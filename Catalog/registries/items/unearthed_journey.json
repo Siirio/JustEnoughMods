@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -379,7 +379,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/acherontisuchus_spawn_egg.json"
+        "assets/unearthed_journey/models/item/acherontisuchus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_acherontisuchus.json"
       ],
       "display_name_en_us": "Acherontisuchus Spawn Egg",
       "display_name_ru_ru": null,
@@ -387,9 +388,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_acherontisuchus.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/acherontisuchus_spawn_egg.json"
       ],
@@ -412,7 +414,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_acherontisuchus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:acherontisuchus_spawn_egg"
@@ -431,7 +435,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/acrophyseter_spawn_egg.json"
+        "assets/unearthed_journey/models/item/acrophyseter_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_acrophyseter.json"
       ],
       "display_name_en_us": "Acrophyseter Spawn Egg",
       "display_name_ru_ru": null,
@@ -439,9 +444,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_acrophyseter.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/acrophyseter_spawn_egg.json"
       ],
@@ -464,7 +470,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_acrophyseter"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:acrophyseter_spawn_egg"
@@ -483,7 +491,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/allaeochelys_spawn_egg.json"
+        "assets/unearthed_journey/models/item/allaeochelys_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_allaeochelys.json"
       ],
       "display_name_en_us": "Allaeochelys Spawn Egg",
       "display_name_ru_ru": null,
@@ -491,9 +500,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_allaeochelys.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/allaeochelys_spawn_egg.json"
       ],
@@ -516,7 +526,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_allaeochelys"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:allaeochelys_spawn_egg"
@@ -535,7 +547,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/alligator_mississippiensis_spawn_egg.json"
+        "assets/unearthed_journey/models/item/alligator_mississippiensis_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_alligator_mississippiensis.json"
       ],
       "display_name_en_us": "Alligator Spawn Egg",
       "display_name_ru_ru": null,
@@ -543,9 +556,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_alligator_mississippiensis.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/alligator_mississippiensis_spawn_egg.json"
       ],
@@ -568,7 +582,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_alligator_mississippiensis"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:alligator_mississippiensis_spawn_egg"
@@ -641,7 +657,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/anhima_spawn_egg.json"
+        "assets/unearthed_journey/models/item/anhima_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_anhima.json"
       ],
       "display_name_en_us": "Anhima Spawn Egg",
       "display_name_ru_ru": null,
@@ -649,9 +666,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_anhima.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/anhima_spawn_egg.json"
       ],
@@ -674,7 +692,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_anhima"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:anhima_spawn_egg"
@@ -1269,7 +1289,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/arctodus_pristinus_spawn_egg.json"
+        "assets/unearthed_journey/models/item/arctodus_pristinus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_arctodus_pristinus.json"
       ],
       "display_name_en_us": "Arctodus Spawn Egg",
       "display_name_ru_ru": null,
@@ -1277,9 +1298,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_arctodus_pristinus.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/arctodus_pristinus_spawn_egg.json"
       ],
@@ -1302,7 +1324,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_arctodus_pristinus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:arctodus_pristinus_spawn_egg"
@@ -1321,7 +1345,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/arktocara_spawn_egg.json"
+        "assets/unearthed_journey/models/item/arktocara_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_arktocara.json"
       ],
       "display_name_en_us": "Arktocara Spawn Egg",
       "display_name_ru_ru": null,
@@ -1329,9 +1354,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_arktocara.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/arktocara_spawn_egg.json"
       ],
@@ -1354,7 +1380,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_arktocara"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:arktocara_spawn_egg"
@@ -1423,7 +1451,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/aturia_spawn_egg.json"
+        "assets/unearthed_journey/models/item/aturia_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_aturia.json"
       ],
       "display_name_en_us": "Aturia Spawn Egg",
       "display_name_ru_ru": null,
@@ -1431,9 +1460,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_aturia.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/aturia_spawn_egg.json"
       ],
@@ -1456,7 +1486,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_aturia"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:aturia_spawn_egg"
@@ -1525,7 +1557,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/balaenoptera_spawn_egg.json"
+        "assets/unearthed_journey/models/item/balaenoptera_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_balaenoptera.json"
       ],
       "display_name_en_us": "Balaenoptera Spawn Egg",
       "display_name_ru_ru": null,
@@ -1533,9 +1566,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_balaenoptera.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/balaenoptera_spawn_egg.json"
       ],
@@ -1558,7 +1592,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_balaenoptera"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:balaenoptera_spawn_egg"
@@ -3819,7 +3855,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/bulwark_brute_spawn_egg.json"
+        "assets/unearthed_journey/models/item/bulwark_brute_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_bulwark_brute.json"
       ],
       "display_name_en_us": "Bulwark Brute Spawn Egg",
       "display_name_ru_ru": null,
@@ -3827,9 +3864,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_bulwark_brute.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/bulwark_brute_spawn_egg.json"
       ],
@@ -3852,7 +3890,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_bulwark_brute"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:bulwark_brute_spawn_egg"
@@ -3871,7 +3911,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/bulwark_lobber_spawn_egg.json"
+        "assets/unearthed_journey/models/item/bulwark_lobber_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_bulwark_lobber.json"
       ],
       "display_name_en_us": "Bulwark Lobber Spawn Egg",
       "display_name_ru_ru": null,
@@ -3879,9 +3920,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_bulwark_lobber.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/bulwark_lobber_spawn_egg.json"
       ],
@@ -3904,7 +3946,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_bulwark_lobber"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:bulwark_lobber_spawn_egg"
@@ -4129,7 +4173,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/carbonemys_spawn_egg.json"
+        "assets/unearthed_journey/models/item/carbonemys_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_carbonemys.json"
       ],
       "display_name_en_us": "Carbonemys Spawn Egg",
       "display_name_ru_ru": null,
@@ -4137,9 +4182,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_carbonemys.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/carbonemys_spawn_egg.json"
       ],
@@ -4162,7 +4208,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_carbonemys"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:carbonemys_spawn_egg"
@@ -6447,7 +6495,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/darwinius_spawn_egg.json"
+        "assets/unearthed_journey/models/item/darwinius_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_darwinius.json"
       ],
       "display_name_en_us": "Darwinius Spawn Egg",
       "display_name_ru_ru": null,
@@ -6455,9 +6504,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_darwinius.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/darwinius_spawn_egg.json"
       ],
@@ -6480,7 +6530,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_darwinius"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:darwinius_spawn_egg"
@@ -6499,7 +6551,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/dasypus_spawn_egg.json"
+        "assets/unearthed_journey/models/item/dasypus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_dasypus.json"
       ],
       "display_name_en_us": "Dasypus Spawn Egg",
       "display_name_ru_ru": null,
@@ -6507,9 +6560,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_dasypus.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/dasypus_spawn_egg.json"
       ],
@@ -6532,7 +6586,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_dasypus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:dasypus_spawn_egg"
@@ -7035,7 +7091,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/dodo_spawn_egg.json"
+        "assets/unearthed_journey/models/item/dodo_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_dodo.json"
       ],
       "display_name_en_us": "Dodo Spawn Egg",
       "display_name_ru_ru": null,
@@ -7043,9 +7100,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_dodo.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/dodo_spawn_egg.json"
       ],
@@ -7068,7 +7126,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_dodo"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:dodo_spawn_egg"
@@ -7289,7 +7349,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/eoconstrictor_spawn_egg.json"
+        "assets/unearthed_journey/models/item/eoconstrictor_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_eoconstrictor.json"
       ],
       "display_name_en_us": "Eoconstrictor Spawn Egg",
       "display_name_ru_ru": null,
@@ -7297,9 +7358,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_eoconstrictor.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/eoconstrictor_spawn_egg.json"
       ],
@@ -7322,7 +7384,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_eoconstrictor"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:eoconstrictor_spawn_egg"
@@ -7975,7 +8039,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/gastornis_spawn_egg.json"
+        "assets/unearthed_journey/models/item/gastornis_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_gastornis.json"
       ],
       "display_name_en_us": "Gastornis Spawn Egg",
       "display_name_ru_ru": null,
@@ -7983,9 +8048,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_gastornis.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/gastornis_spawn_egg.json"
       ],
@@ -8008,7 +8074,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_gastornis"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:gastornis_spawn_egg"
@@ -8079,7 +8147,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/glyptodon_spawn_egg.json"
+        "assets/unearthed_journey/models/item/glyptodon_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_glyptodon.json"
       ],
       "display_name_en_us": "Glyptodon Spawn Egg",
       "display_name_ru_ru": null,
@@ -8087,9 +8156,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_glyptodon.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/glyptodon_spawn_egg.json"
       ],
@@ -8112,7 +8182,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_glyptodon"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:glyptodon_spawn_egg"
@@ -8131,7 +8203,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/gnatusuchus_spawn_egg.json"
+        "assets/unearthed_journey/models/item/gnatusuchus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_gnatusuchus.json"
       ],
       "display_name_en_us": "Gnatusuchus Spawn Egg",
       "display_name_ru_ru": null,
@@ -8139,9 +8212,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_gnatusuchus.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/gnatusuchus_spawn_egg.json"
       ],
@@ -8164,7 +8238,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_gnatusuchus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:gnatusuchus_spawn_egg"
@@ -8512,8 +8588,8 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "jem-advancements-5.2.0.jar:assets/jem_advancements/lang/en_us.json",
-        "jem-advancements-5.2.0.jar:assets/jem_advancements/lang/ru_ru.json",
+        "jem-advancements-5.3.0.jar:assets/jem_advancements/lang/en_us.json",
+        "jem-advancements-5.3.0.jar:assets/jem_advancements/lang/ru_ru.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/journey_guide.json"
       ],
@@ -8655,7 +8731,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/kopidodon_spawn_egg.json"
+        "assets/unearthed_journey/models/item/kopidodon_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_kopidodon.json"
       ],
       "display_name_en_us": "Kopidodon Spawn Egg",
       "display_name_ru_ru": null,
@@ -8663,9 +8740,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_kopidodon.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/kopidodon_spawn_egg.json"
       ],
@@ -8688,7 +8766,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_kopidodon"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:kopidodon_spawn_egg"
@@ -10045,7 +10125,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/leptictidium_spawn_egg.json"
+        "assets/unearthed_journey/models/item/leptictidium_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_leptictidium.json"
       ],
       "display_name_en_us": "Leptictidium Spawn Egg",
       "display_name_ru_ru": null,
@@ -10053,9 +10134,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_leptictidium.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/leptictidium_spawn_egg.json"
       ],
@@ -10078,7 +10160,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_leptictidium"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:leptictidium_spawn_egg"
@@ -11169,7 +11253,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/masillaraptor_spawn_egg.json"
+        "assets/unearthed_journey/models/item/masillaraptor_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_masillaraptor.json"
       ],
       "display_name_en_us": "Masillaraptor Spawn Egg",
       "display_name_ru_ru": null,
@@ -11177,9 +11262,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_masillaraptor.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/masillaraptor_spawn_egg.json"
       ],
@@ -11202,7 +11288,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_masillaraptor"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:masillaraptor_spawn_egg"
@@ -11329,7 +11417,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/megaloceros_spawn_egg.json"
+        "assets/unearthed_journey/models/item/megaloceros_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_megaloceros.json"
       ],
       "display_name_en_us": "Megaloceros Spawn Egg",
       "display_name_ru_ru": null,
@@ -11337,9 +11426,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_megaloceros.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/megaloceros_spawn_egg.json"
       ],
@@ -11362,7 +11452,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_megaloceros"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:megaloceros_spawn_egg"
@@ -11485,7 +11577,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/messelirrisor_spawn_egg.json"
+        "assets/unearthed_journey/models/item/messelirrisor_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_messelirrisor.json"
       ],
       "display_name_en_us": "Messelirrisor Spawn Egg",
       "display_name_ru_ru": null,
@@ -11493,9 +11586,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_messelirrisor.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/messelirrisor_spawn_egg.json"
       ],
@@ -11518,7 +11612,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_messelirrisor"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:messelirrisor_spawn_egg"
@@ -11997,7 +12093,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/neanderthal_spawn_egg.json"
+        "assets/unearthed_journey/models/item/neanderthal_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_neanderthal.json"
       ],
       "display_name_en_us": "Neanderthal Spawn Egg",
       "display_name_ru_ru": null,
@@ -12005,9 +12102,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_neanderthal.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/neanderthal_spawn_egg.json"
       ],
@@ -12030,7 +12128,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_neanderthal"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:neanderthal_spawn_egg"
@@ -12301,7 +12401,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/odobenocetops_spawn_egg.json"
+        "assets/unearthed_journey/models/item/odobenocetops_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_odobenocetops.json"
       ],
       "display_name_en_us": "Odobenocetops Spawn Egg",
       "display_name_ru_ru": null,
@@ -12309,9 +12410,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_odobenocetops.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/odobenocetops_spawn_egg.json"
       ],
@@ -12334,7 +12436,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_odobenocetops"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:odobenocetops_spawn_egg"
@@ -12353,7 +12457,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/ontocetus_spawn_egg.json"
+        "assets/unearthed_journey/models/item/ontocetus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_ontocetus.json"
       ],
       "display_name_en_us": "Ontocetus Spawn Egg",
       "display_name_ru_ru": null,
@@ -12361,9 +12466,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_ontocetus.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/ontocetus_spawn_egg.json"
       ],
@@ -12386,7 +12492,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_ontocetus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:ontocetus_spawn_egg"
@@ -12507,7 +12615,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/pachystruthio_spawn_egg.json"
+        "assets/unearthed_journey/models/item/pachystruthio_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_pachystruthio.json"
       ],
       "display_name_en_us": "Pachystruthio Spawn Egg",
       "display_name_ru_ru": null,
@@ -12515,9 +12624,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_pachystruthio.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/pachystruthio_spawn_egg.json"
       ],
@@ -12540,7 +12650,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_pachystruthio"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:pachystruthio_spawn_egg"
@@ -12559,7 +12671,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/pacifichelys_spawn_egg.json"
+        "assets/unearthed_journey/models/item/pacifichelys_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_pacifichelys.json"
       ],
       "display_name_en_us": "Pacifichelys Spawn Egg",
       "display_name_ru_ru": null,
@@ -12567,9 +12680,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_pacifichelys.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/pacifichelys_spawn_egg.json"
       ],
@@ -12592,7 +12706,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_pacifichelys"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:pacifichelys_spawn_egg"
@@ -12835,7 +12951,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/palaeeudyptes_spawn_egg.json"
+        "assets/unearthed_journey/models/item/palaeeudyptes_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_palaeeudyptes.json"
       ],
       "display_name_en_us": "Palaeeudyptes Spawn Egg",
       "display_name_ru_ru": null,
@@ -12843,9 +12960,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_palaeeudyptes.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/palaeeudyptes_spawn_egg.json"
       ],
@@ -12868,7 +12986,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_palaeeudyptes"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:palaeeudyptes_spawn_egg"
@@ -15009,7 +15129,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/pebanista_spawn_egg.json"
+        "assets/unearthed_journey/models/item/pebanista_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_pebanista.json"
       ],
       "display_name_en_us": "Pebanista Spawn Egg",
       "display_name_ru_ru": null,
@@ -15017,9 +15138,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_pebanista.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/pebanista_spawn_egg.json"
       ],
@@ -15042,7 +15164,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_pebanista"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:pebanista_spawn_egg"
@@ -15061,7 +15185,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/pebasiconcha_spawn_egg.json"
+        "assets/unearthed_journey/models/item/pebasiconcha_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_pebasiconcha.json"
       ],
       "display_name_en_us": "Pebasiconcha Spawn Egg",
       "display_name_ru_ru": null,
@@ -15069,9 +15194,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_pebasiconcha.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/pebasiconcha_spawn_egg.json"
       ],
@@ -15094,7 +15220,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_pebasiconcha"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:pebasiconcha_spawn_egg"
@@ -15217,7 +15345,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/pelagornis_spawn_egg.json"
+        "assets/unearthed_journey/models/item/pelagornis_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_pelagornis.json"
       ],
       "display_name_en_us": "Pelagornis Spawn Egg",
       "display_name_ru_ru": null,
@@ -15225,9 +15354,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_pelagornis.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/pelagornis_spawn_egg.json"
       ],
@@ -15250,7 +15380,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_pelagornis"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:pelagornis_spawn_egg"
@@ -16072,7 +16204,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/platygonus_spawn_egg.json"
+        "assets/unearthed_journey/models/item/platygonus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_platygonus.json"
       ],
       "display_name_en_us": "Platygonus Spawn Egg",
       "display_name_ru_ru": null,
@@ -16080,9 +16213,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_platygonus.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/platygonus_spawn_egg.json"
       ],
@@ -16105,7 +16239,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_platygonus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:platygonus_spawn_egg"
@@ -16927,7 +17063,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/propalaeotherium_spawn_egg.json"
+        "assets/unearthed_journey/models/item/propalaeotherium_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_propalaeotherium.json"
       ],
       "display_name_en_us": "Propalaeotherium Spawn Egg",
       "display_name_ru_ru": null,
@@ -16935,9 +17072,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_propalaeotherium.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/propalaeotherium_spawn_egg.json"
       ],
@@ -16960,7 +17098,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_propalaeotherium"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:propalaeotherium_spawn_egg"
@@ -17031,7 +17171,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/pseudoprepotherium_spawn_egg.json"
+        "assets/unearthed_journey/models/item/pseudoprepotherium_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_pseudoprepotherium.json"
       ],
       "display_name_en_us": "Pseudoprepotherium Spawn Egg",
       "display_name_ru_ru": null,
@@ -17039,9 +17180,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_pseudoprepotherium.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/pseudoprepotherium_spawn_egg.json"
       ],
@@ -17064,7 +17206,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_pseudoprepotherium"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:pseudoprepotherium_spawn_egg"
@@ -20318,7 +20462,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/tapirus_spawn_egg.json"
+        "assets/unearthed_journey/models/item/tapirus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_tapirus.json"
       ],
       "display_name_en_us": "Tapirus Spawn Egg",
       "display_name_ru_ru": null,
@@ -20326,9 +20471,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_tapirus.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/tapirus_spawn_egg.json"
       ],
@@ -20351,7 +20497,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_tapirus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:tapirus_spawn_egg"
@@ -20370,7 +20518,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/tetrameryx_spawn_egg.json"
+        "assets/unearthed_journey/models/item/tetrameryx_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_tetrameryx.json"
       ],
       "display_name_en_us": "Tetrameryx Spawn Egg",
       "display_name_ru_ru": null,
@@ -20378,9 +20527,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_tetrameryx.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/tetrameryx_spawn_egg.json"
       ],
@@ -20403,7 +20553,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_tetrameryx"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:tetrameryx_spawn_egg"
@@ -20422,7 +20574,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/thalassocnus_spawn_egg.json"
+        "assets/unearthed_journey/models/item/thalassocnus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_thalassocnus.json"
       ],
       "display_name_en_us": "Thalassocnus Spawn Egg",
       "display_name_ru_ru": null,
@@ -20430,9 +20583,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_thalassocnus.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/thalassocnus_spawn_egg.json"
       ],
@@ -20455,7 +20609,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_thalassocnus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:thalassocnus_spawn_egg"
@@ -20688,7 +20844,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/thylacine_spawn_egg.json"
+        "assets/unearthed_journey/models/item/thylacine_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_thylacine.json"
       ],
       "display_name_en_us": "Thylacine Spawn Egg",
       "display_name_ru_ru": null,
@@ -20696,9 +20853,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_thylacine.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/thylacine_spawn_egg.json"
       ],
@@ -20721,7 +20879,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_thylacine"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:thylacine_spawn_egg"
@@ -20796,7 +20956,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/titanis_spawn_egg.json"
+        "assets/unearthed_journey/models/item/titanis_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_titanis.json"
       ],
       "display_name_en_us": "Titanis Spawn Egg",
       "display_name_ru_ru": null,
@@ -20804,9 +20965,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_titanis.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/titanis_spawn_egg.json"
       ],
@@ -20829,7 +20991,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_titanis"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:titanis_spawn_egg"
@@ -21424,7 +21588,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/trigodon_spawn_egg.json"
+        "assets/unearthed_journey/models/item/trigodon_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_trigodon.json"
       ],
       "display_name_en_us": "Trigodon Spawn Egg",
       "display_name_ru_ru": null,
@@ -21432,9 +21597,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_trigodon.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/trigodon_spawn_egg.json"
       ],
@@ -21457,7 +21623,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_trigodon"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:trigodon_spawn_egg"
@@ -21476,7 +21644,8 @@
       ],
       "observed_in": [
         "assets/unearthed_journey/lang/en_us.json",
-        "assets/unearthed_journey/models/item/tuatara_spawn_egg.json"
+        "assets/unearthed_journey/models/item/tuatara_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/unearthed_journey_tuatara.json"
       ],
       "display_name_en_us": "Tuatara Spawn Egg",
       "display_name_ru_ru": null,
@@ -21484,9 +21653,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/unearthed_journey_tuatara.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:assets/unearthed_journey/models/item/tuatara_spawn_egg.json"
       ],
@@ -21509,7 +21679,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/unearthed_journey_tuatara"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:unearthed_journey:tuatara_spawn_egg"

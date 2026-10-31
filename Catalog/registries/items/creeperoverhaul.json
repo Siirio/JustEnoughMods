@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -28,7 +28,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/badlands_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/badlands_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_badlands_creeper.json"
       ],
       "display_name_en_us": "Badlands Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва крипера пустошей",
@@ -36,12 +37,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/badlands_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/badlands_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_badlands_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -62,7 +64,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_badlands_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:badlands_creeper_spawn_egg"
@@ -82,7 +86,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/bamboo_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/bamboo_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_bamboo_creeper.json"
       ],
       "display_name_en_us": "Bamboo Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва бамбукового крипера",
@@ -90,12 +95,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/bamboo_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/bamboo_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_bamboo_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -116,7 +122,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_bamboo_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:bamboo_creeper_spawn_egg"
@@ -136,7 +144,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/beach_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/beach_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_beach_creeper.json"
       ],
       "display_name_en_us": "Beach Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва пляжного крипера",
@@ -144,12 +153,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/beach_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/beach_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_beach_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -170,7 +180,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_beach_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:beach_creeper_spawn_egg"
@@ -190,7 +202,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/cave_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/cave_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_cave_creeper.json"
       ],
       "display_name_en_us": "Cave Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва пещерного крипера",
@@ -198,12 +211,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/cave_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/cave_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_cave_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -224,7 +238,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_cave_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:cave_creeper_spawn_egg"
@@ -244,7 +260,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/dark_oak_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/dark_oak_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_dark_oak_creeper.json"
       ],
       "display_name_en_us": "Dark Oak Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва крипера из тёмного дуба",
@@ -252,12 +269,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/dark_oak_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/dark_oak_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_dark_oak_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -278,7 +296,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_dark_oak_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:dark_oak_creeper_spawn_egg"
@@ -298,7 +318,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/desert_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/desert_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_desert_creeper.json"
       ],
       "display_name_en_us": "Desert Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва пустынного крипера",
@@ -306,12 +327,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/desert_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/desert_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_desert_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -332,7 +354,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_desert_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:desert_creeper_spawn_egg"
@@ -352,7 +376,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/dripstone_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/dripstone_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_dripstone_creeper.json"
       ],
       "display_name_en_us": "Dripstone Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва крипера из натёчного камня",
@@ -360,12 +385,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/dripstone_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/dripstone_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_dripstone_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -386,7 +412,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_dripstone_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:dripstone_creeper_spawn_egg"
@@ -406,7 +434,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/hills_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/hills_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_hills_creeper.json"
       ],
       "display_name_en_us": "Hills Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва крипера холмов",
@@ -414,12 +443,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/hills_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/hills_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_hills_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -440,7 +470,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_hills_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:hills_creeper_spawn_egg"
@@ -460,7 +492,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/jungle_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/jungle_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_jungle_creeper.json"
       ],
       "display_name_en_us": "Jungle Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва тропического крипера",
@@ -468,12 +501,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/jungle_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/jungle_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_jungle_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -494,7 +528,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_jungle_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:jungle_creeper_spawn_egg"
@@ -514,7 +550,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/mushroom_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/mushroom_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_mushroom_creeper.json"
       ],
       "display_name_en_us": "Mushroom Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва грибного крипера",
@@ -522,12 +559,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/mushroom_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/mushroom_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_mushroom_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -548,7 +586,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_mushroom_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:mushroom_creeper_spawn_egg"
@@ -567,7 +607,8 @@
       ],
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
-        "assets/creeperoverhaul/models/item/ocean_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/ocean_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_ocean_creeper.json"
       ],
       "display_name_en_us": "Ocean Creeper Spawn Egg",
       "display_name_ru_ru": null,
@@ -575,11 +616,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/ocean_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/ocean_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_ocean_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -600,7 +642,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_ocean_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:ocean_creeper_spawn_egg"
@@ -670,7 +714,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/savannah_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/savannah_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_savannah_creeper.json"
       ],
       "display_name_en_us": "Savannah Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва крипера саванны",
@@ -678,12 +723,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/savannah_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/savannah_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_savannah_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -704,7 +750,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_savannah_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:savannah_creeper_spawn_egg"
@@ -724,7 +772,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/snowy_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/snowy_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_snowy_creeper.json"
       ],
       "display_name_en_us": "Snowy Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва снежного крипера",
@@ -732,12 +781,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/snowy_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/snowy_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_snowy_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -758,7 +808,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_snowy_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:snowy_creeper_spawn_egg"
@@ -778,7 +830,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/spruce_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/spruce_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_spruce_creeper.json"
       ],
       "display_name_en_us": "Spruce Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва елового крипера",
@@ -786,12 +839,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/spruce_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/spruce_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_spruce_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -812,7 +866,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_spruce_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:spruce_creeper_spawn_egg"
@@ -832,7 +888,8 @@
       "observed_in": [
         "assets/creeperoverhaul/lang/en_us.json",
         "assets/creeperoverhaul/lang/ru_ru.json",
-        "assets/creeperoverhaul/models/item/swamp_creeper_spawn_egg.json"
+        "assets/creeperoverhaul/models/item/swamp_creeper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/creeperoverhaul_swamp_creeper.json"
       ],
       "display_name_en_us": "Swamp Creeper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва болотного крипера",
@@ -840,12 +897,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/en_us.json",
         "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/lang/ru_ru.json",
-        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/swamp_creeper_spawn_egg.json"
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/swamp_creeper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/creeperoverhaul_swamp_creeper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -866,7 +924,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/creeperoverhaul_swamp_creeper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:creeperoverhaul:swamp_creeper_spawn_egg"

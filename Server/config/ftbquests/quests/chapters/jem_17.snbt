@@ -4377,64 +4377,6 @@
       "jem_dedicated_event": false
     },
     {
-      "id": "31D39460913B197C",
-      "title": "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.condition\"}",
-      "description": [
-        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.condition\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.purpose\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.tip\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.reward\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.guide_hint\"}"
-      ],
-      "icon": "barnyardbuddies:horseshoe",
-      "x": -12.5,
-      "y": 8.6,
-      "shape": "circle",
-      "size": 1.4,
-      "tasks": [
-        {
-          "id": "236BDAE27783A788",
-          "type": "advancement",
-          "advancement": "jem_advancements:quest_v3/v3_pet_trailcraft"
-        }
-      ],
-      "rewards": [
-        {
-          "id": "2B1617C965F4F279",
-          "type": "jem_advancements:quest_item",
-          "item": "barnyardbuddies:horseshoe",
-          "count": 4,
-          "claim_key": "v3_pet_trailcraft/item/0",
-          "claim_reward_id": "2B1617C965F4F279",
-          "team_reward": false
-        },
-        {
-          "id": "2713E1EEDE84912D",
-          "type": "jem_advancements:quest_item",
-          "item": "barnyardbuddies:spotted_quilt_rug",
-          "count": 2,
-          "claim_key": "v3_pet_trailcraft/item/1",
-          "claim_reward_id": "2713E1EEDE84912D",
-          "team_reward": false
-        },
-        {
-          "id": "257F881F5E2630C8",
-          "type": "jem_advancements:quest_xp",
-          "xp": 75,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "v3_pet_trailcraft",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
       "id": "36FCE59C5D85BEE2",
       "title": "{\"translate\":\"jem.atlas.card.v3_pet_fresh_wheels.title\"}",
       "subtitle": "{\"translate\":\"jem.atlas.card.v3_pet_fresh_wheels.condition\"}",
@@ -5856,9 +5798,7 @@
         "",
         "{\"translate\":\"jem.atlas.card.v3_pet_wagon_service.reward\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.v3_pet_wagon_service.guide_hint\"}",
-        "",
-        "{\"translate\":\"jem.atlas.free_order\"}"
+        "{\"translate\":\"jem.atlas.card.v3_pet_wagon_service.guide_hint\"}"
       ],
       "icon": "trotting_wagons:horse_whip",
       "x": -19.4,
@@ -6704,6 +6644,108 @@
       "jem_source_id": "v3_food_lava_nursery",
       "jem_required_mods": [
         "kaleidoscope_nether"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "8A334CE44829BEDA",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_better_horses_saddle.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_better_horses_saddle.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_better_horses_saddle.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_better_horses_saddle.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_better_horses_saddle.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_better_horses_saddle.reward\"}"
+      ],
+      "icon": "icys-better-horses:upgraded_saddle",
+      "x": -24.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "20B53D63FB4E20BD",
+          "type": "item",
+          "item": "icys-better-horses:upgraded_saddle",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A036F4742B9AD5C",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:golden_carrot",
+          "count": 4,
+          "claim_key": "mu4_better_horses_saddle/item/0",
+          "claim_reward_id": "2A036F4742B9AD5C",
+          "team_reward": false
+        },
+        {
+          "id": "27FF1B60C03E58C5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 30,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_better_horses_saddle",
+      "jem_required_mods": [
+        "icys-better-horses"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "CCC5DD5B9474DE84",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_mineable_spawner.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_mineable_spawner.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_mineable_spawner.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_mineable_spawner.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_mineable_spawner.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_mineable_spawner.reward\"}"
+      ],
+      "icon": "minecraft:spawner",
+      "x": -21.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "2E71F81D91F05DF3",
+          "type": "item",
+          "item": "minecraft:spawner",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F6B86FC5D5A59AD",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:golden_carrot",
+          "count": 4,
+          "claim_key": "mu4_mineable_spawner/item/0",
+          "claim_reward_id": "2F6B86FC5D5A59AD",
+          "team_reward": false
+        },
+        {
+          "id": "2A53B8EA0580B6ED",
+          "type": "jem_advancements:quest_xp",
+          "xp": 30,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_mineable_spawner",
+      "jem_required_mods": [
+        "mineable_spawner"
       ],
       "jem_economy": false,
       "jem_dedicated_event": false

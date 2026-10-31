@@ -11,6 +11,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | [Let's Do] HerbalBrews | `1.0.12` | Client + server |  |
 | [Let's Do] Vinery | `1.4.41` | Client + server |  |
 | 3D Maps | `1.0.1-1.20.1-forge` | Client + server |  |
+| Advancement Frames | `1.20-2.2.8` | Client + server | FTB Quest frame integration |
 | Alex's Caves | `2.0.2` | Client + server |  |
 | Alex's Mobs | `1.22.9` | Client + server |  |
 | Almanac | `1.0.2` | Client + server |  |
@@ -78,6 +79,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Easy Anvils | `8.0.2` | Client + server |  |
 | Easy Magic | `8.0.1` | Client + server |  |
 | Elysium | `1.1.3` | Client + server |  |
+| Ember's Ancient Remnants | `1.0.2.2` | Client + server |  |
 | Embeddium | `0.3.31+mc1.20.1` | Client |  |
 | End Remastered | `5.3.3-R-1.20.1` | Client + server |  |
 | Enderman Overhaul | `1.0.4` | Client + server |  |
@@ -126,8 +128,8 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Gravestone Mod | `1.20.1-1.0.35` | Client + server |  |
 | Guard Villagers | `1.20.1-1.6.19` | Client + server |  |
 | Handcrafted | `3.0.6` | Client + server |  |
-| Horseman | `1.3.17` | Client + server |  |
 | HT's TreeChop | `0.19.0` | Client + server |  |
+| Icy's Better Horses | `2.1.8` | Client + server | Native horse ownership, recruit mounting and MobHome support |
 | ImmediatelyFast | `1.5.5+1.20.4` | Client |  |
 | Immersive Aircraft | `1.5.0+1.20.1` | Client + server |  |
 | Immersive Lanterns | `1.0.6` | Client + server |  |
@@ -141,12 +143,13 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Iron's Lib | `1.20.1-1.0.2` | Client + server |  |
 | Iron's Spells 'n Spellbooks | `1.20.1-3.15.6` | Client + server |  |
 | Item Obliterator | `2.3.0` | Client + server |  |
+| Item Magnet | `1.0.0` | Client + server |  |
 | Jack's Gravestones | `1.0.5` | Client + server |  |
 | Jade | `11.13.3+forge` | Client + server |  |
 | Jaden's Nether Expansion | `2.3.5` | Client + server |  |
 | JamLib | `1.3.6+1.20.1-patch.1` | Server |  |
 | JamLib | `1.3.6+1.20.1-patch.1` | Client |  |
-| JEM Advancements | `5.1.0` | Client + server |  |
+| JEM Advancements | `5.3.0` | Client + server |  |
 | JEM Drill Lifecycle | `1.0.0` | Client + server |  |
 | JEM Pack Core | `2.0.0-dev` | Client + server |  |
 | JEM Server | `2.0.0-dev` | Client + server |  |
@@ -154,7 +157,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | JEM World Boss Tiers | `2.5.0-dev` | Client + server |  |
 | Just Enough Items | `15.49.0.194` | Client + server |  |
 | JustEnoughMods Adaptive Culling | `1.4.1` | Client |  |
-| JustEnoughMods Compatibility | `3.7.0` | Client + server |  |
+| JustEnoughMods Compatibility | `3.10.0` | Client + server |  |
 | Kaleidoscope Compat | `2.6.5-forge+mc1.20.1` | Server |  |
 | Kaleidoscope Compat | `2.6.5-forge+mc1.20.1` | Client |  |
 | Kaleidoscope Cookery | `1.4.1-forge+mc1.20.1` | Server |  |
@@ -190,6 +193,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | MidnightLib | `1.9.2` | Server |  |
 | MidnightLib | `1.9.2` | Client |  |
 | Minecraft Cursor | `3.11.3+1.20.1` | Client |  |
+| Mineable Spawner | `1-v2.4.2+1.16-1.20.1` | Client + server | Silk Touch behavior governed by JEM policy |
 | MmmMmmMmmMmm | `1.20-2.0.11` | Client + server |  |
 | MOA DECOR: HOLIDAYS | `1.20.1` | Client + server |  |
 | Modefite - Item Definition Backport | `1.0.3+1.20.1` | Server |  |
@@ -255,11 +259,13 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Serene Seasons | `9.1.0.3` | Client + server |  |
 | Server Login | `1.0.3` | Server |  |
 | ServerCore | `1.5.2+1.20.1` | Server |  |
+| Shadow Drop | `3.0.4+1.20.1` | Client |  |
 | Shulker Tooltip | `1.13.1` | Client |  |
 | ShutterUp | `1.1.1` | Client + server |  |
 | Siege Weapons Mod | `0.2.5` | Client + server |  |
 | Simply Bows | `0.1.4` | Client + server |  |
 | Simply Tooltips | `0.1.5-1.20.1` | Client + server |  |
+| sittingplus | `2.0.5` | Client + server |  |
 | Skarrier Mobs | `1.0.6` | Client + server |  |
 | Small Ships | `2.0.0-b1.4` | Client + server |  |
 | Snow Under Trees | `1.4.12` | Client + server |  |

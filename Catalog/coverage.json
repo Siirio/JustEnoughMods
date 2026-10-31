@@ -1,17 +1,18 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
-  "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
+  "generated_utc": "2026-10-31T00:06:28.760478+00:00",
   "claim": "100% of statically observed canonical IDs; runtime boundary unresolved",
   "id_coverage": {
     "items": {
       "expected_id_count": null,
-      "enumerated_id_count": 17313,
+      "enumerated_id_count": 17375,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
+        "advancementframes": 5,
         "alexscaves": 610,
         "alexsmobs": 321,
         "animal_feeding_trough": 1,
@@ -59,6 +60,7 @@
         "guardvillagers": 4,
         "handcrafted": 285,
         "herbalbrews": 48,
+        "icys_better_horses": 30,
         "immersive_aircraft": 40,
         "immersive_melodies": 22,
         "immersive_weathering": 237,
@@ -67,10 +69,11 @@
         "invincible": 3,
         "irons_lib": 4,
         "irons_spellbooks": 410,
+        "item_magnet": 2,
         "jacksgravestones": 1,
         "jem_economy": 6,
         "jem_twelve_eyes": 32,
-        "jemcompat": 45,
+        "jemcompat": 70,
         "kaleidoscope_compat": 229,
         "kaleidoscope_cookery": 213,
         "kaleidoscope_doll": 705,
@@ -132,12 +135,13 @@
     },
     "blocks": {
       "expected_id_count": null,
-      "enumerated_id_count": 12154,
+      "enumerated_id_count": 12157,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
+        "advancementframes": 2,
         "alexscaves": 385,
         "alexsmobs": 38,
         "animal_feeding_trough": 1,
@@ -178,6 +182,7 @@
         "gravestone": 1,
         "handcrafted": 268,
         "herbalbrews": 37,
+        "icys_better_horses": 1,
         "immersive_weathering": 194,
         "incision": 129,
         "infinitybuttons": 349,
@@ -235,7 +240,7 @@
     },
     "entities": {
       "expected_id_count": null,
-      "enumerated_id_count": 1608,
+      "enumerated_id_count": 1639,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -270,6 +275,7 @@
         "gravestone": 1,
         "guardvillagers": 1,
         "handcrafted": 2,
+        "icys_better_horses": 31,
         "immersive_aircraft": 7,
         "incision": 5,
         "irons_spellbooks": 76,
@@ -416,13 +422,14 @@
     },
     "structures": {
       "expected_id_count": null,
-      "enumerated_id_count": 520,
+      "enumerated_id_count": 534,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
         "alexscaves": 14,
+        "ancient_remnants": 14,
         "aquamirae": 6,
         "bakery": 1,
         "beachparty": 3,
@@ -468,7 +475,7 @@
     },
     "creative_tabs": {
       "expected_id_count": null,
-      "enumerated_id_count": 54,
+      "enumerated_id_count": 55,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -493,6 +500,7 @@
         "geckolib": 1,
         "golemoverhaul": 1,
         "handcrafted": 1,
+        "icys_better_horses": 1,
         "immersive_aircraft": 1,
         "immersive_melodies": 1,
         "immersive_weathering": 1,
@@ -517,18 +525,18 @@
   "classification_coverage": {
     "armor": 274,
     "foods": 4,
-    "mobs": 1608,
-    "placeables": 9600,
+    "mobs": 1639,
+    "placeables": 9602,
     "tools": 95,
-    "trade_policies": 17313,
-    "weapons": 386
+    "trade_policies": 17375,
+    "weapons": 388
   },
   "semantic_field_coverage": {
     "runtime_verified": 0,
-    "static_inferred": 32605,
+    "static_inferred": 32716,
     "note": "Null is intentional where static sources do not prove semantics."
   },
   "unresolved_counts": {
-    "entries": 69
+    "entries": 68
   }
 }

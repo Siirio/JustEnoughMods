@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -5790,7 +5790,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/cindaria_spawn_egg.json"
+        "assets/cataclysm/models/item/cindaria_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_cindaria.json"
       ],
       "display_name_en_us": "Cindaria Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Эолии",
@@ -5798,12 +5799,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/cindaria_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/cindaria_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_cindaria.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5824,7 +5826,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_cindaria"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:cindaria_spawn_egg"
@@ -6368,7 +6372,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/coralssus_spawn_egg.json"
+        "assets/cataclysm/models/item/coralssus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_coralssus.json"
       ],
       "display_name_en_us": "Coralssus Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва кораллуса",
@@ -6376,12 +6381,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/coralssus_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/coralssus_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_coralssus.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -6402,7 +6408,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_coralssus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:coralssus_spawn_egg"
@@ -8942,7 +8950,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_angler_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_angler_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_angler.json"
       ],
       "display_name_en_us": "Deepling Angler Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глубинника-рыболова",
@@ -8950,12 +8959,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_angler_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_angler_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_angler.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8976,7 +8986,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling_angler"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:deepling_angler_spawn_egg"
@@ -8996,7 +9008,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_brute_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_brute_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_brute.json"
       ],
       "display_name_en_us": "Deepling Brute Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва брутального глубинника",
@@ -9004,12 +9017,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_brute_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_brute_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_brute.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9030,7 +9044,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling_brute"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:deepling_brute_spawn_egg"
@@ -9050,7 +9066,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_priest_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_priest_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_priest.json"
       ],
       "display_name_en_us": "Deepling Priest Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глубинника-жреца",
@@ -9058,12 +9075,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_priest_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_priest_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_priest.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9084,7 +9102,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling_priest"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:deepling_priest_spawn_egg"
@@ -9104,7 +9124,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling.json"
       ],
       "display_name_en_us": "Deepling Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глубинника",
@@ -9112,12 +9133,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9138,7 +9160,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:deepling_spawn_egg"
@@ -9158,7 +9182,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_warlock_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_warlock_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_warlock.json"
       ],
       "display_name_en_us": "Deepling Warlock Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глубинника-мага",
@@ -9166,12 +9191,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_warlock_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_warlock_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_warlock.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9192,7 +9218,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling_warlock"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:deepling_warlock_spawn_egg"
@@ -9372,7 +9400,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/draugr_spawn_egg.json"
+        "assets/cataclysm/models/item/draugr_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_draugr.json"
       ],
       "display_name_en_us": "Draugr Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Драугра",
@@ -9380,12 +9409,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/draugr_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/draugr_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_draugr.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9406,7 +9436,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_draugr"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:draugr_spawn_egg"
@@ -9530,7 +9562,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/elite_draugr_spawn_egg.json"
+        "assets/cataclysm/models/item/elite_draugr_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_elite_draugr.json"
       ],
       "display_name_en_us": "Elite Draugr Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Элитного Драугра",
@@ -9538,12 +9571,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/elite_draugr_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/elite_draugr_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_elite_draugr.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9564,7 +9598,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_elite_draugr"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:elite_draugr_spawn_egg"
@@ -9957,7 +9993,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/endermaptera_spawn_egg.json"
+        "assets/cataclysm/models/item/endermaptera_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_endermaptera.json"
       ],
       "display_name_en_us": "Endermaptera Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Эндер-мафтеры",
@@ -9965,12 +10002,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/endermaptera_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/endermaptera_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_endermaptera.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9991,7 +10029,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_endermaptera"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:endermaptera_spawn_egg"
@@ -10886,7 +10926,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/hippocamtus_spawn_egg.json"
+        "assets/cataclysm/models/item/hippocamtus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_hippocamtus.json"
       ],
       "display_name_en_us": "Hippocamtus Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Гиппокамта",
@@ -10894,12 +10935,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/hippocamtus_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/hippocamtus_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_hippocamtus.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -10920,7 +10962,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_hippocamtus"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:hippocamtus_spawn_egg"
@@ -10994,7 +11038,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/ignited_berserker_spawn_egg.json"
+        "assets/cataclysm/models/item/ignited_berserker_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_ignited_berserker.json"
       ],
       "display_name_en_us": "Ignited Berserker Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва огненного берсерка",
@@ -11002,12 +11047,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/ignited_berserker_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/ignited_berserker_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_ignited_berserker.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -11028,7 +11074,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_ignited_berserker"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:ignited_berserker_spawn_egg"
@@ -12643,7 +12691,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/koboleton_spawn_egg.json"
+        "assets/cataclysm/models/item/koboleton_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_koboleton.json"
       ],
       "display_name_en_us": "Koboleton Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва кобольда",
@@ -12651,12 +12700,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/koboleton_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/koboleton_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_koboleton.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -12677,7 +12727,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_koboleton"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:koboleton_spawn_egg"
@@ -17263,7 +17315,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/royal_draugr_spawn_egg.json"
+        "assets/cataclysm/models/item/royal_draugr_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_royal_draugr.json"
       ],
       "display_name_en_us": "Royal Draugr Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Королевского Драугра",
@@ -17271,12 +17324,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/royal_draugr_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/royal_draugr_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_royal_draugr.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17297,7 +17351,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_royal_draugr"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:royal_draugr_spawn_egg"
@@ -18507,7 +18563,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/symbiocto_spawn_egg.json"
+        "assets/cataclysm/models/item/symbiocto_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_symbiocto.json"
       ],
       "display_name_en_us": "Symbiocto Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Симбиокта",
@@ -18515,12 +18572,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/symbiocto_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/symbiocto_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_symbiocto.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -18541,7 +18599,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_symbiocto"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:symbiocto_spawn_egg"
@@ -19013,7 +19073,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/the_watcher_spawn_egg.json"
+        "assets/cataclysm/models/item/the_watcher_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_the_watcher.json"
       ],
       "display_name_en_us": "The Watcher Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва наблюдателя",
@@ -19021,12 +19082,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/the_watcher_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/the_watcher_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_the_watcher.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -19047,7 +19109,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_the_watcher"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:the_watcher_spawn_egg"
@@ -19385,7 +19449,8 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/urchinkin_spawn_egg.json"
+        "assets/cataclysm/models/item/urchinkin_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_urchinkin.json"
       ],
       "display_name_en_us": "Urchinkin Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Урчинкина",
@@ -19393,12 +19458,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/urchinkin_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/urchinkin_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_urchinkin.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -19419,7 +19485,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/cataclysm_urchinkin"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:cataclysm:urchinkin_spawn_egg"

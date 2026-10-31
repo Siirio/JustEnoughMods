@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
+  "generation": {
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "item_magnet",
+    "name": "Item Magnet",
+    "version": "1.0.0"
+  },
+  "records": [
+    {
+      "registry_id": "item_magnet:item_magnet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "item_magnet",
+      "mod_name": "Item Magnet",
+      "mod_version": "1.0.0",
+      "source_jar": "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar",
+      "source_sha256": "b131bcb1e74456d74677716587771277b6fee384ae0b95d22c8d9b9777bcce4e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/item_magnet/lang/en_us.json",
+        "assets/item_magnet/models/item/item_magnet.json",
+        "data/item_magnet/recipes/item_magnet.json"
+      ],
+      "display_name_en_us": "Item Magnet",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:assets/item_magnet/lang/en_us.json",
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:assets/item_magnet/models/item/item_magnet.json",
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:data/item_magnet/recipes/item_magnet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "item_magnet:item_magnet"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:item_magnet:item_magnet"
+    },
+    {
+      "registry_id": "item_magnet:magnet_display",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "item_magnet",
+      "mod_name": "Item Magnet",
+      "mod_version": "1.0.0",
+      "source_jar": "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar",
+      "source_sha256": "b131bcb1e74456d74677716587771277b6fee384ae0b95d22c8d9b9777bcce4e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/item_magnet/models/item/magnet_display.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:assets/item_magnet/models/item/magnet_display.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:item_magnet:magnet_display"
+    }
+  ]
+}

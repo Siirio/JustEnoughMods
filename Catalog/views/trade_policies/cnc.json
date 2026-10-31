@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -117,7 +117,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/beaver_spawn_egg.json"
+        "assets/cnc/models/item/beaver_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_beaver.json"
       ],
       "display_name_en_us": "Beaver Spawn Egg",
       "display_name_ru_ru": null,
@@ -125,7 +126,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/beaver_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/beaver_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/beaver_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_beaver.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -134,7 +136,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_beaver"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -165,7 +169,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/bewitched_timber_wolf_spawn_egg.json"
+        "assets/cnc/models/item/bewitched_timber_wolf_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_bewitched_timber_wolf.json"
       ],
       "display_name_en_us": "Bewitched Timber Wolf Spawn Egg",
       "display_name_ru_ru": null,
@@ -173,7 +178,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/bewitched_timber_wolf_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/bewitched_timber_wolf_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/bewitched_timber_wolf_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_bewitched_timber_wolf.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -182,7 +188,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_bewitched_timber_wolf"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -258,7 +266,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/black_bear_spawn_egg.json"
+        "assets/cnc/models/item/black_bear_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_black_bear.json"
       ],
       "display_name_en_us": "Black Bear Spawn Egg",
       "display_name_ru_ru": null,
@@ -266,7 +275,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/black_bear_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/black_bear_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/black_bear_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_black_bear.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -275,7 +285,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_black_bear"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -704,7 +716,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/caribou_spawn_egg.json"
+        "assets/cnc/models/item/caribou_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_caribou.json"
       ],
       "display_name_en_us": "Caribou Spawn Egg",
       "display_name_ru_ru": null,
@@ -712,7 +725,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/caribou_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/caribou_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/caribou_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_caribou.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -721,7 +735,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_caribou"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1217,7 +1233,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/cougar_spawn_egg.json"
+        "assets/cnc/models/item/cougar_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_cougar.json"
       ],
       "display_name_en_us": "Cougar Spawn Egg",
       "display_name_ru_ru": null,
@@ -1225,7 +1242,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/cougar_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/cougar_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/cougar_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_cougar.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1234,7 +1252,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_cougar"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1591,7 +1611,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/elk_spawn_egg.json"
+        "assets/cnc/models/item/elk_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_elk.json"
       ],
       "display_name_en_us": "Elk Spawn Egg",
       "display_name_ru_ru": null,
@@ -1599,7 +1620,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/elk_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/elk_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/elk_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_elk.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1608,7 +1630,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_elk"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1653,8 +1677,8 @@
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/field_guide.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/field_guide.json",
-        "jem-advancements-5.2.0.jar:assets/jem_advancements/lang/en_us.json",
-        "jem-advancements-5.2.0.jar:assets/jem_advancements/lang/ru_ru.json"
+        "jem-advancements-5.3.0.jar:assets/jem_advancements/lang/en_us.json",
+        "jem-advancements-5.3.0.jar:assets/jem_advancements/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1834,7 +1858,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/giant_boar_spawn_egg.json"
+        "assets/cnc/models/item/giant_boar_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_giant_boar.json"
       ],
       "display_name_en_us": "Giant Boar Spawn Egg",
       "display_name_ru_ru": null,
@@ -1842,7 +1867,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/giant_boar_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/giant_boar_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/giant_boar_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_giant_boar.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1851,7 +1877,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_giant_boar"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1975,7 +2003,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/goose_spawn_egg.json"
+        "assets/cnc/models/item/goose_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_goose.json"
       ],
       "display_name_en_us": "Goose Spawn Egg",
       "display_name_ru_ru": null,
@@ -1983,7 +2012,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/goose_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/goose_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/goose_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_goose.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1992,7 +2022,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_goose"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2116,7 +2148,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/howler_spawn_egg.json"
+        "assets/cnc/models/item/howler_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_howler.json"
       ],
       "display_name_en_us": "Howler Spawn Egg",
       "display_name_ru_ru": null,
@@ -2124,7 +2157,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/howler_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/howler_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/howler_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_howler.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2133,7 +2167,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_howler"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2448,7 +2484,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/marmot_spawn_egg.json"
+        "assets/cnc/models/item/marmot_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_marmot.json"
       ],
       "display_name_en_us": "Marmot Spawn Egg",
       "display_name_ru_ru": null,
@@ -2456,7 +2493,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/marmot_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/marmot_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/marmot_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_marmot.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2465,7 +2503,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_marmot"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2586,7 +2626,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/mouse_spawn_egg.json"
+        "assets/cnc/models/item/mouse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_mouse.json"
       ],
       "display_name_en_us": "Mouse Spawn Egg",
       "display_name_ru_ru": null,
@@ -2594,7 +2635,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/mouse_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/mouse_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/mouse_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_mouse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2603,7 +2645,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_mouse"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2679,7 +2723,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/mule_deer_spawn_egg.json"
+        "assets/cnc/models/item/mule_deer_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_mule_deer.json"
       ],
       "display_name_en_us": "Mule Deer Spawn Egg",
       "display_name_ru_ru": null,
@@ -2687,7 +2732,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/mule_deer_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/mule_deer_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/mule_deer_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_mule_deer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2696,7 +2742,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_mule_deer"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -3120,7 +3168,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/pit_viper_spawn_egg.json"
+        "assets/cnc/models/item/pit_viper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_pit_viper.json"
       ],
       "display_name_en_us": "Pit Viper Spawn Egg",
       "display_name_ru_ru": null,
@@ -3128,7 +3177,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/pit_viper_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/pit_viper_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/pit_viper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_pit_viper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3137,7 +3187,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_pit_viper"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -3684,7 +3736,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/ringtail_spawn_egg.json"
+        "assets/cnc/models/item/ringtail_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_ringtail.json"
       ],
       "display_name_en_us": "Ringtail Spawn Egg",
       "display_name_ru_ru": null,
@@ -3692,7 +3745,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/ringtail_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/ringtail_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/ringtail_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_ringtail.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3701,7 +3755,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_ringtail"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4008,7 +4064,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/skunk_spawn_egg.json"
+        "assets/cnc/models/item/skunk_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_skunk.json"
       ],
       "display_name_en_us": "Skunk Spawn Egg",
       "display_name_ru_ru": null,
@@ -4016,7 +4073,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/skunk_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/skunk_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/skunk_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_skunk.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4025,7 +4083,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_skunk"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4149,7 +4209,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/squonk_spawn_egg.json"
+        "assets/cnc/models/item/squonk_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_squonk.json"
       ],
       "display_name_en_us": "Squonk Spawn Egg",
       "display_name_ru_ru": null,
@@ -4157,7 +4218,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/squonk_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/squonk_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/squonk_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_squonk.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4166,7 +4228,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_squonk"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4287,7 +4351,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/timber_wolf_spawn_egg.json"
+        "assets/cnc/models/item/timber_wolf_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_timber_wolf.json"
       ],
       "display_name_en_us": "Timber Wolf Spawn Egg",
       "display_name_ru_ru": null,
@@ -4295,7 +4360,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/timber_wolf_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/timber_wolf_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/timber_wolf_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_timber_wolf.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4304,7 +4370,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_timber_wolf"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4335,7 +4403,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/turkey_spawn_egg.json"
+        "assets/cnc/models/item/turkey_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_turkey.json"
       ],
       "display_name_en_us": "Turkey Spawn Egg",
       "display_name_ru_ru": null,
@@ -4343,7 +4412,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/turkey_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/turkey_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/turkey_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_turkey.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4352,7 +4422,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_turkey"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4763,7 +4835,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/white_tailed_deer_spawn_egg.json"
+        "assets/cnc/models/item/white_tailed_deer_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_white_tailed_deer.json"
       ],
       "display_name_en_us": "White-Tailed Deer Spawn Egg",
       "display_name_ru_ru": null,
@@ -4771,7 +4844,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/white_tailed_deer_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/white_tailed_deer_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/white_tailed_deer_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_white_tailed_deer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4780,7 +4854,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_white_tailed_deer"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4904,7 +4980,8 @@
       ],
       "observed_in": [
         "assets/cnc/lang/en_us.json",
-        "assets/cnc/models/item/wolverine_spawn_egg.json"
+        "assets/cnc/models/item/wolverine_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cnc_wolverine.json"
       ],
       "display_name_en_us": "Wolverine Spawn Egg",
       "display_name_ru_ru": null,
@@ -4912,7 +4989,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/wolverine_spawn_egg.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/wolverine_spawn_egg.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/wolverine_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cnc_wolverine.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4921,7 +4999,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cnc_wolverine"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

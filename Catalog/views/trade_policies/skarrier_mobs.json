@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -543,11 +543,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/blare_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/blare_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_blare.json"
       ],
       "display_name_en_us": "Blare Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_blare.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/blare_spawn_egg.json"
       ],
@@ -558,7 +560,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_blare"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -905,11 +909,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/bowlder_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/bowlder_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_bowlder.json"
       ],
       "display_name_en_us": "Bowlder Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_bowlder.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/bowlder_spawn_egg.json"
       ],
@@ -920,7 +926,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_bowlder"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -995,11 +1003,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/breacher_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/breacher_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_breacher.json"
       ],
       "display_name_en_us": "Breacher Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_breacher.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/breacher_spawn_egg.json"
       ],
@@ -1010,7 +1020,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_breacher"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1041,11 +1053,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/carnager_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/carnager_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_carnager.json"
       ],
       "display_name_en_us": "Carnager Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_carnager.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/carnager_spawn_egg.json"
       ],
@@ -1056,7 +1070,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_carnager"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1087,11 +1103,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/carniflore_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/carniflore_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_carniflore.json"
       ],
       "display_name_en_us": "Carniflore Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_carniflore.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/carniflore_spawn_egg.json"
       ],
@@ -1102,7 +1120,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_carniflore"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1285,11 +1305,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/crimlin_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/crimlin_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_crimlin.json"
       ],
       "display_name_en_us": "Crimlin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_crimlin.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/crimlin_spawn_egg.json"
       ],
@@ -1300,7 +1322,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_crimlin"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1471,11 +1495,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/dangle_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/dangle_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_dangle.json"
       ],
       "display_name_en_us": "Dangle Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_dangle.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/dangle_spawn_egg.json"
       ],
@@ -1486,7 +1512,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_dangle"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -3717,11 +3745,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/eater_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/eater_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_eater.json"
       ],
       "display_name_en_us": "Eater Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_eater.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/eater_spawn_egg.json"
       ],
@@ -3732,7 +3762,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_eater"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4581,11 +4613,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/frost_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/frost_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_frost.json"
       ],
       "display_name_en_us": "Frost Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_frost.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/frost_spawn_egg.json"
       ],
@@ -4596,7 +4630,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_frost"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4627,11 +4663,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/gadlisk_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/gadlisk_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_gadlisk.json"
       ],
       "display_name_en_us": "Gadlisk Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_gadlisk.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/gadlisk_spawn_egg.json"
       ],
@@ -4642,7 +4680,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_gadlisk"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4673,11 +4713,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/glowin_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/glowin_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_glowin.json"
       ],
       "display_name_en_us": "Glowin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_glowin.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/glowin_spawn_egg.json"
       ],
@@ -4688,7 +4730,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_glowin"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4719,11 +4763,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/gorger_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/gorger_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_gorger.json"
       ],
       "display_name_en_us": "Gorger Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_gorger.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/gorger_spawn_egg.json"
       ],
@@ -4734,7 +4780,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_gorger"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -5361,11 +5409,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/hellamander_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/hellamander_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_hellamander.json"
       ],
       "display_name_en_us": "Hellamander Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_hellamander.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/hellamander_spawn_egg.json"
       ],
@@ -5376,7 +5426,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_hellamander"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -6761,11 +6813,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/istukan_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/istukan_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_istukan.json"
       ],
       "display_name_en_us": "Istukan Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_istukan.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/istukan_spawn_egg.json"
       ],
@@ -6776,7 +6830,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_istukan"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -6807,11 +6863,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/krill_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/krill_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_krill.json"
       ],
       "display_name_en_us": "Krill Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_krill.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/krill_spawn_egg.json"
       ],
@@ -6822,7 +6880,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_krill"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -7445,11 +7505,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/quake_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/quake_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_quake.json"
       ],
       "display_name_en_us": "Quake Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_quake.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/quake_spawn_egg.json"
       ],
@@ -7460,7 +7522,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_quake"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -9018,11 +9082,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/roe_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/roe_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_roe.json"
       ],
       "display_name_en_us": "Roe Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_roe.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/roe_spawn_egg.json"
       ],
@@ -9033,7 +9099,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_roe"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -9442,11 +9510,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/serene_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/serene_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_serene.json"
       ],
       "display_name_en_us": "Serene Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_serene.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/serene_spawn_egg.json"
       ],
@@ -9457,7 +9527,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_serene"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -9946,11 +10018,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/snap_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/snap_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_snap.json"
       ],
       "display_name_en_us": "Snap Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_snap.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/snap_spawn_egg.json"
       ],
@@ -9961,7 +10035,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_snap"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -11210,11 +11286,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/trawler_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/trawler_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_trawler.json"
       ],
       "display_name_en_us": "Trawler Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_trawler.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/trawler_spawn_egg.json"
       ],
@@ -11225,7 +11303,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_trawler"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -11530,11 +11610,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/viruleon_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/viruleon_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_viruleon.json"
       ],
       "display_name_en_us": "Viruleon Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_viruleon.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/viruleon_spawn_egg.json"
       ],
@@ -11545,7 +11627,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_viruleon"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -11724,11 +11808,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/voidrake_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/voidrake_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_voidrake.json"
       ],
       "display_name_en_us": "Voidrake Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_voidrake.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/voidrake_spawn_egg.json"
       ],
@@ -11739,7 +11825,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_voidrake"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -11998,11 +12086,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/wretch_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/wretch_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_wretch.json"
       ],
       "display_name_en_us": "Wretch Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_wretch.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wretch_spawn_egg.json"
       ],
@@ -12013,7 +12103,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_wretch"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -13523,11 +13615,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/wrought_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/wrought_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_wrought.json"
       ],
       "display_name_en_us": "Wrought Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_wrought.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrought_spawn_egg.json"
       ],
@@ -13538,7 +13632,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_wrought"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -13569,11 +13665,13 @@
       ],
       "observed_in": [
         "assets/skarrier_mobs/lang/en_us.json",
-        "assets/skarrier_mobs/models/item/zombiflore_spawn_egg.json"
+        "assets/skarrier_mobs/models/item/zombiflore_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/skarrier_mobs_zombiflore.json"
       ],
       "display_name_en_us": "Zombiflore Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/skarrier_mobs_zombiflore.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json",
         "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/zombiflore_spawn_egg.json"
       ],
@@ -13584,7 +13682,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/skarrier_mobs_zombiflore"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

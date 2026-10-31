@@ -22129,185 +22129,6 @@
           "sources": []
         },
         {
-          "id": "v3_pet_trailcraft",
-          "number": "v3_pet_trailcraft",
-          "chapter_id": "tab-17",
-          "title": "Привал верхом",
-          "condition": "Сидя на лошади, привяжи её к забору поводком из её специального слота и затем успешно сними сундук с вьючного животного ножницами.",
-          "purpose": "Подковы и попоны поддержат уход и оформление транспортных животных после освоения стоянки и разгрузки.",
-          "tip": "Поводок кладут в специальный слот лошади, затем нажимают на забор верхом. Перед снятием сундука освободи место: его содержимое выпадает. Переключение инвентарей всадника и лошади доступно штатной кнопкой.",
-          "branch": "tab-17",
-          "after": [],
-          "kinds": [
-            "advancement"
-          ],
-          "collection": false,
-          "conditions": [
-            {
-              "kind": "advancement",
-              "action": "While mounted, hitch a horse to a fence using its special lead slot; remove a pack animal’s chest with shears.",
-              "quantity": 1
-            }
-          ],
-          "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
-          "bindings": [
-            {
-              "kind": "advancement",
-              "targets": [],
-              "count": 1,
-              "distinct": 0,
-              "argument": "jem_advancements:quest_v3/v3_pet_trailcraft"
-            }
-          ],
-          "ftb_id": "31D39460913B197C",
-          "position": [
-            -12.5,
-            8.6
-          ],
-          "required_mods": [],
-          "icon": "barnyardbuddies:horseshoe",
-          "status": "active",
-          "reward": {
-            "tier": "field",
-            "items": [
-              {
-                "id": "barnyardbuddies:horseshoe",
-                "count": 4,
-                "name": "Horseshoe"
-              },
-              {
-                "id": "barnyardbuddies:spotted_quilt_rug",
-                "count": 2,
-                "name": "Spotted Quilt Carpet"
-              }
-            ],
-            "choice": [],
-            "xp": 75,
-            "claim": "once",
-            "reason": "Horseshoes and blankets support caring for and dressing transport animals after learning stops and unloading.",
-            "choice_mode": null
-          },
-          "localization": {
-            "ru_ru": {
-              "title": "Привал верхом",
-              "condition": "Сидя на лошади, привяжи её к забору поводком из её специального слота и затем успешно сними сундук с вьючного животного ножницами.",
-              "purpose": "Подковы и попоны поддержат уход и оформление транспортных животных после освоения стоянки и разгрузки.",
-              "tip": "Поводок кладут в специальный слот лошади, затем нажимают на забор верхом. Перед снятием сундука освободи место: его содержимое выпадает. Переключение инвентарей всадника и лошади доступно штатной кнопкой.",
-              "reward": "4 × Horseshoe; 2 × Spotted Quilt Carpet; 75 опыта."
-            },
-            "en_us": {
-              "title": "A Mounted Stop",
-              "condition": "While mounted, hitch a horse to a fence using its special lead slot; remove a pack animal’s chest with shears.",
-              "purpose": "Horseshoes and blankets support caring for and dressing transport animals after learning stops and unloading.",
-              "tip": "Put the lead in the horse’s special slot and interact with a fence while riding. Empty a pack chest safely before shearing; its contents drop. The native inventory-switch button moves between rider and horse views.",
-              "reward": "4 × Horseshoe; 2 × Spotted Quilt Carpet; 75 XP."
-            }
-          },
-          "design": {
-            "stage": "field",
-            "lesson": "Сидя на лошади, привяжи её к забору поводком из её специального слота и затем успешно сними сундук с вьючного животного ножницами.",
-            "old_sources": [],
-            "migration_equivalence": "NEW",
-            "exact_predecessor": null,
-            "reward_purpose": "Horseshoes and blankets support caring for and dressing transport animals after learning stops and unloading.",
-            "visual_route": "transport_workshop",
-            "coverage_keys": [
-              "horseman:mounted_hitch",
-              "horseman:remove_chest",
-              "horseman:rider_inventory",
-              "horseman:swim_and_boat"
-            ],
-            "requires_hook": true,
-            "hook_contract": {
-              "advancement": "jem_advancements:quest_v3/v3_pet_trailcraft",
-              "action": "v3_pet_trailcraft",
-              "success_condition": "Native Horseman mounted hitch commits horse leash holder=fence with lead retained in its intended slot; separate native shears operation changes eligible donkey/mule/llama chest=true->false and produces intended drops. Raw clicks insufficient.",
-              "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
-            },
-            "visual_group": "travel_team"
-          },
-          "teaching_sections": [
-            {
-              "keys": [
-                "horseman:mounted_hitch"
-              ],
-              "title_ru": "Как это работает",
-              "title_en": "How it works",
-              "text_ru": "Положи поводок в специальный слот лошади и нажми по забору верхом; при отвязывании поводок остаётся в слоте.",
-              "text_en": "Put a lead in the horse's special inventory slot and click a fence while mounted. The horse is leashed to the fence; the lead stays in its slot when detached."
-            },
-            {
-              "keys": [
-                "horseman:swim_and_boat"
-              ],
-              "title_ru": "Как это работает",
-              "title_en": "How it works",
-              "text_ru": "На поддерживаемой лошади в воде используется прыжок, а часть лошадей помещается в лодку; исключения задаёт родной тег запрета плавания.",
-              "text_en": "Use jump while riding a supported horse in water, or place a horse in a boat. Supported ridden horses can swim and horses can fit in boats."
-            },
-            {
-              "keys": [
-                "horseman:rider_inventory"
-              ],
-              "title_ru": "Как это работает",
-              "title_en": "How it works",
-              "text_ru": "Штатная кнопка или назначенная клавиша переключает инвентари всадника и лошади; индикатор голода остаётся видимым.",
-              "text_en": "Use the inventory-switch button or its configured hotkey while mounted. The rider can move between both inventories; the mounted HUD keeps hunger visible and shows the jump meter when relevant."
-            },
-            {
-              "keys": [
-                "horseman:remove_chest"
-              ],
-              "title_ru": "Как это работает",
-              "title_en": "How it works",
-              "text_ru": "Ножницы снимают сундук с осла, мула или ламы, а содержимое выпадает: сначала подготовь безопасное место.",
-              "text_en": "Use shears on a donkey, mule or llama carrying a chest. The chest is removed and its contents drop."
-            }
-          ],
-          "mechanic_sections": [
-            {
-              "keys": [
-                "horseman:mounted_hitch"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Положи поводок в специальный слот лошади и нажми по забору верхом; при отвязывании поводок остаётся в слоте.",
-              "text_en": "Put a lead in the horse's special inventory slot and click a fence while mounted. The horse is leashed to the fence; the lead stays in its slot when detached."
-            },
-            {
-              "keys": [
-                "horseman:swim_and_boat"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "На поддерживаемой лошади в воде используется прыжок, а часть лошадей помещается в лодку; исключения задаёт родной тег запрета плавания.",
-              "text_en": "Use jump while riding a supported horse in water, or place a horse in a boat. Supported ridden horses can swim and horses can fit in boats."
-            },
-            {
-              "keys": [
-                "horseman:rider_inventory"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Штатная кнопка или назначенная клавиша переключает инвентари всадника и лошади; индикатор голода остаётся видимым.",
-              "text_en": "Use the inventory-switch button or its configured hotkey while mounted. The rider can move between both inventories; the mounted HUD keeps hunger visible and shows the jump meter when relevant."
-            },
-            {
-              "keys": [
-                "horseman:remove_chest"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Ножницы снимают сундук с осла, мула или ламы, а содержимое выпадает: сначала подготовь безопасное место.",
-              "text_en": "Use shears on a donkey, mule or llama carrying a chest. The chest is removed and its contents drop."
-            }
-          ],
-          "native_options": {
-            "size": 1.4
-          },
-          "sources": []
-        },
-        {
           "id": "v3_pet_fresh_wheels",
           "number": "v3_pet_fresh_wheels",
           "chapter_id": "tab-17",
@@ -25681,9 +25502,7 @@
           "purpose": "Хлыст, колёса и корм снабдят следующие реальные перевозки, не выдавая готовую вторую повозку.",
           "tip": "Возьми лошадь на поводок и взаимодействуй с повозкой крадучись. Так же сажают подходящего моба рядом с неподвижной повозкой. Хлыст меняет скорость; крадущийся ПКМ вне сиденья переключает направление.",
           "branch": "tab-17",
-          "after": [
-            "v3_pet_trailcraft"
-          ],
+          "after": [],
           "kinds": [
             "advancement"
           ],
@@ -27655,6 +27474,975 @@
             "size": 1.4
           },
           "sources": []
+        },
+        {
+          "id": "mu4_better_horses_saddle",
+          "number": "MU4.3",
+          "title": "Улучшенное седло",
+          "branch": "major_update_4",
+          "condition": "Создай улучшенное седло Better Horses.",
+          "purpose": "Освой новый предмет и его родную механику без обхода прогрессии.",
+          "tip": "Породы, уход, снаряжение и повозки описаны в родном справочнике конюшни. Клейдесдаль Barnyard Buddies остаётся отдельным.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "action": "Craft the Better Horses upgraded saddle.",
+              "quantity": "1 шт. / раз",
+              "fields": {
+                "Цель": "icys-better-horses:upgraded_saddle",
+                "Фильтр": "consume: False",
+                "Проверка": "FTB Quests · Item task",
+                "Храним": "Штатный прогресс FTB."
+              },
+              "kind": "inventory",
+              "resolved": [
+                {
+                  "source": "icys-better-horses:upgraded_saddle",
+                  "ids": [
+                    "icys-better-horses:upgraded_saddle"
+                  ],
+                  "match": {
+                    "ids": [
+                      "icys-better-horses:upgraded_saddle"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "technical": "Completion uses one native FTB inventory task. The item is not consumed.",
+          "sources": [
+            "JEM Major Update 4 supplied specification",
+            "Installed mod registry and recipe resources"
+          ],
+          "reward": {
+            "number": "MU4.3",
+            "title": "Улучшенное седло",
+            "chapter": "tab-17",
+            "tier": "starter",
+            "items": [
+              {
+                "id": "minecraft:golden_carrot",
+                "count": 4,
+                "name": "Golden Carrot"
+              }
+            ],
+            "choice": [],
+            "xp": 30,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Небольшой запас поддерживает обучение и не заменяет родную награду мода.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "8A334CE44829BEDA",
+          "position": [
+            -24.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "inventory",
+              "targets": [
+                {
+                  "ids": [
+                    "icys-better-horses:upgraded_saddle"
+                  ]
+                }
+              ],
+              "count": 1,
+              "distinct": 0
+            }
+          ],
+          "required_mods": [
+            "icys_better_horses"
+          ],
+          "icon": "icys-better-horses:upgraded_saddle",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "A Better Saddle",
+              "condition": "Craft the Better Horses upgraded saddle.",
+              "purpose": "Learn the new item through its native progression.",
+              "tip": "Read the native Stable Handbook for breeds, care, gear and carts. Barnyard Buddies' Clydesdale is separate.",
+              "reward": "4 × Golden Carrot; 30 XP."
+            },
+            "ru_ru": {
+              "title": "Улучшенное седло",
+              "condition": "Создай улучшенное седло Better Horses.",
+              "purpose": "Освой новый предмет через его родную прогрессию.",
+              "tip": "Породы, уход, снаряжение и повозки описаны в родном справочнике конюшни. Клейдесдаль Barnyard Buddies остаётся отдельным.",
+              "reward": "4 × Золотая морковь; 30 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "early",
+            "lesson": "Craft the Better Horses upgraded saddle.",
+            "reward_purpose": "Small teaching support without replacing native progression.",
+            "old_sources": [],
+            "migration_action": "new_major_update_4_card",
+            "detection_evidence": "Installed registry item icys-better-horses:upgraded_saddle",
+            "visual_route": "major_update_4",
+            "hard_dependencies": [
+              "icys-better-horses"
+            ],
+            "recommended_after": []
+          },
+          "design": {
+            "exact_predecessor": null,
+            "migration_equivalence": "NEW",
+            "coverage_keys": [],
+            "visual_group": "major_update_4"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_mineable_spawner",
+          "number": "MU4.4",
+          "title": "Перенеси клетку",
+          "branch": "major_update_4",
+          "condition": "Добудь один спавнер Шёлковым касанием.",
+          "purpose": "Освой новый предмет и его родную механику без обхода прогрессии.",
+          "tip": "Без Шёлкового касания ничего не выпадает. Поставленный спавнер сохраняет поддерживаемые данные и никогда не роняет яйцо.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "action": "Obtain one spawner with Silk Touch.",
+              "quantity": "1 шт. / раз",
+              "fields": {
+                "Цель": "minecraft:spawner",
+                "Фильтр": "consume: False",
+                "Проверка": "FTB Quests · Item task",
+                "Храним": "Штатный прогресс FTB."
+              },
+              "kind": "inventory",
+              "resolved": [
+                {
+                  "source": "minecraft:spawner",
+                  "ids": [
+                    "minecraft:spawner"
+                  ],
+                  "match": {
+                    "ids": [
+                      "minecraft:spawner"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "technical": "Completion uses one native FTB inventory task. The item is not consumed.",
+          "sources": [
+            "JEM Major Update 4 supplied specification",
+            "Installed mod registry and recipe resources"
+          ],
+          "reward": {
+            "number": "MU4.4",
+            "title": "Перенеси клетку",
+            "chapter": "tab-17",
+            "tier": "starter",
+            "items": [
+              {
+                "id": "minecraft:golden_carrot",
+                "count": 4,
+                "name": "Golden Carrot"
+              }
+            ],
+            "choice": [],
+            "xp": 30,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Небольшой запас поддерживает обучение и не заменяет родную награду мода.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "CCC5DD5B9474DE84",
+          "position": [
+            -21.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "inventory",
+              "targets": [
+                {
+                  "ids": [
+                    "minecraft:spawner"
+                  ]
+                }
+              ],
+              "count": 1,
+              "distinct": 0
+            }
+          ],
+          "required_mods": [
+            "mineable_spawner"
+          ],
+          "icon": "minecraft:spawner",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "Move the Cage",
+              "condition": "Obtain one spawner with Silk Touch.",
+              "purpose": "Learn the new item through its native progression.",
+              "tip": "Breaking without Silk Touch drops nothing. The placed spawner preserves supported spawn data and never drops an egg.",
+              "reward": "4 × Golden Carrot; 30 XP."
+            },
+            "ru_ru": {
+              "title": "Перенеси клетку",
+              "condition": "Добудь один спавнер Шёлковым касанием.",
+              "purpose": "Освой новый предмет через его родную прогрессию.",
+              "tip": "Без Шёлкового касания ничего не выпадает. Поставленный спавнер сохраняет поддерживаемые данные и никогда не роняет яйцо.",
+              "reward": "4 × Золотая морковь; 30 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "early",
+            "lesson": "Obtain one spawner with Silk Touch.",
+            "reward_purpose": "Small teaching support without replacing native progression.",
+            "old_sources": [],
+            "migration_action": "new_major_update_4_card",
+            "detection_evidence": "Installed registry item minecraft:spawner",
+            "visual_route": "major_update_4",
+            "hard_dependencies": [
+              "mineable_spawner"
+            ],
+            "recommended_after": []
+          },
+          "design": {
+            "exact_predecessor": null,
+            "migration_equivalence": "NEW",
+            "coverage_keys": [],
+            "visual_group": "major_update_4"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_horse_tame",
+          "number": "MU4.1",
+          "title": "Знакомство с улучшенной лошадью",
+          "branch": "major_update_4",
+          "condition": "Знакомство с улучшенной лошадью",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Meet a Better Horse"
+            }
+          ],
+          "technical": "Native advancement binding: icys-better-horses:hold_your_horses",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.1",
+            "title": "Знакомство с улучшенной лошадью",
+            "chapter": "tab-17",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "D0AE3A42E05B6DB7",
+          "position": [
+            -18.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "icys-better-horses:hold_your_horses"
+            }
+          ],
+          "required_mods": [
+            "icys_better_horses"
+          ],
+          "icon": "minecraft:saddle",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "Meet a Better Horse",
+              "condition": "Meet a Better Horse",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "Знакомство с улучшенной лошадью",
+              "condition": "Знакомство с улучшенной лошадью",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_horse_tack",
+          "number": "MU4.2",
+          "title": "Полное снаряжение",
+          "branch": "major_update_4",
+          "condition": "Полное снаряжение",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "All Tacked Up"
+            }
+          ],
+          "technical": "Native advancement binding: icys-better-horses:all_tacked_up",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.2",
+            "title": "Полное снаряжение",
+            "chapter": "tab-17",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "0C939DD9224D1626",
+          "position": [
+            -15.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "icys-better-horses:all_tacked_up"
+            }
+          ],
+          "required_mods": [
+            "icys_better_horses"
+          ],
+          "icon": "icys-better-horses:upgraded_saddle",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "All Tacked Up",
+              "condition": "All Tacked Up",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "Полное снаряжение",
+              "condition": "Полное снаряжение",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_horse_foal",
+          "number": "MU4.3",
+          "title": "Вырасти жеребёнка",
+          "branch": "major_update_4",
+          "condition": "Вырасти жеребёнка",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Raise a Foal"
+            }
+          ],
+          "technical": "Native advancement binding: icys-better-horses:foal_play",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.3",
+            "title": "Вырасти жеребёнка",
+            "chapter": "tab-17",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "DC90C52511D23C58",
+          "position": [
+            -12.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "icys-better-horses:foal_play"
+            }
+          ],
+          "required_mods": [
+            "icys_better_horses"
+          ],
+          "icon": "minecraft:golden_carrot",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "Raise a Foal",
+              "condition": "Raise a Foal",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "Вырасти жеребёнка",
+              "condition": "Вырасти жеребёнка",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_horse_breeds",
+          "number": "MU4.4",
+          "title": "Изучи породы",
+          "branch": "major_update_4",
+          "condition": "Изучи породы",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Learn the Breeds"
+            }
+          ],
+          "technical": "Native advancement binding: icys-better-horses:gotta_tame_em_all",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.4",
+            "title": "Изучи породы",
+            "chapter": "tab-17",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "4A4C32A9361EE0EE",
+          "position": [
+            -9.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "icys-better-horses:gotta_tame_em_all"
+            }
+          ],
+          "required_mods": [
+            "icys_better_horses"
+          ],
+          "icon": "icys-better-horses:stable_handbook",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "Learn the Breeds",
+              "condition": "Learn the Breeds",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "Изучи породы",
+              "condition": "Изучи породы",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_horse_home",
+          "number": "MU4.5",
+          "title": "Построй конюшню",
+          "branch": "major_update_4",
+          "condition": "Построй конюшню",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Build a Stable"
+            }
+          ],
+          "technical": "Native advancement binding: icys-better-horses:home_is_where_the_hay_is",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.5",
+            "title": "Построй конюшню",
+            "chapter": "tab-17",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "1186769D5A389052",
+          "position": [
+            -6.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "icys-better-horses:home_is_where_the_hay_is"
+            }
+          ],
+          "required_mods": [
+            "icys_better_horses"
+          ],
+          "icon": "minecraft:hay_block",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "Build a Stable",
+              "condition": "Build a Stable",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "Построй конюшню",
+              "condition": "Построй конюшню",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_horse_ride",
+          "number": "MU4.6",
+          "title": "В путь вместе",
+          "branch": "major_update_4",
+          "condition": "В путь вместе",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Ride Together"
+            }
+          ],
+          "technical": "Native advancement binding: icys-better-horses:ride_or_die",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.6",
+            "title": "В путь вместе",
+            "chapter": "tab-17",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "93A00B2FBB85E89D",
+          "position": [
+            -3.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "icys-better-horses:ride_or_die"
+            }
+          ],
+          "required_mods": [
+            "icys_better_horses"
+          ],
+          "icon": "minecraft:leather_horse_armor",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "Ride Together",
+              "condition": "Ride Together",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "В путь вместе",
+              "condition": "В путь вместе",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "v3_pet_trailcraft",
+          "number": "v3_pet_trailcraft",
+          "title": "Привал верхом",
+          "branch": "tab-17",
+          "condition": "Обустрой место для лошади и выполни родное достижение конюшни.",
+          "purpose": "Сохрани прежний этап путешествий после удаления Horseman.",
+          "tip": "Используй родной Stable Handbook Better Horses.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Complete Better Horses' native stable milestone."
+            }
+          ],
+          "technical": "Preserved FTB identity 31D39460913B197C with a native Better Horses advancement.",
+          "sources": [
+            "https://www.curseforge.com/minecraft/mc-mods/natures-spirit",
+            "https://www.curseforge.com/minecraft/mc-mods/trials-chambers-reuploaded/files/7266979",
+            "https://github.com/Siirio/JustEnoughMods/blob/e3fb8c01381520edd20dafb3c2b9f73acc5a607b/Catalog/manifest.json"
+          ],
+          "reward": {
+            "tier": "field",
+            "items": [
+              {
+                "id": "barnyardbuddies:horseshoe",
+                "count": 4,
+                "name": "Horseshoe"
+              },
+              {
+                "id": "barnyardbuddies:spotted_quilt_rug",
+                "count": 2,
+                "name": "Spotted Quilt Carpet"
+              }
+            ],
+            "choice": [],
+            "xp": 75,
+            "claim": "once",
+            "reason": "Preserved legacy reward.",
+            "choice_mode": null
+          },
+          "ftb_id": "31D39460913B197C",
+          "position": [
+            -12.5,
+            8.6
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "icys-better-horses:home_is_where_the_hay_is"
+            }
+          ],
+          "required_mods": [
+            "icys_better_horses"
+          ],
+          "icon": "barnyardbuddies:horseshoe",
+          "origin_chapter": "tab-17",
+          "localization": {
+            "en_us": {
+              "title": "A Mounted Stop",
+              "condition": "Complete Better Horses' native stable milestone.",
+              "purpose": "Continue the travel lesson without Horseman.",
+              "tip": "Use the native Stable Handbook.",
+              "reward": "4 × Horseshoe; 2 × Spotted Quilt Carpet; 75 XP."
+            },
+            "ru_ru": {
+              "title": "Привал верхом",
+              "condition": "Выполни родное достижение конюшни Better Horses.",
+              "purpose": "Продолжи урок путешествий без Horseman.",
+              "tip": "Используй родной справочник конюшни.",
+              "reward": "4 × Подкова; 2 × Пятнистая попона; 75 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-17",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
         }
       ],
       "ftb_id": "2C26B9F14FB19A74",
@@ -27901,7 +28689,6 @@
             "v2_companions_h08_01",
             "v2_companions_h08_02",
             "v3_pet_quilted_ride",
-            "v3_pet_trailcraft",
             "v3_pet_fresh_wheels",
             "v3_pet_wagon_service",
             "v3_pet_sled_team",
@@ -28338,16 +29125,6 @@
         {
           "from": "v2_companions_h08_02",
           "to": "v3_pet_quilted_ride",
-          "kind": "branch"
-        },
-        {
-          "from": "v3_pet_quilted_ride",
-          "to": "v3_pet_trailcraft",
-          "kind": "branch"
-        },
-        {
-          "from": "v3_pet_trailcraft",
-          "to": "v3_pet_fresh_wheels",
           "kind": "branch"
         },
         {
@@ -48194,6 +48971,923 @@
             "size": 1.4
           },
           "sources": []
+        },
+        {
+          "id": "mu4_item_magnet",
+          "number": "MU4.1",
+          "title": "Полезное притяжение",
+          "branch": "major_update_4",
+          "condition": "Создай магнит предметов для обычных выброшенных вещей.",
+          "purpose": "Освой новый предмет и его родную механику без обхода прогрессии.",
+          "tip": "Магнит действует на реальные предметы в мире. Невыданные награды JEM хранятся на сервере до получения.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "action": "Craft an Item Magnet and use it for ordinary dropped items.",
+              "quantity": "1 шт. / раз",
+              "fields": {
+                "Цель": "item_magnet:item_magnet",
+                "Фильтр": "consume: False",
+                "Проверка": "FTB Quests · Item task",
+                "Храним": "Штатный прогресс FTB."
+              },
+              "kind": "inventory",
+              "resolved": [
+                {
+                  "source": "item_magnet:item_magnet",
+                  "ids": [
+                    "item_magnet:item_magnet"
+                  ],
+                  "match": {
+                    "ids": [
+                      "item_magnet:item_magnet"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "technical": "Completion uses one native FTB inventory task. The item is not consumed.",
+          "sources": [
+            "JEM Major Update 4 supplied specification",
+            "Installed mod registry and recipe resources"
+          ],
+          "reward": {
+            "number": "MU4.1",
+            "title": "Полезное притяжение",
+            "chapter": "tab-07",
+            "tier": "starter",
+            "items": [
+              {
+                "id": "minecraft:golden_carrot",
+                "count": 4,
+                "name": "Golden Carrot"
+              }
+            ],
+            "choice": [],
+            "xp": 30,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Небольшой запас поддерживает обучение и не заменяет родную награду мода.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "095D2FF7CD36312D",
+          "position": [
+            -24.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "inventory",
+              "targets": [
+                {
+                  "ids": [
+                    "item_magnet:item_magnet"
+                  ]
+                }
+              ],
+              "count": 1,
+              "distinct": 0
+            }
+          ],
+          "required_mods": [
+            "item_magnet"
+          ],
+          "icon": "item_magnet:item_magnet",
+          "origin_chapter": "tab-07",
+          "localization": {
+            "en_us": {
+              "title": "A Helpful Pull",
+              "condition": "Craft an Item Magnet and use it for ordinary dropped items.",
+              "purpose": "Learn the new item through its native progression.",
+              "tip": "The magnet affects real world item entities. Pending JEM Rewards remain in server storage until claimed.",
+              "reward": "4 × Golden Carrot; 30 XP."
+            },
+            "ru_ru": {
+              "title": "Полезное притяжение",
+              "condition": "Создай магнит предметов для обычных выброшенных вещей.",
+              "purpose": "Освой новый предмет через его родную прогрессию.",
+              "tip": "Магнит действует на реальные предметы в мире. Невыданные награды JEM хранятся на сервере до получения.",
+              "reward": "4 × Золотая морковь; 30 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-07",
+          "status": "active",
+          "design_metadata": {
+            "stage": "early",
+            "lesson": "Craft an Item Magnet and use it for ordinary dropped items.",
+            "reward_purpose": "Small teaching support without replacing native progression.",
+            "old_sources": [],
+            "migration_action": "new_major_update_4_card",
+            "detection_evidence": "Installed registry item item_magnet:item_magnet",
+            "visual_route": "major_update_4",
+            "hard_dependencies": [
+              "item_magnet"
+            ],
+            "recommended_after": []
+          },
+          "design": {
+            "exact_predecessor": null,
+            "migration_equivalence": "NEW",
+            "coverage_keys": [],
+            "visual_group": "major_update_4"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_advancement_frame",
+          "number": "MU4.2",
+          "title": "История на стене",
+          "branch": "major_update_4",
+          "condition": "Создай рамку достижений.",
+          "purpose": "Освой новый предмет и его родную механику без обхода прогрессии.",
+          "tip": "Кнопка заданий FTB позволяет выбрать одно выполненное задание. Выбор не выдаёт и не повторяет награды.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "action": "Craft an Advancement Frame.",
+              "quantity": "1 шт. / раз",
+              "fields": {
+                "Цель": "advancementframes:advancement_frame",
+                "Фильтр": "consume: False",
+                "Проверка": "FTB Quests · Item task",
+                "Храним": "Штатный прогресс FTB."
+              },
+              "kind": "inventory",
+              "resolved": [
+                {
+                  "source": "advancementframes:advancement_frame",
+                  "ids": [
+                    "advancementframes:advancement_frame"
+                  ],
+                  "match": {
+                    "ids": [
+                      "advancementframes:advancement_frame"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "technical": "Completion uses one native FTB inventory task. The item is not consumed.",
+          "sources": [
+            "JEM Major Update 4 supplied specification",
+            "Installed mod registry and recipe resources"
+          ],
+          "reward": {
+            "number": "MU4.2",
+            "title": "История на стене",
+            "chapter": "tab-07",
+            "tier": "starter",
+            "items": [
+              {
+                "id": "minecraft:golden_carrot",
+                "count": 4,
+                "name": "Golden Carrot"
+              }
+            ],
+            "choice": [],
+            "xp": 30,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Небольшой запас поддерживает обучение и не заменяет родную награду мода.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "BEAB339F2641D106",
+          "position": [
+            -21.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "inventory",
+              "targets": [
+                {
+                  "ids": [
+                    "advancementframes:advancement_frame"
+                  ]
+                }
+              ],
+              "count": 1,
+              "distinct": 0
+            }
+          ],
+          "required_mods": [
+            "advancementframes"
+          ],
+          "icon": "advancementframes:advancement_frame",
+          "origin_chapter": "tab-07",
+          "localization": {
+            "en_us": {
+              "title": "A Story on the Wall",
+              "condition": "Craft an Advancement Frame.",
+              "purpose": "Learn the new item through its native progression.",
+              "tip": "Use its FTB Quests button to select one completed quest. Selection never grants or repeats a reward.",
+              "reward": "4 × Golden Carrot; 30 XP."
+            },
+            "ru_ru": {
+              "title": "История на стене",
+              "condition": "Создай рамку достижений.",
+              "purpose": "Освой новый предмет через его родную прогрессию.",
+              "tip": "Кнопка заданий FTB позволяет выбрать одно выполненное задание. Выбор не выдаёт и не повторяет награды.",
+              "reward": "4 × Золотая морковь; 30 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-07",
+          "status": "active",
+          "design_metadata": {
+            "stage": "early",
+            "lesson": "Craft an Advancement Frame.",
+            "reward_purpose": "Small teaching support without replacing native progression.",
+            "old_sources": [],
+            "migration_action": "new_major_update_4_card",
+            "detection_evidence": "Installed registry item advancementframes:advancement_frame",
+            "visual_route": "major_update_4",
+            "hard_dependencies": [
+              "advancementframes"
+            ],
+            "recommended_after": []
+          },
+          "design": {
+            "exact_predecessor": null,
+            "migration_equivalence": "NEW",
+            "coverage_keys": [],
+            "visual_group": "major_update_4"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_ancient_aquaduct",
+          "number": "MU4.7",
+          "title": "Найди древний акведук",
+          "branch": "major_update_4",
+          "condition": "Найди древний акведук",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Find an Ancient Aqueduct"
+            }
+          ],
+          "technical": "Native advancement binding: jem_advancements:major_update_4/ancient_aquaduct",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.7",
+            "title": "Найди древний акведук",
+            "chapter": "tab-07",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "03997BBBD5998843",
+          "position": [
+            -18.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "jem_advancements:major_update_4/ancient_aquaduct"
+            }
+          ],
+          "required_mods": [
+            "ancient_remnants"
+          ],
+          "icon": "minecraft:chiseled_stone_bricks",
+          "origin_chapter": "tab-07",
+          "localization": {
+            "en_us": {
+              "title": "Find an Ancient Aqueduct",
+              "condition": "Find an Ancient Aqueduct",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "Найди древний акведук",
+              "condition": "Найди древний акведук",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-07",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_ancient_bridge",
+          "number": "MU4.8",
+          "title": "Перейди древний мост",
+          "branch": "major_update_4",
+          "condition": "Перейди древний мост",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Cross an Ancient Bridge"
+            }
+          ],
+          "technical": "Native advancement binding: jem_advancements:major_update_4/ancient_bridge",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.8",
+            "title": "Перейди древний мост",
+            "chapter": "tab-07",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "FAEB5C0EA9A1F6EA",
+          "position": [
+            -15.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "jem_advancements:major_update_4/ancient_bridge"
+            }
+          ],
+          "required_mods": [
+            "ancient_remnants"
+          ],
+          "icon": "minecraft:stone_bricks",
+          "origin_chapter": "tab-07",
+          "localization": {
+            "en_us": {
+              "title": "Cross an Ancient Bridge",
+              "condition": "Cross an Ancient Bridge",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "Перейди древний мост",
+              "condition": "Перейди древний мост",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-07",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_sitting_plus",
+          "number": "MU4.9",
+          "title": "Присядь отдохнуть",
+          "branch": "major_update_4",
+          "condition": "Присядь отдохнуть",
+          "purpose": "Освой новую механику через её настоящее игровое событие.",
+          "tip": "Засчитывается родное достижение или подтверждённое сервером действие.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "advancement",
+              "action": "Take a Seat"
+            }
+          ],
+          "technical": "Native advancement binding: jem_advancements:major_update_4/sitting_plus",
+          "sources": [
+            "Installed mod advancement resources"
+          ],
+          "reward": {
+            "number": "MU4.9",
+            "title": "Присядь отдохнуть",
+            "chapter": "tab-07",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 35,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Native-mechanic teaching milestone.",
+            "tier_label": "Знакомство"
+          },
+          "ftb_id": "3D04CD68B54803C4",
+          "position": [
+            -12.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "advancement",
+              "targets": [],
+              "count": 1,
+              "distinct": 0,
+              "argument": "jem_advancements:major_update_4/sitting_plus"
+            }
+          ],
+          "required_mods": [
+            "sittingplus"
+          ],
+          "icon": "minecraft:oak_stairs",
+          "origin_chapter": "tab-07",
+          "localization": {
+            "en_us": {
+              "title": "Take a Seat",
+              "condition": "Take a Seat",
+              "purpose": "Learn the installed mechanic through a real gameplay signal.",
+              "tip": "Use the mod's native controls and handbook.",
+              "reward": "35 XP."
+            },
+            "ru_ru": {
+              "title": "Присядь отдохнуть",
+              "condition": "Присядь отдохнуть",
+              "purpose": "Освой механику через настоящее игровое событие.",
+              "tip": "Используй родные управление и справочник мода.",
+              "reward": "35 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-07",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_eggs_farm",
+          "number": "MU4.10",
+          "title": "Инкубация на ферме",
+          "branch": "major_update_4",
+          "condition": "Создай четыре разных разрешённых яйца призыва.",
+          "purpose": "Освой полные рецепты инкубации без доступа к боссам.",
+          "tip": "Каждое яйцо имеет полный рецепт 3×3. Яйца боссов и технических существ исключены.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "inventory",
+              "action": "Farmyard Incubation",
+              "quantity": "4 distinct"
+            }
+          ],
+          "technical": "FTB inventory collection requires four distinct reviewed spawn eggs without consuming them.",
+          "sources": [
+            "Major Update 4 spawn egg review"
+          ],
+          "reward": {
+            "number": "MU4.10",
+            "title": "Инкубация на ферме",
+            "chapter": "tab-07",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 40,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Collection milestone without rare egg rewards.",
+            "tier_label": "Инкубация"
+          },
+          "ftb_id": "4D81128E013D1B41",
+          "position": [
+            -9.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "inventory",
+              "targets": [
+                {
+                  "ids": [
+                    "minecraft:cow_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "minecraft:pig_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "minecraft:sheep_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "minecraft:chicken_spawn_egg"
+                  ]
+                }
+              ],
+              "count": 4,
+              "distinct": 4
+            }
+          ],
+          "required_mods": [],
+          "icon": "minecraft:cow_spawn_egg",
+          "origin_chapter": "tab-07",
+          "localization": {
+            "en_us": {
+              "title": "Farmyard Incubation",
+              "condition": "Craft four distinct allowed spawn eggs.",
+              "purpose": "Learn full-grid incubation recipes without boss access.",
+              "tip": "Boss, summon-only and technical creatures are excluded.",
+              "reward": "40 XP."
+            },
+            "ru_ru": {
+              "title": "Инкубация на ферме",
+              "condition": "Создай четыре разных разрешённых яйца призыва.",
+              "purpose": "Освой инкубацию без доступа к боссам.",
+              "tip": "Боссы, призываемые и технические существа исключены.",
+              "reward": "40 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-07",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_eggs_wild",
+          "number": "MU4.11",
+          "title": "Инкубация дикой природы",
+          "branch": "major_update_4",
+          "condition": "Создай четыре разных разрешённых яйца призыва.",
+          "purpose": "Освой полные рецепты инкубации без доступа к боссам.",
+          "tip": "Каждое яйцо имеет полный рецепт 3×3. Яйца боссов и технических существ исключены.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "inventory",
+              "action": "Wildlife Incubation",
+              "quantity": "4 distinct"
+            }
+          ],
+          "technical": "FTB inventory collection requires four distinct reviewed spawn eggs without consuming them.",
+          "sources": [
+            "Major Update 4 spawn egg review"
+          ],
+          "reward": {
+            "number": "MU4.11",
+            "title": "Инкубация дикой природы",
+            "chapter": "tab-07",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 40,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Collection milestone without rare egg rewards.",
+            "tier_label": "Инкубация"
+          },
+          "ftb_id": "058E76DEF0E0D492",
+          "position": [
+            -6.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "inventory",
+              "targets": [
+                {
+                  "ids": [
+                    "alexsmobs:grizzly_bear_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "alexsmobs:gorilla_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "alexsmobs:raccoon_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "alexsmobs:kangaroo_spawn_egg"
+                  ]
+                }
+              ],
+              "count": 4,
+              "distinct": 4
+            }
+          ],
+          "required_mods": [],
+          "icon": "alexsmobs:grizzly_bear_spawn_egg",
+          "origin_chapter": "tab-07",
+          "localization": {
+            "en_us": {
+              "title": "Wildlife Incubation",
+              "condition": "Craft four distinct allowed spawn eggs.",
+              "purpose": "Learn full-grid incubation recipes without boss access.",
+              "tip": "Boss, summon-only and technical creatures are excluded.",
+              "reward": "40 XP."
+            },
+            "ru_ru": {
+              "title": "Инкубация дикой природы",
+              "condition": "Создай четыре разных разрешённых яйца призыва.",
+              "purpose": "Освой инкубацию без доступа к боссам.",
+              "tip": "Боссы, призываемые и технические существа исключены.",
+              "reward": "40 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-07",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
+        },
+        {
+          "id": "mu4_eggs_hostile",
+          "number": "MU4.12",
+          "title": "Инкубация враждебных существ",
+          "branch": "major_update_4",
+          "condition": "Создай четыре разных разрешённых яйца призыва.",
+          "purpose": "Освой полные рецепты инкубации без доступа к боссам.",
+          "tip": "Каждое яйцо имеет полный рецепт 3×3. Яйца боссов и технических существ исключены.",
+          "after": [],
+          "kinds": [
+            "inventory"
+          ],
+          "collection": false,
+          "conditions": [
+            {
+              "kind": "inventory",
+              "action": "Hostile Incubation",
+              "quantity": "4 distinct"
+            }
+          ],
+          "technical": "FTB inventory collection requires four distinct reviewed spawn eggs without consuming them.",
+          "sources": [
+            "Major Update 4 spawn egg review"
+          ],
+          "reward": {
+            "number": "MU4.12",
+            "title": "Инкубация враждебных существ",
+            "chapter": "tab-07",
+            "tier": "starter",
+            "items": [],
+            "choice": [],
+            "xp": 40,
+            "claim": "once",
+            "choice_mode": null,
+            "reason": "Collection milestone without rare egg rewards.",
+            "tier_label": "Инкубация"
+          },
+          "ftb_id": "A7FB18270B544543",
+          "position": [
+            -3.0,
+            -18.0
+          ],
+          "bindings": [
+            {
+              "kind": "inventory",
+              "targets": [
+                {
+                  "ids": [
+                    "minecraft:zombie_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "minecraft:skeleton_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "minecraft:spider_spawn_egg"
+                  ]
+                },
+                {
+                  "ids": [
+                    "minecraft:creeper_spawn_egg"
+                  ]
+                }
+              ],
+              "count": 4,
+              "distinct": 4
+            }
+          ],
+          "required_mods": [],
+          "icon": "minecraft:zombie_spawn_egg",
+          "origin_chapter": "tab-07",
+          "localization": {
+            "en_us": {
+              "title": "Hostile Incubation",
+              "condition": "Craft four distinct allowed spawn eggs.",
+              "purpose": "Learn full-grid incubation recipes without boss access.",
+              "tip": "Boss, summon-only and technical creatures are excluded.",
+              "reward": "40 XP."
+            },
+            "ru_ru": {
+              "title": "Инкубация враждебных существ",
+              "condition": "Создай четыре разных разрешённых яйца призыва.",
+              "purpose": "Освой инкубацию без доступа к боссам.",
+              "tip": "Боссы, призываемые и технические существа исключены.",
+              "reward": "40 опыта."
+            }
+          },
+          "layout_group": "major_update_4",
+          "layout_source_chapter": "tab-07",
+          "status": "active",
+          "design_metadata": {
+            "stage": "mid",
+            "lesson": "Discover a structure reward with a real acquisition challenge.",
+            "reward_purpose": "A larger meal reserve prepares you for another structure without awarding its key or loot.",
+            "old_sources": [
+              "land_13"
+            ],
+            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
+            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source land_13",
+            "visual_route": "departure",
+            "hard_dependencies": [],
+            "recommended_after": [
+              "field_03"
+            ]
+          },
+          "design": {
+            "exact_predecessor": "land_13",
+            "migration_equivalence": "EXACT",
+            "coverage_keys": [],
+            "visual_group": "fieldcraft"
+          },
+          "native_options": {
+            "size": 1.2
+          },
+          "mechanic_sections": []
         }
       ],
       "ftb_id": "212CD19C4F30BF20",

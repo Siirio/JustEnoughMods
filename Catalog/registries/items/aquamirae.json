@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -322,7 +322,8 @@
       "observed_in": [
         "assets/aquamirae/lang/en_us.json",
         "assets/aquamirae/lang/ru_ru.json",
-        "assets/aquamirae/models/item/abyssal_scyphoid_spawn_egg.json"
+        "assets/aquamirae/models/item/abyssal_scyphoid_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/aquamirae_abyssal_scyphoid.json"
       ],
       "display_name_en_us": "Abyssal Scyphoid Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва пучинной медузы",
@@ -330,12 +331,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/en_us.json",
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/ru_ru.json",
-        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/abyssal_scyphoid_spawn_egg.json"
+        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/abyssal_scyphoid_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/aquamirae_abyssal_scyphoid.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -356,7 +358,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/aquamirae_abyssal_scyphoid"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:aquamirae:abyssal_scyphoid_spawn_egg"
@@ -1566,7 +1570,8 @@
       "observed_in": [
         "assets/aquamirae/lang/en_us.json",
         "assets/aquamirae/lang/ru_ru.json",
-        "assets/aquamirae/models/item/golden_moth_spawn_egg.json"
+        "assets/aquamirae/models/item/golden_moth_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/aquamirae_golden_moth.json"
       ],
       "display_name_en_us": "Golden Moth Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва золотого мотылька",
@@ -1574,12 +1579,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/en_us.json",
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/ru_ru.json",
-        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/golden_moth_spawn_egg.json"
+        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/golden_moth_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/aquamirae_golden_moth.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1600,7 +1606,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/aquamirae_golden_moth"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:aquamirae:golden_moth_spawn_egg"
@@ -3148,7 +3156,8 @@
       "observed_in": [
         "assets/aquamirae/lang/en_us.json",
         "assets/aquamirae/lang/ru_ru.json",
-        "assets/aquamirae/models/item/scuttler_spawn_egg.json"
+        "assets/aquamirae/models/item/scuttler_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/aquamirae_scuttler.json"
       ],
       "display_name_en_us": "Scuttler Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Ползуна",
@@ -3156,12 +3165,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/en_us.json",
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/ru_ru.json",
-        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/scuttler_spawn_egg.json"
+        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/scuttler_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/aquamirae_scuttler.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3182,7 +3192,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/aquamirae_scuttler"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:aquamirae:scuttler_spawn_egg"
@@ -3542,7 +3554,8 @@
       "observed_in": [
         "assets/aquamirae/lang/en_us.json",
         "assets/aquamirae/lang/ru_ru.json",
-        "assets/aquamirae/models/item/shellback_spawn_egg.json"
+        "assets/aquamirae/models/item/shellback_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/aquamirae_shellback.json"
       ],
       "display_name_en_us": "Shellback Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Панцирника",
@@ -3550,12 +3563,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/en_us.json",
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/ru_ru.json",
-        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/shellback_spawn_egg.json"
+        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/shellback_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/aquamirae_shellback.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3576,7 +3590,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/aquamirae_shellback"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:aquamirae:shellback_spawn_egg"
@@ -4612,7 +4628,8 @@
       "observed_in": [
         "assets/aquamirae/lang/en_us.json",
         "assets/aquamirae/lang/ru_ru.json",
-        "assets/aquamirae/models/item/tortured_soul_spawn_egg.json"
+        "assets/aquamirae/models/item/tortured_soul_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/aquamirae_tortured_soul.json"
       ],
       "display_name_en_us": "Tortured Soul Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва измученной души",
@@ -4620,12 +4637,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/en_us.json",
         "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/ru_ru.json",
-        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/tortured_soul_spawn_egg.json"
+        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/tortured_soul_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/aquamirae_tortured_soul.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4646,7 +4664,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/aquamirae_tortured_soul"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:aquamirae:tortured_soul_spawn_egg"

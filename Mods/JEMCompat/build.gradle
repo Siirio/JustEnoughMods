@@ -114,6 +114,7 @@ tasks.named('compileJava', JavaCompile).configure {
 }
 
 sourceSets.main.resources.srcDir 'src/generated/resources'
+sourceSets.main.java.srcDir 'src/generated/java'
 
 tasks.named('processResources', ProcessResources).configure {
     def replaceProperties = [

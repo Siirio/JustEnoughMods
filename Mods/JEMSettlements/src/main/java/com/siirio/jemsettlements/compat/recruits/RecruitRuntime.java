@@ -7,6 +7,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 /** Registered only when Recruits exists; native signatures never enter the common subscriber. */
 public final class RecruitRuntime {
+    @SubscribeEvent public static void joined(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
+        if (!event.getLevel().isClientSide() && event.getEntity() instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit)
+            RecruitEquipmentPolicy.enforce(recruit);
+    }
+    @SubscribeEvent public static void equipment(net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent event) {
+        if (event.getEntity() instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit
+                && !recruit.level().isClientSide())
+            RecruitEquipmentPolicy.enforce(recruit);
+    }
     @SubscribeEvent public static void dismissed(com.talhanation.recruits.RecruitEvent.Dismissed event) {
         if (!(event.getRecruit().level() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;
         var data = SettlementSavedData.get(level.getServer());

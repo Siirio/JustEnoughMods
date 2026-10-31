@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.justenoughmods'
-version = '5.2.2'
+version = '5.3.0'
 
 def instanceOverride = findProperty('jemRuntimeRoot') ?: findProperty('jem_instance') ?: System.getenv('JEM_INSTANCE')
 def jemRuntimeRoot = file(instanceOverride?.toString()?.trim() ?: '../../Client/ManagedPack')
@@ -35,7 +35,9 @@ dependencies {
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/blastfromthepast-1.0.3+1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/unearthed_journey-2.2.3.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/golemoverhaul-forge-1.20.1-1.1.1.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/horseman-1.20.1-1.3.17-forge.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/icys-better-horses-2.1.8-forge-1.20.1.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/advancementframes-1.20-2.2.8.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/sittingplus-2.0.5-1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/trotting_wagons-1.0.4.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/whaleborne-1.20.1-1.2.4b.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Ribbits-1.20.1-Forge-3.0.5.jar"))

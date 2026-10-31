@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
+  "generation": {
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "item_magnet",
+    "name": "Item Magnet",
+    "version": "1.0.0"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "item_magnet:item_magnet",
+      "mod_id": "item_magnet",
+      "mod_name": "Item Magnet",
+      "mod_version": "1.0.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:redstone",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "item_magnet:item_magnet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:data/item_magnet/recipes/item_magnet.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "item_magnet:tools/item_magnet",
+      "mod_id": "item_magnet",
+      "mod_name": "Item Magnet",
+      "mod_version": "1.0.0",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "item_magnet:item_magnet",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:redstone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:data/item_magnet/advancements/recipes/tools/item_magnet.json"
+      ]
+    }
+  ]
+}

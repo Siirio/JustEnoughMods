@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
+  "generation": {
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "advancementframes",
+    "name": "Advancement Frames",
+    "version": "1.20-2.2.8"
+  },
+  "records": [
+    {
+      "registry_id": "advancementframes:advancement_frame",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "advancementframes",
+      "mod_name": "Advancement Frames",
+      "mod_version": "1.20-2.2.8",
+      "source_jar": "advancementframes-1.20-2.2.8.jar",
+      "source_sha256": "c57b8fb06366d12d43065271447af57ef56f1ffee515be5f3e2561aa41034939",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/advancementframes/blockstates/advancement_frame.json",
+        "assets/advancementframes/lang/en_us.json"
+      ],
+      "display_name_en_us": "Advancement Frame",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "advancementframes-1.20-2.2.8.jar:assets/advancementframes/blockstates/advancement_frame.json",
+        "advancementframes-1.20-2.2.8.jar:assets/advancementframes/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "advancementframes:stat_frame",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "advancementframes",
+      "mod_name": "Advancement Frames",
+      "mod_version": "1.20-2.2.8",
+      "source_jar": "advancementframes-1.20-2.2.8.jar",
+      "source_sha256": "c57b8fb06366d12d43065271447af57ef56f1ffee515be5f3e2561aa41034939",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/advancementframes/blockstates/stat_frame.json",
+        "assets/advancementframes/lang/en_us.json"
+      ],
+      "display_name_en_us": "Stat Frame",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "advancementframes-1.20-2.2.8.jar:assets/advancementframes/blockstates/stat_frame.json",
+        "advancementframes-1.20-2.2.8.jar:assets/advancementframes/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

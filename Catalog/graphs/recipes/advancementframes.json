@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
+  "generation": {
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "advancementframes",
+    "name": "Advancement Frames",
+    "version": "1.20-2.2.8"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "advancementframes:advancement_frame",
+      "mod_id": "advancementframes",
+      "mod_name": "Advancement Frames",
+      "mod_version": "1.20-2.2.8",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:emerald",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "advancementframes:advancement_frame"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "advancementframes-1.20-2.2.8.jar:data/advancementframes/recipes/advancement_frame.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "advancementframes:stat_frame",
+      "mod_id": "advancementframes",
+      "mod_name": "Advancement Frames",
+      "mod_version": "1.20-2.2.8",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:quartz",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "advancementframes:stat_frame"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "advancementframes-1.20-2.2.8.jar:data/advancementframes/recipes/stat_frame.json"
+      ]
+    }
+  ]
+}

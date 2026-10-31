@@ -29,6 +29,7 @@ public final class FtbQuestBridge {
         BookItemReward.register();
         BookXpReward.register();
         PastRewardsNetwork.register();
+        if (QuestSignals.loaded("advancementframes")) FtbQuestFrameNetwork.register();
         MinecraftForge.EVENT_BUS.register(BookEvents.class);
         if (QuestSignals.loaded("jem_economy")) BookEconomyEvents.register();
         CustomTaskEvent.EVENT.register(event -> {

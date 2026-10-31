@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -661,7 +661,8 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/burrel_spawn_egg.json"
+        "assets/blastfromthepast/models/item/burrel_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_burrel.json"
       ],
       "display_name_en_us": "Burrel Spawn Egg",
       "display_name_ru_ru": null,
@@ -669,11 +670,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/burrel_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/burrel_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_burrel.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -694,7 +696,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_burrel"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:blastfromthepast:burrel_spawn_egg"
@@ -2557,7 +2561,8 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/frostomper_spawn_egg.json"
+        "assets/blastfromthepast/models/item/frostomper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_frostomper.json"
       ],
       "display_name_en_us": "Frostomper Spawn Egg",
       "display_name_ru_ru": null,
@@ -2565,11 +2570,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/frostomper_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/frostomper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_frostomper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2590,7 +2596,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_frostomper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:blastfromthepast:frostomper_spawn_egg"
@@ -2709,7 +2717,8 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/glaceros_spawn_egg.json"
+        "assets/blastfromthepast/models/item/glaceros_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_glaceros.json"
       ],
       "display_name_en_us": "Glaceros Spawn Egg",
       "display_name_ru_ru": null,
@@ -2717,11 +2726,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/glaceros_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/glaceros_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_glaceros.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2742,7 +2752,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_glaceros"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:blastfromthepast:glaceros_spawn_egg"
@@ -2828,8 +2840,8 @@
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/glacial_guidebook.json",
         "blastfromthepast-1.0.3+1.20.1.jar:data/blastfromthepast/recipes/glacial_guidebook.json",
-        "jem-advancements-5.2.0.jar:assets/jem_advancements/lang/en_us.json",
-        "jem-advancements-5.2.0.jar:assets/jem_advancements/lang/ru_ru.json"
+        "jem-advancements-5.3.0.jar:assets/jem_advancements/lang/en_us.json",
+        "jem-advancements-5.3.0.jar:assets/jem_advancements/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5117,7 +5129,8 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/psycho_bear_spawn_egg.json"
+        "assets/blastfromthepast/models/item/psycho_bear_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_psycho_bear.json"
       ],
       "display_name_en_us": "Psycho Bear Spawn Egg",
       "display_name_ru_ru": null,
@@ -5125,11 +5138,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/psycho_bear_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/psycho_bear_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_psycho_bear.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5150,7 +5164,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_psycho_bear"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:blastfromthepast:psycho_bear_spawn_egg"
@@ -6377,7 +6393,8 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/snowdo_spawn_egg.json"
+        "assets/blastfromthepast/models/item/snowdo_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_snowdo.json"
       ],
       "display_name_en_us": "Snowdo Spawn Egg",
       "display_name_ru_ru": null,
@@ -6385,11 +6402,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/snowdo_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/snowdo_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_snowdo.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -6410,7 +6428,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_snowdo"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:blastfromthepast:snowdo_spawn_egg"

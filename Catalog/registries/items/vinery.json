@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -6072,7 +6072,8 @@
       "observed_in": [
         "assets/vinery/lang/en_us.json",
         "assets/vinery/lang/ru_ru.json",
-        "assets/vinery/models/item/mule_spawn_egg.json"
+        "assets/vinery/models/item/mule_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/vinery_mule.json"
       ],
       "display_name_en_us": "Mule Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва мула",
@@ -6080,9 +6081,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/vinery_mule.json",
         "letsdo-vinery-forge-1.4.41.jar:assets/vinery/lang/en_us.json",
         "letsdo-vinery-forge-1.4.41.jar:assets/vinery/lang/ru_ru.json",
         "letsdo-vinery-forge-1.4.41.jar:assets/vinery/models/item/mule_spawn_egg.json"
@@ -6106,7 +6108,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/vinery_mule"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:vinery:mule_spawn_egg"

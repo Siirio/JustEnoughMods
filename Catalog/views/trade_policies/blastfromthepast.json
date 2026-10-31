@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -581,13 +581,15 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/burrel_spawn_egg.json"
+        "assets/blastfromthepast/models/item/burrel_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_burrel.json"
       ],
       "display_name_en_us": "Burrel Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/burrel_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/burrel_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_burrel.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -596,7 +598,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_burrel"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2253,13 +2257,15 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/frostomper_spawn_egg.json"
+        "assets/blastfromthepast/models/item/frostomper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_frostomper.json"
       ],
       "display_name_en_us": "Frostomper Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/frostomper_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/frostomper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_frostomper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2268,7 +2274,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_frostomper"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2387,13 +2395,15 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/glaceros_spawn_egg.json"
+        "assets/blastfromthepast/models/item/glaceros_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_glaceros.json"
       ],
       "display_name_en_us": "Glaceros Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/glaceros_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/glaceros_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_glaceros.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2402,7 +2412,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_glaceros"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2488,8 +2500,8 @@
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/glacial_guidebook.json",
         "blastfromthepast-1.0.3+1.20.1.jar:data/blastfromthepast/recipes/glacial_guidebook.json",
-        "jem-advancements-5.2.0.jar:assets/jem_advancements/lang/en_us.json",
-        "jem-advancements-5.2.0.jar:assets/jem_advancements/lang/ru_ru.json"
+        "jem-advancements-5.3.0.jar:assets/jem_advancements/lang/en_us.json",
+        "jem-advancements-5.3.0.jar:assets/jem_advancements/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4497,13 +4509,15 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/psycho_bear_spawn_egg.json"
+        "assets/blastfromthepast/models/item/psycho_bear_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_psycho_bear.json"
       ],
       "display_name_en_us": "Psycho Bear Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/psycho_bear_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/psycho_bear_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_psycho_bear.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4512,7 +4526,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_psycho_bear"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -5597,13 +5613,15 @@
       ],
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
-        "assets/blastfromthepast/models/item/snowdo_spawn_egg.json"
+        "assets/blastfromthepast/models/item/snowdo_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_snowdo.json"
       ],
       "display_name_en_us": "Snowdo Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/snowdo_spawn_egg.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/snowdo_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_snowdo.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5612,7 +5630,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/blastfromthepast_snowdo"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

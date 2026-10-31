@@ -17,6 +17,21 @@ public final class PackCompanionAdapter {
     public interface NativeExpiration { UUID jemShelterId(); int jemShelterExpiry(); }
     public interface NativeTransient { void jemShelterWriteTransient(CompoundTag tag); void jemShelterReadTransient(CompoundTag tag); }
     private static final Set<String> CLASSES = Set.of(
+            "icy.betterhorses.net.entity.AmericanPaintHorse",
+            "icy.betterhorses.net.entity.AndalusianHorse",
+            "icy.betterhorses.net.entity.AppaloosaHorse",
+            "icy.betterhorses.net.entity.ArabianHorse",
+            "icy.betterhorses.net.entity.BelgianHorse",
+            "icy.betterhorses.net.entity.ClydesdaleHorse",
+            "icy.betterhorses.net.entity.FriesianHorse",
+            "icy.betterhorses.net.entity.HaflingerHorse",
+            "icy.betterhorses.net.entity.IcelandicHorse",
+            "icy.betterhorses.net.entity.MorganHorse",
+            "icy.betterhorses.net.entity.MustangHorse",
+            "icy.betterhorses.net.entity.PercheronHorse",
+            "icy.betterhorses.net.entity.QuarterHorse",
+            "icy.betterhorses.net.entity.ShireHorse",
+            "icy.betterhorses.net.entity.ThoroughbredHorse",
             "dev.xylonity.companions.common.entity.summon.BubbleFrogEntity",
             "dev.xylonity.companions.common.entity.summon.EmberPoleEntity",
             "dev.xylonity.companions.common.entity.summon.EnderFrogEntity",

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1757,7 +1757,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/crimson_walker_spawn_egg.json"
+        "assets/luminous_nether/models/item/crimson_walker_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_crimson_walker.json"
       ],
       "display_name_en_us": "Crimson Walker Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва багрового ходока",
@@ -1765,15 +1766,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/crimson_walker_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/crimson_walker_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/crimson_walker_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_crimson_walker.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1794,7 +1796,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_crimson_walker"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:crimson_walker_spawn_egg"
@@ -4794,7 +4798,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/gilded_cultist_spawn_egg.json"
+        "assets/luminous_nether/models/item/gilded_cultist_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_gilded_cultist.json"
       ],
       "display_name_en_us": "Gilded Cultist Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва культиста",
@@ -4802,15 +4807,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/gilded_cultist_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/gilded_cultist_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/gilded_cultist_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_gilded_cultist.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4831,7 +4837,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_gilded_cultist"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:gilded_cultist_spawn_egg"
@@ -4902,7 +4910,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/glider_spawn_egg.json"
+        "assets/luminous_nether/models/item/glider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_glider.json"
       ],
       "display_name_en_us": "Glider Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глайдера",
@@ -4910,15 +4919,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/glider_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/glider_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/glider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_glider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4939,7 +4949,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_glider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:glider_spawn_egg"
@@ -5503,7 +5515,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/guzzleghast_spawn_egg.json"
+        "assets/luminous_nether/models/item/guzzleghast_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_guzzleghast.json"
       ],
       "display_name_en_us": "Guzzleghast Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва пожирателя ужаса",
@@ -5511,15 +5524,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/guzzleghast_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/guzzleghast_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/guzzleghast_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_guzzleghast.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5540,7 +5554,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_guzzleghast"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:guzzleghast_spawn_egg"
@@ -6577,7 +6593,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/mushlin_bumper_spawn_egg.json"
+        "assets/luminous_nether/models/item/mushlin_bumper_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_mushlin_bumper.json"
       ],
       "display_name_en_us": "Mushlin Bumper Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва грибного толкателя",
@@ -6585,15 +6602,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/mushlin_bumper_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/mushlin_bumper_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/mushlin_bumper_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_mushlin_bumper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -6614,7 +6632,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_mushlin_bumper"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:mushlin_bumper_spawn_egg"
@@ -8195,7 +8215,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/piglin_cultist_spawn_egg.json"
+        "assets/luminous_nether/models/item/piglin_cultist_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_piglin_cultist.json"
       ],
       "display_name_en_us": "Piglin Cultist Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва культиста",
@@ -8203,15 +8224,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/piglin_cultist_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/piglin_cultist_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/piglin_cultist_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_piglin_cultist.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8232,7 +8254,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_piglin_cultist"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:piglin_cultist_spawn_egg"
@@ -8416,7 +8440,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/piglin_ghost_spawn_egg.json"
+        "assets/luminous_nether/models/item/piglin_ghost_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_piglin_ghost.json"
       ],
       "display_name_en_us": "Piglin Ghost Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва призрака пиглина",
@@ -8424,15 +8449,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/piglin_ghost_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/piglin_ghost_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/piglin_ghost_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_piglin_ghost.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8453,7 +8479,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_piglin_ghost"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:piglin_ghost_spawn_egg"
@@ -8634,7 +8662,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/pottergeist_spawn_egg.json"
+        "assets/luminous_nether/models/item/pottergeist_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_pottergeist.json"
       ],
       "display_name_en_us": "Pottergeist Spawn Egg",
       "display_name_ru_ru": "яйцо призыва полтергейста ",
@@ -8642,15 +8671,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/pottergeist_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/pottergeist_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/pottergeist_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_pottergeist.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8671,7 +8701,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_pottergeist"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:pottergeist_spawn_egg"
@@ -8751,7 +8783,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/revenant_skeleton_spawn_egg.json"
+        "assets/luminous_nether/models/item/revenant_skeleton_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_revenant_skeleton.json"
       ],
       "display_name_en_us": "Revenant Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва ревенанта",
@@ -8759,15 +8792,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/revenant_skeleton_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/revenant_skeleton_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/revenant_skeleton_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_revenant_skeleton.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8788,7 +8822,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_revenant_skeleton"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:revenant_skeleton_spawn_egg"
@@ -11381,7 +11417,8 @@
       "observed_in": [
         "assets/luminous_nether/lang/en_us.json",
         "assets/luminous_nether/lang/ru_ru.json",
-        "assets/luminous_nether/models/item/zombie_piglin_cultist_spawn_egg.json"
+        "assets/luminous_nether/models/item/zombie_piglin_cultist_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/luminous_nether_zombie_piglin_cultist.json"
       ],
       "display_name_en_us": "Zombified Piglin Cultist Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва зомбированного пиглина-культиста ",
@@ -11389,15 +11426,16 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
         "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar:assets/luminous_nether/models/item/zombie_piglin_cultist_spawn_egg.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/en_us.json",
         "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/lang/ru_ru.json",
-        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/zombie_piglin_cultist_spawn_egg.json"
+        "Luminous_20Nether_20V1.3.3_20-_20Forge_201.20.1.jar:assets/luminous_nether/models/item/zombie_piglin_cultist_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/luminous_nether_zombie_piglin_cultist.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -11418,7 +11456,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/luminous_nether_zombie_piglin_cultist"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:luminous_nether:zombie_piglin_cultist_spawn_egg"

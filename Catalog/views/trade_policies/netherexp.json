@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1795,14 +1795,16 @@
       "observed_in": [
         "assets/netherexp/lang/en_us.json",
         "assets/netherexp/lang/ru_ru.json",
-        "assets/netherexp/models/item/apparition_spawn_egg.json"
+        "assets/netherexp/models/item/apparition_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/netherexp_apparition.json"
       ],
       "display_name_en_us": "Apparition Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва видения",
       "source_provenance": [
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
-        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/apparition_spawn_egg.json"
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/apparition_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/netherexp_apparition.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1811,7 +1813,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/netherexp_apparition"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1987,14 +1991,16 @@
       "observed_in": [
         "assets/netherexp/lang/en_us.json",
         "assets/netherexp/lang/ru_ru.json",
-        "assets/netherexp/models/item/banshee_spawn_egg.json"
+        "assets/netherexp/models/item/banshee_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/netherexp_banshee.json"
       ],
       "display_name_en_us": "Banshee Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва банши",
       "source_provenance": [
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
-        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/banshee_spawn_egg.json"
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/banshee_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/netherexp_banshee.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2003,7 +2009,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/netherexp_banshee"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -3323,14 +3331,16 @@
       "observed_in": [
         "assets/netherexp/lang/en_us.json",
         "assets/netherexp/lang/ru_ru.json",
-        "assets/netherexp/models/item/carcass_spawn_egg.json"
+        "assets/netherexp/models/item/carcass_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/netherexp_carcass.json"
       ],
       "display_name_en_us": "Carcass Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва остова",
       "source_provenance": [
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
-        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/carcass_spawn_egg.json"
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/carcass_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/netherexp_carcass.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3339,7 +3349,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/netherexp_carcass"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -17445,14 +17457,16 @@
       "observed_in": [
         "assets/netherexp/lang/en_us.json",
         "assets/netherexp/lang/ru_ru.json",
-        "assets/netherexp/models/item/vessel_spawn_egg.json"
+        "assets/netherexp/models/item/vessel_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/netherexp_vessel.json"
       ],
       "display_name_en_us": "Vessel Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва фиала",
       "source_provenance": [
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
-        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/vessel_spawn_egg.json"
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/vessel_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/netherexp_vessel.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17461,7 +17475,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/netherexp_vessel"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -18321,14 +18337,16 @@
       "observed_in": [
         "assets/netherexp/lang/en_us.json",
         "assets/netherexp/lang/ru_ru.json",
-        "assets/netherexp/models/item/wisp_spawn_egg.json"
+        "assets/netherexp/models/item/wisp_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/netherexp_wisp.json"
       ],
       "display_name_en_us": "Wisp Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва виспа",
       "source_provenance": [
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
-        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/wisp_spawn_egg.json"
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/wisp_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/netherexp_wisp.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -18337,7 +18355,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/netherexp_wisp"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

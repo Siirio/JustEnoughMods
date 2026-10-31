@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -252,7 +252,8 @@
       "observed_in": [
         "assets/whaleborne/lang/en_us.json",
         "assets/whaleborne/lang/ru_ru.json",
-        "assets/whaleborne/models/item/hullback_spawn_egg.json"
+        "assets/whaleborne/models/item/hullback_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/whaleborne_hullback.json"
       ],
       "display_name_en_us": "Hullback Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва судноспина",
@@ -260,9 +261,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/whaleborne_hullback.json",
         "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
         "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
         "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/hullback_spawn_egg.json"
@@ -286,7 +288,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/whaleborne_hullback"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:whaleborne:hullback_spawn_egg"

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -240,7 +240,8 @@
       "observed_in": [
         "assets/trials/lang/en_us.json",
         "assets/trials/lang/ru_ru.json",
-        "assets/trials/models/item/bogged_spawn_egg.json"
+        "assets/trials/models/item/bogged_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/trials_bogged.json"
       ],
       "display_name_en_us": "Bogged Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва болотника",
@@ -248,12 +249,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Trials-2.3.3.jar:assets/trials/lang/en_us.json",
         "Trials-2.3.3.jar:assets/trials/lang/ru_ru.json",
-        "Trials-2.3.3.jar:assets/trials/models/item/bogged_spawn_egg.json"
+        "Trials-2.3.3.jar:assets/trials/models/item/bogged_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/trials_bogged.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -274,7 +276,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/trials_bogged"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:trials:bogged_spawn_egg"
@@ -408,7 +412,8 @@
       "observed_in": [
         "assets/trials/lang/en_us.json",
         "assets/trials/lang/ru_ru.json",
-        "assets/trials/models/item/breeze_spawn_egg.json"
+        "assets/trials/models/item/breeze_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/trials_breeze.json"
       ],
       "display_name_en_us": "Breeze Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва вихря",
@@ -416,12 +421,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "Trials-2.3.3.jar:assets/trials/lang/en_us.json",
         "Trials-2.3.3.jar:assets/trials/lang/ru_ru.json",
-        "Trials-2.3.3.jar:assets/trials/models/item/breeze_spawn_egg.json"
+        "Trials-2.3.3.jar:assets/trials/models/item/breeze_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/trials_breeze.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -442,7 +448,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/trials_breeze"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:trials:breeze_spawn_egg"

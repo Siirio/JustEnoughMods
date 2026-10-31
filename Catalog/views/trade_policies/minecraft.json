@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1711,15 +1711,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_axolotl.json"
       ],
       "display_name_en_us": "Axolotl Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_axolotl.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -1729,7 +1730,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_axolotl"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2754,15 +2757,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_bat.json"
       ],
       "display_name_en_us": "Bat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -2772,7 +2776,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_bat"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2846,15 +2852,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_bee.json"
       ],
       "display_name_en_us": "Bee Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bee.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -2864,7 +2871,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_bee"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4797,15 +4806,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_blaze.json"
       ],
       "display_name_en_us": "Blaze Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_blaze.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -4815,7 +4825,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_blaze"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -7586,15 +7598,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_camel.json"
       ],
       "display_name_en_us": "Camel Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_camel.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -7604,7 +7617,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_camel"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -7874,15 +7889,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_cat.json"
       ],
       "display_name_en_us": "Cat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -7892,7 +7908,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_cat"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -7968,15 +7986,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_cave_spider.json"
       ],
       "display_name_en_us": "Cave Spider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cave_spider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -7986,7 +8005,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_cave_spider"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -9156,15 +9177,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_chicken.json"
       ],
       "display_name_en_us": "Chicken Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_chicken.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -9174,7 +9196,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_chicken"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -11592,15 +11616,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_cow.json"
       ],
       "display_name_en_us": "Cow Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cow.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -11610,7 +11635,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_cow"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -12019,15 +12046,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_creeper.json"
       ],
       "display_name_en_us": "Creeper Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_creeper.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -12037,7 +12065,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_creeper"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -16384,15 +16414,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_dolphin.json"
       ],
       "display_name_en_us": "Dolphin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_dolphin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -16402,7 +16433,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_dolphin"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -16429,15 +16462,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_donkey.json"
       ],
       "display_name_en_us": "Donkey Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_donkey.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -16447,7 +16481,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_donkey"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -16805,15 +16841,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_drowned.json"
       ],
       "display_name_en_us": "Drowned Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_drowned.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -16823,7 +16860,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_drowned"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -17861,15 +17900,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_enderman.json"
       ],
       "display_name_en_us": "Enderman Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_enderman.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17879,7 +17919,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_enderman"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -17906,15 +17948,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_endermite.json"
       ],
       "display_name_en_us": "Endermite Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_endermite.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17924,7 +17967,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_endermite"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -17951,15 +17996,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_evoker.json"
       ],
       "display_name_en_us": "Evoker Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_evoker.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17969,7 +18015,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_evoker"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -20310,15 +20358,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_fox.json"
       ],
       "display_name_en_us": "Fox Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_fox.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20328,7 +20377,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_fox"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -20445,15 +20496,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_frog.json"
       ],
       "display_name_en_us": "Frog Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_frog.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20463,7 +20515,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_frog"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -20598,15 +20652,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_ghast.json"
       ],
       "display_name_en_us": "Ghast Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ghast.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20616,7 +20671,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_ghast"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -21208,15 +21265,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_glow_squid.json"
       ],
       "display_name_en_us": "Glow Squid Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_glow_squid.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21226,7 +21284,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_glow_squid"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -21394,15 +21454,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_goat.json"
       ],
       "display_name_en_us": "Goat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_goat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21412,7 +21473,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_goat"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -23583,15 +23646,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_guardian.json"
       ],
       "display_name_en_us": "Guardian Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_guardian.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -23601,7 +23665,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_guardian"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -24007,15 +24073,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_hoglin.json"
       ],
       "display_name_en_us": "Hoglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_hoglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -24025,7 +24092,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_hoglin"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -24382,15 +24451,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_horse.json"
       ],
       "display_name_en_us": "Horse Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_horse.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -24400,7 +24470,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_horse"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -24564,15 +24636,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_husk.json"
       ],
       "display_name_en_us": "Husk Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_husk.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -24582,7 +24655,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_husk"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -32479,15 +32554,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_llama.json"
       ],
       "display_name_en_us": "Llama Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_llama.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -32497,7 +32573,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_llama"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -33316,15 +33394,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_magma_cube.json"
       ],
       "display_name_en_us": "Magma Cube Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_magma_cube.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -33334,7 +33413,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_magma_cube"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -34506,15 +34587,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_mooshroom.json"
       ],
       "display_name_en_us": "Mooshroom Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mooshroom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -34524,7 +34606,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_mooshroom"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -35394,15 +35478,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_mule.json"
       ],
       "display_name_en_us": "Mule Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mule.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -35412,7 +35497,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_mule"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -39236,15 +39323,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_ocelot.json"
       ],
       "display_name_en_us": "Ocelot Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ocelot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -39254,7 +39342,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_ocelot"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -40144,15 +40234,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_panda.json"
       ],
       "display_name_en_us": "Panda Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_panda.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40162,7 +40253,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_panda"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -40243,15 +40336,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_parrot.json"
       ],
       "display_name_en_us": "Parrot Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_parrot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40261,7 +40355,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_parrot"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -40337,15 +40433,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_phantom.json"
       ],
       "display_name_en_us": "Phantom Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_phantom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40355,7 +40452,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_phantom"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -40382,15 +40481,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_pig.json"
       ],
       "display_name_en_us": "Pig Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pig.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40400,7 +40500,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_pig"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -40517,15 +40619,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_piglin_brute.json"
       ],
       "display_name_en_us": "Piglin Brute Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_piglin_brute.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40535,7 +40638,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_piglin_brute"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -40607,15 +40712,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_pillager.json"
       ],
       "display_name_en_us": "Pillager Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pillager.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40625,7 +40731,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_pillager"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -41545,15 +41653,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_polar_bear.json"
       ],
       "display_name_en_us": "Polar Bear Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_polar_bear.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -41563,7 +41672,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_polar_bear"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -48847,15 +48958,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_rabbit.json"
       ],
       "display_name_en_us": "Rabbit Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_rabbit.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -48865,7 +48977,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_rabbit"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -49040,15 +49154,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_ravager.json"
       ],
       "display_name_en_us": "Ravager Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ravager.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -49058,7 +49173,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_ravager"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -51766,15 +51883,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_sheep.json"
       ],
       "display_name_en_us": "Sheep Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_sheep.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -51784,7 +51902,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_sheep"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -52808,15 +52928,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_shulker.json"
       ],
       "display_name_en_us": "Shulker Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_shulker.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -52826,7 +52947,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_shulker"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -52945,15 +53068,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_silverfish.json"
       ],
       "display_name_en_us": "Silverfish Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_silverfish.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -52963,7 +53087,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_silverfish"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -53035,15 +53161,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_skeleton.json"
       ],
       "display_name_en_us": "Skeleton Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_skeleton.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -53053,7 +53180,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_skeleton"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -53369,15 +53498,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_slime.json"
       ],
       "display_name_en_us": "Slime Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_slime.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -53387,7 +53517,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_slime"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -55302,15 +55434,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_spider.json"
       ],
       "display_name_en_us": "Spider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_spider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -55320,7 +55453,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_spider"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -59668,15 +59803,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_squid.json"
       ],
       "display_name_en_us": "Squid Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_squid.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -59686,7 +59822,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_squid"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -60637,15 +60775,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_stray.json"
       ],
       "display_name_en_us": "Stray Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_stray.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -60655,7 +60794,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_stray"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -60682,15 +60823,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_strider.json"
       ],
       "display_name_en_us": "Strider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_strider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -60700,7 +60842,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_strider"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -61979,15 +62123,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_tadpole.json"
       ],
       "display_name_en_us": "Tadpole Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_tadpole.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -61997,7 +62142,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_tadpole"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -66289,15 +66436,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_turtle.json"
       ],
       "display_name_en_us": "Turtle Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_turtle.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -66307,7 +66455,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_turtle"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -66471,15 +66621,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_vindicator.json"
       ],
       "display_name_en_us": "Vindicator Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_vindicator.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -66489,7 +66640,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_vindicator"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -69197,15 +69350,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_witch.json"
       ],
       "display_name_en_us": "Witch Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_witch.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -69215,7 +69369,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_witch"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -69289,15 +69445,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_wither_skeleton.json"
       ],
       "display_name_en_us": "Wither Skeleton Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wither_skeleton.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -69307,7 +69464,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_wither_skeleton"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -69379,15 +69538,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_wolf.json"
       ],
       "display_name_en_us": "Wolf Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wolf.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -69397,7 +69557,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_wolf"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -70315,15 +70477,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_zoglin.json"
       ],
       "display_name_en_us": "Zoglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zoglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70333,7 +70496,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_zoglin"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -70405,15 +70570,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_zombie.json"
       ],
       "display_name_en_us": "Zombie Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombie.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70423,7 +70589,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_zombie"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -70495,15 +70663,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/jemcompat/recipes/spawn_eggs/minecraft_zombified_piglin.json"
       ],
       "display_name_en_us": "Zombified Piglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombified_piglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70513,7 +70682,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/minecraft_zombified_piglin"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:spawner",
+          "functions": [
+            {
+              "function": "minecraft:copy_nbt",
+              "source": "block_entity",
+              "ops": [
+                { "source": "SpawnData", "target": "BlockEntityTag.SpawnData", "op": "replace" },
+                { "source": "SpawnPotentials", "target": "BlockEntityTag.SpawnPotentials", "op": "replace" },
+                { "source": "Delay", "target": "BlockEntityTag.Delay", "op": "replace" },
+                { "source": "MinSpawnDelay", "target": "BlockEntityTag.MinSpawnDelay", "op": "replace" },
+                { "source": "MaxSpawnDelay", "target": "BlockEntityTag.MaxSpawnDelay", "op": "replace" },
+                { "source": "SpawnCount", "target": "BlockEntityTag.SpawnCount", "op": "replace" },
+                { "source": "MaxNearbyEntities", "target": "BlockEntityTag.MaxNearbyEntities", "op": "replace" },
+                { "source": "RequiredPlayerRange", "target": "BlockEntityTag.RequiredPlayerRange", "op": "replace" },
+                { "source": "SpawnRange", "target": "BlockEntityTag.SpawnRange", "op": "replace" },
+                { "source": "JemLastSlowSpawn", "target": "BlockEntityTag.JemLastSlowSpawn", "op": "replace" }
+              ]
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "enchantments": [
+              { "enchantment": "minecraft:silk_touch", "levels": { "min": 1 } }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:blocks/spawner"
+}

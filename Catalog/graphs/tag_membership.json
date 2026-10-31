@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "tags": {
     "accessories:item/belt": [
       "minecraft:lantern",
@@ -1876,6 +1876,27 @@
     ],
     "alexsmobs:worldgen/structure/spawns_underminers": [
       "#minecraft:mineshaft"
+    ],
+    "ancient_remnants:worldgen/biome/has_structure/aquaduct1": [
+      "#minecraft:is_forest"
+    ],
+    "ancient_remnants:worldgen/biome/has_structure/aquaduct_older": [
+      "#minecraft:is_forest"
+    ],
+    "ancient_remnants:worldgen/biome/has_structure/collapsing_pillar": [
+      "#minecraft:is_forest",
+      "#minecraft:is_jungle"
+    ],
+    "ancient_remnants:worldgen/biome/has_structure/ocean_structure": [
+      "#minecraft:is_ocean",
+      "minecraft:deep_cold_ocean",
+      "minecraft:ocean"
+    ],
+    "ancient_remnants:worldgen/biome/has_structure/pillar_small": [
+      "#minecraft:is_forest"
+    ],
+    "ancient_remnants:worldgen/biome/has_structure/simple_hand": [
+      "#minecraft:is_forest"
     ],
     "another_furniture:item/furniture_hammers": [
       "#bbb:hammers"
@@ -11460,6 +11481,9 @@
       "minecraft:mob_attack_no_aggro",
       "minecraft:player_attack"
     ],
+    "estrogen:entity_types/urine_giving": [
+      "#icys-better-horses:breed_horses"
+    ],
     "exposure:blocks/chromatic_refractors": [
       "minecraft:tinted_glass"
     ],
@@ -11850,6 +11874,12 @@
     ],
     "farmersdelight:blocks/mineable/knife": [
       "spawn:crab_boil_block"
+    ],
+    "farmersdelight:entity_types/horse_feed_tempted": [
+      "#icys-better-horses:breed_horses"
+    ],
+    "farmersdelight:entity_types/horse_feed_users": [
+      "#icys-better-horses:breed_horses"
     ],
     "farmersdelight:items/meals": [
       "spawn:clam_chowder",
@@ -15059,15 +15089,6 @@
       "#minecraft:is_beach",
       "#minecraft:is_savanna"
     ],
-    "horseman:entity_types/cannot_be_hitched": [
-      "minecraft:llama",
-      "minecraft:trader_llama"
-    ],
-    "horseman:entity_types/cannot_swim": [
-      "minecraft:camel",
-      "minecraft:skeleton_horse",
-      "minecraft:zombie_horse"
-    ],
     "iceandfire:entity_types/blinded.json": [
       "cataclysm:ancient_remnant",
       "cataclysm:ender_guardian",
@@ -15083,6 +15104,288 @@
       "cataclysm:netherite_monstrosity",
       "cataclysm:the_harbinger",
       "cataclysm:the_leviathan"
+    ],
+    "icys-better-horses:blocks/horse_breakable": [
+      "#minecraft:fence_gates",
+      "#minecraft:logs",
+      "#minecraft:planks",
+      "#minecraft:wooden_buttons",
+      "#minecraft:wooden_doors",
+      "#minecraft:wooden_fences",
+      "#minecraft:wooden_pressure_plates",
+      "#minecraft:wooden_slabs",
+      "#minecraft:wooden_stairs",
+      "#minecraft:wooden_trapdoors",
+      "minecraft:bricks",
+      "minecraft:coarse_dirt",
+      "minecraft:cobblestone",
+      "minecraft:cobblestone_wall",
+      "minecraft:dirt",
+      "minecraft:glass",
+      "minecraft:glass_pane",
+      "minecraft:gravel",
+      "minecraft:hay_block",
+      "minecraft:melon",
+      "minecraft:mossy_cobblestone",
+      "minecraft:mud_bricks",
+      "minecraft:packed_mud",
+      "minecraft:pumpkin",
+      "minecraft:red_sand",
+      "minecraft:sand",
+      "minecraft:snow_block",
+      "minecraft:terracotta"
+    ],
+    "icys-better-horses:blocks/horse_road": [
+      "minecraft:coarse_dirt",
+      "minecraft:cobblestone",
+      "minecraft:cracked_deepslate_bricks",
+      "minecraft:cracked_stone_bricks",
+      "minecraft:deepslate_bricks",
+      "minecraft:deepslate_tiles",
+      "minecraft:dirt_path",
+      "minecraft:gravel",
+      "minecraft:mossy_cobblestone",
+      "minecraft:mossy_stone_bricks",
+      "minecraft:mud_bricks",
+      "minecraft:packed_mud",
+      "minecraft:polished_andesite",
+      "minecraft:polished_diorite",
+      "minecraft:polished_granite",
+      "minecraft:smooth_stone",
+      "minecraft:stone",
+      "minecraft:stone_bricks"
+    ],
+    "icys-better-horses:blocks/plough_clears": [
+      "#minecraft:small_flowers",
+      "#minecraft:tall_flowers",
+      "minecraft:dead_bush",
+      "minecraft:fern",
+      "minecraft:grass",
+      "minecraft:large_fern",
+      "minecraft:pink_petals",
+      "minecraft:sweet_berry_bush",
+      "minecraft:tall_grass"
+    ],
+    "icys-better-horses:blocks/ploughable": [
+      "minecraft:coarse_dirt",
+      "minecraft:dirt",
+      "minecraft:grass_block",
+      "minecraft:mycelium",
+      "minecraft:podzol",
+      "minecraft:rooted_dirt"
+    ],
+    "icys-better-horses:entity_types/breed_horses": [
+      "icys-better-horses:american_paint_horse",
+      "icys-better-horses:andalusian_horse",
+      "icys-better-horses:appaloosa_horse",
+      "icys-better-horses:arabian_horse",
+      "icys-better-horses:belgian_horse",
+      "icys-better-horses:clydesdale_horse",
+      "icys-better-horses:friesian_horse",
+      "icys-better-horses:haflinger_horse",
+      "icys-better-horses:icelandic_horse",
+      "icys-better-horses:morgan_horse",
+      "icys-better-horses:mustang_horse",
+      "icys-better-horses:percheron_horse",
+      "icys-better-horses:quarter_horse",
+      "icys-better-horses:shire_horse",
+      "icys-better-horses:thoroughbred_horse"
+    ],
+    "icys-better-horses:entity_types/cart_pickup_neutral": [
+      "minecraft:cave_spider",
+      "minecraft:dolphin",
+      "minecraft:goat",
+      "minecraft:llama",
+      "minecraft:panda",
+      "minecraft:piglin",
+      "minecraft:spider",
+      "minecraft:trader_llama"
+    ],
+    "icys-better-horses:entity_types/horses": [
+      "#icys-better-horses:breed_horses",
+      "minecraft:donkey",
+      "minecraft:horse",
+      "minecraft:mule",
+      "minecraft:skeleton_horse",
+      "minecraft:zombie_horse"
+    ],
+    "icys-better-horses:entity_types/livestock": [
+      "minecraft:chicken",
+      "minecraft:cow",
+      "minecraft:goat",
+      "minecraft:mooshroom",
+      "minecraft:pig",
+      "minecraft:rabbit",
+      "minecraft:sheep"
+    ],
+    "icys-better-horses:items/frost_walker_supported": [
+      "icys-better-horses:horse_hooves_gear",
+      "minecraft:chainmail_boots",
+      "minecraft:diamond_boots",
+      "minecraft:golden_boots",
+      "minecraft:iron_boots",
+      "minecraft:leather_boots",
+      "minecraft:netherite_boots"
+    ],
+    "icys-better-horses:items/gear/chest": [
+      "minecraft:chest"
+    ],
+    "icys-better-horses:items/horse_snacks": [
+      "minecraft:beetroot",
+      "minecraft:carrot",
+      "minecraft:glow_berries",
+      "minecraft:melon_slice",
+      "minecraft:potato",
+      "minecraft:sugar_cane",
+      "minecraft:sweet_berries"
+    ],
+    "icys-better-horses:items/stable_handbook_ingredients": [
+      "icys-better-horses:canister",
+      "icys-better-horses:horse_cart_gear",
+      "icys-better-horses:horse_hooves_gear",
+      "icys-better-horses:horse_medkit_gear",
+      "icys-better-horses:horse_stabilizer_gear",
+      "icys-better-horses:upgraded_saddle",
+      "icys-better-horses:wheel",
+      "minecraft:chest"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/american_paint": [
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sparse_jungle",
+      "minecraft:sunflower_plains"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/andalusian": [
+      "minecraft:cherry_grove",
+      "minecraft:flower_forest",
+      "minecraft:forest",
+      "minecraft:meadow",
+      "minecraft:plains"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/appaloosa": [
+      "minecraft:plains",
+      "minecraft:savanna_plateau",
+      "minecraft:sunflower_plains",
+      "minecraft:wooded_badlands"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/arabian": [
+      "minecraft:badlands",
+      "minecraft:desert",
+      "minecraft:eroded_badlands",
+      "minecraft:savanna",
+      "minecraft:savanna_plateau",
+      "minecraft:windswept_savanna"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/belgian": [
+      "minecraft:forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:taiga"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/clydesdale": [
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:windswept_hills"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/friesian": [
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:taiga"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/haflinger": [
+      "minecraft:frozen_peaks",
+      "minecraft:grove",
+      "minecraft:jagged_peaks",
+      "minecraft:meadow",
+      "minecraft:snowy_slopes",
+      "minecraft:stony_peaks"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/icelandic": [
+      "minecraft:frozen_peaks",
+      "minecraft:grove",
+      "minecraft:ice_spikes",
+      "minecraft:jagged_peaks",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_slopes",
+      "minecraft:snowy_taiga"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/morgan": [
+      "minecraft:birch_forest",
+      "minecraft:forest",
+      "minecraft:meadow",
+      "minecraft:plains",
+      "minecraft:sunflower_plains"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/mustang": [
+      "minecraft:badlands",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sparse_jungle",
+      "minecraft:windswept_hills",
+      "minecraft:wooded_badlands"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/percheron": [
+      "minecraft:forest",
+      "minecraft:meadow",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:plains"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/quarter": [
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:savanna_plateau",
+      "minecraft:sunflower_plains",
+      "minecraft:windswept_savanna"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/shire": [
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:windswept_forest"
+    ],
+    "icys-better-horses:worldgen/biome/spawns/thoroughbred": [
+      "minecraft:birch_forest",
+      "minecraft:forest",
+      "minecraft:meadow",
+      "minecraft:plains",
+      "minecraft:sunflower_plains"
+    ],
+    "icys-better-horses:worldgen/biome/spawns_horses": [
+      "#icys-better-horses:spawns/american_paint",
+      "#icys-better-horses:spawns/andalusian",
+      "#icys-better-horses:spawns/appaloosa",
+      "#icys-better-horses:spawns/arabian",
+      "#icys-better-horses:spawns/belgian",
+      "#icys-better-horses:spawns/clydesdale",
+      "#icys-better-horses:spawns/friesian",
+      "#icys-better-horses:spawns/haflinger",
+      "#icys-better-horses:spawns/icelandic",
+      "#icys-better-horses:spawns/morgan",
+      "#icys-better-horses:spawns/mustang",
+      "#icys-better-horses:spawns/percheron",
+      "#icys-better-horses:spawns/quarter",
+      "#icys-better-horses:spawns/shire",
+      "#icys-better-horses:spawns/thoroughbred"
+    ],
+    "icys-better-horses:worldgen/biome/spawns_horses_modded": [
+      "#icys-better-horses:spawns_modded/american_paint",
+      "#icys-better-horses:spawns_modded/andalusian",
+      "#icys-better-horses:spawns_modded/appaloosa",
+      "#icys-better-horses:spawns_modded/arabian",
+      "#icys-better-horses:spawns_modded/belgian",
+      "#icys-better-horses:spawns_modded/clydesdale",
+      "#icys-better-horses:spawns_modded/friesian",
+      "#icys-better-horses:spawns_modded/haflinger",
+      "#icys-better-horses:spawns_modded/icelandic",
+      "#icys-better-horses:spawns_modded/morgan",
+      "#icys-better-horses:spawns_modded/mustang",
+      "#icys-better-horses:spawns_modded/percheron",
+      "#icys-better-horses:spawns_modded/quarter",
+      "#icys-better-horses:spawns_modded/shire",
+      "#icys-better-horses:spawns_modded/thoroughbred"
     ],
     "immersive_aircraft:entity_types/water_animals": [
       "minecraft:cod",
@@ -49222,6 +49525,7 @@
       "immersive_weathering:flower_crown"
     ],
     "trotting_wagons:entity_types/cannot_mount_wagon": [
+      "#icys-better-horses:breed_horses",
       "minecraft:ender_dragon",
       "minecraft:ghast",
       "minecraft:giant",

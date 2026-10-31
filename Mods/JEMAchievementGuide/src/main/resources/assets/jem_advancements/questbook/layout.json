@@ -2845,7 +2845,7 @@
       "height": 6.8,
       "padding": 0.6
     },
-    "regular_node_size": 1.3,
+    "regular_node_size": 1.2,
     "milestone_node_size": 1.65,
     "ordinary_entry": "overview",
     "explicit_search": "native_target",
@@ -3335,13 +3335,6 @@
         "size": 1.4,
         "shape": "circle"
       },
-      "31D39460913B197C": {
-        "source_id": "v3_pet_trailcraft",
-        "x": -12.5,
-        "y": 8.6,
-        "size": 1.4,
-        "shape": "circle"
-      },
       "36FCE59C5D85BEE2": {
         "source_id": "v3_pet_fresh_wheels",
         "x": -10.2,
@@ -3600,6 +3593,20 @@
         "y": 10.9,
         "size": 1.4,
         "shape": "circle"
+      },
+      "8A334CE44829BEDA": {
+        "source_id": "mu4_better_horses_saddle",
+        "x": -24.0,
+        "y": -18.0,
+        "size": 1.2,
+        "shape": "circle"
+      },
+      "CCC5DD5B9474DE84": {
+        "source_id": "mu4_mineable_spawner",
+        "x": -21.0,
+        "y": -18.0,
+        "size": 1.2,
+        "shape": "circle"
       }
     },
     "groups": [
@@ -3748,7 +3755,6 @@
           "v2_companions_h08_01",
           "v2_companions_h08_02",
           "v3_pet_quilted_ride",
-          "v3_pet_trailcraft",
           "v3_pet_fresh_wheels",
           "v3_pet_wagon_service",
           "v3_pet_sled_team",
@@ -6120,72 +6126,6 @@
         "semantics": "visual_relationship_only"
       },
       {
-        "from": "3A39AD4EB10E8700",
-        "to": "31D39460913B197C",
-        "from_source": "v3_pet_quilted_ride",
-        "to_source": "v3_pet_trailcraft",
-        "start": [
-          -14.8,
-          8.6
-        ],
-        "end": [
-          -12.5,
-          8.6
-        ],
-        "points": [
-          [
-            -14.8,
-            8.6
-          ],
-          [
-            -12.5,
-            8.6
-          ]
-        ],
-        "kind": "branch",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "31D39460913B197C",
-        "to": "36FCE59C5D85BEE2",
-        "from_source": "v3_pet_trailcraft",
-        "to_source": "v3_pet_fresh_wheels",
-        "start": [
-          -12.5,
-          8.6
-        ],
-        "end": [
-          -10.2,
-          8.6
-        ],
-        "points": [
-          [
-            -12.5,
-            8.6
-          ],
-          [
-            -10.2,
-            8.6
-          ]
-        ],
-        "kind": "branch",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
         "from": "210BEEAC7A551A52",
         "to": "30970FBA1451DF55",
         "from_source": "v2_companions_h08_01",
@@ -7084,7 +7024,7 @@
       "height": 5.5,
       "padding": 0.5
     },
-    "regular_node_size": 1.4,
+    "regular_node_size": 1.2,
     "milestone_node_size": 1.65,
     "ordinary_entry": "overview",
     "explicit_search": "native_target",
@@ -7712,6 +7652,20 @@
         "x": -6.9,
         "y": 3.4,
         "size": 1.4,
+        "shape": "circle"
+      },
+      "095D2FF7CD36312D": {
+        "source_id": "mu4_item_magnet",
+        "x": -24.0,
+        "y": -18.0,
+        "size": 1.2,
+        "shape": "circle"
+      },
+      "BEAB339F2641D106": {
+        "source_id": "mu4_advancement_frame",
+        "x": -21.0,
+        "y": -18.0,
+        "size": 1.2,
         "shape": "circle"
       }
     },

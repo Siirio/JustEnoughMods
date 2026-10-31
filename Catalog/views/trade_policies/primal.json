@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -350,11 +350,13 @@
       "observed_in": [
         "assets/primal/lang/en_us.json",
         "assets/primal/lang/ru_ru.json",
-        "assets/primal/models/item/bear_spawn_egg.json"
+        "assets/primal/models/item/bear_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/primal_bear.json"
       ],
       "display_name_en_us": "Bear Spawn Egg",
       "display_name_ru_ru": "Яйцо Призыва Медведя",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/primal_bear.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/en_us.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/ru_ru.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/models/item/bear_spawn_egg.json",
@@ -369,7 +371,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/primal_bear"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -490,11 +494,13 @@
       ],
       "observed_in": [
         "assets/primal/lang/en_us.json",
-        "assets/primal/models/item/cassowary_spawn_egg.json"
+        "assets/primal/models/item/cassowary_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/primal_cassowary.json"
       ],
       "display_name_en_us": "Cassowary Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/primal_cassowary.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/en_us.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/models/item/cassowary_spawn_egg.json",
         "primal-1.1.6_2B1.20.1.jar:assets/primal/lang/en_us.json",
@@ -507,7 +513,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/primal_cassowary"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1443,11 +1451,13 @@
       "observed_in": [
         "assets/primal/lang/en_us.json",
         "assets/primal/lang/ru_ru.json",
-        "assets/primal/models/item/crocodile_spawn_egg.json"
+        "assets/primal/models/item/crocodile_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/primal_crocodile.json"
       ],
       "display_name_en_us": "Crocodile Spawn Egg",
       "display_name_ru_ru": "Яйцо Призыва Крокодила",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/primal_crocodile.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/en_us.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/ru_ru.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/models/item/crocodile_spawn_egg.json",
@@ -1462,7 +1472,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/primal_crocodile"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -1687,11 +1699,13 @@
       "observed_in": [
         "assets/primal/lang/en_us.json",
         "assets/primal/lang/ru_ru.json",
-        "assets/primal/models/item/eagle_spawn_egg.json"
+        "assets/primal/models/item/eagle_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/primal_eagle.json"
       ],
       "display_name_en_us": "Eagle Spawn Egg",
       "display_name_ru_ru": "Яйцо Призыва Орла",
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/primal_eagle.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/en_us.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/ru_ru.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/models/item/eagle_spawn_egg.json",
@@ -1706,7 +1720,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/primal_eagle"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2827,11 +2843,13 @@
       ],
       "observed_in": [
         "assets/primal/lang/en_us.json",
-        "assets/primal/models/item/lion_spawn_egg.json"
+        "assets/primal/models/item/lion_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/primal_lion.json"
       ],
       "display_name_en_us": "Lion Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/primal_lion.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/en_us.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/models/item/lion_spawn_egg.json",
         "primal-1.1.6_2B1.20.1.jar:assets/primal/lang/en_us.json",
@@ -2844,7 +2862,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/primal_lion"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4055,11 +4075,13 @@
       ],
       "observed_in": [
         "assets/primal/lang/en_us.json",
-        "assets/primal/models/item/snake_spawn_egg.json"
+        "assets/primal/models/item/snake_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/primal_snake.json"
       ],
       "display_name_en_us": "Snake Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/primal_snake.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/en_us.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/models/item/snake_spawn_egg.json",
         "primal-1.1.6_2B1.20.1.jar:assets/primal/lang/en_us.json",
@@ -4072,7 +4094,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/primal_snake"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -4720,11 +4744,13 @@
       ],
       "observed_in": [
         "assets/primal/lang/en_us.json",
-        "assets/primal/models/item/walrus_spawn_egg.json"
+        "assets/primal/models/item/walrus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/primal_walrus.json"
       ],
       "display_name_en_us": "Walrus Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/primal_walrus.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/lang/en_us.json",
         "primal-1.1.6%2B1.20.1.jar:assets/primal/models/item/walrus_spawn_egg.json",
         "primal-1.1.6_2B1.20.1.jar:assets/primal/lang/en_us.json",
@@ -4737,7 +4763,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/primal_walrus"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -7030,14 +7030,16 @@
       "observed_in": [
         "assets/irons_spellbooks/lang/en_us.json",
         "assets/irons_spellbooks/lang/ru_ru.json",
-        "assets/irons_spellbooks/models/item/cryomancer_spawn_egg.json"
+        "assets/irons_spellbooks/models/item/cryomancer_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/irons_spellbooks_cryomancer.json"
       ],
       "display_name_en_us": "Cryomancer Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва криоманта",
       "source_provenance": [
         "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
         "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/cryomancer_spawn_egg.json"
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/cryomancer_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/irons_spellbooks_cryomancer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -7046,7 +7048,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/irons_spellbooks_cryomancer"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -11697,13 +11701,15 @@
       ],
       "observed_in": [
         "assets/irons_spellbooks/lang/en_us.json",
-        "assets/irons_spellbooks/models/item/ice_spider_spawn_egg.json"
+        "assets/irons_spellbooks/models/item/ice_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/irons_spellbooks_ice_spider.json"
       ],
       "display_name_en_us": "Ice Spider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
         "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/ice_spider_spawn_egg.json"
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/ice_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/irons_spellbooks_ice_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -11712,7 +11718,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/irons_spellbooks_ice_spider"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -13936,14 +13944,16 @@
       "observed_in": [
         "assets/irons_spellbooks/lang/en_us.json",
         "assets/irons_spellbooks/lang/ru_ru.json",
-        "assets/irons_spellbooks/models/item/necromancer_spawn_egg.json"
+        "assets/irons_spellbooks/models/item/necromancer_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/irons_spellbooks_necromancer.json"
       ],
       "display_name_en_us": "Necromancer Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва некроманта",
       "source_provenance": [
         "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
         "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/necromancer_spawn_egg.json"
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/necromancer_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/irons_spellbooks_necromancer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -13952,7 +13962,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/irons_spellbooks_necromancer"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -16026,14 +16038,16 @@
       "observed_in": [
         "assets/irons_spellbooks/lang/en_us.json",
         "assets/irons_spellbooks/lang/ru_ru.json",
-        "assets/irons_spellbooks/models/item/pyromancer_spawn_egg.json"
+        "assets/irons_spellbooks/models/item/pyromancer_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/irons_spellbooks_pyromancer.json"
       ],
       "display_name_en_us": "Pyromancer Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва пироманта",
       "source_provenance": [
         "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
         "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/pyromancer_spawn_egg.json"
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/pyromancer_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/irons_spellbooks_pyromancer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -16042,7 +16056,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/irons_spellbooks_pyromancer"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

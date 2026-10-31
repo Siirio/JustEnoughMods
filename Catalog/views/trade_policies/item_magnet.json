@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
+  "generation": {
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "item_magnet",
+    "name": "Item Magnet",
+    "version": "1.0.0"
+  },
+  "records": [
+    {
+      "item_id": "item_magnet:item_magnet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "item_magnet",
+      "mod_name": "Item Magnet",
+      "mod_version": "1.0.0",
+      "source_jar": "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar",
+      "source_sha256": "b131bcb1e74456d74677716587771277b6fee384ae0b95d22c8d9b9777bcce4e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/item_magnet/lang/en_us.json",
+        "assets/item_magnet/models/item/item_magnet.json",
+        "data/item_magnet/recipes/item_magnet.json"
+      ],
+      "display_name_en_us": "Item Magnet",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:assets/item_magnet/lang/en_us.json",
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:assets/item_magnet/models/item/item_magnet.json",
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:data/item_magnet/recipes/item_magnet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "item_magnet:item_magnet"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "item_magnet:magnet_display",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "item_magnet",
+      "mod_name": "Item Magnet",
+      "mod_version": "1.0.0",
+      "source_jar": "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar",
+      "source_sha256": "b131bcb1e74456d74677716587771277b6fee384ae0b95d22c8d9b9777bcce4e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/item_magnet/models/item/magnet_display.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar:assets/item_magnet/models/item/magnet_display.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

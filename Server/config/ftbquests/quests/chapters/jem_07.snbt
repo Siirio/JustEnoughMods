@@ -50,7 +50,7 @@
         {
           "id": "27C1CD24565D14F5",
           "type": "jem_advancements:quest_item",
-          "item": "handcrafted:hammer",
+          "item": "bbb:hammer",
           "count": 1,
           "claim_key": "v2_home_furniture/item/0",
           "claim_reward_id": "27C1CD24565D14F5",
@@ -5633,6 +5633,108 @@
       "jem_source_id": "v3_fauna_horned_helmet",
       "jem_required_mods": [
         "primal"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "095D2FF7CD36312D",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_item_magnet.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_item_magnet.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_item_magnet.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_item_magnet.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_item_magnet.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_item_magnet.reward\"}"
+      ],
+      "icon": "item_magnet:item_magnet",
+      "x": -24.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "22FB289F569FFA75",
+          "type": "item",
+          "item": "item_magnet:item_magnet",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B49799A2C067102",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:golden_carrot",
+          "count": 4,
+          "claim_key": "mu4_item_magnet/item/0",
+          "claim_reward_id": "2B49799A2C067102",
+          "team_reward": false
+        },
+        {
+          "id": "22D033B9A7BB1ED6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 30,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_item_magnet",
+      "jem_required_mods": [
+        "item_magnet"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "BEAB339F2641D106",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_advancement_frame.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_advancement_frame.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_advancement_frame.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_advancement_frame.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_advancement_frame.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_advancement_frame.reward\"}"
+      ],
+      "icon": "advancementframes:advancement_frame",
+      "x": -21.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "27B2C82F934496C4",
+          "type": "item",
+          "item": "advancementframes:advancement_frame",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2528307EFA756EB7",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:golden_carrot",
+          "count": 4,
+          "claim_key": "mu4_advancement_frame/item/0",
+          "claim_reward_id": "2528307EFA756EB7",
+          "team_reward": false
+        },
+        {
+          "id": "2040168465710031",
+          "type": "jem_advancements:quest_xp",
+          "xp": 30,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_advancement_frame",
+      "jem_required_mods": [
+        "advancementframes"
       ],
       "jem_economy": false,
       "jem_dedicated_event": false

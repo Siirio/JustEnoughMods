@@ -1,0 +1,147 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4-20261031",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "entities",
+      "members_path": "Catalog/changes/major_update_4_spawn_egg_candidates.json",
+      "id_field": "entity_id"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:spawner"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "icys-better-horses"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "spawn_egg_recipe": "Enabled for every reviewed eligible living creature with registered inputs; a reusable JEM SpawnEggItem is registered when the owning mod has no usable native egg"
+    },
+    {
+      "spawner_policy": "YES allows normal reprogramming, NO rejects only spawn-egg reprogramming without affecting natural or existing spawners, SLOW_24000_TICKS allows at most one successful spawn per spawner per Minecraft day"
+    }
+  ],
+  "precedence": {
+    "layer": "major_update_4_gameplay_policy",
+    "priority": 100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Add the verified Major Update 4 mod set, craftable native spawn eggs, shared spawner policy, Silk Touch spawner preservation, recruit equipment restrictions, Better Horses integration, and updated guide surfaces while retiring Horseman.",
+    "modifiers": [
+      {
+        "property": "spawn_egg.recipe_catalog",
+        "operation": "allow",
+        "before": "No Major Update 4 generated recipe catalog",
+        "after": "430 reviewed full-grid spawn egg recipes with unique ingredient multisets, including 15 Better Horses breeds and 25 JEM fallback eggs"
+      },
+      {
+        "property": "spawner.spawn_egg_admission",
+        "operation": "derive",
+        "before": "Native spawn egg behavior",
+        "after": "Shared YES, NO, or one-success-per-24000-ticks policy loaded from the generated catalog"
+      },
+      {
+        "property": "minecraft:spawner.silk_touch_drop",
+        "operation": "set",
+        "before": "No JEM-owned preserved spawner drop",
+        "after": "Silk Touch drops the spawner with its block-entity spawn data and cooldown state, without bonus eggs"
+      },
+      {
+        "property": "recruits.equipment_admission",
+        "operation": "set",
+        "before": "Native unrestricted equipment acceptance",
+        "after": "Vanilla leather through diamond combat equipment is allowed, while netherite and all modded equipment are safely returned"
+      },
+      {
+        "property": "economy.spawn_egg_trade",
+        "operation": "deny",
+        "before": "No spawn egg suffix prohibition",
+        "after": "All spawn eggs are permanently excluded from NPC buy and sell paths"
+      },
+      {
+        "property": "horseman.distribution",
+        "operation": "deny",
+        "before": "Horseman 1.3.17 and its JEM quest integration were active",
+        "after": "Horseman, its configuration, localization and quest integration are retired"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat, JEMAchievementGuide, JEMEconomy, JEMSettlements, MobHome and native third-party mods",
+    "kind": "user_supplied_major_update_spec",
+    "source_files": [
+      "Catalog/changes/major_update_4_spawn_egg_candidates.json",
+      "Catalog/changes/major_update_4_boss_exclusions.json",
+      "Mods/JEMCompat/tools/generate_spawn_egg_recipes.py",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/spawner/SpawnEggPolicy.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/spawner/BaseSpawnerCooldownMixin.java",
+      "Mods/JEMCompat/src/generated/java/com/siirio/jemcompat/feature/spawner/GeneratedSpawnEggContent.java",
+      "Mods/JEMCompat/src/generated/resources/data/jemcompat/fallback_spawn_eggs.json",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitEquipmentPolicy.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/recruits/RecruitEquipmentSlotMixin.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameAccess.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameNetwork.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameScreen.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementFrameFtbQuestMixin.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementSelectFtbButtonMixin.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementSelectScreenAccess.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbQuestRawIconAccess.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SittingPlusQuestMixin.java",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/advancements/major_update_4/ancient_aquaduct.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/advancements/major_update_4/ancient_bridge.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/advancements/major_update_4/sitting_plus.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/compat/PackCompanionAdapter.java",
+      "Client/ManagedPack/config/horseman-*.toml"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement the complete supplied Major Update 4 specification on a development branch while preserving native mod ownership and server authority.",
+    "decision_source": "The user supplied the specification and seven mod artifacts. Codex selected conservative registry verification, excluded unresolved class-review candidates, reused native interfaces, and kept authoritative validation on the server."
+  },
+  "introduced": {
+    "date": "2026-10-31",
+    "commit": null,
+    "action": "implement",
+    "summary": "Implement Major Update 4 from develop for test jem."
+  },
+  "history": [
+    {
+      "date": "2026-10-31",
+      "commit": null,
+      "action": "implement",
+      "summary": "Implement the registry-verified update, integrations and Horseman retirement."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "distribution",
+      "recipes",
+      "spawners",
+      "economy",
+      "recruits",
+      "companions",
+      "FTB quests",
+      "Patchouli handbook"
+    ],
+    "relations": [],
+    "notes": [
+      "Generated recipes use fully filled shaped 3x3 patterns with unique ingredient multisets; missing native egg items are replaced by registered reusable JEM eggs for the same installed entity type.",
+      "Better Horses reuses native AbstractHorse support for recruits and adds exact MobHome companion classes.",
+      "Item Magnet affects world item entities only, so unclaimed JEM Rewards pending storage remains unchanged."
+    ],
+    "unresolved": [
+      "No gameplay test or player acceptance was performed."
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
+  "generation": {
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jemcompat",
+    "name": "JustEnoughMods Compatibility",
+    "version": "3.10.0"
+  },
+  "records": [
+    {
+      "item_id": "jemcompat:spawn_egg_blastfromthepast_speartooth",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jemcompat",
+      "mod_name": "JustEnoughMods Compatibility",
+      "mod_version": "3.10.0",
+      "source_jar": "jemcompat-3.10.0.jar",
+      "source_sha256": "3975b902d63385e4c4749f9a79820fce589408e0e7dcb7a74a6f0701102cf096",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/jemcompat/lang/en_us.json",
+        "assets/jemcompat/lang/ru_ru.json",
+        "assets/jemcompat/models/item/spawn_egg_blastfromthepast_speartooth.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_speartooth.json"
+      ],
+      "display_name_en_us": "Speartooth Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва саблезуба",
+      "source_provenance": [
+        "jemcompat-3.10.0.jar:assets/jemcompat/lang/en_us.json",
+        "jemcompat-3.10.0.jar:assets/jemcompat/lang/ru_ru.json",
+        "jemcompat-3.10.0.jar:assets/jemcompat/models/item/spawn_egg_blastfromthepast_speartooth.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_speartooth.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "spear"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "jemcompat:spawn_egg_irons_spellbooks_cultist",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jemcompat",
+      "mod_name": "JustEnoughMods Compatibility",
+      "mod_version": "3.10.0",
+      "source_jar": "jemcompat-3.10.0.jar",
+      "source_sha256": "3975b902d63385e4c4749f9a79820fce589408e0e7dcb7a74a6f0701102cf096",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/jemcompat/lang/en_us.json",
+        "assets/jemcompat/lang/ru_ru.json",
+        "assets/jemcompat/models/item/spawn_egg_irons_spellbooks_cultist.json",
+        "data/jemcompat/recipes/spawn_eggs/irons_spellbooks_cultist.json"
+      ],
+      "display_name_en_us": "Cultist Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва культиста",
+      "source_provenance": [
+        "jemcompat-3.10.0.jar:assets/jemcompat/lang/en_us.json",
+        "jemcompat-3.10.0.jar:assets/jemcompat/lang/ru_ru.json",
+        "jemcompat-3.10.0.jar:assets/jemcompat/models/item/spawn_egg_irons_spellbooks_cultist.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/irons_spellbooks_cultist.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "spellbook"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

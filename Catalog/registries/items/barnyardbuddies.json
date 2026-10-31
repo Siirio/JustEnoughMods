@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -561,7 +561,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/clydesdale_horse_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/clydesdale_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_clydesdale_horse.json"
       ],
       "display_name_en_us": "Clydesdale Horse Spawn Egg",
       "display_name_ru_ru": null,
@@ -569,11 +570,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/clydesdale_horse_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/clydesdale_horse_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_clydesdale_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -594,7 +596,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_clydesdale_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:clydesdale_horse_spawn_egg"
@@ -718,7 +722,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/cochin_bantam_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/cochin_bantam_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_cochin_bantam.json"
       ],
       "display_name_en_us": "Cochin Bantam Chicken Spawn Egg",
       "display_name_ru_ru": null,
@@ -726,11 +731,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/cochin_bantam_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/cochin_bantam_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_cochin_bantam.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -751,7 +757,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_cochin_bantam"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:cochin_bantam_spawn_egg"
@@ -770,7 +778,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/coyote_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/coyote_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_coyote.json"
       ],
       "display_name_en_us": "Coyote Spawn Egg",
       "display_name_ru_ru": null,
@@ -778,11 +787,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/coyote_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/coyote_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_coyote.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -803,7 +813,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_coyote"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:coyote_spawn_egg"
@@ -1046,7 +1058,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/flemish_giant_rabbit_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/flemish_giant_rabbit_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_flemish_giant_rabbit.json"
       ],
       "display_name_en_us": "Flemish Giant Rabbit Spawn Egg",
       "display_name_ru_ru": null,
@@ -1054,11 +1067,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/flemish_giant_rabbit_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/flemish_giant_rabbit_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_flemish_giant_rabbit.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1079,7 +1093,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_flemish_giant_rabbit"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:flemish_giant_rabbit_spawn_egg"
@@ -1098,7 +1114,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/great_pyrenees_dog_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/great_pyrenees_dog_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_great_pyrenees_dog.json"
       ],
       "display_name_en_us": "Great Pyrenees Dog Spawn Egg",
       "display_name_ru_ru": null,
@@ -1106,11 +1123,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/great_pyrenees_dog_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/great_pyrenees_dog_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_great_pyrenees_dog.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1131,7 +1149,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_great_pyrenees_dog"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:great_pyrenees_dog_spawn_egg"
@@ -1150,7 +1170,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/hamphshire_pig_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/hamphshire_pig_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_hamphshire_pig.json"
       ],
       "display_name_en_us": "Hamphshire Pig Spawn Egg",
       "display_name_ru_ru": null,
@@ -1158,11 +1179,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/hamphshire_pig_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/hamphshire_pig_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_hamphshire_pig.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1183,7 +1205,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_hamphshire_pig"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:hamphshire_pig_spawn_egg"
@@ -1472,7 +1496,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/jacobs_sheep_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/jacobs_sheep_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_jacobs_sheep.json"
       ],
       "display_name_en_us": "Jacob's Sheep Spawn Egg",
       "display_name_ru_ru": null,
@@ -1480,11 +1505,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/jacobs_sheep_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/jacobs_sheep_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_jacobs_sheep.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1505,7 +1531,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_jacobs_sheep"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:jacobs_sheep_spawn_egg"
@@ -1689,7 +1717,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/manx_cat_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/manx_cat_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_manx_cat.json"
       ],
       "display_name_en_us": "Manx Cat Spawn Egg",
       "display_name_ru_ru": null,
@@ -1697,11 +1726,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/manx_cat_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/manx_cat_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_manx_cat.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1722,7 +1752,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_manx_cat"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:manx_cat_spawn_egg"
@@ -2559,7 +2591,8 @@
       ],
       "observed_in": [
         "assets/barnyardbuddies/lang/en_us.json",
-        "assets/barnyardbuddies/models/item/silkie_chicken_spawn_egg.json"
+        "assets/barnyardbuddies/models/item/silkie_chicken_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/barnyardbuddies_silkie_chicken.json"
       ],
       "display_name_en_us": "Silkie Chicken Spawn Egg",
       "display_name_ru_ru": null,
@@ -2567,11 +2600,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
-        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/silkie_chicken_spawn_egg.json"
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/silkie_chicken_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/barnyardbuddies_silkie_chicken.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2592,7 +2626,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/barnyardbuddies_silkie_chicken"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:barnyardbuddies:silkie_chicken_spawn_egg"

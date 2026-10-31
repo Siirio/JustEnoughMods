@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -77,7 +77,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/birch_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/birch_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_birch_spider.json"
       ],
       "display_name_en_us": "Birch Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -85,11 +86,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/birch_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/birch_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_birch_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -110,7 +112,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_birch_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:birch_spider_spawn_egg"
@@ -233,7 +237,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/cavern_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/cavern_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_cavern_spider.json"
       ],
       "display_name_en_us": "Cavern Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -241,11 +246,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/cavern_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/cavern_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_cavern_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -266,7 +272,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_cavern_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:cavern_spider_spawn_egg"
@@ -389,7 +397,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/desert_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/desert_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_desert_spider.json"
       ],
       "display_name_en_us": "Desert Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -397,11 +406,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/desert_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/desert_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_desert_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -422,7 +432,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_desert_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:desert_spider_spawn_egg"
@@ -599,7 +611,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/ice_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/ice_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_ice_spider.json"
       ],
       "display_name_en_us": "Ice Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -607,11 +620,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/ice_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/ice_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_ice_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -632,7 +646,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_ice_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:ice_spider_spawn_egg"
@@ -651,7 +667,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/jungle_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/jungle_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_jungle_spider.json"
       ],
       "display_name_en_us": "Jungle Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -659,11 +676,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/jungle_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/jungle_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_jungle_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -684,7 +702,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_jungle_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:jungle_spider_spawn_egg"
@@ -703,7 +723,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/mushroom_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/mushroom_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_mushroom_spider.json"
       ],
       "display_name_en_us": "Mushroom Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -711,11 +732,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/mushroom_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/mushroom_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_mushroom_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -736,7 +758,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_mushroom_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:mushroom_spider_spawn_egg"
@@ -755,7 +779,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/ocean_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/ocean_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_ocean_spider.json"
       ],
       "display_name_en_us": "Ocean Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -763,11 +788,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/ocean_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/ocean_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_ocean_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -788,7 +814,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_ocean_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:ocean_spider_spawn_egg"
@@ -807,7 +835,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/savanna_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/savanna_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_savanna_spider.json"
       ],
       "display_name_en_us": "Savanna Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -815,11 +844,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/savanna_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/savanna_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_savanna_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -840,7 +870,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_savanna_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:savanna_spider_spawn_egg"
@@ -859,7 +891,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/sculk_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/sculk_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_sculk_spider.json"
       ],
       "display_name_en_us": "Sculk Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -867,11 +900,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/sculk_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/sculk_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_sculk_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -892,7 +926,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_sculk_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:sculk_spider_spawn_egg"
@@ -963,7 +999,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/swamp_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/swamp_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_swamp_spider.json"
       ],
       "display_name_en_us": "Swamp Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -971,11 +1008,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/swamp_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/swamp_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_swamp_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -996,7 +1034,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_swamp_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:swamp_spider_spawn_egg"
@@ -1015,7 +1055,8 @@
       ],
       "observed_in": [
         "assets/spider_overhaul/lang/en_us.json",
-        "assets/spider_overhaul/models/item/taiga_spider_spawn_egg.json"
+        "assets/spider_overhaul/models/item/taiga_spider_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/spider_overhaul_taiga_spider.json"
       ],
       "display_name_en_us": "Taiga Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -1023,11 +1064,12 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json",
-        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/taiga_spider_spawn_egg.json"
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:assets/spider_overhaul/models/item/taiga_spider_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/spider_overhaul_taiga_spider.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1048,7 +1090,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/spider_overhaul_taiga_spider"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:spider_overhaul:taiga_spider_spawn_egg"

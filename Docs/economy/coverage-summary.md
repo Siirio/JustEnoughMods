@@ -1,11 +1,12 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-29T08:01:56.816488+00:00` for `a9308951434fcffddacdf7987dd3d65f4dc3b13b`.
+Generated from Atlas schema 1 at `2026-10-31T00:06:28.760478+00:00` for `b244bda4a8f30528456fda3f7170e33ca81d9681`.
 
-Static evidence observed 17,313 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,375 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
+| advancementframes | 5 | 0 | 5 | 0 | 5 |
 | alexscaves | 610 | 129 | 481 | 0 | 481 |
 | alexsmobs | 321 | 23 | 298 | 2 | 298 |
 | animal_feeding_trough | 1 | 0 | 1 | 0 | 1 |
@@ -53,6 +54,7 @@ Static evidence observed 17,313 canonical item IDs. This is not a Forge runtime 
 | guardvillagers | 4 | 0 | 4 | 0 | 4 |
 | handcrafted | 285 | 63 | 222 | 0 | 222 |
 | herbalbrews | 48 | 19 | 29 | 9 | 29 |
+| icys_better_horses | 30 | 0 | 30 | 0 | 30 |
 | immersive_aircraft | 40 | 0 | 40 | 0 | 40 |
 | immersive_melodies | 22 | 0 | 22 | 0 | 22 |
 | immersive_weathering | 237 | 7 | 230 | 0 | 230 |
@@ -61,10 +63,11 @@ Static evidence observed 17,313 canonical item IDs. This is not a Forge runtime 
 | invincible | 3 | 0 | 3 | 0 | 3 |
 | irons_lib | 4 | 0 | 4 | 0 | 4 |
 | irons_spellbooks | 410 | 3 | 407 | 0 | 407 |
+| item_magnet | 2 | 0 | 2 | 0 | 2 |
 | jacksgravestones | 1 | 0 | 1 | 0 | 1 |
 | jem_economy | 6 | 0 | 6 | 0 | 6 |
 | jem_twelve_eyes | 32 | 0 | 32 | 0 | 32 |
-| jemcompat | 45 | 0 | 45 | 0 | 45 |
+| jemcompat | 70 | 0 | 70 | 0 | 70 |
 | kaleidoscope_compat | 229 | 0 | 229 | 0 | 229 |
 | kaleidoscope_cookery | 213 | 99 | 114 | 7 | 115 |
 | kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |

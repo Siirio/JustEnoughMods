@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -2369,13 +2369,15 @@
       ],
       "observed_in": [
         "assets/incision/lang/en_us.json",
-        "assets/incision/models/item/purger_spawn_egg.json"
+        "assets/incision/models/item/purger_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/incision_purger.json"
       ],
       "display_name_en_us": "Purger Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
         "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
-        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/purger_spawn_egg.json"
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/purger_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/incision_purger.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2384,7 +2386,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/incision_purger"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -2415,13 +2419,15 @@
       ],
       "observed_in": [
         "assets/incision/lang/en_us.json",
-        "assets/incision/models/item/seer_spawn_egg.json"
+        "assets/incision/models/item/seer_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/incision_seer.json"
       ],
       "display_name_en_us": "Seer Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
         "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
-        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/seer_spawn_egg.json"
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/seer_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/incision_seer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2430,7 +2436,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/incision_seer"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

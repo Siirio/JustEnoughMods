@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -27,6 +28,7 @@ public final class TradeRestrictions {
 
     public static boolean npcProhibited(ItemStack stack) {
         if (stack.isEmpty()) return false;
+        if (stack.getItem() instanceof SpawnEggItem) return true;
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
         if (id == null) return true;
         if (ITEMS.contains(id.toString()) || SUFFIXES.stream().anyMatch(id.getPath()::endsWith)
@@ -39,8 +41,10 @@ public final class TradeRestrictions {
     /** Explicit reviewed sell policies relax only former broad ore/Create exclusions. */
     public static boolean saleProhibited(ItemStack stack) {
         if (stack.isEmpty()) return true;
+        if (stack.getItem() instanceof SpawnEggItem) return true;
         var id = ForgeRegistries.ITEMS.getKey(stack.getItem());
         if (id == null || ITEMS.contains(id.toString()) || PREFIXES.stream().anyMatch(id.getPath()::startsWith)
+                || SUFFIXES.stream().anyMatch(id.getPath()::endsWith)
                 || id.getPath().endsWith("_trophy")) return true;
         return !ItemPolicyRegistry.policy(id).sellable();
     }

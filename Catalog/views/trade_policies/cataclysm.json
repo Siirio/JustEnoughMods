@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a9308951434fcffddacdf7987dd3d65f4dc3b13b",
+  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
   "generation": {
-    "generated_utc": "2026-10-29T08:01:56.816488+00:00",
+    "generated_utc": "2026-10-31T00:06:28.760478+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -5109,14 +5109,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/cindaria_spawn_egg.json"
+        "assets/cataclysm/models/item/cindaria_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_cindaria.json"
       ],
       "display_name_en_us": "Cindaria Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Эолии",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/cindaria_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/cindaria_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_cindaria.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5125,7 +5127,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_cindaria"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -5617,14 +5621,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/coralssus_spawn_egg.json"
+        "assets/cataclysm/models/item/coralssus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_coralssus.json"
       ],
       "display_name_en_us": "Coralssus Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва кораллуса",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/coralssus_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/coralssus_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_coralssus.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5633,7 +5639,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_coralssus"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -7881,14 +7889,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_angler_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_angler_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_angler.json"
       ],
       "display_name_en_us": "Deepling Angler Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глубинника-рыболова",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_angler_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_angler_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_angler.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -7897,7 +7907,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling_angler"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -7929,14 +7941,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_brute_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_brute_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_brute.json"
       ],
       "display_name_en_us": "Deepling Brute Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва брутального глубинника",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_brute_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_brute_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_brute.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -7945,7 +7959,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling_brute"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -7977,14 +7993,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_priest_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_priest_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_priest.json"
       ],
       "display_name_en_us": "Deepling Priest Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глубинника-жреца",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_priest_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_priest_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_priest.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -7993,7 +8011,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling_priest"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -8025,14 +8045,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling.json"
       ],
       "display_name_en_us": "Deepling Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глубинника",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8041,7 +8063,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -8073,14 +8097,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/deepling_warlock_spawn_egg.json"
+        "assets/cataclysm/models/item/deepling_warlock_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_warlock.json"
       ],
       "display_name_en_us": "Deepling Warlock Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва глубинника-мага",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_warlock_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/deepling_warlock_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_deepling_warlock.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8089,7 +8115,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_deepling_warlock"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -8261,14 +8289,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/draugr_spawn_egg.json"
+        "assets/cataclysm/models/item/draugr_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_draugr.json"
       ],
       "display_name_en_us": "Draugr Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Драугра",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/draugr_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/draugr_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_draugr.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8277,7 +8307,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_draugr"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -8401,14 +8433,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/elite_draugr_spawn_egg.json"
+        "assets/cataclysm/models/item/elite_draugr_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_elite_draugr.json"
       ],
       "display_name_en_us": "Elite Draugr Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Элитного Драугра",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/elite_draugr_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/elite_draugr_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_elite_draugr.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8417,7 +8451,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_elite_draugr"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -8780,14 +8816,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/endermaptera_spawn_egg.json"
+        "assets/cataclysm/models/item/endermaptera_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_endermaptera.json"
       ],
       "display_name_en_us": "Endermaptera Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Эндер-мафтеры",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/endermaptera_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/endermaptera_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_endermaptera.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8796,7 +8834,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_endermaptera"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -9603,14 +9643,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/hippocamtus_spawn_egg.json"
+        "assets/cataclysm/models/item/hippocamtus_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_hippocamtus.json"
       ],
       "display_name_en_us": "Hippocamtus Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Гиппокамта",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/hippocamtus_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/hippocamtus_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_hippocamtus.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9619,7 +9661,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_hippocamtus"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -9699,14 +9743,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/ignited_berserker_spawn_egg.json"
+        "assets/cataclysm/models/item/ignited_berserker_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_ignited_berserker.json"
       ],
       "display_name_en_us": "Ignited Berserker Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва огненного берсерка",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/ignited_berserker_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/ignited_berserker_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_ignited_berserker.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9715,7 +9761,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_ignited_berserker"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -11133,14 +11181,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/koboleton_spawn_egg.json"
+        "assets/cataclysm/models/item/koboleton_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_koboleton.json"
       ],
       "display_name_en_us": "Koboleton Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва кобольда",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/koboleton_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/koboleton_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_koboleton.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -11149,7 +11199,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_koboleton"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -15185,14 +15237,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/royal_draugr_spawn_egg.json"
+        "assets/cataclysm/models/item/royal_draugr_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_royal_draugr.json"
       ],
       "display_name_en_us": "Royal Draugr Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Королевского Драугра",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/royal_draugr_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/royal_draugr_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_royal_draugr.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -15201,7 +15255,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_royal_draugr"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -16279,14 +16335,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/symbiocto_spawn_egg.json"
+        "assets/cataclysm/models/item/symbiocto_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_symbiocto.json"
       ],
       "display_name_en_us": "Symbiocto Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Симбиокта",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/symbiocto_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/symbiocto_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_symbiocto.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -16295,7 +16353,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_symbiocto"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -16723,14 +16783,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/the_watcher_spawn_egg.json"
+        "assets/cataclysm/models/item/the_watcher_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_the_watcher.json"
       ],
       "display_name_en_us": "The Watcher Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва наблюдателя",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/the_watcher_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/the_watcher_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_the_watcher.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -16739,7 +16801,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_the_watcher"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -17049,14 +17113,16 @@
       "observed_in": [
         "assets/cataclysm/lang/en_us.json",
         "assets/cataclysm/lang/ru_ru.json",
-        "assets/cataclysm/models/item/urchinkin_spawn_egg.json"
+        "assets/cataclysm/models/item/urchinkin_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/cataclysm_urchinkin.json"
       ],
       "display_name_en_us": "Urchinkin Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва Урчинкина",
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json",
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/urchinkin_spawn_egg.json"
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/urchinkin_spawn_egg.json",
+        "jemcompat-3.10.0.jar:data/jemcompat/recipes/spawn_eggs/cataclysm_urchinkin.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17065,7 +17131,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "jemcompat:spawn_eggs/cataclysm_urchinkin"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
