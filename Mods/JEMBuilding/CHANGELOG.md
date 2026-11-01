@@ -1,0 +1,29 @@
+## 1.0.0 - 2026-11-01
+
+- Added conditional JEM Compat ownership that promotes this item to the only player-facing hammer for Handcrafted and Building But Better while preserving both native interaction contracts
+- Added a fifth radial-menu mode for a hollow vertical cylinder with circular side walls and no top or bottom caps
+- Cylinder radius and height follow the second block or air target and use the same block-cell preview, 256-axis bounds, filling, cancellation and expiry lifecycle
+- Built and installed the final cylinder-enabled sandbox artifact with SHA-256 `4b21efb08729f65e4d31e836340f82a11226eb0684c51eec7f2d915d74ee5ced`
+- Added one persisted seven-Minecraft-day expiry per temporary construction region
+- Due regions are selected through a coarse server priority queue without scanning temporary blocks every tick, then cleaned through the existing bounded work queue
+- Expiry removes only remaining construction placeholders, preserves real replacement blocks and continues cleanup when previously unloaded chunks load
+- Added optional Jade expiry text that shows only days, then minutes during the final day, then seconds during the final minute
+- Built and installed the expiry-enabled sandbox artifact with SHA-256 `4968cdf68b5721b6d03399ec1e7077f6724afd76615176bcb76129124b38e7f3`
+- Made Shift+right-click with the hammer explicitly cancel the complete linked temporary region
+- Replaced sphere rings with bounded discrete block-cell preview geometry shared with the saved hollow sphere
+- Replaced pitch-times-limit column targeting with a cursor-ray intersection against the column axis
+- Built and installed the corrected sandbox artifact with SHA-256 `59f053f54ef45576eaa69212acc9ca1e0d68f01a1710093878cf25002c20c013`
+- Replaced face-driven plane selection with a left-click radial menu for wall, floor, 1x1 column, and hollow sphere modes
+- Added block and air right-click confirmation with an inclusive 256-block per-axis bound
+- Made wall orientation follow the dominant horizontal look direction while retaining leftward and rightward expansion
+- Built and installed the sandbox artifact with SHA-256 `6764c2284166b06566d7afea1a528cf8a86414e6918d3bb0d0de8bc31dfecda7`
+- Bound construction orientation to the clicked block face so all three orthogonal planes are directly selectable and diagonal planes cannot occur
+- Made construction placeholders native-placement replaceable, added immediate Creative whole-region conversion, and continued Survival conversion across matching inventory stacks with exact native consumption
+- Rebuilt and installed the corrected sandbox artifact with SHA-256 `a86d9dbf5b806e426da5e87830501175c7fa1c8f981c36b9dc8be429d509bd18`
+- Removed a duplicated persisted-region accessor block that prevented Java compilation
+- Built the reobfuscated standalone artifact and installed its exact bytes in the local `jem sandbox` profile for manual acceptance
+- Added one standalone JEM Builder Hammer with the requested copper, copper-block, stick and cobblestone-wall recipe
+- Added live axis-aligned air targeting for XY, ZY and XZ construction planes
+- Added persistent hollow non-colliding placeholder blocks and bounded server-owned placement/removal work
+- Added survival material filling through native block-item placement, preserving inventory cost and placement behavior
+- Reused the established custom 3D hammer model and texture as self-contained JEM Building assets

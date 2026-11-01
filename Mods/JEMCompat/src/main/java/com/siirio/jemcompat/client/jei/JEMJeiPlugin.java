@@ -41,15 +41,23 @@ public final class JEMJeiPlugin implements IModPlugin {
                     mezz.jei.api.constants.VanillaTypes.ITEM_STACK,
                     java.util.List.of(new net.minecraft.world.item.ItemStack(retiredStation)));
         }
-        var legacyHammer = ForgeRegistries.ITEMS.getValue(new ResourceLocation("handcrafted", "hammer"));
-        if (legacyHammer != null && legacyHammer != net.minecraft.world.item.Items.AIR
+        if (net.minecraftforge.fml.ModList.get().isLoaded("handcrafted")
                 && net.minecraftforge.fml.ModList.get().isLoaded("bbb")) {
-            availableRuntime.getIngredientManager().removeIngredientsAtRuntime(
-                    mezz.jei.api.constants.VanillaTypes.ITEM_STACK,
-                    java.util.List.of(new net.minecraft.world.item.ItemStack(legacyHammer)));
+            hideHammer(availableRuntime, new ResourceLocation("handcrafted", "hammer"));
+            if (net.minecraftforge.fml.ModList.get().isLoaded("jem_building")) {
+                hideHammer(availableRuntime, new ResourceLocation("bbb", "hammer"));
+            }
         }
         CuratedJeiCatalog.rebuild(availableRuntime);
         setNativeOverlayVisible(false);
+    }
+
+    private static void hideHammer(IJeiRuntime runtime, ResourceLocation id) {
+        var item = ForgeRegistries.ITEMS.getValue(id);
+        if (item == null || item == net.minecraft.world.item.Items.AIR) return;
+        runtime.getIngredientManager().removeIngredientsAtRuntime(
+                mezz.jei.api.constants.VanillaTypes.ITEM_STACK,
+                java.util.List.of(new net.minecraft.world.item.ItemStack(item)));
     }
 
     @Override

@@ -1,6 +1,8 @@
 ServerEvents.recipes(event => {
-  if (Platform.isLoaded('handcrafted') && Platform.isLoaded('bbb'))
+  if (Platform.isLoaded('handcrafted') && Platform.isLoaded('bbb')) {
     event.remove({ output: 'handcrafted:hammer' })
+    if (Platform.isLoaded('jem_building')) event.remove({ output: 'bbb:hammer' })
+  }
   const removedTransportItems = [
     'immersive_aircraft:airship',
     'immersive_aircraft:bamboo_hopper',

@@ -10,7 +10,7 @@ enum CatalogCategory {
     WEARABLE("gui.jemcompat.jei.wearable", "minecraft:netherite_chestplate"),
     FOOD("gui.jemcompat.jei.food", "farm_and_charm:cooking_pot"),
     CREATE_REDSTONE("gui.jemcompat.jei.create_redstone", "create:cogwheel"),
-    BUILDING("gui.jemcompat.jei.building", "bbb:hammer"),
+    BUILDING("gui.jemcompat.jei.building", "jem_building:builder_hammer"),
     FURNITURE("gui.jemcompat.jei.furniture", "minecraft:painting"),
     NATURE("gui.jemcompat.jei.nature", "immersive_weathering:mossy_bricks"),
     CONTAINERS("gui.jemcompat.jei.containers", "minecraft:chest"),
@@ -39,6 +39,9 @@ enum CatalogCategory {
 
     public ItemStack icon() {
         Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(iconId));
+        if ((item == null || item == net.minecraft.world.item.Items.AIR) && this == BUILDING) {
+            item = ForgeRegistries.ITEMS.getValue(new ResourceLocation("bbb", "hammer"));
+        }
         return new ItemStack(item == null ? fallbackIcon() : item);
     }
 

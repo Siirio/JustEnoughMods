@@ -45,14 +45,11 @@ public final class JEMCompat {
     }
 
     private static void creativeTabs(BuildCreativeModeTabContentsEvent event) {
-        if (ModList.get().isLoaded("handcrafted")) {
-            var legacyHammer = ForgeRegistries.ITEMS.getValue(new ResourceLocation("handcrafted", "hammer"));
-            if (legacyHammer != null) {
-                var entries = event.getEntries().iterator();
-                while (entries.hasNext()) {
-                    if (entries.next().getKey().is(legacyHammer)) entries.remove();
-                }
-            }
+        boolean completeUnifiedHammer = ModList.get().isLoaded("jem_building")
+                && ModList.get().isLoaded("handcrafted") && ModList.get().isLoaded("bbb");
+        if (ModList.get().isLoaded("handcrafted") && ModList.get().isLoaded("bbb")) {
+            removeFromTab(event, new ResourceLocation("handcrafted", "hammer"));
+            if (completeUnifiedHammer) removeFromTab(event, new ResourceLocation("bbb", "hammer"));
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS || event.getTabKey() == CreativeModeTabs.SEARCH) {
             event.accept(TransportContent.AIRCRAFT_FUEL);
@@ -62,6 +59,13 @@ public final class JEMCompat {
                     var stack = item.getDefaultInstance();
                     if (!event.getEntries().contains(stack)) event.accept(() -> item);
                 });
+    }
+
+    private static void removeFromTab(BuildCreativeModeTabContentsEvent event, ResourceLocation id) {
+        var item = ForgeRegistries.ITEMS.getValue(id);
+        if (item == null) return;
+        var entries = event.getEntries().iterator();
+        while (entries.hasNext()) if (entries.next().getKey().is(item)) entries.remove();
     }
 
 }
