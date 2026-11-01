@@ -586,6 +586,28 @@ overridden; no BBB gameplay code, native merchant layout or personal options are
 changed. Regenerate the ZIP with that folder's `build_resource_pack.py --output`
 then stage/publish/apply through the ordinary native AutoModpack lifecycle.
 
+## Standalone JEM Building sandbox — 2026-11-01
+
+`Mods/JEMBuilding` is an independently publishable client-and-server Forge 1.20.1
+mod owned only by the `sandbox/jem-building` branch until explicit promotion. It
+must not depend on JEM Compat or another private JEM module. Its only item is
+`jem_building:builder_hammer`, and its saved hollow construction cell is
+`jem_building:construction_placeholder`
+
+The server owns confirmed regions, permissions, placeholder placement, material
+consumption and cancellation. A region is persisted as level SavedData while each
+placeholder remains an ordinary saved block with no block entity or tick callback.
+Initial and chunk-load work is bounded, unloaded chunks are never force-loaded and
+the client renders one batched visible grid rather than one renderer per cell. Real
+materials are placed through their native held BlockItem path, so the hammer never
+creates a real building block or replaces an already completed cell
+
+The item model and texture are independent copies of the established editable
+source in `Docs/art/bbb-hammer-2026-10-21`, rebound to the `jem_building` namespace.
+This Sandbox owner does not alter `bbb:hammer`, `handcrafted:hammer` or their native
+interaction routes. Future three-hammer unification remains a separate explicit
+Test JEM promotion task
+
 
 ## SMP/rewards/XP implementation — 2026-10-22
 

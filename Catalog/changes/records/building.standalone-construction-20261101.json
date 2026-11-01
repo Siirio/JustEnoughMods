@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "change_id": "building.standalone-construction-20261101",
+  "status": "conditional",
+  "selectors": [
+    { "type": "namespace", "registry": "*", "value": "jem_building" }
+  ],
+  "conditions": [
+    { "runtime": "The standalone JEM Building mod is installed on both the logical server and participating clients." }
+  ],
+  "precedence": { "layer": "standalone_mod", "priority": 100 },
+  "change": {
+    "summary": "Add the standalone survival construction hammer and persistent hollow construction placeholders.",
+    "modifiers": [
+      {
+        "property": "jem_building.construction",
+        "operation": "add",
+        "before": null,
+        "after": "One unlimited axis-aligned 2D plan is confirmed from a live air-target preview, then incrementally populated with hollow placeholders without forced chunk generation."
+      },
+      {
+        "property": "jem_building.material_cost",
+        "operation": "set",
+        "before": null,
+        "after": "Confirmed placeholders are free, while every real block is placed through the held BlockItem and consumes its ordinary survival stack."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMBuilding",
+    "kind": "Forge standalone gameplay module",
+    "source_files": [
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding",
+      "Mods/JEMBuilding/src/main/resources/data/jem_building/recipes/builder_hammer.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building"
+    ]
+  },
+  "rationale": {
+    "purpose": "Provide survival builders with persistent material-backed construction cells without a tier ladder, free blocks or private JEM dependencies.",
+    "decision_source": "User supplied the Major Building and Quality-of-Life mission and explicitly assigned the standalone construction mod to its own Sandbox branch. Codex selected bounded region work, ordinary saved blocks and native BlockItem filling as implementation details."
+  },
+  "introduced": {
+    "date": "2026-11-01",
+    "commit": "SELF",
+    "action": "add_standalone_jem_building",
+    "summary": "Add JEM Building as an independent Forge 1.20.1 construction mod."
+  },
+  "history": [
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "add_standalone_jem_building",
+      "summary": "Add one hammer, three axis-aligned planes, hollow saved placeholders, cancellation and survival material filling."
+    }
+  ],
+  "impacts": {
+    "systems": ["items", "blocks", "recipes", "world_saved_data", "networking", "inventory", "block_placement_permissions"],
+    "relations": [
+      "jem_building:builder_hammer -> jem_building:construction_placeholder",
+      "held BlockItem -> native placement and inventory consumption"
+    ],
+    "notes": "The module contains no JEM Compat dependency and does not alter Handcrafted or Building But Better registrations or behavior.",
+    "unresolved": ["Runtime player acceptance and third-party claim-mod behavior were not exercised because the user prohibited all tests and validation runs."]
+  }
+}
