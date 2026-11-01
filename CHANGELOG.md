@@ -1,5 +1,7 @@
 ## 2026-11-01 - Build and install the isolated JEM Building sandbox
 
+- User explicitly locked one countdown format across all JustEnoughMods and required the rule to be committed: show only Minecraft days at one day or more with a trailing "+" for a positive remainder, only minutes below one day, and only seconds below one minute, never multiple units in one label
+- The repository-wide contract now lives in `AGENTS.logic-locks.md` and applies to Jade, HUD, GUI, chat, tooltips and guide presentation while internal calculations, save data and protocols retain native units
 - User added a fifth construction element: a cylinder formed only from vertical circular borders, explicitly without top or bottom caps
 - Codex implementation derives horizontal radius and vertical height from the second block or air target, renders the exact discrete cylinder cells in preview, and reuses the existing bounded placement, replacement, cancellation, persistence and expiry owners
 - The final Java 17 sandbox JAR including the open cylinder, persisted expiry and optional Jade presentation was installed with SHA-256 `4b21efb08729f65e4d31e836340f82a11226eb0684c51eec7f2d915d74ee5ced`

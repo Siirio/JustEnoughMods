@@ -120,3 +120,12 @@
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-10-19
 
+## LOCKED: JEM single-unit countdown display
+- Scope: All player-facing countdowns and remaining-duration labels across JustEnoughMods, including Jade, HUD, GUI, chat, tooltips and guide presentation
+- Approved signal: User explicitly said to lock the format for all JustEnoughMods: show days first, minutes only after the final day begins, seconds only after the final minute begins, and never combine them in one line
+- Protected behavior: Display exactly one current time unit. At one Minecraft day or more, show only whole Minecraft days and append + when a positive remainder exists. Below one Minecraft day, show only whole remaining minutes. Below one minute, show only whole remaining seconds. Never compose days, minutes and seconds in one label. Internal calculations, persistence, protocols and save data remain in native units.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Localization wording, typography and presentation surface may change while preserving the one-unit thresholds, Minecraft-day semantics and trailing-plus rule. A specific feature may use a different format only after an explicit user instruction for that feature.
+- Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
+- Created: 2026-11-01
+
