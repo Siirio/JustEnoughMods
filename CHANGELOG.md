@@ -1,3 +1,8 @@
+## 2026-11-01 - Require an explicit branch choice for new work
+
+- User required every request that is at least partly new relative to the active work to begin with an explicit branch question
+- `AGENTS.md` now forbids inferring the branch from the checkout, task type or runtime target and requires waiting for the user's branch choice before starting changes
+
 ## 2026-11-01 - Restore rotten flesh leather smelting
 
 - User reported that rotten flesh no longer smelted into leather and requested a live recipe reload instead of a server restart
@@ -14,7 +19,9 @@
 - JEM Luxium 1.0.10 refreshes the installed Luxium 2.8.0 feature mask after every Luxium or Oculus ownership change and before rebuilding Embeddium, so celestial shadows, sky lighting and configured renderer features can activate in the same in-game Apply operation
 - AutoModpack no longer distributes `luxium-client.toml` with `luxiumEnabled = false`. Luxium now owns that generated personal preference locally, so pack updates do not reset the player's renderer selection
 - Oculus mutual exclusion, previous shader restoration, the official Luxium JAR and the existing Embeddium settings route remain unchanged
-- Production artifact build, native AutoModpack publication and closed-client application are still pending, and player acceptance remains `in testing`
+- The production JEM Luxium 1.0.10 artifact was built from the hotfix branch rooted at `develop` commit `ee54e4818`, with SHA-256 `a25cb93f207ba879825d9d5b81cff6f4ca1aac1ab73c2cc82a3a3e5614ecd765`
+- Native AutoModpack publication completed with exact diff `+1 ~1 -2` and content token `86c855f`: add JEM Luxium 1.0.10, remove 1.0.9, remove the managed Luxium client config and update the manifest
+- At the user's instruction, `test jem` was not launched and the published generation was not applied to that profile. The user will perform player testing later, so the defect remains `in testing`
 
 ## 2026-10-31 - Repair the integrated-server item and mob tick stall
 
