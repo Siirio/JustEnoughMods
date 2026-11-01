@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "b244bda4a8f30528456fda3f7170e33ca81d9681",
+  "snapshot_sha": "8ea8bc1378cdd4aaaa070862184bfd72b5ce6594",
   "entries": [
     {
       "type": "artifact_metadata",
@@ -11,6 +11,14 @@
       "type": "artifact_metadata",
       "artifact": "kotlinforforge-4.12.0-all.jar",
       "reason": "KeyError"
+    },
+    {
+      "type": "duplicate_mod_id",
+      "mod_id": "automodpack",
+      "artifacts": [
+        "jem-bootstrap.jar",
+        "jem-bootstrap.jar"
+      ]
     },
     {
       "type": "duplicate_mod_id",

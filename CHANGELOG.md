@@ -1,3 +1,10 @@
+## 2026-11-01 - Isolate shared-checkout residue by owner
+
+- User requested that unrelated changes left by concurrent Codex sessions be assigned to their owning feature or hotfix branches instead of remaining mixed in the shared checkout
+- The Luxium owner moved its durable fix to `hotfix/luxium-immediate-shadows` and pushed commit `881d36226`
+- The remaining Atlas refresh and economy coverage report identify snapshot `8ea8bc137`, which exists only in `feature/major-update-4`, so that generated batch remains owned by this feature branch
+- Runtime-generated server configuration, player TPA data, logs, Spark files, MapSyncer cache and stale local publication snapshots are not product changes and are excluded from feature history
+
 ## 2026-10-31 - Remove Major Update 4 from MineRENT production
 
 - User clarified that JEM Advancements 5.3.0, Sitting Plus, Advancement Frames, Icy's Better Horses and the other Major Update 4 files belong only to the unfinished `feature/major-update-4` work and must not be present on MineRENT
