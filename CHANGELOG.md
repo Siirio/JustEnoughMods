@@ -1,3 +1,11 @@
+## 2026-11-01 - Build and install the isolated JEM Building sandbox
+
+- User authorized building the standalone Sandbox artifact and installing it only in `jem sandbox` for manual testing
+- Bug / Build / `ConstructionData.Region` declared the same eight accessors twice, so Java compilation stopped before producing a JAR / resolved by retaining one accessor for each persisted field
+- Five Whys: the JAR was absent because compilation failed, compilation failed because duplicate method signatures are illegal, the source contained a repeated accessor block, the initial source-only delivery was intentionally not compiled under the user's earlier no-build instruction, and the duplicate remained undiscovered until the later explicit build request
+- Java 17 is selected explicitly because the workstation default is Java 25 while Forge 1.20.1 and ForgeGradle require Java 17
+- The reobfuscated `jem_building-1.0.0.jar` built successfully and was installed only in the closed `jem sandbox` profile with SHA-256 `7fdc06ab2459594f08a83c7bfcbf1e44d6d871c161be6acf1abebb6dfe0d80e5`
+
 ## 2026-11-01 - Restore rotten flesh leather smelting
 
 - User reported that rotten flesh no longer smelted into leather and requested a live recipe reload instead of a server restart

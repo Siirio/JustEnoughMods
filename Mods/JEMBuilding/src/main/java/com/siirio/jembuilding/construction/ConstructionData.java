@@ -101,14 +101,6 @@ public final class ConstructionData extends SavedData {
         public int maxY() { return maxY; }
         public int maxZ() { return maxZ; }
         public boolean cancelled() { return cancelled; }
-        public ConstructionPlane plane() { return plane; }
-        public int minX() { return minX; }
-        public int minY() { return minY; }
-        public int minZ() { return minZ; }
-        public int maxX() { return maxX; }
-        public int maxY() { return maxY; }
-        public int maxZ() { return maxZ; }
-        public boolean cancelled() { return cancelled; }
 
         public boolean contains(BlockPos pos) {
             return pos.getX() >= minX && pos.getX() <= maxX && pos.getY() >= minY && pos.getY() <= maxY
