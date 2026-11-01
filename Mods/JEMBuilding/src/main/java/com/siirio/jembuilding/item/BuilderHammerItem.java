@@ -1,6 +1,7 @@
 package com.siirio.jembuilding.item;
 
 import com.siirio.jembuilding.construction.ConstructionPlane;
+import com.siirio.jembuilding.construction.ConstructionRuntime;
 import com.siirio.jembuilding.construction.ConstructionShape;
 import com.siirio.jembuilding.network.BuildingNetwork;
 import com.siirio.jembuilding.registry.BuildingContent;
@@ -31,6 +32,11 @@ public final class BuilderHammerItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         if (context.getLevel().getBlockState(context.getClickedPos()).is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get())) {
+            if (context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) {
+                clear(context.getItemInHand());
+                if (!context.getLevel().isClientSide) ConstructionRuntime.cancel(context.getPlayer(), context.getClickedPos());
+                return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
+            }
             return InteractionResult.PASS;
         }
         ItemStack stack = context.getItemInHand();

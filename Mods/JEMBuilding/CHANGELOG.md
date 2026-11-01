@@ -1,5 +1,9 @@
 ## 1.0.0 - 2026-11-01
 
+- Made Shift+right-click with the hammer explicitly cancel the complete linked temporary region
+- Replaced sphere rings with bounded discrete block-cell preview geometry shared with the saved hollow sphere
+- Replaced pitch-times-limit column targeting with a cursor-ray intersection against the column axis
+- Built and installed the corrected sandbox artifact with SHA-256 `59f053f54ef45576eaa69212acc9ca1e0d68f01a1710093878cf25002c20c013`
 - Replaced face-driven plane selection with a left-click radial menu for wall, floor, 1x1 column, and hollow sphere modes
 - Added block and air right-click confirmation with an inclusive 256-block per-axis bound
 - Made wall orientation follow the dominant horizontal look direction while retaining leftward and rightward expansion

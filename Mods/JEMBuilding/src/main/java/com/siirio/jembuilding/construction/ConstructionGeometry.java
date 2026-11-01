@@ -1,5 +1,8 @@
 package com.siirio.jembuilding.construction;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import net.minecraft.core.BlockPos;
 
 public final class ConstructionGeometry {
@@ -27,6 +30,22 @@ public final class ConstructionGeometry {
         return span(first.getX(), second.getX()) <= MAX_SPAN
                 && span(first.getY(), second.getY()) <= MAX_SPAN
                 && span(first.getZ(), second.getZ()) <= MAX_SPAN;
+    }
+
+    public static List<BlockPos> spherePositions(BlockPos center, int radius) {
+        if (radius == 0) return List.of(center.immutable());
+        List<BlockPos> positions = new ArrayList<>();
+        for (int dx = -radius; dx <= radius; dx++) for (int dy = -radius; dy <= radius; dy++) {
+            double outer = (radius + 0.5D) * (radius + 0.5D) - dx * dx - dy * dy;
+            if (outer < 0D) continue;
+            int maxAbsZ = (int) Math.floor(Math.sqrt(outer));
+            double inner = Math.max(0D, (radius - 0.5D) * (radius - 0.5D) - dx * dx - dy * dy);
+            int minAbsZ = inner > 0D ? (int) Math.floor(Math.sqrt(inner)) + 1 : 0;
+            for (int dz = -maxAbsZ; dz <= maxAbsZ; dz++) {
+                if (Math.abs(dz) >= minAbsZ) positions.add(center.offset(dx, dy, dz));
+            }
+        }
+        return Collections.unmodifiableList(positions);
     }
 
     private static BlockPos constrainSphere(BlockPos center, BlockPos requested) {

@@ -154,23 +154,8 @@ public final class ConstructionData extends SavedData {
             if (positions != null) return positions;
             List<BlockPos> built = new ArrayList<>();
             if (shape == ConstructionShape.SPHERE) {
-                if (radius == 0) {
-                    built.add(new BlockPos(originX, originY, originZ));
-                    positions = Collections.unmodifiableList(built);
-                    return positions;
-                }
-                for (int x = minX; x <= maxX; x++) for (int y = minY; y <= maxY; y++) {
-                    int dx = x - originX;
-                    int dy = y - originY;
-                    double outer = (radius + 0.5D) * (radius + 0.5D) - dx * dx - dy * dy;
-                    if (outer < 0D) continue;
-                    int maxAbsZ = (int) Math.floor(Math.sqrt(outer));
-                    double inner = Math.max(0D, (radius - 0.5D) * (radius - 0.5D) - dx * dx - dy * dy);
-                    int minAbsZ = inner > 0D ? (int) Math.floor(Math.sqrt(inner)) + 1 : 0;
-                    for (int dz = -maxAbsZ; dz <= maxAbsZ; dz++) {
-                        if (Math.abs(dz) >= minAbsZ) built.add(new BlockPos(x, y, originZ + dz));
-                    }
-                }
+                positions = ConstructionGeometry.spherePositions(new BlockPos(originX, originY, originZ), radius);
+                return positions;
             } else {
                 for (int y = minY; y <= maxY; y++) for (int z = minZ; z <= maxZ; z++)
                     for (int x = minX; x <= maxX; x++) built.add(new BlockPos(x, y, z));

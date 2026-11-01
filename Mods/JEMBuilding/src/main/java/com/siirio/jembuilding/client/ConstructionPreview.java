@@ -7,6 +7,7 @@ import com.siirio.jembuilding.construction.ConstructionGeometry;
 import com.siirio.jembuilding.construction.ConstructionPlane;
 import com.siirio.jembuilding.construction.ConstructionShape;
 import com.siirio.jembuilding.item.BuilderHammerItem;
+import java.util.List;
 import java.util.Optional;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
@@ -22,6 +23,11 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = JEMBuilding.MOD_ID, value = Dist.CLIENT)
 public final class ConstructionPreview {
+    private static final int MAX_SPHERE_PREVIEW_CELLS = 12_000;
+    private static BlockPos cachedSphereCenter;
+    private static int cachedSphereRadius = -1;
+    private static List<BlockPos> cachedSphereCells = List.of();
+
     public record Selection(BlockPos start, BlockPos end, ConstructionShape shape, ConstructionPlane plane) { }
 
     public static Optional<Selection> current() {
@@ -70,7 +76,8 @@ public final class ConstructionPreview {
             switch (selection.shape()) {
                 case WALL, FLOOR -> drawGrid(vertices, poses, selection.plane(), minX, minY, minZ, maxX, maxY, maxZ);
                 case COLUMN -> drawBox(vertices, poses, minX, minY, minZ, maxX + 1D, maxY + 1D, maxZ + 1D);
-                case SPHERE -> drawSphere(vertices, poses, selection.start(), sphereRadius);
+                case SPHERE -> drawSphereBlocks(vertices, poses, selection.start(), sphereRadius,
+                        minX, minY, minZ, maxX, maxY, maxZ);
             }
             buffers.endBatch(type);
         } finally { poses.popPose(); }
@@ -82,7 +89,20 @@ public final class ConstructionPreview {
             return block.getBlockPos().relative(block.getDirection());
         }
         if (shape == ConstructionShape.COLUMN) {
-            return new BlockPos(start.getX(), start.getY() + (int) Math.round(look.y * (ConstructionGeometry.MAX_SPAN - 1)), start.getZ());
+            double horizontal = look.x * look.x + look.z * look.z;
+            double travel;
+            if (horizontal < 1.0E-5D) {
+                travel = ConstructionGeometry.MAX_SPAN - 1D;
+            } else {
+                double targetX = start.getX() + 0.5D - eye.x;
+                double targetZ = start.getZ() + 0.5D - eye.z;
+                travel = (targetX * look.x + targetZ * look.z) / horizontal;
+                if (!Double.isFinite(travel) || travel <= 0D) {
+                    travel = client.hitResult == null ? 0D : eye.distanceTo(client.hitResult.getLocation());
+                }
+                travel = Math.min(travel, ConstructionGeometry.MAX_SPAN * 2D);
+            }
+            return new BlockPos(start.getX(), Mth.floor(eye.y + look.y * travel), start.getZ());
         }
         if (shape == ConstructionShape.SPHERE && client.hitResult != null) {
             return BlockPos.containing(client.hitResult.getLocation());
@@ -113,29 +133,21 @@ public final class ConstructionPreview {
             line(out, poses, new Vec3(x, y, minZ), new Vec3(x, y, maxZ), r, g, b, a);
     }
 
-    private static void drawSphere(VertexConsumer out, PoseStack poses, BlockPos center, int radius) {
-        float r = 0.91F, g = 0.55F, b = 0.22F, a = 0.9F;
-        Vec3 origin = Vec3.atCenterOf(center);
-        int segments = Math.max(24, Math.min(128, radius * 4));
-        double visualRadius = radius + 0.5D;
-        for (int axis = 0; axis < 3; axis++) {
-            Vec3 previous = circlePoint(origin, visualRadius, axis, 0D);
-            for (int index = 1; index <= segments; index++) {
-                Vec3 next = circlePoint(origin, visualRadius, axis, Math.PI * 2D * index / segments);
-                line(out, poses, previous, next, r, g, b, a);
-                previous = next;
-            }
+    private static void drawSphereBlocks(VertexConsumer out, PoseStack poses, BlockPos center, int radius,
+                                         int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+        if (!center.equals(cachedSphereCenter) || radius != cachedSphereRadius) {
+            cachedSphereCenter = center.immutable();
+            cachedSphereRadius = radius;
+            cachedSphereCells = ConstructionGeometry.spherePositions(center, radius);
         }
-    }
-
-    private static Vec3 circlePoint(Vec3 center, double radius, int axis, double angle) {
-        double first = Math.cos(angle) * radius;
-        double second = Math.sin(angle) * radius;
-        return switch (axis) {
-            case 0 -> center.add(0D, first, second);
-            case 1 -> center.add(first, 0D, second);
-            default -> center.add(first, second, 0D);
-        };
+        int stride = Math.max(1, (cachedSphereCells.size() + MAX_SPHERE_PREVIEW_CELLS - 1) / MAX_SPHERE_PREVIEW_CELLS);
+        for (int index = 0; index < cachedSphereCells.size(); index += stride) {
+            BlockPos pos = cachedSphereCells.get(index);
+            if (pos.getX() < minX || pos.getX() > maxX || pos.getY() < minY || pos.getY() > maxY
+                    || pos.getZ() < minZ || pos.getZ() > maxZ) continue;
+            drawBox(out, poses, pos.getX() + 0.002D, pos.getY() + 0.002D, pos.getZ() + 0.002D,
+                    pos.getX() + 0.998D, pos.getY() + 0.998D, pos.getZ() + 0.998D);
+        }
     }
 
     private static void drawGrid(VertexConsumer out, PoseStack poses, ConstructionPlane plane, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
