@@ -1,3 +1,11 @@
+## 2026-11-01 - Restore the player in the race screen
+
+- User reported that the player model was absent from the race window on MineRENT and requested a new hotfix from `develop`
+- Bug / Client Sided / the screen-owned detached `RemotePlayer` exposed Forge entity capabilities even though it never joins the client level, so Epic Fight saw its incomplete player patch, replaced the native `PlayerRenderer` path and produced no usable model / in testing through a capability-free detached preview
+- Five Whys: the model was absent because the native player render was intercepted, Epic Fight found a player capability on the preview, Forge attaches that capability during entity construction, the screen preview deliberately never receives the world `EntityJoinLevelEvent`, and `RaceStageRenderer` did not isolate world-lifecycle capabilities from its display-only entity
+- The preview remains detached and uses the real player's game profile, live skin, model type, visible skin parts and copied equipment. The race camera, fixed GUI scale, animation, ability previews, world player and SMP neutral preview remain unchanged
+- Exact installed Epic Fight 20.14.17 bytecode and Forge 47.4.10 capability ownership were inspected. No automated test, client launch, gameplay acceptance, MineRENT deployment or stable-profile mutation has been performed
+
 ## 2026-11-01 - Restore rotten flesh leather smelting
 
 - User reported that rotten flesh no longer smelted into leather and requested a live recipe reload instead of a server restart

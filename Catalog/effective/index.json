@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "74f91468c50695ec1eda7ec57d1f79821a25cc831c440c5640495e6e660b85ac",
+  "change_records_sha256": "f091853b7eae436346819c5d36d9f6a43e0dc93be44f32fa2bc82c92e11f9bf6",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -3439,7 +3439,7 @@
     {
       "change_id": "smp-rewards-xp.domain-ui-20261022",
       "status": "active",
-      "summary": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share detached native preview with immediate default skin and live skin resolution",
+      "summary": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share a capability-free detached native preview with immediate default skin and live skin resolution",
       "record": "Catalog/changes/records/smp-rewards-xp.domain-ui-20261022.json",
       "selectors": [
         {
@@ -8379,7 +8379,8 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java": "5a9142157d20559815cca63e3320ab5c45eaa2defa385993ee1b9f90b8e2d14b",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceEnvironment.java": "2dcfc935ec08c5c800614a859f7d36ab4cb390ea6079bd3e661930b5c645c7fc",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/TemporaryPathSavedData.java": "ec85e35bf3f89cbff1f9a4aa0c4580f3c0d4d9bad2d12945d9afba012f2f27fb",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java": "8ad49bb6f4442ab928ab5f7cef154a61e18a7e12bcd504be43b4ae9beadd6e0b",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java": "2a36eca23c864c53ad9f35daaba2545e3a14fd3bef61742e662b324f9838a0e9",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/DetachedPreviewPlayer.java": "16398e2b90f4ef0003ffb90c008f6844fe0d411be5f100c07bace9ec2986de44",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java": "73a7d88a256aadf465aca5f38b66631c300bec7a87802b7ed023a403b1857272",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/PreviewRenderState.java": "e4d6bf648098c0754c04d3810844255963ad3a544418302a1ce1bd9658262fe4",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinSessionResume.java": "77486473da7369f9dee491ba6437c8e294052299f9d5e19b52e70d278dd4da57",
@@ -8389,7 +8390,7 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java": "7edbe04844e5cc0e3921da218f992613ee83dc07b5b2b1187315f39fc9c69a0c",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java": "7ee5c875e779b45c08a6cfa8c02709d02ce75887911793eaddd8eada2ff59432",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RacePanelMaterials.java": "0faed15da1030ed1cf94499962faf99cb778f3ed4c93a4f43e50a7d3d10abd95",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java": "f540262527cf5a7d4d30b41f1c35ccb9af5ec18ba6a78bebecc55d9479ea5f82",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java": "eac08879bb31b29013c270655029e9604ff16ebf24b1400f722ce60d6c80ecea",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java": "2602e4cc56543f298e8fb641374714c2c1712fb8ca1572f41b77b22734c6d226",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java": "c7f0a9952d559ce18a7db8f615cefdcb00be1425b6bd5d5b095b1e15524e0d48",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java": "6920c2755db4ce78c9ff921f13b70f98d14fb3b4d2a1ae9ccc7c26f7cdaa58df",

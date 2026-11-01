@@ -14,7 +14,7 @@ import org.lwjgl.opengl.GL11;
 /** A perspective skin stage. Only its camera moves; the world player stays put. */
 final class RaceStageRenderer {
     private net.minecraft.client.multiplayer.ClientLevel sourceLevel;
-    private net.minecraft.client.player.RemotePlayer preview;
+    private DetachedPreviewPlayer preview;
     private net.minecraft.client.player.LocalPlayer sourcePlayer;
 
     void dispose() { sourceLevel = null; sourcePlayer = null; preview = null; }
@@ -25,15 +25,7 @@ final class RaceStageRenderer {
         if (sourceLevel != client.level || sourcePlayer != source || preview == null) {
             sourceLevel = client.level;
             sourcePlayer = source;
-            preview = new net.minecraft.client.player.RemotePlayer(sourceLevel, source.getGameProfile()) {
-                @Override public net.minecraft.resources.ResourceLocation getSkinTextureLocation() {
-                    return source.getSkinTextureLocation();
-                }
-                @Override public String getModelName() { return source.getModelName(); }
-                @Override public boolean isModelPartShown(net.minecraft.world.entity.player.PlayerModelPart part) {
-                    return source.isModelPartShown(part);
-                }
-            };
+            preview = new DetachedPreviewPlayer(sourceLevel, source);
         }
         for (var slot : net.minecraft.world.entity.EquipmentSlot.values())
             preview.setItemSlot(slot, source.getItemBySlot(slot).copy());
