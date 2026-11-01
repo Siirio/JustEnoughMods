@@ -1,10 +1,10 @@
 # JEM Building selection rework
 
-Status: planned only. No implementation, build, installation, or runtime check is authorized by this note
+Status: implementation authorized on `sandbox/jem-building`
 
 ## User requirements
 
-- A left-click with the construction hammer selects the first endpoint
+- A left-click with the construction hammer against an existing block opens the four-way radial shape menu and establishes the first endpoint after the player chooses a mode
 - A right-click with the construction hammer selects the second endpoint
 - Endpoint selection must work when the crosshair hits an existing block
 - Existing blocks must be valid anchors for creating the construction plane on or from that surface
@@ -12,21 +12,22 @@ Status: planned only. No implementation, build, installation, or runtime check i
 - The selected construction span is limited to 256 blocks on each of X, Y, and Z
 - The limit is an inclusive axis span, so `max - min + 1` may not exceed 256 for any axis
 - Construction remains axis-aligned and orthogonal. This request does not authorize diagonal planes or diagonal interpolation
-- The current plane or axis selection interaction is not approved and must be redesigned before implementation
+- The four modes are wall, floor, one-block-wide column, and hollow sphere
 
 ## Planned interaction work
 
-1. Separate endpoint selection from construction confirmation so left-click and right-click have stable, distinct meanings
-2. Resolve a block hit to a precise block position and hit face without suppressing the hammer interaction on existing blocks
-3. Preserve the current air-target route as an explicit fallback when no block is hit
-4. Store both endpoints and their hit context in hammer state so client preview and server authority use the same selection
-5. Derive only an orthogonal construction plane from the two endpoints and the eventual approved plane-selection gesture
-6. Reject a second endpoint when any inclusive X, Y, or Z span exceeds 256, with a clear player-facing reason
-7. Keep all placement, placeholder replacement, Creative instant fill, and Survival inventory-consumption rules from the current sandbox implementation
+1. Cancel native block breaking while the hammer opens its radial menu
+2. Use four cardinal radial choices with distinct semantic item icons and localized labels
+3. Store the selected shape, anchor, and wall plane in the hammer while the server validates the clicked block and owns the selection
+4. Let right-click confirm against either an existing block face or the current air preview
+5. Choose a wall plane from the dominant horizontal look axis so its width can extend to either side of the anchor
+6. Keep floors on XZ, columns at one block in X and Z with free Y height, and spheres as hollow shells around the first endpoint
+7. Clamp every endpoint to an inclusive 256-block span and cap a symmetric sphere to radius 127
+8. Keep all placement, placeholder replacement, Creative instant fill, and Survival inventory-consumption rules from the current sandbox implementation
 
-## Product decision still required
+## Interaction decision
 
-The user explicitly dislikes the current axis-selection method. Before coding, define one unambiguous gesture for choosing among XY, XZ, and YZ when the two endpoints alone do not determine a unique plane. Do not infer or ship that gesture from this planning note
+The radial mode menu replaces clicked-face plane selection. Wall orientation follows the dominant horizontal look direction at the first click, while floor, column, and sphere have intrinsic geometry
 
 ## Acceptance boundary for the future implementation
 

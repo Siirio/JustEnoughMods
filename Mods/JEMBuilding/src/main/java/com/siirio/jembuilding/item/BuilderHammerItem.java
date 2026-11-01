@@ -1,6 +1,7 @@
 package com.siirio.jembuilding.item;
 
 import com.siirio.jembuilding.construction.ConstructionPlane;
+import com.siirio.jembuilding.construction.ConstructionShape;
 import com.siirio.jembuilding.network.BuildingNetwork;
 import com.siirio.jembuilding.registry.BuildingContent;
 import net.minecraft.ChatFormatting;
@@ -37,11 +38,9 @@ public final class BuilderHammerItem extends Item {
             clear(stack);
             return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
         }
-        BlockPos start = context.getClickedPos().relative(context.getClickedFace());
-        setStart(stack, start, ConstructionPlane.fromFace(context.getClickedFace()));
-        if (context.getPlayer() != null && !context.getLevel().isClientSide) {
-            context.getPlayer().displayClientMessage(Component.translatable("message.jem_building.first_position", start.getX(), start.getY(), start.getZ()), true);
-        }
+        if (start(stack).isEmpty()) return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
+        if (context.getLevel().isClientSide) BuildingNetwork.confirmClientSelection(context.getHand(),
+                context.getClickedPos().relative(context.getClickedFace()));
         return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
     }
 
@@ -53,13 +52,14 @@ public final class BuilderHammerItem extends Item {
             if (level.isClientSide) BuildingNetwork.cancelSelection();
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }
-        if (level.isClientSide && start(stack).isPresent()) BuildingNetwork.confirmClientSelection(hand);
+        if (level.isClientSide && start(stack).isPresent()) BuildingNetwork.confirmClientSelection(hand, null);
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag flag) {
-        lines.add(Component.translatable("tooltip.jem_building.builder_hammer.select").withStyle(ChatFormatting.GRAY));
+        lines.add(Component.translatable("tooltip.jem_building.builder_hammer.mode").withStyle(ChatFormatting.GRAY));
+        lines.add(Component.translatable("tooltip.jem_building.builder_hammer.confirm").withStyle(ChatFormatting.GRAY));
         lines.add(Component.translatable("tooltip.jem_building.builder_hammer.cancel").withStyle(ChatFormatting.DARK_GRAY));
     }
 
@@ -78,12 +78,21 @@ public final class BuilderHammerItem extends Item {
         catch (IllegalArgumentException ignored) { return Optional.empty(); }
     }
 
-    public static void setStart(ItemStack stack, BlockPos start, ConstructionPlane plane) {
+    public static Optional<ConstructionShape> shape(ItemStack stack) {
+        CompoundTag root = stack.getTag();
+        if (root == null || !root.contains(SELECTION, Tag.TAG_COMPOUND)) return Optional.empty();
+        String value = root.getCompound(SELECTION).getString("Shape");
+        try { return value.isEmpty() ? Optional.empty() : Optional.of(ConstructionShape.valueOf(value)); }
+        catch (IllegalArgumentException ignored) { return Optional.empty(); }
+    }
+
+    public static void setStart(ItemStack stack, BlockPos start, ConstructionShape shape, ConstructionPlane plane) {
         CompoundTag selection = new CompoundTag();
         selection.putInt("X", start.getX());
         selection.putInt("Y", start.getY());
         selection.putInt("Z", start.getZ());
         selection.putString("Plane", plane.name());
+        selection.putString("Shape", shape.name());
         stack.getOrCreateTag().put(SELECTION, selection);
     }
 

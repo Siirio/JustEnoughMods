@@ -16,7 +16,7 @@
         "property": "jem_building.construction",
         "operation": "add",
         "before": null,
-        "after": "One unlimited axis-aligned 2D plan is confirmed from a live air-target preview, then incrementally populated with hollow placeholders without forced chunk generation."
+        "after": "A left-click radial menu selects wall, floor, 1x1 column, or hollow sphere. Right-click confirms against a block or live air target, with every axis bounded to 256 blocks, then incrementally populates persistent placeholders without forced chunk generation."
       },
       {
         "property": "jem_building.material_cost",
@@ -49,12 +49,18 @@
     {
       "date": "2026-11-01",
       "commit": "SELF",
+      "action": "add_radial_shape_selection",
+      "summary": "Replace face selection with a four-mode radial menu, block-or-air confirmation, look-directed walls, 1x1 columns, hollow spheres, and 256-block bounds."
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
       "action": "add_standalone_jem_building",
       "summary": "Add one hammer, three axis-aligned planes, hollow saved placeholders, cancellation and survival material filling."
     }
   ],
   "impacts": {
-    "systems": ["items", "blocks", "recipes", "world_saved_data", "networking", "inventory", "block_placement_permissions"],
+    "systems": ["items", "blocks", "recipes", "world_saved_data", "networking", "inventory", "block_placement_permissions", "client_input", "client_gui", "world_preview"],
     "relations": [
       "jem_building:builder_hammer -> jem_building:construction_placeholder",
       "held BlockItem -> native placement and inventory consumption"

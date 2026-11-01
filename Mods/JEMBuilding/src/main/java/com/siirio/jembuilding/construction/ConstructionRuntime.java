@@ -46,17 +46,46 @@ public final class ConstructionRuntime {
         return NATIVE_FILL.get();
     }
 
-    public static void confirm(ServerPlayer player, InteractionHand hand, ConstructionPlane plane, BlockPos requestedEnd) {
+    public static void selectMode(ServerPlayer player, InteractionHand hand, BlockPos clicked, Direction face,
+                                  ConstructionShape shape, ConstructionPlane requestedPlane) {
+        ItemStack hammer = player.getItemInHand(hand);
+        if (!(hammer.getItem() instanceof BuilderHammerItem) || !player.serverLevel().hasChunkAt(clicked)
+                || player.distanceToSqr(Vec3.atCenterOf(clicked)) > 64D || player.serverLevel().getBlockState(clicked).isAir()) return;
+        BlockPos start = clicked.relative(face);
+        if (!within(player.serverLevel(), start)) return;
+        ConstructionPlane plane = switch (shape) {
+            case WALL -> ConstructionPlane.wallFromLook(player.getLookAngle());
+            case FLOOR -> ConstructionPlane.XZ;
+            case COLUMN, SPHERE -> ConstructionPlane.XY;
+        };
+        BuilderHammerItem.setStart(hammer, start, shape, plane);
+        player.getInventory().setChanged();
+        player.displayClientMessage(Component.translatable("message.jem_building.first_position",
+                Component.translatable("screen.jem_building.mode." + shape.name().toLowerCase()), start.getX(), start.getY(), start.getZ()), true);
+    }
+
+    public static void confirm(ServerPlayer player, InteractionHand hand, BlockPos requestedEnd) {
         ItemStack hammer = player.getItemInHand(hand);
         if (!(hammer.getItem() instanceof BuilderHammerItem)) return;
         Optional<BlockPos> selected = BuilderHammerItem.start(hammer);
-        if (selected.isEmpty()) return;
+        Optional<ConstructionShape> selectedShape = BuilderHammerItem.shape(hammer);
+        Optional<ConstructionPlane> selectedPlaneValue = BuilderHammerItem.plane(hammer);
+        if (selected.isEmpty() || selectedShape.isEmpty() || selectedPlaneValue.isEmpty()) return;
         BlockPos start = selected.get();
-        ConstructionPlane selectedPlane = BuilderHammerItem.plane(hammer).orElse(plane);
-        BlockPos end = selectedPlane.constrain(start, requestedEnd);
+        ConstructionShape shape = selectedShape.get();
+        ConstructionPlane selectedPlane = selectedPlaneValue.get();
+        BlockPos end = ConstructionGeometry.constrain(shape, selectedPlane, start, requestedEnd);
         ServerLevel level = player.serverLevel();
-        if (!selectedPlane.contains(start, end) || !within(level, start) || !within(level, end)) return;
-        ConstructionData.Region region = ConstructionData.get(level).create(player.getUUID(), selectedPlane, start, end);
+        if (!ConstructionGeometry.validSpan(start, end) || !within(level, start) || !within(level, end)
+                || ((shape == ConstructionShape.WALL || shape == ConstructionShape.FLOOR) && !selectedPlane.contains(start, end))) return;
+        if (shape == ConstructionShape.SPHERE) {
+            int radius = ConstructionGeometry.sphereRadius(start, end);
+            if (!within(level, start.offset(-radius, -radius, -radius)) || !within(level, start.offset(radius, radius, radius))) {
+                player.displayClientMessage(Component.translatable("message.jem_building.outside_world"), true);
+                return;
+            }
+        }
+        ConstructionData.Region region = ConstructionData.get(level).create(player.getUUID(), shape, selectedPlane, start, end);
         WORLD_WORK.addLast(new RegionWork(level, region, false));
         BuilderHammerItem.clear(hammer);
         player.getInventory().setChanged();
@@ -198,26 +227,9 @@ public final class ConstructionRuntime {
 
         static RegionWork forChunk(ServerLevel level, ConstructionData.Region region, ChunkPos chunk, String key) {
             List<BlockPos> positions = new ArrayList<>();
-            int minX = Math.max(region.minX(), chunk.getMinBlockX());
-            int maxX = Math.min(region.maxX(), chunk.getMaxBlockX());
-            int minZ = Math.max(region.minZ(), chunk.getMinBlockZ());
-            int maxZ = Math.min(region.maxZ(), chunk.getMaxBlockZ());
-            if (minX <= maxX && minZ <= maxZ) {
-                switch (region.plane()) {
-                    case XY -> {
-                        if (region.minZ() >= chunk.getMinBlockZ() && region.minZ() <= chunk.getMaxBlockZ()) {
-                            for (int y = region.minY(); y <= region.maxY(); y++) for (int x = minX; x <= maxX; x++) positions.add(new BlockPos(x, y, region.minZ()));
-                        }
-                    }
-                    case ZY -> {
-                        if (region.minX() >= chunk.getMinBlockX() && region.minX() <= chunk.getMaxBlockX()) {
-                            for (int y = region.minY(); y <= region.maxY(); y++) for (int z = minZ; z <= maxZ; z++) positions.add(new BlockPos(region.minX(), y, z));
-                        }
-                    }
-                    case XZ -> {
-                        for (int z = minZ; z <= maxZ; z++) for (int x = minX; x <= maxX; x++) positions.add(new BlockPos(x, region.minY(), z));
-                    }
-                }
+            for (BlockPos pos : region.positions()) {
+                if (pos.getX() >= chunk.getMinBlockX() && pos.getX() <= chunk.getMaxBlockX()
+                        && pos.getZ() >= chunk.getMinBlockZ() && pos.getZ() <= chunk.getMaxBlockZ()) positions.add(pos);
             }
             return new RegionWork(level, region, region.cancelled(), positions, key);
         }

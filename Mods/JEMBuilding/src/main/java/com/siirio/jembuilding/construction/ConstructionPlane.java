@@ -2,6 +2,7 @@ package com.siirio.jembuilding.construction;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.phys.Vec3;
 
 public enum ConstructionPlane {
     XY,
@@ -14,6 +15,10 @@ public enum ConstructionPlane {
             case Y -> XZ;
             case Z -> XY;
         };
+    }
+
+    public static ConstructionPlane wallFromLook(Vec3 look) {
+        return Math.abs(look.x) > Math.abs(look.z) ? ZY : XY;
     }
 
     public boolean contains(BlockPos start, BlockPos end) {

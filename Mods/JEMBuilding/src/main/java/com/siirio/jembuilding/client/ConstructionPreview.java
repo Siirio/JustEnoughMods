@@ -3,7 +3,9 @@ package com.siirio.jembuilding.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.siirio.jembuilding.JEMBuilding;
+import com.siirio.jembuilding.construction.ConstructionGeometry;
 import com.siirio.jembuilding.construction.ConstructionPlane;
+import com.siirio.jembuilding.construction.ConstructionShape;
 import com.siirio.jembuilding.item.BuilderHammerItem;
 import java.util.Optional;
 import net.minecraft.client.Minecraft;
@@ -11,6 +13,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,7 +22,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = JEMBuilding.MOD_ID, value = Dist.CLIENT)
 public final class ConstructionPreview {
-    public record Selection(BlockPos start, BlockPos end, ConstructionPlane plane) { }
+    public record Selection(BlockPos start, BlockPos end, ConstructionShape shape, ConstructionPlane plane) { }
 
     public static Optional<Selection> current() {
         Minecraft client = Minecraft.getInstance();
@@ -26,9 +30,10 @@ public final class ConstructionPreview {
         Optional<BlockPos> selected = BuilderHammerItem.start(client.player.getMainHandItem());
         if (selected.isEmpty()) return Optional.empty();
         BlockPos start = selected.get();
+        ConstructionShape shape = BuilderHammerItem.shape(client.player.getMainHandItem()).orElse(ConstructionShape.WALL);
         ConstructionPlane plane = BuilderHammerItem.plane(client.player.getMainHandItem()).orElse(ConstructionPlane.XY);
-        BlockPos end = endpoint(start, plane, client.player.getEyePosition(), client.player.getLookAngle());
-        return Optional.of(new Selection(start, plane.constrain(start, end), plane));
+        BlockPos requested = target(start, shape, plane, client.player.getEyePosition(), client.player.getLookAngle());
+        return Optional.of(new Selection(start, ConstructionGeometry.constrain(shape, plane, start, requested), shape, plane));
     }
 
     @SubscribeEvent
@@ -40,12 +45,20 @@ public final class ConstructionPreview {
         Minecraft client = Minecraft.getInstance();
         Vec3 camera = event.getCamera().getPosition();
         int radius = Math.max(32, client.options.getEffectiveRenderDistance() * 16 + 16);
-        int minX = Math.max(Math.min(selection.start().getX(), selection.end().getX()), Mth.floor(camera.x) - radius);
-        int maxX = Math.min(Math.max(selection.start().getX(), selection.end().getX()), Mth.floor(camera.x) + radius);
-        int minY = Math.max(Math.min(selection.start().getY(), selection.end().getY()), client.level.getMinBuildHeight());
-        int maxY = Math.min(Math.max(selection.start().getY(), selection.end().getY()), client.level.getMaxBuildHeight() - 1);
-        int minZ = Math.max(Math.min(selection.start().getZ(), selection.end().getZ()), Mth.floor(camera.z) - radius);
-        int maxZ = Math.min(Math.max(selection.start().getZ(), selection.end().getZ()), Mth.floor(camera.z) + radius);
+        int sphereRadius = selection.shape() == ConstructionShape.SPHERE
+                ? ConstructionGeometry.sphereRadius(selection.start(), selection.end()) : 0;
+        int shapeMinX = selection.shape() == ConstructionShape.SPHERE ? selection.start().getX() - sphereRadius : Math.min(selection.start().getX(), selection.end().getX());
+        int shapeMaxX = selection.shape() == ConstructionShape.SPHERE ? selection.start().getX() + sphereRadius : Math.max(selection.start().getX(), selection.end().getX());
+        int shapeMinY = selection.shape() == ConstructionShape.SPHERE ? selection.start().getY() - sphereRadius : Math.min(selection.start().getY(), selection.end().getY());
+        int shapeMaxY = selection.shape() == ConstructionShape.SPHERE ? selection.start().getY() + sphereRadius : Math.max(selection.start().getY(), selection.end().getY());
+        int shapeMinZ = selection.shape() == ConstructionShape.SPHERE ? selection.start().getZ() - sphereRadius : Math.min(selection.start().getZ(), selection.end().getZ());
+        int shapeMaxZ = selection.shape() == ConstructionShape.SPHERE ? selection.start().getZ() + sphereRadius : Math.max(selection.start().getZ(), selection.end().getZ());
+        int minX = Math.max(shapeMinX, Mth.floor(camera.x) - radius);
+        int maxX = Math.min(shapeMaxX, Mth.floor(camera.x) + radius);
+        int minY = Math.max(shapeMinY, client.level.getMinBuildHeight());
+        int maxY = Math.min(shapeMaxY, client.level.getMaxBuildHeight() - 1);
+        int minZ = Math.max(shapeMinZ, Mth.floor(camera.z) - radius);
+        int maxZ = Math.min(shapeMaxZ, Mth.floor(camera.z) + radius);
         if (minX > maxX || minY > maxY || minZ > maxZ) return;
         PoseStack poses = event.getPoseStack();
         poses.pushPose();
@@ -54,20 +67,32 @@ public final class ConstructionPreview {
             var buffers = client.renderBuffers().bufferSource();
             RenderType type = RenderType.lines();
             VertexConsumer vertices = buffers.getBuffer(type);
-            drawGrid(vertices, poses, selection.plane(), minX, minY, minZ, maxX, maxY, maxZ);
+            switch (selection.shape()) {
+                case WALL, FLOOR -> drawGrid(vertices, poses, selection.plane(), minX, minY, minZ, maxX, maxY, maxZ);
+                case COLUMN -> drawBox(vertices, poses, minX, minY, minZ, maxX + 1D, maxY + 1D, maxZ + 1D);
+                case SPHERE -> drawSphere(vertices, poses, selection.start(), sphereRadius);
+            }
             buffers.endBatch(type);
         } finally { poses.popPose(); }
     }
 
-    private static BlockPos endpoint(BlockPos start, ConstructionPlane plane, Vec3 eye, Vec3 look) {
+    private static BlockPos target(BlockPos start, ConstructionShape shape, ConstructionPlane plane, Vec3 eye, Vec3 look) {
         Minecraft client = Minecraft.getInstance();
+        if (client.hitResult instanceof BlockHitResult block && block.getType() == HitResult.Type.BLOCK) {
+            return block.getBlockPos().relative(block.getDirection());
+        }
+        if (shape == ConstructionShape.COLUMN) {
+            return new BlockPos(start.getX(), start.getY() + (int) Math.round(look.y * (ConstructionGeometry.MAX_SPAN - 1)), start.getZ());
+        }
+        if (shape == ConstructionShape.SPHERE && client.hitResult != null) {
+            return BlockPos.containing(client.hitResult.getLocation());
+        }
         double coordinate = switch (plane) { case XY -> start.getZ() + 0.5D; case ZY -> start.getX() + 0.5D; case XZ -> start.getY() + 0.5D; };
         double origin = switch (plane) { case XY -> eye.z; case ZY -> eye.x; case XZ -> eye.y; };
         double direction = switch (plane) { case XY -> look.z; case ZY -> look.x; case XZ -> look.y; };
-        double borderDistance = Math.min(60_000_000D, Math.max(256D, client.level.getWorldBorder().getSize()));
-        double travel = Math.abs(direction) < 1.0E-5D ? borderDistance : (coordinate - origin) / direction;
-        if (!Double.isFinite(travel) || travel <= 0D) travel = borderDistance;
-        travel = Math.min(travel, borderDistance);
+        double travel = Math.abs(direction) < 1.0E-5D ? ConstructionGeometry.MAX_SPAN - 1D : (coordinate - origin) / direction;
+        if (!Double.isFinite(travel) || travel <= 0D) travel = ConstructionGeometry.MAX_SPAN - 1D;
+        travel = Math.min(travel, ConstructionGeometry.MAX_SPAN - 1D);
         Vec3 point = eye.add(look.scale(travel));
         int minX = Mth.floor(client.level.getWorldBorder().getMinX());
         int maxX = Mth.floor(client.level.getWorldBorder().getMaxX() - 1D);
@@ -76,6 +101,41 @@ public final class ConstructionPreview {
         return new BlockPos(Mth.clamp(Mth.floor(point.x), minX, maxX),
                 Mth.clamp(Mth.floor(point.y), client.level.getMinBuildHeight(), client.level.getMaxBuildHeight() - 1),
                 Mth.clamp(Mth.floor(point.z), minZ, maxZ));
+    }
+
+    private static void drawBox(VertexConsumer out, PoseStack poses, double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
+        float r = 0.91F, g = 0.55F, b = 0.22F, a = 0.9F;
+        for (double y : new double[]{minY, maxY}) for (double z : new double[]{minZ, maxZ})
+            line(out, poses, new Vec3(minX, y, z), new Vec3(maxX, y, z), r, g, b, a);
+        for (double x : new double[]{minX, maxX}) for (double z : new double[]{minZ, maxZ})
+            line(out, poses, new Vec3(x, minY, z), new Vec3(x, maxY, z), r, g, b, a);
+        for (double x : new double[]{minX, maxX}) for (double y : new double[]{minY, maxY})
+            line(out, poses, new Vec3(x, y, minZ), new Vec3(x, y, maxZ), r, g, b, a);
+    }
+
+    private static void drawSphere(VertexConsumer out, PoseStack poses, BlockPos center, int radius) {
+        float r = 0.91F, g = 0.55F, b = 0.22F, a = 0.9F;
+        Vec3 origin = Vec3.atCenterOf(center);
+        int segments = Math.max(24, Math.min(128, radius * 4));
+        double visualRadius = radius + 0.5D;
+        for (int axis = 0; axis < 3; axis++) {
+            Vec3 previous = circlePoint(origin, visualRadius, axis, 0D);
+            for (int index = 1; index <= segments; index++) {
+                Vec3 next = circlePoint(origin, visualRadius, axis, Math.PI * 2D * index / segments);
+                line(out, poses, previous, next, r, g, b, a);
+                previous = next;
+            }
+        }
+    }
+
+    private static Vec3 circlePoint(Vec3 center, double radius, int axis, double angle) {
+        double first = Math.cos(angle) * radius;
+        double second = Math.sin(angle) * radius;
+        return switch (axis) {
+            case 0 -> center.add(0D, first, second);
+            case 1 -> center.add(first, 0D, second);
+            default -> center.add(first, second, 0D);
+        };
     }
 
     private static void drawGrid(VertexConsumer out, PoseStack poses, ConstructionPlane plane, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {

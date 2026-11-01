@@ -21,10 +21,15 @@ public final class ConstructionData extends SavedData {
         return level.getDataStorage().computeIfAbsent(ConstructionData::load, ConstructionData::new, NAME);
     }
 
-    public Region create(UUID owner, ConstructionPlane plane, BlockPos first, BlockPos second) {
-        Region region = new Region(UUID.randomUUID(), owner, plane,
-                Math.min(first.getX(), second.getX()), Math.min(first.getY(), second.getY()), Math.min(first.getZ(), second.getZ()),
-                Math.max(first.getX(), second.getX()), Math.max(first.getY(), second.getY()), Math.max(first.getZ(), second.getZ()), false);
+    public Region create(UUID owner, ConstructionShape shape, ConstructionPlane plane, BlockPos first, BlockPos second) {
+        int radius = shape == ConstructionShape.SPHERE ? ConstructionGeometry.sphereRadius(first, second) : 0;
+        Region region = new Region(UUID.randomUUID(), owner, shape, plane, first.getX(), first.getY(), first.getZ(), radius,
+                shape == ConstructionShape.SPHERE ? first.getX() - radius : Math.min(first.getX(), second.getX()),
+                shape == ConstructionShape.SPHERE ? first.getY() - radius : Math.min(first.getY(), second.getY()),
+                shape == ConstructionShape.SPHERE ? first.getZ() - radius : Math.min(first.getZ(), second.getZ()),
+                shape == ConstructionShape.SPHERE ? first.getX() + radius : Math.max(first.getX(), second.getX()),
+                shape == ConstructionShape.SPHERE ? first.getY() + radius : Math.max(first.getY(), second.getY()),
+                shape == ConstructionShape.SPHERE ? first.getZ() + radius : Math.max(first.getZ(), second.getZ()), false);
         regions.add(region);
         setDirty();
         return region;
@@ -68,7 +73,12 @@ public final class ConstructionData extends SavedData {
     public static final class Region {
         private final UUID id;
         private final UUID owner;
+        private final ConstructionShape shape;
         private final ConstructionPlane plane;
+        private final int originX;
+        private final int originY;
+        private final int originZ;
+        private final int radius;
         private final int minX;
         private final int minY;
         private final int minZ;
@@ -76,12 +86,19 @@ public final class ConstructionData extends SavedData {
         private final int maxY;
         private final int maxZ;
         private boolean cancelled;
+        private List<BlockPos> positions;
 
-        private Region(UUID id, UUID owner, ConstructionPlane plane, int minX, int minY, int minZ,
+        private Region(UUID id, UUID owner, ConstructionShape shape, ConstructionPlane plane,
+                       int originX, int originY, int originZ, int radius, int minX, int minY, int minZ,
                        int maxX, int maxY, int maxZ, boolean cancelled) {
             this.id = id;
             this.owner = owner;
+            this.shape = shape;
             this.plane = plane;
+            this.originX = originX;
+            this.originY = originY;
+            this.originZ = originZ;
+            this.radius = radius;
             this.minX = minX;
             this.minY = minY;
             this.minZ = minZ;
@@ -93,6 +110,7 @@ public final class ConstructionData extends SavedData {
 
         public UUID id() { return id; }
         public UUID owner() { return owner; }
+        public ConstructionShape shape() { return shape; }
         public ConstructionPlane plane() { return plane; }
         public int minX() { return minX; }
         public int minY() { return minY; }
@@ -103,8 +121,12 @@ public final class ConstructionData extends SavedData {
         public boolean cancelled() { return cancelled; }
 
         public boolean contains(BlockPos pos) {
-            return pos.getX() >= minX && pos.getX() <= maxX && pos.getY() >= minY && pos.getY() <= maxY
-                    && pos.getZ() >= minZ && pos.getZ() <= maxZ;
+            if (pos.getX() < minX || pos.getX() > maxX || pos.getY() < minY || pos.getY() > maxY
+                    || pos.getZ() < minZ || pos.getZ() > maxZ) return false;
+            return switch (shape) {
+                case WALL, FLOOR, COLUMN -> true;
+                case SPHERE -> sphereCell(pos.getX() - originX, pos.getY() - originY, pos.getZ() - originZ);
+            };
         }
 
         public boolean intersects(ChunkPos chunk) {
@@ -116,34 +138,60 @@ public final class ConstructionData extends SavedData {
         public long height() { return (long) maxY - minY + 1L; }
         public long depth() { return (long) maxZ - minZ + 1L; }
         public long cells() {
-            return switch (plane) {
-                case XY -> width() * height();
-                case ZY -> depth() * height();
-                case XZ -> width() * depth();
-            };
+            return positions().size();
         }
 
         public BlockPos position(long index) {
-            return switch (plane) {
-                case XY -> new BlockPos((int) (minX + index % width()), (int) (minY + index / width()), minZ);
-                case ZY -> new BlockPos(minX, (int) (minY + index / depth()), (int) (minZ + index % depth()));
-                case XZ -> new BlockPos((int) (minX + index % width()), minY, (int) (minZ + index / width()));
-            };
+            return positions().get((int) index);
         }
 
         public long index(BlockPos pos) {
-            return switch (plane) {
-                case XY -> ((long) pos.getY() - minY) * width() + pos.getX() - minX;
-                case ZY -> ((long) pos.getY() - minY) * depth() + pos.getZ() - minZ;
-                case XZ -> ((long) pos.getZ() - minZ) * width() + pos.getX() - minX;
-            };
+            int index = positions().indexOf(pos);
+            return Math.max(0, index);
+        }
+
+        public List<BlockPos> positions() {
+            if (positions != null) return positions;
+            List<BlockPos> built = new ArrayList<>();
+            if (shape == ConstructionShape.SPHERE) {
+                if (radius == 0) {
+                    built.add(new BlockPos(originX, originY, originZ));
+                    positions = Collections.unmodifiableList(built);
+                    return positions;
+                }
+                for (int x = minX; x <= maxX; x++) for (int y = minY; y <= maxY; y++) {
+                    int dx = x - originX;
+                    int dy = y - originY;
+                    double outer = (radius + 0.5D) * (radius + 0.5D) - dx * dx - dy * dy;
+                    if (outer < 0D) continue;
+                    int maxAbsZ = (int) Math.floor(Math.sqrt(outer));
+                    double inner = Math.max(0D, (radius - 0.5D) * (radius - 0.5D) - dx * dx - dy * dy);
+                    int minAbsZ = inner > 0D ? (int) Math.floor(Math.sqrt(inner)) + 1 : 0;
+                    for (int dz = -maxAbsZ; dz <= maxAbsZ; dz++) {
+                        if (Math.abs(dz) >= minAbsZ) built.add(new BlockPos(x, y, originZ + dz));
+                    }
+                }
+            } else {
+                for (int y = minY; y <= maxY; y++) for (int z = minZ; z <= maxZ; z++)
+                    for (int x = minX; x <= maxX; x++) built.add(new BlockPos(x, y, z));
+            }
+            positions = Collections.unmodifiableList(built);
+            return positions;
+        }
+
+        private boolean sphereCell(int dx, int dy, int dz) {
+            double distance = Math.sqrt((double) dx * dx + (double) dy * dy + (double) dz * dz);
+            return distance >= Math.max(0D, radius - 0.5D) && distance <= radius + 0.5D;
         }
 
         private CompoundTag save() {
             CompoundTag tag = new CompoundTag();
             tag.putUUID("Id", id);
             tag.putUUID("Owner", owner);
+            tag.putString("Shape", shape.name());
             tag.putString("Plane", plane.name());
+            tag.putInt("OriginX", originX); tag.putInt("OriginY", originY); tag.putInt("OriginZ", originZ);
+            tag.putInt("Radius", radius);
             tag.putInt("MinX", minX); tag.putInt("MinY", minY); tag.putInt("MinZ", minZ);
             tag.putInt("MaxX", maxX); tag.putInt("MaxY", maxY); tag.putInt("MaxZ", maxZ);
             tag.putBoolean("Cancelled", cancelled);
@@ -151,7 +199,14 @@ public final class ConstructionData extends SavedData {
         }
 
         private static Region load(CompoundTag tag) {
-            return new Region(tag.getUUID("Id"), tag.getUUID("Owner"), ConstructionPlane.valueOf(tag.getString("Plane")),
+            ConstructionPlane plane = ConstructionPlane.valueOf(tag.getString("Plane"));
+            ConstructionShape shape = tag.contains("Shape", Tag.TAG_STRING) ? ConstructionShape.valueOf(tag.getString("Shape"))
+                    : plane == ConstructionPlane.XZ ? ConstructionShape.FLOOR : ConstructionShape.WALL;
+            return new Region(tag.getUUID("Id"), tag.getUUID("Owner"), shape, plane,
+                    tag.contains("OriginX", Tag.TAG_INT) ? tag.getInt("OriginX") : tag.getInt("MinX"),
+                    tag.contains("OriginY", Tag.TAG_INT) ? tag.getInt("OriginY") : tag.getInt("MinY"),
+                    tag.contains("OriginZ", Tag.TAG_INT) ? tag.getInt("OriginZ") : tag.getInt("MinZ"),
+                    tag.getInt("Radius"),
                     tag.getInt("MinX"), tag.getInt("MinY"), tag.getInt("MinZ"),
                     tag.getInt("MaxX"), tag.getInt("MaxY"), tag.getInt("MaxZ"), tag.getBoolean("Cancelled"));
         }
