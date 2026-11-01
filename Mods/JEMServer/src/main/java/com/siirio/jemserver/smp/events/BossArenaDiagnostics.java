@@ -174,7 +174,7 @@ public final class BossArenaDiagnostics {
             tell(source, "PLAN ONLY: preserve keeper=" + keeper + "; quarantine duplicate=" + duplicate + "; ArenaId=" + pair.arena.id()
                     + "; current canonical claim=" + WorldTierData.get(source.getServer()).liveBoss(pair.arena.id()).orElse(null)
                     + ". Preserve/read back full duplicate NBT, then transfer its canonical claim to the explicit keeper if needed, before discard; no death/loot/progression event.");
-            tell(source, "Confirm within0.05Minecraft-day: /jem boss-audit confirm " + token + " " + keeper + " " + duplicate);
+            tell(source, "Confirm within 1 minute: /jem boss-audit confirm " + token + " " + keeper + " " + duplicate);
             return 1;
         } catch (IllegalStateException failure) { return reject(source, failure.getMessage()); }
     }

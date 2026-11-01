@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -56,6 +57,7 @@ public final class EnchantmentHelp {
     private static Map<ResourceLocation, JsonObject> records = Map.of();
     private static JsonObject labels = new JsonObject();
     private static final Map<ResourceLocation, List<ResourceLocation>> incompatible = new LinkedHashMap<>();
+    private static Set<ResourceLocation> unresolved = Set.of();
     private static boolean loaded;
 
     private EnchantmentHelp() { }
@@ -80,6 +82,16 @@ public final class EnchantmentHelp {
                 if (replacement.put(id, record) != null) throw new IllegalStateException("Duplicate enchantment help: " + id);
             }
             records = Map.copyOf(replacement);
+            java.util.Set<ResourceLocation> missing = new java.util.TreeSet<>(java.util.Comparator.comparing(ResourceLocation::toString));
+            for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
+                ResourceLocation id = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
+                if (id != null && !replacement.containsKey(id)) missing.add(id);
+            }
+            unresolved = Set.copyOf(missing);
+            if (!unresolved.isEmpty()) {
+                com.mojang.logging.LogUtils.getLogger().warn(
+                        "JEM Guidebook has no verified descriptions for loaded enchantments: {}", unresolved);
+            }
             labels = data.getAsJsonObject("labels");
             incompatible.clear();
             loaded = true;
@@ -145,7 +157,13 @@ public final class EnchantmentHelp {
             Enchantment enchantment = entry.getKey();
             ResourceLocation id = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
             JsonObject record = records.get(id);
-            if (record == null) continue;
+            if (record == null) {
+                if (unresolved.contains(id)) {
+                    event.getToolTip().add(Component.translatable("tooltip.jem_advancements.enchantment_unresolved", id)
+                            .withStyle(ChatFormatting.GOLD));
+                }
+                continue;
+            }
             int level = entry.getValue();
             if (!book && id.equals(new ResourceLocation("jem_world_boss_tiers", "progression"))) {
                 Component current = NativeProgression.currentEffect(stack);

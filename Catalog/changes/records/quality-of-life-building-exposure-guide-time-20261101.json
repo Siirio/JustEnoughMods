@@ -1,0 +1,88 @@
+{
+  "schema_version": 2,
+  "change_id": "quality-of-life.building-exposure-guide-time-20261101",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items",
+      "value": "*"
+    },
+    {
+      "type": "registry",
+      "registry": "enchantments",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Test JEM quality-of-life branch only until explicit promotion"
+    }
+  ],
+  "precedence": {
+    "layer": "client_catalog_and_compatibility",
+    "priority": 220,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Correct verified catalog families, add standalone immediate Exposure photographs, surface unresolved enchantments, and normalize player-facing duration text",
+    "modifiers": [
+      {
+        "property": "catalog.item_classification",
+        "operation": "replace",
+        "before": "Fairy Lights pennants, Handcrafted bedding and desks, spell scrolls, and death-prevention totems could fall into building, books, miscellaneous, or other noncanonical categories",
+        "after": "Verified Fairy Lights and Handcrafted families use furniture or holiday categories, the single data-driven Iron's scroll item uses weapons, and native-tagged or exact death-prevention totems use wearables"
+      },
+      {
+        "property": "exposure.survival_flow",
+        "operation": "replace",
+        "before": "Exposure requires film development before photographs and exposes high-sensitivity film, Lightroom, and Interplanar Projector recipe paths",
+        "after": "Simpler Exposure delivers one native Photograph after each successful native frame, permits only regular color and black-and-white film, supports configurable capacity from 1 to 16, and suppresses obsolete normal-survival recipes while retaining old saved content"
+      },
+      {
+        "property": "guide.enchantment_completeness",
+        "operation": "add",
+        "before": "A newly loaded registry enchantment without an authored record could be omitted silently",
+        "after": "The loaded registry is compared with verified bilingual records on resource reload and every unresolved registry ID is reported in the tooltip and log"
+      },
+      {
+        "property": "presentation.duration_units",
+        "operation": "replace",
+        "before": "Some handbook and tooltip text exposed fractional Minecraft-day values for short durations",
+        "after": "Short player-facing durations use whole seconds or minutes, calendar-scale values use whole Minecraft days, and native timing units remain unchanged internally"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM catalog, Guidebook, presentation owners, and standalone Simpler Exposure",
+    "kind": "user_requested_quality_of_life",
+    "source_files": [
+      "AGENTS.md",
+      "Docs/DEVELOPMENT.md",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/EnchantmentHelp.java",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
+      "Mods/SimplerExposure"
+    ]
+  },
+  "impacts": {
+    "systems": [
+      "catalog categories",
+      "Exposure survival photography",
+      "enchantment help",
+      "player-facing duration presentation"
+    ],
+    "relations": [
+      "installed registry and native API evidence -> canonical JEM owner -> client presentation"
+    ],
+    "notes": [
+      "Exposure remains the owner of camera capture, frame metadata, image storage, camera controls, networking, and camera stand behavior",
+      "Existing Exposure items, blocks, block entities, frames, and photographs are retained",
+      "Gameplay durations, saved values, configuration values, and packet units are not changed by presentation formatting"
+    ],
+    "unresolved": [
+      "No build, launch, automated validation, gameplay test, or player acceptance was performed because the user explicitly prohibited all testing and green checks for this task"
+    ]
+  }
+}

@@ -52,6 +52,7 @@ public final class JemCatalogCategories {
     private static final TagKey<Item> CREATE_REDSTONE=TagKey.create(Registries.ITEM,new ResourceLocation("jemcompat","jei/create_redstone"));
     private static final TagKey<Item> NATURE=TagKey.create(Registries.ITEM,new ResourceLocation("jemcompat","jei/nature"));
     private static final TagKey<Item> FISHING=TagKey.create(Registries.ITEM,new ResourceLocation("jemcompat","jei/fishing"));
+    private static final TagKey<Item> SKARRIER_TOTEMS=TagKey.create(Registries.ITEM,new ResourceLocation("skarrier_mobs","totems"));
     private static final Map<Block, Boolean> LIGHT_EMISSION = new ConcurrentHashMap<>();
     private static final Set<String> NON_BUILDING_RESOURCES = Set.of(
             "spawn:sunstone", "spawn:moonstone", "spawn:snail_shell", "minecraft:resin_clump",
@@ -59,6 +60,8 @@ public final class JemCatalogCategories {
     private static final Set<String> BEACH_FURNITURE = Set.of("palm_table", "palm_chair", "beach_chair",
             "hooded_beach_chair", "beach_sun_lounger", "palm_bar_stool", "beach_parasol",
             "beach_towel", "radio", "beach_goal");
+    private static final Set<String> FAIRY_LIGHTS_PENNANTS = Set.of("pennant_bunting", "spearhead_pennant",
+            "square_pennant", "swallowtail_pennant", "triangle_pennant");
 
     private JemCatalogCategories() { }
 
@@ -109,8 +112,14 @@ public final class JemCatalogCategories {
         if (isFood(stack, path, cookingCatalyst)) {
             return Kind.FOOD;
         }
+        if (identity.equals("irons_spellbooks:scroll")) {
+            return Kind.WEAPONS;
+        }
         if (isWeapon(stack)) {
             return Kind.WEAPONS;
+        }
+        if (isProtectiveTotem(stack, namespace, path)) {
+            return Kind.WEARABLE;
         }
         if (isWearable(stack, wearer)) {
             return Kind.WEARABLE;
@@ -128,9 +137,9 @@ public final class JemCatalogCategories {
         if (isCreateOrRedstone(stack, namespace, path)) {
             return Kind.CREATE_REDSTONE;
         }
+        if (isHoliday(namespace, path)) return Kind.HOLIDAY;
         if (isFurniture(namespace, path) || namespace.equals("beachparty")) return Kind.FURNITURE;
         if (stack.is(NATURE) || isNature(stack, path)) return Kind.NATURE;
-        if (isHoliday(namespace, path)) return Kind.HOLIDAY;
         if (isBuildingMaterial(stack, namespace, path)) return Kind.BUILDING_BLOCKS;
         return Kind.OTHER;
     }
@@ -269,9 +278,10 @@ public final class JemCatalogCategories {
 
     private static boolean isFurniture(String namespace, String path) {
         return (namespace.equals("beachparty") && BEACH_FURNITURE.contains(path))
+                || namespace.equals("fairylights") && FAIRY_LIGHTS_PENNANTS.contains(path)
                 || hasWord(path, "chair", "table", "sofa", "couch", "stool", "bench", "curtain",
                 "carpet", "painting", "decoration", "display", "parasol", "towel", "radio", "urn",
-                "shelf", "banner", "sign", "bed", "lamp");
+                "shelf", "banner", "sign", "bed", "lamp", "cushion", "sheet", "desk", "pennant", "bunting");
     }
 
     private static boolean isFunctionalWorkstation(String path) {
@@ -289,7 +299,13 @@ public final class JemCatalogCategories {
 
     private static boolean isHoliday(String namespace, String path) {
         return Set.of("moa_decor_holidays", "snowyspirit", "giftypresent").contains(namespace)
+                || namespace.equals("fairylights") && Set.of("garland", "tinsel").contains(path)
                 || hasWord(path, "christmas", "halloween", "holiday", "snowman", "wreath", "garland", "pumpkin_lantern");
+    }
+
+    private static boolean isProtectiveTotem(ItemStack stack, String namespace, String path) {
+        return stack.is(SKARRIER_TOTEMS) || namespace.equals("moretotems") && path.endsWith("_totem_of_undying")
+                || namespace.equals("minecraft") && path.equals("totem_of_undying");
     }
 
     private static boolean isBuildingMaterial(ItemStack stack, String namespace, String path) {

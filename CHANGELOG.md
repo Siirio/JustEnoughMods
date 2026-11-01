@@ -1,3 +1,13 @@
+## 2026-11-01 - Separate JEM Building and quality-of-life development
+
+- User required two independent branches, one for Sandbox JEM Building and one for Test JEM quality-of-life work, with no tests, builds, launches, validations, green checks, or equivalent verification despite the pasted mission's contrary validation sections
+- Sandbox work remains isolated on `sandbox/jem-building`. Test JEM work remains isolated on `feature/test-jem-major-building-qol` and does not include the future three-hammer integration
+- User requested category corrections for furniture, holiday decorations, spell scrolls, and death-prevention totems. Implementation uses exact installed registry IDs, Fairy Lights shared variant items, Iron's single data-driven scroll item, More Totems IDs, and Skarrier's native functional-totems tag
+- User requested standalone Simpler Exposure with immediate photographs, two film types, finite film use, simpler recipes, and no development stage. Implementation uses Exposure 1.9.21's supported successful-frame event and native Photograph metadata, a configurable 1-16 capacity with default 16, inventory-drop fallback, retained camera and stand recipes, and recipe suppression for obsolete survival processing
+- User requested complete enchantment help and no silent omissions. The existing bilingual 124-entry catalog and native registry-backed level, applicability, conflict, and item projection remain the verified content owner, while newly loaded unresolved registry IDs now appear in tooltips and logs
+- User requested permanent human-readable duration presentation. Fractional Minecraft-day text in enchantment help, World Tier armor help, and boss diagnostics now uses seconds or minutes, and `AGENTS.md` permanently names the shared presentation contract without changing native gameplay timing
+- No JAR was built or installed, no Server or Client runtime was synchronized, no AutoModpack generation was staged or published, and no test or validation command was run
+
 ## 2026-11-01 - Restore rotten flesh leather smelting
 
 - User reported that rotten flesh no longer smelted into leather and requested a live recipe reload instead of a server restart

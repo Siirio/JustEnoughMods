@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.simplerexposure.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "simpler_exposure.refmap.json",
+  "mixins": [
+    "FilmRollItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
