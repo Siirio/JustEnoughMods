@@ -1,6 +1,7 @@
 ## 2026-11-01 - Keep native FTB quests unlocked
 
 - Final release scope from the user: build the selected JARs, publish the AutoModpack release and update MineRENT only. Do not update the local dedicated-server runtime, `test jem`, stable `JustEnoughMods` or any other local client profile. The user will update clients manually through AutoModpack
+- JEM Building and Simpler Exposure are promoted from development-only filtering to the shared production inventory for this authorized release. Their selected JARs were already present in `Client/ManagedPack`, but the previous module classification would otherwise have silently excluded both from AutoModpack and MineRENT
 - The user deferred the full generated Atlas refresh for this release. The interrupted generator run was stopped and its generated output was removed, while the required source-owned change records remain
 - User clarified that the public market must not sell any ores or their raw materials, ingots, nuggets, gems, dusts and storage blocks, including installed modded variants, rather than only the initially named diamond, iron and lapis examples
 - JEM Economy 1.3.3 now applies that purchase-only denial through the installed Forge and Common tags. These resources remain visible with their reviewed sale policy and enabled "Sell" action, while the server sends `buyAvailable=false` and the client disables only the "Buy" button
