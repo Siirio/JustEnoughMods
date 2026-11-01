@@ -577,20 +577,20 @@
       "levels": [
         {
           "text": {
-            "ru_ru": "Единица заряда раз в 0.0001250 майнкрафт-дня полного луча.",
-            "en_us": "One charge per 0.0001250 Minecraft days of fully active beam."
+            "ru_ru": "Единица заряда менее чем за 1 секунду полного луча.",
+            "en_us": "One charge in less than 1 second of fully active beam."
           }
         },
         {
           "text": {
-            "ru_ru": "Единица заряда раз в 0.0002083 майнкрафт-дня полного луча.",
-            "en_us": "One charge per 0.0002083 Minecraft days of fully active beam."
+            "ru_ru": "Единица заряда менее чем за 1 секунду полного луча.",
+            "en_us": "One charge in less than 1 second of fully active beam."
           }
         },
         {
           "text": {
-            "ru_ru": "Единица заряда раз в 0.0002500 майнкрафт-дня полного луча.",
-            "en_us": "One charge per 0.0002500 Minecraft days of fully active beam."
+            "ru_ru": "Единица заряда менее чем за 1 секунду полного луча.",
+            "en_us": "One charge in less than 1 second of fully active beam."
           }
         }
       ],
@@ -694,8 +694,8 @@
         "en_us": "Gamma Ray"
       },
       "effect": {
-        "ru_ru": "Луч наносит 2 урона вместо 1,5 и накладывает Облучение V на 0,0333333 майнкрафт-дня. Виды с устойчивостью к радиации не получают этот эффект.",
-        "en_us": "The beam deals 2 damage instead of 1.5 and applies Irradiated V for 0.0333333 Minecraft days. Radiation-resistant entity types do not receive that effect."
+        "ru_ru": "Луч наносит 2 урона вместо 1,5 и накладывает Облучение V на 40 секунд. Виды с устойчивостью к радиации не получают этот эффект.",
+        "en_us": "The beam deals 2 damage instead of 1.5 and applies Irradiated V for 40 seconds. Radiation-resistant entity types do not receive that effect."
       },
       "applies": {
         "ru_ru": "Излучатель (alexscaves:raygun)",
@@ -714,8 +714,8 @@
         "acquisition": 1
       },
       "brief": {
-        "ru_ru": "Луч наносит 2 урона вместо 1,5 и накладывает Облучение V на 0,0333333 майнкрафт-дня.",
-        "en_us": "The beam deals 2 damage instead of 1.5 and applies Irradiated V for 0.0333333 Minecraft days."
+        "ru_ru": "Луч наносит 2 урона вместо 1,5 и накладывает Облучение V на 40 секунд.",
+        "en_us": "The beam deals 2 damage instead of 1.5 and applies Irradiated V for 40 seconds."
       },
       "applies_brief": {
         "ru_ru": "Излучатель (alexscaves:raygun)",
@@ -968,8 +968,8 @@
         "en_us": "Lasting Morale"
       },
       "effect": {
-        "ru_ru": "Призванные раковиной глубинные остаются 0,05 + уровень/60 майнкрафт-дня.",
-        "en_us": "Conch-summoned Deep Ones remain for 0.05 + level/60 Minecraft days."
+        "ru_ru": "Призванные раковиной глубинные остаются на 1 минуту плюс 20 секунд за уровень.",
+        "en_us": "Conch-summoned Deep Ones remain for 1 minute plus 20 seconds per level."
       },
       "applies": {
         "ru_ru": "Волшебная ракушка (alexscaves:magic_conch)",
@@ -985,20 +985,20 @@
       "levels": [
         {
           "text": {
-            "ru_ru": "Призыв: 0.06667 майнкрафт-дня.",
-            "en_us": "Summon duration: 0.06667 Minecraft days."
+            "ru_ru": "Призыв: 1 минута 20 секунд.",
+            "en_us": "Summon duration: 1 minute 20 seconds."
           }
         },
         {
           "text": {
-            "ru_ru": "Призыв: 0.08333 майнкрафт-дня.",
-            "en_us": "Summon duration: 0.08333 Minecraft days."
+            "ru_ru": "Призыв: 1 минута 40 секунд.",
+            "en_us": "Summon duration: 1 minute 40 seconds."
           }
         },
         {
           "text": {
-            "ru_ru": "Призыв: 0.10000 майнкрафт-дня.",
-            "en_us": "Summon duration: 0.10000 Minecraft days."
+            "ru_ru": "Призыв: 2 минуты.",
+            "en_us": "Summon duration: 2 minutes."
           }
         }
       ],
@@ -1008,8 +1008,8 @@
         "acquisition": 1
       },
       "brief": {
-        "ru_ru": "Призванные раковиной глубинные остаются 0,05 + уровень/60 майнкрафт-дня.",
-        "en_us": "Conch-summoned Deep Ones remain for 0.05 + level/60 Minecraft days."
+        "ru_ru": "Призванные раковиной глубинные остаются на 1 минуту плюс 20 секунд за уровень.",
+        "en_us": "Conch-summoned Deep Ones remain for 1 minute plus 20 seconds per level."
       },
       "applies_brief": {
         "ru_ru": "Волшебная ракушка (alexscaves:magic_conch)",
@@ -1216,8 +1216,8 @@
         "en_us": "Soak Seeking"
       },
       "effect": {
-        "ru_ru": "Сила наведения водяного снаряда равна 0,3 + 0,2 × уровень. Зачарованный снаряд начинает доворачивать сразу и может наводиться до 0,0016667 майнкрафт-дня после выстрела.",
-        "en_us": "Water-bolt steering strength is 0.3 + 0.2 × level. Enchanted bolts can steer immediately and continue for up to 0.0016667 Minecraft days after firing."
+        "ru_ru": "Сила наведения водяного снаряда равна 0,3 + 0,2 × уровень. Зачарованный снаряд начинает доворачивать сразу и может наводиться до 2 секунд после выстрела.",
+        "en_us": "Water-bolt steering strength is 0.3 + 0.2 × level. Enchanted bolts can steer immediately and continue for up to 2 seconds after firing."
       },
       "applies": {
         "ru_ru": "Посох моря (alexscaves:sea_staff)",
@@ -1729,7 +1729,7 @@
       },
       "effect": {
         "ru_ru": "Отпускание сразу после полного натяжения удваивает урон стрел. Окно: 0,0001667 + 0,000125 за каждый уровень после I майнкрафт-дня. Уровень расширяет окно, а не множитель.",
-        "en_us": "Releasing just after full charge doubles arrow damage. The window lasts 0.0001667 Minecraft days plus 0.000125 for each level after I. Level widens the window, not the multiplier."
+        "en_us": "Releasing just after full charge doubles arrow damage. The window is less than 1 second and widens slightly for each level after I. Level widens the window, not the multiplier."
       },
       "applies": {
         "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
@@ -2161,20 +2161,20 @@
       "levels": [
         {
           "text": {
-            "ru_ru": "Проклятие: 0.0066667 майнкрафт-дня.",
-            "en_us": "Hex: 0.0066667 Minecraft days."
+            "ru_ru": "Проклятие: 8 секунд.",
+            "en_us": "Hex: 8 seconds."
           }
         },
         {
           "text": {
-            "ru_ru": "Проклятие: 0.0091667 майнкрафт-дня.",
-            "en_us": "Hex: 0.0091667 Minecraft days."
+            "ru_ru": "Проклятие: 11 секунд.",
+            "en_us": "Hex: 11 seconds."
           }
         },
         {
           "text": {
-            "ru_ru": "Проклятие: 0.0116667 майнкрафт-дня.",
-            "en_us": "Hex: 0.0116667 Minecraft days."
+            "ru_ru": "Проклятие: 14 секунд.",
+            "en_us": "Hex: 14 seconds."
           }
         }
       ],
@@ -2721,8 +2721,8 @@
         "en_us": "Grip"
       },
       "effect": {
-        "ru_ru": "Удержание на стене длится дольше на 0,0016667 майнкрафт-дня за уровень при текущей настройке Gouge.",
-        "en_us": "Wall hanging gains 0.0016667 Minecraft days per level with the current Gouge setting."
+        "ru_ru": "Удержание на стене длится дольше на 2 секунды за уровень при текущей настройке Gouge.",
+        "en_us": "Wall hanging gains 2 seconds per level with the current Gouge setting."
       },
       "applies": {
         "ru_ru": "Кирки; параметры самой кирки дополнительно определяют длительность удержания.",
@@ -2769,8 +2769,8 @@
         }
       ],
       "brief": {
-        "ru_ru": "Удержание на стене длится дольше на 0,0016667 майнкрафт-дня за уровень при текущей настройке Gouge.",
-        "en_us": "Wall hanging gains 0.0016667 Minecraft days per level with the current Gouge setting."
+        "ru_ru": "Удержание на стене длится дольше на 2 секунды за уровень при текущей настройке Gouge.",
+        "en_us": "Wall hanging gains 2 seconds per level with the current Gouge setting."
       },
       "applies_brief": {
         "ru_ru": "Кирки; параметры самой кирки дополнительно определяют длительность удержания",
@@ -2784,8 +2784,8 @@
         "en_us": "Momentum"
       },
       "effect": {
-        "ru_ru": "Сокращает восстановление после соскальзывания на 0,0008333 майнкрафт-дня за уровень при текущей настройке Gouge, минимум до нуля.",
-        "en_us": "Reduces wall-slip recovery by 0.0008333 Minecraft days per level with the current Gouge setting, with a zero minimum."
+        "ru_ru": "Сокращает восстановление после соскальзывания на 1 секунду за уровень при текущей настройке Gouge, минимум до нуля.",
+        "en_us": "Reduces wall-slip recovery by 1 second per level with the current Gouge setting, with a zero minimum."
       },
       "applies": {
         "ru_ru": "Кирки; параметры самой кирки дополнительно определяют длительность удержания.",
@@ -2832,8 +2832,8 @@
         }
       ],
       "brief": {
-        "ru_ru": "Сокращает восстановление после соскальзывания на 0,0008333 майнкрафт-дня за уровень при текущей настройке Gouge, минимум до нуля.",
-        "en_us": "Reduces wall-slip recovery by 0.0008333 Minecraft days per level with the current Gouge setting, with a zero minimum."
+        "ru_ru": "Сокращает восстановление после соскальзывания на 1 секунду за уровень при текущей настройке Gouge, минимум до нуля.",
+        "en_us": "Reduces wall-slip recovery by 1 second per level with the current Gouge setting, with a zero minimum."
       },
       "applies_brief": {
         "ru_ru": "Кирки; параметры самой кирки дополнительно определяют длительность удержания",
@@ -2966,8 +2966,8 @@
         },
         {
           "text": {
-            "ru_ru": "35% ослабления; восстановление 0,01 майнкрафт-дня. Реакция тратится при фактическом получении урона.",
-            "en_us": "adds 35% reduction; recovery is 0.01 Minecraft days. Guard is spent when damage is actually taken."
+            "ru_ru": "35% ослабления; восстановление 12 секунд. Реакция тратится при фактическом получении урона.",
+            "en_us": "Adds 35% reduction; recovery is 12 seconds. Guard is spent when damage is actually taken."
           }
         },
         {
@@ -3964,8 +3964,8 @@
         "en_us": "Yamato: Heavy Rain"
       },
       "effect": {
-        "ru_ru": "При сочетании призванного меча с приседанием заменяет спиральные мечи тяжёлым дождём. Требует 3 заряда; перезарядка 0,00125 майнкрафт-дня.",
-        "en_us": "Using summoned swords with sneak replaces spiral swords with Heavy Rain. Requires 3 skill stacks; cooldown is 0.00125 Minecraft days."
+        "ru_ru": "При сочетании призванного меча с приседанием заменяет спиральные мечи тяжёлым дождём. Требует 3 заряда; перезарядка 2 секунды.",
+        "en_us": "Using summoned swords with sneak replaces spiral swords with Heavy Rain. Requires 3 skill stacks; cooldown is 2 seconds."
       },
       "applies": {
         "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч.",

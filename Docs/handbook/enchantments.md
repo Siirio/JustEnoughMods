@@ -4,6 +4,8 @@ The handbook contains 85 source-confirmed non-vanilla enchantment entries in bot
 
 This is documentation coverage, not a second gameplay registry. Original identities remain in `Catalog/registries`; JEM modifications remain in `Catalog/changes` and `Catalog/effective`. The machine-readable accounting file is [enchantments-coverage.json](enchantments-coverage.json).
 
+The loaded Forge enchantment registry remains the runtime completeness authority. The client compares it with the verified bilingual records on each resource reload. Any newly loaded or data-driven enchantment without a verified record is named by registry ID in its tooltip and logged as unresolved instead of being silently omitted.
+
 ## Ownership and interfaces
 
 - `Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json` owns the new bilingual explanatory prose and source references.
