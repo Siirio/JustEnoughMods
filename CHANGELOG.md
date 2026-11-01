@@ -1,3 +1,14 @@
+## 2026-11-01 - Publish the selected MineRENT and AutoModpack release
+
+- User explicitly limited this release to MineRENT and its native AutoModpack catalogue. The ordinary local dedicated Server, `test jem`, stable `JustEnoughMods`, other local client profiles and the immutable client baseline remain untouched, and the user will apply the client update manually
+- Published the reviewed `develop` snapshot `3921fd8dc87bcc619511d74c1380ff793ee962df` after production preflight matched `origin/develop`, 2,916 release files and 2,909 AutoModpack files
+- Release contents include Digger grindstone extraction ownership, shared Xaero terrain synchronization, JEM Building quality-of-life, the verified JEMFood sell-only catalog, durable FTB quest unlocking, rotten-flesh smelting into leather, immediate Luxium shadow activation and the completed JEM Building sandbox promotion
+- Public Market purchase is disabled for ores and their raw materials, ingots, nuggets or pieces, gems, dusts and storage blocks, including installed modded variants. Their reviewed sale path remains enabled
+- MineRENT `JustEnough` returned to `Работает`, completed dedicated-server loading in 98.933 seconds, loaded 15 FTB quest chapters with 643 quests and started shared Xaero terrain synchronization with `syncEnabled=true`
+- Native `/jempack preview` reported exact diff `+7 ~5 -6 (2 excluded)`, then `/jempack publish` completed at 2026-11-01 19:44:45 +05:00 with full content token `2c790b38e9d334f3ecb0e80c8e009a91b8529e8d`. The excluded files remain the separately owned `mods/jem-bootstrap.jar` and `options.txt`
+- A second MineRENT `/jempack preview` returned the same token with `+0 ~0 -0`, proving that the hosted catalogue matches the published generation
+- Xaero Drawing and Atlas regeneration were explicitly deferred. No automated tests, gameplay launch, local Server synchronization, local client application, stable-profile mutation or release-baseline promotion was performed
+
 ## 2026-11-01 - Keep native FTB quests unlocked
 
 - Final release scope from the user: build the selected JARs, publish the AutoModpack release and update MineRENT only. Do not update the local dedicated-server runtime, `test jem`, stable `JustEnoughMods` or any other local client profile. The user will update clients manually through AutoModpack
