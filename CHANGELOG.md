@@ -1,5 +1,7 @@
 ## 2026-11-01 - Separate JEM Building and quality-of-life development
 
+- User later authorized building and installing both isolated development tracks, with Test JEM delivered through native AutoModpack and JEM Building installed only in `jem sandbox`
+- Registered Simpler Exposure as an independently buildable development module in the root Gradle graph and completed the Atlas history fields required for runtime delivery
 - User required two independent branches, one for Sandbox JEM Building and one for Test JEM quality-of-life work, with no tests, builds, launches, validations, green checks, or equivalent verification despite the pasted mission's contrary validation sections
 - Sandbox work remains isolated on `sandbox/jem-building`. Test JEM work remains isolated on `feature/test-jem-major-building-qol` and does not include the future three-hammer integration
 - User requested category corrections for furniture, holiday decorations, spell scrolls, and death-prevention totems. Implementation uses exact installed registry IDs, Fairy Lights shared variant items, Iron's single data-driven scroll item, More Totems IDs, and Skarrier's native functional-totems tag

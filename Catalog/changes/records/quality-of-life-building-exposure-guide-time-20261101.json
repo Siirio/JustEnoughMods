@@ -66,6 +66,30 @@
       "Mods/SimplerExposure"
     ]
   },
+  "rationale": {
+    "purpose": "Implement the user's isolated Test JEM quality-of-life update without merging the separate Sandbox construction branch or replacing native third-party owners",
+    "decision_source": "User mission supplied on 2026-11-01, with the user's later direct authorization to build and install the isolated development artifacts"
+  },
+  "introduced": {
+    "date": "2026-11-01",
+    "commit": "SELF",
+    "action": "implement_test_jem_quality_of_life",
+    "summary": "Add verified category corrections, standalone Simpler Exposure, registry-aware unresolved enchantment reporting, and human-readable duration presentation"
+  },
+  "history": [
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "implement_test_jem_quality_of_life",
+      "summary": "Add the isolated Test JEM source implementation and its permanent ownership documentation"
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "authorize_local_build_and_installation",
+      "summary": "User explicitly authorized JAR builds, local Server synchronization, native AutoModpack publication to test jem, and separate jem sandbox installation"
+    }
+  ],
   "impacts": {
     "systems": [
       "catalog categories",
