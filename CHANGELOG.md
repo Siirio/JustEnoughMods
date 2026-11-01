@@ -12,7 +12,9 @@
 - User requested standalone Simpler Exposure with immediate photographs, two film types, finite film use, simpler recipes, and no development stage. Implementation uses Exposure 1.9.21's supported successful-frame event and native Photograph metadata, a configurable 1-16 capacity with default 16, inventory-drop fallback, retained camera and stand recipes, and recipe suppression for obsolete survival processing
 - User requested complete enchantment help and no silent omissions. The existing bilingual 124-entry catalog and native registry-backed level, applicability, conflict, and item projection remain the verified content owner, while newly loaded unresolved registry IDs now appear in tooltips and logs
 - User requested permanent human-readable duration presentation. Fractional Minecraft-day text in enchantment help, World Tier armor help, and boss diagnostics now uses seconds or minutes, and `AGENTS.md` permanently names the shared presentation contract without changing native gameplay timing
-- No JAR was built or installed, no Server or Client runtime was synchronized, no AutoModpack generation was staged or published, and no test or validation command was run
+- Built the authorized production JARs for JEM Compat 3.9.2, JEM Advancements 5.2.2, JEM Server 2.0.0-dev, JEM World Boss Tiers 2.5.0, Simpler Exposure 1.0.0 and the branch-coherent JEM Twelve Eyes 1.7.0 dependency companion, then synchronized their exact outputs to the ordinary local Server and `Client/ManagedPack`
+- Native AutoModpack publication completed with reviewed delta `+2 ~5 -2` and content token `b2a7db9ce472ca5f9e4adf7d73cb9fd38bb549cf`. A second preview returned `+0 ~0 -0`, and the closed `test jem` profile was updated through the native transaction to the same active token with matching task-owned files and no pending transaction
+- The ordinary local server saved every dimension and stopped after publication. No automated tests, validation suite, formatter, linter, gameplay QA or client launch was performed, and the stable profile, MineRENT and immutable release baseline remain unchanged
 
 ## 2026-11-01 - Restore rotten flesh leather smelting
 
