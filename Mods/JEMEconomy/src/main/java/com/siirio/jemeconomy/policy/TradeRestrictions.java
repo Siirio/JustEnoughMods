@@ -23,6 +23,8 @@ public final class TradeRestrictions {
     private static final Set<String> SUFFIXES = strings("all_npc_path_suffixes");
     private static final Set<String> PREFIXES = strings("all_npc_path_prefixes");
     private static final Set<String> MARKET_NAMESPACES = strings("market_only_namespaces");
+    private static final Set<String> MARKET_PURCHASE_ITEM_TAGS = strings("market_purchase_item_tags");
+    private static final Set<String> MARKET_PURCHASE_BLOCK_TAGS = strings("market_purchase_block_tags");
     private TradeRestrictions() { }
 
     public static boolean npcProhibited(ItemStack stack) {
@@ -45,10 +47,15 @@ public final class TradeRestrictions {
         return !ItemPolicyRegistry.policy(id).sellable();
     }
 
-    public static boolean marketProhibited(ItemStack stack) {
+    public static boolean marketPurchaseProhibited(ItemStack stack) {
         var id = ForgeRegistries.ITEMS.getKey(stack.getItem());
-        return id == null || (MARKET_NAMESPACES.contains(id.getNamespace()) && !ItemPolicyRegistry.policy(id).buyable()) || npcProhibited(stack);
+        if (id == null || (MARKET_NAMESPACES.contains(id.getNamespace()) && !ItemPolicyRegistry.policy(id).buyable()) || npcProhibited(stack)) return true;
+        if (MARKET_PURCHASE_ITEM_TAGS.stream().anyMatch(tag -> stack.is(TagKey.create(Registries.ITEM, new ResourceLocation(tag))))) return true;
+        return stack.getItem() instanceof BlockItem block && MARKET_PURCHASE_BLOCK_TAGS.stream()
+                .anyMatch(tag -> block.getBlock().defaultBlockState().is(TagKey.create(Registries.BLOCK, new ResourceLocation(tag))));
     }
+
+    public static boolean marketProhibited(ItemStack stack) { return marketPurchaseProhibited(stack); }
 
     public static boolean offerProhibited(MerchantOffer offer) { return npcProhibited(offer.getResult()); }
 

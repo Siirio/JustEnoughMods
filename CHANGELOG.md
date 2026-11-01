@@ -1,3 +1,17 @@
+## 2026-11-01 - Keep native FTB quests unlocked
+
+- Final release scope from the user: build the selected JARs, publish the AutoModpack release and update MineRENT only. Do not update the local dedicated-server runtime, `test jem`, stable `JustEnoughMods` or any other local client profile. The user will update clients manually through AutoModpack
+- The user deferred the full generated Atlas refresh for this release. The interrupted generator run was stopped and its generated output was removed, while the required source-owned change records remain
+- User clarified that the public market must not sell any ores or their raw materials, ingots, nuggets, gems, dusts and storage blocks, including installed modded variants, rather than only the initially named diamond, iron and lapis examples
+- JEM Economy 1.3.3 now applies that purchase-only denial through the installed Forge and Common tags. These resources remain visible with their reviewed sale policy and enabled "Sell" action, while the server sends `buyAvailable=false` and the client disables only the "Buy" button
+- The restriction applies only to the public market purchase path. It does not silently broaden villager, player-shop, gift or barter policy beyond their existing owners
+- User reported that all quests still show "Quests locked!" after the earlier one-time recovery
+- Bug / Server Sided / the one-time `ftbquests locked false` command corrected only the currently resolved native team, while a persisted or newly resolved FTB team can retain `locked=true` and reproduce the same client state / in testing through login reconciliation in the existing optional FTB adapter
+- Five Whys: the book stayed locked because the active native `TeamData` still contained `locked=true`, the earlier command changed only one team instance, FTB Teams can resolve a different or later-loaded team record, the recovery was operational rather than an invariant, and JEM had no durable reconciliation at the native team-owner boundary
+- JEM Advancements now calls the audited FTB Quests 2001.4.22 `TeamData.setLocked(false)` API on server login and immediately saves only when that value changes. The native method clears cached progress and sends its own lock synchronization
+- Quest progress, completed tasks, rewards, claims, team identity and unrelated FTB books remain native and unchanged
+- JEM Economy is versioned as 1.3.3 for this selected release so it cleanly supersedes production 1.3.1 and cannot be confused with the unrelated unselected 1.3.2 Major Update 4 artifact. The 1.3.2-only spawn-egg and trophy policy work is not included
+
 ## 2026-11-01 - Preserve grindstone extraction for Digger tools
 
 - User reported that Shift + right click on a grindstone with a Digger-enchanted item only toggled Digger instead of extracting an enchantment

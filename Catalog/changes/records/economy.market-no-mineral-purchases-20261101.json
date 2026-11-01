@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.market-no-mineral-purchases-20261101",
+  "status": "active",
+  "selectors": [
+    { "type": "tag", "registry": "items", "value": "forge:items/ores" },
+    { "type": "tag", "registry": "items", "value": "forge:items/raw_materials" },
+    { "type": "tag", "registry": "items", "value": "forge:items/ingots" },
+    { "type": "tag", "registry": "items", "value": "forge:items/nuggets" },
+    { "type": "tag", "registry": "items", "value": "forge:items/gems" },
+    { "type": "tag", "registry": "items", "value": "forge:items/dusts" },
+    { "type": "tag", "registry": "items", "value": "forge:items/storage_blocks" },
+    { "type": "tag", "registry": "items", "value": "c:items/ores" },
+    { "type": "tag", "registry": "items", "value": "c:items/raw_materials" },
+    { "type": "tag", "registry": "items", "value": "c:items/ingots" },
+    { "type": "tag", "registry": "items", "value": "c:items/nuggets" },
+    { "type": "tag", "registry": "items", "value": "c:items/gems" },
+    { "type": "tag", "registry": "items", "value": "c:items/dusts" },
+    { "type": "tag", "registry": "items", "value": "c:items/storage_blocks" },
+    { "type": "tag", "registry": "blocks", "value": "forge:blocks/ores" },
+    { "type": "tag", "registry": "blocks", "value": "forge:blocks/storage_blocks" },
+    { "type": "tag", "registry": "blocks", "value": "c:blocks/ores" },
+    { "type": "tag", "registry": "blocks", "value": "c:blocks/storage_blocks" }
+  ],
+  "conditions": [
+    { "runtime": "The item is offered through the public JEM market purchase catalog." }
+  ],
+  "precedence": { "layer": "jem_economy_policy", "priority": 1250 },
+  "change": {
+    "summary": "Deny public-market purchases for every tagged ore and mineral form while preserving eligible player sales.",
+    "modifiers": [
+      {
+        "property": "jem_economy.market.purchase",
+        "operation": "deny",
+        "before": "Reviewed two-way policies could expose ores, raw materials, ingots, nuggets, gems, dusts and storage blocks for public purchase.",
+        "after": "Any installed item or block in the Forge/Common ore, raw-material, ingot, nugget, gem, dust or storage-block families remains listed under its reviewed sale policy, but the market sends buyAvailable=false and the client disables its Buy button. Selling remains available."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy public market admission",
+    "kind": "tag_driven_purchase_policy",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent the public market from replacing resource gathering across vanilla and installed mods.",
+    "decision_source": "User clarified that no ore type, its ingots, pieces or blocks may be purchased, not only the initially listed vanilla examples. Codex maps that product rule to the installed Forge/Common tag families and preserves existing sell-side policy."
+  },
+  "introduced": {
+    "date": "2026-11-01",
+    "commit": "SELF",
+    "action": "deny_market_mineral_purchases",
+    "summary": "Project eligible mineral policies as sell-only so their Buy button is disabled while their Sell action remains available."
+  },
+  "history": [
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "deny_market_mineral_purchases",
+      "summary": "Apply one tag-driven rule to vanilla and modded mineral forms without enumerating item IDs, retaining sale listings and disabling only purchase."
+    }
+  ],
+  "impacts": {
+    "systems": ["JEM Economy", "public_market", "resource_progression", "modded_ores", "AutoModpack"],
+    "relations": ["Forge/Common mineral tags -> buyAvailable=false", "Existing sell policy -> retained sell-only listing and enabled Sell button"],
+    "notes": ["Villager offers, player shops, gifts and barter retain their existing independent policy owners."],
+    "unresolved": ["Player-visible market acceptance remains pending the user's first session with the released artifact."]
+  }
+}

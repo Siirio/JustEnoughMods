@@ -93,13 +93,22 @@ public final class MarketSupply {
     private static ItemPolicy policy(ItemStack stack) {
         var id = ForgeRegistries.ITEMS.getKey(stack.getItem());
         var existing = ItemPolicyRegistry.policy(id);
+        if (TradeRestrictions.marketPurchaseProhibited(stack)) {
+            return existing.sellable() && !TradeRestrictions.saleProhibited(stack) ? withoutPurchase(existing) : null;
+        }
         if (existing.sellable() && !TradeRestrictions.saleProhibited(stack)) return existing;
-        if (TradeRestrictions.marketProhibited(stack)) return null;
         if (existing.buyable()) return existing;
         Long price = PRICES.get(id);
         if (price == null || !building(stack)) return null;
         return new ItemPolicy(1, id, ItemPolicy.Outcome.BUY_ONLY, null, price, 256, 4096,
                 "building_supply", "User-authorized building purchase; no NPC buyback. Exact acquisition budget from building_purchase_prices.json");
+    }
+
+    private static ItemPolicy withoutPurchase(ItemPolicy policy) {
+        return new ItemPolicy(policy.schema(), policy.item(), ItemPolicy.Outcome.SELL_ONLY, policy.sellCopper(), null,
+                policy.dailyPlayerUnits(), policy.dailyGlobalUnits(), policy.demandGroup(), policy.notes(),
+                policy.sellDenominator(), policy.buyDenominator(), policy.quotaFamily(), policy.quotaUnits(),
+                policy.fixedPrice(), policy.bulk1024(), policy.maxFinalSellCopper());
     }
 
     private static boolean building(ItemStack stack) {

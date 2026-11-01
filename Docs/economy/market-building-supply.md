@@ -4,7 +4,7 @@ Current source contract, 2026-10-16. The user requested implementation of the ap
 all wood/building variants, wool, glass, paintings and existing Building/Create and
 Redstone category contents become purchasable; permanent exclusions override every
 NPC sale; main Create is excluded from the public market while appropriate villagers
-retain it. Ore exclusions mean ore blocks, not all ingots/gems/refined mineral blocks.
+retain it. The later 2026-11-01 market rule supersedes the old ore-only purchase boundary: public market purchases now exclude every installed Forge/Common ore, raw material, ingot, nugget, gem, dust and storage-block family, while an existing reviewed sale policy remains available as sell-only.
 
 ## Admission and ownership
 
@@ -48,8 +48,7 @@ It is packaged into the mod and cannot be relaxed by a datapack policy reload.
 - Exact items use installed translation/model/loaded-registration evidence, including
   `trials:heavy_core`, backported `minecraft:resin_clump`, Iron's
   `trial_spawner`/`vault`, and all three unfinished Skarrier stone golems.
-- Ores use Forge item/block ore tags, the ore path suffixes and exact untagged Skarrier tangled/wrong deepslate ore identities, ancient debris
-  and gilded blackstone identities. Refined ingots/gems are not selected.
+- Ores use Forge item/block ore tags, the ore path suffixes and exact untagged Skarrier tangled/wrong deepslate ore identities, ancient debris and gilded blackstone identities. For the public market purchase direction only, Forge/Common raw-material, ingot, nugget, gem, dust and storage-block tags are also denied. This later market rule does not broaden the separate villager restriction.
 - All trophy identities use trophy suffix/prefix selectors plus the native trophy
   button whose identity does not carry that suffix. Barrier identities are explicit.
 - Spawn snail shells are prohibited; processed shell tiles/stairs/slabs remain eligible

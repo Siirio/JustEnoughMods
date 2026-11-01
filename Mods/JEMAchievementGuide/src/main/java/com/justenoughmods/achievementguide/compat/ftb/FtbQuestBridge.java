@@ -9,6 +9,7 @@ import dev.ftb.mods.ftbquests.quest.task.CustomTask;
 import java.util.Map;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -54,6 +55,13 @@ public final class FtbQuestBridge {
             return EventResult.pass();
         });
         MinecraftForge.EVENT_BUS.register(FtbQuestBridge.class);
+    }
+
+    @SubscribeEvent
+    public static void unlock(PlayerEvent.PlayerLoggedInEvent event) {
+        if (!(event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player)) return;
+        var data = ServerQuestFile.INSTANCE.getOrCreateTeamData(player);
+        if (data.setLocked(false)) data.saveIfChanged();
     }
 
     @SubscribeEvent

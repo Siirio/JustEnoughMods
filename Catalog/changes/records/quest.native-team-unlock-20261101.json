@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "change_id": "quest.native-team-unlock-20261101",
+  "status": "conditional",
+  "selectors": [
+    { "type": "registry", "registry": "*" }
+  ],
+  "conditions": [
+    { "runtime": "FTB Quests 2001.4.22 is installed and a real server player logs in." }
+  ],
+  "precedence": { "layer": "jem_compatibility", "priority": 1160 },
+  "change": {
+    "summary": "Keep the universal authored quest book available by reconciling the native FTB team lock at login.",
+    "modifiers": [
+      {
+        "property": "ftbquests.team_data.locked",
+        "operation": "replace",
+        "before": "A persisted or newly resolved native team may retain locked=true and make every entry report Quests locked!.",
+        "after": "The existing optional JEMAchievementGuide FTB adapter calls TeamData.setLocked(false) for the logging-in player's native team and saves only when the value changed. Native FTB synchronization, progress, rewards and claims remain authoritative."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide optional FTB Quests adapter",
+    "kind": "native_ftb_team_reconciliation",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestBridge.java",
+      "Mods/JEMAchievementGuide/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the requested unlocked quest state durable without replacing FTB Quests or rewriting progression.",
+    "decision_source": "User reported that all quests still show locked after the earlier operational recovery. Codex selected the exact installed public TeamData API and login seam after inspecting FTB Quests 2001.4.22 bytecode."
+  },
+  "introduced": {
+    "date": "2026-11-01",
+    "commit": "SELF",
+    "action": "reconcile_native_ftb_team_unlock",
+    "summary": "Clear and save only a changed native FTB team lock when its player logs in."
+  },
+  "history": [
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "reconcile_native_ftb_team_unlock",
+      "summary": "Replace one-time command recovery with an idempotent native login reconciliation."
+    }
+  ],
+  "impacts": {
+    "systems": ["FTB Quests", "FTB Teams", "JEMAchievementGuide", "dedicated_server", "integrated_server"],
+    "relations": ["Player login -> native FTB TeamData -> unlocked quest presentation"],
+    "notes": ["TeamData.setLocked performs the installed mod's own cached-progress invalidation and lock synchronization."],
+    "unresolved": ["Player-visible acceptance remains pending the user's first login with the released artifact."]
+  }
+}
