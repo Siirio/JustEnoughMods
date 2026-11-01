@@ -11,7 +11,7 @@ The installed archives were read directly, including declared nested JARs. The f
 | `xaeroworldmap` | `xaeroworldmap-forge-1.20.1-1.46.0.jar` | 322 | 0 | 322 |
 | `xaerominimap` | `xaerominimap-forge-1.20.1-26.4.2.jar` | 646 | 569 | 77 |
 | `xaerolib` | Nested `xaerolib-forge-1.20.1-1.7.1.jar` and `1.7.3.jar` | 46 | 10 | 36 |
-| `mapsyncer` | `mapsyncer-1.0.3-forge-1.20.1.jar` | 85 | 0 | 85 |
+| `mapsyncer` | `mapsyncer-1.0.4beta2-forge-1.20.jar` | 139 | 0 | 139 |
 | `ftbteams` | `ftb-teams-forge-2001.3.2.jar` | 90 | 0 | 90 |
 | `ftblibrary` | `ftb-library-forge-2001.2.13.jar` | 99 | 53 | 47 |
 | `ftbquests` | `ftb-quests-forge-2001.4.22.jar` | 584 | 568 | 66 |
