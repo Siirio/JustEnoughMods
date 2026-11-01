@@ -3,6 +3,7 @@ package com.siirio.jemluxium.client;
 import com.siirio.jemluxium.JEMLuxium;
 import com.siirio.jemluxium.config.LuxiumClientConfig;
 import com.vinlanx.luxium.Config;
+import com.vinlanx.luxium.client.shaders.LuxiumGpuShaderFeatures;
 import net.irisshaders.iris.api.v0.IrisApi;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -50,6 +51,7 @@ final class LuxiumShaderController {
         Config.CLIENT.luxiumEnabled.set(false);
         Config.CLIENT_SPEC.save();
         LuxiumClientConfig.clearRememberedState();
+        LuxiumGpuShaderFeatures.refreshNow();
         reloadEmbeddiumRenderer();
         LOGGER.info("Oculus shaders enabled and Luxium disabled");
     }
@@ -70,6 +72,7 @@ final class LuxiumShaderController {
         Config.CLIENT.luxiumEnabled.set(true);
         Config.CLIENT_SPEC.save();
         previousOculusEnabled = false;
+        LuxiumGpuShaderFeatures.refreshNow();
         reloadEmbeddiumRenderer();
         LOGGER.info("Luxium enabled and Oculus shaders suspended");
     }
@@ -85,6 +88,7 @@ final class LuxiumShaderController {
             previousOculusEnabled = LuxiumClientConfig.PREVIOUS_SHADERS_ENABLED.get();
             LuxiumClientConfig.clearRememberedState();
         }
+        LuxiumGpuShaderFeatures.refreshNow();
         reloadEmbeddiumRenderer();
         LOGGER.info("Luxium disabled and the previous Oculus shader state restored");
     }

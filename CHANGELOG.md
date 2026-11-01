@@ -74,6 +74,10 @@
 - Five Whys: the JAR was absent because compilation failed, compilation failed because duplicate method signatures are illegal, the source contained a repeated accessor block, the initial source-only delivery was intentionally not compiled under the user's earlier no-build instruction, and the duplicate remained undiscovered until the later explicit build request
 - Java 17 is selected explicitly because the workstation default is Java 25 while Forge 1.20.1 and ForgeGradle require Java 17
 - The reobfuscated `jem_building-1.0.0.jar` built successfully and was installed only in the closed `jem sandbox` profile with SHA-256 `7fdc06ab2459594f08a83c7bfcbf1e44d6d871c161be6acf1abebb6dfe0d80e5`
+## 2026-11-01 - Require an explicit branch choice for new work
+
+- User required every request that is at least partly new relative to the active work to begin with an explicit branch question
+- `AGENTS.md` now forbids inferring the branch from the checkout, task type or runtime target and requires waiting for the user's branch choice before starting changes
 
 ## 2026-11-01 - Restore rotten flesh leather smelting
 
@@ -82,6 +86,18 @@
 - Five Whys: rotten flesh produced no leather because the recipe was absent, the server KubeJS file no longer registered it, commit `5e22e2995` removed its line in the same hunk as an unrelated sail recipe, the consolidation did not preserve the independent recipe, and no product decision or Atlas record authorized its removal
 - Restored the unchanged one rotten flesh to one leather smelting conversion with its existing recipe ID. No balance value, item, registry, packet, serializer or client resource changed
 - Existing clients understand the vanilla ingredient, result and smelting serializer, so normal server recipe synchronization is sufficient and no client update, friend package or release-baseline change is required
+
+## 2026-10-31 - Apply Luxium shadows immediately from the in-game switch
+
+- User clarified that selecting "Enable Luxium" inside Minecraft must activate the complete Luxium renderer immediately, without leaving it selected and restarting the game
+- Bug / Client Sided / JEM Luxium changed Luxium's master enabled setting and rebuilt Embeddium, but did not refresh Luxium's cached GPU feature mask, so a client that started with Luxium disabled rebuilt the renderer with every Luxium GPU feature still masked off / in testing
+- Five Whys: the enabled client had no object shadows or lighting because the active GPU feature mask remained zero, the mask was initialized while Luxium was disabled at startup, JEM's switch changed only the Forge config value, the subsequent Embeddium rebuild reused the cached mask, and the adapter omitted the same `LuxiumGpuShaderFeatures.refreshNow()` call used by Luxium's native settings Apply path
+- JEM Luxium 1.0.10 refreshes the installed Luxium 2.8.0 feature mask after every Luxium or Oculus ownership change and before rebuilding Embeddium, so celestial shadows, sky lighting and configured renderer features can activate in the same in-game Apply operation
+- AutoModpack no longer distributes `luxium-client.toml` with `luxiumEnabled = false`. Luxium now owns that generated personal preference locally, so pack updates do not reset the player's renderer selection
+- Oculus mutual exclusion, previous shader restoration, the official Luxium JAR and the existing Embeddium settings route remain unchanged
+- The production JEM Luxium 1.0.10 artifact was built from the hotfix branch rooted at `develop` commit `ee54e4818`, with SHA-256 `a25cb93f207ba879825d9d5b81cff6f4ca1aac1ab73c2cc82a3a3e5614ecd765`
+- Native AutoModpack publication completed with exact diff `+1 ~1 -2` and content token `86c855f`: add JEM Luxium 1.0.10, remove 1.0.9, remove the managed Luxium client config and update the manifest
+- At the user's instruction, `test jem` was not launched and the published generation was not applied to that profile. The user will perform player testing later, so the defect remains `in testing`
 
 ## 2026-10-31 - Repair the integrated-server item and mob tick stall
 

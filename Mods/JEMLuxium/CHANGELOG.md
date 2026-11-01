@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.10
+
+- Refresh Luxium's cached GPU feature mask immediately when the renderer owner changes, before rebuilding Embeddium
+- Make an in-game Luxium enable apply celestial shadows, sky lighting and the complete Luxium render path without a Minecraft restart
+
 ## 1.0.9
 
 - Persist Luxium's first-run warning acknowledgement before suppressing the warning screen, so new installations never retain the 200-tick gate

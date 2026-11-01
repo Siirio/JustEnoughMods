@@ -2,6 +2,7 @@
 
 ## Repository branches and runtime meaning
 
+- Before starting a request that is wholly or partly new relative to the active task, ask the user which branch it must use and wait for the answer. Do not infer the branch from the current checkout, task type or runtime target
 - `main` represents the latest confirmed production state currently running on MineRENT and installed in the stable `JustEnoughMods` profile. Ordinary development never targets `main`
 - `develop` represents the complete current `test jem` state. All ordinary implementation, local publication and review work is committed and pushed here until an explicit production release
 - A temporary `sandbox/<short-purpose>` branch may exist only while work is being exercised in `jem sandbox`. It starts from `develop`, never replaces it, and is deleted after the work is promoted to `develop` or abandoned
