@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "change_id": "recipe.rotten-flesh-leather-restoration-20261101",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:rotten_flesh"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:leather"
+    }
+  ],
+  "precedence": {
+    "layer": "server_kubejs",
+    "priority": 400,
+    "overrides": []
+  },
+  "change": {
+    "summary": "The dedicated server restores the established furnace recipe that smelts one rotten flesh into one leather.",
+    "modifiers": [
+      {
+        "property": "recipe.jem:leather_from_rotten_flesh",
+        "operation": "replace",
+        "before": {
+          "available": false,
+          "reason": "The recipe line was accidentally deleted while unrelated transport recipes were consolidated on 2026-10-14."
+        },
+        "after": {
+          "available": true,
+          "type": "minecraft:smelting",
+          "ingredient": "minecraft:rotten_flesh",
+          "result": "minecraft:leather",
+          "input_count": 1,
+          "result_count": 1
+        },
+        "notes": "The existing recipe ID and conversion are restored unchanged, so recipe synchronization is sufficient for existing clients."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "MineRENT dedicated-server recipe policy",
+    "kind": "server_kubejs_regression_restoration",
+    "source_files": [
+      "Server/kubejs/server_scripts/jem/recipe_replacements.js"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore the previously approved rotten flesh to leather furnace conversion without changing its balance or requiring a client update.",
+    "decision_source": "User report and request for a live recipe reload on 2026-11-01",
+    "user_requested": "Rotten flesh must smelt into leather again and the recipe must be applied through a recipe reload.",
+    "implementation_choice": "Restore the exact historical KubeJS recipe ID and conversion on the dedicated server, then reload KubeJS recipes without restarting MineRENT."
+  },
+  "introduced": {
+    "date": "2026-11-01",
+    "commit": "SELF",
+    "action": "restore_after_regression",
+    "summary": "Restored the established rotten flesh to leather smelting recipe after its accidental deletion.",
+    "source_files": [
+      "Server/kubejs/server_scripts/jem/recipe_replacements.js"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-14",
+      "commit": "5e22e2995",
+      "action": "accidental_removal",
+      "summary": "A broad recipe consolidation removed the established recipe alongside unrelated Immersive Aircraft recipe code.",
+      "source_files": [
+        "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js",
+        "Server/kubejs/server_scripts/jem/recipe_replacements.js"
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "restore_after_regression",
+      "summary": "Restored the exact historical recipe on the dedicated-server KubeJS surface for a live reload.",
+      "source_files": [
+        "Server/kubejs/server_scripts/jem/recipe_replacements.js"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "smelting",
+      "recipes",
+      "server_recipe_sync"
+    ],
+    "relations": [
+      "minecraft:rotten_flesh -> jem:leather_from_rotten_flesh -> minecraft:leather"
+    ],
+    "notes": [
+      "No item, serializer, registry, packet, model, texture or language resource changes.",
+      "Existing Forge clients receive the restored recipe through normal server recipe synchronization."
+    ],
+    "unresolved": [
+      "Player acceptance on MineRENT remains pending after the live KubeJS recipe reload."
+    ]
+  }
+}

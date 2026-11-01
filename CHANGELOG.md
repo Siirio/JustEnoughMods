@@ -1,3 +1,11 @@
+## 2026-11-01 - Restore rotten flesh leather smelting
+
+- User reported that rotten flesh no longer smelted into leather and requested a live recipe reload instead of a server restart
+- Bug / Server Sided / the 2026-10-14 recipe consolidation accidentally deleted `jem:leather_from_rotten_flesh` alongside unrelated Immersive Aircraft recipe code / in testing through restoration of the exact established KubeJS recipe followed by a live MineRENT recipe reload
+- Five Whys: rotten flesh produced no leather because the recipe was absent, the server KubeJS file no longer registered it, commit `5e22e2995` removed its line in the same hunk as an unrelated sail recipe, the consolidation did not preserve the independent recipe, and no product decision or Atlas record authorized its removal
+- Restored the unchanged one rotten flesh to one leather smelting conversion with its existing recipe ID. No balance value, item, registry, packet, serializer or client resource changed
+- Existing clients understand the vanilla ingredient, result and smelting serializer, so normal server recipe synchronization is sufficient and no client update, friend package or release-baseline change is required
+
 ## 2026-10-31 - Repair the integrated-server item and mob tick stall
 
 - User reported mined coal repeatedly snapping between two positions without being collected, then zombies and other mobs freezing, losing aggression and becoming unhittable across multiple chunks in the original singleplayer profile

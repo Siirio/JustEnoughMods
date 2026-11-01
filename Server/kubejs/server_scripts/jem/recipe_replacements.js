@@ -33,6 +33,7 @@ ServerEvents.recipes(event => {
     'minecraft:honey_bottle'
   ]).id('jemcompat:aircraft_fuel')
   }
+  event.smelting('minecraft:leather', 'minecraft:rotten_flesh').id('jem:leather_from_rotten_flesh')
   if (Platform.isLoaded('farm_and_charm')) event.remove({ id: 'farm_and_charm:feeding_trough' })
   if (Platform.isLoaded('tide')) {
   event.replaceInput({}, 'minecraft:fishing_rod', '#jem:valid_fishing_rods')

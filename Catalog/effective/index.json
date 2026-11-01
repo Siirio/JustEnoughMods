@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "7ba4a20e47034eb333eeab059698a90ca3b010c64a2d134e40b47e91c95a9dfc",
+  "change_records_sha256": "74f91468c50695ec1eda7ec57d1f79821a25cc831c440c5640495e6e660b85ac",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -2423,6 +2423,26 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "recipe.rotten-flesh-leather-restoration-20261101",
+      "status": "active",
+      "summary": "The dedicated server restores the established furnace recipe that smelts one rotten flesh into one leather.",
+      "record": "Catalog/changes/records/recipe.rotten-flesh-leather-restoration-20261101.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:rotten_flesh"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:leather"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 2
     },
     {
       "change_id": "client.recruits-debug-labels-pose-ownership",
@@ -9361,7 +9381,7 @@
     "Server/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json": "0c2f19322b3f385388a186f899d7443007fabb476766e857f0d0cd99aba3b419",
     "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json": "be3e3abae776770e597b3a18e072fe956c2c3b213a2e7bcb38212562d393c3a3",
     "Server/kubejs/server_scripts/jem/economy_recipe_guards.js": "ab1c775eab767a11173b98599cf245610ba63d6a447c0da3a376189ab0b41e35",
-    "Server/kubejs/server_scripts/jem/recipe_replacements.js": "fa50f76dd76057a80827898a456562aeae6a8512d211b43eaf3a18078114df9f",
+    "Server/kubejs/server_scripts/jem/recipe_replacements.js": "dba7f8265f34a91bbd1b1c0a85d7d74d48552112ab210818c96a4262b7750413",
     "Server/mods/copperagebackport-forge-1.20.1-0.1.5.jar": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
     "Server/mods/jem-advancements-5.2.2.jar": "4e6ff216841b93f1c73fb1c678b289db08752681b5a6539bfb51f3e67d3d140b",
     "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar": "37d531119e894b020dc398050f3de3ff50a8d460ba7a636751fee9ab317a81e0",
