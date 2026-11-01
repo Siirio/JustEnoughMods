@@ -21,15 +21,22 @@ public final class ConstructionData extends SavedData {
         return level.getDataStorage().computeIfAbsent(ConstructionData::load, ConstructionData::new, NAME);
     }
 
-    public Region create(UUID owner, ConstructionShape shape, ConstructionPlane plane, BlockPos first, BlockPos second) {
-        int radius = shape == ConstructionShape.SPHERE ? ConstructionGeometry.sphereRadius(first, second) : 0;
+    public Region create(UUID owner, ConstructionShape shape, ConstructionPlane plane, BlockPos first, BlockPos second,
+                         long expiresAtGameTime) {
+        int radius = switch (shape) {
+            case SPHERE -> ConstructionGeometry.sphereRadius(first, second);
+            case CYLINDER -> ConstructionGeometry.cylinderRadius(first, second);
+            default -> 0;
+        };
+        boolean radial = shape == ConstructionShape.SPHERE || shape == ConstructionShape.CYLINDER;
         Region region = new Region(UUID.randomUUID(), owner, shape, plane, first.getX(), first.getY(), first.getZ(), radius,
-                shape == ConstructionShape.SPHERE ? first.getX() - radius : Math.min(first.getX(), second.getX()),
+                radial ? first.getX() - radius : Math.min(first.getX(), second.getX()),
                 shape == ConstructionShape.SPHERE ? first.getY() - radius : Math.min(first.getY(), second.getY()),
-                shape == ConstructionShape.SPHERE ? first.getZ() - radius : Math.min(first.getZ(), second.getZ()),
-                shape == ConstructionShape.SPHERE ? first.getX() + radius : Math.max(first.getX(), second.getX()),
+                radial ? first.getZ() - radius : Math.min(first.getZ(), second.getZ()),
+                radial ? first.getX() + radius : Math.max(first.getX(), second.getX()),
                 shape == ConstructionShape.SPHERE ? first.getY() + radius : Math.max(first.getY(), second.getY()),
-                shape == ConstructionShape.SPHERE ? first.getZ() + radius : Math.max(first.getZ(), second.getZ()), false);
+                radial ? first.getZ() + radius : Math.max(first.getZ(), second.getZ()),
+                expiresAtGameTime, false);
         regions.add(region);
         setDirty();
         return region;
@@ -50,6 +57,16 @@ public final class ConstructionData extends SavedData {
     public void cancel(Region region) {
         region.cancelled = true;
         setDirty();
+    }
+
+    public void initializeMissingExpirations(long expiresAtGameTime) {
+        boolean changed = false;
+        for (Region region : regions) {
+            if (region.cancelled || region.expiresAtGameTime != Long.MIN_VALUE) continue;
+            region.expiresAtGameTime = expiresAtGameTime;
+            changed = true;
+        }
+        if (changed) setDirty();
     }
 
     @Override
@@ -85,12 +102,13 @@ public final class ConstructionData extends SavedData {
         private final int maxX;
         private final int maxY;
         private final int maxZ;
+        private long expiresAtGameTime;
         private boolean cancelled;
         private List<BlockPos> positions;
 
         private Region(UUID id, UUID owner, ConstructionShape shape, ConstructionPlane plane,
                        int originX, int originY, int originZ, int radius, int minX, int minY, int minZ,
-                       int maxX, int maxY, int maxZ, boolean cancelled) {
+                       int maxX, int maxY, int maxZ, long expiresAtGameTime, boolean cancelled) {
             this.id = id;
             this.owner = owner;
             this.shape = shape;
@@ -105,6 +123,7 @@ public final class ConstructionData extends SavedData {
             this.maxX = maxX;
             this.maxY = maxY;
             this.maxZ = maxZ;
+            this.expiresAtGameTime = expiresAtGameTime;
             this.cancelled = cancelled;
         }
 
@@ -118,6 +137,7 @@ public final class ConstructionData extends SavedData {
         public int maxX() { return maxX; }
         public int maxY() { return maxY; }
         public int maxZ() { return maxZ; }
+        public long expiresAtGameTime() { return expiresAtGameTime; }
         public boolean cancelled() { return cancelled; }
 
         public boolean contains(BlockPos pos) {
@@ -126,6 +146,7 @@ public final class ConstructionData extends SavedData {
             return switch (shape) {
                 case WALL, FLOOR, COLUMN -> true;
                 case SPHERE -> sphereCell(pos.getX() - originX, pos.getY() - originY, pos.getZ() - originZ);
+                case CYLINDER -> cylinderCell(pos.getX() - originX, pos.getZ() - originZ);
             };
         }
 
@@ -156,6 +177,9 @@ public final class ConstructionData extends SavedData {
             if (shape == ConstructionShape.SPHERE) {
                 positions = ConstructionGeometry.spherePositions(new BlockPos(originX, originY, originZ), radius);
                 return positions;
+            } else if (shape == ConstructionShape.CYLINDER) {
+                positions = ConstructionGeometry.cylinderPositions(new BlockPos(originX, originY, originZ), radius, minY, maxY);
+                return positions;
             } else {
                 for (int y = minY; y <= maxY; y++) for (int z = minZ; z <= maxZ; z++)
                     for (int x = minX; x <= maxX; x++) built.add(new BlockPos(x, y, z));
@@ -169,6 +193,11 @@ public final class ConstructionData extends SavedData {
             return distance >= Math.max(0D, radius - 0.5D) && distance <= radius + 0.5D;
         }
 
+        private boolean cylinderCell(int dx, int dz) {
+            double distance = Math.sqrt((double) dx * dx + (double) dz * dz);
+            return distance >= Math.max(0D, radius - 0.5D) && distance <= radius + 0.5D;
+        }
+
         private CompoundTag save() {
             CompoundTag tag = new CompoundTag();
             tag.putUUID("Id", id);
@@ -179,6 +208,7 @@ public final class ConstructionData extends SavedData {
             tag.putInt("Radius", radius);
             tag.putInt("MinX", minX); tag.putInt("MinY", minY); tag.putInt("MinZ", minZ);
             tag.putInt("MaxX", maxX); tag.putInt("MaxY", maxY); tag.putInt("MaxZ", maxZ);
+            tag.putLong("ExpiresAtGameTime", expiresAtGameTime);
             tag.putBoolean("Cancelled", cancelled);
             return tag;
         }
@@ -193,7 +223,9 @@ public final class ConstructionData extends SavedData {
                     tag.contains("OriginZ", Tag.TAG_INT) ? tag.getInt("OriginZ") : tag.getInt("MinZ"),
                     tag.getInt("Radius"),
                     tag.getInt("MinX"), tag.getInt("MinY"), tag.getInt("MinZ"),
-                    tag.getInt("MaxX"), tag.getInt("MaxY"), tag.getInt("MaxZ"), tag.getBoolean("Cancelled"));
+                    tag.getInt("MaxX"), tag.getInt("MaxY"), tag.getInt("MaxZ"),
+                    tag.contains("ExpiresAtGameTime", Tag.TAG_LONG) ? tag.getLong("ExpiresAtGameTime") : Long.MIN_VALUE,
+                    tag.getBoolean("Cancelled"));
         }
     }
 }

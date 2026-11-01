@@ -4,5 +4,6 @@ public enum ConstructionShape {
     WALL,
     FLOOR,
     COLUMN,
-    SPHERE
+    SPHERE,
+    CYLINDER
 }

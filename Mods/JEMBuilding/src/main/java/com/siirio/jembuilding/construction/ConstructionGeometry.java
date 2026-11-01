@@ -18,12 +18,19 @@ public final class ConstructionGeometry {
             case WALL, FLOOR -> plane.constrain(start, limited);
             case COLUMN -> new BlockPos(start.getX(), limited.getY(), start.getZ());
             case SPHERE -> constrainSphere(start, limited);
+            case CYLINDER -> constrainCylinder(start, limited);
         };
     }
 
     public static int sphereRadius(BlockPos center, BlockPos endpoint) {
         double distance = Math.sqrt(center.distSqr(endpoint));
         return Math.min(MAX_SPHERE_RADIUS, Math.max(0, (int) Math.round(distance)));
+    }
+
+    public static int cylinderRadius(BlockPos center, BlockPos endpoint) {
+        double dx = endpoint.getX() - center.getX();
+        double dz = endpoint.getZ() - center.getZ();
+        return Math.min(MAX_SPHERE_RADIUS, Math.max(0, (int) Math.round(Math.sqrt(dx * dx + dz * dz))));
     }
 
     public static boolean validSpan(BlockPos first, BlockPos second) {
@@ -48,6 +55,22 @@ public final class ConstructionGeometry {
         return Collections.unmodifiableList(positions);
     }
 
+    public static List<BlockPos> cylinderPositions(BlockPos center, int radius, int minY, int maxY) {
+        List<BlockPos> positions = new ArrayList<>();
+        if (radius == 0) {
+            for (int y = minY; y <= maxY; y++) positions.add(new BlockPos(center.getX(), y, center.getZ()));
+            return Collections.unmodifiableList(positions);
+        }
+        double innerSquared = Math.max(0D, (radius - 0.5D) * (radius - 0.5D));
+        double outerSquared = (radius + 0.5D) * (radius + 0.5D);
+        for (int dx = -radius; dx <= radius; dx++) for (int dz = -radius; dz <= radius; dz++) {
+            double distanceSquared = (double) dx * dx + (double) dz * dz;
+            if (distanceSquared < innerSquared || distanceSquared > outerSquared) continue;
+            for (int y = minY; y <= maxY; y++) positions.add(new BlockPos(center.getX() + dx, y, center.getZ() + dz));
+        }
+        return Collections.unmodifiableList(positions);
+    }
+
     private static BlockPos constrainSphere(BlockPos center, BlockPos requested) {
         int radius = sphereRadius(center, requested);
         if (radius == 0) return center;
@@ -57,6 +80,17 @@ public final class ConstructionGeometry {
         double length = Math.sqrt(dx * dx + dy * dy + dz * dz);
         if (length < 1.0E-5D) return center.offset(radius, 0, 0);
         return center.offset((int) Math.round(dx / length * radius), (int) Math.round(dy / length * radius),
+                (int) Math.round(dz / length * radius));
+    }
+
+    private static BlockPos constrainCylinder(BlockPos center, BlockPos requested) {
+        int radius = cylinderRadius(center, requested);
+        if (radius == 0) return new BlockPos(center.getX(), requested.getY(), center.getZ());
+        double dx = requested.getX() - center.getX();
+        double dz = requested.getZ() - center.getZ();
+        double length = Math.sqrt(dx * dx + dz * dz);
+        if (length < 1.0E-5D) return new BlockPos(center.getX() + radius, requested.getY(), center.getZ());
+        return center.offset((int) Math.round(dx / length * radius), requested.getY() - center.getY(),
                 (int) Math.round(dz / length * radius));
     }
 

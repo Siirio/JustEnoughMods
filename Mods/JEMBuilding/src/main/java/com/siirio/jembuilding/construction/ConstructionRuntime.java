@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
@@ -37,8 +38,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public final class ConstructionRuntime {
     private static final int WORLD_WORK_PER_TICK = 512;
     private static final int FILL_SCAN_PER_TICK = 256;
+    private static final int EXPIRY_CHECK_INTERVAL_TICKS = 200;
+    private static final long TEMPORARY_LIFETIME_TICKS = 7L * 24_000L;
     private static final Deque<RegionWork> WORLD_WORK = new ArrayDeque<>();
     private static final Map<UUID, FillWork> FILL_WORK = new HashMap<>();
+    private static final Map<ServerLevel, PriorityQueue<ConstructionData.Region>> EXPIRY_QUEUES = new HashMap<>();
     private static final Set<String> CHUNK_WORK = new HashSet<>();
     private static final ThreadLocal<Boolean> NATIVE_FILL = ThreadLocal.withInitial(() -> false);
 
@@ -57,6 +61,7 @@ public final class ConstructionRuntime {
             case WALL -> ConstructionPlane.wallFromLook(player.getLookAngle());
             case FLOOR -> ConstructionPlane.XZ;
             case COLUMN, SPHERE -> ConstructionPlane.XY;
+            case CYLINDER -> ConstructionPlane.XZ;
         };
         BuilderHammerItem.setStart(hammer, start, shape, plane);
         player.getInventory().setChanged();
@@ -84,8 +89,18 @@ public final class ConstructionRuntime {
                 player.displayClientMessage(Component.translatable("message.jem_building.outside_world"), true);
                 return;
             }
+        } else if (shape == ConstructionShape.CYLINDER) {
+            int radius = ConstructionGeometry.cylinderRadius(start, end);
+            if (!within(level, new BlockPos(start.getX() - radius, Math.min(start.getY(), end.getY()), start.getZ() - radius))
+                    || !within(level, new BlockPos(start.getX() + radius, Math.max(start.getY(), end.getY()), start.getZ() + radius))) {
+                player.displayClientMessage(Component.translatable("message.jem_building.cylinder_outside_world"), true);
+                return;
+            }
         }
-        ConstructionData.Region region = ConstructionData.get(level).create(player.getUUID(), shape, selectedPlane, start, end);
+        PriorityQueue<ConstructionData.Region> expiryQueue = expiryQueue(level);
+        ConstructionData.Region region = ConstructionData.get(level).create(player.getUUID(), shape, selectedPlane, start, end,
+                level.getGameTime() + TEMPORARY_LIFETIME_TICKS);
+        expiryQueue.add(region);
         WORLD_WORK.addLast(new RegionWork(level, region, false));
         BuilderHammerItem.clear(hammer);
         player.getInventory().setChanged();
@@ -142,9 +157,21 @@ public final class ConstructionRuntime {
         });
     }
 
+    public static long remainingLifetime(ServerPlayer player, BlockPos pos) {
+        ServerLevel level = player.serverLevel();
+        if (!level.hasChunkAt(pos) || player.distanceToSqr(Vec3.atCenterOf(pos)) > 64D
+                || !level.getBlockState(pos).is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get())) return -1L;
+        return ConstructionData.get(level).at(pos)
+                .map(region -> Math.max(0L, region.expiresAtGameTime() - level.getGameTime()))
+                .orElse(-1L);
+    }
+
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
+        if (event.getServer().getTickCount() % EXPIRY_CHECK_INTERVAL_TICKS == 0) {
+            for (ServerLevel level : event.getServer().getAllLevels()) expireDue(level);
+        }
         int remaining = WORLD_WORK_PER_TICK;
         int rounds = WORLD_WORK.size();
         while (remaining > 0 && rounds-- > 0 && !WORLD_WORK.isEmpty()) {
@@ -173,6 +200,7 @@ public final class ConstructionRuntime {
     public static void stopped(ServerStoppedEvent event) {
         WORLD_WORK.clear();
         FILL_WORK.clear();
+        EXPIRY_QUEUES.clear();
         CHUNK_WORK.clear();
         NATIVE_FILL.remove();
     }
@@ -188,21 +216,46 @@ public final class ConstructionRuntime {
     }
 
     private static void apply(ServerLevel level, ConstructionData.Region region, BlockPos pos, boolean remove) {
-        ServerPlayer owner = level.getServer().getPlayerList().getPlayer(region.owner());
-        if (owner == null || owner.serverLevel() != level) return;
         BlockState current = level.getBlockState(pos);
         if (remove) {
-            if (current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) && permitted(owner, pos, owner.getMainHandItem())) {
+            boolean claimedByActiveRegion = ConstructionData.get(level).at(pos)
+                    .filter(active -> !active.id().equals(region.id())).isPresent();
+            if (current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) && !claimedByActiveRegion) {
                 level.setBlock(pos, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
             }
             return;
         }
+        ServerPlayer owner = level.getServer().getPlayerList().getPlayer(region.owner());
+        if (owner == null || owner.serverLevel() != level) return;
         if (current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) || !current.canBeReplaced()) return;
         ItemStack permissionStack = new ItemStack(BuildingContent.BUILDER_HAMMER.get());
         if (!permitted(owner, pos, permissionStack)) return;
         BlockSnapshot snapshot = BlockSnapshot.create(level.dimension(), level, pos);
         if (!level.setBlock(pos, BuildingContent.CONSTRUCTION_PLACEHOLDER.get().defaultBlockState(), Block.UPDATE_ALL)) return;
         if (ForgeEventFactory.onBlockPlace(owner, snapshot, Direction.UP)) snapshot.restore(true, false);
+    }
+
+    private static PriorityQueue<ConstructionData.Region> expiryQueue(ServerLevel level) {
+        return EXPIRY_QUEUES.computeIfAbsent(level, key -> {
+            ConstructionData data = ConstructionData.get(key);
+            data.initializeMissingExpirations(key.getGameTime() + TEMPORARY_LIFETIME_TICKS);
+            PriorityQueue<ConstructionData.Region> queue = new PriorityQueue<>(
+                    java.util.Comparator.comparingLong(ConstructionData.Region::expiresAtGameTime));
+            for (ConstructionData.Region region : data.all()) if (!region.cancelled()) queue.add(region);
+            return queue;
+        });
+    }
+
+    private static void expireDue(ServerLevel level) {
+        PriorityQueue<ConstructionData.Region> queue = expiryQueue(level);
+        ConstructionData data = ConstructionData.get(level);
+        long gameTime = level.getGameTime();
+        while (!queue.isEmpty() && queue.peek().expiresAtGameTime() <= gameTime) {
+            ConstructionData.Region region = queue.remove();
+            if (region.cancelled()) continue;
+            data.cancel(region);
+            WORLD_WORK.addLast(new RegionWork(level, region, true));
+        }
     }
 
     private static final class RegionWork {

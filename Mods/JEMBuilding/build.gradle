@@ -9,10 +9,14 @@ base { archivesName = mod_id }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: mapping_channel, version: mapping_version }
 
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+    maven { url = "https://api.modrinth.com/maven" }
+}
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    compileOnly fg.deobf("maven.modrinth:jade:${jade_version}")
 }
 
 tasks.named('processResources', ProcessResources).configure {

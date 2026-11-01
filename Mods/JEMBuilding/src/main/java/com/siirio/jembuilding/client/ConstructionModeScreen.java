@@ -24,9 +24,10 @@ public final class ConstructionModeScreen extends Screen {
     private static final int SLATE_HOVER = 0xF02B3440;
     private static final List<Choice> CHOICES = List.of(
             new Choice(ConstructionShape.WALL, 0, -ORBIT, new ItemStack(Items.BRICKS)),
-            new Choice(ConstructionShape.FLOOR, ORBIT, 0, new ItemStack(Items.GRASS_BLOCK)),
-            new Choice(ConstructionShape.COLUMN, 0, ORBIT, new ItemStack(Items.LIGHTNING_ROD)),
-            new Choice(ConstructionShape.SPHERE, -ORBIT, 0, new ItemStack(Items.SLIME_BALL)));
+            new Choice(ConstructionShape.FLOOR, 55, -18, new ItemStack(Items.GRASS_BLOCK)),
+            new Choice(ConstructionShape.COLUMN, 34, 47, new ItemStack(Items.LIGHTNING_ROD)),
+            new Choice(ConstructionShape.SPHERE, -34, 47, new ItemStack(Items.SLIME_BALL)),
+            new Choice(ConstructionShape.CYLINDER, -55, -18, new ItemStack(Items.CAULDRON)));
 
     private final BlockPos clicked;
     private final Direction face;
@@ -90,6 +91,7 @@ public final class ConstructionModeScreen extends Screen {
             case WALL -> ConstructionPlane.wallFromLook(look);
             case FLOOR -> ConstructionPlane.XZ;
             case COLUMN, SPHERE -> ConstructionPlane.XY;
+            case CYLINDER -> ConstructionPlane.XZ;
         };
         ItemStack hammer = minecraft.player.getItemInHand(hand);
         if (!(hammer.getItem() instanceof BuilderHammerItem)) {

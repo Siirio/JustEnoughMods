@@ -27,6 +27,9 @@ public final class ConstructionPreview {
     private static BlockPos cachedSphereCenter;
     private static int cachedSphereRadius = -1;
     private static List<BlockPos> cachedSphereCells = List.of();
+    private static BlockPos cachedCylinderCenter;
+    private static BlockPos cachedCylinderEnd;
+    private static List<BlockPos> cachedCylinderCells = List.of();
 
     public record Selection(BlockPos start, BlockPos end, ConstructionShape shape, ConstructionPlane plane) { }
 
@@ -53,12 +56,16 @@ public final class ConstructionPreview {
         int radius = Math.max(32, client.options.getEffectiveRenderDistance() * 16 + 16);
         int sphereRadius = selection.shape() == ConstructionShape.SPHERE
                 ? ConstructionGeometry.sphereRadius(selection.start(), selection.end()) : 0;
-        int shapeMinX = selection.shape() == ConstructionShape.SPHERE ? selection.start().getX() - sphereRadius : Math.min(selection.start().getX(), selection.end().getX());
-        int shapeMaxX = selection.shape() == ConstructionShape.SPHERE ? selection.start().getX() + sphereRadius : Math.max(selection.start().getX(), selection.end().getX());
+        int cylinderRadius = selection.shape() == ConstructionShape.CYLINDER
+                ? ConstructionGeometry.cylinderRadius(selection.start(), selection.end()) : 0;
+        boolean radial = selection.shape() == ConstructionShape.SPHERE || selection.shape() == ConstructionShape.CYLINDER;
+        int radialRadius = selection.shape() == ConstructionShape.SPHERE ? sphereRadius : cylinderRadius;
+        int shapeMinX = radial ? selection.start().getX() - radialRadius : Math.min(selection.start().getX(), selection.end().getX());
+        int shapeMaxX = radial ? selection.start().getX() + radialRadius : Math.max(selection.start().getX(), selection.end().getX());
         int shapeMinY = selection.shape() == ConstructionShape.SPHERE ? selection.start().getY() - sphereRadius : Math.min(selection.start().getY(), selection.end().getY());
         int shapeMaxY = selection.shape() == ConstructionShape.SPHERE ? selection.start().getY() + sphereRadius : Math.max(selection.start().getY(), selection.end().getY());
-        int shapeMinZ = selection.shape() == ConstructionShape.SPHERE ? selection.start().getZ() - sphereRadius : Math.min(selection.start().getZ(), selection.end().getZ());
-        int shapeMaxZ = selection.shape() == ConstructionShape.SPHERE ? selection.start().getZ() + sphereRadius : Math.max(selection.start().getZ(), selection.end().getZ());
+        int shapeMinZ = radial ? selection.start().getZ() - radialRadius : Math.min(selection.start().getZ(), selection.end().getZ());
+        int shapeMaxZ = radial ? selection.start().getZ() + radialRadius : Math.max(selection.start().getZ(), selection.end().getZ());
         int minX = Math.max(shapeMinX, Mth.floor(camera.x) - radius);
         int maxX = Math.min(shapeMaxX, Mth.floor(camera.x) + radius);
         int minY = Math.max(shapeMinY, client.level.getMinBuildHeight());
@@ -77,6 +84,8 @@ public final class ConstructionPreview {
                 case WALL, FLOOR -> drawGrid(vertices, poses, selection.plane(), minX, minY, minZ, maxX, maxY, maxZ);
                 case COLUMN -> drawBox(vertices, poses, minX, minY, minZ, maxX + 1D, maxY + 1D, maxZ + 1D);
                 case SPHERE -> drawSphereBlocks(vertices, poses, selection.start(), sphereRadius,
+                        minX, minY, minZ, maxX, maxY, maxZ);
+                case CYLINDER -> drawCylinderBlocks(vertices, poses, selection.start(), selection.end(), cylinderRadius,
                         minX, minY, minZ, maxX, maxY, maxZ);
             }
             buffers.endBatch(type);
@@ -104,7 +113,7 @@ public final class ConstructionPreview {
             }
             return new BlockPos(start.getX(), Mth.floor(eye.y + look.y * travel), start.getZ());
         }
-        if (shape == ConstructionShape.SPHERE && client.hitResult != null) {
+        if ((shape == ConstructionShape.SPHERE || shape == ConstructionShape.CYLINDER) && client.hitResult != null) {
             return BlockPos.containing(client.hitResult.getLocation());
         }
         double coordinate = switch (plane) { case XY -> start.getZ() + 0.5D; case ZY -> start.getX() + 0.5D; case XZ -> start.getY() + 0.5D; };
@@ -143,6 +152,24 @@ public final class ConstructionPreview {
         int stride = Math.max(1, (cachedSphereCells.size() + MAX_SPHERE_PREVIEW_CELLS - 1) / MAX_SPHERE_PREVIEW_CELLS);
         for (int index = 0; index < cachedSphereCells.size(); index += stride) {
             BlockPos pos = cachedSphereCells.get(index);
+            if (pos.getX() < minX || pos.getX() > maxX || pos.getY() < minY || pos.getY() > maxY
+                    || pos.getZ() < minZ || pos.getZ() > maxZ) continue;
+            drawBox(out, poses, pos.getX() + 0.002D, pos.getY() + 0.002D, pos.getZ() + 0.002D,
+                    pos.getX() + 0.998D, pos.getY() + 0.998D, pos.getZ() + 0.998D);
+        }
+    }
+
+    private static void drawCylinderBlocks(VertexConsumer out, PoseStack poses, BlockPos center, BlockPos end, int radius,
+                                           int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+        if (!center.equals(cachedCylinderCenter) || !end.equals(cachedCylinderEnd)) {
+            cachedCylinderCenter = center.immutable();
+            cachedCylinderEnd = end.immutable();
+            cachedCylinderCells = ConstructionGeometry.cylinderPositions(center, radius,
+                    Math.min(center.getY(), end.getY()), Math.max(center.getY(), end.getY()));
+        }
+        int stride = Math.max(1, (cachedCylinderCells.size() + MAX_SPHERE_PREVIEW_CELLS - 1) / MAX_SPHERE_PREVIEW_CELLS);
+        for (int index = 0; index < cachedCylinderCells.size(); index += stride) {
+            BlockPos pos = cachedCylinderCells.get(index);
             if (pos.getX() < minX || pos.getX() > maxX || pos.getY() < minY || pos.getY() > maxY
                     || pos.getZ() < minZ || pos.getZ() > maxZ) continue;
             drawBox(out, poses, pos.getX() + 0.002D, pos.getY() + 0.002D, pos.getZ() + 0.002D,

@@ -16,13 +16,19 @@
         "property": "jem_building.construction",
         "operation": "add",
         "before": null,
-        "after": "A left-click radial menu selects wall, floor, 1x1 column, or hollow sphere. Right-click confirms against a block or live air target, with every axis bounded to 256 blocks, then incrementally populates persistent placeholders without forced chunk generation."
+        "after": "A left-click radial menu selects wall, floor, 1x1 column, hollow sphere, or an open-ended hollow vertical cylinder. Right-click confirms against a block or live air target, with every axis bounded to 256 blocks, then incrementally populates persistent placeholders without forced chunk generation."
       },
       {
         "property": "jem_building.material_cost",
         "operation": "set",
         "before": null,
         "after": "Confirmed placeholders are free, while every real block is placed through the held BlockItem and consumes its ordinary survival stack."
+      },
+      {
+        "property": "jem_building.temporary_lifetime",
+        "operation": "set",
+        "before": "Temporary construction placeholders persisted until manual cancellation or replacement.",
+        "after": "Each temporary construction region stores one seven-Minecraft-day expiry. A coarse server queue expires due regions without per-block polling, incrementally removes only remaining placeholders in loaded chunks, and leaves every real replacement block intact. Optional Jade presentation shows only one current unit: whole Minecraft days with a trailing plus for a positive remainder, then minutes during the final day, then seconds during the final minute."
       }
     ]
   },
@@ -49,6 +55,18 @@
     {
       "date": "2026-11-01",
       "commit": "SELF",
+      "action": "add_open_cylinder_shape",
+      "summary": "Add a block-cell vertical cylinder whose circular side wall has no top or bottom caps, sharing the existing preview, persistence, filling, cancellation and expiry lifecycle."
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "expire_temporary_regions",
+      "summary": "Persist one seven-Minecraft-day deadline per region, process only due regions through a coarse server expiry queue without per-block tick scans, and expose the remaining lifetime through optional one-unit Jade presentation."
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
       "action": "repair_shape_preview_and_cancellation",
       "summary": "Give hammer cancellation one explicit owner, render sphere previews from shared block cells, and resolve column height from the cursor ray instead of direct pitch scaling."
     },
@@ -66,7 +84,7 @@
     }
   ],
   "impacts": {
-    "systems": ["items", "blocks", "recipes", "world_saved_data", "networking", "inventory", "block_placement_permissions", "client_input", "client_gui", "world_preview"],
+    "systems": ["items", "blocks", "recipes", "world_saved_data", "server_lifecycle", "networking", "inventory", "block_placement_permissions", "client_input", "client_gui", "jade_tooltip", "world_preview"],
     "relations": [
       "jem_building:builder_hammer -> jem_building:construction_placeholder",
       "held BlockItem -> native placement and inventory consumption"

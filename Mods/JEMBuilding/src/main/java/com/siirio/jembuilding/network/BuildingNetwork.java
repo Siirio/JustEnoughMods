@@ -1,6 +1,7 @@
 package com.siirio.jembuilding.network;
 
 import com.siirio.jembuilding.JEMBuilding;
+import com.siirio.jembuilding.client.ConstructionExpiryClient;
 import com.siirio.jembuilding.client.ConstructionPreview;
 import com.siirio.jembuilding.construction.ConstructionPlane;
 import com.siirio.jembuilding.construction.ConstructionShape;
@@ -14,16 +15,19 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class BuildingNetwork {
-    private static final String VERSION = "2";
+    private static final String VERSION = "3";
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(JEMBuilding.MOD_ID, "construction"), () -> VERSION, VERSION::equals, VERSION::equals);
 
     public record SelectMode(InteractionHand hand, BlockPos clicked, Direction face, ConstructionShape shape, ConstructionPlane plane) { }
     public record Confirm(InteractionHand hand, BlockPos end) { }
     public record Cancel(InteractionHand hand) { }
+    public record ExpiryRequest(BlockPos pos) { }
+    public record ExpiryResponse(BlockPos pos, long remainingTicks) { }
 
     public static void register() {
         CHANNEL.messageBuilder(SelectMode.class, 0, NetworkDirection.PLAY_TO_SERVER)
@@ -62,6 +66,26 @@ public final class BuildingNetwork {
                     }
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(ExpiryRequest.class, 3, NetworkDirection.PLAY_TO_SERVER)
+                .encoder((packet, buffer) -> buffer.writeBlockPos(packet.pos()))
+                .decoder(buffer -> new ExpiryRequest(buffer.readBlockPos()))
+                .consumerMainThread((packet, context) -> {
+                    var player = context.get().getSender();
+                    if (player != null) CHANNEL.send(PacketDistributor.PLAYER.with(() -> player),
+                            new ExpiryResponse(packet.pos(), ConstructionRuntime.remainingLifetime(player, packet.pos())));
+                    context.get().setPacketHandled(true);
+                }).add();
+        CHANNEL.messageBuilder(ExpiryResponse.class, 4, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder((packet, buffer) -> {
+                    buffer.writeBlockPos(packet.pos());
+                    buffer.writeLong(packet.remainingTicks());
+                })
+                .decoder(buffer -> new ExpiryResponse(buffer.readBlockPos(), buffer.readLong()))
+                .consumerMainThread((packet, context) -> {
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
+                            () -> () -> ConstructionExpiryClient.receive(packet.pos(), packet.remainingTicks()));
+                    context.get().setPacketHandled(true);
+                }).add();
     }
 
     public static void selectMode(InteractionHand hand, BlockPos clicked, Direction face, ConstructionShape shape, ConstructionPlane plane) {
@@ -79,6 +103,10 @@ public final class BuildingNetwork {
 
     public static void cancelSelection() {
         CHANNEL.sendToServer(new Cancel(InteractionHand.MAIN_HAND));
+    }
+
+    public static void requestExpiry(BlockPos pos) {
+        CHANNEL.sendToServer(new ExpiryRequest(pos));
     }
 
     private BuildingNetwork() {

@@ -1,5 +1,13 @@
 ## 1.0.0 - 2026-11-01
 
+- Added a fifth radial-menu mode for a hollow vertical cylinder with circular side walls and no top or bottom caps
+- Cylinder radius and height follow the second block or air target and use the same block-cell preview, 256-axis bounds, filling, cancellation and expiry lifecycle
+- Built and installed the final cylinder-enabled sandbox artifact with SHA-256 `4b21efb08729f65e4d31e836340f82a11226eb0684c51eec7f2d915d74ee5ced`
+- Added one persisted seven-Minecraft-day expiry per temporary construction region
+- Due regions are selected through a coarse server priority queue without scanning temporary blocks every tick, then cleaned through the existing bounded work queue
+- Expiry removes only remaining construction placeholders, preserves real replacement blocks and continues cleanup when previously unloaded chunks load
+- Added optional Jade expiry text that shows only days, then minutes during the final day, then seconds during the final minute
+- Built and installed the expiry-enabled sandbox artifact with SHA-256 `4968cdf68b5721b6d03399ec1e7077f6724afd76615176bcb76129124b38e7f3`
 - Made Shift+right-click with the hammer explicitly cancel the complete linked temporary region
 - Replaced sphere rings with bounded discrete block-cell preview geometry shared with the saved hollow sphere
 - Replaced pitch-times-limit column targeting with a cursor-ray intersection against the column axis
