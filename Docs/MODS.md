@@ -293,7 +293,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Tumbleweed | `0.5.5` | Client + server |  |
 | TxniLib | `1.0.24` | Client + server |  |
 | Unearthed Journey | `2.2.3` | Client + server |  |
-| Unified Xaero Worldmap | `2.0.1` | Client + server |  |
+| MapSyncer for Xaero World Map | `1.0.4 beta2` | Client + server | Requires Xaero's World Map; server-generated regions are shared incrementally every five minutes and unchanged regions are skipped |
 | VanillaBackport | `1.1.7.10` | Client + server |  |
 | Villager Recruits Mod | `1.15.2` | Client + server |  |
 | Villager Workers Mod | `2.0.3` | Client + server |  |

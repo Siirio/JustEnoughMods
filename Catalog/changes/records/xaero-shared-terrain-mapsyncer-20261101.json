@@ -1,0 +1,130 @@
+{
+  "schema_version": 2,
+  "change_id": "xaero.shared-terrain-mapsyncer",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "logical server and client both load MapSyncer 1.0.4 beta2 with Xaero World Map 1.46.0"
+    }
+  ],
+  "precedence": {
+    "layer": "integration",
+    "priority": 120,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Use MapSyncer as the single owner that converts server-generated MCA regions and synchronizes missing or newer terrain into each client's native Xaero World Map",
+    "modifiers": [
+      {
+        "property": "xaero.shared_terrain.owner",
+        "operation": "replace",
+        "before": {
+          "value": "MapSyncer 1.0.3 conversion plus Unified Xaero Worldmap 2.0.1 player-tile sharing"
+        },
+        "after": {
+          "value": "MapSyncer 1.0.4 beta2 only, with Xaero World Map as its required functional dependency"
+        }
+      },
+      {
+        "property": "xaero.shared_terrain.incremental_update",
+        "operation": "replace",
+        "before": {
+          "value": "DISABLED"
+        },
+        "after": {
+          "value": "TICK every 6000 server ticks, comparing MCA timestamps and generated-region hashes so unchanged regions are skipped"
+        }
+      },
+      {
+        "property": "xaero.personal_data.sharing",
+        "operation": "replace",
+        "before": {
+          "value": "Terrain sharing owner was ambiguous between two addons"
+        },
+        "after": {
+          "value": "Terrain only is shared; personal waypoints, homes, bases, labels, colors, groups, settings and death points remain private"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "MapSyncer",
+    "kind": "third_party_native_integration",
+    "source_files": [
+      "Client/ManagedPack/defaultconfigs/mapsyncer-server.toml",
+      "Server/defaultconfigs/mapsyncer-server.toml",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+      "Mods/JEMServer/build.gradle",
+      "Docs/DEVELOPMENT.md",
+      "Docs/smp-gui/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make all server-generated and player-explored terrain available to every client without continuous full-map scanning or duplicate synchronization stores.",
+    "decision_source": "Direct user request on 2026-11-01 plus the user-supplied MapSyncer and Unified Xaero Worldmap repositories; exact installed logs proved MapSyncer 1.0.3 failed with NoSuchFieldException: AIR and configuration proved incremental updates were disabled."
+  },
+  "introduced": {
+    "date": "2026-11-01",
+    "commit": "SELF",
+    "action": "replace_duplicate_sync_owners",
+    "summary": "Replace MapSyncer 1.0.3 and Unified Xaero Worldmap 2.0.1 with official MapSyncer 1.0.4 beta2 and a five-minute incremental server policy.",
+    "source_files": [
+      "Client/ManagedPack/defaultconfigs/mapsyncer-server.toml",
+      "Server/defaultconfigs/mapsyncer-server.toml",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+      "Mods/JEMServer/build.gradle",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md",
+      "Docs/smp-gui/README.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "replace_duplicate_sync_owners",
+      "summary": "Selected official MapSyncer 1.0.4 beta2 as the single terrain sync owner and removed Unified Xaero Worldmap from the intended client and server inventories.",
+      "source_files": [
+        "Client/ManagedPack/defaultconfigs/mapsyncer-server.toml",
+        "Server/defaultconfigs/mapsyncer-server.toml",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+        "Mods/JEMServer/build.gradle",
+        "Docs/DEVELOPMENT.md",
+        "Docs/MODS.md",
+        "Docs/smp-gui/README.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "xaero",
+      "map_privacy",
+      "networking",
+      "world_generation",
+      "dedicated_server",
+      "singleplayer"
+    ],
+    "relations": [
+      "server MCA region -> MapSyncer conversion cache -> timestamp/hash delta -> native client Xaero region"
+    ],
+    "notes": [
+      "Xaero World Map remains installed on both sides and owns rendering, controls and personal map storage.",
+      "The upstream Forge metadata declares Forge and Minecraft dependencies but does not declare xaeroworldmap, so JEM enforces the functional dependency through the canonical client and server inventories.",
+      "No MineRENT, stable-profile or release-baseline change is part of this branch."
+    ],
+    "unresolved": [
+      "Player acceptance remains pending because no client or gameplay launch was authorized."
+    ]
+  }
+}

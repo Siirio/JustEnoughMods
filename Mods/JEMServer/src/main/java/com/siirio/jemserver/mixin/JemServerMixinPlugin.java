@@ -2,19 +2,13 @@ package com.siirio.jemserver.mixin;
 
 import java.util.List;
 import java.util.Set;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.loading.FMLLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class JemServerMixinPlugin implements IMixinConfigPlugin {
-    private static final String CLIENT_MIXINS = "com.siirio.jemserver.mixin.client.";
     private static final String XAERO_MIXINS = "com.siirio.jemserver.mixin.xaero.";
-    private static final String SHARED_MAP_MIXINS = XAERO_MIXINS + "shared.";
-    private static final String SHARED_MAP_MOD = "unified_xaero_worldmap";
-    private static final String SHARED_BOUNDARY_MIXIN = "com.siirio.jemserver.mixin.SolidBoundaryMixin";
 
     @Override
     public void onLoad(String mixinPackage) {}
@@ -34,7 +28,6 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
             if (!supported) throw new IllegalStateException("JEM Tide chunk scan adapter requires review for installed Tide version");
             return true;
         }
-        if (mixinClassName.startsWith(SHARED_MAP_MIXINS)) return loaded(SHARED_MAP_MOD);
         if (mixinClassName.startsWith(XAERO_MIXINS))
             return loaded("xaeroworldmap") && (!mixinClassName.endsWith("OfficialWaypointTeleportMixin") || loaded("xaerominimap"));
         if (mixinClassName.contains(".fishing.")) return loaded("tide");

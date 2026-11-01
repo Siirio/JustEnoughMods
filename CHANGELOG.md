@@ -1,3 +1,15 @@
+## 2026-11-01 - Replace duplicate Xaero terrain synchronization
+
+- User reported that server-loaded and player-explored chunks were not reliably visible to every player's Xaero World Map and requested one client-and-server synchronization addon with Xaero as its dependency
+- User supplied MapSyncer and Unified Xaero Worldmap as candidate upstream solutions and preferred reusing a proven addon instead of maintaining a second JEM map implementation
+- Bug / Both Sided / MapSyncer 1.0.3 failed its server-region conversion path with `NoSuchFieldException: AIR`, while its incremental mode was disabled, and Unified Xaero Worldmap only merged player-produced tiles instead of discovering server-only or Chunky-generated regions / in testing
+- Five Whys: generated terrain stayed absent because the converter failed, the converter reflected a placeholder field that is not present under the installed mappings, no successful cache update was available to clients, the second addon synchronized a different player-tile model, and two partial owners obscured which state was authoritative
+- Official MapSyncer 1.0.4 beta2 replaces both old sync addons as the single terrain owner on client and server, while Xaero World Map 1.46.0 remains the required functional dependency and native renderer
+- Five-minute incremental updates compare MCA timestamps and generated-region hashes, convert newly generated or changed regions asynchronously and skip unchanged regions, avoiding a daily full-map refresh and constant retransmission
+- Removed the three legacy JEMServer Unified reconciliation/cave Mixins, their Mixin gate and compile dependency, so no dormant second terrain-sync implementation remains in production source
+- Personal waypoints, homes, bases, labels, colors, groups, settings and death points remain private. Only terrain generated on the server or explored by players is shared
+- The exact official Forge 1.20 artifact has SHA-256 `3300d5f1a48e50d92facd1a877cb25a0e29fe37510c355315a271419c9035c41`. MineRENT and the stable `JustEnoughMods` profile remain unchanged
+
 ## 2026-11-01 - Restore rotten flesh leather smelting
 
 - User reported that rotten flesh no longer smelted into leather and requested a live recipe reload instead of a server restart
