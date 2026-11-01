@@ -38,7 +38,7 @@ public final class BuilderHammerItem extends Item {
             return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
         }
         BlockPos start = context.getClickedPos().relative(context.getClickedFace());
-        setStart(stack, start);
+        setStart(stack, start, ConstructionPlane.fromFace(context.getClickedFace()));
         if (context.getPlayer() != null && !context.getLevel().isClientSide) {
             context.getPlayer().displayClientMessage(Component.translatable("message.jem_building.first_position", start.getX(), start.getY(), start.getZ()), true);
         }
@@ -70,11 +70,20 @@ public final class BuilderHammerItem extends Item {
         return Optional.of(new BlockPos(selection.getInt("X"), selection.getInt("Y"), selection.getInt("Z")));
     }
 
-    public static void setStart(ItemStack stack, BlockPos start) {
+    public static Optional<ConstructionPlane> plane(ItemStack stack) {
+        CompoundTag root = stack.getTag();
+        if (root == null || !root.contains(SELECTION, Tag.TAG_COMPOUND)) return Optional.empty();
+        String value = root.getCompound(SELECTION).getString("Plane");
+        try { return value.isEmpty() ? Optional.empty() : Optional.of(ConstructionPlane.valueOf(value)); }
+        catch (IllegalArgumentException ignored) { return Optional.empty(); }
+    }
+
+    public static void setStart(ItemStack stack, BlockPos start, ConstructionPlane plane) {
         CompoundTag selection = new CompoundTag();
         selection.putInt("X", start.getX());
         selection.putInt("Y", start.getY());
         selection.putInt("Z", start.getZ());
+        selection.putString("Plane", plane.name());
         stack.getOrCreateTag().put(SELECTION, selection);
     }
 

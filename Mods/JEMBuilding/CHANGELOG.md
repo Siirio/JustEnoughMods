@@ -1,5 +1,8 @@
 ## 1.0.0 - 2026-11-01
 
+- Bound construction orientation to the clicked block face so all three orthogonal planes are directly selectable and diagonal planes cannot occur
+- Made construction placeholders native-placement replaceable, added immediate Creative whole-region conversion, and continued Survival conversion across matching inventory stacks with exact native consumption
+- Rebuilt and installed the corrected sandbox artifact with SHA-256 `a86d9dbf5b806e426da5e87830501175c7fa1c8f981c36b9dc8be429d509bd18`
 - Removed a duplicated persisted-region accessor block that prevented Java compilation
 - Built the reobfuscated standalone artifact and installed its exact bytes in the local `jem sandbox` profile for manual acceptance
 - Added one standalone JEM Builder Hammer with the requested copper, copper-block, stick and cobblestone-wall recipe

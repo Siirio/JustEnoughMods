@@ -18,8 +18,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = JEMBuilding.MOD_ID, value = Dist.CLIENT)
 public final class ConstructionPreview {
-    private static ConstructionPlane lastPlane = ConstructionPlane.XY;
-
     public record Selection(BlockPos start, BlockPos end, ConstructionPlane plane) { }
 
     public static Optional<Selection> current() {
@@ -28,7 +26,7 @@ public final class ConstructionPreview {
         Optional<BlockPos> selected = BuilderHammerItem.start(client.player.getMainHandItem());
         if (selected.isEmpty()) return Optional.empty();
         BlockPos start = selected.get();
-        ConstructionPlane plane = choosePlane(start, client.player.getEyePosition(), client.player.getLookAngle());
+        ConstructionPlane plane = BuilderHammerItem.plane(client.player.getMainHandItem()).orElse(ConstructionPlane.XY);
         BlockPos end = endpoint(start, plane, client.player.getEyePosition(), client.player.getLookAngle());
         return Optional.of(new Selection(start, plane.constrain(start, end), plane));
     }
@@ -59,17 +57,6 @@ public final class ConstructionPreview {
             drawGrid(vertices, poses, selection.plane(), minX, minY, minZ, maxX, maxY, maxZ);
             buffers.endBatch(type);
         } finally { poses.popPose(); }
-    }
-
-    private static ConstructionPlane choosePlane(BlockPos start, Vec3 eye, Vec3 look) {
-        if (Math.abs(look.y) > 0.62D) { lastPlane = ConstructionPlane.XZ; return lastPlane; }
-        double x = Math.abs(eye.x - start.getX() - 0.5D);
-        double z = Math.abs(eye.z - start.getZ() - 0.5D);
-        double hysteresis = 0.75D;
-        if (lastPlane == ConstructionPlane.ZY && x + hysteresis >= z) return lastPlane;
-        if (lastPlane == ConstructionPlane.XY && z + hysteresis >= x) return lastPlane;
-        lastPlane = x > z ? ConstructionPlane.ZY : ConstructionPlane.XY;
-        return lastPlane;
     }
 
     private static BlockPos endpoint(BlockPos start, ConstructionPlane plane, Vec3 eye, Vec3 look) {

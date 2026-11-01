@@ -1,11 +1,20 @@
 package com.siirio.jembuilding.construction;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 
 public enum ConstructionPlane {
     XY,
     ZY,
     XZ;
+
+    public static ConstructionPlane fromFace(Direction face) {
+        return switch (face.getAxis()) {
+            case X -> ZY;
+            case Y -> XZ;
+            case Z -> XY;
+        };
+    }
 
     public boolean contains(BlockPos start, BlockPos end) {
         return switch (this) {

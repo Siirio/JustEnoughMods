@@ -52,10 +52,11 @@ public final class ConstructionRuntime {
         Optional<BlockPos> selected = BuilderHammerItem.start(hammer);
         if (selected.isEmpty()) return;
         BlockPos start = selected.get();
-        BlockPos end = plane.constrain(start, requestedEnd);
+        ConstructionPlane selectedPlane = BuilderHammerItem.plane(hammer).orElse(plane);
+        BlockPos end = selectedPlane.constrain(start, requestedEnd);
         ServerLevel level = player.serverLevel();
-        if (!plane.contains(start, end) || !within(level, start) || !within(level, end)) return;
-        ConstructionData.Region region = ConstructionData.get(level).create(player.getUUID(), plane, start, end);
+        if (!selectedPlane.contains(start, end) || !within(level, start) || !within(level, end)) return;
+        ConstructionData.Region region = ConstructionData.get(level).create(player.getUUID(), selectedPlane, start, end);
         WORLD_WORK.addLast(new RegionWork(level, region, false));
         BuilderHammerItem.clear(hammer);
         player.getInventory().setChanged();
@@ -70,9 +71,35 @@ public final class ConstructionRuntime {
             if (region.cancelled()) return;
             ItemStack material = stack.copy();
             material.setCount(1);
+            if (serverPlayer.getAbilities().instabuild) {
+                fillCreative(serverPlayer, hand, region, region.index(clicked), material);
+                return;
+            }
             FILL_WORK.put(serverPlayer.getUUID(), new FillWork(serverPlayer.serverLevel(), serverPlayer.getUUID(), hand,
                     region, region.index(clicked), material));
         });
+    }
+
+    private static void fillCreative(ServerPlayer player, InteractionHand hand, ConstructionData.Region region, long start, ItemStack material) {
+        ServerLevel level = player.serverLevel();
+        long cells = region.cells();
+        for (long scanned = 0; scanned < cells; scanned++) {
+            BlockPos pos = region.position((start + scanned) % cells);
+            if (!level.hasChunkAt(pos)) continue;
+            BlockState current = level.getBlockState(pos);
+            if (!current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) && !current.canBeReplaced()) continue;
+            ItemStack held = player.getItemInHand(hand);
+            if (!ItemStack.isSameItemSameTags(held, material) || !permitted(player, pos, held)) break;
+            placeNative(player, hand, pos, held);
+        }
+        player.getInventory().setChanged();
+    }
+
+    private static void placeNative(ServerPlayer player, InteractionHand hand, BlockPos pos, ItemStack held) {
+        BlockHitResult hit = new BlockHitResult(Vec3.atCenterOf(pos), Direction.UP, pos, false);
+        NATIVE_FILL.set(true);
+        try { player.gameMode.useItemOn(player, player.serverLevel(), held, hand, hit); }
+        finally { NATIVE_FILL.set(false); }
     }
 
     public static void cancel(net.minecraft.world.entity.player.Player player, BlockPos clicked) {
@@ -234,21 +261,38 @@ public final class ConstructionRuntime {
         boolean step(int budget) {
             ServerPlayer player = level.getServer().getPlayerList().getPlayer(playerId);
             if (player == null || player.serverLevel() != level || region.cancelled()) return true;
-            ItemStack held = player.getItemInHand(hand);
-            if (held.isEmpty() || !(held.getItem() instanceof BlockItem) || !ItemStack.isSameItemSameTags(held, material)) return true;
+            ItemStack held = matchingHeldOrRefill(player);
+            if (held == null) return true;
             long cells = region.cells();
             int work = 0;
-            while (work++ < budget && scanned < cells && !held.isEmpty()) {
+            while (work++ < budget && scanned < cells) {
+                if (held.isEmpty()) {
+                    held = matchingHeldOrRefill(player);
+                    if (held == null) return true;
+                }
                 long index = (start + scanned++) % cells;
                 BlockPos pos = region.position(index);
-                if (!level.hasChunkAt(pos) || !level.getBlockState(pos).is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) || !permitted(player, pos, held)) continue;
-                BlockHitResult hit = new BlockHitResult(Vec3.atCenterOf(pos), Direction.UP, pos, false);
-                NATIVE_FILL.set(true);
-                try { player.gameMode.useItemOn(player, level, held, hand, hit); }
-                finally { NATIVE_FILL.set(false); }
+                if (!level.hasChunkAt(pos) || !permitted(player, pos, held)) continue;
+                BlockState current = level.getBlockState(pos);
+                if (!current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) && !current.canBeReplaced()) continue;
+                placeNative(player, hand, pos, held);
             }
             player.getInventory().setChanged();
-            return held.isEmpty() || scanned >= cells;
+            return scanned >= cells;
+        }
+
+        private ItemStack matchingHeldOrRefill(ServerPlayer player) {
+            ItemStack held = player.getItemInHand(hand);
+            if (!held.isEmpty()) return ItemStack.isSameItemSameTags(held, material) ? held : null;
+            var inventory = player.getInventory();
+            for (int slot = 0; slot < inventory.items.size(); slot++) {
+                ItemStack candidate = inventory.items.get(slot);
+                if (candidate.isEmpty() || !ItemStack.isSameItemSameTags(candidate, material)) continue;
+                inventory.items.set(slot, ItemStack.EMPTY);
+                player.setItemInHand(hand, candidate);
+                return candidate;
+            }
+            return null;
         }
     }
 
