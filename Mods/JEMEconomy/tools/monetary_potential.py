@@ -22,6 +22,9 @@ def solve_and_author(capture,policies,native,prices,roots,recipes,apply):
   if p.get('outcome','BUY_AND_SELL') not in ['BUY_AND_SELL','SELL_ONLY'] or not p.get('sell_copper'):continue
   owner=p.get('quota_family',i) if active(i) else i;units=p.get('quota_units',1) if active(i) else 1
   multi=F(1) if p.get('fixed_price') or not active(i) else F(3,2)
+  if p.get('max_final_sell_copper'):
+   unit=F(p['sell_copper'],p.get('sell_denominator',p.get('sell_units',1)))
+   multi=min(multi,F(p['max_final_sell_copper'],1)/unit)
   family[i]=owner;factor[i]=F(units);demand[i]=multi
   raw=F(p['sell_copper'],p.get('sell_denominator',p.get('sell_units',1)))/units
   desired[owner]=min(desired.get(owner,raw),raw)

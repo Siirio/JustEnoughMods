@@ -5,15 +5,24 @@ import net.minecraft.resources.ResourceLocation;
 public record ItemPolicy(int schema, ResourceLocation item, Outcome outcome, Long sellCopper, Long buyCopper,
                          int dailyPlayerUnits, int dailyGlobalUnits, String demandGroup, String notes,
                          long sellDenominator, long buyDenominator, ResourceLocation quotaFamily, int quotaUnits,
-                         boolean fixedPrice, Long bulk1024) {
+                         boolean fixedPrice, Long bulk1024, Long maxFinalSellCopper) {
     public ItemPolicy(int schema, ResourceLocation item, Outcome outcome, Long sellCopper, Long buyCopper,
                       int dailyPlayerUnits, int dailyGlobalUnits, String demandGroup, String notes) {
-        this(schema,item,outcome,sellCopper,buyCopper,dailyPlayerUnits,dailyGlobalUnits,demandGroup,notes,1,1,item,1,false,null);
+        this(schema,item,outcome,sellCopper,buyCopper,dailyPlayerUnits,dailyGlobalUnits,demandGroup,notes,1,1,item,1,false,null,null);
+    }
+    public ItemPolicy(int schema, ResourceLocation item, Outcome outcome, Long sellCopper, Long buyCopper,
+                      int dailyPlayerUnits, int dailyGlobalUnits, String demandGroup, String notes,
+                      long sellDenominator, long buyDenominator, ResourceLocation quotaFamily, int quotaUnits,
+                      boolean fixedPrice, Long bulk1024) {
+        this(schema,item,outcome,sellCopper,buyCopper,dailyPlayerUnits,dailyGlobalUnits,demandGroup,notes,
+                sellDenominator,buyDenominator,quotaFamily,quotaUnits,fixedPrice,bulk1024,null);
     }
     public RationalPrice salePrice(int quantity, int multiplier) {
         if (!sellable() || quantity < 0) return RationalPrice.ZERO;
-        return new RationalPrice(sellCopper, sellDenominator).multiply(quantity)
+        RationalPrice adjusted = new RationalPrice(sellCopper, sellDenominator).multiply(quantity)
                 .multiply(fixedPrice ? 100 : multiplier).divide(100);
+        return maxFinalSellCopper == null ? adjusted
+                : adjusted.min(new RationalPrice(Math.multiplyExact(maxFinalSellCopper, quantity), 1));
     }
     public long saleTotal(int quantity, int multiplier) { return salePrice(quantity, multiplier).floor(); }
     public long purchaseTotal(int quantity) {

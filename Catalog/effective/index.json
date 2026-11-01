@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "74f91468c50695ec1eda7ec57d1f79821a25cc831c440c5640495e6e660b85ac",
+  "change_records_sha256": "5119e4ab9464298c785dad4fe33e0e60f61daabfbbfe9d514bae9fd0fb5168ee",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -832,7 +832,7 @@
     {
       "change_id": "economy.reviewed-item-policies",
       "status": "active",
-      "summary": "Canonical commodity policies define exact two-way Market/Shipping admission, prices and caps; prepared meals remain Market NONE while independently reviewed native specialist merchandise uses its separate owner.",
+      "summary": "Canonical item policies define independent buy and sell admission, rational unit prices and final payout caps. The verified JEMFood catalog is sell-only while unrelated items retain their reviewed direction",
       "record": "Catalog/changes/records/economy-item-policies.json",
       "selectors": [
         {
@@ -843,7 +843,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2193
+      "potential_static_target_count": 2214
     },
     {
       "change_id": "economy.ledger-market-replay-safety",
@@ -1021,7 +1021,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2193
+      "potential_static_target_count": 2214
     },
     {
       "change_id": "economy.flesh-half-copper-leather-three-20261021",
@@ -4158,7 +4158,7 @@
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "71b79dfd9d8c49592cefec7342ff65b5aa15975420914c8e111d66916be663fd",
+    "Docs/DEVELOPMENT.md": "c6cca5befb8936eca67bc57cb3f9aa4380314c8408f0ba5a03ab910167ce1466",
     "Docs/MODS.md": "cf734c220e4875be5877ec42e6d57ea9bef6b7bb7cf08ff74125385477073813",
     "Docs/SERVER_COMMANDS.md": "a3d9993f5ae7575d44218d57397bc159d847723f4e9dd89a06e24a01ce7982bb",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "835eef241d1ef5b2d1af0ac72ac4310cc31cd4f80cbb3c25e738d1c4104844cc",
@@ -4184,7 +4184,10 @@
     "Docs/companions/README.md": "81e18ac28f1bdb06ea9c0f9e239dc9dbc641e6bd442c11cb718507ffcda2477f",
     "Docs/companions/alex-evidence.md": "038186ef54b0dd5bc108a34a49a124866ea15127849b0319ceb8a6dcafc3e64c",
     "Docs/companions/pack-evidence.md": "f711ad5cde3d92dbfd9b9185e981a347219f4962eaa1e0eec5f1cfe87d21910d",
+    "Docs/economy/jemfood-sell-only-prices-2026-11-01.csv": "c0cff3759f4295c3d5da1bd4b22dae11b1f6fb881e7e93485a90c1844dfd7d7d",
     "Docs/economy/native-trading-design.md": "ad117c44faa1abbe2ce25de36dd14b2c02b7eed2f6494927c89e2b3b1d0399e6",
+    "Docs/economy/shipping-conversion-audit.json": "f3599372a5eb48ee4171e1cbac599981cea3bf14088276f136a973a951f379e9",
+    "Docs/economy/shipping-recipe-flow.json": "c709a42d808289c3d6c72fc9488fa9cab8fe5fea523f880cc00e960a4ae65537",
     "Docs/events/BLOOD_MOON.md": "0dba7c047425885dec277b0547bc29a82293adf3eb2ca2c25de6f9f11bba7411",
     "Docs/events/BOSS_FIGHT.md": "ad1f36866073a838d19f2d62887b57c8a9d0f76baf1ff054713cba644552d2c7",
     "Docs/events/BOSS_RAID.md": "dd9b735a60413a1650e91ab0296da6ad0045d5451d284076777adc81889e2fc4",
@@ -8104,11 +8107,11 @@
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java": "6e7bae9b42f8d01ad8a5588ebb3a3cb29440bc4a54e2c39324eb62c409ea7671",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java": "1c87168c55480538003e05d4ad3b5f5fbdf46071a351ecf91b4eee80d369badc",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/EconomyRecipePolicy.java": "11395e5699436aa07bd6c451f12363866e56c5bb24f607747a2ed506f379eb69",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java": "964051aad50ec218610cfbf4c0a32f9a0f05ec75e2d8014563aa4e6413086a85",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "0ed981bb753d4bacb4fca2a2299382b62f80ce44812e8c4a5418a14d280ed22a",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java": "fb4882264ae8d436f7b6af97ad3314a8450fc5237ac1ff7a15158ae4d13793b6",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "11964725b530156ce7ff8962afb752d3c90383fab7a705781098ef7cb158a585",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSearch.java": "de4dc74e05e7c2f78eeb1640810edfda92efd77683489afb2424d7a3f4223358",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java": "ef57f6ac449935fce4e130c6837d8f9f089cfd5a9efc5a351c6972a003ab71d4",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/RationalPrice.java": "5def572606bf02ece7fd56ae947555974fc3303452f46ac3c1aafc157f621600",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/RationalPrice.java": "0edb2e6567e602736c8a9c31e6e1ac292a4fee5c1502687e1e29d75dc128ec1b",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java": "3a688a5cd3b937a162c5b32719b47e05e5075225a1b9021ec93853c81175872b",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java": "7514022e44313f7fd5d79728e5deef524d3ce86cc05845559c124922c08cf646",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyItems.java": "ccc45066562f672f4ee7c5686a21df2ae07b204ce88a5367d778d531db3580eb",
@@ -8158,7 +8161,7 @@
     "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/silver_coin_front.png": "e5c90d7a3e0d371e0d0255afd3c1dcb902db5be5d8b235c4628ee65ff607086c",
     "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/silver_coin_rim.png": "4ba5cb16a998f16c14821dce10cb87c6128f1f6e740ad81f0178fb5017e5d7d7",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/building_purchase_prices.json": "51ff5d446c205236507ad12e091cb98bc07ddea083268c40707bf4ebf976f244",
-    "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json": "a94f89a57ac8f0f32059d2425017d6a1820002772748754d1acc823f898aebcd",
+    "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json": "a6adc4940bee177544b8a7cb38c126a2bd6358dcf638e732adaca51e1e9ecb63",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_limits.json": "03cbaeef637161748ece1b6440c885c1bd71f1164346999d61e81d04f7b0f772",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json": "27045737326197bb3c7c0a716d0e7416962eb7e29fe82f32c7332746e8917c07",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json": "a02935861a7c9d9fb1e649dec1288358578177d91589f656ac4f4cc1226960ec",
@@ -8169,8 +8172,9 @@
     "Mods/JEMEconomy/src/main/resources/pack.mcmeta": "ea2e7e998bad1606b0db2d6fa0f81574aa3f3429ad2bc6faf6290cb9b0d73aff",
     "Mods/JEMEconomy/tools/author_building_supply.py": "452c5e163412d0b2958bd878858b5b1e499f0a74a54d4cf497b9fc0852a5fd64",
     "Mods/JEMEconomy/tools/author_shipping_economy.py": "96ad29e1285c36aaf188c5ab16e922f329060c5c0b75365ee2dfea4f7c5d42ac",
-    "Mods/JEMEconomy/tools/derive_conversion_economy.py": "b8ac1bc167146f1c21549fe90c9f1a3f5ace011a7895dd311bbc43872d5dca92",
-    "Mods/JEMEconomy/tools/monetary_potential.py": "22043baaa310b1435b56726d1d46b3f646b32d5167fce621253d29634ebb2aba",
+    "Mods/JEMEconomy/tools/derive_conversion_economy.py": "5a59c03808a2dbdaef86964310ad5d1b01f5879296ec05adacceb59a3daebeb4",
+    "Mods/JEMEconomy/tools/import_jemfood_sell_prices.py": "fb6a9a97ba901a151c0d26761eafa34fca6fbe77ebd18d0c5b0ae146e95d7565",
+    "Mods/JEMEconomy/tools/monetary_potential.py": "f770555a8c9b589bf075672941ac70e293f53fa84c8b1539f86c6bcec364df8b",
     "Mods/JEMEconomy/tools/reconcile_economy.py": "734be91a1683aac51a42880ed0cbca7506480880a0714cf2167aff290768008c",
     "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/client/ExcavationHighlight.java": "91bed261e6936af6895d16906e1a2cb3f91343194e7355f089f8c17032e27a7c",
     "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/feature/CoreEnchantments.java": "67efe910bf673e0bf67c7a8a4357f04dd0edd7098529343c203f6a6d80219ad8",
