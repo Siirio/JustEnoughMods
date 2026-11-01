@@ -55,6 +55,12 @@
     {
       "date": "2026-11-01",
       "commit": "SELF",
+      "action": "promote_unified_hammer_compatibility",
+      "summary": "Keep JEM Building standalone while allowing JEM Compat to promote its builder hammer into native Handcrafted and BBB interactions and retire both legacy player-facing items."
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
       "action": "add_open_cylinder_shape",
       "summary": "Add a block-cell vertical cylinder whose circular side wall has no top or bottom caps, sharing the existing preview, persistence, filling, cancellation and expiry lifecycle."
     },
@@ -84,12 +90,14 @@
     }
   ],
   "impacts": {
-    "systems": ["items", "blocks", "recipes", "world_saved_data", "server_lifecycle", "networking", "inventory", "block_placement_permissions", "client_input", "client_gui", "jade_tooltip", "world_preview"],
+    "systems": ["items", "blocks", "recipes", "world_saved_data", "server_lifecycle", "networking", "inventory", "block_placement_permissions", "client_input", "client_gui", "jade_tooltip", "world_preview", "JEM Compat", "Handcrafted", "Building But Better", "item_obliterator"],
     "relations": [
       "jem_building:builder_hammer -> jem_building:construction_placeholder",
-      "held BlockItem -> native placement and inventory consumption"
+      "held BlockItem -> native placement and inventory consumption",
+      "jem_building:builder_hammer -> Handcrafted Hammerable.onHammer through JEM Compat",
+      "jem_building:builder_hammer -> #bbb:hammers through JEM Compat"
     ],
-    "notes": "The module contains no JEM Compat dependency and does not alter Handcrafted or Building But Better registrations or behavior.",
+    "notes": "JEM Building remains independently loadable. When JEM Compat, Handcrafted and BBB are present, JEM Compat adapts this item into their native interfaces without changing their registered block behavior.",
     "unresolved": ["Runtime player acceptance and third-party claim-mod behavior were not exercised because the user prohibited all tests and validation runs."]
   }
 }

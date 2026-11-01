@@ -1,5 +1,6 @@
 ## 1.0.0 - 2026-11-01
 
+- Added conditional JEM Compat ownership that promotes this item to the only player-facing hammer for Handcrafted and Building But Better while preserving both native interaction contracts
 - Added a fifth radial-menu mode for a hollow vertical cylinder with circular side walls and no top or bottom caps
 - Cylinder radius and height follow the second block or air target and use the same block-cell preview, 256-axis bounds, filling, cancellation and expiry lifecycle
 - Built and installed the final cylinder-enabled sandbox artifact with SHA-256 `4b21efb08729f65e4d31e836340f82a11226eb0684c51eec7f2d915d74ee5ced`

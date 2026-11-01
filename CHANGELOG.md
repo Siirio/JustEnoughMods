@@ -1,5 +1,9 @@
 ## 2026-11-01 - Build and install the isolated JEM Building sandbox
 
+- User superseded the deferred Sandbox-to-Test hammer-unification plan and required the current sandbox branch to make `jem_building:builder_hammer` the only player-facing hammer for JEM Building, Handcrafted and Building But Better, with both old hammer items retired through Item Obliterator
+- Exact installed evidence shows Handcrafted 3.0.6 owns furniture changes through `Hammerable.onHammer`, while BBB 2.0pre4 recognizes hammers through `bbb:hammers`. JEM Compat now gives Handcrafted first refusal, exposes the JEM hammer through BBB's native tag, and leaves JEM construction as the fallback so one click cannot execute multiple incompatible actions
+- Recipes, creative tabs, JEI, the active quest reward, JEM Economy market ownership and Item Obliterator policy now converge on the JEM Builder Hammer. The two legacy registry IDs remain loadable for compatibility, but Item Obliterator removes held copies as explicitly requested
+- JEM Compat 3.9.3 was built as a production artifact with SHA-256 `2cb4a3c2f33a9c0d1b12e1cb018dc25c5b53576af98e36c7be52a6e98816bfc6`. No automated tests, validation suite, formatter, linter, server/client launch, Test JEM AutoModpack publication, stable-profile change or MineRENT deployment was performed
 - User explicitly locked one countdown format across all JustEnoughMods and required the rule to be committed: show only Minecraft days at one day or more with a trailing "+" for a positive remainder, only minutes below one day, and only seconds below one minute, never multiple units in one label
 - The repository-wide contract now lives in `AGENTS.logic-locks.md` and applies to Jade, HUD, GUI, chat, tooltips and guide presentation while internal calculations, save data and protocols retain native units
 - User added a fifth construction element: a cylinder formed only from vertical circular borders, explicitly without top or bottom caps

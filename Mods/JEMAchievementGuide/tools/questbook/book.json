@@ -28567,18 +28567,18 @@
           "reward": {
             "items": [
               {
-                "id": "bbb:hammer",
+                "id": "jem_building:builder_hammer",
                 "count": 1,
                 "name": "Hammer",
                 "name_ru": "Молоток",
                 "acquisition_evidence": {
-                  "source": "Catalog/registries/items",
+                  "source": "Mods/JEMBuilding/src/main/resources/data/jem_building/recipes/builder_hammer.json",
                   "acquisition": "normal_survival",
                   "routes": [
-                    "handcrafted:hammer"
+                    "jem_building:builder_hammer"
                   ],
                   "confidence": "inferred",
-                  "jar": "handcrafted-forge-1.20.1-3.0.6.jar"
+                  "jar": "jem_building-1.0.0.jar"
                 }
               },
               {
@@ -38786,8 +38786,8 @@
             },
             {
               "key": "jemcompat:unified_hammer",
-              "ru_ru": "Существующий строительный молоток BBB также вызывает штатный контракт изменения Handcrafted-мебели. Настрой правильную часть предмета; новая система мебели не создаётся.",
-              "en_us": "Existing BBB Hammer invokes Handcrafted native furniture-change contract; target the supported detail rather than creating another furniture system.",
+              "ru_ru": "Единый строительный молот JEM вызывает штатные действия BBB и нативный контракт изменения Handcrafted-мебели. Настрой правильную часть предмета; новая система мебели не создаётся.",
+              "en_us": "The unified JEM Builder Hammer invokes native BBB actions and Handcrafted's native furniture-change contract; target the supported detail rather than creating another furniture system.",
               "evidence": [
                 {
                   "type": "current_owner_source",
