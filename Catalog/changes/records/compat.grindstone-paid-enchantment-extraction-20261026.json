@@ -46,6 +46,7 @@
     "kind": "server_owned_enchantment_cost_provenance",
     "source_files": [
       "Client/ManagedPack/mods/jemcompat-3.9.2.jar",
+      "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/feature/ExcavationEvents.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentCostHistory.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentRefundData.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/GrindstoneExtraction.java",
@@ -101,6 +102,16 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentCostHistory.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/GrindstoneExtraction.java"
       ]
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "preserve_extraction_against_digger_toggle",
+      "summary": "Exclude the grindstone from the standalone Digger block-click toggle so its explicit Shift-use extraction action receives the interaction.",
+      "source_files": [
+        "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/feature/ExcavationEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/GrindstoneExtraction.java"
+      ]
     }
   ],
   "impacts": {
@@ -121,6 +132,7 @@
     ],
     "notes": [
       "The 2026-10-27 user decision admits old items only for a fixed one-time compensation, without claiming historical paid-cost provenance.",
+      "Digger remains toggleable in the air and on other blocks, while the grindstone-specific Shift-use action takes precedence over that generic toggle.",
       "Forge runtime interaction and modded tooltip ordering remain unobserved without a game launch."
     ]
   }

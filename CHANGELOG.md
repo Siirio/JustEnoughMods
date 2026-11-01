@@ -1,3 +1,11 @@
+## 2026-11-01 - Preserve grindstone extraction for Digger tools
+
+- User reported that Shift + right click on a grindstone with a Digger-enchanted item only toggled Digger instead of extracting an enchantment
+- Bug / Both Sided / JEM Excavation handled the same block interaction first, removed the active Digger enchantment into its disabled NBT state and canceled the Forge event before JEMCompat could perform grindstone extraction / in testing through a grindstone-specific toggle exclusion
+- Five Whys: extraction did not run because its handler never received the canceled event, the event was canceled by the Digger toggle, that toggle accepted every block target, the standalone extraction preserved the old broad block handler without coordinating the later grindstone action, and no owner-level interaction priority excluded blocks with an explicit JEM Shift-use contract
+- Digger still toggles through Shift + right click in the air and on other blocks. Shift + right click on a grindstone now remains owned by the existing server-authoritative enchantment extraction flow
+- Ordinary right click keeps the native grindstone screen. Enchantment order, book output, paid-XP history, one-time legacy compensation and refund protection are unchanged
+
 ## 2026-11-01 - Separate JEM Building and quality-of-life development
 
 - User later authorized building and installing both isolated development tracks, with Test JEM delivered through native AutoModpack and JEM Building installed only in `jem sandbox`
@@ -15,6 +23,20 @@
 - Built the authorized production JARs for JEM Compat 3.9.2, JEM Advancements 5.2.2, JEM Server 2.0.0-dev, JEM World Boss Tiers 2.5.0, Simpler Exposure 1.0.0 and the branch-coherent JEM Twelve Eyes 1.7.0 dependency companion, then synchronized their exact outputs to the ordinary local Server and `Client/ManagedPack`
 - Native AutoModpack publication completed with reviewed delta `+2 ~5 -2` and content token `b2a7db9ce472ca5f9e4adf7d73cb9fd38bb549cf`. A second preview returned `+0 ~0 -0`, and the closed `test jem` profile was updated through the native transaction to the same active token with matching task-owned files and no pending transaction
 - The ordinary local server saved every dimension and stopped after publication. No automated tests, validation suite, formatter, linter, gameplay QA or client launch was performed, and the stable profile, MineRENT and immutable release baseline remain unchanged
+
+## 2026-11-01 - Add the verified JEMFood sell-only catalog
+
+- User requested the supplied 848-row JEMFood proposal be implemented on a new branch from `develop`, with Economy sale enabled and every Economy-controlled purchase path denied
+- Verified all 848 IDs, quality tiers and blessing traits against the live JEMFood assignment owner without changing food effects, durations or trait mapping
+- Atlas resolves 847 rows as registered Items and `natures_spirit:cheese_block` only as a Block, so 847 policies are `SELL_ONLY` and the block-only archival identity remains excluded
+- Added canonical post-demand sale ceilings of 30, 200, 600 and 1,000 Copper for tiers 0 through 3. Aether remains 1,000 Copper and Arcane remains 10,000 Copper
+- Reduced 723 proposed values using the existing exact recipe-potential certificate, the minimum supported quantum for 17 previously inactive endpoints and installed placed-food portion rules. Bakery slices are bounded to one quarter of their whole and Dusty Decorations partial pies retain exact fractional values
+- The current purchase-root audit reports zero unsafe single-output endpoints and zero unsafe simultaneous outputs. A new exact LP certificate remains blocked by a pre-existing fixed-income conflict at `create:crafting/curiosities/cake`, and the bounded minimum-cost pass is supporting evidence because it did not converge within 64 passes
+- Preserved server-authoritative NBT validation, exact-count settlement, rational remainder accounting, persistent receipts, funded escrow and native market balance. Existing daily commodity payout ceilings remain inactive without weakening those conservation rules
+- Preserved the established fixed-price handling for Tide fish and the protected sell-only direction for enchanted golden apple, golden apple and rotten flesh
+- Built the production JEM Economy artifact successfully through `:JEMEconomy:jar` and `reobfJar`. Project rules prohibit automated tests and gameplay test scenarios, so none were created or run
+- Local Server and native AutoModpack publication remain unchanged because the ordinary runtime already contains unrelated `jem-economy-1.3.2.jar`, while this clean `develop` branch owns version 1.3.1. Overwriting the newer runtime would discard work outside this task
+- The implementation remains `in testing` until player acceptance. MineRENT, stable `JustEnoughMods`, the immutable release baseline and production branches were not changed
 
 ## 2026-11-01 - Restore rotten flesh leather smelting
 

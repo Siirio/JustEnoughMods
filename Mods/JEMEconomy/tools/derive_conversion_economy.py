@@ -47,11 +47,14 @@ def main():
  def sale(i):
   p=prices.get(i,{})
   if p.get('outcome','BUY_AND_SELL') not in ['BUY_AND_SELL','SELL_ONLY'] or not p.get('sell_copper'):return F(0)
-  return F(p['sell_copper'],p.get('sell_denominator',p.get('sell_units',1)))*(1 if p.get('fixed_price') or not canonical_active(i) else F(3,2))
+  result=F(p['sell_copper'],p.get('sell_denominator',p.get('sell_units',1)))*(1 if p.get('fixed_price') or not canonical_active(i) else F(3,2))
+  return min(result,F(p['max_final_sell_copper'])) if p.get('max_final_sell_copper') else result
  roots={};channels={};batches=collections.defaultdict(set);gaps=[]
  for r in capture.get('marketListings',[]):
-  if r.get('outcome') not in ['BUY_ONLY','BUY_AND_SELL']:continue
-  item=r['stack']['item'];options=[F(r['price'+str(q)],q) for q in [1,64,256,1024,4096] if r.get('price'+str(q),0)>0]
+  item=r['stack']['item'];current=policies.get(item)
+  outcome=current.get('outcome') if current else r.get('outcome')
+  if outcome not in ['BUY_ONLY','BUY_AND_SELL']:continue
+  options=[F(r['price'+str(q)],q) for q in [1,64,256,1024,4096] if r.get('price'+str(q),0)>0]
   if options:roots[item]=min(options);channels[item]='actual admitted Market full-order quote'
  for r in capture.get('nativeTrades',[]):
   if 'result' not in r:gaps.append({k:r.get(k) for k in ['profession','provider','sample_status']});continue
@@ -217,6 +220,9 @@ def main():
    if sale(i)<=0:continue
    owner=p.get('quota_family',i) if canonical_active(i) else i;units=p.get('quota_units',1) if canonical_active(i) else 1
    family[i]=owner;factors[i]=F(units);multipliers[i]=F(1) if p.get('fixed_price') or not canonical_active(i) else F(3,2)
+   if p.get('max_final_sell_copper'):
+    unit=F(p['sell_copper'],p.get('sell_denominator',p.get('sell_units',1)))
+    multipliers[i]=min(multipliers[i],F(p['max_final_sell_copper'])/unit)
    current=F(p['sell_copper'],p.get('sell_denominator',p.get('sell_units',1)))/units
    base[owner]=min(base.get(owner,current),current)
    if i in fixed or p.get('fixed_price') or p.get('user_income_anchor'):protected.add(owner)

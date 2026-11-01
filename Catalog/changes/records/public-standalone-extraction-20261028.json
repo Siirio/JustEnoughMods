@@ -42,6 +42,12 @@
         "after": "JEMExcavationDisabledLevel stores a temporarily disabled enchantment level"
       },
       {
+        "property": "excavation.shift_use_toggle_scope",
+        "operation": "replace",
+        "before": "Shift + right click toggles Digger in the air and on every block target, including a grindstone with its own JEM Shift-use action",
+        "after": "Shift + right click toggles Digger in the air and on ordinary blocks, while a grindstone remains reserved for JEMCompat enchantment extraction"
+      },
+      {
         "property": "freecam.runtime_owner",
         "operation": "replace",
         "before": "JEMCompat owns the client controller and camera integration Mixins",
@@ -116,6 +122,15 @@
         "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTime.java",
         "Mods/JEMLuxium/gradle.properties"
       ]
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "exclude_grindstone_from_digger_toggle",
+      "summary": "Preserve the generic Digger toggle while allowing the grindstone-specific Shift-use extraction owner to handle that block.",
+      "source_files": [
+        "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/feature/ExcavationEvents.java"
+      ]
     }
   ],
   "revisions": [],
@@ -135,6 +150,7 @@
     ],
     "relations": [
       "Existing enchanted tool -> unchanged jem_pack_core:excavation identity -> standalone mining owner",
+      "Shift-use on a grindstone -> JEMCompat extraction owner instead of the generic Digger toggle",
       "Native block admission -> server-owned batch mining -> native removal and durability callbacks",
       "Delete key -> legacy protocol 1 request -> server validates one physical slot",
       "Native time and optional season state -> standalone client HUD -> unchanged presentation"

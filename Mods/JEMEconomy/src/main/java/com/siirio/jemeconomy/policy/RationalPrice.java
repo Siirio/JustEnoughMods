@@ -28,6 +28,11 @@ public record RationalPrice(long numerator, long denominator) {
         BigInteger gcd = n.gcd(d);
         return new RationalPrice(n.divide(gcd).longValueExact(), d.divide(gcd).longValueExact());
     }
+    public RationalPrice min(RationalPrice other) {
+        BigInteger left = BigInteger.valueOf(numerator).multiply(BigInteger.valueOf(other.denominator));
+        BigInteger right = BigInteger.valueOf(other.numerator).multiply(BigInteger.valueOf(denominator));
+        return left.compareTo(right) <= 0 ? this : other;
+    }
     public long floor() { return numerator / denominator; }
     public long ceil() { return Math.addExact(floor(), numerator % denominator == 0 ? 0 : 1); }
     public RationalPrice remainder() { return new RationalPrice(numerator % denominator, denominator); }

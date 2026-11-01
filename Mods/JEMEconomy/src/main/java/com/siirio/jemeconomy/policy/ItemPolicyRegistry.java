@@ -102,6 +102,9 @@ public final class ItemPolicyRegistry {
             ItemPolicy.Outcome outcome;
             try { outcome = ItemPolicy.Outcome.valueOf(outcomeText); } catch (IllegalArgumentException invalid) { throw new IllegalArgumentException("Invalid policy outcome for " + id,invalid); }
             Long sell = nullableLong(row, "sell_copper"), buy = nullableLong(row, "buy_copper");
+            Long maxFinalSell = nullableLong(row, "max_final_sell_copper");
+            if (maxFinalSell != null && (maxFinalSell <= 0L || maxFinalSell > 1_000_000_000L || sell == null || sell <= 0L))
+                throw new IllegalArgumentException("Invalid final sell cap for " + id);
             if (outcome == ItemPolicy.Outcome.BUY_AND_SELL && (sell == null || buy == null || sell <= 0L || buy <= 0L
                     || buy > 1_000_000_000L || sell > 1_000_000_000_000_000L || new RationalPrice(sell,positive(row,"sell_denominator")).ceil() > 1_000_000_000L || unsafeSpread(sell,positive(row,"sell_denominator"),buy,positive(row,"buy_denominator"))
                     || integer(row, "daily_player_units") <= 0 || integer(row, "daily_global_units") <= 0))
@@ -116,7 +119,7 @@ public final class ItemPolicyRegistry {
                     integer(row, "daily_player_units"), integer(row, "daily_global_units"), string(row, "demand_group"), string(row, "notes"),
                     positive(row,"sell_denominator"), positive(row,"buy_denominator"),
                     row.has("quota_family") ? new ResourceLocation(row.get("quota_family").getAsString()) : id,
-                    (int) positive(row,"quota_units"), row.has("fixed_price") && row.get("fixed_price").getAsBoolean(), nullableLong(row,"bulk_1024")));
+                    (int) positive(row,"quota_units"), row.has("fixed_price") && row.get("fixed_price").getAsBoolean(), nullableLong(row,"bulk_1024"), maxFinalSell));
         }
         return result;
     }

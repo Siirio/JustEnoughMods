@@ -18,7 +18,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Canonical commodity policies define exact two-way Market/Shipping admission, prices and caps; prepared meals remain Market NONE while independently reviewed native specialist merchandise uses its separate owner.",
+    "summary": "Canonical item policies define independent buy and sell admission, rational unit prices and final payout caps. The verified JEMFood catalog is sell-only while unrelated items retain their reviewed direction",
     "modifiers": [
       {
         "property": "economy.trade_policy",
@@ -31,7 +31,10 @@
           "source_member_fields": [
             "outcome",
             "sell_copper",
+            "sell_denominator",
             "buy_copper",
+            "buy_denominator",
+            "max_final_sell_copper",
             "daily_player_units",
             "daily_global_units",
             "demand_group",
@@ -48,14 +51,19 @@
     "source_files": [
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
-      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/RationalPrice.java",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "Mods/JEMEconomy/tools/import_jemfood_sell_prices.py",
+      "Docs/economy/jemfood-sell-only-prices-2026-11-01.csv",
+      "Docs/economy/shipping-conversion-audit.json",
+      "Docs/economy/shipping-recipe-flow.json"
     ]
   },
   "rationale": {
-    "purpose": "Expose reviewed BUY_AND_SELL or NONE decisions while unknown and progression-protected items remain fail-closed.",
-    "decision_source": "Direct user complete economy overhaul brief 2026-10-16; preserve prior explicit EXCLUDE while user now requests suitable native specialist prepared-food offers.",
-    "user_requested": "Complete ordinary resource/agriculture/fish/animal market across installed mods without boss/progression rewards or random generic prices.",
-    "codex_choices": "Item-by-item source-backed prices/caps and conservative recipe-closure corrections in canonical item_policies.json and final balance report."
+    "purpose": "Expose reviewed BUY_AND_SELL, BUY_ONLY, SELL_ONLY or NONE decisions while unknown and progression-protected items remain fail-closed",
+    "decision_source": "Direct user complete economy overhaul brief 2026-10-16 plus the explicit 2026-11-01 JEMFood sell-only requirement",
+    "user_requested": "Allow every verified JEMFood inventory item to sell through authoritative Economy paths without allowing any Economy-controlled purchase path, apply tier ceilings after demand, preserve funded settlement and leave food effects unchanged",
+    "codex_choices": "Bound the proposal by the existing exact recipe-potential certificate, use the minimum supported quantum where that older certificate has no positive endpoint, preserve fixed native fish pricing, enforce placed-food portion ratios, exclude the one block-only identity and represent final payout ceilings in the canonical rational quote"
   },
   "introduced": {
     "date": "2026-10-13",
@@ -128,6 +136,19 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
         "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
       ]
+    },
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "jemfood_sell_only_catalog",
+      "summary": "User authorized the verified 848-row JEMFood catalog as sell-only. 847 registered Item identities receive canonical SELL_ONLY policies and post-demand caps, while natures_spirit:cheese_block remains excluded because the current Atlas records only a Block identity",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Docs/economy/jemfood-sell-only-prices-2026-11-01.csv",
+        "Docs/economy/shipping-conversion-audit.json"
+      ]
     }
   ],
   "impacts": {
@@ -144,12 +165,14 @@
       "item->daily_market_caps"
     ],
     "notes": [
-      "Canonical source_member_fields retain every exact price, quota and reason without per-item Atlas copies.",
-      "Prepared meals remain Market NONE; this does not prohibit the newly requested reviewed native specialist two-way channel. It is not permission to reopen prior explicit EXCLUDE goods.",
-      "Current source-backed recipe closure includes demand/discount bounds, cutting/bulk output, smelting and installed processing rather than relying on the historical one-recipe baseline."
+      "Canonical source_member_fields retain every exact price, quota and reason without per-item Atlas copies",
+      "The 2026-11-01 JEMFood exception is directional. Its verified inventory items may be sold but cannot be bought through Market stock, bulk orders or native NPC merchandise",
+      "The final cap is evaluated after demand in the shared server quote, placed Bakery foods retain four-slice value bounds, and Dusty Decorations pie states retain exact fractional bounds",
+      "Current source-backed recipe closure includes demand bounds, cutting and bulk output, smelting and installed processing rather than relying on the historical one-recipe baseline"
     ],
     "unresolved": [
-      "Static Atlas evidence does not prove every runtime-only acquisition path; any future commodity without exact recipe or acquisition evidence remains fail-closed."
+      "Static Atlas evidence does not prove every runtime-only acquisition path, so any future commodity without exact recipe or acquisition evidence remains fail-closed",
+      "A fresh exact LP certificate for the final policy set remains blocked by the pre-existing fixed-income conflict at create:crafting/curiosities/cake"
     ]
   }
 }
