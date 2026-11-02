@@ -2892,3 +2892,12 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - Updated ManagedPack and staged its normal AutoModpack source. Local Server runtime, original client profile and MineRENT remain unchanged. The staged generation has not been published or applied, and no gameplay launch or automated test was performed
 - Regenerated the installed-artifact Atlas and repaired obsolete version-specific artifact references in existing change records without changing their historical behavior rules
 
+## 2026-11-02 - Make the Void Walker toggle reach native movement
+
+- User added the Void Walker disable, stepped descent and post-jump air-support regression to the same develop fix as FTB and Luxium
+- Bug / Both Sided / JEM redirects targeted enchantment lookups inside vanilla jump and collision methods, but Kaleidoscope End 1.0.14 performs those lookups in separate injected handlers, so require=0 silently left native support active while status text changed / in testing
+- Replaced both ineffective redirects with a required exact-enchantment query interceptor. Disabled Void Walker returns level zero to native movement on client and server. Toggle eligibility reads the real boots so off/on remains reversible
+- The native active-enchantment movement, other enchantments, F7 binding, saved state, network protocol and support-only fall reset remain unchanged. Ordinary jump and Epic Fight Phantom Jump can no longer reacquire this enchantment's synthetic support while it is disabled, subject to player runtime acceptance
+- Built reobfuscated JEMCompat 3.9.4 with Java 17, SHA-256 `13ccf292cb526f5aa9ed3c4ea22b89a641b527c1a8358a003dc520412f07de18`. Verified that its refmap targets the living-entity enchantment query `m_44836_`, and that the two removed ineffective Mixin classes are absent
+- Updated the canonical ManagedPack artifact alongside the already prepared FTB 5.2.4 and Luxium 1.0.11 changes. Local runtime and production deployment remain unchanged, native publication and player movement acceptance remain pending
+

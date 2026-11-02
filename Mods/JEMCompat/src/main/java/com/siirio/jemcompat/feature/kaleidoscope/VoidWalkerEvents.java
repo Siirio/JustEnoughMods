@@ -24,10 +24,10 @@ public final class VoidWalkerEvents {
         if(player.level().getBlockState(support).isAir()) player.fallDistance=0;
     }
 
-    public static int effectiveLevel(Enchantment enchantment, net.minecraft.world.entity.LivingEntity entity) {
-        int level=EnchantmentHelper.getEnchantmentLevel(enchantment,entity);
+    public static boolean suppressed(Enchantment enchantment, net.minecraft.world.entity.LivingEntity entity) {
+        if(enabled(entity)) return false;
         ResourceLocation id=ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
-        return VOID_WALKER.equals(id)&&!enabled(entity)?0:level;
+        return VOID_WALKER.equals(id);
     }
 
     public static boolean enabled(net.minecraft.world.entity.LivingEntity entity) {
@@ -36,7 +36,9 @@ public final class VoidWalkerEvents {
 
     static ToggleResult toggle(ServerPlayer player) {
         var enchantment=ForgeRegistries.ENCHANTMENTS.getValue(VOID_WALKER);
-        boolean equipped=enchantment!=null&&EnchantmentHelper.getEnchantmentLevel(enchantment,player)>0;
+        // Eligibility reads the real boots, not the effective level suppressed while disabled.
+        boolean equipped=enchantment!=null&&EnchantmentHelper.getItemEnchantmentLevel(enchantment,
+                player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.FEET))>0;
         if(equipped) {
             boolean enabled=!enabled(player);
             if(enabled) player.getPersistentData().remove(DISABLED);

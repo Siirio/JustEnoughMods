@@ -29,8 +29,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.siirio.jemcompat.mixin.client.barnyard.BarnyardClydesdaleSprintKeyMixin", List.of("barnyardbuddies")),
             Map.entry("com.siirio.jemcompat.mixin.client.IngredientListOverlayAccessor", List.of("jei")),
             Map.entry("com.siirio.jemcompat.mixin.client.StorageTerminalFocusMixin", List.of("toms_storage")),
-            Map.entry("com.siirio.jemcompat.mixin.kaleidoscope.VoidWalkerJumpToggleMixin", List.of("kaleidoscope_end")),
-            Map.entry("com.siirio.jemcompat.mixin.kaleidoscope.VoidWalkerCollisionToggleMixin", List.of("kaleidoscope_end"))
+            Map.entry("com.siirio.jemcompat.mixin.kaleidoscope.VoidWalkerEnchantmentToggleMixin", List.of("kaleidoscope_end"))
     );
 
     @Override
