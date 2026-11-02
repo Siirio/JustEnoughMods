@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "a2dab9a68c13283c92bfb3af7ab32e581b3ca5a9",
+  "generation": {
+    "generated_utc": "2026-11-02T07:26:34.261102+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jem_building",
+    "name": "JEM Building",
+    "version": "1.0.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "jem_building:builder_hammer",
+      "mod_id": "jem_building",
+      "mod_name": "JEM Building",
+      "mod_version": "1.0.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:cobblestone_wall",
+        "minecraft:copper_block",
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "jem_building:builder_hammer"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "jem_building-1.0.1.jar:data/jem_building/recipes/builder_hammer.json"
+      ]
+    }
+  ]
+}
