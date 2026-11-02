@@ -1,0 +1,109 @@
+{
+  "format": 1,
+  "releaseMode": "minerent_and_hosted_automodpack_with_manual_client_application",
+  "userScope": {
+    "mineRentDeployment": true,
+    "nativeAutoModpackPublication": true,
+    "localServerUpdate": false,
+    "clientProfileApplication": false,
+    "friendPackage": false,
+    "releaseBaselinePromotion": false
+  },
+  "source": {
+    "branch": "develop",
+    "commit": "fef5cf8887cb2f0477d975cde3ee9497f5009b1d",
+    "preflightVerifiedAt": "2026-11-02T14:27:50.487934+05:00",
+    "releaseInventorySha256": "c24d66c31c11f00bae8c459a0557aa0bfbba8389648d669a2502f21a273d7e57",
+    "packSyncInventorySha256": "efca3ec983848e48cb4c589cdb446dae9789b41800f38abfee193c33ebe20153",
+    "releaseFiles": 2916,
+    "packSyncFiles": 2909
+  },
+  "server": {
+    "name": "JustEnough",
+    "panel": "https://my.minerent.net/server/0618360f",
+    "state": "running",
+    "allDimensionsSavedAt": "2026-11-02T14:28:22.362+05:00",
+    "lingeringJvmTerminatedAfterWorldSave": true,
+    "nativeDoneAt": "2026-11-02T14:41:20.464+05:00",
+    "modLoadingCompletedAt": "2026-11-02T14:41:28.543+05:00",
+    "ftbQuestCount": 643
+  },
+  "artifacts": [
+    {
+      "filename": "jem-advancements-5.2.4.jar",
+      "sha256": "3f7ffc849a772ed3adbacccc44936c32e0800e64e461501639da613e518e79b5",
+      "size": 20170781,
+      "verifiedDestinations": [
+        "/mods/jem-advancements-5.2.4.jar",
+        "/automodpack/host-modpack/main/mods/jem-advancements-5.2.4.jar"
+      ]
+    },
+    {
+      "filename": "jem_security-1.0.8.jar",
+      "sha256": "5cc49c7657ba157857b1b52a76f2c2fb8325a1919ae8420145a4a22781a831fa",
+      "size": 66083,
+      "verifiedDestinations": [
+        "/mods/jem_security-1.0.8.jar",
+        "/automodpack/host-modpack/main/mods/jem_security-1.0.8.jar"
+      ]
+    },
+    {
+      "filename": "jemcompat-3.9.4.jar",
+      "sha256": "13ccf292cb526f5aa9ed3c4ea22b89a641b527c1a8358a003dc520412f07de18",
+      "size": 384727,
+      "verifiedDestinations": [
+        "/mods/jemcompat-3.9.4.jar",
+        "/automodpack/host-modpack/main/mods/jemcompat-3.9.4.jar"
+      ]
+    },
+    {
+      "filename": "jem_luxium-1.0.11.jar",
+      "sha256": "e7e4dc7fb00c7be5fad8e7c151f9a2e142b3890074715bc28a516da8738d720a",
+      "size": 24579,
+      "verifiedDestinations": [
+        "/automodpack/host-modpack/main/mods/jem_luxium-1.0.11.jar"
+      ]
+    }
+  ],
+  "removed": {
+    "runtime": [
+      "/mods/jem-advancements-5.2.3.jar",
+      "/mods/jem_security-1.0.7.jar",
+      "/mods/jemcompat-3.9.3.jar"
+    ],
+    "hosted": [
+      "/automodpack/host-modpack/main/mods/jem-advancements-5.2.3.jar",
+      "/automodpack/host-modpack/main/mods/jem_security-1.0.7.jar",
+      "/automodpack/host-modpack/main/mods/jemcompat-3.9.3.jar",
+      "/automodpack/host-modpack/main/mods/jem_luxium-1.0.10.jar"
+    ],
+    "temporaryArchive": "/minerent-hotfix-2026-11-02.zip"
+  },
+  "publication": {
+    "published": true,
+    "journalSequence": 24,
+    "publishedAt": "2026-11-02T14:46:48.198299510+05:00",
+    "contentToken": "71c0c7a2f403d78c026756c26961e3b2fad0444d",
+    "manifestVersion": "310995d2077f5549e5042c3a6985eb0ba6f36e95b91f0d4ac70b0585ed679c8f",
+    "manifestSha1": "cdeee55afd9401621b3c016a2aaa181966c8c111",
+    "preview": { "added": 4, "changed": 1, "deleted": 4, "excluded": 2 },
+    "postPublicationPreviewAt": "2026-11-02T14:47:27.513+05:00",
+    "postPublicationPreview": { "added": 0, "changed": 0, "deleted": 0, "excluded": 2 },
+    "excluded": ["main/mods/jem-bootstrap.jar", "main/options.txt"]
+  },
+  "preservedLocalState": {
+    "releaseDeltaUnchanged": true,
+    "stableSyncUnchanged": true,
+    "baselineCreatedAt": "2026-10-30T22:29:52.226476+05:00",
+    "baselineSha256": "ee0ae01b7dde08cc2c389c4d067906dfd0c9cea91e9209d5bed99632ef1f639c",
+    "stableSyncRecordSha256": "a354460ad36eb5125b5917576bff7e541af333ad6006962c7ac83c7a4723733e",
+    "testSyncRecordSha256": "caf79be35699eb7386a4e13e5a254a74dccf4892162c1995b718d11fe53fae54",
+    "runtimeDomainJarsMatchPreDeploymentCatalog": true,
+    "localPublicationJournalSequence": 133,
+    "localPublicationPublished": false,
+    "localPublicationExplanation": "Only the hosted MineRENT catalogue was published. The excluded local runtime and its native journal were not changed"
+  },
+  "playerAcceptance": "in testing",
+  "automatedTestsRun": false,
+  "gameplayLaunched": false
+}

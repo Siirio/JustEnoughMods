@@ -1,3 +1,13 @@
+## 2026-11-02 - Publish the four-fix MineRENT and AutoModpack release
+
+- User explicitly authorized publishing the prepared ghost-block, FTB, Luxium and Void Walker fixes to MineRENT and its native AutoModpack catalogue only. The ordinary local Server, stable JustEnoughMods, test jem and other client profiles remain untouched, and the user applies the client update manually
+- Production preflight verified clean pushed develop fef5cf8887cb2f0477d975cde3ee9497f5009b1d with 2,916 release files and 2,909 managed publication files. The unchanged remainder of the hosted inventory matched the canonical ManagedPack after accounting for the already released quest, recipe and construction files
+- Replaced exactly three MineRENT runtime JARs with JEM Advancements 5.2.4, JEM Security 1.0.8 and JEMCompat 3.9.4. The hosted client source additionally receives client-only JEM Luxium 1.0.11 and the current manifest. All seven uploaded JAR copies matched the approved SHA-256 values before old versions were removed. Exact paths, hashes and publication evidence are recorded in Docs/releases/2026-11-02-minerent-four-fixes.json
+- The browser-only release preserved worlds: the log confirmed all dimensions saved at 14:28:22 +05:00 before the lingering stopped JVM was terminated. MineRENT then reached Done (1.318s) at 14:41:20, completed mod loading and loaded 643 FTB quests at 14:41:28. The temporary upload archive was removed after extraction and verification
+- Native jempack preview produced exactly +4 ~1 -4 with only bootstrap and options excluded. Native jempack publish completed at 2026-11-02 14:46:48 +05:00, journal sequence 24, full content token 71c0c7a2f403d78c026756c26961e3b2fad0444d. The post-publication preview at 14:47:27 returned +0 ~0 -0 and no catalogue changes
+- The published manifest SHA-1 cdeee55afd9401621b3c016a2aaa181966c8c111 matches the prepared source. MineRENT remains running. Existing local release delta and stable-sync state are unchanged, the three local runtime domain JAR hashes match the pre-deployment Atlas snapshot, and the immutable baseline plus stable/test synchronization records retain their original hashes
+- The local publication journal remains sequence 133 with published=false because the local server was explicitly excluded. No local publication, client application, friend package, baseline promotion, main promotion, automated tests or gameplay launch was performed. All four gameplay fixes remain in testing until player acceptance
+
 ## 2026-11-02 - Remove the block reach and visibility veto
 
 - User explicitly requested complete removal of JEM Security's block reach and line-of-sight checks after the ghost-block investigation, rather than relaxed thresholds or an automation bypass
