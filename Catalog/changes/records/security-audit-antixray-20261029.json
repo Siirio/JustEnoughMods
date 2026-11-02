@@ -20,8 +20,15 @@
     "overrides": []
   },
   "change": {
-    "summary": "Add server-authoritative Creative provenance, command and game-mode audit, outgoing-chunk Anti-Xray, action validation and bounded client attestation",
+    "summary": "Server-authoritative Creative provenance, command and game-mode audit, outgoing-chunk Anti-Xray, entity-attack validation and bounded client attestation without a block reach/visibility veto",
     "modifiers": [
+      {
+        "property": "block_action.jem_security_reach_visibility_veto",
+        "operation": "replace",
+        "before": "JEM Security cancels RightClickBlock and BreakEvent when eye-to-block-center distance exceeds raw BLOCK_REACH + 0.75 or a collision ray to that center hits another block, including server-origin JEM Building fill calls",
+        "after": "JEM Security applies no reach or visibility veto to block interactions, placement or breaking and emits no invalid_block_interaction or invalid_block_break suspicion events. Native Forge validation and other domain permissions continue to own admission",
+        "notes": "The user explicitly removed this logic after live MineRENT audit confirmed 2417 rejected block interactions and 19 rejected breaks since 13:00 on 2026-11-02. Anti-Xray, covered-ore observation, Creative provenance, entity-attack validation and authentication are unchanged. Runtime acceptance remains in testing"
+      },
       {
         "property": "client.hidden_ore_identity",
         "operation": "derive",
@@ -81,12 +88,12 @@
       "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java",
       "Mods/JEMSecurity/src/main/resources/jem_security.mixins.json",
       "Mods/JEMSecurity/src/main/resources/pack.mcmeta",
-      "Client/ManagedPack/mods/jem_security-1.0.7.jar"
+      "Client/ManagedPack/mods/jem_security-1.0.8.jar"
     ]
   },
   "rationale": {
-    "purpose": "Prevent hidden-ore disclosure and unauthorized remote interactions while preserving auditable Creative administration without FCW AntiCheat render integration",
-    "decision_source": "User request and clarification on 2026-10-29",
+    "purpose": "Prevent hidden-ore disclosure and retain auditable Creative administration and entity-attack validation without the user-rejected block reach/visibility cancellation logic",
+    "decision_source": "User request and clarification on 2026-10-29, amended by explicit removal of block reach/visibility checks on 2026-11-02",
     "user_requested": "Create JEM Security, keep test jem unchanged, allow JEM Freecam, block third-party through-block freecam and xray advantages, and track Creative and suspicious actions",
     "codex_choices": "Use outgoing chunk encoding instead of renderer hooks, exact configurable client IDs plus server authority, provenance NBT for Creative stacks, JSONL journals and consent-only sanitized log transfer"
   },
@@ -97,6 +104,20 @@
     "summary": "Add the standalone source and production artifact without installing it into test jem or runtime distributions"
   },
   "history": [
+    {
+      "date": "2026-11-02",
+      "commit": "SELF",
+      "action": "remove_block_reach_visibility_veto",
+      "summary": "User explicitly requires deleting the check entirely. Remove validBlockAction and both block cancellation branches rather than add tolerances, configuration or a construction-only bypass. Preserve Anti-Xray, audits, entity-attack validation and network contracts. Recover the already released context-bound transport from source commit 132223688, absent from develop but present in deployed 1.0.7. Advance the production artifact to 1.0.8",
+      "source_files": [
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityEvents.java",
+        "Mods/JEMSecurity/gradle.properties",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java",
+        "Client/ManagedPack/mods/jem_security-1.0.7.jar",
+        "Client/ManagedPack/mods/jem_security-1.0.8.jar"
+      ]
+    },
     {
       "date": "2026-10-29",
       "commit": "SELF",
@@ -203,6 +224,8 @@
   "impacts": {
     "systems": [
       "server_security",
+      "block_interactions",
+      "construction_filling",
       "creative_inventory",
       "inventory",
       "chunk_networking",
@@ -213,6 +236,7 @@
       "privacy"
     ],
     "relations": [
+      "Native block packet or server-owned JEM Building useItemOn -> Forge block event -> no JEM Security reach/visibility cancellation",
       "Authoritative LevelChunk -> filtered outgoing section copy -> client chunk only",
       "Creative slot packet -> provenance tag -> server transition journal",
       "Declared client mods and packs -> bounded attestation -> exact configured admission decision",

@@ -11,14 +11,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.GameType;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
@@ -106,11 +104,6 @@ public final class SecurityEvents {
     public static void breakBlock(BlockEvent.BreakEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getPlayer() instanceof ServerPlayer player)
                 || !SecurityRuntime.active(player.server)) return;
-        if (!validBlockAction(player, event.getPos())) {
-            event.setCanceled(true);
-            suspicious(player, "invalid_block_break", event.getPos(), 4);
-            return;
-        }
         if (AntiXray.hiddenBlock(event.getState()) && !AntiXray.exposed(level, event.getPos())) {
             suspicious(player, "covered_ore_break", event.getPos(), 8);
         }
@@ -120,12 +113,6 @@ public final class SecurityEvents {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void rightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !SecurityRuntime.active(player.server)) return;
-        if (!validBlockAction(player, event.getPos())) {
-            event.setCanceled(true);
-            event.setCancellationResult(InteractionResult.FAIL);
-            suspicious(player, "invalid_block_interaction", event.getPos(), 3);
-            return;
-        }
         auditTaggedUse(player, event.getItemStack(), "creative_item_block_use", event.getPos());
     }
 
@@ -205,15 +192,6 @@ public final class SecurityEvents {
         details.addProperty("to", current);
         SecurityAuditLog.record(player, "game_mode_changed", details);
         player.getPersistentData().putString(LAST_GAME_MODE, current);
-    }
-
-    private static boolean validBlockAction(ServerPlayer player, BlockPos pos) {
-        double reach = player.getAttributeValue(ForgeMod.BLOCK_REACH.get()) + 0.75D;
-        Vec3 eye = player.getEyePosition();
-        Vec3 target = Vec3.atCenterOf(pos);
-        if (eye.distanceToSqr(target) > reach * reach) return false;
-        BlockHitResult hit = player.level().clip(new ClipContext(eye, target, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
-        return hit.getType() == HitResult.Type.MISS || hit.getBlockPos().equals(pos);
     }
 
     private static boolean validEntityAction(ServerPlayer player, Entity targetEntity) {

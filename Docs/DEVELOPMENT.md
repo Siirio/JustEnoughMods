@@ -79,7 +79,7 @@ The approved public Forge 1.20.1 extraction scope is frozen in the [public relea
 | `JEMEconomy` | Единственный runtime owner `jem_economy` Coins, Wallet/physical ledger, provenance/escrow/receipts, funded native merchants, market и Shipping Box; world SERVER config `[economy] enabled=true` |
 | `JEMSettlements` | Одна production-реализация settlements для integrated/dedicated: unlimited towns, residents/housing/happiness, real storage, payroll и native GUI; Coin adapter optional, при Economy absent/off используется существующий EmeraldTreasury |
 | `JEMServer` | Общие non-event SMP services, parties, profile/map UX и ordinary boss/Raid UI. Scheduled/seasonal Events запускаются только при explicit dedicated host opt-in |
-| `JEMSecurity` | Dedicated-host security: server-owned command/Creative audit, Creative item provenance, outgoing chunk Anti-Xray, authoritative reach/visibility guards, required client attestation and consent-only sanitized client log collection. `jem_freecam` remains explicitly allowed |
+| `JEMSecurity` | Dedicated-host security: server-owned command/Creative audit, Creative item provenance, outgoing chunk Anti-Xray, entity-attack reach/visibility guard, required client attestation and consent-only sanitized client log collection. Block interaction and breaking have no JEM Security reach/visibility veto, including server-owned JEM Building filling, under the explicit 2026-11-02 removal. Native Forge and other domain permissions remain authoritative. `jem_freecam` remains explicitly allowed |
 
 ### Client rendering performance boundary
 

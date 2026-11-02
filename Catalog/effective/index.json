@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "9ecda8bcc7fd2a051ad65cf4079d3e161f52df919677a358b0d721ec0f211b6d",
+  "change_records_sha256": "c907963e775ffef66df8501bc26393e4b1c2d0f9d36b3fca1bffe6d17d84bb38",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -2751,7 +2751,7 @@
     {
       "change_id": "security.audit-antixray-20261029",
       "status": "conditional",
-      "summary": "Add server-authoritative Creative provenance, command and game-mode audit, outgoing-chunk Anti-Xray, action validation and bounded client attestation",
+      "summary": "Server-authoritative Creative provenance, command and game-mode audit, outgoing-chunk Anti-Xray, entity-attack validation and bounded client attestation without a block reach/visibility veto",
       "record": "Catalog/changes/records/security-audit-antixray-20261029.json",
       "selectors": [
         {
@@ -4129,7 +4129,7 @@
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/defaultconfigs/mapsyncer-server.toml": "8d18876d6a65cdfdc098f6c105ed7cbea35a3ef911445427104f821a0a0c8fec",
-    "Client/ManagedPack/jem-pack/manifest.json": "8da0ccebc2e094731de767e428f6989d71a9d57b5881e5dc79eeefbced825c7c",
+    "Client/ManagedPack/jem-pack/manifest.json": "60d7878e9678b970d50f3b2823465e929c96de707835b55cdb6a6c1f85f5c7b5",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4321,7 +4321,7 @@
     "Client/ManagedPack/mods/jem_adaptive_culling-1.5.0.jar": "81c8115c9594b5f83ee3649d3cae4d0a095d4f1984af901dcf4e753bf8240e9f",
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "d7b523b6cc7657340390fa961c9b8db351db4c505eea590a95c1536b923982e7",
     "Client/ManagedPack/mods/jem_luxium-1.0.11.jar": "e7e4dc7fb00c7be5fad8e7c151f9a2e142b3890074715bc28a516da8738d720a",
-    "Client/ManagedPack/mods/jem_security-1.0.7.jar": "8614637b96854c7d2831cf28521a2513d5ff512e47237426b8576d7487c6e5d2",
+    "Client/ManagedPack/mods/jem_security-1.0.8.jar": "5cc49c7657ba157857b1b52a76f2c2fb8325a1919ae8420145a4a22781a831fa",
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0.jar": "8c934a089d724c227ecc11bd36771b48d536559150e97b36664d4a5a2c0d1906",
     "Client/ManagedPack/mods/jemcompat-3.9.4.jar": "13ccf292cb526f5aa9ed3c4ea22b89a641b527c1a8358a003dc520412f07de18",
     "Client/ManagedPack/mods/jemfood-1.0.0.jar": "c3887841900ae110cde3f5c2ff57bae1877e756f0037746c6c072e518be15361",
@@ -4329,7 +4329,7 @@
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "dd571f3a12c99235e1f35e3601099da29b0b1e88343630d94bf6903f56f22ad2",
+    "Docs/DEVELOPMENT.md": "fe3a5c537040494f64ac719f9143993219aa1f2a9e5ada94616b6586d9709f71",
     "Docs/MODS.md": "ee927288eb8b1ef4ff486afbf9708a251b31d65cda3bd6c834a55b5a13d2182f",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -8704,21 +8704,21 @@
     "Mods/JEMSeasonsHud/src/main/resources/assets/jemcompat/lang/en_us.json": "3e3d03db08ea7c5504687c41927e86e5d48431879e5dcb3e72815697d954754a",
     "Mods/JEMSeasonsHud/src/main/resources/assets/jemcompat/lang/ru_ru.json": "51a46cb6eafce9622da9eef7e168acc041d0f57515075cbf8cda4933f7e3989b",
     "Mods/JEMSecurity/build.gradle": "8f21c5f597ba13e6e6db616708ea4b88a2ca7b2dc1f18297f413b899d3159cdf",
-    "Mods/JEMSecurity/gradle.properties": "cf58bb594d9583e54c2568722f964d0ffdb2abacfc3ed20b3ea30abf35049bf8",
+    "Mods/JEMSecurity/gradle.properties": "689e06e4b1d891af6d711804f828bcbde84f4d334acc9011d35538c5c954ddf2",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/AntiXray.java": "505355dccd4c6462de388259ef5d74fbd1a1c0452fbdd06748a13c6b65b3de4c",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/ItemProvenance.java": "042b2532a720dfa00daa42f84d20b2e3c1b9ec15e76eb64f72dc74449df05ea8",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/JEMSecurity.java": "dd09b79c69818c37c9291b8a6bf58c9d695ffe494821b90b272f494d2ba197d7",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityAuditLog.java": "26f011600a52916de64ce6b2a804042b1d70c9c0f7a8c96e25784e8bbeae6b6f",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityCommands.java": "be9f7784caf494285f80ead8084c077b24b36646b62077bcff14f581461bd090",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityConfig.java": "a0a0c74785486487de93c630f0138f58a0290f45f251324997975caeb75bc6ac",
-    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityEvents.java": "602cb8a11acee241a17c21ed7f1b8adaee8de3b8bfd9583e92cee8ab1b681e91",
+    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityEvents.java": "7810b635a55c4ca4cf1f5358509d3d8fdc8041b3c2a10a3dfc94c86175a14633",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityRuntime.java": "71eb536f8f66e6bd35f5b4801cc097b75c0c226ac0b9b4e236a6dcbc2bd9fc24",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/client/ResourcePackGuard.java": "b958e0e50bf0d6f50c18ecdade470d8c47ab856609c92ad6e2d3359efad7214d",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/ChunkPacketDataMixin.java": "bb826eab3e76fe7078de60a4eef1fdd68bf8080ef8f188681461b7289aa6642f",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/CreativeSlotMixin.java": "db2d372973d6ce197da890872cd5ded38abce2a6c8de6655f910d95b38bf5009",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/PackSelectionScreenMixin.java": "97756f5a982c5e1b65c63069e0617caa8382e9e3af3ef8333729481f5b87a54e",
-    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java": "40a6bc7a29ec529ed4a69102dadebb088e3226a374b017df72d17b77c6a9c3b9",
-    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java": "a023fc127b2294b83637a9701ecf947cfe9030a93d8b9bab781ac03b68ddb509",
+    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java": "771a067f595f911a4ee8290a983f8ddcd6d1b64f4c0db0b2f25ca47c817df7f5",
+    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java": "8bd1e81fbe835b550bce2ea5027e0919eedda7cab1bd2ac21f63b46cc35102a6",
     "Mods/JEMSecurity/src/main/resources/jem_security.mixins.json": "1a5bc08e03e9f7f8d1227970c7651da220ef91f0f899f0117c032c11c95210cd",
     "Mods/JEMSecurity/src/main/resources/pack.mcmeta": "dadb7d1b45c17b0e528d721bb9cfa1c6578fc84020e5f4b50f2284db3f1f17dd",
     "Mods/JEMServer/build.gradle": "04d5efb094c763898be5aa07dabfb37926d7a9de0734e1a2adf114f989357ac2",
@@ -9580,7 +9580,7 @@
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "c83b8dfe673016e9afba714fd4be3270676f6ec2f1704a988a10c9d6a5033cfd",
     "tools/module-inventory.json": "8225acb70c457e2e5a2fb88fb2df75110ab9b00f7fe3469b069a6d706e4648b1",
-    "tools/state/packSyncHost-sync.json": "b389c4a620453262e7d3f682448eb203ed024e8ab06aa5eabc0192116c2b4216",
+    "tools/state/packSyncHost-sync.json": "e0f1ca54ab53bce877dcfe34dcec9a625262403b0ac558cd1ebc30bf65ddf100",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }
