@@ -16,7 +16,7 @@
         "property": "ftbquests.team_data.locked",
         "operation": "replace",
         "before": "A persisted or newly resolved native team may retain locked=true and make every entry report Quests locked!.",
-        "after": "The existing optional JEMAchievementGuide FTB adapter waits for FTB Teams to resolve the exact team on login or team change, then calls TeamData.setLocked(false), saves only when the value changed and synchronizes that native TeamData to the affected player. Native FTB progress, rewards and claims remain authoritative."
+        "after": "The optional adapter waits for FTB Teams to resolve the team, calls TeamData.setLocked(false) and saves only a changed file. Native lock updates synchronize the flag. Full TeamData is sent only by FTB's post-definition request handshake, so its decoder binds to the installed client quest file. Native progress, rewards and claims remain authoritative."
       }
     ]
   },
@@ -24,6 +24,7 @@
     "owner": "JEMAchievementGuide optional FTB Quests adapter",
     "kind": "native_ftb_team_reconciliation",
     "source_files": [
+      "Mods/JEMAchievementGuide/build.gradle",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestBridge.java",
       "Mods/JEMAchievementGuide/README.md"
     ]
@@ -50,12 +51,18 @@
       "commit": "SELF",
       "action": "move_unlock_to_native_team_lifecycle",
       "summary": "Move reconciliation from the earlier Forge player-login event to FTB Teams' resolved login/team-change boundary and synchronize the result on the following server tick."
+    },
+    {
+      "date": "2026-11-02",
+      "commit": "SELF",
+      "action": "preserve_native_post_definition_handshake",
+      "summary": "Remove unsolicited full TeamData messages at login and definition reload, which could decode against a null or obsolete client quest file. Retain native lock messages and the post-definition client request."
     }
   ],
   "impacts": {
     "systems": ["FTB Quests", "FTB Teams", "JEMAchievementGuide", "dedicated_server", "integrated_server"],
     "relations": ["FTB Teams resolved login or team change -> exact native FTB TeamData -> unlocked quest presentation"],
-    "notes": ["The following-tick reconciliation runs after FTB Quests' own login synchronization and sends the corrected native TeamData directly to the affected player."],
+    "notes": ["One server tick does not prove that a client has installed its quest definitions. Full TeamData follows the native client acknowledgement/request, while setLocked supplies the native lock delta."],
     "unresolved": ["Player-visible acceptance remains pending after deployment."]
   }
 }

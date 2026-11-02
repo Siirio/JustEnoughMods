@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "recipes",
-  "snapshot_sha": "9a450f86d23433e880f49eed24027a8ecceb03ab",
+  "snapshot_sha": "a2dab9a68c13283c92bfb3af7ab32e581b3ca5a9",
   "generation": {
-    "generated_utc": "2026-10-31T13:17:52.447361+00:00",
+    "generated_utc": "2026-11-02T07:26:34.261102+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -60516,14 +60516,13 @@
       "mod_id": "create",
       "mod_name": "Create",
       "mod_version": "6.0.8",
-      "recipe_type": "create:sequenced_assembly",
-      "machine_id": "create:sequenced_assembly",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
       "ingredient_groups": [
-        "create:filling",
-        "create:sequenced_assembly",
-        "exposure:black_and_white_film",
-        "exposure:developed_black_and_white_film",
-        "minecraft:water"
+        "forge:conditional",
+        "forge:false",
+        "minecraft:barrier",
+        "minecraft:crafting_shapeless"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -60531,7 +60530,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "exposure-forge-1.20.1-1.9.21.jar:data/create/recipes/sequenced_assembly/black_and_white_film_developing.json"
+        "simpler_exposure-1.0.0.jar:data/create/recipes/sequenced_assembly/black_and_white_film_developing.json"
       ]
     },
     {
@@ -60540,17 +60539,13 @@
       "mod_id": "create",
       "mod_name": "Create",
       "mod_version": "6.0.8",
-      "recipe_type": "create:sequenced_assembly",
-      "machine_id": "create:sequenced_assembly",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
       "ingredient_groups": [
-        "create:filling",
-        "create:potion",
-        "create:sequenced_assembly",
-        "exposure:color_film",
-        "exposure:developed_color_film",
-        "minecraft:awkward",
-        "minecraft:mundane",
-        "minecraft:thick"
+        "forge:conditional",
+        "forge:false",
+        "minecraft:barrier",
+        "minecraft:crafting_shapeless"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -60558,7 +60553,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "exposure-forge-1.20.1-1.9.21.jar:data/create/recipes/sequenced_assembly/color_film_developing.json"
+        "simpler_exposure-1.0.0.jar:data/create/recipes/sequenced_assembly/color_film_developing.json"
       ]
     },
     {
@@ -60567,14 +60562,13 @@
       "mod_id": "create",
       "mod_name": "Create",
       "mod_version": "6.0.8",
-      "recipe_type": "create:sequenced_assembly",
-      "machine_id": "create:sequenced_assembly",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
       "ingredient_groups": [
-        "create:filling",
-        "create:sequenced_assembly",
-        "exposure:developed_black_and_white_film",
-        "exposure:high_sensitivity_black_and_white_film",
-        "minecraft:water"
+        "forge:conditional",
+        "forge:false",
+        "minecraft:barrier",
+        "minecraft:crafting_shapeless"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -60582,7 +60576,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "exposure-forge-1.20.1-1.9.21.jar:data/create/recipes/sequenced_assembly/high_sensitivity_black_and_white_film_developing.json"
+        "simpler_exposure-1.0.0.jar:data/create/recipes/sequenced_assembly/high_sensitivity_black_and_white_film_developing.json"
       ]
     },
     {
@@ -60591,17 +60585,13 @@
       "mod_id": "create",
       "mod_name": "Create",
       "mod_version": "6.0.8",
-      "recipe_type": "create:sequenced_assembly",
-      "machine_id": "create:sequenced_assembly",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
       "ingredient_groups": [
-        "create:filling",
-        "create:potion",
-        "create:sequenced_assembly",
-        "exposure:developed_color_film",
-        "exposure:high_sensitivity_color_film",
-        "minecraft:awkward",
-        "minecraft:mundane",
-        "minecraft:thick"
+        "forge:conditional",
+        "forge:false",
+        "minecraft:barrier",
+        "minecraft:crafting_shapeless"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -60609,7 +60599,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "exposure-forge-1.20.1-1.9.21.jar:data/create/recipes/sequenced_assembly/high_sensitivity_color_film_developing.json"
+        "simpler_exposure-1.0.0.jar:data/create/recipes/sequenced_assembly/high_sensitivity_color_film_developing.json"
       ]
     },
     {

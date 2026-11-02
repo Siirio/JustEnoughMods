@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "5119e4ab9464298c785dad4fe33e0e60f61daabfbbfe9d514bae9fd0fb5168ee",
+  "change_records_sha256": "7ffe9dabf9cd2aa5f3b4c50b991014ad18888a925d5e332163de5667eea64b48",
   "totals": {
-    "watched": 7203,
-    "covered": 5453,
-    "unresolved": 1750
+    "watched": 7247,
+    "covered": 5461,
+    "unresolved": 1786
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1387,
-      "covered": 42,
-      "unresolved": 1345,
+      "watched": 1386,
+      "covered": 43,
+      "unresolved": 1343,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -277,7 +277,6 @@
         "Client/ManagedPack/config/infinitybuttons.toml",
         "Client/ManagedPack/config/insanelib.toml",
         "Client/ManagedPack/config/invincible-common.toml",
-        "Client/ManagedPack/config/item_obliterator.json5",
         "Client/ManagedPack/config/jade/hide-blocks.json",
         "Client/ManagedPack/config/jade/hide-entities.json",
         "Client/ManagedPack/config/jade/jade.json",
@@ -316,7 +315,6 @@
         "Client/ManagedPack/config/lithium.properties",
         "Client/ManagedPack/config/lithostitched.json",
         "Client/ManagedPack/config/lodestone-client.toml",
-        "Client/ManagedPack/config/luxium-client.toml",
         "Client/ManagedPack/config/midnightlib.json",
         "Client/ManagedPack/config/minecraft-cursor.json",
         "Client/ManagedPack/config/modernfix-common.toml",
@@ -1362,8 +1360,8 @@
       ]
     },
     "Client/ManagedPack/defaultconfigs": {
-      "watched": 7,
-      "covered": 0,
+      "watched": 8,
+      "covered": 1,
       "unresolved": 7,
       "unresolved_paths": [
         "Client/ManagedPack/defaultconfigs/TPA/config/configuration.toml",
@@ -1441,6 +1439,35 @@
         "Mods/JEMAnimalHints/src/main/resources/pack.mcmeta"
       ]
     },
+    "Mods/JEMBuilding": {
+      "watched": 24,
+      "covered": 2,
+      "unresolved": 22,
+      "unresolved_paths": [
+        "Mods/JEMBuilding/gradle.properties",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/JEMBuilding.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionExpiryClient.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionInput.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionModeScreen.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionPreview.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/compat/jade/ConstructionExpiryJadePlugin.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/compat/jade/ConstructionExpiryProvider.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionData.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionGeometry.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionPlaceholderBlock.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionPlane.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionRuntime.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionShape.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/item/BuilderHammerItem.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/network/BuildingNetwork.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/registry/BuildingContent.java",
+        "Mods/JEMBuilding/src/main/resources/assets/jem_building/blockstates/construction_placeholder.json",
+        "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/block/construction_placeholder.json",
+        "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/builder_hammer.json",
+        "Mods/JEMBuilding/src/main/resources/assets/jem_building/textures/item/builder_hammer.png",
+        "Mods/JEMBuilding/src/main/resources/pack.mcmeta"
+      ]
+    },
     "Mods/JEMCinematicInteractions": {
       "watched": 12,
       "covered": 12,
@@ -1448,8 +1475,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMCompat": {
-      "watched": 148,
-      "covered": 105,
+      "watched": 149,
+      "covered": 106,
       "unresolved": 43,
       "unresolved_paths": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
@@ -1588,8 +1615,8 @@
       ]
     },
     "Mods/JEMInChatFTB": {
-      "watched": 6,
-      "covered": 5,
+      "watched": 7,
+      "covered": 6,
       "unresolved": 1,
       "unresolved_paths": [
         "Mods/JEMInChatFTB/gradle.properties"
@@ -1606,13 +1633,12 @@
     },
     "Mods/JEMLuxium": {
       "watched": 16,
-      "covered": 9,
-      "unresolved": 7,
+      "covered": 10,
+      "unresolved": 6,
       "unresolved_paths": [
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/JEMLuxium.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumClientBootstrap.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionStorage.java",
-        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumShaderController.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/config/LuxiumClientConfig.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/NeoSkyCelestiaOculusGuardMixin.java",
         "Mods/JEMLuxium/src/main/resources/pack.mcmeta"
@@ -1652,9 +1678,9 @@
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 497,
+      "watched": 494,
       "covered": 329,
-      "unresolved": 168,
+      "unresolved": 165,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1714,9 +1740,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/FireAltarStagingMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/KrakenSpawnerStagingMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/VoidAltarStagingMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveMapLayerMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/SharedMapSyncMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NavigationPoint.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NavigationPoints.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Notifications.java",
@@ -1973,6 +1996,33 @@
       "covered": 96,
       "unresolved": 0,
       "unresolved_paths": []
+    },
+    "Mods/SimplerExposure": {
+      "watched": 21,
+      "covered": 1,
+      "unresolved": 20,
+      "unresolved_paths": [
+        "Mods/SimplerExposure/gradle.properties",
+        "Mods/SimplerExposure/src/main/java/com/siirio/simplerexposure/InstantPhotographs.java",
+        "Mods/SimplerExposure/src/main/java/com/siirio/simplerexposure/SimplerExposure.java",
+        "Mods/SimplerExposure/src/main/java/com/siirio/simplerexposure/SimplerExposureConfig.java",
+        "Mods/SimplerExposure/src/main/java/com/siirio/simplerexposure/mixin/FilmRollItemMixin.java",
+        "Mods/SimplerExposure/src/main/resources/data/create/recipes/sequenced_assembly/black_and_white_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/create/recipes/sequenced_assembly/color_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/create/recipes/sequenced_assembly/high_sensitivity_black_and_white_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/create/recipes/sequenced_assembly/high_sensitivity_color_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/black_and_white_film.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/black_and_white_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/broken_interplanar_projector_fixing.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/color_film.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/color_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/high_sensitivity_black_and_white_film.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/high_sensitivity_color_film.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/interplanar_projector.json",
+        "Mods/SimplerExposure/src/main/resources/data/exposure/recipes/lightroom.json",
+        "Mods/SimplerExposure/src/main/resources/pack.mcmeta",
+        "Mods/SimplerExposure/src/main/resources/simpler_exposure.mixins.json"
+      ]
     }
   }
 }

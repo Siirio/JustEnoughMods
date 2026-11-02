@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "9a450f86d23433e880f49eed24027a8ecceb03ab",
+  "snapshot_sha": "a2dab9a68c13283c92bfb3af7ab32e581b3ca5a9",
   "generation": {
-    "generated_utc": "2026-10-31T13:17:52.447361+00:00",
+    "generated_utc": "2026-11-02T07:26:34.261102+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1549,7 +1549,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -1558,9 +1558,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 1876157,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1000000,
       "quota_family": "barnyardbuddies:pet_kibble",
       "quota_units": 1,
       "bulk_1024": null,
@@ -1568,7 +1568,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },

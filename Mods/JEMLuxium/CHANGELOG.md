@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.11
+
+- Reload native core entity shaders along with the GPU feature mask and terrain renderer when changing renderer ownership
+- Log a bounded native shadow-state snapshot after entering a world or changing the master switch to diagnose remaining missing-shadow reports
+- Runtime shadow acceptance remains pending
+
 ## 1.0.10
 
 - Refresh Luxium's cached GPU feature mask immediately when the renderer owner changes, before rebuilding Embeddium

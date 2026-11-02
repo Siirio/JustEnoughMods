@@ -2882,3 +2882,13 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - The user's requested behavior owns the one-hammer, unlimited 2D selection, hollow placeholder, recipe and branch-isolation decisions. Codex independently selected SavedData region ownership, bounded per-tick work, no forced chunk loading and native BlockItem placement as the implementation mechanisms
 - No Gradle build, automated test, launch, linter, formatter, Atlas rebuild/audit/validation or gameplay QA was run, per the user's explicit override. Runtime behavior remains unverified
 
+## 2026-11-02 - Repair quest synchronization and investigate original-profile shadows
+
+- User approved the FTB crash fix on develop and reported that Luxium remains enabled without visible shadows in the original profile
+- Bug / Both Sided / the adapter sent full FTB TeamData before the client installed quest definitions, allowing the packet decoder to capture a null ClientQuestFile and crash Quest.isVisible on book opening / in testing, removed unsolicited login and reload snapshots while retaining native lock updates and the post-definition RequestTeamDataMessage handshake
+- Bug / Client Sided / the renderer switch omitted the core shader reload used by Luxium's native settings lifecycle / in testing, added the native GameRenderer accessor call alongside feature refresh and managed terrain rebuild
+- The broader missing-shadow report remains under investigation. Added bounded runtime state diagnostics for master setting, Oculus, GPU sky mode, shadow frame and cascade generations. Player confirmation remains required
+- Production reobfuscated artifacts built with Java 17: JEM Advancements 5.2.4 SHA-256 `3f7ffc849a772ed3adbacccc44936c32e0800e64e461501639da613e518e79b5` and JEM Luxium 1.0.11 SHA-256 `e7e4dc7fb00c7be5fad8e7c151f9a2e142b3890074715bc28a516da8738d720a`
+- Updated ManagedPack and staged its normal AutoModpack source. Local Server runtime, original client profile and MineRENT remain unchanged. The staged generation has not been published or applied, and no gameplay launch or automated test was performed
+- Regenerated the installed-artifact Atlas and repaired obsolete version-specific artifact references in existing change records without changing their historical behavior rules
+

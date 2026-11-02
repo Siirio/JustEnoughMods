@@ -3,7 +3,6 @@ package com.justenoughmods.achievementguide.compat.ftb;
 import dev.architectury.event.EventResult;
 import dev.ftb.mods.ftbquests.events.CustomTaskEvent;
 import dev.ftb.mods.ftbquests.net.SyncQuestsMessage;
-import dev.ftb.mods.ftbquests.net.SyncTeamDataMessage;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.task.CustomTask;
 import dev.ftb.mods.ftbteams.api.event.TeamEvent;
@@ -76,10 +75,8 @@ public final class FtbQuestBridge {
         // Native reload reads its normal team files. Flush first so an enable/disable cannot lose recent progress.
         file.saveNow();
         file.load();
+        // Native clients request TeamData after installing these definitions.
         new SyncQuestsMessage(file).sendToAll(event.getServer());
-        for (var player : event.getServer().getPlayerList().getPlayers()) {
-            new SyncTeamDataMessage(file.getOrCreateTeamData(player), true).sendTo(player);
-        }
     }
 
     private static void reconcileNativeTeamUnlocks(TickEvent.ServerTickEvent event) {
@@ -93,7 +90,8 @@ public final class FtbQuestBridge {
             if (player != null) {
                 var data = file.getOrCreateTeamData(pending.getValue());
                 if (data.setLocked(false)) data.saveIfChanged();
-                new SyncTeamDataMessage(data, true).sendTo(player);
+                // setLocked sends the native lock update. The full login snapshot is
+                // owned by FTB's post-definition RequestTeamDataMessage handshake.
             }
             iterator.remove();
         }

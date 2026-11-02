@@ -4,6 +4,8 @@ import com.siirio.jemluxium.JEMLuxium;
 import com.siirio.jemluxium.config.LuxiumClientConfig;
 import com.vinlanx.luxium.Config;
 import com.vinlanx.luxium.client.shaders.LuxiumGpuShaderFeatures;
+import com.vinlanx.luxium.mixin.GameRendererAccessor;
+import com.vinlanx.luxium.client.shadows.neoskycelestia.NeoSkyCelestia;
 import net.irisshaders.iris.api.v0.IrisApi;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,6 +17,9 @@ final class LuxiumShaderController {
     private static final Logger LOGGER = LoggerFactory.getLogger(JEMLuxium.MOD_ID);
     private static boolean previousOculusEnabled;
     private static boolean oculusStateInitialized;
+    private static net.minecraft.client.multiplayer.ClientLevel observedLevel;
+    private static int diagnosticTicks;
+    private static boolean observedEnabled;
 
     private LuxiumShaderController() {
     }
@@ -32,6 +37,7 @@ final class LuxiumShaderController {
     }
 
     static void reconcileOculusState() {
+        observeRendererState();
         boolean oculusEnabled = IrisApi.getInstance().getConfig().areShadersEnabled();
         if (!oculusStateInitialized) {
             oculusStateInitialized = true;
@@ -45,6 +51,23 @@ final class LuxiumShaderController {
             disableLuxiumForOculus();
         }
         previousOculusEnabled = oculusEnabled;
+    }
+
+    private static void observeRendererState() {
+        Minecraft minecraft = Minecraft.getInstance();
+        boolean enabled = isLuxiumActive();
+        if (observedLevel != minecraft.level || observedEnabled != enabled) {
+            observedLevel = minecraft.level;
+            observedEnabled = enabled;
+            diagnosticTicks = 40;
+        }
+        if (minecraft.level == null || diagnosticTicks == 0 || --diagnosticTicks != 0) return;
+        var sky = NeoSkyCelestia.get();
+        var frame = sky.frameState();
+        LOGGER.info("Luxium world state: master={}, oculus={}, skyFeature={}, skyMode={}, frame={}, nearGeneration={}, farGeneration={}, entityShadows={}",
+                enabled, IrisApi.getInstance().getConfig().areShadersEnabled(),
+                LuxiumGpuShaderFeatures.neoSkyCelestiaEnabled(), sky.isGpuModeSelected(), frame.enabled(),
+                frame.nearGeneration(), frame.farGeneration(), Config.CLIENT.skyEntityShadowsEnabled.get());
     }
 
     private static void disableLuxiumForOculus() {
@@ -95,8 +118,15 @@ final class LuxiumShaderController {
 
     private static void reloadEmbeddiumRenderer() {
         Minecraft minecraft = Minecraft.getInstance();
+        // Native Luxium settings reload core entity shaders as well as terrain:
+        // their resource selection depends on the GPU feature mask at load time.
+        ((GameRendererAccessor) minecraft.gameRenderer).luxium$reloadShaders(minecraft.getResourceManager());
         if (minecraft.levelRenderer != null) {
             minecraft.levelRenderer.allChanged();
         }
+        LOGGER.info("Luxium renderer applied: master={}, sky={}, local={}, vanilla={}, oculus={}",
+                Config.CLIENT.luxiumEnabled.get(), LuxiumGpuShaderFeatures.neoSkyCelestiaEnabled(),
+                LuxiumGpuShaderFeatures.localReceiverEnabled(), LuxiumGpuShaderFeatures.neoGpuVanillaReceiverEnabled(),
+                IrisApi.getInstance().getConfig().areShadersEnabled());
     }
 }

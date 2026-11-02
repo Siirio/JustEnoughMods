@@ -1,17 +1,18 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "9a450f86d23433e880f49eed24027a8ecceb03ab",
-  "generated_utc": "2026-10-31T13:17:52.447361+00:00",
+  "snapshot_sha": "a2dab9a68c13283c92bfb3af7ab32e581b3ca5a9",
+  "generated_utc": "2026-11-02T07:26:34.261102+00:00",
   "claim": "100% of statically observed canonical IDs; runtime boundary unresolved",
   "id_coverage": {
     "items": {
       "expected_id_count": null,
-      "enumerated_id_count": 17313,
+      "enumerated_id_count": 17351,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
+        "advancementframes": 5,
         "alexscaves": 610,
         "alexsmobs": 321,
         "animal_feeding_trough": 1,
@@ -59,6 +60,7 @@
         "guardvillagers": 4,
         "handcrafted": 285,
         "herbalbrews": 48,
+        "icys_better_horses": 30,
         "immersive_aircraft": 40,
         "immersive_melodies": 22,
         "immersive_weathering": 237,
@@ -67,7 +69,9 @@
         "invincible": 3,
         "irons_lib": 4,
         "irons_spellbooks": 410,
+        "item_magnet": 2,
         "jacksgravestones": 1,
+        "jem_building": 1,
         "jem_economy": 6,
         "jem_twelve_eyes": 32,
         "jemcompat": 45,
@@ -132,12 +136,13 @@
     },
     "blocks": {
       "expected_id_count": null,
-      "enumerated_id_count": 12154,
+      "enumerated_id_count": 12158,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
+        "advancementframes": 2,
         "alexscaves": 385,
         "alexsmobs": 38,
         "animal_feeding_trough": 1,
@@ -178,12 +183,14 @@
         "gravestone": 1,
         "handcrafted": 268,
         "herbalbrews": 37,
+        "icys_better_horses": 1,
         "immersive_weathering": 194,
         "incision": 129,
         "infinitybuttons": 349,
         "irons_lib": 32,
         "irons_spellbooks": 30,
         "jacksgravestones": 1,
+        "jem_building": 1,
         "jem_economy": 1,
         "jem_server": 1,
         "jem_twelve_eyes": 1,
@@ -235,7 +242,7 @@
     },
     "entities": {
       "expected_id_count": null,
-      "enumerated_id_count": 1608,
+      "enumerated_id_count": 1639,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -270,6 +277,7 @@
         "gravestone": 1,
         "guardvillagers": 1,
         "handcrafted": 2,
+        "icys_better_horses": 31,
         "immersive_aircraft": 7,
         "incision": 5,
         "irons_spellbooks": 76,
@@ -416,13 +424,14 @@
     },
     "structures": {
       "expected_id_count": null,
-      "enumerated_id_count": 520,
+      "enumerated_id_count": 534,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
         "alexscaves": 14,
+        "ancient_remnants": 14,
         "aquamirae": 6,
         "bakery": 1,
         "beachparty": 3,
@@ -468,7 +477,7 @@
     },
     "creative_tabs": {
       "expected_id_count": null,
-      "enumerated_id_count": 54,
+      "enumerated_id_count": 55,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -493,6 +502,7 @@
         "geckolib": 1,
         "golemoverhaul": 1,
         "handcrafted": 1,
+        "icys_better_horses": 1,
         "immersive_aircraft": 1,
         "immersive_melodies": 1,
         "immersive_weathering": 1,
@@ -517,18 +527,18 @@
   "classification_coverage": {
     "armor": 274,
     "foods": 4,
-    "mobs": 1608,
-    "placeables": 9600,
+    "mobs": 1639,
+    "placeables": 9602,
     "tools": 95,
-    "trade_policies": 17313,
-    "weapons": 386
+    "trade_policies": 17351,
+    "weapons": 387
   },
   "semantic_field_coverage": {
     "runtime_verified": 0,
-    "static_inferred": 32605,
+    "static_inferred": 32693,
     "note": "Null is intentional where static sources do not prove semantics."
   },
   "unresolved_counts": {
-    "entries": 56
+    "entries": 79
   }
 }
