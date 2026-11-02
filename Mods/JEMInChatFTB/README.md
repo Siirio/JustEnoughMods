@@ -1,6 +1,6 @@
 # In Chat FTB
 
-In Chat FTB shows completed FTB Quests in local chat with a cyan clickable quest name that opens the native quest page
+In Chat FTB shows completed FTB Quests in local chat with a cyan clickable quest name that opens the native quest page. Its exact `/inchatftb quest <id>` click is intercepted by the client screen before vanilla can forward a `RUN_COMMAND` click to the dedicated server
 
 ## Requirements
 

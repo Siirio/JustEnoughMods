@@ -22,10 +22,10 @@ public final class InChatFTB {
             event.getDispatcher().register(Commands.literal("inchatftb")
                     .then(Commands.literal("quest")
                             .then(Commands.argument("id", StringArgumentType.word())
-                                    .executes(context -> open(StringArgumentType.getString(context, "id"))))));
+                                    .executes(context -> openQuest(StringArgumentType.getString(context, "id"))))));
         }
 
-        private static int open(String hexId) {
+        public static int openQuest(String hexId) {
             if (!ClientQuestFile.exists()) return 0;
             try {
                 long id = Long.parseUnsignedLong(hexId, 16);

@@ -45,6 +45,7 @@
     "owner": "MineRENT dedicated-server recipe policy",
     "kind": "server_kubejs_regression_restoration",
     "source_files": [
+      "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js",
       "Server/kubejs/server_scripts/jem/recipe_replacements.js"
     ]
   },
@@ -80,6 +81,16 @@
       "action": "restore_after_regression",
       "summary": "Restored the exact historical recipe on the dedicated-server KubeJS surface for a live reload.",
       "source_files": [
+        "Server/kubejs/server_scripts/jem/recipe_replacements.js"
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "commit": "SELF",
+      "action": "restore_canonical_pack_owner",
+      "summary": "Restored the same recipe in the canonical ManagedPack source so later releases cannot overwrite the runtime-only repair.",
+      "source_files": [
+        "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js",
         "Server/kubejs/server_scripts/jem/recipe_replacements.js"
       ]
     }

@@ -10,7 +10,7 @@ Before the native advancement manager applies resources, the curated loader filt
 
 The marked universal FTB book preserves authored quest/task IDs and native team data. Its optional adapter uses the inspected native pre-load folder seam to create a world-local content projection before native parsing. Missing/off domains become hidden inert historical records, with their original task maxima; dependency dormancy propagates. Races and Twelve Eyes use canonical API proof, not inventory proxies. Native FTB remains responsible for team progress, synchronization and claims. Unrelated unmarked books are unchanged; persistent author edits belong in the canonical config, not an old generated projection.
 
-On every real server login the optional FTB adapter clears only that team's native persisted `locked` flag through `TeamData.setLocked(false)` and immediately saves the changed native team file. FTB Quests performs its own lock synchronization. Progress, completed tasks, rewards, claims and authoring permissions are not rewritten.
+After FTB Teams resolves the exact native team on login or team change, the optional FTB adapter reconciles that team's persisted `locked` flag through `TeamData.setLocked(false)` on the following server tick, saves only a changed native team file and sends the resulting native TeamData to that player. Progress, completed tasks, rewards, claims and authoring permissions are not rewritten.
 
 New books use the actual five Races. Events remain unavailable in integrated worlds or hosts without explicit dedicated event opt-in. Economy absent/off hides only monetary objectives; Settlements retains its native emerald contract. There is one universal authored book, not a second progression owner.
 

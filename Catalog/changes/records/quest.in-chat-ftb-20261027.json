@@ -31,6 +31,7 @@
       "Mods/JEMInChatFTB/build.gradle",
       "Mods/JEMInChatFTB/src/main/java/com/justenoughmods/inchatftb/InChatFTB.java",
       "Mods/JEMInChatFTB/src/main/java/com/justenoughmods/inchatftb/mixin/FTBQuestCompletionMixin.java",
+      "Mods/JEMInChatFTB/src/main/java/com/justenoughmods/inchatftb/mixin/QuestLinkScreenMixin.java",
       "Mods/JEMInChatFTB/src/main/resources/in_chat_ftb.mixins.json",
       "Mods/JEMInChatFTB/src/main/resources/pack.mcmeta",
       "Mods/JEMAchievementGuide/tools/compile_questbook.py",
@@ -54,12 +55,19 @@
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestChapterImageMixin.java",
         "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json"
       ]
+    },
+    {
+      "date": "2026-11-02", "commit": "SELF", "action": "keep_quest_link_client_local",
+      "summary": "Intercept only the exact In Chat FTB RUN_COMMAND link in the client Screen and open the native quest page locally before vanilla can forward it to the dedicated server.",
+      "source_files": [
+        "Mods/JEMInChatFTB/src/main/java/com/justenoughmods/inchatftb/mixin/QuestLinkScreenMixin.java"
+      ]
     }
   ],
   "impacts": {
     "systems": ["FTB Quests", "client_chat", "quest_navigation", "questbook_presentation", "AutoModpack"],
     "relations": ["Native FTB Quest ID -> local clickable chat title -> native FTB quest page", "JEMAchievementGuide source objectives -> visible native quests with stable progress and rewards"],
     "notes": ["In chat FTB is installed only on clients and declares an exact installed FTB Quests dependency."],
-    "unresolved": ["The rendered chat link and quest-page opening remain unobserved until the user runs the updated test jem client."]
+    "unresolved": ["Player-visible acceptance of the corrected local link remains pending."]
   }
 }

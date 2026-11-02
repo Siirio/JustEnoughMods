@@ -1,6 +1,7 @@
 package com.siirio.jembuilding.construction;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +37,7 @@ public final class ConstructionData extends SavedData {
                 radial ? first.getX() + radius : Math.max(first.getX(), second.getX()),
                 shape == ConstructionShape.SPHERE ? first.getY() + radius : Math.max(first.getY(), second.getY()),
                 radial ? first.getZ() + radius : Math.max(first.getZ(), second.getZ()),
-                expiresAtGameTime, false);
+                expiresAtGameTime, false, new BitSet());
         regions.add(region);
         setDirty();
         return region;
@@ -49,9 +50,13 @@ public final class ConstructionData extends SavedData {
     public Optional<Region> at(BlockPos pos) {
         for (int i = regions.size() - 1; i >= 0; i--) {
             Region region = regions.get(i);
-            if (!region.cancelled() && region.contains(pos)) return Optional.of(region);
+            if (!region.cancelled() && region.contains(pos) && !region.settled(pos)) return Optional.of(region);
         }
         return Optional.empty();
+    }
+
+    public void settle(Region region, long index) {
+        if (region.settle(index)) setDirty();
     }
 
     public void cancel(Region region) {
@@ -104,11 +109,12 @@ public final class ConstructionData extends SavedData {
         private final int maxZ;
         private long expiresAtGameTime;
         private boolean cancelled;
+        private final BitSet settled;
         private List<BlockPos> positions;
 
         private Region(UUID id, UUID owner, ConstructionShape shape, ConstructionPlane plane,
                        int originX, int originY, int originZ, int radius, int minX, int minY, int minZ,
-                       int maxX, int maxY, int maxZ, long expiresAtGameTime, boolean cancelled) {
+                       int maxX, int maxY, int maxZ, long expiresAtGameTime, boolean cancelled, BitSet settled) {
             this.id = id;
             this.owner = owner;
             this.shape = shape;
@@ -125,6 +131,7 @@ public final class ConstructionData extends SavedData {
             this.maxZ = maxZ;
             this.expiresAtGameTime = expiresAtGameTime;
             this.cancelled = cancelled;
+            this.settled = settled;
         }
 
         public UUID id() { return id; }
@@ -167,8 +174,21 @@ public final class ConstructionData extends SavedData {
         }
 
         public long index(BlockPos pos) {
-            int index = positions().indexOf(pos);
-            return Math.max(0, index);
+            return positions().indexOf(pos);
+        }
+
+        public boolean settled(long index) {
+            return index >= 0L && index <= Integer.MAX_VALUE && settled.get((int) index);
+        }
+
+        private boolean settled(BlockPos pos) {
+            return settled(index(pos));
+        }
+
+        private boolean settle(long index) {
+            if (index < 0L || index > Integer.MAX_VALUE || settled.get((int) index)) return false;
+            settled.set((int) index);
+            return true;
         }
 
         public List<BlockPos> positions() {
@@ -210,6 +230,7 @@ public final class ConstructionData extends SavedData {
             tag.putInt("MaxX", maxX); tag.putInt("MaxY", maxY); tag.putInt("MaxZ", maxZ);
             tag.putLong("ExpiresAtGameTime", expiresAtGameTime);
             tag.putBoolean("Cancelled", cancelled);
+            tag.putLongArray("Settled", settled.toLongArray());
             return tag;
         }
 
@@ -225,7 +246,7 @@ public final class ConstructionData extends SavedData {
                     tag.getInt("MinX"), tag.getInt("MinY"), tag.getInt("MinZ"),
                     tag.getInt("MaxX"), tag.getInt("MaxY"), tag.getInt("MaxZ"),
                     tag.contains("ExpiresAtGameTime", Tag.TAG_LONG) ? tag.getLong("ExpiresAtGameTime") : Long.MIN_VALUE,
-                    tag.getBoolean("Cancelled"));
+                    tag.getBoolean("Cancelled"), BitSet.valueOf(tag.getLongArray("Settled")));
         }
     }
 }

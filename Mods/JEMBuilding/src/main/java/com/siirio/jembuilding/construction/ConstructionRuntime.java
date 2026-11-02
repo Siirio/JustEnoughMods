@@ -32,7 +32,9 @@ import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.level.ChunkEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public final class ConstructionRuntime {
@@ -113,14 +115,19 @@ public final class ConstructionRuntime {
         if (!(stack.getItem() instanceof BlockItem)) return;
         ConstructionData.get(serverPlayer.serverLevel()).at(clicked).ifPresent(region -> {
             if (region.cancelled()) return;
+            long clickedIndex = region.index(clicked);
+            if (clickedIndex < 0L) return;
             ItemStack material = stack.copy();
             material.setCount(1);
             if (serverPlayer.getAbilities().instabuild) {
-                fillCreative(serverPlayer, hand, region, region.index(clicked), material);
+                fillCreative(serverPlayer, hand, region, clickedIndex, material);
                 return;
             }
+            if (placeNative(serverPlayer, hand, clicked, stack)) {
+                ConstructionData.get(serverPlayer.serverLevel()).settle(region, clickedIndex);
+            }
             FILL_WORK.put(serverPlayer.getUUID(), new FillWork(serverPlayer.serverLevel(), serverPlayer.getUUID(), hand,
-                    region, region.index(clicked), material));
+                    region, (clickedIndex + 1L) % region.cells(), material));
         });
     }
 
@@ -128,22 +135,25 @@ public final class ConstructionRuntime {
         ServerLevel level = player.serverLevel();
         long cells = region.cells();
         for (long scanned = 0; scanned < cells; scanned++) {
-            BlockPos pos = region.position((start + scanned) % cells);
+            long index = (start + scanned) % cells;
+            if (region.settled(index)) continue;
+            BlockPos pos = region.position(index);
             if (!level.hasChunkAt(pos)) continue;
             BlockState current = level.getBlockState(pos);
             if (!current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) && !current.canBeReplaced()) continue;
             ItemStack held = player.getItemInHand(hand);
             if (!ItemStack.isSameItemSameTags(held, material) || !permitted(player, pos, held)) break;
-            placeNative(player, hand, pos, held);
+            if (placeNative(player, hand, pos, held)) ConstructionData.get(level).settle(region, index);
         }
         player.getInventory().setChanged();
     }
 
-    private static void placeNative(ServerPlayer player, InteractionHand hand, BlockPos pos, ItemStack held) {
+    private static boolean placeNative(ServerPlayer player, InteractionHand hand, BlockPos pos, ItemStack held) {
         BlockHitResult hit = new BlockHitResult(Vec3.atCenterOf(pos), Direction.UP, pos, false);
         NATIVE_FILL.set(true);
         try { player.gameMode.useItemOn(player, player.serverLevel(), held, hand, hit); }
         finally { NATIVE_FILL.set(false); }
+        return !player.serverLevel().getBlockState(pos).is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get());
     }
 
     public static void cancel(net.minecraft.world.entity.player.Player player, BlockPos clicked) {
@@ -196,6 +206,14 @@ public final class ConstructionRuntime {
         }
     }
 
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void placeholderBroken(BlockEvent.BreakEvent event) {
+        if (!(event.getLevel() instanceof ServerLevel level) || event.isCanceled()
+                || !event.getState().is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get())) return;
+        ConstructionData data = ConstructionData.get(level);
+        data.at(event.getPos()).ifPresent(region -> data.settle(region, region.index(event.getPos())));
+    }
+
     @SubscribeEvent
     public static void stopped(ServerStoppedEvent event) {
         WORLD_WORK.clear();
@@ -215,7 +233,8 @@ public final class ConstructionRuntime {
                 && level.mayInteract(player, pos) && player.mayUseItemAt(pos, Direction.UP, stack);
     }
 
-    private static void apply(ServerLevel level, ConstructionData.Region region, BlockPos pos, boolean remove) {
+    private static void apply(ServerLevel level, ConstructionData.Region region, BlockPos pos, long index, boolean remove) {
+        if (region.settled(index)) return;
         BlockState current = level.getBlockState(pos);
         if (remove) {
             boolean claimedByActiveRegion = ConstructionData.get(level).at(pos)
@@ -227,7 +246,11 @@ public final class ConstructionRuntime {
         }
         ServerPlayer owner = level.getServer().getPlayerList().getPlayer(region.owner());
         if (owner == null || owner.serverLevel() != level) return;
-        if (current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) || !current.canBeReplaced()) return;
+        if (current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get())) return;
+        if (!current.canBeReplaced()) {
+            ConstructionData.get(level).settle(region, index);
+            return;
+        }
         ItemStack permissionStack = new ItemStack(BuildingContent.BUILDER_HAMMER.get());
         if (!permitted(owner, pos, permissionStack)) return;
         BlockSnapshot snapshot = BlockSnapshot.create(level.dimension(), level, pos);
@@ -262,7 +285,7 @@ public final class ConstructionRuntime {
         private final ServerLevel level;
         private final ConstructionData.Region region;
         private final boolean remove;
-        private final List<BlockPos> chunkPositions;
+        private final List<IndexedPosition> chunkPositions;
         private final String chunkKey;
         private long cursor;
 
@@ -270,7 +293,7 @@ public final class ConstructionRuntime {
             this(level, region, remove, null, null);
         }
 
-        private RegionWork(ServerLevel level, ConstructionData.Region region, boolean remove, List<BlockPos> chunkPositions, String chunkKey) {
+        private RegionWork(ServerLevel level, ConstructionData.Region region, boolean remove, List<IndexedPosition> chunkPositions, String chunkKey) {
             this.level = level;
             this.region = region;
             this.remove = remove;
@@ -279,10 +302,14 @@ public final class ConstructionRuntime {
         }
 
         static RegionWork forChunk(ServerLevel level, ConstructionData.Region region, ChunkPos chunk, String key) {
-            List<BlockPos> positions = new ArrayList<>();
-            for (BlockPos pos : region.positions()) {
+            List<IndexedPosition> positions = new ArrayList<>();
+            List<BlockPos> regionPositions = region.positions();
+            for (int index = 0; index < regionPositions.size(); index++) {
+                BlockPos pos = regionPositions.get(index);
                 if (pos.getX() >= chunk.getMinBlockX() && pos.getX() <= chunk.getMaxBlockX()
-                        && pos.getZ() >= chunk.getMinBlockZ() && pos.getZ() <= chunk.getMaxBlockZ()) positions.add(pos);
+                        && pos.getZ() >= chunk.getMinBlockZ() && pos.getZ() <= chunk.getMaxBlockZ()) {
+                    positions.add(new IndexedPosition(pos, index));
+                }
             }
             return new RegionWork(level, region, region.cancelled(), positions, key);
         }
@@ -293,10 +320,12 @@ public final class ConstructionRuntime {
             int used = 0;
             long size = chunkPositions == null ? region.cells() : chunkPositions.size();
             while (used < budget && cursor < size) {
-                BlockPos pos = chunkPositions == null ? region.position(cursor) : chunkPositions.get((int) cursor);
+                IndexedPosition chunkPosition = chunkPositions == null ? null : chunkPositions.get((int) cursor);
+                BlockPos pos = chunkPosition == null ? region.position(cursor) : chunkPosition.pos();
+                long index = chunkPosition == null ? cursor : chunkPosition.index();
                 cursor++;
                 used++;
-                if (level.hasChunkAt(pos)) apply(level, region, pos, remove || region.cancelled());
+                if (level.hasChunkAt(pos)) apply(level, region, pos, index, remove || region.cancelled());
             }
             return used;
         }
@@ -304,6 +333,8 @@ public final class ConstructionRuntime {
         boolean done() { return cursor >= (chunkPositions == null ? region.cells() : chunkPositions.size()); }
         void completed() { if (chunkKey != null) CHUNK_WORK.remove(chunkKey); }
     }
+
+    private record IndexedPosition(BlockPos pos, int index) { }
 
     private static final class FillWork {
         private final ServerLevel level;
@@ -336,11 +367,12 @@ public final class ConstructionRuntime {
                     if (held == null) return true;
                 }
                 long index = (start + scanned++) % cells;
+                if (region.settled(index)) continue;
                 BlockPos pos = region.position(index);
                 if (!level.hasChunkAt(pos) || !permitted(player, pos, held)) continue;
                 BlockState current = level.getBlockState(pos);
                 if (!current.is(BuildingContent.CONSTRUCTION_PLACEHOLDER.get()) && !current.canBeReplaced()) continue;
-                placeNative(player, hand, pos, held);
+                if (placeNative(player, hand, pos, held)) ConstructionData.get(level).settle(region, index);
             }
             player.getInventory().setChanged();
             return scanned >= cells;

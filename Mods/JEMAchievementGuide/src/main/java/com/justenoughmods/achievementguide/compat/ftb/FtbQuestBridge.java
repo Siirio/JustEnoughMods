@@ -6,10 +6,12 @@ import dev.ftb.mods.ftbquests.net.SyncQuestsMessage;
 import dev.ftb.mods.ftbquests.net.SyncTeamDataMessage;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.task.CustomTask;
+import dev.ftb.mods.ftbteams.api.event.TeamEvent;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -23,6 +25,7 @@ public final class FtbQuestBridge {
             0x1110000000000083L, "NETHER_HEARTEDS",
             0x1110000000000093L, "*");
     private static final long CAMPAIGN = 0x1110000000000045L;
+    private static final Map<UUID, UUID> PENDING_TEAM_UNLOCKS = new HashMap<>();
 
     private FtbQuestBridge() {}
 
@@ -54,19 +57,18 @@ public final class FtbQuestBridge {
             });
             return EventResult.pass();
         });
+        TeamEvent.PLAYER_LOGGED_IN.register(event ->
+                PENDING_TEAM_UNLOCKS.put(event.getPlayer().getUUID(), event.getTeam().getId()));
+        TeamEvent.PLAYER_CHANGED.register(event ->
+                PENDING_TEAM_UNLOCKS.put(event.getPlayerId(), event.getTeam().getId()));
         MinecraftForge.EVENT_BUS.register(FtbQuestBridge.class);
     }
 
     @SubscribeEvent
-    public static void unlock(PlayerEvent.PlayerLoggedInEvent event) {
-        if (!(event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player)) return;
-        var data = ServerQuestFile.INSTANCE.getOrCreateTeamData(player);
-        if (data.setLocked(false)) data.saveIfChanged();
-    }
-
-    @SubscribeEvent
     public static void refresh(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0) return;
+        if (event.phase != TickEvent.Phase.END) return;
+        reconcileNativeTeamUnlocks(event);
+        if (event.getServer().getTickCount() % 20 != 0) return;
         BookMigration.refresh(event.getServer());
         ServerQuestFile file = ServerQuestFile.INSTANCE;
         if (file == null || file.server != event.getServer() || file.isLoading()
@@ -80,6 +82,28 @@ public final class FtbQuestBridge {
         }
     }
 
+    private static void reconcileNativeTeamUnlocks(TickEvent.ServerTickEvent event) {
+        if (PENDING_TEAM_UNLOCKS.isEmpty()) return;
+        ServerQuestFile file = ServerQuestFile.INSTANCE;
+        if (file == null || file.server != event.getServer() || file.isLoading()) return;
+        var iterator = PENDING_TEAM_UNLOCKS.entrySet().iterator();
+        while (iterator.hasNext()) {
+            var pending = iterator.next();
+            var player = event.getServer().getPlayerList().getPlayer(pending.getKey());
+            if (player != null) {
+                var data = file.getOrCreateTeamData(pending.getValue());
+                if (data.setLocked(false)) data.saveIfChanged();
+                new SyncTeamDataMessage(data, true).sendTo(player);
+            }
+            iterator.remove();
+        }
+    }
+
     @SubscribeEvent
-    public static void stopped(ServerStoppedEvent event) { FtbQuestProjection.clear(event.getServer()); BookMigration.clear(event.getServer()); BookEvents.clear(); }
+    public static void stopped(ServerStoppedEvent event) {
+        PENDING_TEAM_UNLOCKS.clear();
+        FtbQuestProjection.clear(event.getServer());
+        BookMigration.clear(event.getServer());
+        BookEvents.clear();
+    }
 }

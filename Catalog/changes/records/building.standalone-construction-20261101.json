@@ -22,7 +22,7 @@
         "property": "jem_building.material_cost",
         "operation": "set",
         "before": null,
-        "after": "Confirmed placeholders are free, while every real block is placed through the held BlockItem and consumes its ordinary survival stack."
+        "after": "Confirmed placeholders are free, while every real block is placed through the held BlockItem and consumes its ordinary survival stack. The clicked placeholder is replaced immediately, and every replaced, occupied or manually broken cell is persisted as settled so region recovery cannot recreate a ghost placeholder there."
       },
       {
         "property": "jem_building.temporary_lifetime",
@@ -57,6 +57,12 @@
       "commit": "SELF",
       "action": "promote_unified_hammer_compatibility",
       "summary": "Keep JEM Building standalone while allowing JEM Compat to promote its builder hammer into native Handcrafted and BBB interactions and retire both legacy player-facing items."
+    },
+    {
+      "date": "2026-11-02",
+      "commit": "SELF",
+      "action": "settle_completed_construction_cells",
+      "summary": "Replace the clicked placeholder immediately and persist completed, occupied or manually broken cells so background and chunk recovery never reconstruct them."
     },
     {
       "date": "2026-11-01",

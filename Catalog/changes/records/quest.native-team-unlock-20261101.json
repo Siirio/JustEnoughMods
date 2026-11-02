@@ -16,7 +16,7 @@
         "property": "ftbquests.team_data.locked",
         "operation": "replace",
         "before": "A persisted or newly resolved native team may retain locked=true and make every entry report Quests locked!.",
-        "after": "The existing optional JEMAchievementGuide FTB adapter calls TeamData.setLocked(false) for the logging-in player's native team and saves only when the value changed. Native FTB synchronization, progress, rewards and claims remain authoritative."
+        "after": "The existing optional JEMAchievementGuide FTB adapter waits for FTB Teams to resolve the exact team on login or team change, then calls TeamData.setLocked(false), saves only when the value changed and synchronizes that native TeamData to the affected player. Native FTB progress, rewards and claims remain authoritative."
       }
     ]
   },
@@ -44,12 +44,18 @@
       "commit": "SELF",
       "action": "reconcile_native_ftb_team_unlock",
       "summary": "Replace one-time command recovery with an idempotent native login reconciliation."
+    },
+    {
+      "date": "2026-11-02",
+      "commit": "SELF",
+      "action": "move_unlock_to_native_team_lifecycle",
+      "summary": "Move reconciliation from the earlier Forge player-login event to FTB Teams' resolved login/team-change boundary and synchronize the result on the following server tick."
     }
   ],
   "impacts": {
     "systems": ["FTB Quests", "FTB Teams", "JEMAchievementGuide", "dedicated_server", "integrated_server"],
-    "relations": ["Player login -> native FTB TeamData -> unlocked quest presentation"],
-    "notes": ["TeamData.setLocked performs the installed mod's own cached-progress invalidation and lock synchronization."],
-    "unresolved": ["Player-visible acceptance remains pending the user's first login with the released artifact."]
+    "relations": ["FTB Teams resolved login or team change -> exact native FTB TeamData -> unlocked quest presentation"],
+    "notes": ["The following-tick reconciliation runs after FTB Quests' own login synchronization and sends the corrected native TeamData directly to the affected player."],
+    "unresolved": ["Player-visible acceptance remains pending after deployment."]
   }
 }
