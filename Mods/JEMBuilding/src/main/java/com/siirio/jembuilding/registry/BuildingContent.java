@@ -3,6 +3,8 @@ package com.siirio.jembuilding.registry;
 import com.siirio.jembuilding.JEMBuilding;
 import com.siirio.jembuilding.construction.ConstructionPlaceholderBlock;
 import com.siirio.jembuilding.item.BuilderHammerItem;
+import com.siirio.jembuilding.item.BlueprintRollItem;
+import com.siirio.jembuilding.item.StructureBlueprintItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -28,6 +30,10 @@ public final class BuildingContent {
                     .isViewBlocking((state, level, pos) -> false)));
     public static final RegistryObject<Item> BUILDER_HAMMER = ITEMS.register("builder_hammer",
             () -> new BuilderHammerItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> BLUEPRINT_ROLL = ITEMS.register("blueprint_roll",
+            () -> new BlueprintRollItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> STRUCTURE_BLUEPRINT = ITEMS.register("structure_blueprint",
+            () -> new StructureBlueprintItem(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus bus) {
         BLOCKS.register(bus);
@@ -36,7 +42,10 @@ public final class BuildingContent {
     }
 
     private static void creativeTab(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) event.accept(BUILDER_HAMMER);
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(BUILDER_HAMMER);
+            event.accept(BLUEPRINT_ROLL);
+        }
     }
 
     private BuildingContent() {

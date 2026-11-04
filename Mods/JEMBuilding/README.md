@@ -2,6 +2,14 @@
 
 Standalone Minecraft Forge 1.20.1 survival construction mod
 
+## Blueprint Roll sandbox feature
+
+The Blueprint Roll is a separate tool from the protected Builder Hammer. Left-click chooses the first corner, right-click chooses the second corner, and the native choice screen captures the inclusive volume as Copy or Move. The resulting named paper stores only the blueprint identity and display metadata while compact palette and progress data remain server-owned in overworld saved data
+
+Copy keeps the source intact. Creative places the exact saved states through bounded work. Survival creates non-colliding placeholders only in free cells, keeps obstructed cells pending, consumes matching block items, and preserves coordinated double-block and bed placement. Move accepts only ordinary movable blocks, rejects block entities and protected or hazardous state, removes the source in bounded work, and provides a resumable placement preview with translation and 90-degree rotation
+
+The requested rolled-paper production model and texture remain intentionally absent because the referenced visual was not included with the supplied text brief. Both items use the vanilla paper model until the original reference is available, avoiding a missing-texture item without guessing the final art. This sandbox branch is not synchronized to `test jem`, MineRENT, stable profiles, or the release baseline
+
 ## Player flow
 
 1. Craft the single JEM Builder Hammer

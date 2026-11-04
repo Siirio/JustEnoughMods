@@ -1,3 +1,16 @@
+## 2026-11-04 - Add the Blueprint Roll sandbox workflow
+
+- User requested the pasted Blueprint Roll mission on a new sandbox branch from `develop`, with no promotion to `test jem` or production
+- User additionally prohibited stashing shared-checkout residue and required routing each uncommitted path to its originating Codex chat for commit until the checkout is clean. That coordination rule is now recorded in the global logic locks and was followed before branching
+- Added a separate Blueprint Roll tool with inclusive two-corner selection, native Copy or Move choice, named saved papers and server-owned compact palette data. The existing Builder Hammer and its construction behavior remain unchanged
+- Copy preserves the source. Creative performs bounded exact-state placement. Survival exposes free cells as non-colliding construction placeholders, retries obstructed cells, consumes matching block items and coordinates supported two-cell blocks
+- Move rejects block entities, ores, portals, unbreakable and protected blocks, missing tools, permission vetoes, changed source state, excessive survival distance and obstructed destinations. Removal and placement are persisted and bounded, suppress intermediate drops, roll back partial work and finalize neighbor updates only after the full destination exists
+- Client placement uses an owner-only actual-block-model ghost preview with stable anchoring, arrow and vertical movement, 90-degree rotation, red collision pulse and right-click confirmation
+- The supplied attachment contains only text and not the referenced blue rolled-paper image. No guessed production model or texture was authored. The saved blueprint uses vanilla paper, while the Blueprint Roll art remains an explicit visual blocker
+- Forge `clean build -x test` completed successfully for JEM Building 1.1.0, followed by an incremental rebuild after preview frustum culling. The final standalone artifact SHA-256 is `0e1efa196ffef0af8c19af4f92aefdb99e735a47ab3e73a7243968ca53746ff7`
+- Atlas impact scan covers every watched task path with no uncovered change. Full rebuild, audit and validation remain blocked by 48 pre-existing missing old JAR source paths and the unrelated managed-runtime drift already present outside this sandbox branch
+- No Minecraft launch, automated test, local Server synchronization, native AutoModpack publication, client-profile mutation, MineRENT deployment or release-baseline promotion was performed
+
 ## 2026-11-02 - Publish the four-fix MineRENT and AutoModpack release
 
 - User explicitly authorized publishing the prepared ghost-block, FTB, Luxium and Void Walker fixes to MineRENT and its native AutoModpack catalogue only. The ordinary local Server, stable JustEnoughMods, test jem and other client profiles remain untouched, and the user applies the client update manually

@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "change_id": "building.blueprint-roll-20261104",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_building"
+    }
+  ],
+  "conditions": [
+    {
+      "branch": "sandbox/blueprint-roll",
+      "scope": "Source and standalone sandbox artifact only. No managed runtime publication or player acceptance"
+    }
+  ],
+  "precedence": {
+    "layer": "user_requested_sandbox_feature",
+    "priority": 1450
+  },
+  "change": {
+    "summary": "Add a separate Blueprint Roll for persisted Copy and transactional Move without changing Builder Hammer ownership",
+    "modifiers": [
+      {
+        "property": "building.blueprint.capture",
+        "operation": "add",
+        "before": null,
+        "after": "Inclusive two-corner selection captures non-air block states into a compact server-owned palette and produces an owner-bound numbered blueprint paper"
+      },
+      {
+        "property": "building.blueprint.copy",
+        "operation": "add",
+        "before": null,
+        "after": "Creative exact-state placement or Survival placeholder construction with matching material consumption, obstruction retry and coordinated two-cell blocks"
+      },
+      {
+        "property": "building.blueprint.move",
+        "operation": "add",
+        "before": null,
+        "after": "Same-dimension bounded extraction and placement with block-entity, protected-block, tool, permission, distance, source-change and destination-collision admission"
+      },
+      {
+        "property": "building.builder_hammer",
+        "operation": "preserve",
+        "before": "Existing radial construction system",
+        "after": "Unchanged existing radial construction system"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMBuilding",
+    "kind": "user_requested_sandbox_feature",
+    "source_files": [
+      "Mods/JEMBuilding/gradle.properties",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/JEMBuilding.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/blueprint/BlueprintConfig.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/blueprint/BlueprintMode.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/blueprint/BlueprintRotation.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/blueprint/BlueprintRuntime.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/blueprint/BlueprintSavedData.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/blueprint/BlueprintStatus.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintCaptureScreen.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintClientHooks.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/item/BlueprintRollItem.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/item/StructureBlueprintItem.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintClientState.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintInput.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintSelectionPreview.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionPlaceholderBlock.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/network/BuildingNetwork.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/registry/BuildingContent.java",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/lang/en_us.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/lang/ru_ru.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/structure_blueprint.json",
+      "Mods/JEMBuilding/src/main/resources/data/jem_building/recipes/blueprint_roll.json",
+      "Mods/JEMBuilding/src/main/resources/data/jem_building/tags/blocks/blueprint_move_allowed.json",
+      "Mods/JEMBuilding/src/main/resources/data/jem_building/tags/blocks/blueprint_move_denied.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Provide Factorio-style structure relocation and reusable construction plans as an isolated JEM Building sandbox feature",
+    "decision_source": "User supplied the Blueprint Roll mission and explicitly requested a new sandbox branch from develop",
+    "implementation_choice": "Reuse the existing generic placeholder block, keep authoritative payloads in overworld SavedData, batch all large work and preserve Builder Hammer behavior"
+  },
+  "introduced": {
+    "date": "2026-11-04",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Implement the isolated Blueprint Roll Copy and Move system"
+  },
+  "history": [
+    {
+      "date": "2026-11-04",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Add persisted selection, previews, Copy construction and transactional Move"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "jem_building",
+      "server_saved_data",
+      "client_preview_rendering",
+      "construction_placeholders"
+    ],
+    "relations": [
+      "jem_building:builder_hammer remains unchanged"
+    ],
+    "notes": "The requested blue rolled-paper reference image was not present in the supplied attachment, so production Blueprint Roll model and texture authoring is deferred rather than guessed",
+    "unresolved": [
+      "Original rolled-paper visual reference is required for production model and texture authoring",
+      "Minecraft runtime and player acceptance are pending because this task does not authorize a launch"
+    ]
+  }
+}

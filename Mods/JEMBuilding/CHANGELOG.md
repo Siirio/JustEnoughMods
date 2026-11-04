@@ -1,3 +1,13 @@
+## 1.1.0 - 2026-11-04
+
+- Added the separate Blueprint Roll selection, Copy and Move workflow without changing Builder Hammer behavior
+- Added compact server-owned palette storage, owner-bound named blueprint papers, per-player numbering and resumable bounded work
+- Added exact-state ghost preview, keyboard translation, 90-degree rotation, collision highlighting and owner-only network payloads
+- Added Creative exact-state copying, Survival material placeholders, coordinated two-cell blocks and recoverable cancellation
+- Added transactional Move removal and placement with protected-block, block-entity, permission, distance and source-change rejection
+- Kept the branch isolated from local managed runtimes and left the requested rolled-paper art pending its missing original reference
+- Built the standalone Forge artifact with SHA-256 `0e1efa196ffef0af8c19af4f92aefdb99e735a47ab3e73a7243968ca53746ff7`
+
 ## 1.0.0 - 2026-11-01
 
 - Added conditional JEM Compat ownership that promotes this item to the only player-facing hammer for Handcrafted and Building But Better while preserving both native interaction contracts

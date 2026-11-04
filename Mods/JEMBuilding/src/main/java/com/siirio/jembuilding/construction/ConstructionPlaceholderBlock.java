@@ -1,6 +1,7 @@
 package com.siirio.jembuilding.construction;
 
 import com.siirio.jembuilding.item.BuilderHammerItem;
+import com.siirio.jembuilding.blueprint.BlueprintRuntime;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -36,6 +37,8 @@ public final class ConstructionPlaceholderBlock extends Block {
             return InteractionResult.CONSUME;
         }
         if (player.getItemInHand(hand).getItem() instanceof BlockItem) {
+            if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer
+                    && BlueprintRuntime.fillPlaceholder(serverPlayer, hand, pos)) return InteractionResult.CONSUME;
             ConstructionRuntime.fill(player, hand, pos);
             return InteractionResult.CONSUME;
         }
