@@ -13,6 +13,7 @@
 - Closed C1: one elongated 12x2x2 blue body, one narrow darker-blue depth strip and one simple white center wrap. The complete model uses three cuboids and has no bow, segmented rings or brown palette
 - Open C0: rejected for an overly thick flat sheet that read closer to a tray than paper
 - Open C1: reduced the sheet to half-unit thickness while retaining one connected curled edge. The silhouette now reads as one unrolled sheet
+- Open C2: user rejected the remaining dense random linework. Repainted the open-sheet UV planes as broad quiet blue fields with one compact cyan room-plan motif and doorway gap, while retaining the accepted single-sheet geometry, curled edge, pencil, and Punchy animation
 - Pencil C0: one compact square-section pencil with graphite tip, wood body, metal band and eraser. It is a prop only and includes no hand geometry
 - Inventory icon C0: user rejected the segmented blue strip because it did not read as the requested tied rectangular roll
 - Inventory icon C1: rejected during internal review because the disconnected white pixels did not form a readable bow and the pale marks continued to segment the body
@@ -21,6 +22,7 @@
 - Animation source: the Blockbench project contains only `right_arm`, `left_arm` and `camera` animation bones with no cubes. Punchy renders the player's existing arms
 - Geometry validation: corrected closed C1 passed outliner, unlisted-node, degenerate and Java block-limit gates with exactly three cuboids. Its blue body is 12x2x2 and only the temporary cord extends the total cross-section to 2.4
 - Texture validation: layered Aseprite sources remain populated and editable. Their exported runtime textures contain no brown, tan, beige, rope-brown or wood-brown pixels
+- Open-sheet validation: the updated embedded Blockbench texture matches the native Aseprite export. The final three-quarter render contains one readable plan, no random line scatter and no transparent holes
 - Animation validation: both clips target existing bones and have valid keyframe timing. Geometry-dependent gates are intentionally inapplicable because the project contains no arm geometry
 - Icon validation: native 32x32 Aseprite source retains separate silhouette, shading, linework and white-cord layers. The six-color export contains only dark blue, blue, lighter blue, cool white and transparent pixels, with no brown or beige. Both terminal planes are parallel at 45 degrees and preserve the eight-pixel body width
-- Delivery verdict: icon C3 passes source and native-size visual review for sandbox integration. No build, Minecraft launch or first-person player acceptance was authorized for this correction
+- Delivery verdict: icon C3 and open-sheet C2 pass source and visual review for sandbox integration. No build, Minecraft launch or first-person player acceptance was authorized for this correction

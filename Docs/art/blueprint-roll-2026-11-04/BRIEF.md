@@ -32,8 +32,9 @@
 - Closed model: one 12x2x2 blue body, one minimal darker-blue depth strip and one simple white cord wrap
 - Closed model has no bow, segmented rings, stepped cylinder or brown, tan, beige and wood colors
 - Open model: one broad sheet with one curled edge and no duplicated paper layers posing as extra sheets
+- Open sheet linework: one compact room-plan motif with a doorway gap, surrounded by broad quiet blue areas. Random decorative lines and dense wear are prohibited
 - Pencil: one small prop revealed only during the Punchy sketch action
-- Texture carries blueprint linework and paper wear. Geometry remains silhouette-led
+- Texture carries only the minimal blueprint plan and controlled material shading. Geometry remains silhouette-led
 
 ## Reference reading
 
