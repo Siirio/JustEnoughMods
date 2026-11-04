@@ -1,5 +1,7 @@
 ## 2026-11-04 - Author the one-sheet Blueprint Roll and Punchy drafting action
 
+- User rejected the first finished Structure Blueprint icon and replaced its direction with one clean diagonal rectangular roll tied by a centered bow. Repainted the native 32x32 layered Aseprite source and runtime PNG with an uninterrupted blue body, narrow white center cord, connected loops, central knot and short tails
+- Visual review rejected the first correction because its cord fragments did not read as a bow, then rejected the broad-band revision because it still resembled a cross-wrap. The final C2 icon uses six colors, 834 transparent pixels and no brown or beige. The Blockbench models, Punchy animations, gameplay behavior and item registrations remain unchanged
 - User supplied the missing blue rolled-paper reference and requested production Blockbench models, then clarified that the tool is one sheet rather than a bundle of three rolls
 - User rejected the first closed model as chunky and overbuilt, required an elongated literal 2x2 roll, a temporary white cord only while closed and a blue plus slightly darker-blue palette with no brownish colors
 - User specified the first-person sequence: first corner opens the sheet, second corner makes the real right arm reach behind the right side of the camera as if taking a pencil from behind the ear, draw three quick strokes, withdraw the pencil and close the roll

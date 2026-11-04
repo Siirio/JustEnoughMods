@@ -12,7 +12,7 @@
 - The active tool is one blue blueprint sheet, never a bundle of two or three rolls
 - The closed silhouette is one long narrow roll with a literal 2x2 body cross-section and a temporary white cord around its center
 - The open silhouette is the same single sheet partially unrolled into a readable drawing surface
-- The finished Structure Blueprint has its own blue closed-roll inventory icon and uses the closed Blockbench model in hand
+- The finished Structure Blueprint has its own clean diagonal rectangular blue-roll inventory icon with a white center cord tied into a readable bow, and uses the closed Blockbench model in hand
 - Finished Structure Blueprints have no opening or sketch animation
 - No arm geometry is authored in Blockbench. The only props are the blueprint sheet, cord, and pencil
 
