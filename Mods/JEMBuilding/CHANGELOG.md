@@ -4,7 +4,8 @@
 - Added the Aseprite-authored blueprint atlas, cord, pencil and distinct finished-blueprint inventory icon
 - Added Punchy 2.7e first-person opening and sketch clips. The existing player arms reach behind the right side of the camera, return with the pencil and draw without any modeled duplicate arms
 - Kept finished Structure Blueprints closed and non-animated while rendering the closed 3D roll in hand
-- Built the reobfuscated standalone artifact with SHA-256 `79ACDAB7B83FA9C8BD42FAC72D42E4AE23192F4AAD1E9B7BDC4F5ACCA6BD4C86`
+- Rebuilt the reobfuscated standalone artifact after the approved open-sheet repaint with SHA-256 `AE4BC42579925671703EB6539D8183E60F00F7810B652C884540E801A1872A54`
+- Installed the exact artifact and Punchy 2.7e only in the closed `jem sandbox` profile for manual acceptance
 
 ## 1.1.0 - 2026-11-04
 

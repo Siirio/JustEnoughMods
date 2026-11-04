@@ -12,7 +12,7 @@
   "conditions": [
     {
       "branch": "sandbox/blueprint-roll",
-      "scope": "Source and standalone sandbox artifact only. No managed runtime publication or player acceptance"
+      "scope": "Source and jem sandbox artifact only. No managed runtime publication or player acceptance"
     }
   ],
   "precedence": {
@@ -141,6 +141,12 @@
         "commit": "SELF",
         "action": "revise_visual",
         "summary": "Simplify the opened sheet to broad quiet blue fields and one compact room-plan motif without changing its geometry or animation"
+      },
+      {
+        "date": "2026-11-04",
+        "commit": "SELF",
+        "action": "install_sandbox",
+        "summary": "Install JEM Building 1.1.1 and its optional Punchy 2.7e animation owner only in the closed jem sandbox profile"
       }
   ],
   "impacts": {
