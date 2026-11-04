@@ -35,7 +35,7 @@ User's supplied quality contract: [QUALITY_ENGINE_SOURCE.md](QUALITY_ENGINE_SOUR
 | VANILLA-A | Technical/native anchor selected for the user's explicit vanilla-fit direction | [Official azalea screenshot](https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/azalea-ingame.jpg), [article](https://www.minecraft.net/en-us/article/taking-inventory-azalea) | Compact foliage masses, muted olive greens and sparse pink flower pixels. Inspected actual image before R3 authoring; not copied and not separately approved as a spell |
 | VANILLA-B | Technical/native anchor selected for the user's explicit vanilla-fit direction | [Official mangrove screenshot](https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Mangrove_Carousel-B-768_Mangrove-Swamp_1200x670.jpg), [article](https://www.minecraft.net/en-us/mangrove-trees-build-a-better-world) | Connected angular woody volume and ground attachment; modest tonal changes rather than luminous outlines. Actual image inspected before R3; no asset pixels copied |
 | USER-NEGATIVE-R2 | Explicitly user-rejected | [Actual R2 atlas](../races/assets/rejected/born-in-bloom-r2/bloom_growth_r2.png), [rejection record](../races/assets/rejected/born-in-bloom-r2/BRIEF.md) | Thin illustrative roots, starburst and isolated leaf blades were rejected as ugly/odd and incompatible with vanilla. Technical execution/export was not quality evidence |
-| USER-LABELLED-VFX | Existing positive and negative reference collection | `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/pairs/Reference VFX/` and `knowledge-sources/30_user_labeled_gui_vfx_reference_study_2026-10-16.md` | Preserve the original folder classifications. Relevant comparisons require the same object/size/function; an elemental slash sheet does not approve a plant silhouette |
+| USER-LABELLED-VFX | Existing positive and negative reference collection | `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/pairs/Reference VFX/` and `knowledge-sources/30_user_labeled_gui_vfx_reference_study_2026-10-16.md` | Preserve the original folder classifications. Relevant comparisons require the same object/size/function; an elemental slash sheet does not approve a plant silhouette |
 
 The newly pasted text mentions a negative screenshot, but its attachment contains only text. The actual R2 atlas above supplies the known negative evidence; no missing screenshot was fabricated.
 
@@ -59,7 +59,7 @@ saturated orange/red with charcoal bases. The pale R6 palette remains scoped
 negative evidence under the Taste Engine VFX `I_dont_like/Infernal-creamy-r6`.
 
 The21 supplied model references and giant-gnome benchmark are owned by
-`C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Models/Reference/`.
+`C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/Models/Reference/`.
 The selected benchmark is M-C geometry plus T-A painting; all other complete
 variants live under separate model/painting `I_dont_like` folders. Full E is
 negative; its hat painting and mossy boots are regional lessons only, never

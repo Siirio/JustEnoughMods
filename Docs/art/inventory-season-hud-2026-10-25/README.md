@@ -12,7 +12,7 @@ Visual-auditor C3: AGENT_PASS for the inspected native pixel pair, geometry, con
 
 Activation uses new `timeHud.showInventoryDayNight` and `timeHud.showInventorySeasons` keys with true defaults. This replaces the retired unfinished HUD's false defaults while preserving existing offset keys and all other client preferences. Forge owns native config correction on load, no managed profile file is copied or patched manually
 
-Exact Pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-gui-and-icon-asset-production`, both taste and technical read. Taste remains provisional. Global Minecraft art and Aseprite production contracts apply
+Exact Pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-gui-and-icon-asset-production`, both taste and technical read. Taste remains provisional. Global Minecraft art and Aseprite production contracts apply
 
 ## Native geometry
 
@@ -25,8 +25,8 @@ Exact Pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecr
 
 ## Inspected original references
 
-- Positive: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181525.png`, compact semantic symbols, connected clusters and selective contrast
-- Negative: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_dont_like/Снимок экрана 2026-10-20 174338.png`, muddy uniform brown field, weak hierarchy and crowded labels
+- Positive: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181525.png`, compact semantic symbols, connected clusters and selective contrast
+- Negative: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_dont_like/Снимок экрана 2026-10-20 174338.png`, muddy uniform brown field, weak hierarchy and crowded labels
 
 These originals were visually inspected and attached to [the actual Gemini conversation](https://gemini.google.com/app/a4a276d879dc9732). No reference pixels are licensed or approved for reuse. Codex supplied geometry and review findings. Gemini owned visual authoring
 

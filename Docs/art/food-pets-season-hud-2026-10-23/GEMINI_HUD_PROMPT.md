@@ -19,7 +19,7 @@ Outputs requested: day_cycle.png and season_cycle.png, each exactly24x24 with al
 - `../reference-library/minecraft-2026-10-22/originals/GUI/Reference/I_like/Снимок экрана 2026-10-16 181525.png`: compact, legible semantic pixel symbols only; do not copy labels.
 - `day_cycle-c1.png`, `day_cycle-c2.png`: rejected anti-examples. Do not trace or reuse.
 
-Exact active taste profile: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-gui-and-icon-asset-production/TASTE.md`; companion TECHNICAL.md and shared ART_DIRECTION.md. Personal GUI taste is PROVISIONAL; user feedback above controls this specific revision. No image has been approved for installation.
+Exact active taste profile: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-gui-and-icon-asset-production/TASTE.md`; companion TECHNICAL.md and shared ART_DIRECTION.md. Personal GUI taste is PROVISIONAL; user feedback above controls this specific revision. No image has been approved for installation.
 
 ## Local app handoff
 

@@ -10,13 +10,13 @@ This is C0 only. No asset, model, source-code or runtime correction was made dur
 
 The intended subject is a working settlement dashboard: distinct dark masonry navigation, warm wood header, quiet pale content, semantic16×16 need icons, a readable roster/detail split and real payroll access. Native labels/values/actions remain dynamic. Search stays; «Все жители»/«По имени» are absent. The required production route is layered native-size Aseprite sources and direct PNG export, with no generated/cutout operational artwork.
 
-Exact Pair read in full: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE.md,TECHNICAL.md}`. The tree was recursively discovered, including the separate `Icons` collection. Shared `ART_DIRECTION.md`, relevant reference analysis and the Aseprite tooling contract were read.
+Exact Pair read in full: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE.md,TECHNICAL.md}`. The tree was recursively discovered, including the separate `Icons` collection. Shared `ART_DIRECTION.md`, relevant reference analysis and the Aseprite tooling contract were read.
 
 Original positive images actually reopened:
 
-- `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181050.png` (GUI+05): connected dark material planes, substantial slot edges and selective detail.
+- `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181050.png` (GUI+05): connected dark material planes, substantial slot edges and selective detail.
 - Same directory, `Снимок экрана 2026-10-16 181055.png` (GUI+06): broad wood clusters, raised edge/recess separation and connected panel structure.
-- `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Icons/I_like/Снимок экрана 2026-10-16 181018.png` (former GUI+01): distinct compact semantic silhouettes. The old GUI-folder path in the candidate README is stale; the original was found and opened in `Icons/I_like`. Lightning/tree layout is not borrowed as a settlement motif.
+- `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/Icons/I_like/Снимок экрана 2026-10-16 181018.png` (former GUI+01): distinct compact semantic silhouettes. The old GUI-folder path in the candidate README is stale; the original was found and opened in `Icons/I_like`. Lightning/tree layout is not borrowed as a settlement motif.
 
 Original negative/mixed runtime screenshots actually reopened: project-root `Docs/settlements/assets/reference/runtime-corrections-2026-10-19/{01.png,05.png,06.png}` and their README. They establish the content-sized directory/chest correction, no vacant sidebar, no flat full-row interaction state, crisp pale-paper text and one status baseline. These are prior rejected evidence, not the current candidate or a fresh runtime observation.
 

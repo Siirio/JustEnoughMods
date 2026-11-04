@@ -2,7 +2,7 @@
 
 User direction (2026-10-17): match supplied user-reference.png, with a live mouse-following librarian replacing the painted character and one category dropdown replacing the category tabs. The user explicitly requested generation of missing artwork, then integration of the generated result. The generated plate is authorized for this task; no third-party pixel extraction is used.
 
-Exact Taste Engine pair: C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md.
+Exact Taste Engine pair: C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md.
 
 Source: storefront-r1.ora, an OpenRaster document with the original generated raster as one named editable plate layer. It does not claim separately hand-painted ornaments or reconstructed pixel-art layers. Its mergedimage.png and data/plate.png are byte-identical to the consumed storefront.png. Export is extraction of data/plate.png; native image dimensions1671×941, logical renderer canvas836×471. Generated using the built-in imagegen tool from the supplied reference; no new external assets.
 

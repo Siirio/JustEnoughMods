@@ -1,3 +1,9 @@
+## 2026-11-04 - Repair local visual workflow references
+
+- User requested that shared-checkout residue be traced to its owning session and committed instead of being stashed or mixed into a new sandbox branch
+- The earlier `Ultimate-Skills` to `Ultimate-Skills-Local` migration left 37 JEM visual documentation and authoring-script references pointing at the renamed local workflow tree
+- Updated only those path references so the established Taste Engine, Blockbench and visual-review sources remain reachable without changing visual behavior or assets
+
 ## 2026-11-03 - Include Colorize and Immersive Paintings in Major Update 4
 
 - User requested Colorize, Immersive Paintings and the Exposure + Immersive Paintings compatibility addon for Major Update 4, then clarified that the work belongs on the existing `feature/major-update-4` branch rather than `develop`

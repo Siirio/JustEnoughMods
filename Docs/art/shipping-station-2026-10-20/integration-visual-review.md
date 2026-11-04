@@ -23,7 +23,7 @@ Paths below are relative to this document unless absolute.
 | `reference/ai-item-list-ui-rejected.png` | Rejected repeated goods list on the right; do not restore it. |
 | `reference/ai-weighing-block-reference.png` | Open crate, supported upright/beam, two pans and distinct wood/metal/brass masses. Subject reference only. |
 | `model/repaint-r2/before-three-quarter.png` | Actual rejected R1: compressed fine grain and multi-band iron on thin rails. |
-| `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181050.png` | Original GUI+05: material depth and substantial slots without losing content hierarchy. |
+| `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181050.png` | Original GUI+05: material depth and substantial slots without losing content hierarchy. |
 | Same directory, `Снимок экрана 2026-10-16 181055.png` | Original GUI+06: connected wood planes, quiet broad grain, raised borders/recessed slots. |
 | `Server/local/collector-repaint-20261020/barrel_side.png` and `anvil.png` (project-root paths) | Actual native reference pixels: broad readable wood and quiet iron. Kept outside distributed resources. |
 
