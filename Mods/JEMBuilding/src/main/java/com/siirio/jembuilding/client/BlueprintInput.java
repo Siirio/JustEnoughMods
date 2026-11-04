@@ -26,6 +26,7 @@ public final class BlueprintInput {
         if (first == null) {
             pendingFirst = event.getPos().immutable();
             BuildingNetwork.selectBlueprintFirst(InteractionHand.MAIN_HAND, event.getPos());
+            BlueprintClientAnimation.playOpen(InteractionHand.MAIN_HAND);
             return;
         }
         event.getEntity().displayClientMessage(net.minecraft.network.chat.Component.translatable("message.jem_building.blueprint.use_right_click"), true);

@@ -34,6 +34,9 @@ public final class BuildingContent {
             () -> new BlueprintRollItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> STRUCTURE_BLUEPRINT = ITEMS.register("structure_blueprint",
             () -> new StructureBlueprintItem(new Item.Properties().stacksTo(1)));
+    /** Presentation-only prop used by Punchy's temporary first-person item override. */
+    public static final RegistryObject<Item> BLUEPRINT_PENCIL = ITEMS.register("blueprint_pencil",
+            () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus bus) {
         BLOCKS.register(bus);

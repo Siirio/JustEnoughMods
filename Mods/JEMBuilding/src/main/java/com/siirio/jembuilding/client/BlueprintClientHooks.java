@@ -9,7 +9,7 @@ public final class BlueprintClientHooks {
         Minecraft client = Minecraft.getInstance();
         if (client.player == null || (com.siirio.jembuilding.item.BlueprintRollItem.first(client.player.getItemInHand(hand)).isEmpty()
                 && BlueprintInput.pendingFirst() == null)) return;
-        Minecraft.getInstance().setScreen(new BlueprintCaptureScreen(second, hand));
+        BlueprintClientAnimation.beginSketch(second, hand);
     }
     private BlueprintClientHooks() { }
 }

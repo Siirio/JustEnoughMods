@@ -8,7 +8,9 @@ The Blueprint Roll is a separate tool from the protected Builder Hammer. Left-cl
 
 Copy keeps the source intact. Creative places the exact saved states through bounded work. Survival creates non-colliding placeholders only in free cells, keeps obstructed cells pending, consumes matching block items, and preserves coordinated double-block and bed placement. Move accepts only ordinary movable blocks, rejects block entities and protected or hazardous state, removes the source in bounded work, and provides a resumable placement preview with translation and 90-degree rotation
 
-The requested rolled-paper production model and texture remain intentionally absent because the referenced visual was not included with the supplied text brief. Both items use the vanilla paper model until the original reference is available, avoiding a missing-texture item without guessing the final art. This sandbox branch is not synchronized to `test jem`, MineRENT, stable profiles, or the release baseline
+The Blueprint Roll now uses one continuous blue sheet in two Blockbench states: a cord-bound closed roll and one partially opened sheet with a single curled edge. First-corner selection opens it. Second-corner selection triggers Punchy's existing first-person arm renderer: the real right arm reaches out behind the camera as if retrieving a pencil from the right ear, returns with the pencil, makes three quick drafting strokes, withdraws it and closes the roll. The animation model contains no arm geometry, so it cannot create duplicate, third or fourth arms
+
+Finished Structure Blueprints use their own Aseprite-authored closed blue-roll icon in the inventory and the closed Blockbench roll in hand. They never trigger the opening or sketch animation. The editable visual sources and review evidence live in `Docs/art/blueprint-roll-2026-11-04`. This sandbox branch is not synchronized to `test jem`, MineRENT, stable profiles, or the release baseline
 
 ## Player flow
 

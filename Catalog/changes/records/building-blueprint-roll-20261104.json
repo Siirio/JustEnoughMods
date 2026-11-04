@@ -45,6 +45,12 @@
         "operation": "preserve",
         "before": "Existing radial construction system",
         "after": "Unchanged existing radial construction system"
+      },
+      {
+        "property": "building.blueprint.presentation",
+        "operation": "replace",
+        "before": "Temporary vanilla paper item models",
+        "after": "One blue sheet with closed and open Blockbench states, an Aseprite atlas, a distinct finished-blueprint icon and Punchy-owned first-person open and sketch clips without modeled arms"
       }
     ]
   },
@@ -62,6 +68,10 @@
       "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/blueprint/BlueprintStatus.java",
       "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintCaptureScreen.java",
       "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintClientHooks.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintClientAnimation.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintClientModels.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintItemRenderer.java",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/PunchyBlueprintBridge.java",
       "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/item/BlueprintRollItem.java",
       "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/item/StructureBlueprintItem.java",
       "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/BlueprintClientState.java",
@@ -74,6 +84,17 @@
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/lang/ru_ru.json",
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll.json",
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/structure_blueprint.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll_closed_3d.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll_closed_model.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll_open_3d.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll_open_model.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_pencil.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_pencil_3d.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/structure_blueprint_icon.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/textures/item/blueprint_roll_atlas.png",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/textures/item/structure_blueprint.png",
+      "Mods/JEMBuilding/src/main/resources/assets/punchy/animations/jem_blueprint.animation.json",
+      "Docs/art/blueprint-roll-2026-11-04",
       "Mods/JEMBuilding/src/main/resources/data/jem_building/recipes/blueprint_roll.json",
       "Mods/JEMBuilding/src/main/resources/data/jem_building/tags/blocks/blueprint_move_allowed.json",
       "Mods/JEMBuilding/src/main/resources/data/jem_building/tags/blocks/blueprint_move_denied.json"
@@ -96,6 +117,12 @@
       "commit": "SELF",
       "action": "implement",
       "summary": "Add persisted selection, previews, Copy construction and transactional Move"
+    },
+    {
+      "date": "2026-11-04",
+      "commit": "SELF",
+      "action": "author_visuals",
+      "summary": "Replace temporary paper with one-sheet closed and open models, a finished icon and Punchy-owned first-person drafting"
     }
   ],
   "impacts": {
@@ -103,14 +130,16 @@
       "jem_building",
       "server_saved_data",
       "client_preview_rendering",
-      "construction_placeholders"
+      "construction_placeholders",
+      "punchy_first_person_animation"
     ],
     "relations": [
-      "jem_building:builder_hammer remains unchanged"
+      "jem_building:builder_hammer remains unchanged",
+      "jem_building:blueprint_pencil is presentation-only and never enters creative tabs, recipes, loot or player inventory",
+      "Punchy owns the existing first-person arms while JEM Building supplies animation clips and temporary item overrides"
     ],
-    "notes": "The requested blue rolled-paper reference image was not present in the supplied attachment, so production Blueprint Roll model and texture authoring is deferred rather than guessed",
+    "notes": "The later user-supplied blue rolled-paper reference is preserved with provenance in Docs/art/blueprint-roll-2026-11-04 and now drives the production sandbox visuals",
     "unresolved": [
-      "Original rolled-paper visual reference is required for production model and texture authoring",
       "Minecraft runtime and player acceptance are pending because this task does not authorize a launch"
     ]
   }

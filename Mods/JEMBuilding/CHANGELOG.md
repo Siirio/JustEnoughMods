@@ -1,3 +1,11 @@
+## 1.1.1 - 2026-11-04
+
+- Replaced the temporary vanilla-paper presentation with editable closed and open Blockbench models built from one continuous blue sheet
+- Added the Aseprite-authored blueprint atlas, cord, pencil and distinct finished-blueprint inventory icon
+- Added Punchy 2.7e first-person opening and sketch clips. The existing player arms reach behind the right side of the camera, return with the pencil and draw without any modeled duplicate arms
+- Kept finished Structure Blueprints closed and non-animated while rendering the closed 3D roll in hand
+- Built the reobfuscated standalone artifact with SHA-256 `79ACDAB7B83FA9C8BD42FAC72D42E4AE23192F4AAD1E9B7BDC4F5ACCA6BD4C86`
+
 ## 1.1.0 - 2026-11-04
 
 - Added the separate Blueprint Roll selection, Copy and Move workflow without changing Builder Hammer behavior
@@ -5,7 +13,7 @@
 - Added exact-state ghost preview, keyboard translation, 90-degree rotation, collision highlighting and owner-only network payloads
 - Added Creative exact-state copying, Survival material placeholders, coordinated two-cell blocks and recoverable cancellation
 - Added transactional Move removal and placement with protected-block, block-entity, permission, distance and source-change rejection
-- Kept the branch isolated from local managed runtimes and left the requested rolled-paper art pending its missing original reference
+- Kept the branch isolated from local managed runtimes and initially left the requested rolled-paper art pending its missing original reference
 - Built the standalone Forge artifact with SHA-256 `0e1efa196ffef0af8c19af4f92aefdb99e735a47ab3e73a7243968ca53746ff7`
 
 ## 1.0.0 - 2026-11-01

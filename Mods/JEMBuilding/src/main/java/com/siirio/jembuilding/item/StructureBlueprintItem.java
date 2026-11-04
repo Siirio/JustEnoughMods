@@ -19,6 +19,19 @@ public final class StructureBlueprintItem extends Item {
     public StructureBlueprintItem(Properties properties) { super(properties); }
 
     @Override
+    public void initializeClient(java.util.function.Consumer<net.minecraftforge.client.extensions.common.IClientItemExtensions> consumer) {
+        consumer.accept(new net.minecraftforge.client.extensions.common.IClientItemExtensions() {
+            private net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer renderer;
+
+            @Override
+            public net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (renderer == null) renderer = new com.siirio.jembuilding.client.BlueprintItemRenderer();
+                return renderer;
+            }
+        });
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext context) {
         if (context.getLevel().isClientSide) {
             if (context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) BuildingNetwork.cancelBlueprint(context.getHand());

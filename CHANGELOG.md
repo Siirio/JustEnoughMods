@@ -1,3 +1,13 @@
+## 2026-11-04 - Author the one-sheet Blueprint Roll and Punchy drafting action
+
+- User supplied the missing blue rolled-paper reference and requested production Blockbench models, then clarified that the tool is one sheet rather than a bundle of three rolls
+- User specified the first-person sequence: first corner opens the sheet, second corner makes the real right arm reach behind the right side of the camera as if taking a pencil from behind the ear, draw three quick strokes, withdraw the pencil and close the roll
+- User explicitly prohibited modeled duplicate arms and required reuse of the existing Punchy animation system. Implementation uses Punchy 2.7e's inspected public one-shot trigger and resource clip loader. The editable animation project contains only the existing `right_arm`, `left_arm` and `camera` bones with no arm cubes
+- Authored one closed roll, one open sheet and one pencil prop in Blockbench, plus a layered native-size Aseprite atlas and a separate closed blue-roll icon for finished Structure Blueprints. Finished blueprints render the closed 3D model in hand and never animate
+- Visual review rejected the first open-sheet candidate as too thick, reduced it to a half-unit sheet and accepted the corrected C1 silhouette. Closed, open and pencil models passed Blockbench geometry gates, and both animation clips passed bone and keyframe-timing checks
+- JEM Building 1.1.1 completed the final production `clean build -x test`. The reobfuscated artifact SHA-256 is `79ACDAB7B83FA9C8BD42FAC72D42E4AE23192F4AAD1E9B7BDC4F5ACCA6BD4C86`. No automated tests, Minecraft launch, local Server synchronization, AutoModpack publication, profile mutation, MineRENT deployment or release-baseline promotion was performed
+- Atlas impact coverage reports zero uncovered task paths. Full rebuild, audit and validation remain blocked by the same 48 pre-existing missing historical JAR sources and unrelated managed-runtime drift already present before this visual task
+
 ## 2026-11-04 - Add the Blueprint Roll sandbox workflow
 
 - User requested the pasted Blueprint Roll mission on a new sandbox branch from `develop`, with no promotion to `test jem` or production
