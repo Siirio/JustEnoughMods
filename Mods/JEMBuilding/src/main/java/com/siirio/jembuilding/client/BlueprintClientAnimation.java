@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = JEMBuilding.MOD_ID, value = Dist.CLIENT)
 public final class BlueprintClientAnimation {
-    private static final int SKETCH_TICKS = 25;
+    private static final int SKETCH_TICKS = 38;
     private static PendingCapture pendingCapture;
     private static int sketchTicks;
 

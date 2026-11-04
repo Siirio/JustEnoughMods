@@ -37,6 +37,9 @@ public final class BuildingContent {
     /** Presentation-only prop used by Punchy's temporary first-person item override. */
     public static final RegistryObject<Item> BLUEPRINT_PENCIL = ITEMS.register("blueprint_pencil",
             () -> new Item(new Item.Properties().stacksTo(1)));
+    /** Presentation-only open sheet used by Punchy's temporary first-person item override. */
+    public static final RegistryObject<Item> BLUEPRINT_OPEN_PROP = ITEMS.register("blueprint_open_prop",
+            () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus bus) {
         BLOCKS.register(bus);

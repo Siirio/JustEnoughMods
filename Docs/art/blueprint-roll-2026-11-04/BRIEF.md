@@ -19,11 +19,17 @@
 ## First-person action
 
 - First corner selection opens the roll
-- On the second corner, the existing Punchy right arm moves out to the player's right and behind the camera as if reaching behind the right ear
-- The same arm returns holding the pencil, makes three quick deliberate drafting strokes on the open sheet, withdraws the pencil, and the sheet rolls closed
+- On the second corner, the left hand rises to pin the upper edge while the right hand drops to the lower edge and pulls the sheet vertically open. Both grips remain visibly connected to the paper during this tension beat
+- The right wrist then turns palm-up and the existing Punchy right arm moves out to the player's right and behind the camera as if reaching behind the right ear
+- The same arm returns holding the pencil, makes three quick deliberate drafting strokes on the open sheet, returns the pencil behind the ear, and comes back to compress the sheet with the left hand
+- The left hand releases only after the closed roll has transferred decisively into the right hand
 - Punchy owns the arm pose and timing. JEM Building only triggers the inspected Punchy animation seam and changes the held model state
 - The action must never render an extra modeled hand or create a third or fourth arm
-- Target rhythm: reach 0.18 s, return 0.18 s, three strokes over 0.52 s, close and settle 0.30 s
+- Target rhythm: two-hand tension 0.30 s, wrist turn and ear reach 0.28 s, return 0.18 s, three strokes over 0.46 s, pencil return 0.24 s, close and transfer 0.32 s
+
+### Art-direction prompt
+
+A practiced builder handles one compact blueprint as a physical object. The left hand rises and pins the upper edge. The right hand reaches down, grips the lower edge, and pulls it downward while the left hand yields slightly upward so the single sheet reads as vertically tensioned rather than floating. The right wrist rolls palm-up, exits past the right edge toward the unseen pencil behind the ear, returns with the pencil, and draws three short purposeful strokes. It returns the pencil behind the ear, comes back empty, helps compress the sheet, and leaves the closed roll seated large and clearly in the right hand. Keep the camera restrained, preserve continuous hand-to-prop contact, reuse only Punchy's two existing arms, and stage each ownership transfer as clearly as the positive first-person medkit reference. The user's runtime screenshot is the negative reference for scale and contact: never leave a tiny prop detached near the center-bottom of the frame
 
 ## Geometry and texture budget
 
@@ -40,4 +46,5 @@
 
 - The user's photograph supplies the single-roll silhouette, elongated proportion, blue material, pale edge and central cord
 - Project positive references supply clean Minecraft cuboid construction, strong material separation and readable attachment contact
+- `ANI05_Medkit` supplies the positive first-person staging principle: large readable prop, two hands with distinct jobs, visible contact, and deliberate ownership changes as each hand enters and leaves frame
 - External Blockbench scroll examples were inspected only for category legibility. Their geometry and textures are not copied

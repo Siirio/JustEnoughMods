@@ -50,7 +50,7 @@
         "property": "building.blueprint.presentation",
         "operation": "replace",
         "before": "Temporary vanilla paper item models",
-        "after": "One blue sheet with closed and open Blockbench states, an Aseprite atlas, a distinct finished-blueprint icon and Punchy-owned first-person open and sketch clips without modeled arms"
+        "after": "One blue sheet with closed and open Blockbench states, enlarged inventory and first-person presentation, an Aseprite atlas, a distinct finished-blueprint icon and Punchy-owned two-hand unroll, ear-pencil, drafting, return and right-hand close clips without modeled arms"
       }
     ]
   },
@@ -88,6 +88,7 @@
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll_closed_model.json",
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll_open_3d.json",
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_roll_open_model.json",
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_open_prop.json",
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_pencil.json",
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/blueprint_pencil_3d.json",
       "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/structure_blueprint_icon.json",
@@ -147,6 +148,18 @@
         "commit": "SELF",
         "action": "install_sandbox",
         "summary": "Install JEM Building 1.1.1 and its optional Punchy 2.7e animation owner only in the closed jem sandbox profile"
+      },
+      {
+        "date": "2026-11-04",
+        "commit": "SELF",
+        "action": "revise_first_person_presentation",
+        "summary": "Enlarge both Blueprint Roll GUI presentations and first-person models, add an open-sheet presentation prop, and replace the disconnected sketch with a two-hand unroll, behind-ear pencil cycle and closed-roll transfer to the right hand"
+      },
+      {
+        "date": "2026-11-04",
+        "commit": "SELF",
+        "action": "install_sandbox",
+        "summary": "Replace JEM Building 1.1.1 with the corrected 1.1.2 artifact only in the closed jem sandbox profile while retaining 1.1.1 as a recoverable backup"
       }
   ],
   "impacts": {
@@ -160,6 +173,7 @@
     "relations": [
       "jem_building:builder_hammer remains unchanged",
       "jem_building:blueprint_pencil is presentation-only and never enters creative tabs, recipes, loot or player inventory",
+      "jem_building:blueprint_open_prop is presentation-only and never enters creative tabs, recipes, loot or player inventory",
       "Punchy owns the existing first-person arms while JEM Building supplies animation clips and temporary item overrides"
     ],
     "notes": "The later user-supplied blue rolled-paper reference is preserved with provenance in Docs/art/blueprint-roll-2026-11-04 and now drives the production sandbox visuals",
