@@ -10,7 +10,7 @@
 ## G0 contract
 
 - The active tool is one blue blueprint sheet, never a bundle of two or three rolls
-- The closed silhouette is a single compact roll with a pale paper edge and a tan cord tied around its center
+- The closed silhouette is one long narrow roll with a literal 2x2 body cross-section and a temporary white cord around its center
 - The open silhouette is the same single sheet partially unrolled into a readable drawing surface
 - The finished Structure Blueprint has its own blue closed-roll inventory icon and uses the closed Blockbench model in hand
 - Finished Structure Blueprints have no opening or sketch animation
@@ -28,14 +28,15 @@
 ## Geometry and texture budget
 
 - Java 1.20.1 cuboid item models authored in Blockbench
-- One 64x64 Aseprite-authored atlas with a limited blue, pale-paper, tan-cord, graphite, and wood palette
-- Closed model: one stepped cylindrical roll, one connected cord wrap, one readable knot/bow contact
+- One 64x64 Aseprite-authored atlas using blueprint blue, a slightly deeper blue, cool white linework and graphite only
+- Closed model: one 12x2x2 blue body, one minimal darker-blue depth strip and one simple white cord wrap
+- Closed model has no bow, segmented rings, stepped cylinder or brown, tan, beige and wood colors
 - Open model: one broad sheet with one curled edge and no duplicated paper layers posing as extra sheets
 - Pencil: one small prop revealed only during the Punchy sketch action
 - Texture carries blueprint linework and paper wear. Geometry remains silhouette-led
 
 ## Reference reading
 
-- The user's photograph supplies the single-roll silhouette, blue material, pale edge, and central cord
-- Project positive references supply stepped Minecraft cuboid construction, clean material separation, and believable attachment contact
+- The user's photograph supplies the single-roll silhouette, elongated proportion, blue material, pale edge and central cord
+- Project positive references supply clean Minecraft cuboid construction, strong material separation and readable attachment contact
 - External Blockbench scroll examples were inspected only for category legibility. Their geometry and textures are not copied
