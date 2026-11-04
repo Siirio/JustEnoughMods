@@ -1,3 +1,15 @@
+## 2026-11-03 - Include Colorize and Immersive Paintings in Major Update 4
+
+- User requested Colorize, Immersive Paintings and the Exposure + Immersive Paintings compatibility addon for Major Update 4, then clarified that the work belongs on the existing `feature/major-update-4` branch rather than `develop`
+- Selected the exact Forge 1.20.1-compatible artifacts: Colorize 1.6.0, Immersive Paintings 0.6.13 and Immersive Paintings × Exposure 1.0.0
+- Colorize and Immersive Paintings are added to both the canonical managed client and ordinary local dedicated server because they own shared block interactions, custom painting state and multiplayer synchronization
+- The Exposure bridge remains client-only because exact bytecode registers only client GUI integration and defines no network channel, while Exposure and Immersive Paintings remain installed on both sides
+- Existing Exposure 1.9.21 camera and photograph metadata remain unchanged. The addon only exposes existing photographs inside the native Immersive Paintings selection flow
+- Bug / Client and Server Sided / ignored physical mod inventories retained later `develop` artifacts after Git switched to `feature/major-update-4`, so the branch source and runtime binaries initially described different snapshots / in testing after restoring the exact Major Update 4 objects from native AutoModpack history, including JEMCompat 3.10.2 SHA-256 `58e33853523dc4c71ca95a45d504d9921f037816e9e73953fe576288b5b54a77`, and rebuilding the Atlas from the corrected inventories
+- The full Atlas rebuild validates 738 artifacts and resolves both `immersive_paintings:painting` and `exposure:photograph` in the canonical registry
+- The ordinary local dedicated server loaded Colorize 1.6.0, Immersive Paintings 0.6.13 and JEMCompat 3.10.2, then native AutoModpack published journal sequence 135 with content token `144a1661eedd977c8276ffe87630741af32e3ef3`. The final native preview reports `+0 ~0 -0`
+- MineRENT, stable `JustEnoughMods`, release baseline, `develop`, `main` and production runtime remain unchanged. Player acceptance remains pending
+
 ## 2026-11-01 - Isolate shared-checkout residue by owner
 
 - User requested that unrelated changes left by concurrent Codex sessions be assigned to their owning feature or hotfix branches instead of remaining mixed in the shared checkout

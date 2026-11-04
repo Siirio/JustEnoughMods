@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "8ea8bc1378cdd4aaaa070862184bfd72b5ce6594",
-  "generated_utc": "2026-10-31T06:25:54.728294+00:00",
+  "snapshot_sha": "18403ab81136ccd17affb2505e78442b5d89260a",
+  "generated_utc": "2026-11-03T12:30:16.344085+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -1931,6 +1931,48 @@
       ],
       "namespaces": [],
       "source_path": "Server\\mods\\Clumps-forge-1.20.1-12.0.0.4.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "colorize-1.20-forge-1.6.0.jar",
+      "sha256": "e0e500a4a27d84957005a37f528eece148e456d7284c893056ae391741a6c5d4",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "colorize",
+          "name": "Colorize",
+          "version": "1.6.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "colorize"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\colorize-1.20-forge-1.6.0.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "colorize-1.20-forge-1.6.0.jar",
+      "sha256": "e0e500a4a27d84957005a37f528eece148e456d7284c893056ae391741a6c5d4",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "colorize",
+          "name": "Colorize",
+          "version": "1.6.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "colorize"
+      ],
+      "source_path": "Server\\mods\\colorize-1.20-forge-1.6.0.jar",
       "nested_dependencies": []
     },
     {
@@ -8168,6 +8210,48 @@
       "nested_dependencies": []
     },
     {
+      "filename": "immersive_paintings-0.6.13+1.20.1-forge.jar",
+      "sha256": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "immersive_paintings",
+          "name": "Immersive Paintings",
+          "version": "0.6.13+1.20.1",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "immersive_paintings"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\immersive_paintings-0.6.13+1.20.1-forge.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "immersive_paintings-0.6.13+1.20.1-forge.jar",
+      "sha256": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "immersive_paintings",
+          "name": "Immersive Paintings",
+          "version": "0.6.13+1.20.1",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "immersive_paintings"
+      ],
+      "source_path": "Server\\mods\\immersive_paintings-0.6.13+1.20.1-forge.jar",
+      "nested_dependencies": []
+    },
+    {
       "filename": "immersive_weathering-1.20.1-2.0.5-forge.jar",
       "sha256": "b88353d6efe18635bac2d4169e704320987e9678fd683217195dcdcf2c1ca1ba",
       "sides": [
@@ -8360,6 +8444,27 @@
           ]
         }
       ]
+    },
+    {
+      "filename": "immersivepaintings-exposure-1.0.0.jar",
+      "sha256": "12828b32b3cba13924be661bdbbcd15aad6926d448210193e6851285f730157f",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "immersivepaintings_exposure",
+          "name": "Immersive Paintings × Exposure",
+          "version": "1.0.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "immersivepaintings_exposure"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\immersivepaintings-exposure-1.0.0.jar",
+      "nested_dependencies": []
     },
     {
       "filename": "in-chat-ftb-1.0.0.jar",
@@ -9276,7 +9381,7 @@
     },
     {
       "filename": "jem-bootstrap.jar",
-      "sha256": "e87f48b644bc7b3f907cf09ca16f7723deaa9588bde5227d63eac4b924126c51",
+      "sha256": "75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8",
       "sides": [
         "client"
       ],
@@ -9297,7 +9402,7 @@
     },
     {
       "filename": "jem-bootstrap.jar",
-      "sha256": "877f26f0de3c21bc45c5abf565dc5c363d1fb8b32296156464a4a5bc584191e3",
+      "sha256": "6304c1acff7985970cd25860fc3f78b1737ed3950bec16d0b5686c398ff5c32a",
       "sides": [
         "server"
       ],
@@ -9999,8 +10104,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jemcompat-3.10.1.jar",
-      "sha256": "59362e3ecea6929a8321ebefb2014dffcf3575b747e992df4d1ce86c4236e133",
+      "filename": "jemcompat-3.10.2.jar",
+      "sha256": "58e33853523dc4c71ca95a45d504d9921f037816e9e73953fe576288b5b54a77",
       "sides": [
         "client"
       ],
@@ -10009,7 +10114,7 @@
         {
           "id": "jemcompat",
           "name": "JustEnoughMods Compatibility",
-          "version": "3.10.1",
+          "version": "3.10.2",
           "display_test": "unknown"
         }
       ],
@@ -10021,12 +10126,12 @@
         "minecraft",
         "sereneseasons"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jemcompat-3.10.1.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jemcompat-3.10.2.jar",
       "nested_dependencies": []
     },
     {
-      "filename": "jemcompat-3.10.1.jar",
-      "sha256": "59362e3ecea6929a8321ebefb2014dffcf3575b747e992df4d1ce86c4236e133",
+      "filename": "jemcompat-3.10.2.jar",
+      "sha256": "58e33853523dc4c71ca95a45d504d9921f037816e9e73953fe576288b5b54a77",
       "sides": [
         "server"
       ],
@@ -10035,7 +10140,7 @@
         {
           "id": "jemcompat",
           "name": "JustEnoughMods Compatibility",
-          "version": "3.10.1",
+          "version": "3.10.2",
           "display_test": "unknown"
         }
       ],
@@ -10047,7 +10152,7 @@
         "minecraft",
         "sereneseasons"
       ],
-      "source_path": "Server\\mods\\jemcompat-3.10.1.jar",
+      "source_path": "Server\\mods\\jemcompat-3.10.2.jar",
       "nested_dependencies": []
     },
     {

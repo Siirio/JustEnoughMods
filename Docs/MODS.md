@@ -49,6 +49,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | clickadv mod | `1.20.1-3.9` | Client |  |
 | Cloth Config v10 API | `11.1.136` | Client + server |  |
 | Clumps | `12.0.0.4` | Client + server |  |
+| Colorize | `1.6.0` | Client + server | Major Update 4 |
 | Companions! | `1.3.3` | Client + server |  |
 | Connectivity Mod | `1.20.1-7.6` | Client + server |  |
 | Controlling | `12.0.2` | Client |  |
@@ -135,6 +136,8 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Immersive Lanterns | `1.0.6` | Client + server |  |
 | Immersive Melodies | `0.8.0+1.20.1` | Server |  |
 | Immersive Melodies | `0.8.0+1.20.1` | Client |  |
+| Immersive Paintings | `0.6.13+1.20.1` | Client + server | Major Update 4 |
+| Immersive Paintings × Exposure | `1.0.0` | Client | Major Update 4 compatibility |
 | Immersive Weathering | `1.20.1-2.0.5` | Client + server |  |
 | incision | `1.0.9` | Client + server |  |
 | InControl | `1.20-9.5.0` | Client + server |  |

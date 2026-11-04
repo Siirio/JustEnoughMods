@@ -1,0 +1,137 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.major-update-4-colorize-immersive-paintings-20261103",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "category",
+      "registry": "blocks",
+      "value": "colorize-supported vanilla dye, tinted-glass and mossy block families"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "immersive_paintings"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "exposure"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "distribution": "Major Update 4 development inventory on feature/major-update-4, with no MineRENT, stable-profile or release-baseline promotion in this task"
+    },
+    {
+      "compatibility": "Immersive Paintings × Exposure is client-only and requires installed Exposure and Immersive Paintings"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_dependencies",
+    "priority": 100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Add native recoloring, multiplayer custom paintings and existing Exposure photograph selection to the Major Update 4 inventory",
+    "modifiers": [
+      {
+        "property": "distribution.major_update_4.mods",
+        "operation": "add",
+        "before": {
+          "colorize": "absent",
+          "immersive_paintings": "absent",
+          "immersivepaintings_exposure": "absent"
+        },
+        "after": {
+          "colorize": "1.6.0 on client and server",
+          "immersive_paintings": "0.6.13+1.20.1 on client and server",
+          "immersivepaintings_exposure": "1.0.0 on client"
+        }
+      },
+      {
+        "property": "minecraft.block_recoloring",
+        "operation": "add",
+        "before": "Supported vanilla color variants require their ordinary acquisition and replacement paths",
+        "after": "Colorize owns right-click transformations with dyes, glass tinting with amethyst and sneaking vine conversion for its declared mossy families"
+      },
+      {
+        "property": "immersive_paintings.custom_art",
+        "operation": "add",
+        "before": "No installed owner for uploaded custom paintings",
+        "after": "Immersive Paintings owns custom image storage, placement, visibility policy and multiplayer synchronization"
+      },
+      {
+        "property": "exposure.photograph_painting_selection",
+        "operation": "add",
+        "before": "Exposure photographs and painting frames have separate native interfaces",
+        "after": "The client-only compatibility addon exposes existing Exposure photographs in the Immersive Paintings editor without changing capture or photograph metadata"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Colorize, Immersive Paintings and Immersive Paintings × Exposure",
+    "kind": "user_requested_native_mod_inclusion",
+    "source_files": [
+      "Client/ManagedPack/mods/colorize-1.20-forge-1.6.0.jar",
+      "Client/ManagedPack/mods/immersive_paintings-0.6.13+1.20.1-forge.jar",
+      "Client/ManagedPack/mods/immersivepaintings-exposure-1.0.0.jar",
+      "Server/mods/colorize-1.20-forge-1.6.0.jar",
+      "Server/mods/immersive_paintings-0.6.13+1.20.1-forge.jar",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Include the three requested painting and recoloring capabilities in Major Update 4",
+    "decision_source": "Direct user request on 2026-11-03",
+    "user_requested": "Include Colorize, Immersive Paintings and Immersive Paintings Exposure compatibility in Major Update 4",
+    "implementation_choices": "Use the latest exact Forge artifact compatible with Minecraft 1.20.1 for each requested project, place shared-state mods on both sides and keep the GUI-only bridge on the client"
+  },
+  "introduced": {
+    "date": "2026-11-03",
+    "commit": "SELF",
+    "action": "add_major_update_4_mods",
+    "summary": "Add Colorize, Immersive Paintings and their Exposure GUI compatibility to the development distribution",
+    "source_files": [
+      "Client/ManagedPack/mods/colorize-1.20-forge-1.6.0.jar",
+      "Client/ManagedPack/mods/immersive_paintings-0.6.13+1.20.1-forge.jar",
+      "Client/ManagedPack/mods/immersivepaintings-exposure-1.0.0.jar",
+      "Server/mods/colorize-1.20-forge-1.6.0.jar",
+      "Server/mods/immersive_paintings-0.6.13+1.20.1-forge.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-03",
+      "commit": "SELF",
+      "action": "add_major_update_4_mods",
+      "summary": "Selected and synchronized exact Forge 1.20.1 artifacts after inspecting their embedded metadata and compatibility code"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "block_interactions",
+      "painting_variants",
+      "client_presentation",
+      "networking",
+      "native mod dependencies",
+      "runtime distribution"
+    ],
+    "relations": [
+      "dye, amethyst or vine interaction -> Colorize native block transformation",
+      "custom image selection -> Immersive Paintings storage and multiplayer synchronization",
+      "Exposure photograph -> client compatibility tab -> Immersive Paintings editor"
+    ],
+    "notes": [
+      "Exposure 1.9.21 remains the camera, frame and photograph metadata owner",
+      "Simpler Exposure remains the immediate native Photograph delivery owner",
+      "No JEM module reconstructs custom painting or photograph state",
+      "MineRENT, stable JustEnoughMods and the immutable release baseline are unchanged"
+    ],
+    "unresolved": [
+      "Player acceptance remains pending because no client or gameplay launch was authorized"
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-31T06:25:54.728294+00:00` for `8ea8bc1378cdd4aaaa070862184bfd72b5ce6594`.
+Generated from Atlas schema 1 at `2026-11-03T12:30:16.344085+00:00` for `18403ab81136ccd17affb2505e78442b5d89260a`.
 
-Static evidence observed 17,375 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,379 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -57,6 +57,7 @@ Static evidence observed 17,375 canonical item IDs. This is not a Forge runtime 
 | icys_better_horses | 30 | 0 | 30 | 0 | 30 |
 | immersive_aircraft | 40 | 0 | 40 | 0 | 40 |
 | immersive_melodies | 22 | 0 | 22 | 0 | 22 |
+| immersive_paintings | 4 | 0 | 4 | 0 | 4 |
 | immersive_weathering | 237 | 7 | 230 | 0 | 230 |
 | incision | 81 | 2 | 79 | 0 | 79 |
 | infinitybuttons | 372 | 0 | 372 | 0 | 372 |

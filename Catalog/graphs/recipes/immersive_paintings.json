@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "18403ab81136ccd17affb2505e78442b5d89260a",
+  "generation": {
+    "generated_utc": "2026-11-03T12:30:16.344085+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "immersive_paintings",
+    "name": "Immersive Paintings",
+    "version": "0.6.13+1.20.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_paintings:glow_graffiti",
+      "mod_id": "immersive_paintings",
+      "mod_name": "Immersive Paintings",
+      "mod_version": "0.6.13+1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "immersive_paintings:graffiti",
+        "minecraft:crafting_shapeless",
+        "minecraft:glow_ink_sac"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_paintings:glow_graffiti"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_paintings-0.6.13+1.20.1-forge.jar:data/immersive_paintings/recipes/glow_graffiti.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_paintings:glow_painting",
+      "mod_id": "immersive_paintings",
+      "mod_name": "Immersive Paintings",
+      "mod_version": "0.6.13+1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "immersive_paintings:painting",
+        "minecraft:crafting_shapeless",
+        "minecraft:glow_ink_sac"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_paintings:glow_painting"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_paintings-0.6.13+1.20.1-forge.jar:data/immersive_paintings/recipes/glow_painting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_paintings:graffiti",
+      "mod_id": "immersive_paintings",
+      "mod_name": "Immersive Paintings",
+      "mod_version": "0.6.13+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_paintings:dye",
+        "minecraft:bucket",
+        "minecraft:crafting_shaped",
+        "minecraft:gunpowder"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_paintings:graffiti"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_paintings-0.6.13+1.20.1-forge.jar:data/immersive_paintings/recipes/graffiti.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_paintings:painting",
+      "mod_id": "immersive_paintings",
+      "mod_name": "Immersive Paintings",
+      "mod_version": "0.6.13+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_paintings:dye",
+        "minecraft:crafting_shaped",
+        "minecraft:paper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_paintings:painting"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_paintings-0.6.13+1.20.1-forge.jar:data/immersive_paintings/recipes/painting.json"
+      ]
+    }
+  ]
+}
