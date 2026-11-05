@@ -50,11 +50,11 @@ A practiced builder handles one compact blueprint as a physical object. The left
 
 - Consumer: `jem_building:structure_blueprint` GUI and inventory icon only
 - Native source and export: layered 32x32 Aseprite RGBA, displayed by Minecraft at 16x16 inventory scale with nearest-neighbour pixel structure
-- Projection: frontal square plaque with stepped pixel corners, not a perspective object
-- Dominant mass: one connected deep-blue tile occupying most of the canvas with a lighter blue inset and restrained top-left highlight
+- Projection: frontal blueprint sheet with readable scroll depth, not a flat square plaque or a perspective object
+- Dominant mass: one connected deep-blue sheet occupying most of the canvas with a lighter blue inset, restrained top-left highlight, a top roll shifted backward and a bottom roll shifted forward
 - Focal symbol: one connected cool-white house silhouette centered on the tile, built from two-pixel clusters so its roof, wall, doorway and single window survive the 16x16 display
 - Value roles: navy contour and lower-right depth, saturated blueprint-blue face, cyan highlight, cool-white house, pale-blue symbol shadow
-- Avoid: copying either screenshot glyph, tiny isolated pixels, a generic document page, a detailed cottage illustration, glow spill, text, gradients, antialiasing and decoration outside the tile
+- Avoid: copying either screenshot glyph, tiny isolated pixels, a flat square tile, a generic white document page, a detailed cottage illustration, glow spill, text, gradients and antialiasing
 - Authoring owner: Codex paints the native pixels directly in Aseprite under the user's explicit 2026-11-05 instruction not to use Gemini for this task
 
 ## Reference reading
