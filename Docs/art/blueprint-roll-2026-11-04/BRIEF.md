@@ -6,13 +6,17 @@
 - Source: image supplied directly by the user in Codex chat on 2026-11-04
 - SHA-256: `998C5577A7CAA2CEC087CEA7B66693D83214CD37E1EF0E031B468A337D603149`
 - Use: visual direction only. No pixels or geometry are copied into production assets
+- User icon reference: `reference/user-blue-house-icon-style.png`
+- Source: cropped inventory screenshot supplied directly by the user in Codex chat on 2026-11-05
+- SHA-256: `50F771FEC0E6308983504E9C81CFB9F0E2D5336623FF6F097BCAF69B027FCEA7`
+- Use: blue tile, bright inset and compact white-symbol direction only. Screenshot pixels are not copied into production assets
 
 ## G0 contract
 
 - The active tool is one blue blueprint sheet, never a bundle of two or three rolls
 - The closed silhouette is one long narrow roll with a literal 2x2 body cross-section and a temporary white cord around its center
 - The open silhouette is the same single sheet partially unrolled into a readable drawing surface
-- The finished Structure Blueprint has its own clean diagonal rectangular blue-roll inventory icon with parallel diagonal end caps and a white center cord tied into a readable bow, and uses the closed Blockbench model in hand
+- The finished Structure Blueprint uses a compact blue square inventory plaque with a centered white house symbol, while retaining the closed Blockbench roll model in hand
 - Finished Structure Blueprints have no opening or sketch animation
 - No arm geometry is authored in Blockbench. The only props are the blueprint sheet, cord, and pencil
 
@@ -41,6 +45,17 @@ A practiced builder handles one compact blueprint as a physical object. The left
 - Open sheet linework: one compact room-plan motif with a doorway gap, surrounded by broad quiet blue areas. Random decorative lines and dense wear are prohibited
 - Pencil: one small prop revealed only during the Punchy sketch action
 - Texture carries only the minimal blueprint plan and controlled material shading. Geometry remains silhouette-led
+
+## Finished-blueprint house icon
+
+- Consumer: `jem_building:structure_blueprint` GUI and inventory icon only
+- Native source and export: layered 32x32 Aseprite RGBA, displayed by Minecraft at 16x16 inventory scale with nearest-neighbour pixel structure
+- Projection: frontal square plaque with stepped pixel corners, not a perspective object
+- Dominant mass: one connected deep-blue tile occupying most of the canvas with a lighter blue inset and restrained top-left highlight
+- Focal symbol: one connected cool-white house silhouette centered on the tile, built from two-pixel clusters so its roof, wall, doorway and single window survive the 16x16 display
+- Value roles: navy contour and lower-right depth, saturated blueprint-blue face, cyan highlight, cool-white house, pale-blue symbol shadow
+- Avoid: copying either screenshot glyph, tiny isolated pixels, a generic document page, a detailed cottage illustration, glow spill, text, gradients, antialiasing and decoration outside the tile
+- Authoring owner: Codex paints the native pixels directly in Aseprite under the user's explicit 2026-11-05 instruction not to use Gemini for this task
 
 ## Reference reading
 

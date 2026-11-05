@@ -56,6 +56,7 @@ public final class BlueprintClientState {
     private static List<BlockState> palette = List.of();
     private static List<BlueprintSavedData.Entry> entries = List.of();
     private static BlockPos anchor;
+    private static BlockPos manualOffset = BlockPos.ZERO;
     private static BlueprintRotation rotation = BlueprintRotation.NONE;
     private static boolean requested;
 
@@ -72,7 +73,8 @@ public final class BlueprintClientState {
         for (CompoundTag state : packet.palette()) states.add(NbtUtils.readBlockState(client.level.holderLookup(Registries.BLOCK), state));
         palette = List.copyOf(states); entries = List.copyOf(packet.entries()); requested = false;
         if (changed || anchor == null) {
-            anchor = initialAnchor(client);
+            manualOffset = BlockPos.ZERO;
+            anchor = aimedAnchor(client);
             rotation = BlueprintRotation.NONE;
         }
     }
@@ -95,6 +97,7 @@ public final class BlueprintClientState {
             BuildingNetwork.requestBlueprint(InteractionHand.MAIN_HAND);
         }
         if (client.screen != null || anchor == null) return;
+        anchor = aimedAnchor(client).offset(manualOffset);
         if (ROTATE.consumeClick()) { rotation = rotation.next(); announce(client); }
         move(X_NEG, -1, 0, 0, client); move(X_POS, 1, 0, 0, client);
         move(Z_NEG, 0, 0, -1, client); move(Z_POS, 0, 0, 1, client);
@@ -103,7 +106,8 @@ public final class BlueprintClientState {
 
     private static void move(KeyMapping key, int x, int y, int z, Minecraft client) {
         if (!key.consumeClick()) return;
-        anchor = anchor.offset(x, y, z);
+        manualOffset = manualOffset.offset(x, y, z);
+        anchor = aimedAnchor(client).offset(manualOffset);
         announce(client);
     }
 
@@ -145,7 +149,7 @@ public final class BlueprintClientState {
         buffers.endBatch(RenderType.translucent());
     }
 
-    private static BlockPos initialAnchor(Minecraft client) {
+    private static BlockPos aimedAnchor(Minecraft client) {
         HitResult hit = client.hitResult;
         if (hit instanceof BlockHitResult block && hit.getType() == HitResult.Type.BLOCK) return block.getBlockPos().relative(block.getDirection());
         Vec3 point = client.player.getEyePosition().add(client.player.getLookAngle().scale(6D));
@@ -153,7 +157,8 @@ public final class BlueprintClientState {
     }
 
     private static void clear() {
-        id = null; palette = List.of(); entries = List.of(); anchor = null; requested = false;
+        id = null; palette = List.of(); entries = List.of(); anchor = null; manualOffset = BlockPos.ZERO;
+        rotation = BlueprintRotation.NONE; requested = false;
     }
 
     @Mod.EventBusSubscriber(modid = JEMBuilding.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)

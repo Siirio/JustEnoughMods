@@ -20,7 +20,7 @@
     "priority": 1450
   },
   "change": {
-    "summary": "Add a separate Blueprint Roll for persisted Copy and transactional Move without changing Builder Hammer ownership",
+    "summary": "Add a separate Blueprint Roll for persisted Copy and transactional Move with live held-item projection without changing Builder Hammer ownership",
     "modifiers": [
       {
         "property": "building.blueprint.capture",
@@ -50,7 +50,13 @@
         "property": "building.blueprint.presentation",
         "operation": "replace",
         "before": "Temporary vanilla paper item models",
-        "after": "One blue sheet with closed and open Blockbench states, enlarged inventory and first-person presentation, an Aseprite atlas, a distinct finished-blueprint icon and Punchy-owned two-hand unroll, ear-pencil, drafting, return and right-hand close clips without modeled arms"
+        "after": "One blue sheet with closed and open Blockbench states, enlarged inventory and first-person presentation, an Aseprite atlas, a blue house-plaque icon for finished blueprints and Punchy-owned two-hand unroll, ear-pencil, drafting, return and right-hand close clips without modeled arms"
+      },
+      {
+        "property": "building.blueprint.live_projection",
+        "operation": "replace",
+        "before": "The client fixed the saved blueprint preview anchor once when its server payload arrived, so later camera aim changes did not move the ghost structure",
+        "after": "While a saved Structure Blueprint remains in the main hand, the client recomputes its preview anchor from the current crosshair every tick and applies keyboard movement as a relative offset until confirmation"
       }
     ]
   },
@@ -160,6 +166,18 @@
         "commit": "SELF",
         "action": "install_sandbox",
         "summary": "Replace JEM Building 1.1.1 with the corrected 1.1.2 artifact only in the closed jem sandbox profile while retaining 1.1.1 as a recoverable backup"
+      },
+      {
+        "date": "2026-11-05",
+        "commit": "SELF",
+        "action": "repair_live_projection_and_revise_icon",
+        "summary": "Make saved blueprint ghosts follow the live crosshair with relative manual offsets and replace the finished-blueprint roll sprite with a native 32x32 blue house plaque"
+      },
+      {
+        "date": "2026-11-05",
+        "commit": "SELF",
+        "action": "install_sandbox",
+        "summary": "Install JEM Building 1.1.3 only in the closed jem sandbox profile and preserve 1.1.2 as a recoverable backup"
       }
   ],
   "impacts": {
@@ -174,7 +192,8 @@
       "jem_building:builder_hammer remains unchanged",
       "jem_building:blueprint_pencil is presentation-only and never enters creative tabs, recipes, loot or player inventory",
       "jem_building:blueprint_open_prop is presentation-only and never enters creative tabs, recipes, loot or player inventory",
-      "Punchy owns the existing first-person arms while JEM Building supplies animation clips and temporary item overrides"
+      "Punchy owns the existing first-person arms while JEM Building supplies animation clips and temporary item overrides",
+      "jem_building:structure_blueprint keeps server-authoritative placement and collision admission while its client preview follows the current crosshair plus a local relative offset"
     ],
     "notes": "The later user-supplied blue rolled-paper reference is preserved with provenance in Docs/art/blueprint-roll-2026-11-04 and now drives the production sandbox visuals",
     "unresolved": [

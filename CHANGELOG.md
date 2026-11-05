@@ -1,3 +1,13 @@
+## 2026-11-05 - Keep saved Blueprint projections live
+
+- User reported that already copied Structure Blueprints showed their ghost at only the initial opening position instead of providing a live projection, requested deployment to `jem sandbox`, and supplied a compact blue icon reference while asking for a house symbol
+- Bug / Client Sided / `BlueprintClientState.receive` calculated one absolute preview anchor when the server payload arrived, while the client tick updated only rotation and direct absolute keyboard moves, so subsequent crosshair changes had no owner that recomputed the ghost destination / in testing through a live crosshair-derived anchor plus a separately retained relative keyboard offset
+- Preserved the server-owned saved structure payload, collision coloring, placement validation, rotation, confirmation, cancellation and main-hand scope. Arrow and Page Up/Down controls now shift the live aimed anchor instead of replacing it with a stale absolute location
+- Replaced the finished Structure Blueprint inventory sprite with a native layered 32x32 Aseprite icon: one deep-blue stepped tile, a lighter blueprint-blue face and one centered cool-white house. The prior diagonal tied-roll source remains preserved separately and the closed Blockbench roll remains the in-hand model
+- The user explicitly assigned this icon to Codex rather than Gemini. No generated, traced, copied, resized or downsampled pixels enter the production PNG
+- JEM Building 1.1.3 completed `clean build -x test` successfully. Its reobfuscated artifact SHA-256 is `86EA826DC88F4B29BDD1033C4FA17709EA97A7C2FA4AF6A490DFE3B4E4E56714`
+- Installed that exact artifact only in the closed `jem sandbox` profile, replacing 1.1.2 while preserving it under `visual-backups/blueprint-roll-20261105-115802`. Punchy 2.7e remains unchanged. Minecraft was not launched and player acceptance remains pending
+
 ## 2026-11-04 - Author the one-sheet Blueprint Roll and Punchy drafting action
 
 - User reported that the installed Blueprint Roll icons and held model were too small and incorrectly positioned, and specified a complete two-hand drawing performance ending with the closed roll in the right hand
