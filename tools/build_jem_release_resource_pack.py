@@ -43,6 +43,23 @@ PLAYER_INTERFACE_PATHS = {
     "assets/minecraft/textures/gui/recipe_button.png",
 }
 
+COSMETIC_ARMOR_TEXTURE = (
+    "assets/cosmeticarmorreworked/textures/gui/cosarmorinventory.png"
+)
+COSMETIC_ARMOR_SCREEN_BOUNDS = (0, 0, 176, 166)
+COSMETIC_ARMOR_SLOT_SOURCE = (7, 83, 25, 101)
+COSMETIC_ARMOR_EQUIPMENT_SLOT_ORIGINS = (
+    (7, 7),
+    (7, 25),
+    (7, 43),
+    (7, 61),
+    (77, 61),
+    (97, 61),
+    (115, 61),
+    (133, 61),
+    (151, 61),
+)
+
 
 def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -78,8 +95,9 @@ def immersive_interfaces_entry(path: str) -> bool:
     # panels are larger than JEI's runtime rectangles and visibly stack below them.
     if lowered.startswith("assets/jei/"):
         return False
-    # Cosmetic Armor keeps its native inventory contract instead of inheriting
-    # Immersive Interfaces merely because the composite pack has higher priority.
+    # Exclude Immersive Interfaces' independent backpack repaint. The dedicated
+    # composite below preserves Cosmetic Armor's geometry while reusing the final
+    # JEM Release inventory materials.
     return not lowered.startswith("assets/cosmeticarmorreworked/")
 
 
@@ -142,6 +160,51 @@ def composite_widgets(reimagined: bytes, hud: bytes) -> bytes:
     output = io.BytesIO()
     result.save(output, format="PNG", optimize=False)
     return output.getvalue()
+
+
+def composite_cosmetic_armor(native: bytes, jem_inventory: bytes) -> tuple[bytes, int]:
+    with Image.open(io.BytesIO(native)) as native_image:
+        native_rgba = native_image.convert("RGBA")
+    with Image.open(io.BytesIO(jem_inventory)) as inventory_image:
+        inventory_rgba = inventory_image.convert("RGBA")
+    if native_rgba.size != (256, 256) or inventory_rgba.size != native_rgba.size:
+        raise ValueError(
+            "Unexpected Cosmetic Armor source dimensions: "
+            f"native={native_rgba.size}, JEM inventory={inventory_rgba.size}"
+        )
+
+    result = native_rgba.copy()
+    result.paste(
+        inventory_rgba.crop(COSMETIC_ARMOR_SCREEN_BOUNDS),
+        COSMETIC_ARMOR_SCREEN_BOUNDS[:2],
+    )
+    equipment_slot = inventory_rgba.crop(COSMETIC_ARMOR_SLOT_SOURCE)
+    for origin in COSMETIC_ARMOR_EQUIPMENT_SLOT_ORIGINS:
+        result.paste(equipment_slot, origin)
+
+    screen_right = COSMETIC_ARMOR_SCREEN_BOUNDS[2]
+    screen_bottom = COSMETIC_ARMOR_SCREEN_BOUNDS[3]
+    native_pixels = list(native_rgba.get_flattened_data())
+    result_pixels = list(result.get_flattened_data())
+    width, height = result.size
+    for y in range(height):
+        for x in range(width):
+            if x < screen_right and y < screen_bottom:
+                continue
+            index = y * width + x
+            if result_pixels[index] != native_pixels[index]:
+                raise ValueError(
+                    "Cosmetic Armor composite changed a protected native sprite "
+                    f"at {x},{y}"
+                )
+
+    changed_pixels = sum(
+        native_pixel != result_pixel
+        for native_pixel, result_pixel in zip(native_pixels, result_pixels)
+    )
+    output = io.BytesIO()
+    result.save(output, format="PNG", optimize=False)
+    return output.getvalue(), changed_pixels
 
 
 def is_hybrid_interface_path(path: str) -> bool:
@@ -359,6 +422,7 @@ def write_zip(output: Path, files: dict[str, bytes]) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--resourcepacks-dir", type=Path, required=True)
+    parser.add_argument("--cosmetic-armor-jar", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--title", type=Path)
     parser.add_argument("--audit", type=Path, required=True)
@@ -370,12 +434,18 @@ def main() -> int:
     args = parse_args()
     source_paths = {name: args.resourcepacks_dir / filename for name, filename in PACKS.items()}
     missing = [str(path) for path in source_paths.values() if not path.is_file()]
+    if not args.cosmetic_armor_jar.is_file():
+        missing.append(str(args.cosmetic_armor_jar))
     if missing:
         raise FileNotFoundError("Missing source packs:\n" + "\n".join(missing))
 
     source_hashes = {
         name: {"filename": path.name, "sha256": file_sha256(path)}
         for name, path in source_paths.items()
+    }
+    source_hashes["cosmetic_armor"] = {
+        "filename": args.cosmetic_armor_jar.name,
+        "sha256": file_sha256(args.cosmetic_armor_jar),
     }
     files: dict[str, bytes] = {}
     owners: dict[str, str] = {}
@@ -460,6 +530,15 @@ def main() -> int:
     )
     owners[widgets_path] = "composite:hud_rows_0_45+reimagined_buttons"
 
+    cosmetic_armor, cosmetic_armor_changed_pixels = composite_cosmetic_armor(
+        read_entry(args.cosmetic_armor_jar, COSMETIC_ARMOR_TEXTURE),
+        files["assets/minecraft/textures/gui/container/inventory.png"],
+    )
+    files[COSMETIC_ARMOR_TEXTURE] = cosmetic_armor
+    owners[COSMETIC_ARMOR_TEXTURE] = (
+        "composite:cosmetic_armor_native_geometry+jem_release_inventory_materials"
+    )
+
     if args.title:
         if not args.title.is_file():
             raise FileNotFoundError(args.title)
@@ -484,6 +563,9 @@ def main() -> int:
         "assets/minecraft/textures/mob_effect/absorption.png": "effect_icons",
         "assets/icons/textures/menu/main_menu.png": "icons",
         widgets_path: "composite:hud_rows_0_45+reimagined_buttons",
+        COSMETIC_ARMOR_TEXTURE: (
+            "composite:cosmetic_armor_native_geometry+jem_release_inventory_materials"
+        ),
     }
     winner_failures = [
         f"{path}: expected {expected}, got {owners.get(path)}"
@@ -519,7 +601,16 @@ def main() -> int:
             widgets_path: {
                 "rows_0_45": "hud_reimagined",
                 "rows_46_255": "reimagined_gui",
-            }
+            },
+            COSMETIC_ARMOR_TEXTURE: {
+                "screen_bounds": list(COSMETIC_ARMOR_SCREEN_BOUNDS),
+                "equipment_slot_source": list(COSMETIC_ARMOR_SLOT_SOURCE),
+                "equipment_slot_origins": [
+                    list(origin) for origin in COSMETIC_ARMOR_EQUIPMENT_SLOT_ORIGINS
+                ],
+                "changed_pixels_from_native": cosmetic_armor_changed_pixels,
+                "protected_native_region": "all pixels outside the 176 by 166 screen",
+            },
         },
         "sources": source_hashes,
         "selected_entry_counts": selected_counts,

@@ -26,6 +26,12 @@
         "operation": "add",
         "before": null,
         "after": "The native mod owns four cosmetic armor slots, armor visibility toggles, synchronization and rendering. Functional armor stats and ordinary armor inventory ownership remain unchanged."
+      },
+      {
+        "property": "player.cosmetic_armor_gui_style",
+        "operation": "replace",
+        "before": "The active JEM Release pack excludes Cosmetic Armor resources, leaving the mod's bright native inventory atlas visible beside the styled player inventory.",
+        "after": "JEM Release deterministically reuses its own inventory bank, crafting material and recessed slot pixels inside Cosmetic Armor's exact native screen geometry while preserving the mod's controls and runtime behavior."
       }
     ]
   },
@@ -33,12 +39,14 @@
     "owner": "Cosmetic Armor Reworked",
     "kind": "user_requested_third_party_dependency",
     "source_files": [
-      "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar"
+      "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar",
+      "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip",
+      "tools/build_jem_release_resource_pack.py"
     ]
   },
   "rationale": {
     "purpose": "Let players choose armor appearance independently from protection without adding a second JEM armor-state owner.",
-    "decision_source": "The user explicitly requested Cosmetic Armor on 2026-10-28. Codex selected the latest Forge 1.20.1 release v1a after checking exact metadata, side requirements and the official source."
+    "decision_source": "The user explicitly requested Cosmetic Armor on 2026-10-28, then on 2026-11-06 requested that its vanilla-looking GUI reuse the existing JEM Release assets. The implementation keeps the native mod as behavior owner and adds only a resource-pack presentation adapter."
   },
   "introduced": {
     "date": "2026-10-28",
@@ -55,18 +63,30 @@
       "source_files": [
         "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar"
       ]
+    },
+    {
+      "date": "2026-11-06",
+      "commit": "SELF",
+      "action": "style_native_gui",
+      "summary": "Reuse the released JEM inventory materials inside Cosmetic Armor's exact native atlas geometry without changing menu or synchronization ownership.",
+      "source_files": [
+        "tools/build_jem_release_resource_pack.py",
+        "Docs/art/jem-release-resource-pack/cosmetic-armor/geometry.json"
+      ]
     }
   ],
   "impacts": {
     "systems": [
       "player inventory",
       "armor rendering",
+      "resource-pack GUI presentation",
       "client_server_contract",
       "AutoModpack delivery"
     ],
     "relations": [
       "The exact mod metadata declares Forge 47+ and MATCH_VERSION on both sides",
       "The mod adds presentation slots and does not replace native functional armor stats",
+      "JEM Release owns only the pixel presentation and preserves the mod's native 256x256 atlas, 176x166 screen region and runtime-drawn controls",
       "Redistributed binary source is available at https://github.com/zlainsama/CosmeticArmorReworked under the embedded MMPL 1.0.1 license"
     ],
     "notes": [

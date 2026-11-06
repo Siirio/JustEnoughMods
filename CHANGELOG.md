@@ -1,3 +1,13 @@
+## 2026-11-06 - Match Cosmetic Armor to JEM Release
+
+- User reported that Cosmetic Armor's bright native inventory visually overtook the JEM Release player interface and requested that the screen reuse the existing JEM Release assets on the same Major Update branch
+- Bug / Client / the earlier ownership repair excluded the complete `assets/cosmeticarmorreworked` namespace from JEM Release, which prevented the rejected Immersive Interfaces repaint but also left the mod's vanilla-looking atlas as the active winner / in testing after replacing only that presentation outcome with a dedicated JEM Release composite
+- The deterministic builder now combines the exact released JEM inventory bank, crafting material and recessed slot pixels with Cosmetic Armor's native `256x256` atlas and `176x166` screen geometry
+- All nine equipment-slot origins, the live player render, recipe book, item rendering, toggle behavior, native sprites outside the screen region and client/server synchronization remain owned by Cosmetic Armor Reworked
+- The rebuilt `JEM Release v0.3.zip` contains 3,442 entries and 1,074 validated PNGs with no winner, PNG or CRC failure. Static visual audit passes at C0 without a correction round, while runtime appearance and player acceptance remain unobserved
+- Native AutoModpack published generation 137 with content token `56c8a9caa4e95e1544d5c3ee7814bd3fca21d112` and reviewed delta `+0 ~2 -0`, then applied exactly the manifest and rebuilt JEM Release archive to the closed `test jem` profile. The active token and archive SHA-256 `8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727` match the canonical publication and no transaction remains pending
+- MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
 ## 2026-11-06 - Remove Iron's Spells for Major Update 4
 
 - User requested complete removal of Iron's Spells 'n Spellbooks from the existing Major Update branch and explicitly called out world generation and FTB Quests as required consequence surfaces

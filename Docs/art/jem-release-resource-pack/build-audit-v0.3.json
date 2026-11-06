@@ -1,9 +1,9 @@
 {
   "output": "Client\\ManagedPack\\resourcepacks\\JEM Release v0.3.zip",
-  "output_sha256": "b05de9ed601df18c7ad7ee66067b3a61a3441b3153d9477bdca7e3f71b1c5f67",
-  "output_bytes": 11669997,
-  "zip_entries": 3441,
-  "validated_png_count": 1073,
+  "output_sha256": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
+  "output_bytes": 11672736,
+  "zip_entries": 3442,
+  "validated_png_count": 1074,
   "winner_failures": [],
   "png_failures": [],
   "zip_crc_failure": null,
@@ -31,6 +31,10 @@
     "effect_icons": {
       "filename": "§6Effect Icons Recrafted§8.zip",
       "sha256": "3aede0ab0bdd09441acd8d661e858992bef1a4c1e727c08129a18c68477634d1"
+    },
+    "cosmetic_armor": {
+      "filename": "cosmeticarmorreworked-1.20.1-v1a.jar",
+      "sha256": "c790e8671625b05ec0aa19272e0ea74ea95619f953e3c6f39a6736af0d386804"
     }
   },
   "required_winners": {
@@ -41,7 +45,8 @@
     "assets/minecraft/textures/gui/icons.png": "hud_reimagined",
     "assets/minecraft/textures/mob_effect/absorption.png": "effect_icons",
     "assets/icons/textures/menu/main_menu.png": "icons",
-    "assets/minecraft/textures/gui/widgets.png": "composite:hud_rows_0_45+reimagined_buttons"
+    "assets/minecraft/textures/gui/widgets.png": "composite:hud_rows_0_45+reimagined_buttons",
+    "assets/cosmeticarmorreworked/textures/gui/cosarmorinventory.png": "composite:cosmetic_armor_native_geometry+jem_release_inventory_materials"
   },
   "result": "pass",
   "runtime_verified": false,
