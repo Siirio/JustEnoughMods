@@ -87,10 +87,6 @@ public final class JemWorldBossTiers {
         MinecraftForge.EVENT_BUS.register(bossRespawns);
         MinecraftForge.EVENT_BUS.register(new WeaponProtection());
         MinecraftForge.EVENT_BUS.register(com.siirio.jemworldbosstiers.compat.cataclysm.IncineratorBudget.class);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
-            MinecraftForge.EVENT_BUS.register(com.siirio.jemworldbosstiers.compat.irons.IronsSpellDamageAdapter.class);
-            MinecraftForge.EVENT_BUS.register(com.siirio.jemworldbosstiers.compat.irons.ContinuousEchoes.class);
-        }
     }
 
     @SubscribeEvent

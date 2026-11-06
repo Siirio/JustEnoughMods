@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "18403ab81136ccd17affb2505e78442b5d89260a",
+  "snapshot_sha": "7bbca9bbe11e03556cdba044136ede99a1072335",
   "generation": {
-    "generated_utc": "2026-11-03T12:30:16.344085+00:00",
+    "generated_utc": "2026-11-06T06:43:16.818690+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -615,44 +615,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:amethyst_block"
-      ]
-    },
-    {
-      "item_id": "minecraft:ancient_debris",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "data/irons_spellbooks/recipes/ancient_debris_from_pyrium.json"
-      ],
-      "display_name_en_us": "Ancient Debris",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/ancient_debris_from_pyrium.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:ancient_debris",
-      "placed_registry_ids": [
-        "minecraft:ancient_debris"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "irons_spellbooks:ancient_debris_from_pyrium"
       ]
     },
     {

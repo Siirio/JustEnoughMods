@@ -12,9 +12,6 @@ import net.minecraft.world.entity.animal.horse.AbstractHorse;
 /** Exact installed-class admission. Native serializers remain the inventory/capability owner. */
 public final class PackCompanionAdapter {
     public interface NativeOwner { UUID jemShelterNativeOwner(); }
-    public interface NativeSummon extends NativeOwner { void jemShelterCaptureSummon(CompoundTag tag); void jemShelterResumeSummon(); void jemShelterAbortSummon(); void jemShelterCommitSummon(); }
-    public interface NativeSummonManager { void jemShelterCapture(Entity entity, CompoundTag tag); Object jemShelterBegin(Entity entity); void jemShelterAbort(Entity entity, Object token); }
-    public interface NativeExpiration { UUID jemShelterId(); int jemShelterExpiry(); }
     public interface NativeTransient { void jemShelterWriteTransient(CompoundTag tag); void jemShelterReadTransient(CompoundTag tag); }
     private static final Set<String> CLASSES = Set.of(
             "icy.betterhorses.net.entity.AmericanPaintHorse",
@@ -38,11 +35,6 @@ public final class PackCompanionAdapter {
             "dev.xylonity.companions.common.entity.summon.FireworkToadEntity",
             "dev.xylonity.companions.common.entity.summon.LivingCandleEntity",
             "dev.xylonity.companions.common.entity.summon.NetherBullfrogEntity",
-            "io.redspace.ironsspellbooks.entity.mobs.SummonedHorse",
-            "io.redspace.ironsspellbooks.entity.mobs.SummonedPolarBear",
-            "io.redspace.ironsspellbooks.entity.mobs.SummonedSkeleton",
-            "io.redspace.ironsspellbooks.entity.mobs.SummonedVex",
-            "io.redspace.ironsspellbooks.entity.mobs.SummonedZombie",
             "com.hm.efn.entity.doppelganger.DoppelgangerEntity",
             "com.hm.efn.entity.falchion.GuardianEntity",
 
@@ -170,8 +162,7 @@ public final class PackCompanionAdapter {
                 || name.equals("net.mcreator.unearthedjourney.entity.CarbonemysEntity")
                 || name.equals("net.mcreator.unearthedjourney.entity.GnatusuchusEntity")
                 || name.equals("dev.obscuria.aquamirae.common.entity.Shellback")) return CompanionAdapters.Habitat.AMPHIBIOUS;
-        if (name.equals("io.redspace.ironsspellbooks.entity.mobs.SummonedVex")
-                || name.equals("dev.xylonity.companions.common.entity.summon.EnderFrogEntity")
+        if (name.equals("dev.xylonity.companions.common.entity.summon.EnderFrogEntity")
                 || name.equals("org.primal.entity.animal.EagleEntity")
                 || name.equals("dev.xylonity.companions.common.entity.companion.GoldenAllayEntity")
                 || name.equals("dev.xylonity.companions.common.entity.companion.ShadeBatEntity")
@@ -182,78 +173,19 @@ public final class PackCompanionAdapter {
     }
     public static boolean nativeOwnerTeleport(Entity entity) { return TELEPORT.contains(entity.getClass().getName()); }
     public static void snapshot(Entity entity, CompoundTag tag) {
-        if (entity instanceof NativeSummon summon) summon.jemShelterCaptureSummon(tag);
         if (entity.getClass().getName().equals("com.ninni.spawn.server.entity.mob.Hamster")) {
             // Native defaults restore hydration (20), no active TNT fuse and no vanished wheel membership.
             for (String key : new String[]{"Hydration", "HasEatenTnt", "TntTimer", "InWheel", "WheelCooldown"}) tag.remove(key);
         }
     }
-    public static void recovered(Entity entity) {
-        if (entity instanceof NativeSummon summon) summon.jemShelterResumeSummon();
-    }
+    public static void recovered(Entity entity) {}
     public static boolean recoveryAllowed(CompoundTag tag, net.minecraft.server.level.ServerLevel level) {
-        CompoundTag data = tag.getCompound("ForgeData");
-        long deadline = data.getLong("jemShelterNativeSummonDeadline");
-        if (deadline > 0 && level.getServer().overworld().getGameTime() >= deadline) return false;
-        if (tag.getString("id").startsWith("irons_spellbooks:"))
-            return data.hasUUID("jemShelterNativeSummoner") && deadline > 0;
         return !tag.getString("id").equals("efn:guardian") || !tag.contains("jemShelterNativeAge")
                 || tag.getInt("jemShelterNativeAge") < 600;
     }
-    public static void recoveryAborted(Entity entity) {
-        if (entity instanceof NativeSummon summon) summon.jemShelterAbortSummon();
-    }
-    public static void recoveryCommitted(Entity entity) {
-        if (entity instanceof NativeSummon summon) summon.jemShelterCommitSummon();
-    }
-    public static boolean ready(Entity entity) {
-        if (!(entity instanceof NativeSummon summon)) return true;
-        summon.jemShelterCaptureSummon(new CompoundTag());
-        CompoundTag data = entity.getPersistentData();
-        return data.hasUUID("jemShelterNativeSummoner") && entity.getServer() != null
-                && data.getLong("jemShelterNativeSummonDeadline") > entity.getServer().overworld().getGameTime();
-    }
-    @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "mobhome")
-    public static final class NativeSummonLifecycle {
-        private static final java.util.Queue<Entity> JOINS = new java.util.concurrent.ConcurrentLinkedQueue<>();
-        private NativeSummonLifecycle() {}
-        @net.minecraftforge.eventbus.api.SubscribeEvent
-        public static void joined(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
-            Entity entity = event.getEntity();
-            if (!event.getLevel().isClientSide && entity instanceof NativeSummon
-                    && entity.getPersistentData().hasUUID("jemShelterNativeSummoner")
-                    && entity.getPersistentData().contains("jemShelterNativeSummonDeadline")) {
-                if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel level) {
-                    com.siirio.mobhome.feature.shelter.CompanionData.Pet pet =
-                            com.siirio.mobhome.feature.shelter.CompanionData.get(level).pet(entity.getUUID());
-                    if (pet != null && (pet.pending != null || pet.restoring)) return;
-                }
-                JOINS.add(entity);
-            }
-        }
-        @net.minecraftforge.eventbus.api.SubscribeEvent
-        public static void tick(net.minecraftforge.event.TickEvent.ServerTickEvent event) {
-            if (event.phase != net.minecraftforge.event.TickEvent.Phase.END) return;
-            Entity entity;
-            for (int remaining = JOINS.size(); remaining > 0 && (entity = JOINS.poll()) != null; remaining--) {
-                if (!(entity.level() instanceof net.minecraft.server.level.ServerLevel level)
-                        || !entity.isAlive() || entity.isRemoved() || level.getEntity(entity.getUUID()) != entity) continue;
-                com.siirio.mobhome.feature.shelter.CompanionData.Pet pet =
-                        com.siirio.mobhome.feature.shelter.CompanionData.get(level).pet(entity.getUUID());
-                if (pet != null && (pet.pending != null || pet.restoring || pet.epoch != entity.getPersistentData()
-                        .getLong(com.siirio.mobhome.feature.shelter.CompanionData.ENTITY_EPOCH))) continue;
-                if (entity.getPersistentData().getLong("jemShelterNativeSummonDeadline") <= level.getServer().overworld().getGameTime()) {
-                    entity.discard(); continue;
-                }
-                java.util.UUID owner = entity.getPersistentData().getUUID("jemShelterNativeSummoner");
-                if (level.getServer().getPlayerList().getPlayer(owner) == null) { JOINS.add(entity); continue; }
-                ((NativeSummon) entity).jemShelterResumeSummon();
-                ((NativeSummon) entity).jemShelterCommitSummon();
-            }
-        }
-        @net.minecraftforge.eventbus.api.SubscribeEvent
-        public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { JOINS.clear(); }
-    }
+    public static void recoveryAborted(Entity entity) {}
+    public static void recoveryCommitted(Entity entity) {}
+    public static boolean ready(Entity entity) { return true; }
     public static boolean preserveNativeAge(Entity entity) {
         String name = entity.getClass().getName();
         return name.startsWith("dev.xylonity.companions.common.entity.summon.")

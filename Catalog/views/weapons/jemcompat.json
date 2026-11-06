@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "weapons",
-  "snapshot_sha": "18403ab81136ccd17affb2505e78442b5d89260a",
+  "snapshot_sha": "7bbca9bbe11e03556cdba044136ede99a1072335",
   "generation": {
-    "generated_utc": "2026-11-03T12:30:16.344085+00:00",
+    "generated_utc": "2026-11-06T06:43:16.818690+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -21,7 +21,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.10.2",
       "source_jar": "jemcompat-3.10.2.jar",
-      "source_sha256": "58e33853523dc4c71ca95a45d504d9921f037816e9e73953fe576288b5b54a77",
+      "source_sha256": "239e07ca43efe6ff6940e71104c95efb2cdc9f8982f10743f2d0ffe95ba3ac2f",
       "side_availability": [
         "client"
       ],
@@ -44,40 +44,6 @@
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "weapon_archetypes": [
         "spear"
-      ],
-      "category_evidence": "registry path; requires runtime class confirmation"
-    },
-    {
-      "item_id": "jemcompat:spawn_egg_irons_spellbooks_cultist",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.10.2",
-      "source_jar": "jemcompat-3.10.2.jar",
-      "source_sha256": "58e33853523dc4c71ca95a45d504d9921f037816e9e73953fe576288b5b54a77",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/spawn_egg_irons_spellbooks_cultist.json",
-        "data/jemcompat/recipes/spawn_eggs/irons_spellbooks_cultist.json"
-      ],
-      "display_name_en_us": "Cultist Spawn Egg",
-      "display_name_ru_ru": "Яйцо призыва культиста",
-      "source_provenance": [
-        "jemcompat-3.10.2.jar:assets/jemcompat/lang/en_us.json",
-        "jemcompat-3.10.2.jar:assets/jemcompat/lang/ru_ru.json",
-        "jemcompat-3.10.2.jar:assets/jemcompat/models/item/spawn_egg_irons_spellbooks_cultist.json",
-        "jemcompat-3.10.2.jar:data/jemcompat/recipes/spawn_eggs/irons_spellbooks_cultist.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "weapon_archetypes": [
-        "spellbook"
       ],
       "category_evidence": "registry path; requires runtime class confirmation"
     }

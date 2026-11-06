@@ -5738,6 +5738,309 @@
       ],
       "jem_economy": false,
       "jem_dedicated_event": false
+    },
+    {
+      "id": "03997BBBD5998843",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_ancient_aquaduct.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_ancient_aquaduct.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_ancient_aquaduct.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_ancient_aquaduct.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_ancient_aquaduct.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_ancient_aquaduct.reward\"}"
+      ],
+      "icon": "minecraft:chiseled_stone_bricks",
+      "x": -18.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "22803195FE4DD375",
+          "type": "advancement",
+          "advancement": "jem_advancements:major_update_4/ancient_aquaduct"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A111DDC42CF0A04",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_ancient_aquaduct",
+      "jem_required_mods": [
+        "ancient_remnants"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "FAEB5C0EA9A1F6EA",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_ancient_bridge.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_ancient_bridge.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_ancient_bridge.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_ancient_bridge.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_ancient_bridge.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_ancient_bridge.reward\"}"
+      ],
+      "icon": "minecraft:stone_bricks",
+      "x": -15.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "277292F9BC6D6F40",
+          "type": "advancement",
+          "advancement": "jem_advancements:major_update_4/ancient_bridge"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2841A0CE56C0442B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_ancient_bridge",
+      "jem_required_mods": [
+        "ancient_remnants"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3D04CD68B54803C4",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_sitting_plus.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_sitting_plus.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_sitting_plus.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_sitting_plus.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_sitting_plus.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_sitting_plus.reward\"}"
+      ],
+      "icon": "minecraft:oak_stairs",
+      "x": -12.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "253DB164E52BD11A",
+          "type": "advancement",
+          "advancement": "jem_advancements:major_update_4/sitting_plus"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AD55643910B2838",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_sitting_plus",
+      "jem_required_mods": [
+        "sittingplus"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "4D81128E013D1B41",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_eggs_farm.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_eggs_farm.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_farm.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_farm.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_farm.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_farm.reward\"}"
+      ],
+      "icon": "minecraft:cow_spawn_egg",
+      "x": -9.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "22DCE141868D722E",
+          "type": "item",
+          "item": "minecraft:cow_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "27832E9F395F1D4E",
+          "type": "item",
+          "item": "minecraft:pig_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "28EB44CCD6C78C37",
+          "type": "item",
+          "item": "minecraft:sheep_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "28D844DB862E951E",
+          "type": "item",
+          "item": "minecraft:chicken_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22F65B8A3E6730D0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_eggs_farm",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "058E76DEF0E0D492",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_eggs_wild.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_eggs_wild.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_wild.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_wild.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_wild.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_wild.reward\"}"
+      ],
+      "icon": "alexsmobs:grizzly_bear_spawn_egg",
+      "x": -6.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "287275A734ABA61D",
+          "type": "item",
+          "item": "alexsmobs:grizzly_bear_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "293A0055B1D682D5",
+          "type": "item",
+          "item": "alexsmobs:gorilla_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2823D156E24D7F22",
+          "type": "item",
+          "item": "alexsmobs:raccoon_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "28CCE71FC6341A18",
+          "type": "item",
+          "item": "alexsmobs:kangaroo_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2001A9B16C8D2C39",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_eggs_wild",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "A7FB18270B544543",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_eggs_hostile.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_eggs_hostile.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_hostile.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_hostile.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_hostile.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_eggs_hostile.reward\"}"
+      ],
+      "icon": "minecraft:zombie_spawn_egg",
+      "x": -3.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "21FC9D8CA8C57CFE",
+          "type": "item",
+          "item": "minecraft:zombie_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "291155C730642789",
+          "type": "item",
+          "item": "minecraft:skeleton_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "276AD33517718648",
+          "type": "item",
+          "item": "minecraft:spider_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "24A317C744851D41",
+          "type": "item",
+          "item": "minecraft:creeper_spawn_egg",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "262684A2834E3D39",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_eggs_hostile",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
     }
   ],
   "images": [

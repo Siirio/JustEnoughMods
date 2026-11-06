@@ -55,8 +55,6 @@ CLASS_REVIEW_EXCLUSIONS = {
     "aquamirae:shipbreaker": "EVENT_BOSS_TECHNICAL_ENTITY",
     "deep_dark_regrowth:abomination": "BOSSLIKE_UNIQUE_MONSTER",
     "deep_dark_regrowth:annihilator": "BOSSLIKE_UNIQUE_MONSTER",
-    "irons_spellbooks:archevoker": "MINIBOSS",
-    "irons_spellbooks:wisp": "SUMMON_ONLY_COMPANION",
     "skarrier_mobs:freeze": "TECHNICAL_EFFECT_ENTITY",
     "unearthed_journey:basilosaurus": "AQUATIC_FISHLIKE_CREATURE",
     "unearthed_journey:livyatan": "BOSS",

@@ -1,6 +1,6 @@
 # JEM World Boss Tiers
 
-One logical-server owner for world progression, boss profiles/scaling, hosted encounters, native arena/revival identity and non-item progression rewards. Item entitlements belong to mandatory `jem_rewards [1.0.0,)`. The production implementation supports integrated worlds and dedicated hosts; client presentation uses the same synchronized state. Required metadata: Forge `[47.4.10,)`, Minecraft `[1.20.1,1.21)`; builds target 1.20.1. Iron's Spells is optional behind its audited adapter. See the [complete domain inventory](../../Docs/universal/README.md).
+One logical-server owner for world progression, boss profiles/scaling, hosted encounters, native arena/revival identity and non-item progression rewards. Item entitlements belong to mandatory `jem_rewards [1.0.0,)`. The production implementation supports integrated worlds and dedicated hosts, while client presentation uses the same synchronized state. Required metadata: Forge `[47.4.10,)`, Minecraft `[1.20.1,1.21)`, with builds targeting 1.20.1. See the [complete domain inventory](../../Docs/universal/README.md).
 
 ## Progression and persistence
 

@@ -7,15 +7,9 @@ import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-/** Logical-server handlers protect both world types; optional Iron targets are version-pinned. */
+/** Logical-server handlers protect both world types and version-pin optional native targets. */
 public final class PowerMixins implements IMixinConfigPlugin {
     @Override public boolean shouldApplyMixin(String target, String mixin) {
-        if (mixin.endsWith(".IronsSiphonHealingMixin") || mixin.endsWith(".IronsContinuousEchoMixin")) {
-            var file = FMLLoader.getLoadingModList().getModFileById("irons_spellbooks");
-            return file != null
-                    && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("irons_spellbooks")
-                    && mod.getVersion().toString().equals("1.20.1-3.15.6"));
-        }
         if (mixin.endsWith(".CataclysmIgnisDamageMixin") || mixin.endsWith(".CataclysmGuardianDamageMixin")
                 || mixin.endsWith(".CataclysmLeviathanDamageMixin") || mixin.endsWith(".CataclysmMonstrosityDamageMixin")
                 || mixin.endsWith(".CataclysmMaledictusDamageMixin")

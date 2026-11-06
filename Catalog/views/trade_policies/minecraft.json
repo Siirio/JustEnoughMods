@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "18403ab81136ccd17affb2505e78442b5d89260a",
+  "snapshot_sha": "7bbca9bbe11e03556cdba044136ede99a1072335",
   "generation": {
-    "generated_utc": "2026-11-03T12:30:16.344085+00:00",
+    "generated_utc": "2026-11-06T06:43:16.818690+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -931,52 +931,6 @@
       "price_basis": "Immutable approved resource anchor per64; exact recipe family.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
-    },
-    {
-      "item_id": "minecraft:ancient_debris",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "data/irons_spellbooks/recipes/ancient_debris_from_pyrium.json"
-      ],
-      "display_name_en_us": "Ancient Debris",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/ancient_debris_from_pyrium.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "irons_spellbooks:ancient_debris_from_pyrium"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
     },
     {
       "item_id": "minecraft:andesite",
@@ -5590,7 +5544,6 @@
         "data/farm_and_charm/recipes/drying/bone_meal_from_wild_tomatoes.json",
         "data/farm_and_charm/recipes/mincer/bonemeal_from_bone.json",
         "data/incision/recipes/fangtobonemeal.json",
-        "data/irons_spellbooks/recipes/frozen_bone_to_bonemeal.json",
         "data/kaleidoscope_cookery/recipes/millstone/bone_meal_from_bone.json",
         "data/kaleidoscope_nether/recipes/bone_meal_from_wither_rib.json",
         "data/kaleidoscope_nether/recipes/millstone/wither_rib.json",
@@ -5625,7 +5578,6 @@
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/bone_meal_from_small_bone_blocks.json",
         "alexsmobs-1.22.9.jar:data/alexsmobs/recipes/bonemeal_from_fish_bones.json",
         "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/fangtobonemeal.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/frozen_bone_to_bonemeal.json",
         "kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/bone_meal_from_wither_rib.json",
         "kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/wither_rib.json",
         "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/bone_meal_from_wither_rib.json",
@@ -5692,7 +5644,6 @@
         "farm_and_charm:drying/bone_meal_from_wild_tomatoes",
         "farm_and_charm:mincer/bonemeal_from_bone",
         "incision:fangtobonemeal",
-        "irons_spellbooks:frozen_bone_to_bonemeal",
         "kaleidoscope_cookery:millstone/bone_meal_from_bone",
         "kaleidoscope_nether:bone_meal_from_wither_rib",
         "kaleidoscope_nether:millstone/wither_rib",
@@ -7070,17 +7021,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_water_bucket.json",
         "data/minecraft/recipes/bucket.json"
       ],
       "display_name_en_us": "Bucket",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_water_bucket.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/bucket.json"
       ],
@@ -7092,7 +7042,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "irons_spellbooks:alchemist_cauldron/fill_water_bucket",
         "minecraft:bucket"
       ],
       "recipe_dependency_evidence": [],
@@ -20825,45 +20774,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_blood_vial.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_common_ink.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_epic_ink.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_evasion_elixir.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_greater_evasion_elixir.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_greater_healing_potion.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_greater_invisibility_elixir.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_greater_oakskin_elixir.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_ice_venom_vial.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_invisibility_elixir.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_legendary_ink.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_oakskin_elixir.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_rare_ink.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_timeless_slurry.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/fill_uncommon_ink.json",
         "data/minecraft/recipes/glass_bottle.json"
       ],
       "display_name_en_us": "Glass Bottle",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_blood_vial.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_common_ink.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_epic_ink.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_evasion_elixir.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_greater_evasion_elixir.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_greater_healing_potion.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_greater_invisibility_elixir.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_greater_oakskin_elixir.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_ice_venom_vial.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_invisibility_elixir.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_legendary_ink.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_oakskin_elixir.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_rare_ink.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_timeless_slurry.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/fill_uncommon_ink.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/glass_bottle.json"
       ],
@@ -20875,21 +20795,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "irons_spellbooks:alchemist_cauldron/fill_blood_vial",
-        "irons_spellbooks:alchemist_cauldron/fill_common_ink",
-        "irons_spellbooks:alchemist_cauldron/fill_epic_ink",
-        "irons_spellbooks:alchemist_cauldron/fill_evasion_elixir",
-        "irons_spellbooks:alchemist_cauldron/fill_greater_evasion_elixir",
-        "irons_spellbooks:alchemist_cauldron/fill_greater_healing_potion",
-        "irons_spellbooks:alchemist_cauldron/fill_greater_invisibility_elixir",
-        "irons_spellbooks:alchemist_cauldron/fill_greater_oakskin_elixir",
-        "irons_spellbooks:alchemist_cauldron/fill_ice_venom_vial",
-        "irons_spellbooks:alchemist_cauldron/fill_invisibility_elixir",
-        "irons_spellbooks:alchemist_cauldron/fill_legendary_ink",
-        "irons_spellbooks:alchemist_cauldron/fill_oakskin_elixir",
-        "irons_spellbooks:alchemist_cauldron/fill_rare_ink",
-        "irons_spellbooks:alchemist_cauldron/fill_timeless_slurry",
-        "irons_spellbooks:alchemist_cauldron/fill_uncommon_ink",
         "minecraft:glass_bottle"
       ],
       "recipe_dependency_evidence": [],
@@ -26953,7 +26858,6 @@
         "data/dustydecorations/recipes/cow_hide_to_leather_1.json",
         "data/dustydecorations/recipes/cow_hide_to_leather_2.json",
         "data/farm_and_charm/recipes/mincer/leather_from_horse_armor.json",
-        "data/irons_spellbooks/recipes/hogskin_to_leather.json",
         "data/kaleidoscope_nether/recipes/ghast_hide_to_leather.json",
         "data/kaleidoscope_nether/recipes/hoglin_hide_to_leather.json",
         "data/kaleidoscope_nether/recipes/millstone/ghast_hide.json",
@@ -26969,7 +26873,6 @@
         "DustyDecorations_1.20.1Forge_V1.13.jar:data/dustydecorations/recipes/cow_hide_to_leather_1.json",
         "DustyDecorations_1.20.1Forge_V1.13.jar:data/dustydecorations/recipes/cow_hide_to_leather_2.json",
         "alexsmobs-1.22.9.jar:data/alexsmobs/recipes/kangaroo_hide_to_leather.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/hogskin_to_leather.json",
         "kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/ghast_hide_to_leather.json",
         "kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/hoglin_hide_to_leather.json",
         "kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/ghast_hide.json",
@@ -26996,7 +26899,6 @@
         "dustydecorations:cow_hide_to_leather_1",
         "dustydecorations:cow_hide_to_leather_2",
         "farm_and_charm:mincer/leather_from_horse_armor",
-        "irons_spellbooks:hogskin_to_leather",
         "kaleidoscope_nether:ghast_hide_to_leather",
         "kaleidoscope_nether:hoglin_hide_to_leather",
         "kaleidoscope_nether:millstone/ghast_hide",
@@ -30937,52 +30839,6 @@
       "source_provenance": [
         "alexscaves-2.0.2.jar:assets/alexscaves/lang/en_us.json",
         "alexscaves-2.0.2.jar:assets/alexscaves/lang/ru_ru.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "minecraft:lingering_potion.effect.mana",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/irons_spellbooks/lang/en_us.json",
-        "assets/irons_spellbooks/lang/ru_ru.json"
-      ],
-      "display_name_en_us": "Lingering Potion of Mana",
-      "display_name_ru_ru": "Туманное зелье маны",
-      "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -41605,16 +41461,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/irons_spellbooks/recipes/poisonous_potato.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Poisonous Potato",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/poisonous_potato.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -41624,9 +41479,7 @@
       "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "irons_spellbooks:poisonous_potato"
-      ],
+      "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": 5513,
@@ -44993,52 +44846,6 @@
       "source_provenance": [
         "alexscaves-2.0.2.jar:assets/alexscaves/lang/en_us.json",
         "alexscaves-2.0.2.jar:assets/alexscaves/lang/ru_ru.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "minecraft:potion.effect.mana",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/irons_spellbooks/lang/en_us.json",
-        "assets/irons_spellbooks/lang/ru_ru.json"
-      ],
-      "display_name_en_us": "Potion of Mana",
-      "display_name_ru_ru": "Зелье маны",
-      "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -57388,52 +57195,6 @@
       "review_status": "unresolved"
     },
     {
-      "item_id": "minecraft:splash_potion.effect.mana",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/irons_spellbooks/lang/en_us.json",
-        "assets/irons_spellbooks/lang/ru_ru.json"
-      ],
-      "display_name_en_us": "Splash Potion of Mana",
-      "display_name_ru_ru": "Взрывное зелье маны",
-      "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
       "item_id": "minecraft:splash_potion.effect.mundane",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -64172,52 +63933,6 @@
       "review_status": "unresolved"
     },
     {
-      "item_id": "minecraft:tipped_arrow.effect.mana",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/irons_spellbooks/lang/en_us.json",
-        "assets/irons_spellbooks/lang/ru_ru.json"
-      ],
-      "display_name_en_us": "Arrow of Mana",
-      "display_name_ru_ru": "Стрела маны",
-      "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
-        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
       "item_id": "minecraft:tipped_arrow.effect.mundane",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -67527,16 +67242,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/irons_spellbooks/recipes/alchemist_cauldron/empty_water_bucket.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Water Bucket",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/alchemist_cauldron/empty_water_bucket.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -67546,9 +67260,7 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "irons_spellbooks:alchemist_cauldron/empty_water_bucket"
-      ],
+      "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

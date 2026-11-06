@@ -28,7 +28,6 @@ public final class GeneratedSpawnEggContent {
         register("spawn_egg_deep_dark_extended_spreader", "deep_dark_extended:spreader");
         register("spawn_egg_deep_dark_extended_stalker", "deep_dark_extended:stalker");
         register("spawn_egg_incision_skeletoncultist", "incision:skeletoncultist");
-        register("spawn_egg_irons_spellbooks_cultist", "irons_spellbooks:cultist");
         register("spawn_egg_minecraft_armadillo", "minecraft:armadillo");
         register("spawn_egg_minecraft_sulfur_cube", "minecraft:sulfur_cube");
         register("spawn_egg_netherexp_warphopper", "netherexp:warphopper");

@@ -7,8 +7,6 @@ public final class HostedAllies {
     private HostedAllies() {}
 
     public static Entity owner(Entity entity) {
-        Entity summoner = invoke(entity, "io.redspace.ironsspellbooks.entity.mobs.IMagicSummon", "getSummoner");
-        if (summoner != null) return summoner;
         Entity recruit = invoke(entity, "com.talhanation.recruits.entities.AbstractRecruitEntity", "getOwner");
         if (recruit != null) return recruit;
         try {

@@ -5249,7 +5249,7 @@
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
-      "icon": "irons_spellbooks:invisibility_elixir",
+      "icon": "minecraft:fermented_spider_eye",
       "x": 14.8,
       "y": 10.9,
       "shape": "circle",
@@ -5265,7 +5265,7 @@
         {
           "id": "26041D2DE1AE3097",
           "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:invisibility_elixir",
+          "item": "minecraft:fermented_spider_eye",
           "count": 2,
           "claim_key": "v3_combat_guzzle_ectoplasm/item/0",
           "claim_reward_id": "26041D2DE1AE3097",
@@ -6694,7 +6694,7 @@
       ],
       "jem_source_id": "mu4_better_horses_saddle",
       "jem_required_mods": [
-        "icys-better-horses"
+        "icys_better_horses"
       ],
       "jem_economy": false,
       "jem_dedicated_event": false
@@ -6746,6 +6746,304 @@
       "jem_source_id": "mu4_mineable_spawner",
       "jem_required_mods": [
         "mineable_spawner"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "D0AE3A42E05B6DB7",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_horse_tame.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_horse_tame.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_horse_tame.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_tame.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_tame.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_tame.reward\"}"
+      ],
+      "icon": "minecraft:saddle",
+      "x": -18.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "2522AD61F9A6982D",
+          "type": "advancement",
+          "advancement": "icys-better-horses:hold_your_horses"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "211A1362770E10E5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_horse_tame",
+      "jem_required_mods": [
+        "icys_better_horses"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "0C939DD9224D1626",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_horse_tack.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_horse_tack.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_horse_tack.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_tack.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_tack.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_tack.reward\"}"
+      ],
+      "icon": "icys-better-horses:upgraded_saddle",
+      "x": -15.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "2298F4DD18F7EE11",
+          "type": "advancement",
+          "advancement": "icys-better-horses:all_tacked_up"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C9DE3FBCD300039",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_horse_tack",
+      "jem_required_mods": [
+        "icys_better_horses"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "DC90C52511D23C58",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_horse_foal.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_horse_foal.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_horse_foal.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_foal.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_foal.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_foal.reward\"}"
+      ],
+      "icon": "minecraft:golden_carrot",
+      "x": -12.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "2AE69180625C97D7",
+          "type": "advancement",
+          "advancement": "icys-better-horses:foal_play"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CA17DFB5629C83B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_horse_foal",
+      "jem_required_mods": [
+        "icys_better_horses"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "4A4C32A9361EE0EE",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_horse_breeds.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_horse_breeds.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_horse_breeds.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_breeds.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_breeds.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_breeds.reward\"}"
+      ],
+      "icon": "icys-better-horses:stable_handbook",
+      "x": -9.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "270CE4E603DE5A9E",
+          "type": "advancement",
+          "advancement": "icys-better-horses:gotta_tame_em_all"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28252C7C0839EA59",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_horse_breeds",
+      "jem_required_mods": [
+        "icys_better_horses"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "1186769D5A389052",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_horse_home.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_horse_home.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_horse_home.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_home.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_home.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_home.reward\"}"
+      ],
+      "icon": "minecraft:hay_block",
+      "x": -6.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "27056691D89984A6",
+          "type": "advancement",
+          "advancement": "icys-better-horses:home_is_where_the_hay_is"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "208CB0633858A69D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_horse_home",
+      "jem_required_mods": [
+        "icys_better_horses"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "93A00B2FBB85E89D",
+      "title": "{\"translate\":\"jem.atlas.card.mu4_horse_ride.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mu4_horse_ride.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.mu4_horse_ride.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_ride.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_ride.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.mu4_horse_ride.reward\"}"
+      ],
+      "icon": "minecraft:leather_horse_armor",
+      "x": -3.0,
+      "y": -18.0,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "2484E24309EECB78",
+          "type": "advancement",
+          "advancement": "icys-better-horses:ride_or_die"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29B6711820558D41",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mu4_horse_ride",
+      "jem_required_mods": [
+        "icys_better_horses"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "31D39460913B197C",
+      "title": "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_pet_trailcraft.reward\"}"
+      ],
+      "icon": "barnyardbuddies:horseshoe",
+      "x": -12.5,
+      "y": 8.6,
+      "shape": "circle",
+      "size": 1.2,
+      "tasks": [
+        {
+          "id": "236BDAE27783A788",
+          "type": "advancement",
+          "advancement": "icys-better-horses:home_is_where_the_hay_is"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B1617C965F4F279",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:horseshoe",
+          "count": 4,
+          "claim_key": "v3_pet_trailcraft/item/0",
+          "claim_reward_id": "2B1617C965F4F279",
+          "team_reward": false
+        },
+        {
+          "id": "2713E1EEDE84912D",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:spotted_quilt_rug",
+          "count": 2,
+          "claim_key": "v3_pet_trailcraft/item/1",
+          "claim_reward_id": "2713E1EEDE84912D",
+          "team_reward": false
+        },
+        {
+          "id": "257F881F5E2630C8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_pet_trailcraft",
+      "jem_required_mods": [
+        "icys_better_horses"
       ],
       "jem_economy": false,
       "jem_dedicated_event": false

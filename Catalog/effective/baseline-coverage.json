@@ -2,16 +2,16 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "03823f754bbe869e452b225fedbed2d30a862fb85ae0e8922ea2e8b364fac079",
+  "change_records_sha256": "903975f08d0e7aef39cbbd2d331e00d2114d6386dbb2bd6953990018b2039c68",
   "totals": {
-    "watched": 7224,
-    "covered": 5477,
-    "unresolved": 1747
+    "watched": 7143,
+    "covered": 5500,
+    "unresolved": 1643
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1385,
-      "covered": 42,
+      "watched": 1384,
+      "covered": 41,
       "unresolved": 1343,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
@@ -1401,15 +1401,10 @@
       ]
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 3965,
-      "covered": 3961,
-      "unresolved": 4,
-      "unresolved_paths": [
-        "Mods/JEMAchievementGuide/gradle.properties",
-        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/NodeCriterion.java",
-        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/UpstreamAdvancementCriterion.java",
-        "Mods/JEMAchievementGuide/src/main/resources/pack.mcmeta"
-      ]
+      "watched": 3905,
+      "covered": 3905,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMAdaptiveCulling": {
       "watched": 15,
@@ -1447,52 +1442,9 @@
     },
     "Mods/JEMCompat": {
       "watched": 154,
-      "covered": 112,
-      "unresolved": 42,
-      "unresolved_paths": [
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedItemTooltips.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/FrozenTintBufferSource.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/blastfromthepast/FrostbiteSpawnSupport.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/elements/ElementalImpactEvents.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/leash/UniversalLeashEvents.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportEvents.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/worldtier/EnhancedAiTierController.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/worldtier/EnhancedAiTierPolicy.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/DurabilityEnchantmentMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/InfiniteEquipmentDurabilityMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/ItemDurabilityBarMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/LeashFenceKnotEntityMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/EntityRenderDispatcherFrozenTintMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/IngredientListOverlayAccessor.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/StorageTerminalFocusMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/events/LuminousEventVictoryMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/guide/SpawnWithJourneyGuideProcedureMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/DonkeyInventoryMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EntityStuckSpeedAccessor.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/FurnaceMinecartMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/ItemBasedSteeringAccessor.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/PigBoostMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/RoyalWagonInventoryMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/TrottingWagonClydesdaleMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/CaptainCorneliaHealingMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/EnhancedAiSpawningMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/KrakenStaggerMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/SandwormStaggerMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/worldtier/BossMechanicPolicy.java",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_english_aliases.json",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/item/aircraft_fuel.json",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_front.png",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_side.png",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_top.png",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/item/aircraft_fuel.png",
-        "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/freezing_impact_items.json",
-        "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/igniting_impact_items.json",
-        "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/create_redstone.json",
-        "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/nature.json",
-        "Mods/JEMCompat/src/main/resources/data/minecraft/tags/blocks/mineable/axe.json",
-        "Mods/JEMCompat/src/main/resources/pack.mcmeta"
-      ]
+      "covered": 154,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMDrillLifecycle": {
       "watched": 21,
@@ -1522,16 +1474,9 @@
     },
     "Mods/JEMEconomy": {
       "watched": 152,
-      "covered": 146,
-      "unresolved": 6,
-      "unresolved_paths": [
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/blockstates/shipping_box.json",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_box_front.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_box_side.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_box_top.png",
-        "Mods/JEMEconomy/src/main/resources/data/jem_economy/recipes/shipping_box.json",
-        "Mods/JEMEconomy/src/main/resources/data/minecraft/tags/blocks/mineable/axe.json"
-      ]
+      "covered": 152,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMExcavation": {
       "watched": 14,
@@ -1616,8 +1561,8 @@
       ]
     },
     "Mods/JEMProfessions": {
-      "watched": 23,
-      "covered": 23,
+      "watched": 22,
+      "covered": 22,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1628,8 +1573,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMRoles": {
-      "watched": 167,
-      "covered": 167,
+      "watched": 158,
+      "covered": 158,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1907,67 +1852,14 @@
       "unresolved_paths": []
     },
     "Mods/JEMWorldBossTiers": {
-      "watched": 146,
-      "covered": 94,
-      "unresolved": 52,
-      "unresolved_paths": [
-        "Mods/JEMWorldBossTiers/gradle.properties",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossEffectApi.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossRevivalApi.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataLoader.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossFrenzy.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossTierScaling.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EncounterScaler.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EquipmentRefreshPolicy.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ParsedBossData.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/RewardProfile.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/TierValues.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/client/TierAdvancementDescriptions.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/IronsSpellCatalog.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/IronsSpellDamageAdapter.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SpellTierFactors.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/enchantment/TierEnchantments.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterProvenance.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingHealthSync.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/RaidRewardPool.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/RewardGroup.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/SpawnDecision.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/SpawnProvenanceRules.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/event/HostedEncounterAvailableEvent.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/event/WorldTierChangedEvent.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/loot/ProgressionBookLootModifier.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/loot/TierLoot.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/DisplayInfoAccessor.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ExperienceOrbInvoker.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/KilledTriggerMixin.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/SinglePoolElementAccessor.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/StructureTemplateAccessor.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/network/ClientTierState.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/network/TierSyncPacket.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/BossDefeatPolicy.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/ProgressionRules.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/TierAdvancements.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/protection/WeaponProtection.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaDestructionPolicy.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/NativeAnchorMigration.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/RespawnOwnership.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/RevivalService.java",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/advancements/world_tier/1.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/advancements/world_tier/2.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/advancements/world_tier/3.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/advancements/world_tier/4.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/advancements/world_tier/5.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/loot_modifiers/progression_book.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/blocks/protected_from_boss_destruction.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/entity_types/boss_frenzy_excluded.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/pack.mcmeta"
-      ]
+      "watched": 139,
+      "covered": 139,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/MobHome": {
-      "watched": 96,
-      "covered": 96,
+      "watched": 93,
+      "covered": 93,
       "unresolved": 0,
       "unresolved_paths": []
     }

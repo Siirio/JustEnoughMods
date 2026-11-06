@@ -13,6 +13,6 @@ This file lists upstream mod artifacts whose original code or packaged JAR was c
 
 ## Not counted as tweaked originals
 
-JEM integrations for Create, Iron's Spells, Workers, Recruits, Xaero, Tide, PlayerRevive, TinyInv, Jade, Immersive Aircraft, Trotting Wagons, Immersive Melodies and other installed mods live in separate JEM modules, configs, tags or datapacks. Their upstream JARs remain unchanged and therefore have no `Tweaked` status in [MODS.md](MODS.md). BackToBed was removed from the canonical pack; `/home` is owned by JEM Server instead of a patched upstream artifact.
+JEM integrations for Create, Workers, Recruits, Xaero, Tide, PlayerRevive, TinyInv, Jade, Immersive Aircraft, Trotting Wagons, Immersive Melodies and other installed mods live in separate JEM modules, configs, tags or datapacks. Their upstream JARs remain unchanged and therefore have no `Tweaked` status in [MODS.md](MODS.md). Iron's Spells and its exclusive integration family were removed for Major Update 4. BackToBed was removed from the canonical pack, and `/home` is owned by JEM Server instead of a patched upstream artifact.
 
 JEM Claims and Flan are removed from the intended runtime and source ownership. Settlement territories remain informational gameplay regions and do not protect land; boss arenas and active event safety remain with World Boss Tiers and the hosted-event lifecycle.

@@ -106,7 +106,6 @@ public final class RaceExperience {
         UUID nonce=RaceService.currentNonce(p);
         long secondaryRemaining=race(p)==0?guardianRemaining(p):remaining(p,secondary);
         SandboxNetwork.sendStatus(p,new Status(Math.max(0,race(p)),selected(p),tiers,progress,remaining(p,"signature"),secondaryRemaining,developerMode(p),bloomUpgrade(p),reselect,test,nonce,SandboxRaceTraits.healingPenalty(p)));
-        SandboxOptionalIrons.sync(p);
     }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent e){if(e.getEntity() instanceof ServerPlayer p&&(allowed(p))){mirrorIfLocal(p);snapshot(p);}}
     private static void mirrorIfLocal(ServerPlayer p){if(allowed(p))mirror(p);}

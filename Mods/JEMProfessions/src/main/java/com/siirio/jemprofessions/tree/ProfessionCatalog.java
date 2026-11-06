@@ -42,10 +42,6 @@ public final class ProfessionCatalog {
         NODES.put(ProfessionId.EXPLORER, List.of(
                 n("wall_climb","mobility",1,"",5,"minecraft:ladder"), n("fast_traveler","mobility",2,"wall_climb",15,"minecraft:leather_boots"), n("ledge_catch","mobility",3,"fast_traveler",25,"minecraft:lead"),
                 n("ration_saver","expedition",1,"",10,"minecraft:bread"), n("river_runner","expedition",2,"ration_saver",40,"minecraft:oak_boat"), n("portable_camp","expedition",3,"river_runner",50,"minecraft:campfire")));
-        NODES.put(ProfessionId.MAGE, List.of(
-                n("mana_saver","mana",1,"",5,"irons_spellbooks:arcane_essence"), n("meditation","mana",2,"mana_saver",25,"minecraft:amethyst_shard"), n("combo_magic","mana",3,"meditation",30,"irons_spellbooks:blank_rune"),
-                n("magic_school","affinity",1,"",15,"irons_spellbooks:upgrade_orb"), n("school_master","affinity",2,"magic_school",30,"minecraft:enchanting_table"), n("arcane_specialist","affinity",3,"school_master",50,"irons_spellbooks:legendary_ink"),
-                n("arcane_guard","support",1,"",20,"minecraft:enchanted_golden_apple"), n("magic_circle","support",2,"arcane_guard",35,"minecraft:lodestone"), n("sanctuary","support",3,"magic_circle",50,"minecraft:beacon")));
         validate();
     }
 

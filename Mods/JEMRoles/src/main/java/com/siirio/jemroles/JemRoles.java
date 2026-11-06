@@ -19,12 +19,7 @@ public final class JemRoles {
                 com.siirio.jemroles.race.RaceRules.SPEC, "jem-races-server.toml");
         RolesNetwork.register();
         com.siirio.jemvisualsandbox.workbench.SandboxRaceLoot.register(modBus);
-        com.siirio.jemvisualsandbox.workbench.SandboxOptionalIrons.register(modBus);
         MinecraftForge.EVENT_BUS.register(RolesNetwork.class);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
-            com.siirio.jemroles.compat.irons.RacialSpells.register(modBus);
-            // Preserve legacy spell IDs; the final native selection/HUD has one owner.
-        }
         if (ModList.get().isLoaded("jem_economy")) {
             MinecraftForge.EVENT_BUS.register(com.siirio.jemroles.compat.economy.CoinTradeRaceBridge.class);
         }

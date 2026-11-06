@@ -90,7 +90,7 @@ public final class BlockbenchWorkbench {
         while (NEXT.consumeClick()) if (developer) { selectedArt = (selectedArt + 1) % ASSETS.length; label(client, ASSETS[selectedArt].name()); }
         while (PREVIOUS.consumeClick()) if (developer) { selectedArt = (selectedArt + ASSETS.length - 1) % ASSETS.length; label(client, ASSETS[selectedArt].name()); }
         boolean nativeDedicated=false;
-        while (CAST.consumeClick()) if (allowed&&!nativeDedicated&&!com.siirio.jemvisualsandbox.client.races.OptionalRacePresentation.nativeKey(CAST)) SandboxNetwork.cast();
+        while (CAST.consumeClick()) if (allowed&&!nativeDedicated) SandboxNetwork.cast();
         boolean pressed=false;
         while (SECONDARY.consumeClick()) if (allowed&&!nativeDedicated) { SandboxNetwork.secondary();pressed=true; }
         boolean down=allowed && SECONDARY.isDown();

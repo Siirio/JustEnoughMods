@@ -1,3 +1,18 @@
+## 2026-11-06 - Remove Iron's Spells for Major Update 4
+
+- User requested complete removal of Iron's Spells 'n Spellbooks from the existing Major Update branch and explicitly called out world generation and FTB Quests as required consequence surfaces
+- Removed Iron's Spells 3.15.6, Iron's Library 1.0.2, Epic Fight Skill - Iron's Spells 1.0.3 and EFIS Compat 2.6.0 from the canonical managed client and ordinary local dedicated server
+- Deleted their client/server configs and localization overlays, then removed optional spell, cast, race, profession, boss-tier, healing, summon, companion recovery, handbook, merchant audit and input-default integrations from the owning JEM modules
+- Retired 31 Iron/add-on-owned quest cards while preserving 591 surviving cards. The 121 surviving cards that used Iron rewards retain their quest IDs, native FTB IDs, reward ordering and counts with installed vanilla replacement items
+- Recompiled the canonical questbook into matching client and local-server FTB chapters, removed retired advancement producers and the Iron native-manual route, and regenerated the spawn-egg system without Iron entities
+- Removed Iron registry subjects from active companion recovery, boss exclusion, economy, food-effect and spawn-egg projections. Historical change records and the inactive pre-V4 quest migration archive remain as history, not current runtime ownership
+- Rebuilt the seven affected production artifacts under Java 17. The exact selective Gradle build completed successfully with reobfuscated JARs for WorldBossTiers, AchievementGuide, Races, MobHome, Economy, Food and Compat
+- Bug / Both Sided / `JEMWorldBossTiers` source declared internal version `2.5.0` while the established server and Twelve Eyes dependency floor is `2.5.0-dev`, so the first local publication startup rejected the freshly rebuilt artifact before world load / in testing after correcting the source-owned Gradle version and rebuilding the exact artifact without weakening either dependency gate
+- The corrected Iron-free server loaded the existing Major Update 4 world, projected 591 FTB quests, omitted the retired pocket dimension from the active server levels and stopped with all active dimensions saved. Forge reported the expected missing historical Iron datapack and dimension references during the first load without restoring their runtime ownership
+- Native AutoModpack published generation 136 with content token `0764e38ac929eabab756fc07f2477fb51f7a5fca` and reviewed delta `+0 ~14 -10`, then applied the cumulative Major Update 4 head to the closed `test jem` profile through its native planner and ownership ledger. The installed token is active, all seven rebuilt JEM JAR hashes match the canonical managed client and no transaction remains pending
+- Existing worlds are not regenerated or rewritten. Shared Curios, GeckoLib, Player Animator, Epic Fight and independently owned dependencies remain installed
+- MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged. Local native AutoModpack publication and player acceptance are separate completion steps
+
 ## 2026-11-04 - Repair local visual workflow references
 
 - User requested that shared-checkout residue be traced to its owning session and committed instead of being stashed or mixed into a new sandbox branch

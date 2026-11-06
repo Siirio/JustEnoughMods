@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-03T12:30:16.344085+00:00` for `18403ab81136ccd17affb2505e78442b5d89260a`.
+Generated from Atlas schema 1 at `2026-11-06T06:43:16.818690+00:00` for `7bbca9bbe11e03556cdba044136ede99a1072335`.
 
-Static evidence observed 17,379 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 16,958 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -36,7 +36,6 @@ Static evidence observed 17,379 canonical item IDs. This is not a Forge runtime 
 | dragonlib | 1 | 0 | 1 | 0 | 1 |
 | dummmmmmy | 1 | 0 | 1 | 0 | 1 |
 | dustydecorations | 503 | 3 | 500 | 0 | 500 |
-| efiscompat | 1 | 0 | 1 | 0 | 1 |
 | efn | 65 | 0 | 65 | 0 | 65 |
 | endermanoverhaul | 36 | 0 | 36 | 0 | 36 |
 | endrem | 36 | 0 | 36 | 0 | 36 |
@@ -62,13 +61,11 @@ Static evidence observed 17,379 canonical item IDs. This is not a Forge runtime 
 | incision | 81 | 2 | 79 | 0 | 79 |
 | infinitybuttons | 372 | 0 | 372 | 0 | 372 |
 | invincible | 3 | 0 | 3 | 0 | 3 |
-| irons_lib | 4 | 0 | 4 | 0 | 4 |
-| irons_spellbooks | 410 | 3 | 407 | 0 | 407 |
 | item_magnet | 2 | 0 | 2 | 0 | 2 |
 | jacksgravestones | 1 | 0 | 1 | 0 | 1 |
 | jem_economy | 6 | 0 | 6 | 0 | 6 |
 | jem_twelve_eyes | 32 | 0 | 32 | 0 | 32 |
-| jemcompat | 70 | 0 | 70 | 0 | 70 |
+| jemcompat | 69 | 0 | 69 | 0 | 69 |
 | kaleidoscope_compat | 229 | 0 | 229 | 0 | 229 |
 | kaleidoscope_cookery | 213 | 99 | 114 | 7 | 115 |
 | kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |
@@ -83,7 +80,7 @@ Static evidence observed 17,379 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 14 | 169 | 0 | 169 |
 | luminous_nether | 205 | 8 | 197 | 0 | 197 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1456 | 321 | 1135 | 82 | 1138 |
+| minecraft | 1451 | 321 | 1130 | 82 | 1133 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | mobhome | 2 | 0 | 2 | 0 | 2 |
 | modefite | 2 | 0 | 2 | 0 | 2 |

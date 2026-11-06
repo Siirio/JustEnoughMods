@@ -14,7 +14,6 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.github.alexthe666.alexsmobs.", "alexsmobs"),
             Map.entry("com.github.alexmodguy.alexscaves.", "alexscaves"),
             Map.entry("dev.xylonity.companions.", "companions"),
-            Map.entry("io.redspace.ironsspellbooks.", "irons_spellbooks"),
             Map.entry("com.hm.efn.", "efn"),
             Map.entry("org.primal.", "primal"),
             Map.entry("com.ninni.spawn.", "spawn"),

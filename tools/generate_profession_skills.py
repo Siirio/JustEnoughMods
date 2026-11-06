@@ -100,17 +100,6 @@ PROFESSIONS = {
         "patrol_route": ("Маршрут патруля", "6 точек для 12 собственных стражей.", "minecraft:filled_map", "", "rally", False),
         "captain_order": ("Приказ капитана", "Финальный уровень ветви стражи.", "minecraft:shield", "", "patrol_route", False),
     }),
-    "mage": ("Маг", "irons_spellbooks:iron_spell_book", {
-        "mana_saver": ("Экономия маны", "Обычные заклинания дешевле на 5%.", "irons_spellbooks:arcane_essence", "", "", True),
-        "meditation": ("Медитация", "+5% регенерации маны после 10 с покоя.", "minecraft:amethyst_shard", "", "mana_saver", False),
-        "combo_magic": ("Комбо", "После 3 разных заклинаний следующее дешевле на 20%.", "irons_spellbooks:blank_rune", "", "meditation", False),
-        "magic_school": ("Школа магии", "+8% силы выбранной школы.", "irons_spellbooks:upgrade_orb", "", "", True),
-        "school_master": ("Мастер школы", "Второй уровень магической специализации.", "minecraft:enchanting_table", "", "magic_school", False),
-        "arcane_specialist": ("Тайный специалист", "Финальный уровень магической специализации.", "irons_spellbooks:legendary_ink", "", "school_master", False),
-        "arcane_guard": ("Магический щит", "25 маны поглощают 2 HP урона.", "minecraft:enchanted_golden_apple", "", "", True),
-        "magic_circle": ("Магический круг", "Радиус 6, 8 с, +10% регенерации.", "minecraft:lodestone", "", "arcane_guard", False),
-        "sanctuary": ("Святилище", "Финальный уровень ветви магической поддержки.", "minecraft:beacon", "", "magic_circle", False),
-    }),
 }
 
 

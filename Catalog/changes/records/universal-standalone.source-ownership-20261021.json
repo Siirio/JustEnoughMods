@@ -677,8 +677,6 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpellBridge.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/jade/RaceJadePlugin.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
@@ -686,16 +684,12 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/TemporaryPathSavedData.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RacePanelMaterials.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/mixin/RaceNarratorHotkeyMixin.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/mixin/RootedHostileTickMixin.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/mixin/SandboxAnimalFearMixin.java",
@@ -723,7 +717,6 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxOptionalIrons.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxSkills.java",
@@ -1087,7 +1080,6 @@
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/StandaloneAdmission.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CombatProbeMixin.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java",
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsSiphonHealingMixin.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ProgressionGuardMixin.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/network/AdmissionChoicePacket.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/network/AdmissionPromptPacket.java",
@@ -1110,7 +1102,8 @@
       "Mods/JEMAchievementGuide/tools/questbook/legacy/create.snbt",
       "Mods/JEMAchievementGuide/tools/questbook/legacy/getting_started.snbt",
       "Mods/JEMAchievementGuide/tools/questbook/legacy/living_world.snbt",
-      "Mods/JEMAchievementGuide/tools/questbook/legacy/races.snbt"
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/races.snbt",
+      "Catalog/changes/records/major-update-4-remove-irons-spells-20261106.json"
     ]
   },
   "rationale": {
@@ -4576,4 +4569,3 @@
     ]
   }
 }
-
