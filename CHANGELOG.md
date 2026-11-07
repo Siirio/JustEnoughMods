@@ -1,11 +1,21 @@
-## 2026-11-07 - Guarantee Xaero cave sharing and isolate the Luminous fault boundary
+## 2026-11-07 - Restore Luxium ownership in Major Update 4
 
-- User requested that Xaero cave-map sharing reach every player in Major Update 4 and suggested AutoModpack might explain why the installed Luminous mods appear not to work
+- User corrected the reported renderer name from "Luminous" to "Luxium" and suspected that AutoModpack projection explains why Luxium does not work while packs using an ordinary `mods` directory do
+- Bug / Client Sided / Major Update 4 distributed Luxium's generated personal `luxium-client.toml` with `luxiumEnabled=false`, so each native AutoModpack generation could reassert the disabled master setting while Oculus remained a separately preserved personal preference / in testing after removing Luxium's personal config from managed ownership and carrying forward the established JEM Luxium 1.0.11 repair
+- Five Whys: Luxium appeared inactive because its master switch was false, that false value came from the managed pack default, the default was projected separately from the player's editable Oculus state, `test jem` retained Oculus disabled while Luxium was also reset disabled, and renderer preference ownership was split between AutoModpack and the two native renderer configs
+- Ported only the established owner-scoped Luxium repair from `develop`: renderer changes refresh Luxium's cached GPU feature mask, reload native core entity shaders through Luxium's own accessor, rebuild Embeddium through its managed context and emit one bounded world-state diagnostic snapshot
+- Replaced JEM Luxium 1.0.9 with the existing source-matching 1.0.11 artifact, SHA-256 `e7e4dc7fb00c7be5fad8e7c151f9a2e142b3890074715bc28a516da8738d720a`. No Gradle build or gameplay launch was performed
+- Native AutoModpack published generation 138 with content token `db2f0033fd07306b2418b68c38c5ddf2ec7a4f85`, reviewed delta `+1 ~1 -2`, then applied it to the closed `test jem` profile through the native planner and ownership ledger
+- The active token and JEM Luxium hash match the published canonical files, JEM Luxium's adapter state and editable Oculus preference retain their exact pre-update hashes, both retired managed paths are absent and no transaction remains pending. Luxium will generate its now-local native config on the next authorized client launch
+- The official unmodified Luxium 2.8.0-pre-alpha JAR, Embeddium 0.3.31, Oculus 1.8.0, the reversible Luxium/Oculus mutual-exclusion contract and editable Oculus shader preference remain unchanged
+- Corrected the earlier changelog entry below by removing the unrelated Luminous Beasts and Luminous Nether diagnosis that resulted from Codex misunderstanding the mod name
+- MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Runtime shadow appearance and player acceptance remain pending
+
+## 2026-11-07 - Guarantee Xaero cave sharing
+
+- User requested that Xaero cave-map sharing reach every player in Major Update 4
 - Verified the complete Xaero chain in the canonical managed client, ordinary local server and active native AutoModpack generation: World Map 1.46.0, Unified Xaero Worldmap 2.0.1, embedded XaeroLib 1.7.3, client Minimap 26.4.2 and JEM Server 2.0.0-dev
 - JEM Server's shipped artifact contains the existing all-dimension reconciliation and full-cave acceptance mixins. Major Update 4 now explicitly requires the matching client/server chain through AutoModpack's mandatory `main` group, while personal waypoints, homes, death points, labels, colors, groups and settings remain private and native
-- Bug / Both Sided / Luminous content was suspected to be absent or unusable because AutoModpack projects managed JARs from its active directory instead of the profile's ordinary `mods` directory / in testing after static and live-log evidence disproved that cause: Forge's AutoModpack locator finds Luminous Beasts 1.2.7, Luminous Nether 1.3.3 and LuminousTag 1.1, their active hashes exactly match the canonical artifacts, and their models, recipes and world-generation data reach normal Forge resource loading
-- The observed Luminous log faults belong to the installed upstream artifacts: Luminous Beasts 1.2.7 references a missing Beast Pit texture and Luminous Nether 1.3.3 exposes optional Supplementaries recipes whose result or ingredient is absent in this inventory. Neither fault is produced by AutoModpack file projection
-- No speculative Luminous migration was applied. Current upstream Beasts 1.2.8 fixes the logged Beast Pit warning and changes world configuration and loot behavior, while Nether 1.3.4 renames many registry IDs used by JEM quests, boss profiles, localization and progression. The exact player-visible Luminous failure must identify which owner needs migration before those breaking updates are introduced
 - No managed client file changed, so generation 137 and content token `56c8a9caa4e95e1544d5c3ee7814bd3fca21d112` remain the fresh published and installed Major Update 4 head. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
 
 ## 2026-11-06 - Match Cosmetic Armor to JEM Release

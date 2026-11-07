@@ -31,9 +31,15 @@
       },
       {
         "property": "luxium.renderer_ownership",
-        "operation": "document",
-        "before": "JEM Luxium owns reversible Luxium and Oculus selection through Embeddium Apply.",
-        "after": "Renderer ownership and Apply behavior remain unchanged while only navigation and control placement change."
+        "operation": "replace",
+        "before": "JEM Luxium changes Luxium's master enabled setting and rebuilds Embeddium, but leaves LuxiumGpuShaderFeatures on the feature mask cached while Luxium was disabled at startup.",
+        "after": "Every owner change refreshes LuxiumGpuShaderFeatures, reloads native core shaders through Luxium's GameRendererAccessor and rebuilds Embeddium. A bounded world/master-change snapshot logs actual sky feature, mode, frame and cascade generations. Runtime shadow acceptance is still pending."
+      },
+      {
+        "property": "luxium.client_config_ownership",
+        "operation": "replace",
+        "before": "AutoModpack distributes luxium-client.toml with luxiumEnabled=false and can overwrite the player's renderer selection.",
+        "after": "Luxium generates and owns its personal client config locally. AutoModpack no longer distributes luxium-client.toml."
       }
     ]
   },
@@ -44,6 +50,7 @@
       "Mods/JEMLuxium/gradle.properties",
       "Mods/JEMLuxium/build.gradle",
       "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumActionControl.java",
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumShaderController.java",
       "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionPage.java",
       "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumYouTubeButton.java",
       "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VideoSettingsHubDirectEmbeddiumMixin.java",
@@ -51,7 +58,7 @@
       "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/en_us.json",
       "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/ru_ru.json",
       "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json",
-      "Client/ManagedPack/mods/jem_luxium-1.0.9.jar"
+      "Client/ManagedPack/mods/jem_luxium-1.0.11.jar"
     ]
   },
   "rationale": {
@@ -89,6 +96,23 @@
         "Client/ManagedPack/mods/jem_luxium-1.0.5.jar",
         "Client/ManagedPack/mods/jem_luxium-1.0.9.jar"
       ]
+    },
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "refresh_luxium_gpu_features",
+      "summary": "Refresh Luxium's cached GPU feature mask before every renderer rebuild and stop distributing its personal client config.",
+      "source_files": [
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumShaderController.java",
+        "Client/ManagedPack/config/luxium-client.toml",
+        "Client/ManagedPack/mods/jem_luxium-1.0.10.jar"
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "commit": "SELF",
+      "action": "reload_native_core_shaders_and_trace_shadow_state",
+      "summary": "Complete the native Apply lifecycle with core shader reload and bounded render-state diagnostics after the user reported persistent missing shadows. The complete player-visible cause remains under investigation."
     }
   ],
   "impacts": {
@@ -97,20 +121,26 @@
       "video_settings_navigation",
       "embeddium_options",
       "luxium_configuration",
+      "luxium_gpu_feature_mask",
+      "celestial_shadows",
+      "sky_lighting",
+      "automodpack_personal_config_ownership",
       "accessibility_narration"
     ],
     "relations": [
       "Vanilla Options video action -> direct Embeddium screen",
       "Embeddium Luxium tab -> renderer toggle -> native Apply lifecycle",
+      "Luxium Apply -> refresh GPU feature mask -> rebuild Embeddium renderer",
       "Embeddium Luxium tab second row -> official LuxiumConfigScreen",
       "Embeddium Luxium tab lower action -> official Luxium YouTube resource -> confirmation screen"
     ],
     "notes": [
       "The official Luxium JAR remains unmodified and supplies the complete settings screen and YouTube texture.",
-      "Luxium and Oculus mutual exclusion, shader restoration and managed-context renderer reload remain unchanged."
+      "Luxium and Oculus mutual exclusion and shader restoration remain unchanged.",
+      "The managed pack no longer owns luxium-client.toml, so a player's renderer selection survives independently of pack updates."
     ],
     "unresolved": [
-      "Runtime navigation, row layout, focus order and link confirmation remain unobserved until authorized player testing."
+      "Runtime navigation, row layout, focus order, link confirmation and immediate shadow activation remain unobserved until authorized player testing."
     ]
   }
 }

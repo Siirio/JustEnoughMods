@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.11
+
+- Reload native core entity shaders along with the GPU feature mask and terrain renderer when changing renderer ownership
+- Log a bounded native shadow-state snapshot after entering a world or changing the master switch to diagnose remaining missing-shadow reports
+- Runtime shadow acceptance remains pending
+
+## 1.0.10
+
+- Refresh Luxium's cached GPU feature mask immediately when the renderer owner changes, before rebuilding Embeddium
+- Make an in-game Luxium enable apply celestial shadows, sky lighting and the complete Luxium render path without a Minecraft restart
+
 ## 1.0.9
 
 - Persist Luxium's first-run warning acknowledgement before suppressing the warning screen, so new installations never retain the 200-tick gate
