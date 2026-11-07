@@ -150,7 +150,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Jaden's Nether Expansion | `2.3.5` | Client + server |  |
 | JamLib | `1.3.6+1.20.1-patch.1` | Server |  |
 | JamLib | `1.3.6+1.20.1-patch.1` | Client |  |
-| JEM Advancements | `5.3.0` | Client + server |  |
+| JEM Advancements | `5.3.1` | Client + server |  |
 | JEM Drill Lifecycle | `1.0.0` | Client + server |  |
 | JEM Pack Core | `2.0.0-dev` | Client + server |  |
 | JEM Server | `2.0.0-dev` | Client + server |  |

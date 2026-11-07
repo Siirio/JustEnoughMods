@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "change_id": "quest.native-team-unlock-20261101",
+  "status": "conditional",
+  "selectors": [
+    { "type": "registry", "registry": "*" }
+  ],
+  "conditions": [
+    { "runtime": "FTB Quests 2001.4.22 is installed and a real server player logs in." }
+  ],
+  "precedence": { "layer": "jem_compatibility", "priority": 1160 },
+  "change": {
+    "summary": "Keep the universal authored quest book available by reconciling the native FTB team lock at login.",
+    "modifiers": [
+      {
+        "property": "ftbquests.team_data.locked",
+        "operation": "replace",
+        "before": "A persisted or newly resolved native team may retain locked=true and make every entry report Quests locked!.",
+        "after": "The optional adapter waits for FTB Teams to resolve the team, calls TeamData.setLocked(false) and saves only a changed file. Native lock updates synchronize the flag. Full TeamData is sent only by FTB's post-definition request handshake, so its decoder binds to the installed client quest file. Native progress, rewards and claims remain authoritative."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide optional FTB Quests adapter",
+    "kind": "native_ftb_team_reconciliation",
+    "source_files": [
+      "Mods/JEMAchievementGuide/build.gradle",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestBridge.java",
+      "Mods/JEMAchievementGuide/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the requested unlocked quest state durable without replacing FTB Quests or rewriting progression.",
+    "decision_source": "User reported that quests stay locked on MineRENT and a local dedicated server while the integrated singleplayer server remains available. The installed FTB Quests bytecode and JEM 5.2.4 versus 5.3.0 artifact comparison identified the missing native team reconciliation."
+  },
+  "introduced": {
+    "date": "2026-11-01",
+    "commit": "SELF",
+    "action": "reconcile_native_ftb_team_unlock",
+    "summary": "Clear and save only a changed native FTB team lock when its player logs in."
+  },
+  "history": [
+    {
+      "date": "2026-11-01",
+      "commit": "SELF",
+      "action": "reconcile_native_ftb_team_unlock",
+      "summary": "Replace one-time command recovery with an idempotent native login reconciliation."
+    },
+    {
+      "date": "2026-11-02",
+      "commit": "SELF",
+      "action": "move_unlock_to_native_team_lifecycle",
+      "summary": "Move reconciliation from the earlier Forge player-login event to FTB Teams' resolved login/team-change boundary and synchronize the result on the following server tick."
+    },
+    {
+      "date": "2026-11-02",
+      "commit": "SELF",
+      "action": "preserve_native_post_definition_handshake",
+      "summary": "Remove unsolicited full TeamData messages at login and definition reload, which could decode against a null or obsolete client quest file. Retain native lock messages and the post-definition client request."
+    },
+    {
+      "date": "2026-11-07",
+      "commit": "SELF",
+      "action": "restore_reconciliation_to_major_update_4",
+      "summary": "Restore the established native team unlock lifecycle after Major Update 4 branched before the 5.2.4 correction."
+    },
+    {
+      "date": "2026-11-07",
+      "commit": "SELF",
+      "action": "publish_local_generation_139",
+      "summary": "Load JEM Advancements 5.3.1 with 591 quests on the ordinary local server and install the exact native AutoModpack publication in the closed test jem profile."
+    }
+  ],
+  "impacts": {
+    "systems": ["FTB Quests", "FTB Teams", "JEMAchievementGuide", "dedicated_server", "integrated_server"],
+    "relations": ["FTB Teams resolved login or team change -> exact native FTB TeamData -> unlocked quest presentation"],
+    "notes": ["One server tick does not prove that a client has installed its quest definitions. Full TeamData follows the native client acknowledgement/request, while setLocked supplies the native lock delta."],
+    "unresolved": ["Player-visible acceptance remains pending after local deployment."]
+  }
+}

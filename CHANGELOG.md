@@ -1,3 +1,14 @@
+## 2026-11-07 - Restore dedicated-server quest access in Major Update 4
+
+- User reported that the universal FTB quest book remains locked on MineRENT and local dedicated servers while it is available in singleplayer, then requested the fix and local `test jem` delivery
+- Bug / Both Sided / Major Update 4 branched before the established JEM Advancements 5.2.4 native team-unlock correction, so dedicated servers running 5.3.0 no longer cleared a resolved FTB team's persisted `locked` flag and instead resent the locked full TeamData / in testing after restoring the FTB Teams login and team-change reconciliation in JEM Advancements 5.3.1
+- Five Whys: quests stayed locked because server-authoritative TeamData retained `locked=true`, the 5.3.0 adapter never called `setLocked(false)`, its feature branch lacked the later 5.2.4 correction, full TeamData synchronization propagated the stale lock instead of repairing it, and the branch boundary did not preserve the established optional FTB lifecycle adapter
+- The restored adapter waits for the exact native team, clears and saves only a changed lock, relies on FTB's native lock delta, and leaves full TeamData to the post-definition `RequestTeamDataMessage` handshake
+- Authored quest IDs, task progress, completed quests, rewards, claims, permissions, projection rules and Advancement Frames integration remain unchanged
+- Built JEM Advancements 5.3.1 under Java 17 with SHA-256 `7eca031eb3710ce3c4263c1150cb0b8aeb0a8905574dbc51dceb6033f8fcd0ab`, installed the matching artifact on the ordinary local server and confirmed Forge loaded it with all 591 FTB quests
+- Native AutoModpack published generation 139 with content token `6ad8ac115ca98bafcb87a1c4b1cc38c8ccf024c6` and reviewed delta `+1 ~1 -1`, then applied it to the closed `test jem` profile through the native planner and ownership ledger
+- The active token and JEM Advancements hash match the canonical publication, the retired 5.3.0 artifact is absent and no transaction remains pending. MineRENT and stable `JustEnoughMods` remain unchanged, while player-visible login acceptance remains pending
+
 ## 2026-11-07 - Restore Luxium ownership in Major Update 4
 
 - User corrected the reported renderer name from "Luminous" to "Luxium" and suspected that AutoModpack projection explains why Luxium does not work while packs using an ordinary `mods` directory do

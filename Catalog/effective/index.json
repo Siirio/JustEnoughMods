@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "35492327e3a5f36c9007abc2e6e9eba475f4f6fc9110b48e8e642f782911fccf",
+  "change_records_sha256": "be10fcafbb60fbbd3cad60a347df6c020e8087fc719a1e96ec37244a161aa075",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -2322,6 +2322,20 @@
       "potential_static_target_count": 32085
     },
     {
+      "change_id": "quest.native-team-unlock-20261101",
+      "status": "conditional",
+      "summary": "Keep the universal authored quest book available by reconciling the native FTB team lock at login.",
+      "record": "Catalog/changes/records/quest.native-team-unlock-20261101.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 32085
+    },
+    {
       "change_id": "quest.standalone-visual-v4-20261027",
       "status": "active",
       "summary": "Standalone Visual V4,606 fresh quests with native success producers, user-approved retirements and no historical migration",
@@ -4075,7 +4089,7 @@
     "Client/ManagedPack/config/quickskin-client.json": "3e646bae5faaf41b169277e367783a937c683f18d41b4f54dd8a928700ffecfb",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Client/ManagedPack/jem-pack/manifest.json": "f12fd5cd662df63122541aaa3514ff9498c7d76f2c7d803808003203e1a1d459",
+    "Client/ManagedPack/jem-pack/manifest.json": "bd3368ec96e0c654e1fdaaf91253ff60d9a9de6110baf9d53f50584d28513e8d",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4254,7 +4268,7 @@
     "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar": "c790e8671625b05ec0aa19272e0ea74ea95619f953e3c6f39a6736af0d386804",
     "Client/ManagedPack/mods/immersive_paintings-0.6.13+1.20.1-forge.jar": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
     "Client/ManagedPack/mods/immersivepaintings-exposure-1.0.0.jar": "12828b32b3cba13924be661bdbbcd15aad6926d448210193e6851285f730157f",
-    "Client/ManagedPack/mods/jem-advancements-5.3.0.jar": "06c68320c78597b8180da99a9e6813649d1bf3fef95a9188e469810c69039c5e",
+    "Client/ManagedPack/mods/jem-advancements-5.3.1.jar": "7eca031eb3710ce3c4263c1150cb0b8aeb0a8905574dbc51dceb6033f8fcd0ab",
     "Client/ManagedPack/mods/jem-bootstrap.jar": "75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8",
     "Client/ManagedPack/mods/jem-economy-1.3.2.jar": "5049eac7880a2a58ea7423b78944302b39dd588b962d8bc375d149d797999923",
     "Client/ManagedPack/mods/jem-identity-1.0.0.jar": "c84a1cc030dd5a91b7bae287b24ced375387c18f171b382e7aa128763eba010d",
@@ -4279,7 +4293,7 @@
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
     "Docs/DEVELOPMENT.md": "9c8a5f8aa6dcc11381b15480fdf91e300c1bed48434e75f29828e97a707c36f6",
-    "Docs/MODS.md": "acc00ba44c511682f15db7433fb2fd5ac99b7b404804e7a7b88878a64136fe1c",
+    "Docs/MODS.md": "c19ca6daf8a340a4aab9d098fa323587ae6de3e601d7b6827716dbe611d0b095",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -4356,8 +4370,8 @@
     "Docs/settlements/standalone/README.md": "e8ce61bb158d96f847082c7e184037a1346066d3a02018712d8c27c780c31b43",
     "Docs/smp-gui/README.md": "76e6d033057c1f0f74c26dfdfd008f694dbceafe744ca9df9f2bd7fd00516812",
     "Mods/JEMAchievementGuide/AGENTS.logic-locks.md": "7a18c34f555bb26c3e6f1b0b2ffdca297dc98d2afcfa6e23fdba3b291e2c9a09",
-    "Mods/JEMAchievementGuide/README.md": "e7e8656224a6f36bd0a801aaa8c3a296352a8163ee4fb843b69353ea70ef4d06",
-    "Mods/JEMAchievementGuide/build.gradle": "39820cc932348d2665a4d22fc1f52d9ab42c9901fef77aba4a653154da5bf953",
+    "Mods/JEMAchievementGuide/README.md": "3598dac5df5ae15aecdf6c0725a222bc6660bfec6f08e254b79783de4b6015eb",
+    "Mods/JEMAchievementGuide/build.gradle": "213a558fe55feba95ba242451c0100519ee5b315a0fdc6ff2614c9631001e0e2",
     "Mods/JEMAchievementGuide/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
     "Mods/JEMAchievementGuide/src/main/advancements/campaign-guide.json": "f7cfe6d3e6f2742dfaac2049ac85cef80d72e61a82e2f50f98e2067b9354328b",
     "Mods/JEMAchievementGuide/src/main/advancements/create_6.0.8_baseline/conductor.json": "8d4269162f8d9708b42955d374e6537a026e22e47247d9701e1b80e576bb9388",
@@ -4409,7 +4423,7 @@
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookStackProofs.java": "abc80e419643eb5f04abeef018f6f576b0363de9ff5e0c4e1f2bdcd80aea1c74",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookTerminalActions.java": "d81d608fc34b8490b88add72b0f4b4d8cf7d2a74f7e3174446d0b4b58aec3a48",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookXpReward.java": "8d17fc733383a1b08be2ee3bfd2ce0d758853d26d16a5c137806b5d90ccd1fc5",
-    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestBridge.java": "9dfcd9b97fb5cc1b1d56277e0811c7c5eda096011839f2f1f5f17150f802c26f",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestBridge.java": "3be932ec7391dcb65992a43dba7616297a4bfaf7ed6db4dada0eabf672719cb0",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameAccess.java": "8248fdcf7833cb79547fab3c2583632d8d58df50d589975fbc4436b1ac85a758",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameNetwork.java": "6e06ebfe827dd28f1785e3631b84df7f842ccfb273b22129bd1143976ebcfdee",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameScreen.java": "2faa1849f70174f8ebdab8f69fe7fe8e0b783404552d49bcf9cd04c34cb744a6",
@@ -9377,7 +9391,7 @@
     "Server/mods/colorize-1.20-forge-1.6.0.jar": "e0e500a4a27d84957005a37f528eece148e456d7284c893056ae391741a6c5d4",
     "Server/mods/copperagebackport-forge-1.20.1-0.1.5.jar": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
     "Server/mods/immersive_paintings-0.6.13+1.20.1-forge.jar": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
-    "Server/mods/jem-advancements-5.3.0.jar": "06c68320c78597b8180da99a9e6813649d1bf3fef95a9188e469810c69039c5e",
+    "Server/mods/jem-advancements-5.3.1.jar": "7eca031eb3710ce3c4263c1150cb0b8aeb0a8905574dbc51dceb6033f8fcd0ab",
     "Server/mods/jem-server-2.0.0-dev.jar": "2f75ade90302d710967f9107c9f06e74e1d59f540765dc0a5ac7f35749a53265",
     "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar": "16587a36cb374fa543779c1df8807319ec3d1d224e3b8a4749c60bd0ccce1d8c",
     "Server/mods/jem_drill_lifecycle-1.0.0.jar": "d7b523b6cc7657340390fa961c9b8db351db4c505eea590a95c1536b923982e7",
@@ -9397,7 +9411,7 @@
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
     "tools/module-inventory.json": "21bd8f9024b78659dafc0fa0f1368f1578a06c0c4eff29424d9c7aaec7df0fd9",
-    "tools/state/packSyncHost-sync.json": "746a787497a1d3552b65180f9cb9858261e68d7d32eb09d55c01d31094326568",
+    "tools/state/packSyncHost-sync.json": "e80041c1f41f3dec24ea59bccb0db28f7356ba47f8cd352466269b2f40abe300",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }
