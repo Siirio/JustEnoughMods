@@ -1,3 +1,13 @@
+## 2026-11-07 - Guarantee Xaero cave sharing and isolate the Luminous fault boundary
+
+- User requested that Xaero cave-map sharing reach every player in Major Update 4 and suggested AutoModpack might explain why the installed Luminous mods appear not to work
+- Verified the complete Xaero chain in the canonical managed client, ordinary local server and active native AutoModpack generation: World Map 1.46.0, Unified Xaero Worldmap 2.0.1, embedded XaeroLib 1.7.3, client Minimap 26.4.2 and JEM Server 2.0.0-dev
+- JEM Server's shipped artifact contains the existing all-dimension reconciliation and full-cave acceptance mixins. Major Update 4 now explicitly requires the matching client/server chain through AutoModpack's mandatory `main` group, while personal waypoints, homes, death points, labels, colors, groups and settings remain private and native
+- Bug / Both Sided / Luminous content was suspected to be absent or unusable because AutoModpack projects managed JARs from its active directory instead of the profile's ordinary `mods` directory / in testing after static and live-log evidence disproved that cause: Forge's AutoModpack locator finds Luminous Beasts 1.2.7, Luminous Nether 1.3.3 and LuminousTag 1.1, their active hashes exactly match the canonical artifacts, and their models, recipes and world-generation data reach normal Forge resource loading
+- The observed Luminous log faults belong to the installed upstream artifacts: Luminous Beasts 1.2.7 references a missing Beast Pit texture and Luminous Nether 1.3.3 exposes optional Supplementaries recipes whose result or ingredient is absent in this inventory. Neither fault is produced by AutoModpack file projection
+- No speculative Luminous migration was applied. Current upstream Beasts 1.2.8 fixes the logged Beast Pit warning and changes world configuration and loot behavior, while Nether 1.3.4 renames many registry IDs used by JEM quests, boss profiles, localization and progression. The exact player-visible Luminous failure must identify which owner needs migration before those breaking updates are introduced
+- No managed client file changed, so generation 137 and content token `56c8a9caa4e95e1544d5c3ee7814bd3fca21d112` remain the fresh published and installed Major Update 4 head. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
 ## 2026-11-06 - Match Cosmetic Armor to JEM Release
 
 - User reported that Cosmetic Armor's bright native inventory visually overtook the JEM Release player interface and requested that the screen reuse the existing JEM Release assets on the same Major Update branch

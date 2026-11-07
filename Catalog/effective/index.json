@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "0d45341890708a70e4df04cfafc2b1c618599f1586e5d3ebeb0853454e493594",
+  "change_records_sha256": "082626c9cfb99de689e5f0f4695eea588ae7adfb4e1d4d44207937f4adde4279",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1878,6 +1878,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "distribution.major-update-4-xaero-cave-20261107",
+      "status": "active",
+      "summary": "Require the complete Xaero terrain-sharing chain on every Major Update 4 client while preserving native map and waypoint ownership",
+      "record": "Catalog/changes/records/major-update-4-xaero-cave-distribution-20261107.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
     },
     {
       "change_id": "smp.market-reference-storefront",
@@ -4060,7 +4075,7 @@
     "Client/ManagedPack/config/quickskin-client.json": "3e646bae5faaf41b169277e367783a937c683f18d41b4f54dd8a928700ffecfb",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Client/ManagedPack/jem-pack/manifest.json": "484af17c34154a50ae92efe8556009b20110a098f6ffe4d40374c3482e7b1068",
+    "Client/ManagedPack/jem-pack/manifest.json": "f12fd5cd662df63122541aaa3514ff9498c7d76f2c7d803808003203e1a1d459",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4257,10 +4272,13 @@
     "Client/ManagedPack/mods/jemfood-1.0.0.jar": "89194b305e9c0674a12c840842fe769f439ce40998f389c0af71b0054ed257ea",
     "Client/ManagedPack/mods/mobhome-1.0.1.jar": "b739ef11356e514de3701d9ede949761fa4b8add90139d31f78c020d6a4b46e6",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+    "Client/ManagedPack/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar": "f375d8e67a486b95c55b3985cde4f2a469ba10a3719a0fa7b495845d69e20106",
+    "Client/ManagedPack/mods/xaerominimap-forge-1.20.1-26.4.2.jar": "8143f332ed20a61a518692b42c793e021b6bd2d0d9d61cf3938fb9cfa07eb59c",
+    "Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar": "e00bd87a949cfa8c31d571f4d9646db038e3b98f8cdbb7bd217f3fb9c3780c9e",
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "bfcdcf380e3bfb6f00ed2f3129437881b82f15b7851738648b0a5e09f7232a4c",
+    "Docs/DEVELOPMENT.md": "9c8a5f8aa6dcc11381b15480fdf91e300c1bed48434e75f29828e97a707c36f6",
     "Docs/MODS.md": "acc00ba44c511682f15db7433fb2fd5ac99b7b404804e7a7b88878a64136fe1c",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -8585,6 +8603,9 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java": "efa5fe452219be18dfb3ddb33b547ba2c323a997343018f1bd42756413354261",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointOptionMixin.java": "4f6e0fdd1d63685f2aa23a648b7830cb80915c6c8a7bff3d177b1a518b74d39d",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointTeleportMixin.java": "b7b6a00d7b0a9839a64466472056691f15635c85cd8efb50a4bc2740d0a3d261",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java": "a841bbc856812669c6d56223bf5e9ebce336a4b58dfe73faa123bff227c6728a",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveMapLayerMixin.java": "965adce18215797dd37e52deac485b4c43a2b2b84a9ca5459f29b85a17e9c5ef",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/SharedMapSyncMixin.java": "a65ee656959f9863dbc210c53f05a2fadcce9ebc826d01b7158f94e2d0ded204",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java": "5923894a6f30e7b7bd611997b64663222c4c3a7818b2195d6f4163f862bd9493",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossQuarantineRecords.java": "7eaeb66626d833fcb4458e2abb4970e0ea4747a27b693562753a775b7762a25c",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossQuarantineState.java": "e048e55df10d8753ce6a5e03b16847875a8084311dcc8bc2fe6d1b7c00827948",
@@ -9356,9 +9377,12 @@
     "Server/mods/copperagebackport-forge-1.20.1-0.1.5.jar": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
     "Server/mods/immersive_paintings-0.6.13+1.20.1-forge.jar": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
     "Server/mods/jem-advancements-5.3.0.jar": "06c68320c78597b8180da99a9e6813649d1bf3fef95a9188e469810c69039c5e",
+    "Server/mods/jem-server-2.0.0-dev.jar": "2f75ade90302d710967f9107c9f06e74e1d59f540765dc0a5ac7f35749a53265",
     "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar": "16587a36cb374fa543779c1df8807319ec3d1d224e3b8a4749c60bd0ccce1d8c",
     "Server/mods/jem_drill_lifecycle-1.0.0.jar": "d7b523b6cc7657340390fa961c9b8db351db4c505eea590a95c1536b923982e7",
     "Server/mods/jemcompat-3.10.2.jar": "239e07ca43efe6ff6940e71104c95efb2cdc9f8982f10743f2d0ffe95ba3ac2f",
+    "Server/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar": "f375d8e67a486b95c55b3985cde4f2a469ba10a3719a0fa7b495845d69e20106",
+    "Server/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar": "e00bd87a949cfa8c31d571f4d9646db038e3b98f8cdbb7bd217f3fb9c3780c9e",
     "Server/run.bat": "4d42c275b005814be58b8819283f79a108876923e51cf63557b27caba4352f2a",
     "build.gradle": "8b6bbf0cbdc6cfe46e299b22b1a7aa31fd064b3c627aca69be654d144e4f9752",
     "config/QUALITY.md": "04df97d6ab1daec0e17ce6e66212697d9ef662ef3f9b2f9b5f801a2dc41cc574",
@@ -9372,7 +9396,7 @@
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
     "tools/module-inventory.json": "21bd8f9024b78659dafc0fa0f1368f1578a06c0c4eff29424d9c7aaec7df0fd9",
-    "tools/state/packSyncHost-sync.json": "3cfc1a38fb9ca03ea93a51a571454a7d931a1b3c4de35bbcbf9d4021a33cdd7f",
+    "tools/state/packSyncHost-sync.json": "746a787497a1d3552b65180f9cb9858261e68d7d32eb09d55c01d31094326568",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.major-update-4-xaero-cave-20261107",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "distribution": "Major Update 4 development inventory on feature/major-update-4"
+    },
+    {
+      "runtime": "dedicated server with matching Unified Xaero Worldmap, Xaero World Map and JEM Server artifacts"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_dependencies",
+    "priority": 111,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Require the complete Xaero terrain-sharing chain on every Major Update 4 client while preserving native map and waypoint ownership",
+    "modifiers": [
+      {
+        "property": "distribution.major_update_4.xaero_cave_sync",
+        "operation": "document",
+        "before": "The artifacts and JEM full-cave adapters existed, but their all-client Major Update 4 delivery contract was implicit",
+        "after": {
+          "client_required": [
+            "xaeroworldmap 1.46.0",
+            "unified_xaero_worldmap 2.0.1",
+            "xaerolib 1.7.3 embedded dependency",
+            "xaerominimap 26.4.2",
+            "jem_server 2.0.0-dev"
+          ],
+          "server_required": [
+            "xaeroworldmap 1.46.0",
+            "unified_xaero_worldmap 2.0.1",
+            "xaerolib 1.7.3 embedded dependency",
+            "jem_server 2.0.0-dev"
+          ],
+          "automodpack_group": "main",
+          "scope": "explored terrain in every accepted dimension and cave layer, including JEM full-cave acceptance"
+        }
+      },
+      {
+        "property": "xaero.personal_map_data",
+        "operation": "document",
+        "before": "Native personal map data remains outside the shared-terrain adapter",
+        "after": "Waypoints, homes, death points, labels, colors, groups and settings remain private to their creator"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Unified Xaero Worldmap and JEMServer xaero.shared adapter",
+    "kind": "user_requested_distribution_contract",
+    "source_files": [
+      "Client/ManagedPack/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar",
+      "Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar",
+      "Client/ManagedPack/mods/xaerominimap-forge-1.20.1-26.4.2.jar",
+      "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+      "Server/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar",
+      "Server/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar",
+      "Server/mods/jem-server-2.0.0-dev.jar",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveMapLayerMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/SharedMapSyncMixin.java",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make cave-map sharing available to every player who installs Major Update 4 without exposing personal waypoint data",
+    "decision_source": "Direct user request on 2026-11-07",
+    "user_requested": "Make the Xaero cave mod available to all in the same Major Update",
+    "implementation_choices": "Keep the already installed native addon and matching JEM full-cave extension, then make their mandatory AutoModpack delivery boundary explicit instead of adding a competing map owner"
+  },
+  "introduced": {
+    "date": "2026-11-07",
+    "commit": "SELF",
+    "action": "document_major_update_4_xaero_cave_distribution",
+    "summary": "Record and verify the all-client Xaero cave-sharing artifact chain"
+  },
+  "history": [
+    {
+      "date": "2026-11-07",
+      "commit": "SELF",
+      "action": "document_major_update_4_xaero_cave_distribution",
+      "summary": "Verified canonical, server and active AutoModpack artifacts and preserved native waypoint privacy"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "native AutoModpack client distribution",
+      "runtime distribution",
+      "xaero",
+      "map privacy",
+      "client_server_contract"
+    ],
+    "relations": [
+      "Xaero explored terrain -> Unified Xaero Worldmap -> JEM full-cave acceptance -> matching Major Update 4 clients"
+    ],
+    "notes": [
+      "The active test jem generation contains byte-identical copies of the canonical Xaero and JEM Server artifacts",
+      "No native Xaero GUI, camera, controls, renderer, map store or personal waypoint behavior is replaced",
+      "MineRENT, stable JustEnoughMods and the immutable release baseline are unchanged"
+    ],
+    "unresolved": [
+      "Player-rendered cave synchronization acceptance remains pending because no client or gameplay launch was authorized"
+    ]
+  }
+}
