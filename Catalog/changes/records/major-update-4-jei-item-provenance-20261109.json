@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4-jei-item-provenance-20261109",
+  "status": "active",
+  "selectors": [
+    {"type": "id", "registry": "items", "value": "luminous_nether:gold_cultist_axe"},
+    {"type": "id", "registry": "items", "value": "luminous_beasts:pumpkin_helmet_helmet"},
+    {"type": "id", "registry": "items", "value": "unearthed_journey:eye_of_methuselah"},
+    {"type": "id", "registry": "items", "value": "paraglider:spirit_orb"},
+    {"type": "id", "registry": "items", "value": "paraglider:essence"}
+  ],
+  "conditions": [
+    {"client": "JEI, JEMAchievementGuide and JEMCompat are installed"},
+    {"focus": "Native JEI Information recipes expose each item under INPUT and OUTPUT focus"}
+  ],
+  "precedence": {
+    "layer": "major_update_4_item_explanation",
+    "priority": 106,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Project every exact item selector from localized JEM Guide content into native JEI Information recipes and add verified source/use pages for the reported non-crafted items.",
+    "modifiers": [
+      {
+        "property": "client.jei.item_information_selector_coverage",
+        "operation": "expand",
+        "before": "Only the first spotlight item of an authored page could receive JEI information. Generated quest pages without spotlight selectors were rejected",
+        "after": "Exact registered item IDs in jem_items, jem_aliases and spotlight selectors receive JEI information. Authored item pages have priority over generated quest projections"
+      },
+      {
+        "property": "client.jei.item_information_focus",
+        "operation": "preserve",
+        "before": "Native JEI recipe and uses focus",
+        "after": "Information recipes remain native JEI INPUT and OUTPUT routes, so U and ordinary recipe lookup both open them"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide item-help content and JEMCompat JEI projection",
+    "kind": "user_requested_item_provenance_help",
+    "source_files": [
+      "Mods/JEMAchievementGuide/build.gradle",
+      "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookItemHelp.java",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/luminous_beasts/pumpkin_helmet.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/luminous_nether/gold_cultist_axe.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/paraglider/essence.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/paraglider/spirit_orb.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/unearthed_journey/eye_of_methuselah.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/luminous_beasts/pumpkin_helmet.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/luminous_nether/gold_cultist_axe.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/paraglider/essence.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/paraglider/spirit_orb.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/unearthed_journey/eye_of_methuselah.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Docs/major-update-4/jei-item-provenance.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Do not leave non-crafted progression items as unexplained JEI dead ends. Show verified acquisition and use information without replacing native JEI controls.",
+    "decision_source": "The user required complete item explanations and named Cultist Axe, Pumpkin Helmet, Eye of Methuselah, Paraglider Spirit Orb and Essence as examples. The implementation reuses the existing native JEI Information category and verifies each curated example against installed artifacts."
+  },
+  "introduced": {
+    "date": "2026-11-09",
+    "commit": null,
+    "action": "implement",
+    "summary": "Expand native JEI information coverage and add verified provenance pages."
+  },
+  "history": [
+    {
+      "date": "2026-11-09",
+      "commit": null,
+      "action": "implement",
+      "summary": "Project exact Guide item aliases into JEI and add five reported non-crafted item pages.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/build.gradle",
+        "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookItemHelp.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_jei",
+      "item_provenance",
+      "guide_localization"
+    ],
+    "relations": [
+      "major-update-4-20261031",
+      "major-update-4-video-community-content-20261109"
+    ],
+    "notes": [
+      "The installed JEI Information category adds each described item as INPUT and as an invisible OUTPUT.",
+      "Static source coverage is 646 localized entries, 2307 entry-item pairs and 2094 unique item IDs.",
+      "Multiple relevant Guide entries can produce multiple JEI information pages for the same item. The first authored item page remains the tooltip summary owner."
+    ],
+    "unresolved": [
+      "Minecraft launch and player acceptance were not performed."
+    ]
+  }
+}

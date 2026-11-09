@@ -6,6 +6,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -15,6 +16,7 @@ import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import vazkii.patchouli.common.util.ItemStackUtil;
 
 import java.io.IOException;
@@ -112,27 +114,34 @@ public final class HandbookItemHelp extends SimplePreparableReloadListener<Map<S
     protected void apply(Map<String, JsonObject> entries, ResourceManager resources, ProfilerFiller profiler) {
         Map<Item, List<Help>> items = new LinkedHashMap<>();
         List<Info> information = new ArrayList<>();
-        entries.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(source -> {
+        entries.entrySet().stream()
+                .sorted((left, right) -> {
+                    boolean leftQuestProjection = left.getKey().contains("/quest_v3/");
+                    boolean rightQuestProjection = right.getKey().contains("/quest_v3/");
+                    if (leftQuestProjection != rightQuestProjection) return leftQuestProjection ? 1 : -1;
+                    return left.getKey().compareTo(right.getKey());
+                })
+                .forEach(source -> {
             JsonObject entry = source.getValue();
             if (!entry.has("jem_summary")) return;
             try {
                 if (!entry.has("pages")) throw new IllegalArgumentException("Item-help entry has no native pages");
                 String summary = plain(entry.get("jem_summary").getAsString());
                 if (summary.isBlank()) return;
-                String selector = firstSpotlight(entry);
-                if (selector == null) throw new IllegalArgumentException("Item-help entry has no primary spotlight item");
+                List<String> selectors = selectors(entry);
+                if (selectors.isEmpty()) throw new IllegalArgumentException("Item-help entry has no registered item selector");
                 List<Component> body = information(entry, summary);
-                for (ItemStack stack : ItemStackUtil.loadStackListFromString(selector)) {
-                    if (stack.isEmpty()) continue;
-                    ItemStack exact = stack.copy();
-                    exact.setCount(1);
-                    List<Help> targets = items.computeIfAbsent(exact.getItem(), ignored -> new ArrayList<>());
-                    if (targets.stream().anyMatch(existing -> ItemStack.isSameItemSameTags(existing.stack, exact))) {
-                        LogUtils.getLogger().warn("Duplicate Handbook item-help selector in {}: {}", source.getKey(), selector);
-                        continue;
+                for (String selector : selectors) {
+                    for (ItemStack stack : ItemStackUtil.loadStackListFromString(selector)) {
+                        if (stack.isEmpty()) continue;
+                        ItemStack exact = stack.copy();
+                        exact.setCount(1);
+                        List<Help> targets = items.computeIfAbsent(exact.getItem(), ignored -> new ArrayList<>());
+                        if (targets.stream().noneMatch(existing -> ItemStack.isSameItemSameTags(existing.stack, exact))) {
+                            targets.add(new Help(exact, summary, body));
+                            information.add(new Info(exact, body));
+                        }
                     }
-                    targets.add(new Help(exact, summary, body));
-                    information.add(new Info(exact, body));
                 }
             } catch (RuntimeException error) {
                 LogUtils.getLogger().error("Cannot project Handbook item-help entry {}", source.getKey(), error);
@@ -153,6 +162,24 @@ public final class HandbookItemHelp extends SimplePreparableReloadListener<Map<S
             }
         }
         return null;
+    }
+
+    private static List<String> selectors(JsonObject entry) {
+        LinkedHashSet<String> selectors = new LinkedHashSet<>();
+        String spotlight = firstSpotlight(entry);
+        if (spotlight != null) selectors.add(spotlight);
+        if (entry.has("jem_items")) {
+            for (var element : entry.getAsJsonArray("jem_items")) addRegisteredItem(selectors, element.getAsString());
+        }
+        if (entry.has("jem_aliases")) {
+            for (var element : entry.getAsJsonArray("jem_aliases")) addRegisteredItem(selectors, element.getAsString());
+        }
+        return List.copyOf(selectors);
+    }
+
+    private static void addRegisteredItem(LinkedHashSet<String> selectors, String candidate) {
+        ResourceLocation id = ResourceLocation.tryParse(candidate);
+        if (id != null && ForgeRegistries.ITEMS.containsKey(id)) selectors.add(id.toString());
     }
 
     private static List<Component> information(JsonObject entry, String summary) {

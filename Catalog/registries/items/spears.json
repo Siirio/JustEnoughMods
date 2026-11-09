@@ -1,0 +1,1456 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "93f5b65a8319ae77048a944928df39a1f1226944",
+  "generation": {
+    "generated_utc": "2026-11-09T12:02:59.929237+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "spears",
+    "name": "Backported Spears",
+    "version": "1.4.7"
+  },
+  "records": [
+    {
+      "registry_id": "caverns_and_chasms:necromium_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/caverns_and_chasms/models/item/necromium_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/caverns_and_chasms/recipes/necromium_spear_smithing.json"
+      ],
+      "display_name_en_us": "Necromium Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "caverns_and_chasms:items/slowness_inflicting_items"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/caverns_and_chasms/models/item/necromium_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/caverns_and_chasms/recipes/necromium_spear_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "caverns_and_chasms:necromium_spear_smithing"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:caverns_and_chasms:necromium_spear"
+    },
+    {
+      "registry_id": "caverns_and_chasms:necromium_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/caverns_and_chasms/models/item/necromium_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/caverns_and_chasms/models/item/necromium_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:caverns_and_chasms:necromium_spear_in_hand"
+    },
+    {
+      "registry_id": "caverns_and_chasms:silver_nugget",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/caverns_and_chasms/recipes/silver_nugget_from_blasting_spear.json",
+        "data/caverns_and_chasms/recipes/silver_nugget_from_smelting_spear.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/caverns_and_chasms/recipes/silver_nugget_from_blasting_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/caverns_and_chasms/recipes/silver_nugget_from_smelting_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "caverns_and_chasms:silver_nugget_from_blasting_spear",
+        "caverns_and_chasms:silver_nugget_from_smelting_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:caverns_and_chasms:silver_nugget"
+    },
+    {
+      "registry_id": "caverns_and_chasms:silver_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/caverns_and_chasms/models/item/silver_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/caverns_and_chasms/recipes/silver_spear.json"
+      ],
+      "display_name_en_us": "Silver Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "caverns_and_chasms:items/magic_damage_items"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/caverns_and_chasms/models/item/silver_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/caverns_and_chasms/recipes/silver_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "caverns_and_chasms:silver_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:caverns_and_chasms:silver_spear"
+    },
+    {
+      "registry_id": "caverns_and_chasms:silver_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/caverns_and_chasms/models/item/silver_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/caverns_and_chasms/models/item/silver_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:caverns_and_chasms:silver_spear_in_hand"
+    },
+    {
+      "registry_id": "dragonloot:dragon_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/dragonloot/models/item/dragon_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/dragonloot/recipes/dragon_spear.json"
+      ],
+      "display_name_en_us": "Dragon Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "dragonloot:items/explosion_resistant"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/dragonloot/models/item/dragon_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/dragonloot/recipes/dragon_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "dragonloot:dragon_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:dragonloot:dragon_spear"
+    },
+    {
+      "registry_id": "dragonloot:dragon_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/dragonloot/models/item/dragon_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/dragonloot/models/item/dragon_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:dragonloot:dragon_spear_in_hand"
+    },
+    {
+      "registry_id": "ender_dragon_loot:dragon_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spears/lang/en_us.json",
+        "data/ender_dragon_loot/recipes/dragon_spear.json"
+      ],
+      "display_name_en_us": "Dragon Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/ender_dragon_loot/recipes/dragon_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "ender_dragon_loot:dragon_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:ender_dragon_loot:dragon_spear"
+    },
+    {
+      "registry_id": "enderitemod:enderite_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/enderitemod/models/item/enderite_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/enderitemod/recipes/enderite_spear.json"
+      ],
+      "display_name_en_us": "Enderite Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "enderitemod:items/enderite_items"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/enderitemod/models/item/enderite_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/enderitemod/recipes/enderite_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "enderitemod:enderite_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:enderitemod:enderite_spear"
+    },
+    {
+      "registry_id": "enderitemod:enderite_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/enderitemod/models/item/enderite_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/enderitemod/models/item/enderite_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:enderitemod:enderite_spear_in_hand"
+    },
+    {
+      "registry_id": "minecraft:copper_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/copper_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/minecraft/recipes/copper_spear.json"
+      ],
+      "display_name_en_us": "Copper Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/copper_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/copper_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "minecraft:copper_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:copper_spear"
+    },
+    {
+      "registry_id": "minecraft:copper_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/copper_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/copper_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:copper_spear_in_hand"
+    },
+    {
+      "registry_id": "minecraft:diamond_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/diamond_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/minecraft/recipes/diamond_spear.json"
+      ],
+      "display_name_en_us": "Diamond Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/diamond_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/diamond_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "minecraft:diamond_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:diamond_spear"
+    },
+    {
+      "registry_id": "minecraft:diamond_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/diamond_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/diamond_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:diamond_spear_in_hand"
+    },
+    {
+      "registry_id": "minecraft:golden_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/golden_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/minecraft/recipes/golden_spear.json"
+      ],
+      "display_name_en_us": "Golden Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/golden_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/golden_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "minecraft:golden_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:golden_spear"
+    },
+    {
+      "registry_id": "minecraft:golden_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/golden_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/golden_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:golden_spear_in_hand"
+    },
+    {
+      "registry_id": "minecraft:iron_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/iron_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/minecraft/recipes/iron_spear.json"
+      ],
+      "display_name_en_us": "Iron Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/iron_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/iron_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "minecraft:iron_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:iron_spear"
+    },
+    {
+      "registry_id": "minecraft:iron_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/iron_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/iron_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:iron_spear_in_hand"
+    },
+    {
+      "registry_id": "minecraft:netherite_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/netherite_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/minecraft/recipes/netherite_spear_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/netherite_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/netherite_spear_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "minecraft:netherite_spear_smithing"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:netherite_spear"
+    },
+    {
+      "registry_id": "minecraft:netherite_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/netherite_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/netherite_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:netherite_spear_in_hand"
+    },
+    {
+      "registry_id": "minecraft:spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:spear_in_hand"
+    },
+    {
+      "registry_id": "minecraft:stone_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/stone_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/minecraft/recipes/stone_spear.json"
+      ],
+      "display_name_en_us": "Stone Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/stone_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/stone_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "minecraft:stone_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:stone_spear"
+    },
+    {
+      "registry_id": "minecraft:stone_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/stone_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/stone_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:stone_spear_in_hand"
+    },
+    {
+      "registry_id": "minecraft:wooden_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/wooden_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/minecraft/recipes/wooden_spear.json"
+      ],
+      "display_name_en_us": "Wooden Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/wooden_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/wooden_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "minecraft:wooden_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:wooden_spear"
+    },
+    {
+      "registry_id": "minecraft:wooden_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/wooden_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/minecraft/models/item/wooden_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:wooden_spear_in_hand"
+    },
+    {
+      "registry_id": "oreganized:electrum_spear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/oreganized/models/item/electrum_spear.json",
+        "assets/spears/lang/en_us.json",
+        "data/oreganized/recipes/electrum_spear.json"
+      ],
+      "display_name_en_us": "Electrum Spear",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/oreganized/models/item/electrum_spear.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/spears/lang/en_us.json",
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/oreganized/recipes/electrum_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "oreganized:electrum_spear"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:oreganized:electrum_spear"
+    },
+    {
+      "registry_id": "oreganized:electrum_spear_in_hand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "spears",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "source_jar": "spear-backport-forge-1.4.7-1.20.1.jar",
+      "source_sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/oreganized/models/item/electrum_spear_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:assets/oreganized/models/item/electrum_spear_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:oreganized:electrum_spear_in_hand"
+    }
+  ]
+}

@@ -1,3 +1,32 @@
+## 2026-11-09 - Explain non-crafted items through native JEI
+
+- User required every unclear non-crafted item to explain where it is found, how it is obtained and why or how it is used, with access through ordinary JEI focus and the `U` uses key
+- Expanded the existing native JEI Information projection from first-spotlight-only pages to every exact registered item ID in localized Guide aliases and spotlight selectors
+- Native JEI 15.49.0.194 exposes Information ingredients under both INPUT and OUTPUT focus, so the same pages open through `U` and ordinary recipe lookup without a custom replacement screen
+- Added verified Russian and English pages for Cultist Axe, Pumpkin Helmet, Eye of Methuselah, Paraglider Spirit Orb and Paraglider Essence
+- Verified the five reported examples against installed JAR bytecode, loot modifiers, bargain recipes, effective configuration and existing research records
+- Static source coverage now includes 646 localized entries, 2,307 entry-item information pairs and 2,094 unique item IDs
+- Bug / Build / JEM Achievement Guide still referenced the retired `jem-rewards-1.0.0.jar` filename, so the first selective build could not resolve its compile dependency / resolved by using the canonical `:JEMRewards` project output instead of a versioned local JAR path
+- Built JEM Advancements 5.3.2 with SHA-256 `92cb60aeff44060cb544de568776b335f224a1a3263fa806c04eee4a58602042` and JEM Compat 3.10.3 with SHA-256 `b7c8b8773dd75699d3d5fd2ad946cd86e54beec85436e8180eb6c85af53294d0` under Java 17, then installed the exact outputs in the canonical managed client and ordinary local server
+- The rebuilt Atlas validates 17,074 items, 12,100 blocks, 1,567 entities, 556 structures and all 197 active change records with no uncovered task change
+- Native AutoModpack published the cumulative change as generation 142 with reviewed delta `+19 ~4 -3`, then published the final duplicate-owner correction as generation 143 with content token `f1b6db480ab7414a94db47408d339db241ad2641` and reviewed delta `+0 ~2 -0`
+- Applied generation 143 to the closed `test jem` profile. The active token and exact JEM Advancements hash match the canonical publication, and no native update transaction remains pending
+- Runtime Minecraft and player acceptance remain pending
+
+## 2026-11-09 - Install the approved video-plan community layer
+
+- User approved the complete `JEM_All_3_Videos_Master_Plan.md` scope and the previously shortlisted Bibliophilia and shureee's Potions resource packs
+- Installed exact Forge 1.20.1 artifacts for Backported Spears, Rose Gold Equipment, Visual Workbench, Block Runner, Structory, Ocean Lily Pad Village, AmbientSounds 6, Windy, Do a Barrel Roll, Weather Glass and the audited Immersive Storms port
+- Added Forge CIT and configured Paxi to activate Bibliophilia 1.17 and shureee's Potions 2.0 for all managed clients. Bibliophilia includes selected modded-enchantment support, while unsupported modded potions keep their native appearance
+- Removed FastWorkbench from client and server because its pooled crafting-result cache conflicts with Visual Workbench's persistent grid and shift-click ownership. Existing FastSuite remains unchanged
+- Removed the stale `TreeChop-1.20.1-forge-0.19.0-fixed.jar.url` Windows shortcut from managed transfer. The real TreeChop JAR remains installed on client and server with matching hashes
+- Reused installed CreativeCore 2.12.40 and Puzzles Lib 8.1.33. No duplicate dependency version was added
+- Set conservative defaults: AmbientSounds volume 0.4, Block Runner road multiplier 1.15, subtle Windy density, 16-pixel Weather Glass, and reduced Immersive Storms particles without dense fog, duplicate wind audio or server damage
+- Native preview confirmed that generation 142 deletes only the stale TreeChop URL shortcut, FastWorkbench and its config. The real TreeChop JAR remains outside the delete plan with SHA-256 `219fbe5bf8d862dc7b524ca5a0151f66bba4d53a01010858e136a9e8c4d55d4f`
+- Applied the exact generation to the closed `test jem` profile through the native planner and ownership ledger. All 14 new or replaced JAR hashes match the publication, all three planned paths are absent and no transaction remains pending
+- Static metadata, dependency, registry and side-gating review is complete. Runtime gameplay, shader, fresh-chunk worldgen and player acceptance remain pending
+- This is the community-content tranche of the approved master plan. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
 ## 2026-11-09 - Correct potion and enchanted-book resource-pack direction
 
 - User clarified that Major Update 4 must use suitable existing resource packs instead of newly authored JEM textures

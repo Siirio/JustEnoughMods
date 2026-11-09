@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "recipes",
-  "snapshot_sha": "7f9ca8bb51fbd9e19dedc66bac67536fa6b99808",
+  "snapshot_sha": "93f5b65a8319ae77048a944928df39a1f1226944",
   "generation": {
-    "generated_utc": "2026-11-09T09:27:42.966144+00:00",
+    "generated_utc": "2026-11-09T12:02:59.929237+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -22622,6 +22622,30 @@
     },
     {
       "schema_version": 1,
+      "recipe_id": "minecraft:copper_spear",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:copper_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/copper_spear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
       "recipe_id": "minecraft:copper_sword",
       "mod_id": "minecraft",
       "mod_name": "Minecraft",
@@ -32122,6 +32146,30 @@
     },
     {
       "schema_version": 1,
+      "recipe_id": "minecraft:diamond_spear",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:diamond",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:diamond_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/diamond_spear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
       "recipe_id": "minecraft:diamond_sword",
       "mod_id": "minecraft",
       "mod_name": "Minecraft",
@@ -38141,6 +38189,30 @@
     },
     {
       "schema_version": 1,
+      "recipe_id": "minecraft:golden_spear",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:gold_ingot",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:golden_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/golden_spear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
       "recipe_id": "minecraft:golden_sword",
       "mod_id": "minecraft",
       "mod_name": "Minecraft",
@@ -39879,6 +39951,30 @@
       "conditional_requirements": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_shovel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:iron_spear",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:iron_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/iron_spear.json"
       ]
     },
     {
@@ -49270,6 +49366,31 @@
       "conditional_requirements": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_shovel_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:netherite_spear_smithing",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:diamond_spear",
+        "minecraft:netherite_ingot",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:netherite_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/netherite_spear_smithing.json"
       ]
     },
     {
@@ -60680,6 +60801,30 @@
     },
     {
       "schema_version": 1,
+      "recipe_id": "minecraft:stone_spear",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:stone_tool_materials"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:stone_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/stone_spear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
       "recipe_id": "minecraft:stone_stairs",
       "mod_id": "minecraft",
       "mod_name": "Minecraft",
@@ -67756,6 +67901,30 @@
       "conditional_requirements": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/wooden_shovel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:wooden_spear",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:wooden_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/minecraft/recipes/wooden_spear.json"
       ]
     },
     {

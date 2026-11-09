@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "93f5b65a8319ae77048a944928df39a1f1226944",
+  "generation": {
+    "generated_utc": "2026-11-09T12:02:59.929237+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "caverns_and_chasms",
+    "name": "caverns_and_chasms",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "caverns_and_chasms:necromium_spear_smithing",
+      "mod_id": "caverns_and_chasms",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "forge:ingots/necromium",
+        "minecraft:diamond_spear",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "caverns_and_chasms:necromium_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/caverns_and_chasms/recipes/necromium_spear_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "caverns_and_chasms:silver_nugget_from_blasting_spear",
+      "mod_id": "caverns_and_chasms",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "recipe_type": "minecraft:blasting",
+      "machine_id": "minecraft:blasting",
+      "ingredient_groups": [
+        "caverns_and_chasms:silver_spear",
+        "minecraft:blasting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "caverns_and_chasms:silver_nugget"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/caverns_and_chasms/recipes/silver_nugget_from_blasting_spear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "caverns_and_chasms:silver_nugget_from_smelting_spear",
+      "mod_id": "caverns_and_chasms",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "caverns_and_chasms:silver_spear",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "caverns_and_chasms:silver_nugget"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/caverns_and_chasms/recipes/silver_nugget_from_smelting_spear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "caverns_and_chasms:silver_spear",
+      "mod_id": "caverns_and_chasms",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/silver",
+        "forge:rods/wooden",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "caverns_and_chasms:silver_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/caverns_and_chasms/recipes/silver_spear.json"
+      ]
+    }
+  ]
+}

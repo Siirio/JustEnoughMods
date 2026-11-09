@@ -105,7 +105,7 @@ public final class JEMJeiPlugin implements IModPlugin {
 
                 @Override
                 public java.util.List<net.minecraft.network.chat.FormattedText> getDescription() {
-                    return com.justenoughmods.achievementguide.client.handbook.HandbookItemHelp.informationFor(stack)
+                    return info.information()
                             .stream().<net.minecraft.network.chat.FormattedText>map(component -> component).toList();
                 }
             });

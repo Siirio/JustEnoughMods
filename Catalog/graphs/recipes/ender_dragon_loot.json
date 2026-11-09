@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "93f5b65a8319ae77048a944928df39a1f1226944",
+  "generation": {
+    "generated_utc": "2026-11-09T12:02:59.929237+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "ender_dragon_loot",
+    "name": "ender_dragon_loot",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "ender_dragon_loot:dragon_spear",
+      "mod_id": "ender_dragon_loot",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "ender_dragon_loot:dragon_scale",
+        "ender_dragon_loot:dragon_upgrade_template",
+        "minecraft:netherite_spear",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ender_dragon_loot:dragon_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/ender_dragon_loot/recipes/dragon_spear.json"
+      ]
+    }
+  ]
+}

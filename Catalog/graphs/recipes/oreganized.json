@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "93f5b65a8319ae77048a944928df39a1f1226944",
+  "generation": {
+    "generated_utc": "2026-11-09T12:02:59.929237+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "oreganized",
+    "name": "oreganized",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "oreganized:electrum_spear",
+      "mod_id": "oreganized",
+      "mod_name": "Backported Spears",
+      "mod_version": "1.4.7",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:diamond_spear",
+        "minecraft:smithing_transform",
+        "oreganized:electrum_ingot",
+        "oreganized:electrum_upgrade_smithing_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "oreganized:electrum_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "spear-backport-forge-1.4.7-1.20.1.jar:data/oreganized/recipes/electrum_spear.json"
+      ]
+    }
+  ]
+}

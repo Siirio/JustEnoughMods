@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "7f9ca8bb51fbd9e19dedc66bac67536fa6b99808",
+  "snapshot_sha": "93f5b65a8319ae77048a944928df39a1f1226944",
   "tags": {
     "accessories:item/belt": [
       "minecraft:lantern",
@@ -7072,6 +7072,12 @@
     "cataclysm:worldgen/structure_set/sunken_city_avoid": [
       "minecraft:ocean_monuments"
     ],
+    "caverns_and_chasms:items/magic_damage_items": [
+      "caverns_and_chasms:silver_spear"
+    ],
+    "caverns_and_chasms:items/slowness_inflicting_items": [
+      "caverns_and_chasms:necromium_spear"
+    ],
     "chimes:blocks/wind_bells": [
       "chimes:glass_bells"
     ],
@@ -10139,6 +10145,9 @@
       "bbb:polished_stone",
       "bbb:stone_tiles"
     ],
+    "dragonloot:items/explosion_resistant": [
+      "dragonloot:dragon_spear"
+    ],
     "dummmmmmy:damage_type/is_cold": [
       "minecraft:freeze"
     ],
@@ -10352,6 +10361,9 @@
     ],
     "endergetic:items/ender_fire_base_blocks": [
       "infinitybuttons:end_stone_brick_secret_button"
+    ],
+    "enderitemod:items/enderite_items": [
+      "enderitemod:enderite_spear"
     ],
     "endermanoverhaul:blocks/cave_enderman_holdable": [
       "#minecraft:base_stone_overworld",
@@ -28119,6 +28131,10 @@
       "railways:yellow_two_pane_locometal_window",
       "railways:yellow_wrapped_locometal_smokebox",
       "ribbits:swamp_lantern",
+      "rosegoldequipment:raw_rose_gold_block",
+      "rosegoldequipment:rose_gold_block",
+      "rosegoldequipment:rose_gold_door",
+      "rosegoldequipment:rose_gold_trapdoor",
       "shutterup:copper_shutter",
       "shutterup:exposed_copper_shutter",
       "shutterup:iron_shutter",
@@ -35761,7 +35777,8 @@
       "minecraft:netherite_ingot",
       "minecraft:quartz",
       "minecraft:redstone",
-      "minecraft:resin_brick"
+      "minecraft:resin_brick",
+      "rosegoldequipment:rose_gold_ingot"
     ],
     "minecraft:items/trim_templates": [
       "alexscaves:polarity_armor_trim_smithing_template",
@@ -35833,6 +35850,10 @@
       "minecraft:netherite_helmet",
       "minecraft:netherite_leggings",
       "minecraft:turtle_helmet",
+      "rosegoldequipment:rose_golden_boots",
+      "rosegoldequipment:rose_golden_chestplate",
+      "rosegoldequipment:rose_golden_helmet",
+      "rosegoldequipment:rose_golden_leggings",
       "skarrier_mobs:deep_alloy_armor_boots",
       "skarrier_mobs:deep_alloy_armor_chestplate",
       "skarrier_mobs:deep_alloy_armor_helmet",
@@ -47257,6 +47278,66 @@
     ],
     "streamsreflowing:worldgen/biome/stream_biomes": [
       "#minecraft:is_overworld"
+    ],
+    "structory:worldgen/biome/has_structure/boat": [
+      "minecraft:cold_ocean",
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_lukewarm_ocean",
+      "minecraft:deep_ocean",
+      "minecraft:lukewarm_ocean",
+      "minecraft:ocean",
+      "minecraft:warm_ocean"
+    ],
+    "structory:worldgen/biome/has_structure/chapel": [
+      "birch_forest",
+      "dark_forest",
+      "forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "structory:worldgen/biome/has_structure/firetower": [
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga"
+    ],
+    "structory:worldgen/biome/has_structure/jungle_well": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:sparse_jungle"
+    ],
+    "structory:worldgen/biome/has_structure/northern_ruin": [
+      "plains",
+      "sunflower_plains"
+    ],
+    "structory:worldgen/biome/has_structure/old_manor": [
+      "minecraft:dark_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga"
+    ],
+    "structory:worldgen/biome/has_structure/outcast_villager_desert": [
+      "minecraft:desert"
+    ],
+    "structory:worldgen/biome/has_structure/outcast_villager_grassy": [
+      "birch_forest",
+      "forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "structory:worldgen/biome/has_structure/ruin_taiga": [
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "snowy_taiga",
+      "taiga"
     ],
     "supplementaries:blocks/prevents_offset_above": [
       "#bbb:urns"

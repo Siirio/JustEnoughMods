@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-09T09:27:42.966144+00:00` for `7f9ca8bb51fbd9e19dedc66bac67536fa6b99808`.
+Generated from Atlas schema 1 at `2026-11-09T12:02:59.929237+00:00` for `93f5b65a8319ae77048a944928df39a1f1226944`.
 
-Static evidence observed 16,958 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,074 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -80,7 +80,7 @@ Static evidence observed 16,958 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 14 | 169 | 0 | 169 |
 | luminous_nether | 205 | 8 | 197 | 0 | 197 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1451 | 321 | 1130 | 82 | 1133 |
+| minecraft | 1427 | 321 | 1106 | 82 | 1109 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | mobhome | 2 | 0 | 2 | 0 | 2 |
 | modefite | 2 | 0 | 2 | 0 | 2 |
@@ -97,6 +97,7 @@ Static evidence observed 16,958 canonical item IDs. This is not a Forge runtime 
 | railways | 1928 | 288 | 1640 | 0 | 1640 |
 | recruits | 14 | 0 | 14 | 0 | 14 |
 | ribbits | 21 | 3 | 18 | 0 | 18 |
+| rosegoldequipment | 113 | 0 | 113 | 0 | 113 |
 | rottencreatures | 30 | 2 | 28 | 0 | 28 |
 | secretdoors | 158 | 0 | 158 | 0 | 158 |
 | sereneseasons | 22 | 0 | 22 | 0 | 22 |
@@ -112,6 +113,7 @@ Static evidence observed 16,958 canonical item IDs. This is not a Forge runtime 
 | sophisticatedcore | 20 | 0 | 20 | 0 | 20 |
 | sophisticatedstorage | 225 | 0 | 225 | 0 | 225 |
 | spawn | 311 | 42 | 269 | 3 | 269 |
+| spears | 27 | 0 | 27 | 0 | 27 |
 | spider_overhaul | 20 | 2 | 18 | 0 | 18 |
 | tide | 446 | 110 | 336 | 25 | 336 |
 | tinyinv | 2 | 0 | 2 | 0 | 2 |

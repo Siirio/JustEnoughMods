@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "93f5b65a8319ae77048a944928df39a1f1226944",
+  "generation": {
+    "generated_utc": "2026-11-09T12:02:59.929237+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "blockrunner",
+    "name": "Block Runner",
+    "version": "8.0.4"
+  },
+  "records": [
+    {
+      "registry_id": "blockrunner:speedMultiplier",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "blockrunner",
+      "mod_name": "Block Runner",
+      "mod_version": "8.0.4",
+      "source_jar": "BlockRunner-v8.0.4-1.20.1-Forge.jar",
+      "source_sha256": "ef04ae91e0a2588df525492e24ae802b2308cc1f314ed624d0e849acb21dfe89",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/blockrunner/lang/en_us.json"
+      ],
+      "display_name_en_us": "Speed Multiplier: %s",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BlockRunner-v8.0.4-1.20.1-Forge.jar:assets/blockrunner/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}
