@@ -1,3 +1,12 @@
+## 2026-11-09 - Prepare potion and enchanted-book retextures
+
+- User requested potion and enchanted-book retextures for Major Update 4, with support for modded content where possible
+- Confirmed that the active `JEM Release v0.3.zip` remains the correct presentation owner and that a separate resource pack is not required
+- Minecraft's shared potion-item models let one bottle family cover standard, splash and lingering potions while preserving runtime colors for vanilla and modded effects that use those items
+- Minecraft's shared `minecraft:enchanted_book` texture lets one book design cover vanilla and modded enchantments without a manual enchantment allowlist
+- Authored the first native `16x16` potion candidate in Aseprite with separate bottle and tint layers, then recorded a static C0 visual pass on checker, light and dark backgrounds
+- The mandatory visual review boundary is active. No resource-pack archive, managed client file, local server file or AutoModpack publication changed pending user approval of the representative potion
+
 ## 2026-11-09 - Remove two Guide tabs and repair JEI mode switching
 
 - User requested complete removal of the "Getting started" and "Items" tabs from JEM Guide, then reported that the curated category search remained visible after switching to standard JEI

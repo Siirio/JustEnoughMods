@@ -1,0 +1,26 @@
+{
+  "candidate": "Docs/art/jem-release-resource-pack/item-retextures/candidate/potion-candidate.aseprite",
+  "cycle": 0,
+  "status": "AGENT_PASS_USER_REVIEW_REQUIRED",
+  "runtime_observed": false,
+  "references": [
+    "Minecraft 1.20.1 assets/minecraft/textures/item/potion.png",
+    "Minecraft 1.20.1 assets/minecraft/textures/item/potion_overlay.png",
+    "Taste-Engine/Pairs/Minecraft/GUI/Reference/For_JEM_Resource_Pack/Exact Wanted GUI Approach and Style 3.png",
+    "Taste-Engine/Pairs/Minecraft/GUI/Reference/For_JEM_Resource_Pack/Exact Wanted GUI Approach and Style 4.png",
+    "Taste-Engine/Pairs/Minecraft/Icons/I_like/Снимок экрана 2026-10-20 214733.png",
+    "Taste-Engine/Pairs/Minecraft/Icons/I_like/Снимок экрана 2026-10-20 214948.png"
+  ],
+  "checks": {
+    "reference_fidelity": "PASS - retains a readable Minecraft potion silhouette while using the selected references' decisive outline, compact clusters and strong value separation",
+    "geometry_and_perspective": "PASS - one consistent front-facing inventory-icon view with a centered stopper, neck, shoulders and stable base",
+    "silhouette_and_readability": "PASS - the bottle reads at native 1x and remains identifiable on checker, light and dark backgrounds",
+    "palette_and_materials": "PASS - limited warm stopper, cool glass and sample violet liquid ramps separate cork, glass and contents",
+    "pixel_craft": "PASS - native 16x16 Aseprite pixels with no antialiasing, scaling, generated imagery or traced source pixels",
+    "layer_contract": "PASS - editable Bottle Base and Tint Overlay layers preserve the later Minecraft runtime-tint split",
+    "modded_compatibility": "PASS BY CONTRACT - standard potion-item and enchanted-book render paths are shared across their stack variants, while independent mod items remain outside this unverified claim",
+    "runtime_acceptance": "UNOBSERVED - the candidate is not integrated and the client was not launched"
+  },
+  "automatic_correction_rounds": 0,
+  "decision_required": "User visual approval before series production and managed-pack integration"
+}
