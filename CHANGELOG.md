@@ -1,11 +1,10 @@
-## 2026-11-09 - Prepare potion and enchanted-book retextures
+## 2026-11-09 - Correct potion and enchanted-book resource-pack direction
 
-- User requested potion and enchanted-book retextures for Major Update 4, with support for modded content where possible
-- Confirmed that the active `JEM Release v0.3.zip` remains the correct presentation owner and that a separate resource pack is not required
-- Minecraft's shared potion-item models let one bottle family cover standard, splash and lingering potions while preserving runtime colors for vanilla and modded effects that use those items
-- Minecraft's shared `minecraft:enchanted_book` texture lets one book design cover vanilla and modded enchantments without a manual enchantment allowlist
-- Authored the first native `16x16` potion candidate in Aseprite with separate bottle and tint layers, then recorded a static C0 visual pass on checker, light and dark backgrounds
-- The mandatory visual review boundary is active. No resource-pack archive, managed client file, local server file or AutoModpack publication changed pending user approval of the representative potion
+- User clarified that Major Update 4 must use suitable existing resource packs instead of newly authored JEM textures
+- Removed the original Aseprite potion candidate and its static visual-audit files from the branch
+- Shortlisted `Bibliophilia | Enchanted Books` for vanilla and supported modded enchantments and `shureee's Potions` for distinct vanilla potion silhouettes on Minecraft 1.20.1
+- Both candidates require a CIT implementation on Forge 1.20.1. `Forge CIT` is the compatible client-side dependency under review
+- No third-party archive, dependency, managed client file, local server file or AutoModpack publication changed pending the user's pack selection
 
 ## 2026-11-09 - Remove two Guide tabs and repair JEI mode switching
 
