@@ -150,7 +150,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Jaden's Nether Expansion | `2.3.5` | Client + server |  |
 | JamLib | `1.3.6+1.20.1-patch.1` | Server |  |
 | JamLib | `1.3.6+1.20.1-patch.1` | Client |  |
-| JEM Advancements | `5.3.1` | Client + server |  |
+| JEM Advancements | `5.3.2` | Client + server |  |
 | JEM Drill Lifecycle | `1.0.0` | Client + server |  |
 | JEM Pack Core | `2.0.0-dev` | Client + server |  |
 | JEM Server | `2.0.0-dev` | Client + server |  |
@@ -158,7 +158,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | JEM World Boss Tiers | `2.5.0-dev` | Client + server |  |
 | Just Enough Items | `15.49.0.194` | Client + server |  |
 | JustEnoughMods Adaptive Culling | `1.4.1` | Client |  |
-| JustEnoughMods Compatibility | `3.10.0` | Client + server |  |
+| JustEnoughMods Compatibility | `3.10.3` | Client + server |  |
 | Kaleidoscope Compat | `2.6.5-forge+mc1.20.1` | Server |  |
 | Kaleidoscope Compat | `2.6.5-forge+mc1.20.1` | Client |  |
 | Kaleidoscope Cookery | `1.4.1-forge+mc1.20.1` | Server |  |

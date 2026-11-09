@@ -42,6 +42,24 @@
         "operation": "deny",
         "before": "Generated custom/native/campaign advancement descriptions and Better Advancements click-to-book routing",
         "after": "No advancement pages/categories/index or Mechanics pages in either language, no active click routing. Gameplay advancements and FTB quests unchanged"
+      },
+      {
+        "property": "handbook.ribbon_tabs",
+        "operation": "set",
+        "before": [
+          "start",
+          "bosses",
+          "enchantments",
+          "items",
+          "quests",
+          "manuals"
+        ],
+        "after": [
+          "bosses",
+          "enchantments",
+          "quests",
+          "manuals"
+        ]
       }
     ]
   },
@@ -56,7 +74,9 @@
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/AdvancementScreenEvents.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/ClientBootstrap.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookNavigation.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookSection.java",
+      "Mods/JEMAchievementGuide/build.gradle",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/handbook/manuals.json",
@@ -130,7 +150,7 @@
       "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
       "Mods/JEMAchievementGuide/tools/generate_handbook.py",
       "Mods/JEMAchievementGuide/tools/generate_resources.py",
-      "Client/ManagedPack/mods/jem-advancements-5.3.1.jar",
+      "Client/ManagedPack/mods/jem-advancements-5.3.2.jar",
       "Docs/handbook/README.md"
     ]
   },
@@ -147,6 +167,18 @@
     "summary": "Five-section reference book only"
   },
   "history": [
+    {
+      "date": "2026-11-09",
+      "commit": "SELF",
+      "action": "remove_start_and_items_ribbons",
+      "summary": "Remove the Getting started and Items navigation tabs while retaining direct item help, search and JEI reference projections",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookNavigation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookSection.java",
+        "Mods/JEMAchievementGuide/build.gradle",
+        "Client/ManagedPack/mods/jem-advancements-5.3.2.jar"
+      ]
+    },
     {
       "date": "2026-10-24",
       "commit": "SELF",

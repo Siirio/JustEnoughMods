@@ -19,7 +19,7 @@ Implementation owner: JEMAchievementGuide. Product brief: the user's universal h
 ## Implementation plan
 
 - [x] Restore native Patchouli book identity and its inventory-grid shapeless recipe.
-- [x] Extend the native book screen with five localized, keyboard-accessible ribbon sections, search and scoped return from native manuals. Reuse native resources; no replacement book GUI or new runtime library.
+- [x] Extend the native book screen with localized, keyboard-accessible ribbon navigation, search and scoped return from native manuals. Current ribbons are Bosses, Enchantments, Quests and Mod manuals. Reuse native resources; no replacement book GUI or new runtime library.
 - [x] Inventory installed native manuals, inspect their actual opening contracts and preserve native research/player state.
 - [x] Trace confirmed enchantment registrations and add owner-backed explanations, per-level multi-enchantment tooltips and handbook navigation. Acquisition gaps remain explicit below.
 - [x] Trace boss profiles, summon/use chains and actual defenses; publish only established instructions and record unresolved fields honestly.
@@ -38,7 +38,7 @@ Coverage files in this directory track evidence and implementation status; they 
 
 | Surface | Implemented source scope | Evidence and limits |
 | --- | --- | --- |
-| Navigation | Getting started, Bosses, Enchantments, Items, Mod manuals | Native Patchouli spreads/history/search; five left-edge icon ribbons; original right-edge bookmarks remain native. GUI acceptance is unobserved. |
+| Navigation | Bosses, Enchantments, Quests, Mod manuals | Four left-edge icon ribbons. Getting started and Items are not tabs. Existing item reference data remains available through direct help, search and JEI. Native Patchouli history and original right-edge bookmarks remain native. GUI acceptance is unobserved. |
 | Native manuals | Eight general manual families; acquired Aquamirae NBT variants | [Exact API/version/condition ledger](manuals.md). No discovery fabrication; MCreator read-only menus use a fixed, throttled server request and require the handbook in inventory. |
 | Enchantments | 85 confirmed non-vanilla registrations, both languages, actual stored levels; target icons for 72 specialized entries | [Coverage](enchantments-coverage.json), [mechanics and remaining acquisition gaps](enchantments.md). Six EFN book sources remain unestablished. |
 | Bosses | All 56 current canonical boss profiles have distinct source-backed tactical guidance | [Per-field coverage](bosses-coverage.json). Complete native phase/attack catalogs, every damage predicate and live world overrides are not claimed. |
@@ -47,7 +47,7 @@ Coverage files in this directory track evidence and implementation status; they 
 
 ## Content and projection ownership
 
-`src/main/handbook/{navigation,manuals,translations,bosses,items}.json` owns authored navigation and boss/item prose. `tools/generate_handbook.py` materializes its localized Patchouli resources. The advancement generator retains gameplay definitions and their translations. Its final handbook materializer prunes retired book advancement entries, their categories and removed sections before writing the five current reference sections. It does not run as a build side effect.
+`src/main/handbook/{navigation,manuals,translations,bosses,items}.json` owns authored content and boss/item prose. `HandbookSection` owns the four visible ribbon routes. `tools/generate_handbook.py` materializes localized Patchouli resources. The advancement generator retains gameplay definitions and their translations. Its final handbook materializer prunes retired book advancement entries and removed sections. It does not run as a build side effect.
 
 `assets/jem_advancements/handbook/enchantments.json` owns enchantment explanations. Patchouli processors and tooltip providers read the same resource; native APIs supply current maximum level, compatibility and relevant synchronized configuration. Table applicability, anvil eligibility and item-specific rules remain distinct. Progression equipment text reuses the existing World Tier snapshot/provider; its enchantment level I is distinct from World Tier II/III. HideFlags and native lore are preserved.
 

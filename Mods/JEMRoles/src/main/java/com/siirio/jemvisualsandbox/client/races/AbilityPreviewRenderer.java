@@ -4,22 +4,21 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexSorting;
 import com.siirio.jemvisualsandbox.workbench.AbilityPreviewPresentation;
+import com.siirio.jemvisualsandbox.workbench.BloomMechanics;
 import com.siirio.jemvisualsandbox.workbench.RacePowerStages;
 import com.siirio.jemvisualsandbox.workbench.VisualRenderContext;
+import java.util.Locale;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.RemotePlayer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.projectile.ThrownEnderpearl;
-import net.minecraft.world.entity.player.PlayerModelPart;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.phys.Vec3;
@@ -32,7 +31,7 @@ import org.lwjgl.opengl.GL11;
 public final class AbilityPreviewRenderer {
     private final AbilityPreviewPresentation presentation = new AbilityPreviewPresentation();
     private ClientLevel sourceLevel;
-    private RemotePlayer actor;
+    private DetachedPreviewPlayer actor;
     private Creeper target;
     private IronGolem guardian;
     private ThrownEnderpearl pearl;
@@ -57,15 +56,7 @@ public final class AbilityPreviewRenderer {
                 && actor.getSkinTextureLocation().equals(client.player.getSkinTextureLocation())) return true;
         dispose();
         sourceLevel = client.level;
-        ResourceLocation skin = client.player.getSkinTextureLocation();
-        String model = client.player.getModelName();
-        var parts = java.util.EnumSet.noneOf(PlayerModelPart.class);
-        for (var part : PlayerModelPart.values()) if (client.player.isModelPartShown(part)) parts.add(part);
-        actor = new RemotePlayer(sourceLevel, client.player.getGameProfile()) {
-            @Override public ResourceLocation getSkinTextureLocation() { return skin; }
-            @Override public String getModelName() { return model; }
-            @Override public boolean isModelPartShown(PlayerModelPart part) { return parts.contains(part); }
-        };
+        actor = new DetachedPreviewPlayer(sourceLevel, client.player);
         target = new Creeper(EntityType.CREEPER, sourceLevel);
         guardian = new IronGolem(EntityType.IRON_GOLEM, sourceLevel);
         pearl = new ThrownEnderpearl(EntityType.ENDER_PEARL, sourceLevel);
@@ -101,14 +92,14 @@ public final class AbilityPreviewRenderer {
         if (race == 4 && slot == 1 && age >= 0 && age < 38)
             attack = Math.min(1, (age - (age >= 22 ? 22 : age >= 10 ? 10 : 0)) / 6);
         actor.attackAnim = actor.oAttackAnim = attack;
-        actor.swingingArm = net.minecraft.world.InteractionHand.MAIN_HAND;
+        actor.swingingArm = InteractionHand.MAIN_HAND;
         actor.tickCount = target.tickCount = (int)ticks;
         face(actor, race == 1 && slot == 0 && age >= 14 && age < 64 ? 90 : -90);
         face(target, 90);
         // Base grip pins movement while attack motion continues; stage I locks it.
-        boolean bloomGrip=race==2 && slot==0 && age>=0 && age<com.siirio.jemvisualsandbox.workbench.BloomMechanics.GRIP_TICKS;
+        boolean bloomGrip=race==2 && slot==0 && age>=0 && age<BloomMechanics.GRIP_TICKS;
         target.attackAnim=target.oAttackAnim=bloomGrip && bloomStage==0?(age%20)/20:0;
-        target.swingingArm=net.minecraft.world.InteractionHand.MAIN_HAND;
+        target.swingingArm=InteractionHand.MAIN_HAND;
         if(bloomGrip && bloomStage>=1)target.tickCount=0;
         face(guardian, -90);
         float hit = presentation.hitAge(race, slot, bloomStage, age);
@@ -228,7 +219,7 @@ public final class AbilityPreviewRenderer {
             default -> "";
         };
     }
-    private static String decimal(double value){return String.format(java.util.Locale.ROOT,"%.1f",value);}
+    private static String decimal(double value){return String.format(Locale.ROOT,"%.1f",value);}
 
     private static void face(LivingEntity entity, float yaw) {
         entity.yBodyRot = entity.yBodyRotO = yaw; entity.yHeadRot = entity.yHeadRotO = yaw;

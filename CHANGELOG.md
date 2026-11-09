@@ -1,3 +1,26 @@
+## 2026-11-09 - Remove two Guide tabs and repair JEI mode switching
+
+- User requested complete removal of the "Getting started" and "Items" tabs from JEM Guide, then reported that the curated category search remained visible after switching to standard JEI
+- JEM Guide now exposes only Bosses, Enchantments, Quests and Mod manuals as ribbon tabs. Existing item reference data remains available through direct help, search and JEI without a visible Items tab
+- Bug / Client Sided / the curated category search was registered as a native screen widget, so Minecraft continued to render and focus it after JEM stopped its manual overlay render for standard JEI / in testing after binding widget visibility, activity and focus to curated mode during pre-render and mode switching
+- The standard JEI search and recipe ownership remain native. The mode switch does not clear either search query
+- Built JEM Guide 5.3.2 and JEM Compat 3.10.3 under Java 17. The ordinary local server loaded both artifacts, and Atlas validation completed with 16,958 items, 12,095 blocks, 1,567 entities and no uncovered task change
+- Native AutoModpack published the cumulative transition as generation 140, then published the final identity-gated JEM Rewards correction as generation 141 with content token `715a0513839d76b04c99fd52ac316e223c18390d` and reviewed delta `+0 ~2 -0`. Native recovery completed its deferred projection swap in the closed `test jem` profile
+- The active token and JAR hashes match the canonical publication, all four retired versioned artifacts are absent and no transaction remains pending
+- Runtime GUI acceptance remains pending. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
+## 2026-11-09 - Restore first race preview and universal starter supplies
+
+- User reported that the player model is absent during the first race choice on dedicated and integrated servers, required starter-kit ownership at the modpack level, and added a spyglass plus glider to the kit
+- Bug / Client Sided / the detached race-preview player exposed Forge capabilities without receiving the client-level join lifecycle, so Epic Fight could replace the native renderer with an incomplete player patch / in testing after moving both race stages to one capability-free detached player
+- Five Whys: the model was absent because the native player renderer was replaced, Epic Fight found its player capability, Forge attached that capability during display-entity construction, the detached entity never received `EntityJoinLevelEvent`, and the preview owner did not isolate world-lifecycle capabilities from a screen-only entity
+- Bug / Both Sided / starter issuance was called only from JEM Server while `SmpEnvironment.active` requires a dedicated host, so integrated singleplayer never entered the delivery path / in testing after moving new issuance and legacy migration to universal JEM Rewards
+- The user selected `minecraft:spyglass` and a glider. The implementation uses the installed native `paraglider:paraglider`, preserves the original starter source ID, gives prior recipients only one versioned exploration extension, and prevents replay of completed or interrupted server-owned grants
+- JEM Server retains only dedicated authentication and pre-choice combat protection. JEM Rewards now owns the same durable starter behavior on integrated and dedicated logical servers, while JEM Identity keeps offline dedicated issuance behind the existing Server Login verification gate
+- Built JEM Roles 2.0.3, JEM Rewards 1.1.0 and the updated JEM Server 2.0.0-dev artifact under Java 17, then installed the exact outputs in the canonical managed client and ordinary local server
+- Native AutoModpack generation 141 installs the matching client artifacts in `test jem`. The active profile files resolve to JEM Roles SHA-256 `c98f3f9a360af54cd5292c9239d6ef335dc4093afc355e9f449e081c398ec0e2`, JEM Rewards `d13db58b5dab2f030d0f492d3684ef10f59513247bdafdd01af6001981034c7f` and JEM Server `922c6a95765555e1b71300b504a5c79691edcda8cfefba88842c46e0a1786d9b`
+- Runtime player acceptance remains pending. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
 ## 2026-11-07 - Restore dedicated-server quest access in Major Update 4
 
 - User reported that the universal FTB quest book remains locked on MineRENT and local dedicated servers while it is available in singleplayer, then requested the fix and local `test jem` delivery

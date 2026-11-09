@@ -1,5 +1,5 @@
 plugins { id 'java'; id 'net.minecraftforge.gradle' version '6.0.54' }
-version = '1.0.0'
+version = '1.1.0'
 group = 'com.siirio.jemrewards'
 base { archivesName = 'jem-rewards' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -7,6 +7,7 @@ minecraft { mappings channel: 'official', version: '1.20.1' }
 repositories { mavenCentral() }
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
     compileOnly files('../../Client/ManagedPack/mods/jei-1.20.1-forge-15.49.0.194.jar')
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

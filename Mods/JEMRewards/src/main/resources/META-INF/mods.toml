@@ -3,10 +3,10 @@ loaderVersion="[47,)"
 license="All Rights Reserved"
 [[mods]]
 modId="jem_rewards"
-version="1.0.0"
+version="1.1.0"
 displayName="JEM Rewards"
 authors="Siirio"
-description="Persistent item rewards and native inventory collection."
+description="Persistent item rewards, universal starter supplies and native inventory collection."
 [[dependencies.jem_rewards]]
 modId="forge"
 mandatory=true
@@ -18,4 +18,10 @@ modId="minecraft"
 mandatory=true
 versionRange="[1.20.1,1.21)"
 ordering="NONE"
+side="BOTH"
+[[dependencies.jem_rewards]]
+modId="jem_identity"
+mandatory=true
+versionRange="[1.0.0,)"
+ordering="AFTER"
 side="BOTH"

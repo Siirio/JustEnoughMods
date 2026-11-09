@@ -27,7 +27,6 @@ import vazkii.patchouli.api.PatchouliAPI;
 import vazkii.patchouli.client.book.gui.GuiBook;
 import vazkii.patchouli.client.book.gui.GuiBookCategory;
 import vazkii.patchouli.client.book.gui.GuiBookEntry;
-import vazkii.patchouli.client.book.gui.GuiBookIndex;
 import vazkii.patchouli.common.book.Book;
 import vazkii.patchouli.common.book.BookRegistry;
 
@@ -144,9 +143,7 @@ public final class HandbookNavigation {
     }
 
     static void select(GuiBook source, HandbookSection section) {
-        if (section == HandbookSection.START) {
-            source.displayLexiconGui(new GuiBookIndex(source.book), true);
-        } else if (section == HandbookSection.QUESTS) {
+        if (section == HandbookSection.QUESTS) {
             if (net.minecraftforge.fml.ModList.get().isLoaded("ftbquests")) ClientQuestFile.openGui();
         } else if (section == HandbookSection.MANUALS) {
             source.displayLexiconGui(new HandbookManualScreen(source.book), true);
@@ -170,7 +167,7 @@ public final class HandbookNavigation {
             while (category != null && category.getParentCategory() != null) category = category.getParentCategory();
             if (category != null) return category.getId().getPath().replace("handbook/", "");
         }
-        return "start";
+        return "";
     }
 
     public static void openManual(GuiBook origin, NativeManuals.Manual manual) {

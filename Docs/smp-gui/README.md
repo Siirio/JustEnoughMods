@@ -4,15 +4,15 @@
 
 Current contract: SMP routes to independent Settlements/Market; Rewards are in normal inventory E on both host types. Integrated/LAN has no JEM Events or parties. Common ordinary Minecraft XP has one x2 baseline; other modifiers apply above it.
 
-## Starter entitlement and authentication/race protection —2026-10-21
+## Modpack starter entitlement and dedicated authentication/race protection —2026-11-09
 
 Source implemented / **in testing**. No build, runtime delivery, protection check or deployment is claimed by this section.
 
-The user requests starter supplies and protection while authentication or initial race selection is incomplete. Codex's announced interpretation is one kit per canonical verified account, including existing players; cooked beef is the selected food. These once-only/food choices are implementation assumptions, not separate user approval of every detail. The kit contains64cooked beef,10iron ingots, one leather helmet/chestplate/leggings/boots, one native `sophisticatedbackpacks:backpack` and one Nature's Compass. Existing20Gold starter funding/receipts remain unchanged.
+The user requests a modpack-level starter kit for dedicated and integrated worlds. JEM Rewards now owns one kit per player and world. The kit contains64cooked beef,10iron ingots, one leather helmet/chestplate/leggings/boots, one native `sophisticatedbackpacks:backpack`, one Nature's Compass, one `minecraft:spyglass` and one `paraglider:paraglider`. Existing recipients receive only the new spyglass and Paraglider extension. Existing20Gold starter funding and receipts remain unchanged.
 
-The kit becomes eligible after authentication and does not wait for race choice. Server-owned entitlement/journal state and native player inventory+operation receipt prevent reconnect/death/replay from granting another kit. Partial delivery keeps undelivered items in the durable journal when inventory is full; nothing drops on the ground or replaces worn equipment. A missing required native item or failed persistence is an explicit delivery failure, not a replacement item or falsely completed kit.
+JEM Rewards uses the original starter source ID, imports old JEM Server completion and pending state, and preserves matching player receipts. Reconnect, death, migration and replay do not grant the old kit twice. Partial claims keep undelivered items in the durable reward journal. Nothing drops on the ground or replaces worn equipment. A missing required native item or failed persistence is an explicit delivery failure.
 
-Protection is authoritative while IdentityPolicy cannot resolve the verified account or that account has no effective RaceApi selection. Incoming attack/hurt/damage/death is blocked; melee and damage whose resolved owner is the protected player are also blocked to prevent protected attacks. It ends immediately when both authentication and effective race selection exist. Merely reopening a race GUI cannot restore it. StarterWelcome consumes these owners without adding authentication or race-choice state.
+Dedicated authentication and pre-choice protection remain in JEM Server. Protection is authoritative while IdentityPolicy cannot resolve the verified account or that account has no effective RaceApi selection. Incoming attack/hurt/damage/death is blocked. Melee and damage whose resolved owner is the protected player are also blocked. It ends when verification and the effective race selection exist. Merely reopening a race GUI cannot restore it.
 
 ## Functional source update — 2026-10-21
 

@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "be10fcafbb60fbbd3cad60a347df6c020e8087fc719a1e96ec37244a161aa075",
+  "change_records_sha256": "ffe3193939e5c49e5d107a85f718f5f6d62d9c2b85562d9e8aad44ecacb17377",
   "totals": {
     "watched": 7094,
-    "covered": 5456,
-    "unresolved": 1638
+    "covered": 5453,
+    "unresolved": 1641
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1593,8 +1593,8 @@
     },
     "Mods/JEMServer": {
       "watched": 497,
-      "covered": 332,
-      "unresolved": 165,
+      "covered": 329,
+      "unresolved": 168,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1626,6 +1626,7 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegionData.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionPalette.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionPermissions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/SleepStatusVoteMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/BloodMoonMoonMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/BloodMoonSkyMixin.java",
@@ -1670,6 +1671,8 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpUpdate.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViewRevision.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViewSession.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ViewDelta.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/compat/EpicFightDebuffBridge.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/compat/PhantomArmorAbility.java",

@@ -33,6 +33,12 @@
         "operation": "derive",
         "before": "Broad furniture/decor and building heuristics placed materials, glass, light sources, storage and display objects in inappropriate leaves.",
         "after": "Materials include ordinary placeable construction blocks, bricks, slabs, stairs, cushion block variants and snow/sandstone after functional exceptions; separate Glass and Light leaves. Tom's Storage, Sophisticated Backpacks/Storage, MobHome and the Shipping Box are containers; Casual Swing, Shutter Up, Chimes, Secret Doors, Beachparty displays, antler stands, stakes, skulls and trophies are decor; dolls are wearable. Kaleidoscope, Bakery and Herbal Brews items and cooking stations are food; Infinity Buttons are Create/Redstone, XtraArrows are weapons, and ores, dynamite, resin, shells, buckets and resource stones are excluded from construction."
+      },
+      {
+        "property": "jemcompat.jei_mode_widget_ownership",
+        "operation": "constrain",
+        "before": "The curated category search remained an active screen widget after the standard JEI overlay became visible.",
+        "after": "The curated category search is visible and active only in curated mode; standard JEI mode hides it and clears its focus."
       }
     ]
   },
@@ -40,13 +46,14 @@
     "owner": "JEMCompat",
     "kind": "user_requested_curated_jei_taxonomy",
     "source_files": [
-      "Client/ManagedPack/mods/jemcompat-3.10.2.jar",
+      "Client/ManagedPack/mods/jemcompat-3.10.3.jar",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogLayout.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java"
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Mods/JEMCompat/gradle.properties"
     ]
   },
   "rationale": {
@@ -92,6 +99,17 @@
       "source_files": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java"
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "commit": "SELF",
+      "action": "bind_category_search_to_curated_mode",
+      "summary": "Hide, deactivate and unfocus the curated category search whenever standard JEI is active.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+        "Mods/JEMCompat/gradle.properties",
+        "Client/ManagedPack/mods/jemcompat-3.10.3.jar"
       ]
     }
   ],

@@ -67,6 +67,13 @@ public final class CuratedJeiOverlay {
     }
 
     @SubscribeEvent
+    public static void beforeRender(ScreenEvent.Render.Pre event) {
+        if (event.getScreen() == owner && owner instanceof AbstractContainerScreen<?> screen && categorySearch != null) {
+            setSearchAvailable(screen, !JEMJeiPlugin.isNativeOverlayVisible());
+        }
+    }
+
+    @SubscribeEvent
     public static void render(ScreenEvent.Render.Post event) {
         if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen) || JEMJeiPlugin.runtime() == null) return;
         ensureSearch(screen);
@@ -75,7 +82,9 @@ public final class CuratedJeiOverlay {
         lastMouseY = event.getMouseY();
         GuiGraphics graphics = event.getGuiGraphics();
         renderNativeToggle(graphics, layout, event.getMouseX(), event.getMouseY());
-        if (JEMJeiPlugin.isNativeOverlayVisible()) return;
+        boolean nativeOverlayVisible = JEMJeiPlugin.isNativeOverlayVisible();
+        setSearchAvailable(screen, !nativeOverlayVisible);
+        if (nativeOverlayVisible) return;
         renderCategories(graphics, layout, event.getMouseX(), event.getMouseY());
         positionSearch(layout);
         categorySearch.render(graphics, event.getMouseX(), event.getMouseY(), event.getPartialTick());
@@ -90,7 +99,9 @@ public final class CuratedJeiOverlay {
         int mouseX = (int) event.getMouseX();
         int mouseY = (int) event.getMouseY();
         if (inside(mouseX, mouseY, layout.toggleX(), layout.top(), BUTTON, BUTTON)) {
-            JEMJeiPlugin.setNativeOverlayVisible(!JEMJeiPlugin.isNativeOverlayVisible());
+            boolean nativeOverlayVisible = !JEMJeiPlugin.isNativeOverlayVisible();
+            JEMJeiPlugin.setNativeOverlayVisible(nativeOverlayVisible);
+            setSearchAvailable(screen, !nativeOverlayVisible);
             event.setCanceled(true);
             return;
         }
@@ -251,6 +262,15 @@ public final class CuratedJeiOverlay {
         categorySearch.setX(layout.searchX());
         categorySearch.setY(layout.searchY());
         categorySearch.setWidth(layout.searchWidth());
+    }
+
+    private static void setSearchAvailable(AbstractContainerScreen<?> screen, boolean available) {
+        if (categorySearch == null) return;
+        categorySearch.visible = available;
+        categorySearch.active = available;
+        if (available) return;
+        categorySearch.setFocused(false);
+        if (screen.getFocused() == categorySearch) screen.setFocused(null);
     }
 
     private static void renderNativeToggle(GuiGraphics graphics, CatalogLayout layout, int mouseX, int mouseY) {
