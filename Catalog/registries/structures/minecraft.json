@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "structures",
-  "snapshot_sha": "cbaf99948fd0fa2124b262b969f58d132e097ec1",
+  "snapshot_sha": "ea6bf89004c4baa983357b07318a0c27974d0985",
   "generation": {
-    "generated_utc": "2026-11-09T16:27:06.107369+00:00",
+    "generated_utc": "2026-11-10T04:28:42.062317+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -33,7 +33,9 @@
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [],
+      "tags": [
+        "minecraft:worldgen/structure/ancient_city"
+      ],
       "is_registered": null,
       "survival_obtainable": null,
       "survival_source_evidence": [],
@@ -604,7 +606,9 @@
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [],
+      "tags": [
+        "minecraft:worldgen/structure/pillager_outpost"
+      ],
       "is_registered": null,
       "survival_obtainable": null,
       "survival_source_evidence": [],
@@ -1443,8 +1447,7 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/worldgen/structure/village_taiga.json"
@@ -1461,6 +1464,7 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
+        "dungeons-and-taverns-3.0.3.f[Forge].jar:data/minecraft/worldgen/structure/village_taiga.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/worldgen/structure/village_taiga.json"
       ],
       "confidence": "inferred",

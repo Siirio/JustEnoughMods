@@ -1,0 +1,130 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4-towns-towers-dungeons-taverns-20261110",
+  "status": "active",
+  "selectors": [
+    {"type": "namespace", "registry": "*", "value": "towns_and_towers"},
+    {"type": "namespace", "registry": "*", "value": "nova_structures"},
+    {"type": "namespace", "registry": "*", "value": "cristellib"}
+  ],
+  "conditions": [
+    {"distribution": "Exact Forge 1.20.1 artifacts are required on the managed client and logical server"},
+    {"world_generation": "New structures apply only to newly generated chunks"}
+  ],
+  "precedence": {
+    "layer": "major_update_4_structure_expansion",
+    "priority": 106,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Add Towns and Towers plus the remembered Dungeons and Taverns structure set while retaining Terralith biome coverage and JEM progression ownership",
+    "modifiers": [
+      {
+        "property": "distribution.major_update_4.structure_mods",
+        "operation": "add",
+        "before": {
+          "towns_and_towers": "absent",
+          "dungeons_and_taverns": "absent",
+          "cristel_lib": "absent"
+        },
+        "after": {
+          "towns_and_towers": "1.12 on client and server",
+          "dungeons_and_taverns": "3.0.3.f on client and server",
+          "cristel_lib": "1.1.6 on client and server"
+        }
+      },
+      {
+        "property": "worldgen.structure_catalog",
+        "operation": "add",
+        "before": "Towns and Towers and Dungeons and Taverns structures were unavailable",
+        "after": "Both native structure catalogs, placement sets, templates, loot and supporting functions are available in new chunks"
+      },
+      {
+        "property": "worldgen.terralith_biome_tag_compatibility",
+        "operation": "set",
+        "before": "The two new artifacts can reset eight shared vanilla structure-biome tags and discard prior Terralith additions",
+        "after": "A high-priority JEM Paxi datapack adds the exact Terralith entries back without replacing the new mods' native tag members"
+      },
+      {
+        "property": "loot.minecraft.witch",
+        "operation": "set",
+        "before": "JEM Twelve Eyes owns the final empty witch loot table for campaign gating",
+        "after": "JEM Twelve Eyes remains the final owner. The Dungeons and Taverns emerald addition does not bypass the established gate"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Towns and Towers, Dungeons and Taverns, Cristel Lib and the JEM Paxi compatibility layer",
+    "kind": "user_requested_major_update_structure_expansion",
+    "source_files": [
+      "Client/ManagedPack/mods/Towns-and-Towers-1.12-Fabric+Forge.jar",
+      "Client/ManagedPack/mods/dungeons-and-taverns-3.0.3.f[Forge].jar",
+      "Client/ManagedPack/mods/cristellib-1.1.6-forge.jar",
+      "Server/mods/Towns-and-Towers-1.12-Fabric+Forge.jar",
+      "Server/mods/dungeons-and-taverns-3.0.3.f[Forge].jar",
+      "Server/mods/cristellib-1.1.6-forge.jar",
+      "Client/ManagedPack/config/cristellib/minecraftED.json5",
+      "Client/ManagedPack/config/cristellib/minecraftP.json5",
+      "Client/ManagedPack/config/towns_and_towers/structure_enable_or_disable_new.json5",
+      "Client/ManagedPack/config/towns_and_towers/structure_rarity_new.json5",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/pack.mcmeta",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/desert_pyramid.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/pillager_outpost.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/stronghold.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_desert.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_plains.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_savanna.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_snowy.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_taiga.json",
+      "Docs/major-update-4/structure-expansion-20261110.json",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Expand Major Update 4 exploration with the requested village, outpost, tavern and dungeon structure catalogs without erasing installed terrain-mod compatibility",
+    "decision_source": "The user directly requested Towns and Towers and described another structure mod retained from the old Iron's Spells-era pack. Local profile evidence identifies that mod as Dungeons and Taverns",
+    "implementation_choices": "Reuse exact official-hash artifacts from the retained Forge 1.20.1 profile, keep native spacing and add only the smallest data compatibility layer required by the installed Terralith and JEM Twelve Eyes owners"
+  },
+  "introduced": {
+    "date": "2026-11-10",
+    "commit": "SELF",
+    "action": "add_major_update_4_structure_mods",
+    "summary": "Add Towns and Towers, Dungeons and Taverns and Cristel Lib with JEM structure-tag compatibility"
+  },
+  "history": [
+    {
+      "date": "2026-11-10",
+      "commit": "SELF",
+      "action": "add_major_update_4_structure_mods",
+      "summary": "Selected the exact old-profile artifacts, confirmed official hashes and preserved Terralith and Twelve Eyes ownership"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "runtime_distribution",
+      "worldgen",
+      "structure_loot",
+      "villager_generation",
+      "biome_tags",
+      "campaign_progression"
+    ],
+    "relations": [
+      "Towns and Towers -> Cristel Lib",
+      "Towns and Towers and Dungeons and Taverns -> new-chunk structure generation",
+      "shared vanilla biome tags -> JEM Paxi Terralith restoration",
+      "Dungeons and Taverns witch loot -> existing JEM Twelve Eyes final override"
+    ],
+    "notes": [
+      "All Towns and Towers structures remain enabled at native 1.12 spacing values",
+      "Cristel Lib structure enablement and placement files match the retained old JEM profile and native 1.1.6 defaults",
+      "The retained old profile and official Modrinth releases have identical SHA-512 values",
+      "No existing chunk or structure is regenerated",
+      "MineRENT, main, stable JustEnoughMods and the immutable release baseline remain unchanged"
+    ],
+    "unresolved": [
+      "Minecraft launch, fresh-chunk generation and player acceptance were not performed",
+      "Final structure density across the complete installed worldgen stack requires player acceptance in unexplored chunks"
+    ]
+  }
+}

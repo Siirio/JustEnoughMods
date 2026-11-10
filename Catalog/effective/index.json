@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "e4027ce8cfe08f89ea59ab5d092aeea8286eab416d60f0c24eb8e49ffed67153",
+  "change_records_sha256": "19a28dfa7467b1a83afb5e1c3cf74245d09dd479dca6e94c9c5cdfec02f5f253",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -28,7 +28,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "guide.adventure-atlas-redesign-20261025",
@@ -42,7 +42,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "aircraft-resourcepack-native-autoload-20261020",
@@ -72,7 +72,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "atlas.static-snapshot-provenance",
@@ -87,7 +87,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "backpack.augment-bay-and-workbench",
@@ -222,7 +222,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "smp.claims-flan-removal",
@@ -252,7 +252,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "compat.narrator-and-shared-categories",
@@ -331,7 +331,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "client.barnyard-clydesdale-key-connection-20261029",
@@ -376,7 +376,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "client.gui-armor-and-closed-channel-diagnostics-20261021",
@@ -406,7 +406,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "client.jalloween-resource-ownership-20261030",
@@ -476,7 +476,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "client.jem-races-connection-snapshot-20261031",
@@ -506,7 +506,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "client.quickskin-main-menu-presentation-20261028",
@@ -1652,7 +1652,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2123
+      "potential_static_target_count": 2240
     },
     {
       "change_id": "hosted.canonical-live-boss-loading-and-quarantine-20261021",
@@ -1684,7 +1684,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2123
+      "potential_static_target_count": 2240
     },
     {
       "change_id": "hosted.native-support-public-chat-smp-render-20261021",
@@ -1716,7 +1716,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2123
+      "potential_static_target_count": 2240
     },
     {
       "change_id": "jemcompat.void-walker-toggle",
@@ -1746,7 +1746,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "login.connectivity-terminal-socket",
@@ -1913,6 +1913,31 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "major-update-4-towns-towers-dungeons-taverns-20261110",
+      "status": "active",
+      "summary": "Add Towns and Towers plus the remembered Dungeons and Taverns structure set while retaining Terralith biome coverage and JEM progression ownership",
+      "record": "Catalog/changes/records/major-update-4-towns-towers-dungeons-taverns-20261110.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "towns_and_towers"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "nova_structures"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "cristellib"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 117
     },
     {
       "change_id": "major-update-4-video-community-content-20261109",
@@ -2394,7 +2419,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "quest.native-team-unlock-20261101",
@@ -2408,7 +2433,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "quest.standalone-visual-v4-20261027",
@@ -2422,7 +2447,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "race.daily-reselection-first-login-20261020",
@@ -2692,7 +2717,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "sandbox-ancients-pearl-vfx",
@@ -2812,7 +2837,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "server.bound-test-profile-20261020",
@@ -3813,7 +3838,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "universal-standalone.economy-world-policy-20261021",
@@ -3871,7 +3896,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2227
+      "potential_static_target_count": 2344
     },
     {
       "change_id": "universal-standalone.quest-projection-20261021",
@@ -3886,7 +3911,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "universal-standalone.races-20261021",
@@ -4026,7 +4051,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32239
+      "potential_static_target_count": 32356
     },
     {
       "change_id": "vinery.native-merchant-registered-ids",
@@ -4136,6 +4161,8 @@
     "Client/ManagedPack/config/ambientsounds-client.json": "5c1e3439d6b7001474b8500180073945f2ed5c0906f54aed263c166db26bcc33",
     "Client/ManagedPack/config/blockrunner.json": "ff609c9e941141097a1961413e3ba4f683257585cee4fc345bb82cf4df934515",
     "Client/ManagedPack/config/copperagebackport.json": "da645997e3cb48f82019e2a309cc7152a85eadce4aa88a5fe2b15f459da6941d",
+    "Client/ManagedPack/config/cristellib/minecraftED.json5": "82b10f837c42c517a86850be6975c62036defaf832fb470638f764278227af21",
+    "Client/ManagedPack/config/cristellib/minecraftP.json5": "5ec59bade8eefc94ae74b510810ed22579d85f88a5c22bdd56b2e6b993f26930",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_hover.png": "1502648829c215599a50d5607c4b5958c0a8f4ca02e13ab1327f2307c5bc28ba",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_inactive.png": "a9080d0741f8c70e9e53b012f5eceae94959bdaa47fc242e30bfb78727935550",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_normal.png": "56cb74a6c1279dad26744cdd45db7d78bc11801f137318d5de256bf6a57f2fa1",
@@ -4166,6 +4193,15 @@
     "Client/ManagedPack/config/immersive_storms.json5": "6283bfb40b2aa551b6838b9bf85f9a72dbfca3d14edb5abe854fcd6da2167b7b",
     "Client/ManagedPack/config/jei/ingredient-list-mod-sort-order.ini": "c0f7e20a23441042ceca1d664baeb6c18d97570c2cd7745db3fd689f4da5a359",
     "Client/ManagedPack/config/oculus.properties": "f137bd89ac226e35021096c86fc6c1c65e9146a2b27017aa22703d7c04078706",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/desert_pyramid.json": "342d3242ba073b528b09399014547680c412e112f524d26a04fdc936171f5db5",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/pillager_outpost.json": "367a2083a2018366d31a9a20bd361871c75abc3a99ee28a3d9ed8ae4bcbacda0",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/stronghold.json": "a0598fc85154901eb1c94a412ce6a93436b16ed7056bdd7a8a026b91570e5513",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_desert.json": "0e1bbd34a60aca23d258d282a21617c4ecade7f4f718110de556d02164a7c960",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_plains.json": "e40244c30cc4b731b2f8b32171bff4597514e0b479e7688240cbc9d14b2caa87",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_savanna.json": "6b2ee5337d8cb9b8a9ff9945318958e5450effdbeae040203c4ac7fbe88b9672",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_snowy.json": "1f09e1785eeba4f34d793c8395f7ffca35fa17da2d6ad61bfb8756a4acd4a876",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_taiga.json": "46954202b380940e6a80bf8dad4ae56c46d5efed31e47246230b134d102698cd",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/pack.mcmeta": "482a406b77923ea29fd3031032573a48263a77c2e5e9e918afd3826b83544a14",
     "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_beach.json": "7abf422c41f30956f52e5583505f8e38bccc981fe284548b94165a8eb42171be",
     "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_deep.json": "873bf5c35481ac6bcaf71b7b1d4d24e4666ecff0f34ca1d63b62e84e092c56ad",
     "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_shallow.json": "24b79f7e77e9c4f1a9a2347242bd470f02a21d4671b00ef219a31d32c14d91ca",
@@ -4176,10 +4212,12 @@
     "Client/ManagedPack/config/paxi/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip": "6474ca9582bccb35c96851f5c8f51657fe0d09b139004144c30cad88264d2fea",
     "Client/ManagedPack/config/quickskin-client.json": "3e646bae5faaf41b169277e367783a937c683f18d41b4f54dd8a928700ffecfb",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
+    "Client/ManagedPack/config/towns_and_towers/structure_enable_or_disable_new.json5": "4dee01e4787b603acf915607d8f6c71b3c1770008fc3c452c97e5944e86278be",
+    "Client/ManagedPack/config/towns_and_towers/structure_rarity_new.json5": "427157180a3007ea9f1b432c114211b3536db829a2b119a3f3e06854262e990c",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/config/weatherglass.properties": "5006c1c79c3319181308ff1cc999f68e65afb2ff9980d214a0ca0b29d5c3cee7",
     "Client/ManagedPack/config/windy-client.toml": "e3eef566494077eff01f7a2ce334d03eb4828836a0fa15d5cce4c25654b71acd",
-    "Client/ManagedPack/jem-pack/manifest.json": "82c9825aab56d79ecbca8647954da0a5a43b0f1148ff9b7df109f062dd7862dc",
+    "Client/ManagedPack/jem-pack/manifest.json": "cce2fdb71b89ed17c082b15018da0216f076ba0933b205b74bdbf0d3e026557d",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4353,9 +4391,11 @@
     "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js": "ab1c775eab767a11173b98599cf245610ba63d6a447c0da3a376189ab0b41e35",
     "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js": "fa50f76dd76057a80827898a456562aeae6a8512d211b43eaf3a18078114df9f",
     "Client/ManagedPack/kubejs/server_scripts/jem/twelve_eye_campaign.js": "3df41fc154cb177b06c680d1d6bf55e0646ba14bc325a5eda44593ad4401a8e0",
+    "Client/ManagedPack/mods/Towns-and-Towers-1.12-Fabric+Forge.jar": "9c8115af7109579da990249fdd67b38323a45be70f8a3a962b61da69c7021984",
     "Client/ManagedPack/mods/colorize-1.20-forge-1.6.0.jar": "e0e500a4a27d84957005a37f528eece148e456d7284c893056ae391741a6c5d4",
     "Client/ManagedPack/mods/copperagebackport-forge-1.20.1-0.1.5.jar": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
     "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar": "c790e8671625b05ec0aa19272e0ea74ea95619f953e3c6f39a6736af0d386804",
+    "Client/ManagedPack/mods/cristellib-1.1.6-forge.jar": "3856ad565ea45d6189452d813e2f021b365b686d3b1adae5f747c56a1e535d9f",
     "Client/ManagedPack/mods/immersive_paintings-0.6.13+1.20.1-forge.jar": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
     "Client/ManagedPack/mods/immersivepaintings-exposure-1.0.0.jar": "12828b32b3cba13924be661bdbbcd15aad6926d448210193e6851285f730157f",
     "Client/ManagedPack/mods/jem-advancements-5.3.2.jar": "92cb60aeff44060cb544de568776b335f224a1a3263fa806c04eee4a58602042",
@@ -4382,8 +4422,8 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "d657d5df873ed20efda86eae274f9f982c221a66a7822326e347a785a30195d8",
-    "Docs/MODS.md": "a6f95944d38e974bca008a305f4dfc254c52c58db6d62362c4c8aa8a5642b789",
+    "Docs/DEVELOPMENT.md": "0a8123facce91b673eaa2e90384cdcb7f7676504d155a130a4da4794fca02798",
+    "Docs/MODS.md": "2d945b42e457d0ea3f783fd1cc936dc208397f636cfe5c10275c0c73e85124b1",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -4430,6 +4470,7 @@
     "Docs/localization/README.md": "5517433806850e357590ecdd2443fc3553937f388f5ff23fd3fbd2317341cb3a",
     "Docs/localization/coverage-20261024.json": "71b65fe5e370e567adecc4a0d30191aabce6a3b6e28342ade00b79710f97f6b9",
     "Docs/major-update-4/jei-item-provenance.json": "33334d6805ca8c460c8fc5488401d03ee3c3d1ddd5cf53addd6a12c3d4560d55",
+    "Docs/major-update-4/structure-expansion-20261110.json": "9205807cf5e1b4b6118b6b93bf35ca0faba345e7672e6e8c61eedec0f7682841",
     "Docs/major-update-4/video-master-plan-community-integration.json": "209e41f7f5eaea85fcc70b8db421c1d4da76e56803d8b8c2ff83691571f51606",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "168c85fba7fcd6362c52085f9ba8aae13454548bce1a55c6d7caf15180608f12",
@@ -9492,8 +9533,10 @@
     "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json": "3e305a680de6018ce89ac8ff3bdbcd8049478fa86bdb22b022741b8e4dcbd238",
     "Server/kubejs/server_scripts/jem/economy_recipe_guards.js": "ab1c775eab767a11173b98599cf245610ba63d6a447c0da3a376189ab0b41e35",
     "Server/kubejs/server_scripts/jem/recipe_replacements.js": "fa50f76dd76057a80827898a456562aeae6a8512d211b43eaf3a18078114df9f",
+    "Server/mods/Towns-and-Towers-1.12-Fabric+Forge.jar": "9c8115af7109579da990249fdd67b38323a45be70f8a3a962b61da69c7021984",
     "Server/mods/colorize-1.20-forge-1.6.0.jar": "e0e500a4a27d84957005a37f528eece148e456d7284c893056ae391741a6c5d4",
     "Server/mods/copperagebackport-forge-1.20.1-0.1.5.jar": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
+    "Server/mods/cristellib-1.1.6-forge.jar": "3856ad565ea45d6189452d813e2f021b365b686d3b1adae5f747c56a1e535d9f",
     "Server/mods/immersive_paintings-0.6.13+1.20.1-forge.jar": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
     "Server/mods/jem-advancements-5.3.2.jar": "92cb60aeff44060cb544de568776b335f224a1a3263fa806c04eee4a58602042",
     "Server/mods/jem-server-2.0.0-dev.jar": "922c6a95765555e1b71300b504a5c79691edcda8cfefba88842c46e0a1786d9b",
@@ -9515,7 +9558,7 @@
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
     "tools/module-inventory.json": "21bd8f9024b78659dafc0fa0f1368f1578a06c0c4eff29424d9c7aaec7df0fd9",
-    "tools/state/packSyncHost-sync.json": "8f096fcae3b1d7a5fcfba413b5110cf06463de7cd466dfe40b6151b4226fd366",
+    "tools/state/packSyncHost-sync.json": "cbe97c33466a5f09d347eefe25475ee48972b9bf9b13ae937b63063a6f0242f7",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

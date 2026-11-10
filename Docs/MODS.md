@@ -64,6 +64,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Create: Steam 'n' Rails | `1.7.3+forge-mc1.20.1` | Client |  |
 | CreateBetterFps | `1.1.2` | Client |  |
 | CreativeCore | `2.12.40` | Client + server |  |
+| Cristel Lib | `1.1.6` | Client + server | Towns and Towers dependency |
 | Creeper Overhaul | `3.0.2` | Client + server |  |
 | Critters n' Crawlers | `2.2.5` | Server |  |
 | Critters n' Crawlers | `2.2.5` | Client |  |
@@ -74,6 +75,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Deltabox Lib | `2.2.0` | Client + server |  |
 | Diagonal Fences | `8.1.5` | Client + server |  |
 | Diagonal Walls | `8.0.4` | Client + server |  |
+| Dungeons and Taverns | `3.0.3.f` | Client + server | Major Update 4 structure expansion |
 | Draggable Lists | `1.0.1` | Client |  |
 | DragonLib | `1.20.1-beta-3.0.28` | Client + server |  |
 | Dusty Decorations | `1.13` | Client + server |  |
@@ -290,6 +292,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Tiny Item Animations | `1.20-1.1` | Client |  |
 | TinyInv | `1.1.0.1` | Client | Add to the server only during the later matching release staging |
 | Tom's Simple Storage Mod | `1.7.1` | Client + server |  |
+| Towns and Towers | `1.12` | Client + server | Major Update 4 structure expansion |
 | TPA | `2.0.0` | Client + server |  |
 | Trade Cycling | `1.20.1-1.0.18` | Client + server |  |
 | Trek | `1-B0.6.2` | Server |  |

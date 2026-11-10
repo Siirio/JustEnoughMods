@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "cbaf99948fd0fa2124b262b969f58d132e097ec1",
+  "snapshot_sha": "ea6bf89004c4baa983357b07318a0c27974d0985",
   "tags": {
     "accessories:item/belt": [
       "minecraft:lantern",
@@ -33135,6 +33135,7 @@
       "true_ending:load"
     ],
     "minecraft:functions/tick": [
+      "nova_structures:mobs",
       "true_ending:tick"
     ],
     "minecraft:game_events/allay_can_listen": [
@@ -36712,7 +36713,42 @@
     ],
     "minecraft:worldgen/biome/has_structure/stronghold": [
       "#minecraft:is_overworld",
-      "#terralith:all_terralith_biomes"
+      "#terralith:all_terralith_biomes",
+      "minecraft:badlands",
+      "minecraft:bamboo_jungle",
+      "minecraft:beach",
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:deep_dark",
+      "minecraft:desert",
+      "minecraft:dripstone_caves",
+      "minecraft:eroded_badlands",
+      "minecraft:flower_forest",
+      "minecraft:forest",
+      "minecraft:frozen_peaks",
+      "minecraft:grove",
+      "minecraft:ice_spikes",
+      "minecraft:jagged_peaks",
+      "minecraft:jungle",
+      "minecraft:lush_caves",
+      "minecraft:meadow",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:savanna_plateau",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_slopes",
+      "minecraft:snowy_taiga",
+      "minecraft:sparse_jungle",
+      "minecraft:stony_peaks",
+      "minecraft:sunflower_plains",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:windswept_hills",
+      "minecraft:wooded_badlands"
     ],
     "minecraft:worldgen/biome/has_structure/swamp_hut": [
       "minecraft:swamp"
@@ -37386,6 +37422,9 @@
       "minecraft:tunnelers_dream",
       "minecraft:water_world"
     ],
+    "minecraft:worldgen/structure/ancient_city": [
+      "minecraft:ancient_city"
+    ],
     "minecraft:worldgen/structure/cats_spawn_as_black": [
       "minecraft:swamp_hut"
     ],
@@ -37394,7 +37433,9 @@
     ],
     "minecraft:worldgen/structure/dolphin_located": [
       "#minecraft:ocean_ruin",
-      "#minecraft:shipwreck"
+      "#minecraft:shipwreck",
+      "towns_and_towers:village_ocean",
+      "towns_and_towers:wreckage_ocean"
     ],
     "minecraft:worldgen/structure/eye_of_ender_located": [
       "minecraft:stronghold",
@@ -37407,7 +37448,8 @@
     ],
     "minecraft:worldgen/structure/ocean_ruin": [
       "minecraft:ocean_ruin_cold",
-      "minecraft:ocean_ruin_warm"
+      "minecraft:ocean_ruin_warm",
+      "nova_structures:conduit_ruin"
     ],
     "minecraft:worldgen/structure/on_desert_pyramid_maps": [
       "mtr:desert_temple"
@@ -37432,6 +37474,39 @@
     "minecraft:worldgen/structure/on_woodland_explorer_maps": [
       "minecraft:mansion"
     ],
+    "minecraft:worldgen/structure/pillager_outpost": [
+      "minecraft:pillager_outpost",
+      "towns_and_towers:exclusives/pillager_outpost_classic",
+      "towns_and_towers:exclusives/pillager_outpost_iberian",
+      "towns_and_towers:exclusives/pillager_outpost_mediterranean",
+      "towns_and_towers:exclusives/pillager_outpost_oriental",
+      "towns_and_towers:exclusives/pillager_outpost_rustic",
+      "towns_and_towers:exclusives/pillager_outpost_swedish",
+      "towns_and_towers:exclusives/pillager_outpost_tudor",
+      "towns_and_towers:pillager_outpost_badlands",
+      "towns_and_towers:pillager_outpost_beach",
+      "towns_and_towers:pillager_outpost_birch_forest",
+      "towns_and_towers:pillager_outpost_desert",
+      "towns_and_towers:pillager_outpost_flower_forest",
+      "towns_and_towers:pillager_outpost_forest",
+      "towns_and_towers:pillager_outpost_grove",
+      "towns_and_towers:pillager_outpost_jungle",
+      "towns_and_towers:pillager_outpost_meadow",
+      "towns_and_towers:pillager_outpost_mushroom_fields",
+      "towns_and_towers:pillager_outpost_ocean",
+      "towns_and_towers:pillager_outpost_old_growth_taiga",
+      "towns_and_towers:pillager_outpost_savanna",
+      "towns_and_towers:pillager_outpost_savanna_plateau",
+      "towns_and_towers:pillager_outpost_snowy_beach",
+      "towns_and_towers:pillager_outpost_snowy_plains",
+      "towns_and_towers:pillager_outpost_snowy_slopes",
+      "towns_and_towers:pillager_outpost_snowy_taiga",
+      "towns_and_towers:pillager_outpost_sparse_jungle",
+      "towns_and_towers:pillager_outpost_sunflower_plains",
+      "towns_and_towers:pillager_outpost_swamp",
+      "towns_and_towers:pillager_outpost_taiga",
+      "towns_and_towers:pillager_outpost_wooded_badlands"
+    ],
     "minecraft:worldgen/structure/ruined_portal": [
       "minecraft:ruined_portal",
       "minecraft:ruined_portal_desert",
@@ -37455,6 +37530,32 @@
       "natures_spirit:village_coconut",
       "natures_spirit:village_cypress",
       "natures_spirit:village_wisteria",
+      "towns_and_towers:exclusives/village_classic",
+      "towns_and_towers:exclusives/village_iberian",
+      "towns_and_towers:exclusives/village_mediterranean",
+      "towns_and_towers:exclusives/village_nilotic",
+      "towns_and_towers:exclusives/village_rustic",
+      "towns_and_towers:exclusives/village_swedish",
+      "towns_and_towers:exclusives/village_tudor",
+      "towns_and_towers:exclusives/village_wandering_trader_camp",
+      "towns_and_towers:village_badlands",
+      "towns_and_towers:village_beach",
+      "towns_and_towers:village_birch_forest",
+      "towns_and_towers:village_flower_forest",
+      "towns_and_towers:village_forest",
+      "towns_and_towers:village_grove",
+      "towns_and_towers:village_jungle",
+      "towns_and_towers:village_meadow",
+      "towns_and_towers:village_mushroom_fields",
+      "towns_and_towers:village_ocean",
+      "towns_and_towers:village_old_growth_taiga",
+      "towns_and_towers:village_savanna_plateau",
+      "towns_and_towers:village_snowy_slopes",
+      "towns_and_towers:village_snowy_taiga",
+      "towns_and_towers:village_sparse_jungle",
+      "towns_and_towers:village_sunflower_plains",
+      "towns_and_towers:village_swamp",
+      "towns_and_towers:village_wooded_badlands",
       "trek:village/cherry",
       "trek:village/desert",
       "trek:village/plains",
@@ -39094,6 +39195,235 @@
     ],
     "netherexp:worldgen/structure/sanctum_compass_located": [
       "netherexp:sanctum"
+    ],
+    "nova_structures:worldgen/biome/collections/any_forests": [
+      "#minecraft:is_forest"
+    ],
+    "nova_structures:worldgen/biome/collections/any_taiga": [
+      "#nova_structures:collections/taiga",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:taiga"
+    ],
+    "nova_structures:worldgen/biome/collections/badlands": [
+      "#minecraft:is_badlands"
+    ],
+    "nova_structures:worldgen/biome/collections/beaches": [
+      "#minecraft:is_beach"
+    ],
+    "nova_structures:worldgen/biome/collections/birch_forests": [
+      "minecraft:birch_forest",
+      "minecraft:old_growth_birch_forest"
+    ],
+    "nova_structures:worldgen/biome/collections/caves": [
+      "minecraft:deep_dark",
+      "minecraft:dripstone_caves",
+      "minecraft:lush_caves"
+    ],
+    "nova_structures:worldgen/biome/collections/cherry_forests": [
+      "minecraft:cherry_grove"
+    ],
+    "nova_structures:worldgen/biome/collections/deep_oceans": [
+      "#minecraft:is_deep_ocean"
+    ],
+    "nova_structures:worldgen/biome/collections/deserts": [
+      "minecraft:desert"
+    ],
+    "nova_structures:worldgen/biome/collections/end": [
+      "#minecraft:is_end"
+    ],
+    "nova_structures:worldgen/biome/collections/end_voids": [
+      "minecraft:end_barrens",
+      "minecraft:small_end_islands"
+    ],
+    "nova_structures:worldgen/biome/collections/floral": [
+      "minecraft:flower_forest"
+    ],
+    "nova_structures:worldgen/biome/collections/giant_taigas": [
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga"
+    ],
+    "nova_structures:worldgen/biome/collections/giant_trees": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga"
+    ],
+    "nova_structures:worldgen/biome/collections/hills": [
+      "#minecraft:is_hill"
+    ],
+    "nova_structures:worldgen/biome/collections/icy": [
+      "minecraft:frozen_peaks",
+      "minecraft:ice_spikes"
+    ],
+    "nova_structures:worldgen/biome/collections/illager_camps": [
+      "#minecraft:is_badlands",
+      "#minecraft:is_beach",
+      "#minecraft:is_forest",
+      "#minecraft:is_hill",
+      "#minecraft:is_jungle",
+      "#minecraft:is_river",
+      "#minecraft:is_savanna",
+      "#minecraft:is_taiga",
+      "minecraft:desert",
+      "minecraft:dripstone_caves",
+      "minecraft:ice_spikes",
+      "minecraft:lush_caves",
+      "minecraft:mushroom_fields",
+      "minecraft:plains",
+      "minecraft:snowy_plains",
+      "minecraft:sunflower_plains"
+    ],
+    "nova_structures:worldgen/biome/collections/jungles": [
+      "#minecraft:is_jungle"
+    ],
+    "nova_structures:worldgen/biome/collections/light_jungles": [
+      "#minecraft:is_jungle"
+    ],
+    "nova_structures:worldgen/biome/collections/mangroves": [
+      "minecraft:mangrove_swamp"
+    ],
+    "nova_structures:worldgen/biome/collections/meadows": [
+      "minecraft:meadow"
+    ],
+    "nova_structures:worldgen/biome/collections/mountains": [
+      "#minecraft:is_mountain"
+    ],
+    "nova_structures:worldgen/biome/collections/mushrooms": [
+      "minecraft:mushroom_fields"
+    ],
+    "nova_structures:worldgen/biome/collections/nether": [
+      "#minecraft:is_nether"
+    ],
+    "nova_structures:worldgen/biome/collections/nether_basalts": [
+      "minecraft:basalt_deltas"
+    ],
+    "nova_structures:worldgen/biome/collections/nether_crimson_forests": [
+      "minecraft:crimson_forest"
+    ],
+    "nova_structures:worldgen/biome/collections/nether_souls": [
+      "minecraft:soul_sand_valley"
+    ],
+    "nova_structures:worldgen/biome/collections/nether_warped_forest": [
+      "minecraft:warped_forest"
+    ],
+    "nova_structures:worldgen/biome/collections/oak_structure_biomes": [
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:sunflower_plains"
+    ],
+    "nova_structures:worldgen/biome/collections/oceans": [
+      "#minecraft:is_deep_ocean",
+      "#minecraft:is_ocean"
+    ],
+    "nova_structures:worldgen/biome/collections/overworld": [
+      "#minecraft:is_overworld"
+    ],
+    "nova_structures:worldgen/biome/collections/plains": [
+      "minecraft:plains",
+      "minecraft:sunflower_plains"
+    ],
+    "nova_structures:worldgen/biome/collections/regular_forests": [
+      "minecraft:forest"
+    ],
+    "nova_structures:worldgen/biome/collections/savannas": [
+      "#minecraft:is_savanna"
+    ],
+    "nova_structures:worldgen/biome/collections/snowy_forests": [
+      "minecraft:grove",
+      "minecraft:snowy_taiga"
+    ],
+    "nova_structures:worldgen/biome/collections/snowy_mountains": [
+      "minecraft:snowy_slopes"
+    ],
+    "nova_structures:worldgen/biome/collections/snowy_plains": [
+      "minecraft:snowy_plains"
+    ],
+    "nova_structures:worldgen/biome/collections/snowy_structures": [
+      "minecraft:grove",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_taiga"
+    ],
+    "nova_structures:worldgen/biome/collections/spooky_forests": [
+      "minecraft:dark_forest"
+    ],
+    "nova_structures:worldgen/biome/collections/stony_shores": [
+      "minecraft:stony_shore"
+    ],
+    "nova_structures:worldgen/biome/collections/stronghold_related_ruins_biomes": [
+      "#minecraft:is_forest",
+      "#minecraft:is_taiga",
+      "#nova_structures:collections/taiga",
+      "minecraft:grove",
+      "minecraft:plains",
+      "minecraft:sunflower_plains"
+    ],
+    "nova_structures:worldgen/biome/collections/swamps": [
+      "minecraft:mangrove_swamp",
+      "minecraft:swamp"
+    ],
+    "nova_structures:worldgen/biome/collections/taiga": [
+      "minecraft:taiga"
+    ],
+    "nova_structures:worldgen/biome/illager_hideout": [
+      "#minecraft:is_badlands",
+      "#minecraft:is_beach",
+      "#minecraft:is_forest",
+      "#minecraft:is_hill",
+      "#minecraft:is_jungle",
+      "#minecraft:is_river",
+      "#minecraft:is_savanna",
+      "#minecraft:is_taiga",
+      "minecraft:desert",
+      "minecraft:dripstone_caves",
+      "minecraft:ice_spikes",
+      "minecraft:lush_caves",
+      "minecraft:mushroom_fields",
+      "minecraft:plains",
+      "minecraft:snowy_plains",
+      "minecraft:sunflower_plains"
+    ],
+    "nova_structures:worldgen/structure/badlands_miner_outpost": [
+      "nova_structures:badlands_miner_outpost"
+    ],
+    "nova_structures:worldgen/structure/conduit_ruin": [
+      "nova_structures:conduit_ruin"
+    ],
+    "nova_structures:worldgen/structure/creeping_crypt": [
+      "nova_structures:creeping_crypt"
+    ],
+    "nova_structures:worldgen/structure/desert_ruins": [
+      "nova_structures:desert_ruins"
+    ],
+    "nova_structures:worldgen/structure/firewatch_tower": [
+      "nova_structures:firewatch_tower_birch",
+      "nova_structures:firewatch_tower_dark_oak",
+      "nova_structures:firewatch_tower_forest",
+      "nova_structures:firewatch_tower_jungle",
+      "nova_structures:firewatch_tower_mangrove",
+      "nova_structures:firewatch_tower_savanna",
+      "nova_structures:firewatch_tower_taiga"
+    ],
+    "nova_structures:worldgen/structure/illager_hideout": [
+      "nova_structures:illager_hideout"
+    ],
+    "nova_structures:worldgen/structure/illager_manor": [
+      "nova_structures:illager_manor"
+    ],
+    "nova_structures:worldgen/structure/jungle_ruins": [
+      "nova_structures:jungle_ruins"
+    ],
+    "nova_structures:worldgen/structure/ruin_town": [
+      "nova_structures:ruin_town"
+    ],
+    "nova_structures:worldgen/structure/stray_fort": [
+      "nova_structures:stray_fort"
+    ],
+    "nova_structures:worldgen/structure/undead_crypt": [
+      "nova_structures:undead_crypt"
+    ],
+    "nova_structures:worldgen/structure/witch_villa": [
+      "nova_structures:witch_villa"
     ],
     "nullscape:blocks/amethyst_cut": [
       "dead_bubble_coral_block",
@@ -48461,6 +48791,172 @@
     "toms_storage:items/trims": [
       "toms_storage:ts.painted_trim",
       "toms_storage:ts.trim"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_badlands": [
+      "minecraft:badlands"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_beach": [
+      "minecraft:beach"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_birch_forest": [
+      "minecraft:birch_forest",
+      "minecraft:old_growth_birch_forest"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_deep_oceans": [
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_lukewarm_ocean",
+      "minecraft:deep_ocean"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_desert": [
+      "minecraft:desert"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_flower_forest": [
+      "minecraft:flower_forest"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_forest": [
+      "minecraft:forest"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_grove": [
+      "minecraft:grove"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_jungle": [
+      "minecraft:jungle"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_meadow": [
+      "minecraft:meadow"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_mushroom_fields": [
+      "minecraft:mushroom_fields"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_old_growth_taiga": [
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_savanna": [
+      "minecraft:savanna"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_savanna_plateau": [
+      "minecraft:savanna_plateau"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_snowy_beach": [
+      "minecraft:snowy_beach"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_snowy_plains": [
+      "minecraft:snowy_plains"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_snowy_slopes": [
+      "minecraft:snowy_slopes"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_snowy_taiga": [
+      "minecraft:snowy_taiga"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_sparse_jungle": [
+      "minecraft:sparse_jungle"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_sunflower_plains": [
+      "minecraft:sunflower_plains"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_swamp": [
+      "minecraft:swamp"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_taiga": [
+      "minecraft:taiga"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/pillager_outpost_wooded_badlands": [
+      "minecraft:wooded_badlands"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/shallow_oceans_wreckage": [
+      "minecraft:cold_ocean",
+      "minecraft:lukewarm_ocean",
+      "minecraft:ocean",
+      "minecraft:warm_ocean"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_badlands_pueblo": [
+      "minecraft:badlands"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_beach_lighthouse": [
+      "minecraft:beach"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_birch_forest_romanian": [
+      "minecraft:birch_forest",
+      "minecraft:old_growth_birch_forest"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_deep_oceans_ships": [
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_lukewarm_ocean",
+      "minecraft:deep_ocean"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_flower_forest_japanese": [
+      "minecraft:flower_forest"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_forest_ruins": [
+      "minecraft:forest"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_grove_villager_outpost": [
+      "minecraft:grove"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_jungle_tribal": [
+      "minecraft:jungle"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_meadow_swiss": [
+      "minecraft:meadow"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_mushroom_fields_fantasy": [
+      "minecraft:mushroom_fields"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_old_growth_taiga_polish": [
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_savanna_plateau_ramshackled": [
+      "minecraft:savanna_plateau"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_snowy_slopes_inn": [
+      "minecraft:snowy_slopes"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_snowy_taiga_viking": [
+      "minecraft:snowy_taiga"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_sparse_jungle_polynesian": [
+      "minecraft:sparse_jungle"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_sunflower_plains_farm": [
+      "minecraft:sunflower_plains"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_swamp_boat": [
+      "minecraft:swamp"
+    ],
+    "towns_and_towers:worldgen/biome/has_structure/village_wooded_badlands_tipi": [
+      "minecraft:wooded_badlands"
+    ],
+    "towns_and_towers:worldgen/structure/town": [
+      "towns_and_towers:exclusives/village_classic",
+      "towns_and_towers:exclusives/village_iberian",
+      "towns_and_towers:exclusives/village_mediterranean",
+      "towns_and_towers:exclusives/village_nilotic",
+      "towns_and_towers:exclusives/village_piglin",
+      "towns_and_towers:exclusives/village_rustic",
+      "towns_and_towers:exclusives/village_swedish",
+      "towns_and_towers:exclusives/village_tudor",
+      "towns_and_towers:exclusives/village_wandering_trader_camp",
+      "towns_and_towers:village_badlands",
+      "towns_and_towers:village_beach",
+      "towns_and_towers:village_birch_forest",
+      "towns_and_towers:village_flower_forest",
+      "towns_and_towers:village_forest",
+      "towns_and_towers:village_grove",
+      "towns_and_towers:village_jungle",
+      "towns_and_towers:village_meadow",
+      "towns_and_towers:village_mushroom_fields",
+      "towns_and_towers:village_ocean",
+      "towns_and_towers:village_old_growth_taiga",
+      "towns_and_towers:village_savanna_plateau",
+      "towns_and_towers:village_snowy_slopes",
+      "towns_and_towers:village_snowy_taiga",
+      "towns_and_towers:village_sparse_jungle",
+      "towns_and_towers:village_sunflower_plains",
+      "towns_and_towers:village_swamp",
+      "towns_and_towers:village_wooded_badlands"
     ],
     "treechop:blocks/chopped_logs": [
       "treechop:chopped_log"

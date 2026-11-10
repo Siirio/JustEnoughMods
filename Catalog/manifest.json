@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "cbaf99948fd0fa2124b262b969f58d132e097ec1",
-  "generated_utc": "2026-11-09T16:27:06.107369+00:00",
+  "snapshot_sha": "ea6bf89004c4baa983357b07318a0c27974d0985",
+  "generated_utc": "2026-11-10T04:28:42.062317+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -3419,6 +3419,88 @@
       ]
     },
     {
+      "filename": "cristellib-1.1.6-forge.jar",
+      "sha256": "3856ad565ea45d6189452d813e2f021b365b686d3b1adae5f747c56a1e535d9f",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "cristellib",
+          "name": "Cristel Lib",
+          "version": "1.1.6",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "cristellib"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\cristellib-1.1.6-forge.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/jankson-1.2.3.jar",
+          "sha256": "7a71dd9c4ac20cea37ce19c35c4aeda15385a40f31836b0058ff18f9e9554aad",
+          "identifier": {
+            "group": "blue.endless",
+            "artifact": "jankson"
+          },
+          "version": {
+            "range": "[1.2.3,)",
+            "artifactVersion": "1.2.3"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
+    },
+    {
+      "filename": "cristellib-1.1.6-forge.jar",
+      "sha256": "3856ad565ea45d6189452d813e2f021b365b686d3b1adae5f747c56a1e535d9f",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "cristellib",
+          "name": "Cristel Lib",
+          "version": "1.1.6",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "cristellib"
+      ],
+      "source_path": "Server\\mods\\cristellib-1.1.6-forge.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/jankson-1.2.3.jar",
+          "sha256": "7a71dd9c4ac20cea37ce19c35c4aeda15385a40f31836b0058ff18f9e9554aad",
+          "identifier": {
+            "group": "blue.endless",
+            "artifact": "jankson"
+          },
+          "version": {
+            "range": "[1.2.3,)",
+            "artifactVersion": "1.2.3"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
+    },
+    {
       "filename": "Critters n' Crawlers-2.2.5-mc1.20.1.jar",
       "sha256": "ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca",
       "sides": [
@@ -4351,6 +4433,52 @@
           ]
         }
       ]
+    },
+    {
+      "filename": "dungeons-and-taverns-3.0.3.f[Forge].jar",
+      "sha256": "251b531ff2882c61a4c2eba3bd7b1683aa22b6c2d459e27bfde04a2948c99e1e",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mr_dungeons_andtaverns",
+          "name": "Dungeons and Taverns",
+          "version": "3.0.3.f",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "lang",
+        "minecraft",
+        "nova_structures"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\dungeons-and-taverns-3.0.3.f[Forge].jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "dungeons-and-taverns-3.0.3.f[Forge].jar",
+      "sha256": "251b531ff2882c61a4c2eba3bd7b1683aa22b6c2d459e27bfde04a2948c99e1e",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mr_dungeons_andtaverns",
+          "name": "Dungeons and Taverns",
+          "version": "3.0.3.f",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "lang",
+        "minecraft",
+        "nova_structures"
+      ],
+      "source_path": "Server\\mods\\dungeons-and-taverns-3.0.3.f[Forge].jar",
+      "nested_dependencies": []
     },
     {
       "filename": "DustyDecorations_1.20.1Forge_V1.13.jar",
@@ -19084,6 +19212,56 @@
         "toms_storage"
       ],
       "source_path": "Server\\mods\\toms_storage-1.20-1.7.1.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "Towns-and-Towers-1.12-Fabric+Forge.jar",
+      "sha256": "9c8115af7109579da990249fdd67b38323a45be70f8a3a962b61da69c7021984",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "t_and_t",
+          "name": "Towns and Towers",
+          "version": "${file.jarVersion}",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "cristellib",
+        "kaisyn",
+        "minecraft",
+        "t_and_t",
+        "towns_and_towers"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\Towns-and-Towers-1.12-Fabric+Forge.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "Towns-and-Towers-1.12-Fabric+Forge.jar",
+      "sha256": "9c8115af7109579da990249fdd67b38323a45be70f8a3a962b61da69c7021984",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "t_and_t",
+          "name": "Towns and Towers",
+          "version": "${file.jarVersion}",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "cristellib",
+        "kaisyn",
+        "minecraft",
+        "t_and_t",
+        "towns_and_towers"
+      ],
+      "source_path": "Server\\mods\\Towns-and-Towers-1.12-Fabric+Forge.jar",
       "nested_dependencies": []
     },
     {

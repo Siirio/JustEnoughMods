@@ -1,3 +1,20 @@
+## 2026-11-10 - Add the remembered structure expansion to Major Update 4
+
+- User requested Towns and Towers and asked for the other structure mod retained from the old Iron's Spells-era pack
+- Local profile evidence identifies the remembered mod as Dungeons and Taverns. The retained `Medieval RPG [JEM]` profile loaded Dungeons and Taverns 3.0.3.f and Towns and Towers 1.12 together
+- Added exact official-hash Forge 1.20.1 artifacts for Towns and Towers 1.12, Dungeons and Taverns 3.0.3.f and required Cristel Lib 1.1.6 to the canonical managed client and ordinary local server
+- Preserved all Towns and Towers structures and native spacing. Both structure catalogs affect only newly generated chunks
+- Preserved Cristel Lib's native Minecraft structure enablement and placement values. Its generated defaults match the retained old JEM profile line for line
+- Static collision review found that the new artifacts use `replace=true` on eight vanilla structure-biome tags also extended by Terralith. Added a narrow Paxi datapack that restores only the exact Terralith members without replacing the new native entries
+- Preserved the established JEM Twelve Eyes final ownership of witch loot. Dungeons and Taverns does not restore bypass loot, while its native tick function safely merges with True Ending through `replace=false`
+- The rebuilt Atlas validates 17,074 items, 12,100 blocks, 1,567 entities, 673 structures and all 198 active change records with no uncovered task change
+- The ordinary local server loaded all three artifacts. Native AutoModpack generation 144 published the reviewed `+14 ~1 -0` structure transition, then generation 145 published the two deterministic Cristel Lib defaults with final content token `b8cf870a25ccf894d939c2ef5d60c05fdf722cfa` and reviewed delta `+2 ~1 -0`
+- Bug / Client Tooling / Windows Explorer held two directory handles on the inactive `test jem` projection, so AutoModpack preserved the approved transaction but deferred its atomic directory swap / in testing after identifying the exact owner, restarting only Explorer and completing native transaction recovery
+- Five Whys: native commit deferred because the active projection could not be renamed, the rename was blocked by two open `active/mods` directory handles, both handles belonged to Windows Explorer rather than Minecraft or the updater, Windows denied targeted handle closure, and the desktop shell retained a browsed mod-directory handle outside AutoModpack's lifecycle ownership
+- Applied generation 145 to the closed `test jem` profile through the native planner and ownership ledger. Its active token, both structure configs and all three JAR hashes match the canonical publication, and no native update transaction remains pending
+- Exact embedded metadata, dependencies, structure resources and client/server hashes were reviewed. Client launch, fresh-chunk generation and player acceptance remain pending
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
 ## 2026-11-09 - Explain non-crafted items through native JEI
 
 - User required every unclear non-crafted item to explain where it is found, how it is obtained and why or how it is used, with access through ordinary JEI focus and the `U` uses key
