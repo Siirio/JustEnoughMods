@@ -14,12 +14,14 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Advancement Frames | `1.20-2.2.8` | Client + server | FTB Quest frame integration |
 | Alex's Caves | `2.0.2` | Client + server |  |
 | Alex's Mobs | `1.22.9` | Client + server |  |
+| Abridged | `2.0.0` | Client + server | Major Update 4 structure expansion |
 | Almanac | `1.0.2` | Client + server |  |
 | Animal Feeding Trough | `1.1.0+1.20.1-forge` | Client + server |  |
 | AppleSkin | `2.5.1+mc1.20.1` | Client |  |
 | Aquamirae | `7.1.13` | Client + server |  |
 | Architectury | `9.2.14` | Client + server |  |
 | AutoModpack | `5.0.0-rc.1` | Client + server | Tweaked |
+| ATi Structures - Vanilla Edition | `1.4.5` | Client + server | Major Update 4 file V1.4.7 |
 | Sophisticated Backpacks | `3.26.14.2226` | Client + server | Native backpack replacement |
 | Sophisticated Storage | `1.5.9.2197` | Client + server | Native storage |
 | Sophisticated Core | `1.5.15.2427` | Client + server | Shared dependency |
@@ -29,7 +31,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Balm | `7.3.42` | Client + server |  |
 | Barnyard Buddies | `0.6..4` | Client + server |  |
 | Better Advancements | `0.6.0.73` | Client |  |
-| Better village | `3.3.1` | Client + server |  |
 | BetterF3 | `7.0.2` | Client |  |
 | Blast From The Past | `1.0.3` | Client + server |  |
 | Blueprint | `7.1.5` | Client + server |  |
@@ -65,6 +66,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | CreateBetterFps | `1.1.2` | Client |  |
 | CreativeCore | `2.12.40` | Client + server |  |
 | Cristel Lib | `1.1.6` | Client + server | Towns and Towers dependency |
+| Cult of Azazel | `1.1.4.12` | Client + server | Major Update 4 |
 | Creeper Overhaul | `3.0.2` | Client + server |  |
 | Critters n' Crawlers | `2.2.5` | Server |  |
 | Critters n' Crawlers | `2.2.5` | Client |  |
@@ -82,7 +84,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Easy Anvils | `8.0.2` | Client + server |  |
 | Easy Magic | `8.0.1` | Client + server |  |
 | Elysium | `1.1.3` | Client + server |  |
-| Ember's Ancient Remnants | `1.0.2.2` | Client + server |  |
+| Ember's Ancient Remnants | `1.0.2.2` | Client + server | Major Update 4, already installed before this expansion |
 | Embeddium | `0.3.31+mc1.20.1` | Client |  |
 | End Remastered | `5.3.3-R-1.20.1` | Client + server |  |
 | Enderman Overhaul | `1.0.4` | Client + server |  |
@@ -132,6 +134,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Guard Villagers | `1.20.1-1.6.19` | Client + server |  |
 | Handcrafted | `3.0.6` | Client + server |  |
 | HT's TreeChop | `0.19.0` | Client + server |  |
+| Lio's Hobbit Hill Village | `0.0.5` | Client + server | Major Update 4 structure expansion |
 | Icy's Better Horses | `2.1.8` | Client + server | Native horse ownership, recruit mounting and MobHome support |
 | ImmediatelyFast | `1.5.5+1.20.4` | Client |  |
 | Immersive Aircraft | `1.5.0+1.20.1` | Client + server |  |
@@ -187,6 +190,8 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Lithostitched | `1.4.11` | Client + server |  |
 | Lodestone | `1.20.1-1.6.4.1` | Client + server |  |
 | Loot Journal | `6.2.1` | Client + server |  |
+| Luki's Grand Capitals | `1.1.3` | Client + server | Major Update 4 vanilla village owner |
+| Luki's Woodland Mansions | `1-v.1.0` | Client + server | Major Update 4 mansion split from Grand Capitals |
 | Luminous Beasts | `1.2.7` | Server |  |
 | Luminous Beasts | `1.2.7` | Client |  |
 | Luminous Nether | `1.3.3` | Server |  |
@@ -204,6 +209,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | ModernFix | `5.27.77+mc1.20.1` | Server |  |
 | ModernFix | `5.27.77+mc1.20.1` | Client |  |
 | Moog's Structure Lib | `3.1.2` | Client + server |  |
+| Moog's Soaring Structures | `2.2.0` | Client + server | Major Update 4 structure expansion |
 | MoogsMineshaftsReimagined | `1.0.2` | Client + server |  |
 | MoogsNetherStructures | `3.0.0` | Client + server |  |
 | MoogsOceanStructures | `1.1.0` | Client + server |  |
@@ -223,6 +229,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Nullscape | `1.2.8` | Client + server |  |
 | Obscure Tooltips | `3.10.0` | Client |  |
 | Oceanic Realms | `1.0.7` | Client + server |  |
+| Oh The Trees You'll Grow | `1.7.4` | Client + server | Major Update 4 tree-template library |
 | Oculus | `1.8.0` | Client |  |
 | P1nero's Epic Cataclysm | `20.14.0.9` | Client + server |  |
 | PacketFixer | `3.3.2` | Client + server |  |
@@ -281,9 +288,14 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Sounds | `2.2.1+1.20.1+forge` | Client |  |
 | Spawn | `4.0.7-1.20.1` | Client + server |  |
 | Spider Overhaul | `0.0.6-Forge-v1.20` | Client + server |  |
+| Lio's Spiral Tower Villages | `0.0.4` | Client + server | Major Update 4 structure expansion |
 | Spyglass Improvements | `1.5.12b` | Client |  |
 | Status Effect Bars | `1.0.3` | Client + server |  |
 | StreamsReflowing | `2.13.1` | Client + server |  |
+| Structure Layout Optimizer | `1.0.11` | Client + server | Major Update 4 structure-layout performance owner |
+| StructureOverlapless | `1.20.1-1.2.0` | Client + server | Major Update 4 overlap owner |
+| StructBlend | `1.0.3` | Client + server | Major Update 4 structure-terrain blending owner |
+| RoadWeaver | `2.1.1-1.20.1` | Client + server | Major Update 4 settlement-road generation owner |
 | Tectonic | `3.0.17` | Client + server |  |
 | TerraBlender | `3.0.1.10` | Client + server |  |
 | Terralith | `2.5.4` | Client + server |  |

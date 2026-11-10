@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "ea6bf89004c4baa983357b07318a0c27974d0985",
-  "generated_utc": "2026-11-10T04:28:42.062317+00:00",
+  "snapshot_sha": "1a8795e8c83d06f8fa970bc5117f5f2b8ddea869",
+  "generated_utc": "2026-11-10T07:05:22.683172+00:00",
   "claim": "100% of statically observed canonical IDs; runtime boundary unresolved",
   "id_coverage": {
     "items": {
       "expected_id_count": null,
-      "enumerated_id_count": 17074,
+      "enumerated_id_count": 17216,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -95,6 +95,7 @@
         "natures_spirit": 717,
         "naturescompass": 32,
         "netherexp": 397,
+        "netherman": 142,
         "oceanicrealms": 43,
         "p1nero_ec": 1,
         "paraglider": 14,
@@ -135,7 +136,7 @@
     },
     "blocks": {
       "expected_id_count": null,
-      "enumerated_id_count": 12100,
+      "enumerated_id_count": 12171,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -206,6 +207,7 @@
         "mobhome": 2,
         "natures_spirit": 800,
         "netherexp": 292,
+        "netherman": 71,
         "oceanicrealms": 13,
         "paraglider": 5,
         "primal": 57,
@@ -240,7 +242,7 @@
     },
     "entities": {
       "expected_id_count": null,
-      "enumerated_id_count": 1567,
+      "enumerated_id_count": 1593,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -288,6 +290,7 @@
         "moretotems": 2,
         "natures_spirit": 34,
         "netherexp": 16,
+        "netherman": 26,
         "oceanicrealms": 19,
         "primal": 22,
         "railways": 3,
@@ -322,7 +325,7 @@
     },
     "effects": {
       "expected_id_count": null,
-      "enumerated_id_count": 405,
+      "enumerated_id_count": 413,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -355,6 +358,7 @@
         "minecraft": 34,
         "moretotems": 3,
         "netherexp": 24,
+        "netherman": 8,
         "primal": 2,
         "rottencreatures": 4,
         "skarrier_mobs": 51,
@@ -421,12 +425,13 @@
     },
     "structures": {
       "expected_id_count": null,
-      "enumerated_id_count": 673,
+      "enumerated_id_count": 795,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
+        "abridged": 1,
         "alexscaves": 14,
         "ancient_remnants": 14,
         "aquamirae": 6,
@@ -440,25 +445,31 @@
         "brewery": 1,
         "cataclysm": 14,
         "companions": 5,
+        "hobbit_hill_village": 1,
         "legendary_monsters": 13,
         "minecraft": 38,
         "mmr": 6,
         "mns": 48,
         "mos": 26,
+        "mr_ati_structuresvanillaedition": 55,
         "mr_dungeons_andtaverns": 58,
         "mr_trek": 133,
+        "mss": 35,
         "mtr": 6,
         "mvs": 129,
         "natures_spirit": 4,
         "netherexp": 5,
+        "netherman": 11,
         "nullscape": 1,
         "ocean_lily_pad_village": 16,
         "paraglider": 3,
         "ribbits": 1,
+        "roadweaver": 17,
         "skarrier_mobs": 5,
         "snowyspirit": 1,
         "spawn": 8,
         "spider_overhaul": 1,
+        "spiral_tower_village": 2,
         "structory": 15,
         "t_and_t": 59,
         "terralith": 28,
@@ -525,20 +536,20 @@
     }
   },
   "classification_coverage": {
-    "armor": 226,
+    "armor": 230,
     "foods": 4,
-    "mobs": 1567,
-    "placeables": 9578,
+    "mobs": 1593,
+    "placeables": 9641,
     "tools": 99,
-    "trade_policies": 17074,
-    "weapons": 391
+    "trade_policies": 17216,
+    "weapons": 392
   },
   "semantic_field_coverage": {
     "runtime_verified": 0,
-    "static_inferred": 32356,
+    "static_inferred": 32725,
     "note": "Null is intentional where static sources do not prove semantics."
   },
   "unresolved_counts": {
-    "entries": 65
+    "entries": 66
   }
 }

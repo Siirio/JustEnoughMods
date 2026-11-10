@@ -1,7 +1,36 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "ea6bf89004c4baa983357b07318a0c27974d0985",
+  "snapshot_sha": "1a8795e8c83d06f8fa970bc5117f5f2b8ddea869",
   "tags": {
+    "abridged:instrument/bridge_goat_horns": [
+      "minecraft:dream_goat_horn",
+      "minecraft:feel_goat_horn"
+    ],
+    "abridged:worldgen/biome/has_bridge/badlands_mining": [
+      "#minecraft:is_badlands"
+    ],
+    "abridged:worldgen/biome/has_bridge/birch": [
+      "minecraft:birch_forest",
+      "minecraft:old_growth_birch_forest"
+    ],
+    "abridged:worldgen/biome/has_bridge/jungle": [
+      "#minecraft:is_jungle"
+    ],
+    "abridged:worldgen/biome/has_bridge/oak": [
+      "minecraft:forest"
+    ],
+    "abridged:worldgen/biome/has_bridge/sandstone": [
+      "minecraft:desert"
+    ],
+    "abridged:worldgen/biome/has_bridge/spruce": [
+      "#minecraft:is_taiga"
+    ],
+    "abridged:worldgen/biome/has_bridge/stone": [
+      "#minecraft:is_overworld"
+    ],
+    "abridged:worldgen/biome/has_bridges": [
+      "#minecraft:is_river"
+    ],
     "accessories:item/belt": [
       "minecraft:lantern",
       "minecraft:soul_lantern",
@@ -2004,6 +2033,529 @@
     "aquamirae:worldgen/biome/ice_maze": [
       "aquamirae:ice_maze",
       "minecraft:deep_frozen_ocean"
+    ],
+    "ati_structures:worldgen/biome/ancient_temple": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/ancient_vessel": [
+      "minecraft:cold_ocean",
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_lukewarm_ocean",
+      "minecraft:deep_ocean",
+      "minecraft:lukewarm_ocean",
+      "minecraft:ocean",
+      "minecraft:warm_ocean"
+    ],
+    "ati_structures:worldgen/biome/arachnid_dwelling": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:jungle",
+      "minecraft:mangrove_swamp",
+      "minecraft:sparse_jungle",
+      "minecraft:swamp",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga"
+    ],
+    "ati_structures:worldgen/biome/ati_stoneworks": [
+      "birch_forest",
+      "dark_forest",
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/castillo": [
+      "birch_forest",
+      "dark_forest",
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/catalonian_castle": [
+      "birch_forest",
+      "dark_forest",
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/dark_keep": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/dark_tower": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/deepslate_keep": [
+      "birch_forest",
+      "minecraft:bamboo_jungle",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sparse_jungle",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/desert_outpost": [
+      "minecraft:desert"
+    ],
+    "ati_structures:worldgen/biome/dojo": [
+      "birch_forest",
+      "minecraft:bamboo_jungle",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sparse_jungle",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/fortified_temple": [
+      "birch_forest",
+      "minecraft:bamboo_jungle",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sparse_jungle",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/gnome_hut": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:jungle",
+      "minecraft:mushroom_fields",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/granite_fort": [
+      "birch_forest",
+      "dark_forest",
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga"
+    ],
+    "ati_structures:worldgen/biome/haunted_ruin": [
+      "birch_forest",
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga"
+    ],
+    "ati_structures:worldgen/biome/herobrine_stronghold": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:sparse_jungle",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga"
+    ],
+    "ati_structures:worldgen/biome/ice_tribe": [
+      "minecraft:deep_frozen_ocean",
+      "minecraft:frozen_ocean"
+    ],
+    "ati_structures:worldgen/biome/illager_homestead": [
+      "#has_structure/village_plains",
+      "#has_structure/village_savanna",
+      "#has_structure/village_snowy",
+      "#has_structure/village_taiga",
+      "#is_forest",
+      "#is_jungle"
+    ],
+    "ati_structures:worldgen/biome/illager_tower": [
+      "#has_structure/village_plains",
+      "#has_structure/village_savanna",
+      "#has_structure/village_snowy",
+      "#has_structure/village_taiga",
+      "#is_forest",
+      "#is_jungle"
+    ],
+    "ati_structures:worldgen/biome/jungle_grotto": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:mangrove_swamp",
+      "minecraft:sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/jungle_settlement": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/lighthouse": [
+      "minecraft:beach"
+    ],
+    "ati_structures:worldgen/biome/manor": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:sparse_jungle",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga"
+    ],
+    "ati_structures:worldgen/biome/marble_chateau": [
+      "birch_forest",
+      "forest",
+      "minecraft:bamboo_jungle",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sparse_jungle",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/monastery_tower": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/mosque": [
+      "minecraft:desert"
+    ],
+    "ati_structures:worldgen/biome/mud_tower": [
+      "birch_forest",
+      "dark_forest",
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/nomadic_camp": [
+      "#has_structure/village_plains",
+      "#has_structure/village_savanna",
+      "#has_structure/village_snowy",
+      "#has_structure/village_taiga",
+      "#is_forest",
+      "#is_jungle"
+    ],
+    "ati_structures:worldgen/biome/old_fort": [
+      "minecraft:frozen_peaks",
+      "minecraft:frozen_river",
+      "minecraft:grove",
+      "minecraft:ice_spikes",
+      "minecraft:jagged_peaks",
+      "minecraft:snowy_beach",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_slopes",
+      "minecraft:snowy_taiga"
+    ],
+    "ati_structures:worldgen/biome/old_home": [
+      "birch_forest",
+      "dark_forest",
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains",
+      "old_growth_birch_forest",
+      "old_growth_pine_taiga",
+      "old_growth_spruce_taiga",
+      "sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/old_residence": [
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga"
+    ],
+    "ati_structures:worldgen/biome/overgrown_outpost": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/pufferfish_cave": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/quarry": [
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:sunflower_plains"
+    ],
+    "ati_structures:worldgen/biome/rotten_log": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:plains",
+      "minecraft:sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/rotting_temple": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:mangrove_swamp",
+      "minecraft:sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/rotting_temple_underground": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:sparse_jungle"
+    ],
+    "ati_structures:worldgen/biome/ruined_castle": [
+      "minecraft:forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:sunflower_plains",
+      "minecraft:taiga"
+    ],
+    "ati_structures:worldgen/biome/sculk_deposit": [
+      "minecraft:deep_dark",
+      "minecraft:frozen_peaks",
+      "minecraft:jagged_peaks",
+      "minecraft:snowy_slopes"
+    ],
+    "ati_structures:worldgen/biome/silverfish_nest": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/sinking_temple": [
+      "minecraft:cold_ocean",
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_frozen_ocean",
+      "minecraft:deep_lukewarm_ocean",
+      "minecraft:deep_ocean",
+      "minecraft:lukewarm_ocean",
+      "minecraft:ocean",
+      "minecraft:warm_ocean"
+    ],
+    "ati_structures:worldgen/biome/small_keep": [
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sparse_jungle",
+      "minecraft:sunflower_plains"
+    ],
+    "ati_structures:worldgen/biome/spider_nest": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/steam_house": [
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sparse_jungle",
+      "minecraft:sunflower_plains"
+    ],
+    "ati_structures:worldgen/biome/storage_house": [
+      "#has_structure/village_plains",
+      "#has_structure/village_savanna",
+      "#has_structure/village_snowy",
+      "#has_structure/village_taiga",
+      "#is_forest",
+      "#is_jungle"
+    ],
+    "ati_structures:worldgen/biome/storage_shack": [
+      "#has_structure/village_plains",
+      "#has_structure/village_savanna",
+      "#has_structure/village_snowy",
+      "#has_structure/village_taiga",
+      "#is_forest",
+      "#is_jungle"
+    ],
+    "ati_structures:worldgen/biome/stray_ruins": [
+      "minecraft:frozen_peaks",
+      "minecraft:frozen_river",
+      "minecraft:grove",
+      "minecraft:ice_spikes",
+      "minecraft:jagged_peaks",
+      "minecraft:snowy_beach",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_slopes",
+      "minecraft:snowy_taiga"
+    ],
+    "ati_structures:worldgen/biome/tavern": [
+      "minecraft:badlands",
+      "minecraft:forest",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:plains",
+      "minecraft:savanna",
+      "minecraft:sunflower_plains"
+    ],
+    "ati_structures:worldgen/biome/underground_monument": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/underwater_dungeon": [
+      "minecraft:badlands",
+      "minecraft:beach",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/villager_inn": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:mangrove_swamp",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:sparse_jungle",
+      "minecraft:swamp"
+    ],
+    "ati_structures:worldgen/biome/warden_monument": [
+      "minecraft:deep_dark",
+      "minecraft:frozen_peaks",
+      "minecraft:jagged_peaks",
+      "minecraft:snowy_slopes"
+    ],
+    "ati_structures:worldgen/biome/wither_cavern": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/wither_keep": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_hills"
+    ],
+    "ati_structures:worldgen/biome/woodland_keep": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:jungle",
+      "minecraft:mangrove_swamp",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:sparse_jungle",
+      "minecraft:swamp"
     ],
     "bakery:blocks/allows_cooking": [
       "#c:allows_cooking",
@@ -5976,9 +6528,16 @@
       "#natures_spirit:is_flowering"
     ],
     "c:worldgen/biome/is_forest": [
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:forest",
       "natures_spirit:aspen_forest",
       "natures_spirit:coniferous_covert",
       "natures_spirit:maple_woodlands"
+    ],
+    "c:worldgen/biome/is_hill": [
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:windswept_hills"
     ],
     "c:worldgen/biome/is_hot/overworld": [
       "#natures_spirit:is_hot"
@@ -10033,6 +10592,9 @@
       "minecraft:spyglass",
       "toms_storage:ts.adv_wireless_terminal"
     ],
+    "curios:items/charm": [
+      "netherman:chance_totem"
+    ],
     "curios:items/feet": [
       "beachparty:crocs",
       "cataclysm:sturdy_boots"
@@ -10041,7 +10603,8 @@
       "beachparty:swim_wings",
       "cataclysm:blazing_grips",
       "cataclysm:chitin_claw",
-      "cataclysm:sticky_gloves"
+      "cataclysm:sticky_gloves",
+      "netherman:chance_totem"
     ],
     "curios:items/head": [
       "beachparty:beach_hat",
@@ -10061,6 +10624,9 @@
       "cataclysm:berserker_soul_amulet",
       "cataclysm:vitality_ankh",
       "kaleidoscope_nether:ghast_pendant"
+    ],
+    "curios:items/ring": [
+      "netherman:chance_totem"
     ],
     "curios:items/rings": [
       "cataclysm:ring_of_grudged"
@@ -13559,6 +14125,10 @@
       "terralith:yellowstone"
     ],
     "forge:worldgen/biome/is_coniferous": [
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
       "terralith:alpine_grove",
       "terralith:alpine_highlands",
       "terralith:bryce_canyon",
@@ -13576,6 +14146,11 @@
     ],
     "forge:worldgen/biome/is_dark_forest": [
       "minecraft:pale_garden"
+    ],
+    "forge:worldgen/biome/is_dense": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:jungle"
     ],
     "forge:worldgen/biome/is_dense/overworld": [
       "terralith:jungle_mountains",
@@ -20046,6 +20621,19 @@
     "legendary_monsters:worldgen/structure/space_station_eye_located": [
       "legendary_monsters:space_station"
     ],
+    "lios_outlandish_villages:worldgen/biome/has_structure/hobbit_village": [
+      "#c:is_forest",
+      "#forge:is_coniferous",
+      "#forge:is_dense"
+    ],
+    "lios_outlandish_villages:worldgen/biome/has_structure/spiral_tower_village": [
+      "#minecraft:is_badlands",
+      "#minecraft:is_forest",
+      "#minecraft:is_jungle"
+    ],
+    "lios_outlandish_villages:worldgen/biome/has_structure/spiral_tower_village_sea": [
+      "#minecraft:is_ocean"
+    ],
     "lithostitched:worldgen/processor_list/shipwreck_palettes": [
       "lithostitched:shipwreck_palette/dark_oak_and_jungle",
       "lithostitched:shipwreck_palette/dark_oak_and_spruce",
@@ -23995,6 +24583,8 @@
       "netherexp:stripped_claret_hyphae",
       "netherexp:stripped_claret_stem",
       "netherexp:stripped_smokestalk_block",
+      "netherman:eye_block",
+      "netherman:ghastly_nest",
       "primal:kiwano_bulk",
       "primal:litchi_tree",
       "primal:starfruit_tree",
@@ -26960,6 +27550,55 @@
       "netherexp:yellow_nether_brick_stairs",
       "netherexp:yellow_nether_brick_wall",
       "netherexp:yellow_nether_bricks",
+      "netherman:a_puzzle",
+      "netherman:altar",
+      "netherman:azazel_trophy",
+      "netherman:blackstone_column",
+      "netherman:chiseled_samsonit",
+      "netherman:cobbled_samsonit",
+      "netherman:cobbled_samsonit_slab",
+      "netherman:cobbled_samsonit_stairs",
+      "netherman:cobbled_samsonit_wall",
+      "netherman:e_puzzle",
+      "netherman:eye_block",
+      "netherman:face_puzzle_left_down",
+      "netherman:face_puzzle_left_up",
+      "netherman:face_puzzle_right_down",
+      "netherman:face_puzzle_right_up",
+      "netherman:grand_door",
+      "netherman:l_puzzle",
+      "netherman:labyrinth_bellspawn",
+      "netherman:locker_nether",
+      "netherman:maze_door",
+      "netherman:nether_spawner",
+      "netherman:pointed_blackstone",
+      "netherman:polished_samsonit",
+      "netherman:polished_samsonit_slab",
+      "netherman:polished_samsonit_stairs",
+      "netherman:polished_samsonit_wall",
+      "netherman:potent_magma",
+      "netherman:samsonit",
+      "netherman:samsonit_bell",
+      "netherman:samsonit_bricks",
+      "netherman:samsonit_bricks_slab",
+      "netherman:samsonit_bricks_stairs",
+      "netherman:samsonit_bricks_wall",
+      "netherman:samsonit_eye",
+      "netherman:samsonit_key",
+      "netherman:samsonit_tiles",
+      "netherman:statue_stand",
+      "netherman:totemus",
+      "netherman:totemus_hole",
+      "netherman:void_cave_corner",
+      "netherman:void_cave_mid",
+      "netherman:void_cave_midcorner",
+      "netherman:void_corner",
+      "netherman:void_mid",
+      "netherman:void_midcorner",
+      "netherman:voidnether_corner",
+      "netherman:voidnether_mid",
+      "netherman:voidnether_midcorner",
+      "netherman:z_puzzle",
       "oceanicrealms:hard_sedimentary_sandstone",
       "oceanicrealms:reef_rock",
       "oceanicrealms:sedimentary_sandstone",
@@ -29134,6 +29773,40 @@
       "netherexp:soul_slate_wall",
       "netherexp:souled_geyser",
       "netherexp:wither_bone_block",
+      "netherman:a_puzzle",
+      "netherman:altar",
+      "netherman:chiseled_samsonit",
+      "netherman:cobbled_samsonit",
+      "netherman:cobbled_samsonit_slab",
+      "netherman:cobbled_samsonit_stairs",
+      "netherman:cobbled_samsonit_wall",
+      "netherman:e_puzzle",
+      "netherman:grand_door",
+      "netherman:l_puzzle",
+      "netherman:nether_spawner",
+      "netherman:polished_samsonit",
+      "netherman:polished_samsonit_slab",
+      "netherman:polished_samsonit_stairs",
+      "netherman:polished_samsonit_wall",
+      "netherman:samsonit",
+      "netherman:samsonit_bell",
+      "netherman:samsonit_bricks",
+      "netherman:samsonit_bricks_slab",
+      "netherman:samsonit_bricks_stairs",
+      "netherman:samsonit_bricks_wall",
+      "netherman:samsonit_eye",
+      "netherman:samsonit_key",
+      "netherman:samsonit_tiles",
+      "netherman:void_cave_corner",
+      "netherman:void_cave_mid",
+      "netherman:void_cave_midcorner",
+      "netherman:void_corner",
+      "netherman:void_mid",
+      "netherman:void_midcorner",
+      "netherman:voidnether_corner",
+      "netherman:voidnether_mid",
+      "netherman:voidnether_midcorner",
+      "netherman:z_puzzle",
       "skarrier_mobs:tangled_wrong_deepslate_ore_diamond",
       "skarrier_mobs:tangled_wrong_deepslate_ore_emerald",
       "skarrier_mobs:tangled_wrong_deepslate_ore_gold",
@@ -29547,6 +30220,20 @@
       "natures_spirit:chert_copper_ore",
       "natures_spirit:chert_iron_ore",
       "natures_spirit:chert_lapis_ore",
+      "netherman:azazel_trophy",
+      "netherman:blackstone_column",
+      "netherman:face_puzzle_left_down",
+      "netherman:face_puzzle_left_up",
+      "netherman:face_puzzle_right_down",
+      "netherman:face_puzzle_right_up",
+      "netherman:labyrinth_bellspawn",
+      "netherman:locker_nether",
+      "netherman:maze_door",
+      "netherman:pointed_blackstone",
+      "netherman:potent_magma",
+      "netherman:statue_stand",
+      "netherman:totemus",
+      "netherman:totemus_hole",
       "shutterup:copper_shutter",
       "shutterup:exposed_copper_shutter",
       "shutterup:iron_shutter",
@@ -31888,6 +32575,9 @@
       "netherexp:soul_slate_tile_wall",
       "netherexp:soul_slate_wall",
       "netherexp:yellow_nether_brick_wall",
+      "netherman:cobbled_samsonit_wall",
+      "netherman:polished_samsonit_wall",
+      "netherman:samsonit_bricks_wall",
       "skarrier_mobs:wrong_deepslate_brick_wall",
       "skarrier_mobs:wrong_deepslate_cobbled_wall",
       "skarrier_mobs:wrong_deepslate_polished_wall",
@@ -33378,6 +34068,7 @@
       "minecraft:tipped_arrow",
       "natures_spirit:cheese_arrow",
       "netherexp:phasmo_arrow",
+      "netherman:crimson_arrow",
       "skarrier_mobs:void_arrow",
       "xtraarrows:apple_arrow",
       "xtraarrows:breeding_arrow",
@@ -34480,6 +35171,12 @@
       "minecraft:music_disc_tears",
       "netherexp:music_disc_buckshot_wonderland",
       "netherexp:music_disc_cricket",
+      "netherman:music_disc_azazel",
+      "netherman:music_disc_boss",
+      "netherman:music_disc_god",
+      "netherman:music_disc_maze",
+      "netherman:music_disc_quar",
+      "netherman:music_disc_sacred",
       "primal:music_disc_oh_deer",
       "snowyspirit:music_disc_winter",
       "spawn:music_disc_barbaric",
@@ -36444,6 +37141,11 @@
       "minecraft:wasteland",
       "minecraft:wither",
       "netherexp:house",
+      "netherman:angel_painting",
+      "netherman:face_painting",
+      "netherman:king_painting",
+      "netherman:throne_painting",
+      "netherman:village_painting",
       "spawn:clown",
       "spawn:its_still_life",
       "spawn:the_reptile",
@@ -37624,6 +38326,62 @@
       "minecraft:deep_lukewarm_ocean",
       "minecraft:lukewarm_ocean",
       "minecraft:warm_ocean"
+    ],
+    "mss:worldgen/biome/has_structure/badlands_biomes": [
+      "#minecraft:is_badlands"
+    ],
+    "mss:worldgen/biome/has_structure/birch_biomes": [
+      "minecraft:birch_forest",
+      "minecraft:forest",
+      "minecraft:old_growth_birch_forest"
+    ],
+    "mss:worldgen/biome/has_structure/cherry_biomes": [
+      "minecraft:cherry_grove"
+    ],
+    "mss:worldgen/biome/has_structure/cold_biomes": [
+      "#mss:has_structure/mountain_biomes",
+      "#mss:has_structure/snowy_biomes",
+      "#mss:has_structure/taiga_biomes"
+    ],
+    "mss:worldgen/biome/has_structure/desert_biomes": [
+      "minecraft:desert"
+    ],
+    "mss:worldgen/biome/has_structure/jungle_biomes": [
+      "#minecraft:is_jungle"
+    ],
+    "mss:worldgen/biome/has_structure/mangrove_biomes": [
+      "minecraft:mangrove_swamp"
+    ],
+    "mss:worldgen/biome/has_structure/mountain_biomes": [
+      "#minecraft:is_mountain"
+    ],
+    "mss:worldgen/biome/has_structure/mushroom_island_biomes": [
+      "minecraft:mushroom_fields"
+    ],
+    "mss:worldgen/biome/has_structure/ocean_biomes": [
+      "#minecraft:is_ocean"
+    ],
+    "mss:worldgen/biome/has_structure/overworld_biomes": [
+      "#minecraft:is_overworld"
+    ],
+    "mss:worldgen/biome/has_structure/red_sand_biomes": [
+      "#mss:has_structure/badlands_biomes",
+      "#mss:has_structure/desert_biomes"
+    ],
+    "mss:worldgen/biome/has_structure/snowy_biomes": [
+      "minecraft:frozen_peaks",
+      "minecraft:grove",
+      "minecraft:ice_spikes",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_slopes",
+      "minecraft:snowy_taiga"
+    ],
+    "mss:worldgen/biome/has_structure/swampy_biomes": [
+      "minecraft:mangrove_swamp",
+      "minecraft:swamp"
+    ],
+    "mss:worldgen/biome/has_structure/taiga_biomes": [
+      "#minecraft:is_taiga"
     ],
     "mtr:worldgen/biome/has_structure/acacia_biomes": [
       "minecraft:savanna"
@@ -39195,6 +39953,25 @@
     ],
     "netherexp:worldgen/structure/sanctum_compass_located": [
       "netherexp:sanctum"
+    ],
+    "netherman:worldgen/biome/overworld_land": [
+      "#minecraft:is_badlands",
+      "#minecraft:is_beach",
+      "#minecraft:is_forest",
+      "#minecraft:is_jungle",
+      "#minecraft:is_mountain",
+      "#minecraft:is_savanna",
+      "#minecraft:is_taiga",
+      "minecraft:cherry_grove",
+      "minecraft:desert",
+      "minecraft:ice_spikes",
+      "minecraft:mangrove_swamp",
+      "minecraft:meadow",
+      "minecraft:mushroom_fields",
+      "minecraft:plains",
+      "minecraft:snowy_plains",
+      "minecraft:sunflower_plains",
+      "minecraft:swamp"
     ],
     "nova_structures:worldgen/biome/collections/any_forests": [
       "#minecraft:is_forest"
@@ -47674,6 +48451,9 @@
     ],
     "supplementaries:worldgen/structure/adventure_map_destinations": [
       "snowyspirit:gingerbread_house"
+    ],
+    "supplementaries:worldgen/structure/way_sign_destinations": [
+      "abridged:bridge"
     ],
     "terrablender:dimension_type/nether_regions": [
       "minecraft:the_nether"

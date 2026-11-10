@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "structures",
+  "snapshot_sha": "1a8795e8c83d06f8fa970bc5117f5f2b8ddea869",
+  "generation": {
+    "generated_utc": "2026-11-10T07:05:22.683172+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "abridged",
+    "name": "Abridged",
+    "version": "2.0.0"
+  },
+  "records": [
+    {
+      "registry_id": "abridged:bridge",
+      "registry_type": "structure",
+      "schema_version": 1,
+      "mod_id": "abridged",
+      "mod_name": "Abridged",
+      "mod_version": "2.0.0",
+      "source_jar": "abridged-2.0.0-forge-1.20.1.jar",
+      "source_sha256": "d64f9c5d70aa808771770cc7b7f4490f225e646db3c81ae0080cbc6b4a5429af",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/abridged/worldgen/structure/bridge.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "supplementaries:worldgen/structure/way_sign_destinations"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "abridged-2.0.0-forge-1.20.1.jar:data/abridged/worldgen/structure/bridge.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

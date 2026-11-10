@@ -1,0 +1,186 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4-structure-catalog-expansion-20261110",
+  "status": "active",
+  "selectors": [
+    {"type": "namespace", "registry": "*", "value": "hobbit_hill_village"},
+    {"type": "namespace", "registry": "*", "value": "ohthetreesyoullgrow"},
+    {"type": "namespace", "registry": "*", "value": "mr_ati_structuresvanillaedition"},
+    {"type": "namespace", "registry": "*", "value": "netherman"},
+    {"type": "namespace", "registry": "*", "value": "abridged"},
+    {"type": "namespace", "registry": "*", "value": "mr_lukis_grandcapitals"},
+    {"type": "namespace", "registry": "*", "value": "mss"},
+    {"type": "namespace", "registry": "*", "value": "spiral_tower_village"},
+    {"type": "namespace", "registry": "*", "value": "mr_lukis_woodlandmansions"},
+    {"type": "namespace", "registry": "*", "value": "structblend"},
+    {"type": "namespace", "registry": "*", "value": "roadweaver"},
+    {"type": "namespace", "registry": "structures", "value": "minecraft"},
+    {"type": "namespace", "registry": "structures", "value": "cataclysm"},
+    {"type": "namespace", "registry": "structures", "value": "legendary_monsters"},
+    {"type": "namespace", "registry": "structures", "value": "block_factorys_bosses"},
+    {"type": "namespace", "registry": "structures", "value": "alexscaves"}
+  ],
+  "conditions": [
+    {"distribution": "Exact Forge 1.20.1 artifacts are required on the managed client and logical server"},
+    {"world_generation": "New structures and template changes apply only to newly generated chunks"}
+  ],
+  "precedence": {
+    "layer": "major_update_4_structure_catalog",
+    "priority": 108,
+    "overrides": ["major-update-4-towns-towers-dungeons-taverns-20261110"]
+  },
+  "change": {
+    "summary": "Expand the Major Update 4 structure catalog and assign one owner for vanilla village, outpost and overlap behavior",
+    "modifiers": [
+      {
+        "property": "distribution.major_update_4.structure_catalog",
+        "operation": "add",
+        "before": "Requested structure artifacts were absent except Ember's Ancient Remnants",
+        "after": "Twelve compatible structure and control JARs plus Improved Pillager Outpost and Dungeons and Taverns Ancient City Overhaul are synchronized on client and server"
+      },
+      {
+        "property": "worldgen.minecraft.villages",
+        "operation": "replace",
+        "before": "Better Villages, Trek, Nature's Spirit and later artifacts could replace the same vanilla village set",
+        "after": "Luki's Grand Capitals owns the five vanilla village definitions. One merged Luki-spaced structure set retains each unique Nature's Spirit and Trek village ID once"
+      },
+      {
+        "property": "worldgen.minecraft.pillager_outpost",
+        "operation": "replace",
+        "before": "Trek and Luki could replace the vanilla outpost structure route before Improved Pillager Outpost templates were selected",
+        "after": "The exact vanilla 1.20.1 structure, structure set and base pool route select Improved Pillager Outpost v5 templates as the final outpost overhaul"
+      },
+      {
+        "property": "worldgen.structure_overlap",
+        "operation": "set",
+        "before": "No single global owner prevented physical structure overlap",
+        "after": "StructureOverlapless is the single overlap owner. The pillager outpost and all 23 canonical JEM boss structures are unskippable"
+      },
+      {
+        "property": "worldgen.structure_layout_performance",
+        "operation": "add",
+        "before": "No dedicated jigsaw layout optimizer",
+        "after": "Structure Layout Optimizer 1.0.11 is active with seed-parity-changing pool deduplication disabled"
+      },
+      {
+        "property": "worldgen.structure_terrain_blending",
+        "operation": "add",
+        "before": "Generated structures retained abrupt terrain cuts, buried entrances and unsupported edges",
+        "after": "StructBlend 1.0.3 adjusts only surrounding terrain. The priority pillager outpost and all 23 canonical boss structures are excluded"
+      },
+      {
+        "property": "worldgen.settlement_roads",
+        "operation": "add",
+        "before": "The expanded settlement catalog had no automatic road-network owner",
+        "after": "RoadWeaver 2.1.1 plans and generates roads between the village tag and the priority vanilla pillager outpost on both logical sides. Canonical boss structures remain outside its whitelist"
+      },
+      {
+        "property": "loot.mansions.mansion_common",
+        "operation": "replace",
+        "before": "Luki's Woodland Mansions uses the unsupported value field for a Forge 1.20.1 loot-table reference",
+        "after": "A narrow Paxi override uses the required name field and retains the native minecraft:chests/woodland_mansion target"
+      },
+      {
+        "property": "distribution.sift_backport",
+        "operation": "document",
+        "before": "Requested for Major Update 4",
+        "after": "Excluded because all inspected official Forge 1.20.1 files require Java 21 while the pack runtime is Java 17"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Native structure mods, Paxi compatibility data, Structure Layout Optimizer, StructureOverlapless, StructBlend and RoadWeaver",
+    "kind": "user_requested_major_update_structure_expansion",
+    "source_files": [
+      "Client/ManagedPack/mods/lukis-grand-capitals-1.1.3.jar",
+      "Client/ManagedPack/mods/lukis-woodland-mansions-v.1.0.jar",
+      "Client/ManagedPack/mods/overlapless-1.20.1-1.2.0.jar",
+      "Client/ManagedPack/mods/structure_layout_optimizer-forge-1.0.11.jar",
+      "Client/ManagedPack/mods/structblend-1.0.3.jar",
+      "Client/ManagedPack/mods/roadweaver-forge-2.1.1-1.20.1.jar",
+      "Client/ManagedPack/config/roadweaver/roadweaver.json",
+      "Client/ManagedPack/config/abridged.json",
+      "Client/ManagedPack/config/netherman-common.toml",
+      "Client/ManagedPack/config/overlapless-common.toml",
+      "Client/ManagedPack/config/structure_layout_optimizer.jsonc",
+      "Client/ManagedPack/config/structblend-common.toml",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/mansions/loot_tables/mansion_common.json",
+      "Client/ManagedPack/config/paxi/datapacks/ImprovedPillagerOutpost-v5.zip",
+      "Client/ManagedPack/config/paxi/datapacks/DnT Ancient City Overhaul.zip",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/minecraft/worldgen/structure/pillager_outpost.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/minecraft/worldgen/structure_set/pillager_outposts.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/minecraft/worldgen/structure_set/villages.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/minecraft/worldgen/template_pool/pillager_outpost/base_plates.json",
+      "Mods/JEMWorldBossTiers/src/main/resources/data/jem_server/jem/events/structures/campaigns.json",
+      "Docs/major-update-4/structure-catalog-expansion-20261110.json",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Add the requested exploration catalog without duplicate structure-control systems or lost critical boss arenas",
+    "decision_source": "The user selected the content mods, required Improved Pillager Outpost priority and requested a final non-duplicated structure-control combination",
+    "implementation_choices": "Keep native artifacts, resolve exact vanilla resource collisions through narrow Paxi data, use one performance owner and one physical-overlap owner, and reject unsafe whole-structure respawn or unneeded dimension policy"
+  },
+  "introduced": {
+    "date": "2026-11-10",
+    "commit": "SELF",
+    "action": "expand_major_update_4_structure_catalog",
+    "summary": "Add the compatible structure catalog with Luki village ownership, Improved outpost priority and one overlap owner"
+  },
+  "history": [
+    {
+      "date": "2026-11-10",
+      "commit": "SELF",
+      "action": "expand_major_update_4_structure_catalog",
+      "summary": "Inspected exact artifacts and collisions, rejected incompatible Sift files, loaded the corrected local server and preserved protected boss structures",
+      "source_files": [
+        "Client/ManagedPack/config/bettervillage_1.properties",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/pack.mcmeta",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/desert_pyramid.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/pillager_outpost.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/stronghold.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_desert.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_plains.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_savanna.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_snowy.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/village_taiga.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "runtime_distribution",
+      "worldgen",
+      "villages",
+      "pillager_outposts",
+      "woodland_mansions",
+      "ancient_cities",
+      "boss_arenas",
+      "structure_layout_performance",
+      "structure_terrain_blending",
+      "settlement_roads",
+      "structure_overlap"
+    ],
+    "relations": [
+      "Luki's Grand Capitals -> vanilla village definitions",
+      "merged villages structure set -> Luki, Nature's Spirit and Trek unique villages",
+      "vanilla outpost route -> Improved Pillager Outpost templates",
+      "StructureOverlapless -> ordinary structure overlap prevention",
+      "StructBlend -> surrounding terrain shaping for non-critical structures",
+      "RoadWeaver -> asynchronous roads for villages and the priority pillager outpost",
+      "canonical campaign structures -> unskippable overlap policy",
+      "JEM boss lifecycle -> boss revival without whole-structure rewriting"
+    ],
+    "notes": [
+      "Ember's Ancient Remnants remains installed once",
+      "Better Villages and its generated config are removed",
+      "Structurify, Respawning Structures and Dimensional Structure Restrict are not installed",
+      "MineRENT, main, stable JustEnoughMods and the immutable release baseline remain unchanged"
+    ],
+    "unresolved": [
+      "Fresh-chunk generation and player acceptance were not performed",
+      "Sift Backport requires an upstream Java 17-compatible Forge 1.20.1 build before it can enter this pack"
+    ]
+  }
+}

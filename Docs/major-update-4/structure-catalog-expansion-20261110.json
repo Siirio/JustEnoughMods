@@ -1,0 +1,42 @@
+{
+  "scope": "Major Update 4 local structure expansion",
+  "date": "2026-11-10",
+  "branch": "feature/major-update-4",
+  "installed": [
+    {"file": "hobbit_hill_village-0.0.5.jar", "sha256": "0bc1b0229e627ceb85acb5e00bed337eca9914f528f448b00d2f13058b20d79f"},
+    {"file": "Oh-The-Trees-Youll-Grow-forge-1.20.1-1.7.4.jar", "sha256": "f44112ed556dcde6fd01cb7f4ae8fa518e4ff167ba3554465410198dbcd27188"},
+    {"file": "ATi Structures Vanilla V1.4.7.jar", "sha256": "e7de7e898d3d107b7ac204b327fd9fcabd4acd3ef7a4c86e9dace3c4b6c3d3cc"},
+    {"file": "cultofazazelforge-1.1.4.12.jar", "sha256": "92b7eb590241b4c6fbd478f53529807127a2a9bdc5c28f062342df62484b8ed7"},
+    {"file": "abridged-2.0.0-forge-1.20.1.jar", "sha256": "d64f9c5d70aa808771770cc7b7f4490f225e646db3c81ae0080cbc6b4a5429af"},
+    {"file": "lukis-grand-capitals-1.1.3.jar", "sha256": "58182dc8d306afd944e708e0480d939a9adc3fcdab75c0bebd122a32c63d3851"},
+    {"file": "MoogsSoaringStructures-universal-1.20-2.2.0.jar", "sha256": "48b3e9fdc7667e008199a927c03a224467f31745ec90267bc07091ea71a6ea4d"},
+    {"file": "spiral_tower_village-0.0.4.jar", "sha256": "f8150abd691170476a85be3a0c73c5ffce9626dad9eede34ac60c628a8e2528b"},
+    {"file": "lukis-woodland-mansions-v.1.0.jar", "sha256": "45a678beaa5789ee94fdcde9f9043d7e3049f7c1e7e92f4d65baaa8052c0af0a"},
+    {"file": "structure_layout_optimizer-forge-1.0.11.jar", "sha256": "14bfc4b1e82ea24118402fccd90dffde45fa6d9e2238bfaa19a43b3fb88ee49c"},
+    {"file": "overlapless-1.20.1-1.2.0.jar", "sha256": "efc432760f0a302c3920ff1d3ba418cc26f4ea8f111eff6cc0573ce70a3a1a97"},
+    {"file": "structblend-1.0.3.jar", "sha256": "d2f33254b1e4821f2c4207a9f3d123b4087a7f60ee9d22836d60f2739aefeec3"},
+    {"file": "roadweaver-forge-2.1.1-1.20.1.jar", "sha256": "8c28831d0a18f7c7366737fb14cd987af7e34b660ad3a175550775f060fe2eb2"},
+    {"file": "ImprovedPillagerOutpost-v5.zip", "sha256": "01cb6e4c52040a9d431009c36f5e1b08ec5d4f7ad5723c37ebe9017ee7793865"},
+    {"file": "DnT Ancient City Overhaul.zip", "sha256": "1edb43c4234856be67ffe572c7d25ae23dece128f19061b1b5e673829b52769e"}
+  ],
+  "retained": ["ancient_remnants-1.0.2.2.jar"],
+  "removed": ["bettervillage-forge-1.20.1-3.3.1-all.jar", "bettervillage_1.properties"],
+  "excluded": {
+    "Sift Backport": "Both official Forge 1.20.1 releases use Java 21 class version 65 and cannot load in the pack's Java 17 runtime",
+    "Structurify": "Duplicates placement and overlap ownership",
+    "Respawning Structures": "Duplicates JEM boss revival and arena ownership",
+    "Dimensional Structure Restrict": "No cross-dimension placement defect was found"
+  },
+  "runtime": {
+    "forge": "1.20.1-47.4.10",
+    "java": "17.0.15",
+    "loaded_mods_before_structblend_and_roadweaver": 331,
+    "server_ready_before_structblend_and_roadweaver": "Done (9.431s)",
+    "loaded_mods_final": 333,
+    "server_ready_final": "Done (19.310s)",
+    "roadweaver_registry_discovery": "795 structures and 103 tags",
+    "luki_mansion_loot_parse_error": "absent after final compatibility pack priority",
+    "client_server_artifact_hashes_match": true,
+    "fresh_chunk_gameplay": "not observed"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "1a8795e8c83d06f8fa970bc5117f5f2b8ddea869",
+  "generation": {
+    "generated_utc": "2026-11-10T07:05:22.683172+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "netherman",
+    "name": "Cult of Azazel",
+    "version": "1.1.4.12"
+  },
+  "records": [
+    {
+      "item_id": "netherman:azazel_spear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "netherman",
+      "mod_name": "Cult of Azazel",
+      "mod_version": "1.1.4.12",
+      "source_jar": "cultofazazelforge-1.1.4.12.jar",
+      "source_sha256": "92b7eb590241b4c6fbd478f53529807127a2a9bdc5c28f062342df62484b8ed7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherman/lang/en_us.json",
+        "assets/netherman/lang/ru_ru.json",
+        "assets/netherman/models/item/azazel_spear.json"
+      ],
+      "display_name_en_us": "§6Longinus",
+      "display_name_ru_ru": "§6Лонгин",
+      "source_provenance": [
+        "cultofazazelforge-1.1.4.12.jar:assets/netherman/lang/en_us.json",
+        "cultofazazelforge-1.1.4.12.jar:assets/netherman/lang/ru_ru.json",
+        "cultofazazelforge-1.1.4.12.jar:assets/netherman/models/item/azazel_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "spear"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

@@ -1,3 +1,21 @@
+## 2026-11-10 - Expand Major Update 4 structures and assign overlap ownership
+
+- User requested eleven additional structure and worldgen projects, priority for Improved Pillager Outpost, Luki ownership over Better Villages, conditional mansion and ancient-city overhauls, and one non-duplicated structure-control stack
+- Added Lio's Hobbit Hill Village 0.0.5, Oh The Trees You'll Grow 1.7.4, ATi Structures file V1.4.7, Cult of Azazel 1.1.4.12, Abridged 2.0.0, Luki's Grand Capitals 1.1.3, Moog's Soaring Structures 2.2.0 and Lio's Spiral Tower Villages 0.0.4 to the managed client and local server
+- Ember's Ancient Remnants 1.0.2.2 was already present and remains unchanged. No duplicate artifact was added
+- Removed Better Villages 3.3.1 and its config because its vanilla village templates overlap Luki's Grand Capitals. The merged village structure set retains one copy of each Luki-owned vanilla village and all unique Nature's Spirit and Trek village IDs
+- Added Luki's Woodland Mansions 1-v.1.0 because Grand Capitals 1.1.3 no longer includes the mansion. Added Dungeons and Taverns Ancient City Overhaul because the installed pack had no vanilla ancient-city overhaul
+- Added Improved Pillager Outpost v5 as the only vanilla outpost template owner. The compatibility datapack restores the exact vanilla 1.20.1 outpost route, so Trek and Luki outpost overrides cannot replace its templates
+- Selected Structure Layout Optimizer 1.0.11 for jigsaw performance and StructureOverlapless 1.20.1-1.2.0 for physical overlap control. Seed-parity-changing pool deduplication is disabled, while the outpost and all 23 registered JEM boss structures are unskippable
+- Added StructBlend 1.0.3 as the separate terrain-blending owner recommended alongside StructureOverlapless. The priority outpost and all 23 canonical boss structures are excluded so their template and arena geometry remain unchanged
+- Added RoadWeaver 2.1.1-1.20.1 to both logical sides as the road owner for the expanded village catalog and the priority vanilla pillager outpost. Canonical boss structures remain outside its whitelist
+- Excluded Structurify, Dimensional Structure Restrict and Respawning Structures because they duplicate placement, dimension or boss-lifecycle ownership without a proven missing function
+- Bug / Both Sided / the official Sift Backport Forge 1.20.1 files are compiled for Java 21 class version 65, while this Forge 1.20.1 runtime uses Java 17 class version 61 / excluded after the first ordinary server start failed and both available official Forge 1.20.1 releases were inspected
+- Bug / Both Sided / Luki's Woodland Mansions 1-v.1.0 uses the unsupported `value` field for its referenced common loot table, so Forge 1.20.1 rejects `mansions:mansion_common` / in testing after a narrow Paxi override replaces only that field with the required `name` field
+- The final ordinary local server loaded 333 mods, initialized StructBlend, loaded RoadWeaver with 795 discovered structures and 103 tags, completed datapack loading, reached `Done (19.310s)` on the preserved Major Update 4 world and stopped cleanly. The final priority pack also removed Luki's invalid `mansions:mansion_common` loot-table parse error. Fresh-chunk player acceptance remains pending
+- Native AutoModpack published generation 146 with content token `2e0aa9c7d1fe958f52346ecb8f6e0531c1c7a6c6` and reviewed delta `+35 ~1 -11`, then applied it to the closed `test jem` profile. The installed token and reviewed artifact hashes match, and no update transaction remains pending
+- Client launch, fresh-chunk structure generation and player acceptance remain pending. MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
 ## 2026-11-10 - Add the remembered structure expansion to Major Update 4
 
 - User requested Towns and Towers and asked for the other structure mod retained from the old Iron's Spells-era pack

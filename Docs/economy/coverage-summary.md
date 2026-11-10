@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-10T04:28:42.062317+00:00` for `ea6bf89004c4baa983357b07318a0c27974d0985`.
+Generated from Atlas schema 1 at `2026-11-10T07:05:22.683172+00:00` for `1a8795e8c83d06f8fa970bc5117f5f2b8ddea869`.
 
-Static evidence observed 17,074 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,216 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -89,6 +89,7 @@ Static evidence observed 17,074 canonical item IDs. This is not a Forge runtime 
 | natures_spirit | 717 | 189 | 528 | 58 | 528 |
 | naturescompass | 32 | 0 | 32 | 0 | 32 |
 | netherexp | 397 | 16 | 381 | 0 | 381 |
+| netherman | 142 | 0 | 142 | 0 | 142 |
 | oceanicrealms | 43 | 9 | 34 | 4 | 34 |
 | p1nero_ec | 1 | 0 | 1 | 0 | 1 |
 | paraglider | 14 | 0 | 14 | 0 | 14 |

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "ea6bf89004c4baa983357b07318a0c27974d0985",
-  "generated_utc": "2026-11-10T04:28:42.062317+00:00",
+  "snapshot_sha": "1a8795e8c83d06f8fa970bc5117f5f2b8ddea869",
+  "generated_utc": "2026-11-10T07:05:22.683172+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -12,6 +12,50 @@
     "vanilla unpacked server archive"
   ],
   "artifacts": [
+    {
+      "filename": "abridged-2.0.0-forge-1.20.1.jar",
+      "sha256": "d64f9c5d70aa808771770cc7b7f4490f225e646db3c81ae0080cbc6b4a5429af",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "abridged",
+          "name": "Abridged",
+          "version": "2.0.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "abridged",
+        "supplementaries"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\abridged-2.0.0-forge-1.20.1.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "abridged-2.0.0-forge-1.20.1.jar",
+      "sha256": "d64f9c5d70aa808771770cc7b7f4490f225e646db3c81ae0080cbc6b4a5429af",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "abridged",
+          "name": "Abridged",
+          "version": "2.0.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "abridged",
+        "supplementaries"
+      ],
+      "source_path": "Server\\mods\\abridged-2.0.0-forge-1.20.1.jar",
+      "nested_dependencies": []
+    },
     {
       "filename": "advancementframes-1.20-2.2.8.jar",
       "sha256": "c57b8fb06366d12d43065271447af57ef56f1ffee515be5f3e2561aa41034939",
@@ -398,6 +442,48 @@
         "architectury"
       ],
       "source_path": "Server\\mods\\architectury-9.2.14-forge.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "ATi Structures Vanilla V1.4.7.jar",
+      "sha256": "e7de7e898d3d107b7ac204b327fd9fcabd4acd3ef7a4c86e9dace3c4b6c3d3cc",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mr_ati_structuresvanillaedition",
+          "name": "ATi Structures - Vanilla Edition",
+          "version": "1.4.5",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "ati_structures"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\ATi Structures Vanilla V1.4.7.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "ATi Structures Vanilla V1.4.7.jar",
+      "sha256": "e7de7e898d3d107b7ac204b327fd9fcabd4acd3ef7a4c86e9dace3c4b6c3d3cc",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mr_ati_structuresvanillaedition",
+          "name": "ATi Structures - Vanilla Edition",
+          "version": "1.4.5",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "ati_structures"
+      ],
+      "source_path": "Server\\mods\\ATi Structures Vanilla V1.4.7.jar",
       "nested_dependencies": []
     },
     {
@@ -980,144 +1066,6 @@
       ],
       "source_path": "Client\\ManagedPack\\mods\\BetterF3-7.0.2-Forge-1.20.1.jar",
       "nested_dependencies": []
-    },
-    {
-      "filename": "bettervillage-forge-1.20.1-3.3.1-all.jar",
-      "sha256": "9e8b26db627f1eaa6f4daa3a771c5ac844ec29249bc251273df394736451d3f2",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "bettervillage",
-          "name": "Better village",
-          "version": "3.3.1",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "bettervillage",
-        "minecraft"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\bettervillage-forge-1.20.1-3.3.1-all.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
-          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "filename": "bettervillage-forge-1.20.1-3.3.1-all.jar",
-      "sha256": "9e8b26db627f1eaa6f4daa3a771c5ac844ec29249bc251273df394736451d3f2",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "bettervillage",
-          "name": "Better village",
-          "version": "3.3.1",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "bettervillage",
-        "minecraft"
-      ],
-      "source_path": "Server\\mods\\bettervillage-forge-1.20.1-3.3.1-all.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
-          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
     },
     {
       "filename": "blastfromthepast-1.0.3+1.20.1.jar",
@@ -1942,7 +1890,8 @@
       "filename": "cloth-config-11.1.136-forge.jar",
       "sha256": "1e895e85cf5b1e1905ef3178ec155c8badfe22a1577b92c09143a5aa1f4ce0f2",
       "sides": [
-        "client"
+        "client",
+        "server"
       ],
       "enabled": true,
       "mods": [
@@ -3544,6 +3493,52 @@
         "minecraft"
       ],
       "source_path": "Server\\mods\\Critters n_ Crawlers-2.2.5-mc1.20.1.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "cultofazazelforge-1.1.4.12.jar",
+      "sha256": "92b7eb590241b4c6fbd478f53529807127a2a9bdc5c28f062342df62484b8ed7",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "netherman",
+          "name": "Cult of Azazel",
+          "version": "1.1.4.12",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "curios",
+        "minecraft",
+        "netherman"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\cultofazazelforge-1.1.4.12.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "cultofazazelforge-1.1.4.12.jar",
+      "sha256": "92b7eb590241b4c6fbd478f53529807127a2a9bdc5c28f062342df62484b8ed7",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "netherman",
+          "name": "Cult of Azazel",
+          "version": "1.1.4.12",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "curios",
+        "minecraft",
+        "netherman"
+      ],
+      "source_path": "Server\\mods\\cultofazazelforge-1.1.4.12.jar",
       "nested_dependencies": []
     },
     {
@@ -8168,6 +8163,52 @@
       "nested_dependencies": []
     },
     {
+      "filename": "hobbit_hill_village-0.0.5.jar",
+      "sha256": "0bc1b0229e627ceb85acb5e00bed337eca9914f528f448b00d2f13058b20d79f",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "hobbit_hill_village",
+          "name": "Hobbit Hill Village",
+          "version": "0.0.5",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "c",
+        "forge",
+        "lios_outlandish_villages"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\hobbit_hill_village-0.0.5.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "hobbit_hill_village-0.0.5.jar",
+      "sha256": "0bc1b0229e627ceb85acb5e00bed337eca9914f528f448b00d2f13058b20d79f",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "hobbit_hill_village",
+          "name": "Hobbit Hill Village",
+          "version": "0.0.5",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "c",
+        "forge",
+        "lios_outlandish_villages"
+      ],
+      "source_path": "Server\\mods\\hobbit_hill_village-0.0.5.jar",
+      "nested_dependencies": []
+    },
+    {
       "filename": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "sides": [
@@ -12308,6 +12349,94 @@
       ]
     },
     {
+      "filename": "lukis-grand-capitals-1.1.3.jar",
+      "sha256": "58182dc8d306afd944e708e0480d939a9adc3fcdab75c0bebd122a32c63d3851",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mr_lukis_grandcapitals",
+          "name": "Luki's Grand Capitals",
+          "version": "1.1.3",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "minecraft",
+        "revampedvillages"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\lukis-grand-capitals-1.1.3.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "lukis-grand-capitals-1.1.3.jar",
+      "sha256": "58182dc8d306afd944e708e0480d939a9adc3fcdab75c0bebd122a32c63d3851",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mr_lukis_grandcapitals",
+          "name": "Luki's Grand Capitals",
+          "version": "1.1.3",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "minecraft",
+        "revampedvillages"
+      ],
+      "source_path": "Server\\mods\\lukis-grand-capitals-1.1.3.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "lukis-woodland-mansions-v.1.0.jar",
+      "sha256": "45a678beaa5789ee94fdcde9f9043d7e3049f7c1e7e92f4d65baaa8052c0af0a",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mr_lukis_woodlandmansions",
+          "name": "Luki's Woodland Mansions",
+          "version": "1-v.1.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "mansions",
+        "minecraft"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\lukis-woodland-mansions-v.1.0.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "lukis-woodland-mansions-v.1.0.jar",
+      "sha256": "45a678beaa5789ee94fdcde9f9043d7e3049f7c1e7e92f4d65baaa8052c0af0a",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mr_lukis_woodlandmansions",
+          "name": "Luki's Woodland Mansions",
+          "version": "1-v.1.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "mansions",
+        "minecraft"
+      ],
+      "source_path": "Server\\mods\\lukis-woodland-mansions-v.1.0.jar",
+      "nested_dependencies": []
+    },
+    {
       "filename": "Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
       "sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
       "sides": [
@@ -13086,6 +13215,48 @@
         "mos"
       ],
       "source_path": "Server\\mods\\MoogsOceanStructures-universal-1.20-1.1.0.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "MoogsSoaringStructures-universal-1.20-2.2.0.jar",
+      "sha256": "48b3e9fdc7667e008199a927c03a224467f31745ec90267bc07091ea71a6ea4d",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mss",
+          "name": "MoogsSoaringStructures",
+          "version": "2.2.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "mss"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\MoogsSoaringStructures-universal-1.20-2.2.0.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "MoogsSoaringStructures-universal-1.20-2.2.0.jar",
+      "sha256": "48b3e9fdc7667e008199a927c03a224467f31745ec90267bc07091ea71a6ea4d",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "mss",
+          "name": "MoogsSoaringStructures",
+          "version": "2.2.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "mss"
+      ],
+      "source_path": "Server\\mods\\MoogsSoaringStructures-universal-1.20-2.2.0.jar",
       "nested_dependencies": []
     },
     {
@@ -14251,6 +14422,86 @@
           "nested_dependencies": []
         }
       ]
+    },
+    {
+      "filename": "Oh-The-Trees-Youll-Grow-forge-1.20.1-1.7.4.jar",
+      "sha256": "f44112ed556dcde6fd01cb7f4ae8fa518e4ff167ba3554465410198dbcd27188",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "ohthetreesyoullgrow",
+          "name": "Oh The Trees You'll Grow",
+          "version": "1.7.4",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "ohthetreesyoullgrow"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\Oh-The-Trees-Youll-Grow-forge-1.20.1-1.7.4.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "Oh-The-Trees-Youll-Grow-forge-1.20.1-1.7.4.jar",
+      "sha256": "f44112ed556dcde6fd01cb7f4ae8fa518e4ff167ba3554465410198dbcd27188",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "ohthetreesyoullgrow",
+          "name": "Oh The Trees You'll Grow",
+          "version": "1.7.4",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "ohthetreesyoullgrow"
+      ],
+      "source_path": "Server\\mods\\Oh-The-Trees-Youll-Grow-forge-1.20.1-1.7.4.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "overlapless-1.20.1-1.2.0.jar",
+      "sha256": "efc432760f0a302c3920ff1d3ba418cc26f4ea8f111eff6cc0573ce70a3a1a97",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "overlapless",
+          "name": "Overlapless",
+          "version": "1.20.1-1.2.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [],
+      "source_path": "Client\\ManagedPack\\mods\\overlapless-1.20.1-1.2.0.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "overlapless-1.20.1-1.2.0.jar",
+      "sha256": "efc432760f0a302c3920ff1d3ba418cc26f4ea8f111eff6cc0573ce70a3a1a97",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "overlapless",
+          "name": "Overlapless",
+          "version": "1.20.1-1.2.0",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [],
+      "source_path": "Server\\mods\\overlapless-1.20.1-1.2.0.jar",
+      "nested_dependencies": []
     },
     {
       "filename": "p1nero_ec-20.14.0.9.jar",
@@ -16116,6 +16367,162 @@
       ],
       "source_path": "Server\\mods\\rightclickharvest-forge-4.6.1+1.20.1.jar",
       "nested_dependencies": []
+    },
+    {
+      "filename": "roadweaver-forge-2.1.1-1.20.1.jar",
+      "sha256": "8c28831d0a18f7c7366737fb14cd987af7e34b660ad3a175550775f060fe2eb2",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "roadweaver",
+          "name": "RoadWeaver",
+          "version": "2.1.1-1.20.1",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "roadweaver"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\roadweaver-forge-2.1.1-1.20.1.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/architectury-forge-9.2.14.jar",
+          "sha256": "47d5eca3d83aae1ac1d4a70116727715bd7ef4c077d228fee873065cbca94687",
+          "identifier": {
+            "group": "dev.architectury",
+            "artifact": "architectury-forge"
+          },
+          "version": {
+            "range": "[9.2.14,)",
+            "artifactVersion": "9.2.14"
+          },
+          "mods": [
+            {
+              "id": "architectury",
+              "name": "Architectury",
+              "version": "9.2.14",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [
+            "architectury"
+          ],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        },
+        {
+          "path": "META-INF/jars/cloth-config-forge-11.1.136.jar",
+          "sha256": "1e895e85cf5b1e1905ef3178ec155c8badfe22a1577b92c09143a5aa1f4ce0f2",
+          "identifier": {
+            "group": "me.shedaniel.cloth",
+            "artifact": "cloth-config-forge"
+          },
+          "version": {
+            "range": "[11.1.136,)",
+            "artifactVersion": "11.1.136"
+          },
+          "mods": [
+            {
+              "id": "cloth_config",
+              "name": "Cloth Config v10 API",
+              "version": "11.1.136",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [
+            "cloth-config2"
+          ],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
+    },
+    {
+      "filename": "roadweaver-forge-2.1.1-1.20.1.jar",
+      "sha256": "8c28831d0a18f7c7366737fb14cd987af7e34b660ad3a175550775f060fe2eb2",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "roadweaver",
+          "name": "RoadWeaver",
+          "version": "2.1.1-1.20.1",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "roadweaver"
+      ],
+      "source_path": "Server\\mods\\roadweaver-forge-2.1.1-1.20.1.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/architectury-forge-9.2.14.jar",
+          "sha256": "47d5eca3d83aae1ac1d4a70116727715bd7ef4c077d228fee873065cbca94687",
+          "identifier": {
+            "group": "dev.architectury",
+            "artifact": "architectury-forge"
+          },
+          "version": {
+            "range": "[9.2.14,)",
+            "artifactVersion": "9.2.14"
+          },
+          "mods": [
+            {
+              "id": "architectury",
+              "name": "Architectury",
+              "version": "9.2.14",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [
+            "architectury"
+          ],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        },
+        {
+          "path": "META-INF/jars/cloth-config-forge-11.1.136.jar",
+          "sha256": "1e895e85cf5b1e1905ef3178ec155c8badfe22a1577b92c09143a5aa1f4ce0f2",
+          "identifier": {
+            "group": "me.shedaniel.cloth",
+            "artifact": "cloth-config-forge"
+          },
+          "version": {
+            "range": "[11.1.136,)",
+            "artifactVersion": "11.1.136"
+          },
+          "mods": [
+            {
+              "id": "cloth_config",
+              "name": "Cloth Config v10 API",
+              "version": "11.1.136",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [
+            "cloth-config2"
+          ],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
     },
     {
       "filename": "rosegoldequipment-1.7.6.jar",
@@ -18325,6 +18732,52 @@
       "nested_dependencies": []
     },
     {
+      "filename": "spiral_tower_village-0.0.4.jar",
+      "sha256": "f8150abd691170476a85be3a0c73c5ffce9626dad9eede34ac60c628a8e2528b",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "spiral_tower_village",
+          "name": "Spiral Tower Village",
+          "version": "0.0.4",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "c",
+        "forge",
+        "lios_outlandish_villages"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\spiral_tower_village-0.0.4.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "spiral_tower_village-0.0.4.jar",
+      "sha256": "f8150abd691170476a85be3a0c73c5ffce9626dad9eede34ac60c628a8e2528b",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "spiral_tower_village",
+          "name": "Spiral Tower Village",
+          "version": "0.0.4",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "c",
+        "forge",
+        "lios_outlandish_villages"
+      ],
+      "source_path": "Server\\mods\\spiral_tower_village-0.0.4.jar",
+      "nested_dependencies": []
+    },
+    {
       "filename": "spyglass_improvements-forge-1.5.12b%2Bmc1.20%2Bforge.jar",
       "sha256": "8f4000d787653d0ce9cb12f7a4325a7b9daa5245631e94027f87a2aed3b15125",
       "sides": [
@@ -18822,6 +19275,44 @@
       ]
     },
     {
+      "filename": "structblend-1.0.3.jar",
+      "sha256": "d2f33254b1e4821f2c4207a9f3d123b4087a7f60ee9d22836d60f2739aefeec3",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "structblend",
+          "name": "StructBlend",
+          "version": "1.0.3",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [],
+      "source_path": "Client\\ManagedPack\\mods\\structblend-1.0.3.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "structblend-1.0.3.jar",
+      "sha256": "d2f33254b1e4821f2c4207a9f3d123b4087a7f60ee9d22836d60f2739aefeec3",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "structblend",
+          "name": "StructBlend",
+          "version": "1.0.3",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [],
+      "source_path": "Server\\mods\\structblend-1.0.3.jar",
+      "nested_dependencies": []
+    },
+    {
       "filename": "Structory_1.20.x_v1.3.5.jar",
       "sha256": "43f4b4b88bb9caa1114928a93e787335e56171b5233a545bf2f4da1ce9fe943b",
       "sides": [
@@ -18864,6 +19355,142 @@
       ],
       "source_path": "Server\\mods\\Structory_1.20.x_v1.3.5.jar",
       "nested_dependencies": []
+    },
+    {
+      "filename": "structure_layout_optimizer-forge-1.0.11.jar",
+      "sha256": "14bfc4b1e82ea24118402fccd90dffde45fa6d9e2238bfaa19a43b3fb88ee49c",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "structure_layout_optimizer",
+          "name": "Structure Layout Optimizer",
+          "version": "1.0.11",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "structure_layout_optimizer"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\structure_layout_optimizer-forge-1.0.11.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
+          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "structure_layout_optimizer-forge-1.0.11.jar",
+      "sha256": "14bfc4b1e82ea24118402fccd90dffde45fa6d9e2238bfaa19a43b3fb88ee49c",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "structure_layout_optimizer",
+          "name": "Structure Layout Optimizer",
+          "version": "1.0.11",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "structure_layout_optimizer"
+      ],
+      "source_path": "Server\\mods\\structure_layout_optimizer-forge-1.0.11.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
+          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
     },
     {
       "filename": "tectonic-3.0.17-forge-1.20.1.jar",
