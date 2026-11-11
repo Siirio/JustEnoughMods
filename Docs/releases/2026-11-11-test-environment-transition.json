@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-11",
+  "status": "local test client and dedicated server prepared, player acceptance pending",
+  "sourceBackup": {
+    "path": "C:/Users/user/Downloads/43cc4557-07e4-42d9-bfdb-3ee187aa7b17.tar.zst",
+    "bytes": 9558689939,
+    "archivePathAudit": "passed",
+    "restoredWorld": false,
+    "restoredAutoModpackState": false,
+    "restoredBackups": false,
+    "restoredLogs": false
+  },
+  "profiles": {
+    "stable": {
+      "name": "JustEnoughMods",
+      "changed": false
+    },
+    "test": {
+      "name": "Test JustEnoughMods",
+      "copiedFrom": "JustEnoughMods",
+      "internalVersionId": "Test JustEnoughMods",
+      "oldTestProfilePresent": false,
+      "gameDirAutomodpackPresent": false,
+      "externalStateRoot": "%LOCALAPPDATA%/JEM/pack-sync/a346954f6e91a4358d0be710b1ca972da28d8a84"
+    },
+    "sandbox": {
+      "name": "Sandbox JustEnoughMods",
+      "internalVersionId": "Sandbox JustEnoughMods"
+    }
+  },
+  "bootstrap": {
+    "revision": "jem.19",
+    "nativeVersion": "5.0.0-rc.1",
+    "upstreamCommit": "4348bf2532bb8261af3297cf2480a3a0ee91befb",
+    "bytes": 3495874,
+    "sha1": "66383de7ce760069c9a8afd6e095b086568d35c6",
+    "sha256": "3ed4d26bd8cc269de686ac3b10117ddaee258a53b2717f7068ad39780c564a30",
+    "productionBuild": "successful",
+    "testsRun": false
+  },
+  "publication": {
+    "journalSequence": 147,
+    "contentToken": "2f9f5b33826b2f51765c783802c803b10c0f2a8f",
+    "manifestSha1": "39a57e9a0d2b97824d0a51ae55731a9f55033dcc",
+    "stagedManifestMatchesPublished": true,
+    "installedManagedJarCount": 327,
+    "clientTransactionPending": false
+  },
+  "server": {
+    "root": "Server",
+    "backupWorldPresent": false,
+    "newWorld": "world-major-update-4",
+    "newWorldCreated": true,
+    "startupReachedDone": true,
+    "startupSeconds": 23.816,
+    "stoppedCleanly": true,
+    "activeProcessAfterStop": false,
+    "recoveryArchive": "C:/MyProjects/Minecraft/JustEnoughMods-updates/retired-test-jem-server-20261111"
+  },
+  "runtime": {
+    "minecraftClientLaunched": false,
+    "gameplayTestRun": false,
+    "playerAcceptance": "pending",
+    "MineRENTChanged": false,
+    "releaseBaselineChanged": false
+  }
+}
