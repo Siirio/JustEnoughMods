@@ -20,7 +20,7 @@ The live GL 3.3 path routes the world into an owned color/depth target. It execu
 ## Validation status
 
 - Production compilation and reobfuscation: passed with Java 17 and ForgeGradle 6.0.36
-- Artifact: `taste-1.0.0-sandbox.jar`, SHA-256 `3F4FCBD18A3F6267A94E14973191026E965284B05857FF3FE761EA966232D9B9`
+- Artifact: `taste-1.0.1-sandbox.jar`, SHA-256 `24E4D60A857BDDB34BCF95EA5C1B35A9ED16F5256AC0C695F2532438A4F70C45`
 - Registry and consumer audit: passed with 387 unique settings, 36 categories and no unassigned phase
 - Minecraft launch and scene captures: not run because this task did not authorize a client launch
 - Vanilla visual acceptance: not run
@@ -28,7 +28,7 @@ The live GL 3.3 path routes the world into an owned color/depth target. It execu
 - Physical NVIDIA, AMD and Intel matrix: not run
 - Dedicated-server class-loading check: not run
 
-The final JAR contains 362 entries, both core shader programs, the Mixin config and refmap, and no test classes. Its installed copy in `Sandbox JustEnoughMods` has the same SHA-256. `Test JustEnoughMods` contains no Taste Engine JAR
+The bugfix JAR contains both core shader programs, the Mixin config and refmap, and no test classes. Its installed copy in `Sandbox JustEnoughMods` has the same SHA-256. `Test JustEnoughMods` contains no Taste Engine JAR
 
 Source presence is not runtime proof. Specialized G-buffer, shadow, compute GI, transparency, precipitation, temporal and provider paths remain `CODE_AUTHORED_RUNTIME_NOT_RUN` until their named Minecraft scenes run. The validation files use `NOT_RUN` instead of converting unavailable runtime evidence into a pass
 

@@ -35,6 +35,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.fml.ModList;
 import org.joml.Matrix4f;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL30;
 import org.slf4j.Logger;
 
 /** Owns the world-only render route and the two-stage portable presentation pipeline. */
@@ -120,6 +122,24 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
                     value("general.renderScale") * adaptiveQuality.scale()));
             width = Math.max(1, Math.round(nativeWidth * renderScale));
             height = Math.max(1, Math.round(nativeHeight * renderScale));
+            int nextIdentity = System.identityHashCode(minecraft.level);
+            if (nextIdentity != levelIdentity) {
+                levelIdentity = nextIdentity;
+                worldEpoch++;
+            }
+            Optional<FrameSnapshot> nextFrame = snapshot(camera, projection);
+            if (nextFrame.isEmpty()) {
+                frames.invalidate(TemporalHistory.Reason.PROJECTION_CHANGE);
+                failure = "World projection is not ready; native rendering remains active";
+                parameters = null;
+                environment = null;
+                nativeTarget = null;
+                return;
+            }
+            WorldViewScope.ViewKey key = new WorldViewScope.ViewKey(environment.dimension(), 0);
+            activeFrame = frames.begin(nextFrame.get(), key, false);
+            selectBackend(effective);
+            backend.beginFrame(frame);
             worldTarget = targets.acquire(descriptor("world", width, height, true));
             sceneTarget = targets.acquire(descriptor("scene", width, height, true));
             allocations.record("world", new AllocationLedger.Allocation("world", descriptor("world", width, height, true).byteSize(), frame, false));
@@ -127,16 +147,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
             worldTarget.clear(Minecraft.ON_OSX);
             worldTarget.bindWrite(true);
             targetRoute = WorldTargetRouter.route(worldTarget);
-            WorldViewScope.ViewKey key = new WorldViewScope.ViewKey(environment.dimension(), 0);
             worldScope = WorldViewScope.enter(key);
-            int nextIdentity = System.identityHashCode(minecraft.level);
-            if (nextIdentity != levelIdentity) {
-                levelIdentity = nextIdentity;
-                worldEpoch++;
-            }
-            activeFrame = frames.begin(snapshot(camera, projection), key, false);
-            selectBackend(effective);
-            backend.beginFrame(frame);
             worldOpen = true;
             afterLevel = false;
         } catch (IOException | RuntimeException renderFailure) {
@@ -163,6 +174,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
             loggedFailure = false;
             frame++;
         } catch (Exception renderFailure) {
+            restoreCapturedWorld();
             fail(renderFailure);
         } finally {
             closeWorldScope();
@@ -251,7 +263,8 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         set(sceneShader, "CloudDensity", value("clouds.density"));
         set(sceneShader, "Wetness", enabled("wetness.enabled") ? environment.rain() * value("wetness.smoothness") : 0.0F);
         set(sceneShader, "WaterStrength", enabled("water.enabled") ? value("water.normalStrength") : 0.0F);
-        set(sceneShader, "LavaStrength", enabled("lava.enabled") ? value("emission.lava") : 0.0F);
+        set(sceneShader, "LavaStrength", enabled("lava.enabled") && enabled("emission.lava")
+                ? value("emission.strength") : 0.0F);
         set(sceneShader, "ReducedMotion", enabled("accessibility.reducedMotion") ? 1.0F : 0.0F);
         drawFullscreen();
         sceneShader.clear();
@@ -318,15 +331,26 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
                 new DebugAttachments.Attachment(0, Math.round(width * scale), Math.round(height * scale), "Effective internal scale"));
     }
 
-    private FrameSnapshot snapshot(Camera camera, Matrix4f projection) {
+    private Optional<FrameSnapshot> snapshot(Camera camera, Matrix4f projection) {
+        if (!finite(projection)) return Optional.empty();
+        float determinant = projection.determinant();
+        if (!Float.isFinite(determinant) || Math.abs(determinant) < 1.0E-8F) return Optional.empty();
         Vec3 position = camera.getPosition();
         FrameSnapshot.Vec3d cameraWorld = new FrameSnapshot.Vec3d(position.x, position.y, position.z);
         FrameSnapshot.Vec3d origin = new FrameSnapshot.Vec3d(Math.floor(position.x / 256.0) * 256.0,
                 Math.floor(position.y / 256.0) * 256.0, Math.floor(position.z / 256.0) * 256.0);
         Matrix4f inverse = new Matrix4f(projection).invert();
-        return new FrameSnapshot(frame, worldEpoch, environment.dimension(), origin, cameraWorld,
+        if (!finite(inverse)) return Optional.empty();
+        return Optional.of(new FrameSnapshot(frame, worldEpoch, environment.dimension(), origin, cameraWorld,
                 matrix(new Matrix4f()), matrix(projection), matrix(inverse), matrix(projection),
-                width, height, (environment.gameTime() + partialTick) / 20.0);
+                width, height, (environment.gameTime() + partialTick) / 20.0));
+    }
+
+    private static boolean finite(Matrix4f value) {
+        float[] elements = new float[16];
+        value.get(elements);
+        for (float element : elements) if (!Float.isFinite(element)) return false;
+        return true;
     }
 
     private static FrameSnapshot.Matrix4 matrix(Matrix4f value) {
@@ -347,6 +371,19 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
             targetRoute = null;
         }
         if (nativeTarget != null) nativeTarget.bindWrite(true);
+    }
+
+    private void restoreCapturedWorld() {
+        if (worldTarget == null || nativeTarget == null) return;
+        try (GlStateScope ignored = GlStateScope.capture()) {
+            GL30.glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER, worldTarget.frameBufferId);
+            GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, nativeTarget.frameBufferId);
+            GL30.glBlitFramebuffer(0, 0, worldTarget.width, worldTarget.height,
+                    0, 0, nativeTarget.width, nativeTarget.height,
+                    GL11.GL_COLOR_BUFFER_BIT, GL11.GL_NEAREST);
+        } catch (RuntimeException recoveryFailure) {
+            LOGGER.error("Taste could not restore the captured native world after a pipeline failure", recoveryFailure);
+        }
     }
 
     private void closeWorldScope() {
