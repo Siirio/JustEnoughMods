@@ -2,7 +2,8 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'idea'
-    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'net.minecraftforge.gradle' version '6.0.36'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
 group = mod_group_id
@@ -17,6 +18,12 @@ minecraft {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin {
+    add sourceSets.main, 'taste.refmap.json'
+    config 'taste.mixins.json'
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -46,7 +53,8 @@ tasks.named('jar', Jar).configure {
                 'Specification-Version': '1',
                 'Implementation-Title': mod_name,
                 'Implementation-Version': mod_version,
-                'Implementation-Vendor': mod_authors
+                'Implementation-Vendor': mod_authors,
+                'MixinConfigs': 'taste.mixins.json'
         ])
     }
     finalizedBy 'reobfJar'

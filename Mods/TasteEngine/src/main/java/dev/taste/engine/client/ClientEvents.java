@@ -24,7 +24,7 @@ public final class ClientEvents {
         Minecraft minecraft = Minecraft.getInstance();
         while (ClientRegistration.OPEN_MENU.consumeClick()) {
             if (minecraft.screen == null && minecraft.level != null)
-                minecraft.setScreen(new TasteConfigScreen(null, ClientState.store()));
+                minecraft.setScreen(new EngineSettingsScreen(null, ClientState.store()));
         }
         while (ClientRegistration.TOGGLE_MASTER.consumeClick()) {
             if (minecraft.screen != null || minecraft.level == null) continue;

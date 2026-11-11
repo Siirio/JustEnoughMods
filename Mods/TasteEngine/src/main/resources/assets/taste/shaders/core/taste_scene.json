@@ -1,0 +1,34 @@
+{
+  "blend": { "func": "add", "srcrgb": "one", "dstrgb": "zero" },
+  "vertex": "taste:taste_scene",
+  "fragment": "taste:taste_scene",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "DiffuseSampler" },
+    { "name": "DepthSampler" }
+  ],
+  "uniforms": [
+    { "name": "InSize", "type": "float", "count": 2, "values": [1.0, 1.0] },
+    { "name": "FarPlane", "type": "float", "count": 1, "values": [256.0] },
+    { "name": "Time", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Rain", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "SunIntensity", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "SkyIntensity", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "AmbientFloor", "type": "float", "count": 1, "values": [0.04] },
+    { "name": "BlockIntensity", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "WarmColdBalance", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "ShadowStrength", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "ContactShadow", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "AoStrength", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "AoRadius", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "GiStrength", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "EmissionStrength", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "ReflectionStrength", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "CloudCoverage", "type": "float", "count": 1, "values": [0.5] },
+    { "name": "CloudDensity", "type": "float", "count": 1, "values": [0.5] },
+    { "name": "Wetness", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "WaterStrength", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "LavaStrength", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "ReducedMotion", "type": "float", "count": 1, "values": [0.0] }
+  ]
+}

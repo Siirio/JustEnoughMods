@@ -1,0 +1,10 @@
+#version 430 core
+layout(local_size_x = 4, local_size_y = 4, local_size_z = 4) in;
+layout(rgba8, binding = 0) uniform image3D occupancyAlbedo;
+uniform ivec3 updateMinimum;
+uniform ivec3 updateMaximum;
+void main() {
+    ivec3 voxel = updateMinimum + ivec3(gl_GlobalInvocationID.xyz);
+    if (any(greaterThanEqual(voxel, updateMaximum))) return;
+    imageStore(occupancyAlbedo, voxel, vec4(0.0));
+}

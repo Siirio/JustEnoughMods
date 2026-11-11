@@ -26,7 +26,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 /** Compact native editor for the complete setting registry. */
-public final class TasteConfigScreen extends Screen {
+public class TasteConfigScreen extends Screen {
     private record VisibleRow(SettingSpec spec, int y) { }
     private final Screen parent;
     private final ConfigStore store;

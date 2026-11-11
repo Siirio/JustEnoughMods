@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "targets": [
+    {
+      "name": "forge-1.20.1-production",
+      "java": "17",
+      "forge": "47.4.10",
+      "backend": "vanilla",
+      "status": "PASS",
+      "command": "gradlew.bat reobfJar --no-daemon",
+      "artifact": "taste-1.0.0-sandbox.jar",
+      "sha256": "3F4FCBD18A3F6267A94E14973191026E965284B05857FF3FE761EA966232D9B9"
+    },
+    {
+      "name": "embeddium-0.3.31-runtime",
+      "java": "17",
+      "forge": "47.4.10",
+      "backend": "embeddium-0.3.31",
+      "status": "NOT_RUN"
+    }
+  ]
+}

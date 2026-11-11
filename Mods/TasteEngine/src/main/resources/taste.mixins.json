@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.taste.engine.mixin.client",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "taste.refmap.json",
+  "client": [
+    "MinecraftTargetMixin",
+    "LevelRendererFrameMixin",
+    "TerrainStageMixin",
+    "GameRendererHandMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

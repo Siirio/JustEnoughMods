@@ -26,7 +26,7 @@ public final class ClientRegistration {
     @SubscribeEvent
     public static void setup(FMLClientSetupEvent event) {
         ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
-                () -> new ConfigScreenHandler.ConfigScreenFactory((minecraft, parent) -> new TasteConfigScreen(parent, ClientState.store())));
+                () -> new ConfigScreenHandler.ConfigScreenFactory((minecraft, parent) -> new EngineSettingsScreen(parent, ClientState.store())));
         event.enqueueWork(ClientState::initialize);
     }
     @SubscribeEvent
