@@ -22,7 +22,7 @@ The native settings screen uses direct persistent category tabs on the left, mat
 ## Validation status
 
 - Production compilation and reobfuscation: passed with Java 17 and ForgeGradle 6.0.36
-- Artifact: `taste-1.0.3-sandbox.jar`, SHA-256 `523DFBEA0D03CE8B5196FE9356570E450AB1F7D81B63930B34EC57FD109660F2`
+- Artifact: `taste-1.0.4-sandbox.jar`, SHA-256 `CA63B524C8B49F7CD36FAC45D0CB86F9046152ABD26B5BE97FC4F7E993B7DA89`
 - Registry and consumer audit: passed with 387 unique settings, 36 categories and no unassigned phase
 - Minecraft launch and scene captures: not run because this task did not authorize a client launch
 - Vanilla visual acceptance: not run
@@ -30,7 +30,7 @@ The native settings screen uses direct persistent category tabs on the left, mat
 - Physical NVIDIA, AMD and Intel matrix: not run
 - Dedicated-server class-loading check: not run
 
-The 1.0.3 JAR retains both core shader programs, the Mixin config and refmap, and no test classes. Its installed copy in `Sandbox JustEnoughMods` has the same SHA-256. The superseded 1.0.2 JAR is retained in that profile's disabled backup. `Test JustEnoughMods` contains no Taste Engine JAR
+The 1.0.4 JAR retains both core shader programs, the Mixin config and refmap, and no test classes. Its installed copy in `Sandbox JustEnoughMods` has the same SHA-256. The crashed 1.0.3 JAR is retained in that profile's disabled backup. `Test JustEnoughMods` contains no Taste Engine JAR
 
 Source presence is not runtime proof. Specialized G-buffer, shadow, compute GI, transparency, precipitation, temporal and provider paths remain `CODE_AUTHORED_RUNTIME_NOT_RUN` until their named Minecraft scenes run. The validation files use `NOT_RUN` instead of converting unavailable runtime evidence into a pass
 

@@ -15,13 +15,16 @@ import org.lwjgl.opengl.GL30;
 
 /** Restores the shared state touched by the integrated fullscreen pass. */
 public final class GlStateScope implements AutoCloseable {
+    private static final int MANAGED_TEXTURE_UNITS = 12;
     private final int readFramebuffer;
     private final int drawFramebuffer;
     private final int program;
     private final ShaderInstance shader;
     private final int vertexArray;
     private final int activeTexture;
-    private final int[] texture2d = new int[16];
+    // Forge 1.20.1 GlStateManager owns exactly 12 cached texture-unit states.
+    // Restoring a larger hardware range through RenderSystem would index past that cache.
+    private final int[] texture2d = new int[MANAGED_TEXTURE_UNITS];
     private final int[] viewport = new int[4];
     private final int[] scissorBox = new int[4];
     private final boolean depth;
