@@ -1,3 +1,15 @@
+## 2026-11-11 - Move pack synchronization to server login and standard folders
+
+- User required AutoModpack to stop checking the remembered server during ordinary Minecraft startup and to install managed content into the standard profile folders instead of using `automodpack/client/active` as the visible runtime
+- Bug / Client Sided / JEM Bootstrap ran remembered-server lookup, full projection verification and update planning during every ordinary launch, while Forge also loaded managed mods from the internal active projection / in testing after moving synchronization to the native server login query and removing the projection from Forge mod discovery
+- Five Whys: startup took several extra minutes because Bootstrap performed synchronization before server selection, the flow treated launch as an update trigger, remembered connection metadata supplied a server before the player selected one, the active projection was also the loader source, and transaction storage and runtime layout were not separated
+- Revision `jem.16` keeps the native downloader, consent, risk, old-file choice, final review, trust checks, object store, transaction, rollback and ownership ledger. BootRecovery can finish only an already accepted transaction during startup and does not begin a new server check
+- Every selected managed path is now copied transactionally to its standard gameDir root, including `mods`, `resourcepacks` and `shaderpacks`. Forge loads `gameDir/mods`. `automodpack/client/active` remains an internal installed-generation and rollback witness
+- A login that changes JARs still requires the native restart before the connection can continue. Personal files remain protected by the ownership ledger, first-install choice and explicit pinned mod IDs
+- The Forge 1.20.1 production JAR built successfully without tests. Its revision is `jem.16`, size is 3,489,667 bytes and SHA-256 is `9a0ce9a5b1a3f9139f5bd33946c9b46d0c76c5ffe58176a3af2b2441f0625f54`
+- Synchronized only the canonical managed source, clean bootstrap installer and ordinary local Server. The `test jem` profile, stable `JustEnoughMods`, MineRENT and immutable release baseline remain unchanged. Bootstrap remains excluded from the managed AutoModpack generation, so no generation publication is required
+- No Minecraft launch or runtime timing measurement was performed. The previous 10-minute to 2-minute target remains a player-acceptance goal, not a verified result
+
 ## 2026-11-10 - Expand Major Update 4 structures and assign overlap ownership
 
 - User requested eleven additional structure and worldgen projects, priority for Improved Pillager Outpost, Luki ownership over Better Villages, conditional mansion and ancient-city overhauls, and one non-duplicated structure-control stack

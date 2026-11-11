@@ -12,7 +12,10 @@ from pathlib import Path
 
 MODULE = Path(__file__).resolve().parent
 CONFIG = MODULE / "upstream.json"
-PATCH = MODULE / "patches" / "reliable-updates.patch"
+PATCHES = (
+    MODULE / "patches" / "reliable-updates.patch",
+    MODULE / "patches" / "login-sync-standard-layout.patch",
+)
 
 
 def prepare(config, source):
@@ -20,11 +23,12 @@ def prepare(config, source):
     receipt = destination / "jem-source.json"
     identity = {
         "commit": config["commit"],
-        "patchSha256": hashlib.sha256(PATCH.read_bytes()).hexdigest(),
+        "patchSha256": hashlib.sha256(b"".join(patch.read_bytes() for patch in PATCHES)).hexdigest(),
     }
     patched_paths = {
         line.removeprefix("+++ b/").strip()
-        for line in PATCH.read_text(encoding="utf-8").splitlines()
+        for patch in PATCHES
+        for line in patch.read_text(encoding="utf-8").splitlines()
         if line.startswith("+++ b/")
     }
     prepared_paths = set(config["sourceHashes"]) | patched_paths
@@ -70,7 +74,8 @@ def prepare(config, source):
     # the outer JEM checkout: its cwd-prefix filtering silently skips these paths.
     patch_environment = dict(os.environ)
     patch_environment["GIT_CEILING_DIRECTORIES"] = str(destination.parent.resolve())
-    subprocess.run(["git", "apply", "--ignore-space-change", str(PATCH)], cwd=destination, env=patch_environment, check=True)
+    for patch in PATCHES:
+        subprocess.run(["git", "apply", "--ignore-space-change", str(patch)], cwd=destination, env=patch_environment, check=True)
     identity["preparedSourceHashes"] = {
         relative: hashlib.sha256((destination / relative).read_bytes()).hexdigest()
         for relative in sorted(prepared_paths)

@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-11",
+  "status": "development artifact built and synchronized locally, runtime acceptance pending",
+  "revision": "jem.16",
+  "nativeVersion": "5.0.0-rc.1",
+  "upstreamCommit": "4348bf2532bb8261af3297cf2480a3a0ee91befb",
+  "artifact": {
+    "source": "Mods/JEMBootstrap/build/libs/jem-bootstrap.jar",
+    "sha256": "9a0ce9a5b1a3f9139f5bd33946c9b46d0c76c5ffe58176a3af2b2441f0625f54",
+    "bytes": 3489667,
+    "manifestRevision": "jem.16"
+  },
+  "behavior": {
+    "ordinaryLaunchServerSync": false,
+    "serverCheckTrigger": "native server login query",
+    "runtimeModsDirectory": "gameDir/mods",
+    "managedResourcePacksDirectory": "gameDir/resourcepacks",
+    "managedShaderPacksDirectory": "gameDir/shaderpacks",
+    "internalProjectionRole": "transaction, rollback and installed-generation witness only",
+    "restartAfterJarChange": true,
+    "personalFileProtection": "native ownership ledger plus explicit pinned mod IDs"
+  },
+  "build": {
+    "task": "oneJar for Forge 1.20.1",
+    "result": "successful",
+    "testsRun": false,
+    "minecraftLaunched": false
+  },
+  "localTargets": [
+    "Client/ManagedPack/mods/jem-bootstrap.jar",
+    "Client/JustEnoughMods/mods/jem-bootstrap.jar",
+    "Server/mods/jem-bootstrap.jar"
+  ],
+  "excludedTargets": [
+    "test jem profile",
+    "stable JustEnoughMods profile",
+    "MineRENT",
+    "immutable release baseline"
+  ],
+  "managedPublicationChanged": false,
+  "reason": "Bootstrap is excluded from the served managed generation and updates separately"
+}

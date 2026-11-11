@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "d935a932910b383dfe672025dccce234548c109803d6a709ecd3b456941970bf",
+  "change_records_sha256": "277dab4e699e469246816b33e69c81a2c54fb04828d33f6f54b3fa74afc9ee92",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -2175,6 +2175,21 @@
       "potential_static_target_count": 1
     },
     {
+      "change_id": "pack-sync.login-only-standard-layout",
+      "status": "conditional",
+      "summary": "Defer server synchronization until login and expose managed files through the standard game directory.",
+      "record": "Catalog/changes/records/pack-sync.login-only-standard-layout.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
+    },
+    {
       "change_id": "companions.shelter-bound-native-recovery",
       "status": "conditional",
       "summary": "Standalone Mob Home owns two size-independent homes and native recovery, with no required JEM/content mods",
@@ -4320,7 +4335,7 @@
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/config/weatherglass.properties": "5006c1c79c3319181308ff1cc999f68e65afb2ff9980d214a0ca0b29d5c3cee7",
     "Client/ManagedPack/config/windy-client.toml": "e3eef566494077eff01f7a2ce334d03eb4828836a0fa15d5cce4c25654b71acd",
-    "Client/ManagedPack/jem-pack/manifest.json": "248a08ed76c429a57204fbe809d1c61b9701cf21c71cd1f529edddd8126882e2",
+    "Client/ManagedPack/jem-pack/manifest.json": "2f16b5e5ec20e7035be3fc2de69882ab4b8fdea5fd6bcf63d8f41d13cdab57c5",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4502,7 +4517,7 @@
     "Client/ManagedPack/mods/immersive_paintings-0.6.13+1.20.1-forge.jar": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
     "Client/ManagedPack/mods/immersivepaintings-exposure-1.0.0.jar": "12828b32b3cba13924be661bdbbcd15aad6926d448210193e6851285f730157f",
     "Client/ManagedPack/mods/jem-advancements-5.3.2.jar": "92cb60aeff44060cb544de568776b335f224a1a3263fa806c04eee4a58602042",
-    "Client/ManagedPack/mods/jem-bootstrap.jar": "75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8",
+    "Client/ManagedPack/mods/jem-bootstrap.jar": "9a0ce9a5b1a3f9139f5bd33946c9b46d0c76c5ffe58176a3af2b2441f0625f54",
     "Client/ManagedPack/mods/jem-economy-1.3.2.jar": "5049eac7880a2a58ea7423b78944302b39dd588b962d8bc375d149d797999923",
     "Client/ManagedPack/mods/jem-identity-1.0.0.jar": "c84a1cc030dd5a91b7bae287b24ced375387c18f171b382e7aa128763eba010d",
     "Client/ManagedPack/mods/jem-races-2.0.3.jar": "c98f3f9a360af54cd5292c9239d6ef335dc4093afc355e9f449e081c398ec0e2",
@@ -4531,7 +4546,7 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "8c2451e31abdb81869030bff3c9901dac49f6be9645f3cdd516524f38103ac31",
+    "Docs/DEVELOPMENT.md": "5df4b694caa9a3b940f23a09a6381e3a498f61b872fb91230cd7d31bfc019fec",
     "Docs/MODS.md": "989bb2935600b9f8a5642de362fd82466ea5288cd32f380d8a5d0f674d901ec8",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -8161,9 +8176,10 @@
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/config/JEMConfig.java": "87864ec9b9786b78fef6a97a5307bbf8603e65b7fd07cd91ec0d1981ee352375",
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/ClientLevelMixin.java": "b45f61877a06f7cc9ac6abfca4bc1f7a463479966e07f0be3e0557c25ce333c8",
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/EntityRenderDispatcherMixin.java": "d7eafdaaf3247ed0e275d942dd1ff007cb763a65c64f2d9010901971213fba06",
+    "Mods/JEMBootstrap/patches/login-sync-standard-layout.patch": "874f7262b1638123e5c4cce3ef3db1018529436ce48283f1a735167d07e9d610",
     "Mods/JEMBootstrap/patches/reliable-updates.patch": "2177def2d6a26136adc4a41468dd2e78a473c8cca78c5080e88ea23a90ef6ba5",
-    "Mods/JEMBootstrap/prepare.py": "e6603b1c5e326d6d012c47bb5524ab8df49851fad5f3cf2847aca06df341ff87",
-    "Mods/JEMBootstrap/upstream.json": "10544c0e6226fdf1348eb24ef3edddeece638f33610abaccd8f0ab6a9a319daa",
+    "Mods/JEMBootstrap/prepare.py": "bffd588e7d8b58e4a09c49d13ab54df682658ec8e399b6c7d6e98a167d0a9d0b",
+    "Mods/JEMBootstrap/upstream.json": "f147815ebbf75e396f30db1ddbd26e68c0f8997443aacf0bf3419790e786bcf7",
     "Mods/JEMCompat/AGENTS.md": "5b6571fd825d84aaac62215b40edce7c64b97eaadb164ac597865b13b01773c6",
     "Mods/JEMCompat/README.md": "28b2515dcc42ea369dccf820ee4fe9e6ba82900e351e8816bc5be0edb83fc420",
     "Mods/JEMCompat/SEASONS.md": "2a722937421ab4ff9c9be2cdb2a168c4e45a6c3b1c03206ffee420878ade5ab3",
@@ -9667,8 +9683,8 @@
     "tools/build_jem_release_resource_pack.py": "b69a3cebba55980a260059f7e7a9029f86e931fb8d188f54e1b15c6b29e26d5a",
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
-    "tools/module-inventory.json": "21bd8f9024b78659dafc0fa0f1368f1578a06c0c4eff29424d9c7aaec7df0fd9",
-    "tools/state/packSyncHost-sync.json": "ae6de1bb48fd4c12787a60d0ed0a73f7e9ccb9576819b3ad4eacaf9a0a6bd04c",
+    "tools/module-inventory.json": "51ed35673188082e623a62ada97f8b758217ce65b1158a0df9735125703c8796",
+    "tools/state/packSyncHost-sync.json": "84b9b1bef03bef882ca3a6366c46067883131e867ee8f5fc0a359bfdfd0c7bf4",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

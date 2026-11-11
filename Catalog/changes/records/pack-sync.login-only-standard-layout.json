@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "change_id": "pack-sync.login-only-standard-layout",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Client uses JEM Bootstrap revision jem.16 and connects to a dedicated server that advertises a native AutoModpack generation."
+    }
+  ],
+  "precedence": {
+    "layer": "native_distribution_lifecycle",
+    "priority": 35
+  },
+  "change": {
+    "summary": "Defer server synchronization until login and expose managed files through the standard game directory.",
+    "modifiers": [
+      {
+        "property": "automodpack.sync_trigger",
+        "operation": "replace",
+        "before": "Ordinary Minecraft launch can fetch remembered server metadata, scan the active projection and prepare an update before the player selects a server.",
+        "after": "Ordinary launch performs no server update check. The native login query fetches and compares the advertised generation when the player attempts to connect."
+      },
+      {
+        "property": "automodpack.runtime_layout",
+        "operation": "replace",
+        "before": "Forge can load managed mods from automodpack/client/active/mods, while players expect mods and packs under the standard game directory.",
+        "after": "Managed paths are transactionally copied to standard gameDir roots and Forge loads gameDir/mods. The internal active projection remains a rollback and installed-generation witness only."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMBootstrap pinned native AutoModpack source patch",
+    "kind": "startup_and_runtime_layout_ownership",
+    "source_files": [
+      "Mods/JEMBootstrap/patches/login-sync-standard-layout.patch",
+      "Mods/JEMBootstrap/prepare.py",
+      "Mods/JEMBootstrap/upstream.json",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove remembered-server synchronization from ordinary startup and make the installed modpack visible in the folders players already use.",
+    "decision_source": "User explicitly required AutoModpack to check only during a server connection attempt, requested standard mods/resourcepacks/shaderpacks paths and authorized replacing the jem.9 behavior. Codex retained native transaction, consent, trust and ownership boundaries."
+  },
+  "introduced": {
+    "date": "2026-11-11",
+    "commit": "SELF",
+    "action": "change",
+    "summary": "Use login-only synchronization and standard gameDir runtime paths."
+  },
+  "history": [
+    {
+      "date": "2026-11-11",
+      "commit": "SELF",
+      "action": "change",
+      "summary": "Use login-only synchronization and standard gameDir runtime paths."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Native AutoModpack login flow",
+      "Forge mod discovery",
+      "Managed resource-pack and shader-pack placement",
+      "Native update planning and rollback",
+      "Player-owned local files"
+    ],
+    "relations": [
+      "Server selection -> native login query -> manifest comparison -> reviewed transaction -> standard gameDir files -> restart when JARs changed"
+    ],
+    "notes": [
+      "The Bootstrap mod itself still loads with Forge. It does not contact a remembered server during ordinary launch.",
+      "BootRecovery may finish an already accepted pending transaction without starting a new server check.",
+      "No registry, gameplay, packet-channel version, world, MineRENT or stable-profile change."
+    ],
+    "unresolved": [
+      "Player launch timing and first login acceptance remain pending.",
+      "A changed managed JAR still requires the native restart before connection can continue."
+    ]
+  }
+}
