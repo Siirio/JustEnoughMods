@@ -1,3 +1,11 @@
+## 2026-11-11 - Bound Atlas work for packaging-only repairs
+
+- User required future narrow JEM repairs to avoid the 41-minute delivery path observed during the Sift reobfuscation fix
+- Added a permanent packaging-only fast path to the canonical `jem-registry-keeper` workflow
+- Packaging-only repairs now use one build, one focused artifact comparison, one Atlas refresh and validation path, one pack publication and application, and one consolidated final check
+- The workflow now forbids the shared Atlas publisher, independent reproducibility stores, repository-wide archive scans and repeated full Atlas passes unless the user or owning project documentation explicitly requires them
+- A mandatory command that exceeds five minutes must be reported, while optional diagnostics stop after the root cause is confirmed
+
 ## 2026-11-11 - Repair the Sift production artifact
 
 - User requested repair of the `Test JustEnoughMods` startup crash and all required delivery work
