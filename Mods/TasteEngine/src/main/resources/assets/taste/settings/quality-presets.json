@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "presets": {
+    "low": {
+      "general.renderScale": 1.0,
+      "shadows.resolution": "1024",
+      "shadows.cascades": 2,
+      "shadows.distance": 96,
+      "shadows.filter": "pcf",
+      "shadows.filterSamples": 8,
+      "shadows.maxLocalLights": 0,
+      "gi.mode": "screen",
+      "gi.screenSamples": 4,
+      "clouds.raySteps": 24,
+      "clouds.lightSteps": 2,
+      "clouds.resolutionScale": "0.25",
+      "fog.steps": 16,
+      "fog.resolutionScale": "0.25",
+      "reflections.steps": 24,
+      "particles.budget": 1500,
+      "ao.directions": 2,
+      "ao.steps": 3
+    },
+    "balanced": {
+      "shadows.resolution": "2048",
+      "shadows.cascades": 3,
+      "shadows.distance": 128,
+      "shadows.filterSamples": 16,
+      "shadows.maxLocalLights": 2,
+      "gi.mode": "screen",
+      "gi.screenSamples": 12,
+      "clouds.raySteps": 40,
+      "clouds.lightSteps": 4,
+      "fog.steps": 32,
+      "reflections.steps": 48,
+      "particles.budget": 3500
+    },
+    "high": {},
+    "ultra": {
+      "shadows.resolution": "4096",
+      "shadows.cascades": 4,
+      "shadows.distance": 256,
+      "shadows.filterSamples": 48,
+      "shadows.maxLocalLights": 8,
+      "gi.mode": "voxel",
+      "gi.resolution": "128",
+      "gi.cones": 9,
+      "clouds.raySteps": 128,
+      "clouds.lightSteps": 16,
+      "clouds.resolutionScale": "1",
+      "fog.steps": 96,
+      "fog.resolutionScale": "1",
+      "reflections.steps": 128,
+      "reflections.resolutionScale": "1",
+      "particles.budget": 12000,
+      "ao.resolutionScale": "1",
+      "materials.parallax": true,
+      "performance.memoryBudgetMiB": 2048
+    }
+  }
+}

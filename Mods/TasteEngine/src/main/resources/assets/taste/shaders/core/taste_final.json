@@ -1,0 +1,50 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "one",
+    "dstrgb": "zero"
+  },
+  "vertex": "taste:taste_final",
+  "fragment": "taste:taste_final",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "DiffuseSampler" },
+    { "name": "DepthSampler" }
+  ],
+  "uniforms": [
+    { "name": "InSize", "type": "float", "count": 2, "values": [1.0, 1.0] },
+    { "name": "FarPlane", "type": "float", "count": 1, "values": [256.0] },
+    { "name": "Time", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Rain", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Exposure", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "Saturation", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "Contrast", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "Temperature", "type": "float", "count": 1, "values": [6500.0] },
+    { "name": "Tint", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Gamma", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "BloomEnabled", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "BloomStrength", "type": "float", "count": 1, "values": [0.16] },
+    { "name": "BloomThreshold", "type": "float", "count": 1, "values": [1.5] },
+    { "name": "BloomRadius", "type": "float", "count": 1, "values": [0.65] },
+    { "name": "FogStrength", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "FogDistance", "type": "float", "count": 1, "values": [160.0] },
+    { "name": "ShaftStrength", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Vignette", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Grain", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Sharpen", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "DofEnabled", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "FocusDistance", "type": "float", "count": 1, "values": [8.0] },
+    { "name": "Aperture", "type": "float", "count": 1, "values": [2.8] },
+    { "name": "DofRadius", "type": "float", "count": 1, "values": [12.0] },
+    { "name": "Outline", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "OutlineWidth", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "ToonBands", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "WetLens", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Underwater", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "UnderwaterDensity", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Thunder", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "ReducedMotion", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "MinimumContrast", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "ToneMapper", "type": "float", "count": 1, "values": [0.0] }
+  ]
+}

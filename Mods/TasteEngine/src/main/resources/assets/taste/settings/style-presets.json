@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "presets": {
+    "natural": {
+      "lighting.sunIntensity": 2.6,
+      "color.saturation": 1,
+      "color.contrast": 1,
+      "style.shading": "physical",
+      "bloom.strength": 0.1,
+      "lighting.warmColdBalance": 0.05
+    },
+    "storybook": {
+      "color.saturation": 1.18,
+      "color.highlightTint": "#FFE4BE",
+      "color.shadowTint": "#CBCFFF",
+      "clouds.mode": "block",
+      "style.shading": "soft",
+      "style.lightWrap": 0.22,
+      "entities.rimStrength": 0.24,
+      "bloom.strength": 0.14
+    },
+    "warm": {
+      "lighting.sunColor": "#FFD8A2",
+      "lighting.sunIntensity": 3.4,
+      "fog.volumetric": true,
+      "fog.shaftsStrength": 1.05,
+      "color.temperature": 5900,
+      "color.saturation": 1.05,
+      "gi.intensity": 1.2,
+      "bloom.strength": 0.18,
+      "camera.dof": false
+    },
+    "soul": {
+      "emission.soulColor": "#39ECF2",
+      "emission.strength": 1.7,
+      "color.shadowTint": "#A1D4E2",
+      "color.saturation": 0.95,
+      "lighting.ambientFloor": 0.003,
+      "bloom.emissionWeight": 1.4,
+      "fog.color": "#306374",
+      "fog.density": 0.013
+    },
+    "soft": {
+      "lighting.sunIntensity": 2.5,
+      "style.lightWrap": 0.3,
+      "color.contrast": 0.94,
+      "color.saturation": 0.92,
+      "bloom.strength": 0.14,
+      "shadows.sunAngularRadius": 0.6,
+      "color.highlightTint": "#FFEDCE"
+    },
+    "rainy": {
+      "clouds.coverage": 0.82,
+      "clouds.density": 1.1,
+      "weather.rainDensity": 1.2,
+      "glass.rainDrops": true,
+      "wetness.enabled": true,
+      "wetness.puddleCoverage": 0.45,
+      "color.saturation": 0.9,
+      "color.shadowTint": "#C1D4C9",
+      "fog.density": 0.011
+    }
+  }
+}

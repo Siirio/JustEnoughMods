@@ -129,3 +129,11 @@
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-11-01
 
+## LOCKED: Taste Engine sandbox isolation and native bypass
+- Scope: `Mods/TasteEngine`, its sandbox artifact and the `Sandbox JustEnoughMods` profile
+- Approved signal: The user required the handoff mod in the renamed sandbox, from a new branch based on `develop`, with no work in `Test JustEnoughMods`
+- Protected behavior: Taste Engine remains a standalone client mod and uses only `Sandbox JustEnoughMods` during this development branch. It never enters Test JustEnoughMods, Client/ManagedPack, the local dedicated Server, stable JustEnoughMods or MineRENT without a later explicit promotion request. Master Off bypasses the Taste world pass and frees its optional GPU resources. Active Taste graphics ownership is mutually exclusive with Luxium, Oculus and ImmersiveVFX
+- Allowed changes: Extend the clean-room renderer, adapters, effects, configuration and sandbox packaging while preserving the bypass, client-only operation and profile isolation
+- Unlock condition: Explicit user request to promote Taste Engine or change its renderer ownership contract
+- Created: 2026-11-11
+
