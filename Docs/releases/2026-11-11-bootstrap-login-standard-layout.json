@@ -1,14 +1,14 @@
 {
   "date": "2026-11-11",
   "status": "development artifact built and synchronized locally, runtime acceptance pending",
-  "revision": "jem.16",
+  "revision": "jem.17",
   "nativeVersion": "5.0.0-rc.1",
   "upstreamCommit": "4348bf2532bb8261af3297cf2480a3a0ee91befb",
   "artifact": {
     "source": "Mods/JEMBootstrap/build/libs/jem-bootstrap.jar",
-    "sha256": "9a0ce9a5b1a3f9139f5bd33946c9b46d0c76c5ffe58176a3af2b2441f0625f54",
-    "bytes": 3489667,
-    "manifestRevision": "jem.16"
+    "sha256": "df3096a998b2331133e9262aaa7c7a0028ad6d9c480d016009ce4703ec4aff01",
+    "bytes": 3494165,
+    "manifestRevision": "jem.17"
   },
   "behavior": {
     "ordinaryLaunchServerSync": false,
@@ -16,9 +16,15 @@
     "runtimeModsDirectory": "gameDir/mods",
     "managedResourcePacksDirectory": "gameDir/resourcepacks",
     "managedShaderPacksDirectory": "gameDir/shaderpacks",
-    "internalProjectionRole": "transaction, rollback and installed-generation witness only",
+    "clientServiceStateDirectory": "%LOCALAPPDATA%/JEM/pack-sync/<profile-id>",
+    "clientGameDirAutomodpackAfterMigration": false,
+    "dedicatedServerStateDirectory": "gameDir/automodpack/server",
+    "internalProjectionRole": "external transaction, rollback and installed-generation witness only",
+    "immutableDiskStrategy": "verified same-volume hard link with verified copy fallback",
+    "mutableDiskStrategy": "independent verified copies",
     "restartAfterJarChange": true,
-    "personalFileProtection": "native ownership ledger plus explicit pinned mod IDs"
+    "personalFileProtection": "unique personal mod IDs remain, pinned IDs remain protected and same-ID conflicts require reviewed ledger-aware disposition",
+    "singleplayerAfterFirstInstall": "available without a server check, with dedicated-only JEM systems disabled"
   },
   "build": {
     "task": "oneJar for Forge 1.20.1",

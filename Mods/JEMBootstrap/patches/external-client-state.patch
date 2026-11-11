@@ -1,0 +1,582 @@
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
+index 51226a7..1ca1bdf 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
+@@ -49,7 +49,19 @@ public final class DetachedUpdateHelper {
+ 
+ 	/** The helper hosts instance-level machinery, so its jars live beside the instance state, outside any role tree. */
+ 	public static Path helperDirectory() {
+-		return GameDirectory.current().resolve(HELPER_DIR).toAbsolutePath().normalize();
++		return DataRootResolver.instanceStatePath(clientLocation(), HELPER_DIR);
++	}
++
++	public static Path helperLogFile() {
++		return DataRootResolver.instanceStatePath(clientLocation(), HELPER_LOG_FILE);
++	}
++
++	public static Path helperLeaseFile() {
++		return DataRootResolver.instanceStatePath(clientLocation(), HELPER_LEASE_FILE);
++	}
++
++	private static DataRootResolver.Location clientLocation() {
++		return DataRootResolver.resolve(GameDirectory.current(), LOADER_MANAGER == null ? null : LOADER_MANAGER.getEnvironmentType());
+ 	}
+ 
+ 	public static void launch() throws IOException {
+@@ -70,7 +82,7 @@ public final class DetachedUpdateHelper {
+ 				runtimeDependency(LoggerContext.class).toString());
+ 		// The game process exits right after this launch, so inherited streams would die with it; the helper's story must outlive the game in a file.
+ 		// Append: a second helper that loses the lease still starts with this redirect already open, and must not truncate the running helper's log.
+-		Path helperLog = GameDirectory.current().resolve(HELPER_LOG_FILE).toAbsolutePath().normalize();
++		Path helperLog = helperLogFile();
+ 		// The helper has no loader service. Pin this process's already-resolved root as a JVM property before the main class; configuredRoot prefers it over env and role defaults.
+ 		String environment = LOADER_MANAGER == null || LOADER_MANAGER.getEnvironmentType() == null ? "" : LOADER_MANAGER.getEnvironmentType().name();
+ 		DataRootResolver.Location dataLocation = DataRootResolver.resolve(GameDirectory.current(), LOADER_MANAGER == null ? null : LOADER_MANAGER.getEnvironmentType());
+@@ -84,7 +96,7 @@ public final class DetachedUpdateHelper {
+ 	 * True after waiting out a helper that already held the lease, so the caller should retry recovery once.
+ 	 */
+ 	public static boolean awaitRunningHelper() throws IOException {
+-		Path leaseFile = GameDirectory.current().resolve(HELPER_LEASE_FILE).toAbsolutePath().normalize();
++		Path leaseFile = helperLeaseFile();
+ 		if (!Files.isRegularFile(leaseFile, LinkOption.NOFOLLOW_LINKS)) return false;
+ 		try (FileChannel channel = FileChannel.open(leaseFile, StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS)) {
+ 			FileLock probe;
+@@ -113,7 +125,7 @@ public final class DetachedUpdateHelper {
+ 				}
+ 			}
+ 			LOGGER.error("The detached update helper still holds the lease after {} minutes; stopping this launch before loading the modpack, its own log is at {}", HELPER_LEASE_WAIT.toMinutes(),
+-					GameDirectory.current().resolve(HELPER_LOG_FILE).toAbsolutePath().normalize());
++					helperLogFile());
+ 			throw new IOException("The previous update is still finishing; the client must wait before loading its modpack");
+ 		}
+ 	}
+@@ -123,7 +135,7 @@ public final class DetachedUpdateHelper {
+ 	 * sessions - its parent wait, its per-attempt failures, its give-up.
+ 	 */
+ 	public static void mirrorRecentRuns() {
+-		Path helperLog = GameDirectory.current().resolve(HELPER_LOG_FILE).toAbsolutePath().normalize();
++		Path helperLog = helperLogFile();
+ 		try {
+ 			if (!Files.isRegularFile(helperLog, LinkOption.NOFOLLOW_LINKS)) return;
+ 			byte[] tail;
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
+index 9c1fa10..8404697 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
+@@ -72,7 +72,7 @@ public final class UpdateHelperMain {
+ 		Path gameDirectory = GameDirectory.current();
+ 		DataRootResolver.Location dataLocation = DataRootResolver.resolve(gameDirectory, environment);
+ 		logStart(parentPid, environment, gameDirectory, dataLocation);
+-		Path leaseFile = gameDirectory.resolve(HELPER_LEASE_FILE).toAbsolutePath().normalize();
++		Path leaseFile = DataRootResolver.instanceStatePath(dataLocation, HELPER_LEASE_FILE);
+ 		Files.createDirectories(leaseFile.getParent());
+ 		try (FileChannel leaseChannel = FileChannel.open(leaseFile, StandardOpenOption.CREATE, StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS)) {
+ 			FileLock lease;
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateRecovery.java b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateRecovery.java
+index 7112450..8445652 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateRecovery.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateRecovery.java
+@@ -1,12 +1,10 @@
+ package pl.skidam.automodpack_core.client;
+ 
+ import static pl.skidam.automodpack_core.Constants.LOGGER;
+-import static pl.skidam.automodpack_core.storage.StoragePaths.HELPER_LOG_FILE;
+ 
+ import java.io.IOException;
+ import java.nio.file.Path;
+ 
+-import pl.skidam.automodpack_core.storage.GameDirectory;
+ import pl.skidam.automodpack_core.update.ClientStorage;
+ import pl.skidam.automodpack_core.update.UpdateLoopDetector;
+ import pl.skidam.automodpack_core.update.UpdateTransaction;
+@@ -82,7 +80,7 @@ public final class UpdateRecovery {
+ 			clearDeferredGuard(storage);
+ 			LOGGER.error("The same update transaction {} failed after {} deferred restarts; kept the last finalized generation and retired the transaction to {}", deferred.transactionId,
+ 					loop.restarts(), stuckJournal.toAbsolutePath().normalize());
+-			LOGGER.error("If the update keeps failing, send that file together with {} and the latest log", GameDirectory.current().resolve(HELPER_LOG_FILE).toAbsolutePath().normalize());
++			LOGGER.error("If the update keeps failing, send that file together with {} and the latest log", DetachedUpdateHelper.helperLogFile());
+ 			return new RecoveryAttempt(execution, deferred, true);
+ 		}
+ 		DetachedUpdateHelper.launch();
+@@ -95,7 +93,7 @@ public final class UpdateRecovery {
+ 		LOGGER.error("Blocked operation {}, blocked path {}, message {}", execution.operation(), execution.blockedPath(), execution.message());
+ 		LOGGER.error("Journal-recorded result: status {}, operation {}, path {}, message {}", transaction.resultStatus, transaction.resultOperation, transaction.resultPath, transaction.resultMessage);
+ 		LOGGER.error("The full transaction journal is at {}", storage.transactionFile().toAbsolutePath().normalize());
+-		LOGGER.error("The detached helper's own log, with its per-attempt recovery failures, is at {}", GameDirectory.current().resolve(HELPER_LOG_FILE).toAbsolutePath().normalize());
++		LOGGER.error("The detached helper's own log, with its per-attempt recovery failures, is at {}", DetachedUpdateHelper.helperLogFile());
+ 		DetachedUpdateHelper.mirrorRecentRuns();
+ 		if (loop.decision() == UpdateLoopDetector.Decision.RESTART)
+ 			LOGGER.error("This is deferred restart {} of {} for the transaction; when they run out, the next failed launch rolls back to the last finalized generation", loop.restarts(), loop.maxRestarts());
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/config/BootstrapInstaller.java b/core/src/main/java/pl/skidam/automodpack_core/config/BootstrapInstaller.java
+index 1c42b72..daff93e 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/config/BootstrapInstaller.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/config/BootstrapInstaller.java
+@@ -23,7 +23,7 @@ public final class BootstrapInstaller {
+ 	public static Optional<Receipt> importIfPresent(ClientStorage storage, ClientConfigJsons.ClientConfigFieldsV3 clientConfig) {
+ 		Path instanceRootBootstrap = storage.gameDirectory().resolve(BOOTSTRAP_FILE.getFileName());
+ 		if (Files.isRegularFile(instanceRootBootstrap) && !instanceRootBootstrap.equals(storage.bootstrapFile()))
+-			LOGGER.warn("Ignoring instance-root {}; packs can write that path. Place the file at {}", BOOTSTRAP_FILE.getFileName(), BOOTSTRAP_FILE);
++			LOGGER.warn("Ignoring instance-root {}; packs can write that path. Place the file at {}", BOOTSTRAP_FILE.getFileName(), storage.bootstrapFile());
+ 		if (!Files.isRegularFile(storage.bootstrapFile())) return Optional.empty();
+ 
+ 		ConnectionJsons.KnownHostsBootstrapFields fields = ConfigTools.read(storage.bootstrapFile(), ConnectionJsons.KnownHostsBootstrapFields.class)
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java b/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
+index 758e43a..3f62e8a 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
+@@ -14,6 +14,7 @@ import java.util.zip.ZipFile;
+ import io.airlift.compress.zstd.ZstdDecompressor;
+ 
+ import pl.skidam.automodpack_core.config.ConfigTools;
++import pl.skidam.automodpack_core.storage.DataRootResolver;
+ import pl.skidam.automodpack_core.storage.GameDirectory;
+ import pl.skidam.automodpack_core.storage.StoragePaths;
+ import pl.skidam.automodpack_core.utils.DurableFiles;
+@@ -55,7 +56,10 @@ public final class ImplStore {
+ 		Path outerJar = JarUtils.getJarPath(outerClass);
+ 		ImplManifest manifest = readManifest(outerJar);
+ 		ImplManifest.Entry entry = manifest.entryFor(loader, mcVersion);
+-		Path cacheDir = GameDirectory.current().resolve(client ? StoragePaths.CLIENT_IMPL_CACHE_DIR : StoragePaths.SERVER_IMPL_CACHE_DIR);
++		Path gameDirectory = GameDirectory.current();
++		Path cacheDir = client
++				? DataRootResolver.instanceStatePath(DataRootResolver.resolve(gameDirectory, LoaderManagerService.EnvironmentType.CLIENT), StoragePaths.CLIENT_IMPL_CACHE_DIR)
++				: gameDirectory.resolve(StoragePaths.SERVER_IMPL_CACHE_DIR);
+ 		Path implJar = cacheDir.resolve(entry.id() + ".jar");
+ 		Path lockFile = cacheDir.resolveSibling(cacheDir.getFileName() + LOCK_SUFFIX);
+ 
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/storage/ClientStateMigration.java b/core/src/main/java/pl/skidam/automodpack_core/storage/ClientStateMigration.java
+new file mode 100644
+index 0000000..f8f0270
+--- /dev/null
++++ b/core/src/main/java/pl/skidam/automodpack_core/storage/ClientStateMigration.java
+@@ -0,0 +1,78 @@
++package pl.skidam.automodpack_core.storage;
++
++import static pl.skidam.automodpack_core.Constants.LOGGER;
++
++import java.io.IOException;
++import java.nio.file.Files;
++import java.nio.file.LinkOption;
++import java.nio.file.Path;
++import java.util.Comparator;
++import java.util.List;
++import java.util.stream.Stream;
++
++import pl.skidam.automodpack_core.utils.FileIntegrity;
++import pl.skidam.automodpack_core.utils.FileLocks;
++import pl.skidam.automodpack_core.utils.FileTrees;
++import pl.skidam.automodpack_core.utils.VerifiedFileTransfer;
++
++/** One-time, resumable move of legacy client service state out of the game directory. */
++public final class ClientStateMigration {
++	private static final String LOCK_FILE = "legacy-migration.lock";
++
++	private ClientStateMigration() {}
++
++	public static void migrate(DataRootResolver.Location location) throws IOException {
++		if (location.dedicatedServer()) return;
++		Path legacyRoot = location.ownerPath().resolve(StoragePaths.AUTOMODPACK_DIR).normalize();
++		if (!Files.exists(legacyRoot, LinkOption.NOFOLLOW_LINKS)) return;
++		if (Files.isSymbolicLink(legacyRoot) || !Files.isDirectory(legacyRoot, LinkOption.NOFOLLOW_LINKS))
++			throw new IOException("Legacy AutoModpack client state is not a regular directory: " + legacyRoot);
++		Path targetRoot = location.root().toAbsolutePath().normalize();
++		if (targetRoot.startsWith(legacyRoot)) throw new IOException("JEM Pack Sync profile root is inside legacy client state: " + targetRoot);
++		Files.createDirectories(targetRoot);
++		FileLocks.withLock(targetRoot.resolve(LOCK_FILE), LinkOption.NOFOLLOW_LINKS, () -> {
++			migrateLocked(legacyRoot, targetRoot);
++			return null;
++		});
++	}
++
++	private static void migrateLocked(Path legacyRoot, Path targetRoot) throws IOException {
++		// The new JAR has already staged its current impl before core startup. The old impl tree is rebuildable and
++		// must not conflict with that current cache during the one-time state move.
++		FileTrees.delete(legacyRoot.resolve(StoragePaths.AUTOMODPACK_DIR.relativize(StoragePaths.CLIENT_IMPL_CACHE_DIR)));
++		List<Path> paths;
++		try (Stream<Path> walked = Files.walk(legacyRoot)) {
++			paths = walked.sorted(Comparator.comparingInt(Path::getNameCount)).toList();
++		}
++		for (Path source : paths) {
++			if (source.equals(legacyRoot)) continue;
++			if (Files.isSymbolicLink(source)) throw new IOException("Legacy AutoModpack client state contains a symbolic link: " + source);
++			Path target = targetRoot.resolve(legacyRoot.relativize(source)).normalize();
++			if (!target.startsWith(targetRoot)) throw new IOException("Legacy AutoModpack path escaped the JEM Pack Sync profile root: " + source);
++			if (Files.isDirectory(source, LinkOption.NOFOLLOW_LINKS)) {
++				Files.createDirectories(target);
++				continue;
++			}
++			if (!Files.isRegularFile(source, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Unsupported legacy AutoModpack entry: " + source);
++			migrateFile(source, target);
++		}
++		for (Path source : paths.stream().sorted(Comparator.comparingInt(Path::getNameCount).reversed()).toList())
++			Files.deleteIfExists(source);
++		LOGGER.info("Moved legacy client service state from {} to {} and removed the game-directory automodpack folder", legacyRoot, targetRoot);
++	}
++
++	private static void migrateFile(Path source, Path target) throws IOException {
++		long size = Files.size(source);
++		String hash = FileIntegrity.identityHash(source, null);
++		if (hash == null) throw new IOException("Cannot hash legacy AutoModpack client state: " + source);
++		if (Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {
++			if (Files.isSymbolicLink(target) || !Files.isRegularFile(target, LinkOption.NOFOLLOW_LINKS)
++					|| !FileIntegrity.matches(target, size, hash))
++				throw new IOException("Legacy and external JEM Pack Sync state disagree at " + target);
++		} else {
++			Files.createDirectories(target.getParent());
++			VerifiedFileTransfer.copyAtomic(source, target, size, hash);
++		}
++		Files.delete(source);
++	}
++}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java b/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java
+index 8cafb99..fb67755 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java
+@@ -71,16 +71,24 @@ public final class DataRootResolver {
+ 		}
+ 	}
+ 
+-	public record Location(Path root, String ownerId, Path ownerPath) {
++	public record Location(Path root, String ownerId, Path ownerPath, LoaderManagerService.EnvironmentType environment) {
+ 		public Location {
+ 			root = Objects.requireNonNull(root, "root").toAbsolutePath().normalize();
+ 			ownerId = HashUtils.normalizeSha1(Objects.requireNonNull(ownerId, "owner ID"));
+ 			ownerPath = Objects.requireNonNull(ownerPath, "owner path").toAbsolutePath().normalize();
+ 		}
+ 
++		public Location(Path root, String ownerId, Path ownerPath) {
++			this(root, ownerId, ownerPath, null);
++		}
++
+ 		public Layout layout() {
+ 			return new Layout(root);
+ 		}
++
++		public boolean dedicatedServer() {
++			return environment == LoaderManagerService.EnvironmentType.SERVER;
++		}
+ 	}
+ 
+ 	private DataRootResolver() {}
+@@ -100,17 +108,27 @@ public final class DataRootResolver {
+ 		Path requestedRoot = Objects.requireNonNull(gameDirectory, "game directory").toAbsolutePath().normalize();
+ 		try {
+ 			Path gameRoot = canonicalGameRoot(requestedRoot);
+-			Path automodpackDirectory = gameRoot.resolve(StoragePaths.AUTOMODPACK_DIR).normalize();
+-			createLocalDataDirectory(gameRoot, automodpackDirectory);
+-			Path root = selectRoot(gameRoot, environment);
++			String ownerId = computeOwnerIdentity(gameRoot);
++			Path root = selectRoot(gameRoot, ownerId, environment);
+ 			String localFailure = probe(root);
+ 			if (localFailure != null) throw new IOException("AutoModpack data storage is not writable: " + localFailure);
+-			return new Location(root, computeOwnerIdentity(gameRoot), gameRoot);
++			return new Location(root, ownerId, gameRoot, environment);
+ 		} catch (IOException e) {
+ 			throw new IllegalStateException("Cannot resolve AutoModpack data storage for " + requestedRoot, e);
+ 		}
+ 	}
+ 
++	/** Maps a historical game-local AutoModpack path to its role-owned location. */
++	public static Path instanceStatePath(Location location, Path legacyPath) {
++		Objects.requireNonNull(location, "data location");
++		Path relative = Objects.requireNonNull(legacyPath, "legacy path").normalize();
++		if (relative.isAbsolute() || relative.getNameCount() < 1 || !relative.getName(0).equals(StoragePaths.AUTOMODPACK_DIR))
++			throw new IllegalArgumentException("Instance state path is outside the AutoModpack tree: " + legacyPath);
++		if (location.dedicatedServer()) return location.ownerPath().resolve(relative).normalize();
++		if (relative.getNameCount() == 1) return location.root();
++		return location.root().resolve(relative.subpath(1, relative.getNameCount())).normalize();
++	}
++
+ 	/** Git-style content-addressed path {@code objects/<aa>/<rest-of-sha1>}. */
+ 	public static Path objectFile(Path objectsDirectory, String sha1) {
+ 		String hash = HashUtils.normalizeSha1(sha1);
+@@ -146,16 +164,12 @@ public final class DataRootResolver {
+ 		return realRoot;
+ 	}
+ 
+-	private static void createLocalDataDirectory(Path gameRoot, Path directory) throws IOException {
+-		Files.createDirectories(directory);
+-		if (Files.isSymbolicLink(directory) || !Files.isDirectory(directory, LinkOption.NOFOLLOW_LINKS)) throw new IOException("AutoModpack data directory is not a regular directory: " + directory);
+-		Path realDirectory = directory.toRealPath();
+-		if (!gameRoot.equals(realDirectory.getParent())) throw new IOException("AutoModpack data directory resolves outside the game directory: " + directory);
+-	}
+-
+-	private static Path selectRoot(Path gameRoot, LoaderManagerService.EnvironmentType environment) throws IOException {
++	private static Path selectRoot(Path gameRoot, String ownerId, LoaderManagerService.EnvironmentType environment) throws IOException {
+ 		Path configured = configuredRoot(gameRoot);
+ 		if (configured != null) {
++			Path legacyRoot = gameRoot.resolve(StoragePaths.AUTOMODPACK_DIR).normalize();
++			if (environment != LoaderManagerService.EnvironmentType.SERVER && configured.startsWith(legacyRoot))
++				throw new IOException("Configured client data root is inside the game directory: " + configured);
+ 			String failure = probe(configured);
+ 			if (failure != null) throw new IOException("Configured AutoModpack data root is unusable: " + failure);
+ 			logRootOnce("Using the configured AutoModpack data root: {}", configured);
+@@ -166,14 +180,10 @@ public final class DataRootResolver {
+ 			logRootOnce("AutoModpack server data root: {}", serverRoot);
+ 			return serverRoot;
+ 		}
+-		Path sharedRoot = platformDataRoot();
+-		String sharedFailure = probe(sharedRoot);
+-		if (sharedFailure == null) {
+-			logRootOnce("AutoModpack shared data root: {}", sharedRoot);
+-			return sharedRoot;
+-		}
+-		Path clientRoot = gameRoot.resolve(StoragePaths.CLIENT_DATA_DIR).normalize();
+-		LOGGER.warn("Shared AutoModpack data root {} is unusable ({}); falling back to instance-local {}", sharedRoot, sharedFailure, clientRoot);
++		Path clientRoot = platformDataRoot(ownerId);
++		String clientFailure = probe(clientRoot);
++		if (clientFailure != null) throw new IOException("JEM Pack Sync profile root is unusable: " + clientFailure);
++		logRootOnce("JEM Pack Sync client profile root: {}", clientRoot);
+ 		return clientRoot;
+ 	}
+ 
+@@ -218,7 +228,7 @@ public final class DataRootResolver {
+ 		}
+ 	}
+ 
+-	private static Path platformDataRoot() {
+-		return PlatformUtils.userDataDirectory().resolve("automodpack").resolve("data").toAbsolutePath().normalize();
++	private static Path platformDataRoot(String ownerId) {
++		return PlatformUtils.userDataDirectory().resolve("JEM").resolve("pack-sync").resolve(HashUtils.normalizeSha1(ownerId)).toAbsolutePath().normalize();
+ 	}
+ }
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java b/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java
+index a38294a..547c673 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java
+@@ -26,6 +26,7 @@ import pl.skidam.automodpack_core.modpack.generation.OwnershipLedger;
+ import pl.skidam.automodpack_core.modpack.group.LogicalPath;
+ import pl.skidam.automodpack_core.modpack.group.ModpackPathPolicy;
+ import pl.skidam.automodpack_core.storage.DataRootResolver;
++import pl.skidam.automodpack_core.storage.ClientStateMigration;
+ import pl.skidam.automodpack_core.update.UpdatePlan.Root;
+ import pl.skidam.automodpack_core.utils.FileTrees;
+ import pl.skidam.automodpack_core.utils.HashUtils;
+@@ -79,30 +80,30 @@ public final class ClientStorage {
+ 	private ClientStorage(DataRootResolver.Location dataLocation) {
+ 		this.dataLocation = Objects.requireNonNull(dataLocation, "data location");
+ 		this.gameDirectory = requireDirectoryPath(dataLocation.ownerPath(), "game directory");
+-		this.automodpackDirectory = this.gameDirectory.resolve(AUTOMODPACK_DIR).normalize();
+-		this.clientDirectory = this.gameDirectory.resolve(CLIENT_DIR).normalize();
+ 		this.dataDirectory = dataLocation.root();
++		this.automodpackDirectory = this.dataDirectory;
++		this.clientDirectory = DataRootResolver.instanceStatePath(dataLocation, CLIENT_DIR);
+ 		DataRootResolver.Layout dataLayout = dataLocation.layout();
+ 		this.objectsDirectory = dataLayout.objectsDirectory();
+-		this.overlaysDirectory = this.gameDirectory.resolve(CLIENT_OVERLAYS_DIR).normalize();
+-		this.generatedCopiesDirectory = this.gameDirectory.resolve(CLIENT_GENERATED_COPIES_DIR).normalize();
+-		this.activeDirectory = this.gameDirectory.resolve(CLIENT_ACTIVE_DIR).normalize();
+-		this.incomingDirectory = this.gameDirectory.resolve(CLIENT_INCOMING_DIR).normalize();
+-		this.backupDirectory = this.gameDirectory.resolve(CLIENT_BACKUP_DIR).normalize();
+-		this.stateFile = this.gameDirectory.resolve(CLIENT_ACTIVE_STATE_FILE).normalize();
+-		this.transactionFile = this.gameDirectory.resolve(CLIENT_TRANSACTION_FILE).normalize();
+-		this.repairJournalFile = this.gameDirectory.resolve(CLIENT_REPAIR_FILE).normalize();
+-		this.mutationLockFile = this.gameDirectory.resolve(CLIENT_MUTATION_LOCK_FILE).normalize();
+-		this.selectionFile = this.gameDirectory.resolve(CLIENT_SELECTION_FILE).normalize();
+-		this.restartLoopStateFile = this.gameDirectory.resolve(CLIENT_RESTART_LOOP_STATE_FILE).normalize();
+-		this.stuckTransactionStateFile = this.gameDirectory.resolve(CLIENT_STUCK_TRANSACTION_STATE_FILE).normalize();
+-		this.clientConfigFile = this.gameDirectory.resolve(CLIENT_CONFIG_FILE).normalize();
+-		this.selectedModpackFile = this.gameDirectory.resolve(CLIENT_SELECTED_FILE).normalize();
+-		this.modpackContentTempFile = this.gameDirectory.resolve(CLIENT_CONTENT_TEMP_FILE).normalize();
+-		this.historyDirectory = this.gameDirectory.resolve(CLIENT_HISTORY_DIR).normalize();
+-		this.stateHistoryDirectory = this.gameDirectory.resolve(CLIENT_STATE_HISTORY_DIR).normalize();
+-		this.journalTempFile = this.gameDirectory.resolve(CLIENT_JOURNAL_TEMP_FILE).normalize();
+-		this.bootstrapFile = this.gameDirectory.resolve(BOOTSTRAP_FILE).normalize();
++		this.overlaysDirectory = DataRootResolver.instanceStatePath(dataLocation, CLIENT_OVERLAYS_DIR);
++		this.generatedCopiesDirectory = DataRootResolver.instanceStatePath(dataLocation, CLIENT_GENERATED_COPIES_DIR);
++		this.activeDirectory = DataRootResolver.instanceStatePath(dataLocation, CLIENT_ACTIVE_DIR);
++		this.incomingDirectory = DataRootResolver.instanceStatePath(dataLocation, CLIENT_INCOMING_DIR);
++		this.backupDirectory = DataRootResolver.instanceStatePath(dataLocation, CLIENT_BACKUP_DIR);
++		this.stateFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_ACTIVE_STATE_FILE);
++		this.transactionFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_TRANSACTION_FILE);
++		this.repairJournalFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_REPAIR_FILE);
++		this.mutationLockFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_MUTATION_LOCK_FILE);
++		this.selectionFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_SELECTION_FILE);
++		this.restartLoopStateFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_RESTART_LOOP_STATE_FILE);
++		this.stuckTransactionStateFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_STUCK_TRANSACTION_STATE_FILE);
++		this.clientConfigFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_CONFIG_FILE);
++		this.selectedModpackFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_SELECTED_FILE);
++		this.modpackContentTempFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_CONTENT_TEMP_FILE);
++		this.historyDirectory = DataRootResolver.instanceStatePath(dataLocation, CLIENT_HISTORY_DIR);
++		this.stateHistoryDirectory = DataRootResolver.instanceStatePath(dataLocation, CLIENT_STATE_HISTORY_DIR);
++		this.journalTempFile = DataRootResolver.instanceStatePath(dataLocation, CLIENT_JOURNAL_TEMP_FILE);
++		this.bootstrapFile = DataRootResolver.instanceStatePath(dataLocation, BOOTSTRAP_FILE);
+ 		this.fileCacheDirectory = dataLayout.fileCacheDirectory();
+ 		this.modCacheDirectory = dataLayout.modCacheDirectory();
+ 		this.platformCacheDirectory = dataLayout.platformCacheDirectory();
+@@ -118,6 +119,11 @@ public final class ClientStorage {
+ 		if (environment != null && environment != LoaderManagerService.EnvironmentType.CLIENT)
+ 			throw new IllegalStateException("Client storage belongs to the client role, but this process runs the " + environment + " environment");
+ 		DataRootResolver.Location dataLocation = DataRootResolver.resolve(requireDirectoryPath(gameDirectory, "game directory"));
++		try {
++			ClientStateMigration.migrate(dataLocation);
++		} catch (IOException e) {
++			throw new IllegalStateException("Cannot move legacy client service state out of the game directory", e);
++		}
+ 		Path canonicalGameDirectory = dataLocation.ownerPath();
+ 		WeakReference<ClientStorage> reference = OPEN_STORAGE.get(canonicalGameDirectory);
+ 		ClientStorage existing = reference == null ? null : reference.get();
+@@ -233,7 +239,7 @@ public final class ClientStorage {
+ 	}
+ 
+ 	public Path recoveredDirectory() {
+-		return gameDirectory.resolve(RECOVERED_DIR).normalize();
++		return DataRootResolver.instanceStatePath(dataLocation, RECOVERED_DIR);
+ 	}
+ 
+ 	public Path stagingDirectory() {
+@@ -560,8 +566,7 @@ public final class ClientStorage {
+ 	}
+ 
+ 	private void validateLayout() {
+-		validateWithin(gameDirectory, automodpackDirectory);
+-		validateWithin(automodpackDirectory, clientDirectory, clientConfigFile, bootstrapFile, gameDirectory.resolve(RECOVERED_DIR));
++		validateWithin(dataDirectory, automodpackDirectory, clientDirectory, clientConfigFile, bootstrapFile, recoveredDirectory());
+ 		validateWithin(clientDirectory, overlaysDirectory, generatedCopiesDirectory, activeDirectory, incomingDirectory, backupDirectory,
+ 				historyDirectory, stateHistoryDirectory, stateHistoryTreesDirectory(), stateFile, transactionFile, repairJournalFile, mutationLockFile, selectionFile, selectedModpackFile, restartLoopStateFile,
+ 				stuckTransactionStateFile,
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/InstalledGenerationWitness.java b/core/src/main/java/pl/skidam/automodpack_core/update/InstalledGenerationWitness.java
+index 77e0d12..bd84e7f 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/InstalledGenerationWitness.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/InstalledGenerationWitness.java
+@@ -13,6 +13,7 @@ import pl.skidam.automodpack_core.modpack.generation.ContentTree;
+ import pl.skidam.automodpack_core.modpack.generation.Journal;
+ import pl.skidam.automodpack_core.modpack.generation.JournalEntry;
+ import pl.skidam.automodpack_core.storage.SharedObjectOwnership;
++import pl.skidam.automodpack_core.storage.DataRootResolver;
+ import pl.skidam.automodpack_core.storage.StoragePaths;
+ import pl.skidam.automodpack_core.utils.HashUtils;
+ 
+@@ -32,10 +33,11 @@ final class InstalledGenerationWitness {
+         // It grants no consent and contributes no ledger, credentials, current head or executable bytes.
+         for (Path peer : SharedObjectOwnership.clientOwnerPaths(storage.dataLocation())) {
+             if (peer.equals(storage.gameDirectory())) continue;
+-            Path journal = peer.resolve(StoragePaths.CLIENT_HISTORY_DIR).resolve(state.modpackId).resolve("journal.jsonl");
++			DataRootResolver.Location peerLocation = DataRootResolver.resolve(peer, pl.skidam.automodpack_core.loader.LoaderManagerService.EnvironmentType.CLIENT);
++			Path journal = DataRootResolver.instanceStatePath(peerLocation, StoragePaths.CLIENT_HISTORY_DIR).resolve(state.modpackId).resolve("journal.jsonl");
+             if (!Files.isRegularFile(journal, LinkOption.NOFOLLOW_LINKS) || Files.isSymbolicLink(journal)) continue;
+             try {
+-                var peerState = ConfigTools.readUnique(peer.resolve(StoragePaths.CLIENT_ACTIVE_STATE_FILE),
++				var peerState = ConfigTools.readUnique(DataRootResolver.instanceStatePath(peerLocation, StoragePaths.CLIENT_ACTIVE_STATE_FILE),
+                         ClientStorageJsons.ClientGenerationStateFields.class, "Peer active state", ClientStorage::validatedActiveState).orElse(null);
+                 if (peerState == null || !state.modpackId.equals(peerState.modpackId) || !state.contentToken.equals(peerState.contentToken)
+                         || !state.ownershipLedger.digest.equals(peerState.ownershipLedger.digest)) continue;
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/SelfUpdateSwap.java b/core/src/main/java/pl/skidam/automodpack_core/update/SelfUpdateSwap.java
+index aee0252..fa9d255 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/SelfUpdateSwap.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/SelfUpdateSwap.java
+@@ -37,12 +37,13 @@ public final class SelfUpdateSwap {
+ 	public static void commit(Path gameDirectory, DataRootResolver.Location dataLocation, String currentPath, String targetPath, String targetSha1, long targetSize, String currentSha1)
+ 			throws IOException {
+ 		StorageJsons.SelfUpdateFields swap = validated(currentPath, targetPath, targetSha1, targetSize, currentSha1);
+-		ConfigTools.writeAtomic(gameDirectory.resolve(SELF_UPDATE_FILE).normalize(), swap);
++		Path recordFile = DataRootResolver.instanceStatePath(dataLocation, SELF_UPDATE_FILE);
++		ConfigTools.writeAtomic(recordFile, swap);
+ 		// Strict on purpose, and deliberately not recover's aside-and-continue: a swap failing moments after it was
+ 		// planned means the plan is wrong now, so this update must fail loudly instead of quietly staying on the old jar.
+ 		installTarget(gameDirectory, dataLocation, swap);
+ 		retireSupersededJar(gameDirectory, swap);
+-		Files.deleteIfExists(gameDirectory.resolve(SELF_UPDATE_FILE).normalize());
++		Files.deleteIfExists(recordFile);
+ 	}
+ 
+ 	/**
+@@ -52,7 +53,7 @@ public final class SelfUpdateSwap {
+ 	 * failure after the target jar is already installed still propagates: the next boot's retry is what completes the swap.
+ 	 */
+ 	public static void recover(Path gameDirectory, DataRootResolver.Location dataLocation) throws IOException {
+-		Path recordFile = gameDirectory.resolve(SELF_UPDATE_FILE).normalize();
++		Path recordFile = DataRootResolver.instanceStatePath(dataLocation, SELF_UPDATE_FILE);
+ 		StorageJsons.SelfUpdateFields swap = ConfigTools.readState(recordFile, StorageJsons.SelfUpdateFields.class, "Pending self-update record", fields -> {
+ 			try {
+ 				return validated(fields.currentPath, fields.targetPath, fields.targetSha1, fields.targetSize, fields.currentSha1);
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/UpdatePlanner.java b/core/src/main/java/pl/skidam/automodpack_core/update/UpdatePlanner.java
+index 4d625ea..2369183 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdatePlanner.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdatePlanner.java
+@@ -211,7 +211,7 @@ public final class UpdatePlanner {
+ 		planTargetInstalls(input, targetItems, liveCopyPaths, protectedIds, targetModsByPath, session);
+ 		// Duplicate disposition must precede nested-copy planning so a candidate's colliders are judged against
+ 		// the plan that already decided the fate of the standard roots they collide with.
+-		planDuplicates(target.modpackId, input.targetMods(), input.standardMods(), liveCopyPaths, installedLedger, session, listedPins);
++		planDuplicates(target.modpackId, input.targetMods(), input.standardMods(), installedLedger, session, listedPins);
+ 		List<NestedCopy> generatedCopies = survivingNestedCandidates(input.nestedCandidates(), session).stream().map(NestedCandidate::copy).sorted(Comparator.comparing(NestedCopy::relativePath)).toList();
+ 		planNestedCopies(input.previousNestedCopies(), generatedCopies, session);
+ 		planBaselineCaptures(input.files(), session);
+@@ -530,7 +530,7 @@ public final class UpdatePlanner {
+ 		return SemanticVersion.wins(challengerVersion, challengerPath, incumbentVersion, incumbentPath);
+ 	}
+ 
+-	private static void planDuplicates(String modpackId, List<ModInfo> targetMods, List<ModInfo> standardMods, Set<String> liveCopyPaths,
++	private static void planDuplicates(String modpackId, List<ModInfo> targetMods, List<ModInfo> standardMods,
+ 			OwnershipLedger installedLedger, PlanningSession session, Set<String> listedPins) {
+ 		List<ModInfo> sortedTarget = targetMods.stream().filter(mod -> session.has(new FileKey(Root.PROJECTION, LogicalPath.normalize(mod.relativePath()))))
+ 				.sorted(Comparator.comparing(ModInfo::relativePath)).toList();
+@@ -540,12 +540,8 @@ public final class UpdatePlanner {
+ 		// ties) speaks for the source, so a file never gets two conflict rows.
+ 		Map<ModInfo, ModInfo> duplicates = new LinkedHashMap<>();
+ 		for (ModInfo standard : sortedStandard) {
+-			// A live-copy path is resolved by editable-state reconciliation, not by duplicate resolution: neither its projection row
+-			// nor the player's standard-directory jar may be deleted, vaulted or conflict-flagged as a duplicate of the other.
+-			if (liveCopyPaths.contains(LogicalPath.normalize(standard.relativePath()))) continue;
+ 			ModInfo winner = null;
+ 			for (ModInfo target : sortedTarget) {
+-				if (liveCopyPaths.contains(LogicalPath.normalize(target.relativePath()))) continue;
+ 				if (!intersects(target.ids(), standard.ids())) continue;
+ 				if (winner == null || winsVersion(target.version(), target.relativePath(), winner.version(), winner.relativePath())) winner = target;
+ 			}
+@@ -565,10 +561,10 @@ public final class UpdatePlanner {
+ 			boolean owned = isOwned(standard, standardPath, installedLedger);
+ 			boolean keepStandard = target.ids().stream().anyMatch(idsToKeep::contains);
+ 			FileKey targetKey = new FileKey(Root.GAME_DIR, targetPath);
+-			if (!keepStandard && oldKey.equals(targetKey) && standard.sha1().equalsIgnoreCase(target.sha1())) {
+-				// The live copy is byte-identical to the pack's own mod: the projection serves the same bytes, so the
+-				// redundant copy just goes - nothing of the player's to preserve and no conflict to ask about.
+-				session.delete(oldKey, standard.sha1());
++			if (oldKey.equals(targetKey)) {
++				if (standard.sha1().equalsIgnoreCase(target.sha1())) continue;
++				session.conflicts().add(conflict(modpackId, targetPath, target, standardPath, standard,
++						owned ? ConflictAction.REMOVE_OWNED : ConflictAction.PRESERVE_LOCAL));
+ 				session.restart(RestartReason.REMOVED_DUPLICATE_MODS);
+ 				continue;
+ 			}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
+index 76af320..250f5fa 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
+@@ -24,6 +24,8 @@ import pl.skidam.automodpack_core.config.ConfigTools;
+ import pl.skidam.automodpack_core.config.ModpackJsons;
+ import pl.skidam.automodpack_core.config.ReconfConfigs;
+ import pl.skidam.automodpack_core.modpack.group.ClientSelectionStore;
++import pl.skidam.automodpack_core.modpack.group.LogicalPath;
++import pl.skidam.automodpack_core.modpack.group.ModpackPathPolicy;
+ import pl.skidam.automodpack_core.modpack.group.SelectedModpackTarget;
+ import pl.skidam.automodpack_core.update.UpdatePlan.BaselineCapture;
+ import pl.skidam.automodpack_core.update.UpdatePlan.Conflict;
+@@ -406,7 +408,9 @@ public final class UpdateTransactionExecutor {
+ 			if (FileIntegrity.matchesNamed(target, operation.expectedSize(), operation.expectedObjectHash(), fileCache)) continue;
+ 			verifyExpectedExisting(operation, target);
+ 			Path source = context.storage().objectFile(operation.expectedObjectHash());
+-			VerifiedFileTransfer.copyAtomic(source, target, operation.expectedSize(), operation.expectedObjectHash(), fileCache);
++			if (immutableLivePayload(operation))
++				VerifiedFileTransfer.linkAtomic(source, target, operation.expectedSize(), operation.expectedObjectHash(), fileCache);
++			else VerifiedFileTransfer.copyAtomic(source, target, operation.expectedSize(), operation.expectedObjectHash(), fileCache);
+ 		}
+ 		for (Operation operation : transaction.plan().operations()) {
+ 			if (operation.operation() != OperationType.DELETE || operation.root() == Root.PROJECTION) continue;
+@@ -420,6 +424,15 @@ public final class UpdateTransactionExecutor {
+ 		}
+ 	}
+ 
++	/** Managed mods and pack assets are immutable runtime inputs, so hard-link them to CAS when the file system allows it. */
++	private static boolean immutableLivePayload(Operation operation) {
++		if (operation.root() != Root.GAME_DIR) return false;
++		String path = LogicalPath.normalize(operation.relativePath());
++		return ModpackPathPolicy.isModPath(path)
++				|| path.startsWith(ModpackPathPolicy.RESOURCEPACKS_ROOT + "/")
++				|| path.startsWith(ModpackPathPolicy.SHADERPACKS_ROOT + "/");
++	}
++
+ 	private void verifyExpectedExisting(Operation operation, Path target) throws IOException {
+ 		if (operation.root() != Root.OVERLAY && operation.root() != Root.GAME_DIR) return;
+ 		String described = operation.root() == Root.OVERLAY ? "Client overlay" : "Game-directory";

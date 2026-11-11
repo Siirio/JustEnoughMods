@@ -15,6 +15,7 @@ CONFIG = MODULE / "upstream.json"
 PATCHES = (
     MODULE / "patches" / "reliable-updates.patch",
     MODULE / "patches" / "login-sync-standard-layout.patch",
+    MODULE / "patches" / "external-client-state.patch",
 )
 
 
