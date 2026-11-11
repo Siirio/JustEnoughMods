@@ -12,11 +12,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
     private static final String EXCAVATION_PLANE_MIXIN =
             "com.justenoughmods.achievementguide.mixin.ExcavationPlaneQuestMixin";
     private static final Map<String, List<String>> DEPENDENCIES = Map.<String, List<String>>ofEntries(
-            Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.AdvancementFrameFtbQuestMixin", List.<String>of("advancementframes", "ftbquests")),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.SittingPlusQuestMixin", List.<String>of("sittingplus")),
-            Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.AdvancementSelectScreenAccess", List.<String>of("advancementframes", "ftbquests")),
-            Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.AdvancementSelectFtbButtonMixin", List.<String>of("advancementframes", "ftbquests")),
-            Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.FtbQuestRawIconAccess", List.<String>of("ftbquests")),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.NativePlayerHarvestQuestMixin", List.<String>of()),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.WorldPrehistoricQuestDartDamageMixin", List.<String>of("unearthed_journey")),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.WorldBattleReleaseStackQuestMixin", List.<String>of("cataclysm", "lionfishapi")),

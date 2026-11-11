@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-11",
+  "branch": "feature/major-update-4",
+  "status": "published_and_applied_locally",
+  "removed": [
+    "advancementframes-1.20-2.2.8.jar",
+    "rosegoldequipment-1.7.6.jar",
+    "dungeons-and-taverns-3.0.3.f[Forge].jar",
+    "DnT Ancient City Overhaul.zip",
+    "Oh-The-Trees-Youll-Grow-forge-1.20.1-1.7.4.jar",
+    "overlapless-1.20.1-1.2.0.jar"
+  ],
+  "added": [
+    {
+      "file": "structurify-forge-2.0.43+mc1.20.1.jar",
+      "sha256": "a5cb28ab19ee49da0c4cbfec964d4113dc4155fed7ecd7cff69e3bccdc710390",
+      "source": "https://github.com/Faboslav/structurify/releases/tag/2.0.43",
+      "role": "single physical structure-overlap owner"
+    },
+    {
+      "file": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
+      "sha256": "28184197726aed7541829ceadba68277e72519ec313ab5f5350c8d677415d970",
+      "source_commit": "82a7428b31e29bcebaa127c3118214c9f17421fa",
+      "license_declared_by_upstream": "MIT",
+      "class_version": 61,
+      "role": "Mielon's The Sift dimension backport"
+    }
+  ],
+  "overlap_policy": {
+    "prevent_structure_overlap": true,
+    "overlap_padding": 0,
+    "global_spacing_modifier_enabled": false,
+    "excluded_from_overlap_prevention": "minecraft:pillager_outpost and all 23 canonical JEM boss structures"
+  },
+  "retained_distinct_owners": [
+    "Structure Layout Optimizer 1.0.11 for jigsaw layout calculation",
+    "StructBlend 1.0.3 for terrain blending",
+    "RoadWeaver 2.1.1 for settlement roads"
+  ],
+  "guide": {
+    "artifact": "jem-advancements-5.3.3.jar",
+    "sha256": "4787d7995f5573d581089a33afe3723cbc0269181df382912c70d7069e56f198",
+    "mapped_cards": 590,
+    "advancement_frames_integration_removed": true
+  },
+  "runtime": {
+    "server_layout": "bootstrap-only Server/mods with the managed generation loaded by AutoModpack",
+    "local_generation": 148,
+    "content_token": "cb5325182ded9de31120c1453e941630cd33c3a3",
+    "test_profile_applied": true,
+    "pending_transaction": false,
+    "minecraft_launch": false,
+    "fresh_chunk_acceptance": false,
+    "player_acceptance": false
+  }
+}

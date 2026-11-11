@@ -1,12 +1,11 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-11T06:21:22.570018+00:00` for `53400d9b03ce12346ec42e513432b268aa8b8a43`.
+Generated from Atlas schema 1 at `2026-11-11T09:37:45.430313+00:00` for `07930edf326d73285d1e349918cf70234c149de5`.
 
-Static evidence observed 17,216 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,128 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| advancementframes | 5 | 0 | 5 | 0 | 5 |
 | alexscaves | 610 | 129 | 481 | 0 | 481 |
 | alexsmobs | 321 | 23 | 298 | 2 | 298 |
 | animal_feeding_trough | 1 | 0 | 1 | 0 | 1 |
@@ -80,7 +79,7 @@ Static evidence observed 17,216 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 14 | 169 | 0 | 169 |
 | luminous_nether | 205 | 8 | 197 | 0 | 197 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1427 | 321 | 1106 | 82 | 1109 |
+| minecraft | 1451 | 321 | 1130 | 82 | 1133 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | mobhome | 2 | 0 | 2 | 0 | 2 |
 | modefite | 2 | 0 | 2 | 0 | 2 |
@@ -98,12 +97,12 @@ Static evidence observed 17,216 canonical item IDs. This is not a Forge runtime 
 | railways | 1928 | 288 | 1640 | 0 | 1640 |
 | recruits | 14 | 0 | 14 | 0 | 14 |
 | ribbits | 21 | 3 | 18 | 0 | 18 |
-| rosegoldequipment | 113 | 0 | 113 | 0 | 113 |
 | rottencreatures | 30 | 2 | 28 | 0 | 28 |
 | secretdoors | 158 | 0 | 158 | 0 | 158 |
 | sereneseasons | 22 | 0 | 22 | 0 | 22 |
 | shutterup | 20 | 0 | 20 | 0 | 20 |
 | siegeweapons | 8 | 0 | 8 | 0 | 8 |
+| sift_backport | 6 | 0 | 6 | 0 | 6 |
 | simplybows | 115 | 0 | 115 | 0 | 115 |
 | skarrier_mobs | 294 | 6 | 288 | 2 | 288 |
 | smallships | 66 | 0 | 66 | 0 | 66 |

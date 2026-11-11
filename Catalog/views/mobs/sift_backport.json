@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "registry_type": "mobs",
+  "snapshot_sha": "07930edf326d73285d1e349918cf70234c149de5",
+  "generation": {
+    "generated_utc": "2026-11-11T09:37:45.430313+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "sift_backport",
+    "name": "Sift Backport",
+    "version": "1.0.5.1"
+  },
+  "records": [
+    {
+      "entity_id": "sift:blub",
+      "registry_type": "entity_view",
+      "schema_version": 1,
+      "mod_id": "sift_backport",
+      "mod_name": "Sift Backport",
+      "mod_version": "1.0.5.1",
+      "source_jar": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
+      "source_sha256": "28184197726aed7541829ceadba68277e72519ec313ab5f5350c8d677415d970",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/sift/lang/en_us.json"
+      ],
+      "display_name_en_us": "Blub",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar:assets/sift/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "roles": [],
+      "living": null,
+      "attitude": null,
+      "default_health": null,
+      "default_attributes": null,
+      "natural_spawn": null,
+      "biomes": [],
+      "dimensions": [],
+      "structure_spawns": [],
+      "summoned_by_boss_ids": [],
+      "related_boss_ids": [],
+      "relationship_evidence": [],
+      "boss_campaign_role": null,
+      "taming_method": null,
+      "owner_mechanism": null,
+      "rideable": null,
+      "ride_control": null,
+      "breeding": null,
+      "despawn_behavior": null,
+      "drops": [],
+      "mount_eligibility": "unresolved"
+    }
+  ]
+}

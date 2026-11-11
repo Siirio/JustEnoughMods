@@ -4,7 +4,6 @@
   "status": "active",
   "selectors": [
     {"type": "namespace", "registry": "*", "value": "towns_and_towers"},
-    {"type": "namespace", "registry": "*", "value": "nova_structures"},
     {"type": "namespace", "registry": "*", "value": "cristellib"}
   ],
   "conditions": [
@@ -17,19 +16,17 @@
     "overrides": []
   },
   "change": {
-    "summary": "Add Towns and Towers plus the remembered Dungeons and Taverns structure set while retaining Terralith biome coverage and JEM progression ownership",
+    "summary": "Retain Towns and Towers with Cristel Lib while removing Dungeons and Taverns by user direction",
     "modifiers": [
       {
         "property": "distribution.major_update_4.structure_mods",
         "operation": "add",
         "before": {
           "towns_and_towers": "absent",
-          "dungeons_and_taverns": "absent",
           "cristel_lib": "absent"
         },
         "after": {
           "towns_and_towers": "1.12 on client and server",
-          "dungeons_and_taverns": "3.0.3.f on client and server",
           "cristel_lib": "1.1.6 on client and server"
         }
       },
@@ -37,32 +34,22 @@
         "property": "worldgen.structure_catalog",
         "operation": "add",
         "before": "Towns and Towers and Dungeons and Taverns structures were unavailable",
-        "after": "Both native structure catalogs, placement sets, templates, loot and supporting functions are available in new chunks"
+        "after": "The Towns and Towers native structure catalog remains available in new chunks. Dungeons and Taverns is removed"
       },
       {
         "property": "worldgen.terralith_biome_tag_compatibility",
         "operation": "set",
-        "before": "The two new artifacts can reset eight shared vanilla structure-biome tags and discard prior Terralith additions",
-        "after": "A high-priority JEM Paxi datapack adds the exact Terralith entries back without replacing the new mods' native tag members"
-      },
-      {
-        "property": "loot.minecraft.witch",
-        "operation": "set",
-        "before": "JEM Twelve Eyes owns the final empty witch loot table for campaign gating",
-        "after": "JEM Twelve Eyes remains the final owner. The Dungeons and Taverns emerald addition does not bypass the established gate"
+        "before": "Towns and Towers can replace shared vanilla structure-biome tags and discard prior Terralith additions",
+        "after": "A high-priority JEM Paxi datapack adds the exact Terralith entries back without replacing Towns and Towers native tag members"
       }
     ]
   },
   "cause": {
-    "owner": "Towns and Towers, Dungeons and Taverns, Cristel Lib and the JEM Paxi compatibility layer",
+    "owner": "Towns and Towers, Cristel Lib and the JEM Paxi compatibility layer",
     "kind": "user_requested_major_update_structure_expansion",
     "source_files": [
       "Client/ManagedPack/mods/Towns-and-Towers-1.12-Fabric+Forge.jar",
-      "Client/ManagedPack/mods/dungeons-and-taverns-3.0.3.f[Forge].jar",
       "Client/ManagedPack/mods/cristellib-1.1.6-forge.jar",
-      "Server/mods/Towns-and-Towers-1.12-Fabric+Forge.jar",
-      "Server/mods/dungeons-and-taverns-3.0.3.f[Forge].jar",
-      "Server/mods/cristellib-1.1.6-forge.jar",
       "Client/ManagedPack/config/cristellib/minecraftED.json5",
       "Client/ManagedPack/config/cristellib/minecraftP.json5",
       "Client/ManagedPack/config/towns_and_towers/structure_enable_or_disable_new.json5",
@@ -82,15 +69,15 @@
     ]
   },
   "rationale": {
-    "purpose": "Expand Major Update 4 exploration with the requested village, outpost, tavern and dungeon structure catalogs without erasing installed terrain-mod compatibility",
-    "decision_source": "The user directly requested Towns and Towers and described another structure mod retained from the old Iron's Spells-era pack. Local profile evidence identifies that mod as Dungeons and Taverns",
+    "purpose": "Retain the requested Towns and Towers catalog without erasing installed terrain-mod compatibility",
+    "decision_source": "The user directly retained Towns and Towers and later explicitly removed Dungeons and Taverns",
     "implementation_choices": "Reuse exact official-hash artifacts from the retained Forge 1.20.1 profile, keep native spacing and add only the smallest data compatibility layer required by the installed Terralith and JEM Twelve Eyes owners"
   },
   "introduced": {
     "date": "2026-11-10",
     "commit": "SELF",
     "action": "add_major_update_4_structure_mods",
-    "summary": "Add Towns and Towers, Dungeons and Taverns and Cristel Lib with JEM structure-tag compatibility"
+    "summary": "Add Towns and Towers and Cristel Lib with JEM structure-tag compatibility"
   },
   "history": [
     {
@@ -98,6 +85,12 @@
       "commit": "SELF",
       "action": "add_major_update_4_structure_mods",
       "summary": "Selected the exact old-profile artifacts, confirmed official hashes and preserved Terralith and Twelve Eyes ownership"
+    },
+    {
+      "date": "2026-11-11",
+      "commit": "SELF",
+      "action": "remove_dungeons_and_taverns",
+      "summary": "Remove Dungeons and Taverns while retaining Towns and Towers, Cristel Lib and the required Terralith tag restoration."
     }
   ],
   "impacts": {
@@ -111,9 +104,8 @@
     ],
     "relations": [
       "Towns and Towers -> Cristel Lib",
-      "Towns and Towers and Dungeons and Taverns -> new-chunk structure generation",
-      "shared vanilla biome tags -> JEM Paxi Terralith restoration",
-      "Dungeons and Taverns witch loot -> existing JEM Twelve Eyes final override"
+      "Towns and Towers -> new-chunk structure generation",
+      "shared vanilla biome tags -> JEM Paxi Terralith restoration"
     ],
     "notes": [
       "All Towns and Towers structures remain enabled at native 1.12 spacing values",

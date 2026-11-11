@@ -1,18 +1,17 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "53400d9b03ce12346ec42e513432b268aa8b8a43",
-  "generated_utc": "2026-11-11T06:21:22.570018+00:00",
+  "snapshot_sha": "07930edf326d73285d1e349918cf70234c149de5",
+  "generated_utc": "2026-11-11T09:37:45.430313+00:00",
   "claim": "100% of statically observed canonical IDs; runtime boundary unresolved",
   "id_coverage": {
     "items": {
       "expected_id_count": null,
-      "enumerated_id_count": 17216,
+      "enumerated_id_count": 17128,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
-        "advancementframes": 5,
         "alexscaves": 610,
         "alexsmobs": 321,
         "animal_feeding_trough": 1,
@@ -86,7 +85,7 @@
         "luminous_beasts": 183,
         "luminous_nether": 205,
         "luminoustag": 1,
-        "minecraft": 1427,
+        "minecraft": 1451,
         "moa_decor_holidays": 151,
         "mobhome": 2,
         "modefite": 2,
@@ -104,12 +103,12 @@
         "railways": 1928,
         "recruits": 14,
         "ribbits": 21,
-        "rosegoldequipment": 113,
         "rottencreatures": 30,
         "secretdoors": 158,
         "sereneseasons": 22,
         "shutterup": 20,
         "siegeweapons": 8,
+        "sift_backport": 6,
         "simplybows": 115,
         "skarrier_mobs": 294,
         "smallships": 66,
@@ -136,13 +135,12 @@
     },
     "blocks": {
       "expected_id_count": null,
-      "enumerated_id_count": 12171,
+      "enumerated_id_count": 12170,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
       "method": "installed static artifact evidence",
       "by_mod": {
-        "advancementframes": 2,
         "alexscaves": 385,
         "alexsmobs": 38,
         "animal_feeding_trough": 1,
@@ -214,12 +212,12 @@
         "railways": 1489,
         "recruits": 6,
         "ribbits": 14,
-        "rosegoldequipment": 4,
         "rottencreatures": 23,
         "secretdoors": 158,
         "sereneseasons": 1,
         "shutterup": 20,
         "siegeweapons": 1,
+        "sift_backport": 5,
         "skarrier_mobs": 40,
         "snowrealmagic": 7,
         "snowyspirit": 46,
@@ -242,7 +240,7 @@
     },
     "entities": {
       "expected_id_count": null,
-      "enumerated_id_count": 1593,
+      "enumerated_id_count": 1594,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -298,6 +296,7 @@
         "ribbits": 1,
         "rottencreatures": 15,
         "siegeweapons": 7,
+        "sift_backport": 1,
         "skarrier_mobs": 60,
         "smallships": 7,
         "snowrealmagic": 1,
@@ -398,7 +397,7 @@
     },
     "biomes": {
       "expected_id_count": null,
-      "enumerated_id_count": 264,
+      "enumerated_id_count": 266,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -416,6 +415,7 @@
         "netherexp": 7,
         "nullscape": 3,
         "oceanicrealms": 1,
+        "sift_backport": 2,
         "spawn": 10,
         "streamsreflowing": 1,
         "terrablender": 1,
@@ -425,7 +425,7 @@
     },
     "structures": {
       "expected_id_count": null,
-      "enumerated_id_count": 795,
+      "enumerated_id_count": 737,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -452,7 +452,6 @@
         "mns": 48,
         "mos": 26,
         "mr_ati_structuresvanillaedition": 55,
-        "mr_dungeons_andtaverns": 58,
         "mr_trek": 133,
         "mss": 35,
         "mtr": 6,
@@ -536,20 +535,20 @@
     }
   },
   "classification_coverage": {
-    "armor": 230,
+    "armor": 226,
     "foods": 4,
-    "mobs": 1593,
-    "placeables": 9641,
-    "tools": 99,
-    "trade_policies": 17216,
-    "weapons": 392
+    "mobs": 1594,
+    "placeables": 9640,
+    "tools": 95,
+    "trade_policies": 17128,
+    "weapons": 391
   },
   "semantic_field_coverage": {
     "runtime_verified": 0,
-    "static_inferred": 32725,
+    "static_inferred": 32581,
     "note": "Null is intentional where static sources do not prove semantics."
   },
   "unresolved_counts": {
-    "entries": 65
+    "entries": 52
   }
 }

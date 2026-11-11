@@ -1,0 +1,16 @@
+diff --git a/forge/1.20.1/build.gradle b/forge/1.20.1/build.gradle
+index be7c16a..fd3da73 100644
+--- a/forge/1.20.1/build.gradle
++++ b/forge/1.20.1/build.gradle
+@@ -28 +28 @@ java {
+-    toolchain.languageVersion = JavaLanguageVersion.of(21)
++    toolchain.languageVersion = JavaLanguageVersion.of(17)
+@@ -197,2 +197,4 @@ tasks.named('jar', Jar).configure {
+                     "Implementation-Vendor"   : mod_authors,
++                    "JEM-Recompiled-Target"   : "Java 17",
++                    "JEM-Upstream-Commit"     : "82a7428b31e29bcebaa127c3118214c9f17421fa",
+                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")])
+@@ -205,2 +207,3 @@ tasks.withType(JavaCompile).configureEach {
+     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
++    options.release = 17
+ }

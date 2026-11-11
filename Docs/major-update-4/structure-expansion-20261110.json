@@ -2,11 +2,7 @@
   "schema_version": 1,
   "date": "2026-11-10",
   "branch": "feature/major-update-4",
-  "request": "Add Towns and Towers and identify the remembered structure mod from the old Iron's Spells-era pack",
-  "identified_mod": {
-    "name": "Dungeons and Taverns",
-    "evidence": "The retained Medieval RPG [JEM] Forge 1.20.1 profile loads Dungeons and Taverns 3.0.3.f and Towns and Towers 1.12 together. Its local artifacts match the official Modrinth SHA-512 values byte for byte"
-  },
+  "request": "Retain Towns and Towers and remove the previously identified Dungeons and Taverns artifact",
   "artifacts": [
     {
       "name": "Cristel Lib",
@@ -18,18 +14,6 @@
       "sha512": "8d5c8bb59be56c49ef0fcc3593862ad09862210e5099f39bf66c29c73f1b54b637ec6e6fa01b2e1409dafe4cc3e2f2e43d9c6113c78372f49d7c2ff71d056ca0",
       "source": "https://modrinth.com/mod/cristel-lib/version/DOsSK4NK",
       "role": "Required Towns and Towers structure configuration and runtime datapack library"
-    },
-    {
-      "name": "Dungeons and Taverns",
-      "mod_id": "mr_dungeons_andtaverns",
-      "data_namespace": "nova_structures",
-      "version": "3.0.3.f",
-      "file": "dungeons-and-taverns-3.0.3.f[Forge].jar",
-      "side": "client_and_server",
-      "sha256": "251b531ff2882c61a4c2eba3bd7b1683aa22b6c2d459e27bfde04a2948c99e1e",
-      "sha512": "66008a7439fde95270350433adbff7b74944ad97e216ad165d11b3a023647a8cd18c17aa12ded2a58fa793ff29433e9bcbbd55e6ffd5a3af44f72c1ea12c1089",
-      "source": "https://modrinth.com/mod/dungeons-and-taverns/version/ojHpWOrz",
-      "content": "59 declared structure JSON files and 24 structure-set JSON files across the Overworld and Nether"
     },
     {
       "name": "Towns and Towers",
@@ -45,11 +29,9 @@
     }
   ],
   "compatibility": {
-    "terralith": "A JEM Paxi datapack restores Terralith entries after the two new mods use replace=true on eight shared vanilla biome tags",
-    "twelve_eyes": "The existing JEM Twelve Eyes datapack remains the final owner of the witch loot table. Dungeons and Taverns does not restore bypass loot",
-    "function_tags": "Dungeons and Taverns and True Ending both use replace=false for the Minecraft tick function tag, so both native functions remain active",
+    "terralith": "A JEM Paxi datapack restores Terralith entries after Towns and Towers uses replace=true on shared vanilla biome tags",
     "world_boundary": "New structures generate only in new chunks. Existing chunks and existing structures are not regenerated"
   },
   "configuration": "The Towns and Towers and Cristel Lib files preserve their native 1.20.1 values. Cristel Lib's generated files match the retained old JEM profile line for line",
-  "runtime_status": "The ordinary local dedicated server loaded all three artifacts and published the reviewed native AutoModpack generation. No client launch or fresh-chunk gameplay acceptance was performed"
+  "runtime_status": "The previous runtime loaded all three artifacts. Dungeons and Taverns is removed from the current canonical generation. Current runtime acceptance is pending"
 }

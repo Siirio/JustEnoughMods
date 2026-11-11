@@ -1,3 +1,18 @@
+## 2026-11-11 - Reduce the Major Update 4 stack and add Sift
+
+- User removed Advancement Frames, Rose Gold Equipment, Dungeons and Taverns, Dungeons and Taverns Ancient City Overhaul and Oh The Trees You'll Grow. The user selected Structurify as the only overlapping structure-control owner and requested the Sift addition in the same implementation task
+- Removed the five content artifacts and StructureOverlapless from the canonical managed generation. Advancement Frames integration, its optional dependency, selector code and teaching card are also removed
+- Added Structurify 2.0.43 as the single physical overlap owner. Native spacing remains active, overlap padding is zero, and the priority pillager outpost plus all 23 canonical JEM boss structures are excluded from overlap prevention
+- Retained Structure Layout Optimizer, StructBlend and RoadWeaver because they separately own jigsaw layout calculation, terrain blending and road generation
+- Built Sift Backport 1.0.5.1 from pinned MIT upstream commit `82a7428b31e29bcebaa127c3118214c9f17421fa` with Java 17 class version 61. The patch changes only the toolchain, release target and disclosure manifest fields. Artifact SHA-256 is `28184197726aed7541829ceadba68277e72519ec313ab5f5350c8d677415d970`
+- Bug / Build / Sift source verification compared LF archive bytes with CRLF Windows-checkout hashes / resolved by recording the exact pinned `git archive` hashes before applying the unchanged patch
+- Bug / Build / JEM modules still resolved compile-only dependencies from the retired full `Server/mods` inventory after the new bootstrap-only local-server transition / resolved by moving only those build-time paths to canonical `Client/ManagedPack/mods`
+- Bug / Client / the native local-apply helper rejected ownership-proven `REMOVE_OWNED` collisions after recovery from another server generation / resolved by accepting only same-path replacements whose old hash matches the active ownership ledger plan and whose new hash matches the canonical managed pack
+- Compiled the canonical questbook to 590 mapped cards and built JEM Advancements 5.3.3 without tests. Artifact SHA-256 is `4787d7995f5573d581089a33afe3723cbc0269181df382912c70d7069e56f198`
+- Added `Docs/major-update-4/Мои Задачи.md` with the user's manual checks for the roll blue-screen defect, barriers, FTB Quests and Luxium
+- Published native local generation 148 with content token `cb5325182ded9de31120c1453e941630cd33c3a3` and applied it to `Test JustEnoughMods`. No native transaction remains pending
+- Minecraft launch, fresh-chunk generation and player acceptance were not performed
+
 ## 2026-11-11 - Replace the local test environment for Major Update 4
 
 - User requested deletion of the old `test jem` client and server, rename of `jem sandbox`, creation of `Test JustEnoughMods` from stable `JustEnoughMods`, and reconstruction of the local server from the supplied MineRENT backup with a new world and Major Update 4

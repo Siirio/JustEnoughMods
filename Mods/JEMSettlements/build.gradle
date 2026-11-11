@@ -3,7 +3,7 @@ group = 'com.siirio.jemsettlements'
 version = '2.1.1'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: 'official', version: '1.20.1' }
-repositories { flatDir { dirs '../../Server/mods' } }
+repositories { flatDir { dirs '../../Client/ManagedPack/mods' } }
 def xaeroWorldMap = file('../../Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar')
 def xaeroLib = layout.buildDirectory.file('xaero-lib/xaerolib-forge-1.20.1-1.7.3.jar')
 tasks.register('extractXaeroLib', Copy) {
@@ -23,7 +23,7 @@ dependencies {
     compileOnly files(xaeroLib)
     compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
     compileOnly project(path: ':JEMEconomy', configuration: 'jemCompile')
-    compileOnly fg.deobf(files('../../Server/mods/Jade-1.20.1-Forge-11.13.3.jar'))
+    compileOnly fg.deobf(files('../../Client/ManagedPack/mods/Jade-1.20.1-Forge-11.13.3.jar'))
     compileOnly fg.deobf('local:recruits:1.20.1-1.15.2')
     compileOnly fg.deobf(files('../../Client/ManagedPack/mods/PatPat-1.3.1%2B1.20.1%2Bforge.jar'))
     compileOnly fg.deobf(files('../../Client/ManagedPack/mods/fairylights-7.0.0-1.20.1.jar'))

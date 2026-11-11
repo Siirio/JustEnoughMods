@@ -35,7 +35,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Add the verified Major Update 4 mod set, craftable native spawn eggs, shared spawner policy, Silk Touch spawner preservation, recruit equipment restrictions, Better Horses integration, and updated guide surfaces while retiring Horseman.",
+    "summary": "Add the retained Major Update 4 gameplay set, craftable native spawn eggs, shared spawner policy, Silk Touch spawner preservation, recruit equipment restrictions, Better Horses integration, and updated guide surfaces while retiring Horseman and Advancement Frames.",
     "modifiers": [
       {
         "property": "spawn_egg.recipe_catalog",
@@ -72,6 +72,12 @@
         "operation": "deny",
         "before": "Horseman 1.3.17 and its JEM quest integration were active",
         "after": "Horseman, its configuration, localization and quest integration are retired"
+      },
+      {
+        "property": "advancementframes.distribution",
+        "operation": "deny",
+        "before": "Advancement Frames and its completed-FTB-quest selector integration were active",
+        "after": "The mod, teaching card, optional dependency and selector integration are removed"
       }
     ]
   },
@@ -89,13 +95,6 @@
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitEquipmentPolicy.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/recruits/RecruitEquipmentSlotMixin.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameAccess.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameNetwork.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameScreen.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementFrameFtbQuestMixin.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementSelectFtbButtonMixin.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementSelectScreenAccess.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbQuestRawIconAccess.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SittingPlusQuestMixin.java",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/advancements/major_update_4/ancient_aquaduct.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/advancements/major_update_4/ancient_bridge.json",
@@ -121,6 +120,21 @@
       "commit": null,
       "action": "implement",
       "summary": "Implement the registry-verified update, integrations and Horseman retirement."
+    },
+    {
+      "date": "2026-11-11",
+      "commit": "SELF",
+      "action": "remove_advancement_frames",
+      "summary": "Remove Advancement Frames, its teaching card and its optional JEM selector integration by user direction.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameNetwork.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestFrameScreen.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementFrameFtbQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementSelectFtbButtonMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementSelectScreenAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbQuestRawIconAccess.java"
+      ]
     }
   ],
   "impacts": {

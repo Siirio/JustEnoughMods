@@ -3,7 +3,6 @@
   "change_id": "major-update-4-video-community-content-20261109",
   "status": "active",
   "selectors": [
-    {"type": "namespace", "registry": "*", "value": "rosegoldequipment"},
     {"type": "namespace", "registry": "*", "value": "spears"},
     {"type": "namespace", "registry": "*", "value": "ocean_lily_pad_village"},
     {"type": "namespace", "registry": "*", "value": "structory"},
@@ -30,7 +29,7 @@
         "property": "distribution.major_update_4_video_community_mods",
         "operation": "add",
         "before": "The approved community artifacts were absent from the Major Update 4 managed pack",
-        "after": "Backported Spears, Rose Gold Equipment, Visual Workbench, Block Runner, Structory, Ocean Lily Pad Village, AmbientSounds, Windy, Do a Barrel Roll, Weather Glass and the audited Immersive Storms port are pinned to exact Forge 1.20.1 artifacts"
+        "after": "Backported Spears, Visual Workbench, Block Runner, Structory, Ocean Lily Pad Village, AmbientSounds, Windy, Do a Barrel Roll, Weather Glass and the audited Immersive Storms port are pinned to exact Forge 1.20.1 artifacts. Rose Gold Equipment is removed by user direction"
       },
       {
         "property": "crafting_table.runtime_owner",
@@ -93,6 +92,12 @@
         "Client/ManagedPack/config/fastbench.cfg",
         "Server/config/fastbench.cfg"
       ]
+    },
+    {
+      "date": "2026-11-11",
+      "commit": "SELF",
+      "action": "remove_rose_gold_equipment",
+      "summary": "Remove Rose Gold Equipment from the Major Update 4 distribution by user direction."
     }
   ],
   "impacts": {
@@ -112,7 +117,6 @@
     ],
     "notes": [
       "Existing CreativeCore 2.12.40 and Puzzles Lib 8.1.33 satisfy the new dependency constraints.",
-      "Rose Gold Equipment already owns its gear, trim material, block, door and trapdoor IDs. Later JEM extensions must add only missing uses.",
       "Structory and Ocean Lily Pad Village affect new chunks only. No existing world chunk is regenerated.",
       "The Immersive Storms port passed static side-gating review but remains a new beta without runtime acceptance.",
       "The TreeChop Windows Internet Shortcut is not a runtime artifact and is excluded from managed transfer. The real client and server JARs remain identical."

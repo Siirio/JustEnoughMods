@@ -27,7 +27,7 @@ dependencies {
     compileOnly project(path: ':JEMRewards', configuration: 'jemCompile')
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    compileOnly fg.deobf(files('../../Server/mods/epic-fight-20.14.17-mc1.20.1-forge.jar'))
+    compileOnly fg.deobf(files('../../Client/ManagedPack/mods/epic-fight-20.14.17-mc1.20.1-forge.jar'))
 }
 
 mixin {

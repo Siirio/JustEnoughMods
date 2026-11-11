@@ -11,7 +11,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | [Let's Do] HerbalBrews | `1.0.12` | Client + server |  |
 | [Let's Do] Vinery | `1.4.41` | Client + server |  |
 | 3D Maps | `1.0.1-1.20.1-forge` | Client + server |  |
-| Advancement Frames | `1.20-2.2.8` | Client + server | FTB Quest frame integration |
 | Alex's Caves | `2.0.2` | Client + server |  |
 | Alex's Mobs | `1.22.9` | Client + server |  |
 | Abridged | `2.0.0` | Client + server | Major Update 4 structure expansion |
@@ -77,7 +76,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Deltabox Lib | `2.2.0` | Client + server |  |
 | Diagonal Fences | `8.1.5` | Client + server |  |
 | Diagonal Walls | `8.0.4` | Client + server |  |
-| Dungeons and Taverns | `3.0.3.f` | Client + server | Major Update 4 structure expansion |
 | Draggable Lists | `1.0.1` | Client |  |
 | DragonLib | `1.20.1-beta-3.0.28` | Client + server |  |
 | Dusty Decorations | `1.13` | Client + server |  |
@@ -229,7 +227,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Nullscape | `1.2.8` | Client + server |  |
 | Obscure Tooltips | `3.10.0` | Client |  |
 | Oceanic Realms | `1.0.7` | Client + server |  |
-| Oh The Trees You'll Grow | `1.7.4` | Client + server | Major Update 4 tree-template library |
 | Oculus | `1.8.0` | Client |  |
 | P1nero's Epic Cataclysm | `20.14.0.9` | Client + server |  |
 | PacketFixer | `3.3.2` | Client + server |  |
@@ -287,13 +284,14 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Sooty Chimneys | `1.3.4` | Client + server |  |
 | Sounds | `2.2.1+1.20.1+forge` | Client |  |
 | Spawn | `4.0.7-1.20.1` | Client + server |  |
+| Sift Backport | `1.0.5.1-java17` | Client + server | Mielon's The Sift dimension backport rebuilt from the pinned MIT upstream source for Java 17 |
 | Spider Overhaul | `0.0.6-Forge-v1.20` | Client + server |  |
 | Lio's Spiral Tower Villages | `0.0.4` | Client + server | Major Update 4 structure expansion |
 | Spyglass Improvements | `1.5.12b` | Client |  |
 | Status Effect Bars | `1.0.3` | Client + server |  |
 | StreamsReflowing | `2.13.1` | Client + server |  |
 | Structure Layout Optimizer | `1.0.11` | Client + server | Major Update 4 structure-layout performance owner |
-| StructureOverlapless | `1.20.1-1.2.0` | Client + server | Major Update 4 overlap owner |
+| Structurify | `2.0.43` | Client + server | Major Update 4 overlap owner with protected outpost and boss structures excluded |
 | StructBlend | `1.0.3` | Client + server | Major Update 4 structure-terrain blending owner |
 | RoadWeaver | `2.1.1-1.20.1` | Client + server | Major Update 4 settlement-road generation owner |
 | Tectonic | `3.0.17` | Client + server |  |

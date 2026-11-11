@@ -138,8 +138,17 @@ class ApplyPublishedJemPack {{
    Object prepared=call(session,"prepared",new Class<?>[0]);
    UpdatePlan plan=(UpdatePlan)call(prepared,"plan",new Class<?>[0]);
    require(plan.packTarget().contentToken().equals({json.dumps(expected_token)}),"Native plan token differs");
-   for(var conflict:plan.conflicts())System.out.println("CONFLICT "+conflict);
-   require(plan.conflicts().isEmpty(),"Native plan contains conflicts");
+   Path gameDir=Path.of(System.getProperty("user.dir")).toAbsolutePath().normalize();
+   for(var conflict:plan.conflicts()){{
+    System.out.println("CONFLICT "+conflict);
+    require(conflict.action()==UpdatePlan.ConflictAction.REMOVE_OWNED,"Native plan contains an unapproved local conflict");
+    require(conflict.sourcePath().equals(conflict.targetPath()),"Owned replacement changes its logical path");
+    Path existing=gameDir.resolve(conflict.sourcePath()).normalize();Path replacement=canonical.resolve(conflict.targetPath()).normalize();
+    require(existing.startsWith(gameDir)&&Files.isRegularFile(existing),"Owned conflict source is absent or escaped the profile");
+    require(replacement.startsWith(canonical)&&Files.isRegularFile(replacement),"Owned conflict target is absent or escaped the canonical pack");
+    require(Files.size(existing)==conflict.sourceSize()&&sha(existing).equals(conflict.sourceHash()),"Owned conflict source differs from the reviewed native plan");
+    require(Files.size(replacement)==conflict.targetSize()&&sha(replacement).equals(conflict.targetHash()),"Owned conflict target differs from the canonical pack");
+   }}
    for(var operation:plan.operations()){{
     String relative=operation.relativePath();Path source=canonical.resolve(relative).normalize();
     System.out.println("OP "+operation.operation()+" "+operation.root()+" "+relative);

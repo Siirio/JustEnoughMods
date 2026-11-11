@@ -1,35 +1,34 @@
 {
   "schema_version": 1,
-  "registry_type": "blocks",
-  "snapshot_sha": "53400d9b03ce12346ec42e513432b268aa8b8a43",
+  "registry_type": "biomes",
+  "snapshot_sha": "07930edf326d73285d1e349918cf70234c149de5",
   "generation": {
-    "generated_utc": "2026-11-11T06:21:22.570018+00:00",
+    "generated_utc": "2026-11-11T09:37:45.430313+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
-    "id": "advancementframes",
-    "name": "Advancement Frames",
-    "version": "1.20-2.2.8"
+    "id": "sift_backport",
+    "name": "Sift Backport",
+    "version": "1.0.5.1"
   },
   "records": [
     {
-      "registry_id": "advancementframes:advancement_frame",
-      "registry_type": "block",
+      "registry_id": "sift:sift",
+      "registry_type": "biome",
       "schema_version": 1,
-      "mod_id": "advancementframes",
-      "mod_name": "Advancement Frames",
-      "mod_version": "1.20-2.2.8",
-      "source_jar": "advancementframes-1.20-2.2.8.jar",
-      "source_sha256": "c57b8fb06366d12d43065271447af57ef56f1ffee515be5f3e2561aa41034939",
+      "mod_id": "sift_backport",
+      "mod_name": "Sift Backport",
+      "mod_version": "1.0.5.1",
+      "source_jar": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
+      "source_sha256": "28184197726aed7541829ceadba68277e72519ec313ab5f5350c8d677415d970",
       "side_availability": [
         "client"
       ],
       "observed_in": [
-        "assets/advancementframes/blockstates/advancement_frame.json",
-        "assets/advancementframes/lang/en_us.json"
+        "data/sift/worldgen/biome/sift.json"
       ],
-      "display_name_en_us": "Advancement Frame",
+      "display_name_en_us": null,
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
@@ -39,8 +38,7 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "advancementframes-1.20-2.2.8.jar:assets/advancementframes/blockstates/advancement_frame.json",
-        "advancementframes-1.20-2.2.8.jar:assets/advancementframes/lang/en_us.json"
+        "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar:data/sift/worldgen/biome/sift.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -52,22 +50,21 @@
       "unresolved_reason": "Runtime registration and dynamic properties not observed"
     },
     {
-      "registry_id": "advancementframes:stat_frame",
-      "registry_type": "block",
+      "registry_id": "sift:sift_floating_islands",
+      "registry_type": "biome",
       "schema_version": 1,
-      "mod_id": "advancementframes",
-      "mod_name": "Advancement Frames",
-      "mod_version": "1.20-2.2.8",
-      "source_jar": "advancementframes-1.20-2.2.8.jar",
-      "source_sha256": "c57b8fb06366d12d43065271447af57ef56f1ffee515be5f3e2561aa41034939",
+      "mod_id": "sift_backport",
+      "mod_name": "Sift Backport",
+      "mod_version": "1.0.5.1",
+      "source_jar": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
+      "source_sha256": "28184197726aed7541829ceadba68277e72519ec313ab5f5350c8d677415d970",
       "side_availability": [
         "client"
       ],
       "observed_in": [
-        "assets/advancementframes/blockstates/stat_frame.json",
-        "assets/advancementframes/lang/en_us.json"
+        "data/sift/worldgen/biome/sift_floating_islands.json"
       ],
-      "display_name_en_us": "Stat Frame",
+      "display_name_en_us": null,
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
@@ -77,8 +74,7 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "advancementframes-1.20-2.2.8.jar:assets/advancementframes/blockstates/stat_frame.json",
-        "advancementframes-1.20-2.2.8.jar:assets/advancementframes/lang/en_us.json"
+        "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar:data/sift/worldgen/biome/sift_floating_islands.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

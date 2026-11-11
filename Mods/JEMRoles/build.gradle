@@ -10,8 +10,8 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
     compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
     compileOnly project(path: ':JEMEconomy', configuration: 'jemCompile')
-    compileOnly fg.deobf(files('../../Server/mods/lodestone-1.20.1-1.6.4.1.jar'))
-    compileOnly fg.deobf(files('../../Server/mods/Jade-1.20.1-Forge-11.13.3.jar'))
+    compileOnly fg.deobf(files('../../Client/ManagedPack/mods/lodestone-1.20.1-1.6.4.1.jar'))
+    compileOnly fg.deobf(files('../../Client/ManagedPack/mods/Jade-1.20.1-Forge-11.13.3.jar'))
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }

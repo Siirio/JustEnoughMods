@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "53400d9b03ce12346ec42e513432b268aa8b8a43",
+  "snapshot_sha": "07930edf326d73285d1e349918cf70234c149de5",
   "tags": {
     "abridged:instrument/bridge_goat_horns": [
       "minecraft:dream_goat_horn",
@@ -21830,7 +21830,9 @@
       "minecraft:podzol",
       "minecraft:smooth_basalt",
       "minecraft:snow",
-      "minecraft:snow_block"
+      "minecraft:snow_block",
+      "sift:light_sculk_grass_block",
+      "sift:sculk_grass_block"
     ],
     "minecraft:blocks/anvil": [
       "minecraft:anvil",
@@ -28770,10 +28772,6 @@
       "railways:yellow_two_pane_locometal_window",
       "railways:yellow_wrapped_locometal_smokebox",
       "ribbits:swamp_lantern",
-      "rosegoldequipment:raw_rose_gold_block",
-      "rosegoldequipment:rose_gold_block",
-      "rosegoldequipment:rose_gold_door",
-      "rosegoldequipment:rose_gold_trapdoor",
       "shutterup:copper_shutter",
       "shutterup:exposed_copper_shutter",
       "shutterup:iron_shutter",
@@ -28783,6 +28781,9 @@
       "shutterup:waxed_oxidized_copper_shutter",
       "shutterup:waxed_weathered_copper_shutter",
       "shutterup:weathered_copper_shutter",
+      "sift:chiseled_soulshale",
+      "sift:light_sculk_grass_block",
+      "sift:sculk_grass_block",
       "skarrier_mobs:stone_golem_unfinished_1",
       "skarrier_mobs:stone_golem_unfinished_2",
       "skarrier_mobs:stone_golem_unfinished_3",
@@ -32144,6 +32145,8 @@
       "netherexp:sorrowsquash",
       "netherexp:sorrowsquash_stem",
       "netherexp:sorrowsquash_stem_plant",
+      "sift:sculk_grass",
+      "sift:tall_sculk_grass",
       "spawn:broad_grass",
       "spawn:date_sapling",
       "spawn:magmatic_splatter",
@@ -33825,7 +33828,6 @@
       "true_ending:load"
     ],
     "minecraft:functions/tick": [
-      "nova_structures:mobs",
       "true_ending:tick"
     ],
     "minecraft:game_events/allay_can_listen": [
@@ -36475,8 +36477,7 @@
       "minecraft:netherite_ingot",
       "minecraft:quartz",
       "minecraft:redstone",
-      "minecraft:resin_brick",
-      "rosegoldequipment:rose_gold_ingot"
+      "minecraft:resin_brick"
     ],
     "minecraft:items/trim_templates": [
       "alexscaves:polarity_armor_trim_smithing_template",
@@ -36548,10 +36549,6 @@
       "minecraft:netherite_helmet",
       "minecraft:netherite_leggings",
       "minecraft:turtle_helmet",
-      "rosegoldequipment:rose_golden_boots",
-      "rosegoldequipment:rose_golden_chestplate",
-      "rosegoldequipment:rose_golden_helmet",
-      "rosegoldequipment:rose_golden_leggings",
       "skarrier_mobs:deep_alloy_armor_boots",
       "skarrier_mobs:deep_alloy_armor_chestplate",
       "skarrier_mobs:deep_alloy_armor_helmet",
@@ -37415,42 +37412,7 @@
     ],
     "minecraft:worldgen/biome/has_structure/stronghold": [
       "#minecraft:is_overworld",
-      "#terralith:all_terralith_biomes",
-      "minecraft:badlands",
-      "minecraft:bamboo_jungle",
-      "minecraft:beach",
-      "minecraft:birch_forest",
-      "minecraft:dark_forest",
-      "minecraft:deep_dark",
-      "minecraft:desert",
-      "minecraft:dripstone_caves",
-      "minecraft:eroded_badlands",
-      "minecraft:flower_forest",
-      "minecraft:forest",
-      "minecraft:frozen_peaks",
-      "minecraft:grove",
-      "minecraft:ice_spikes",
-      "minecraft:jagged_peaks",
-      "minecraft:jungle",
-      "minecraft:lush_caves",
-      "minecraft:meadow",
-      "minecraft:old_growth_birch_forest",
-      "minecraft:old_growth_pine_taiga",
-      "minecraft:old_growth_spruce_taiga",
-      "minecraft:plains",
-      "minecraft:savanna",
-      "minecraft:savanna_plateau",
-      "minecraft:snowy_plains",
-      "minecraft:snowy_slopes",
-      "minecraft:snowy_taiga",
-      "minecraft:sparse_jungle",
-      "minecraft:stony_peaks",
-      "minecraft:sunflower_plains",
-      "minecraft:taiga",
-      "minecraft:windswept_forest",
-      "minecraft:windswept_gravelly_hills",
-      "minecraft:windswept_hills",
-      "minecraft:wooded_badlands"
+      "#terralith:all_terralith_biomes"
     ],
     "minecraft:worldgen/biome/has_structure/swamp_hut": [
       "minecraft:swamp"
@@ -38124,9 +38086,6 @@
       "minecraft:tunnelers_dream",
       "minecraft:water_world"
     ],
-    "minecraft:worldgen/structure/ancient_city": [
-      "minecraft:ancient_city"
-    ],
     "minecraft:worldgen/structure/cats_spawn_as_black": [
       "minecraft:swamp_hut"
     ],
@@ -38150,8 +38109,7 @@
     ],
     "minecraft:worldgen/structure/ocean_ruin": [
       "minecraft:ocean_ruin_cold",
-      "minecraft:ocean_ruin_warm",
-      "nova_structures:conduit_ruin"
+      "minecraft:ocean_ruin_warm"
     ],
     "minecraft:worldgen/structure/on_desert_pyramid_maps": [
       "mtr:desert_temple"
@@ -38177,7 +38135,6 @@
       "minecraft:mansion"
     ],
     "minecraft:worldgen/structure/pillager_outpost": [
-      "minecraft:pillager_outpost",
       "towns_and_towers:exclusives/pillager_outpost_classic",
       "towns_and_towers:exclusives/pillager_outpost_iberian",
       "towns_and_towers:exclusives/pillager_outpost_mediterranean",
@@ -39972,235 +39929,6 @@
       "minecraft:snowy_plains",
       "minecraft:sunflower_plains",
       "minecraft:swamp"
-    ],
-    "nova_structures:worldgen/biome/collections/any_forests": [
-      "#minecraft:is_forest"
-    ],
-    "nova_structures:worldgen/biome/collections/any_taiga": [
-      "#nova_structures:collections/taiga",
-      "minecraft:old_growth_pine_taiga",
-      "minecraft:old_growth_spruce_taiga",
-      "minecraft:taiga"
-    ],
-    "nova_structures:worldgen/biome/collections/badlands": [
-      "#minecraft:is_badlands"
-    ],
-    "nova_structures:worldgen/biome/collections/beaches": [
-      "#minecraft:is_beach"
-    ],
-    "nova_structures:worldgen/biome/collections/birch_forests": [
-      "minecraft:birch_forest",
-      "minecraft:old_growth_birch_forest"
-    ],
-    "nova_structures:worldgen/biome/collections/caves": [
-      "minecraft:deep_dark",
-      "minecraft:dripstone_caves",
-      "minecraft:lush_caves"
-    ],
-    "nova_structures:worldgen/biome/collections/cherry_forests": [
-      "minecraft:cherry_grove"
-    ],
-    "nova_structures:worldgen/biome/collections/deep_oceans": [
-      "#minecraft:is_deep_ocean"
-    ],
-    "nova_structures:worldgen/biome/collections/deserts": [
-      "minecraft:desert"
-    ],
-    "nova_structures:worldgen/biome/collections/end": [
-      "#minecraft:is_end"
-    ],
-    "nova_structures:worldgen/biome/collections/end_voids": [
-      "minecraft:end_barrens",
-      "minecraft:small_end_islands"
-    ],
-    "nova_structures:worldgen/biome/collections/floral": [
-      "minecraft:flower_forest"
-    ],
-    "nova_structures:worldgen/biome/collections/giant_taigas": [
-      "minecraft:old_growth_pine_taiga",
-      "minecraft:old_growth_spruce_taiga"
-    ],
-    "nova_structures:worldgen/biome/collections/giant_trees": [
-      "minecraft:bamboo_jungle",
-      "minecraft:jungle",
-      "minecraft:old_growth_pine_taiga",
-      "minecraft:old_growth_spruce_taiga"
-    ],
-    "nova_structures:worldgen/biome/collections/hills": [
-      "#minecraft:is_hill"
-    ],
-    "nova_structures:worldgen/biome/collections/icy": [
-      "minecraft:frozen_peaks",
-      "minecraft:ice_spikes"
-    ],
-    "nova_structures:worldgen/biome/collections/illager_camps": [
-      "#minecraft:is_badlands",
-      "#minecraft:is_beach",
-      "#minecraft:is_forest",
-      "#minecraft:is_hill",
-      "#minecraft:is_jungle",
-      "#minecraft:is_river",
-      "#minecraft:is_savanna",
-      "#minecraft:is_taiga",
-      "minecraft:desert",
-      "minecraft:dripstone_caves",
-      "minecraft:ice_spikes",
-      "minecraft:lush_caves",
-      "minecraft:mushroom_fields",
-      "minecraft:plains",
-      "minecraft:snowy_plains",
-      "minecraft:sunflower_plains"
-    ],
-    "nova_structures:worldgen/biome/collections/jungles": [
-      "#minecraft:is_jungle"
-    ],
-    "nova_structures:worldgen/biome/collections/light_jungles": [
-      "#minecraft:is_jungle"
-    ],
-    "nova_structures:worldgen/biome/collections/mangroves": [
-      "minecraft:mangrove_swamp"
-    ],
-    "nova_structures:worldgen/biome/collections/meadows": [
-      "minecraft:meadow"
-    ],
-    "nova_structures:worldgen/biome/collections/mountains": [
-      "#minecraft:is_mountain"
-    ],
-    "nova_structures:worldgen/biome/collections/mushrooms": [
-      "minecraft:mushroom_fields"
-    ],
-    "nova_structures:worldgen/biome/collections/nether": [
-      "#minecraft:is_nether"
-    ],
-    "nova_structures:worldgen/biome/collections/nether_basalts": [
-      "minecraft:basalt_deltas"
-    ],
-    "nova_structures:worldgen/biome/collections/nether_crimson_forests": [
-      "minecraft:crimson_forest"
-    ],
-    "nova_structures:worldgen/biome/collections/nether_souls": [
-      "minecraft:soul_sand_valley"
-    ],
-    "nova_structures:worldgen/biome/collections/nether_warped_forest": [
-      "minecraft:warped_forest"
-    ],
-    "nova_structures:worldgen/biome/collections/oak_structure_biomes": [
-      "minecraft:forest",
-      "minecraft:plains",
-      "minecraft:sunflower_plains"
-    ],
-    "nova_structures:worldgen/biome/collections/oceans": [
-      "#minecraft:is_deep_ocean",
-      "#minecraft:is_ocean"
-    ],
-    "nova_structures:worldgen/biome/collections/overworld": [
-      "#minecraft:is_overworld"
-    ],
-    "nova_structures:worldgen/biome/collections/plains": [
-      "minecraft:plains",
-      "minecraft:sunflower_plains"
-    ],
-    "nova_structures:worldgen/biome/collections/regular_forests": [
-      "minecraft:forest"
-    ],
-    "nova_structures:worldgen/biome/collections/savannas": [
-      "#minecraft:is_savanna"
-    ],
-    "nova_structures:worldgen/biome/collections/snowy_forests": [
-      "minecraft:grove",
-      "minecraft:snowy_taiga"
-    ],
-    "nova_structures:worldgen/biome/collections/snowy_mountains": [
-      "minecraft:snowy_slopes"
-    ],
-    "nova_structures:worldgen/biome/collections/snowy_plains": [
-      "minecraft:snowy_plains"
-    ],
-    "nova_structures:worldgen/biome/collections/snowy_structures": [
-      "minecraft:grove",
-      "minecraft:snowy_plains",
-      "minecraft:snowy_taiga"
-    ],
-    "nova_structures:worldgen/biome/collections/spooky_forests": [
-      "minecraft:dark_forest"
-    ],
-    "nova_structures:worldgen/biome/collections/stony_shores": [
-      "minecraft:stony_shore"
-    ],
-    "nova_structures:worldgen/biome/collections/stronghold_related_ruins_biomes": [
-      "#minecraft:is_forest",
-      "#minecraft:is_taiga",
-      "#nova_structures:collections/taiga",
-      "minecraft:grove",
-      "minecraft:plains",
-      "minecraft:sunflower_plains"
-    ],
-    "nova_structures:worldgen/biome/collections/swamps": [
-      "minecraft:mangrove_swamp",
-      "minecraft:swamp"
-    ],
-    "nova_structures:worldgen/biome/collections/taiga": [
-      "minecraft:taiga"
-    ],
-    "nova_structures:worldgen/biome/illager_hideout": [
-      "#minecraft:is_badlands",
-      "#minecraft:is_beach",
-      "#minecraft:is_forest",
-      "#minecraft:is_hill",
-      "#minecraft:is_jungle",
-      "#minecraft:is_river",
-      "#minecraft:is_savanna",
-      "#minecraft:is_taiga",
-      "minecraft:desert",
-      "minecraft:dripstone_caves",
-      "minecraft:ice_spikes",
-      "minecraft:lush_caves",
-      "minecraft:mushroom_fields",
-      "minecraft:plains",
-      "minecraft:snowy_plains",
-      "minecraft:sunflower_plains"
-    ],
-    "nova_structures:worldgen/structure/badlands_miner_outpost": [
-      "nova_structures:badlands_miner_outpost"
-    ],
-    "nova_structures:worldgen/structure/conduit_ruin": [
-      "nova_structures:conduit_ruin"
-    ],
-    "nova_structures:worldgen/structure/creeping_crypt": [
-      "nova_structures:creeping_crypt"
-    ],
-    "nova_structures:worldgen/structure/desert_ruins": [
-      "nova_structures:desert_ruins"
-    ],
-    "nova_structures:worldgen/structure/firewatch_tower": [
-      "nova_structures:firewatch_tower_birch",
-      "nova_structures:firewatch_tower_dark_oak",
-      "nova_structures:firewatch_tower_forest",
-      "nova_structures:firewatch_tower_jungle",
-      "nova_structures:firewatch_tower_mangrove",
-      "nova_structures:firewatch_tower_savanna",
-      "nova_structures:firewatch_tower_taiga"
-    ],
-    "nova_structures:worldgen/structure/illager_hideout": [
-      "nova_structures:illager_hideout"
-    ],
-    "nova_structures:worldgen/structure/illager_manor": [
-      "nova_structures:illager_manor"
-    ],
-    "nova_structures:worldgen/structure/jungle_ruins": [
-      "nova_structures:jungle_ruins"
-    ],
-    "nova_structures:worldgen/structure/ruin_town": [
-      "nova_structures:ruin_town"
-    ],
-    "nova_structures:worldgen/structure/stray_fort": [
-      "nova_structures:stray_fort"
-    ],
-    "nova_structures:worldgen/structure/undead_crypt": [
-      "nova_structures:undead_crypt"
-    ],
-    "nova_structures:worldgen/structure/witch_villa": [
-      "nova_structures:witch_villa"
     ],
     "nullscape:blocks/amethyst_cut": [
       "dead_bubble_coral_block",

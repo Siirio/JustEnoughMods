@@ -5,7 +5,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: 'official', version: '1.20.1' }
 def developmentLibraries = providers.gradleProperty('jemDevelopmentLibraries')
         .getOrElse(rootProject.file('.gradle/jem-development-libraries').absolutePath)
-repositories { flatDir { dirs '../../Server/mods', developmentLibraries } }
+repositories { flatDir { dirs '../../Client/ManagedPack/mods', developmentLibraries } }
 
 // Sandbox packaging reuses the real profession owner, with a separate screen and entry point.
 def professionProfile = providers.gradleProperty('professionProfile').getOrElse('production')
@@ -29,7 +29,7 @@ tasks.named('processResources') {
 }
 if (professionProfile == 'sandbox') {
     tasks.register('extractNativeCompileJars', Copy) {
-        from(zipTree(file('../../Server/mods/create-1.20.1-6.0.8.jar'))) {
+        from(zipTree(file('../../Client/ManagedPack/mods/create-1.20.1-6.0.8.jar'))) {
             include 'META-INF/jarjar/*.jar'
             eachFile { path = name }
             includeEmptyDirs = false
