@@ -1,3 +1,12 @@
+## 2026-11-11 - Diagnose the Sift client startup crash
+
+- User reported that `Test JustEnoughMods` crashed after local generation 148 was installed and the local server was started
+- Bug / Client Sided / the Java 17 Sift Backport artifact retained Mojmap development method names because the inherited ForgeGradle configuration set `minecraft.reobf = false` and the pinned build invoked only `jar` / in testing with no replacement artifact published yet
+- Five Whys: Forge registry dispatch failed because Sift called `SoundEvent.createVariableRangeEvent` and `BlockBehaviour.Properties.of`, those names do not exist in the Forge 47.4.10 SRG runtime, the artifact kept development mappings because reobfuscation was disabled, the Java 17 patch intentionally inherited the upstream packaging configuration, and static verification checked the class version and content but did not inspect production symbol names or launch the client
+- The later Alex's Caves, Alex's Mobs, Forge fluid and 748 registry-ID errors are rollback consequences after Sift's first two `NoSuchMethodError` failures, not separate root causes
+- The client failed during game initialization before it connected to the local server. The server remained ready on `127.0.0.1:31604`
+- No source fix, rebuild, managed-pack replacement, publication or client launch was performed during this diagnosis
+
 ## 2026-11-11 - Reduce the Major Update 4 stack and add Sift
 
 - User removed Advancement Frames, Rose Gold Equipment, Dungeons and Taverns, Dungeons and Taverns Ancient City Overhaul and Oh The Trees You'll Grow. The user selected Structurify as the only overlapping structure-control owner and requested the Sift addition in the same implementation task
