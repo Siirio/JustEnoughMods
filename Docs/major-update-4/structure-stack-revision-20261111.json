@@ -19,11 +19,11 @@
     },
     {
       "file": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
-      "sha256": "28184197726aed7541829ceadba68277e72519ec313ab5f5350c8d677415d970",
+      "sha256": "413e4999c09a2488ad3faf63c02b185f705c20fc6f4248ad50fff8c36b9bdc6e",
       "source_commit": "82a7428b31e29bcebaa127c3118214c9f17421fa",
       "license_declared_by_upstream": "MIT",
       "class_version": 61,
-      "role": "Mielon's The Sift dimension backport"
+      "role": "Mielon's The Sift dimension backport, Java 17 and Forge SRG production-reobfuscated"
     }
   ],
   "overlap_policy": {
@@ -45,10 +45,16 @@
   },
   "runtime": {
     "server_layout": "bootstrap-only Server/mods with the managed generation loaded by AutoModpack",
-    "local_generation": 148,
-    "content_token": "cb5325182ded9de31120c1453e941630cd33c3a3",
+    "local_generation": 149,
+    "content_token": "df2877a424a152666f3672be8a7e4733ece2d117",
+    "manifest_sha1": "86b6e1ee1dcc3b44c8dc24b0394cae474004ed5f",
     "test_profile_applied": true,
     "pending_transaction": false,
+    "verified_managed_jars": 329,
+    "sift_runtime_symbols": [
+      "net.minecraft.sounds.SoundEvent.m_262824_",
+      "net.minecraft.world.level.block.state.BlockBehaviour$Properties.m_284310_"
+    ],
     "minecraft_launch": false,
     "fresh_chunk_acceptance": false,
     "player_acceptance": false

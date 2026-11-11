@@ -1,3 +1,13 @@
+## 2026-11-11 - Repair the Sift production artifact
+
+- User requested repair of the `Test JustEnoughMods` startup crash and all required delivery work
+- Bug / Client Sided / the Java 17 Sift Backport artifact retained Mojmap development method names because ForgeGradle reobfuscation was disabled and the build invoked only `jar` / in testing after replacing it with the Java 17 Forge SRG production artifact
+- Enabled ForgeGradle reobfuscation in the pinned upstream patch and made `reobfJar` the required production task. Sift Java source, resources, registries, gameplay and network behavior are unchanged
+- Built class version 61 artifact SHA-256 `413e4999c09a2488ad3faf63c02b185f705c20fc6f4248ad50fff8c36b9bdc6e`. Static bytecode inspection confirms `SoundEvent.m_262824_` and `BlockBehaviour.Properties.m_284310_` replace the two crashing Mojmap calls. Every non-class, non-manifest JAR entry matches the previous artifact byte-for-byte
+- Rebuilt and validated the full Registry Atlas. Sift IDs remain present with the new artifact hash, no installed-artifact drift remains, and representative Sift behavior queries report no conflicts
+- Published native AutoModpack generation 149 with token `df2877a424a152666f3672be8a7e4733ece2d117` and manifest SHA-1 `86b6e1ee1dcc3b44c8dc24b0394cae474004ed5f`. Applied it to the closed `Test JustEnoughMods` profile, verified 329 managed JARs, matching Sift SHA-256 and no pending transaction
+- The local server remains available at `127.0.0.1:31604`. Minecraft was not launched, so client startup and player acceptance remain pending
+
 ## 2026-11-11 - Diagnose the Sift client startup crash
 
 - User reported that `Test JustEnoughMods` crashed after local generation 148 was installed and the local server was started

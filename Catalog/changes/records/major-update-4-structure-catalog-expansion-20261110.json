@@ -85,7 +85,7 @@
         "property": "distribution.sift_backport",
         "operation": "add",
         "before": "Official Forge 1.20.1 artifacts required Java 21 and could not load in the Java 17 pack runtime",
-        "after": "Version 1.0.5.1 is rebuilt from pinned MIT upstream commit 82a7428b31e29bcebaa127c3118214c9f17421fa with class version 61 and unchanged gameplay source"
+        "after": "Version 1.0.5.1 is rebuilt and production-reobfuscated from pinned MIT upstream commit 82a7428b31e29bcebaa127c3118214c9f17421fa with class version 61 and unchanged gameplay source"
       }
     ]
   },
@@ -155,6 +155,17 @@
       "summary": "Remove Oh The Trees You'll Grow and the Dungeons and Taverns ancient-city datapack, replace StructureOverlapless with Structurify and add the Java 17 Sift Backport.",
       "source_files": [
         "Client/ManagedPack/config/overlapless-common.toml"
+      ]
+    },
+    {
+      "date": "2026-11-11",
+      "commit": "SELF",
+      "action": "reobfuscate_sift_backport",
+      "summary": "Replace the Mojmap development JAR with the Forge 1.20.1 SRG production artifact while preserving Sift content and gameplay.",
+      "source_files": [
+        "Mods/SiftBackport/upstream.json",
+        "Mods/SiftBackport/patches/java17-runtime.patch",
+        "Client/ManagedPack/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar"
       ]
     }
   ],

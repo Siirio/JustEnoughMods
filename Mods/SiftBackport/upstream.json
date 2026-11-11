@@ -11,7 +11,7 @@
     "forge/1.20.1/gradle.properties": "64e2f869f6f703cf78b442930088dbf304a8ac04026141af961d2cc623336454"
   },
   "buildDirectory": "forge/1.20.1",
-  "buildArguments": ["clean", "jar", "-x", "test", "--no-daemon"],
+  "buildArguments": ["clean", "reobfJar", "-x", "test", "--no-daemon"],
   "artifact": "forge/1.20.1/build/libs/Sift-Backport-1.0.5.1-1.20.1-forge.jar",
   "distributionName": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar"
 }
