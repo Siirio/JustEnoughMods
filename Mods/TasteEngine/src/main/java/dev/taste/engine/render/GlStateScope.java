@@ -1,8 +1,11 @@
 package dev.taste.engine.render;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.BufferUploader;
 import java.nio.IntBuffer;
 import java.nio.ByteBuffer;
+import net.minecraft.client.renderer.ShaderInstance;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
@@ -15,6 +18,7 @@ public final class GlStateScope implements AutoCloseable {
     private final int readFramebuffer;
     private final int drawFramebuffer;
     private final int program;
+    private final ShaderInstance shader;
     private final int vertexArray;
     private final int activeTexture;
     private final int[] texture2d = new int[16];
@@ -39,6 +43,7 @@ public final class GlStateScope implements AutoCloseable {
         readFramebuffer = GL11.glGetInteger(GL30.GL_READ_FRAMEBUFFER_BINDING);
         drawFramebuffer = GL11.glGetInteger(GL30.GL_DRAW_FRAMEBUFFER_BINDING);
         program = GL11.glGetInteger(GL20.GL_CURRENT_PROGRAM);
+        shader = RenderSystem.getShader();
         vertexArray = GL11.glGetInteger(GL30.GL_VERTEX_ARRAY_BINDING);
         activeTexture = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
         for (int unit = 0; unit < texture2d.length; unit++) {
@@ -79,25 +84,34 @@ public final class GlStateScope implements AutoCloseable {
     public void close() {
         GL30.glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER, readFramebuffer);
         GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, drawFramebuffer);
-        GL11.glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
-        GL20.glUseProgram(program);
-        GL30.glBindVertexArray(vertexArray);
+        RenderSystem.viewport(viewport[0], viewport[1], viewport[2], viewport[3]);
+        RenderSystem.setShader(() -> shader);
+        GlStateManager._glUseProgram(program);
+        GlStateManager._glBindVertexArray(vertexArray);
+        // BufferUploader caches the last immediate VertexBuffer separately from OpenGL.
+        // Restoring an earlier VAO without invalidating that cache makes the next upload
+        // skip its bind and draw against VAO 0.
+        BufferUploader.reset();
         for (int unit = 0; unit < texture2d.length; unit++) {
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + unit);
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture2d[unit]);
+            RenderSystem.activeTexture(GL13.GL_TEXTURE0 + unit);
+            RenderSystem.bindTexture(texture2d[unit]);
         }
-        GL13.glActiveTexture(activeTexture);
-        set(GL11.GL_DEPTH_TEST, depth);
-        set(GL11.GL_BLEND, blend);
-        set(GL11.GL_CULL_FACE, cull);
-        set(GL11.GL_SCISSOR_TEST, scissor);
+        RenderSystem.activeTexture(activeTexture);
+        if (depth) RenderSystem.enableDepthTest();
+        else RenderSystem.disableDepthTest();
+        if (blend) RenderSystem.enableBlend();
+        else RenderSystem.disableBlend();
+        if (cull) RenderSystem.enableCull();
+        else RenderSystem.disableCull();
+        if (scissor) RenderSystem.enableScissor(scissorBox[0], scissorBox[1], scissorBox[2], scissorBox[3]);
+        else RenderSystem.disableScissor();
         set(GL30.GL_FRAMEBUFFER_SRGB, framebufferSrgb);
-        GL11.glDepthMask(depthMask);
-        GL11.glColorMask(colorMask[0], colorMask[1], colorMask[2], colorMask[3]);
+        RenderSystem.depthMask(depthMask);
+        RenderSystem.colorMask(colorMask[0], colorMask[1], colorMask[2], colorMask[3]);
         GL11.glFrontFace(frontFace);
-        GL14.glBlendFuncSeparate(blendSourceRgb, blendDestinationRgb, blendSourceAlpha, blendDestinationAlpha);
-        GL20.glBlendEquationSeparate(blendEquationRgb, blendEquationAlpha);
-        GL11.glScissor(scissorBox[0], scissorBox[1], scissorBox[2], scissorBox[3]);
+        RenderSystem.blendFuncSeparate(blendSourceRgb, blendDestinationRgb, blendSourceAlpha, blendDestinationAlpha);
+        if (blendEquationRgb == blendEquationAlpha) RenderSystem.blendEquation(blendEquationRgb);
+        else GL20.glBlendEquationSeparate(blendEquationRgb, blendEquationAlpha);
     }
 
     private static void set(int capability, boolean enabled) {

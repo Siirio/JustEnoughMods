@@ -28,18 +28,20 @@ import net.minecraft.network.chat.Component;
 /** Compact native editor for the complete setting registry. */
 public class TasteConfigScreen extends Screen {
     private record VisibleRow(SettingSpec spec, int y) { }
+    private record CategoryTab(int index, Button button) { }
     private final Screen parent;
     private final ConfigStore store;
     private final SettingRegistry registry;
     private ConfigDraft draft;
     private final List<AbstractWidget> rowWidgets = new ArrayList<>();
+    private final List<AbstractWidget> categoryWidgets = new ArrayList<>();
+    private final List<CategoryTab> categoryTabs = new ArrayList<>();
     private final List<VisibleRow> rows = new ArrayList<>();
     private final List<EditBox> textEditors = new ArrayList<>();
     private final Map<String, String> invalidText = new LinkedHashMap<>();
     private final Map<String, String> errors = new LinkedHashMap<>();
     private EditBox search;
     private Button master;
-    private Button categoryButton;
     private Button apply;
     private Button previous;
     private Button next;
@@ -49,8 +51,13 @@ public class TasteConfigScreen extends Screen {
     private int page;
     private int pageCount = 1;
     private int rowCount = 1;
+    private int categoryOffset;
+    private int visibleCategoryCount = 1;
     private int left;
     private int panelWidth;
+    private int sidebarWidth;
+    private int contentLeft;
+    private int contentWidth;
     private boolean refreshRows;
 
     public TasteConfigScreen(Screen parent, ConfigStore store) {
@@ -63,33 +70,32 @@ public class TasteConfigScreen extends Screen {
     }
 
     @Override protected void init() {
-        panelWidth = Math.min(660, width - 20);
+        panelWidth = Math.min(860, width - 20);
         left = (width - panelWidth) / 2;
+        sidebarWidth = Math.min(176, Math.max(136, panelWidth / 4));
+        contentLeft = left + sidebarWidth + 10;
+        contentWidth = left + panelWidth - contentLeft;
         rowCount = Math.max(1, (height - 190) / 44);
         rowWidgets.clear();
+        categoryWidgets.clear();
+        categoryTabs.clear();
         textEditors.clear();
         master = addRenderableWidget(Button.builder(masterText(), button -> {
             draft.set("general.enabled", new JsonPrimitive(!draft.value("general.enabled").getAsBoolean()));
             rebuildRows();
-        }).bounds(left, 44, Math.min(190, panelWidth / 2), 20).build());
+        }).bounds(contentLeft, 44, Math.min(190, contentWidth / 2), 20).build());
         master.setTooltip(Tooltip.create(Component.translatable("taste.ui.masterHelp")));
-        search = addRenderableWidget(new EditBox(font, left, 70, panelWidth / 2 - 3, 20, Component.translatable("taste.ui.search")));
+        search = addRenderableWidget(new EditBox(font, contentLeft, 70, contentWidth, 20, Component.translatable("taste.ui.search")));
         search.setMaxLength(120);
         search.setValue(query);
         search.setHint(Component.translatable("taste.ui.search"));
         search.setResponder(text -> { query = text; page = 0; refreshRows = true; });
-        categoryButton = addRenderableWidget(Button.builder(categoryText(), button -> {
-            int count = registry.categories().size() + 1;
-            categoryIndex = Math.floorMod(categoryIndex + (Screen.hasShiftDown() ? -1 : 1), count);
-            page = 0;
-            rebuildRows();
-        }).bounds(left + panelWidth / 2 + 3, 70, panelWidth / 2 - 3, 20).build());
-        categoryButton.setTooltip(Tooltip.create(Component.translatable("taste.ui.categoryHelp")));
+        rebuildCategoryTabs();
         previous = addRenderableWidget(Button.builder(Component.literal("<"), b -> { page--; rebuildRows(); })
-                .bounds(left, height - 84, 30, 20).build());
+                .bounds(contentLeft, height - 84, 30, 20).build());
         next = addRenderableWidget(Button.builder(Component.literal(">"), b -> { page++; rebuildRows(); })
-                .bounds(left + panelWidth - 30, height - 84, 30, 20).build());
-        int buttonWidth = (panelWidth - 12) / 4;
+                .bounds(contentLeft + contentWidth - 30, height - 84, 30, 20).build());
+        int buttonWidth = (contentWidth - 12) / 4;
         addRenderableWidget(Button.builder(Component.translatable("taste.ui.resetPage"), b -> {
             if (categoryIndex == 0 || !query.isBlank()) for (VisibleRow row : List.copyOf(rows)) reset(row.spec().id());
             else {
@@ -97,23 +103,23 @@ public class TasteConfigScreen extends Screen {
                 registry.settings().values().stream().filter(s -> s.category().equals(category)).forEach(s -> reset(s.id()));
             }
             rebuildRows();
-        }).bounds(left, height - 28, buttonWidth, 20).tooltip(Tooltip.create(Component.translatable("taste.ui.resetPageHelp"))).build());
+        }).bounds(contentLeft, height - 28, buttonWidth, 20).tooltip(Tooltip.create(Component.translatable("taste.ui.resetPageHelp"))).build());
         addRenderableWidget(Button.builder(Component.translatable("taste.ui.resetAll"), b -> {
             draft.resetAll(); invalidText.clear(); errors.clear(); message = ""; rebuildRows();
-        }).bounds(left + buttonWidth + 4, height - 28, buttonWidth, 20).build());
+        }).bounds(contentLeft + buttonWidth + 4, height - 28, buttonWidth, 20).build());
         apply = addRenderableWidget(Button.builder(Component.translatable("taste.ui.apply"), b -> applyDraft())
-                .bounds(left + (buttonWidth + 4) * 2, height - 28, buttonWidth, 20).build());
+                .bounds(contentLeft + (buttonWidth + 4) * 2, height - 28, buttonWidth, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose())
-                .bounds(left + (buttonWidth + 4) * 3, height - 28, buttonWidth, 20).build());
+                .bounds(contentLeft + (buttonWidth + 4) * 3, height - 28, buttonWidth, 20).build());
         rebuildRows();
     }
 
     private Component masterText() {
         return Component.translatable("taste.ui.master", Component.translatable(draft.value("general.enabled").getAsBoolean() ? "options.on" : "options.off"));
     }
-    private Component categoryText() {
-        return categoryIndex == 0 ? Component.translatable("taste.ui.allCategories")
-                : Component.literal(registry.categories().get(categoryIndex - 1).label(language()));
+    private Component categoryText(int index) {
+        return index == 0 ? Component.translatable("taste.ui.allCategories")
+                : Component.literal(registry.categories().get(index - 1).label(language()));
     }
     private String language() { return minecraft == null ? "en_us" : minecraft.getLanguageManager().getSelected(); }
     private List<SettingSpec> filtered() {
@@ -142,16 +148,69 @@ public class TasteConfigScreen extends Screen {
         previous.active = page > 0;
         next.active = page + 1 < pageCount;
         master.setMessage(masterText());
-        categoryButton.setMessage(categoryText());
+        rebuildCategoryTabs();
         updateApplyState();
         refreshRows = false;
+    }
+
+    private void selectCategory(int index) {
+        categoryIndex = index;
+        page = 0;
+        query = "";
+        search.setValue("");
+        rebuildRows();
+    }
+
+    private void rebuildCategoryTabs() {
+        categoryWidgets.forEach(this::removeWidget);
+        categoryWidgets.clear();
+        categoryTabs.clear();
+        int categoryCount = registry.categories().size() + 1;
+        visibleCategoryCount = Math.max(1, (height - 98) / 22);
+        int maximumOffset = Math.max(0, categoryCount - visibleCategoryCount);
+        if (categoryIndex < categoryOffset) categoryOffset = categoryIndex;
+        if (categoryIndex >= categoryOffset + visibleCategoryCount)
+            categoryOffset = categoryIndex - visibleCategoryCount + 1;
+        categoryOffset = Math.max(0, Math.min(maximumOffset, categoryOffset));
+        int end = Math.min(categoryCount, categoryOffset + visibleCategoryCount);
+        for (int index = categoryOffset; index < end; index++) {
+            int tabIndex = index;
+            Component label = categoryText(index);
+            Component message = index == categoryIndex
+                    ? Component.literal("> ").append(label)
+                    : label;
+            Button tab = Button.builder(message, button -> selectCategory(tabIndex))
+                    .bounds(left, 44 + (index - categoryOffset) * 22, sidebarWidth, 20)
+                    .tooltip(Tooltip.create(label))
+                    .build();
+            categoryWidgets.add(addRenderableWidget(tab));
+            categoryTabs.add(new CategoryTab(index, tab));
+        }
+        Button scrollUp = Button.builder(Component.literal("▲"), button -> scrollCategories(-visibleCategoryCount))
+                .bounds(left, height - 50, (sidebarWidth - 4) / 2, 20)
+                .tooltip(Tooltip.create(Component.translatable("taste.ui.scrollCategories")))
+                .build();
+        Button scrollDown = Button.builder(Component.literal("▼"), button -> scrollCategories(visibleCategoryCount))
+                .bounds(left + (sidebarWidth + 4) / 2, height - 50, (sidebarWidth - 4) / 2, 20)
+                .tooltip(Tooltip.create(Component.translatable("taste.ui.scrollCategories")))
+                .build();
+        scrollUp.active = categoryOffset > 0;
+        scrollDown.active = categoryOffset < maximumOffset;
+        categoryWidgets.add(addRenderableWidget(scrollUp));
+        categoryWidgets.add(addRenderableWidget(scrollDown));
+    }
+
+    private void scrollCategories(int amount) {
+        int maximumOffset = Math.max(0, registry.categories().size() + 1 - visibleCategoryCount);
+        categoryOffset = Math.max(0, Math.min(maximumOffset, categoryOffset + amount));
+        rebuildCategoryTabs();
     }
     private <T extends AbstractWidget> T rowWidget(T widget) {
         rowWidgets.add(widget);
         return addRenderableWidget(widget);
     }
     private void createEditor(SettingSpec spec, JsonPrimitive current, int y) {
-        int editorWidth = panelWidth - 34;
+        int editorWidth = contentWidth - 34;
         EffectiveConfig effective = EffectiveConfig.resolve(new ConfigSnapshot(-1, draft.style(), draft.quality(),
                 Map.of(), draft.effective()), ClientState.capabilities());
         Tooltip tooltip = Tooltip.create(Component.literal(spec.id() + "\n" + spec.description() + "\n")
@@ -161,7 +220,7 @@ public class TasteConfigScreen extends Screen {
             rowWidget(Button.builder(Component.translatable(current.getAsBoolean() ? "options.on" : "options.off"), button -> {
                 draft.set(spec.id(), new JsonPrimitive(!draft.value(spec.id()).getAsBoolean()));
                 rebuildRows();
-            }).bounds(left, y, editorWidth, 20).tooltip(tooltip).build());
+            }).bounds(contentLeft, y, editorWidth, 20).tooltip(tooltip).build());
         } else if (spec.type() == SettingSpec.Type.ENUM) {
             rowWidget(Button.builder(Component.literal(current.getAsString()), button -> {
                 int index = spec.options().indexOf(draft.value(spec.id()).getAsString());
@@ -169,10 +228,10 @@ public class TasteConfigScreen extends Screen {
                 while (spec.id().equals("general.backend") && ClientState.embeddiumInstalled() && spec.options().get(index).equals("vanilla"));
                 draft.set(spec.id(), new JsonPrimitive(spec.options().get(index)));
                 rebuildRows();
-            }).bounds(left, y, editorWidth, 20).tooltip(tooltip).build());
+            }).bounds(contentLeft, y, editorWidth, 20).tooltip(tooltip).build());
         } else {
             int textWidth = spec.numeric() ? Math.max(72, editorWidth / 3) : editorWidth;
-            int textX = spec.numeric() ? left + editorWidth - textWidth : left;
+            int textX = spec.numeric() ? contentLeft + editorWidth - textWidth : contentLeft;
             EditBox editor = rowWidget(new EditBox(font, textX, y, textWidth, 20, Component.literal(spec.label(language()))));
             editor.setMaxLength(40);
             editor.setValue(invalidText.getOrDefault(spec.id(), display(current)));
@@ -189,13 +248,13 @@ public class TasteConfigScreen extends Screen {
             });
             textEditors.add(editor);
             if (spec.numeric()) {
-                NumericSlider slider = rowWidget(new NumericSlider(left, y, editorWidth - textWidth - 4, spec, current.getAsDouble(),
+                NumericSlider slider = rowWidget(new NumericSlider(contentLeft, y, editorWidth - textWidth - 4, spec, current.getAsDouble(),
                         value -> editor.setValue(display(value))));
                 slider.setTooltip(tooltip);
             }
         }
         rowWidget(Button.builder(Component.literal("R"), button -> { reset(spec.id()); rebuildRows(); })
-                .bounds(left + panelWidth - 28, y, 28, 20)
+                .bounds(contentLeft + contentWidth - 28, y, 28, 20)
                 .tooltip(Tooltip.create(Component.translatable("taste.ui.resetOne"))).build());
     }
     private void reset(String id) {
@@ -222,23 +281,35 @@ public class TasteConfigScreen extends Screen {
     }
     @Override public void onClose() { if (minecraft != null) minecraft.setScreen(parent); }
     @Override public boolean isPauseScreen() { return false; }
+    @Override public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+        if (mouseX >= left && mouseX < left + sidebarWidth && mouseY >= 44 && mouseY < height - 28) {
+            scrollCategories(delta > 0.0 ? -1 : 1);
+            return true;
+        }
+        return super.mouseScrolled(mouseX, mouseY, delta);
+    }
     @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics);
         graphics.drawCenteredString(font, title, width / 2, 10, 0xFFFFFF);
         graphics.drawCenteredString(font, Component.translatable("taste.ui.rendererStage"), width / 2, 27, 0x72D8E8);
+        graphics.drawString(font, Component.translatable("taste.ui.categories"), left, 33, 0x72D8E8, false);
+        for (CategoryTab tab : categoryTabs)
+            if (tab.index() == categoryIndex)
+                graphics.fill(left - 3, tab.button().getY(), left - 1, tab.button().getY() + tab.button().getHeight(), 0xFF72D8E8);
         graphics.drawString(font, font.plainSubstrByWidth(Component.translatable(ClientState.rendererAvailable()
-                        ? "taste.ui.statusOn" : "taste.ui.statusPending").getString(), panelWidth / 2 - 6),
-                left + panelWidth / 2 + 3, 50, 0xAAAAAA, false);
+                        ? "taste.ui.statusOn" : "taste.ui.statusPending").getString(), contentWidth / 2 - 6),
+                contentLeft + contentWidth / 2 + 3, 50, 0xAAAAAA, false);
         for (VisibleRow row : rows) {
             String label = (draft.hasOverride(row.spec().id()) ? "* " : "") + row.spec().label(language());
             if (!row.spec().unit().isBlank()) label += " (" + row.spec().unit() + ")";
-            graphics.drawString(font, font.plainSubstrByWidth(label, panelWidth), left, row.y(), 0xE6E6E6, false);
+            graphics.drawString(font, font.plainSubstrByWidth(label, contentWidth), contentLeft, row.y(), 0xE6E6E6, false);
         }
-        if (rows.isEmpty()) graphics.drawCenteredString(font, Component.translatable("taste.ui.noResults"), width / 2, 110, 0xAAAAAA);
+        int contentCenter = contentLeft + contentWidth / 2;
+        if (rows.isEmpty()) graphics.drawCenteredString(font, Component.translatable("taste.ui.noResults"), contentCenter, 110, 0xAAAAAA);
         graphics.drawCenteredString(font, Component.translatable("taste.ui.page", page + 1, pageCount, draft.dirty() ? "*" : ""),
-                width / 2, height - 78, 0xCCCCCC);
+                contentCenter, height - 78, 0xCCCCCC);
         String status = errors.isEmpty() ? message : errors.values().iterator().next();
-        graphics.drawString(font, font.plainSubstrByWidth(status, panelWidth), left, height - 55, errors.isEmpty() ? 0xAACCAA : 0xFF7777, false);
+        graphics.drawString(font, font.plainSubstrByWidth(status, contentWidth), contentLeft, height - 55, errors.isEmpty() ? 0xAACCAA : 0xFF7777, false);
         super.render(graphics, mouseX, mouseY, partialTick);
     }
     private static String display(JsonPrimitive value) {

@@ -5,13 +5,11 @@ import com.mojang.logging.LogUtils;
 import dev.taste.engine.TasteMod;
 import dev.taste.engine.config.ConfigDraft;
 import dev.taste.engine.config.ConfigStore;
-import dev.taste.engine.render.TasteRenderer;
 import java.io.IOException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -39,10 +37,5 @@ public final class ClientEvents {
                 if (minecraft.player != null) minecraft.player.displayClientMessage(Component.translatable("taste.ui.saveFailed"), true);
             }
         }
-    }
-
-    @SubscribeEvent
-    public static void renderLevel(RenderLevelStageEvent event) {
-        TasteRenderer.instance().render(event);
     }
 }

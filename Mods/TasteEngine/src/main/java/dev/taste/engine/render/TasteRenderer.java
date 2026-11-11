@@ -32,7 +32,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.fml.ModList;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
@@ -79,7 +78,6 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     private String failure = "";
     private boolean loggedFailure;
     private boolean worldOpen;
-    private boolean afterLevel;
     private boolean materialRulesLoaded;
 
     private TasteRenderer() { RenderHooks.setListener(this); }
@@ -90,11 +88,6 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     public synchronized String failure() { return failure; }
     public synchronized long allocatedBytes() { return targets == null ? 0L : targets.allocatedBytes(); }
     public synchronized double lastGpuMilliseconds() { return lastGpuMilliseconds; }
-
-    /** Marks the immutable final-world-depth stage. Composition occurs at the renderLevel return boundary. */
-    public synchronized void render(RenderLevelStageEvent event) {
-        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_LEVEL && worldOpen) afterLevel = true;
-    }
 
     @Override
     public synchronized void beginWorld(Camera camera, Matrix4f projection, float nextPartialTick) {
@@ -149,7 +142,6 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
             targetRoute = WorldTargetRouter.route(worldTarget);
             worldScope = WorldViewScope.enter(key);
             worldOpen = true;
-            afterLevel = false;
         } catch (IOException | RuntimeException renderFailure) {
             fail(renderFailure);
             closeWorldScope();
@@ -162,7 +154,6 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         RenderSystem.assertOnRenderThread();
         closeRouteOnly();
         try {
-            if (!afterLevel) throw new IllegalStateException("Forge AFTER_LEVEL was not observed before world completion");
             if (timer != null) timer.begin();
             executeGraph();
             if (timer != null) {
@@ -245,6 +236,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     }
 
     private void drawScene() {
+        clearGlErrors();
         sceneTarget.bindWrite(true);
         bindCommon(sceneShader, worldTarget);
         set(sceneShader, "SunIntensity", enabled("lighting.sunEnabled") ? value("lighting.sunIntensity") : 0.0F);
@@ -266,12 +258,17 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         set(sceneShader, "LavaStrength", enabled("lava.enabled") && enabled("emission.lava")
                 ? value("emission.strength") : 0.0F);
         set(sceneShader, "ReducedMotion", enabled("accessibility.reducedMotion") ? 1.0F : 0.0F);
-        drawFullscreen();
-        sceneShader.clear();
+        try {
+            drawFullscreen();
+            requireNoGlError("scene-lighting");
+        } finally {
+            sceneShader.clear();
+        }
         frames.debug().publish("scene", new DebugAttachments.Attachment(sceneTarget.getColorTextureId(), width, height, "Linear scene composite"));
     }
 
     private void drawFinal() {
+        clearGlErrors();
         nativeTarget.bindWrite(true);
         bindCommon(finalShader, sceneTarget);
         set(finalShader, "Exposure", powerOfTwo(value("color.exposureEV")));
@@ -304,8 +301,12 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         set(finalShader, "ReducedMotion", enabled("accessibility.reducedMotion") ? 1.0F : 0.0F);
         set(finalShader, "MinimumContrast", value("accessibility.minimumContrast"));
         set(finalShader, "ToneMapper", parameters.value("color.toneMapper").getAsString().equals("neutral") ? 1.0F : 0.0F);
-        drawFullscreen();
-        finalShader.clear();
+        try {
+            drawFullscreen();
+            requireNoGlError("final-color");
+        } finally {
+            finalShader.clear();
+        }
         frames.debug().publish("final", new DebugAttachments.Attachment(nativeTarget.getColorTextureId(), nativeWidth, nativeHeight, "Tone-mapped world before hand and GUI"));
         updateAdaptiveScale();
     }
@@ -393,7 +394,6 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
             worldScope = null;
         }
         worldOpen = false;
-        afterLevel = false;
         activeFrame = null;
         parameters = null;
         environment = null;
@@ -446,6 +446,21 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         builder.vertex(1.0D, 1.0D, 0.0D).uv(1.0F, 1.0F).endVertex();
         builder.vertex(-1.0D, 1.0D, 0.0D).uv(0.0F, 1.0F).endVertex();
         BufferUploader.drawWithShader(builder.end());
+    }
+
+    private static void clearGlErrors() {
+        for (int count = 0; count < 32 && GL11.glGetError() != GL11.GL_NO_ERROR; count++) {
+            // The debug callback has already reported errors from the preceding foreign render stage.
+        }
+    }
+
+    private static void requireNoGlError(String pass) {
+        int error = GL11.glGetError();
+        if (error == GL11.GL_NO_ERROR) return;
+        for (int count = 0; count < 31 && GL11.glGetError() != GL11.GL_NO_ERROR; count++) {
+            // Drain all errors owned by this pass before native rendering resumes.
+        }
+        throw new IllegalStateException("OpenGL error 0x" + Integer.toHexString(error) + " in Taste pass " + pass);
     }
 
     @Override public synchronized void close() { releaseGpu(); }

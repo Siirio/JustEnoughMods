@@ -15,12 +15,14 @@ The sandbox source includes the P01 through P10 owners from the handoff:
 - complete settings UI support classes, presets, migration, overrides, diagnostics and optional bounded environment messages
 - allocation records, nonblocking timer queries, adaptive quality policy, compatibility reporting and validation exporters
 
-The live GL 3.3 path routes the world into an owned color/depth target. It executes a scene-lighting pass and a final-color pass, then restores the native target before Minecraft renders the hand and GUI. Every setting is captured in an immutable per-frame phase parameter block. The scene and final shaders directly consume the portable controls they implement
+The live GL 3.3 path routes the world into an owned color/depth target. It executes a scene-lighting pass and a final-color pass at the actual `LevelRenderer.renderLevel` return boundary, then restores the native target before Minecraft renders the hand and GUI. It does not depend on a separate Forge stage event that can be absent from a modded render path. Shared OpenGL restoration also synchronizes Minecraft's shader, texture, capability and immediate-buffer caches. A pass-level OpenGL error aborts composition and restores the captured native world instead of presenting a black target. Every setting is captured in an immutable per-frame phase parameter block. The scene and final shaders directly consume the portable controls they implement
+
+The native settings screen uses direct persistent category tabs on the left, matching the supplied interactive menu prototype. The tab rail scrolls independently and the search field continues to search all 387 settings. Selecting a tab opens that category directly and never advances through a carousel
 
 ## Validation status
 
 - Production compilation and reobfuscation: passed with Java 17 and ForgeGradle 6.0.36
-- Artifact: `taste-1.0.1-sandbox.jar`, SHA-256 `24E4D60A857BDDB34BCF95EA5C1B35A9ED16F5256AC0C695F2532438A4F70C45`
+- Artifact: `taste-1.0.3-sandbox.jar`, SHA-256 `523DFBEA0D03CE8B5196FE9356570E450AB1F7D81B63930B34EC57FD109660F2`
 - Registry and consumer audit: passed with 387 unique settings, 36 categories and no unassigned phase
 - Minecraft launch and scene captures: not run because this task did not authorize a client launch
 - Vanilla visual acceptance: not run
@@ -28,7 +30,7 @@ The live GL 3.3 path routes the world into an owned color/depth target. It execu
 - Physical NVIDIA, AMD and Intel matrix: not run
 - Dedicated-server class-loading check: not run
 
-The bugfix JAR contains both core shader programs, the Mixin config and refmap, and no test classes. Its installed copy in `Sandbox JustEnoughMods` has the same SHA-256. `Test JustEnoughMods` contains no Taste Engine JAR
+The 1.0.3 JAR retains both core shader programs, the Mixin config and refmap, and no test classes. Its installed copy in `Sandbox JustEnoughMods` has the same SHA-256. The superseded 1.0.2 JAR is retained in that profile's disabled backup. `Test JustEnoughMods` contains no Taste Engine JAR
 
 Source presence is not runtime proof. Specialized G-buffer, shadow, compute GI, transparency, precipitation, temporal and provider paths remain `CODE_AUTHORED_RUNTIME_NOT_RUN` until their named Minecraft scenes run. The validation files use `NOT_RUN` instead of converting unavailable runtime evidence into a pass
 
