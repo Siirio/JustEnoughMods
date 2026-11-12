@@ -1,3 +1,9 @@
+## 2026-11-12 - Fix the Taste Engine Sandbox startup crash
+
+- Bug / Client Sided / Forge could not load the synthetic `Args$1` class required by Taste Engine's entity-renderer `@ModifyArgs` injection while loading the dispatcher at startup / in testing with a typed `@ModifyArg` hook on the same renderer invocation
+- Preserved the native renderer invocation and replaced only its buffer-source argument. Forward lighting and actor-motion capture still receive the same entity and buffers
+- Java 17 production compilation and `reobfJar` passed. Verified the packaged typed hook and both SRG mappings. The installed `taste-1.0.6-sandbox.jar` matches the build SHA-256 `35E0884459A81688D1C19689790CFA1DFF5E36A03C739B4FF41B23E533F32789`. Sandbox startup acceptance is pending
+
 ## 2026-11-12 - Finish the Taste Engine Sandbox renderer paths
 
 - The user requested the remaining handoff and settings in the existing `sandbox/taste-engine` worktree, followed by a Sandbox-only artifact for manual review

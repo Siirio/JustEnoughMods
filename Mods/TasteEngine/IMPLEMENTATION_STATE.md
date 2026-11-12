@@ -2,7 +2,9 @@
 
 ## Sandbox acceptance
 
-The user rejected 1.0.4 because the world showed no visible cast shadows or sun shafts. Java 17 production compilation and `reobfJar` passed for `taste-1.0.5-sandbox.jar`. The installed Sandbox JAR matches the built artifact, SHA-256 `9EB9B5D7682B10EB4CA88E1A43594EF6C5A93B03E7C5D3ACC05D04590B106809`. The previous JAR is in the Sandbox `mods.disabled` directory. Player acceptance is pending.
+The user rejected 1.0.4 because the world showed no visible cast shadows or sun shafts. Sandbox 1.0.5 then crashed during startup because Forge could not load the synthetic argument class required by the entity-renderer injection. Version 1.0.6 uses a typed argument hook at the same native call.
+
+Java 17 production compilation and `reobfJar` passed for `taste-1.0.6-sandbox.jar`. The installed Sandbox JAR matches the built artifact, SHA-256 `35E0884459A81688D1C19689790CFA1DFF5E36A03C739B4FF41B23E533F32789`. Prior JARs are in the Sandbox `mods.disabled` directory. Startup and visual acceptance are pending.
 
 ## Connected source paths
 
