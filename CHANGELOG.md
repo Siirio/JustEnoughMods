@@ -1,3 +1,13 @@
+## 2026-11-12 - Restore the Major Update 4 local server runtime
+
+- User reported that `Test JustEnoughMods` could not connect to the local server
+- Bug / Both Sided / the 2026-11-11 local-server transition preserved the world, configs and AutoModpack host state but left `Server/mods` with only `jem-bootstrap.jar`, so the server advertised none of the installed gameplay channels and every login timed out after the native Pack Sync check / in testing after restoring the filtered 279-JAR dedicated-server runtime
+- Five Whys: Forge rejected the login because required channels were absent, those channels were absent because only Bootstrap loaded, only Bootstrap loaded because the transition synchronized the transport layer but not the dedicated-server mod inventory, the transition receipt checked `Done` against that bootstrap-only runtime, and it did not compare the server runtime inventory with the current managed generation
+- Restored the 329 current managed JARs, added the two server-only `ServerCore 1.5.2` and `ServerLogin 1.0.3` artifacts from the supplied MineRENT backup, then removed 52 client-only JARs from the dedicated side. The final server folder contains 279 JARs and loads 333 mods including all Major Update 4 gameplay and world-generation owners
+- Bug / Server Sided / native `Luxium 2.8.0-pre-alpha` constructs a Forge mod instance that directly loads `net.minecraft.client.gui.screens.Screen`, so installing it on a dedicated server aborts mod loading / in testing after classifying native Luxium and `jem_luxium` as client-only and excluding both from the server runtime
+- AutoModpack was not the Luxium failure owner. Its generation 149 remained unchanged and loaded successfully from content token `df2877a424a152666f3672be8a7e4733ece2d117`
+- The restored server loaded 333 mods, 15,724 recipes, 591 FTB Quests entries and the Structurify overlap configuration, then reached `Done (5.286s)` after the 198-second full startup. It is listening at `127.0.0.1:31604`. Player connection acceptance remains pending
+
 ## 2026-11-12 - Keep client-host credentials in external Pack Sync state
 
 - User reported that `Test JustEnoughMods` crashed immediately after startup
