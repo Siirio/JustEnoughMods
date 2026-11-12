@@ -1,3 +1,14 @@
+## 2026-11-13 - Keep equal-token login screen-neutral
+
+- User confirmed that revision `jem.24` still left "Connecting to world" over a world that had already loaded
+- Bug / Client Sided / the equal-token branch still called both `resumeLogin()` and the updater's ordinary `close()`, and both operations could schedule Pack Sync screen restoration during vanilla login / in testing after revision `jem.25` made the equal-token branch release updater resources without any screen operation
+- Five Whys: the connection message remained because a stale `ConnectScreen` became current over the loaded level, it became current because Pack Sync restored login UI after the token matched, restoration still ran because equal-token cleanup reused the ordinary updater close path, ordinary close owns restoration for review and download flows, and the equal-token fast path had no separate screen-neutral cleanup contract
+- Revision `jem.25` adds a resource-only updater close operation and uses it only after an equal installed generation token. Different-token updates, review screens, downloads, cancellation, certificate trust and error restoration keep the ordinary close contract
+- Fresh client and server logs proved that the server accepted the player at `23:52:41`, the client reached `in-game` at `23:52:54`, and only the stale connection screen remained. This excludes token mismatch, failed login and world loading as the cause
+- Built revision `jem.25` without tests. The artifact is 3,491,445 bytes with SHA-256 `d3515ceec590b3e748e5564037ca2417730dbb3bb88241e1382829728ceead74`
+- Installed the exact artifact in `Client/ManagedPack`, the bootstrap installer template, closed Test JEM profile and local Server. The server reached `Done (2.573s)` and listens at `127.0.0.1:31604`
+- Native preview reported `+0 ~0 -0`, publish returned `NO_CHANGES`, and generation 153 retained token `1eb452bd56d358e8b2ffb5bf16459e588e36b3d8`. Test JEM has 335 managed JARs, the matching token and no active transaction. Runtime player acceptance remains pending
+
 ## 2026-11-12 - Stop the stale connection screen from covering the loaded world
 
 - User reported that Test JEM entered the server and rendered the world and HUD, but continued to show "Connecting to world"

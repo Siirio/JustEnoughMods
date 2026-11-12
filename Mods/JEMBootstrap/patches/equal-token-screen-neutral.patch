@@ -1,0 +1,41 @@
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
+@@ -712,16 +712,21 @@ public class ModpackUpdater implements AutoCloseable {
+ 
+ 	@Override
+ 	public void close() {
++		closeWithoutScreenRestore();
++		ScreenManager.restore();
++	}
++
++	/** Releases updater resources without changing the live Minecraft screen. */
++	public void closeWithoutScreenRestore() {
+ 		review.confirmationClosed();
+ 		interruptInFlight();
+ 		UpdateAttempt current = attempt.getAndSet(null);
+ 		if (current != null) current.cancel();
+ 		objectAcquisition.release();
+ 		if (closed.compareAndSet(false, true)) {
+ 			if (transport != null) transport.close();
+ 			platformCache.close();
+ 		}
+-		ScreenManager.restore();
+ 	}
+ 
+ 	enum ApplyStatus {
+diff --git a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
+--- a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
++++ b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
+@@ -245,10 +245,7 @@ final class ClientLoginUpdateFlow {
+ 		ClientGenerationStore generations = new ClientGenerationStore(storage);
+ 		if (generations.headMatchesActive(serverModpackContent.modpackId, serverModpackContent.contentToken)) {
+ 			LOGGER.info("Installed generation token matches the server head; continuing login without file verification");
+-			if (!alreadyDisconnected) {
+-				ScreenManager.resumeLogin();
+-			}
+-			updater.close();
++			updater.closeWithoutScreenRestore();
+ 			if (alreadyDisconnected) {
+ 				ScreenImpl.multiplayer();
+ 			}

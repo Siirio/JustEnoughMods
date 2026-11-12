@@ -20,6 +20,7 @@ PATCHES = (
     MODULE / "patches" / "external-client-host-tls.patch",
     MODULE / "patches" / "resume-live-login.patch",
     MODULE / "patches" / "resume-live-login-race.patch",
+    MODULE / "patches" / "equal-token-screen-neutral.patch",
 )
 
 

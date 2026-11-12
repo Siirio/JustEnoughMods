@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-13",
+  "status": "local test client and current local server prepared, player acceptance pending",
+  "cause": "the equal-token branch reused updater cleanup operations that also owned Pack Sync screen restoration",
+  "bootstrap": {
+    "revision": "jem.25",
+    "nativeVersion": "5.0.0-rc.1",
+    "upstreamCommit": "4348bf2532bb8261af3297cf2480a3a0ee91befb",
+    "bytes": 3491445,
+    "sha256": "d3515ceec590b3e748e5564037ca2417730dbb3bb88241e1382829728ceead74",
+    "productionBuild": "successful",
+    "testsRun": false
+  },
+  "loginContract": {
+    "attachedEqualToken": "release updater resources without changing the vanilla login screen",
+    "attachedDifferentToken": "disconnect immediately and start the native reviewed updater",
+    "reviewDownloadCancelAndFailureScreenRecoveryChanged": false,
+    "nativeTrustAndTransactionChecksChanged": false
+  },
+  "evidence": {
+    "serverPlayerAcceptedAt": "2026-11-12T23:52:41+05:00",
+    "clientReachedInGameAt": "2026-11-12T23:52:54+05:00",
+    "visibleFailure": "stale connect.joining screen remained above the loaded level"
+  },
+  "installation": {
+    "managedSource": true,
+    "bootstrapInstaller": true,
+    "currentLocalServer": true,
+    "testProfile": true,
+    "stableProfile": false,
+    "mineRent": false,
+    "releaseBaseline": false
+  },
+  "publication": {
+    "journalSequence": 153,
+    "contentToken": "1eb452bd56d358e8b2ffb5bf16459e588e36b3d8",
+    "generationChanged": false,
+    "nativePreview": "+0 ~0 -0",
+    "publishResult": "NO_CHANGES",
+    "reason": "bootstrap is excluded from the served managed pack"
+  },
+  "runtime": {
+    "minecraftClientLaunchedByDelivery": false,
+    "serverStartupReachedDone": true,
+    "serverStartupSeconds": 2.573,
+    "serverListening": "127.0.0.1:31604",
+    "testProfileActiveToken": "1eb452bd56d358e8b2ffb5bf16459e588e36b3d8",
+    "verifiedBootstrapCopies": 4,
+    "verifiedManagedJars": 335,
+    "activeTransaction": false,
+    "playerAcceptance": "pending"
+  }
+}
