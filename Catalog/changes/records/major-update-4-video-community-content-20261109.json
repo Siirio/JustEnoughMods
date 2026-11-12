@@ -29,7 +29,7 @@
         "property": "distribution.major_update_4_video_community_mods",
         "operation": "add",
         "before": "The approved community artifacts were absent from the Major Update 4 managed pack",
-        "after": "Backported Spears, Visual Workbench, Block Runner, Structory, Ocean Lily Pad Village, AmbientSounds, Do a Barrel Roll, Weather Glass and the audited Immersive Storms port are pinned to exact Forge 1.20.1 artifacts. Windy is removed after its dedicated-server registry crash. Rose Gold Equipment is removed by user direction"
+        "after": "Backported Spears, Visual Workbench, Block Runner, Structory, Ocean Lily Pad Village, AmbientSounds, Weather Glass and the audited Immersive Storms port are pinned to exact Forge 1.20.1 artifacts. Do a Barrel Roll, Windy and Rose Gold Equipment are removed by user direction or defect ownership"
       },
       {
         "property": "crafting_table.runtime_owner",
@@ -106,6 +106,15 @@
       "source_files": [
         "Client/ManagedPack/mods/windy-forge-1.20.1.jar",
         "Client/ManagedPack/config/windy-client.toml"
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "remove_do_a_barrel_roll",
+      "summary": "Remove Do a Barrel Roll from the managed client by direct user request",
+      "source_files": [
+        "Client/ManagedPack/mods/do_a_barrel_roll-forge-3.5.6+1.20.1.jar"
       ]
     }
   ],

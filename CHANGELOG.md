@@ -1,3 +1,18 @@
+## 2026-11-13 - Ground-anchor roads and move the locator to the experience bar
+
+- User reported that RoadWeaver created a large artificial terrain wall in the sky instead of starting on existing ground and rising toward the destination
+- Bug / Both Sided / RoadWeaver 2.1.1 applied a backward slope pass from the high endpoint, raised the low endpoint of an ordinary road and then filled every air block from natural terrain to that target without a height bound / in testing after replacing the artifact with `2.1.1-1.20.1-jem.1`
+- Five Whys: the wall existed because RoadWeaver filled to a high road target, the target was high because backward smoothing propagated the destination height toward the low endpoint, both endpoints were treated as mandatory slope anchors, the generated profile had no maximum lift over recorded terrain, and the terrain adapter trusted that profile without a fill-height guard
+- The patched profile starts at the lower recorded terrain endpoint, moves toward the higher endpoint under the native slope limit and caps ordinary-road lift to the configured causeway depth. Native bridge spans remain unchanged
+- The correction also replaces persisted placement profiles in ungenerated chunks. It does not remove road-wall blocks that already exist in the world
+- User requested the newer vanilla-style locator position. Locator Bar now uses its built-in `CLASSIC` renderer with `elementsOnXpBar=true` instead of the `REWORKED` top-center HUD
+- User requested removal of Do a Barrel Roll. Its client artifact and generated server config are absent from the updated pack
+- Confirmed that Respawning Structures is not installed. JEM restores registered boss entities and encounter state, but it does not rebuild destroyed structure blocks
+- Native AutoModpack preview reported `+3 ~1 -2` and published generation 155 with content token `94ee6654d8a90c1665dfb820f75db50f71576ef3`
+- Applied generation 155 to the closed `Test JustEnoughMods` profile. The active projection and gameDir match the canonical patched RoadWeaver and locator configurations, both retired JARs are absent and no transaction remains pending
+- The local server loaded the patched RoadWeaver artifact and remains running at `127.0.0.1:31604`. New-road generation and player-visible locator placement remain in testing because the client was not launched
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
 ## 2026-11-13 - Restrict Inventory Tabs to loaded client state
 
 - User requested a patched Inventory Tabs build that works only with loaded chunks, removal of the upstream artifact and installation in Test JEM

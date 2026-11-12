@@ -11,6 +11,15 @@ This file lists upstream mod artifacts whose original code or packaged JAR was c
 - How: the client bootstrap no longer rejects a first installation before AutoModpack can create its manifest; recovery uses the untouched installer profile, and the packaged JAR records both the upstream commit and JEM revision in its manifest.
 - Compatibility: the upstream `5.0.0-rc.1` network/version contract is retained so the server does not replace the patched bootstrap with an upstream artifact.
 
+## RoadWeaver 2.1.1-1.20.1
+
+- Artifact: `roadweaver-forge-2.1.1-1.20.1-jem.1.jar`
+- Upstream artifact SHA-256: `8c28831d0a18f7c7366737fb14cd987af7e34b660ad3a175550775f060fe2eb2`
+- JEM artifact SHA-256: `5fc80e1233a98eea99438dea398397487bf9b55361017d2d92c693809778a395`
+- Why: prevent the backward slope pass from raising a low road endpoint and making the terrain adapter build an unbounded artificial wall
+- How: two narrow bytecode hooks route generated and persisted height profiles through the disclosed `GroundAnchoredHeightProfile` helper. Ordinary runs anchor at the lower recorded terrain endpoint, preserve the slope limit and cap lift to native causeway depth
+- Compatibility: the original `roadweaver` mod ID, registrations, bridge planner, configuration and client/server contract remain unchanged
+
 ## Not counted as tweaked originals
 
 JEM integrations for Create, Workers, Recruits, Xaero, Tide, PlayerRevive, TinyInv, Jade, Immersive Aircraft, Trotting Wagons, Immersive Melodies and other installed mods live in separate JEM modules, configs, tags or datapacks. Their upstream JARs remain unchanged and therefore have no `Tweaked` status in [MODS.md](MODS.md). Iron's Spells and its exclusive integration family were removed for Major Update 4. BackToBed was removed from the canonical pack, and `/home` is owned by JEM Server instead of a patched upstream artifact.

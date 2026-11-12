@@ -73,7 +73,7 @@
         "property": "worldgen.settlement_roads",
         "operation": "add",
         "before": "The expanded settlement catalog had no automatic road-network owner",
-        "after": "RoadWeaver 2.1.1 plans and generates roads between the village tag and the priority vanilla pillager outpost on both logical sides. Canonical boss structures remain outside its whitelist"
+        "after": "RoadWeaver 2.1.1-1.20.1-jem.1 plans ground-anchored roads between the village tag and the priority vanilla pillager outpost on both logical sides. Canonical boss structures remain outside its whitelist"
       },
       {
         "property": "loot.mansions.mansion_common",
@@ -99,7 +99,7 @@
       "Client/ManagedPack/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
       "Client/ManagedPack/mods/structure_layout_optimizer-forge-1.0.11.jar",
       "Client/ManagedPack/mods/structblend-1.0.3.jar",
-      "Client/ManagedPack/mods/roadweaver-forge-2.1.1-1.20.1.jar",
+      "Client/ManagedPack/mods/roadweaver-forge-2.1.1-1.20.1-jem.1.jar",
       "Client/ManagedPack/config/roadweaver/roadweaver.json",
       "Client/ManagedPack/config/abridged.json",
       "Client/ManagedPack/config/netherman-common.toml",
@@ -167,6 +167,19 @@
         "Mods/SiftBackport/patches/java17-runtime.patch",
         "Client/ManagedPack/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar"
       ]
+    },
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "ground_anchor_road_profiles",
+      "summary": "Replace upstream RoadWeaver with the disclosed JEM ground-anchor patch after backward slope smoothing raised low endpoints and generated unbounded terrain walls",
+      "source_files": [
+        "Mods/RoadWeaver/README.md",
+        "Mods/RoadWeaver/prepare.py",
+        "Mods/RoadWeaver/src/net/shiroha233/roadweaver/features/path/pathlogic/surface/GroundAnchoredHeightProfile.java",
+        "Mods/RoadWeaver/tools/PatchRoadWeaver.java",
+        "Client/ManagedPack/mods/roadweaver-forge-2.1.1-1.20.1-jem.1.jar"
+      ]
     }
   ],
   "impacts": {
@@ -191,14 +204,16 @@
       "StructBlend -> surrounding terrain shaping for non-critical structures",
       "RoadWeaver -> asynchronous roads for villages and the priority pillager outpost",
       "canonical campaign structures -> unskippable overlap policy",
-      "JEM boss lifecycle -> boss revival without whole-structure rewriting"
+      "JEM boss lifecycle -> boss revival without whole-structure rewriting",
+      "recorded road terrain -> one-direction slope profile -> bounded ordinary road fill"
     ],
     "notes": [
       "Ember's Ancient Remnants remains installed once",
       "Better Villages and its generated config are removed",
       "StructureOverlapless, Respawning Structures and Dimensional Structure Restrict are not installed",
       "Oh The Trees You'll Grow and both Dungeons and Taverns artifacts are removed",
-      "MineRENT, main, stable JustEnoughMods and the immutable release baseline remain unchanged"
+      "MineRENT, main, stable JustEnoughMods and the immutable release baseline remain unchanged",
+      "Already generated terrain walls are preserved until a separate world-repair request identifies their exact chunks"
     ],
     "unresolved": [
       "Fresh-chunk generation and player acceptance were not performed"

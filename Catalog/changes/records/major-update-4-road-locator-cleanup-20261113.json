@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4-road-locator-cleanup-20261113",
+  "status": "active",
+  "selectors": [
+    {"type": "namespace", "registry": "*", "value": "roadweaver"},
+    {"type": "namespace", "registry": "*", "value": "locatorbar"},
+    {"type": "namespace", "registry": "*", "value": "do_a_barrel_roll"}
+  ],
+  "conditions": [
+    {"world_generation": "Road correction affects future placement and ungenerated chunks, not blocks already present in the world"},
+    {"client_hud": "Locator Bar keeps native player and waypoint discovery while using its built-in classic renderer"}
+  ],
+  "precedence": {
+    "layer": "major_update_4_runtime_corrections",
+    "priority": 120,
+    "overrides": [
+      "major-update-4-structure-catalog-expansion-20261110",
+      "major-update-4-video-community-content-20261109"
+    ]
+  },
+  "change": {
+    "summary": "Ground-anchor RoadWeaver profiles, move Locator Bar to the experience bar and remove Do a Barrel Roll",
+    "modifiers": [
+      {
+        "property": "worldgen.roadweaver.height_profile",
+        "operation": "replace",
+        "before": "Forward and backward slope passes could raise the low endpoint to satisfy a high endpoint, after which terrain fill built an unbounded artificial wall",
+        "after": "Each ordinary run starts at its lower recorded terrain endpoint, rises toward the higher endpoint under the configured slope limit and cannot lift above recorded terrain by more than the configured causeway depth"
+      },
+      {
+        "property": "client.locatorbar.style",
+        "operation": "set",
+        "before": "REWORKED top-center locator HUD",
+        "after": "CLASSIC vanilla-like locator markers on the experience bar with elementsOnXpBar enabled"
+      },
+      {
+        "property": "distribution.major_update_4.mods.do_a_barrel_roll",
+        "operation": "remove",
+        "before": "3.5.6 client artifact",
+        "after": "absent"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "RoadWeaver JEM patch, Locator Bar native configuration and managed distribution",
+    "kind": "user_requested_worldgen_hud_and_mod_correction",
+    "source_files": [
+      "Mods/RoadWeaver/README.md",
+      "Mods/RoadWeaver/upstream.json",
+      "Mods/RoadWeaver/prepare.py",
+      "Mods/RoadWeaver/src/net/shiroha233/roadweaver/features/path/pathlogic/surface/GroundAnchoredHeightProfile.java",
+      "Mods/RoadWeaver/tools/PatchRoadWeaver.java",
+      "Client/ManagedPack/mods/roadweaver-forge-2.1.1-1.20.1-jem.1.jar",
+      "Client/ManagedPack/config/locatorbar.json",
+      "Client/ManagedPack/config/locatorbar-server.json",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep settlement roads on real terrain, use the requested newer vanilla locator position and remove the unwanted flight-camera mod",
+    "decision_source": "The user supplied the malformed road screenshot, requested the hotbar locator style and then directly requested removal of Do a Barrel Roll",
+    "implementation_choices": "Patch the exact installed MIT RoadWeaver artifact through two narrow bytecode hooks and one disclosed helper, reuse Locator Bar's built-in Classic renderer and preserve already generated world blocks"
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Install the ground-anchored RoadWeaver patch, configure classic Locator Bar and remove Do a Barrel Roll"
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Correct RoadWeaver height ownership, locator placement and managed client contents"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "worldgen",
+      "settlement_roads",
+      "structure_terrain",
+      "client_hud",
+      "client_camera",
+      "runtime_distribution"
+    ],
+    "relations": [
+      "recorded RoadWeaver terrain -> anchored slope profile -> bounded fill",
+      "Locator Bar server style -> native Classic experience-bar renderer",
+      "managed client -> Do a Barrel Roll absent"
+    ],
+    "notes": [
+      "Native RoadWeaver bridge spans remain under its existing bridge planner",
+      "The original RoadWeaver mod ID and client/server contract are preserved",
+      "No JEM-owned HUD texture or replacement locator renderer was added",
+      "Respawning Structures remains excluded because JEM restores boss entities and encounter state, not destroyed structure blocks"
+    ],
+    "unresolved": [
+      "Already generated road-wall blocks require a separate exact-chunk repair decision",
+      "Minecraft runtime and player acceptance were not performed"
+    ]
+  }
+}

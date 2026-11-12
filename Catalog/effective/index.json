@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "aa9af2ce751d55c42e14ed8c748a0c6125c86d80fe1b0302ce1ee93a6d9767c2",
+  "change_records_sha256": "bdc2c1de7a5f5395f51d9fb2273acccd2df115f1d418577f8a6eefe665f6d7ac",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -2023,6 +2023,31 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "major-update-4-road-locator-cleanup-20261113",
+      "status": "active",
+      "summary": "Ground-anchor RoadWeaver profiles, move Locator Bar to the experience bar and remove Do a Barrel Roll",
+      "record": "Catalog/changes/records/major-update-4-road-locator-cleanup-20261113.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "roadweaver"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "locatorbar"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "do_a_barrel_roll"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 17
     },
     {
       "change_id": "major-update-4-structure-catalog-expansion-20261110",
@@ -4360,7 +4385,7 @@
     }
   ],
   "source_fingerprints": {
-    "CHANGELOG.md": "e26ffbeefa30f9b4a1cdd72c2228efff0d84451cfb0702623b3ee634782f7367",
+    "CHANGELOG.md": "ce7561d67f064cea6d8447e671e3b461f51d64a6f05539b4355fbc304e8982f2",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -4422,6 +4447,8 @@
     "Client/ManagedPack/config/immersive_storms.json5": "6283bfb40b2aa551b6838b9bf85f9a72dbfca3d14edb5abe854fcd6da2167b7b",
     "Client/ManagedPack/config/inventorytabs-client.toml": "673774b94e0dbc9d28022920f481fe844b086d4bb597d31900687abc9628ab2d",
     "Client/ManagedPack/config/jei/ingredient-list-mod-sort-order.ini": "c0f7e20a23441042ceca1d664baeb6c18d97570c2cd7745db3fd689f4da5a359",
+    "Client/ManagedPack/config/locatorbar-server.json": "694b48c01839787399471f771e0acbbb1458aff22f5589638f762c4ead04e2a9",
+    "Client/ManagedPack/config/locatorbar.json": "5e328f761c1cfd481bf86f9d2a3163f1d7c1eaaea1e0c3e1384f00845967034d",
     "Client/ManagedPack/config/netherman-common.toml": "96e331c093e4802b9ef8a879cefeebc4d202bb038534913830c7d6f0bc065c00",
     "Client/ManagedPack/config/oculus.properties": "f137bd89ac226e35021096c86fc6c1c65e9146a2b27017aa22703d7c04078706",
     "Client/ManagedPack/config/offgrid/common.toml": "04a908889e11c9c8769d4666ed54088a7ede27c2026f15caeba1167a9cf07b6a",
@@ -4665,7 +4692,7 @@
     "Client/ManagedPack/mods/lukis-woodland-mansions-v.1.0.jar": "45a678beaa5789ee94fdcde9f9043d7e3049f7c1e7e92f4d65baaa8052c0af0a",
     "Client/ManagedPack/mods/mobhome-1.0.1.jar": "b739ef11356e514de3701d9ede949761fa4b8add90139d31f78c020d6a4b46e6",
     "Client/ManagedPack/mods/offgrid-forge-1.0.4-1.20.1.jar": "6a7f4d64a8d1cdf29fbf238b118d3298b738d5234c57a5eb142d35bf4718e6f1",
-    "Client/ManagedPack/mods/roadweaver-forge-2.1.1-1.20.1.jar": "8c28831d0a18f7c7366737fb14cd987af7e34b660ad3a175550775f060fe2eb2",
+    "Client/ManagedPack/mods/roadweaver-forge-2.1.1-1.20.1-jem.1.jar": "5fc80e1233a98eea99438dea398397487bf9b55361017d2d92c693809778a395",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
     "Client/ManagedPack/mods/structblend-1.0.3.jar": "d2f33254b1e4821f2c4207a9f3d123b4087a7f60ee9d22836d60f2739aefeec3",
     "Client/ManagedPack/mods/structure_layout_optimizer-forge-1.0.11.jar": "14bfc4b1e82ea24118402fccd90dffde45fa6d9e2238bfaa19a43b3fb88ee49c",
@@ -4678,8 +4705,8 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "d35e33fe71280490bfe2456a4316442f5c139cebb3f3f9cf438bc1626fe9885b",
-    "Docs/MODS.md": "a7d0797874b142cddc5518f72657c879d493400c3540930b6f2555bacb33e42b",
+    "Docs/DEVELOPMENT.md": "815d4a7ace9416de55dbd625d192be5959ea7f1e5f8fda07840b8fca177a7e11",
+    "Docs/MODS.md": "fc6fe618359806c49b6787da27d5a689bf4bb57a0d065dae7bc3cf8bbb38358e",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -9789,6 +9816,11 @@
     "Mods/MobHome/src/main/resources/pack.mcmeta": "8d3f57c7791e52c85c2e197314a661d7aef0463ec03632c634a6037847705f57",
     "Mods/MobHome/tools/README.md": "4d904c4c64d022632035ac02d54a0ab20a4c530c1a709fbdbbfeec923bf69de4",
     "Mods/MobHome/tools/package_native_models.py": "447489490ef4819928c98b4479ce9d20e8e93b1722b6c7295be9f9df2a2ad9fd",
+    "Mods/RoadWeaver/README.md": "f5c6e328f64ede2b036fdaba0a7372b3a0b1510f51768ba7edeeba262d5d661e",
+    "Mods/RoadWeaver/prepare.py": "f2f99529bd72335d8de35c6debb368ed2488e544ea5abe3e2d18dcbf344f8234",
+    "Mods/RoadWeaver/src/net/shiroha233/roadweaver/features/path/pathlogic/surface/GroundAnchoredHeightProfile.java": "096ac5a8089b87a90df9734c28177357332e1e4fe9ef7a484abd89ec97caba8d",
+    "Mods/RoadWeaver/tools/PatchRoadWeaver.java": "be02c51460f29bd0a43f4ad4ec4af9d73bb5deba08f8061b12689a9a9ac56e87",
+    "Mods/RoadWeaver/upstream.json": "5169af659172b847cd84d73e00ab519628794c66ee50b76f902e127dd222ee7b",
     "Server/automodpack/server.conf": "9f6f18c2187c4610c93b85e03b8c208265865a2a2258b504899d86ee09180d6a",
     "Server/config/blockrunner.json": "ff609c9e941141097a1961413e3ba4f683257585cee4fc345bb82cf4df934515",
     "Server/config/immersive_storms.json5": "6283bfb40b2aa551b6838b9bf85f9a72dbfca3d14edb5abe854fcd6da2167b7b",

@@ -190,7 +190,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Lodestone | `1.20.1-1.6.4.1` | Client + server |  |
 | Loot Journal | `6.2.1` | Client + server |  |
 | Luki's Grand Capitals | `1.1.3` | Client + server | Major Update 4 vanilla village owner |
-| Locator Bar | `1.2.2` | Client + server | Major Update 4 friend locator above the hotbar |
+| Locator Bar | `1.2.2` | Client + server | Major Update 4 vanilla-style friend locator on the experience bar |
 | Luki's Woodland Mansions | `1-v.1.0` | Client + server | Major Update 4 mansion split from Grand Capitals |
 | Luminous Beasts | `1.2.7` | Server |  |
 | Luminous Beasts | `1.2.7` | Client |  |
@@ -297,7 +297,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Structure Layout Optimizer | `1.0.11` | Client + server | Major Update 4 structure-layout performance owner |
 | Structurify | `2.0.43` | Client + server | Major Update 4 overlap owner with protected outpost and boss structures excluded |
 | StructBlend | `1.0.3` | Client + server | Major Update 4 structure-terrain blending owner |
-| RoadWeaver | `2.1.1-1.20.1` | Client + server | Major Update 4 settlement-road generation owner |
+| RoadWeaver | `2.1.1-1.20.1-jem.1` | Client + server | Major Update 4 ground-anchored settlement-road generation owner |
 | Swinging Signs | `1.0.1` | Client | Major Update 4 |
 | Tectonic | `3.0.17` | Client + server |  |
 | TerraBlender | `3.0.1.10` | Client + server |  |
