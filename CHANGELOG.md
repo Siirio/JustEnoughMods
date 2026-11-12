@@ -1,3 +1,13 @@
+## 2026-11-12 - Add the Offgrid building tranche to Major Update 4
+
+- User requested transfer of JEM Unofficial Offgrid, Inventory Tabs, Swinging Signs and Underlay from Sandbox into Test JEM on `feature/major-update-4`. The user also requested a Forge 1.20.1 adaptation of the downloaded Olaf's Relatively Placed Blocks behavior as part of an "Unofficial Offgrid" mod
+- Added unchanged Offgrid 1.0.4 and Underlay 1.0.5 artifacts to the managed client and dedicated server. Added Inventory Tabs 0.10.1 and Swinging Signs 1.0.1 to the managed client only because they own client presentation and input
+- Built `Unofficial Offgrid` 1.0.0 as a separate required Offgrid addon. It preserves the original All Rights Reserved Offgrid JAR byte-for-byte and extends only Offgrid's native placement eligibility with Olaf 2.0.2 shape classification. Offgrid remains the sole owner of multipart state, synchronization, rendering, breaking and placement
+- The addon uses CC0-1.0 for its original implementation, requires exact Offgrid 1.0.4, clears its eligibility cache after tag updates and excludes Offgrid's native blocklog route. Built the production reobfuscated Forge artifact without tests using Java 21. Artifact size is 8,365 bytes and SHA-256 is `c437a21082b1699371e0a080650b32bec5e8ec37c860728a7ed065b244a7c264`
+- Rebuilt and validated the full Registry Atlas. The local dedicated server loaded 336 mods, including Offgrid, Underlay and Unofficial Offgrid, reached `Done (5.144s)`, published the reviewed `+9 ~1 -0` delta and then saved all eight dimensions before it stopped
+- Native AutoModpack published generation 150 with content token `134b96fb07071a3053748aa0a154cc128c75957a` and manifest SHA-1 `3d35642bc00734ca2c687e4f10e53f025edf4161`. Applied it to the closed `Test JustEnoughMods` profile, verified all 334 managed JARs and confirmed no pending transaction
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Minecraft client launch and player acceptance remain pending
+
 ## 2026-11-12 - Make Pack Sync login token-driven
 
 - User required an equal client/server update token to bypass the Pack Sync file check, and a different token to start the default AutoModpack update immediately instead of holding login for 60 seconds

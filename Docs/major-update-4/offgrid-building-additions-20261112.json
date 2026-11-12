@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-12",
+  "branch": "feature/major-update-4",
+  "status": "published_and_applied_locally",
+  "request": "Move the four Sandbox building and inventory mods into Test JEM and adapt Olaf's Relatively Placed Blocks behavior for Forge 1.20.1 as Unofficial Offgrid",
+  "artifacts": [
+    {
+      "file": "offgrid-forge-1.0.4-1.20.1.jar",
+      "version": "1.0.4",
+      "runtime": "client_and_server",
+      "sha256": "6a7f4d64a8d1cdf29fbf238b118d3298b738d5234c57a5eb142d35bf4718e6f1",
+      "source": "Sandbox JustEnoughMods",
+      "modified": false
+    },
+    {
+      "file": "inventorytabs-forge-1.20.1-0.10.1.jar",
+      "version": "0.10.1",
+      "runtime": "client",
+      "sha256": "2d0c9707506ea153e0fb43eb419d27513b68ff341c16a612b016f929fb83b94c",
+      "source": "Sandbox JustEnoughMods",
+      "modified": false
+    },
+    {
+      "file": "swingingsigns-forge-1.0.1-mc1.20.1.jar",
+      "version": "1.0.1",
+      "runtime": "client",
+      "sha256": "36b19a3c59208d42bf2af9d3bfce150ee4e70dee4d5fb982612ea1a443cdb3f2",
+      "source": "Sandbox JustEnoughMods",
+      "modified": false
+    },
+    {
+      "file": "underlay-1.0.5-forge-mc1.20.1.jar",
+      "version": "1.0.5",
+      "runtime": "client_and_server",
+      "sha256": "0edd19354ac6b366dbd11cfc7c053cc0c84ee5d4487aba37d90e5098ad0c4a11",
+      "source": "Sandbox JustEnoughMods",
+      "modified": false
+    },
+    {
+      "file": "olafsrelativeblocks-2.0.2-mc1.20.1.jar",
+      "version": "2.0.2",
+      "runtime": "reference_only",
+      "sha256": "38b656a94afb328698ff546aae2f9252a3dd426307fb27c7647a7498b84d5cc7",
+      "source": "C:/Users/user/Downloads",
+      "modified": false,
+      "distributed": false
+    },
+    {
+      "file": "unofficial_offgrid-1.0.0.jar",
+      "version": "1.0.0",
+      "runtime": "client_and_server",
+      "sha256": "c437a21082b1699371e0a080650b32bec5e8ec37c860728a7ed065b244a7c264",
+      "source": "Mods/JEMUnofficialOffgrid",
+      "license": "CC0-1.0",
+      "build": "ForgeGradle reobfJar with Java 21",
+      "tests": false
+    }
+  ],
+  "ownership": {
+    "offgrid": "multipart storage, synchronization, rendering, breaking, mixed slabs and placement",
+    "unofficial_offgrid": "additional shape-based eligibility only",
+    "underlay": "native underlay behavior",
+    "inventory_tabs": "client inventory navigation",
+    "swinging_signs": "client sign presentation"
+  },
+  "release_boundary": {
+    "minerent": false,
+    "stable_profile": false,
+    "release_baseline": false
+  },
+  "publication": {
+    "generation": 150,
+    "content_token": "134b96fb07071a3053748aa0a154cc128c75957a",
+    "manifest_sha1": "3d35642bc00734ca2c687e4f10e53f025edf4161",
+    "preview_delta": "+9 ~1 -0",
+    "test_profile_applied": true,
+    "verified_managed_jars": 334,
+    "pending_transaction": false
+  },
+  "local_server": {
+    "jar_count": 282,
+    "loaded_mod_count": 336,
+    "ready_time_seconds": 5.144,
+    "stopped_cleanly": true,
+    "minecraft_client_launch": false,
+    "player_acceptance": false
+  }
+}

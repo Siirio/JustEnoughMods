@@ -1,0 +1,165 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.major-update-4-offgrid-building-additions-20261112",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "offgrid"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "unofficial_offgrid"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "underlay"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "inventorytabs"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "swingingsigns"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "distribution": "Major Update 4 development inventory on feature/major-update-4 only"
+    },
+    {
+      "dependency": "Unofficial Offgrid requires exact Offgrid 1.0.4 on both logical sides"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_dependencies",
+    "priority": 100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Add the requested Offgrid building tranche and extend native Offgrid eligibility with Olaf's relative-placement shape rules",
+    "modifiers": [
+      {
+        "property": "distribution.major_update_4.mods",
+        "operation": "add",
+        "before": {
+          "offgrid": "absent",
+          "unofficial_offgrid": "absent",
+          "underlay": "absent",
+          "inventorytabs": "absent",
+          "swingingsigns": "absent"
+        },
+        "after": {
+          "offgrid": "1.0.4 on client and server",
+          "unofficial_offgrid": "1.0.0 on client and server",
+          "underlay": "1.0.5 on client and server",
+          "inventorytabs": "0.10.1 on client",
+          "swingingsigns": "1.0.1 on client"
+        }
+      },
+      {
+        "property": "offgrid.relative_placement_eligibility",
+        "operation": "extend",
+        "before": "Offgrid accepts only its native eligibility rules and tags",
+        "after": "Unofficial Offgrid adds Olaf 2.0.2 shape classification after native Offgrid rejection while preserving the native blocklog route"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Offgrid, Unofficial Offgrid, Underlay, Inventory Tabs and Swinging Signs",
+    "kind": "user_requested_native_mod_inclusion_and_compatibility_addon",
+    "source_files": [
+      "Mods/JEMUnofficialOffgrid/build.gradle",
+      "Mods/JEMUnofficialOffgrid/gradle.properties",
+      "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/ForgeEvents.java",
+      "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/RelativePlacementClassifier.java",
+      "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/UnofficialOffgrid.java",
+      "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/mixin/OverlaysMixin.java",
+      "Mods/JEMUnofficialOffgrid/src/main/resources/data/unofficial_offgrid/tags/blocks/relative_placement_denied.json",
+      "Mods/JEMUnofficialOffgrid/src/main/resources/pack.mcmeta",
+      "Mods/JEMUnofficialOffgrid/src/main/resources/unofficial_offgrid.mixins.json",
+      "Client/ManagedPack/config/Underlay/underlay.json",
+      "Client/ManagedPack/config/inventorytabs-client.toml",
+      "Client/ManagedPack/config/offgrid/common.toml",
+      "Client/ManagedPack/config/swingingsigns.json",
+      "Client/ManagedPack/mods/offgrid-forge-1.0.4-1.20.1.jar",
+      "Client/ManagedPack/mods/unofficial_offgrid-1.0.0.jar",
+      "Client/ManagedPack/mods/underlay-1.0.5-forge-mc1.20.1.jar",
+      "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1.jar",
+      "Client/ManagedPack/mods/swingingsigns-forge-1.0.1-mc1.20.1.jar",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Move the approved Sandbox mods into Test JEM and provide the requested Forge 1.20.1 relative-placement behavior without replacing Offgrid",
+    "decision_source": "Direct user request on 2026-11-12",
+    "user_requested": "Add JEM Unofficial Offgrid, Inventory Tabs, Swinging Signs and Underlay from Sandbox and make Olaf's Relatively Placed Blocks behavior part of Unofficial Offgrid",
+    "implementation_choices": "Keep the All Rights Reserved Offgrid artifact unchanged, implement a separate CC0-1.0 Forge addon, reuse Offgrid state ownership and keep presentation-only mods client-only"
+  },
+  "introduced": {
+    "date": "2026-11-12",
+    "commit": "SELF",
+    "action": "add_major_update_4_offgrid_building_tranche",
+    "summary": "Add the building tranche and the Unofficial Offgrid Forge addon",
+    "source_files": [
+      "Mods/JEMUnofficialOffgrid/build.gradle",
+      "Mods/JEMUnofficialOffgrid/gradle.properties",
+      "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/ForgeEvents.java",
+      "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/RelativePlacementClassifier.java",
+      "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/UnofficialOffgrid.java",
+      "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/mixin/OverlaysMixin.java",
+      "Mods/JEMUnofficialOffgrid/src/main/resources/data/unofficial_offgrid/tags/blocks/relative_placement_denied.json",
+      "Mods/JEMUnofficialOffgrid/src/main/resources/pack.mcmeta",
+      "Mods/JEMUnofficialOffgrid/src/main/resources/unofficial_offgrid.mixins.json",
+      "Client/ManagedPack/config/Underlay/underlay.json",
+      "Client/ManagedPack/config/inventorytabs-client.toml",
+      "Client/ManagedPack/config/offgrid/common.toml",
+      "Client/ManagedPack/config/swingingsigns.json",
+      "Client/ManagedPack/mods/offgrid-forge-1.0.4-1.20.1.jar",
+      "Client/ManagedPack/mods/unofficial_offgrid-1.0.0.jar",
+      "Client/ManagedPack/mods/underlay-1.0.5-forge-mc1.20.1.jar",
+      "Server/mods/offgrid-forge-1.0.4-1.20.1.jar",
+      "Server/mods/unofficial_offgrid-1.0.0.jar",
+      "Server/mods/underlay-1.0.5-forge-mc1.20.1.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-12",
+      "commit": "SELF",
+      "action": "add_major_update_4_offgrid_building_tranche",
+      "summary": "Inspected the exact installed and downloaded JARs, preserved native ownership and built the production Forge addon"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "block_interactions",
+      "client_presentation",
+      "networking",
+      "native_mod_dependencies",
+      "runtime_distribution"
+    ],
+    "relations": [
+      "block state -> Offgrid native eligibility -> Unofficial Offgrid shape extension -> Offgrid native placement",
+      "inventory screen -> Inventory Tabs client navigation",
+      "sign rendering -> Swinging Signs client presentation",
+      "block placement -> Underlay native behavior"
+    ],
+    "notes": [
+      "Offgrid remains the only multipart state and synchronization owner",
+      "The downloaded Fabric Olaf artifact is a reference input and is not distributed",
+      "MineRENT, stable JustEnoughMods and the immutable release baseline are unchanged"
+    ],
+    "unresolved": [
+      "Player acceptance remains pending because no client or gameplay launch was authorized"
+    ]
+  }
+}

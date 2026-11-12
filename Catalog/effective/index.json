@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "4281457dcc5e51c19e86e075ae88346d0afd457dee8ea9c082c46003c3308082",
+  "change_records_sha256": "b64dab5cfbefc63f9ba4f9ac5f93696b390a5a1af4fbfdd7ba65b313eebad4fa",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1878,6 +1878,41 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 5
+    },
+    {
+      "change_id": "distribution.major-update-4-offgrid-building-additions-20261112",
+      "status": "active",
+      "summary": "Add the requested Offgrid building tranche and extend native Offgrid eligibility with Olaf's relative-placement shape rules",
+      "record": "Catalog/changes/records/major-update-4-offgrid-building-additions-20261112.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "offgrid"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "unofficial_offgrid"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "underlay"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "inventorytabs"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "swingingsigns"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
     },
     {
       "change_id": "major-update-4.remove-irons-spells-20261106",
@@ -4258,6 +4293,7 @@
     "Catalog/views/power/blockers.json": "678fae825b8cd6153fdff8dc775767a9024a82e0d487ce6deb6333690df9ca98",
     "Catalog/views/power/durability.json": "e5c9ff225e1472b6ab4c3043d975bce29972abb9dbfef35d2690bc6c30521f61",
     "Catalog/views/power/power-ladder.json": "a0e18c693bb1df150e424d421ebeb48292bcf6b36096e3afaf9f7676c6b5c3e2",
+    "Client/ManagedPack/config/Underlay/underlay.json": "fd143c5508ba24f21b3c8ca4d8b461c1b27ea672d0e84ba2049360bb7ddf4130",
     "Client/ManagedPack/config/abridged.json": "728a5c3420d1bfba47a09c74646bfb9294d1f1dc2bfaa6d4b26a6c8d491cec56",
     "Client/ManagedPack/config/ambientsounds-client.json": "5c1e3439d6b7001474b8500180073945f2ed5c0906f54aed263c166db26bcc33",
     "Client/ManagedPack/config/blockrunner.json": "ff609c9e941141097a1961413e3ba4f683257585cee4fc345bb82cf4df934515",
@@ -4292,9 +4328,11 @@
     "Client/ManagedPack/config/ftbquests/quests/reward_tables/v2_home_housewarming.snbt": "83fa96932416df48a287a0f0faafedb3d50845c73679e8ef0e9a20073ffe4d3b",
     "Client/ManagedPack/config/ftbquests/quests/reward_tables/v2_home_trade_05.snbt": "7300cfda79668f83c95e43cacf3fb1b63653efb8be443fbdc587f29b7f3f1326",
     "Client/ManagedPack/config/immersive_storms.json5": "6283bfb40b2aa551b6838b9bf85f9a72dbfca3d14edb5abe854fcd6da2167b7b",
+    "Client/ManagedPack/config/inventorytabs-client.toml": "673774b94e0dbc9d28022920f481fe844b086d4bb597d31900687abc9628ab2d",
     "Client/ManagedPack/config/jei/ingredient-list-mod-sort-order.ini": "c0f7e20a23441042ceca1d664baeb6c18d97570c2cd7745db3fd689f4da5a359",
     "Client/ManagedPack/config/netherman-common.toml": "96e331c093e4802b9ef8a879cefeebc4d202bb038534913830c7d6f0bc065c00",
     "Client/ManagedPack/config/oculus.properties": "f137bd89ac226e35021096c86fc6c1c65e9146a2b27017aa22703d7c04078706",
+    "Client/ManagedPack/config/offgrid/common.toml": "04a908889e11c9c8769d4666ed54088a7ede27c2026f15caeba1167a9cf07b6a",
     "Client/ManagedPack/config/paxi/datapacks/ImprovedPillagerOutpost-v5.zip": "01cb6e4c52040a9d431009c36f5e1b08ec5d4f7ad5723c37ebe9017ee7793865",
     "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/mansions/loot_tables/mansion_common.json": "bde5118ee08783181fed3d236ba391e654b4c8b94f435ace47b03dbe5cf3a4e1",
     "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/minecraft/tags/worldgen/biome/has_structure/desert_pyramid.json": "342d3242ba073b528b09399014547680c412e112f524d26a04fdc936171f5db5",
@@ -4324,6 +4362,7 @@
     "Client/ManagedPack/config/structblend-common.toml": "dfb4681fed61fe04c94f30183a87c85b5aeb4927cb213495be03d60bef15c351",
     "Client/ManagedPack/config/structure_layout_optimizer.jsonc": "c1150586b8ab28b23913ed762c3907952a00835f5f2e5dc3dd493efe64c67f77",
     "Client/ManagedPack/config/structurify.json": "c5ec11d2baca07a5a0e8886db156c2b82db0c61362db5e730647cd7bd094abab",
+    "Client/ManagedPack/config/swingingsigns.json": "00eaaaf828317feff64ac30adc252ec91b7ed19f28d385d1b86990214989df14",
     "Client/ManagedPack/config/towns_and_towers/structure_enable_or_disable_new.json5": "4dee01e4787b603acf915607d8f6c71b3c1770008fc3c452c97e5944e86278be",
     "Client/ManagedPack/config/towns_and_towers/structure_rarity_new.json5": "427157180a3007ea9f1b432c114211b3536db829a2b119a3f3e06854262e990c",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
@@ -4511,8 +4550,9 @@
     "Client/ManagedPack/mods/cristellib-1.1.6-forge.jar": "3856ad565ea45d6189452d813e2f021b365b686d3b1adae5f747c56a1e535d9f",
     "Client/ManagedPack/mods/immersive_paintings-0.6.13+1.20.1-forge.jar": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
     "Client/ManagedPack/mods/immersivepaintings-exposure-1.0.0.jar": "12828b32b3cba13924be661bdbbcd15aad6926d448210193e6851285f730157f",
+    "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1.jar": "2d0c9707506ea153e0fb43eb419d27513b68ff341c16a612b016f929fb83b94c",
     "Client/ManagedPack/mods/jem-advancements-5.3.3.jar": "4787d7995f5573d581089a33afe3723cbc0269181df382912c70d7069e56f198",
-    "Client/ManagedPack/mods/jem-bootstrap.jar": "3ed4d26bd8cc269de686ac3b10117ddaee258a53b2717f7068ad39780c564a30",
+    "Client/ManagedPack/mods/jem-bootstrap.jar": "63d85180156e398cf9522c91e6b7f2c0c4e52da1ee5b7e673815b8da782de199",
     "Client/ManagedPack/mods/jem-economy-1.3.2.jar": "5049eac7880a2a58ea7423b78944302b39dd588b962d8bc375d149d797999923",
     "Client/ManagedPack/mods/jem-identity-1.0.0.jar": "c84a1cc030dd5a91b7bae287b24ced375387c18f171b382e7aa128763eba010d",
     "Client/ManagedPack/mods/jem-races-2.0.3.jar": "c98f3f9a360af54cd5292c9239d6ef335dc4093afc355e9f449e081c398ec0e2",
@@ -4530,18 +4570,22 @@
     "Client/ManagedPack/mods/lukis-grand-capitals-1.1.3.jar": "58182dc8d306afd944e708e0480d939a9adc3fcdab75c0bebd122a32c63d3851",
     "Client/ManagedPack/mods/lukis-woodland-mansions-v.1.0.jar": "45a678beaa5789ee94fdcde9f9043d7e3049f7c1e7e92f4d65baaa8052c0af0a",
     "Client/ManagedPack/mods/mobhome-1.0.1.jar": "b739ef11356e514de3701d9ede949761fa4b8add90139d31f78c020d6a4b46e6",
+    "Client/ManagedPack/mods/offgrid-forge-1.0.4-1.20.1.jar": "6a7f4d64a8d1cdf29fbf238b118d3298b738d5234c57a5eb142d35bf4718e6f1",
     "Client/ManagedPack/mods/roadweaver-forge-2.1.1-1.20.1.jar": "8c28831d0a18f7c7366737fb14cd987af7e34b660ad3a175550775f060fe2eb2",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
     "Client/ManagedPack/mods/structblend-1.0.3.jar": "d2f33254b1e4821f2c4207a9f3d123b4087a7f60ee9d22836d60f2739aefeec3",
     "Client/ManagedPack/mods/structure_layout_optimizer-forge-1.0.11.jar": "14bfc4b1e82ea24118402fccd90dffde45fa6d9e2238bfaa19a43b3fb88ee49c",
     "Client/ManagedPack/mods/structurify-forge-2.0.43+mc1.20.1.jar": "a5cb28ab19ee49da0c4cbfec964d4113dc4155fed7ecd7cff69e3bccdc710390",
+    "Client/ManagedPack/mods/swingingsigns-forge-1.0.1-mc1.20.1.jar": "36b19a3c59208d42bf2af9d3bfce150ee4e70dee4d5fb982612ea1a443cdb3f2",
+    "Client/ManagedPack/mods/underlay-1.0.5-forge-mc1.20.1.jar": "0edd19354ac6b366dbd11cfc7c053cc0c84ee5d4487aba37d90e5098ad0c4a11",
     "Client/ManagedPack/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar": "f375d8e67a486b95c55b3985cde4f2a469ba10a3719a0fa7b495845d69e20106",
+    "Client/ManagedPack/mods/unofficial_offgrid-1.0.0.jar": "c437a21082b1699371e0a080650b32bec5e8ec37c860728a7ed065b244a7c264",
     "Client/ManagedPack/mods/xaerominimap-forge-1.20.1-26.4.2.jar": "8143f332ed20a61a518692b42c793e021b6bd2d0d9d61cf3938fb9cfa07eb59c",
     "Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar": "e00bd87a949cfa8c31d571f4d9646db038e3b98f8cdbb7bd217f3fb9c3780c9e",
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "b4610d24d78cfb8e5449e1d88ac8f80ed4261a62ea82c59588fc780f096ee254",
+    "Docs/DEVELOPMENT.md": "a14f101acdd6fcd5c56cf38eb4b3048d3618f7405831aa78a1f4f53ae28af4b6",
     "Docs/MODS.md": "82832761d272c4526af2a9595f1098c9c088a07f351b244efaace3af7c8a7bd9",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -8164,11 +8208,11 @@
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/config/JEMConfig.java": "87864ec9b9786b78fef6a97a5307bbf8603e65b7fd07cd91ec0d1981ee352375",
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/ClientLevelMixin.java": "b45f61877a06f7cc9ac6abfca4bc1f7a463479966e07f0be3e0557c25ce333c8",
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/EntityRenderDispatcherMixin.java": "d7eafdaaf3247ed0e275d942dd1ff007cb763a65c64f2d9010901971213fba06",
-    "Mods/JEMBootstrap/patches/external-client-state.patch": "3a1528ba9076ec66ae1d3288f5d1c54b72afb90442a5e3b590e8bcfc6b38c3a5",
-    "Mods/JEMBootstrap/patches/login-sync-standard-layout.patch": "874f7262b1638123e5c4cce3ef3db1018529436ce48283f1a735167d07e9d610",
+    "Mods/JEMBootstrap/patches/external-client-state.patch": "61f076574559183e372a38b3f02d4c3e9d848356f4c707d78fad7f4d2c62c1fd",
+    "Mods/JEMBootstrap/patches/login-sync-standard-layout.patch": "c19e0ca3c13c56a156a9c0290419111d1b74dc7777c02a610e1ae17d23ac2b73",
     "Mods/JEMBootstrap/patches/reliable-updates.patch": "2177def2d6a26136adc4a41468dd2e78a473c8cca78c5080e88ea23a90ef6ba5",
-    "Mods/JEMBootstrap/prepare.py": "c04e22ab7f88a1c24d91e4c37f2f1f96d614a78966466d122085528970e38bb2",
-    "Mods/JEMBootstrap/upstream.json": "ca750bf14c31e345beab1970072e92c035471516fbcaaad1ebaa9c0944267f4c",
+    "Mods/JEMBootstrap/prepare.py": "809cdb5b459d25a9a7645a529d6d941c88f54aedcbace9d4679953818b1e4ac2",
+    "Mods/JEMBootstrap/upstream.json": "0ecf6bab719c85157091b539ad755081ba35c50b8f002058bdc9134f422d23b5",
     "Mods/JEMCompat/AGENTS.md": "5b6571fd825d84aaac62215b40edce7c64b97eaadb164ac597865b13b01773c6",
     "Mods/JEMCompat/README.md": "28b2515dcc42ea369dccf820ee4fe9e6ba82900e351e8816bc5be0edb83fc420",
     "Mods/JEMCompat/SEASONS.md": "2a722937421ab4ff9c9be2cdb2a168c4e45a6c3b1c03206ffee420878ade5ab3",
@@ -9476,6 +9520,15 @@
     "Mods/JEMTwelveEyes/src/main/resources/data/jemcompat/tags/worldgen/structure/campaign/sirok.json": "0d1b8827b29b04404c7bdc1ba89ac3f82f308a4ed4187bb03447b5cdaeae0ba5",
     "Mods/JEMTwelveEyes/src/main/resources/jem_twelve_eyes.mixins.json": "e4459d1d95e53b300e7ef3c22052f86ee63c813da614dabc0ab6f62c2bce16df",
     "Mods/JEMTwelveEyes/src/main/resources/jem_twelve_eyes/campaigns.json": "7eb81a4857be33a762de08a8850463a021be44a955aafd41f1cb5c0d2afc23ef",
+    "Mods/JEMUnofficialOffgrid/build.gradle": "e664c0f1cf1148331b82738749774dc2cdd7e4e66f1dc6d78138dcf6a1e11b29",
+    "Mods/JEMUnofficialOffgrid/gradle.properties": "1a1c23bf4b4e1d654fe89f512f8b6f4f43f6c53f3445a0c28d8cbd5ee27894b6",
+    "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/ForgeEvents.java": "60e4855a42f7e7d8885b50d1da4a5176f3c6aa4b8dafd6d1d4e6afd0d0354df7",
+    "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/RelativePlacementClassifier.java": "51fe2c991d3e0cf3d77f57a9e92c20e2858d875dec0de42b42bf822ab08a98c5",
+    "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/UnofficialOffgrid.java": "6d14277478cc6177e528cbdda67a7a59a09ec3694a39c038fd49ab019cd9ddf7",
+    "Mods/JEMUnofficialOffgrid/src/main/java/com/siirio/unofficialoffgrid/mixin/OverlaysMixin.java": "b737f570386a09f6503e6bab9ea0e387f265cd54e55435201dca0d8df3777361",
+    "Mods/JEMUnofficialOffgrid/src/main/resources/data/unofficial_offgrid/tags/blocks/relative_placement_denied.json": "4ac2fb8d1727a2ce9e72f4dfb71ebb753f284ffafd77bb33778b9f99f0228c3e",
+    "Mods/JEMUnofficialOffgrid/src/main/resources/pack.mcmeta": "07b9a4a244ba6285f0af682afd97fdeb3a4c98b943c11c73882ab74cf3f99233",
+    "Mods/JEMUnofficialOffgrid/src/main/resources/unofficial_offgrid.mixins.json": "3f8b65fccf04e0fa4c6da89e0c84402b001d8714a32419df74219c110daa6c12",
     "Mods/JEMVillagerTalking/build.gradle": "3920a3be7c574293c87e89be515b28f2a7225c03534f69b97c16919c546359eb",
     "Mods/JEMVillagerTalking/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
     "Mods/JEMVisualSandboxR3/README.md": "11356eaf024e6394031151e001cd591b5e681142a8577348cc38e9a8d7b1dbb1",
@@ -9661,7 +9714,7 @@
     "tools/build_jem_release_resource_pack.py": "b69a3cebba55980a260059f7e7a9029f86e931fb8d188f54e1b15c6b29e26d5a",
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
-    "tools/module-inventory.json": "21bd8f9024b78659dafc0fa0f1368f1578a06c0c4eff29424d9c7aaec7df0fd9",
+    "tools/module-inventory.json": "0cbbbbe99055296491170e7128d0178955aa8deb2fffc1271e6d119cc1854500",
     "tools/state/packSyncHost-sync.json": "a9e7526313e9557018e51955fbfe00b99ecf70fb7885e1c966460ebcd005c309",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }

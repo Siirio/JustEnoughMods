@@ -146,6 +146,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | InControl | `1.20-9.5.0` | Client + server |  |
 | Infinity Buttons | `1.20.1-4.0.7` | Client + server |  |
 | InsaneLib | `1.23.4.6` | Client + server |  |
+| Inventory Tabs | `0.10.1` | Client | Major Update 4 |
 | Item Obliterator | `2.3.0` | Client + server |  |
 | Item Magnet | `1.0.0` | Client + server |  |
 | Jack's Gravestones | `1.0.5` | Client + server |  |
@@ -228,6 +229,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Obscure Tooltips | `3.10.0` | Client |  |
 | Oceanic Realms | `1.0.7` | Client + server |  |
 | Oculus | `1.8.0` | Client |  |
+| Offgrid | `1.0.4` | Client + server | Major Update 4 native multipart owner |
 | P1nero's Epic Cataclysm | `20.14.0.9` | Client + server |  |
 | PacketFixer | `3.3.2` | Client + server |  |
 | Paraglider | `20.1.3` | Client + server |  |
@@ -294,6 +296,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Structurify | `2.0.43` | Client + server | Major Update 4 overlap owner with protected outpost and boss structures excluded |
 | StructBlend | `1.0.3` | Client + server | Major Update 4 structure-terrain blending owner |
 | RoadWeaver | `2.1.1-1.20.1` | Client + server | Major Update 4 settlement-road generation owner |
+| Swinging Signs | `1.0.1` | Client | Major Update 4 |
 | Tectonic | `3.0.17` | Client + server |  |
 | TerraBlender | `3.0.1.10` | Client + server |  |
 | Terralith | `2.5.4` | Client + server |  |
@@ -314,6 +317,8 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | TxniLib | `1.0.24` | Client + server |  |
 | Unearthed Journey | `2.2.3` | Client + server |  |
 | Unified Xaero Worldmap | `2.0.1` | Client + server |  |
+| Underlay | `1.0.5` | Client + server | Major Update 4 |
+| Unofficial Offgrid | `1.0.0` | Client + server | Major Update 4 Forge shape-eligibility addon for Offgrid 1.0.4 |
 | VanillaBackport | `1.1.7.10` | Client + server |  |
 | Villager Recruits Mod | `1.15.2` | Client + server |  |
 | Villager Workers Mod | `2.0.3` | Client + server |  |
