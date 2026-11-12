@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "b64dab5cfbefc63f9ba4f9ac5f93696b390a5a1af4fbfdd7ba65b313eebad4fa",
+  "change_records_sha256": "856c637bd55a16cdc1b049753c019e1ce6d8f603564c10ffc65e8611109cca00",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -28,7 +28,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "guide.adventure-atlas-redesign-20261025",
@@ -42,7 +42,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "aircraft-resourcepack-native-autoload-20261020",
@@ -72,7 +72,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "atlas.static-snapshot-provenance",
@@ -87,7 +87,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "backpack.augment-bay-and-workbench",
@@ -222,7 +222,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "smp.claims-flan-removal",
@@ -252,7 +252,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "compat.narrator-and-shared-categories",
@@ -266,7 +266,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17161
     },
     {
       "change_id": "client.preferences-and-carryon-removal",
@@ -331,7 +331,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "client.barnyard-clydesdale-key-connection-20261029",
@@ -376,7 +376,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "client.gui-armor-and-closed-channel-diagnostics-20261021",
@@ -406,7 +406,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "client.jalloween-resource-ownership-20261030",
@@ -476,7 +476,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "client.jem-races-connection-snapshot-20261031",
@@ -506,7 +506,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "client.quickskin-main-menu-presentation-20261028",
@@ -559,7 +559,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 18723
+      "potential_static_target_count": 18756
     },
     {
       "change_id": "compat.ffapi-forge-native-villager-trades",
@@ -750,7 +750,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17161
     },
     {
       "change_id": "compat.jei-category-search-and-reclassification-20261026",
@@ -764,7 +764,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17161
     },
     {
       "change_id": "compat.spawner-spirit-orb-provenance-20261031",
@@ -877,7 +877,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 29300
+      "potential_static_target_count": 29333
     },
     {
       "change_id": "economy.reviewed-item-policies",
@@ -1165,7 +1165,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17161
     },
     {
       "change_id": "economy.shipping-exact-coin-actions-20261026",
@@ -1746,7 +1746,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "login.connectivity-terminal-socket",
@@ -1843,6 +1843,26 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 110
+    },
+    {
+      "change_id": "distribution.major-update-4-exposure-polaroid-20261112",
+      "status": "active",
+      "summary": "Replace the custom Simpler Exposure direction with the native Exposure Polaroid instant-camera addon",
+      "record": "Catalog/changes/records/major-update-4-exposure-polaroid-20261112.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "exposure_polaroid"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "exposure"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 134
     },
     {
       "change_id": "major-update-4-jei-item-provenance-20261109",
@@ -2312,7 +2332,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17161
     },
     {
       "change_id": "power.race-cinematic-reentry",
@@ -2554,7 +2574,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "quest.native-team-unlock-20261101",
@@ -2568,7 +2588,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "quest.standalone-visual-v4-20261027",
@@ -2582,7 +2602,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "race.daily-reselection-first-login-20261020",
@@ -2852,7 +2872,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "sandbox-ancients-pearl-vfx",
@@ -2972,7 +2992,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "server.bound-test-profile-20261020",
@@ -3035,7 +3055,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 29300
+      "potential_static_target_count": 29333
     },
     {
       "change_id": "settlements.city-sidebar-tab",
@@ -3475,7 +3495,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17140
+      "potential_static_target_count": 17173
     },
     {
       "change_id": "settlements.sandbox-build-boundary",
@@ -3833,7 +3853,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17161
     },
     {
       "change_id": "smp-rewards-xp.minecraft-xp-20261022",
@@ -3973,7 +3993,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "universal-standalone.economy-world-policy-20261021",
@@ -4046,7 +4066,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "universal-standalone.races-20261021",
@@ -4186,7 +4206,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32583
+      "potential_static_target_count": 32616
     },
     {
       "change_id": "vinery.native-merchant-registered-ids",
@@ -4368,7 +4388,7 @@
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/config/weatherglass.properties": "5006c1c79c3319181308ff1cc999f68e65afb2ff9980d214a0ca0b29d5c3cee7",
     "Client/ManagedPack/config/windy-client.toml": "e3eef566494077eff01f7a2ce334d03eb4828836a0fa15d5cce4c25654b71acd",
-    "Client/ManagedPack/jem-pack/manifest.json": "ef7f87ffb18eb2026751a65b83a0dca06a177edcdad969f70040d6c2f3a394bc",
+    "Client/ManagedPack/jem-pack/manifest.json": "857a669dd0a98a3561785f8452c952846a1f1c7f98c522259fff217b59f52a37",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4548,6 +4568,8 @@
     "Client/ManagedPack/mods/copperagebackport-forge-1.20.1-0.1.5.jar": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
     "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar": "c790e8671625b05ec0aa19272e0ea74ea95619f953e3c6f39a6736af0d386804",
     "Client/ManagedPack/mods/cristellib-1.1.6-forge.jar": "3856ad565ea45d6189452d813e2f021b365b686d3b1adae5f747c56a1e535d9f",
+    "Client/ManagedPack/mods/exposure-forge-1.20.1-1.9.21.jar": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+    "Client/ManagedPack/mods/exposure_polaroid-forge-1.20.1-1.1.4.jar": "fe728329dfb79a9e8c7a2196e2d3d9fa1b527cfa2a2273df8e6a18a316bfe760",
     "Client/ManagedPack/mods/immersive_paintings-0.6.13+1.20.1-forge.jar": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
     "Client/ManagedPack/mods/immersivepaintings-exposure-1.0.0.jar": "12828b32b3cba13924be661bdbbcd15aad6926d448210193e6851285f730157f",
     "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1.jar": "2d0c9707506ea153e0fb43eb419d27513b68ff341c16a612b016f929fb83b94c",
@@ -4585,8 +4607,8 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "a14f101acdd6fcd5c56cf38eb4b3048d3618f7405831aa78a1f4f53ae28af4b6",
-    "Docs/MODS.md": "6a4666ecf0c71a94240c8eba6698664b864c6e5c9009ea4a67300cdc4105fac7",
+    "Docs/DEVELOPMENT.md": "43cce58c6c151c28a375c622f42c0a63c9888f59fa1fabc724a6a77eff889705",
+    "Docs/MODS.md": "0928739bdbf6b3ecbbaf2655a6a09b14048b1e9c4a74d273138f5dd1c8da48cc",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -9714,8 +9736,8 @@
     "tools/build_jem_release_resource_pack.py": "b69a3cebba55980a260059f7e7a9029f86e931fb8d188f54e1b15c6b29e26d5a",
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
-    "tools/module-inventory.json": "0cbbbbe99055296491170e7128d0178955aa8deb2fffc1271e6d119cc1854500",
-    "tools/state/packSyncHost-sync.json": "53f98319c57868b936fb99b02d9a34d9a98e340484f84a3baf1afd3b72894067",
+    "tools/module-inventory.json": "64cf13bfb83318fa7e039ccb35bc4efd2a4ad52afd858fe177615dcdf3812dca",
+    "tools/state/packSyncHost-sync.json": "1bf62a399eb6ba3b905575af47c6aacdd5e8cab7145836dba2f34dac229927ed",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }
 }

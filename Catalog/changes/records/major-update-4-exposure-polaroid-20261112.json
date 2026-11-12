@@ -1,0 +1,123 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.major-update-4-exposure-polaroid-20261112",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "exposure_polaroid"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "exposure"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "distribution": "Major Update 4 development inventory on feature/major-update-4, with no MineRENT, stable-profile or release-baseline promotion"
+    },
+    {
+      "dependency": "Exposure Polaroid 1.1.4 requires Exposure 1.9.14 or newer on both logical sides. Installed Exposure 1.9.21 therefore remains as a mandatory dependency"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_dependencies",
+    "priority": 110,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Replace the custom Simpler Exposure direction with the native Exposure Polaroid instant-camera addon",
+    "modifiers": [
+      {
+        "property": "distribution.major_update_4.mods",
+        "operation": "replace",
+        "before": {
+          "exposure": "1.9.21 as the player-facing camera workflow",
+          "simpler_exposure": "custom immediate-photograph module on the newer develop lineage",
+          "exposure_polaroid": "absent"
+        },
+        "after": {
+          "exposure": "1.9.21 retained as the required runtime and photograph-state dependency",
+          "simpler_exposure": "retired and absent from the Major Update 4 distribution",
+          "exposure_polaroid": "1.1.4 on client and server"
+        }
+      },
+      {
+        "property": "exposure.instant_photography",
+        "operation": "replace",
+        "before": "The custom Simpler Exposure design emitted immediate photographs and suppressed parts of the native developing workflow",
+        "after": "Exposure Polaroid owns the Instant Camera and four Instant Slide types. A used slide produces a native Exposure Photograph after the addon's two-second development delay"
+      },
+      {
+        "property": "exposure.photograph_state",
+        "operation": "document",
+        "before": "Exposure owns photograph metadata and storage",
+        "after": "Exposure continues to own photograph metadata and storage for Exposure Polaroid. No JEM module duplicates that state"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Exposure Polaroid with Exposure as its mandatory dependency",
+    "kind": "user_requested_native_mod_replacement",
+    "source_files": [
+      "Client/ManagedPack/mods/exposure_polaroid-forge-1.20.1-1.1.4.jar",
+      "Client/ManagedPack/mods/exposure-forge-1.20.1-1.9.21.jar",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md",
+      "tools/module-inventory.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Use the maintained native instant-camera addon instead of the custom Exposure simplification module",
+    "decision_source": "Direct user request on 2026-11-12",
+    "user_requested": "Replace the JEM Exposure simplification direction with Exposure Polaroid, retain mandatory Exposure after dependency confirmation and keep the Immersive Paintings Exposure bridge after the user's follow-up",
+    "implementation_choices": "Retain the base Exposure JAR and configuration required by the addon's declared mandatory dependency. Retire the separate Simpler Exposure module and leave the client-only Immersive Paintings bridge installed"
+  },
+  "introduced": {
+    "date": "2026-11-12",
+    "commit": "SELF",
+    "action": "install_exposure_polaroid",
+    "summary": "Install Exposure Polaroid 1.1.4 on both logical sides and retire the custom simplification direction",
+    "source_files": [
+      "Client/ManagedPack/mods/exposure_polaroid-forge-1.20.1-1.1.4.jar",
+      "Server/mods/exposure_polaroid-forge-1.20.1-1.1.4.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-12",
+      "commit": "SELF",
+      "action": "install_exposure_polaroid",
+      "summary": "Selected the latest release for Forge 1.20.1 from the author's Modrinth project and verified its embedded dependency on Exposure 1.9.14 or newer"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "camera gameplay",
+      "photograph creation",
+      "native mod dependencies",
+      "recipes",
+      "client presentation",
+      "networking",
+      "runtime distribution"
+    ],
+    "relations": [
+      "Instant Slide -> Exposure Polaroid Instant Camera -> native Exposure Photograph",
+      "Exposure Polaroid -> mandatory Exposure 1.9.21 dependency",
+      "Exposure Photograph -> Immersive Paintings client bridge -> painting selection",
+      "custom Simpler Exposure design -> retired"
+    ],
+    "notes": [
+      "The current Major Update 4 branch did not contain the Simpler Exposure source or JAR, so retirement is recorded in the canonical module inventory for later branch integration",
+      "Exposure Polaroid is not a standalone replacement for Exposure",
+      "Immersive Paintings × Exposure 1.0.0 remains a client-only compatibility bridge by the user's final direction",
+      "MineRENT, stable JustEnoughMods and the immutable release baseline are unchanged"
+    ],
+    "unresolved": [
+      "Player acceptance remains pending because no client or gameplay launch was authorized"
+    ]
+  }
+}

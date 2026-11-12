@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "d6fd4eb376e0fe883883d855f8e3cd41496a56a7",
-  "generated_utc": "2026-11-12T09:44:21.195884+00:00",
+  "snapshot_sha": "9ffcabe82b25f610c064048f62e05952cf9bc769",
+  "generated_utc": "2026-11-12T10:20:39.913986+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -5851,6 +5851,142 @@
         {
           "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
           "sha256": "1c0161c1cf4262af8be41f0f4fcb8531847450f10e82d28bfd791ef49e553423",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "exposure_polaroid-forge-1.20.1-1.1.4.jar",
+      "sha256": "fe728329dfb79a9e8c7a2196e2d3d9fa1b527cfa2a2273df8e6a18a316bfe760",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "exposure_polaroid",
+          "name": "Exposure Polaroid",
+          "version": "1.1.4",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "exposure_polaroid"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\exposure_polaroid-forge-1.20.1-1.1.4.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
+          "sha256": "7c2bb067e2cb788db5e0e2d0934066faccd53e7676c84238386ef612931b1d20",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "exposure_polaroid-forge-1.20.1-1.1.4.jar",
+      "sha256": "fe728329dfb79a9e8c7a2196e2d3d9fa1b527cfa2a2273df8e6a18a316bfe760",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "exposure_polaroid",
+          "name": "Exposure Polaroid",
+          "version": "1.1.4",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "exposure_polaroid"
+      ],
+      "source_path": "Server\\mods\\exposure_polaroid-forge-1.20.1-1.1.4.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
+          "sha256": "7c2bb067e2cb788db5e0e2d0934066faccd53e7676c84238386ef612931b1d20",
           "identifier": {
             "group": "io.github.llamalad7",
             "artifact": "mixinextras-forge"

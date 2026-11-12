@@ -1,3 +1,15 @@
+## 2026-11-12 - Add Exposure Polaroid and retire custom simplification
+
+- User requested replacement of Exposure and JEM's Exposure simplification with Exposure Polaroid in Major Update 4, then confirmed that the Immersive Paintings Exposure bridge can remain
+- Exposure Polaroid 1.1.4 is an addon rather than a standalone replacement. Its embedded Forge metadata requires Exposure 1.9.14 or newer on both logical sides, so Exposure 1.9.21 remains installed only as the mandatory runtime and photograph-state dependency
+- Added the exact Forge 1.20.1 Exposure Polaroid 1.1.4 artifact to the managed client and local dedicated server. The downloaded artifact matches the author's Modrinth SHA-512 `197b46b55ea5ab541be50eff7eeb0414328ebef36bd5e166078ee67786772c0560f3177eaa68254dd70068952c633ad1de38f2758154fb1a89cf31019f157b2c`
+- Retained the client-only Immersive Paintings × Exposure 1.0.0 bridge after the user's follow-up. It continues to expose native Exposure photographs in the Immersive Paintings editor
+- The custom Simpler Exposure module is not present in the Major Update 4 branch or runtime. Marked it retired in the canonical module inventory so the newer `develop` lineage does not restore it during later integration
+- Exposure Polaroid owns the Instant Camera and Instant Slides. Exposure continues to own native Photograph metadata and storage. Existing Exposure items and saved photographs remain valid
+- Rebuilt and validated the full Registry Atlas. The local dedicated server loaded 337 mods, including Exposure 1.9.21 and Exposure Polaroid 1.1.4, and reached `Done`
+- Native AutoModpack published generation 151 with content token `ebd633a23cf7e55d18ac48849ad614ee5eba1c8e` and manifest SHA-1 `f58e4d427037ff04a96ccc961a5bbf30e4ee51bd`. Applied the exact two-operation plan to the closed `Test JustEnoughMods` profile, verified all 335 managed JARs and confirmed no pending transaction
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Minecraft client launch and player acceptance remain pending
+
 ## 2026-11-12 - Add the Offgrid building tranche to Major Update 4
 
 - User requested transfer of JEM Unofficial Offgrid, Inventory Tabs, Swinging Signs and Underlay from Sandbox into Test JEM on `feature/major-update-4`. The user also requested a Forge 1.20.1 adaptation of the downloaded Olaf's Relatively Placed Blocks behavior as part of an "Unofficial Offgrid" mod

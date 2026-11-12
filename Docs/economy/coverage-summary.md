@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-12T09:44:21.195884+00:00` for `d6fd4eb376e0fe883883d855f8e3cd41496a56a7`.
+Generated from Atlas schema 1 at `2026-11-12T10:20:39.913986+00:00` for `9ffcabe82b25f610c064048f62e05952cf9bc769`.
 
-Static evidence observed 17,128 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,161 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -41,6 +41,7 @@ Static evidence observed 17,128 canonical item IDs. This is not a Forge runtime 
 | epic_fight_avalon | 1 | 0 | 1 | 0 | 1 |
 | epicfight | 49 | 0 | 49 | 0 | 49 |
 | exposure | 87 | 0 | 87 | 0 | 87 |
+| exposure_polaroid | 33 | 0 | 33 | 0 | 33 |
 | fairylights | 33 | 0 | 33 | 0 | 33 |
 | farm_and_charm | 112 | 56 | 56 | 18 | 56 |
 | flashlightmod | 5 | 0 | 5 | 0 | 5 |

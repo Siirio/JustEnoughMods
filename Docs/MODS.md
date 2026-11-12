@@ -95,7 +95,8 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Epic Fight Patch | `1.0.0` | Client + server |  |
 | EpicFight Nightfall | `3.4.1` | Server |  |
 | EpicFight Nightfall | `3.4.1` | Client |  |
-| Exposure | `1.9.21` | Client + server |  |
+| Exposure | `1.9.21` | Client + server | Required runtime dependency for Exposure Polaroid |
+| Exposure Polaroid | `1.1.4` | Client + server | Major Update 4 instant-camera workflow |
 | Fairy Lights | `7.0.0` | Client + server |  |
 | Fancy World Animations | `1.2.31` | Server |  |
 | Fancy World Animations | `1.2.31` | Client |  |
