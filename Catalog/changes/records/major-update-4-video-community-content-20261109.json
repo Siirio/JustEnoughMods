@@ -23,13 +23,13 @@
     "overrides": []
   },
   "change": {
-    "summary": "Install the approved Videos 1-3 community content, atmosphere stack and CIT resource packs while removing the FastWorkbench conflict.",
+    "summary": "Install the retained Videos 1-3 community content, atmosphere stack and CIT resource packs while removing the FastWorkbench conflict.",
     "modifiers": [
       {
         "property": "distribution.major_update_4_video_community_mods",
         "operation": "add",
         "before": "The approved community artifacts were absent from the Major Update 4 managed pack",
-        "after": "Backported Spears, Visual Workbench, Block Runner, Structory, Ocean Lily Pad Village, AmbientSounds, Windy, Do a Barrel Roll, Weather Glass and the audited Immersive Storms port are pinned to exact Forge 1.20.1 artifacts. Rose Gold Equipment is removed by user direction"
+        "after": "Backported Spears, Visual Workbench, Block Runner, Structory, Ocean Lily Pad Village, AmbientSounds, Do a Barrel Roll, Weather Glass and the audited Immersive Storms port are pinned to exact Forge 1.20.1 artifacts. Windy is removed after its dedicated-server registry crash. Rose Gold Equipment is removed by user direction"
       },
       {
         "property": "crafting_table.runtime_owner",
@@ -46,8 +46,8 @@
       {
         "property": "client.weather_presentation_budget",
         "operation": "set",
-        "before": "No shared budget for the new wind, glass and storm presentation stack",
-        "after": "Subtle Windy density, 16-pixel Weather Glass, reduced Immersive Storms particles, no duplicate ambient storm audio and no forced dense fog"
+        "before": "No shared budget for the new glass and storm presentation stack",
+        "after": "16-pixel Weather Glass, reduced Immersive Storms particles, no duplicate ambient storm audio and no forced dense fog. Windy is absent"
       },
       {
         "property": "distribution.treechop_artifact",
@@ -65,7 +65,6 @@
       "Client/ManagedPack/config/paxi/resourcepack_load_order.json",
       "Client/ManagedPack/config/ambientsounds-client.json",
       "Client/ManagedPack/config/blockrunner.json",
-      "Client/ManagedPack/config/windy-client.toml",
       "Client/ManagedPack/config/weatherglass.properties",
       "Client/ManagedPack/config/immersive_storms.json5",
       "Server/config/blockrunner.json",
@@ -98,6 +97,16 @@
       "commit": "SELF",
       "action": "remove_rose_gold_equipment",
       "summary": "Remove Rose Gold Equipment from the Major Update 4 distribution by user direction."
+    },
+    {
+      "date": "2026-11-12",
+      "commit": "SELF",
+      "action": "remove_windy",
+      "summary": "Remove Windy after its client-only custom particle registry crashed after dedicated-server login.",
+      "source_files": [
+        "Client/ManagedPack/mods/windy-forge-1.20.1.jar",
+        "Client/ManagedPack/config/windy-client.toml"
+      ]
     }
   ],
   "impacts": {

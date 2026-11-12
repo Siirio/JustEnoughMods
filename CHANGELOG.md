@@ -1,3 +1,13 @@
+## 2026-11-12 - Remove the Windy post-login crash
+
+- User reported that Test JEM crashed after the Pack Sync login repair
+- Bug / Client Sided / Windy 1.2.0 registers custom Forge particle types while it is installed only on the client, so dedicated-server registry synchronization removes `windy:mote` and Windy's first level tick dereferences the absent registry object / in testing after removing Windy and its managed config
+- Five Whys: the client crashed because `WindDirector` called `MOTE.get()`, the registry object was absent because the server registry snapshot did not contain Windy's particle IDs, the server did not contain them because Windy was classified as client-only, that classification conflicts with Windy's synchronized Forge registrations, and this failure can occur only after a dedicated-server level join
+- The client log confirms that the equal-token Pack Sync path completed and the server fully admitted the player before Windy crashed. The Bootstrap login repair remains unchanged
+- Removed Windy 1.2.0 and its managed client configuration. Fog 1.5.3 and Better Clouds 1.3.37 beta remain installed
+- Rebuilt and validated the Registry Atlas. Native preview reported `+0 ~1 -2`, and AutoModpack published generation 153 with content token `1eb452bd56d358e8b2ffb5bf16459e588e36b3d8` and manifest SHA-1 `ac85ad5691076999664f199632e92ef55b31625d`
+- Applied the published generation to the closed `Test JustEnoughMods` profile. All 335 managed JARs match, Windy is absent and no native transaction remains pending. Runtime player acceptance remains pending until the user reconnects
+
 ## 2026-11-12 - Resume live login after an equal Pack Sync token
 
 - User reported that the client remained on "Preparing update" after accepting the local server certificate, although the installed and published generation tokens matched
