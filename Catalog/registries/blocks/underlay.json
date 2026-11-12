@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "d6fd4eb376e0fe883883d855f8e3cd41496a56a7",
+  "generation": {
+    "generated_utc": "2026-11-12T09:44:21.195884+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "underlay",
+    "name": "Underlay",
+    "version": "1.0.5"
+  },
+  "records": [
+    {
+      "registry_id": "underlay:overlay",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "underlay",
+      "mod_name": "Underlay",
+      "mod_version": "1.0.5",
+      "source_jar": "underlay-1.0.5-forge-mc1.20.1.jar",
+      "source_sha256": "0edd19354ac6b366dbd11cfc7c053cc0c84ee5d4487aba37d90e5098ad0c4a11",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/underlay/lang/en_us.json"
+      ],
+      "display_name_en_us": " (Overlay)",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "underlay-1.0.5-forge-mc1.20.1.jar:assets/underlay/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "d6fd4eb376e0fe883883d855f8e3cd41496a56a7",
+  "generation": {
+    "generated_utc": "2026-11-12T09:44:21.195884+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "offgrid",
+    "name": "Offgrid",
+    "version": "1.0.4+1.20.1"
+  },
+  "records": [
+    {
+      "registry_id": "offgrid:mixed_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "offgrid",
+      "mod_name": "Offgrid",
+      "mod_version": "1.0.4+1.20.1",
+      "source_jar": "offgrid-forge-1.0.4-1.20.1.jar",
+      "source_sha256": "6a7f4d64a8d1cdf29fbf238b118d3298b738d5234c57a5eb142d35bf4718e6f1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/offgrid/blockstates/mixed_slab.json",
+        "assets/offgrid/lang/en_us.json"
+      ],
+      "display_name_en_us": "Mixed Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "offgrid-forge-1.0.4-1.20.1.jar:assets/offgrid/blockstates/mixed_slab.json",
+        "offgrid-forge-1.0.4-1.20.1.jar:assets/offgrid/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

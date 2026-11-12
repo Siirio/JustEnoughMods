@@ -1,7 +1,12 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "49069d89136dc1c7c49a74c3301c4050338890a9",
+  "snapshot_sha": "d6fd4eb376e0fe883883d855f8e3cd41496a56a7",
   "entries": [
+    {
+      "type": "artifact_metadata",
+      "artifact": "kotlinforforge-4.12.0-all.jar",
+      "reason": "KeyError"
+    },
     {
       "type": "artifact_metadata",
       "artifact": "kotlinforforge-4.12.0-all.jar",
@@ -189,6 +194,14 @@
       "artifacts": [
         "architectury-9.2.14-forge.jar",
         "architectury-forge-9.2.14.jar"
+      ]
+    },
+    {
+      "type": "duplicate_mod_id",
+      "mod_id": "mixinextras",
+      "artifacts": [
+        "forge-mixinextras-forge-0.3.2.jar",
+        "mixinextras-forge-0.3.1.jar"
       ]
     },
     {
