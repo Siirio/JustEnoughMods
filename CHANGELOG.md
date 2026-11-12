@@ -1,3 +1,13 @@
+## 2026-11-12 - Keep client-host credentials in external Pack Sync state
+
+- User reported that `Test JustEnoughMods` crashed immediately after startup
+- Bug / Client Sided / integrated client-host initialization still wrote `provisioning-secret` through the legacy game-directory constant after all other client state moved to the external profile root, so the next startup rejected the conflicting credentials before Forge loaded / in testing after routing the credential through `DataRootResolver`
+- Five Whys: startup stopped because migration found two different provisioning secrets, the legacy secret was generated at 16:56 after the earlier migration, integrated client hosting called `ProvisioningSecretStore.ensure()`, that store alone still used `StoragePaths.PROVISIONING_SECRET_FILE` directly, and the external-state migration had no role-aware credential-path adapter
+- Revision `jem.20` resolves the provisioning secret through the same role-aware data location as other Pack Sync state. Dedicated servers retain their game-directory credential path, while clients use `%LOCALAPPDATA%/JEM/pack-sync/<profile-id>/credentials`
+- Migration keeps the existing external client credential authoritative and removes only a stale conflicting legacy provisioning secret created by the old client-host path. All other state conflicts remain fail-closed
+- Built revision `jem.20` with SHA-256 `70eaf4c03de104b2b5103caa8a515bf746392549aebfaabe5d0714d54accb671` and installed the exact artifact in the canonical managed source, bootstrap-only installer, local dedicated server and closed `Test JustEnoughMods` profile. The stable profile, MineRENT and release baseline remain unchanged
+- Native pack preview retained generation 149 with content token `df2877a424a152666f3672be8a7e4733ece2d117` and reported `+0 ~0 -0`, because Bootstrap remains outside the served pack. Client startup acceptance remains pending
+
 ## 2026-11-11 - Bound Atlas work for packaging-only repairs
 
 - User required future narrow JEM repairs to avoid the 41-minute delivery path observed during the Sift reobfuscation fix
