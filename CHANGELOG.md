@@ -1,3 +1,13 @@
+## 2026-11-12 - Remove legacy client state and retired local server
+
+- User required deletion of the old client `automodpack` folder, the retired local server that used the old layout and all Bootstrap migration logic connected to that folder. MineRENT and the current local server world remain outside the deletion
+- Bug / Client Sided / integrated client hosting still created `certificate.crt` and `private-key.pem` through game-local server constants, while connection trust opened the external client state and rejected the two different credential pairs / in testing after revision `jem.21` moved integrated-host TLS material to the external role-aware root and removed game-local client migration
+- Five Whys: connection trust stopped because two TLS pairs disagreed, the second pair existed because integrated hosting used `SERVER_CERT_FILE` directly, that constant resolves under gameDir, the earlier credential repair covered only `provisioning-secret`, and the patch chain still treated the forbidden client folder as a migration source instead of removing its ownership completely
+- Removed `ClientStateMigration`, the legacy shared-object import patch and every Bootstrap call or patch entry that migrated game-local client state. Client service state now has one owner at `%LOCALAPPDATA%/JEM/pack-sync/<profile-id>`. A configured client root inside gameDir remains explicitly rejected. Transaction validation now checks game content and external client state against their separate canonical roots without referencing the retired folder
+- Sent `Test JustEnoughMods/automodpack` and the 21,449,028,924-byte `retired-test-jem-server-20261111` archive to the Windows Recycle Bin. The active local server, its world, `Server/automodpack` and MineRENT were not deleted
+- Built Bootstrap revision `jem.21` without tests. Artifact size is 3,491,005 bytes and SHA-256 is `41dffa967251bcf818f60dcd349804ed608a354834a6826d89bb693f51b2b6e7`. Installed the exact artifact in the managed source, bootstrap installer template, current local server and closed `Test JustEnoughMods` profile
+- The local server loaded 333 mods and reached `Done (5.893s)`. Native Pack Sync preview and publish returned `+0 ~0 -0` and retained generation 149 with content token `df2877a424a152666f3672be8a7e4733ece2d117`, because Bootstrap is not a managed download. Minecraft client launch and player connection acceptance remain pending
+
 ## 2026-11-12 - Restore the Major Update 4 local server runtime
 
 - User reported that `Test JustEnoughMods` could not connect to the local server

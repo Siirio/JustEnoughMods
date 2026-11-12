@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-12",
+  "status": "local test client and current local server prepared, player acceptance pending",
+  "cause": "integrated client hosting still created its TLS certificate and private key through game-local server constants, while connection trust opened the external client state and rejected the two different credential pairs",
+  "bootstrap": {
+    "revision": "jem.21",
+    "nativeVersion": "5.0.0-rc.1",
+    "upstreamCommit": "4348bf2532bb8261af3297cf2480a3a0ee91befb",
+    "bytes": 3491005,
+    "sha256": "41dffa967251bcf818f60dcd349804ed608a354834a6826d89bb693f51b2b6e7",
+    "productionBuild": "successful",
+    "testsRun": false
+  },
+  "clientStateContract": {
+    "externalRoot": "%LOCALAPPDATA%/JEM/pack-sync/<profile-id>",
+    "gameDirectoryAutomodpackAllowed": false,
+    "legacyMigrationCodePresent": false,
+    "configuredGameLocalClientRootRejected": true,
+    "integratedHostTlsUsesExternalRoot": true
+  },
+  "removed": {
+    "testClientLegacyDirectory": "sent to Windows Recycle Bin",
+    "retiredLocalServer": "C:/MyProjects/Minecraft/JustEnoughMods-updates/retired-test-jem-server-20261111 sent to Windows Recycle Bin",
+    "retiredLocalServerBytes": 21449028924,
+    "mineRentChanged": false
+  },
+  "installation": {
+    "managedSource": true,
+    "bootstrapInstaller": true,
+    "currentLocalServer": true,
+    "testProfile": true,
+    "stableProfile": false,
+    "mineRent": false,
+    "releaseBaseline": false
+  },
+  "publication": {
+    "journalSequence": 149,
+    "contentToken": "df2877a424a152666f3672be8a7e4733ece2d117",
+    "nativePreview": "+0 ~0 -0",
+    "publishResult": "NO_CHANGES",
+    "reason": "bootstrap is excluded from the served managed pack"
+  },
+  "runtime": {
+    "serverAddress": "127.0.0.1:31604",
+    "serverStartupReachedDone": true,
+    "minecraftClientLaunched": false,
+    "playerAcceptance": "pending"
+  }
+}

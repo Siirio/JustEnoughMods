@@ -1,0 +1,24 @@
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/protocol/netty/NettyServer.java b/core/src/main/java/pl/skidam/automodpack_core/protocol/netty/NettyServer.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/protocol/netty/NettyServer.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/protocol/netty/NettyServer.java
+@@ -39,6 +39,8 @@ import pl.skidam.automodpack_core.protocol.ServerHolepunchBridge;
+ import pl.skidam.automodpack_core.protocol.netty.handler.AmmhGateHandler;
+ import pl.skidam.automodpack_core.protocol.netty.handler.HttpContractHandler;
+ import pl.skidam.automodpack_core.protocol.netty.handler.ProxyProtocolHandler;
++import pl.skidam.automodpack_core.storage.DataRootResolver;
++import pl.skidam.automodpack_core.storage.GameDirectory;
+ import pl.skidam.automodpack_core.utils.CustomThreadFactoryBuilder;
+ import pl.skidam.automodpack_core.utils.FileLocks;
+ import pl.skidam.automodpack_core.utils.HashUtils;
+@@ -248,8 +250,9 @@ public class NettyServer {
+ 			return;
+ 		}
+ 
+-		Path certFile = SERVER_CERT_FILE;
+-		Path privateKeyFile = SERVER_PRIVATE_KEY_FILE;
++		DataRootResolver.Location location = DataRootResolver.resolve(GameDirectory.current());
++		Path certFile = DataRootResolver.instanceStatePath(location, SERVER_CERT_FILE);
++		Path privateKeyFile = DataRootResolver.instanceStatePath(location, SERVER_PRIVATE_KEY_FILE);
+ 		ensureTlsMaterial(certFile, privateKeyFile);
+ 
+ 		X509Certificate cert = NetUtils.loadCertificate(certFile);

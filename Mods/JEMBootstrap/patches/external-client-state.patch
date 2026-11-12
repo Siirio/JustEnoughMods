@@ -144,90 +144,6 @@ index 758e43a..3f62e8a 100644
  		Path implJar = cacheDir.resolve(entry.id() + ".jar");
  		Path lockFile = cacheDir.resolveSibling(cacheDir.getFileName() + LOCK_SUFFIX);
  
-diff --git a/core/src/main/java/pl/skidam/automodpack_core/storage/ClientStateMigration.java b/core/src/main/java/pl/skidam/automodpack_core/storage/ClientStateMigration.java
-new file mode 100644
-index 0000000..f8f0270
---- /dev/null
-+++ b/core/src/main/java/pl/skidam/automodpack_core/storage/ClientStateMigration.java
-@@ -0,0 +1,78 @@
-+package pl.skidam.automodpack_core.storage;
-+
-+import static pl.skidam.automodpack_core.Constants.LOGGER;
-+
-+import java.io.IOException;
-+import java.nio.file.Files;
-+import java.nio.file.LinkOption;
-+import java.nio.file.Path;
-+import java.util.Comparator;
-+import java.util.List;
-+import java.util.stream.Stream;
-+
-+import pl.skidam.automodpack_core.utils.FileIntegrity;
-+import pl.skidam.automodpack_core.utils.FileLocks;
-+import pl.skidam.automodpack_core.utils.FileTrees;
-+import pl.skidam.automodpack_core.utils.VerifiedFileTransfer;
-+
-+/** One-time, resumable move of legacy client service state out of the game directory. */
-+public final class ClientStateMigration {
-+	private static final String LOCK_FILE = "legacy-migration.lock";
-+
-+	private ClientStateMigration() {}
-+
-+	public static void migrate(DataRootResolver.Location location) throws IOException {
-+		if (location.dedicatedServer()) return;
-+		Path legacyRoot = location.ownerPath().resolve(StoragePaths.AUTOMODPACK_DIR).normalize();
-+		if (!Files.exists(legacyRoot, LinkOption.NOFOLLOW_LINKS)) return;
-+		if (Files.isSymbolicLink(legacyRoot) || !Files.isDirectory(legacyRoot, LinkOption.NOFOLLOW_LINKS))
-+			throw new IOException("Legacy AutoModpack client state is not a regular directory: " + legacyRoot);
-+		Path targetRoot = location.root().toAbsolutePath().normalize();
-+		if (targetRoot.startsWith(legacyRoot)) throw new IOException("JEM Pack Sync profile root is inside legacy client state: " + targetRoot);
-+		Files.createDirectories(targetRoot);
-+		FileLocks.withLock(targetRoot.resolve(LOCK_FILE), LinkOption.NOFOLLOW_LINKS, () -> {
-+			migrateLocked(legacyRoot, targetRoot);
-+			return null;
-+		});
-+	}
-+
-+	private static void migrateLocked(Path legacyRoot, Path targetRoot) throws IOException {
-+		// The new JAR has already staged its current impl before core startup. The old impl tree is rebuildable and
-+		// must not conflict with that current cache during the one-time state move.
-+		FileTrees.delete(legacyRoot.resolve(StoragePaths.AUTOMODPACK_DIR.relativize(StoragePaths.CLIENT_IMPL_CACHE_DIR)));
-+		List<Path> paths;
-+		try (Stream<Path> walked = Files.walk(legacyRoot)) {
-+			paths = walked.sorted(Comparator.comparingInt(Path::getNameCount)).toList();
-+		}
-+		for (Path source : paths) {
-+			if (source.equals(legacyRoot)) continue;
-+			if (Files.isSymbolicLink(source)) throw new IOException("Legacy AutoModpack client state contains a symbolic link: " + source);
-+			Path target = targetRoot.resolve(legacyRoot.relativize(source)).normalize();
-+			if (!target.startsWith(targetRoot)) throw new IOException("Legacy AutoModpack path escaped the JEM Pack Sync profile root: " + source);
-+			if (Files.isDirectory(source, LinkOption.NOFOLLOW_LINKS)) {
-+				Files.createDirectories(target);
-+				continue;
-+			}
-+			if (!Files.isRegularFile(source, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Unsupported legacy AutoModpack entry: " + source);
-+			migrateFile(source, target);
-+		}
-+		for (Path source : paths.stream().sorted(Comparator.comparingInt(Path::getNameCount).reversed()).toList())
-+			Files.deleteIfExists(source);
-+		LOGGER.info("Moved legacy client service state from {} to {} and removed the game-directory automodpack folder", legacyRoot, targetRoot);
-+	}
-+
-+	private static void migrateFile(Path source, Path target) throws IOException {
-+		long size = Files.size(source);
-+		String hash = FileIntegrity.identityHash(source, null);
-+		if (hash == null) throw new IOException("Cannot hash legacy AutoModpack client state: " + source);
-+		if (Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {
-+			if (Files.isSymbolicLink(target) || !Files.isRegularFile(target, LinkOption.NOFOLLOW_LINKS)
-+					|| !FileIntegrity.matches(target, size, hash))
-+				throw new IOException("Legacy and external JEM Pack Sync state disagree at " + target);
-+		} else {
-+			Files.createDirectories(target.getParent());
-+			VerifiedFileTransfer.copyAtomic(source, target, size, hash);
-+		}
-+		Files.delete(source);
-+	}
-+}
 diff --git a/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java b/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java
 index 8cafb99..fb67755 100644
 --- a/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java
@@ -305,8 +221,8 @@ index 8cafb99..fb67755 100644
 +	private static Path selectRoot(Path gameRoot, String ownerId, LoaderManagerService.EnvironmentType environment) throws IOException {
  		Path configured = configuredRoot(gameRoot);
  		if (configured != null) {
-+			Path legacyRoot = gameRoot.resolve(StoragePaths.AUTOMODPACK_DIR).normalize();
-+			if (environment != LoaderManagerService.EnvironmentType.SERVER && configured.startsWith(legacyRoot))
++			Path forbiddenClientGameRoot = gameRoot.resolve(StoragePaths.AUTOMODPACK_DIR).normalize();
++			if (environment != LoaderManagerService.EnvironmentType.SERVER && configured.startsWith(forbiddenClientGameRoot))
 +				throw new IOException("Configured client data root is inside the game directory: " + configured);
  			String failure = probe(configured);
  			if (failure != null) throw new IOException("Configured AutoModpack data root is unusable: " + failure);
@@ -344,14 +260,6 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.
 index a38294a..547c673 100644
 --- a/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java
-@@ -26,6 +26,7 @@ import pl.skidam.automodpack_core.modpack.generation.OwnershipLedger;
- import pl.skidam.automodpack_core.modpack.group.LogicalPath;
- import pl.skidam.automodpack_core.modpack.group.ModpackPathPolicy;
- import pl.skidam.automodpack_core.storage.DataRootResolver;
-+import pl.skidam.automodpack_core.storage.ClientStateMigration;
- import pl.skidam.automodpack_core.update.UpdatePlan.Root;
- import pl.skidam.automodpack_core.utils.FileTrees;
- import pl.skidam.automodpack_core.utils.HashUtils;
 @@ -79,30 +80,30 @@ public final class ClientStorage {
  	private ClientStorage(DataRootResolver.Location dataLocation) {
  		this.dataLocation = Objects.requireNonNull(dataLocation, "data location");
@@ -404,18 +312,6 @@ index a38294a..547c673 100644
  		this.fileCacheDirectory = dataLayout.fileCacheDirectory();
  		this.modCacheDirectory = dataLayout.modCacheDirectory();
  		this.platformCacheDirectory = dataLayout.platformCacheDirectory();
-@@ -118,6 +119,11 @@ public final class ClientStorage {
- 		if (environment != null && environment != LoaderManagerService.EnvironmentType.CLIENT)
- 			throw new IllegalStateException("Client storage belongs to the client role, but this process runs the " + environment + " environment");
- 		DataRootResolver.Location dataLocation = DataRootResolver.resolve(requireDirectoryPath(gameDirectory, "game directory"));
-+		try {
-+			ClientStateMigration.migrate(dataLocation);
-+		} catch (IOException e) {
-+			throw new IllegalStateException("Cannot move legacy client service state out of the game directory", e);
-+		}
- 		Path canonicalGameDirectory = dataLocation.ownerPath();
- 		WeakReference<ClientStorage> reference = OPEN_STORAGE.get(canonicalGameDirectory);
- 		ClientStorage existing = reference == null ? null : reference.get();
 @@ -233,7 +239,7 @@ public final class ClientStorage {
  	}
  
@@ -580,3 +476,23 @@ index 76af320..250f5fa 100644
  	private void verifyExpectedExisting(Operation operation, Path target) throws IOException {
  		if (operation.root() != Root.OVERLAY && operation.root() != Root.GAME_DIR) return;
  		String described = operation.root() == Root.OVERLAY ? "Client overlay" : "Game-directory";
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
+@@ -498,10 +498,12 @@ public final class UpdateTransactionValidator {
+ 	Path validateRootAndPath(Root root, String relativePath, String currentModpackId) throws IOException {
+ 		Path constrainedRoot = storage.root(root, currentModpackId);
+ 		Path resolved = FileTrees.resolveConfined(constrainedRoot, relativePath, "Transaction target");
+-		Path game = storage.gameDirectory();
+-		Path automodpack = storage.automodpackDirectory();
+-		if (root == Root.GAME_DIR && resolved.startsWith(automodpack)) throw new IOException("GAME_DIR operation uses a narrower root");
+-		if (!resolved.startsWith(game)) throw new IOException("Transaction target escaped the game directory");
++		if (root == Root.GAME_DIR) {
++			if (!resolved.startsWith(storage.gameDirectory()))
++				throw new IOException("Transaction target escaped the game directory");
++		} else if (!resolved.startsWith(storage.clientDirectory())) {
++			throw new IOException("Transaction target escaped the external client state");
++		}
+ 		return resolved;
+ 	}
+ 

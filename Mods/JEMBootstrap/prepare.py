@@ -16,8 +16,8 @@ PATCHES = (
     MODULE / "patches" / "reliable-updates.patch",
     MODULE / "patches" / "login-sync-standard-layout.patch",
     MODULE / "patches" / "external-client-state.patch",
-    MODULE / "patches" / "legacy-client-object-migration.patch",
     MODULE / "patches" / "external-client-credentials.patch",
+    MODULE / "patches" / "external-client-host-tls.patch",
 )
 
 
