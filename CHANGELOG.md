@@ -1,3 +1,14 @@
+## 2026-11-12 - Resume live login after an equal Pack Sync token
+
+- User reported that the client remained on "Preparing update" after accepting the local server certificate, although the installed and published generation tokens matched
+- Bug / Client Sided / the equal-token login path returned `CONTINUE` to Forge but left Pack Sync's transient preparation screen in control, so the completed update check looked active and the underlying live connection screen never returned / in testing after revision `jem.23` added an explicit live-login resume path
+- Five Whys: the client appeared to keep checking because the preparation screen stayed visible, it stayed visible because the token fast path only closed the updater, generic close could not restore the connection because ordinary restoration correctly treats a connection screen as abandoned, the certificate prompt had replaced that screen without retaining a dedicated live-login reference, and the new token shortcut did not include the matching UI transition
+- Pack Sync now retains the exact vanilla connection screen while its certificate and preparation screens temporarily own the display. An equal token restores that live screen before the updater closes and then continues the same Forge login
+- Different-token updates, detached joins, cancellation, failure handling, native review, transaction safety and the token comparison remain unchanged
+- Built revision `jem.23` without tests. Artifact size is 3,491,284 bytes and SHA-256 is `0fc9548fdd08b1172f82cad1057a28f20925767dbbfd4cde4c95012e3a310bc`. Installed the exact artifact in the managed source, bootstrap installer template, current local server and closed `Test JustEnoughMods` profile
+- The local server loaded 337 mods and reached `Done (5.183s)`. Native preview reported `+0 ~0 -0`, publish returned `NO_CHANGES`, and generation 152 retained token `933d264392e86508b8d4b2b1902aa5106d68e7e9`
+- The closed Test profile has the same active token, all 336 managed JARs match the canonical source and no native transaction remains pending. Runtime player acceptance remains pending until the user reconnects
+
 ## 2026-11-12 - Replace the Major Update 4 camera, mineshaft and royal-mob stack
 
 - User requested Camerapture, Royal Variations, Epic Fight Extra, Fog, Better Clouds and Hopo Better Mineshafts in Test JEM. The user also requested removal of Immersive Paintings, Exposure, Exposure Polaroid, the Exposure bridge, the custom Unofficial Offgrid addon and any competing mineshaft overhaul

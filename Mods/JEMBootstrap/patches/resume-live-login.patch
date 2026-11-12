@@ -1,0 +1,117 @@
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenService.java b/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenService.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenService.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenService.java
+@@ -94,6 +94,13 @@ public interface ScreenService {
+ 	 */
+ 	default void restore() {}
+ 
++	/**
++	 * Removes Pack Sync's transient screen and restores the live vanilla connection screen. This is only for a login
++	 * whose installed generation already matches the server head; ordinary restore still treats a torn-down connection
++	 * as having nowhere safe to return.
++	 */
++	default void resumeLogin() {}
++
+ 	/**
+ 	 * The screens the player interacted with in this flow are gone, e.g. a login torn down before its modpack sync;
+ 	 * the remembered return target is dropped and later returns land on the neutral fallback until a new interactive
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java b/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
+@@ -116,6 +116,10 @@ public final class ScreenManager {
+ 		instance.restore();
+ 	}
+ 
++	public static void resumeLogin() {
++		instance.resumeLogin();
++	}
++
+ 	public static void discardReturnTarget() {
+ 		instance.discardReturnTarget();
+ 	}
+diff --git a/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java b/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java
+--- a/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java
++++ b/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java
+@@ -163,9 +163,15 @@ public class ScreenImpl implements ScreenService {
+ 		executeOnClient(Screens::restoreIfWaiting);
+ 	}
+ 
++	@Override
++	public void resumeLogin() {
++		Screens.supersedeWait();
++		executeOnClient(Screens::resumeLogin);
++	}
++
+ 	@Override
+ 	public void discardReturnTarget() {
+-		executeOnClient(() -> Screens.interactiveParent = null);
++		executeOnClient(Screens::discardReturnTargets);
+ 	}
+ 
+ 	@Override
+@@ -201,6 +208,7 @@ public class ScreenImpl implements ScreenService {
+ 
+ 	private static class Screens {
+ 		private static Screen interactiveParent;
++		private static Screen liveLoginParent;
+ 		// A Preparing/Download screen owns the player's attention from the moment one is asked for until a real screen shows again; the loading transition delays that swap, so this flag and not the live screen says when a flow is transient.
+ 		private static boolean transientAttention;
+ 		private static final TransientAttention WAIT = new TransientAttention();
+@@ -237,6 +245,7 @@ public class ScreenImpl implements ScreenService {
+ 		public static void setScreen(Screen screen) {
+ 			// A live login screen must be replaced instantly, without the transition: the vanilla join proceeds under our screens.
+ 			if (getScreen() instanceof ConnectScreen) {
++				liveLoginParent = getScreen();
+ 				LOADING_TRANSITION.cancel();
+ 				setScreenNow(screen);
+ 				return;
+@@ -335,6 +344,7 @@ public class ScreenImpl implements ScreenService {
+ 		}
+ 
+ 		public static void multiplayer() {
++			liveLoginParent = null;
+ 			Screens.setScreen(multiplayerScreen());
+ 		}
+ 
+@@ -369,5 +379,23 @@ public class ScreenImpl implements ScreenService {
+ 			if (!transientAttention && !isTransient(getScreen())) return;
+ 			Screens.setScreen(returnTarget(interactiveParent));
+ 		}
++
++		/** Restores the exact connecting screen that Pack Sync interrupted while the same login is still active. */
++		static void resumeLogin() {
++			Screen parent = liveLoginParent;
++			liveLoginParent = null;
++			WAIT.supersede();
++			if (!(parent instanceof ConnectScreen)) {
++				restoreIfWaiting();
++				return;
++			}
++			LOADING_TRANSITION.cancel();
++			setScreenNow(parent);
++		}
++
++		static void discardReturnTargets() {
++			interactiveParent = null;
++			liveLoginParent = null;
++		}
+ 	}
+ }
+diff --git a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
+--- a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
++++ b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
+@@ -244,8 +244,13 @@ public final class ClientLoginUpdateFlow {
+ 		ClientGenerationStore generations = new ClientGenerationStore(storage);
+ 		if (generations.headMatchesActive(serverModpackContent.modpackId, serverModpackContent.contentToken)) {
+ 			LOGGER.info("Installed generation token matches the server head; continuing login without file verification");
++			if (!alreadyDisconnected) {
++				ScreenManager.resumeLogin();
++			}
+ 			updater.close();
+-			if (alreadyDisconnected) ScreenImpl.multiplayer();
++			if (alreadyDisconnected) {
++				ScreenImpl.multiplayer();
++			}
+ 			return alreadyDisconnected ? LoginUpdateResponse.UPDATE_REQUIRED : LoginUpdateResponse.CONTINUE;
+ 		}
+ 		if (!alreadyDisconnected) {
