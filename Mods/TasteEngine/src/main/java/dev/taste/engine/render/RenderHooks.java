@@ -9,7 +9,7 @@ import org.joml.Matrix4f;
 /** Narrow Mixin boundary. All policy stays in renderer-owned classes. */
 public final class RenderHooks {
     public interface Listener {
-        void beginWorld(Camera camera, Matrix4f projection, float partialTick);
+        void beginWorld(Camera camera, Matrix4f cameraView, Matrix4f projection, float partialTick);
         void endWorld();
         void beginLayer(RenderType type);
         void endLayer(RenderType type);
@@ -24,11 +24,11 @@ public final class RenderHooks {
     private RenderHooks() { }
 
     public static void setListener(Listener next) { listener = next; }
-    public static void beginWorld(Camera camera, Matrix4f projection, float partialTick) {
+    public static void beginWorld(Camera camera, Matrix4f cameraView, Matrix4f projection, float partialTick) {
         int depth = WORLD_DEPTH.get();
         WORLD_DEPTH.set(depth + 1);
         Listener active = listener;
-        if (depth == 0 && active != null) active.beginWorld(camera, projection, partialTick);
+        if (depth == 0 && active != null) active.beginWorld(camera, cameraView, projection, partialTick);
     }
     public static void endWorld() {
         int depth = Math.max(0, WORLD_DEPTH.get() - 1);

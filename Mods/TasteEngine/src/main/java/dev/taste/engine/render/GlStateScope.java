@@ -33,6 +33,7 @@ public final class GlStateScope implements AutoCloseable {
     private final boolean scissor;
     private final boolean framebufferSrgb;
     private final boolean depthMask;
+    private final int depthFunction;
     private final boolean[] colorMask = new boolean[4];
     private final int frontFace;
     private final int blendSourceRgb;
@@ -69,6 +70,7 @@ public final class GlStateScope implements AutoCloseable {
         scissor = GL11.glIsEnabled(GL11.GL_SCISSOR_TEST);
         framebufferSrgb = GL11.glIsEnabled(GL30.GL_FRAMEBUFFER_SRGB);
         depthMask = GL11.glGetBoolean(GL11.GL_DEPTH_WRITEMASK);
+        depthFunction = GL11.glGetInteger(GL11.GL_DEPTH_FUNC);
         frontFace = GL11.glGetInteger(GL11.GL_FRONT_FACE);
         blendSourceRgb = GL11.glGetInteger(GL14.GL_BLEND_SRC_RGB);
         blendDestinationRgb = GL11.glGetInteger(GL14.GL_BLEND_DST_RGB);
@@ -91,10 +93,8 @@ public final class GlStateScope implements AutoCloseable {
         RenderSystem.setShader(() -> shader);
         GlStateManager._glUseProgram(program);
         GlStateManager._glBindVertexArray(vertexArray);
-        // BufferUploader caches the last immediate VertexBuffer separately from OpenGL.
-        // Restoring an earlier VAO without invalidating that cache makes the next upload
-        // skip its bind and draw against VAO 0.
-        BufferUploader.reset();
+        // Invalidate the immediate buffer cache without unbinding the restored VAO.
+        BufferUploader.invalidate();
         for (int unit = 0; unit < texture2d.length; unit++) {
             RenderSystem.activeTexture(GL13.GL_TEXTURE0 + unit);
             RenderSystem.bindTexture(texture2d[unit]);
@@ -110,6 +110,7 @@ public final class GlStateScope implements AutoCloseable {
         else RenderSystem.disableScissor();
         set(GL30.GL_FRAMEBUFFER_SRGB, framebufferSrgb);
         RenderSystem.depthMask(depthMask);
+        RenderSystem.depthFunc(depthFunction);
         RenderSystem.colorMask(colorMask[0], colorMask[1], colorMask[2], colorMask[3]);
         GL11.glFrontFace(frontFace);
         RenderSystem.blendFuncSeparate(blendSourceRgb, blendDestinationRgb, blendSourceAlpha, blendDestinationAlpha);

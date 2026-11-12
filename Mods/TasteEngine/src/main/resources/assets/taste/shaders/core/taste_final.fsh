@@ -2,23 +2,25 @@
 
 uniform sampler2D DiffuseSampler;
 uniform sampler2D DepthSampler;
+uniform sampler2D BloomSampler;
+uniform sampler2D ExposureSampler;
 uniform vec2 InSize;
-uniform float FarPlane;
+uniform mat4 InverseProjection;
 uniform float Time;
 uniform float Rain;
 uniform float Exposure;
+uniform float AutoExposure;
+uniform vec3 ShadowTint;
+uniform vec3 HighlightTint;
 uniform float Saturation;
 uniform float Contrast;
 uniform float Temperature;
 uniform float Tint;
 uniform float Gamma;
-uniform float BloomEnabled;
 uniform float BloomStrength;
-uniform float BloomThreshold;
-uniform float BloomRadius;
 uniform float FogStrength;
 uniform float FogDistance;
-uniform float ShaftStrength;
+uniform vec3 FogColor;
 uniform float Vignette;
 uniform float Grain;
 uniform float Sharpen;
@@ -63,6 +65,12 @@ vec3 neutral(vec3 color) {
     return mix(color, vec3(q), 1.0 - 1.0 / (0.15 * (peak - q) + 1.0));
 }
 
+vec3 encodeDisplayColor(vec3 color) {
+    vec3 displayLow = color * 12.92;
+    vec3 displayHigh = 1.055 * pow(color, vec3(1.0 / 2.4)) - 0.055;
+    return mix(displayLow, displayHigh, step(vec3(0.0031308), color));
+}
+
 vec2 wetLensOffset(vec2 uv) {
     if (WetLens < 0.5 || Rain <= 0.001) return vec2(0.0);
     vec2 cells = uv * vec2(23.0, 13.0);
@@ -75,27 +83,10 @@ vec2 wetLensOffset(vec2 uv) {
     return local * drop * Rain * 0.004;
 }
 
-vec3 bloomAt(vec2 uv, vec2 texel) {
-    vec2 radius = texel * mix(1.0, 7.0, clamp(BloomRadius, 0.0, 1.0));
-    vec3 sum = vec3(0.0);
-    sum += texture(DiffuseSampler, uv + vec2(radius.x, 0.0)).rgb;
-    sum += texture(DiffuseSampler, uv - vec2(radius.x, 0.0)).rgb;
-    sum += texture(DiffuseSampler, uv + vec2(0.0, radius.y)).rgb;
-    sum += texture(DiffuseSampler, uv - vec2(0.0, radius.y)).rgb;
-    sum += texture(DiffuseSampler, uv + radius).rgb * 0.7;
-    sum += texture(DiffuseSampler, uv - radius).rgb * 0.7;
-    sum += texture(DiffuseSampler, uv + vec2(radius.x, -radius.y)).rgb * 0.7;
-    sum += texture(DiffuseSampler, uv + vec2(-radius.x, radius.y)).rgb * 0.7;
-    sum /= 6.8;
-    float peak = max(sum.r, max(sum.g, sum.b));
-    float mask = smoothstep(max(0.0, BloomThreshold - 0.45), BloomThreshold + 0.35, peak * 2.0);
-    return sum * mask * BloomStrength * BloomEnabled;
-}
-
-float linearDepth(float deviceDepth) {
-    float nearPlane = 0.05;
-    float z = deviceDepth * 2.0 - 1.0;
-    return (2.0 * nearPlane * FarPlane) / max(FarPlane + nearPlane - z * (FarPlane - nearPlane), 1.0e-5);
+float linearDepth(vec2 uv) {
+    vec4 clip = vec4(uv * 2.0 - 1.0, texture(DepthSampler, uv).r * 2.0 - 1.0, 1.0);
+    vec4 view = InverseProjection * clip;
+    return max(0.0, -view.z / max(view.w, 1.0e-6));
 }
 
 vec3 depthFocus(vec2 uv, vec2 texel, vec3 center, float depthBlocks) {
@@ -114,24 +105,21 @@ void main() {
     vec2 texel = 1.0 / max(InSize, vec2(1.0));
     vec2 uv = clamp(texCoord + wetLensOffset(texCoord), texel, vec2(1.0) - texel);
     vec3 center = texture(DiffuseSampler, uv).rgb;
-    float centerDepth = linearDepth(texture(DepthSampler, uv).r);
+    float centerDepth = linearDepth(uv);
     center = depthFocus(uv, texel, center, centerDepth);
     vec3 cross = texture(DiffuseSampler, uv + vec2(texel.x, 0.0)).rgb
                + texture(DiffuseSampler, uv - vec2(texel.x, 0.0)).rgb
                + texture(DiffuseSampler, uv + vec2(0.0, texel.y)).rgb
                + texture(DiffuseSampler, uv - vec2(0.0, texel.y)).rgb;
     vec3 color = max(center + (center * 4.0 - cross) * Sharpen * 0.18, vec3(0.0));
-    color += bloomAt(uv, texel);
+    color += texture(BloomSampler, uv).rgb * BloomStrength;
 
-    float horizon = smoothstep(0.28, 0.82, uv.y) * (1.0 - smoothstep(0.78, 1.0, uv.y));
-    vec3 atmosphericLight = mix(vec3(0.34, 0.55, 0.78), vec3(1.0, 0.73, 0.43), smoothstep(0.52, 0.9, uv.x));
-    float fogDistance = 1.0 - exp(-centerDepth / max(FogDistance, 1.0));
-    color = mix(color, atmosphericLight, clamp(FogStrength * fogDistance * (0.25 + horizon * 0.75), 0.0, 0.82));
-    color += atmosphericLight * horizon * ShaftStrength * 0.018;
+    float fogAmount = 1.0 - exp(-FogStrength * min(centerDepth, FogDistance));
+    color = mix(color, FogColor, fogAmount);
 
     vec2 depthStep = texel * max(OutlineWidth, 1.0);
-    float depthEdge = abs(centerDepth - linearDepth(texture(DepthSampler, uv + vec2(depthStep.x, 0.0)).r));
-    depthEdge += abs(centerDepth - linearDepth(texture(DepthSampler, uv + vec2(0.0, depthStep.y)).r));
+    float depthEdge = abs(centerDepth - linearDepth(uv + vec2(depthStep.x, 0.0)));
+    depthEdge += abs(centerDepth - linearDepth(uv + vec2(0.0, depthStep.y)));
     float outlineMask = smoothstep(0.08, 0.7, depthEdge / max(centerDepth, 0.5)) * clamp(Outline, 0.0, 1.0);
     color *= 1.0 - outlineMask * 0.72;
 
@@ -151,9 +139,14 @@ void main() {
     }
     color = (color - 0.18) * Contrast + 0.18;
     color = mix(color, smoothstep(vec3(0.0), vec3(1.0), color), clamp(MinimumContrast, 0.0, 1.0) * 0.25);
-    color = max(color * Exposure, vec3(0.0));
+    float ev = AutoExposure > 0.5 ? texelFetch(ExposureSampler, ivec2(0), 0).r : 0.0;
+    color = max(color * (Exposure * exp2(ev)), vec3(0.0));
+    float tone = dot(color, vec3(0.2126, 0.7152, 0.0722));
+    vec3 gradeTint = mix(ShadowTint, HighlightTint, smoothstep(0.04, 0.75, tone));
+    color *= gradeTint;
     color = ToneMapper > 0.5 ? neutral(color) : filmic(color);
     color = pow(max(color, vec3(0.0)), vec3(1.0 / max(Gamma, 0.01)));
+    color = encodeDisplayColor(color);
 
     vec2 centered = texCoord * 2.0 - 1.0;
     float edge = smoothstep(0.30, 1.35, dot(centered, centered));

@@ -15,8 +15,10 @@ import dev.taste.engine.config.ConfigSnapshot;
 import dev.taste.engine.config.ConsumerRegistry;
 import dev.taste.engine.config.EffectiveConfig;
 import dev.taste.engine.config.SettingRegistry;
+import dev.taste.engine.effects.BloomPyramid;
 import dev.taste.engine.environment.EnvironmentResolver;
 import dev.taste.engine.environment.EnvironmentSnapshot;
+import dev.taste.engine.light.ShadowRenderer;
 import dev.taste.engine.material.MaterialGeneration;
 import dev.taste.engine.material.MaterialResolver;
 import dev.taste.engine.material.MaterialRuleLoader;
@@ -24,6 +26,7 @@ import dev.taste.engine.render.backend.TerrainBackend;
 import dev.taste.engine.render.embeddium.Embeddium031Backend;
 import dev.taste.engine.render.vanilla.VanillaTerrainBackend;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import net.minecraft.client.Camera;
@@ -34,6 +37,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 import org.slf4j.Logger;
@@ -50,15 +54,26 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     private final AdaptiveQualityController adaptiveQuality = new AdaptiveQualityController();
     private final AllocationLedger allocations = new AllocationLedger();
     private final HandRenderer hand = new HandRenderer();
+    private final ShadowRenderer shadows = new ShadowRenderer();
+    private final BloomPyramid bloomPyramid = new BloomPyramid();
     private CapabilityProbe.Result probe;
     private SettingRegistry registry;
     private ConsumerRegistry consumers;
     private TargetPool targets;
     private ShaderInstance sceneShader;
     private ShaderInstance finalShader;
+    private ShaderInstance bloomShader;
+    private ShaderInstance exposureShader;
     private PassTimerRing timer;
     private TextureTarget worldTarget;
     private TextureTarget sceneTarget;
+    private TextureTarget volumeTarget;
+    private TextureTarget bloomTarget;
+    private TextureTarget exposureTarget;
+    private long exposureWorldEpoch = -1;
+    private long exposureTime;
+    private int exposureIndex;
+    private int allocatedBloomLevels;
     private RenderTarget nativeTarget;
     private AutoCloseable targetRoute;
     private WorldViewScope worldScope;
@@ -66,6 +81,10 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     private TerrainBackend backend;
     private PipelineParameters parameters;
     private EnvironmentSnapshot environment;
+    private List<ShadowRenderer.MapLayer> shadowMaps = List.of();
+    private Vector3f towardsSun;
+    private boolean daylight;
+    private float directionalIntensity;
     private int width;
     private int height;
     private int nativeWidth;
@@ -90,7 +109,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     public synchronized double lastGpuMilliseconds() { return lastGpuMilliseconds; }
 
     @Override
-    public synchronized void beginWorld(Camera camera, Matrix4f projection, float nextPartialTick) {
+    public synchronized void beginWorld(Camera camera, Matrix4f cameraView, Matrix4f projection, float nextPartialTick) {
         RenderSystem.assertOnRenderThread();
         if (worldOpen) return;
         Minecraft minecraft = Minecraft.getInstance();
@@ -120,7 +139,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
                 levelIdentity = nextIdentity;
                 worldEpoch++;
             }
-            Optional<FrameSnapshot> nextFrame = snapshot(camera, projection);
+            Optional<FrameSnapshot> nextFrame = snapshot(camera, cameraView, projection);
             if (nextFrame.isEmpty()) {
                 frames.invalidate(TemporalHistory.Reason.PROJECTION_CHANGE);
                 failure = "World projection is not ready; native rendering remains active";
@@ -227,19 +246,134 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
 
     private void executeGraph() throws Exception {
         RenderGraph.Resource world = new RenderGraph.Resource("world", "world-target");
+        RenderGraph.Resource visibility = new RenderGraph.Resource("sun-visibility", "sun-shadow-maps");
+        RenderGraph.Resource volume = new RenderGraph.Resource("atmosphere", "atmosphere-target");
         RenderGraph.Resource scene = new RenderGraph.Resource("scene", "scene-target");
+        RenderGraph.Resource bloom = new RenderGraph.Resource("bloom", "bloom-pyramid");
+        RenderGraph.Resource exposure = new RenderGraph.Resource("exposure", "exposure-history");
         RenderGraph.Resource output = new RenderGraph.Resource("output", "native-target");
-        RenderGraph.Compiled graph = RenderGraph.compile(Set.of(world), Set.of(output), java.util.List.of(
-                new RenderGraph.Pass("scene-lighting", Set.of(world), Set.of(scene), this::drawScene),
-                new RenderGraph.Pass("final-color", Set.of(scene), Set.of(output), this::drawFinal)));
+        RenderGraph.Compiled graph = RenderGraph.compile(Set.of(world), Set.of(output), List.of(
+                new RenderGraph.Pass("sun-visibility", Set.of(), Set.of(visibility), this::drawShadowMaps),
+                new RenderGraph.Pass("atmosphere", Set.of(world, visibility), Set.of(volume), this::drawVolume),
+                new RenderGraph.Pass("scene-lighting", Set.of(world, visibility, volume), Set.of(scene), this::drawScene),
+                new RenderGraph.Pass("bloom", Set.of(world, scene), Set.of(bloom), this::drawBloom),
+                new RenderGraph.Pass("exposure", Set.of(scene), Set.of(exposure), this::drawExposure),
+                new RenderGraph.Pass("final-color", Set.of(scene, bloom, exposure), Set.of(output), this::drawFinal)));
         graph.execute(ignored -> GlStateScope.capture());
+    }
+
+    private void drawShadowMaps() throws IOException {
+        shadowMaps = List.of();
+        float angle = environment.sunAngle();
+        towardsSun = new Vector3f(-(float) Math.sin(angle), (float) Math.cos(angle), 0);
+        daylight = towardsSun.y >= 0;
+        if (!daylight) towardsSun.negate();
+        directionalIntensity = !environment.hasSky() ? 0
+                : daylight ? (enabled("lighting.sunEnabled") ? value("lighting.sunIntensity") : 0)
+                            : value("lighting.moonIntensity");
+        directionalIntensity *= Math.min(1, towardsSun.y / 0.08F);
+        boolean needShafts = volumeEnabled() && value("fog.shaftsStrength") > 0;
+        if (!(enabled("shadows.enabled") || needShafts) || directionalIntensity <= 0) {
+            shadows.releaseFrom(targets, 0);
+            return;
+        }
+        clearGlErrors();
+        int resolution = Integer.parseInt(parameters.value("shadows.resolution").getAsString());
+        shadowMaps = shadows.draw(backend, targets, activeFrame.snapshot(), towardsSun, resolution,
+                parameters.value("shadows.cascades").getAsInt(), value("shadows.distance"), value("shadows.splitLambda"));
+        requireNoGlError("sun-visibility");
+        for (int index = 0; index < shadowMaps.size(); index++) {
+            ShadowRenderer.MapLayer layer = shadowMaps.get(index);
+            frames.debug().publish("sun-shadow-" + index, new DebugAttachments.Attachment(
+                    layer.texture(), layer.resolution(), layer.resolution(),
+                    "Directional terrain depth, " + layer.submissions() + " caster submissions"));
+        }
+    }
+
+    private void bindShadowMaps() {
+        set(sceneShader, "CascadeCount", shadowMaps.size());
+        set(sceneShader, "ShadowBias", value("shadows.bias"));
+        set(sceneShader, "ShadowNormalBias", value("shadows.normalBias"));
+        set(sceneShader, "ShadowSamples", value("shadows.filterSamples"));
+        set(sceneShader, "SunAngularRadius", value("shadows.sunAngularRadius"));
+        int shadowFilter = switch (parameters.value("shadows.filter").getAsString()) {
+            case "pcss" -> 2;
+            case "pcf" -> 1;
+            default -> 0;
+        };
+        set(sceneShader, "ShadowFilter", shadowFilter);
+        set(sceneShader, "VolumeSteps", value("fog.steps"));
+        set(sceneShader, "VolumeDensity", value("fog.density"));
+        set(sceneShader, "VolumeDistance", value("fog.maxDistance"));
+        set(sceneShader, "VolumeAnisotropy", value("fog.anisotropy"));
+        set(sceneShader, "VolumeStrength", value("fog.shaftsStrength"));
+        set(sceneShader, "VolumeHeightBase", value("fog.heightBase") - (float) activeFrame.snapshot().origin().y());
+        set(sceneShader, "VolumeHeightFalloff", value("fog.heightFalloff"));
+        sceneShader.getUniform("TowardsSun").set(towardsSun);
+        sceneShader.getUniform("SunColor").set(linearColor(daylight ? "lighting.sunColor" : "lighting.moonColor"));
+        sceneShader.getUniform("FogColor").set(linearColor("fog.color"));
+        Matrix4f view = new Matrix4f().set(activeFrame.snapshot().view().columnMajor());
+        sceneShader.getUniform("InverseView").set(view.invert());
+        for (int index = 0; index < 4; index++) {
+            ShadowRenderer.MapLayer layer = index < shadowMaps.size() ? shadowMaps.get(index) : null;
+            sceneShader.setSampler("ShadowMap" + index, layer == null ? worldTarget.getDepthTextureId() : layer.texture());
+            if (layer == null) continue;
+            sceneShader.getUniform("LightProjection" + index).set(layer.view().projection());
+            set2(sceneShader, "CascadeRange" + index, layer.view().far(), layer.view().depthSpan());
+        }
+    }
+
+    private Vector3f linearColor(String setting) {
+        int color = Integer.parseInt(parameters.value(setting).getAsString().substring(1), 16);
+        return new Vector3f(linearChannel(color >> 16), linearChannel(color >> 8), linearChannel(color));
+    }
+
+    private static float linearChannel(int channel) {
+        float s = (channel & 255) / 255.0F;
+        return s <= 0.04045F ? s / 12.92F : (float) Math.pow((s + 0.055F) / 1.055F, 2.4);
+    }
+
+    private boolean volumeEnabled() {
+        return enabled("fog.enabled") && enabled("fog.volumetric") && value("fog.density") > 0;
+    }
+
+    private void drawVolume() {
+        if (!volumeEnabled()) {
+            targets.release("atmosphere");
+            volumeTarget = null;
+            return;
+        }
+        clearGlErrors();
+        float scale = Float.parseFloat(parameters.value("fog.resolutionScale").getAsString());
+        int volumeWidth = Math.max(1, Math.round(width * scale));
+        int volumeHeight = Math.max(1, Math.round(height * scale));
+        volumeTarget = targets.acquire(descriptor("atmosphere", volumeWidth, volumeHeight, false));
+        volumeTarget.bindWrite(true);
+        bindCommon(sceneShader, worldTarget);
+        bindShadowMaps();
+        sceneShader.setSampler("VolumeSampler", worldTarget.getColorTextureId());
+        set(sceneShader, "VolumeOnly", 1);
+        set(sceneShader, "VolumeEnabled", 0);
+        set(sceneShader, "SunIntensity", directionalIntensity);
+        try {
+            drawFullscreen();
+            requireNoGlError("atmosphere");
+        } finally {
+            sceneShader.clear();
+        }
+        frames.debug().publish("atmosphere", new DebugAttachments.Attachment(volumeTarget.getColorTextureId(),
+                volumeWidth, volumeHeight, "Atmospheric scattering and transmittance"));
     }
 
     private void drawScene() {
         clearGlErrors();
         sceneTarget.bindWrite(true);
         bindCommon(sceneShader, worldTarget);
-        set(sceneShader, "SunIntensity", enabled("lighting.sunEnabled") ? value("lighting.sunIntensity") : 0.0F);
+        bindShadowMaps();
+        sceneShader.setSampler("VolumeSampler", volumeTarget == null ? worldTarget.getColorTextureId() : volumeTarget.getColorTextureId());
+        set(sceneShader, "VolumeOnly", 0);
+        set(sceneShader, "VolumeEnabled", volumeTarget == null ? 0 : 1);
+        set(sceneShader, "SunIntensity", directionalIntensity);
         set(sceneShader, "SkyIntensity", value("lighting.skyIntensity"));
         set(sceneShader, "AmbientFloor", value("lighting.ambientFloor"));
         set(sceneShader, "BlockIntensity", value("lighting.blockIntensity"));
@@ -272,18 +406,20 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         nativeTarget.bindWrite(true);
         bindCommon(finalShader, sceneTarget);
         set(finalShader, "Exposure", powerOfTwo(value("color.exposureEV")));
+        set(finalShader, "AutoExposure", exposureTarget == null ? 0 : 1);
+        finalShader.setSampler("ExposureSampler", exposureTarget == null ? sceneTarget.getColorTextureId() : exposureTarget.getColorTextureId());
         set(finalShader, "Saturation", value("color.saturation"));
         set(finalShader, "Contrast", value("color.contrast"));
         set(finalShader, "Temperature", value("color.temperature"));
         set(finalShader, "Tint", value("color.tint"));
         set(finalShader, "Gamma", value("color.gamma"));
-        set(finalShader, "BloomEnabled", enabled("bloom.enabled") ? 1.0F : 0.0F);
-        set(finalShader, "BloomStrength", value("bloom.strength"));
-        set(finalShader, "BloomThreshold", value("bloom.threshold"));
-        set(finalShader, "BloomRadius", value("bloom.radius"));
-        set(finalShader, "FogStrength", enabled("fog.enabled") ? value("fog.density") : 0.0F);
+        finalShader.getUniform("ShadowTint").set(linearColor("color.shadowTint"));
+        finalShader.getUniform("HighlightTint").set(linearColor("color.highlightTint"));
+        finalShader.setSampler("BloomSampler", bloomTarget == null ? sceneTarget.getColorTextureId() : bloomTarget.getColorTextureId());
+        set(finalShader, "BloomStrength", bloomTarget == null ? 0 : value("bloom.strength"));
+        set(finalShader, "FogStrength", enabled("fog.enabled") && volumeTarget == null ? value("fog.density") : 0.0F);
         set(finalShader, "FogDistance", value("fog.maxDistance"));
-        set(finalShader, "ShaftStrength", enabled("fog.volumetric") ? value("fog.shaftsStrength") : 0.0F);
+        finalShader.getUniform("FogColor").set(linearColor("fog.color"));
         set(finalShader, "Vignette", value("camera.vignette"));
         set(finalShader, "Grain", value("camera.grain"));
         set(finalShader, "Sharpen", value("camera.sharpen"));
@@ -311,16 +447,119 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         updateAdaptiveScale();
     }
 
+    private void drawBloom() throws IOException {
+        bloomTarget = null;
+        List<BloomPyramid.Level> levels = enabled("bloom.enabled") && value("bloom.strength") > 0
+                ? bloomPyramid.layout(width, height, parameters.value("bloom.levels").getAsInt()) : List.of();
+        for (int index = levels.size(); index < allocatedBloomLevels; index++) {
+            targets.release("bloom-down-" + index);
+        }
+        for (int index = Math.max(0, levels.size() - 1); index < allocatedBloomLevels - 1; index++) {
+            targets.release("bloom-up-" + index);
+        }
+        allocatedBloomLevels = levels.size();
+        if (levels.isEmpty()) return;
+        clearGlErrors();
+        if (bloomShader == null) {
+            bloomShader = new ShaderInstance(Minecraft.getInstance().getResourceManager(),
+                    new ResourceLocation("taste", "taste_bloom"), DefaultVertexFormat.POSITION_TEX);
+        }
+        TextureTarget input = sceneTarget;
+        TextureTarget[] down = new TextureTarget[levels.size()];
+        for (BloomPyramid.Level level : levels) {
+            TextureTarget destination = targets.acquire(descriptor("bloom-down-" + level.index(), level.width(), level.height(), false));
+            renderBloom(input, null, destination, level.index() == 0 ? 0 : 1);
+            down[level.index()] = destination;
+            input = destination;
+        }
+        for (int index = levels.size() - 2; index >= 0; index--) {
+            BloomPyramid.Level level = levels.get(index);
+            TextureTarget destination = targets.acquire(descriptor("bloom-up-" + index, level.width(), level.height(), false));
+            renderBloom(input, down[index], destination, 2);
+            input = destination;
+        }
+        requireNoGlError("bloom");
+        bloomTarget = input;
+        frames.debug().publish("bloom", new DebugAttachments.Attachment(input.getColorTextureId(),
+                input.width, input.height, "Reconstructed bloom pyramid"));
+    }
+
+    private void drawExposure() throws IOException {
+        if (!enabled("color.autoExposure")) {
+            targets.release("exposure-0");
+            targets.release("exposure-1");
+            resetExposure();
+            return;
+        }
+        clearGlErrors();
+        if (exposureShader == null) {
+            exposureShader = new ShaderInstance(Minecraft.getInstance().getResourceManager(),
+                    new ResourceLocation("taste", "taste_exposure"), DefaultVertexFormat.POSITION_TEX);
+        }
+        TextureTarget next = targets.acquire(descriptor("exposure-" + exposureIndex, 1, 1, false));
+        next.bindWrite(true);
+        bindCommon(exposureShader, sceneTarget);
+        boolean history = exposureTarget != null && exposureWorldEpoch == worldEpoch;
+        exposureShader.setSampler("PreviousSampler", history ? exposureTarget.getColorTextureId() : sceneTarget.getColorTextureId());
+        long now = System.nanoTime();
+        float elapsed = Math.min(1, (now - exposureTime) / 1_000_000_000F);
+        set(exposureShader, "HasHistory", history ? 1 : 0);
+        set(exposureShader, "DeltaSeconds", elapsed);
+        set(exposureShader, "MinEV", value("color.minEV"));
+        set(exposureShader, "MaxEV", value("color.maxEV"));
+        set(exposureShader, "LightSeconds", value("color.adaptLightSeconds"));
+        set(exposureShader, "DarkSeconds", value("color.adaptDarkSeconds"));
+        try {
+            drawFullscreen();
+            requireNoGlError("exposure");
+        } finally {
+            exposureShader.clear();
+        }
+        exposureTarget = next;
+        exposureWorldEpoch = worldEpoch;
+        exposureTime = now;
+        exposureIndex ^= 1;
+    }
+
+    private void resetExposure() {
+        exposureTarget = null;
+        exposureWorldEpoch = -1;
+        exposureTime = 0;
+        exposureIndex = 0;
+    }
+
+    private void renderBloom(TextureTarget input, TextureTarget fine, TextureTarget destination, int mode) {
+        destination.setFilterMode(GL11.GL_LINEAR);
+        destination.bindWrite(true);
+        bindCommon(bloomShader, input);
+        bloomShader.setSampler("FineSampler", fine == null ? input.getColorTextureId() : fine.getColorTextureId());
+        set(bloomShader, "Mode", mode);
+        set(bloomShader, "Threshold", value("bloom.threshold"));
+        set(bloomShader, "Knee", value("bloom.knee"));
+        set(bloomShader, "SkyWeight", value("bloom.skyWeight"));
+        set(bloomShader, "Radius", value("bloom.radius"));
+        set(bloomShader, "Anamorphic", value("bloom.anamorphic"));
+        try {
+            drawFullscreen();
+        } finally {
+            bloomShader.clear();
+        }
+    }
+
     private void bindCommon(ShaderInstance shader, TextureTarget input) {
         RenderSystem.disableDepthTest();
         RenderSystem.depthMask(false);
         RenderSystem.disableCull();
         RenderSystem.disableBlend();
+        RenderSystem.disableScissor();
+        RenderSystem.colorMask(true, true, true, true);
         RenderSystem.setShader(() -> shader);
         shader.setSampler("DiffuseSampler", input.getColorTextureId());
         shader.setSampler("DepthSampler", worldTarget.getDepthTextureId());
         set2(shader, "InSize", input.width, input.height);
-        set(shader, "FarPlane", Math.max(64.0F, Minecraft.getInstance().options.getEffectiveRenderDistance() * 16.0F));
+        var inverseProjection = shader.getUniform("InverseProjection");
+        if (inverseProjection != null)
+            inverseProjection.set(new Matrix4f().set(activeFrame.snapshot().inverseProjection().columnMajor()));
         set(shader, "Time", (float) ((frame + partialTick) / 20.0));
         set(shader, "Rain", environment.rain());
     }
@@ -332,8 +571,8 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
                 new DebugAttachments.Attachment(0, Math.round(width * scale), Math.round(height * scale), "Effective internal scale"));
     }
 
-    private Optional<FrameSnapshot> snapshot(Camera camera, Matrix4f projection) {
-        if (!finite(projection)) return Optional.empty();
+    private Optional<FrameSnapshot> snapshot(Camera camera, Matrix4f cameraView, Matrix4f projection) {
+        if (!finite(cameraView) || !finite(projection)) return Optional.empty();
         float determinant = projection.determinant();
         if (!Float.isFinite(determinant) || Math.abs(determinant) < 1.0E-8F) return Optional.empty();
         Vec3 position = camera.getPosition();
@@ -342,8 +581,10 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
                 Math.floor(position.y / 256.0) * 256.0, Math.floor(position.z / 256.0) * 256.0);
         Matrix4f inverse = new Matrix4f(projection).invert();
         if (!finite(inverse)) return Optional.empty();
+        float[] relativeCamera = cameraWorld.relativeTo(origin);
+        Matrix4f view = new Matrix4f(cameraView).translate(-relativeCamera[0], -relativeCamera[1], -relativeCamera[2]);
         return Optional.of(new FrameSnapshot(frame, worldEpoch, environment.dimension(), origin, cameraWorld,
-                matrix(new Matrix4f()), matrix(projection), matrix(inverse), matrix(projection),
+                matrix(view), matrix(projection), matrix(inverse), matrix(projection),
                 width, height, (environment.gameTime() + partialTick) / 20.0));
     }
 
@@ -397,12 +638,17 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         activeFrame = null;
         parameters = null;
         environment = null;
+        volumeTarget = null;
+        bloomTarget = null;
+        shadowMaps = List.of();
+        towardsSun = null;
         nativeTarget = null;
     }
 
     private void fail(Exception renderFailure) {
         failure = renderFailure.getMessage() == null ? renderFailure.getClass().getSimpleName() : renderFailure.getMessage();
         frames.invalidate(TemporalHistory.Reason.PIPELINE_CHANGE);
+        resetExposure();
         if (!loggedFailure) {
             LOGGER.error("Taste renderer restored native ownership after a frame failure", renderFailure);
             loggedFailure = true;
@@ -416,6 +662,11 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         if (targets != null) { targets.close(); targets = null; }
         if (sceneShader != null) { sceneShader.close(); sceneShader = null; }
         if (finalShader != null) { finalShader.close(); finalShader = null; }
+        if (bloomShader != null) { bloomShader.close(); bloomShader = null; }
+        if (exposureShader != null) { exposureShader.close(); exposureShader = null; }
+        resetExposure();
+        allocatedBloomLevels = 0;
+        shadows.close();
         allocations.clear();
         frames.clear();
         materialRulesLoaded = false;

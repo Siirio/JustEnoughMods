@@ -17,7 +17,7 @@ abstract class LevelRendererFrameMixin {
     @Inject(method = "renderLevel", at = @At("HEAD"))
     private void taste$beginWorld(PoseStack poses, float partialTick, long finishTimeNano, boolean drawBlockOutline,
             Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f projection, CallbackInfo callback) {
-        RenderHooks.beginWorld(camera, projection, partialTick);
+        RenderHooks.beginWorld(camera, poses.last().pose(), projection, partialTick);
     }
 
     @Inject(method = "renderLevel", at = @At("RETURN"))
