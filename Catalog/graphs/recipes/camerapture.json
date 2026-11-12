@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "9ccedf7aa1d8c5e7851c46869798772f9aa88f81",
+  "generation": {
+    "generated_utc": "2026-11-12T16:11:56.319318+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "camerapture",
+    "name": "Camerapture",
+    "version": "1.10.12"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "camerapture:album",
+      "mod_id": "camerapture",
+      "mod_name": "Camerapture",
+      "mod_version": "1.10.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:paper",
+        "minecraft:writable_book"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "camerapture:album"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Camerapture-1.10.12+mc1.20.1-forge.jar:data/camerapture/recipes/album.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "camerapture:album_cloning",
+      "mod_id": "camerapture",
+      "mod_name": "Camerapture",
+      "mod_version": "1.10.12",
+      "recipe_type": "camerapture:album_cloning",
+      "machine_id": "camerapture:album_cloning",
+      "ingredient_groups": [
+        "camerapture:album_cloning"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Camerapture-1.10.12+mc1.20.1-forge.jar:data/camerapture/recipes/album_cloning.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "camerapture:camera",
+      "mod_id": "camerapture",
+      "mod_name": "Camerapture",
+      "mod_version": "1.10.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane",
+        "minecraft:iron_ingot",
+        "minecraft:redstone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "camerapture:camera"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Camerapture-1.10.12+mc1.20.1-forge.jar:data/camerapture/recipes/camera.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "camerapture:picture_cloning",
+      "mod_id": "camerapture",
+      "mod_name": "Camerapture",
+      "mod_version": "1.10.12",
+      "recipe_type": "camerapture:picture_cloning",
+      "machine_id": "camerapture:picture_cloning",
+      "ingredient_groups": [
+        "camerapture:picture_cloning"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Camerapture-1.10.12+mc1.20.1-forge.jar:data/camerapture/recipes/picture_cloning.json"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,20 @@
+## 2026-11-12 - Replace the Major Update 4 camera, mineshaft and royal-mob stack
+
+- User requested Camerapture, Royal Variations, Epic Fight Extra, Fog, Better Clouds and Hopo Better Mineshafts in Test JEM. The user also requested removal of Immersive Paintings, Exposure, Exposure Polaroid, the Exposure bridge, the custom Unofficial Offgrid addon and any competing mineshaft overhaul
+- Replaced Exposure and Immersive Paintings with Camerapture 1.10.12. Removed all four camera and painting artifacts, their managed configs, localization and copied native advancement data
+- Replaced Moog's Mineshafts Reimagined 1.0.2 with Hopo Better Mineshaft 1.2.2d. Other Moog structure mods remain because they do not overhaul mineshafts
+- Kept the original Offgrid 1.0.4, Underlay 1.0.5, Inventory Tabs 0.10.1 and Swinging Signs 1.0.1 artifacts. Removed the custom Unofficial Offgrid artifact and marked its module retired
+- Added Epic Fight Extra 1.2.1 to both logical sides after verifying its Epic Fight 20.14+ dependency against the installed Epic Fight 20.14.17. Added Fog 1.5.3 and Better Clouds 1.3.37 beta to the client only with their already installed dependencies
+- Bug / Both Sided / Enhanced AI Leaders were enabled with a five-percent chance and native bonus stats that multiply base health to four times normal and add 15 armor, which created the reported high-health royal mobs / in testing after disabling Enhanced AI Leaders
+- Five Whys: mobs had anomalous health because Enhanced AI applied leader bonus stats, it applied those stats because Leaders were enabled, Leaders were mistaken for World Tier scaling because both affect hostile mobs, the pack did not separate named variants from ordinary tier scaling, and the previous configuration retained Enhanced AI's default leader chance
+- Ordinary JEM World Tier hostile scaling remains unchanged. It continues to increase ordinary hostile health and damage by 10 percent at Tier 3, 15 percent at Tier 4 and 20 percent at Tier 5
+- Added Royal Variations 2.0.5 to both logical sides. A server-owned KubeJS adapter reads the canonical World Tier API and removes its four royal mob variants below Tier 3. Native Royal Variations spawn weights apply from Tier 3
+- Added Locator Bar 1.2.2 to both logical sides after the user's follow-up. It shows friend player markers on the locator HUD and offers the classic layout near the experience bar
+- Rebuilt and validated the full Registry Atlas. The local dedicated server loaded 337 mods, reached `Done (4.226s)` and loaded all six KubeJS server scripts with zero errors or warnings
+- Native AutoModpack published generation 152 with content token `933d264392e86508b8d4b2b1902aa5106d68e7e9` and manifest SHA-1 `8d2a7dc45e18e4854a1dba5b52bb369399ccee42`. Applied the reviewed `+8 ~2 -23` generation to the closed `Test JustEnoughMods` profile, verified all 336 managed JARs and confirmed no pending transaction
+- The local dedicated server remains running after publication. Minecraft client launch and player acceptance were not performed
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Minecraft client launch and player acceptance remain pending
+
 ## 2026-11-12 - Add Exposure Polaroid and retire custom simplification
 
 - User requested replacement of Exposure and JEM's Exposure simplification with Exposure Polaroid in Major Update 4, then confirmed that the Immersive Paintings Exposure bridge can remain

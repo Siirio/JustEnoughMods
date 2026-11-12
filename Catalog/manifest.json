@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "9ffcabe82b25f610c064048f62e05952cf9bc769",
-  "generated_utc": "2026-11-12T10:20:39.913986+00:00",
+  "snapshot_sha": "9ccedf7aa1d8c5e7851c46869798772f9aa88f81",
+  "generated_utc": "2026-11-12T16:11:56.319318+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -984,6 +984,135 @@
       "nested_dependencies": []
     },
     {
+      "filename": "better-clouds-1.3.37-beta+1.20.1-forge.rev.e63efe2.jar",
+      "sha256": "985b0e93156819847d3e825fa19f4267b8f2aa0efafeeb2d9c681bf52d040ca3",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "betterclouds",
+          "name": "Better Clouds",
+          "version": "1.3.37-beta+1.20.1-forge.rev.e63efe2",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "betterclouds"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\better-clouds-1.3.37-beta+1.20.1-forge.rev.e63efe2.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/api-5.0.0.jar",
+          "sha256": "4d0ef27b7a2889a7444e734a00d5aad690944967231571ac497cc5aecbb3894b",
+          "identifier": {
+            "group": "gs.mclo",
+            "artifact": "api"
+          },
+          "version": {
+            "range": "[5.0.0,)",
+            "artifactVersion": "5.0.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client"
+          ],
+          "nested_dependencies": []
+        },
+        {
+          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
+          "sha256": "23210ec6c25e445823f75fac4bb8209cdfcfb43aaa3ffa5fb659451063604d2b",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        },
+        {
+          "path": "META-INF/jars/mixinsquared-forge-0.2.0.jar",
+          "sha256": "332c16da4ea88be4af4b6a3d6d9ef7e9ea934d10ad037107d0e67dd2be89aa84",
+          "identifier": {
+            "group": "com.github.bawnorton.mixinsquared",
+            "artifact": "mixinsquared-forge"
+          },
+          "version": {
+            "range": "[0.2.0,)",
+            "artifactVersion": "0.2.0"
+          },
+          "mods": [
+            {
+              "id": "mixinsquared",
+              "name": "MixinSquared",
+              "version": "0.2.0",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinSquared-0.2.0.jar",
+              "sha256": "853a3008cc1839163e8b713be6b6ff6a582ba0e9720db2b4ca0e2c00e26619b8",
+              "identifier": {
+                "group": "com.github.Bawnorton",
+                "artifact": "MixinSquared"
+              },
+              "version": {
+                "range": "[0.2.0,)",
+                "artifactVersion": "0.2.0"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "filename": "BetterAdvancements-Forge-1.20.1-0.6.0.73.jar",
       "sha256": "dd7f9948b2e385e0507c6ef2fd8649959da71c006ca62389cd98ccb70e597d57",
       "sides": [
@@ -1227,6 +1356,182 @@
       ],
       "source_path": "Client\\ManagedPack\\mods\\CameraOverhaul-v2.1.1-forge%2Bmc%5B1.20-1.20.5%5D.jar",
       "nested_dependencies": []
+    },
+    {
+      "filename": "Camerapture-1.10.12+mc1.20.1-forge.jar",
+      "sha256": "d4e35231c00608f75a8155120d7e0457fae7181e2cb796f5844e550e921b04e2",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "camerapture",
+          "name": "Camerapture",
+          "version": "1.10.12",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "camerapture",
+        "minecraft"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\Camerapture-1.10.12+mc1.20.1-forge.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
+          "sha256": "309ec3cc2e69da6a4bebcfb179fb9384a06cf38d24a111fd30b261b074479fd0",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        },
+        {
+          "path": "META-INF/jars/webp4j-1.3.0.jar",
+          "sha256": "bf86bcfa2c99a86afe6f496bde366df98550d5216630d047c2d9d67599ee57c8",
+          "identifier": {
+            "group": "dev.matrixlab",
+            "artifact": "webp4j"
+          },
+          "version": {
+            "range": "[1.3.0,)",
+            "artifactVersion": "1.3.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
+    },
+    {
+      "filename": "Camerapture-1.10.12+mc1.20.1-forge.jar",
+      "sha256": "d4e35231c00608f75a8155120d7e0457fae7181e2cb796f5844e550e921b04e2",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "camerapture",
+          "name": "Camerapture",
+          "version": "1.10.12",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "camerapture",
+        "minecraft"
+      ],
+      "source_path": "Server\\mods\\Camerapture-1.10.12+mc1.20.1-forge.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
+          "sha256": "309ec3cc2e69da6a4bebcfb179fb9384a06cf38d24a111fd30b261b074479fd0",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        },
+        {
+          "path": "META-INF/jars/webp4j-1.3.0.jar",
+          "sha256": "bf86bcfa2c99a86afe6f496bde366df98550d5216630d047c2d9d67599ee57c8",
+          "identifier": {
+            "group": "dev.matrixlab",
+            "artifact": "webp4j"
+          },
+          "version": {
+            "range": "[1.3.0,)",
+            "artifactVersion": "1.3.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
     },
     {
       "filename": "casualswing-0.1.0-1.20.1-Forge.jar",
@@ -5713,6 +6018,296 @@
       ]
     },
     {
+      "filename": "epicfight-extra-1.2.1-mc1.20.1-forge-all.jar",
+      "sha256": "1614e80c53e57747cbf09532155edc5dad01202765a0a14677a013fa01ade527",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "epicfightx",
+          "name": "Epic Fight Extra",
+          "version": "1.2.1",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "epicfight",
+        "epicfightx",
+        "minecraft"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\epicfight-extra-1.2.1-mc1.20.1-forge-all.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/epic-fight-invincible-lib-20.14.7.5-mc1.20.1-forge.jar",
+          "sha256": "488c095775427c25fb2920fe90635ea7347a841699e93ac1b379cad918a0fec7",
+          "identifier": {
+            "group": "maven.modrinth",
+            "artifact": "epic-fight-invincible-lib"
+          },
+          "version": {
+            "range": "[20.14.7.5-mc1.20.1-forge,)",
+            "artifactVersion": "20.14.7.5-mc1.20.1-forge"
+          },
+          "mods": [
+            {
+              "id": "invincible",
+              "name": "Epic Fight - Invincible",
+              "version": "20.14.7.5",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [
+            "controlify",
+            "invincible"
+          ],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        },
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
+          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        },
+        {
+          "path": "META-INF/jarjar/mixinsquared-forge-0.2.0-beta.6.jar",
+          "sha256": "8970946ec29a6da480404b5df35cff717518c8de818c451087e0a312ad1a12e5",
+          "identifier": {
+            "group": "com.bawnorton.mixinsquared",
+            "artifact": "mixinsquared-forge"
+          },
+          "version": {
+            "range": "[0.2.0-beta.6,)",
+            "artifactVersion": "0.2.0-beta.6"
+          },
+          "mods": [
+            {
+              "id": "mixinsquared",
+              "name": "MixinSquared",
+              "version": "0.2.0-beta.6",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinSquared-0.2.0-beta.6.jar",
+              "sha256": "0c2430d46f90a77a8f56f44fd062c2e89eae8ef79a98e53f8117da1aaa2249c8",
+              "identifier": {
+                "group": "com.github.Bawnorton",
+                "artifact": "MixinSquared"
+              },
+              "version": {
+                "range": "[0.2.0-beta.6,)",
+                "artifactVersion": "0.2.0-beta.6"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "epicfight-extra-1.2.1-mc1.20.1-forge-all.jar",
+      "sha256": "1614e80c53e57747cbf09532155edc5dad01202765a0a14677a013fa01ade527",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "epicfightx",
+          "name": "Epic Fight Extra",
+          "version": "1.2.1",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "epicfight",
+        "epicfightx",
+        "minecraft"
+      ],
+      "source_path": "Server\\mods\\epicfight-extra-1.2.1-mc1.20.1-forge-all.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/epic-fight-invincible-lib-20.14.7.5-mc1.20.1-forge.jar",
+          "sha256": "488c095775427c25fb2920fe90635ea7347a841699e93ac1b379cad918a0fec7",
+          "identifier": {
+            "group": "maven.modrinth",
+            "artifact": "epic-fight-invincible-lib"
+          },
+          "version": {
+            "range": "[20.14.7.5-mc1.20.1-forge,)",
+            "artifactVersion": "20.14.7.5-mc1.20.1-forge"
+          },
+          "mods": [
+            {
+              "id": "invincible",
+              "name": "Epic Fight - Invincible",
+              "version": "20.14.7.5",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [
+            "controlify",
+            "invincible"
+          ],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        },
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
+          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        },
+        {
+          "path": "META-INF/jarjar/mixinsquared-forge-0.2.0-beta.6.jar",
+          "sha256": "8970946ec29a6da480404b5df35cff717518c8de818c451087e0a312ad1a12e5",
+          "identifier": {
+            "group": "com.bawnorton.mixinsquared",
+            "artifact": "mixinsquared-forge"
+          },
+          "version": {
+            "range": "[0.2.0-beta.6,)",
+            "artifactVersion": "0.2.0-beta.6"
+          },
+          "mods": [
+            {
+              "id": "mixinsquared",
+              "name": "MixinSquared",
+              "version": "0.2.0-beta.6",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinSquared-0.2.0-beta.6.jar",
+              "sha256": "0c2430d46f90a77a8f56f44fd062c2e89eae8ef79a98e53f8117da1aaa2249c8",
+              "identifier": {
+                "group": "com.github.Bawnorton",
+                "artifact": "MixinSquared"
+              },
+              "version": {
+                "range": "[0.2.0-beta.6,)",
+                "artifactVersion": "0.2.0-beta.6"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "filename": "EpicFight_X_L_Enders_Cataclysm-1.0.jar",
       "sha256": "4c9d2b2f21f9ca2263d30fe160e9841b3a15fcac2ccbc219a05e626d91568925",
       "sides": [
@@ -5753,284 +6348,6 @@
       ],
       "source_path": "Server\\mods\\EpicFight_X_L_Enders_Cataclysm-1.0.jar",
       "nested_dependencies": []
-    },
-    {
-      "filename": "exposure-forge-1.20.1-1.9.21.jar",
-      "sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "exposure",
-          "name": "Exposure",
-          "version": "1.9.21",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "create",
-        "exposure",
-        "forge",
-        "minecraft"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\exposure-forge-1.20.1-1.9.21.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
-          "sha256": "1c0161c1cf4262af8be41f0f4fcb8531847450f10e82d28bfd791ef49e553423",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "filename": "exposure-forge-1.20.1-1.9.21.jar",
-      "sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "exposure",
-          "name": "Exposure",
-          "version": "1.9.21",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "create",
-        "exposure",
-        "forge",
-        "minecraft"
-      ],
-      "source_path": "Server\\mods\\exposure-forge-1.20.1-1.9.21.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
-          "sha256": "1c0161c1cf4262af8be41f0f4fcb8531847450f10e82d28bfd791ef49e553423",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "filename": "exposure_polaroid-forge-1.20.1-1.1.4.jar",
-      "sha256": "fe728329dfb79a9e8c7a2196e2d3d9fa1b527cfa2a2273df8e6a18a316bfe760",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "exposure_polaroid",
-          "name": "Exposure Polaroid",
-          "version": "1.1.4",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "exposure_polaroid"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\exposure_polaroid-forge-1.20.1-1.1.4.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
-          "sha256": "7c2bb067e2cb788db5e0e2d0934066faccd53e7676c84238386ef612931b1d20",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "filename": "exposure_polaroid-forge-1.20.1-1.1.4.jar",
-      "sha256": "fe728329dfb79a9e8c7a2196e2d3d9fa1b527cfa2a2273df8e6a18a316bfe760",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "exposure_polaroid",
-          "name": "Exposure Polaroid",
-          "version": "1.1.4",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "exposure_polaroid"
-      ],
-      "source_path": "Server\\mods\\exposure_polaroid-forge-1.20.1-1.1.4.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
-          "sha256": "7c2bb067e2cb788db5e0e2d0934066faccd53e7676c84238386ef612931b1d20",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
     },
     {
       "filename": "fairylights-7.0.0-1.20.1.jar",
@@ -6799,6 +7116,101 @@
               "sides": [
                 "client",
                 "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "Fog-forge-1.5.3-1.20.1.jar",
+      "sha256": "e6945f170729829b42ea2716e25db16f5251ffa91dd834b94d069792f79ebf7b",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "fog",
+          "name": "Fog",
+          "version": "1.5.3-1.20.1",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "c",
+        "fog",
+        "minecraft"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\Fog-forge-1.5.3-1.20.1.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/architectury-forge-9.2.14.jar",
+          "sha256": "ea4065c35c49748bf83bcdd836ed595d414ffda5e775797f0009c9fbe5ffb6b7",
+          "identifier": {
+            "group": "dev.architectury",
+            "artifact": "architectury-forge"
+          },
+          "version": {
+            "range": "[9.2.14,)",
+            "artifactVersion": "9.2.14"
+          },
+          "mods": [
+            {
+              "id": "architectury",
+              "name": "Architectury",
+              "version": "9.2.14",
+              "display_test": "unknown"
+            }
+          ],
+          "namespaces": [
+            "architectury"
+          ],
+          "sides": [
+            "client"
+          ],
+          "nested_dependencies": []
+        },
+        {
+          "path": "META-INF/jars/mixinextras-forge-0.4.0.jar",
+          "sha256": "bb765c8f0b2057a7c2353da649fe1840937e10b841975bc23631e8a197dfeb26",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.0,)",
+            "artifactVersion": "0.4.0"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.0",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.0.jar",
+              "sha256": "2df0ec9169bd82f698ffb10e9c551af93665a89a750fd54debabe8bc397834ea",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.0,)",
+                "artifactVersion": "0.4.0"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client"
               ],
               "nested_dependencies": []
             }
@@ -8209,6 +8621,52 @@
       "nested_dependencies": []
     },
     {
+      "filename": "HopoBetterMineshaft-[1.20.1-1.20.4]-1.2.2d.jar",
+      "sha256": "65dfb8dadcbfadc6bac986e2cb391741b0b559569b3c617bd8cd69dc276646f4",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "hopo",
+          "name": "HopoBetterMineshaft",
+          "version": "1.2.2",
+          "display_test": "IGNORE_SERVER_VERSION"
+        }
+      ],
+      "namespaces": [
+        "hopo",
+        "minecraft",
+        "zhopo"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\HopoBetterMineshaft-[1.20.1-1.20.4]-1.2.2d.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "HopoBetterMineshaft-[1.20.1-1.20.4]-1.2.2d.jar",
+      "sha256": "65dfb8dadcbfadc6bac986e2cb391741b0b559569b3c617bd8cd69dc276646f4",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "hopo",
+          "name": "HopoBetterMineshaft",
+          "version": "1.2.2",
+          "display_test": "IGNORE_SERVER_VERSION"
+        }
+      ],
+      "namespaces": [
+        "hopo",
+        "minecraft",
+        "zhopo"
+      ],
+      "source_path": "Server\\mods\\HopoBetterMineshaft-[1.20.1-1.20.4]-1.2.2d.jar",
+      "nested_dependencies": []
+    },
+    {
       "filename": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "sides": [
@@ -8467,48 +8925,6 @@
         "immersive_melodies"
       ],
       "source_path": "Server\\mods\\immersive_melodies-0.8.0%2B1.20.1-forge.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "immersive_paintings-0.6.13+1.20.1-forge.jar",
-      "sha256": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "immersive_paintings",
-          "name": "Immersive Paintings",
-          "version": "0.6.13+1.20.1",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "immersive_paintings"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\immersive_paintings-0.6.13+1.20.1-forge.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "immersive_paintings-0.6.13+1.20.1-forge.jar",
-      "sha256": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "immersive_paintings",
-          "name": "Immersive Paintings",
-          "version": "0.6.13+1.20.1",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "immersive_paintings"
-      ],
-      "source_path": "Server\\mods\\immersive_paintings-0.6.13+1.20.1-forge.jar",
       "nested_dependencies": []
     },
     {
@@ -8840,27 +9256,6 @@
           ]
         }
       ]
-    },
-    {
-      "filename": "immersivepaintings-exposure-1.0.0.jar",
-      "sha256": "12828b32b3cba13924be661bdbbcd15aad6926d448210193e6851285f730157f",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "immersivepaintings_exposure",
-          "name": "Immersive Paintings × Exposure",
-          "version": "1.0.0",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "immersivepaintings_exposure"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\immersivepaintings-exposure-1.0.0.jar",
-      "nested_dependencies": []
     },
     {
       "filename": "in-chat-ftb-1.0.0.jar",
@@ -12205,6 +12600,48 @@
       "nested_dependencies": []
     },
     {
+      "filename": "LocatorBar-forge-1.2.2+1.20.1.jar",
+      "sha256": "efb3b503760a13b8daf53360221b3b8adb6b4e7f5a9cd43cbd0539c13e3e2125",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "locatorbar",
+          "name": "Locator Bar",
+          "version": "1.2.2",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "locatorbar"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\LocatorBar-forge-1.2.2+1.20.1.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "LocatorBar-forge-1.2.2+1.20.1.jar",
+      "sha256": "efb3b503760a13b8daf53360221b3b8adb6b4e7f5a9cd43cbd0539c13e3e2125",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "locatorbar",
+          "name": "Locator Bar",
+          "version": "1.2.2",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "locatorbar"
+      ],
+      "source_path": "Server\\mods\\LocatorBar-forge-1.2.2+1.20.1.jar",
+      "nested_dependencies": []
+    },
+    {
       "filename": "lodestone-1.20.1-1.6.4.1.jar",
       "sha256": "e9f8b7bc70ba99d97005f2acee2061b149785fbae3c1e37db08c79197bcc7c2d",
       "sides": [
@@ -13110,48 +13547,6 @@
           ]
         }
       ]
-    },
-    {
-      "filename": "MoogsMineshaftsReimagined-1.20-1.0.2.jar",
-      "sha256": "02ac7c46666fcebf23cbd60569aa3bd84f1524605a24b612a4448ef1a21e1b4a",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "mmr",
-          "name": "MoogsMineshaftsReimagined",
-          "version": "1.0.2",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "mmr"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\MoogsMineshaftsReimagined-1.20-1.0.2.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "MoogsMineshaftsReimagined-1.20-1.0.2.jar",
-      "sha256": "02ac7c46666fcebf23cbd60569aa3bd84f1524605a24b612a4448ef1a21e1b4a",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "mmr",
-          "name": "MoogsMineshaftsReimagined",
-          "version": "1.0.2",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "mmr"
-      ],
-      "source_path": "Server\\mods\\MoogsMineshaftsReimagined-1.20-1.0.2.jar",
-      "nested_dependencies": []
     },
     {
       "filename": "MoogsNetherStructures-1.20-3.0.0.jar",
@@ -16670,6 +17065,56 @@
         "rottencreatures"
       ],
       "source_path": "Server\\mods\\rottencreatures-forge-1.20.1-1.1.0.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "royal-variations-[Forge]_1.20.1_2.0.5.jar",
+      "sha256": "0d4391b2ddeb16b87df098a4d50c6224293a7bc44fe1b406a90e0f2aec5f06e7",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "royalvariations",
+          "name": "Royal Variations",
+          "version": "${file.jarVersion}",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "curios",
+        "forge",
+        "minecraft",
+        "randomium",
+        "royalvariations"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\royal-variations-[Forge]_1.20.1_2.0.5.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "royal-variations-[Forge]_1.20.1_2.0.5.jar",
+      "sha256": "0d4391b2ddeb16b87df098a4d50c6224293a7bc44fe1b406a90e0f2aec5f06e7",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "royalvariations",
+          "name": "Royal Variations",
+          "version": "${file.jarVersion}",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "curios",
+        "forge",
+        "minecraft",
+        "randomium",
+        "royalvariations"
+      ],
+      "source_path": "Server\\mods\\royal-variations-[Forge]_1.20.1_2.0.5.jar",
       "nested_dependencies": []
     },
     {
@@ -23395,48 +23840,6 @@
         "unified-xaero-worldmap"
       ],
       "source_path": "Server\\mods\\unified-xaero-worldmap-2.0.1+1.20.1-forge.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "unofficial_offgrid-1.0.0.jar",
-      "sha256": "c437a21082b1699371e0a080650b32bec5e8ec37c860728a7ed065b244a7c264",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "unofficial_offgrid",
-          "name": "Unofficial Offgrid",
-          "version": "1.0.0",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "unofficial_offgrid"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\unofficial_offgrid-1.0.0.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "unofficial_offgrid-1.0.0.jar",
-      "sha256": "c437a21082b1699371e0a080650b32bec5e8ec37c860728a7ed065b244a7c264",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "unofficial_offgrid",
-          "name": "Unofficial Offgrid",
-          "version": "1.0.0",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "unofficial_offgrid"
-      ],
-      "source_path": "Server\\mods\\unofficial_offgrid-1.0.0.jar",
       "nested_dependencies": []
     },
     {

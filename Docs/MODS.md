@@ -30,12 +30,14 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Balm | `7.3.42` | Client + server |  |
 | Barnyard Buddies | `0.6..4` | Client + server |  |
 | Better Advancements | `0.6.0.73` | Client |  |
+| Better Clouds | `1.3.37-beta+1.20.1-forge.rev.e63efe2` | Client | Major Update 4 cloud renderer |
 | BetterF3 | `7.0.2` | Client |  |
 | Blast From The Past | `1.0.3` | Client + server |  |
 | Blueprint | `7.1.5` | Client + server |  |
 | Bosses'Rise | `2.1.2` | Client + server |  |
 | Building But Better | `2.0pre4` | Client + server |  |
 | CameraOverhaul | `2.1.1-forge+mc.1.20-1.20.5` | Client |  |
+| Camerapture | `1.10.12` | Client + server | Major Update 4 camera and picture owner |
 | Carry On | `2.1.2.7` | Client + server |  |
 | Casual Swing | `0.1.0-1.20.1-Forge` | Client + server |  |
 | cataclysm | `3.31` | Client + server |  |
@@ -95,8 +97,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Epic Fight Patch | `1.0.0` | Client + server |  |
 | EpicFight Nightfall | `3.4.1` | Server |  |
 | EpicFight Nightfall | `3.4.1` | Client |  |
-| Exposure | `1.9.21` | Client + server | Required runtime dependency for Exposure Polaroid |
-| Exposure Polaroid | `1.1.4` | Client + server | Major Update 4 instant-camera workflow |
+| Epic Fight Extra | `1.2.1` | Client + server | Major Update 4 Epic Fight extension |
 | Fairy Lights | `7.0.0` | Client + server |  |
 | Fancy World Animations | `1.2.31` | Server |  |
 | Fancy World Animations | `1.2.31` | Client |  |
@@ -140,8 +141,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Immersive Lanterns | `1.0.6` | Client + server |  |
 | Immersive Melodies | `0.8.0+1.20.1` | Server |  |
 | Immersive Melodies | `0.8.0+1.20.1` | Client |  |
-| Immersive Paintings | `0.6.13+1.20.1` | Client + server | Major Update 4 |
-| Immersive Paintings × Exposure | `1.0.0` | Client | Major Update 4 compatibility |
 | Immersive Weathering | `1.20.1-2.0.5` | Client + server |  |
 | incision | `1.0.9` | Client + server |  |
 | InControl | `1.20-9.5.0` | Client + server |  |
@@ -191,6 +190,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Lodestone | `1.20.1-1.6.4.1` | Client + server |  |
 | Loot Journal | `6.2.1` | Client + server |  |
 | Luki's Grand Capitals | `1.1.3` | Client + server | Major Update 4 vanilla village owner |
+| Locator Bar | `1.2.2` | Client + server | Major Update 4 friend locator above the hotbar |
 | Luki's Woodland Mansions | `1-v.1.0` | Client + server | Major Update 4 mansion split from Grand Capitals |
 | Luminous Beasts | `1.2.7` | Server |  |
 | Luminous Beasts | `1.2.7` | Client |  |
@@ -210,7 +210,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | ModernFix | `5.27.77+mc1.20.1` | Client |  |
 | Moog's Structure Lib | `3.1.2` | Client + server |  |
 | Moog's Soaring Structures | `2.2.0` | Client + server | Major Update 4 structure expansion |
-| MoogsMineshaftsReimagined | `1.0.2` | Client + server |  |
+| HopoBetterMineshaft | `1.2.2` | Client + server | Major Update 4 mineshaft overhaul |
 | MoogsNetherStructures | `3.0.0` | Client + server |  |
 | MoogsOceanStructures | `1.1.0` | Client + server |  |
 | MoogsTemplesReimagined | `2.0.3` | Client + server |  |
@@ -231,6 +231,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Oceanic Realms | `1.0.7` | Client + server |  |
 | Oculus | `1.8.0` | Client |  |
 | Offgrid | `1.0.4` | Client + server | Major Update 4 native multipart owner |
+| Royal Variations | `2.0.5` | Client + server | Major Update 4, enabled from World Tier 3 |
 | P1nero's Epic Cataclysm | `20.14.0.9` | Client + server |  |
 | PacketFixer | `3.3.2` | Client + server |  |
 | Paraglider | `20.1.3` | Client + server |  |
@@ -319,7 +320,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Unearthed Journey | `2.2.3` | Client + server |  |
 | Unified Xaero Worldmap | `2.0.1` | Client + server |  |
 | Underlay | `1.0.5` | Client + server | Major Update 4 |
-| Unofficial Offgrid | `1.0.0` | Client + server | Major Update 4 Forge shape-eligibility addon for Offgrid 1.0.4 |
+| Fog | `1.5.3-1.20.1` | Client | Major Update 4 fog renderer |
 | VanillaBackport | `1.1.7.10` | Client + server |  |
 | Villager Recruits Mod | `1.15.2` | Client + server |  |
 | Villager Workers Mod | `2.0.3` | Client + server |  |

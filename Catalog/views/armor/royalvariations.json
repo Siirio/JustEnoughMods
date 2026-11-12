@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "registry_type": "armor",
+  "snapshot_sha": "9ccedf7aa1d8c5e7851c46869798772f9aa88f81",
+  "generation": {
+    "generated_utc": "2026-11-12T16:11:56.319318+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "royalvariations",
+    "name": "Royal Variations",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "item_id": "royalvariations:royal_knight_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "royal-variations-[Forge]_1.20.1_2.0.5.jar",
+      "source_sha256": "0d4391b2ddeb16b87df098a4d50c6224293a7bc44fe1b406a90e0f2aec5f06e7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/royalvariations/lang/en_us.json",
+        "assets/royalvariations/lang/ru_ru.json",
+        "assets/royalvariations/models/item/royal_knight_boots.json",
+        "data/royalvariations/recipes/royal_knight_boots_smithing.json"
+      ],
+      "display_name_en_us": "Royal Knight Boots",
+      "display_name_ru_ru": "Ботинки королевского рыцаря",
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/lang/en_us.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/lang/ru_ru.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/models/item/royal_knight_boots.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_knight_boots_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "royalvariations:royal_knight_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "royal-variations-[Forge]_1.20.1_2.0.5.jar",
+      "source_sha256": "0d4391b2ddeb16b87df098a4d50c6224293a7bc44fe1b406a90e0f2aec5f06e7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/royalvariations/lang/en_us.json",
+        "assets/royalvariations/lang/ru_ru.json",
+        "assets/royalvariations/models/item/royal_knight_helmet.json",
+        "data/royalvariations/recipes/royal_knight_helmet_smithing.json"
+      ],
+      "display_name_en_us": "Royal Knight Helmet",
+      "display_name_ru_ru": "Шлем королевского рыцаря",
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/lang/en_us.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/lang/ru_ru.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/models/item/royal_knight_helmet.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_knight_helmet_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "royalvariations:royal_knight_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "royal-variations-[Forge]_1.20.1_2.0.5.jar",
+      "source_sha256": "0d4391b2ddeb16b87df098a4d50c6224293a7bc44fe1b406a90e0f2aec5f06e7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/royalvariations/lang/en_us.json",
+        "assets/royalvariations/lang/ru_ru.json",
+        "assets/royalvariations/models/item/royal_knight_leggings.json",
+        "data/royalvariations/recipes/royal_knight_leggings_smithing.json"
+      ],
+      "display_name_en_us": "Royal Knight Leggings",
+      "display_name_ru_ru": "Поножи королевского рыцаря",
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/lang/en_us.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/lang/ru_ru.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:assets/royalvariations/models/item/royal_knight_leggings.json",
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_knight_leggings_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

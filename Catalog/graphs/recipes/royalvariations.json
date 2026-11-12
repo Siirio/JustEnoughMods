@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "9ccedf7aa1d8c5e7851c46869798772f9aa88f81",
+  "generation": {
+    "generated_utc": "2026-11-12T16:11:56.319318+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "royalvariations",
+    "name": "Royal Variations",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:gold_ingot_from_blasting_royal_bone",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:blasting",
+      "machine_id": "minecraft:blasting",
+      "ingredient_groups": [
+        "minecraft:blasting",
+        "royalvariations:royal_bone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:gold_ingot"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/gold_ingot_from_blasting_royal_bone.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:gold_ingot_from_smelting_royal_bone",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "royalvariations:royal_bone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:gold_ingot"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/gold_ingot_from_smelting_royal_bone.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_arrow",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:arrow",
+        "minecraft:crafting_shaped",
+        "royalvariations:royal_bone_meal"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_arrow"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_arrow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_arrow2",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:nuggets/gold",
+        "minecraft:arrow",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_arrow"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_arrow2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_bomb",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/gold",
+        "forge:nuggets/gold",
+        "minecraft:crafting_shaped",
+        "royalvariations:royal_gunpowder"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_bomb"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_bomb.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_bone_meal",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "royalvariations:royal_bone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_bone_meal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_bone_meal.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_bow",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:string",
+        "royalvariations:royal_bone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_bow"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_bow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_knight_boots_smithing",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:chainmail_boots",
+        "minecraft:smithing_transform",
+        "royalvariations:royal_armor_fragments",
+        "royalvariations:royal_upgrade_smithing_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_knight_boots"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_knight_boots_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_knight_cuirass_smithing",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:chainmail_chestplate",
+        "minecraft:smithing_transform",
+        "royalvariations:royal_armor_fragments",
+        "royalvariations:royal_upgrade_smithing_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_knight_cuirass"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_knight_cuirass_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_knight_helmet_smithing",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:chainmail_helmet",
+        "minecraft:smithing_transform",
+        "royalvariations:royal_armor_fragments",
+        "royalvariations:royal_upgrade_smithing_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_knight_helmet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_knight_helmet_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_knight_leggings_smithing",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:chainmail_leggings",
+        "minecraft:smithing_transform",
+        "royalvariations:royal_armor_fragments",
+        "royalvariations:royal_upgrade_smithing_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_knight_leggings"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_knight_leggings_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_telelocator",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/gold",
+        "forge:nuggets/gold",
+        "minecraft:compass",
+        "minecraft:crafting_shaped",
+        "royalvariations:royal_bone",
+        "royalvariations:royal_ender_pearl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_telelocator"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_telelocator.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_telelocator_refill",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "royalvariations:empty_royal_telelocator",
+        "royalvariations:royal_ender_pearl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_telelocator"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_telelocator_refill.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_upgrade",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/iron",
+        "minecraft:crafting_shaped",
+        "minecraft:red_wool",
+        "royalvariations:spiritual_crown"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_upgrade_smithing_template"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_upgrade.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:royal_upgrade_duplicate",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/iron",
+        "minecraft:crafting_shaped",
+        "minecraft:red_wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:royal_upgrade_smithing_template"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/royal_upgrade_duplicate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:spectral_gauntlet",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/gold",
+        "minecraft:crafting_shaped",
+        "minecraft:phantom_membrane",
+        "royalvariations:royal_ender_pearl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:spectral_gauntlet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/spectral_gauntlet.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "royalvariations:spiritual_crown",
+      "mod_id": "royalvariations",
+      "mod_name": "Royal Variations",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "royalvariations:spiritual_crown_shard"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "royalvariations:spiritual_crown"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/spiritual_crown.json"
+      ]
+    }
+  ]
+}

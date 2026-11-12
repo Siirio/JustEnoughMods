@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "9ffcabe82b25f610c064048f62e05952cf9bc769",
+  "snapshot_sha": "9ccedf7aa1d8c5e7851c46869798772f9aa88f81",
   "tags": {
     "abridged:instrument/bridge_goat_horns": [
       "minecraft:dream_goat_horn",
@@ -6490,6 +6490,11 @@
       "minecraft:small_end_islands",
       "minecraft:the_end"
     ],
+    "c:worldgen/biome/is_aquatic_icy": [
+      "minecraft:deep_frozen_ocean",
+      "minecraft:frozen_ocean",
+      "minecraft:frozen_river"
+    ],
     "c:worldgen/biome/is_badlands": [
       "#minecraft:is_badlands"
     ],
@@ -6497,13 +6502,53 @@
       "#minecraft:is_beach",
       "#natures_spirit:is_coast"
     ],
+    "c:worldgen/biome/is_birch_forest": [
+      "minecraft:birch_forest",
+      "minecraft:old_growth_birch_forest"
+    ],
+    "c:worldgen/biome/is_cave": [
+      "minecraft:deep_dark",
+      "minecraft:dripstone_caves",
+      "minecraft:lush_caves"
+    ],
+    "c:worldgen/biome/is_cold": [
+      "#c:is_cold/overworld"
+    ],
+    "c:worldgen/biome/is_cold/end": [
+      "minecraft:end_barrens",
+      "minecraft:end_highlands",
+      "minecraft:end_midlands",
+      "minecraft:small_end_islands",
+      "minecraft:the_end"
+    ],
     "c:worldgen/biome/is_cold/overworld": [
-      "#natures_spirit:is_cold"
+      "#natures_spirit:is_cold",
+      "minecraft:cold_ocean",
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_frozen_ocean",
+      "minecraft:frozen_ocean",
+      "minecraft:frozen_peaks",
+      "minecraft:frozen_river",
+      "minecraft:grove",
+      "minecraft:ice_spikes",
+      "minecraft:jagged_peaks",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:snowy_beach",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_slopes",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga"
     ],
     "c:worldgen/biome/is_deep_ocean": [
       "#minecraft:is_deep_ocean"
     ],
     "c:worldgen/biome/is_dense_vegetation/overworld": [
+      "minecraft:bamboo_jungle",
+      "minecraft:dark_forest",
+      "minecraft:jungle",
+      "minecraft:mangrove_swamp",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:old_growth_spruce_taiga",
       "natures_spirit:cedar_thicket",
       "natures_spirit:maple_woodlands",
       "natures_spirit:sugi_forest",
@@ -6513,19 +6558,51 @@
       "#natures_spirit:is_desert",
       "minecraft:desert"
     ],
+    "c:worldgen/biome/is_dry": [
+      "#c:is_dry/end",
+      "#c:is_dry/nether",
+      "#c:is_dry/overworld"
+    ],
+    "c:worldgen/biome/is_dry/end": [
+      "minecraft:end_barrens",
+      "minecraft:end_highlands",
+      "minecraft:end_midlands",
+      "minecraft:small_end_islands",
+      "minecraft:the_end"
+    ],
+    "c:worldgen/biome/is_dry/nether": [
+      "minecraft:basalt_deltas",
+      "minecraft:crimson_forest",
+      "minecraft:nether_wastes",
+      "minecraft:soul_sand_valley",
+      "minecraft:warped_forest"
+    ],
     "c:worldgen/biome/is_dry/overworld": [
       "#natures_spirit:is_desert",
       "#natures_spirit:is_highlands",
       "#natures_spirit:is_scorched",
       "#natures_spirit:is_xeric",
+      "minecraft:badlands",
+      "minecraft:desert",
+      "minecraft:eroded_badlands",
+      "minecraft:savanna",
+      "minecraft:savanna_plateau",
+      "minecraft:windswept_savanna",
+      "minecraft:wooded_badlands",
       "natures_spirit:oak_savanna",
       "natures_spirit:wooded_drylands"
     ],
     "c:worldgen/biome/is_floral": [
-      "#natures_spirit:is_flowering"
+      "#natures_spirit:is_flowering",
+      "minecraft:cherry_grove",
+      "minecraft:meadow",
+      "minecraft:sunflower_plains"
     ],
     "c:worldgen/biome/is_floral/overworld": [
       "#natures_spirit:is_flowering"
+    ],
+    "c:worldgen/biome/is_flower_forest": [
+      "minecraft:flower_forest"
     ],
     "c:worldgen/biome/is_forest": [
       "minecraft:birch_forest",
@@ -6539,8 +6616,33 @@
       "minecraft:windswept_gravelly_hills",
       "minecraft:windswept_hills"
     ],
+    "c:worldgen/biome/is_hot": [
+      "#c:is_hot/nether",
+      "#c:is_hot/overworld"
+    ],
+    "c:worldgen/biome/is_hot/nether": [
+      "minecraft:basalt_deltas",
+      "minecraft:crimson_forest",
+      "minecraft:nether_wastes",
+      "minecraft:soul_sand_valley",
+      "minecraft:warped_forest"
+    ],
     "c:worldgen/biome/is_hot/overworld": [
-      "#natures_spirit:is_hot"
+      "#natures_spirit:is_hot",
+      "minecraft:badlands",
+      "minecraft:bamboo_jungle",
+      "minecraft:desert",
+      "minecraft:eroded_badlands",
+      "minecraft:jungle",
+      "minecraft:mangrove_swamp",
+      "minecraft:savanna",
+      "minecraft:savanna_plateau",
+      "minecraft:sparse_jungle",
+      "minecraft:stony_peaks",
+      "minecraft:swamp",
+      "minecraft:warm_ocean",
+      "minecraft:windswept_savanna",
+      "minecraft:wooded_badlands"
     ],
     "c:worldgen/biome/is_icy": [
       "minecraft:frozen_peaks",
@@ -6555,15 +6657,42 @@
       "natures_spirit:sleeted_slopes",
       "natures_spirit:snowcapped_red_peaks"
     ],
+    "c:worldgen/biome/is_mountain/peak": [
+      "minecraft:frozen_peaks",
+      "minecraft:jagged_peaks",
+      "minecraft:stony_peaks"
+    ],
+    "c:worldgen/biome/is_mountain/slope": [
+      "minecraft:cherry_grove",
+      "minecraft:grove",
+      "minecraft:meadow",
+      "minecraft:snowy_slopes"
+    ],
     "c:worldgen/biome/is_mushroom": [
       "minecraft:mushroom_fields"
+    ],
+    "c:worldgen/biome/is_nether_forest": [
+      "minecraft:crimson_forest",
+      "minecraft:warped_forest"
     ],
     "c:worldgen/biome/is_ocean": [
       "#c:is_deep_ocean",
       "#c:is_shallow_ocean",
       "#minecraft:is_ocean"
     ],
+    "c:worldgen/biome/is_old_growth": [
+      "minecraft:old_growth_birch_forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga"
+    ],
+    "c:worldgen/biome/is_outer_end_island": [
+      "minecraft:end_barrens",
+      "minecraft:end_highlands",
+      "minecraft:end_midlands"
+    ],
     "c:worldgen/biome/is_plains": [
+      "minecraft:plains",
+      "minecraft:sunflower_plains",
       "natures_spirit:alpine_clearings",
       "natures_spirit:prairie",
       "natures_spirit:shrubland"
@@ -6589,16 +6718,78 @@
       "minecraft:snowy_slopes",
       "minecraft:snowy_taiga"
     ],
+    "c:worldgen/biome/is_snowy_plains": [
+      "minecraft:snowy_plains"
+    ],
     "c:worldgen/biome/is_sparse_vegetation/overworld": [
-      "#natures_spirit:is_field"
+      "#natures_spirit:is_field",
+      "minecraft:frozen_peaks",
+      "minecraft:jagged_peaks",
+      "minecraft:savanna",
+      "minecraft:savanna_plateau",
+      "minecraft:snowy_slopes",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:windswept_hills",
+      "minecraft:windswept_savanna",
+      "minecraft:wooded_badlands"
+    ],
+    "c:worldgen/biome/is_stony_shores": [
+      "minecraft:stony_shore"
     ],
     "c:worldgen/biome/is_swamp": [
       "#natures_spirit:is_wetland",
       "minecraft:mangrove_swamp",
       "minecraft:swamp"
     ],
+    "c:worldgen/biome/is_temperate": [
+      "#c:is_temperate/overworld"
+    ],
+    "c:worldgen/biome/is_temperate/overworld": [
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:meadow",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:stony_shore",
+      "minecraft:sunflower_plains",
+      "minecraft:swamp",
+      "minecraft:windswept_forest"
+    ],
+    "c:worldgen/biome/is_tree/coniferous": [
+      "minecraft:grove"
+    ],
+    "c:worldgen/biome/is_tree/deciduous": [
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:flower_forest",
+      "minecraft:forest",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:windswept_forest"
+    ],
+    "c:worldgen/biome/is_void": [
+      "minecraft:the_void"
+    ],
+    "c:worldgen/biome/is_wet": [
+      "#c:is_wet/overworld"
+    ],
     "c:worldgen/biome/is_wet/overworld": [
-      "#natures_spirit:is_wetland"
+      "#natures_spirit:is_wetland",
+      "minecraft:bamboo_jungle",
+      "minecraft:beach",
+      "minecraft:dripstone_caves",
+      "minecraft:jungle",
+      "minecraft:lush_caves",
+      "minecraft:mangrove_swamp",
+      "minecraft:sparse_jungle",
+      "minecraft:swamp"
+    ],
+    "c:worldgen/biome/is_windswept": [
+      "minecraft:windswept_forest",
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:windswept_hills",
+      "minecraft:windswept_savanna"
     ],
     "c:worldgen/biome/jungle": [
       "terralith:amethyst_canyon",
@@ -6673,6 +6864,8 @@
       "minecraft:warped_forest"
     ],
     "c:worldgen/biome/no_default_monsters": [
+      "minecraft:deep_dark",
+      "minecraft:mushroom_fields",
       "terralith:mirage_isles"
     ],
     "c:worldgen/biome/plains": [
@@ -10604,7 +10797,8 @@
       "cataclysm:blazing_grips",
       "cataclysm:chitin_claw",
       "cataclysm:sticky_gloves",
-      "netherman:chance_totem"
+      "netherman:chance_totem",
+      "royalvariations:spectral_gauntlet"
     ],
     "curios:items/head": [
       "beachparty:beach_hat",
@@ -12023,87 +12217,6 @@
     "estrogen:entity_types/urine_giving": [
       "#icys-better-horses:breed_horses"
     ],
-    "exposure:blocks/chromatic_refractors": [
-      "minecraft:tinted_glass"
-    ],
-    "exposure:entity_types/ignores_camera": [
-      "minecraft:elder_guardian",
-      "minecraft:ender_dragon",
-      "minecraft:phantom",
-      "minecraft:warden",
-      "minecraft:wither"
-    ],
-    "exposure:items/black_and_white_film_rolls": [
-      "exposure:black_and_white_film",
-      "exposure:high_sensitivity_black_and_white_film"
-    ],
-    "exposure:items/black_printing_dyes": [
-      "minecraft:black_dye"
-    ],
-    "exposure:items/blue_filters": [
-      "minecraft:blue_stained_glass_pane"
-    ],
-    "exposure:items/color_film_rolls": [
-      "exposure:color_film",
-      "exposure:high_sensitivity_color_film"
-    ],
-    "exposure:items/cyan_printing_dyes": [
-      "minecraft:cyan_dye"
-    ],
-    "exposure:items/developed_film_rolls": [
-      "exposure:developed_black_and_white_film",
-      "exposure:developed_color_film"
-    ],
-    "exposure:items/film_rolls": [
-      "exposure:black_and_white_film",
-      "exposure:color_film",
-      "exposure:high_sensitivity_black_and_white_film",
-      "exposure:high_sensitivity_color_film"
-    ],
-    "exposure:items/filters": [
-      "exposure:interplanar_projector",
-      "minecraft:black_stained_glass_pane",
-      "minecraft:blue_stained_glass_pane",
-      "minecraft:brown_stained_glass_pane",
-      "minecraft:cyan_stained_glass_pane",
-      "minecraft:glass_pane",
-      "minecraft:gray_stained_glass_pane",
-      "minecraft:green_stained_glass_pane",
-      "minecraft:light_blue_stained_glass_pane",
-      "minecraft:light_gray_stained_glass_pane",
-      "minecraft:lime_stained_glass_pane",
-      "minecraft:magenta_stained_glass_pane",
-      "minecraft:orange_stained_glass_pane",
-      "minecraft:pink_stained_glass_pane",
-      "minecraft:purple_stained_glass_pane",
-      "minecraft:red_stained_glass_pane",
-      "minecraft:white_stained_glass_pane",
-      "minecraft:yellow_stained_glass_pane"
-    ],
-    "exposure:items/flashes": [
-      "minecraft:redstone_lamp"
-    ],
-    "exposure:items/green_filters": [
-      "minecraft:green_stained_glass_pane"
-    ],
-    "exposure:items/lenses": [
-      "minecraft:spyglass"
-    ],
-    "exposure:items/magenta_printing_dyes": [
-      "minecraft:magenta_dye"
-    ],
-    "exposure:items/photo_agers": [
-      "minecraft:brown_dye"
-    ],
-    "exposure:items/photo_papers": [
-      "minecraft:paper"
-    ],
-    "exposure:items/red_filters": [
-      "minecraft:red_stained_glass_pane"
-    ],
-    "exposure:items/yellow_printing_dyes": [
-      "minecraft:yellow_dye"
-    ],
     "fairylights:items/dyeable": [
       "#fairylights:dyeable_lights",
       "#fairylights:pennants",
@@ -12994,7 +13107,8 @@
       "block_factorys_bosses:knight_boots",
       "create:cardboard_boots",
       "create:copper_diving_boots",
-      "create:netherite_diving_boots"
+      "create:netherite_diving_boots",
+      "royalvariations:royal_knight_boots"
     ],
     "forge:items/armors/chestplates": [
       "alexsmobs:crocodile_chestplate",
@@ -13004,7 +13118,8 @@
       "block_factorys_bosses:knight_chestplate",
       "create:cardboard_chestplate",
       "create:copper_backtank",
-      "create:netherite_backtank"
+      "create:netherite_backtank",
+      "royalvariations:royal_knight_cuirass"
     ],
     "forge:items/armors/helmets": [
       "alexsmobs:fedora",
@@ -13017,14 +13132,16 @@
       "block_factorys_bosses:knight_helmet",
       "create:cardboard_helmet",
       "create:copper_diving_helmet",
-      "create:netherite_diving_helmet"
+      "create:netherite_diving_helmet",
+      "royalvariations:royal_knight_helmet"
     ],
     "forge:items/armors/leggings": [
       "alexsmobs:centipede_leggings",
       "alexsmobs:emu_leggings",
       "block_factorys_bosses:dragon_bones_leggings",
       "block_factorys_bosses:knight_leggings",
-      "create:cardboard_leggings"
+      "create:cardboard_leggings",
+      "royalvariations:royal_knight_leggings"
     ],
     "forge:items/axes": [
       "skarrier_mobs:invulnerite_axe",
@@ -13048,7 +13165,8 @@
     ],
     "forge:items/bones": [
       "block_factorys_bosses:dragon_bone",
-      "minecraft:bone"
+      "minecraft:bone",
+      "royalvariations:royal_bone"
     ],
     "forge:items/bookshelves": [
       "#blueprint:wooden_bookshelves"
@@ -13404,7 +13522,8 @@
       "kaleidoscope_end:void_conch"
     ],
     "forge:items/ender_pearls": [
-      "#endermanoverhaul:ender_pearls"
+      "#endermanoverhaul:ender_pearls",
+      "royalvariations:royal_ender_pearl"
     ],
     "forge:items/feathers": [
       "barnyardbuddies:silkie_feather",
@@ -13570,6 +13689,9 @@
       "vinery:taiga_grapes_red",
       "vinery:taiga_grapes_white",
       "vinery:white_grape"
+    ],
+    "forge:items/gunpowder": [
+      "royalvariations:royal_gunpowder"
     ],
     "forge:items/heart": [
       "alexsmobs:soul_heart"
@@ -13985,7 +14107,8 @@
     ],
     "forge:items/tools/bows": [
       "alexscaves:dreadbow",
-      "cataclysm:cursed_bow"
+      "cataclysm:cursed_bow",
+      "royalvariations:royal_bow"
     ],
     "forge:items/tools/fishing_rods": [
       "#tide:fishing_rods"
@@ -14015,6 +14138,7 @@
       "minecraft:netherite_sword",
       "minecraft:stone_sword",
       "minecraft:wooden_sword",
+      "royalvariations:royal_staff",
       "skarrier_mobs:behemoth_blade",
       "skarrier_mobs:wretched_claymore"
     ],
@@ -15585,6 +15709,20 @@
       "#minecraft:is_beach",
       "#minecraft:is_savanna"
     ],
+    "hopo:worldgen/structure/bettermineshafts": [
+      "hopo:mineshaft/acacia_mineshaft",
+      "hopo:mineshaft/bamboo_mineshaft",
+      "hopo:mineshaft/birch_mineshaft",
+      "hopo:mineshaft/cherry_mineshaft",
+      "hopo:mineshaft/dark_oak_mineshaft",
+      "hopo:mineshaft/deepslate_mineshaft",
+      "hopo:mineshaft/jungle_mineshaft",
+      "hopo:mineshaft/mangrove_mineshaft",
+      "hopo:mineshaft/mud_mineshaft",
+      "hopo:mineshaft/oak_mineshaft",
+      "hopo:mineshaft/spruce_mineshaft",
+      "hopo:mineshaft/stone_mineshaft"
+    ],
     "iceandfire:entity_types/blinded.json": [
       "cataclysm:ancient_remnant",
       "cataclysm:ender_guardian",
@@ -15933,24 +16071,6 @@
       "immersive_melodies:triangle",
       "immersive_melodies:trumpet",
       "immersive_melodies:vielle"
-    ],
-    "immersive_paintings:items/dye": [
-      "minecraft:black_dye",
-      "minecraft:blue_dye",
-      "minecraft:brown_dye",
-      "minecraft:cyan_dye",
-      "minecraft:gray_dye",
-      "minecraft:green_dye",
-      "minecraft:light_blue_dye",
-      "minecraft:light_gray_dye",
-      "minecraft:lime_dye",
-      "minecraft:magenta_dye",
-      "minecraft:orange_dye",
-      "minecraft:pink_dye",
-      "minecraft:purple_dye",
-      "minecraft:red_dye",
-      "minecraft:white_dye",
-      "minecraft:yellow_dye"
     ],
     "immersive_weathering:blocks/bars": [
       "immersive_weathering:exposed_iron_bars",
@@ -22200,6 +22320,7 @@
       "kaleidoscope_nether:weeping_cave_vines_plant",
       "minecraft:cave_vines",
       "minecraft:cave_vines_plant",
+      "minecraft:chain",
       "minecraft:hanging_roots",
       "minecraft:ladder",
       "minecraft:scaffolding",
@@ -24164,7 +24285,6 @@
       "dustydecorations:wooden_buoy_2",
       "dustydecorations:wooden_buoy_3",
       "dustydecorations:yellow_wool_awning",
-      "exposure:lightroom",
       "farm_and_charm:chicken_coop",
       "farm_and_charm:feeding_trough",
       "farm_and_charm:pet_bowl",
@@ -33507,6 +33627,7 @@
       "minecraft:arrow",
       "minecraft:spectral_arrow",
       "netherexp:phasmo_arrow",
+      "royalvariations:royal_arrow",
       "skarrier_mobs:void_arrow_projectile",
       "tide:star_arrow"
     ],
@@ -33807,6 +33928,7 @@
       "minecraft:stray",
       "minecraft:wither_skeleton",
       "netherexp:vessel",
+      "royalvariations:royal_skeleton",
       "spawn:barbed"
     ],
     "minecraft:entity_types/warden": [
@@ -34071,6 +34193,7 @@
       "natures_spirit:cheese_arrow",
       "netherexp:phasmo_arrow",
       "netherman:crimson_arrow",
+      "royalvariations:royal_arrow",
       "skarrier_mobs:void_arrow",
       "xtraarrows:apple_arrow",
       "xtraarrows:breeding_arrow",
@@ -34292,9 +34415,8 @@
     "minecraft:items/bookshelf_books": [
       "alexscaves:cave_book",
       "alexsmobs:animal_dictionary",
+      "camerapture:album",
       "epicfight:skillbook",
-      "exposure:album",
-      "exposure:signed_album",
       "minecraft:book",
       "minecraft:enchanted_book",
       "minecraft:knowledge_book",
@@ -34974,9 +35096,8 @@
     ],
     "minecraft:items/lectern_books": [
       "aquamirae:logbook",
+      "camerapture:album",
       "createrailwaysnavigator:navigator",
-      "exposure:album",
-      "exposure:signed_album",
       "minecraft:writable_book",
       "minecraft:written_book",
       "patchouli:guide_book",
@@ -36353,6 +36474,7 @@
       "minecraft:netherite_sword",
       "minecraft:stone_sword",
       "minecraft:wooden_sword",
+      "royalvariations:royal_staff",
       "skarrier_mobs:behemoth_blade",
       "skarrier_mobs:blitzblade",
       "skarrier_mobs:decayerite_sword",
@@ -45874,6 +45996,13 @@
       "railways:wooden_headstock_screwlink_coupler",
       "railways:wooden_headstock_split_knuckle_coupler"
     ],
+    "randomium:items/blacklist": [
+      "royalvariations:achievement_icon",
+      "royalvariations:bony_king_icon",
+      "royalvariations:explosive_king_icon",
+      "royalvariations:rotten_king_icon",
+      "royalvariations:teleporting_king_icon"
+    ],
     "ribbits:worldgen/biome/has_structure/ribbit_village": [
       "minecraft:swamp"
     ],
@@ -45934,6 +46063,23 @@
     ],
     "rottencreatures:worldgen/biomes/can_swampy_spawn_on": [
       "#forge:is_swamp"
+    ],
+    "royalvariations:worldgen/biome/mob_spawn/common_blacklist": [
+      "#forge:is_mushroom",
+      "minecraft:deep_dark"
+    ],
+    "royalvariations:worldgen/biome/mob_spawn/royal_creeper": [
+      "#minecraft:is_overworld"
+    ],
+    "royalvariations:worldgen/biome/mob_spawn/royal_enderman": [
+      "#minecraft:is_end",
+      "#minecraft:is_overworld"
+    ],
+    "royalvariations:worldgen/biome/mob_spawn/royal_skeleton": [
+      "#minecraft:is_overworld"
+    ],
+    "royalvariations:worldgen/biome/mob_spawn/royal_zombie": [
+      "#minecraft:is_overworld"
     ],
     "secretdoors:blocks/secret_bookshelf_doors": [
       "secretdoors:secret_bookshelf_door",
@@ -50317,9 +50463,6 @@
       "unearthed_journey:anhima_egg",
       "unearthed_journey:pelagornis_egg"
     ],
-    "unofficial_offgrid:blocks/relative_placement_denied": [
-      "minecraft:sugar_cane"
-    ],
     "vinery:blocks/can_not_connect": [
       "vinery:bolvar_wine",
       "vinery:chenet_wine",
@@ -50591,6 +50734,66 @@
       "xtraarrows:golden_torch_arrow",
       "xtraarrows:golden_tracking_arrow",
       "xtraarrows:notch_apple_arrow"
+    ],
+    "zhopo:worldgen/biome/has_structure/acacia_mineshaft": [
+      "minecraft:savanna"
+    ],
+    "zhopo:worldgen/biome/has_structure/bamboo_mineshaft": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:sparse_jungle"
+    ],
+    "zhopo:worldgen/biome/has_structure/birch_mineshaft": [
+      "minecraft:birch_forest",
+      "minecraft:forest"
+    ],
+    "zhopo:worldgen/biome/has_structure/cherry_mineshaft": [
+      "minecraft:cherry_grove"
+    ],
+    "zhopo:worldgen/biome/has_structure/dark_oak_mineshaft": [
+      "minecraft:badlands",
+      "minecraft:dark_forest",
+      "minecraft:eroded_badlands",
+      "minecraft:forest",
+      "minecraft:plains",
+      "minecraft:wooded_badlands"
+    ],
+    "zhopo:worldgen/biome/has_structure/deepslate_mineshaft": [
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_dark"
+    ],
+    "zhopo:worldgen/biome/has_structure/dripstone_mineshaft": [
+      "minecraft:dripstone_caves"
+    ],
+    "zhopo:worldgen/biome/has_structure/jungle_mineshaft": [
+      "minecraft:bamboo_jungle",
+      "minecraft:jungle",
+      "minecraft:sparse_jungle"
+    ],
+    "zhopo:worldgen/biome/has_structure/lush_mineshaft": [
+      "minecraft:lush_caves"
+    ],
+    "zhopo:worldgen/biome/has_structure/mangrove_mineshaft": [
+      "minecraft:mangrove_swamp"
+    ],
+    "zhopo:worldgen/biome/has_structure/mud_mineshaft": [
+      "minecraft:desert",
+      "minecraft:mangrove_swamp",
+      "minecraft:swamp"
+    ],
+    "zhopo:worldgen/biome/has_structure/oak_mineshaft": [
+      "minecraft:plains"
+    ],
+    "zhopo:worldgen/biome/has_structure/spruce_mineshaft": [
+      "minecraft:forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga"
+    ],
+    "zhopo:worldgen/biome/has_structure/stone_mineshaft": [
+      "minecraft:meadow",
+      "minecraft:windswept_forest"
     ],
     "zipline:items/attachment": [
       "#minecraft:pickaxes"

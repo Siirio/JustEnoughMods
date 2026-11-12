@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-12T10:20:39.913986+00:00` for `9ffcabe82b25f610c064048f62e05952cf9bc769`.
+Generated from Atlas schema 1 at `2026-11-12T16:11:56.319318+00:00` for `9ccedf7aa1d8c5e7851c46869798772f9aa88f81`.
 
-Static evidence observed 17,161 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,095 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -20,6 +20,7 @@ Static evidence observed 17,161 canonical item IDs. This is not a Forge runtime 
 | block_factorys_bosses | 137 | 1 | 136 | 0 | 136 |
 | blueprint | 1 | 0 | 1 | 0 | 1 |
 | brewery | 72 | 31 | 41 | 6 | 41 |
+| camerapture | 6 | 0 | 6 | 0 | 6 |
 | casualswing | 32 | 0 | 32 | 0 | 32 |
 | cataclysm | 385 | 18 | 367 | 0 | 367 |
 | chimes | 7 | 0 | 7 | 0 | 7 |
@@ -39,9 +40,8 @@ Static evidence observed 17,161 canonical item IDs. This is not a Forge runtime 
 | endermanoverhaul | 36 | 0 | 36 | 0 | 36 |
 | endrem | 36 | 0 | 36 | 0 | 36 |
 | epic_fight_avalon | 1 | 0 | 1 | 0 | 1 |
-| epicfight | 49 | 0 | 49 | 0 | 49 |
-| exposure | 87 | 0 | 87 | 0 | 87 |
-| exposure_polaroid | 33 | 0 | 33 | 0 | 33 |
+| epicfight | 47 | 0 | 47 | 0 | 47 |
+| epicfightx | 12 | 0 | 12 | 0 | 12 |
 | fairylights | 33 | 0 | 33 | 0 | 33 |
 | farm_and_charm | 112 | 56 | 56 | 18 | 56 |
 | flashlightmod | 5 | 0 | 5 | 0 | 5 |
@@ -56,7 +56,6 @@ Static evidence observed 17,161 canonical item IDs. This is not a Forge runtime 
 | icys_better_horses | 30 | 0 | 30 | 0 | 30 |
 | immersive_aircraft | 40 | 0 | 40 | 0 | 40 |
 | immersive_melodies | 22 | 0 | 22 | 0 | 22 |
-| immersive_paintings | 4 | 0 | 4 | 0 | 4 |
 | immersive_weathering | 237 | 7 | 230 | 0 | 230 |
 | incision | 81 | 2 | 79 | 0 | 79 |
 | infinitybuttons | 372 | 0 | 372 | 0 | 372 |
@@ -99,6 +98,7 @@ Static evidence observed 17,161 canonical item IDs. This is not a Forge runtime 
 | recruits | 14 | 0 | 14 | 0 | 14 |
 | ribbits | 21 | 3 | 18 | 0 | 18 |
 | rottencreatures | 30 | 2 | 28 | 0 | 28 |
+| royalvariations | 42 | 0 | 42 | 0 | 42 |
 | secretdoors | 158 | 0 | 158 | 0 | 158 |
 | sereneseasons | 22 | 0 | 22 | 0 | 22 |
 | shutterup | 20 | 0 | 20 | 0 | 20 |

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "9ccedf7aa1d8c5e7851c46869798772f9aa88f81",
+  "generation": {
+    "generated_utc": "2026-11-12T16:11:56.319318+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "epicfightx",
+    "name": "Epic Fight Extra",
+    "version": "1.2.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "epicfightx:combat_mastery_i",
+      "mod_id": "epicfightx",
+      "mod_name": "Epic Fight Extra",
+      "mod_version": "1.2.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "epicfightx:combat_mastery_i",
+        "minecraft:book",
+        "minecraft:crafting_shapeless",
+        "minecraft:nether_star"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "epicfight:skillbook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "epicfight-extra-1.2.1-mc1.20.1-forge-all.jar:data/epicfightx/recipes/combat_mastery_i.json"
+      ]
+    }
+  ]
+}
