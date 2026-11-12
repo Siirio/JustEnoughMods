@@ -20,6 +20,13 @@ abstract class LevelRendererFrameMixin {
         RenderHooks.beginWorld(camera, poses.last().pose(), projection, partialTick);
     }
 
+    @Inject(method = "renderLevel", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/client/renderer/RenderType;translucent()Lnet/minecraft/client/renderer/RenderType;"))
+    private void taste$captureOpaqueWorld(PoseStack poses, float partialTick, long finishTimeNano, boolean drawBlockOutline,
+            Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f projection, CallbackInfo callback) {
+        RenderHooks.beforeTranslucentTerrain();
+    }
+
     @Inject(method = "renderLevel", at = @At("RETURN"))
     private void taste$endWorld(PoseStack poses, float partialTick, long finishTimeNano, boolean drawBlockOutline,
             Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f projection, CallbackInfo callback) {

@@ -19,7 +19,8 @@ public final class TargetPool implements AutoCloseable {
     public TextureTarget acquire(TargetDescriptor descriptor) {
         RenderSystem.assertOnRenderThread();
         if (descriptor.format() != TargetDescriptor.Format.RGBA8
-                && descriptor.format() != TargetDescriptor.Format.RGBA16F)
+                && descriptor.format() != TargetDescriptor.Format.RGBA16F
+                && descriptor.format() != TargetDescriptor.Format.RGBA32F)
             throw new IllegalArgumentException("Unsupported portable target format " + descriptor.format());
         Entry current = targets.get(descriptor.name());
         if (current != null && current.descriptor().equals(descriptor)) return current.target();
@@ -27,7 +28,8 @@ public final class TargetPool implements AutoCloseable {
         TextureTarget replacement = null;
         try {
             replacement = new TextureTarget(descriptor.width(), descriptor.height(), descriptor.depth(), Minecraft.ON_OSX);
-            if (descriptor.format() == TargetDescriptor.Format.RGBA16F) promoteToLinearHdr(replacement);
+            if (descriptor.format() != TargetDescriptor.Format.RGBA8)
+                allocateFloatColor(replacement, descriptor.format());
             replacement.setClearColor(0.0F, 0.0F, 0.0F, 0.0F);
             if (current != null) current.target().destroyBuffers();
             targets.put(descriptor.name(), new Entry(descriptor, replacement));
@@ -63,16 +65,17 @@ public final class TargetPool implements AutoCloseable {
         budget.clear();
     }
 
-    private static void promoteToLinearHdr(TextureTarget target) {
+    private static void allocateFloatColor(TextureTarget target, TargetDescriptor.Format format) {
         int priorTexture = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         int priorFramebuffer = GL11.glGetInteger(GL30.GL_FRAMEBUFFER_BINDING);
         try {
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, target.getColorTextureId());
-            GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA16F, target.width, target.height, 0,
+            int storage = format == TargetDescriptor.Format.RGBA32F ? GL30.GL_RGBA32F : GL30.GL_RGBA16F;
+            GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, storage, target.width, target.height, 0,
                     GL11.GL_RGBA, GL11.GL_FLOAT, (java.nio.ByteBuffer) null);
             GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, target.frameBufferId);
             if (GL30.glCheckFramebufferStatus(GL30.GL_DRAW_FRAMEBUFFER) != GL30.GL_FRAMEBUFFER_COMPLETE)
-                throw new IllegalStateException("RGBA16F target is incomplete");
+                throw new IllegalStateException(format + " target is incomplete");
         } finally {
             GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, priorFramebuffer);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, priorTexture);

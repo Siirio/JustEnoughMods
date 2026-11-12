@@ -19,6 +19,7 @@ import dev.taste.engine.effects.BloomPyramid;
 import dev.taste.engine.environment.EnvironmentResolver;
 import dev.taste.engine.environment.EnvironmentSnapshot;
 import dev.taste.engine.light.ShadowRenderer;
+import dev.taste.engine.light.LocalLightingPass;
 import dev.taste.engine.material.MaterialGeneration;
 import dev.taste.engine.material.MaterialResolver;
 import dev.taste.engine.material.MaterialRuleLoader;
@@ -31,8 +32,11 @@ import java.util.Optional;
 import java.util.Set;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
@@ -56,6 +60,8 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     private final HandRenderer hand = new HandRenderer();
     private final ShadowRenderer shadows = new ShadowRenderer();
     private final BloomPyramid bloomPyramid = new BloomPyramid();
+    private final IndirectLightingPass indirect = new IndirectLightingPass();
+    private final LocalLightingPass localLighting = new LocalLightingPass();
     private CapabilityProbe.Result probe;
     private SettingRegistry registry;
     private ConsumerRegistry consumers;
@@ -66,6 +72,12 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     private ShaderInstance exposureShader;
     private PassTimerRing timer;
     private TextureTarget worldTarget;
+    private TextureTarget opaqueTarget;
+    private TextureTarget indirectTarget;
+    private boolean opaqueCaptured;
+    private boolean screenGi;
+    private LocalLightingPass.TileData lightTiles;
+    private ShadowRenderer.PointMaps pointMaps;
     private TextureTarget sceneTarget;
     private TextureTarget volumeTarget;
     private TextureTarget bloomTarget;
@@ -107,6 +119,12 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     public synchronized String failure() { return failure; }
     public synchronized long allocatedBytes() { return targets == null ? 0L : targets.allocatedBytes(); }
     public synchronized double lastGpuMilliseconds() { return lastGpuMilliseconds; }
+    public synchronized void dirtyLocalLight(ClientLevel level, BlockPos position) {
+        if (Minecraft.getInstance().level == level) {
+            localLighting.dirty(position);
+            shadows.invalidatePointMaps();
+        }
+    }
 
     @Override
     public synchronized void beginWorld(Camera camera, Matrix4f cameraView, Matrix4f projection, float nextPartialTick) {
@@ -127,6 +145,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
             partialTick = nextPartialTick;
             environment = environments.resolve(minecraft, nextPartialTick);
             parameters = PipelineParameters.resolve(requested, registry, consumers);
+            screenGi = effective.values().get("gi.mode").getAsString().equals("screen");
             nativeTarget = minecraft.getMainRenderTarget();
             nativeWidth = nativeTarget.width;
             nativeHeight = nativeTarget.height;
@@ -175,10 +194,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         try {
             if (timer != null) timer.begin();
             executeGraph();
-            if (timer != null) {
-                timer.end(frame);
-                timer.poll().ifPresent(value -> lastGpuMilliseconds = value);
-            }
+            if (timer != null) timer.poll().ifPresent(value -> lastGpuMilliseconds = value);
             frames.complete(activeFrame);
             failure = "";
             loggedFailure = false;
@@ -187,6 +203,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
             restoreCapturedWorld();
             fail(renderFailure);
         } finally {
+            if (timer != null) timer.end(frame);
             closeWorldScope();
         }
     }
@@ -202,6 +219,28 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     }
     @Override public synchronized void endHand() {
         if (hand.capturing()) hand.end(frame);
+    }
+
+    @Override public synchronized void beforeTranslucentTerrain() {
+        if (!worldOpen || opaqueCaptured) return;
+        try (GlStateScope ignored = GlStateScope.capture()) {
+            clearGlErrors();
+            opaqueTarget = targets.acquire(descriptor("opaque", width, height, true));
+            RenderSystem.disableScissor();
+            GL30.glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER, worldTarget.frameBufferId);
+            GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, opaqueTarget.frameBufferId);
+            GL30.glBlitFramebuffer(0, 0, width, height, 0, 0, width, height,
+                    GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT, GL11.GL_NEAREST);
+            requireNoGlError("opaque terrain capture");
+            opaqueCaptured = true;
+            frames.debug().publish("opaque-color", new DebugAttachments.Attachment(
+                    opaqueTarget.getColorTextureId(), width, height, "World color before translucent terrain"));
+            frames.debug().publish("opaque-depth", new DebugAttachments.Attachment(
+                    opaqueTarget.getDepthTextureId(), width, height, "World depth before translucent terrain"));
+        } catch (RuntimeException captureFailure) {
+            opaqueTarget = null;
+            fail(captureFailure);
+        }
     }
 
     public synchronized void invalidateResources() {
@@ -246,19 +285,26 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
 
     private void executeGraph() throws Exception {
         RenderGraph.Resource world = new RenderGraph.Resource("world", "world-target");
+        RenderGraph.Resource opaque = new RenderGraph.Resource("opaque", "opaque-target");
+        RenderGraph.Resource diffuse = new RenderGraph.Resource("indirect", "indirect-history");
         RenderGraph.Resource visibility = new RenderGraph.Resource("sun-visibility", "sun-shadow-maps");
+        RenderGraph.Resource local = new RenderGraph.Resource("local-light-tiles", "local-light-data");
+        RenderGraph.Resource pointShadows = new RenderGraph.Resource("point-visibility", "point-shadow-atlas");
         RenderGraph.Resource volume = new RenderGraph.Resource("atmosphere", "atmosphere-target");
         RenderGraph.Resource scene = new RenderGraph.Resource("scene", "scene-target");
         RenderGraph.Resource bloom = new RenderGraph.Resource("bloom", "bloom-pyramid");
         RenderGraph.Resource exposure = new RenderGraph.Resource("exposure", "exposure-history");
         RenderGraph.Resource output = new RenderGraph.Resource("output", "native-target");
-        RenderGraph.Compiled graph = RenderGraph.compile(Set.of(world), Set.of(output), List.of(
+        RenderGraph.Compiled graph = RenderGraph.compile(Set.of(world, opaque), Set.of(output), List.of(
                 new RenderGraph.Pass("sun-visibility", Set.of(), Set.of(visibility), this::drawShadowMaps),
-                new RenderGraph.Pass("atmosphere", Set.of(world, visibility), Set.of(volume), this::drawVolume),
-                new RenderGraph.Pass("scene-lighting", Set.of(world, visibility, volume), Set.of(scene), this::drawScene),
+                new RenderGraph.Pass("local-light-tiles", Set.of(), Set.of(local), this::prepareLocalLighting),
+                new RenderGraph.Pass("point-visibility", Set.of(local), Set.of(pointShadows), this::drawPointShadows),
+                new RenderGraph.Pass("atmosphere", Set.of(world, opaque, visibility, local, pointShadows), Set.of(volume), this::drawVolume),
+                new RenderGraph.Pass("indirect", Set.of(opaque), Set.of(diffuse), this::drawIndirect),
+                new RenderGraph.Pass("scene-lighting", Set.of(world, opaque, visibility, volume, diffuse, local, pointShadows), Set.of(scene), this::drawScene),
                 new RenderGraph.Pass("bloom", Set.of(world, scene), Set.of(bloom), this::drawBloom),
                 new RenderGraph.Pass("exposure", Set.of(scene), Set.of(exposure), this::drawExposure),
-                new RenderGraph.Pass("final-color", Set.of(scene, bloom, exposure), Set.of(output), this::drawFinal)));
+                new RenderGraph.Pass("final-color", Set.of(world, scene, bloom, exposure), Set.of(output), this::drawFinal)));
         graph.execute(ignored -> GlStateScope.capture());
     }
 
@@ -314,6 +360,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         sceneShader.getUniform("FogColor").set(linearColor("fog.color"));
         Matrix4f view = new Matrix4f().set(activeFrame.snapshot().view().columnMajor());
         sceneShader.getUniform("InverseView").set(view.invert());
+        sceneShader.getUniform("Projection").set(new Matrix4f().set(activeFrame.snapshot().projection().columnMajor()));
         for (int index = 0; index < 4; index++) {
             ShadowRenderer.MapLayer layer = index < shadowMaps.size() ? shadowMaps.get(index) : null;
             sceneShader.setSampler("ShadowMap" + index, layer == null ? worldTarget.getDepthTextureId() : layer.texture());
@@ -337,6 +384,51 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         return enabled("fog.enabled") && enabled("fog.volumetric") && value("fog.density") > 0;
     }
 
+    private void prepareLocalLighting() {
+        clearGlErrors();
+        lightTiles = localLighting.prepare(targets, activeFrame.snapshot(), parameters, materialResolver);
+        requireNoGlError("local light upload");
+    }
+
+    private void drawPointShadows() throws IOException {
+        clearGlErrors();
+        int resolution = Integer.parseInt(parameters.value("shadows.localResolution").getAsString());
+        int count = enabled("shadows.enabled") && enabled("shadows.localLights")
+                ? parameters.value("shadows.maxLocalLights").getAsInt() : 0;
+        int cadence = parameters.value("shadows.dynamicEveryFrames").getAsInt();
+        int refresh = enabled("shadows.cacheStatic") ? Math.max(cadence, 20) : cadence;
+        pointMaps = shadows.drawPointMaps(backend, targets, activeFrame.snapshot(),
+                lightTiles == null ? List.of() : lightTiles.lights(), resolution, count, refresh);
+        requireNoGlError("point-light visibility");
+        if (pointMaps != null) {
+            frames.debug().publish("point-shadow-atlas", new DebugAttachments.Attachment(pointMaps.texture(),
+                    pointMaps.columns() * resolution, pointMaps.rows() * resolution, "Point light terrain depth"));
+        }
+    }
+
+    private void bindLocalLighting() {
+        sceneShader.setSampler("LocalLights", lightTiles == null ? worldTarget.getColorTextureId() : lightTiles.texture());
+        sceneShader.setSampler("PointShadowAtlas", pointMaps == null ? worldTarget.getDepthTextureId() : pointMaps.texture());
+        set(sceneShader, "LocalLightCount", lightTiles == null ? 0 : lightTiles.lights().size());
+        set(sceneShader, "PointShadowCount", pointMaps == null ? 0 : pointMaps.count());
+        set2(sceneShader, "PointShadowGrid", pointMaps == null ? 1 : pointMaps.columns(), pointMaps == null ? 1 : pointMaps.rows());
+        set(sceneShader, "LightTileColumns", lightTiles == null ? 1 : lightTiles.columns());
+        set2(sceneShader, "LightViewport", width, height);
+        set(sceneShader, "LocalVolumes", enabled("fog.localLightVolumes") ? 1 : 0);
+        set(sceneShader, "BlockIntensity", value("lighting.blockIntensity"));
+    }
+
+    private void drawIndirect() throws IOException {
+        clearGlErrors();
+        indirectTarget = indirect.render(targets, opaqueTarget, activeFrame.snapshot(), parameters, screenGi,
+                TasteRenderer::drawFullscreen);
+        requireNoGlError("indirect lighting");
+        if (indirectTarget != null) {
+            frames.debug().publish("indirect", new DebugAttachments.Attachment(indirectTarget.getColorTextureId(),
+                    indirectTarget.width, indirectTarget.height, "Screen diffuse bounce and ambient occlusion"));
+        }
+    }
+
     private void drawVolume() {
         if (!volumeEnabled()) {
             targets.release("atmosphere");
@@ -354,6 +446,8 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         sceneShader.setSampler("VolumeSampler", worldTarget.getColorTextureId());
         set(sceneShader, "VolumeOnly", 1);
         set(sceneShader, "VolumeEnabled", 0);
+        bindIndirect();
+        bindLocalLighting();
         set(sceneShader, "SunIntensity", directionalIntensity);
         try {
             drawFullscreen();
@@ -373,6 +467,9 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         sceneShader.setSampler("VolumeSampler", volumeTarget == null ? worldTarget.getColorTextureId() : volumeTarget.getColorTextureId());
         set(sceneShader, "VolumeOnly", 0);
         set(sceneShader, "VolumeEnabled", volumeTarget == null ? 0 : 1);
+        bindIndirect();
+        bindLocalLighting();
+        bindSky();
         set(sceneShader, "SunIntensity", directionalIntensity);
         set(sceneShader, "SkyIntensity", value("lighting.skyIntensity"));
         set(sceneShader, "AmbientFloor", value("lighting.ambientFloor"));
@@ -380,9 +477,6 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         set(sceneShader, "WarmColdBalance", value("lighting.warmColdBalance"));
         set(sceneShader, "ShadowStrength", enabled("shadows.enabled") ? 1.0F : 0.0F);
         set(sceneShader, "ContactShadow", enabled("shadows.contact") ? value("shadows.contactLength") : 0.0F);
-        set(sceneShader, "AoStrength", enabled("ao.enabled") ? value("ao.strength") : 0.0F);
-        set(sceneShader, "AoRadius", value("ao.radius"));
-        set(sceneShader, "GiStrength", value("gi.intensity"));
         set(sceneShader, "EmissionStrength", enabled("emission.enabled") ? value("emission.strength") : 0.0F);
         set(sceneShader, "ReflectionStrength", enabled("reflections.enabled") ? 1.0F : 0.0F);
         set(sceneShader, "CloudCoverage", enabled("clouds.enabled") ? value("clouds.coverage") : 0.0F);
@@ -399,6 +493,44 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
             sceneShader.clear();
         }
         frames.debug().publish("scene", new DebugAttachments.Attachment(sceneTarget.getColorTextureId(), width, height, "Linear scene composite"));
+    }
+
+    private void bindIndirect() {
+        TextureTarget opaque = opaqueTarget == null ? worldTarget : opaqueTarget;
+        TextureTarget lighting = indirectTarget == null ? opaque : indirectTarget;
+        sceneShader.setSampler("OpaqueDepth", opaque.getDepthTextureId());
+        sceneShader.setSampler("IndirectSampler", lighting.getColorTextureId());
+        sceneShader.setSampler("IndirectDepth", lighting.getDepthTextureId());
+        set(sceneShader, "IndirectEnabled", indirectTarget == null ? 0 : 1);
+    }
+
+    private void bindSky() {
+        String mode = parameters.value("sky.mode").getAsString();
+        ClientLevel level = Minecraft.getInstance().level;
+        int skyMode = level == null || level.effects().skyType() != DimensionSpecialEffects.SkyType.NORMAL
+                ? 0 : switch (mode) {
+                    case "stylized" -> 1;
+                    case "atmospheric" -> 2;
+                    default -> 0;
+                };
+        set(sceneShader, "SkyMode", skyMode);
+        set(sceneShader, "SkySunShape", parameters.value("sky.sunShape").getAsString().equals("square") ? 1 : 0);
+        set(sceneShader, "SkySunSize", value("sky.sunSize"));
+        set(sceneShader, "SkyMoonSize", value("sky.moonSize"));
+        set(sceneShader, "SkyMoonPhase", environment.moonPhase());
+        set(sceneShader, "SkySaturation", value("sky.sunsetSaturation"));
+        set(sceneShader, "SkyStarDensity", enabled("sky.stars") ? value("sky.starDensity") : 0);
+        set(sceneShader, "SkyStarBrightness", value("sky.starBrightness"));
+        set(sceneShader, "SkyAurora", enabled("sky.aurora") ? value("sky.auroraStrength") : 0);
+        set(sceneShader, "SkyMilkyWay", enabled("sky.milkyWay") ? 1 : 0);
+        set(sceneShader, "SkyRainbow", enabled("sky.rainbow") ? 1 : 0);
+        set(sceneShader, "SkyTurbidity", value("sky.atmosphereTurbidity"));
+        float angle = environment.sunAngle();
+        sceneShader.getUniform("SkySolarDirection").set(-(float) Math.sin(angle), (float) Math.cos(angle), 0);
+        sceneShader.getUniform("SkyZenith").set(linearColor("sky.zenithColor"));
+        sceneShader.getUniform("SkyHorizon").set(linearColor("sky.horizonColor"));
+        sceneShader.getUniform("SkyMoonColor").set(linearColor("lighting.moonColor"));
+        sceneShader.getUniform("SkyDiscColor").set(linearColor("lighting.sunColor"));
     }
 
     private void drawFinal() {
@@ -560,7 +692,7 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         var inverseProjection = shader.getUniform("InverseProjection");
         if (inverseProjection != null)
             inverseProjection.set(new Matrix4f().set(activeFrame.snapshot().inverseProjection().columnMajor()));
-        set(shader, "Time", (float) ((frame + partialTick) / 20.0));
+        set(shader, "Time", (float) (((environment.gameTime() % 1_728_000L) + partialTick) / 20.0));
         set(shader, "Rain", environment.rain());
     }
 
@@ -638,6 +770,12 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         activeFrame = null;
         parameters = null;
         environment = null;
+        opaqueCaptured = false;
+        opaqueTarget = null;
+        indirectTarget = null;
+        screenGi = false;
+        lightTiles = null;
+        pointMaps = null;
         volumeTarget = null;
         bloomTarget = null;
         shadowMaps = List.of();
@@ -648,6 +786,8 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
     private void fail(Exception renderFailure) {
         failure = renderFailure.getMessage() == null ? renderFailure.getClass().getSimpleName() : renderFailure.getMessage();
         frames.invalidate(TemporalHistory.Reason.PIPELINE_CHANGE);
+        indirect.invalidate();
+        shadows.invalidatePointMaps();
         resetExposure();
         if (!loggedFailure) {
             LOGGER.error("Taste renderer restored native ownership after a frame failure", renderFailure);
@@ -667,6 +807,8 @@ public final class TasteRenderer implements AutoCloseable, RenderHooks.Listener 
         resetExposure();
         allocatedBloomLevels = 0;
         shadows.close();
+        indirect.close();
+        localLighting.close();
         allocations.clear();
         frames.clear();
         materialRulesLoaded = false;

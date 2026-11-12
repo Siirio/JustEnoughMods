@@ -19,7 +19,8 @@ public record EffectiveConfig(ConfigSnapshot requested, Map<String, JsonPrimitiv
 
     public static EffectiveConfig resolve(ConfigSnapshot snapshot, Capabilities capabilities) {
         Map<String, JsonPrimitive> effective = new LinkedHashMap<>(snapshot.values());
-        if (effective.get("gi.mode").getAsString().equals("voxel") && !capabilities.flags().contains("gl43"))
+        if (effective.get("gi.mode").getAsString().equals("voxel")
+                && (!capabilities.flags().contains("gl43") || !capabilities.flags().contains("voxel_gi")))
             effective.put("gi.mode", new JsonPrimitive("screen"));
         Backend backend = Backend.OFF;
         String reason = "";

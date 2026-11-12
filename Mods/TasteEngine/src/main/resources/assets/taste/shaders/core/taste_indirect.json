@@ -1,0 +1,181 @@
+{
+  "vertex": "taste:taste_scene",
+  "fragment": "taste:taste_indirect",
+  "attributes": [
+    "Position",
+    "UV0"
+  ],
+  "samplers": [
+    {
+      "name": "OpaqueColor"
+    },
+    {
+      "name": "OpaqueDepth"
+    },
+    {
+      "name": "PreviousIndirect"
+    },
+    {
+      "name": "PreviousDepth"
+    }
+  ],
+  "uniforms": [
+    {
+      "name": "InverseProjection",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Projection",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Reprojection",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "AoDirections",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0
+      ]
+    },
+    {
+      "name": "AoSteps",
+      "type": "float",
+      "count": 1,
+      "values": [
+        6
+      ]
+    },
+    {
+      "name": "AoRadius",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1.2
+      ]
+    },
+    {
+      "name": "AoThickness",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.3
+      ]
+    },
+    {
+      "name": "AoStrength",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.8
+      ]
+    },
+    {
+      "name": "GiSamples",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0
+      ]
+    },
+    {
+      "name": "GiDistance",
+      "type": "float",
+      "count": 1,
+      "values": [
+        48
+      ]
+    },
+    {
+      "name": "GiIntensity",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1
+      ]
+    },
+    {
+      "name": "ColorBleed",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.65
+      ]
+    },
+    {
+      "name": "AoTemporal",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0
+      ]
+    },
+    {
+      "name": "GiTemporal",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0
+      ]
+    }
+  ]
+}

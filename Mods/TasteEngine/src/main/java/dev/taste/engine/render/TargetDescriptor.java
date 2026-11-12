@@ -4,7 +4,7 @@ package dev.taste.engine.render;
 public record TargetDescriptor(String name, int width, int height, Format format, boolean depth,
         int mipLevels, int layers, int samples) {
     public enum Format {
-        RGBA8(4), RGBA16F(8), RG16F(4), R16F(2), R8(1), DEPTH24(4), DEPTH32F(4);
+        RGBA8(4), RGBA16F(8), RGBA32F(16), RG16F(4), R16F(2), R8(1), DEPTH24(4), DEPTH32F(4);
         private final int bytesPerPixel;
         Format(int bytesPerPixel) { this.bytesPerPixel = bytesPerPixel; }
         public int bytesPerPixel() { return bytesPerPixel; }

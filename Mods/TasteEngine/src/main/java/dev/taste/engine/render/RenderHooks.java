@@ -10,6 +10,7 @@ import org.joml.Matrix4f;
 public final class RenderHooks {
     public interface Listener {
         void beginWorld(Camera camera, Matrix4f cameraView, Matrix4f projection, float partialTick);
+        void beforeTranslucentTerrain();
         void endWorld();
         void beginLayer(RenderType type);
         void endLayer(RenderType type);
@@ -39,6 +40,10 @@ public final class RenderHooks {
             LAYERS.remove();
             WORLD_DEPTH.remove();
         }
+    }
+    public static void beforeTranslucentTerrain() {
+        Listener active = listener;
+        if (WORLD_DEPTH.get() == 1 && active != null) active.beforeTranslucentTerrain();
     }
     public static void beginLayer(RenderType type) {
         LAYERS.get().push(type.toString());
