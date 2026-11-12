@@ -8,7 +8,7 @@ import java.util.Set;
 public final class TemporalHistory {
     public enum Reason { STARTUP, WORLD_CHANGE, DIMENSION_CHANGE, CAMERA_CUT,
         PROJECTION_CHANGE, VIEWPORT_RESIZE, RENDERER_TOGGLE, RESOURCE_RELOAD,
-        PIPELINE_CHANGE, MATERIAL_CHANGE, TIME_DISCONTINUITY }
+        PIPELINE_CHANGE, MATERIAL_CHANGE, TIME_DISCONTINUITY, LIGHTNING }
     public record Ticket(long generation, Set<Reason> reasons) {
         public Ticket { reasons = Set.copyOf(reasons); }
     }

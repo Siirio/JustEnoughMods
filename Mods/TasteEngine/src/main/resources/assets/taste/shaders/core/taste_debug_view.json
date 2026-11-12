@@ -1,0 +1,10 @@
+{
+  "vertex": "taste:taste_scene",
+  "fragment": "taste:taste_debug_view",
+  "attributes": ["Position", "UV0"],
+  "samplers": [{"name":"DataSampler"},{"name":"SecondarySampler"}],
+  "uniforms": [
+    {"name":"Mode","type":"float","count":1,"values":[0]},
+    {"name":"InverseProjection","type":"matrix4x4","count":16,"values":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]}
+  ]
+}

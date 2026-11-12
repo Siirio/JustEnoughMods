@@ -20,6 +20,16 @@ import java.util.Set;
 
 /** Persists before publication. Failed validation or IO never replaces the active snapshot. */
 public final class ConfigStore {
+    public enum PreviewStage { NONE, WAITING, VISIBLE, REVERTED, FAILED }
+    public record PreviewStatus(PreviewStage stage, int seconds, String error) {
+        public boolean pending() { return stage == PreviewStage.WAITING || stage == PreviewStage.VISIBLE; }
+    }
+    private record Preview(ConfigSnapshot candidate, long eligibleAt, long expiresAt) {
+        Preview visible(long now) {
+            return new Preview(candidate, eligibleAt,
+                    now + candidate.value("general.keepPromptSeconds").getAsLong() * 1_000_000_000L);
+        }
+    }
     public record ApplyResult(ConfigSnapshot snapshot, List<String> changedIds, Set<SettingSpec.ApplyAction> actions) {
         public ApplyResult { changedIds = List.copyOf(changedIds); actions = Set.copyOf(actions); }
     }
@@ -28,6 +38,8 @@ public final class ConfigStore {
     private final PresetCatalog presets;
     private final Path path;
     private volatile ConfigSnapshot current;
+    private Preview preview;
+    private PreviewStatus finishedPreview = new PreviewStatus(PreviewStage.NONE, 0, "");
     private JsonObject envelope = new JsonObject();
     private final List<String> warnings = new ArrayList<>();
 
@@ -74,7 +86,74 @@ public final class ConfigStore {
 
     public synchronized ApplyResult apply(ConfigDraft draft) throws IOException {
         if (draft.baseRevision() != current.revision()) throw new IllegalStateException("Configuration changed while this draft was open; reopen the screen.");
-        ConfigSnapshot next = draft.snapshot(current.revision() + 1);
+        ApplyResult result = persist(draft.snapshot(current.revision() + 1));
+        preview = null;
+        finishedPreview = new PreviewStatus(PreviewStage.NONE, 0, "");
+        return result;
+    }
+
+    public synchronized void startPreview(ConfigDraft draft) {
+        if (draft.baseRevision() != current.revision()) throw new IllegalStateException("Configuration changed while this draft was open; reopen the screen.");
+        ConfigSnapshot candidate = draft.snapshot(current.revision() + 1);
+        long eligible = System.nanoTime() + candidate.value("general.previewDelay").getAsLong() * 1_000_000L;
+        preview = new Preview(candidate, eligible, 0L);
+        finishedPreview = new PreviewStatus(PreviewStage.NONE, 0, "");
+    }
+
+    public synchronized ConfigSnapshot renderSnapshot() {
+        expirePreview();
+        return preview != null && System.nanoTime() - preview.eligibleAt() >= 0 ? preview.candidate() : current;
+    }
+
+    public synchronized void markPreviewVisible(ConfigSnapshot rendered) {
+        if (preview != null && preview.candidate() == rendered && preview.expiresAt() == 0L)
+            preview = preview.visible(System.nanoTime());
+    }
+
+    public synchronized void rejectPreview(ConfigSnapshot rendered, String error) {
+        if (preview == null || preview.candidate() != rendered) return;
+        preview = null;
+        finishedPreview = new PreviewStatus(PreviewStage.FAILED, 0, error);
+    }
+
+    public synchronized ApplyResult keepPreview() throws IOException {
+        expirePreview();
+        if (preview == null || preview.expiresAt() == 0L)
+            throw new IllegalStateException("No visible configuration preview to keep");
+        ConfigSnapshot candidate = preview.candidate();
+        try {
+            ApplyResult result = persist(candidate);
+            preview = null;
+            finishedPreview = new PreviewStatus(PreviewStage.NONE, 0, "");
+            return result;
+        } catch (IOException failure) {
+            rejectPreview(candidate, failure.getMessage());
+            throw failure;
+        }
+    }
+
+    public synchronized void revertPreview() {
+        if (preview != null) {
+            preview = null;
+            finishedPreview = new PreviewStatus(PreviewStage.REVERTED, 0, "");
+        }
+    }
+
+    public synchronized PreviewStatus previewStatus() {
+        expirePreview();
+        if (preview == null) return finishedPreview;
+        if (preview.expiresAt() == 0L) return new PreviewStatus(PreviewStage.WAITING, 0, "");
+        long remaining = preview.expiresAt() - System.nanoTime();
+        int seconds = (int) Math.max(0, (remaining + 999_999_999L) / 1_000_000_000L);
+        return new PreviewStatus(PreviewStage.VISIBLE, seconds, "");
+    }
+
+    private void expirePreview() {
+        if (preview != null && preview.expiresAt() != 0L && System.nanoTime() - preview.expiresAt() >= 0)
+            revertPreview();
+    }
+
+    private ApplyResult persist(ConfigSnapshot next) throws IOException {
         JsonObject nextDocument = document(next);
         Files.createDirectories(path.getParent());
         writeAtomically(backupPath(), bytes(document(current)));

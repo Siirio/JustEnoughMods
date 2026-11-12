@@ -25,7 +25,7 @@ public final class CascadeController {
     public float stabilize(float coordinate, float texelWorldSize) { return Math.round(coordinate / texelWorldSize) * texelWorldSize; }
 
     public LightView fit(Cascade cascade, FrameSnapshot frame, Vector3f towardsSun, int resolution) {
-        Matrix4f inverseProjection = new Matrix4f().set(frame.inverseProjection().columnMajor());
+        Matrix4f inverseProjection = new Matrix4f().set(frame.unjitteredProjection().columnMajor()).invert();
         Matrix4f inverseView = new Matrix4f().set(frame.view().columnMajor()).invert();
         Vector3f[] corners = new Vector3f[8];
         Vector3f center = new Vector3f();
@@ -54,13 +54,15 @@ public final class CascadeController {
         FrameSnapshot.Vec3d origin = frame.origin();
         double originX = basis.m00() * origin.x() + basis.m10() * origin.y() + basis.m20() * origin.z();
         double originY = basis.m01() * origin.x() + basis.m11() * origin.y() + basis.m21() * origin.z();
+        double originZ = basis.m02() * origin.x() + basis.m12() * origin.y() + basis.m22() * origin.z();
         float x = snapRelative(lightCenter.x, originX, texelSize);
         float y = snapRelative(lightCenter.y, originY, texelSize);
+        float z = snapRelative(lightCenter.z, originZ, texelSize);
         float lightwardReach = Math.max(96.0F, cascade.far());
         float depthSpan = halfExtent * 2 + lightwardReach;
         Matrix4f projection = new Matrix4f().ortho(x - halfExtent, x + halfExtent,
                 y - halfExtent, y + halfExtent,
-                -lightCenter.z - halfExtent - lightwardReach, -lightCenter.z + halfExtent).mul(basis);
+                -z - halfExtent - lightwardReach, -z + halfExtent).mul(basis);
         return new LightView(cascade.far(), depthSpan, projection);
     }
 

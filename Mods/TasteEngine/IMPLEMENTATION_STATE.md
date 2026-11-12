@@ -2,47 +2,26 @@
 
 ## Sandbox acceptance
 
-The user rejected the 1.0.4 output because the world looked almost unchanged and showed no cast shadows or sun shafts. This is an incomplete renderer. The two connected passes do not execute the shadow caster or volume programs. A settings category assigned to a phase does not establish a runtime consumer.
+The user rejected 1.0.4 because the world showed no visible cast shadows or sun shafts. Java 17 production compilation and `reobfJar` passed for `taste-1.0.5-sandbox.jar`. The installed Sandbox JAR matches the built artifact, SHA-256 `9EB9B5D7682B10EB4CA88E1A43594EF6C5A93B03E7C5D3ACC05D04590B106809`. The previous JAR is in the Sandbox `mods.disabled` directory. Player acceptance is pending.
 
-The local source checkpoint adds cascaded terrain depth draws for Vanilla and Embeddium 0.3.31. Both use independent light-frustum section selection. Vanilla borrows resident chunk vertex buffers. Embeddium builds independent region lists and uses a separate renderer with the installed vertex format. The scene pass consumes those depth maps for directional light. An atmosphere target stores scattering and transmittance, with depth-weighted reconstruction. The post graph also includes a bloom pyramid and GPU exposure adaptation. These changes have not been built or installed.
+## Connected source paths
 
-The next local source checkpoint captures opaque color and depth before translucent terrain on both backends. An indirect lighting pass uses those inputs for horizon occlusion, screen-space diffuse bounce, and depth-checked history. The voxel request is retained, but the effective mode is screen until the voxel implementation is available. A loaded-section light scan and held item inputs populate screen tiles. Selected sources use a six-face terrain depth atlas for shadows on surfaces and in the atmosphere. The scene pass also consumes the sky settings in dimensions with a normal sky. These paths are unverified in the game.
+- The world frame captures opaque inputs before translucent terrain and composes after Forge `AFTER_LEVEL`. Fabulous routes five native HDR layers through depth-ordered premultiplied composition. The native hand uses a separate full-resolution color/depth target
+- Vanilla and Embeddium 0.3.31 submit resident terrain into directional cascades and point-light maps. Supported vanilla entities, player skins and block entities submit caster meshes. The forward actor shader reads the current directional maps when the self-shadow control is active. Static directional maps use native mesh revisions and stable projections when wind does not move casters
+- The volume pass integrates fog and direct shafts using caster visibility. Two light-space entries transmit the color of eligible glass into direct lighting and the volume pass. The cloud renderer owns a separate transmission field and world-space layers. Portal edge scattering uses point-light caster maps. Confirmed client lightning adds capped scene, cloud and local volume radiance
+- The terrain material pass re-emits supported baked Forge geometry into color, normal, light and material attachments. LabPBR and oldPBR companion maps follow the active sprite timeline. POM uses a separate height map when supplied. The material-surface pass matches the actual baked or fluid sprite and render layer and supplies material optics
+- Vegetation uses the unused Vanilla normal padding byte and Embeddium material bits. The visible, shadow and reflection shaders share the same wind calculation. The terrain attachment stores current and previous positions for reprojection
+- The renderer includes screen GI, GL 4.3 voxel occupancy and radiance, bounded resident-terrain reflection probes and water captures, temporal resolve, bloom, exposure, color grading, camera effects and photo capture
+- Weather, precipitation, indoor dust, snow coating, portals, placement and interaction use bounded client effects. Lens film dries after entering shelter. The optional Serene Seasons adapter reads client appearance data without changing the calendar. Decorative settings read the preview snapshot
+- Taste-owned particles use depth-tested soft edges and select sorted or weighted transparency. Native eyes, enchanted glint, lightning and owned particles provide semantic bloom input. TAA consumes retained terrain and actor motion plus reactive emission and particle coverage
+- The settings UI uses direct left tabs and only starts the Keep timer after the candidate frame is presented. Diagnostics expose actual frame attachments when available and report unavailable inputs. The settings registry contains 387 controls in 36 categories
 
-The shadow draw currently uses built resident terrain. It still needs bounded caster mesh requests for unbuilt sections, entity and block-entity casters, and glass and cloud transmission. The atmosphere draw still needs integration at transparent surface depth, cave mist, indoor dust, and temporal reconstruction. Bloom still needs semantic emission data and hand routing. Terrain material attachments, forward layers, voxel GI, cloud geometry, water, glass, weather, particles and the remaining temporal systems still need integration. The next shared input is mesh material and light metadata from both terrain backends.
+## Coverage limits
 
-## Source implementation
-
-The sandbox source includes the P01 through P10 owners from the handoff:
-
-- world target routing, frame scopes, temporal history, target pooling, memory budgets and configuration consumers
-- material descriptions, rules, palettes, companion atlases, generation epochs and vanilla/Embeddium backend boundaries
-- forward materials, foreign-batch policy, Fabulous layer contracts, hand ownership and provider APIs
-- direct and local light data, stable caster/cache structures, GTAO, screen GI and voxel-GI source paths
-- dimension profiles, biome blending, sky, clouds, volume integration, weather exposure, precipitation and wetness
-- reflections, water, underwater composition, glass, persistent face-local droplets, ice and lava
-- bounded particles, vegetation deformation, actors, portals, decals, impacts and placement motion
-- velocity, reactive masks, temporal resolve, bloom, exposure, color, camera, stylization and photo accumulation
-- complete settings UI support classes, presets, migration, overrides, diagnostics and optional bounded environment messages
-- allocation records, nonblocking timer queries, adaptive quality policy, compatibility reporting and validation exporters
-
-The installed 1.0.4 GL 3.3 path routes the world into an owned color/depth target. It executes a scene-lighting pass and a final-color pass at the actual `LevelRenderer.renderLevel` return boundary, then restores the native target before Minecraft renders the hand and GUI. It does not depend on a separate Forge stage event that can be absent from a modded render path. Shared OpenGL restoration also synchronizes Minecraft's shader, texture, capability and immediate-buffer caches. A pass-level OpenGL error aborts composition and restores the captured native world instead of presenting a black target. Every setting is captured in an immutable per-frame phase parameter block. The scene and final shaders directly consume the portable controls they implement
-
-The native settings screen uses direct persistent category tabs on the left, matching the supplied interactive menu prototype. The tab rail scrolls independently and the search field continues to search all 387 settings. Selecting a tab opens that category directly and never advances through a carousel
-
-## Validation status
-
-- Production compilation and reobfuscation: passed with Java 17 and ForgeGradle 6.0.36
-- Artifact: `taste-1.0.4-sandbox.jar`, SHA-256 `CA63B524C8B49F7CD36FAC45D0CB86F9046152ABD26B5BE97FC4F7E993B7DA89`
-- Registry inventory: 387 unique settings and 36 categories. The phase assignment report does not verify concrete consumers
-- Minecraft launch and scene captures: not run because this task did not authorize a client launch
-- Vanilla visual acceptance: not run
-- Embeddium 0.3.31 visual acceptance: not run
-- Physical NVIDIA, AMD and Intel matrix: not run
-- Dedicated-server class-loading check: not run
-
-The 1.0.4 JAR retains both core shader programs, the Mixin config and refmap, and no test classes. Its installed copy in `Sandbox JustEnoughMods` has the same SHA-256. The crashed 1.0.3 JAR is retained in that profile's disabled backup. `Test JustEnoughMods` contains no Taste Engine JAR
-
-The specialized G-buffer, shadow, compute GI, transparency, precipitation, temporal and provider paths require implementation or integration before acceptance. The existing `CODE_AUTHORED_RUNTIME_NOT_RUN` labels in the generated report describe phase assignment only. They do not prove that an effect is wired or complete.
+- Directional casters and offscreen reflections use loaded terrain. Dynamic wind casters refresh with the current visual frame. Unsupported foreign material layers retain the native draw path
+- Glass transmission retains two entries per cascade sample. Companion maps with different animation timing or dimensions keep the compatible material fallback. Serene Seasons is optional, with neutral influence when absent
+- Actor motion requires matching native layer geometry across consecutive frames. Changing or unrecognized meshes use temporal rejection or native coverage
+- The user owns the Sandbox gameplay check. Visual acceptance and the physical GPU matrix are pending
 
 ## Project-policy deviations from the handoff
 

@@ -1,0 +1,21 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "one",
+    "dstrgb": "zero"
+  },
+  "vertex": "taste:taste_final",
+  "fragment": "taste:taste_photo_accumulate",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "CurrentColor" },
+    { "name": "CurrentDepth" },
+    { "name": "HistoryColor" },
+    { "name": "HistoryDepth" }
+  ],
+  "uniforms": [
+    { "name": "InverseProjection", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1] },
+    { "name": "WorldJitter", "type": "float", "count": 2, "values": [0, 0] },
+    { "name": "HasHistory", "type": "float", "count": 1, "values": [0.0] }
+  ]
+}

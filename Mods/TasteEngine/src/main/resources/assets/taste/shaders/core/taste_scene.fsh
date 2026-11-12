@@ -17,6 +17,8 @@ uniform float VolumeAnisotropy;
 uniform float VolumeStrength;
 uniform float VolumeHeightBase;
 uniform float VolumeHeightFalloff;
+uniform float VolumeWater;
+uniform float CaveDensity;
 uniform float VolumeOnly;
 uniform float VolumeEnabled;
 uniform vec3 TowardsSun;
@@ -30,6 +32,8 @@ uniform sampler2D LocalLights;
 uniform sampler2D PointShadowAtlas;
 uniform float IndirectEnabled;
 uniform float LocalLightCount;
+uniform float PortalLightCount;
+uniform float EventLightCount;
 uniform float LightTileColumns;
 uniform vec2 LightViewport;
 uniform float LocalVolumes;
@@ -66,6 +70,9 @@ uniform sampler2D ShadowMap0;
 uniform sampler2D ShadowMap1;
 uniform sampler2D ShadowMap2;
 uniform sampler2D ShadowMap3;
+uniform sampler2D GlassTransmission;
+uniform sampler2D GlassTransmissionSecond;
+uniform float GlassTransmissionEnabled;
 uniform float Time;
 uniform float Rain;
 uniform float SunIntensity;
@@ -75,13 +82,9 @@ uniform float BlockIntensity;
 uniform float WarmColdBalance;
 uniform float ShadowStrength;
 uniform float ContactShadow;
-uniform float EmissionStrength;
-uniform float ReflectionStrength;
-uniform float CloudCoverage;
-uniform float CloudDensity;
-uniform float Wetness;
-uniform float WaterStrength;
-uniform float LavaStrength;
+uniform float LightWrap;
+uniform float ShadingStyle;
+uniform float ToonBands;
 uniform float ReducedMotion;
 
 in vec2 texCoord;
@@ -122,6 +125,22 @@ float shadowDepth(int index, vec2 uv) {
 
 bool insideMap(vec3 p) {
     return all(greaterThanEqual(p, vec3(0.0))) && all(lessThanEqual(p, vec3(1.0)));
+}
+
+vec3 glassTransmission(vec3 world, float distance) {
+    int index = cascadeIndex(distance);
+    if (GlassTransmissionEnabled < 0.5 || index < 0) return vec3(1.0);
+    vec3 point = lightCoordinate(index, world);
+    if (!insideMap(point)) return vec3(1.0);
+    ivec2 halfSize = textureSize(GlassTransmission, 0) / 2;
+    ivec2 cell = ivec2(index % 2, index / 2) * halfSize;
+    ivec2 texel = clamp(ivec2(point.xy * vec2(halfSize)), ivec2(0), halfSize - 1);
+    vec4 sampleValue = texelFetch(GlassTransmission, cell + texel, 0);
+    float receiver = point.z - max(ShadowBias, 0.00065);
+    if (receiver <= sampleValue.a) return vec3(1.0);
+    if (GlassTransmissionEnabled < 1.5) return sampleValue.rgb;
+    vec4 second = texelFetch(GlassTransmissionSecond, cell + texel, 0);
+    return sampleValue.rgb * (receiver > second.a ? second.rgb : vec3(1.0));
 }
 
 vec2 diskSample(int index, int count) {
@@ -220,7 +239,7 @@ float localVisibility(int index, vec3 ray, float range, bool volume) {
 }
 
 vec3 localIrradiance(vec3 world, vec3 normal, bool volume) {
-    if (LocalLightCount < 1.0 || (volume && LocalVolumes < 0.5)) return vec3(0.0);
+    if (LocalLightCount < 1.0 || (volume && LocalVolumes < 0.5 && PortalLightCount + EventLightCount < 1.0)) return vec3(0.0);
     ivec2 tile = ivec2(clamp(texCoord * LightViewport, vec2(0.0), LightViewport - 1.0) / 32.0);
     int tileAddress = int(LocalLightCount) * 2 + (tile.y * int(LightTileColumns) + tile.x) * 5;
     int count = min(int(lightData(tileAddress).r), volume ? 4 : 16);
@@ -228,6 +247,10 @@ vec3 localIrradiance(vec3 world, vec3 normal, bool volume) {
     for (int i = 0; i < count; ++i) {
         vec4 indices = lightData(tileAddress + 1 + i / 4);
         int index = int(indices[i % 4]);
+        bool portal = float(index) < PortalLightCount;
+        bool event = float(index) < PortalLightCount + EventLightCount;
+        if (portal && (!volume || float(index) >= PointShadowCount)) continue;
+        if (volume && !event && LocalVolumes < 0.5) continue;
         vec4 source = lightData(index * 2);
         vec3 delta = source.xyz - world;
         float distance = length(delta);
@@ -253,21 +276,27 @@ vec4 integrateAtmosphere(vec3 view) {
     float cosTheta = dot(direction, TowardsSun);
     float phase = (1.0 - g * g) / (12.566371 * pow(max(1.0 + g * g - 2.0 * g * cosTheta, 0.01), 1.5));
     float transmittance = 1.0;
-    float sunScattering = 0.0;
+    vec3 sunScattering = vec3(0.0);
     vec3 localScattering = vec3(0.0);
     bool shafts = CascadeCount >= 1.0 && VolumeStrength > 0.0 && SunIntensity > 0.0;
     for (int i = 0; i < count; ++i) {
         float distance = (float(i) + 0.5) * segmentLength;
         vec3 world = eye + direction * distance;
-        float density = VolumeDensity * exp(clamp(-(world.y - VolumeHeightBase) * VolumeHeightFalloff, -10.0, 3.0));
+        float density = VolumeWater > 0.5 ? VolumeDensity
+                : VolumeDensity * exp(clamp(-(world.y - VolumeHeightBase) * VolumeHeightFalloff, -10.0, 3.0))
+                    + CaveDensity * exp(-distance / 22.0);
         float segmentT = exp(-density * segmentLength);
-        if (shafts)
-            sunScattering += transmittance * (1.0 - segmentT) * visibility(world, -ray.z * distance, false);
+        if (shafts) {
+            float depth = -ray.z * distance;
+            sunScattering += transmittance * (1.0 - segmentT) * visibility(world, depth, false)
+                    * glassTransmission(world, depth);
+        }
         localScattering += transmittance * (1.0 - segmentT) * localIrradiance(world, vec3(0.0), true);
         transmittance *= segmentT;
         if (transmittance < 0.005) break;
     }
     vec3 light = SunColor * (sunScattering * phase * VolumeStrength * SunIntensity * (1.0 - Rain));
+    if (VolumeWater > 0.5) return vec4((light + localScattering * 0.07957747) * vec3(0.35, 0.76, 1.0), 1.0);
     return vec4(FogColor * (1.0 - transmittance) + light + localScattering * 0.07957747, transmittance);
 }
 
@@ -427,41 +456,52 @@ void main() {
         return;
     }
     bool sky = SkyMode > 0.5 && deviceDepth >= 1.0;
-    if (sky) color = skyRadiance(normalize(mat3(InverseView) * view));
+    if (sky) {
+        vec3 direction = normalize(mat3(InverseView) * view);
+        if (SkyMode > 2.5) {
+            vec2 coords = vec2(atan(direction.z, direction.x), asin(clamp(direction.y, -1.0, 1.0))) * 170.0;
+            float identity = skyHash(floor(coords));
+            float star = step(1.0 - min(0.3, SkyStarDensity * 0.02), identity)
+                    * (1.0 - smoothstep(0.025, 0.17, length(fract(coords) - 0.5)));
+            color += vec3(0.5, 0.58, 1.0) * star * SkyStarBrightness;
+        } else color = skyRadiance(direction);
+    }
     vec3 world = (InverseView * vec4(view, 1.0)).xyz;
     vec3 normal = cross(dFdx(world), dFdy(world));
     normal /= max(length(normal), 1.0e-6);
     float depth = max(0.0, -view.z);
     float horizon = smoothstep(0.2, 0.85, texCoord.y);
     float skyLight = mix(AmbientFloor, SkyIntensity, horizon) * 0.04;
-    float direct = mix(0.94, 1.08, clamp(SunIntensity / 4.0, 0.0, 1.0));
     vec3 temperature = mix(vec3(0.93, 0.97, 1.05), vec3(1.06, 0.98, 0.91), clamp(WarmColdBalance * 0.5 + 0.5, 0.0, 1.0));
     vec4 indirect = vec4(0.0, 0.0, 0.0, 1.0);
     float opaqueDepth = texture(OpaqueDepth, texCoord).r;
     if (IndirectEnabled > 0.5 && deviceDepth < 1.0 && abs(opaqueDepth - deviceDepth) < 0.0000002)
         indirect = indirectAt(texCoord, depth);
-    if (!sky) color *= direct * temperature;
-    if (CascadeCount >= 1.0 && ShadowStrength > 0.5 && deviceDepth < 1.0) {
-        float diffuse = max(0.0, dot(normal, TowardsSun));
-        float sunlight = visibility(world + normal * ShadowNormalBias, depth, true) * contactVisibility(view);
+    if (!sky) color *= temperature;
+    float directFraction = 0.0;
+    if (deviceDepth < 1.0) {
+        float cosine = dot(normal, TowardsSun);
+        float wrap = ShadingStyle > 0.5 ? LightWrap : LightWrap * 0.5;
+        float diffuse = max(0.0, (cosine + wrap) / (1.0 + wrap));
+        if (ShadingStyle > 1.5 && ToonBands >= 2.0) {
+            float quantized = diffuse * ToonBands;
+            float blend = max(fwidth(quantized), 0.01);
+            diffuse = (floor(quantized) + smoothstep(0.5 - blend, 0.5 + blend, fract(quantized))) / ToonBands;
+        }
         float intensity = clamp(SunIntensity * 0.20, 0.0, 0.85) * (1.0 - Rain);
-        color *= (1.0 - intensity) + SunColor * diffuse * sunlight * intensity;
+        float sunlight = 1.0;
+        if (ShadowStrength > 0.5) {
+            if (CascadeCount >= 1.0) sunlight = visibility(world + normal * ShadowNormalBias, depth, true);
+            sunlight *= contactVisibility(view);
+        }
+        color *= (1.0 - intensity) + SunColor * diffuse * sunlight * intensity * glassTransmission(world, depth);
+        directFraction = clamp(diffuse * sunlight * intensity, 0.0, 1.0);
     }
     if (!sky) color += (color * skyLight + color * indirect.rgb) * indirect.a;
     if (deviceDepth < 1.0) color += color * localIrradiance(world, normal, false);
-    float peak = max(color.r, max(color.g, color.b));
-    color += color * smoothstep(0.65, 1.0, peak) * EmissionStrength * 0.025;
-    float wet = clamp(Wetness * Rain, 0.0, 1.0);
-    float reflectedSky = (1.0 - abs(texCoord.y * 2.0 - 1.0)) * ReflectionStrength;
-    color = mix(color, color * 0.82 + vec3(0.10, 0.17, 0.24) * reflectedSky, wet * 0.13);
-    float cloudShade = CloudCoverage * CloudDensity * horizon * 0.025;
-    color *= 1.0 - cloudShade;
-    float liquidMotion = mix(sin((texCoord.x + texCoord.y) * 48.0 + Time * 1.4), 0.0, ReducedMotion);
-    color += vec3(0.02, 0.07, 0.08) * WaterStrength * wet * liquidMotion;
-    color += vec3(0.15, 0.045, 0.005) * LavaStrength * smoothstep(0.8, 1.0, color.r) * 0.035;
     if (VolumeEnabled > 0.5) {
         vec4 atmosphere = atmosphereAt(texCoord, depth);
         color = color * atmosphere.a + atmosphere.rgb;
     }
-    fragColor = vec4(max(color, vec3(0.0)), 1.0);
+    fragColor = vec4(max(color, vec3(0.0)), directFraction);
 }

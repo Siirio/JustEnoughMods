@@ -43,6 +43,7 @@ public class TasteConfigScreen extends Screen {
     private EditBox search;
     private Button master;
     private Button apply;
+    private Button cancel;
     private Button previous;
     private Button next;
     private String query = "";
@@ -81,6 +82,7 @@ public class TasteConfigScreen extends Screen {
         categoryTabs.clear();
         textEditors.clear();
         master = addRenderableWidget(Button.builder(masterText(), button -> {
+            if (store.previewStatus().pending()) return;
             draft.set("general.enabled", new JsonPrimitive(!draft.value("general.enabled").getAsBoolean()));
             rebuildRows();
         }).bounds(contentLeft, 44, Math.min(190, contentWidth / 2), 20).build());
@@ -97,6 +99,7 @@ public class TasteConfigScreen extends Screen {
                 .bounds(contentLeft + contentWidth - 30, height - 84, 30, 20).build());
         int buttonWidth = (contentWidth - 12) / 4;
         addRenderableWidget(Button.builder(Component.translatable("taste.ui.resetPage"), b -> {
+            if (store.previewStatus().pending()) return;
             if (categoryIndex == 0 || !query.isBlank()) for (VisibleRow row : List.copyOf(rows)) reset(row.spec().id());
             else {
                 String category = registry.categories().get(categoryIndex - 1).id();
@@ -105,11 +108,17 @@ public class TasteConfigScreen extends Screen {
             rebuildRows();
         }).bounds(contentLeft, height - 28, buttonWidth, 20).tooltip(Tooltip.create(Component.translatable("taste.ui.resetPageHelp"))).build());
         addRenderableWidget(Button.builder(Component.translatable("taste.ui.resetAll"), b -> {
+            if (store.previewStatus().pending()) return;
             draft.resetAll(); invalidText.clear(); errors.clear(); message = ""; rebuildRows();
         }).bounds(contentLeft + buttonWidth + 4, height - 28, buttonWidth, 20).build());
         apply = addRenderableWidget(Button.builder(Component.translatable("taste.ui.apply"), b -> applyDraft())
                 .bounds(contentLeft + (buttonWidth + 4) * 2, height - 28, buttonWidth, 20).build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose())
+        cancel = addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> {
+            if (store.previewStatus().pending()) {
+                store.revertPreview();
+                updateApplyState();
+            } else onClose();
+        })
                 .bounds(contentLeft + (buttonWidth + 4) * 3, height - 28, buttonWidth, 20).build());
         rebuildRows();
     }
@@ -261,14 +270,36 @@ public class TasteConfigScreen extends Screen {
         draft.reset(id); invalidText.remove(id); errors.remove(id); message = "";
     }
     private void updateApplyState() {
-        if (apply != null) apply.active = errors.isEmpty();
+        ConfigStore.PreviewStatus status = store.previewStatus();
+        if (apply != null) {
+            apply.active = status.stage() == ConfigStore.PreviewStage.VISIBLE || (!status.pending() && errors.isEmpty());
+            apply.setMessage(Component.translatable(status.pending() ? "taste.ui.previewKeep" : "taste.ui.apply"));
+        }
+        if (cancel != null) cancel.setMessage(Component.translatable(status.pending() ? "taste.ui.previewRevert" : "gui.cancel"));
+        if (master != null) master.active = !status.pending();
+        for (AbstractWidget widget : rowWidgets) widget.active = !status.pending();
     }
     private void applyDraft() {
         if (!errors.isEmpty()) return;
         try {
-            store.apply(draft);
+            ConfigStore.PreviewStatus status = store.previewStatus();
+            ConfigStore.ApplyResult result;
+            if (status.stage() == ConfigStore.PreviewStage.VISIBLE) {
+                result = store.keepPreview();
+            } else if (status.pending()) {
+                return;
+            } else if (draft.dirty() && minecraft != null && minecraft.level != null
+                    && draft.value("general.livePreview").getAsBoolean()) {
+                store.startPreview(draft);
+                updateApplyState();
+                return;
+            } else {
+                result = store.apply(draft);
+            }
             draft = store.draft();
-            message = Component.translatable("taste.ui.saved").getString();
+            message = result.snapshot().value("general.showChanges").getAsBoolean()
+                    ? Component.translatable("taste.ui.savedChanges", result.changedIds().size()).getString()
+                    : Component.translatable("taste.ui.saved").getString();
             rebuildRows();
         } catch (IOException | RuntimeException failure) {
             message = failure.getMessage() == null ? Component.translatable("taste.ui.saveFailed").getString() : failure.getMessage();
@@ -278,8 +309,12 @@ public class TasteConfigScreen extends Screen {
         if (search != null) search.tick();
         textEditors.forEach(EditBox::tick);
         if (refreshRows) rebuildRows();
+        updateApplyState();
     }
-    @Override public void onClose() { if (minecraft != null) minecraft.setScreen(parent); }
+    @Override public void onClose() {
+        store.revertPreview();
+        if (minecraft != null) minecraft.setScreen(parent);
+    }
     @Override public boolean isPauseScreen() { return false; }
     @Override public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
         if (mouseX >= left && mouseX < left + sidebarWidth && mouseY >= 44 && mouseY < height - 28) {
@@ -308,7 +343,15 @@ public class TasteConfigScreen extends Screen {
         if (rows.isEmpty()) graphics.drawCenteredString(font, Component.translatable("taste.ui.noResults"), contentCenter, 110, 0xAAAAAA);
         graphics.drawCenteredString(font, Component.translatable("taste.ui.page", page + 1, pageCount, draft.dirty() ? "*" : ""),
                 contentCenter, height - 78, 0xCCCCCC);
-        String status = errors.isEmpty() ? message : errors.values().iterator().next();
+        ConfigStore.PreviewStatus preview = store.previewStatus();
+        String previewMessage = switch (preview.stage()) {
+            case WAITING -> Component.translatable("taste.ui.previewWaiting").getString();
+            case VISIBLE -> Component.translatable("taste.ui.previewVisible", preview.seconds()).getString();
+            case REVERTED -> Component.translatable("taste.ui.previewRestored").getString();
+            case FAILED -> Component.translatable("taste.ui.previewFailed", preview.error()).getString();
+            case NONE -> message;
+        };
+        String status = errors.isEmpty() ? previewMessage : errors.values().iterator().next();
         graphics.drawString(font, font.plainSubstrByWidth(status, contentWidth), contentLeft, height - 55, errors.isEmpty() ? 0xAACCAA : 0xFF7777, false);
         super.render(graphics, mouseX, mouseY, partialTick);
     }

@@ -1,0 +1,23 @@
+#version 150
+
+#moj_import <fog.glsl>
+
+in vec3 Position;
+in vec4 Color;
+in vec2 UV0;
+
+uniform mat4 ModelViewMat;
+uniform mat4 ProjMat;
+uniform mat3 IViewRotMat;
+uniform int FogShape;
+
+out float fogDistance;
+out vec4 authoredColor;
+out vec2 eyeUv;
+
+void main() {
+    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
+    fogDistance = fog_distance(ModelViewMat, IViewRotMat * Position, FogShape);
+    authoredColor = Color;
+    eyeUv = UV0;
+}

@@ -30,7 +30,10 @@ public final class CapabilityProbe {
         int textureUnits = GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS);
         boolean framebufferFormats = drawBuffers >= 4 && colorAttachments >= 4 && probeFourTargetFloatFramebuffer();
         if (framebufferFormats) flags.add("rgba16f-mrt");
-        if (GL.getCapabilities().OpenGL43) flags.add("gl43");
+        if (GL.getCapabilities().OpenGL43) {
+            flags.add("gl43");
+            flags.add("voxel_gi");
+        }
         flags.add("post");
         boolean baseline = framebufferFormats && textureUnits >= 16;
         String reason = baseline ? "" : "Taste requires a complete four-target RGBA16F framebuffer and sixteen fragment samplers";

@@ -1,0 +1,39 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "one",
+    "dstrgb": "1-srcalpha",
+    "srcalpha": "one",
+    "dstalpha": "1-srcalpha"
+  },
+  "vertex": "taste:taste_final",
+  "fragment": "taste:taste_hand_composite",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "HandColor" },
+    { "name": "HandDepth" },
+    { "name": "PreviousHand" }
+  ],
+  "uniforms": [
+    { "name": "HandProjection", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1] },
+    { "name": "InverseHandProjection", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1] },
+    { "name": "LightDirection", "type": "float", "count": 3, "values": [0, 0, 1] },
+    { "name": "LightColor", "type": "float", "count": 3, "values": [0, 0, 0] },
+    { "name": "LightStrength", "type": "float", "count": 1, "values": [0] },
+    { "name": "SelfShadow", "type": "float", "count": 1, "values": [0] },
+    { "name": "DirectionalLighting", "type": "float", "count": 1, "values": [0] },
+    { "name": "Aperture", "type": "float", "count": 1, "values": [2.8] },
+    { "name": "BlurRadius", "type": "float", "count": 1, "values": [0] },
+    { "name": "FocalLength", "type": "float", "count": 1, "values": [0.012] },
+    { "name": "Shutter", "type": "float", "count": 1, "values": [0] },
+    { "name": "MotionSamples", "type": "float", "count": 1, "values": [8] },
+    { "name": "HandEmission", "type": "float", "count": 1, "values": [0] },
+    { "name": "EnvironmentUp", "type": "float", "count": 3, "values": [0, 1, 0] },
+    { "name": "EnvironmentSky", "type": "float", "count": 3, "values": [0, 0, 0] },
+    { "name": "EnvironmentHorizon", "type": "float", "count": 3, "values": [0, 0, 0] },
+    { "name": "EnvironmentStrength", "type": "float", "count": 1, "values": [0] },
+    { "name": "ReflectRoughness", "type": "float", "count": 1, "values": [1] },
+    { "name": "ReflectMetallic", "type": "float", "count": 1, "values": [0] },
+    { "name": "ReflectF0", "type": "float", "count": 1, "values": [0.04] }
+  ]
+}

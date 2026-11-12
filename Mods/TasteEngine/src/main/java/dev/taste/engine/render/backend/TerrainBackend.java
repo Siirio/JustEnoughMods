@@ -13,6 +13,7 @@ public interface TerrainBackend extends AutoCloseable {
     void beginLayer(String layer);
     void endLayer(String layer);
     List<LayerStamp> stamps();
+    long casterRevision();
     void deactivate();
     @Override void close();
 }

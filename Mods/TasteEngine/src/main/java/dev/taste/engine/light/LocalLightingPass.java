@@ -16,14 +16,12 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -37,7 +35,7 @@ import org.lwjgl.opengl.GL11;
 
 /** Bounded loaded-section discovery and packed screen tile lists for local light sources. */
 public final class LocalLightingPass implements AutoCloseable {
-    public record TileData(int texture, int columns, List<Light> lights) { }
+    public record TileData(int texture, int columns, List<Light> lights, int portalCount, int eventCount) { }
     private record Section(int x, int y, int z, double distance) {
         long key() { return SectionPos.asLong(x, y, z); }
     }
@@ -54,7 +52,8 @@ public final class LocalLightingPass implements AutoCloseable {
     private long worldEpoch = -1;
     private FloatBuffer buffer;
 
-    public TileData prepare(TargetPool targets, FrameSnapshot frame, PipelineParameters settings, MaterialResolver resolver) {
+    public TileData prepare(TargetPool targets, FrameSnapshot frame, PipelineParameters settings, MaterialResolver resolver,
+            List<Light> portalLights, List<Light> eventLights) {
         Minecraft minecraft = Minecraft.getInstance();
         ClientLevel level = minecraft.level;
         if (level == null) return null;
@@ -66,7 +65,7 @@ public final class LocalLightingPass implements AutoCloseable {
         List<Light> candidates = new ArrayList<>();
         boolean blocks = enabled(settings, "lighting.coloredBlocks");
         boolean held = enabled(settings, "lighting.heldLights");
-        if (!(blocks || held)) {
+        if (!(blocks || held) && portalLights.isEmpty() && eventLights.isEmpty()) {
             targets.release("local-light-data");
             return null;
         }
@@ -79,17 +78,23 @@ public final class LocalLightingPass implements AutoCloseable {
             addHeld(minecraft.player.getMainHandItem(), frame.cameraWorld(), resolver, range, candidates);
             addHeld(minecraft.player.getOffhandItem(), frame.cameraWorld(), resolver, range, candidates);
         }
-        if (candidates.isEmpty()) return null;
         FrameSnapshot.Vec3d eye = frame.cameraWorld();
         int limit = settings.value("lighting.maxLights").getAsInt();
-        List<Light> selected = candidates.stream()
-                .sorted(Comparator.comparingDouble((Light light) -> influence(light, eye)).reversed())
-                .limit(limit).toList();
+        int portalCount = Math.min(limit, portalLights.size());
+        int eventCount = Math.min(limit - portalCount, eventLights.size());
+        List<Light> selected = new ArrayList<>(limit);
+        selected.addAll(portalLights.subList(0, portalCount));
+        selected.addAll(eventLights.subList(0, eventCount));
+        candidates.stream().sorted(Comparator.comparingDouble((Light light) -> influence(light, eye)).reversed())
+                .limit(limit - portalCount - eventCount).forEach(selected::add);
         List<TiledLightGrid.ProjectedLight> projected = project(frame, selected);
-        if (projected.isEmpty()) return null;
+        if (projected.isEmpty()) {
+            targets.release("local-light-data");
+            return null;
+        }
         grid.build(frame.width(), frame.height(), projected);
         int texture = upload(targets, frame, settings, selected, limit);
-        return new TileData(texture, grid.columns(), selected);
+        return new TileData(texture, grid.columns(), List.copyOf(selected), portalCount, eventCount);
     }
 
     private void collectBlocks(ClientLevel level, FrameSnapshot frame, MaterialResolver resolver,
@@ -135,7 +140,7 @@ public final class LocalLightingPass implements AutoCloseable {
     }
 
     private List<Light> scan(ClientLevel level, LevelChunkSection section, Section location, MaterialResolver resolver) {
-        if (section.hasOnlyAir() || !section.maybeHas(state -> state.getLightEmission() > 0 || material(state, resolver).emission() > 0))
+        if (section.hasOnlyAir() || !section.maybeHas(state -> intensity(material(state, resolver), state.getLightEmission()) > 0))
             return List.of();
         Light[] cells = new Light[64];
         BlockPos.MutableBlockPos position = new BlockPos.MutableBlockPos();
@@ -145,10 +150,9 @@ public final class LocalLightingPass implements AutoCloseable {
             position.set(location.x() * 16 + x, location.y() * 16 + y, location.z() * 16 + z);
             MaterialDescription material = material(state, resolver);
             int nativeLight = state.getLightEmission(level, position);
-            if (nativeLight <= 0 && material.emission() <= 0) continue;
             int cell = (x / 4) + (z / 4) * 4 + (y / 4) * 16;
-            float intensity = Math.max(material.emission(), nativeLight / 15.0F);
-            if (cells[cell] != null && cells[cell].intensity() >= intensity) continue;
+            float intensity = intensity(material, nativeLight);
+            if (intensity <= 0 || (cells[cell] != null && cells[cell].intensity() >= intensity)) continue;
             cells[cell] = lightFor(state, material, nativeLight, position.getX() + 0.5, position.getY() + 0.65,
                     position.getZ() + 0.5, Math.max(3.0F, nativeLight * 1.5F));
         }
@@ -163,23 +167,29 @@ public final class LocalLightingPass implements AutoCloseable {
         BlockState state = block.getBlock().defaultBlockState();
         MaterialDescription material = material(state, resolver);
         int nativeLight = state.getLightEmission();
-        if (nativeLight <= 0 && material.emission() <= 0) return;
+        if (intensity(material, nativeLight) <= 0) return;
         candidates.add(lightFor(state, material, nativeLight, eye.x(), eye.y() - 0.3, eye.z(), range));
     }
 
     private MaterialDescription material(BlockState state, MaterialResolver resolver) {
         return materials.computeIfAbsent(state, key -> {
-            ResourceLocation block = BuiltInRegistries.BLOCK.getKey(key.getBlock());
-            ResourceLocation fluid = key.getFluidState().isEmpty() ? null : BuiltInRegistries.FLUID.getKey(key.getFluidState().getType());
-            return resolver.resolve(new MaterialQuery(block, fluid, null,
-                    key.getTags().map(TagKey::location).collect(Collectors.toSet()), false, false, -1));
+            if (!key.getFluidState().isEmpty()) {
+                MaterialDescription fluid = resolver.resolve(MaterialQuery.fluid(
+                        key.getFluidState(), null, MaterialQuery.Layer.TRANSLUCENT, -1));
+                if (fluid.emission() > 0 || fluid.metadata().localLight() != null) return fluid;
+            }
+            return resolver.resolve(MaterialQuery.block(key, null, null, -1));
         });
     }
 
     private static Light lightFor(BlockState state, MaterialDescription material, int nativeLight,
             double x, double y, double z, float range) {
         ResourceLocation block = BuiltInRegistries.BLOCK.getKey(state.getBlock());
-        int rgb = material.emission() > 0 && material.tintRgb() != 0xFFFFFF ? material.tintRgb() : switch (block.toString()) {
+        var local = material.metadata().localLight();
+        Integer explicitColor = local == null ? null : local.colorRgb();
+        if (explicitColor == null) explicitColor = material.metadata().emissionColorRgb();
+        int rgb = explicitColor != null ? explicitColor
+                : material.emission() > 0 && material.tintRgb() != 0xFFFFFF ? material.tintRgb() : switch (block.toString()) {
             case "minecraft:soul_fire", "minecraft:soul_torch", "minecraft:soul_wall_torch", "minecraft:soul_lantern",
                     "minecraft:soul_campfire" -> 0x46E3EF;
             case "minecraft:sea_lantern", "minecraft:beacon" -> 0xD7FBFF;
@@ -187,7 +197,13 @@ public final class LocalLightingPass implements AutoCloseable {
             default -> 0xFFE2BA;
         };
         return new Light(x, y, z, linear(rgb >> 16), linear(rgb >> 8), linear(rgb),
-                Math.max(material.emission(), nativeLight / 15.0F), range, true);
+                intensity(material, nativeLight), local == null ? range : local.range(), true);
+    }
+
+    private static float intensity(MaterialDescription material, int nativeLight) {
+        var local = material.metadata().localLight();
+        if (local != null) return local.range() > 0 ? local.intensity() : 0;
+        return Math.max(material.emission(), nativeLight / 15.0F);
     }
 
     private static List<TiledLightGrid.ProjectedLight> project(FrameSnapshot frame, List<Light> lights) {

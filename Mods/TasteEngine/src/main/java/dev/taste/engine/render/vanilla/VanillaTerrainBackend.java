@@ -42,6 +42,17 @@ public final class VanillaTerrainBackend implements TerrainBackend {
         layer = null;
     }
     public List<LayerStamp> stamps() { return List.copyOf(stamps); }
+    public long casterRevision() {
+        ViewArea area = ((LevelRendererViewAreaAccessor) Minecraft.getInstance().levelRenderer).taste$getViewArea();
+        if (area == null) return 0;
+        long revision = 0;
+        for (RenderChunk chunk : area.chunks) {
+            int compiled = System.identityHashCode(chunk.getCompiledChunk());
+            long element = chunk.getOrigin().asLong() * 0x9E3779B97F4A7C15L + Integer.toUnsignedLong(compiled);
+            revision += Long.rotateLeft(element, compiled & 31);
+        }
+        return revision;
+    }
     public int drawShadowCasters(Matrix4f lightProjection, FrameSnapshot.Vec3d origin, ShadowDraw draw) {
         ViewArea area = ((LevelRendererViewAreaAccessor) Minecraft.getInstance().levelRenderer).taste$getViewArea();
         if (area == null) return 0;
@@ -52,12 +63,13 @@ public final class VanillaTerrainBackend implements TerrainBackend {
             float x = (float) (position.getX() - origin.x());
             float y = (float) (position.getY() - origin.y());
             float z = (float) (position.getZ() - origin.z());
-            if (!frustum.testAab(x, y, z, x + 16, y + 16, z + 16)) continue;
+            if (!frustum.testAab(x - 0.18F, y, z - 0.18F, x + 16.18F, y + 16, z + 16.18F)) continue;
             for (RenderType layer : SHADOW_LAYERS) {
                 if (section.getCompiledChunk().isEmpty(layer)) continue;
                 VertexBuffer mesh = section.getBuffer(layer);
                 if (mesh == null || mesh.isInvalid()) continue;
-                draw.draw(mesh, x, y, z, layer == RenderType.solid() ? 0 : 0.1F);
+                float cutoff = layer == RenderType.solid() ? 0 : layer == RenderType.cutoutMipped() ? 0.5F : 0.1F;
+                draw.draw(mesh, x, y, z, cutoff);
                 draws++;
             }
         }

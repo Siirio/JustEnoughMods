@@ -26,6 +26,7 @@ public final class EmbeddiumCaptureRenderer implements AutoCloseable {
     private final Method isBuilt;
     private final Method isDisposed;
     private final Method sectionFlags;
+    private final Method lastBuiltFrame;
     private final Method originX;
     private final Method originY;
     private final Method originZ;
@@ -72,6 +73,7 @@ public final class EmbeddiumCaptureRenderer implements AutoCloseable {
             isBuilt = section.getMethod("isBuilt");
             isDisposed = section.getMethod("isDisposed");
             sectionFlags = section.getMethod("getFlags");
+            lastBuiltFrame = section.getMethod("getLastBuiltFrame");
             originX = section.getMethod("getOriginX");
             originY = section.getMethod("getOriginY");
             originZ = section.getMethod("getOriginZ");
@@ -114,7 +116,7 @@ public final class EmbeddiumCaptureRenderer implements AutoCloseable {
                 float x = (float) ((int) originX.invoke(section) - origin.x());
                 float y = (float) ((int) originY.invoke(section) - origin.y());
                 float z = (float) ((int) originZ.invoke(section) - origin.z());
-                if (!frustum.testAab(x, y, z, x + 16, y + 16, z + 16)) continue;
+                if (!frustum.testAab(x - 0.18F, y, z - 0.18F, x + 16.18F, y + 16, z + 16.18F)) continue;
                 Object sectionRegion = region.invoke(section);
                 Object list = byRegion.get(sectionRegion);
                 if (list == null) {
@@ -128,6 +130,26 @@ public final class EmbeddiumCaptureRenderer implements AutoCloseable {
             if (count == 0) return 0;
             drawLists(lightProjection, origin, vertexType.invoke(manager), new ArrayList<>(byRegion.values()));
             return count;
+        } catch (ReflectiveOperationException failure) {
+            throw abiFailure(failure);
+        }
+    }
+
+    public long casterRevision() {
+        try {
+            Object world = worldInstance.invoke(null);
+            Object manager = world == null ? null : managerField.get(world);
+            if (manager == null) return 0;
+            long revision = 0;
+            Map<?, ?> sections = (Map<?, ?>) sectionsField.get(manager);
+            for (Map.Entry<?, ?> entry : sections.entrySet()) {
+                Object section = entry.getValue();
+                if (!(boolean) isBuilt.invoke(section) || (boolean) isDisposed.invoke(section)) continue;
+                long key = ((Number) entry.getKey()).longValue();
+                int built = (int) lastBuiltFrame.invoke(section);
+                revision += Long.rotateLeft(key * 0x9E3779B97F4A7C15L + built, built & 31);
+            }
+            return revision;
         } catch (ReflectiveOperationException failure) {
             throw abiFailure(failure);
         }

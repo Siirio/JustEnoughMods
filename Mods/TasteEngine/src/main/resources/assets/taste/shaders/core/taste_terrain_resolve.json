@@ -1,0 +1,21 @@
+{
+  "vertex": "taste:taste_scene",
+  "fragment": "taste:taste_terrain_resolve",
+  "attributes": ["Position","UV0"],
+  "samplers": [{"name":"SceneSampler"}, {"name":"OpaqueDepth"}, {"name":"WorldDepth"}, {"name":"MaterialDepth"}, {"name":"AlbedoAo"}, {"name":"NormalSurface"}, {"name":"EmissionFlags"}, {"name":"MotionLight"}, {"name":"MaterialAux"}],
+  "uniforms": [
+    {"name":"PuddleOrigin","type":"float","count":2,"values":[0,0]},
+    {"name":"InverseProjection","type":"matrix4x4","count":16,"values":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]},
+    {"name":"InverseView","type":"matrix4x4","count":16,"values":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]},
+    {"name":"LightDirection","type":"float","count":3,"values":[0,1,0]},
+    {"name":"LightColor","type":"float","count":3,"values":[1,1,1]},
+    {"name":"Subsurface","type":"float","count":1,"values":[0]},
+    {"name":"EmissiveStrength","type":"float","count":1,"values":[1]},
+    {"name":"Wetness","type":"float","count":1,"values":[0]},
+    {"name":"WetDarkening","type":"float","count":1,"values":[0.18]},
+    {"name":"WetSmoothness","type":"float","count":1,"values":[0.75]},
+    {"name":"PuddleCoverage","type":"float","count":1,"values":[0]},
+    {"name":"PuddleDepth","type":"float","count":1,"values":[0.015]},
+    {"name":"WorldSeed","type":"float","count":1,"values":[0]}
+  ]
+}

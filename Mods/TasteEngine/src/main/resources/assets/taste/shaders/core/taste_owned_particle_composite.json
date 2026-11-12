@@ -1,0 +1,36 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "one",
+    "dstrgb": "zero",
+    "srcalpha": "one",
+    "dstalpha": "zero"
+  },
+  "vertex": "taste:taste_final",
+  "fragment": "taste:taste_owned_particle_composite",
+  "attributes": [
+    "Position",
+    "UV0"
+  ],
+  "samplers": [
+    {
+      "name": "SceneColor"
+    },
+    {
+      "name": "ParticleColor"
+    },
+    {
+      "name": "ParticleReveal"
+    }
+  ],
+  "uniforms": [
+    {
+      "name": "Weighted",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0
+      ]
+    }
+  ]
+}

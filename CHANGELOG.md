@@ -1,3 +1,21 @@
+## 2026-11-12 - Finish the Taste Engine Sandbox renderer paths
+
+- The user requested the remaining handoff and settings in the existing `sandbox/taste-engine` worktree, followed by a Sandbox-only artifact for manual review
+- Added matching plant anchors to the pinned Vanilla and Embeddium mesh layouts. Terrain motion now uses current and prior unjittered coordinates. Supported actor geometry supplies its own motion and changed-pose mask
+- Added bounded owned particle lighting and soft depth with sorted or weighted blending, native eyes and glint emission, confirmed lightning illumination, portal edge scattering, sheltered indoor dust, and lens-film drying
+- Added native sprite animation synchronization, separate height maps, per-sprite transparent optics, and two depth-peeled glass transmission entries
+- Implementation choices include preserving unsupported native draw layers, capping transparent caster depth at two entries, and limiting static caster reuse to stable mesh and light inputs. Visual acceptance remains pending
+- Bug / Client Sided / 1.0.4 lacked connected caster-map and volume passes / in testing with depth-backed cascades, light-volume integration and dedicated transparent transmission
+- Java 17 production compilation and reobfuscation passed. The installed Sandbox `taste-1.0.5-sandbox.jar` matches the built SHA-256 `9EB9B5D7682B10EB4CA88E1A43594EF6C5A93B03E7C5D3ACC05D04590B106809`. The artifact contains all 27 registered client Mixins and their refmap. The user owns the game check
+
+## 2026-11-12 - Continue Taste Engine in Sandbox
+
+- The user requested the complete visual handoff and functional settings starting from `da319489b`. The user set the order to finish source, then build and install only in Sandbox for manual review
+- Bug / Client Sided / the installed 1.0.4 world composite did not submit or consume directional caster maps or volume integration / source changes pending build and Sandbox acceptance
+- Added concrete source consumers for the terrain and actor lighting inputs, directional and point casters, volume shafts, GL 4.3 voxel GI, cloud layers, material surfaces, reflections, weather, camera and photo passes
+- Implementation choices include reusing Forge baked geometry for bounded material captures, routing the native Fabulous layers to HDR targets and composing after Forge `AFTER_LEVEL`. The new source scope and remaining handoff contracts are recorded in `Mods/TasteEngine/IMPLEMENTATION_STATE.md`
+- This entry records source state at the end of the earlier request. The next entry records build and installation on `sandbox/taste-engine`
+
 ## 2026-11-02 - Publish the four-fix MineRENT and AutoModpack release
 
 - User explicitly authorized publishing the prepared ghost-block, FTB, Luxium and Void Walker fixes to MineRENT and its native AutoModpack catalogue only. The ordinary local Server, stable JustEnoughMods, test jem and other client profiles remain untouched, and the user applies the client update manually

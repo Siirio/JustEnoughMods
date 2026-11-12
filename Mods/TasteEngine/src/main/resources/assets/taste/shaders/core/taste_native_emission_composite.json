@@ -1,0 +1,9 @@
+{
+  "vertex": "taste:taste_scene",
+  "fragment": "taste:taste_native_emission_composite",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    {"name": "DiffuseSampler"}, {"name": "DepthSampler"}, {"name": "NativeEmission"}, {"name": "Atmosphere"}
+  ],
+  "uniforms": [{"name": "HasAtmosphere", "type": "float", "count": 1, "values": [0]}]
+}

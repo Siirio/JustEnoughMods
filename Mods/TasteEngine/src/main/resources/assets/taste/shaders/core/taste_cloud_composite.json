@@ -1,0 +1,23 @@
+{
+  "vertex": "taste:taste_scene",
+  "fragment": "taste:taste_cloud_composite",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    {"name": "SceneColor"},
+    {"name": "ViewDepth"},
+    {"name": "CloudColor"},
+    {"name": "CloudDistance"},
+    {"name": "CloudShadow"}
+  ],
+  "uniforms": [
+    {"name": "InverseProjection", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]},
+    {"name": "InverseView", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]},
+    {"name": "Layer1Shape", "type": "float", "count": 2, "values": [0.0, 0.0]},
+    {"name": "Layer2Shape", "type": "float", "count": 2, "values": [0.0, 0.0]},
+    {"name": "Layer3Shape", "type": "float", "count": 2, "values": [0.0, 0.0]},
+    {"name": "ShadowCenter", "type": "float", "count": 3, "values": [0.0, 0.0, 0.0]},
+    {"name": "ShadowDirection", "type": "float", "count": 3, "values": [0.0, 0.0, 0.0]},
+    {"name": "ShadowSpan", "type": "float", "count": 1, "values": [0.0]},
+    {"name": "ShadowStrength", "type": "float", "count": 1, "values": [0.0]}
+  ]
+}

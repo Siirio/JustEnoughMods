@@ -5,9 +5,24 @@
   "samplers": [
     { "name": "DiffuseSampler" },
     { "name": "FineSampler" },
-    { "name": "DepthSampler" }
+    { "name": "DepthSampler" },
+    { "name": "TerrainEmission" },
+    { "name": "TerrainDepth" },
+    { "name": "SurfaceData" },
+    { "name": "SurfaceDepth" },
+    { "name": "NativeEmission" },
+    { "name": "ParticleEmission" },
+    { "name": "Atmosphere" }
   ],
   "uniforms": [
+    { "name": "TerrainEmissionActive", "type": "float", "count": 1, "values": [0] },
+    { "name": "SurfaceEmissionActive", "type": "float", "count": 1, "values": [0] },
+    { "name": "EmissionScale", "type": "float", "count": 1, "values": [1] },
+    { "name": "EmissionWeight", "type": "float", "count": 1, "values": [1] },
+    { "name": "NativeEmissionActive", "type": "float", "count": 1, "values": [0] },
+    { "name": "ParticleEmissionActive", "type": "float", "count": 1, "values": [0] },
+    { "name": "HasAtmosphere", "type": "float", "count": 1, "values": [0] },
+    { "name": "SourceJitter", "type": "float", "count": 2, "values": [0, 0] },
     { "name": "InSize", "type": "float", "count": 2, "values": [1.0, 1.0] },
     { "name": "Mode", "type": "float", "count": 1, "values": [0] },
     { "name": "Threshold", "type": "float", "count": 1, "values": [1.5] },

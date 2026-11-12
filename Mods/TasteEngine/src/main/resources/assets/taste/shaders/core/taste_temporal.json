@@ -1,0 +1,37 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "one",
+    "dstrgb": "zero"
+  },
+  "vertex": "taste:taste_final",
+  "fragment": "taste:taste_temporal",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "CurrentColor" },
+    { "name": "CurrentDepth" },
+    { "name": "History" },
+    { "name": "RawWorld" },
+    { "name": "OpaqueWorld" },
+    { "name": "OpaqueDepth" },
+    { "name": "TerrainDepth" },
+    { "name": "TerrainMotion" },
+    { "name": "ActorMotion" },
+    { "name": "NativeEmission" },
+    { "name": "ParticleCoverage" }
+  ],
+  "uniforms": [
+    { "name": "CurrentInverseProjection", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1] },
+    { "name": "PreviousClipFromView", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1] },
+    { "name": "WorldJitter", "type": "float", "count": 2, "values": [0.0, 0.0] },
+    { "name": "HistoryWeight", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Disocclusion", "type": "float", "count": 1, "values": [0.02] },
+    { "name": "VarianceGamma", "type": "float", "count": 1, "values": [1.25] },
+    { "name": "ReactiveStrength", "type": "float", "count": 1, "values": [0.9] },
+    { "name": "ProtectUnknown", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "HasTerrainMotion", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "HasActorMotion", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "HasNativeEmission", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "ParticleCoverageMode", "type": "float", "count": 1, "values": [0.0] }
+  ]
+}

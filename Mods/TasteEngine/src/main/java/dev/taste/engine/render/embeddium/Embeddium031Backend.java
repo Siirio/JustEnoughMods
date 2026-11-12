@@ -30,6 +30,11 @@ public final class Embeddium031Backend implements TerrainBackend {
         layer = null;
     }
     public List<LayerStamp> stamps() { return List.copyOf(stamps); }
+    public long casterRevision() {
+        if (!available) return 0;
+        if (capture == null) capture = new EmbeddiumCaptureRenderer();
+        return capture.casterRevision();
+    }
     public int drawShadowCasters(Matrix4f projection, FrameSnapshot.Vec3d origin) {
         if (!available) throw new IllegalStateException("Embeddium 0.3.31 is not installed");
         if (capture == null) capture = new EmbeddiumCaptureRenderer();

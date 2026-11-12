@@ -1,0 +1,24 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "one",
+    "dstrgb": "zero"
+  },
+  "vertex": "taste:taste_final",
+  "fragment": "taste:taste_photo_guide",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "PhotoColor" },
+    { "name": "CurrentDepth" },
+    { "name": "FocusSampler" }
+  ],
+  "uniforms": [
+    { "name": "InverseProjection", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1] },
+    { "name": "WorldJitter", "type": "float", "count": 2, "values": [0, 0] },
+    { "name": "OutSize", "type": "float", "count": 2, "values": [1.0, 1.0] },
+    { "name": "AutoFocus", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "FocusDistance", "type": "float", "count": 1, "values": [8.0] },
+    { "name": "FocalLength", "type": "float", "count": 1, "values": [0.012] },
+    { "name": "Aperture", "type": "float", "count": 1, "values": [2.8] }
+  ]
+}

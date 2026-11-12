@@ -18,6 +18,9 @@
     { "name": "PointShadowAtlas" }
   ],
   "uniforms": [
+    { "name": "LightWrap", "type": "float", "count": 1, "values": [0.18] },
+    { "name": "ShadingStyle", "type": "float", "count": 1, "values": [1] },
+    { "name": "ToonBands", "type": "float", "count": 1, "values": [4] },
     { "name": "PointShadowCount", "type": "float", "count": 1, "values": [0] },
     { "name": "PointShadowGrid", "type": "float", "count": 2, "values": [1, 1] },
     { "name": "SkyMode", "type": "float", "count": 1, "values": [0] },
@@ -38,6 +41,8 @@
     { "name": "SkyMoonColor", "type": "float", "count": 3, "values": [0, 0, 0] },
     { "name": "SkyDiscColor", "type": "float", "count": 3, "values": [0, 0, 0] },
     { "name": "LocalLightCount", "type": "float", "count": 1, "values": [0] },
+    { "name": "PortalLightCount", "type": "float", "count": 1, "values": [0] },
+    { "name": "EventLightCount", "type": "float", "count": 1, "values": [0] },
     { "name": "LightTileColumns", "type": "float", "count": 1, "values": [1] },
     { "name": "LightViewport", "type": "float", "count": 2, "values": [1, 1] },
     { "name": "LocalVolumes", "type": "float", "count": 1, "values": [0] },
@@ -56,6 +61,8 @@
     { "name": "VolumeStrength", "type": "float", "count": 1, "values": [0] },
     { "name": "VolumeHeightBase", "type": "float", "count": 1, "values": [0] },
     { "name": "VolumeHeightFalloff", "type": "float", "count": 1, "values": [0.035] },
+    { "name": "VolumeWater", "type": "float", "count": 1, "values": [0] },
+    { "name": "CaveDensity", "type": "float", "count": 1, "values": [0] },
     { "name": "VolumeOnly", "type": "float", "count": 1, "values": [0] },
     { "name": "VolumeEnabled", "type": "float", "count": 1, "values": [0] },
     { "name": "FogColor", "type": "float", "count": 3, "values": [0, 0, 0] },
@@ -80,14 +87,10 @@
     { "name": "BlockIntensity", "type": "float", "count": 1, "values": [1.0] },
     { "name": "WarmColdBalance", "type": "float", "count": 1, "values": [0.0] },
     { "name": "ShadowStrength", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "GlassTransmission", "type": "int", "count": 1, "values": [12] },
+    { "name": "GlassTransmissionSecond", "type": "int", "count": 1, "values": [13] },
+    { "name": "GlassTransmissionEnabled", "type": "float", "count": 1, "values": [0.0] },
     { "name": "ContactShadow", "type": "float", "count": 1, "values": [0.0] },
-    { "name": "EmissionStrength", "type": "float", "count": 1, "values": [1.0] },
-    { "name": "ReflectionStrength", "type": "float", "count": 1, "values": [1.0] },
-    { "name": "CloudCoverage", "type": "float", "count": 1, "values": [0.5] },
-    { "name": "CloudDensity", "type": "float", "count": 1, "values": [0.5] },
-    { "name": "Wetness", "type": "float", "count": 1, "values": [0.0] },
-    { "name": "WaterStrength", "type": "float", "count": 1, "values": [0.0] },
-    { "name": "LavaStrength", "type": "float", "count": 1, "values": [0.0] },
     { "name": "ReducedMotion", "type": "float", "count": 1, "values": [0.0] }
   ]
 }

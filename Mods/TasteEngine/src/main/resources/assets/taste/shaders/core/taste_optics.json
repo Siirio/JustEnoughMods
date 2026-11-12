@@ -1,0 +1,25 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "one",
+    "dstrgb": "zero"
+  },
+  "vertex": "taste:taste_final",
+  "fragment": "taste:taste_optics",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "DepthSampler" },
+    { "name": "PreviousOptics" },
+    { "name": "CloudSampler" }
+  ],
+  "uniforms": [
+    { "name": "InverseProjection", "type": "matrix4x4", "count": 16, "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1] },
+    { "name": "WorldJitter", "type": "float", "count": 2, "values": [0.0, 0.0] },
+    { "name": "SourceUv", "type": "float", "count": 2, "values": [0.5, 0.5] },
+    { "name": "SourceVisibility", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "HasCloudCoverage", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "CrosshairFocus", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "ManualFocus", "type": "float", "count": 1, "values": [8.0] },
+    { "name": "HistoryBlend", "type": "float", "count": 1, "values": [0.0] }
+  ]
+}

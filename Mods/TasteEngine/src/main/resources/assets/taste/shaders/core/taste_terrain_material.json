@@ -1,0 +1,21 @@
+{
+  "vertex": "taste:taste_terrain_material",
+  "fragment": "taste:taste_terrain_material",
+  "attributes": ["Position","Color","UV0","UV1","UV2","Normal"],
+  "samplers": [{"name":"BlockAtlas"}, {"name":"MaterialPalette"}, {"name":"NormalAtlas"}, {"name":"SpecularAtlas"}, {"name":"HeightAtlas"}],
+  "uniforms": [
+    {"name":"NativeMipCutoff","type":"float","count":1,"values":[0.5]},
+    {"name":"RoughnessScale","type":"float","count":1,"values":[1]},
+    {"name":"RoofCheckRange","type":"float","count":1,"values":[64]},
+    {"name":"ViewProjection","type":"matrix4x4","count":16,"values":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]},
+    {"name":"MotionProjection","type":"matrix4x4","count":16,"values":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]},
+    {"name":"PreviousViewProjection","type":"matrix4x4","count":16,"values":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]},
+    {"name":"SectionOrigin","type":"float","count":3,"values":[0,0,0]},
+    {"name":"Eye","type":"float","count":3,"values":[0,0,0]},
+    {"name":"NormalStrength","type":"float","count":1,"values":[1]},
+    {"name":"GeneratedNormals","type":"float","count":1,"values":[0]},
+    {"name":"ParallaxDepth","type":"float","count":1,"values":[0]},
+    {"name":"ParallaxSteps","type":"float","count":1,"values":[24]},
+    {"name":"AuxOnly","type":"float","count":1,"values":[0]}
+  ]
+}

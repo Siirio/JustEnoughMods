@@ -1,0 +1,9 @@
+{
+  "vertex": "taste:taste_scene",
+  "fragment": "taste:taste_gui_color",
+  "attributes": ["Position", "UV0"],
+  "samplers": [{ "name": "DisplaySampler" }],
+  "uniforms": [
+    { "name": "ColorVision", "type": "float", "count": 1, "values": [0] }
+  ]
+}

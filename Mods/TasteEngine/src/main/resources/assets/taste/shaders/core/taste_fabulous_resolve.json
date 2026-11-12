@@ -1,0 +1,13 @@
+{
+  "vertex": "taste:taste_scene",
+  "fragment": "taste:taste_fabulous_resolve",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    {"name": "WorldColor"}, {"name": "WorldDepth"},
+    {"name": "TranslucentColor"}, {"name": "TranslucentDepth"},
+    {"name": "ItemEntityColor"}, {"name": "ItemEntityDepth"},
+    {"name": "ParticlesColor"}, {"name": "ParticlesDepth"},
+    {"name": "WeatherColor"}, {"name": "WeatherDepth"},
+    {"name": "CloudsColor"}, {"name": "CloudsDepth"}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "one",
+    "dstrgb": "zero"
+  },
+  "vertex": "taste:taste_final",
+  "fragment": "taste:taste_display",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "DisplaySampler" }
+  ],
+  "uniforms": [
+  ]
+}

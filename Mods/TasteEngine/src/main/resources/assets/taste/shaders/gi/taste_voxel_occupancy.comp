@@ -1,0 +1,195 @@
+#version 430 core
+
+layout(local_size_x = 64) in;
+
+struct Face {
+    vec4 vertex[12];
+    vec4 material;
+};
+layout(std430, binding = 0) readonly buffer SectionFaces { Face faces[]; };
+layout(r32ui, binding = 0) uniform uimage3D Accumulator;
+layout(rgba8, binding = 1) writeonly uniform image3D Occupancy;
+layout(rgba8, binding = 2) writeonly uniform image3D Orientation;
+layout(rgba16f, binding = 3) writeonly uniform image3D Emission;
+uniform sampler2D BlockAtlas;
+uniform int Operation;
+uniform int Resolution;
+uniform int FaceCount;
+uniform ivec3 Minimum;
+uniform ivec3 Extent;
+uniform vec3 SectionCellOffset;
+uniform float CellSize;
+
+const int BANKS = 13;
+const uint MAX_SAMPLES = 1024u;
+const float FIXED = 4096.0;
+
+ivec3 physicalCell(ivec3 cell) {
+    return (cell % Resolution + Resolution) % Resolution;
+}
+
+ivec3 slot(ivec3 physical, int bank) {
+    return physical + ivec3(0, 0, bank * Resolution);
+}
+
+vec3 srgbToLinear(vec3 srgb) {
+    return mix(srgb / 12.92, pow((srgb + 0.055) / 1.055, vec3(2.4)), greaterThan(srgb, vec3(0.04045)));
+}
+
+vec3 unpackRgb(float value) {
+    uint rgb = uint(value);
+    return vec3((rgb >> 16u) & 255u, (rgb >> 8u) & 255u, rgb & 255u) / 255.0;
+}
+
+bool intersectsAxis(vec3 a, vec3 b, vec3 c, vec3 halfExtent, vec3 axis) {
+    if (dot(axis, axis) < 1e-12) return true;
+    float x = dot(a, axis);
+    float y = dot(b, axis);
+    float z = dot(c, axis);
+    float radius = dot(halfExtent, abs(axis));
+    return min(x, min(y, z)) <= radius && max(x, max(y, z)) >= -radius;
+}
+
+bool overlaps(vec3 a, vec3 b, vec3 c, vec3 normal, ivec3 cell) {
+    vec3 center = vec3(cell) + 0.5;
+    a -= center;
+    b -= center;
+    c -= center;
+    vec3 absoluteNormal = abs(normal);
+    vec3 extent = vec3(0.4999);
+    int dominant = absoluteNormal.x >= max(absoluteNormal.y, absoluteNormal.z) ? 0
+            : absoluteNormal.y >= absoluteNormal.z ? 1 : 2;
+    extent[dominant] = 0.5001;
+    if (any(greaterThan(min(a, min(b, c)), extent)) || any(lessThan(max(a, max(b, c)), -extent))) return false;
+    if (!intersectsAxis(a, b, c, extent, normal)) return false;
+    vec3 edges[3] = vec3[](b - a, c - b, a - c);
+    for (int i = 0; i < 3; ++i) {
+        if (!intersectsAxis(a, b, c, extent, cross(edges[i], vec3(1.0, 0.0, 0.0)))
+                || !intersectsAxis(a, b, c, extent, cross(edges[i], vec3(0.0, 1.0, 0.0)))
+                || !intersectsAxis(a, b, c, extent, cross(edges[i], vec3(0.0, 0.0, 1.0)))) return false;
+    }
+    return true;
+}
+
+vec3 approximateBarycentric(vec3 center, vec3 a, vec3 ab, vec3 ac) {
+    vec3 delta = center - a;
+    float bb = dot(ab, ab);
+    float bc = dot(ab, ac);
+    float cc = dot(ac, ac);
+    float db = dot(delta, ab);
+    float dc = dot(delta, ac);
+    float determinant = bb * cc - bc * bc;
+    if (abs(determinant) < 1e-12) return vec3(1.0, 0.0, 0.0);
+    float v = (cc * db - bc * dc) / determinant;
+    float w = (bb * dc - bc * db) / determinant;
+    vec3 weights = max(vec3(1.0 - v - w, v, w), vec3(0.0));
+    return weights / max(1e-6, weights.x + weights.y + weights.z);
+}
+
+void addValue(ivec3 p, int bank, float value) {
+    imageAtomicAdd(Accumulator, slot(p, bank), uint(round(max(0.0, value) * FIXED)));
+}
+
+void storeSurface(ivec3 cell, vec3 albedo, vec3 normal, vec3 emissive, float opacity, float sky) {
+    ivec3 p = physicalCell(cell);
+    if (imageAtomicAdd(Accumulator, slot(p, 0), 1u) >= MAX_SAMPLES) return;
+    addValue(p, 1, albedo.r);
+    addValue(p, 2, albedo.g);
+    addValue(p, 3, albedo.b);
+    addValue(p, 4, normal.x * 0.5 + 0.5);
+    addValue(p, 5, normal.y * 0.5 + 0.5);
+    addValue(p, 6, normal.z * 0.5 + 0.5);
+    addValue(p, 7, emissive.r);
+    addValue(p, 8, emissive.g);
+    addValue(p, 9, emissive.b);
+    addValue(p, 10, sky);
+    imageAtomicMax(Accumulator, slot(p, 11), uint(round(opacity * FIXED)));
+}
+
+void rasterTriangle(Face face, int bi, int ci) {
+    vec4 va = face.vertex[0];
+    vec4 vb = face.vertex[bi * 3];
+    vec4 vc = face.vertex[ci * 3];
+    vec3 a = va.xyz / CellSize + SectionCellOffset;
+    vec3 b = vb.xyz / CellSize + SectionCellOffset;
+    vec3 c = vc.xyz / CellSize + SectionCellOffset;
+    vec3 ab = b - a;
+    vec3 ac = c - a;
+    vec3 normal = cross(ab, ac);
+    if (dot(normal, normal) < 1e-12) return;
+    normal = normalize(normal);
+    ivec3 minimum = max(ivec3(0), ivec3(floor(min(a, min(b, c)) - 0.001)));
+    ivec3 maximum = min(Extent - 1, ivec3(floor(max(a, max(b, c)) + 0.001)));
+    vec4 texA = face.vertex[1];
+    vec4 texB = face.vertex[bi * 3 + 1];
+    vec4 texC = face.vertex[ci * 3 + 1];
+    vec4 colA = face.vertex[2];
+    vec4 colB = face.vertex[bi * 3 + 2];
+    vec4 colC = face.vertex[ci * 3 + 2];
+    for (int z = minimum.z; z <= maximum.z; ++z) {
+        for (int y = minimum.y; y <= maximum.y; ++y) {
+            for (int x = minimum.x; x <= maximum.x; ++x) {
+                ivec3 cell = ivec3(x, y, z);
+                if (!overlaps(a, b, c, normal, cell)) continue;
+                vec3 w = approximateBarycentric(vec3(cell) + 0.5, a, ab, ac);
+                vec4 tx = texA * w.x + texB * w.y + texC * w.z;
+                vec4 col = colA * w.x + colB * w.y + colC * w.z;
+                vec4 sampled = textureLod(BlockAtlas, tx.xy, 0.0);
+                if (sampled.a * col.y < face.material.y) continue;
+                vec3 albedo = srgbToLinear(clamp(sampled.rgb * vec3(tx.zw, col.x), 0.0, 1.0));
+                vec3 emissionColor = face.material.w >= 0.0 ? srgbToLinear(unpackRgb(face.material.w)) : albedo;
+                float intensity = max(face.material.z, col.w * 0.85);
+                vec3 emission = min(vec3(4.0), emissionColor * intensity);
+                float sky = dot(vec3(va.w, vb.w, vc.w), w);
+                storeSurface(Minimum + cell, albedo, normal, emission, face.material.x, sky);
+            }
+        }
+    }
+}
+
+float readValue(ivec3 p, int bank, float divisor) {
+    return float(imageLoad(Accumulator, slot(p, bank)).r) / divisor;
+}
+
+void resolve(ivec3 p) {
+    uint count = min(MAX_SAMPLES, imageLoad(Accumulator, slot(p, 0)).r);
+    bool valid = imageLoad(Accumulator, slot(p, 12)).r != 0u;
+    if (!valid || count == 0u) {
+        imageStore(Occupancy, p, vec4(0.0, 0.0, 0.0, valid ? 0.0 : 1.0));
+        imageStore(Orientation, p, vec4(0.5, 0.5, 0.5, 0.0));
+        imageStore(Emission, p, vec4(0.0));
+        return;
+    }
+    float divisor = FIXED * float(count);
+    vec3 albedo = vec3(readValue(p, 1, divisor), readValue(p, 2, divisor), readValue(p, 3, divisor));
+    vec3 normal = vec3(readValue(p, 4, divisor), readValue(p, 5, divisor), readValue(p, 6, divisor));
+    vec3 emission = vec3(readValue(p, 7, divisor), readValue(p, 8, divisor), readValue(p, 9, divisor));
+    imageStore(Occupancy, p, vec4(albedo, readValue(p, 11, FIXED)));
+    imageStore(Orientation, p, vec4(normal, readValue(p, 10, divisor)));
+    imageStore(Emission, p, vec4(emission, 1.0));
+}
+
+void main() {
+    int index = int(gl_GlobalInvocationID.x);
+    if (Operation == 2) {
+        if (index < FaceCount) {
+            rasterTriangle(faces[index], 1, 2);
+            rasterTriangle(faces[index], 2, 3);
+        }
+        return;
+    }
+    if (index >= Extent.x * Extent.y * Extent.z) return;
+    ivec3 cell = Minimum + ivec3(index % Extent.x, (index / Extent.x) % Extent.y, index / (Extent.x * Extent.y));
+    ivec3 p = physicalCell(cell);
+    if (Operation == 0) {
+        for (int bank = 0; bank < BANKS; ++bank) imageStore(Accumulator, slot(p, bank), uvec4(0u));
+    } else if (Operation == 1) {
+        imageStore(Accumulator, slot(p, 12), uvec4(1u));
+    } else if (Operation == 3) {
+        resolve(p);
+    } else {
+        imageStore(Occupancy, p, vec4(0.0, 0.0, 0.0, 1.0));
+        imageStore(Orientation, p, vec4(0.5, 0.5, 0.5, 0.0));
+        imageStore(Emission, p, vec4(0.0));
+    }
+}

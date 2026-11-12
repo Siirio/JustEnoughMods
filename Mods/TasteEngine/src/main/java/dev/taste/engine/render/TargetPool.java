@@ -56,6 +56,9 @@ public final class TargetPool implements AutoCloseable {
     }
 
     public long allocatedBytes() { return budget.activeBytes(); }
+    public long limitBytes() { return budget.limitBytes(); }
+    public long externalBytes() { return budget.externalBytes(); }
+    public void accountExternal(long bytes) { budget.accountExternal(bytes); }
     public Map<String, Long> allocations() { return budget.activeAllocations(); }
 
     @Override public void close() {
