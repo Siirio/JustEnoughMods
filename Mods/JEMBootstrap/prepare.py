@@ -19,6 +19,7 @@ PATCHES = (
     MODULE / "patches" / "external-client-credentials.patch",
     MODULE / "patches" / "external-client-host-tls.patch",
     MODULE / "patches" / "resume-live-login.patch",
+    MODULE / "patches" / "resume-live-login-race.patch",
 )
 
 

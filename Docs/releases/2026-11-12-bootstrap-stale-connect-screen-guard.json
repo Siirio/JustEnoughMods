@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-12",
+  "status": "local test client and current local server prepared, player acceptance pending",
+  "cause": "the queued equal-token screen restoration could replace a newer vanilla login screen after the render thread had already advanced",
+  "bootstrap": {
+    "revision": "jem.24",
+    "nativeVersion": "5.0.0-rc.1",
+    "upstreamCommit": "4348bf2532bb8261af3297cf2480a3a0ee91befb",
+    "bytes": 3491379,
+    "sha256": "ad75ae8ec01bdf0e19bac060035cc238be61e9b6022119f20ae58069bcd2e8b5",
+    "productionBuild": "successful",
+    "testsRun": false
+  },
+  "loginContract": {
+    "attachedEqualToken": "restore the saved connection screen only while the Pack Sync transient screen is still current, then continue without file verification",
+    "vanillaAlreadyAdvanced": "clear Pack Sync transient bookkeeping without replacing the newer vanilla screen",
+    "attachedDifferentToken": "disconnect immediately and start the native reviewed updater",
+    "detachedClient": "retain the explicit join or sync prompt",
+    "nativeTrustAndTransactionChecksChanged": false
+  },
+  "installation": {
+    "managedSource": true,
+    "bootstrapInstaller": true,
+    "currentLocalServer": true,
+    "testProfile": true,
+    "stableProfile": false,
+    "mineRent": false,
+    "releaseBaseline": false
+  },
+  "publication": {
+    "journalSequence": 153,
+    "contentToken": "1eb452bd56d358e8b2ffb5bf16459e588e36b3d8",
+    "publishedManifestSha1": "ac85ad5691076999664f199632e92ef55b31625d",
+    "stagedManifestSha1": "ac85ad5691076999664f199632e92ef55b31625d",
+    "generationChanged": false,
+    "nativePreview": "+0 ~0 -0",
+    "publishResult": "NO_CHANGES",
+    "reason": "bootstrap is excluded from the served managed pack"
+  },
+  "runtime": {
+    "minecraftClientLaunchedByDelivery": false,
+    "serverStartupReachedDone": true,
+    "serverModCount": 337,
+    "serverListening": "127.0.0.1:31604",
+    "testProfileActiveToken": "1eb452bd56d358e8b2ffb5bf16459e588e36b3d8",
+    "verifiedBootstrapCopies": 4,
+    "verifiedManagedJars": 335,
+    "pendingTransaction": false,
+    "playerAcceptance": "pending"
+  }
+}

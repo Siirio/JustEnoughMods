@@ -1,3 +1,14 @@
+## 2026-11-12 - Stop the stale connection screen from covering the loaded world
+
+- User reported that Test JEM entered the server and rendered the world and HUD, but continued to show "Connecting to world"
+- Bug / Client Sided / Pack Sync queued restoration of the interrupted vanilla `ConnectScreen`, but vanilla could complete login and replace its screen before the queued render-thread action ran, so the late action restored an obsolete connection screen over the loaded world / in testing after revision `jem.24` made restoration conditional on the Pack Sync transient screen still owning the display
+- Five Whys: the message remained because the old `ConnectScreen` became current again, it became current because the equal-token path queued an asynchronous restoration, that restoration ran after vanilla advanced to its next login screen, it did not check the current screen before replacing it, and the revision `jem.23` screen-ownership contract covered the saved parent but not render-thread ordering
+- Revision `jem.24` restores the saved connection screen only while a Pack Sync preparation or download screen is still current. If vanilla already advanced, Pack Sync clears only its transient bookkeeping and does not replace the newer screen
+- Equal-token login, different-token native updates, certificate trust, cancellation, transactions and ordinary screen recovery remain unchanged
+- Built revision `jem.24` without tests. The production artifact is 3,491,379 bytes with SHA-256 `ad75ae8ec01bdf0e19bac060035cc238be61e9b6022119f20ae58069bcd2e8b5`. Installed the exact artifact in the managed source, bootstrap installer template, closed Test JEM profile and current local server
+- The local server loaded 337 mods, reached `Done (3.664s)` and listens at `127.0.0.1:31604`. Native preview reported `+0 ~0 -0`, publish returned `NO_CHANGES`, and generation 153 retained token `1eb452bd56d358e8b2ffb5bf16459e588e36b3d8`
+- The closed Test JEM profile retains the same active token, all 335 managed JARs match and no native transaction remains pending. Runtime player acceptance remains pending until the user reconnects
+
 ## 2026-11-12 - Remove the Windy post-login crash
 
 - User reported that Test JEM crashed after the Pack Sync login repair

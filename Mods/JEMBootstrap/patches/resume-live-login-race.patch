@@ -1,0 +1,17 @@
+diff --git a/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java b/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java
+--- a/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java
++++ b/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java
+@@ -391,6 +391,13 @@ public class ScreenImpl implements ScreenService {
+ 				restoreIfWaiting();
+ 				return;
+ 			}
++			Screen current = getScreen();
++			if (!isTransient(current)) {
++				LOADING_TRANSITION.cancel();
++				interactiveParent = null;
++				transientAttention = false;
++				return;
++			}
+ 			LOADING_TRANSITION.cancel();
+ 			setScreenNow(parent);
+ 		}
