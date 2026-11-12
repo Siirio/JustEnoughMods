@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "9f7c7eb44510e495a326721188ad454a70ea5cf5664fe503786b20f48192dc04",
+  "change_records_sha256": "aa9af2ce751d55c42e14ed8c748a0c6125c86d80fe1b0302ce1ee93a6d9767c2",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1717,6 +1717,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 2341
+    },
+    {
+      "change_id": "compat.inventory-tabs-loaded-chunks-20261113",
+      "status": "active",
+      "summary": "Replace Inventory Tabs 0.10.1 with a source-disclosed patch that discovers tabs only from loaded client state",
+      "record": "Catalog/changes/records/inventory-tabs-loaded-chunks-20261113.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "inventorytabs"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
     },
     {
       "change_id": "jemcompat.void-walker-toggle",
@@ -4345,7 +4360,7 @@
     }
   ],
   "source_fingerprints": {
-    "CHANGELOG.md": "ae25cfbd5e0a7b6ebcb427798289695c41e7e8681fe2f248f5336d79d9d19720",
+    "CHANGELOG.md": "e26ffbeefa30f9b4a1cdd72c2228efff0d84451cfb0702623b3ee634782f7367",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -4444,7 +4459,7 @@
     "Client/ManagedPack/config/towns_and_towers/structure_rarity_new.json5": "427157180a3007ea9f1b432c114211b3536db829a2b119a3f3e06854262e990c",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/config/weatherglass.properties": "5006c1c79c3319181308ff1cc999f68e65afb2ff9980d214a0ca0b29d5c3cee7",
-    "Client/ManagedPack/jem-pack/manifest.json": "9de21884751697b6270f6508604e0d85aba50e64775daaa6b50c2cc0e3556205",
+    "Client/ManagedPack/jem-pack/manifest.json": "f3e59fea9bc26cdfb4fab17d0994d71c39d071f36aeb432c23c270e656b6fb8c",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4629,9 +4644,9 @@
     "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar": "c790e8671625b05ec0aa19272e0ea74ea95619f953e3c6f39a6736af0d386804",
     "Client/ManagedPack/mods/cristellib-1.1.6-forge.jar": "3856ad565ea45d6189452d813e2f021b365b686d3b1adae5f747c56a1e535d9f",
     "Client/ManagedPack/mods/epicfight-extra-1.2.1-mc1.20.1-forge-all.jar": "1614e80c53e57747cbf09532155edc5dad01202765a0a14677a013fa01ade527",
-    "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1.jar": "2d0c9707506ea153e0fb43eb419d27513b68ff341c16a612b016f929fb83b94c",
+    "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1-jem.1.jar": "7912952426d4c1733295742f6266deafb463dcd0f3a5985527f8a2e9cc2bf021",
     "Client/ManagedPack/mods/jem-advancements-5.3.3.jar": "4787d7995f5573d581089a33afe3723cbc0269181df382912c70d7069e56f198",
-    "Client/ManagedPack/mods/jem-bootstrap.jar": "0fc9548fdd08b1172f82cad1057a28f20925767dbbffd4cde4c95012e3a310bc",
+    "Client/ManagedPack/mods/jem-bootstrap.jar": "d3515ceec590b3e748e5564037ca2417730dbb3bb88241e1382829728ceead74",
     "Client/ManagedPack/mods/jem-economy-1.3.2.jar": "5049eac7880a2a58ea7423b78944302b39dd588b962d8bc375d149d797999923",
     "Client/ManagedPack/mods/jem-identity-1.0.0.jar": "c84a1cc030dd5a91b7bae287b24ced375387c18f171b382e7aa128763eba010d",
     "Client/ManagedPack/mods/jem-races-2.0.3.jar": "c98f3f9a360af54cd5292c9239d6ef335dc4093afc355e9f449e081c398ec0e2",
@@ -4663,8 +4678,8 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "083a58e8a510b72e77c9317b76c2d35599111f017be990f1eb30d14ad3031c77",
-    "Docs/MODS.md": "56c471a3638aa516deff6e3602bc6e4af78d1109fe2194ba11315c303f338160",
+    "Docs/DEVELOPMENT.md": "d35e33fe71280490bfe2456a4316442f5c139cebb3f3f9cf438bc1626fe9885b",
+    "Docs/MODS.md": "a7d0797874b142cddc5518f72657c879d493400c3540930b6f2555bacb33e42b",
     "Docs/SERVER_COMMANDS.md": "501519352641d352e4bc85d34d144a23fdcaaeb7704a472fdd037fc80f4003fd",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -4744,6 +4759,10 @@
     "Docs/settlements/standalone/GUI_SPEC.md": "02457e8eab2641fdbceae192ce0a1c78edb08d7b289f5353ad9a3b5a6dade54a",
     "Docs/settlements/standalone/README.md": "e8ce61bb158d96f847082c7e184037a1346066d3a02018712d8c27c780c31b43",
     "Docs/smp-gui/README.md": "d3f295c0ac92445218e749d4ab12267b6255d5c34d29144791e504a7c337f7c4",
+    "Mods/InventoryTabs/README.md": "a88efab29705f7ed6f3916882230e0594b9ae174a82c5b0bc2806623013c326e",
+    "Mods/InventoryTabs/patches/loaded-chunks-only.patch": "3c9e341b4ae039017a57450785acf60dd8ac8d7508f5dbcaf553ba6333f2b3fc",
+    "Mods/InventoryTabs/prepare.py": "0980370315e297d3df90621631beaaebb1e281087a95698c85a4beb4cd3ab377",
+    "Mods/InventoryTabs/upstream.json": "64f49dd70c062193d9662c4471785975f4e8d24c88238c43f42d48bffda8d9d5",
     "Mods/JEMAchievementGuide/AGENTS.logic-locks.md": "7a18c34f555bb26c3e6f1b0b2ffdca297dc98d2afcfa6e23fdba3b291e2c9a09",
     "Mods/JEMAchievementGuide/README.md": "32a252e4ad025cf7d2f356b198c8d12b1bc47a43f8ffb35923309d46c6389489",
     "Mods/JEMAchievementGuide/build.gradle": "3374ad1aad518c28c75b079182f5f73ba73a7b7386d1a76d805e3d3b826b926d",
@@ -8289,8 +8308,8 @@
     "Mods/JEMBootstrap/patches/external-client-state.patch": "61f076574559183e372a38b3f02d4c3e9d848356f4c707d78fad7f4d2c62c1fd",
     "Mods/JEMBootstrap/patches/login-sync-standard-layout.patch": "c19e0ca3c13c56a156a9c0290419111d1b74dc7777c02a610e1ae17d23ac2b73",
     "Mods/JEMBootstrap/patches/reliable-updates.patch": "2177def2d6a26136adc4a41468dd2e78a473c8cca78c5080e88ea23a90ef6ba5",
-    "Mods/JEMBootstrap/prepare.py": "9431f52d0e75d56693a935e54d0fe5cdf74a00e6e42506c96f71349289361597",
-    "Mods/JEMBootstrap/upstream.json": "51b36c39ad8d69b8835a0990bef374100f1353758712e38f014d07956a7ee387",
+    "Mods/JEMBootstrap/prepare.py": "46017b6e3988e803fec879aa7685bace44e859abe53e6917c472afa03d799a8f",
+    "Mods/JEMBootstrap/upstream.json": "74665549a9f756aaacff5a2c46b413f5f68a30ffa3a602ec093ab28915f1adf7",
     "Mods/JEMCompat/AGENTS.md": "5b6571fd825d84aaac62215b40edce7c64b97eaadb164ac597865b13b01773c6",
     "Mods/JEMCompat/README.md": "28b2515dcc42ea369dccf820ee4fe9e6ba82900e351e8816bc5be0edb83fc420",
     "Mods/JEMCompat/SEASONS.md": "2a722937421ab4ff9c9be2cdb2a168c4e45a6c3b1c03206ffee420878ade5ab3",
@@ -9793,7 +9812,7 @@
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
     "tools/module-inventory.json": "1e60af37c842bc154dce65c6eb4bbf578ebc3e3065f9586ba7c49206f279c66d",
-    "tools/state/packSyncHost-sync.json": "360cf278bed232aa41b2e6f073d7e2c86a12240e078b960811d673a8469d45ad",
+    "tools/state/packSyncHost-sync.json": "d0b710cd8315dc9abb7ec8aa280e12e6b27d72cbfbeb7ddbc112c4f3f9baa1bc",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }
 }

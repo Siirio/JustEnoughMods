@@ -146,7 +146,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | InControl | `1.20-9.5.0` | Client + server |  |
 | Infinity Buttons | `1.20.1-4.0.7` | Client + server |  |
 | InsaneLib | `1.23.4.6` | Client + server |  |
-| Inventory Tabs | `0.10.1` | Client | Major Update 4 |
+| Inventory Tabs | `0.10.1-jem.1` | Client | Major Update 4, loaded-chunk patch |
 | Item Obliterator | `2.3.0` | Client + server |  |
 | Item Magnet | `1.0.0` | Client + server |  |
 | Jack's Gravestones | `1.0.5` | Client + server |  |

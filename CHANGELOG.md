@@ -1,3 +1,16 @@
+## 2026-11-13 - Restrict Inventory Tabs to loaded client state
+
+- User requested a patched Inventory Tabs build that works only with loaded chunks, removal of the upstream artifact and installation in Test JEM
+- Bug / Client Sided / Inventory Tabs 0.10.1 constructed every registered entity type in a synthetic `FakeLevel` during Forge's client login event, Brewery's `RopeKnotEntity` constructor queried a block position, the synthetic chunk source returned no chunk and the exception aborted `ClientboundLoginPacket` handling while leaving the connection screen over a partially loaded world / in testing after replacing startup probing with loaded-entity discovery and explicit loaded-chunk guards
+- Five Whys: the connection screen remained because client login packet handling aborted, handling aborted because Inventory Tabs propagated an exception from entity registration, registration failed because it constructed Brewery's rope-knot type in a synthetic level, that constructor reads its supporting block and requested a chunk, and Inventory Tabs had no contract limiting discovery to actual loaded client state
+- Rebuilt pinned MIT upstream commit `ed11c477a1cb6e6b184d73df1e8784ee22268a04` as `0.10.1-jem.1`. The production JAR removes `FakeLevel`, discovers entity tabs only from actual nearby entities and checks `Level.hasChunkAt` before block matching, line-of-sight, hover text, stale-tab handling and opening
+- Preserved native block, chest, villager, horse, chest-boat and generic inventory tabs, public registration methods, configuration and `inventorytabs` mod ID. The patch adds no server component or network channel
+- Production `reobfJar` build succeeded with Java 17 and tests disabled. Artifact SHA-256 is `7912952426d4c1733295742f6266deafb463dcd0f3a5985527f8a2e9cc2bf021`
+- The earlier Bootstrap screen fixes remain installed, but current runtime evidence proved that token matching already completed before the Inventory Tabs exception. Those changes were not the owner of this login failure
+- Native AutoModpack preview reported `+1 ~1 -1` and published generation 154 with content token `4b692bbae1f573a4326765ae9f5944b12ef93814` and manifest SHA-1 `ebc791b01b8df6123d575bd20a2d628ba8dc01c0`
+- Applied the published generation to the closed `Test JustEnoughMods` profile. All 335 managed JARs match, the original Inventory Tabs JAR is absent and no native transaction remains pending
+- The local server remains running at `127.0.0.1:31604`. The client was not launched, so runtime player acceptance remains pending
+
 ## 2026-11-13 - Keep equal-token login screen-neutral
 
 - User confirmed that revision `jem.24` still left "Connecting to world" over a world that had already loaded

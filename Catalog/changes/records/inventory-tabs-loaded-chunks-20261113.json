@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.inventory-tabs-loaded-chunks-20261113",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "inventorytabs"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "distribution": "Major Update 4 client on feature/major-update-4"
+    },
+    {
+      "runtime": "Minecraft 1.20.1 Forge client"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_dependencies",
+    "priority": 110,
+    "overrides": [
+      "distribution.major-update-4-offgrid-building-additions-20261112"
+    ]
+  },
+  "change": {
+    "summary": "Replace Inventory Tabs 0.10.1 with a source-disclosed patch that discovers tabs only from loaded client state",
+    "modifiers": [
+      {
+        "property": "inventorytabs.entity_discovery",
+        "operation": "replace",
+        "before": "Construct every registered entity type in a synthetic FakeLevel during client login",
+        "after": "Classify only actual nearby entities already present in the client level"
+      },
+      {
+        "property": "inventorytabs.block_chunk_access",
+        "operation": "restrict",
+        "before": "Read every nearby block position during tab discovery and stale-tab handling without an explicit loaded-chunk guard",
+        "after": "Require Level.hasChunkAt before block matching, line-of-sight, hover text, stale-tab handling or tab opening"
+      },
+      {
+        "property": "distribution.major_update_4.mods.inventorytabs",
+        "operation": "replace",
+        "before": "0.10.1 upstream client artifact",
+        "after": "0.10.1-jem.1 patched client artifact"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Inventory Tabs loaded-state discovery",
+    "kind": "client_login_compatibility_repair",
+    "source_files": [
+      "Mods/InventoryTabs/README.md",
+      "Mods/InventoryTabs/prepare.py",
+      "Mods/InventoryTabs/upstream.json",
+      "Mods/InventoryTabs/patches/loaded-chunks-only.patch",
+      "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1-jem.1.jar",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent Inventory Tabs from requesting unavailable chunks or aborting Forge login while retaining tabs for loaded nearby blocks and inventory entities",
+    "decision_source": "Direct user request on 2026-11-13 after the Inventory Tabs and Brewery login conflict was isolated",
+    "user_requested": "Make Inventory Tabs work only inside loaded chunks, remove the original artifact and install a patched version",
+    "implementation_choices": "Pin MIT upstream commit ed11c477a1cb6e6b184d73df1e8784ee22268a04, remove FakeLevel from the compiled artifact, classify actual loaded entities and guard every block-tab read with hasChunkAt"
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "replace_inventory_tabs_with_loaded_chunk_patch",
+    "summary": "Install Inventory Tabs 0.10.1-jem.1 and remove the upstream runtime artifact",
+    "source_files": [
+      "Mods/InventoryTabs/README.md",
+      "Mods/InventoryTabs/prepare.py",
+      "Mods/InventoryTabs/upstream.json",
+      "Mods/InventoryTabs/patches/loaded-chunks-only.patch",
+      "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1-jem.1.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "replace_inventory_tabs_with_loaded_chunk_patch",
+      "summary": "Removed login-time synthetic entity construction and restricted block-tab reads to loaded chunks"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_presentation",
+      "native_mod_dependencies",
+      "runtime_distribution"
+    ],
+    "relations": [
+      "loaded nearby entity -> native inventory capability -> Inventory Tabs entity tab",
+      "loaded nearby block -> native block state -> Inventory Tabs block tab",
+      "unloaded block position -> hasChunkAt false -> no block read and no tab"
+    ],
+    "notes": [
+      "Inventory Tabs remains client-only and keeps its native mod ID and configuration",
+      "Villager, tamed-horse, chest-boat and generic inventory entity tab types are preserved",
+      "The patched production artifact SHA-256 is 7912952426d4c1733295742f6266deafb463dcd0f3a5985527f8a2e9cc2bf021",
+      "MineRENT, stable JustEnoughMods and the immutable release baseline remain unchanged"
+    ],
+    "unresolved": [
+      "Player acceptance remains pending until Test JustEnoughMods reconnects with the patched artifact"
+    ]
+  }
+}
