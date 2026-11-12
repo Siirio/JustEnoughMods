@@ -772,18 +772,51 @@ index 14cf8c5a..022c27d4 100644
          } else {
              later.continueAction().run();
 diff --git a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
-index f976a263..318cb1ce 100644
+index f976a263..68c5897b 100644
 --- a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
 +++ b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
-@@ -244,7 +244,7 @@ final class ClientLoginUpdateFlow {
+@@ -18,7 +18,6 @@ import pl.skidam.automodpack_core.auth.ConnectionStore;
+ import pl.skidam.automodpack_core.auth.Secrets;
+ import pl.skidam.automodpack_core.client.ManifestFetcher;
+ import pl.skidam.automodpack_core.client.ModpackUpdater;
+-import pl.skidam.automodpack_core.client.ModpackUtils;
+ import pl.skidam.automodpack_core.config.ConnectionJsons;
+ import pl.skidam.automodpack_core.config.GenerationJsons;
+ import pl.skidam.automodpack_core.config.ModpackJsons;
+@@ -236,27 +235,26 @@ final class ClientLoginUpdateFlow {
+ 	}
+ 
+ 	/**
+-	 * The non-detached join: the advertised head is checked against the local generation, an already-current pack lets
+-	 * the login proceed, and everything else runs the reviewed update through the engine after the connecting screen is
+-	 * released. The failure tail stays with the caller, since the detached prompt shares it.
++	 * The non-detached join trusts the committed active content token as its login witness. An equal token continues
++	 * immediately without inspecting files. A different token leaves login and runs the native reviewed updater.
+ 	 */
+ 	private static LoginUpdateResponse syncDuringLogin(ClientHandshakePacketListenerImpl handler, ClientStorage storage, ModpackUpdater updater,
  			SelectedModpackTarget selectedTarget, boolean alreadyDisconnected) throws Exception {
  		ModpackJsons.ModpackContentFields serverModpackContent = selectedTarget.flatTarget();
- 		ModpackUtils.UpdateCheckResult updateCheckResult = ModpackUtils.isUpdate(serverModpackContent, storage);
+-		ModpackUtils.UpdateCheckResult updateCheckResult = ModpackUtils.isUpdate(serverModpackContent, storage);
 -		ModpackUtils.reprotectActiveFiles(serverModpackContent, storage);
-+		ModpackUtils.reprotectVerifiedFiles(serverModpackContent, storage, updateCheckResult);
- 		if (!updater.requiresUpdateBeforeLogin(updateCheckResult)) {
+-		if (!updater.requiresUpdateBeforeLogin(updateCheckResult)) {
++		ClientGenerationStore generations = new ClientGenerationStore(storage);
++		if (generations.headMatchesActive(serverModpackContent.modpackId, serverModpackContent.contentToken)) {
++			LOGGER.info("Installed generation token matches the server head; continuing login without file verification");
  			updater.close();
  			if (alreadyDisconnected) ScreenImpl.multiplayer();
+ 			return alreadyDisconnected ? LoginUpdateResponse.UPDATE_REQUIRED : LoginUpdateResponse.CONTINUE;
+ 		}
+ 		if (!alreadyDisconnected) {
+-			LOGGER.info("Modpack update required; leaving the connecting screen");
++			LOGGER.info("Server generation token differs from the installed token; leaving login for the native update flow");
+ 			ScreenManager.waiting(updater::cancelFromPlayer);
+ 			disconnectImmediately(handler);
+ 		}
+ 		updater.processModpackUpdate(true);
+ 		return LoginUpdateResponse.UPDATE_REQUIRED;
+ 	}
+ 
+ 	/**
 diff --git a/src/main/resources/assets/automodpack/lang/en_us.json b/src/main/resources/assets/automodpack/lang/en_us.json
 index c7778ed1..4206a05e 100644
 --- a/src/main/resources/assets/automodpack/lang/en_us.json

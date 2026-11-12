@@ -1,3 +1,13 @@
+## 2026-11-12 - Make Pack Sync login token-driven
+
+- User required an equal client/server update token to bypass the Pack Sync file check, and a different token to start the default AutoModpack update immediately instead of holding login for 60 seconds
+- Bug / Client Sided / the login query performed a complete projection scan, protection pass, generation-history check and update-plan decision before it answered the server, so a valid generation could exceed the fixed 60-second login timeout / in testing after revision `jem.22` made the committed content token the attached-client login witness
+- Five Whys: the server disconnected because its login query had no answer, the client had no answer because it inspected thousands of managed paths, it inspected them because the login path reused the full update verdict, the full verdict was retained after update discovery moved out of startup, and the design did not use the already committed generation token as the fast login boundary
+- An attached client with the same token now returns `CONTINUE` without file verification. A different token now leaves the connecting screen immediately and enters the existing native reviewed updater. Detached packs keep their explicit prompt because token equality does not prove unchanged local files
+- Native manifest trust, consent, transaction, ownership, restart, recovery and rollback behavior remain unchanged. Bootstrap remains outside the served managed generation, so this repair does not create a new pack token
+- Built revision `jem.22` without tests. Artifact size is 3,491,022 bytes and SHA-256 is `63d85180156e398cf9522c91e6b7f2c0c4e52da1ee5b7e673815b8da782de199`. Installed the exact artifact in the managed source, bootstrap installer template, current local server and closed `Test JustEnoughMods` profile. Runtime player acceptance remains pending
+- The local server loaded 333 mods and reached `Done (2.609s)`. Native preview reported `+0 ~0 -0`, publish returned `NO_CHANGES`, and generation 149 retained token `df2877a424a152666f3672be8a7e4733ece2d117`. The Test profile has the same active token and no pending transaction. The server saved all dimensions and stopped after publication
+
 ## 2026-11-12 - Remove legacy client state and retired local server
 
 - User required deletion of the old client `automodpack` folder, the retired local server that used the old layout and all Bootstrap migration logic connected to that folder. MineRENT and the current local server world remain outside the deletion
