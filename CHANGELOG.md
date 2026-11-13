@@ -1744,6 +1744,13 @@ Production JAR builds and pinned Bootstrap patch reproduction were completed on 
 
 # Changelog
 
+## 2026-11-13 - Stop local Chunky generation before player entry
+
+- User explicitly requested that the active local Chunky pre-generation stop so the player can join immediately
+- Bug / Server Sided / Chunky 1.3.146 automatically resumed the saved 300 by 300 chunk task and scheduled chunk-state work through the main server event loop, after which one server tick exceeded the 60-second watchdog limit and stopped the server / in testing
+- The saved `minecraft:overworld` task is cancelled and `continueOnRestart` is disabled. Existing generated chunks and the world remain unchanged
+- The local dedicated server is restarted without Chunky generation. Luxium client artifacts, native AutoModpack state, MineRENT, the stable profile and the release baseline remain unchanged
+
 ## 2026-11-13 - Reconcile Luxium shadows after world entry
 
 - User reported that Luxium still had no visible shadows in Test JustEnoughMods and required recovery of the last actually working Sandbox behavior instead of relying on the earlier incomplete "Luxium + Oculus is working" statement
