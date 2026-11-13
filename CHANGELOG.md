@@ -1,3 +1,10 @@
+## 2026-11-14 - Keep Luxium in Sandbox only
+
+- User reported that Luxium shadows still failed in Test JustEnoughMods and requested removal from that profile. Removed Luxium and its JEM adapter from the managed pack and kept Oculus for shader selection
+- Bug / Client / Sandbox Taste and Oculus both redirected the first-person hand render call. The required Oculus Mixin failed during Forge startup / in testing with Taste moved to a reversible Sandbox backup
+- User requested the Voxy setup in Sandbox. Installed the local Neo Voxy 0.4.0beta build and VSS 0.3.5 with the settings used in Test JustEnoughMods. Luxium remains available for Sandbox rendering checks
+- Published local AutoModpack generation 163 and completed its native application in Test JustEnoughMods. Restored the saved Oculus shader setting and archived the generated Luxium configuration
+
 ## 2026-11-14 - Install the Luxium fix in both local profiles
 
 - User closed Minecraft and requested the Luxium fix in Test JustEnoughMods and Sandbox JustEnoughMods

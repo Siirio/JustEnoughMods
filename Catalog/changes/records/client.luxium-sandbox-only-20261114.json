@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "change_id": "client.luxium-sandbox-only-20261114",
+  "status": "active",
+  "selectors": [{"type": "registry", "registry": "*", "value": "*"}],
+  "precedence": {"layer": "client_presentation", "priority": 80},
+  "change": {
+    "summary": "Remove Luxium from the managed development pack and keep it available in Sandbox.",
+    "modifiers": [{"property": "client.luxium.managed_distribution", "operation": "set", "before": true, "after": false}]
+  },
+  "cause": {
+    "owner": "JEM managed client distribution",
+    "kind": "distribution",
+    "source_files": ["tools/module-inventory.json", "tools/state/packSyncHost-sync.json"]
+  },
+  "rationale": {
+    "purpose": "Keep the managed development profile playable and isolate Luxium rendering checks in Sandbox.",
+    "decision_source": "User requested removal from Test JEM and continued Luxium testing in Sandbox."
+  },
+  "introduced": {"date": "2026-11-14", "commit": "SELF", "action": "restrict_to_sandbox", "summary": "Remove both Luxium artifacts from managed distribution."},
+  "history": [{
+    "date": "2026-11-14",
+    "commit": "SELF",
+    "action": "restrict_to_sandbox",
+    "summary": "Remove the upstream Luxium and JEM adapter JARs from the managed pack.",
+    "source_files": ["Client/ManagedPack/mods/Luxium Let there be light-2.8.0-pre-alpha.jar", "Client/ManagedPack/mods/jem_luxium-1.0.12.jar"]
+  }],
+  "impacts": {"systems": ["client rendering", "Oculus", "AutoModpack"], "relations": [], "notes": ["Oculus remains installed in the managed pack."], "unresolved": ["Luxium shadow behavior still requires in-game confirmation in Sandbox."]}
+}

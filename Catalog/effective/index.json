@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "ad0512cddbf8d3951f24b89a4f3ce5ada71f2c032f134b280f1f01f1628089f2",
+  "change_records_sha256": "328a7042929875e4e52ed6fce2f3af26422a7971438df2d5374c15db63f244a6",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -513,6 +513,21 @@
       "status": "active",
       "summary": "Skip Luxium 2.8.0's first-run alpha warning gate on JEM clients.",
       "record": "Catalog/changes/records/client.luxium-alpha-warning-suppression-20261030.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*",
+          "value": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 32572
+    },
+    {
+      "change_id": "client.luxium-sandbox-only-20261114",
+      "status": "active",
+      "summary": "Remove Luxium from the managed development pack and keep it available in Sandbox.",
+      "record": "Catalog/changes/records/client.luxium-sandbox-only-20261114.json",
       "selectors": [
         {
           "type": "registry",
@@ -4520,7 +4535,7 @@
     }
   ],
   "source_fingerprints": {
-    "CHANGELOG.md": "3222a4b4fdf8f8bd4db6ad023a277489086c8782f3f80a6490eb12b44cae367b",
+    "CHANGELOG.md": "f811f5b8d52750ab1e2a4c888b82580ba2ba756ed1c74dd6d5d69663fd1311d8",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -4630,7 +4645,7 @@
     "Client/ManagedPack/config/towns_and_towers/structure_rarity_new.json5": "427157180a3007ea9f1b432c114211b3536db829a2b119a3f3e06854262e990c",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/config/weatherglass.properties": "57613c9675b8ab3b0cd7110dc5fcf83e12b3a738bdbaea6db4cb71e6d55d9d41",
-    "Client/ManagedPack/jem-pack/manifest.json": "3241e9014634b053f03e1eed8fab7f33b9c8b7bc56d9a4fd5635f75d859c605e",
+    "Client/ManagedPack/jem-pack/manifest.json": "947413d5cc444f5d778bf7738ff273f99b14415f405be4ac3701bf84a7cadba6",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4830,7 +4845,6 @@
     "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar": "16587a36cb374fa543779c1df8807319ec3d1d224e3b8a4749c60bd0ccce1d8c",
     "Client/ManagedPack/mods/jem_adaptive_culling-1.5.0.jar": "81c8115c9594b5f83ee3649d3cae4d0a095d4f1984af901dcf4e753bf8240e9f",
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "d7b523b6cc7657340390fa961c9b8db351db4c505eea590a95c1536b923982e7",
-    "Client/ManagedPack/mods/jem_luxium-1.0.12.jar": "46427a0abe461b2dc0faf9146d18df860b017c5854ccc6d9408c0d8a8ed53676",
     "Client/ManagedPack/mods/jem_security-1.0.7.jar": "a426383e63f70ec72a24bacf0687b9dbd2347bd6db5971b60f4735454e654f6b",
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "467db4e13c9ebb84c095d3b8e1dbfaf6a84ab559a1c37458c36f9e6042bcdbfa",
     "Client/ManagedPack/mods/jemcompat-3.10.3.jar": "bcea210a770ce3d7b8c6ae84b2ea1f6550f609ecb4d59ebbd53a0c72952250bd",
@@ -4851,7 +4865,7 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "1e3676823538e74551e656146c61ee66de81340d554ad8c21abcbbd3742f2805",
+    "Docs/DEVELOPMENT.md": "561d16fdd74b26cfdf7de0992e57301dd91666eddd33c7ebd19703945b1c96a4",
     "Docs/MODS.md": "e8706907ceef453373611a8daf7150b308c556f38b238706dfbb3fb51f2416cf",
     "Docs/SERVER_COMMANDS.md": "70f44d76010dc872bc7d4c2ff6734f25376f91436de312d5b687c73abef12596",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -9996,8 +10010,8 @@
     "tools/build_jem_release_resource_pack.py": "b69a3cebba55980a260059f7e7a9029f86e931fb8d188f54e1b15c6b29e26d5a",
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
-    "tools/module-inventory.json": "3bdd48e909d5759b90c3e663c6f405d96706a0db01be182c6eebb3bece0980d0",
-    "tools/state/packSyncHost-sync.json": "336d8b3469c210a0118fc76584b8941c15a4abdf895e3440b8099f4d5b30aac1",
+    "tools/module-inventory.json": "3f49a30c85ad9635ff6548b8d0a29712effe568125d86586177e2b2dbdb0a45f",
+    "tools/state/packSyncHost-sync.json": "2f0015f1c3ae409d8d07c70932a1e78dba1d3a14dc39c57a5c7eeb25476e9875",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }
 }
