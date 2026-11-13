@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4.radium-removal",
+  "status": "active",
+  "selectors": [{"type": "namespace", "registry": "*", "value": "radium"}],
+  "precedence": {"layer": "major_update_4", "priority": 1100},
+  "change": {
+    "summary": "Remove Radium from the managed client and local dedicated server.",
+    "modifiers": [{
+      "property": "radium.installed",
+      "operation": "set",
+      "before": "0.12.4+git.26c9d8e with default lithium.properties",
+      "after": false
+    }]
+  },
+  "cause": {
+    "owner": "JEM managed pack and local dedicated mod inventory",
+    "kind": "mod_removal",
+    "source_files": ["Docs/MODS.md", "tools/state/packSyncHost-sync.json"]
+  },
+  "rationale": {
+    "purpose": "Remove the observed Radium collision wait path and isolate the effect on terrain visibility.",
+    "decision_source": "The user requested removal and explicit approval before reinstating Radium.",
+    "implementation_choices": "Remove the matching Radium artifact and its configuration on both sides. Keep the other renderer inputs constant."
+  },
+  "introduced": {"date": "2026-11-13", "commit": "SELF", "action": "remove_radium", "summary": "Remove Radium and its configuration."},
+  "history": [{
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "remove_radium",
+    "summary": "Remove both copies of Radium and its configuration.",
+    "source_files": [
+      "Client/ManagedPack/mods/radium-mc1.20.1-0.12.4+git.26c9d8e.jar",
+      "Server/mods/radium-mc1.20.1-0.12.4+git.26c9d8e.jar",
+      "Client/ManagedPack/config/lithium.properties",
+      "Server/config/lithium.properties"
+    ]
+  }],
+  "impacts": {
+    "systems": ["chunk_loading", "entity_collision", "runtime_distribution"],
+    "relations": ["Radium movement collision sweeper -> synchronous chunk lookup on the logical server"],
+    "notes": ["Installed Radium SHA-256 was b42584e2672d6b5329959ec2b0f342395b19389fed0ee4d86ea71072f42f77a0. The artifact supplied no gameplay registry resources."],
+    "unresolved": ["Effect on movement stalls and client terrain visibility requires player comparison."]
+  }
+}

@@ -1,3 +1,12 @@
+## 2026-11-13 - Remove Radium for the chunk visibility investigation
+
+- User requested removal of Radium and explicit approval before reinstating it, even if the delay persists
+- Bug / Both Sided / Radium's movement collision sweeper can wait synchronously for an in-flight chunk on the server thread / in testing after removing Radium and its default configuration from the managed client and local dedicated server
+- The singleplayer capture separately shows server backlog and delayed terrain display. The client sometimes identified blocks before drawing them. The effect of removing Radium on terrain display remains unverified
+- The local dedicated server completed startup without Radium after a retry. The first startup hit the watchdog while Epic Fight hashed Nightfall animation data during resource reload
+- Native AutoModpack preview reported `+0 ~1 -2` and published the update with content token `03b9e79b06bc96e14a5fa1bcef2e5e6e8f182efe`
+- Test JustEnoughMods applied generation 158. All 333 managed JARs match the source and no update transaction remains pending. AutoModpack also restored existing Streams bank-style examples removed by the prior mod startup
+
 ## 2026-11-13 - Reduce fresh-terrain stalls and disable the Beachparty bottle
 
 - User requested removal of StructBlend and Beachparty's Message in a Bottle, and retention of Streams Reflowing during the generation performance work

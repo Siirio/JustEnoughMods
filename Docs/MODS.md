@@ -256,7 +256,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Puzzles Lib | `8.1.33` | Client + server |  |
 | QuickSkin | `2.6.2.4` | Server |  |
 | QuickSkin | `2.6.2.4` | Client |  |
-| Radium | `0.12.4+git.26c9d8e` | Client + server |  |
 | Reconnectible Chains | `2.2.5` | Client + server |  |
 | Resourceful Lib | `2.1.29` | Client + server |  |
 | Resourcefulconfig | `2.1.3` | Client + server |  |
