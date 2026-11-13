@@ -56,6 +56,15 @@
         "before": "The default Oculus preference enabled shaders, so the JEM bridge selected Oculus over native Luxium",
         "after": "A fresh installation starts with Oculus shaders off and uses native Luxium celestial shadows. AutoModpack retains the player's editable Oculus preference on later updates",
         "notes": "Only the fresh renderer default replaces the historical Jalloween shader selection. The title and optional shader pack are unchanged."
+      },
+      {
+        "property": "luxium.celestial_shadow_pass_voxy_compatibility",
+        "operation": "replace",
+        "before": "Neo Voxy runs its ordinary LOD projection during Luxium's Embeddium shadow pass and writes depth into the celestial cascade framebuffer",
+        "after": "Neo Voxy skips viewport setup inside the Luxium celestial terrain pass. Native Embeddium terrain fills the cascade and Voxy still renders the main world",
+        "conditions": [
+          "Neo Voxy 0.4.0beta Forge with Luxium 2.8.0 celestial terrain capture"
+        ]
       }
     ]
   },
@@ -76,7 +85,8 @@
       "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json",
       "Client/ManagedPack/mods/jem_luxium-1.0.12.jar",
       "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/config/LuxiumClientConfig.java",
-      "Client/ManagedPack/config/oculus.properties"
+      "Client/ManagedPack/config/oculus.properties",
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VoxyCelestialShadowPassMixin.java"
     ]
   },
   "rationale": {
@@ -147,6 +157,15 @@
       "commit": "SELF",
       "action": "recover_legacy_local_shadow_preset",
       "summary": "Restore the native celestial shadow default for the exact preset linked to the measured torch slowdown. Keep future personal settings editable."
+    },
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "exclude_voxy_from_celestial_shadow_capture",
+      "summary": "Keep the Voxy depth compositing pass outside the Luxium celestial framebuffer",
+      "source_files": [
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VoxyCelestialShadowPassMixin.java"
+      ]
     }
   ],
   "impacts": {
@@ -175,7 +194,8 @@
     ],
     "unresolved": [
       "Runtime navigation, row layout, focus order, link confirmation and immediate shadow activation remain unobserved until authorized player testing.",
-      "Player acceptance of sun and moon shadows and frame rate after migrating the exact legacy preset is pending"
+      "Player acceptance of sun and moon shadows and frame rate after migrating the exact legacy preset is pending",
+      "Nearby terrain shadow appearance after the Voxy capture guard requires player acceptance. Distant Voxy meshes have no native Luxium receiver"
     ]
   }
 }

@@ -1,3 +1,9 @@
+## 2026-11-13 - Isolate Luxium celestial depth from Voxy
+
+- User reported absent visible Luxium shadows after the preset repair. The client log confirms that both celestial cascades were active
+- Bug / Client / Voxy rendered its ordinary perspective LOD pass into Luxium's orthographic celestial depth framebuffer during Embeddium's cutout pass / in testing with a client-only viewport guard scoped to celestial terrain capture. Voxy keeps its ordinary main-world rendering
+- Built the reobfuscated adapter and published native generation 162 on the local server. Test JustEnoughMods remained open, so client installation and visible shadow acceptance are pending
+
 ## 2026-11-13 - Set Weather Glass detail to 32 pixels
 
 - User requested 32 by 32 as the Weather Glass default. Set its native rain, snow and dust detail to 32 and kept the existing effect amounts
