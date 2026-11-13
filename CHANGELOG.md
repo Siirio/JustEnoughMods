@@ -1,3 +1,10 @@
+## 2026-11-14 - Install the Luxium fix in both local profiles
+
+- User closed Minecraft and requested the Luxium fix in Test JustEnoughMods and Sandbox JustEnoughMods
+- Applied published AutoModpack generation 162 to Test JustEnoughMods. Confirmed the active token and that the native transaction cleared
+- Installed the same JEM Luxium adapter, Luxium and Oculus in Sandbox JustEnoughMods. Enabled Luxium with celestial shadows and saved the existing Oculus shader preference for when Luxium is switched off. Verified the three installed JAR hashes in both profiles
+- Bug / Client / Voxy entered Luxium's celestial depth pass / in testing with the viewport guard installed. Visible shadows and frame rate await in-game confirmation
+
 ## 2026-11-13 - Isolate Luxium celestial depth from Voxy
 
 - User reported absent visible Luxium shadows after the preset repair. The client log confirms that both celestial cascades were active
