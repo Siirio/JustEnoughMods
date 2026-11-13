@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.12
+
+- Reconcile the selected Luxium renderer once after the client enters a stable world
+- Rebuild core and Embeddium receiver shaders after the world lifecycle settles, so a correct internal shadow-map state cannot remain disconnected from the visible terrain pipeline
+- Keep the existing immediate feature refresh, Oculus mutual exclusion and bounded runtime diagnostics
+
 ## 1.0.11
 
 - Reload native core entity shaders along with the GPU feature mask and terrain renderer when changing renderer ownership

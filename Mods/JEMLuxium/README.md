@@ -14,6 +14,7 @@ It also permanently acknowledges and suppresses Luxium 2.8.0's first-run alpha w
 - off disables Luxium and restores the Oculus shader enabled state that existed before Luxium was selected
 - enabling Oculus shaders while Luxium is active disables Luxium and discards the temporary restore marker
 - every renderer-owner change refreshes Luxium's GPU feature mask, reloads native core entity shaders through Luxium's own GameRenderer accessor, then rebuilds Embeddium through its managed OpenGL context
+- after a world becomes stable, the selected Luxium renderer receives one deferred reconciliation rebuild so the visible receiver programs match the persisted renderer owner
 - a bounded log snapshot after world entry or a master-switch change records the actual GPU sky mode, shadow-frame generations and entity-shadow preference for diagnosis
 - Luxium's installed-Oculus guard is bypassed only for its celestial shadow lifecycle because this adapter guarantees that the two renderers are never active together
 - the Luxium mod is a required client dependency, so the checkbox never becomes a disabled placeholder

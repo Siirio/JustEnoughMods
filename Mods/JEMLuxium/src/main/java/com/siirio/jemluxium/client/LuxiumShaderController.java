@@ -20,6 +20,7 @@ final class LuxiumShaderController {
     private static net.minecraft.client.multiplayer.ClientLevel observedLevel;
     private static int diagnosticTicks;
     private static boolean observedEnabled;
+    private static int deferredWorldReloadTicks = -1;
 
     private LuxiumShaderController() {
     }
@@ -37,8 +38,8 @@ final class LuxiumShaderController {
     }
 
     static void reconcileOculusState() {
-        observeRendererState();
         boolean oculusEnabled = IrisApi.getInstance().getConfig().areShadersEnabled();
+        observeRendererState(oculusEnabled);
         if (!oculusStateInitialized) {
             oculusStateInitialized = true;
             previousOculusEnabled = oculusEnabled;
@@ -53,13 +54,26 @@ final class LuxiumShaderController {
         previousOculusEnabled = oculusEnabled;
     }
 
-    private static void observeRendererState() {
+    private static void observeRendererState(boolean oculusEnabled) {
         Minecraft minecraft = Minecraft.getInstance();
         boolean enabled = isLuxiumActive();
         if (observedLevel != minecraft.level || observedEnabled != enabled) {
             observedLevel = minecraft.level;
             observedEnabled = enabled;
             diagnosticTicks = 40;
+            if (minecraft.level != null && enabled && !oculusEnabled) {
+                deferredWorldReloadTicks = 20;
+            } else {
+                deferredWorldReloadTicks = -1;
+            }
+        }
+        if (deferredWorldReloadTicks > 0 && --deferredWorldReloadTicks == 0) {
+            if (minecraft.level != null && enabled && !oculusEnabled) {
+                LuxiumGpuShaderFeatures.refreshNow();
+                reloadEmbeddiumRenderer("stable world reconciliation");
+                diagnosticTicks = 40;
+            }
+            deferredWorldReloadTicks = -1;
         }
         if (minecraft.level == null || diagnosticTicks == 0 || --diagnosticTicks != 0) return;
         var sky = NeoSkyCelestia.get();
@@ -75,7 +89,7 @@ final class LuxiumShaderController {
         Config.CLIENT_SPEC.save();
         LuxiumClientConfig.clearRememberedState();
         LuxiumGpuShaderFeatures.refreshNow();
-        reloadEmbeddiumRenderer();
+        reloadEmbeddiumRenderer("Oculus ownership");
         LOGGER.info("Oculus shaders enabled and Luxium disabled");
     }
 
@@ -96,7 +110,7 @@ final class LuxiumShaderController {
         Config.CLIENT_SPEC.save();
         previousOculusEnabled = false;
         LuxiumGpuShaderFeatures.refreshNow();
-        reloadEmbeddiumRenderer();
+        reloadEmbeddiumRenderer("Luxium ownership");
         LOGGER.info("Luxium enabled and Oculus shaders suspended");
     }
 
@@ -112,11 +126,11 @@ final class LuxiumShaderController {
             LuxiumClientConfig.clearRememberedState();
         }
         LuxiumGpuShaderFeatures.refreshNow();
-        reloadEmbeddiumRenderer();
+        reloadEmbeddiumRenderer("restored Oculus ownership");
         LOGGER.info("Luxium disabled and the previous Oculus shader state restored");
     }
 
-    private static void reloadEmbeddiumRenderer() {
+    private static void reloadEmbeddiumRenderer(String reason) {
         Minecraft minecraft = Minecraft.getInstance();
         // Native Luxium settings reload core entity shaders as well as terrain:
         // their resource selection depends on the GPU feature mask at load time.
@@ -124,7 +138,8 @@ final class LuxiumShaderController {
         if (minecraft.levelRenderer != null) {
             minecraft.levelRenderer.allChanged();
         }
-        LOGGER.info("Luxium renderer applied: master={}, sky={}, local={}, vanilla={}, oculus={}",
+        LOGGER.info("Luxium renderer applied ({}): master={}, sky={}, local={}, vanilla={}, oculus={}",
+                reason,
                 Config.CLIENT.luxiumEnabled.get(), LuxiumGpuShaderFeatures.neoSkyCelestiaEnabled(),
                 LuxiumGpuShaderFeatures.localReceiverEnabled(), LuxiumGpuShaderFeatures.neoGpuVanillaReceiverEnabled(),
                 IrisApi.getInstance().getConfig().areShadersEnabled());

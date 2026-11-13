@@ -1744,6 +1744,16 @@ Production JAR builds and pinned Bootstrap patch reproduction were completed on 
 
 # Changelog
 
+## 2026-11-13 - Reconcile Luxium shadows after world entry
+
+- User reported that Luxium still had no visible shadows in Test JustEnoughMods and required recovery of the last actually working Sandbox behavior instead of relying on the earlier incomplete "Luxium + Oculus is working" statement
+- Bug / Client Sided / JEM Luxium verified Luxium's internal sky mode and generated cascade maps but had no post-world owner that reconciled Embeddium's visible receiver programs after the renderer switch and world-entry lifecycle completed / in testing
+- Five Whys: visible terrain had no confirmed shadow receiver because the adapter logged only Luxium's internal frame, the only renderer rebuild occurred during the earlier settings transition, later world and renderer lifecycle work could finish after that rebuild, no stable-world reconciliation existed, and the compatibility adapter incorrectly treated an enabled shadow frame as proof of the final visible pipeline
+- JEM Luxium 1.0.12 retains the immediate GPU feature refresh and managed renderer reload, then performs one deferred core-and-terrain rebuild after Luxium is selected in a stable loaded world
+- The official Luxium 2.8.0 JAR, Oculus 1.8.0 mutual exclusion, saved renderer preference and unrelated renderer mods remain unchanged. Runtime player acceptance remains pending
+- The reobfuscated client artifact has SHA-256 `c9fb26898bd4f076daab80485c3d75069569f12fc416b3e01378ddf9cffbe627`. Native AutoModpack published and installed content token `87822e5ab915abc4a890a24564604b0b416bf226` in the closed `Test JustEnoughMods` profile, verified all 334 managed JARs and left no pending transaction
+- The interrupted Chunky request was restored as a 300 by 300 chunk square in `minecraft:overworld`, centered at `0,0` with a 2400-block radius. Existing chunks remain reusable, and the local server is configured to continue the saved task after restart
+
 ## 2026-10-30 - Prepare the cumulative Jalloween production release and first-login handbook
 
 - User requested promotion of the complete developed update to MineRENT, the stable original profile and `main`, with the Halloween menu and music, hosted structure-boss barriers, Mob Home, JEM Food, Seasons HUD, lossless Sophisticated Backpacks migration, native inventory rendering, SMP-only player preview adaptation and accessible FTB Quests
