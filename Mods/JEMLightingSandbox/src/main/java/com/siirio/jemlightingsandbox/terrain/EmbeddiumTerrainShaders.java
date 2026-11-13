@@ -81,7 +81,10 @@ public final class EmbeddiumTerrainShaders {
                 in vec4 v_JemSkyColor;
                 in vec2 v_JemLightLevels;
 
-                """ + lighting + "\n" + FRAGMENT_MAIN);
+                """ + lighting + "\n" + FRAGMENT_MAIN + "\n" + """
+                    vec3 jemTangentX = dFdx(v_JemPosition);
+                    vec3 jemTangentY = dFdy(v_JemPosition);
+                """);
         source = replace(source, FRAGMENT_COLOR, "    vec3 jemTextureColor = diffuseColor.rgb;\n\n" + FRAGMENT_COLOR);
         return replace(source, FRAGMENT_FOG, """
                     vec3 jemAlbedo = jemTextureColor * v_JemUnlitColor.rgb;
@@ -91,7 +94,7 @@ public final class EmbeddiumTerrainShaders {
                     jemSkyBaseColor *= v_JemSkyColor.a;
                 #endif
                     diffuseColor.rgb = jemApplyLighting(diffuseColor.rgb, jemSkyBaseColor, jemAlbedo,
-                        v_JemPosition, v_JemLightLevels);
+                        v_JemPosition, v_JemLightLevels, jemTangentX, jemTangentY);
 
                 """ + FRAGMENT_FOG);
     }

@@ -1,3 +1,10 @@
+## 2026-11-14 - Correct Sandbox terrain lighting near walls, doors and snow
+
+- User reported jagged bands and abrupt changes in colored lighting around walls, a spruce door and snow layers
+- Bug / Client / The terrain shader treated small projected fragments as degenerate faces, skipped the ray's starting voxel and modeled all casters as full cubes / in testing with normalized surface derivatives and ray intersections against native door and snow bounds
+- Matched torch and lantern light origins to the visible flame or lamp body. Cutout terrain receives the same lighting as solid terrain, with derivatives computed before its alpha discard. The light mix preserves part of the native diffuse light and the emitter's glow
+- The Sandbox build uses the existing OpenGL 3.3 path. In-game visual review of this revision is pending
+
 ## 2026-11-14 - Add independent block-light shadows to Sandbox terrain
 
 - User requested the approved lighting effect on ordinary Embeddium chunks in Sandbox, with simultaneous block and sunlight shadows on Windows and macOS

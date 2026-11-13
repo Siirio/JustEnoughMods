@@ -23,7 +23,8 @@ public abstract class EmbeddiumChunkRendererMixin {
             at = @At("RETURN"), remap = false)
     private void jemLightingSandbox$bindTerrainLighting(TerrainRenderPass pass, CallbackInfo callback) {
         if (activeProgram != null) {
-            TerrainLighting.begin(activeProgram.handle(), pass == DefaultTerrainRenderPasses.SOLID);
+            boolean receivesLighting = pass == DefaultTerrainRenderPasses.SOLID || pass == DefaultTerrainRenderPasses.CUTOUT;
+            TerrainLighting.begin(activeProgram.handle(), receivesLighting);
         }
     }
 

@@ -3,10 +3,10 @@
   "change_id": "client.sandbox-terrain-lighting-20261114",
   "status": "conditional",
   "selectors": [{"type": "registry", "registry": "*"}],
-  "conditions": [{"profile": "Sandbox JustEnoughMods", "renderer": "Embeddium 0.3.31", "pass": "solid", "stock_shaders": true}],
+  "conditions": [{"profile": "Sandbox JustEnoughMods", "renderer": "Embeddium 0.3.31", "pass": "solid or cutout", "stock_shaders": true}],
   "precedence": {"layer": "client_presentation", "priority": 81},
   "change": {
-    "summary": "Add independent direct shadows from native emissive blocks and the sun to nearby opaque terrain.",
+    "summary": "Add independent direct shadows from native emissive blocks and the sun to nearby solid and cutout terrain.",
     "modifiers": [{"property": "client.sandbox.terrain_lighting", "operation": "set", "before": false, "after": true}]
   },
   "cause": {
@@ -31,6 +31,9 @@
     "decision_source": "User requested ordinary Embeddium chunks, emissive blocks and simultaneous sunlight in Sandbox only, on Windows and macOS. The local voxel volume, solid pass and eight-source budget are implementation choices."
   },
   "introduced": {"date": "2026-11-14", "commit": "SELF", "action": "add_sandbox_terrain_lighting", "summary": "Apply original terrain lighting during opaque Embeddium chunk draws."},
-  "history": [{"date": "2026-11-14", "commit": "SELF", "action": "add_sandbox_terrain_lighting", "summary": "Extend the scene to native block emission and opaque terrain."}],
-  "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["No gameplay registrations, server state or native block emission levels change. The standalone preview remains available."], "unresolved": ["Visual output and frame time require verification on Windows and macOS. Partial block casters, LOD, entities and held lights are outside this pass."]}
+  "history": [
+    {"date": "2026-11-14", "commit": "276dd1aa4", "action": "add_sandbox_terrain_lighting", "summary": "Extend the scene to native block emission and opaque terrain."},
+    {"date": "2026-11-14", "commit": "SELF", "action": "repair_sandbox_terrain_shadow_edges", "summary": "Address reported lighting bands and seams with scale-independent normals, interval ray intersections, native door and snow shapes, and modeled flame origins. Apply lighting to cutout receivers."}
+  ],
+  "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["No gameplay registrations, server state or native block emission levels change. The standalone preview remains available."], "unresolved": ["Visual output and frame time require verification on Windows and macOS. Partial casters other than native doors and snow, LOD, entities and held lights are outside this pass."]}
 }

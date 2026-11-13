@@ -30,7 +30,7 @@ public final class TerrainLighting {
 
     private static boolean enabled = true;
     private static boolean failed;
-    private static int opacityTexture;
+    private static int voxelTexture;
     private static int previousTexture = -1;
     private static TerrainLightVolume.Snapshot uploaded;
 
@@ -100,9 +100,9 @@ public final class TerrainLighting {
 
     private static void releaseTexture() {
         uploaded = null;
-        if (opacityTexture != 0) {
-            GL11.glDeleteTextures(opacityTexture);
-            opacityTexture = 0;
+        if (voxelTexture != 0) {
+            GL11.glDeleteTextures(voxelTexture);
+            voxelTexture = 0;
         }
     }
 
@@ -114,7 +114,7 @@ public final class TerrainLighting {
         PROGRAMS.clear();
     }
 
-    public static void begin(int program, boolean solid) {
+    public static void begin(int program, boolean receivesLighting) {
         Uniforms uniforms = PROGRAMS.computeIfAbsent(program, Uniforms::new);
         if (uniforms.active < 0) {
             return;
@@ -123,7 +123,7 @@ public final class TerrainLighting {
         // Each program must keep the volume sampler apart from Embeddium's 2D samplers.
         GL20.glUniform1i(uniforms.opacity, TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.active, 0);
-        if (!solid) {
+        if (!receivesLighting) {
             return;
         }
         Minecraft client = Minecraft.getInstance();
@@ -142,12 +142,12 @@ public final class TerrainLighting {
         GL13.glActiveTexture(GL13.GL_TEXTURE0 + TEXTURE_UNIT);
         try {
             previousTexture = GL11.glGetInteger(GL12.GL_TEXTURE_BINDING_3D);
-            if (opacityTexture == 0) {
-                opacityTexture = GL11.glGenTextures();
+            if (voxelTexture == 0) {
+                voxelTexture = GL11.glGenTextures();
             }
-            GL11.glBindTexture(GL12.GL_TEXTURE_3D, opacityTexture);
+            GL11.glBindTexture(GL12.GL_TEXTURE_3D, voxelTexture);
             if (uploaded != snapshot) {
-                uploadOpacity(snapshot);
+                uploadVoxels(snapshot);
                 uploaded = snapshot;
             }
 
@@ -158,8 +158,8 @@ public final class TerrainLighting {
             GL20.glUniform1i(uniforms.lightCount, snapshot.lights().size());
             int index = 0;
             for (var light : snapshot.lights()) {
-                GL20.glUniform4f(uniforms.positions[index], (float) (light.x() + 0.5 - camera.x),
-                        (float) (light.y() + 0.5 - camera.y), (float) (light.z() + 0.5 - camera.z), light.emission() + 0.5F);
+                GL20.glUniform4f(uniforms.positions[index], (float) (light.x() - camera.x),
+                        (float) (light.y() - camera.y), (float) (light.z() - camera.z), light.emission() + 0.5F);
                 GL20.glUniform4f(uniforms.colors[index], light.red(), light.green(), light.blue(), light.emission() / 15F);
                 index++;
             }
@@ -195,7 +195,7 @@ public final class TerrainLighting {
         }
     }
 
-    private static void uploadOpacity(TerrainLightVolume.Snapshot snapshot) {
+    private static void uploadVoxels(TerrainLightVolume.Snapshot snapshot) {
         int unpackBuffer = GL11.glGetInteger(GL21.GL_PIXEL_UNPACK_BUFFER_BINDING);
         int alignment = GL11.glGetInteger(GL11.GL_UNPACK_ALIGNMENT);
         int rowLength = GL11.glGetInteger(GL11.GL_UNPACK_ROW_LENGTH);
@@ -217,11 +217,11 @@ public final class TerrainLighting {
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL12.GL_TEXTURE_WRAP_R, GL12.GL_CLAMP_TO_EDGE);
-                GL12.glTexImage3D(GL12.GL_TEXTURE_3D, 0, GL30.GL_R8, snapshot.sizeX(), snapshot.sizeY(), snapshot.sizeZ(),
-                        0, GL11.GL_RED, GL11.GL_UNSIGNED_BYTE, snapshot.opacity());
+                GL12.glTexImage3D(GL12.GL_TEXTURE_3D, 0, GL30.GL_RG8, snapshot.sizeX(), snapshot.sizeY(), snapshot.sizeZ(),
+                        0, GL30.GL_RG, GL11.GL_UNSIGNED_BYTE, snapshot.voxelData());
             } else {
                 GL12.glTexSubImage3D(GL12.GL_TEXTURE_3D, 0, 0, 0, 0, snapshot.sizeX(), snapshot.sizeY(),
-                        snapshot.sizeZ(), GL11.GL_RED, GL11.GL_UNSIGNED_BYTE, snapshot.opacity());
+                        snapshot.sizeZ(), GL30.GL_RG, GL11.GL_UNSIGNED_BYTE, snapshot.voxelData());
             }
         } finally {
             GL11.glPixelStorei(GL11.GL_UNPACK_ALIGNMENT, alignment);
