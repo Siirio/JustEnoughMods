@@ -1,3 +1,11 @@
+## 2026-11-14 - Add Sandbox atmosphere and lighting settings
+
+- User requested sunlight shafts, atmospheric effects, three lighting update modes and adjustable light distance in Sandbox
+- Added half-resolution sunlight scattering and distance haze. The effect uses scene depth and the existing terrain volume, including partial shade from foliage. The settings screen controls atmosphere, update speed and an 8–20 block light distance
+- Slow retains the existing scan budget. Fast scans the volume faster. Realtime applies known block changes before the next draw, with a bounded scan for new areas. The 20-block option expands the sampled volume
+- Bug / Client / The center of a flush redstone lamp was behind the ceiling plane, so the shader rejected its direct contribution while reducing native diffuse light / in testing with a source point on an exposed face and greater retention of native diffuse light in occluded areas
+- This revision requires in-game visual and frame-time checks on Windows and macOS
+
 ## 2026-11-14 - Correct Sandbox terrain lighting near walls, doors and snow
 
 - User reported jagged bands and abrupt changes in colored lighting around walls, a spruce door and snow layers

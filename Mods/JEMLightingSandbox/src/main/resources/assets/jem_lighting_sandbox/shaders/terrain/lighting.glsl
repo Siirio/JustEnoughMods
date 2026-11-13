@@ -23,7 +23,7 @@ ivec2 jemVoxelData(ivec3 cell) {
 }
 
 bool jemHitsShape(int shape, vec3 origin, vec3 inverseRay, float entering, float leaving) {
-    if (shape == 0 || leaving - entering <= JEM_RAY_EPSILON) {
+    if (shape == 0 || shape > 12 || leaving - entering <= JEM_RAY_EPSILON) {
         return false;
     }
     if (shape == 1) {
@@ -94,6 +94,26 @@ float jemSunlight(vec3 rayOrigin, vec3 normal, float skyLevel) {
     return strength * (1.0 - incidence * visibility);
 }
 
+vec3 jemExposedEmitterFace(ivec3 sourceCell, vec3 receiver) {
+    vec3 towardReceiver = receiver - (vec3(sourceCell) + 0.5);
+    float bestDistance = 0.499;
+    ivec3 face = ivec3(0);
+    for (int axis = 0; axis < 3; ++axis) {
+        float distance = abs(towardReceiver[axis]);
+        if (distance <= bestDistance) {
+            continue;
+        }
+        ivec3 candidate = ivec3(0);
+        candidate[axis] = towardReceiver[axis] < 0.0 ? -1 : 1;
+        ivec3 neighbor = sourceCell + candidate;
+        if (jemInsideVolume(neighbor) && jemVoxelData(neighbor).y != 1) {
+            bestDistance = distance;
+            face = candidate;
+        }
+    }
+    return vec3(face);
+}
+
 vec3 jemLinearColor(vec3 color) {
     return pow(max(color, vec3(0.0)), vec3(2.2));
 }
@@ -151,7 +171,18 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
         float taxicabDistance = absoluteDelta.x + absoluteDelta.y + absoluteDelta.z;
         float distanceFade = smoothstep(0.0, 2.0, source.w - distance);
         float lightLevel = max(0.0, properties.w - max(0.0, taxicabDistance - 1.0) / 15.0);
-        modeledBlockLevel = max(modeledBlockLevel, distanceFade * lightLevel);
+        float modeledSourceLevel = distanceFade * lightLevel;
+        modeledBlockLevel = max(modeledBlockLevel, 0.35 * modeledSourceLevel);
+
+        bool solidSource = jemInsideVolume(sourceCell) && jemVoxelData(sourceCell).y == 1;
+        if (solidSource) {
+            vec3 emitterFace = jemExposedEmitterFace(sourceCell, rayOrigin);
+            if (all(equal(emitterFace, vec3(0.0)))) {
+                continue;
+            }
+            // Move the target outside the emitting face so flush fixtures can light their own room.
+            lightPosition = vec3(sourceCell) + 0.5 + 0.65 * emitterFace;
+        }
 
         vec3 shadowRay = lightPosition - rayOrigin;
         float shadowRayLength = length(shadowRay);
@@ -163,7 +194,12 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
         if (incidence <= 0.0) {
             continue;
         }
-        float visibility = jemVisibility(rayOrigin, direction, shadowRayLength, sourceCell);
+        // Trace all intervening geometry for solid emitters, including the source's own other faces.
+        float visibility = jemVisibility(rayOrigin, direction, shadowRayLength, solidSource ? ivec3(-1) : sourceCell);
+        modeledBlockLevel = max(modeledBlockLevel, mix(0.35, 1.0, visibility) * modeledSourceLevel);
+        if (solidSource) {
+            incidence = mix(incidence, sqrt(incidence), 0.55);
+        }
         float attenuation = distanceFade * 1.35 * properties.w / (1.0 + 0.08 * distanceSquared);
         contributedLight += properties.rgb * (visibility * incidence * attenuation);
     }

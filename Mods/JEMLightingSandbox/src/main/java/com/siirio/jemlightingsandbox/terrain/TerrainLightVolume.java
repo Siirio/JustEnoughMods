@@ -1,5 +1,6 @@
 package com.siirio.jemlightingsandbox.terrain;
 
+import com.siirio.jemlightingsandbox.LightingSettings;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -31,7 +32,6 @@ public final class TerrainLightVolume {
     private static final int SIZE_X = 48;
     private static final int SIZE_Y = 40;
     private static final int SIZE_Z = 48;
-    private static final int VOLUME = SIZE_X * SIZE_Y * SIZE_Z;
     private static final int BYTES_PER_VOXEL = 2;
     private static final int CELLS_PER_TICK = 8192;
     private static final int MAX_LIGHTS = 8;
@@ -45,6 +45,7 @@ public final class TerrainLightVolume {
     private static final int DOOR_X_MAX = 10;
     private static final int DOOR_Z_MIN = 11;
     private static final int DOOR_Z_MAX = 12;
+    private static final int FOLIAGE = 13;
     private static final int EMISSION_MASK = 0x0F;
     private static final int STANDING_TORCH = 1;
     private static final int WALL_TORCH_BASE = 2;
@@ -58,6 +59,7 @@ public final class TerrainLightVolume {
     private ClientLevel level;
     private Snapshot snapshot;
     private Build build;
+    private Build front;
     private boolean rebuildRequested;
     private int ticksSincePublication;
 
@@ -70,24 +72,43 @@ public final class TerrainLightVolume {
         int x = Mth.floor(anchor.x);
         int y = Mth.floor(anchor.y);
         int z = Mth.floor(anchor.z);
+        var mode = LightingSettings.mode();
+        boolean extended = LightingSettings.lightDistance() > 15;
+        int width = extended ? 64 : SIZE_X;
+        int height = extended ? 56 : SIZE_Y;
+        int depth = extended ? 64 : SIZE_Z;
         if (snapshot != null && snapshot.bounds().awayFrom(x, y, z, DISCARD_DISTANCE)) {
             snapshot = null;
+            front = null;
         }
-        if (build != null && build.bounds.awayFrom(x, y, z, DISCARD_DISTANCE)) {
+        if (build != null && (build.bounds.width != width || build.bounds.awayFrom(x, y, z, DISCARD_DISTANCE))) {
             build = null;
         }
 
         ticksSincePublication++;
+        if (mode == LightingSettings.Mode.REALTIME && front != null && snapshot.sizeX() == width) {
+            refreshChangedBlocks(currentLevel);
+        }
         if (build == null && (snapshot == null || rebuildRequested || ticksSincePublication >= REFRESH_TICKS
-                || snapshot.bounds().awayFrom(x, y, z, RECENTER_DISTANCE))) {
-            build = new Build(new Bounds(x - SIZE_X / 2, y - SIZE_Y / 2, z - SIZE_Z / 2), anchor);
+                || snapshot.sizeX() != width || snapshot.bounds().awayFrom(x, y, z, RECENTER_DISTANCE))) {
+            build = new Build(new Bounds(x - width / 2, y - height / 2, z - depth / 2, width, height, depth), anchor);
             rebuildRequested = false;
         }
 
-        if (build != null && build.advance(currentLevel)) {
+        int budget = mode == LightingSettings.Mode.SLOW ? CELLS_PER_TICK : CELLS_PER_TICK * 3;
+        if (build != null && build.advance(currentLevel, budget)) {
             snapshot = build.finish(currentLevel);
+            front = build;
             build = null;
             ticksSincePublication = 0;
+        }
+    }
+
+    public void refreshChangedBlocks(ClientLevel currentLevel) {
+        if (front != null && level == currentLevel && !front.dirty.isEmpty()
+                && LightingSettings.mode() == LightingSettings.Mode.REALTIME
+                && front.advance(currentLevel, CELLS_PER_TICK)) {
+            snapshot = front.finish(currentLevel);
         }
     }
 
@@ -99,7 +120,8 @@ public final class TerrainLightVolume {
             build.mark(build.bounds.index(x, y, z));
         }
         if (snapshot != null && snapshot.bounds().contains(x, y, z)) {
-            rebuildRequested = true;
+            front.mark(front.bounds.index(x, y, z));
+            rebuildRequested |= LightingSettings.mode() != LightingSettings.Mode.REALTIME;
         }
     }
 
@@ -108,7 +130,8 @@ public final class TerrainLightVolume {
             build.markChunk(chunk);
         }
         if (snapshot != null && snapshot.bounds().intersects(chunk)) {
-            rebuildRequested = true;
+            front.markChunk(chunk);
+            rebuildRequested |= LightingSettings.mode() != LightingSettings.Mode.REALTIME;
         }
     }
 
@@ -116,6 +139,7 @@ public final class TerrainLightVolume {
         level = null;
         snapshot = null;
         build = null;
+        front = null;
         rebuildRequested = false;
         ticksSincePublication = 0;
     }
@@ -128,7 +152,7 @@ public final class TerrainLightVolume {
     public record Snapshot(ClientLevel level, int minX, int minY, int minZ, int sizeX, int sizeY, int sizeZ,
             ByteBuffer voxelData, List<Light> lights) {
         private Bounds bounds() {
-            return new Bounds(minX, minY, minZ);
+            return new Bounds(minX, minY, minZ, sizeX, sizeY, sizeZ);
         }
     }
 
@@ -136,46 +160,47 @@ public final class TerrainLightVolume {
     public record Light(double x, double y, double z, float red, float green, float blue, int emission) {
     }
 
-    private record Bounds(int minX, int minY, int minZ) {
+    private record Bounds(int minX, int minY, int minZ, int width, int height, int depth) {
         private boolean contains(int x, int y, int z) {
-            return x >= minX && x < minX + SIZE_X && y >= minY && y < minY + SIZE_Y
-                    && z >= minZ && z < minZ + SIZE_Z;
+            return x >= minX && x < minX + width && y >= minY && y < minY + height
+                    && z >= minZ && z < minZ + depth;
         }
 
         private boolean intersects(ChunkPos chunk) {
-            return chunk.getMinBlockX() < minX + SIZE_X && chunk.getMaxBlockX() >= minX
-                    && chunk.getMinBlockZ() < minZ + SIZE_Z && chunk.getMaxBlockZ() >= minZ;
+            return chunk.getMinBlockX() < minX + width && chunk.getMaxBlockX() >= minX
+                    && chunk.getMinBlockZ() < minZ + depth && chunk.getMaxBlockZ() >= minZ;
         }
 
         private boolean awayFrom(int x, int y, int z, int distance) {
-            return Math.abs(x - (minX + SIZE_X / 2)) > distance
-                    || Math.abs(y - (minY + SIZE_Y / 2)) > distance
-                    || Math.abs(z - (minZ + SIZE_Z / 2)) > distance;
+            return Math.abs(x - (minX + width / 2)) > distance
+                    || Math.abs(y - (minY + height / 2)) > distance
+                    || Math.abs(z - (minZ + depth / 2)) > distance;
         }
 
         private int index(int x, int y, int z) {
-            return x - minX + SIZE_X * (y - minY + SIZE_Y * (z - minZ));
+            return x - minX + width * (y - minY + height * (z - minZ));
         }
 
         private int x(int index) {
-            return minX + index % SIZE_X;
+            return minX + index % width;
         }
 
         private int y(int index) {
-            return minY + index / SIZE_X % SIZE_Y;
+            return minY + index / width % height;
         }
 
         private int z(int index) {
-            return minZ + index / (SIZE_X * SIZE_Y);
+            return minZ + index / (width * height);
         }
     }
 
     private static final class Build {
         private final Bounds bounds;
         private final Vec3 anchor;
-        private final ByteBuffer voxelData = ByteBuffer.allocateDirect(VOLUME * BYTES_PER_VOXEL);
+        private final int cells;
+        private final ByteBuffer voxelData;
         private final Int2IntOpenHashMap emitters = new Int2IntOpenHashMap();
-        private final BitSet dirty = new BitSet(VOLUME);
+        private final BitSet dirty;
         private final BlockPos.MutableBlockPos position = new BlockPos.MutableBlockPos();
         private int cursor;
         private int cachedChunkX;
@@ -186,13 +211,15 @@ public final class TerrainLightVolume {
         private Build(Bounds bounds, Vec3 anchor) {
             this.bounds = bounds;
             this.anchor = anchor;
+            cells = bounds.width * bounds.height * bounds.depth;
+            voxelData = ByteBuffer.allocateDirect(cells * BYTES_PER_VOXEL);
+            dirty = new BitSet(cells);
         }
 
-        private boolean advance(ClientLevel level) {
+        private boolean advance(ClientLevel level, int budget) {
             // Packet replacement is visible on the next tick, including for our last cached coordinates.
             hasCachedChunk = false;
-            int budget = CELLS_PER_TICK;
-            while (cursor < VOLUME && budget > 0) {
+            while (cursor < cells && budget > 0) {
                 read(level, cursor++);
                 budget--;
             }
@@ -202,7 +229,7 @@ public final class TerrainLightVolume {
                 budget--;
             }
             cachedChunk = null;
-            return cursor == VOLUME && dirty.isEmpty();
+            return cursor == cells && dirty.isEmpty();
         }
 
         private void read(ClientLevel level, int index) {
@@ -259,11 +286,11 @@ public final class TerrainLightVolume {
                 return;
             }
             int startX = Math.max(bounds.minX, chunk.getMinBlockX());
-            int endX = Math.min(bounds.minX + SIZE_X, chunk.getMaxBlockX() + 1);
+            int endX = Math.min(bounds.minX + bounds.width, chunk.getMaxBlockX() + 1);
             int startZ = Math.max(bounds.minZ, chunk.getMinBlockZ());
-            int endZ = Math.min(bounds.minZ + SIZE_Z, chunk.getMaxBlockZ() + 1);
+            int endZ = Math.min(bounds.minZ + bounds.depth, chunk.getMaxBlockZ() + 1);
             for (int z = startZ; z < endZ; z++) {
-                for (int y = bounds.minY; y < bounds.minY + SIZE_Y; y++) {
+                for (int y = bounds.minY; y < bounds.minY + bounds.height; y++) {
                     int start = bounds.index(startX, y, z);
                     if (start < cursor) {
                         dirty.set(start, Math.min(cursor, start + endX - startX));
@@ -294,7 +321,7 @@ public final class TerrainLightVolume {
             var ranked = new ArrayList<>(nearest);
             ranked.sort(LIGHT_PRIORITY);
             List<Light> lights = ranked.stream().map(this::toLight).toList();
-            return new Snapshot(level, bounds.minX, bounds.minY, bounds.minZ, SIZE_X, SIZE_Y, SIZE_Z,
+            return new Snapshot(level, bounds.minX, bounds.minY, bounds.minZ, bounds.width, bounds.height, bounds.depth,
                     voxelData.asReadOnlyBuffer(), lights);
         }
 
@@ -352,7 +379,10 @@ public final class TerrainLightVolume {
             int layers = state.getValue(SnowLayerBlock.LAYERS);
             return layers == SnowLayerBlock.MAX_HEIGHT ? FULL : SNOW_LAYER_BASE + layers;
         }
-        return state.isSolidRender(level, position) ? FULL : EMPTY;
+        if (state.isSolidRender(level, position)) {
+            return FULL;
+        }
+        return state.is(BlockTags.LEAVES) ? FOLIAGE : EMPTY;
     }
 
     private static int lightPointId(BlockState state) {

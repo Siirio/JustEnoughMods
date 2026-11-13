@@ -1,0 +1,17 @@
+{
+  "vertex": "jem_lighting_sandbox:atmosphere_composite",
+  "fragment": "jem_lighting_sandbox:atmosphere_composite",
+  "attributes": ["Position", "UV0"],
+  "samplers": [
+    { "name": "AtmosphereTex" },
+    { "name": "SceneDepth" }
+  ],
+  "uniforms": [
+    {
+      "name": "InverseViewProjection",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    }
+  ]
+}

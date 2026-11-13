@@ -2,6 +2,7 @@ package com.siirio.jemlightingsandbox.terrain;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
+import com.siirio.jemlightingsandbox.LightingSettings;
 import java.util.HashMap;
 import java.util.Map;
 import net.irisshaders.iris.api.v0.IrisApi;
@@ -127,6 +128,7 @@ public final class TerrainLighting {
             return;
         }
         Minecraft client = Minecraft.getInstance();
+        VOLUME.refreshChangedBlocks(client.level);
         var snapshot = VOLUME.snapshot();
         if (!available() || snapshot == null || snapshot.level() != client.level) {
             return;
@@ -159,7 +161,8 @@ public final class TerrainLighting {
             int index = 0;
             for (var light : snapshot.lights()) {
                 GL20.glUniform4f(uniforms.positions[index], (float) (light.x() - camera.x),
-                        (float) (light.y() - camera.y), (float) (light.z() - camera.z), light.emission() + 0.5F);
+                        (float) (light.y() - camera.y), (float) (light.z() - camera.z),
+                        light.emission() * LightingSettings.lightDistance() / 15F + 0.5F);
                 GL20.glUniform4f(uniforms.colors[index], light.red(), light.green(), light.blue(), light.emission() / 15F);
                 index++;
             }
@@ -211,7 +214,8 @@ public final class TerrainLighting {
             GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, 0);
             GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, 0);
             GL11.glPixelStorei(GL12.GL_UNPACK_SKIP_IMAGES, 0);
-            if (uploaded == null) {
+            if (uploaded == null || uploaded.sizeX() != snapshot.sizeX() || uploaded.sizeY() != snapshot.sizeY()
+                    || uploaded.sizeZ() != snapshot.sizeZ()) {
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
@@ -235,15 +239,32 @@ public final class TerrainLighting {
     }
 
     private static void setSun(Uniforms uniforms, ClientLevel level, float partialTick) {
+        Sun sun = sun(level, partialTick);
+        GL20.glUniform4f(uniforms.sun, sun.x(), sun.y(), 0F, sun.strength());
+        GL20.glUniform3f(uniforms.sunColor, 1F, 1F, 1F);
+    }
+
+    public static Sun sun(ClientLevel level, float partialTick) {
         float angle = level.getSunAngle(partialTick);
         float altitude = Mth.cos(angle);
         float strength = 0F;
         if (level.dimensionType().hasSkyLight() && !level.dimensionType().hasCeiling()) {
             strength = Mth.clamp(altitude * 4F, 0F, 1F) * (1F - level.getRainLevel(partialTick) * 0.85F);
         }
-        GL20.glUniform4f(uniforms.sun, -Mth.sin(angle), altitude, 0F, strength);
-        GL20.glUniform3f(uniforms.sunColor, 1F, 1F, 1F);
+        return new Sun(-Mth.sin(angle), altitude, strength);
     }
+
+    public static VolumeTexture currentVolume(ClientLevel level) {
+        if (!available() || uploaded == null || uploaded.level() != level || voxelTexture == 0) {
+            return null;
+        }
+        return new VolumeTexture(voxelTexture, uploaded.minX(), uploaded.minY(), uploaded.minZ(),
+                uploaded.sizeX(), uploaded.sizeY(), uploaded.sizeZ());
+    }
+
+    public record Sun(float x, float y, float strength) {}
+
+    public record VolumeTexture(int id, int x, int y, int z, int width, int height, int depth) {}
 
     private static boolean available() {
         return enabled && !failed && canPatchStockShaders() && !oculusShadersEnabled();
