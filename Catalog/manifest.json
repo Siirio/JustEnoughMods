@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "2824be81eb2969157d02fa06a2d7e5a6334f2f22",
-  "generated_utc": "2026-11-13T16:02:05.980515+00:00",
+  "snapshot_sha": "de75871777949411a13ea64d300dc785769eeb50",
+  "generated_utc": "2026-11-13T17:46:40.359663+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -10288,7 +10288,7 @@
     },
     {
       "filename": "jem-races-2.0.3.jar",
-      "sha256": "c98f3f9a360af54cd5292c9239d6ef335dc4093afc355e9f449e081c398ec0e2",
+      "sha256": "2c6e5267c7477136e1a078fbef0baa7381dcc9ff78bffd9f42bffa53dc43fad7",
       "sides": [
         "client"
       ],
@@ -10311,7 +10311,7 @@
     },
     {
       "filename": "jem-races-2.0.3.jar",
-      "sha256": "c98f3f9a360af54cd5292c9239d6ef335dc4093afc355e9f449e081c398ec0e2",
+      "sha256": "2c6e5267c7477136e1a078fbef0baa7381dcc9ff78bffd9f42bffa53dc43fad7",
       "sides": [
         "server"
       ],
@@ -10796,7 +10796,7 @@
     },
     {
       "filename": "jem_security-1.0.7.jar",
-      "sha256": "8614637b96854c7d2831cf28521a2513d5ff512e47237426b8576d7487c6e5d2",
+      "sha256": "d294c14aab69aadf0861af5e1310cc5cc704a7fc994f1d8f3357d6def1217407",
       "sides": [
         "client"
       ],
@@ -10817,7 +10817,7 @@
     },
     {
       "filename": "jem_security-1.0.7.jar",
-      "sha256": "8614637b96854c7d2831cf28521a2513d5ff512e47237426b8576d7487c6e5d2",
+      "sha256": "d294c14aab69aadf0861af5e1310cc5cc704a7fc994f1d8f3357d6def1217407",
       "sides": [
         "server"
       ],
@@ -24038,6 +24038,46 @@
       "namespaces": [],
       "source_path": "Server\\mods\\VisualWorkbench-v8.0.1-1.20.1-Forge.jar",
       "nested_dependencies": []
+    },
+    {
+      "filename": "vss-0.3.5-forge-1.20.1.jar",
+      "sha256": "5f8f40bfc83a4bb6a049921668ee0f889730572f191c7a349526d75c97c0f730",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "vss",
+          "name": "Voxy Server Side",
+          "version": "0.3.5-forge-1.20.1",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "vss"
+      ],
+      "source_path": "Server\\mods\\vss-0.3.5-forge-1.20.1.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/lz4-java-1.8.0.jar",
+          "sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "identifier": {
+            "group": "org.lz4",
+            "artifact": "lz4-java"
+          },
+          "version": {
+            "range": "[1.8.0,2.0)",
+            "artifactVersion": "1.8.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
     },
     {
       "filename": "wakes-1.20.1-Forge-1.4.1.jar",

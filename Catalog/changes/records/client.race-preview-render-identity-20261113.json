@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "change_id": "client.race-preview-render-identity-20261113",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 126
+  },
+  "change": {
+    "summary": "Give both race preview models a display-only identity",
+    "modifiers": [
+      {
+        "property": "race_preview.player_render_identity",
+        "operation": "replace",
+        "before": "Both detached player models reuse the live player UUID and can be hidden by world render hooks",
+        "after": "Both models use separate display-only UUIDs and read native appearance from the live player"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Races",
+    "kind": "runtime_correction",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/DetachedPreviewPlayer.java",
+      "Client/ManagedPack/mods/jem-races-2.0.3.jar",
+      "Docs/races/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep the player visible in the main race stage and the ability scene across races",
+    "decision_source": "User report or request on 2026-11-13"
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Give both race preview models a display-only identity"
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Give both race preview models a display-only identity"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "race selection",
+      "client_presentation"
+    ],
+    "relations": [
+      "Detached display identity -> native PlayerRenderer -> live skin and equipment appearance"
+    ],
+    "unresolved": [
+      "Both scenes require player acceptance in game"
+    ]
+  }
+}

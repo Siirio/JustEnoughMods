@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "change_id": "security.antixray-chunk-packet-20261113",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "tag",
+      "registry": "blocks",
+      "value": "forge:ores"
+    },
+    {
+      "type": "registry",
+      "registry": "blocks",
+      "value": "minecraft:ancient_debris"
+    }
+  ],
+  "precedence": {
+    "layer": "server_security",
+    "priority": 126
+  },
+  "change": {
+    "summary": "Encode masked chunk sections with independent palettes before packet allocation",
+    "modifiers": [
+      {
+        "property": "client.initial_chunk_mask_encoding",
+        "operation": "replace",
+        "before": "A copied palette shared the authoritative resize callback. The output buffer used the original section size",
+        "after": "The filter writes independent palettes and the packet allocates the measured masked byte count"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Security",
+    "kind": "runtime_correction",
+    "source_files": [
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/AntiXray.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/ChunkPacketDataMixin.java",
+      "Client/ManagedPack/mods/jem_security-1.0.7.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Deliver valid dedicated-server chunk packets while retaining the configured ore mask",
+    "decision_source": "User report or request on 2026-11-13"
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Encode masked chunk sections with independent palettes before packet allocation"
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Encode masked chunk sections with independent palettes before packet allocation"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "chunk_networking",
+      "ore_privacy",
+      "dedicated_server"
+    ],
+    "relations": [
+      "Dedicated chunk -> ore masking -> exact-length vanilla packet data"
+    ],
+    "unresolved": [
+      "Chunk delivery and visual acceptance require player traversal"
+    ]
+  }
+}

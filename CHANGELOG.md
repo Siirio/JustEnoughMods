@@ -1,3 +1,15 @@
+## 2026-11-13 - Restore race previews and dedicated chunk delivery
+
+- User reported missing player models across all races in both F6 scenes, missing Luxium shadows, and terrain gaps on the local dedicated server. The user also requested removal of the four cardinal directions from Locator Bar
+- Bug / Client / Both detached race preview players reused the live player UUID, which allowed installed world render hooks to cancel either preview / in testing with separate display UUIDs and the live player's native appearance
+- Bug / Server / AntiXray could resize a copied palette through the live callback and write filtered data into a buffer sized for the original chunk / in testing with independent section palettes and measured packet length. The configured ore mask stays active
+- Bug / Client / The local Luxium master and GPU local shadows were off / in testing with both enabled in Test JustEnoughMods, existing sky shadows enabled and Oculus inactive. Selected hard cubemap shadows for the placed-light path
+- Set native Locator Bar `showWorldDirections` to false in the managed client settings and local server. Waypoint and player marker settings are preserved
+- Increased the local client's ordinary render distance from 2 to 8 after Neo Voxy warned about culling near the screen edges at 2. Set its LOD subdivision threshold to 28 for finer detail
+- Bug / Client / Neo Voxy 0.3.5 discarded some half-occupied cells while reducing terrain detail / in testing with a local build of upstream 0.4.0beta at commit 08e30e0cc. The beta retains those surfaces and migrates existing LOD data. The previous JAR and cache were backed up
+- The local dedicated server completed startup. Native AutoModpack generation 159 published both rebuilt modules and both Locator Bar configs. Test JustEnoughMods applied token `2a95facc37101f622c56b914448ebc69193d6908` and verified 333 managed JARs
+- F6, placed-light shadows, VSS transfer and the terrain near `397 110 277` still require in-game acceptance
+
 ## 2026-11-13 - Install Voxy for local use
 
 - User requested Voxy on the client and local dedicated server, then startup of the local server

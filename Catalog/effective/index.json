@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "4e56f1b54b33dd66de4fbf132c29dc13bab115ce15e5233193a4c8aba524c953",
+  "change_records_sha256": "6e255a94be0d9841baf88e02f0f07156b56497326d3c5b2891213881c232b303",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -494,6 +494,21 @@
       "potential_static_target_count": 0
     },
     {
+      "change_id": "client.locatorbar-hide-directions-20261113",
+      "status": "active",
+      "summary": "Hide the four compass directions on the experience-bar locator",
+      "record": "Catalog/changes/records/client.locatorbar-hide-directions-20261113.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "locatorbar"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
+    },
+    {
       "change_id": "client.luxium-alpha-warning-suppression-20261030",
       "status": "active",
       "summary": "Skip Luxium 2.8.0's first-run alpha warning gate on JEM clients.",
@@ -522,6 +537,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1
+    },
+    {
+      "change_id": "client.race-preview-render-identity-20261113",
+      "status": "active",
+      "summary": "Give both race preview models a display-only identity",
+      "record": "Catalog/changes/records/client.race-preview-render-identity-20261113.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
     },
     {
       "change_id": "client.smp-preview-native-appearance-20261026",
@@ -3145,6 +3175,26 @@
       "potential_static_target_count": 32572
     },
     {
+      "change_id": "security.antixray-chunk-packet-20261113",
+      "status": "active",
+      "summary": "Encode masked chunk sections with independent palettes before packet allocation",
+      "record": "Catalog/changes/records/security.antixray-chunk-packet-20261113.json",
+      "selectors": [
+        {
+          "type": "tag",
+          "registry": "blocks",
+          "value": "forge:ores"
+        },
+        {
+          "type": "registry",
+          "registry": "blocks",
+          "value": "minecraft:ancient_debris"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
+    },
+    {
       "change_id": "server.bound-test-profile-20261020",
       "status": "conditional",
       "summary": "Bind test privileges to exact dedicated save identity/epoch, authenticated finite grants and recoverable temporary OP; retain explicit production migration API.",
@@ -4455,7 +4505,7 @@
     }
   ],
   "source_fingerprints": {
-    "CHANGELOG.md": "2c3ebe0443eff0ee320feee9217916cb39e01f53081c885b1bdc8b5b92b130fc",
+    "CHANGELOG.md": "49b9a01854e49deb1069c3b0210f7771554933b5554485e27bf9b18252bde270",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -4519,8 +4569,8 @@
     "Client/ManagedPack/config/inventorytabs-client.toml": "673774b94e0dbc9d28022920f481fe844b086d4bb597d31900687abc9628ab2d",
     "Client/ManagedPack/config/item_obliterator.json5": "9ee77ac619568af88a8dd6827cbfbf8f7f19e02c7b3972b520a33106ef64ffbf",
     "Client/ManagedPack/config/jei/ingredient-list-mod-sort-order.ini": "c0f7e20a23441042ceca1d664baeb6c18d97570c2cd7745db3fd689f4da5a359",
-    "Client/ManagedPack/config/locatorbar-server.json": "694b48c01839787399471f771e0acbbb1458aff22f5589638f762c4ead04e2a9",
-    "Client/ManagedPack/config/locatorbar.json": "5e328f761c1cfd481bf86f9d2a3163f1d7c1eaaea1e0c3e1384f00845967034d",
+    "Client/ManagedPack/config/locatorbar-server.json": "1b8d4a3000b08ef5508ac1d989b918e7778b8e7744ba7ebe18fcdd45b455ef65",
+    "Client/ManagedPack/config/locatorbar.json": "1bab2a3145347001ffb3ff674579b1acdb6e6a9df51e15fb970b5fb5aa3f8ccb",
     "Client/ManagedPack/config/netherman-common.toml": "96e331c093e4802b9ef8a879cefeebc4d202bb038534913830c7d6f0bc065c00",
     "Client/ManagedPack/config/oculus.properties": "f137bd89ac226e35021096c86fc6c1c65e9146a2b27017aa22703d7c04078706",
     "Client/ManagedPack/config/offgrid/common.toml": "04a908889e11c9c8769d4666ed54088a7ede27c2026f15caeba1167a9cf07b6a",
@@ -4565,7 +4615,7 @@
     "Client/ManagedPack/config/towns_and_towers/structure_rarity_new.json5": "427157180a3007ea9f1b432c114211b3536db829a2b119a3f3e06854262e990c",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/config/weatherglass.properties": "5006c1c79c3319181308ff1cc999f68e65afb2ff9980d214a0ca0b29d5c3cee7",
-    "Client/ManagedPack/jem-pack/manifest.json": "100d2090c8e65057da311dab4abcd0c0f3a24e2f43e6935896cdf58ba850f68a",
+    "Client/ManagedPack/jem-pack/manifest.json": "027893c056c0ae483a3c4f01a63da3e0d27a41ffacab4b310adf1e6f48f27e23",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -4758,7 +4808,7 @@
     "Client/ManagedPack/mods/jem-bootstrap.jar": "d3515ceec590b3e748e5564037ca2417730dbb3bb88241e1382829728ceead74",
     "Client/ManagedPack/mods/jem-economy-1.3.2.jar": "4fbf560ad58f24bb86b728b1d6a40bbd66df6c2f81557224338ca21cbcef92a8",
     "Client/ManagedPack/mods/jem-identity-1.0.0.jar": "c84a1cc030dd5a91b7bae287b24ced375387c18f171b382e7aa128763eba010d",
-    "Client/ManagedPack/mods/jem-races-2.0.3.jar": "c98f3f9a360af54cd5292c9239d6ef335dc4093afc355e9f449e081c398ec0e2",
+    "Client/ManagedPack/mods/jem-races-2.0.3.jar": "2c6e5267c7477136e1a078fbef0baa7381dcc9ff78bffd9f42bffa53dc43fad7",
     "Client/ManagedPack/mods/jem-rewards-1.1.0.jar": "d13db58b5dab2f030d0f492d3684ef10f59513247bdafdd01af6001981034c7f",
     "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "220a72d65293a95295bb687df068c999f95240cd4d98233ab6dea0018a8a1c41",
     "Client/ManagedPack/mods/jem-settlements-2.1.1.jar": "d802239a354bf046cc566b24be1b908cf38b8b2647c6cdf3e1d479a57b227fb0",
@@ -4766,7 +4816,7 @@
     "Client/ManagedPack/mods/jem_adaptive_culling-1.5.0.jar": "81c8115c9594b5f83ee3649d3cae4d0a095d4f1984af901dcf4e753bf8240e9f",
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "d7b523b6cc7657340390fa961c9b8db351db4c505eea590a95c1536b923982e7",
     "Client/ManagedPack/mods/jem_luxium-1.0.12.jar": "c9fb26898bd4f076daab80485c3d75069569f12fc416b3e01378ddf9cffbe627",
-    "Client/ManagedPack/mods/jem_security-1.0.7.jar": "8614637b96854c7d2831cf28521a2513d5ff512e47237426b8576d7487c6e5d2",
+    "Client/ManagedPack/mods/jem_security-1.0.7.jar": "d294c14aab69aadf0861af5e1310cc5cc704a7fc994f1d8f3357d6def1217407",
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "467db4e13c9ebb84c095d3b8e1dbfaf6a84ab559a1c37458c36f9e6042bcdbfa",
     "Client/ManagedPack/mods/jemcompat-3.10.3.jar": "bcea210a770ce3d7b8c6ae84b2ea1f6550f609ecb4d59ebbd53a0c72952250bd",
     "Client/ManagedPack/mods/jemfood-1.0.0.jar": "89194b305e9c0674a12c840842fe769f439ce40998f389c0af71b0054ed257ea",
@@ -4787,7 +4837,7 @@
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
     "Docs/DEVELOPMENT.md": "e0a8dc1d882ad92dbe5b6e147e83e09825f70cdef0bfc82b78c35ce7a318ea16",
-    "Docs/MODS.md": "f8d818c82d7471d9dfdae9e3e3e3fb77aed7abca371a1faf5a45f23bd59e09c7",
+    "Docs/MODS.md": "e8706907ceef453373611a8daf7150b308c556f38b238706dfbb3fb51f2416cf",
     "Docs/SERVER_COMMANDS.md": "70f44d76010dc872bc7d4c2ff6734f25376f91436de312d5b687c73abef12596",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -4848,7 +4898,7 @@
     "Docs/power-system/README.md": "6126ef340f35b28de6734c00c4f76fbf304cd542d65eb6efa589bd98dac55a58",
     "Docs/power-system/Weapons.md": "5a67dada7b91f501c6ce9da04690102441a718ebb6e05a5d30aa1f3978ade479",
     "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/skarrier/manifest.json": "42e3c46095986c686e5582a746f3bc96de8376ff3db03e4591c1971db1fa2406",
-    "Docs/races/README.md": "9074f2ee5802988fcc493c15fa82906904baf302cdab8f2ffb7b5bb6fae11e89",
+    "Docs/races/README.md": "b0d8b2a4d287cf31e3d7063b739b65f96300835686506f8a6e579c775a7cf990",
     "Docs/races/VFX_REFERENCE_BRIEFS.md": "e6e6f81334f8fdaf0b5f2197562ee4afc0eb8c2e2b1e6cf3d33d56c2e2233c87",
     "Docs/races/assets/guardian-dome/PLAN.md": "8519ffb62d2ed6f61ccb8e21cb907cd2a1a0563f1a839ca1afb40b17b1dc5f52",
     "Docs/races/assets/guardian-dome/author.py": "7b644e0ccc1c13820f09262a43d573ea7489ff780133375a01b05146185504c4",
@@ -8905,7 +8955,7 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceEnvironment.java": "9abd47bcb6298422008e03cec13913376684cef6646718cfd6f02d5690228ad0",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/TemporaryPathSavedData.java": "ec85e35bf3f89cbff1f9a4aa0c4580f3c0d4d9bad2d12945d9afba012f2f27fb",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java": "7cf2968ce7877c1bf0d3c328d9de3c3ca554f8f0b9c6d4b3fbff6bad1ae40501",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/DetachedPreviewPlayer.java": "16398e2b90f4ef0003ffb90c008f6844fe0d411be5f100c07bace9ec2986de44",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/DetachedPreviewPlayer.java": "712ba7a1c56b1f3d09ceeabdde05417fc6afd92ccf37c59872190e0106d7099e",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/PreviewRenderState.java": "e4d6bf648098c0754c04d3810844255963ad3a544418302a1ce1bd9658262fe4",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinSessionResume.java": "090adb3fa0abc8e10406f35af0476ef7b57988aa4698633e16fefe9b1ecdd977",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinTitleScreenDefaults.java": "a9f3fd900fedc0e91ff3ac024535d077b3f276a504c520ff9652de4a641f3ffa",
@@ -9046,7 +9096,7 @@
     "Mods/JEMSeasonsHud/src/main/resources/assets/jemcompat/lang/ru_ru.json": "51a46cb6eafce9622da9eef7e168acc041d0f57515075cbf8cda4933f7e3989b",
     "Mods/JEMSecurity/build.gradle": "8f21c5f597ba13e6e6db616708ea4b88a2ca7b2dc1f18297f413b899d3159cdf",
     "Mods/JEMSecurity/gradle.properties": "4c379fc4227dba63028c28705150f45fdef52955c174dce082edcd114f9bfefe",
-    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/AntiXray.java": "505355dccd4c6462de388259ef5d74fbd1a1c0452fbdd06748a13c6b65b3de4c",
+    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/AntiXray.java": "84f675c1e58b92ad60c5155e2ba71d9bdc3c40ef833fed8fe0938d510bbab368",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/ItemProvenance.java": "042b2532a720dfa00daa42f84d20b2e3c1b9ec15e76eb64f72dc74449df05ea8",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/JEMSecurity.java": "dd09b79c69818c37c9291b8a6bf58c9d695ffe494821b90b272f494d2ba197d7",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityAuditLog.java": "26f011600a52916de64ce6b2a804042b1d70c9c0f7a8c96e25784e8bbeae6b6f",
@@ -9055,7 +9105,7 @@
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityEvents.java": "7f1a91b60706dcac434b436ac79b8493266dd67cf6612721a7a91293289b771c",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityRuntime.java": "71eb536f8f66e6bd35f5b4801cc097b75c0c226ac0b9b4e236a6dcbc2bd9fc24",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/client/ResourcePackGuard.java": "b958e0e50bf0d6f50c18ecdade470d8c47ab856609c92ad6e2d3359efad7214d",
-    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/ChunkPacketDataMixin.java": "bb826eab3e76fe7078de60a4eef1fdd68bf8080ef8f188681461b7289aa6642f",
+    "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/ChunkPacketDataMixin.java": "8d78c5d4eff87610c1dd4262872422e5d871961929a29069cefa49cd76b8c62f",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/CreativeSlotMixin.java": "db2d372973d6ce197da890872cd5ded38abce2a6c8de6655f910d95b38bf5009",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/PackSelectionScreenMixin.java": "97756f5a982c5e1b65c63069e0617caa8382e9e3af3ef8333729481f5b87a54e",
     "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java": "771a067f595f911a4ee8290a983f8ddcd6d1b64f4c0db0b2f25ca47c817df7f5",
@@ -9930,7 +9980,7 @@
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
     "tools/module-inventory.json": "3bdd48e909d5759b90c3e663c6f405d96706a0db01be182c6eebb3bece0980d0",
-    "tools/state/packSyncHost-sync.json": "72b40d6a0588c7cf64f327718a336d4f728f4570f2b8cda602f34b8655b3250b",
+    "tools/state/packSyncHost-sync.json": "911f07f5cab8b221b096ce0fc414f436f57653b6f37840fb0a18b202cce61f0f",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }
 }

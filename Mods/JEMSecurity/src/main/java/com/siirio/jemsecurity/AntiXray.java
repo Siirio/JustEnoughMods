@@ -1,5 +1,6 @@
 package com.siirio.jemsecurity;
 
+import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.SectionPos;
@@ -14,39 +15,59 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.LevelChunkSection;
+import net.minecraft.world.level.chunk.PalettedContainer;
 
 public final class AntiXray {
     public static final TagKey<Block> ORES = TagKey.create(Registries.BLOCK, new ResourceLocation("forge", "ores"));
+    private static final int MAX_CHUNK_DATA_BYTES = 2 * 1024 * 1024;
 
     private AntiXray() { }
 
-    public static boolean writeFilteredChunk(FriendlyByteBuf buffer, LevelChunk chunk) {
+    public static byte[] encodeFilteredChunk(LevelChunk chunk, int estimatedSize) {
         if (!(chunk.getLevel() instanceof ServerLevel level) || !SecurityRuntime.active(level.getServer())
-                || !SecurityConfig.ANTI_XRAY.get()) return false;
-        LevelChunkSection[] sections = chunk.getSections();
-        for (int index = 0; index < sections.length; index++) {
-            LevelChunkSection original = sections[index];
-            if (!original.maybeHas(AntiXray::hiddenBlock)) {
-                original.write(buffer);
-                continue;
+                || !SecurityConfig.ANTI_XRAY.get()) return null;
+
+        FriendlyByteBuf buffer = new FriendlyByteBuf(
+                Unpooled.buffer(Math.min(estimatedSize, MAX_CHUNK_DATA_BYTES), MAX_CHUNK_DATA_BYTES));
+        try {
+            LevelChunkSection[] sections = chunk.getSections();
+            int baseX = chunk.getPos().getMinBlockX();
+            int baseZ = chunk.getPos().getMinBlockZ();
+            for (int index = 0; index < sections.length; index++) {
+                LevelChunkSection section = sections[index];
+                if (section.maybeHas(AntiXray::hiddenBlock)) {
+                    int baseY = SectionPos.sectionToBlockCoord(chunk.getMinSection() + index);
+                    section = filterSection(level, section, baseX, baseY, baseZ);
+                }
+                section.write(buffer);
             }
-            LevelChunkSection filtered = new LevelChunkSection(original.getStates().copy(), original.getBiomes());
-            int baseY = SectionPos.sectionToBlockCoord(chunk.getMinSection() + index);
-            for (int x = 0; x < 16; x++) {
-                for (int y = 0; y < 16; y++) {
-                    for (int z = 0; z < 16; z++) {
-                        BlockState state = original.getBlockState(x, y, z);
-                        if (!hiddenBlock(state)) continue;
-                        BlockPos worldPos = new BlockPos(chunk.getPos().getMinBlockX() + x, baseY + y,
-                                chunk.getPos().getMinBlockZ() + z);
-                        if (!exposed(level, worldPos)) filtered.setBlockState(x, y, z, filler(level, worldPos, state), false);
+            byte[] encoded = new byte[buffer.readableBytes()];
+            buffer.readBytes(encoded);
+            return encoded;
+        } finally {
+            buffer.release();
+        }
+    }
+
+    private static LevelChunkSection filterSection(ServerLevel level, LevelChunkSection original,
+                                                  int baseX, int baseY, int baseZ) {
+        // A palette copy keeps the live container's resize callback.
+        PalettedContainer<BlockState> states = new PalettedContainer<>(Block.BLOCK_STATE_REGISTRY,
+                Blocks.AIR.defaultBlockState(), PalettedContainer.Strategy.SECTION_STATES);
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+        for (int y = 0; y < 16; y++) {
+            for (int z = 0; z < 16; z++) {
+                for (int x = 0; x < 16; x++) {
+                    BlockState state = original.getBlockState(x, y, z);
+                    if (hiddenBlock(state)) {
+                        pos.set(baseX + x, baseY + y, baseZ + z);
+                        if (!exposed(level, pos)) state = filler(level, pos, state);
                     }
+                    states.getAndSetUnchecked(x, y, z, state);
                 }
             }
-            filtered.recalcBlockCounts();
-            filtered.write(buffer);
         }
-        return true;
+        return new LevelChunkSection(states, original.getBiomes());
     }
 
     public static boolean hiddenBlock(BlockState state) {
