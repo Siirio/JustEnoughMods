@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "change_id": "client.sandbox-terrain-lighting-20261114",
+  "status": "conditional",
+  "selectors": [{"type": "registry", "registry": "*"}],
+  "conditions": [{"profile": "Sandbox JustEnoughMods", "renderer": "Embeddium 0.3.31", "pass": "solid", "stock_shaders": true}],
+  "precedence": {"layer": "client_presentation", "priority": 81},
+  "change": {
+    "summary": "Add independent direct shadows from native emissive blocks and the sun to nearby opaque terrain.",
+    "modifiers": [{"property": "client.sandbox.terrain_lighting", "operation": "set", "before": false, "after": true}]
+  },
+  "cause": {
+    "owner": "JEMLightingSandbox",
+    "kind": "client_presentation",
+    "source_files": [
+      "Mods/JEMLightingSandbox/build.gradle",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingClient.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/ClientLevelMixin.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EmbeddiumChunkRendererMixin.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EmbeddiumShaderLoaderMixin.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/EmbeddiumTerrainShaders.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/TerrainLighting.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/TerrainLightVolume.java",
+      "Mods/JEMLightingSandbox/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMLightingSandbox/src/main/resources/jem_lighting_sandbox.mixins.json",
+      "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/terrain/lighting.glsl"
+    ]
+  },
+  "rationale": {
+    "purpose": "Extend the approved lighting preview to playable terrain while retaining native block emission and sky light inputs.",
+    "decision_source": "User requested ordinary Embeddium chunks, emissive blocks and simultaneous sunlight in Sandbox only, on Windows and macOS. The local voxel volume, solid pass and eight-source budget are implementation choices."
+  },
+  "introduced": {"date": "2026-11-14", "commit": "SELF", "action": "add_sandbox_terrain_lighting", "summary": "Apply original terrain lighting during opaque Embeddium chunk draws."},
+  "history": [{"date": "2026-11-14", "commit": "SELF", "action": "add_sandbox_terrain_lighting", "summary": "Extend the scene to native block emission and opaque terrain."}],
+  "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["No gameplay registrations, server state or native block emission levels change. The standalone preview remains available."], "unresolved": ["Visual output and frame time require verification on Windows and macOS. Partial block casters, LOD, entities and held lights are outside this pass."]}
+}

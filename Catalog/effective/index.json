@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "89050fdc0f401ecca84e237e506e539268a61ac1a5f88340489a694dd3824c11",
+  "change_records_sha256": "f1e1ca8f6aeee0b9d9a11c81f867bed4a5250dd40762e2289bb8de3b1032d737",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -573,6 +573,20 @@
       "status": "conditional",
       "summary": "Add an independent client-side lighting preview with two point lights and one directional light.",
       "record": "Catalog/changes/records/client.sandbox-lighting-scene-20261114.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 32572
+    },
+    {
+      "change_id": "client.sandbox-terrain-lighting-20261114",
+      "status": "conditional",
+      "summary": "Add independent direct shadows from native emissive blocks and the sun to nearby opaque terrain.",
+      "record": "Catalog/changes/records/client.sandbox-terrain-lighting-20261114.json",
       "selectors": [
         {
           "type": "registry",
@@ -4549,7 +4563,7 @@
     }
   ],
   "source_fingerprints": {
-    "CHANGELOG.md": "b1f0a363b93b379cc52b08f9c5317c86e516e96fed7e5578054714e4a68ae311",
+    "CHANGELOG.md": "f1fefe7abb53e3593509df3eb6dd1a37cf2344d832d3cc1444e4af076a653b76",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -4879,7 +4893,7 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "6faa0b4b1f1adc405027fa1fda4be37e7b842c8b5e8e2d73e345dc2a810b49bb",
+    "Docs/DEVELOPMENT.md": "2d3053b3a22343e5842321feda7f2a82a74ae66b50e52b7b4b4d1ff9e4dbd6f8",
     "Docs/MODS.md": "e8706907ceef453373611a8daf7150b308c556f38b238706dfbb3fb51f2416cf",
     "Docs/SERVER_COMMANDS.md": "70f44d76010dc872bc7d4c2ff6734f25376f91436de312d5b687c73abef12596",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -8877,14 +8891,22 @@
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/client/InventoryDeleteKeys.java": "a742d2e56fa4c7ffb474265086ae11d432fce939ccf2565c43c11024b245206c",
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/feature/inventory/InventoryDeleteNetwork.java": "b24883c2a0a7b058c440305b2cde73ae3c32680888bb94f288359e018feb84d0",
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/feature/inventory/SophisticatedStorageDelete.java": "15b0de2c1f8cc81156aa02f84017b4840916e04a8f1e1f1391d57261d68e64d9",
-    "Mods/JEMLightingSandbox/build.gradle": "d6fb6d0bfa05d67da3ef3ba35d6387e5cc8accc7de2afe3a374cfb2ca639f5fc",
+    "Mods/JEMLightingSandbox/build.gradle": "d59944a1b9bac9435e886d4a339f5df5ef3efd836073c1fb0a77b7e71f67373f",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/JemLightingSandbox.java": "929bbd7c988b924752bc291919ec5897cd2f0360a600b3082e5b67f8c9ead733",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingClient.java": "02fba0b9cde609655243ca9c42027e073576ed1fc5ca63a24c383d083d902e88",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingClient.java": "2f3b6fa08c1791869779504fccf18cb6d56351931fe8a105beba4c45f9f8a1ab",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingScreen.java": "2f4fb57cacdc7dbd9d3265aafa08378d2fb48b861c5c4afac5ac0e4feb7e11f7",
-    "Mods/JEMLightingSandbox/src/main/resources/META-INF/mods.toml": "7b03121b33b25dec17c83b93649450ceeb54f9ad746ea83e0e4173a618e51e13",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/ClientLevelMixin.java": "5a9e8c1ecf84fea2ac99b6661a286d849b14f2257aa9eeec644fa0b3ab540dbe",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EmbeddiumChunkRendererMixin.java": "c584eee92efcd0fb082654e1d1188815db24d32ced91c1cda7279ff837a4df13",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EmbeddiumShaderLoaderMixin.java": "a1a34fd6d830b55b0b52efb5412ab9f2582bb63699251553e6ddb95f8193b2fd",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/EmbeddiumTerrainShaders.java": "b70e79f8d5c1093fe3347d026bd121e502bc5afd94fd50fed6910b0b9b35276a",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/TerrainLightVolume.java": "d84abac44439ee5f44cae4314582e90ef8d00d1f34b71d88b9193fd257181d1a",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/TerrainLighting.java": "037b3ed1b748e3039253ee106abff3dd91d89bcccc3cefeb149876bab233e611",
+    "Mods/JEMLightingSandbox/src/main/resources/META-INF/mods.toml": "09b002d7be7fe6f74e6d5e67b80ecaa7875ed6a0f41881da4984b215ea73e0dd",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.fsh": "bbb1cd4d0fe86fd54c3f2811d1fe1793b43873434507fc684d4672604c2022aa",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.json": "21e5eaac792ec9b899c4aac338c23cf316062615dea451efdf814f9b5195244c",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.vsh": "36141b30b677ae4590873b657a462c089c3d09a84c61342c8213007c9dd6a0d4",
+    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/terrain/lighting.glsl": "1f8384ba5f1cba10ac3518f1d605fef172f2c2d7397d10038bed8623b8cb8ca7",
+    "Mods/JEMLightingSandbox/src/main/resources/jem_lighting_sandbox.mixins.json": "6a3d53922142cd50f0df4321b6d62e819db5187da5970da18af8462f286eb7ed",
     "Mods/JEMLightingSandbox/src/main/resources/pack.mcmeta": "8a5beefa7c02d85d835d3c3e1b84fdff1652d0f1751307a53397dd06dec9e525",
     "Mods/JEMLuxium/build.gradle": "0b039b4082baf554815b1922d47f4e5a97b48027cf27074c61cc2a3b894c586f",
     "Mods/JEMLuxium/gradle.properties": "3c365a9eedf339702683dfcf33250a2c7a12110a396e2365e7ba3d3e2d6f744f",

@@ -4,16 +4,23 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="jem_lighting_sandbox"
-version="0.1.0"
+version="0.2.0"
 displayName="JEM Lighting Sandbox"
 displayTest="IGNORE_ALL_VERSION"
-description='''Independent point and directional lighting preview for Sandbox JustEnoughMods.'''
+description='''Independent point lighting and sun shadows for Embeddium terrain in Sandbox JustEnoughMods.'''
 
 [[dependencies.jem_lighting_sandbox]]
 modId="forge"
 mandatory=true
 versionRange="[47.4,)"
 ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jem_lighting_sandbox]]
+modId="embeddium"
+mandatory=true
+versionRange="[0.3.31,0.3.32)"
+ordering="AFTER"
 side="CLIENT"
 
 [[dependencies.jem_lighting_sandbox]]

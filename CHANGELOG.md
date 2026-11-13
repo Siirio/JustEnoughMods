@@ -1,3 +1,10 @@
+## 2026-11-14 - Add independent block-light shadows to Sandbox terrain
+
+- User requested the approved lighting effect on ordinary Embeddium chunks in Sandbox, with simultaneous block and sunlight shadows on Windows and macOS
+- Added a client-side voxel volume of loaded chunks. Forge block states supply native emission levels. The renderer selects up to eight nearby sources and evaluates a separate shadow ray for each source, plus sunlight
+- The first terrain pass covers opaque surfaces and full-block casters. Native block light remains the baseline outside the local volume. Luxium is isolated in a reversible Sandbox backup because it replaces the same stock shader
+- The terrain renderer uses OpenGL 3.3 features. Visual appearance and frame time on Windows and macOS remain unverified
+
 ## 2026-11-14 - Add the independent lighting preview to Sandbox
 
 - User requested a JEM renderer prototype with two colored lamps, a column and sun in Sandbox only

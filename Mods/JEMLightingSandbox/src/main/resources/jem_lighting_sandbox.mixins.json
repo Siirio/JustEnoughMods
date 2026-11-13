@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemlightingsandbox.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_lighting_sandbox.refmap.json",
+  "client": [
+    "ClientLevelMixin",
+    "EmbeddiumChunkRendererMixin",
+    "EmbeddiumShaderLoaderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
