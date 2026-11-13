@@ -1,3 +1,9 @@
+## 2026-11-14 - Correct torch darkening in Sandbox
+
+- User reported that placing a torch darkened the scene until they left its shadow or broke the torch
+- Bug / Client / NeoCPU composited a reference frame without Luxium celestial lighting over areas covered by its torch shadow mask / in testing with NeoCPU disabled and NeoFlood enabled only in Sandbox. NeoFlood computes block light separately from sky light. Its source radius is capped at 16 blocks and local entity casters are off
+- Bug / Client / The installed JEM Luxium 1.0.5 adapter failed to find its OptionsScreen target during Forge startup / in testing with the previously working 1.0.12 artifact restored from the matching local build. The old JAR and prior config were backed up
+
 ## 2026-11-14 - Enable local block shadows in Sandbox
 
 - User reported that torches and lamps lit blocks without casting shadows while sun and moon shadows worked
