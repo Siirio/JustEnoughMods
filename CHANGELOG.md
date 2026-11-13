@@ -1,3 +1,9 @@
+## 2026-11-14 - Enable local block shadows in Sandbox
+
+- User reported that torches and lamps lit blocks without casting shadows while sun and moon shadows worked
+- Bug / Client / Sandbox had all local shadow modes disabled. Luxium 2.8.0 also disables celestial shadows when either GPU local receiver is active / in testing with native NeoCPU block shadows enabled in Sandbox
+- Set the NeoCPU scene capture to half resolution per axis and disabled local entity casters to limit render cost. The celestial settings were preserved. Visible shadows and FPS await in-game confirmation
+
 ## 2026-11-14 - Keep Luxium in Sandbox only
 
 - User reported that Luxium shadows still failed in Test JustEnoughMods and requested removal from that profile. Removed Luxium and its JEM adapter from the managed pack and kept Oculus for shader selection
