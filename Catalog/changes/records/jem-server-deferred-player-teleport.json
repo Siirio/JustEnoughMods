@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "change_id": "jem-server.deferred-player-teleport",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Direct authorized same-dimension player chat /tp or /teleport with coordinates and only the sender as target."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_server",
+    "priority": 1100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Prepare destination chunks without blocking the logical server tick.",
+    "modifiers": [
+      {
+        "property": "commands.self_teleport.chunk_preparation",
+        "operation": "replace",
+        "before": "Vanilla directly teleports and can block in getChunkBlocking.",
+        "after": "Queue a bounded set of FULL tickets, poll loaded chunks on server tick end and finish on the server thread once the complete destination footprint is available."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Server",
+    "kind": "forge_command_and_chunk_lifecycle",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/teleport/PlayerCommandTeleport.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/PlayerCommandTeleportMixin.java",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Allow server ticks to continue during a cold teleport and avoid blocking collision reads.",
+    "decision_source": "User approved nonblocking teleport as part of exploration performance work."
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "defer_cold_player_teleports",
+    "summary": "Prepare destination chunks without blocking the logical server tick."
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "defer_cold_player_teleports",
+      "summary": "Prepare destination chunks without blocking the logical server tick."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "worldgen",
+      "teleport",
+      "collision"
+    ],
+    "relations": [
+      "Player command -> Forge permission and teleport event -> FULL destination tickets -> server-authoritative arrival"
+    ],
+    "notes": [
+      "Queue preserves native command coordinates and existing event protections, releases tickets on completion or cancellation and times out after two minutes."
+    ],
+    "unresolved": [
+      "Runtime acceptance and measured generation time are pending."
+    ]
+  }
+}

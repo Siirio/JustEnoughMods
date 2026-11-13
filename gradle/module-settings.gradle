@@ -2,7 +2,8 @@ def inventory = new groovy.json.JsonSlurper().parse(new File(rootProject.project
 def names = new HashSet<String>()
 def statuses = ['production', 'development', 'retired', 'upstream-patch']
 inventory.modules.each { module ->
-    if (!(module.name instanceof String) || !((module.name ==~ /JEM[A-Za-z0-9]+/) || module.name == 'MobHome')
+    if (!(module.name instanceof String) || !((module.name ==~ /JEM[A-Za-z0-9]+/) || module.name == 'MobHome'
+            || (module.name == 'SimplerExposure' && module.status == 'retired' && module.java == false))
             || !names.add(module.name) || !statuses.contains(module.status)
             || !(module.java instanceof Boolean) || !(module.modIds instanceof List)) {
         throw new GradleException("Invalid or duplicate module inventory entry: ${module}")

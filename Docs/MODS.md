@@ -293,10 +293,10 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Lio's Spiral Tower Villages | `0.0.4` | Client + server | Major Update 4 structure expansion |
 | Spyglass Improvements | `1.5.12b` | Client |  |
 | Status Effect Bars | `1.0.3` | Client + server |  |
-| StreamsReflowing | `2.13.1` | Client + server |  |
+| StreamsReflowing | `2.17.1` | Client + server | MEDIUM rivers and lakes with migrated JEM settings |
+| BiomeSpy | `1.3.3` | Logical server | JEM Compat preserves Structurify's structure locator |
 | Structure Layout Optimizer | `1.0.11` | Client + server | Major Update 4 structure-layout performance owner |
 | Structurify | `2.0.43` | Client + server | Major Update 4 overlap owner with protected outpost and boss structures excluded |
-| StructBlend | `1.0.3` | Client + server | Major Update 4 structure-terrain blending owner |
 | RoadWeaver | `2.1.1-1.20.1-jem.1` | Client + server | Major Update 4 ground-anchored settlement-road generation owner |
 | Swinging Signs | `1.0.1` | Client | Major Update 4 |
 | Tectonic | `3.0.17` | Client + server |  |

@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "change_id": "jem-compat.epic-fight-roll-clearance",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Epic Fight 20.14.17 and exact forward/backward Epic Fight, Epic Fight Extra or Nightfall player roll animation IDs."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_compat",
+    "priority": 1100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Check the actual restored player dimensions at the native Epic Fight roll callback.",
+    "modifiers": [
+      {
+        "property": "combat.roll.collision_restore",
+        "operation": "replace",
+        "before": "Roll restores the native size without player collision displacement.",
+        "after": "Check the restored box against loaded collision geometry. Try native compact poses in place before bounded collision-swept correction on the logical server."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Compat / Epic Fight",
+    "kind": "optional_animation_callback",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/combat/EpicFightRollRestoreMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/combat/RollClearance.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent the roll from restoring a full player box through an obstacle when a safe local pose or displacement exists.",
+    "decision_source": "User reproduced visual loss after rolling into a block with shaders disabled."
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "restore_epic_fight_roll_clearance",
+    "summary": "Check the actual restored player dimensions at the native Epic Fight roll callback."
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "restore_epic_fight_roll_clearance",
+      "summary": "Check the actual restored player dimensions at the native Epic Fight roll callback."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "combat",
+      "collision",
+      "client_camera"
+    ],
+    "relations": [
+      "Epic Fight roll completion -> native refreshDimensions -> loaded collision clearance"
+    ],
+    "notes": [
+      "Server owns movement; client can only adjust local pose."
+    ],
+    "unresolved": [
+      "Whether the correction removes the white first-person and black third-person render symptoms requires manual reproduction."
+    ]
+  }
+}

@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "registry_type": "blocks",
-  "snapshot_sha": "4911a9576e3cd946ab327b7faa809302e43161c9",
+  "snapshot_sha": "f766174b2c5a1436cc218533bef1c2cef8352395",
   "generation": {
-    "generated_utc": "2026-11-12T21:20:20.507420+00:00",
+    "generated_utc": "2026-11-13T14:56:24.301922+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "streamsreflowing",
     "name": "StreamsReflowing",
-    "version": "2.13.1"
+    "version": "2.17.1"
   },
   "records": [
     {
@@ -19,16 +19,17 @@
       "schema_version": 1,
       "mod_id": "streamsreflowing",
       "mod_name": "StreamsReflowing",
-      "mod_version": "2.13.1",
-      "source_jar": "StreamsReflowing-1.20.1-forge-2.13.1.jar",
-      "source_sha256": "d670d0b1e0f771f89bbfce8a89e4575c2f08c26c0610d7d1a85d63e4eaf8ce25",
+      "mod_version": "2.17.1",
+      "source_jar": "StreamsReflowing-1.20.1-forge-2.17.1.jar",
+      "source_sha256": "de5ea64740532b3d1ecbb99d1e433ba7e2aa9febeab56890abb98c6499da7dd0",
       "side_availability": [
         "client"
       ],
       "observed_in": [
-        "assets/streamsreflowing/blockstates/stream.json"
+        "assets/streamsreflowing/blockstates/stream.json",
+        "assets/streamsreflowing/lang/en_us.json"
       ],
-      "display_name_en_us": null,
+      "display_name_en_us": "Stream",
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
@@ -38,7 +39,8 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "StreamsReflowing-1.20.1-forge-2.13.1.jar:assets/streamsreflowing/blockstates/stream.json"
+        "StreamsReflowing-1.20.1-forge-2.17.1.jar:assets/streamsreflowing/blockstates/stream.json",
+        "StreamsReflowing-1.20.1-forge-2.17.1.jar:assets/streamsreflowing/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

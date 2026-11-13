@@ -58,7 +58,7 @@
       "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/en_us.json",
       "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/ru_ru.json",
       "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json",
-      "Client/ManagedPack/mods/jem_luxium-1.0.11.jar"
+      "Client/ManagedPack/mods/jem_luxium-1.0.12.jar"
     ]
   },
   "rationale": {
@@ -113,6 +113,16 @@
       "commit": "SELF",
       "action": "reload_native_core_shaders_and_trace_shadow_state",
       "summary": "Complete the native Apply lifecycle with core shader reload and bounded render-state diagnostics after the user reported persistent missing shadows. The complete player-visible cause remains under investigation."
+    },
+    {
+      "date": "2026-11-13",
+      "commit": "d09ab572c",
+      "action": "reconcile_shadows_after_world_entry",
+      "summary": "Track the installed Luxium compatibility artifact that defers reconciliation until world entry.",
+      "source_files": [
+        "Client/ManagedPack/mods/jem_luxium-1.0.11.jar",
+        "Client/ManagedPack/mods/jem_luxium-1.0.12.jar"
+      ]
     }
   ],
   "impacts": {

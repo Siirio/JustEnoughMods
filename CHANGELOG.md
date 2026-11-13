@@ -1,3 +1,19 @@
+## 2026-11-13 - Reduce fresh-terrain stalls and disable the Beachparty bottle
+
+- User requested removal of StructBlend and Beachparty's Message in a Bottle, and retention of Streams Reflowing during the generation performance work
+- Bug / Both Sided / Beachparty could spawn a bottle whose use invokes a synchronous structure search / in testing after disabling spawning, blacklisting the exact item and its interactions, and removing it from native and JEM market offers
+- Removed StructBlend 1.0.3 and its configuration from both local pack sources. Fresh terrain uses the structures' native adaptation
+- Replaced Streams Reflowing 2.13.1 with 2.17.1 on both sides. Migrated the properties and Russian settings labels, retained MEDIUM rivers and lakes, and selected legacy shaping for continuity with existing worlds
+- Renamed the six retained bank scenery rules with a JEM prefix after startup showed that the upstream migration withdraws the old stock filenames
+- Kept the new Flow Wand recipe and withheld the Carve Wand survival recipe until its terrain edits can be checked against JEM protection rules
+- Bug / Both Sided / Direct player teleport to fresh land synchronously waited for the target and collision-neighbor chunks on the logical server thread / in testing with bounded FULL chunk tickets and deferred server-thread arrival
+- Bug / Both Sided / Epic Fight roll restores a player box through nearby collision because the native resize path skips player displacement / in testing with a loaded-area collision check, native compact poses and bounded server-side correction. The camera symptom still requires manual acceptance
+- Added BiomeSpy 1.3.3 for biome searches. JEM Compat excludes its structure-locate injection with Structurify present because that injection bypasses the native call used by Structurify's placement rules
+- Fixed Gradle inventory configuration for the retired Unofficial Offgrid and Simpler Exposure modules so production artifacts can build again
+- Native AutoModpack published generation 157 with content token `b0379683376d4f5c71b23ef5c6aa5659badc5c12`. The closed Test JustEnoughMods profile committed that token, matches all 334 canonical JARs, and has no pending transaction
+- Bug / Client / The offline application verifier mistook the native integrated server's `automodpack/server.conf` for leftover legacy client state / in testing with validation that allows the server config and continues checking the active client token and JAR hashes
+- The local dedicated server loaded the new artifacts and retained all six JEM riverbank scenery definitions. Teleport latency, fresh chunk throughput and the first- and third-person roll display remain unverified in gameplay
+
 ## 2026-11-13 - Regenerate the local Major Update 4 world
 
 - User requested deletion of the local world affected by the RoadWeaver terrain wall and creation of a clean world with the same seed

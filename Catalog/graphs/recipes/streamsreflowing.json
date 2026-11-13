@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f766174b2c5a1436cc218533bef1c2cef8352395",
+  "generation": {
+    "generated_utc": "2026-11-13T14:56:24.301922+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "streamsreflowing",
+    "name": "StreamsReflowing",
+    "version": "2.17.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "streamsreflowing:carve_wand",
+      "mod_id": "streamsreflowing",
+      "mod_name": "StreamsReflowing",
+      "mod_version": "2.17.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:heart_of_the_sea",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:brush"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "StreamsReflowing-1.20.1-forge-2.17.1.jar:data/streamsreflowing/recipes/carve_wand.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "streamsreflowing:flow_wand",
+      "mod_id": "streamsreflowing",
+      "mod_name": "StreamsReflowing",
+      "mod_version": "2.17.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:nautilus_shell",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:brush"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "StreamsReflowing-1.20.1-forge-2.17.1.jar:data/streamsreflowing/recipes/flow_wand.json"
+      ]
+    }
+  ]
+}

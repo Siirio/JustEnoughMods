@@ -187,7 +187,16 @@ try {{ ApplyPublishedJemPack.run(); }} catch(Throwable failure) {{ failure.print
     print(output[-16000:])
     require(result.returncode == 0, f"Native client apply exited with {result.returncode}")
     require(f"INSTALLED_TOKEN={expected_token}" in output, "Native client apply did not report the published token")
-    require(not (profile / "automodpack").exists(), "Legacy gameDir/automodpack remains after migration")
+    game_dir_pack = profile / "automodpack"
+    if game_dir_pack.exists():
+        # AutoModpack creates server.conf for the integrated server.
+        require(
+            game_dir_pack.is_dir() and all(
+                entry.name == "server.conf" and entry.is_file()
+                for entry in game_dir_pack.iterdir()
+            ),
+            "Legacy AutoModpack client state remains in gameDir/automodpack",
+        )
 
     state_root_line = next(line for line in output.splitlines() if line.startswith("STATE_ROOT="))
     state_root = Path(state_root_line.removeprefix("STATE_ROOT=").strip())
@@ -206,7 +215,7 @@ try {{ ApplyPublishedJemPack.run(); }} catch(Throwable failure) {{ failure.print
         "stateRoot": str(state_root),
         "contentToken": expected_token,
         "verifiedManagedJars": checked_jars,
-        "legacyAutomodpackFolderRemoved": True,
+        "legacyAutomodpackFolderRemoved": not game_dir_pack.exists(),
     }, ensure_ascii=False, indent=2))
 
 

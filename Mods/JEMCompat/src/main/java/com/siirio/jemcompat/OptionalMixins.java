@@ -35,6 +35,11 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.combat.EpicFightRollRestoreMixin")) {
+            var epicFight = FMLLoader.getLoadingModList().getModFileById("epicfight");
+            return epicFight != null && epicFight.getMods().stream().anyMatch(mod -> mod.getModId().equals("epicfight")
+                    && mod.getVersion().toString().equals("20.14.17"));
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.worldgen.DeepDarkAncientFossilPlacementMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("deep_dark_regrowth");
             boolean supported = file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("deep_dark_regrowth")

@@ -93,6 +93,7 @@ dependencies {
     compileOnly fg.deobf(files(installedMod('SereneSeasons-forge-*.jar')))
     compileOnly fg.deobf(files(installedMod('GlitchCore-forge-*.jar')))
     compileOnly fg.deobf(files(installedMod('AudioYT-1.0.1.jar')))
+    compileOnly fg.deobf(files(installedMod('epic-fight-20.14.17-mc1.20.1-forge.jar')))
     compileOnly files(installedMod('BetterAdvancements-*.jar'))
     compileOnly project(path: ':JEMAchievementGuide', configuration: 'jemCompile')
     compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')

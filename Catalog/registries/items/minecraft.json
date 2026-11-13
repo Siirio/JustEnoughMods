@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "4911a9576e3cd946ab327b7faa809302e43161c9",
+  "snapshot_sha": "f766174b2c5a1436cc218533bef1c2cef8352395",
   "generation": {
-    "generated_utc": "2026-11-12T21:20:20.507420+00:00",
+    "generated_utc": "2026-11-13T14:56:24.301922+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -8171,7 +8171,9 @@
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
         "data/barnyardbuddies/recipes/brushrecipesilky.json",
-        "data/minecraft/recipes/brush.json"
+        "data/minecraft/recipes/brush.json",
+        "data/streamsreflowing/recipes/carve_wand.json",
+        "data/streamsreflowing/recipes/flow_wand.json"
       ],
       "display_name_en_us": "Brush",
       "display_name_ru_ru": null,
@@ -8187,6 +8189,8 @@
       "acquisition_class": "normal_survival",
       "source_provenance": [
         "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/brushrecipesilky.json",
+        "StreamsReflowing-1.20.1-forge-2.17.1.jar:data/streamsreflowing/recipes/carve_wand.json",
+        "StreamsReflowing-1.20.1-forge-2.17.1.jar:data/streamsreflowing/recipes/flow_wand.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/brush.json"
       ],
@@ -8211,7 +8215,9 @@
       "block_item_id": null,
       "acquisition_routes": [
         "barnyardbuddies:brushrecipesilky",
-        "minecraft:brush"
+        "minecraft:brush",
+        "streamsreflowing:carve_wand",
+        "streamsreflowing:flow_wand"
       ],
       "uses": [],
       "safe_canonical_stack": null,
