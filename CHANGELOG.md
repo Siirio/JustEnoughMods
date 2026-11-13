@@ -1,3 +1,11 @@
+## 2026-11-14 - Extend Sandbox light coverage and trace block geometry
+
+- User requested lighting at a distance, a 2–32 chunk setting with a render-distance checkbox, and shadows through fence gaps and foliage
+- Indexed emitters from loaded chunks and selected nearby sources for each receiving terrain section. Distant visible terrain can show colored light before the player reaches it. The separate source reach still controls how far each lamp illuminates its surroundings
+- Bug / Client / The old pass selected eight sources around the camera and used a small camera-centered volume for their entire contribution / in testing with section-local source lists and native block light guiding distant illumination
+- Bug / Client / The old caster palette omitted most non-cubic shapes and treated terrain foliage as empty / in testing with geometry reconstructed from supported baked models and native outlines for other shapes. Leaf layers attenuate transmitted light by thickness
+- Detailed ray-traced shadows apply within the local caster volume. Distant terrain retains its native occlusion cues. The 32-chunk scan covers only chunks already loaded by the client
+
 ## 2026-11-14 - Add Sandbox atmosphere and lighting settings
 
 - User requested sunlight shafts, atmospheric effects, three lighting update modes and adjustable light distance in Sandbox

@@ -105,7 +105,7 @@ final class AtmosphereRenderer {
             scattering.safeGetUniform("AirColor").set((float) sky.x, (float) sky.y, (float) sky.z);
             scattering.safeGetUniform("CameraAltitude").set((float) position.y - level.getSeaLevel());
             scattering.safeGetUniform("Weather").set(weather);
-            drawScattering(volume.id());
+            drawScattering(volume.id(), volume.shapes());
 
             main.bindWrite(true);
             composite.setSampler("AtmosphereTex", reduced.getColorTextureId());
@@ -134,18 +134,27 @@ final class AtmosphereRenderer {
                 && (entity.hasEffect(MobEffects.BLINDNESS) || entity.hasEffect(MobEffects.DARKNESS));
     }
 
-    private static void drawScattering(int voxelTexture) {
+    private static void drawScattering(int voxelTexture, int shapeTexture) {
         scattering.apply();
         try {
             RenderSystem.disableBlend();
             int active = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
+            int shapeUnit = TerrainLighting.SHAPE_TEXTURE_UNIT;
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
+            int previousShape = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + VOXEL_UNIT);
             int previous = GL11.glGetInteger(GL12.GL_TEXTURE_BINDING_3D);
             try {
                 GL11.glBindTexture(GL12.GL_TEXTURE_3D, voxelTexture);
                 GL20.glUniform1i(GL20.glGetUniformLocation(scattering.getId(), "JemVoxels"), VOXEL_UNIT);
+                GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, shapeTexture);
+                GL20.glUniform1i(GL20.glGetUniformLocation(scattering.getId(), "JemShapes"), shapeUnit);
                 drawQuad();
             } finally {
+                GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousShape);
+                GL13.glActiveTexture(GL13.GL_TEXTURE0 + VOXEL_UNIT);
                 GL11.glBindTexture(GL12.GL_TEXTURE_3D, previous);
                 GL13.glActiveTexture(active);
             }

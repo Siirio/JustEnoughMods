@@ -3,6 +3,7 @@ package com.siirio.jemlightingsandbox.terrain;
 import com.siirio.jemlightingsandbox.LightingSettings;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Comparator;
@@ -15,10 +16,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.RedstoneWallTorchBlock;
-import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -38,14 +37,6 @@ public final class TerrainLightVolume {
     private static final int RECENTER_DISTANCE = 8;
     private static final int DISCARD_DISTANCE = 18;
     private static final int REFRESH_TICKS = 100;
-    private static final int EMPTY = 0;
-    private static final int FULL = 1;
-    private static final int SNOW_LAYER_BASE = 1;
-    private static final int DOOR_X_MIN = 9;
-    private static final int DOOR_X_MAX = 10;
-    private static final int DOOR_Z_MIN = 11;
-    private static final int DOOR_Z_MAX = 12;
-    private static final int FOLIAGE = 13;
     private static final int EMISSION_MASK = 0x0F;
     private static final int STANDING_TORCH = 1;
     private static final int WALL_TORCH_BASE = 2;
@@ -150,7 +141,7 @@ public final class TerrainLightVolume {
     }
 
     public record Snapshot(ClientLevel level, int minX, int minY, int minZ, int sizeX, int sizeY, int sizeZ,
-            ByteBuffer voxelData, List<Light> lights) {
+            ByteBuffer voxelData, List<Light> lights, FloatBuffer shapePalette) {
         private Bounds bounds() {
             return new Bounds(minX, minY, minZ, sizeX, sizeY, sizeZ);
         }
@@ -199,6 +190,7 @@ public final class TerrainLightVolume {
         private final Vec3 anchor;
         private final int cells;
         private final ByteBuffer voxelData;
+        private final BlockShadowShapes shapes = new BlockShadowShapes();
         private final Int2IntOpenHashMap emitters = new Int2IntOpenHashMap();
         private final BitSet dirty;
         private final BlockPos.MutableBlockPos position = new BlockPos.MutableBlockPos();
@@ -237,24 +229,24 @@ public final class TerrainLightVolume {
             int y = bounds.y(index);
             int z = bounds.z(index);
             if (level.isOutsideBuildHeight(y)) {
-                writeVoxel(index, 0, EMPTY);
+                writeVoxel(index, 0, BlockShadowShapes.EMPTY);
                 emitters.remove(index);
                 return;
             }
             LevelChunk chunk = chunkAt(level, x >> 4, z >> 4);
             if (chunk == null) {
-                writeVoxel(index, 0, FULL);
+                writeVoxel(index, 0, BlockShadowShapes.FULL);
                 emitters.remove(index);
                 return;
             }
             position.set(x, y, z);
             BlockState state = chunk.getBlockState(position);
             int emission = Mth.clamp(state.getLightEmission(level, position), 0, EMISSION_MASK);
-            writeVoxel(index, emission, occluderShape(state, level, position));
+            writeVoxel(index, emission, shapes.id(state, level, position));
             if (emission == 0) {
                 emitters.remove(index);
             } else {
-                emitters.put(index, lightPointId(state) << 28 | emission << 24 | emissionColor(state, level, position));
+                emitters.put(index, encodeLight(level, position, state, emission));
             }
         }
 
@@ -322,67 +314,47 @@ public final class TerrainLightVolume {
             ranked.sort(LIGHT_PRIORITY);
             List<Light> lights = ranked.stream().map(this::toLight).toList();
             return new Snapshot(level, bounds.minX, bounds.minY, bounds.minZ, bounds.width, bounds.height, bounds.depth,
-                    voxelData.asReadOnlyBuffer(), lights);
+                    voxelData.asReadOnlyBuffer(), lights, shapes.texture());
         }
 
         private Light toLight(RankedLight candidate) {
-            int encoded = candidate.encoded;
-            int pointId = encoded >>> 28;
-            double x = bounds.x(candidate.index) + 0.5;
-            double y = bounds.y(candidate.index) + 0.5;
-            double z = bounds.z(candidate.index) + 0.5;
-            // Match the native flame's mean position and leave particle jitter out of shadow rays.
-            if (pointId >= WALL_TORCH_BASE && pointId < STANDING_LANTERN) {
-                Direction towardWall = Direction.from2DDataValue(pointId - WALL_TORCH_BASE);
-                x += towardWall.getStepX() * 0.27;
-                y = bounds.y(candidate.index) + 0.92;
-                z += towardWall.getStepZ() * 0.27;
-            } else if (pointId == STANDING_TORCH) {
-                y = bounds.y(candidate.index) + 0.70;
-            } else if (pointId == STANDING_LANTERN) {
-                y = bounds.y(candidate.index) + 3.5 / 16.0;
-            } else if (pointId == HANGING_LANTERN) {
-                y = bounds.y(candidate.index) + 4.5 / 16.0;
-            }
-            return new Light(x, y, z, linear(encoded >>> 16), linear(encoded >>> 8), linear(encoded),
-                    (encoded >>> 24) & EMISSION_MASK);
+            int index = candidate.index;
+            return positionLight(bounds.x(index), bounds.y(index), bounds.z(index), candidate.encoded);
         }
     }
 
     private record RankedLight(int index, int encoded, double distancePerEmission) {
     }
 
-    private static int occluderShape(BlockState state, ClientLevel level, BlockPos position) {
-        var block = state.getBlock();
-        if (block instanceof DoorBlock) {
-            var shape = state.getShape(level, position);
-            if (!shape.isEmpty()) {
-                var box = shape.bounds();
-                if (box.getXsize() == 3.0 / 16.0 && box.getYsize() == 1.0 && box.getZsize() == 1.0) {
-                    if (box.minX == 0.0) {
-                        return DOOR_X_MIN;
-                    }
-                    if (box.maxX == 1.0) {
-                        return DOOR_X_MAX;
-                    }
-                }
-                if (box.getZsize() == 3.0 / 16.0 && box.getYsize() == 1.0 && box.getXsize() == 1.0) {
-                    if (box.minZ == 0.0) {
-                        return DOOR_Z_MIN;
-                    }
-                    if (box.maxZ == 1.0) {
-                        return DOOR_Z_MAX;
-                    }
-                }
-            }
-        } else if (block instanceof SnowLayerBlock) {
-            int layers = state.getValue(SnowLayerBlock.LAYERS);
-            return layers == SnowLayerBlock.MAX_HEIGHT ? FULL : SNOW_LAYER_BASE + layers;
+    static Light lightAt(ClientLevel level, BlockPos position, BlockState state, int emission) {
+        return positionLight(position.getX(), position.getY(), position.getZ(),
+                encodeLight(level, position, state, emission));
+    }
+
+    private static int encodeLight(ClientLevel level, BlockPos position, BlockState state, int emission) {
+        return lightPointId(state) << 28 | emission << 24 | emissionColor(state, level, position);
+    }
+
+    private static Light positionLight(int blockX, int blockY, int blockZ, int encoded) {
+        int pointId = encoded >>> 28;
+        double x = blockX + 0.5;
+        double y = blockY + 0.5;
+        double z = blockZ + 0.5;
+        // Match the native flame's mean position and leave particle jitter out of shadow rays.
+        if (pointId >= WALL_TORCH_BASE && pointId < STANDING_LANTERN) {
+            Direction towardWall = Direction.from2DDataValue(pointId - WALL_TORCH_BASE);
+            x += towardWall.getStepX() * 0.27;
+            y = blockY + 0.92;
+            z += towardWall.getStepZ() * 0.27;
+        } else if (pointId == STANDING_TORCH) {
+            y = blockY + 0.70;
+        } else if (pointId == STANDING_LANTERN) {
+            y = blockY + 3.5 / 16.0;
+        } else if (pointId == HANGING_LANTERN) {
+            y = blockY + 4.5 / 16.0;
         }
-        if (state.isSolidRender(level, position)) {
-            return FULL;
-        }
-        return state.is(BlockTags.LEAVES) ? FOLIAGE : EMPTY;
+        return new Light(x, y, z, linear(encoded >>> 16), linear(encoded >>> 8), linear(encoded),
+                (encoded >>> 24) & EMISSION_MASK);
     }
 
     private static int lightPointId(BlockState state) {

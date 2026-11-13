@@ -3,6 +3,7 @@ package com.siirio.jemlightingsandbox.terrain;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import com.siirio.jemlightingsandbox.LightingSettings;
+import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
 import net.irisshaders.iris.api.v0.IrisApi;
@@ -26,13 +27,21 @@ import org.slf4j.Logger;
 public final class TerrainLighting {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final int TEXTURE_UNIT = 7;
+    public static final int SHAPE_TEXTURE_UNIT = 8;
+    private static final int LIGHT_TEXTURE_UNIT = 9;
     private static final TerrainLightVolume VOLUME = new TerrainLightVolume();
+    private static final ChunkLightIndex LIGHT_INDEX = new ChunkLightIndex();
+    private static final ChunkLightTexture CHUNK_LIGHTS = new ChunkLightTexture();
     private static final Map<Integer, Uniforms> PROGRAMS = new HashMap<>();
 
     private static boolean enabled = true;
     private static boolean failed;
     private static int voxelTexture;
+    private static int shapeTexture;
+    private static FloatBuffer uploadedShapes;
     private static int previousTexture = -1;
+    private static int previousShape;
+    private static int previousLights;
     private static TerrainLightVolume.Snapshot uploaded;
 
     private TerrainLighting() {
@@ -66,7 +75,7 @@ public final class TerrainLighting {
             return "waiting for a compatible Embeddium terrain draw";
         }
         var snapshot = VOLUME.snapshot();
-        return snapshot == null ? "building the terrain volume" : "on, " + snapshot.lights().size() + " local lights";
+        return "on, " + LIGHT_INDEX.coveredChunks() + " indexed chunks";
     }
 
     public static void tick(Minecraft client) {
@@ -78,20 +87,25 @@ public final class TerrainLighting {
             return;
         }
         if (client.gameRenderer.getMainCamera().isInitialized()) {
-            VOLUME.tick(level, client.gameRenderer.getMainCamera().getPosition());
+            Vec3 camera = client.gameRenderer.getMainCamera().getPosition();
+            VOLUME.tick(level, camera);
+            LIGHT_INDEX.tick(level, camera, lightingChunks(client), LightingSettings.mode());
         }
     }
 
     public static void invalidate(BlockPos position) {
         VOLUME.invalidate(position);
+        LIGHT_INDEX.invalidate(position);
     }
 
     public static void invalidateChunk(ChunkPos position) {
         VOLUME.invalidateChunk(position);
+        LIGHT_INDEX.invalidateChunk(position);
     }
 
     public static void clearWorld() {
         VOLUME.clear();
+        LIGHT_INDEX.clear();
         if (!RenderSystem.isOnRenderThread()) {
             RenderSystem.recordRenderCall(TerrainLighting::releaseTexture);
         } else {
@@ -101,6 +115,12 @@ public final class TerrainLighting {
 
     private static void releaseTexture() {
         uploaded = null;
+        uploadedShapes = null;
+        CHUNK_LIGHTS.clear();
+        if (shapeTexture != 0) {
+            GL11.glDeleteTextures(shapeTexture);
+            shapeTexture = 0;
+        }
         if (voxelTexture != 0) {
             GL11.glDeleteTextures(voxelTexture);
             voxelTexture = 0;
@@ -123,6 +143,8 @@ public final class TerrainLighting {
 
         // Each program must keep the volume sampler apart from Embeddium's 2D samplers.
         GL20.glUniform1i(uniforms.opacity, TEXTURE_UNIT);
+        GL20.glUniform1i(uniforms.shapes, SHAPE_TEXTURE_UNIT);
+        GL20.glUniform1i(uniforms.chunkLights, LIGHT_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.active, 0);
         if (!receivesLighting) {
             return;
@@ -134,13 +156,17 @@ public final class TerrainLighting {
             return;
         }
 
-        if (!GL.getCapabilities().OpenGL33 || GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS) <= TEXTURE_UNIT) {
+        if (!GL.getCapabilities().OpenGL33 || GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS) <= LIGHT_TEXTURE_UNIT) {
             failed = true;
-            LOGGER.warn("JEM terrain lighting requires OpenGL 3.3 and eight fragment texture units");
+            LOGGER.warn("JEM terrain lighting requires OpenGL 3.3 and ten fragment texture units");
             return;
         }
 
         int activeTexture = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + SHAPE_TEXTURE_UNIT);
+        previousShape = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
+        previousLights = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         GL13.glActiveTexture(GL13.GL_TEXTURE0 + TEXTURE_UNIT);
         try {
             previousTexture = GL11.glGetInteger(GL12.GL_TEXTURE_BINDING_3D);
@@ -154,6 +180,20 @@ public final class TerrainLighting {
             }
 
             Vec3 camera = client.gameRenderer.getMainCamera().getPosition();
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + SHAPE_TEXTURE_UNIT);
+            bindShapes(snapshot.shapePalette());
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
+            int chunks = lightingChunks(client);
+            CHUNK_LIGHTS.reachChanged(LightingSettings.lightDistance(), camera, chunks);
+            for (var changed : LIGHT_INDEX.drainChanges()) {
+                CHUNK_LIGHTS.mark(changed);
+            }
+            int rows = CHUNK_LIGHTS.bindAndUpdate(snapshot.level(), camera, chunks, LIGHT_INDEX);
+            BlockPos cameraBlock = BlockPos.containing(camera);
+            GL20.glUniform3i(uniforms.cameraBlock, cameraBlock.getX(), cameraBlock.getY(), cameraBlock.getZ());
+            GL20.glUniform3f(uniforms.cameraFraction, (float) (camera.x - cameraBlock.getX()),
+                    (float) (camera.y - cameraBlock.getY()), (float) (camera.z - cameraBlock.getZ()));
+            GL20.glUniform4i(uniforms.chunkLayout, rows, snapshot.level().getMinSection(), chunks, 0);
             GL20.glUniform3f(uniforms.origin, (float) (snapshot.minX() - camera.x),
                     (float) (snapshot.minY() - camera.y), (float) (snapshot.minZ() - camera.z));
             GL20.glUniform3i(uniforms.size, snapshot.sizeX(), snapshot.sizeY(), snapshot.sizeZ());
@@ -193,8 +233,49 @@ public final class TerrainLighting {
 
     private static void restoreTextureBinding() {
         if (previousTexture >= 0) {
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + TEXTURE_UNIT);
             GL11.glBindTexture(GL12.GL_TEXTURE_3D, previousTexture);
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + SHAPE_TEXTURE_UNIT);
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousShape);
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousLights);
             previousTexture = -1;
+        }
+    }
+
+    private static int lightingChunks(Minecraft client) {
+        return LightingSettings.lightingChunks(client.options.getEffectiveRenderDistance());
+    }
+
+    private static void bindShapes(FloatBuffer shapes) {
+        if (shapeTexture == 0) {
+            shapeTexture = GL11.glGenTextures();
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, shapeTexture);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+        } else {
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, shapeTexture);
+        }
+        if (uploadedShapes != shapes) {
+            int buffer = GL11.glGetInteger(GL21.GL_PIXEL_UNPACK_BUFFER_BINDING);
+            int rowLength = GL11.glGetInteger(GL11.GL_UNPACK_ROW_LENGTH);
+            int skipPixels = GL11.glGetInteger(GL11.GL_UNPACK_SKIP_PIXELS);
+            int skipRows = GL11.glGetInteger(GL11.GL_UNPACK_SKIP_ROWS);
+            try {
+                GL15.glBindBuffer(GL21.GL_PIXEL_UNPACK_BUFFER, 0);
+                GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, 0);
+                GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, 0);
+                GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, 0);
+                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA32F,
+                        BlockShadowShapes.TEXTURE_WIDTH, BlockShadowShapes.TEXTURE_HEIGHT,
+                        0, GL11.GL_RGBA, GL11.GL_FLOAT, shapes);
+                uploadedShapes = shapes;
+            } finally {
+                GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, rowLength);
+                GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, skipPixels);
+                GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, skipRows);
+                GL15.glBindBuffer(GL21.GL_PIXEL_UNPACK_BUFFER, buffer);
+            }
         }
     }
 
@@ -258,13 +339,13 @@ public final class TerrainLighting {
         if (!available() || uploaded == null || uploaded.level() != level || voxelTexture == 0) {
             return null;
         }
-        return new VolumeTexture(voxelTexture, uploaded.minX(), uploaded.minY(), uploaded.minZ(),
+        return new VolumeTexture(voxelTexture, shapeTexture, uploaded.minX(), uploaded.minY(), uploaded.minZ(),
                 uploaded.sizeX(), uploaded.sizeY(), uploaded.sizeZ());
     }
 
     public record Sun(float x, float y, float strength) {}
 
-    public record VolumeTexture(int id, int x, int y, int z, int width, int height, int depth) {}
+    public record VolumeTexture(int id, int shapes, int x, int y, int z, int width, int height, int depth) {}
 
     private static boolean available() {
         return enabled && !failed && canPatchStockShaders() && !oculusShadersEnabled();
@@ -283,6 +364,11 @@ public final class TerrainLighting {
     private static final class Uniforms {
         private final int active;
         private final int opacity;
+        private final int shapes;
+        private final int chunkLights;
+        private final int cameraBlock;
+        private final int cameraFraction;
+        private final int chunkLayout;
         private final int origin;
         private final int size;
         private final int lightCount;
@@ -294,6 +380,11 @@ public final class TerrainLighting {
         private Uniforms(int program) {
             active = GL20.glGetUniformLocation(program, "jemActive");
             opacity = GL20.glGetUniformLocation(program, "jemOpacity");
+            shapes = GL20.glGetUniformLocation(program, "jemShapes");
+            chunkLights = GL20.glGetUniformLocation(program, "jemChunkLights");
+            cameraBlock = GL20.glGetUniformLocation(program, "jemCameraBlock");
+            cameraFraction = GL20.glGetUniformLocation(program, "jemCameraFraction");
+            chunkLayout = GL20.glGetUniformLocation(program, "jemChunkLayout");
             origin = GL20.glGetUniformLocation(program, "jemVolumeOrigin");
             size = GL20.glGetUniformLocation(program, "jemVolumeSize");
             lightCount = GL20.glGetUniformLocation(program, "jemLightCount");

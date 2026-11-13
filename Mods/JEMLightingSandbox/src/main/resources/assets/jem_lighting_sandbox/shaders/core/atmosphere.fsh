@@ -2,6 +2,7 @@
 
 uniform sampler2D SceneDepth;
 uniform sampler3D JemVoxels;
+uniform sampler2D JemShapes;
 uniform mat4 InverseViewProjection;
 uniform vec3 VolumeOrigin;
 uniform vec3 VolumeSize;
@@ -43,22 +44,20 @@ bool hitsShape(int shape, vec3 localOrigin, vec3 inverseRay, float entering, flo
         return true;
     }
 
-    // The terrain texture stores snow and door bounds in its green channel.
-    vec3 low = vec3(0.0);
-    vec3 high = vec3(1.0);
-    if (shape <= 8) {
-        high.y = float(shape - 1) * 0.125;
-    } else if (shape == 9) {
-        high.x = 0.1875;
-    } else if (shape == 10) {
-        low.x = 0.8125;
-    } else if (shape == 11) {
-        high.z = 0.1875;
-    } else {
-        low.z = 0.8125;
+    if (shape >= 14) {
+        for (int box = 0; box < 8; ++box) {
+            vec4 low = texelFetch(JemShapes, ivec2(box * 2, shape), 0);
+            if (low.w < 0.5) {
+                break;
+            }
+            vec3 high = texelFetch(JemShapes, ivec2(box * 2 + 1, shape), 0).xyz;
+            vec2 interval = boxInterval(localOrigin, inverseRay, low.xyz, high);
+            if (min(interval.y, leaving) - max(interval.x, entering) > RAY_EPSILON) {
+                return true;
+            }
+        }
     }
-    vec2 interval = boxInterval(localOrigin, inverseRay, low, high);
-    return min(interval.y, leaving) - max(interval.x, entering) > RAY_EPSILON;
+    return false;
 }
 
 float sunVisibility(vec3 origin, vec3 inverseRay) {
@@ -79,7 +78,7 @@ float sunVisibility(vec3 origin, vec3 inverseRay) {
         float segmentEnd = min(leaving, SUN_REACH);
         int shape = int(texelFetch(JemVoxels, cell, 0).g * 255.0 + 0.5);
         if (shape == 13) {
-            visibility *= exp(-0.85 * max(segmentEnd - entering, 0.0));
+            visibility *= exp(-0.32 * max(segmentEnd - entering, 0.0));
             if (visibility < 0.02) {
                 return 0.0;
             }
