@@ -1,3 +1,11 @@
+## 2026-11-13 - Install Voxy for local use
+
+- User requested Voxy on the client and local dedicated server, then startup of the local server
+- Installed the existing Java 17 Neo Voxy 0.3.5 Forge client build in Test JustEnoughMods and VSS 0.3.5 on both sides. Kept Neo Voxy outside the managed pack because its license prohibits redistribution
+- Configured VSS to serve existing terrain over the local loopback connection. Disabled background generation, seed prediction sync, distant player sync and the client Xaero bridge. Shared distribution requires separate compatibility work with JEMSecurity's chunk filter
+- The local dedicated server reached `Done` on `127.0.0.1:31604`. Its `vss stats` command responded after resource reload. The client files match the existing artifacts. Client rendering and LOD transfer await a player connection
+- Bug / Client Sided / Luxium initializes its daytime shadow maps, but the reported terrain shadows remain absent / in investigation pending a trace from the shadow draw pass to the terrain shader
+
 ## 2026-11-13 - Remove Radium for the chunk visibility investigation
 
 - User requested removal of Radium and explicit approval before reinstating it, even if the delay persists
