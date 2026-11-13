@@ -4,17 +4,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.FogType;
@@ -23,12 +18,8 @@ import net.minecraftforge.common.Tags;
 import org.joml.Vector3f;
 
 public final class SandboxWeather {
-    private static final ResourceLocation RED_OASIS = ResourceLocation.tryParse("terralith:red_oasis");
-    private static final ResourceLocation STRATIFIED_DESERT = ResourceLocation.tryParse("natures_spirit:stratified_desert");
     private static final RandomSource RANDOM = RandomSource.create();
     private static final DustParticleOptions WIND_DUST = dust(0.76F, 0.76F, 0.68F, 0.35F);
-    private static final DustParticleOptions SAND = dust(0.84F, 0.66F, 0.37F, 0.62F);
-    private static final DustParticleOptions RED_SAND = dust(0.67F, 0.37F, 0.20F, 0.67F);
     private static final DustParticleOptions CAVE_DUST = dust(0.56F, 0.53F, 0.47F, 0.42F);
     private static ClientLevel heatLevel;
     private static long nextHeatScan;
@@ -63,18 +54,9 @@ public final class SandboxWeather {
         if (status == ParticleStatus.MINIMAL || !hasOutdoorWeather(level)) {
             return;
         }
-        float rain = level.getRainLevel(1.0F);
-        float thunder = level.getThunderLevel(1.0F);
         long time = level.getGameTime();
         Vec3 wind = wind(level);
 
-        int budget = Mth.ceil(rain * Mth.lerp(thunder, 7F, 24F));
-        if (status == ParticleStatus.DECREASED) {
-            budget /= 2;
-        }
-        for (int sample = 0; sample < budget; sample++) {
-            spawnWeather(client, level, center, position, wind, thunder);
-        }
         if (time % (status == ParticleStatus.DECREASED ? 8 : 4) == 0) {
             spawnAirDust(client, level, center, position, wind);
         }
@@ -102,8 +84,7 @@ public final class SandboxWeather {
             int centerX = cursor.getX();
             int centerY = cursor.getY();
             int centerZ = cursor.getZ();
-            var biome = level.getBiome(cursor);
-            boolean desert = isRedSand(biome) || biome.is(Tags.Biomes.IS_DESERT) || biome.is(STRATIFIED_DESERT);
+            boolean desert = PrecipitationRenderer.sandColor(level.getBiome(cursor)) != 0;
             targetHeat = desert && outdoors(level, cursor) ? 0.30F * (1F - level.getRainLevel(1F)) : 0F;
             float localHeat = 0F;
             Vec3 nearbyHeatOrigin = null;
@@ -151,38 +132,6 @@ public final class SandboxWeather {
         return wind(level).scale(0.032);
     }
 
-    private static void spawnWeather(Minecraft client, ClientLevel level, Vec3 center, BlockPos.MutableBlockPos position,
-            Vec3 wind, float thunder) {
-        double x = center.x + spread(15);
-        double z = center.z + spread(15);
-        position.set(x, center.y, z);
-        if (!level.hasChunkAt(position)) {
-            return;
-        }
-        int ground = level.getHeight(Heightmap.Types.MOTION_BLOCKING, position.getX(), position.getZ());
-        double y = Math.max(ground + 0.1, center.y - 3 + RANDOM.nextDouble() * 11);
-        position.set(x, y, z);
-        if (Math.abs(center.y - y) > 12 || !outdoors(level, position) || !level.isEmptyBlock(position)) {
-            return;
-        }
-        Holder<Biome> biome = level.getBiome(position);
-        Biome.Precipitation precipitation = biome.value().getPrecipitationAt(position);
-        if (precipitation == Biome.Precipitation.SNOW) {
-            emit(client, ParticleTypes.SNOWFLAKE, x, y, z, wind.scale(Mth.lerp(thunder, 0.025F, 0.12F)),
-                    -Mth.lerp(thunder, 0.032F, 0.075F), 30);
-        } else if (isRedSand(biome) || biome.is(Tags.Biomes.IS_DESERT) || biome.is(STRATIFIED_DESERT)) {
-            double height = ground + RANDOM.nextDouble() * Mth.lerp(thunder, 1.1F, 3.8F);
-            position.set(x, height, z);
-            if (outdoors(level, position) && level.isEmptyBlock(position)) {
-                emit(client, isRedSand(biome) ? RED_SAND : SAND, x, height, z,
-                        wind.scale(Mth.lerp(thunder, 0.055F, 0.17F)), -0.006, 22);
-            }
-        } else if (precipitation == Biome.Precipitation.RAIN) {
-            emit(client, ParticleTypes.RAIN, x, y, z, wind.scale(Mth.lerp(thunder, 0.015F, 0.07F)),
-                    -Mth.lerp(thunder, 0.18F, 0.31F), 18);
-        }
-    }
-
     private static void spawnAirDust(Minecraft client, ClientLevel level, Vec3 center, BlockPos.MutableBlockPos position,
             Vec3 wind) {
         double x = center.x + spread(6);
@@ -215,20 +164,16 @@ public final class SandboxWeather {
                 && level.getBlockState(position.above(4)).is(BlockTags.BASE_STONE_OVERWORLD);
     }
 
-    private static boolean outdoors(ClientLevel level, BlockPos position) {
+    static boolean outdoors(ClientLevel level, BlockPos position) {
         return !level.isOutsideBuildHeight(position) && level.hasChunkAt(position) && level.canSeeSky(position)
                 && position.getY() >= level.getHeight(Heightmap.Types.MOTION_BLOCKING, position.getX(), position.getZ());
     }
 
-    private static boolean hasOutdoorWeather(ClientLevel level) {
+    static boolean hasOutdoorWeather(ClientLevel level) {
         return level.dimensionType().hasSkyLight() && !level.dimensionType().hasCeiling();
     }
 
-    private static boolean isRedSand(Holder<Biome> biome) {
-        return biome.is(BiomeTags.IS_BADLANDS) || biome.is(RED_OASIS);
-    }
-
-    private static Vec3 wind(ClientLevel level) {
+    static Vec3 wind(ClientLevel level) {
         double time = level.getGameTime();
         double angle = 0.85 + Math.sin(time * 0.0023) * 0.75;
         double gust = 0.71 + Math.sin(time * 0.021) * 0.20 + Math.sin(time * 0.061) * 0.09;

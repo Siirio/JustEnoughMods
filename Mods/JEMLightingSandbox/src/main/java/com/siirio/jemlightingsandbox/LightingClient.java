@@ -74,6 +74,7 @@ public final class LightingClient {
             Minecraft client = Minecraft.getInstance();
             TerrainLighting.tick(client);
             SandboxWeather.tick(client);
+            PrecipitationRenderer.tick(client);
         }
     }
 
@@ -105,6 +106,7 @@ public final class LightingClient {
         if (event.getLevel() == client.level) {
             client.execute(() -> {
                 TerrainLighting.clearWorld();
+                PrecipitationRenderer.clear();
                 AtmosphereRenderer.releaseTargets();
                 WaterSurface.release();
             });

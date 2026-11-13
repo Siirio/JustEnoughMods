@@ -74,7 +74,7 @@ public final class TerrainLighting {
         if (!canPatchStockShaders()) {
             return "inactive (Luxium owns the terrain shaders)";
         }
-        if (oculusShadersEnabled()) {
+        if (isShaderPackActive()) {
             return "inactive (Oculus shader pack enabled)";
         }
         if (failed) {
@@ -425,10 +425,10 @@ public final class TerrainLighting {
     public record VolumeTexture(int id, int shapes, int x, int y, int z, int width, int height, int depth) {}
 
     private static boolean available() {
-        return enabled && !failed && canPatchStockShaders() && !oculusShadersEnabled();
+        return enabled && !failed && canPatchStockShaders() && !isShaderPackActive();
     }
 
-    private static boolean oculusShadersEnabled() {
+    public static boolean isShaderPackActive() {
         return ModList.get().isLoaded("oculus") && Oculus.shadersEnabled();
     }
 

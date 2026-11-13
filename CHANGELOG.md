@@ -1,3 +1,10 @@
+## 2026-11-14 - Replace the Sandbox precipitation render
+
+- User requested diagonal motion for light rain, heavy rain and ordinary snow, and horizontal motion for blizzards, sandblows and sandstorms
+- Bug / Client / Minecraft still drew vertical rain and snow sheets while the additional particles used native factories with gravity / in testing with a single custom falling precipitation pass and world-space motion
+- The replacement reads native biome and weather state and shares the wind direction with campfire smoke. It preserves native weather sounds, ground impacts and custom dimension weather
+- The previous Sandbox JAR and client settings are archived separately from the approved 0.4.0 backup
+
 ## 2026-11-14 - Expand Sandbox atmosphere and stabilize distant lighting
 
 - User requested an approved 0.4.0 backup, stable distant colored light, and a wider Sandbox atmosphere. Shader-pack compatibility and removal of overlapping mods require separate approval
