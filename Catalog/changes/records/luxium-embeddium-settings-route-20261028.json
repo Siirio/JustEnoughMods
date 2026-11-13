@@ -18,7 +18,9 @@
   "precedence": {
     "layer": "client_presentation",
     "priority": 150,
-    "overrides": []
+    "overrides": [
+      "client.jalloween-atmosphere-20261030"
+    ]
   },
   "change": {
     "summary": "Route Video Settings directly to Embeddium and keep Luxium-owned actions inside the existing Luxium page.",
@@ -40,6 +42,20 @@
         "operation": "replace",
         "before": "AutoModpack distributes luxium-client.toml with luxiumEnabled=false and can overwrite the player's renderer selection.",
         "after": "Luxium generates and owns its personal client config locally. AutoModpack no longer distributes luxium-client.toml."
+      },
+      {
+        "property": "luxium.legacy_local_shadow_preset",
+        "operation": "replace",
+        "before": "The previous local preset enabled direct hard cubemap shadows at 42 blocks with 32 sources alongside celestial shadows",
+        "after": "A one-time client migration disables the exact expensive local preset when celestial shadows are selected. Native sun and moon shadows take precedence, with ordinary block illumination",
+        "notes": "Keep the renderer selection, native Luxium config ownership and optional local modes"
+      },
+      {
+        "property": "client.default_shader",
+        "operation": "replace",
+        "before": "The default Oculus preference enabled shaders, so the JEM bridge selected Oculus over native Luxium",
+        "after": "A fresh installation starts with Oculus shaders off and uses native Luxium celestial shadows. AutoModpack retains the player's editable Oculus preference on later updates",
+        "notes": "Only the fresh renderer default replaces the historical Jalloween shader selection. The title and optional shader pack are unchanged."
       }
     ]
   },
@@ -58,7 +74,9 @@
       "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/en_us.json",
       "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/ru_ru.json",
       "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json",
-      "Client/ManagedPack/mods/jem_luxium-1.0.12.jar"
+      "Client/ManagedPack/mods/jem_luxium-1.0.12.jar",
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/config/LuxiumClientConfig.java",
+      "Client/ManagedPack/config/oculus.properties"
     ]
   },
   "rationale": {
@@ -123,6 +141,12 @@
         "Client/ManagedPack/mods/jem_luxium-1.0.11.jar",
         "Client/ManagedPack/mods/jem_luxium-1.0.12.jar"
       ]
+    },
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "recover_legacy_local_shadow_preset",
+      "summary": "Restore the native celestial shadow default for the exact preset linked to the measured torch slowdown. Keep future personal settings editable."
     }
   ],
   "impacts": {
@@ -150,7 +174,8 @@
       "The managed pack no longer owns luxium-client.toml, so a player's renderer selection survives independently of pack updates."
     ],
     "unresolved": [
-      "Runtime navigation, row layout, focus order, link confirmation and immediate shadow activation remain unobserved until authorized player testing."
+      "Runtime navigation, row layout, focus order, link confirmation and immediate shadow activation remain unobserved until authorized player testing.",
+      "Player acceptance of sun and moon shadows and frame rate after migrating the exact legacy preset is pending"
     ]
   }
 }

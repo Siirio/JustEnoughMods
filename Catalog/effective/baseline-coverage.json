@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "6e255a94be0d9841baf88e02f0f07156b56497326d3c5b2891213881c232b303",
+  "change_records_sha256": "d17a6443cad0958eb980868beab1c247151a9c06803b2c758698975b47b76117",
   "totals": {
     "watched": 7125,
-    "covered": 5516,
-    "unresolved": 1609
+    "covered": 5517,
+    "unresolved": 1608
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1517,13 +1517,12 @@
     },
     "Mods/JEMLuxium": {
       "watched": 16,
-      "covered": 10,
-      "unresolved": 6,
+      "covered": 11,
+      "unresolved": 5,
       "unresolved_paths": [
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/JEMLuxium.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumClientBootstrap.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionStorage.java",
-        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/config/LuxiumClientConfig.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/NeoSkyCelestiaOculusGuardMixin.java",
         "Mods/JEMLuxium/src/main/resources/pack.mcmeta"
       ]

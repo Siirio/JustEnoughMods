@@ -39,6 +39,10 @@ final class LuxiumShaderController {
 
     static void reconcileOculusState() {
         boolean oculusEnabled = IrisApi.getInstance().getConfig().areShadersEnabled();
+        if (recoverLegacyShadowPreset() && isLuxiumActive() && !oculusEnabled) {
+            LuxiumGpuShaderFeatures.refreshNow();
+            reloadEmbeddiumRenderer("shadow preset recovery");
+        }
         observeRendererState(oculusEnabled);
         if (!oculusStateInitialized) {
             oculusStateInitialized = true;
@@ -52,6 +56,29 @@ final class LuxiumShaderController {
             disableLuxiumForOculus();
         }
         previousOculusEnabled = oculusEnabled;
+    }
+
+    private static boolean recoverLegacyShadowPreset() {
+        if (!LuxiumClientConfig.SPEC.isLoaded() || !Config.CLIENT_SPEC.isLoaded()
+                || LuxiumClientConfig.SHADOW_PRESET_RECOVERED.get()) {
+            return false;
+        }
+
+        var client = Config.CLIENT;
+        boolean legacyPreset = client.skyLightEnabled.get() && client.gpuShadowsEnabled.get()
+                && client.gpuLocalLightingMode.get() == Config.GpuLocalLightingMode.GPU_ONLY
+                && client.gpuLocalShadowMode.get() == Config.GpuLocalShadowMode.CUBEMAP_HARD
+                && !client.gpuHardShadowBakeEnabled.get()
+                && client.gpuLocalLightDistance.get() == 42
+                && client.gpuFastSpreadMaxLights.get() == 32;
+        if (legacyPreset) {
+            client.gpuShadowsEnabled.set(false);
+            Config.CLIENT_SPEC.save();
+            LOGGER.info("Restored Luxium celestial shadows from the legacy local shadow preset");
+        }
+        LuxiumClientConfig.SHADOW_PRESET_RECOVERED.set(true);
+        LuxiumClientConfig.SPEC.save();
+        return legacyPreset;
     }
 
     private static void observeRendererState(boolean oculusEnabled) {

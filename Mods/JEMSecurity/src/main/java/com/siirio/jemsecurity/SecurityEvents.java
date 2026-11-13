@@ -40,6 +40,8 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = JEMSecurity.MOD_ID)
 public final class SecurityEvents {
     private static final String LAST_GAME_MODE = "jem_security_last_game_mode";
+    private static final double BLOCK_HIT_TOLERANCE = 1.0D / 64.0D;
+    private static final double BLOCK_HIT_RAY_EXTENSION = 0.001D;
     private static final Set<Reveal> REVEALS = new HashSet<>();
     private static final Map<UUID, Integer> SUSPICION = new HashMap<>();
 
@@ -120,10 +122,11 @@ public final class SecurityEvents {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void rightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !SecurityRuntime.active(player.server)) return;
-        if (!validBlockAction(player, event.getPos())) {
+        String rejection = blockUseRejection(player, event.getPos(), event.getHitVec());
+        if (rejection != null) {
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.FAIL);
-            suspicious(player, "invalid_block_interaction", event.getPos(), 3);
+            suspicious(player, "invalid_block_interaction", event.getPos(), 3, rejection);
             return;
         }
         auditTaggedUse(player, event.getItemStack(), "creative_item_block_use", event.getPos());
@@ -216,6 +219,41 @@ public final class SecurityEvents {
         return hit.getType() == HitResult.Type.MISS || hit.getBlockPos().equals(pos);
     }
 
+    private static String blockUseRejection(ServerPlayer player, BlockPos pos, BlockHitResult reportedHit) {
+        if (reportedHit.getType() != HitResult.Type.BLOCK || !reportedHit.getBlockPos().equals(pos)) {
+            return "invalid_target";
+        }
+        Vec3 target = reportedHit.getLocation();
+        Vec3 offset = target.subtract(Vec3.atCenterOf(pos));
+        double maxOffset = 1.0000001D;
+        if (!Double.isFinite(offset.x) || !Double.isFinite(offset.y) || !Double.isFinite(offset.z)
+                || Math.abs(offset.x) >= maxOffset || Math.abs(offset.y) >= maxOffset || Math.abs(offset.z) >= maxOffset) {
+            return "invalid_hit_position";
+        }
+        // Placement helpers can submit a synthetic hit. Keep the server's existing admission for those clicks.
+        if (validBlockAction(player, pos)) return null;
+
+        double reach = player.getAttributeValue(ForgeMod.BLOCK_REACH.get()) + 0.75D;
+        Vec3 eye = player.getEyePosition();
+        if (eye.distanceToSqr(target) > reach * reach) return "out_of_reach";
+
+        // Continue slightly through the reported surface so a click on its boundary intersects the outline.
+        Vec3 rayEnd = target.add(target.subtract(eye).normalize().scale(BLOCK_HIT_RAY_EXTENSION));
+        BlockHitResult outline = player.level().clip(new ClipContext(
+                eye, rayEnd, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
+        if (outline.getType() == HitResult.Type.MISS) return "missing_outline";
+        if (!outline.getBlockPos().equals(pos)) return "obstructed";
+        if (outline.getDirection() != reportedHit.getDirection()
+                || outline.getLocation().distanceToSqr(target) > BLOCK_HIT_TOLERANCE * BLOCK_HIT_TOLERANCE) {
+            return "hit_mismatch";
+        }
+
+        BlockHitResult collision = player.level().clip(new ClipContext(
+                eye, target, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
+        return collision.getType() == HitResult.Type.MISS || collision.getBlockPos().equals(pos)
+                ? null : "obstructed";
+    }
+
     private static boolean validEntityAction(ServerPlayer player, Entity targetEntity) {
         double reach = player.getAttributeValue(ForgeMod.ENTITY_REACH.get()) + 0.75D;
         Vec3 eye = player.getEyePosition();
@@ -226,12 +264,17 @@ public final class SecurityEvents {
     }
 
     private static void suspicious(ServerPlayer player, String type, BlockPos pos, int points) {
+        suspicious(player, type, pos, points, null);
+    }
+
+    private static void suspicious(ServerPlayer player, String type, BlockPos pos, int points, String reason) {
         int score = SUSPICION.merge(player.getUUID(), points, Integer::sum);
         JsonObject details = new JsonObject();
         details.addProperty("dimension", player.level().dimension().location().toString());
         details.addProperty("position", pos.toShortString());
         details.addProperty("points", points);
         details.addProperty("score", score);
+        if (reason != null) details.addProperty("reason", reason);
         SecurityAuditLog.record(player, type, details);
     }
 

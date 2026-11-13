@@ -11,5 +11,5 @@ EntityEvents.spawned(event => {
   if (!JEM_ROYAL_VARIATIONS_MOBS.has(entityId)) return
   if (JEM_ROYAL_VARIATIONS_TIER_API.currentTier(event.server) >= 3) return
 
-  event.entity.discard()
+  event.cancel()
 })

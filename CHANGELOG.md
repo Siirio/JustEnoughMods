@@ -1,3 +1,16 @@
+## 2026-11-13 - Set Weather Glass detail to 32 pixels
+
+- User requested 32 by 32 as the Weather Glass default. Set its native rain, snow and dust detail to 32 and kept the existing effect amounts
+- Compared the two repository-local control templates and both managed mod keybind files with Test JustEnoughMods. All 204 template bindings and both mod files already match. No keybind file was changed
+- The local dedicated server started with the updated Security artifact and Royal Variations script. AutoModpack published and applied generation 161 to Test JustEnoughMods. The active token and changed artifact hashes match
+
+## 2026-11-13 - Restore playable shadows, block use and royal mob admission
+
+- User requested a playable Luxium default, compatible JEM Security block use, and a World Tier III lock for every Royal Variations mob
+- Bug / Client / Direct GPU local cubemaps redrew the world around the torch and prevented Luxium 2.8.0 from building celestial shadow maps / in testing with a one-time recovery of the exact previous preset. Fresh installations select native celestial shadows with ordinary torch lighting. Existing Oculus preferences remain editable
+- Bug / Server / The right-click guard could reject a visible block face because it traced only to the block center / in testing with server-verified hit position, face, reach and obstruction. Rejections record a reason in the existing audit. Luxium does not participate in admission
+- Bug / Both Sided / The Royal Variations script discarded the entity without cancelling its join event / in testing with native cancellation for all four variants below Tier III, including entities loaded from saves. Native spawn weights apply at Tier III and above
+
 ## 2026-11-13 - Restore race previews and dedicated chunk delivery
 
 - User reported missing player models across all races in both F6 scenes, missing Luxium shadows, and terrain gaps on the local dedicated server. The user also requested removal of the four cardinal directions from Locator Bar

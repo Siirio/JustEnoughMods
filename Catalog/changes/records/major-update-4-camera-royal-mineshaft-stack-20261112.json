@@ -90,7 +90,7 @@
         "property": "royalvariations.spawn_admission",
         "operation": "gate",
         "before": "Native spawn weights apply at every World Tier",
-        "after": "The four royal mob variants are discarded below Tier 3 through the public JEM World Tier API. Native spawn weights apply from Tier 3"
+        "after": "The server cancels entity admission for all four Royal Variations mobs below World Tier 3, including entities loaded from saves. Native spawn rules apply from Tier 3"
       }
     ]
   },
@@ -128,6 +128,13 @@
     ]
   },
   "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "cancel_royal_entity_admission_below_tier_three",
+      "summary": "Cancel the Forge entity join for all four Royal Variations mobs below Tier 3. The old discard call marked the entity removed while its join event still passed",
+      "source_files": ["Client/ManagedPack/kubejs/server_scripts/jem/royal_variations_world_tier.js"]
+    },
     {
       "date": "2026-11-12",
       "commit": "SELF",
@@ -174,7 +181,7 @@
     "relations": [
       "Enhanced AI Leaders -> disabled",
       "ordinary hostile -> JEM World Tier scaling -> unchanged",
-      "Royal Variations mob -> public World Tier API -> allowed from Tier 3",
+      "Royal Variations entity join -> public World Tier API -> cancel below Tier 3",
       "mineshaft generation -> Hopo Better Mineshaft",
       "camera and picture state -> Camerapture",
       "player positions -> Locator Bar -> locator HUD"
@@ -185,7 +192,8 @@
       "MineRENT, stable JustEnoughMods and the immutable release baseline remain unchanged"
     ],
     "unresolved": [
-      "Client gameplay acceptance and the full Epic Fight combat compatibility matrix remain unobserved"
+      "Client gameplay acceptance and the full Epic Fight combat compatibility matrix remain unobserved",
+      "Player acceptance for Royal Variations admission below and at Tier 3 remains pending"
     ]
   }
 }

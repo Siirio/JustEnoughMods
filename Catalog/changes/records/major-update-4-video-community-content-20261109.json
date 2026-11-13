@@ -47,7 +47,7 @@
         "property": "client.weather_presentation_budget",
         "operation": "set",
         "before": "No shared budget for the new glass and storm presentation stack",
-        "after": "16-pixel Weather Glass, reduced Immersive Storms particles, no duplicate ambient storm audio and no forced dense fog. Windy is absent"
+        "after": "32-pixel Weather Glass, reduced Immersive Storms particles, no duplicate ambient storm audio and no forced dense fog. Windy is absent"
       },
       {
         "property": "distribution.treechop_artifact",
@@ -82,6 +82,15 @@
     "summary": "Install and configure the audited Major Update 4 community-content tranche."
   },
   "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "set_weather_glass_default_detail",
+      "summary": "Apply the requested native 32-pixel setting to rain, snow and dust. Preserve the existing effect amounts and wind behavior.",
+      "source_files": [
+        "Client/ManagedPack/config/weatherglass.properties"
+      ]
+    },
     {
       "date": "2026-11-09",
       "commit": null,

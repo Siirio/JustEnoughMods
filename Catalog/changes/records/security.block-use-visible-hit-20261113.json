@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "change_id": "security.block-use-visible-hit-20261113",
+  "status": "conditional",
+  "selectors": [
+    {"type": "registry", "registry": "blocks", "value": "*"}
+  ],
+  "conditions": [
+    {"requires": "JEM Security enabled on the dedicated server and a Forge right-click block event"}
+  ],
+  "precedence": {
+    "layer": "server_security",
+    "priority": 126
+  },
+  "change": {
+    "summary": "Verify a visible clicked face when the block-center ray would reject a right click",
+    "modifiers": [
+      {
+        "property": "server.block_use_validation",
+        "operation": "replace",
+        "before": "JEM Security checks reach and physical obstruction toward the target block center, regardless of the actual clicked face",
+        "after": "Keep the existing server check for bounded native and assisted hits. When that check rejects, require the actual hit to be in reach and the server's outline ray to match the block, face and location. Require physical line of sight to the hit. Record the rejection reason in the existing audit"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Security",
+    "kind": "server_block_use_validation",
+    "source_files": [
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityEvents.java",
+      "Client/ManagedPack/mods/jem_security-1.0.7.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Allow a visible face to be used when another block hides the target center. Keep server checks for reach and obstruction",
+    "decision_source": "The user reported intermittent placement failures and asked for compatibility with Luxium. The local audit confirmed server-side block-use denials. Forge 47.4.10 passes the bounded hit to the event",
+    "implementation_choices": "Use the server's world shapes and player eye position to verify the reported hit. Retain previous admission for bounded synthetic hits from placement helpers. Keep lighting outside the security decision"
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Use verified clicked faces for the dedicated server's right-click guard"
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Add server-side face verification and identify right-click rejections in the existing audit"
+    }
+  ],
+  "impacts": {
+    "systems": ["block_placement", "server_security", "creative_item_provenance"],
+    "relations": ["Forge right-click block event supplies the bounded hit. JEM Security verifies reach and visibility against server world geometry"],
+    "notes": [
+      "The existing reach tolerance remains in effect. Break and attack validation, AntiXray and client attestation are unchanged",
+      "The guard uses no client mod identity or lighting settings for admission"
+    ],
+    "unresolved": [
+      "The original audit cannot distinguish which check rejected each click",
+      "Player acceptance for ordinary edge clicks and ProPlacer-assisted placement is pending"
+    ]
+  }
+}
