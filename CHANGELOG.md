@@ -1,3 +1,12 @@
+## 2026-11-13 - Regenerate the local Major Update 4 world
+
+- User requested deletion of the local world affected by the RoadWeaver terrain wall and creation of a clean world with the same seed
+- Removed `Server/world-major-update-4` from the active Server runtime after verifying its `level.dat` and seed `-4403480805445476436`
+- Preserved the removed save outside Server at `C:/Users/user/AppData/Local/Temp/jem-removed-worlds/world-major-update-4-before-root-fix-20261113-0455` for emergency recovery
+- Set the local server seed to `-4403480805445476436` and generated a new `world-major-update-4`
+- The new `level.dat` confirms the same seed. The dedicated server reached `Done (269.091s)`, completed its follow-up resource reload and listens on `127.0.0.1:31604`
+- MineRENT, stable `JustEnoughMods`, the immutable release baseline and managed client generation remain unchanged
+
 ## 2026-11-13 - Ground-anchor roads and move the locator to the experience bar
 
 - User reported that RoadWeaver created a large artificial terrain wall in the sky instead of starting on existing ground and rising toward the destination
