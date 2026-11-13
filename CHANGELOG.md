@@ -1,3 +1,9 @@
+## 2026-11-14 - Add the independent lighting preview to Sandbox
+
+- User requested a JEM renderer prototype with two colored lamps, a column and sun in Sandbox only
+- Added `/jemlighting` with an original GLSL scene. Each source checks its own occlusion and contributes independently. The preview screen isolates this first check from ordinary terrain, Luxium and Voxy
+- Added separate lamp and sun controls and camera orbit. Windows and macOS visual acceptance remains pending
+
 ## 2026-11-14 - Correct torch darkening in Sandbox
 
 - User reported that placing a torch darkened the scene until they left its shadow or broke the torch

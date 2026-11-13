@@ -1,0 +1,25 @@
+{
+  "vertex": "jem_lighting_sandbox:shadow_preview",
+  "fragment": "jem_lighting_sandbox:shadow_preview",
+  "attributes": ["Position", "UV0"],
+  "samplers": [],
+  "uniforms": [
+    {
+      "name": "ModelViewMat",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    },
+    {
+      "name": "ProjMat",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    },
+    { "name": "Aspect", "type": "float", "count": 1, "values": [1.6] },
+    { "name": "Orbit", "type": "float", "count": 1, "values": [0.38] },
+    { "name": "RedEnabled", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "BlueEnabled", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "SunEnabled", "type": "float", "count": 1, "values": [1.0] }
+  ]
+}

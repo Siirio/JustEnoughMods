@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "328a7042929875e4e52ed6fce2f3af26422a7971438df2d5374c15db63f244a6",
+  "change_records_sha256": "89050fdc0f401ecca84e237e506e539268a61ac1a5f88340489a694dd3824c11",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -567,6 +567,20 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "client.sandbox-lighting-scene-20261114",
+      "status": "conditional",
+      "summary": "Add an independent client-side lighting preview with two point lights and one directional light.",
+      "record": "Catalog/changes/records/client.sandbox-lighting-scene-20261114.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 32572
     },
     {
       "change_id": "client.smp-preview-native-appearance-20261026",
@@ -4535,7 +4549,7 @@
     }
   ],
   "source_fingerprints": {
-    "CHANGELOG.md": "f811f5b8d52750ab1e2a4c888b82580ba2ba756ed1c74dd6d5d69663fd1311d8",
+    "CHANGELOG.md": "b1f0a363b93b379cc52b08f9c5317c86e516e96fed7e5578054714e4a68ae311",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -4865,7 +4879,7 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "561d16fdd74b26cfdf7de0992e57301dd91666eddd33c7ebd19703945b1c96a4",
+    "Docs/DEVELOPMENT.md": "6faa0b4b1f1adc405027fa1fda4be37e7b842c8b5e8e2d73e345dc2a810b49bb",
     "Docs/MODS.md": "e8706907ceef453373611a8daf7150b308c556f38b238706dfbb3fb51f2416cf",
     "Docs/SERVER_COMMANDS.md": "70f44d76010dc872bc7d4c2ff6734f25376f91436de312d5b687c73abef12596",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -8863,6 +8877,15 @@
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/client/InventoryDeleteKeys.java": "a742d2e56fa4c7ffb474265086ae11d432fce939ccf2565c43c11024b245206c",
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/feature/inventory/InventoryDeleteNetwork.java": "b24883c2a0a7b058c440305b2cde73ae3c32680888bb94f288359e018feb84d0",
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/feature/inventory/SophisticatedStorageDelete.java": "15b0de2c1f8cc81156aa02f84017b4840916e04a8f1e1f1391d57261d68e64d9",
+    "Mods/JEMLightingSandbox/build.gradle": "d6fb6d0bfa05d67da3ef3ba35d6387e5cc8accc7de2afe3a374cfb2ca639f5fc",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/JemLightingSandbox.java": "929bbd7c988b924752bc291919ec5897cd2f0360a600b3082e5b67f8c9ead733",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingClient.java": "02fba0b9cde609655243ca9c42027e073576ed1fc5ca63a24c383d083d902e88",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingScreen.java": "2f4fb57cacdc7dbd9d3265aafa08378d2fb48b861c5c4afac5ac0e4feb7e11f7",
+    "Mods/JEMLightingSandbox/src/main/resources/META-INF/mods.toml": "7b03121b33b25dec17c83b93649450ceeb54f9ad746ea83e0e4173a618e51e13",
+    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.fsh": "bbb1cd4d0fe86fd54c3f2811d1fe1793b43873434507fc684d4672604c2022aa",
+    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.json": "21e5eaac792ec9b899c4aac338c23cf316062615dea451efdf814f9b5195244c",
+    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.vsh": "36141b30b677ae4590873b657a462c089c3d09a84c61342c8213007c9dd6a0d4",
+    "Mods/JEMLightingSandbox/src/main/resources/pack.mcmeta": "8a5beefa7c02d85d835d3c3e1b84fdff1652d0f1751307a53397dd06dec9e525",
     "Mods/JEMLuxium/build.gradle": "0b039b4082baf554815b1922d47f4e5a97b48027cf27074c61cc2a3b894c586f",
     "Mods/JEMLuxium/gradle.properties": "3c365a9eedf339702683dfcf33250a2c7a12110a396e2365e7ba3d3e2d6f744f",
     "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumActionControl.java": "63175bbff6fbfc4dbc75a93daaee5edd50ee699c7069c6744d88862f917448ca",
@@ -10010,7 +10033,7 @@
     "tools/build_jem_release_resource_pack.py": "b69a3cebba55980a260059f7e7a9029f86e931fb8d188f54e1b15c6b29e26d5a",
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
-    "tools/module-inventory.json": "3f49a30c85ad9635ff6548b8d0a29712effe568125d86586177e2b2dbdb0a45f",
+    "tools/module-inventory.json": "83bf3e61274e4190ad03e1c20c330a2437e7f1af36cec6b895fb41a68af5fd02",
     "tools/state/packSyncHost-sync.json": "2f0015f1c3ae409d8d07c70932a1e78dba1d3a14dc39c57a5c7eeb25476e9875",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }

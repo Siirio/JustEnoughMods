@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "change_id": "client.sandbox-lighting-scene-20261114",
+  "status": "conditional",
+  "selectors": [{"type": "registry", "registry": "*"}],
+  "conditions": [{"profile": "Sandbox JustEnoughMods", "command": "/jemlighting"}],
+  "precedence": {"layer": "client_presentation", "priority": 80},
+  "change": {
+    "summary": "Add an independent client-side lighting preview with two point lights and one directional light.",
+    "modifiers": [{"property": "client.sandbox.lighting_preview", "operation": "set", "before": false, "after": true}]
+  },
+  "cause": {
+    "owner": "JEMLightingSandbox",
+    "kind": "client_presentation",
+    "source_files": [
+      "Mods/JEMLightingSandbox/build.gradle",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/JemLightingSandbox.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingClient.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingScreen.java",
+      "Mods/JEMLightingSandbox/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMLightingSandbox/src/main/resources/pack.mcmeta",
+      "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.json",
+      "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.vsh",
+      "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.fsh",
+      "tools/module-inventory.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Check independent source visibility and additive lighting before ordinary terrain integration.",
+    "decision_source": "User requested an independent JEM renderer with two lamps, one column and sun in Sandbox only. The isolated screen and analytic box intersections are implementation choices."
+  },
+  "introduced": {"date": "2026-11-14", "commit": "SELF", "action": "add_sandbox_preview", "summary": "Add a client command and original GLSL lighting scene."},
+  "history": [{"date": "2026-11-14", "commit": "SELF", "action": "add_sandbox_preview", "summary": "Add the Sandbox-only independent lighting composition prototype."}],
+  "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["The preview uses client-only geometry and introduces no world registrations or server state."], "unresolved": ["Visual acceptance requires Windows and macOS runs. Normal chunk rendering is outside this prototype."]}
+}
