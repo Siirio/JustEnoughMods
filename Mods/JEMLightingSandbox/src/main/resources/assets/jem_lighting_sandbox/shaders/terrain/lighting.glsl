@@ -12,6 +12,58 @@ uniform vec4 jemLightPositionRange[8];
 uniform vec4 jemLightColorStrength[8];
 uniform vec4 jemSunDirectionStrength;
 uniform vec3 jemSunColor;
+uniform int jemEntityCount;
+uniform vec3 jemEntityMin[8];
+uniform vec3 jemEntityMax[8];
+uniform sampler2D jemWaterScene;
+uniform sampler2D jemWaterDepth;
+uniform int jemWaterActive;
+uniform mat4 jemWaterMatrix;
+uniform float jemWaterTime;
+uniform vec3 jemWaterSky;
+uniform vec2 jemWaterOrigin;
+uniform vec4 jemCloud;
+uniform sampler2D jemCloudTexture;
+
+vec4 jemWaterSurface(vec4 base, vec3 position, vec2 lightLevels) {
+    if (jemWaterActive == 0 || length(position) > 64.0) {
+        return base;
+    }
+    vec2 world = position.xz + jemWaterOrigin;
+    vec3 normal = normalize(vec3(0.11 * sin(world.x * 1.276272 + jemWaterTime * 1.6), 1.0,
+            0.1 * sin(world.y * 1.521709 - jemWaterTime * 1.9)));
+    vec3 incident = normalize(position);
+    if (incident.y >= -0.01) {
+        return base;
+    }
+    vec2 size = vec2(textureSize(jemWaterScene, 0));
+    vec2 uv = gl_FragCoord.xy / size;
+    vec2 bent = clamp(uv + normal.xz * 0.055, vec2(0.002), vec2(0.998));
+    float depth = texture(jemWaterDepth, bent).r;
+    if (depth < gl_FragCoord.z) {
+        bent = uv;
+    }
+    vec3 through = texture(jemWaterScene, bent).rgb;
+    vec3 reflected = jemWaterSky * smoothstep(0.45, 1.0, lightLevels.y);
+    vec3 reflection = reflect(incident, normal);
+    for (int sampleIndex = 1; sampleIndex <= 10; ++sampleIndex) {
+        vec3 samplePoint = position + reflection * (0.4 + float(sampleIndex * sampleIndex) * 0.20);
+        vec4 clip = jemWaterMatrix * vec4(samplePoint, 1.0);
+        if (clip.w <= 0.0) break;
+        vec3 screen = clip.xyz / clip.w * 0.5 + 0.5;
+        if (any(lessThan(screen.xy, vec2(0.004))) || any(greaterThan(screen.xy, vec2(0.996)))) break;
+        float opaque = texture(jemWaterDepth, screen.xy).r;
+        float separation = screen.z - opaque;
+        if (opaque < 1.0 && separation > 0.0 && separation < 0.006) {
+            reflected = texture(jemWaterScene, screen.xy).rgb;
+            break;
+        }
+    }
+    float fresnel = 0.025 + 0.70 * pow(1.0 - clamp(dot(-incident, normal), 0.0, 1.0), 5.0);
+    float clarity = 0.68 - 0.36 * clamp(base.a, 0.0, 1.0);
+    vec3 water = mix(base.rgb, through * (0.65 + base.rgb * 0.35), clarity);
+    return vec4(mix(water, reflected, fresnel), 1.0);
+}
 
 const int JEM_MAX_LIGHTS = 8;
 const int JEM_MAX_RAY_STEPS = 48;
@@ -84,6 +136,22 @@ float jemVisibility(vec3 origin, vec3 direction, float reach, ivec3 lightCell) {
         cell += ivec3(crossed) * cellStep;
         nextCrossing += vec3(crossed) * distancePerCell;
         entering = leaving;
+    }
+    if (jemEntityCount > 0) {
+        vec3 cameraOrigin = origin + jemVolumeOrigin;
+        for (int entity = 0; entity < jemEntityCount; ++entity) {
+            vec3 low = jemEntityMin[entity];
+            vec3 high = jemEntityMax[entity];
+            vec3 center = (low + high) * 0.5;
+            vec3 halfSize = max((high - low) * vec3(0.45, 0.50, 0.45), vec3(0.01));
+            vec3 ray = direction / halfSize;
+            vec3 relative = (cameraOrigin - center) / halfSize;
+            float t = -dot(relative, ray) / dot(ray, ray);
+            if (t > 0.008 && t < reach) {
+                vec3 offset = relative + ray * t;
+                visibility *= mix(0.38, 1.0, smoothstep(0.5, 1.0, dot(offset, offset)));
+            }
+        }
     }
     return visibility;
 }
@@ -160,10 +228,11 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
         normal = -normal;
     }
     vec3 localPosition = position - jemVolumeOrigin;
+    vec3 receiverPosition = position - normal * JEM_SURFACE_BIAS;
     vec3 edgeDistance = min(localPosition, vec3(jemVolumeSize) - localPosition);
     float sceneWeight = smoothstep(1.0, 10.0, min(edgeDistance.x, min(edgeDistance.y, edgeDistance.z)));
     vec3 sectionOrigin = vec3(0.0);
-    ivec2 lightRow = jemChunkLightRow(position, sectionOrigin);
+    ivec2 lightRow = jemChunkLightRow(receiverPosition, sectionOrigin);
     int indexedCount = lightRow.x < 0 ? 0 : int(texelFetch(jemChunkLights, lightRow, 0).z);
     bool indexed = indexedCount > 0;
     if (!indexed && sceneWeight <= 0.0) {
@@ -171,8 +240,10 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
     }
 
     vec3 rayOrigin = localPosition + normal * JEM_SURFACE_BIAS;
-    ivec3 receiverCell = ivec3(floor(localPosition - normal * JEM_SURFACE_BIAS));
+    ivec3 receiverCell = ivec3(floor(receiverPosition - jemVolumeOrigin));
     float receiverEmission = jemInsideVolume(receiverCell) ? float(jemVoxelData(receiverCell).x) / 15.0 : 0.0;
+    // Native block light indicates that light reaches the surface. It is not a measure of this ray's transmission.
+    float nativeVisibility = smoothstep(0.5, 3.0, lightLevels.x * 15.0);
     vec3 contributedLight = vec3(0.0);
     float modeledBlockLevel = 0.0;
     for (int index = 0; index < JEM_MAX_LIGHTS; ++index) {
@@ -225,7 +296,6 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
             continue;
         }
         // Trace all intervening geometry for solid emitters, including the source's own other faces.
-        float nativeVisibility = smoothstep(0.0, max(0.15, lightLevel * 0.75), lightLevels.x);
         float tracedVisibility = sceneWeight > 0.0 && jemInsideVolume(sourceCell)
                 ? jemVisibility(rayOrigin, direction, shadowRayLength, solidSource ? ivec3(-1) : sourceCell)
                 : nativeVisibility;
@@ -250,6 +320,12 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
     // The vanilla sky term already contains daylight. Darken its directional share
     // while keeping an ambient floor, instead of adding another full sun light.
     vec3 litSky = skyLinear * (vec3(1.0) - 0.55 * jemSunColor * sunlightOcclusion * sceneWeight);
+    if (jemCloud.w > 0.0 && jemSunDirectionStrength.y > 0.10 && position.y < jemCloud.z) {
+        float travel = (jemCloud.z - position.y) / jemSunDirectionStrength.y;
+        vec2 uv = fract(jemCloud.xy + (position.xz + jemSunDirectionStrength.xz * travel) / 3072.0);
+        float coverage = textureLod(jemCloudTexture, uv, 0.0).a;
+        litSky *= 1.0 - coverage * jemCloud.w * jemSunDirectionStrength.w * smoothstep(0.5, 0.95, lightLevels.y);
+    }
     vec3 combined = litSky + residualBlockLight + jemLinearColor(albedo) * contributedLight;
     vec3 outputColor = pow(max(combined, vec3(0.0)), vec3(1.0 / 2.2));
     return mix(nativeColor, outputColor, indexed ? 1.0 : sceneWeight);

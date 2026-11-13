@@ -1,3 +1,11 @@
+## 2026-11-14 - Expand Sandbox atmosphere and stabilize distant lighting
+
+- User requested an approved 0.4.0 backup, stable distant colored light, and a wider Sandbox atmosphere. Shader-pack compatibility and removal of overlapping mods require separate approval
+- Bug / Client / Distant lighting used a relative vanilla light threshold that could suppress the contribution when a surface left the camera's detailed shadow volume / in testing with a stable receiver-section lookup and a low absolute block-light gate
+- Added water-only screen-space reflection and refraction, biome water tint and underwater absorption, local light scattering, aurora, rainbows and distant thunder glow. Weather particles use native precipitation types and thunder intensity. Added wind, cave dust, campfire smoke drift, and heat shimmer
+- Added approximate shadows from nearby living entity bounds and a projected texture for vanilla cloud shadows. Better Clouds uses a separate pipeline that needs its own shadow integration
+- Preserved the installed 0.4.0 JAR and client config in the local Sandbox backup. Visuals and frame time for 0.5.0 require in-game confirmation
+
 ## 2026-11-14 - Extend Sandbox light coverage and trace block geometry
 
 - User requested lighting at a distance, a 2–32 chunk setting with a render-distance checkbox, and shadows through fence gaps and foliage

@@ -25,6 +25,7 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.material.FogType;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 
@@ -36,6 +37,9 @@ final class AtmosphereRenderer {
     private static ShaderInstance composite;
     private static TextureTarget depthCopy;
     private static TextureTarget reduced;
+    private static TextureTarget colorCopy;
+    private static ClientLevel weatherLevel;
+    private static long lastRain = Long.MIN_VALUE;
     private static boolean failed;
 
     private AtmosphereRenderer() {
@@ -56,8 +60,9 @@ final class AtmosphereRenderer {
         Minecraft client = Minecraft.getInstance();
         ClientLevel level = client.level;
         Camera camera = event.getCamera();
+        FogType medium = camera.getFluidInCamera();
         if (level == null || !level.dimensionType().hasSkyLight() || level.dimensionType().hasCeiling()
-                || camera.getFluidInCamera() != FogType.NONE || hasRestrictedVision(camera)) {
+                || (medium != FogType.NONE && medium != FogType.WATER) || hasRestrictedVision(camera)) {
             return;
         }
         var volume = TerrainLighting.currentVolume(level);
@@ -71,7 +76,33 @@ final class AtmosphereRenderer {
         }
         var sun = TerrainLighting.sun(level, event.getPartialTick());
         float weather = level.getRainLevel(event.getPartialTick());
-        if (sun.strength() < 0.01F && weather < 0.01F) {
+        boolean underwater = medium == FogType.WATER;
+        var block = camera.getBlockPosition();
+        var biome = level.getBiome(block).value();
+        long gameTime = level.getGameTime();
+        if (weatherLevel != level || gameTime < lastRain) {
+            weatherLevel = level;
+            lastRain = Long.MIN_VALUE;
+        }
+        if (weather > 0.55F) {
+            lastRain = gameTime;
+        }
+        float openSky = Mth.clamp((level.getBrightness(LightLayer.SKY, block) - 8F) / 7F, 0F, 1F);
+        float aurora = biome.coldEnoughToSnow(block) ? Mth.clamp(-sun.y() * 3F, 0F, 1F) * (1F - weather) : 0F;
+        float rainbow = lastRain == Long.MIN_VALUE ? 0F : (1F - weather)
+                * Mth.clamp(1F - (gameTime - lastRain) / 900F, 0F, 1F) * sun.strength();
+        float flash = 0F;
+        if (!client.options.hideLightningFlash().get()) {
+            float thunder = level.getThunderLevel(event.getPartialTick());
+            float timeSinceFlash = (gameTime % 227L + event.getPartialTick());
+            float distant = thunder * 0.35F * Math.max(0F, 1F - timeSinceFlash / 7F);
+            flash = Math.max(distant, Mth.clamp(level.getSkyFlashTime() / 3F, 0F, 1F));
+        }
+        float clock = ((gameTime % 81920L) + event.getPartialTick()) / 20F;
+        float heat = underwater ? 0F : SandboxWeather.heat(client);
+        var localLights = TerrainLighting.localLights(level);
+        if (!underwater && localLights.isEmpty()
+                && Math.max(Math.max(sun.strength(), weather), Math.max(heat, Math.max(aurora, flash))) < 0.01F) {
             return;
         }
 
@@ -87,6 +118,9 @@ final class AtmosphereRenderer {
             ensureTargets(main);
             GL11.glDisable(GL11.GL_SCISSOR_TEST);
             depthCopy.copyDepthFrom(main);
+            if (underwater || heat > 0.01F) {
+                copySceneColor(main);
+            }
             RenderSystem.disableDepthTest();
             RenderSystem.depthMask(false);
             RenderSystem.disableCull();
@@ -105,11 +139,44 @@ final class AtmosphereRenderer {
             scattering.safeGetUniform("AirColor").set((float) sky.x, (float) sky.y, (float) sky.z);
             scattering.safeGetUniform("CameraAltitude").set((float) position.y - level.getSeaLevel());
             scattering.safeGetUniform("Weather").set(weather);
+            scattering.safeGetUniform("Underwater").set(underwater ? 1F : 0F);
+            scattering.safeGetUniform("OpenSky").set(openSky);
+            scattering.safeGetUniform("Aurora").set(aurora);
+            scattering.safeGetUniform("Rainbow").set(rainbow);
+            scattering.safeGetUniform("DistantFlash").set(flash);
+            scattering.safeGetUniform("AtmosphereTime").set(clock);
+            int water = biome.getWaterFogColor();
+            scattering.safeGetUniform("WaterColor").set((water >> 16 & 255) / 255F, (water >> 8 & 255) / 255F,
+                    (water & 255) / 255F);
+            int tint = biome.getWaterColor();
+            float clarity = Mth.clamp(0.30F + ((tint & 255) - (tint >> 16 & 255)) / 400F, 0.15F, 0.85F);
+            scattering.safeGetUniform("WaterClarity").set(clarity);
+            for (int index = 0; index < 2; index++) {
+                if (index < localLights.size()) {
+                    var light = localLights.get(index);
+                    scattering.safeGetUniform("LocalLight" + index).set((float) (light.x() - position.x),
+                            (float) (light.y() - position.y), (float) (light.z() - position.z), Math.min(8F, light.emission() * 0.55F));
+                    scattering.safeGetUniform("LocalColor" + index).set(light.red(), light.green(), light.blue(), light.emission() / 15F);
+                } else {
+                    scattering.safeGetUniform("LocalLight" + index).set(0F, 0F, 0F, 0F);
+                }
+            }
             drawScattering(volume.id(), volume.shapes());
 
             main.bindWrite(true);
             composite.setSampler("AtmosphereTex", reduced.getColorTextureId());
             composite.setSampler("SceneDepth", depthCopy.getDepthTextureId());
+            composite.setSampler("SceneColor", underwater || heat > 0.01F ? colorCopy.getColorTextureId() : reduced.getColorTextureId());
+            composite.safeGetUniform("Underwater").set(underwater ? 1F : 0F);
+            composite.safeGetUniform("Heat").set(heat);
+            var heatOrigin = SandboxWeather.heatOrigin(client);
+            if (heatOrigin == null) {
+                composite.safeGetUniform("HeatOrigin").set(0F, 0F, 0F, 0F);
+            } else {
+                composite.safeGetUniform("HeatOrigin").set((float) (heatOrigin.x - position.x),
+                        (float) (heatOrigin.y - position.y + 0.8), (float) (heatOrigin.z - position.z), 1.3F);
+            }
+            composite.safeGetUniform("AtmosphereTime").set(clock);
             composite.safeGetUniform("InverseViewProjection").set(inverseViewProjection);
             composite.apply();
             try {
@@ -127,6 +194,16 @@ final class AtmosphereRenderer {
         } finally {
             state.restore();
         }
+    }
+
+    private static void copySceneColor(RenderTarget main) {
+        if (colorCopy == null) {
+            colorCopy = new TextureTarget(main.width, main.height, false, Minecraft.ON_OSX);
+        }
+        GL30.glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER, main.frameBufferId);
+        GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, colorCopy.frameBufferId);
+        GL30.glBlitFramebuffer(0, 0, main.width, main.height, 0, 0, main.width, main.height,
+                GL11.GL_COLOR_BUFFER_BIT, GL11.GL_NEAREST);
     }
 
     private static boolean hasRestrictedVision(Camera camera) {
@@ -195,6 +272,10 @@ final class AtmosphereRenderer {
             reduced.destroyBuffers();
             reduced = null;
         }
+        if (colorCopy != null) {
+            colorCopy.destroyBuffers();
+            colorCopy = null;
+        }
     }
 
     private static final class DrawState {
@@ -219,6 +300,7 @@ final class AtmosphereRenderer {
         private final int equationAlpha = GL11.glGetInteger(GL20.GL_BLEND_EQUATION_ALPHA);
         private final int texture0;
         private final int texture1;
+        private final int texture2;
 
         private DrawState() {
             GL11.glGetIntegerv(GL11.GL_VIEWPORT, viewport);
@@ -227,6 +309,8 @@ final class AtmosphereRenderer {
             texture0 = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
             GlStateManager._activeTexture(GL13.GL_TEXTURE1);
             texture1 = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
+            GlStateManager._activeTexture(GL13.GL_TEXTURE2);
+            texture2 = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
             GlStateManager._activeTexture(activeTexture);
         }
 
@@ -245,6 +329,8 @@ final class AtmosphereRenderer {
             GlStateManager._bindTexture(texture0);
             GlStateManager._activeTexture(GL13.GL_TEXTURE1);
             GlStateManager._bindTexture(texture1);
+            GlStateManager._activeTexture(GL13.GL_TEXTURE2);
+            GlStateManager._bindTexture(texture2);
             GlStateManager._activeTexture(activeTexture);
             GlStateManager._bindTexture(activeBinding);
             GL20.glUseProgram(program);

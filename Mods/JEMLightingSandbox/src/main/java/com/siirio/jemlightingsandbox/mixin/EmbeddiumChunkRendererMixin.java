@@ -1,6 +1,8 @@
 package com.siirio.jemlightingsandbox.mixin;
 
 import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
+import com.siirio.jemlightingsandbox.terrain.WaterSurface;
+import net.minecraft.client.Minecraft;
 import me.jellysquid.mods.sodium.client.gl.device.CommandList;
 import me.jellysquid.mods.sodium.client.gl.shader.GlProgram;
 import me.jellysquid.mods.sodium.client.render.chunk.shader.ChunkShaderInterface;
@@ -25,6 +27,7 @@ public abstract class EmbeddiumChunkRendererMixin {
         if (activeProgram != null) {
             boolean receivesLighting = pass == DefaultTerrainRenderPasses.SOLID || pass == DefaultTerrainRenderPasses.CUTOUT;
             TerrainLighting.begin(activeProgram.handle(), receivesLighting);
+            WaterSurface.prepare(activeProgram.handle(), Minecraft.getInstance(), pass == DefaultTerrainRenderPasses.TRANSLUCENT);
         }
     }
 
@@ -32,11 +35,13 @@ public abstract class EmbeddiumChunkRendererMixin {
             at = @At("HEAD"), remap = false)
     private void jemLightingSandbox$restoreTextureBinding(CallbackInfo callback) {
         TerrainLighting.end();
+        WaterSurface.end();
     }
 
     @Inject(method = "delete(Lme/jellysquid/mods/sodium/client/gl/device/CommandList;)V",
             at = @At("HEAD"), remap = false)
     private void jemLightingSandbox$forgetProgramBindings(CommandList commands, CallbackInfo callback) {
         TerrainLighting.clearProgramBindings();
+        WaterSurface.clearProgramBindings();
     }
 }

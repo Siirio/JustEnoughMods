@@ -3,6 +3,7 @@ package com.siirio.jemlightingsandbox;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
 import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
+import com.siirio.jemlightingsandbox.terrain.WaterSurface;
 import java.io.IOException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ShaderInstance;
@@ -70,7 +71,9 @@ public final class LightingClient {
     @SubscribeEvent
     public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
-            TerrainLighting.tick(Minecraft.getInstance());
+            Minecraft client = Minecraft.getInstance();
+            TerrainLighting.tick(client);
+            SandboxWeather.tick(client);
         }
     }
 
@@ -103,6 +106,7 @@ public final class LightingClient {
             client.execute(() -> {
                 TerrainLighting.clearWorld();
                 AtmosphereRenderer.releaseTargets();
+                WaterSurface.release();
             });
         }
     }

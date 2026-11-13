@@ -5,12 +5,16 @@ import com.mojang.logging.LogUtils;
 import com.siirio.jemlightingsandbox.LightingSettings;
 import java.nio.FloatBuffer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import net.irisshaders.iris.api.v0.IrisApi;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.CloudStatus;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
@@ -29,6 +33,8 @@ public final class TerrainLighting {
     private static final int TEXTURE_UNIT = 7;
     public static final int SHAPE_TEXTURE_UNIT = 8;
     private static final int LIGHT_TEXTURE_UNIT = 9;
+    private static final int CLOUD_TEXTURE_UNIT = 12;
+    private static final ResourceLocation CLOUD_TEXTURE = ResourceLocation.tryParse("minecraft:textures/environment/clouds.png");
     private static final TerrainLightVolume VOLUME = new TerrainLightVolume();
     private static final ChunkLightIndex LIGHT_INDEX = new ChunkLightIndex();
     private static final ChunkLightTexture CHUNK_LIGHTS = new ChunkLightTexture();
@@ -42,6 +48,9 @@ public final class TerrainLighting {
     private static int previousTexture = -1;
     private static int previousShape;
     private static int previousLights;
+    private static int previousCloud;
+    private static final LivingEntity[] CASTERS = new LivingEntity[8];
+    private static final double[] CASTER_DISTANCE = new double[CASTERS.length];
     private static TerrainLightVolume.Snapshot uploaded;
 
     private TerrainLighting() {
@@ -145,6 +154,7 @@ public final class TerrainLighting {
         GL20.glUniform1i(uniforms.opacity, TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.shapes, SHAPE_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.chunkLights, LIGHT_TEXTURE_UNIT);
+        GL20.glUniform1i(uniforms.cloudTex, CLOUD_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.active, 0);
         if (!receivesLighting) {
             return;
@@ -167,6 +177,8 @@ public final class TerrainLighting {
         previousShape = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
         previousLights = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + CLOUD_TEXTURE_UNIT);
+        previousCloud = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         GL13.glActiveTexture(GL13.GL_TEXTURE0 + TEXTURE_UNIT);
         try {
             previousTexture = GL11.glGetInteger(GL12.GL_TEXTURE_BINDING_3D);
@@ -207,6 +219,8 @@ public final class TerrainLighting {
                 index++;
             }
             setSun(uniforms, snapshot.level(), client.getFrameTime());
+            setEntityCasters(uniforms, client, snapshot.level(), camera);
+            setCloudShadow(uniforms, client, snapshot.level(), camera);
             GL20.glUniform1i(uniforms.active, 1);
         } catch (RuntimeException exception) {
             failed = true;
@@ -239,6 +253,8 @@ public final class TerrainLighting {
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousShape);
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousLights);
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + CLOUD_TEXTURE_UNIT);
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousCloud);
             previousTexture = -1;
         }
     }
@@ -325,6 +341,63 @@ public final class TerrainLighting {
         GL20.glUniform3f(uniforms.sunColor, 1F, 1F, 1F);
     }
 
+    private static void setEntityCasters(Uniforms uniforms, Minecraft client, ClientLevel level, Vec3 camera) {
+        int count = 0;
+        if (LightingSettings.atmosphereEnabled()) {
+            for (var entity : level.entitiesForRendering()) {
+                if (!(entity instanceof LivingEntity living) || !living.isAlive() || living.isInvisible()
+                        || living.isSpectator()
+                        || (living == client.getCameraEntity() && client.options.getCameraType().isFirstPerson())) {
+                    continue;
+                }
+                double distance = living.distanceToSqr(camera);
+                if (distance > 16 * 16) {
+                    continue;
+                }
+                int slot = count;
+                while (slot > 0 && CASTER_DISTANCE[slot - 1] > distance) {
+                    slot--;
+                }
+                if (slot >= CASTERS.length) {
+                    continue;
+                }
+                for (int index = Math.min(count, CASTERS.length - 1); index > slot; index--) {
+                    CASTER_DISTANCE[index] = CASTER_DISTANCE[index - 1];
+                    CASTERS[index] = CASTERS[index - 1];
+                }
+                CASTER_DISTANCE[slot] = distance;
+                CASTERS[slot] = living;
+                count = Math.min(count + 1, CASTERS.length);
+            }
+        }
+        GL20.glUniform1i(uniforms.entityCount, count);
+        for (int index = 0; index < count; index++) {
+            LivingEntity entity = CASTERS[index];
+            CASTERS[index] = null;
+            var box = entity.getBoundingBox().move(entity.getPosition(client.getFrameTime()).subtract(entity.position()));
+            GL20.glUniform3f(uniforms.entityMin[index], (float) (box.minX - camera.x),
+                    (float) (box.minY - camera.y), (float) (box.minZ - camera.z));
+            GL20.glUniform3f(uniforms.entityMax[index], (float) (box.maxX - camera.x),
+                    (float) (box.maxY - camera.y), (float) (box.maxZ - camera.z));
+        }
+    }
+
+    private static void setCloudShadow(Uniforms uniforms, Minecraft client, ClientLevel level, Vec3 camera) {
+        float height = level.effects().getCloudHeight();
+        if (!LightingSettings.atmosphereEnabled() || client.options.getCloudsType() == CloudStatus.OFF
+                || ModList.get().isLoaded("betterclouds") || Float.isNaN(height)) {
+            GL20.glUniform4f(uniforms.cloud, 0F, 0F, 0F, 0F);
+            return;
+        }
+        int texture = client.getTextureManager().getTexture(CLOUD_TEXTURE).getId();
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + CLOUD_TEXTURE_UNIT);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
+        double x = (camera.x + (client.levelRenderer.getTicks() + client.getFrameTime()) * 0.03) / 3072.0;
+        double z = (camera.z / 12.0 + 0.33) / 256.0;
+        GL20.glUniform4f(uniforms.cloud, (float) (x - Math.floor(x)), (float) (z - Math.floor(z)),
+                height + 0.33F - (float) camera.y, 0.26F);
+    }
+
     public static Sun sun(ClientLevel level, float partialTick) {
         float angle = level.getSunAngle(partialTick);
         float altitude = Mth.cos(angle);
@@ -341,6 +414,10 @@ public final class TerrainLighting {
         }
         return new VolumeTexture(voxelTexture, shapeTexture, uploaded.minX(), uploaded.minY(), uploaded.minZ(),
                 uploaded.sizeX(), uploaded.sizeY(), uploaded.sizeZ());
+    }
+
+    public static List<TerrainLightVolume.Light> localLights(ClientLevel level) {
+        return uploaded == null || uploaded.level() != level ? List.of() : uploaded.lights();
     }
 
     public record Sun(float x, float y, float strength) {}
@@ -374,6 +451,11 @@ public final class TerrainLighting {
         private final int lightCount;
         private final int sun;
         private final int sunColor;
+        private final int cloud;
+        private final int cloudTex;
+        private final int entityCount;
+        private final int[] entityMin = new int[CASTERS.length];
+        private final int[] entityMax = new int[CASTERS.length];
         private final int[] positions = new int[8];
         private final int[] colors = new int[8];
 
@@ -390,6 +472,13 @@ public final class TerrainLighting {
             lightCount = GL20.glGetUniformLocation(program, "jemLightCount");
             sun = GL20.glGetUniformLocation(program, "jemSunDirectionStrength");
             sunColor = GL20.glGetUniformLocation(program, "jemSunColor");
+            cloud = GL20.glGetUniformLocation(program, "jemCloud");
+            cloudTex = GL20.glGetUniformLocation(program, "jemCloudTexture");
+            entityCount = GL20.glGetUniformLocation(program, "jemEntityCount");
+            for (int index = 0; index < entityMin.length; index++) {
+                entityMin[index] = GL20.glGetUniformLocation(program, "jemEntityMin[" + index + "]");
+                entityMax[index] = GL20.glGetUniformLocation(program, "jemEntityMax[" + index + "]");
+            }
             for (int index = 0; index < positions.length; index++) {
                 positions[index] = GL20.glGetUniformLocation(program, "jemLightPositionRange[" + index + "]");
                 colors[index] = GL20.glGetUniformLocation(program, "jemLightColorStrength[" + index + "]");

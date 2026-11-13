@@ -65,12 +65,14 @@ public final class EmbeddiumTerrainShaders {
                 out vec4 v_JemUnlitColor;
                 out vec4 v_JemSkyColor;
                 out vec2 v_JemLightLevels;
+                flat out uint v_JemWater;
                 """);
         return replace(source, VERTEX_LIGHTMAP, VERTEX_LIGHTMAP + "\n" + """
                     v_JemPosition = position;
                     v_JemUnlitColor = _vert_color;
                     v_JemSkyColor = _vert_color * _sample_lightmap(u_LightTex, ivec2(0, _vert_tex_light_coord.y));
                     v_JemLightLevels = clamp(vec2(_vert_tex_light_coord) / 240.0, 0.0, 1.0);
+                    v_JemWater = _material_params & 128u;
                 """);
     }
 
@@ -80,6 +82,7 @@ public final class EmbeddiumTerrainShaders {
                 in vec4 v_JemUnlitColor;
                 in vec4 v_JemSkyColor;
                 in vec2 v_JemLightLevels;
+                flat in uint v_JemWater;
 
                 """ + lighting + "\n" + FRAGMENT_MAIN + "\n" + """
                     vec3 jemTangentX = dFdx(v_JemPosition);
@@ -95,6 +98,9 @@ public final class EmbeddiumTerrainShaders {
                 #endif
                     diffuseColor.rgb = jemApplyLighting(diffuseColor.rgb, jemSkyBaseColor, jemAlbedo,
                         v_JemPosition, v_JemLightLevels, jemTangentX, jemTangentY);
+                    if (v_JemWater != 0u) {
+                        diffuseColor = jemWaterSurface(diffuseColor, v_JemPosition, v_JemLightLevels);
+                    }
 
                 """ + FRAGMENT_FOG);
     }
