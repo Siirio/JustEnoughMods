@@ -43,13 +43,15 @@ final class BiomeFog {
         float end = profile.end();
         float opacity = profile.opacity();
         boolean preservedCave = biome.is(Biomes.DEEP_DARK) || biome.is(Biomes.DRIPSTONE_CAVES);
+        boolean openDimension = level.dimensionType().hasSkyLight() && !level.dimensionType().hasCeiling();
+        float enclosure = 0F;
         float partialTick = (float) event.getPartialTick();
         if (preservedCave) {
             color = original.lerp(color, 0.68);
-        } else if (profile.sky() == 0 || !level.dimensionType().hasSkyLight() || level.dimensionType().hasCeiling()) {
+        } else if (profile.sky() == 0 || !openDimension) {
             color = original.lerp(color, 0.69);
         } else {
-            float enclosure = enclosure(level, position);
+            enclosure = enclosure(level, position);
             float daylight = Mth.clamp((level.getSkyDarken(partialTick) - 0.2F) / 0.8F, 0F, 1F);
             color = color.scale(0.32 + 0.68 * daylight);
             color = AtmospherePalette.weatherSky(color, level.getRainLevel(partialTick), level.getThunderLevel(partialTick), daylight);
@@ -61,8 +63,9 @@ final class BiomeFog {
         }
         frame = blend(level, new Medium(start, end, opacity, color));
         // Retain the native horizon color for the two approved caves and special dimensions.
-        if (!preservedCave && profile.sky() != 0) {
-            Vec3 horizon = original.lerp(frame.color(), 0.65);
+        if (!preservedCave && profile.sky() != 0 && openDimension) {
+            Vec3 sky = level.getSkyColor(camera.getPosition(), partialTick);
+            Vec3 horizon = sky.lerp(original.lerp(frame.color(), 0.65), enclosure);
             event.setRed((float) horizon.x);
             event.setGreen((float) horizon.y);
             event.setBlue((float) horizon.z);

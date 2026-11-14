@@ -1,3 +1,9 @@
+## 2026-11-15 - Keep Sandbox sky color across biome borders
+
+- User prefers the full-sky color shown near the red desert border in both render modes and allows white clouds in birch and plains biomes
+- Bug / Client / BadOptimizations returns its cached native sky color inside a biome before the JEM tint runs. JEM calculated the fog horizon separately from the sky / in testing with the supported sky-cache exclusion and shared outdoor sky and horizon color
+- The implementation uses a Better Clouds tint hook for clear-weather Birch Forest, Old Growth Birch Forest, Plains and Sunflower Plains. Particle effects remain under discussion. In-game appearance awaits review
+
 ## 2026-11-15 - Extend Sandbox atmosphere to every biome
 
 - User approved Neo Voxy compatibility and the Deep Dark and dripstone fog. User requested atmosphere in every biome with Voxy and Fog disabled, a more orange red-desert sky, clear and thunder sky changes, and distinct lush and ordinary cave fog
