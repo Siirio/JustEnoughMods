@@ -19,8 +19,9 @@
       {"property": "client.sandbox.point_shadow_blend", "operation": "set", "before": "native light replacement depended on traced visibility", "after": "geometry-traced light replacement follows volume coverage and directional light follows visibility"},
       {"property": "client.sandbox.directional_casters", "operation": "replace", "before": "diffuse angle loss within a moving terrain volume and approximate entity ellipsoids", "after": "sun and moon use terrain occlusion and nearby animated entity geometry, with entity map resolution selectable from 256 through 2048"},
       {"property": "client.sandbox.local_entity_shadows", "operation": "set", "before": false, "after": "supported nearby living entity model faces occlude each modeled terrain light independently"},
-      {"property": "client.sandbox.celestial_shafts", "operation": "replace", "before": "sun-only local volume scattering", "after": "sun and moon visibility through terrain with a separate sky-depth contribution"},
+      {"property": "client.sandbox.celestial_shafts", "operation": "replace", "before": "sun-only local volume scattering", "after": "stronger sun and moon shafts integrated along subpixel-staggered view rays and bounded by actual terrain depth"},
       {"property": "client.sandbox.precipitation_density", "operation": "set", "before": "fixed spawn budget", "after": "independent global rain and storm sliders, 25 to 200 percent, default 100 and 150 percent respectively"},
+      {"property": "client.sandbox.local_light_scattering", "operation": "set", "before": "glow around nearby light sources", "after": false},
       {"property": "client.sandbox.biome_fog", "operation": "set", "before": "built-in surface and underground biome fog", "after": false},
       {"property": "client.sandbox.campfire_smoke", "operation": "set", "before": "native lifetime with outdoor wind drift", "after": "longer gradual fade, nominal 10-block rise for ordinary smoke, plus 1.5 blocks per nearby lit campfire to a shared 20-block ceiling, with darker and denser smoke in clusters. Above 5 blocks, the sprite grows 5 percent per 2 blocks and an exposed plume bends up to 4 extra blocks downwind"}
     ]
@@ -92,10 +93,11 @@
     {"date": "2026-11-14", "commit": "0053a5281", "action": "repair_smoke_directional_shadows_and_weather_density", "summary": "Use a typed smoke movement redirect, fix directional blocker loss, project entity model geometry and expose global precipitation density controls."},
     {"date": "2026-11-14", "commit": "0b8fd9a82", "action": "tune_sandbox_smoke_biome_fog_and_precipitation", "summary": "Add cluster-responsive smoke, scene-depth biome fog and particle variation with three-dimensional weather motion."},
     {"date": "2026-11-14", "commit": "d883d64b1", "action": "revise_sandbox_fog_and_celestial_lighting", "summary": "Replace fog and shaft composition and add moonlight, local model-shaped entity shadows and directional map resolution."},
-    {"date": "2026-11-14", "commit": "SELF", "action": "remove_sandbox_biome_fog_and_tune_smoke", "summary": "Remove the custom air fog and add height-based smoke drift and sprite scale.", "source_files": [
+    {"date": "2026-11-14", "commit": "0a03d5e79", "action": "remove_sandbox_biome_fog_and_tune_smoke", "summary": "Remove the custom air fog and add height-based smoke drift and sprite scale.", "source_files": [
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/BiomeFog.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/FogSettingsScreen.java"
-    ]}
+    ]},
+    {"date": "2026-11-14", "commit": "SELF", "action": "smooth_celestial_shafts_and_remove_light_haze", "summary": "Use one stronger terrain-occluded path for sun and moon shafts and remove point-light haze."}
   ],
   "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["No gameplay registrations, server state or native block emission levels change. The standalone preview remains available."], "unresolved": ["Visual output and frame time require verification on Windows and macOS. Local entity occlusion uses captured model faces without texel alpha testing. Dedicated Better Clouds projection, Voxy LOD shadow receivers and shader-pack coexistence are outside this pass."]}
 }

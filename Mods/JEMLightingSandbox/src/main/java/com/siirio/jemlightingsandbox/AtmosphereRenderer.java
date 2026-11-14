@@ -11,7 +11,6 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.logging.LogUtils;
 import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
 import org.joml.Matrix4f;
-import org.joml.Vector4f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
@@ -100,8 +99,7 @@ final class AtmosphereRenderer {
         }
         float clock = ((gameTime % 81920L) + event.getPartialTick()) / 20F;
         float heat = underwater ? 0F : SandboxWeather.heat(client);
-        var localLights = TerrainLighting.localLights(level);
-        if (!underwater && localLights.isEmpty()
+        if (!underwater
                 && Math.max(Math.max(celestial.strength(), weather), Math.max(heat, Math.max(aurora, flash))) < 0.01F) {
             return;
         }
@@ -109,9 +107,7 @@ final class AtmosphereRenderer {
         var inverseViewProjection = new Matrix4f().set(RenderSystem.getInverseViewRotationMatrix())
                 .mul(new Matrix4f(event.getProjectionMatrix()).invert());
         var position = camera.getPosition();
-        var source = new Matrix4f(inverseViewProjection).invert()
-                .transform(new Vector4f(celestial.x(), celestial.y(), 0F, 0F));
-        float rayStrength = moon ? 0.65F * celestial.strength() : celestial.strength();
+        float rayStrength = moon ? (float) Math.sqrt(celestial.strength()) * 0.82F : celestial.strength();
         float sunHeight = Mth.clamp(sun.y() * 2.5F, 0F, 1F);
         float lowSun = 1F - sunHeight * sunHeight * (3F - 2F * sunHeight);
 
@@ -144,11 +140,7 @@ final class AtmosphereRenderer {
             scattering.safeGetUniform("SunStrength").set(rayStrength);
             scattering.safeGetUniform("SunColor").set(moon ? 0.48F : 1F, moon ? 0.67F : 0.94F - lowSun * 0.12F,
                     moon ? 1F : 0.81F - lowSun * 0.26F);
-            float projectionW = Math.max(0.001F, source.w);
-            scattering.safeGetUniform("CelestialScreen").set(0.5F + 0.5F * source.x / projectionW,
-                    0.5F + 0.5F * source.y / projectionW, source.w > 0.04F ? 1F : 0F, 0F);
             scattering.safeGetUniform("CameraAltitude").set((float) position.y - level.getSeaLevel());
-            scattering.safeGetUniform("Weather").set(weather);
             scattering.safeGetUniform("Underwater").set(underwater ? 1F : 0F);
             scattering.safeGetUniform("OpenSky").set(openSky);
             scattering.safeGetUniform("Aurora").set(aurora);
@@ -161,16 +153,6 @@ final class AtmosphereRenderer {
             int tint = biome.getWaterColor();
             float clarity = Mth.clamp(0.30F + ((tint & 255) - (tint >> 16 & 255)) / 400F, 0.15F, 0.85F);
             scattering.safeGetUniform("WaterClarity").set(clarity);
-            for (int index = 0; index < 2; index++) {
-                if (volume != null && index < localLights.size()) {
-                    var light = localLights.get(index);
-                    scattering.safeGetUniform("LocalLight" + index).set((float) (light.x() - position.x),
-                            (float) (light.y() - position.y), (float) (light.z() - position.z), Math.min(8F, light.emission() * 0.55F));
-                    scattering.safeGetUniform("LocalColor" + index).set(light.red(), light.green(), light.blue(), light.emission() / 15F);
-                } else {
-                    scattering.safeGetUniform("LocalLight" + index).set(0F, 0F, 0F, 0F);
-                }
-            }
             drawScattering(volume == null ? 0 : volume.id(), volume == null ? 0 : volume.shapes());
 
             main.bindWrite(true);

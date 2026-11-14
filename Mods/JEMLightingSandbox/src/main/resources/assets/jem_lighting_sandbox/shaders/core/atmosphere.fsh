@@ -8,10 +8,8 @@ uniform vec3 VolumeOrigin;
 uniform vec3 VolumeSize;
 uniform vec3 SunDirection;
 uniform float SunStrength;
-uniform vec4 CelestialScreen;
 uniform vec3 SunColor;
 uniform float CameraAltitude;
-uniform float Weather;
 uniform float OpenSky;
 uniform float Underwater;
 uniform vec3 WaterColor;
@@ -20,20 +18,13 @@ uniform float Aurora;
 uniform float Rainbow;
 uniform float DistantFlash;
 uniform float AtmosphereTime;
-uniform vec4 LocalLight0;
-uniform vec4 LocalLight1;
-uniform vec4 LocalColor0;
-uniform vec4 LocalColor1;
 
 in vec2 sceneUv;
 out vec4 fragColor;
 
-const int VIEW_SAMPLES = 7;
+const int MAX_VIEW_SAMPLES = 32;
 const int SUN_STEPS = 36;
-const int LOCAL_VIEW_SAMPLES = 5;
-const int LOCAL_STEPS = 20;
 const float SUN_REACH = 24.0;
-const float LOCAL_REACH = 10.0;
 const float VIEW_REACH = 36.0;
 const float RAY_EPSILON = 0.0001;
 
@@ -75,7 +66,7 @@ bool hitsShape(int shape, vec3 localOrigin, vec3 inverseRay, float entering, flo
     return false;
 }
 
-float lightVisibility(vec3 origin, vec3 inverseRay, float reach, int steps, ivec3 sourceCell) {
+float lightVisibility(vec3 origin, vec3 inverseRay, float reach, int steps) {
     ivec3 cell = ivec3(floor(origin));
     ivec3 stepDirection = ivec3(sign(inverseRay));
     vec3 cellEdge = vec3(cell) + max(vec3(stepDirection), vec3(0.0));
@@ -86,7 +77,7 @@ float lightVisibility(vec3 origin, vec3 inverseRay, float reach, int steps, ivec
     float visibility = 1.0;
 
     for (int index = 0; index < SUN_STEPS; ++index) {
-        if (index >= steps || all(equal(cell, sourceCell))
+        if (index >= steps
                 || any(lessThan(cell, ivec3(0))) || any(greaterThanEqual(cell, volumeEnd))) {
             break;
         }
@@ -125,101 +116,34 @@ float celestialShafts(vec3 ray, float sceneDistance) {
         return 0.0;
     }
 
-    float stride = (last - first) / float(VIEW_SAMPLES);
+    // Fixed subpixel phases break up aligned sample planes without temporal flicker.
+    float phase = fract(dot(mod(gl_FragCoord.xy, 8.0), vec2(0.75487767, 0.56984029)));
+    float lengthInVolume = last - first;
+    float stride = max(0.40, lengthInVolume / float(MAX_VIEW_SAMPLES));
     vec3 inverseSun = inverseDirection(SunDirection);
-    float obscured = 0.0;
-    float exposed = 0.0;
-    for (int index = 0; index < VIEW_SAMPLES; ++index) {
-        float distance = first + (float(index) + 0.5) * stride;
+    float lit = 0.0;
+    float shadowed = 0.0;
+    for (int index = 0; index < MAX_VIEW_SAMPLES; ++index) {
+        float segment = first + float(index) * stride;
+        float span = min(stride, last - segment);
+        if (span <= 0.0) break;
+        float distance = segment + (0.14 + 0.72 * phase) * span;
         vec3 point = cameraInVolume + ray * distance;
         vec3 edges = min(point, VolumeSize - point);
-        float edge = smoothstep(0.0, 2.5, min(edges.x, min(edges.y, edges.z)));
+        float edge = smoothstep(0.0, 3.0, min(edges.x, min(edges.y, edges.z)));
         float density = atmosphereDensity(CameraAltitude + ray.y * distance);
         if (Underwater > 0.5) {
             density = exp(-distance * mix(0.17, 0.045, WaterClarity));
         }
-        float weight = edge * density * exp(-distance * 0.018);
-        float visible = lightVisibility(point, inverseSun, SUN_REACH, SUN_STEPS, ivec3(-1));
-        exposed += weight * visible;
-        obscured += weight * (1.0 - visible);
+        float weight = span * edge * density * exp(-distance * 0.018);
+        float visible = lightVisibility(point, inverseSun, SUN_REACH, SUN_STEPS);
+        lit += weight * visible;
+        shadowed += weight * (1.0 - visible);
     }
-    float forward = 0.18 + 0.82 * pow(max(dot(ray, SunDirection), 0.0), 4.0);
-    float contrast = smoothstep(0.03, 0.36, obscured / max(exposed + obscured, 0.001));
-    return (1.0 - exp(-0.048 * exposed * stride)) * mix(0.26, 1.0, contrast) * forward;
-}
-
-float skyShafts(vec2 uv) {
-    if (CelestialScreen.z < 0.5 || SunStrength <= 0.0 || Underwater > 0.5) return 0.0;
-    vec2 source = CelestialScreen.xy;
-    vec2 edge = min(source, 1.0 - source);
-    float frame = smoothstep(-0.18, 0.02, min(edge.x, edge.y));
-    if (frame <= 0.0) return 0.0;
-    vec2 delta = source - uv;
-    float distance = length(delta);
-    float exposure = 0.0;
-    for (int i = 0; i < 18; i++) {
-        float along = (float(i) + 0.5) / 18.0;
-        vec2 sampleUv = uv + delta * (along * 0.91);
-        if (all(greaterThanEqual(sampleUv, vec2(0.0))) && all(lessThanEqual(sampleUv, vec2(1.0)))) {
-            exposure += step(0.999999, texture(SceneDepth, sampleUv).r) * (0.72 + 0.28 * along);
-        }
-    }
-    float fraction = exposure / 15.48;
-    float contrast = 4.0 * fraction * (1.0 - fraction);
-    return frame * contrast * exp(-3.4 * distance) * smoothstep(0.025, 0.12, distance) * 0.55;
-}
-
-vec4 localScatter(vec3 ray, float sceneDistance, vec4 light, vec4 color) {
-    if (light.w <= 0.0 || color.a <= 0.0) {
-        return vec4(0.0);
-    }
-
-    float reach = min(light.w, LOCAL_REACH);
-    float projected = dot(ray, light.xyz);
-    vec3 perpendicular = light.xyz - ray * projected;
-    float radialSquared = reach * reach - dot(perpendicular, perpendicular);
-    if (radialSquared <= 0.0) {
-        return vec4(0.0);
-    }
-
-    float halfLength = sqrt(radialSquared);
-    vec3 cameraInVolume = -VolumeOrigin;
-    vec2 interval = boxInterval(cameraInVolume, inverseDirection(ray), vec3(0.0), VolumeSize);
-    float first = max(max(0.25, projected - halfLength), interval.x);
-    float last = min(min(sceneDistance, projected + halfLength), interval.y);
-    if (last <= first) {
-        return vec4(0.0);
-    }
-
-    vec3 source = cameraInVolume + light.xyz;
-    if (any(lessThan(source, vec3(0.0))) || any(greaterThanEqual(source, VolumeSize))) {
-        return vec4(0.0);
-    }
-
-    ivec3 sourceCell = ivec3(floor(source));
-    float stride = (last - first) / float(LOCAL_VIEW_SAMPLES);
-    float path = 0.0;
-    for (int index = 0; index < LOCAL_VIEW_SAMPLES; ++index) {
-        float viewDistance = first + (float(index) + 0.5) * stride;
-        vec3 point = cameraInVolume + ray * viewDistance;
-        vec3 toSource = source - point;
-        float distance = length(toSource);
-        vec3 direction = toSource / max(distance, 0.0001);
-        float visibility = lightVisibility(point, inverseDirection(direction), distance, LOCAL_STEPS, sourceCell);
-        float falloff = 1.0 - smoothstep(0.0, reach, distance);
-        float density = mix(0.64, 1.0 + 0.40 * Weather, OpenSky);
-        if (Underwater > 0.5) {
-            density = exp(-viewDistance * mix(0.18, 0.055, WaterClarity));
-        }
-        path += density * visibility * falloff / (1.0 + 0.15 * distance * distance);
-    }
-
-    float strength = (1.0 - exp(-0.080 * path * stride)) * color.a;
-    vec3 tint = pow(clamp(color.rgb, vec3(0.0), vec3(1.0)), vec3(0.4545));
-    if (Underwater > 0.5) {
-        tint *= mix(vec3(1.0), max(WaterColor, vec3(0.18, 0.30, 0.40)), 0.52);
-    }
-    return vec4(tint * strength, strength);
+    // Only show shafts where actual terrain interrupts the light along this view.
+    float contrast = smoothstep(0.12, 1.4, shadowed);
+    float forward = 0.30 + 0.70 * pow(max(dot(ray, SunDirection), 0.0), 3.0);
+    return (1.0 - exp(-0.21 * lit)) * contrast * forward;
 }
 
 vec3 rainbowColor(float angle) {
@@ -267,17 +191,10 @@ void main() {
         haze = (1.0 - exp(-max(0.0, sceneDistance - 1.0) * waterDensity)) * 0.28;
     }
 
-    float beam = max(celestialShafts(ray, sceneDistance), skyShafts(sceneUv)) * SunStrength;
+    float beam = celestialShafts(ray, sceneDistance) * SunStrength;
     vec3 beamColor = submerged ? mix(SunColor, max(WaterColor, vec3(0.12, 0.26, 0.30)), 0.53) : SunColor;
-    float opacity = haze + beam * (1.0 - haze);
+    float opacity = haze + 0.30 * beam * (1.0 - haze);
     vec4 scatter = vec4(WaterColor * haze + beamColor * beam * (1.0 - haze), opacity);
-
-    vec4 local0 = localScatter(ray, sceneDistance, LocalLight0, LocalColor0);
-    vec4 local1 = localScatter(ray, sceneDistance, LocalLight1, LocalColor1);
-    float localOpacity = 1.0 - (1.0 - local0.a) * (1.0 - local1.a);
-    vec3 localTint = (local0.rgb + local1.rgb) / max(0.0001, local0.a + local1.a);
-    vec4 local = vec4(localTint * localOpacity, localOpacity);
-    scatter += local * (1.0 - scatter.a);
 
     if (!submerged && OpenSky > 0.0) {
         if (sky && ray.y > 0.0) {

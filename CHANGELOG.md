@@ -1,3 +1,9 @@
+## 2026-11-14 - Smooth Sandbox celestial shafts and remove local light haze
+
+- User requested stronger sun and moon shafts and removal of haze around local emitters
+- Bug / Client / A screen-depth radial pass drew over nearby geometry while seven aligned volume samples produced visible bands / in testing with one terrain-occluded pass and up to 32 spatially staggered samples
+- Removed local light scattering from the atmosphere pass. Campfire particles and surface lighting keep their existing paths
+
 ## 2026-11-14 - Remove built-in Sandbox biome fog and increase smoke sway
 
 - User requested removal of built-in biome fog in favor of a separate mod. Removed the fog pass, controls and client configuration keys
