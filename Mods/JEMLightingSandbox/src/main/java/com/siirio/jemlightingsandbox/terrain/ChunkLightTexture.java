@@ -15,13 +15,15 @@ import org.lwjgl.opengl.GL21;
 import org.lwjgl.opengl.GL30;
 
 final class ChunkLightTexture {
-    private static final int SIDE = 65;
     private static final int LIGHTS_PER_SECTION = 8;
-    private static final int SECTION_TEXELS = 1 + LIGHTS_PER_SECTION * 2;
+    private static final int MASK_OFFSET = 1 + LIGHTS_PER_SECTION * 2;
+    private static final int SECTION_TEXELS = MASK_OFFSET + 2;
+    private static final double BOUND_PADDING = 1.0 / 64.0;
     private static final int COLUMNS_PER_UPLOAD = 10;
     private static final long UPLOAD_BUDGET_NANOS = 750_000;
-    private final LinkedHashSet<ChunkPos> dirty = new LinkedHashSet<>();
+    private LinkedHashSet<ChunkPos> dirty = new LinkedHashSet<>();
     private int texture;
+    private int side;
     private int sections;
     private int minSection;
     private int sourceReach;
@@ -48,20 +50,22 @@ final class ChunkLightTexture {
     void reachChanged(int reach, Vec3 camera, int chunks) {
         int cx = SectionPos.blockToSectionCoord(camera.x);
         int cz = SectionPos.blockToSectionCoord(camera.z);
-        boolean all = sourceReach != reach || lastRadius < 0;
+        boolean all = sourceReach != reach || lastRadius != chunks;
         if (!all && lastX == cx && lastZ == cz && lastRadius == chunks) {
             return;
         }
         sourceReach = reach;
-        queueNewColumn(cx, cz, all);
+        var previousDirty = dirty;
+        dirty = new LinkedHashSet<>();
+        queueNewColumn(cx, cz, all, previousDirty);
         for (int radius = 1; radius <= chunks; radius++) {
             for (int offset = -radius; offset <= radius; offset++) {
-                queueNewColumn(cx + offset, cz - radius, all);
-                queueNewColumn(cx + offset, cz + radius, all);
+                queueNewColumn(cx + offset, cz - radius, all, previousDirty);
+                queueNewColumn(cx + offset, cz + radius, all, previousDirty);
             }
             for (int offset = 1 - radius; offset < radius; offset++) {
-                queueNewColumn(cx - radius, cz + offset, all);
-                queueNewColumn(cx + radius, cz + offset, all);
+                queueNewColumn(cx - radius, cz + offset, all, previousDirty);
+                queueNewColumn(cx + radius, cz + offset, all, previousDirty);
             }
         }
         lastX = cx;
@@ -69,20 +73,32 @@ final class ChunkLightTexture {
         lastRadius = chunks;
     }
 
-    private void queueNewColumn(int x, int z, boolean all) {
-        if (all || Math.max(Math.abs(x - lastX), Math.abs(z - lastZ)) > lastRadius) {
-            dirty.add(new ChunkPos(x, z));
+    private void queueNewColumn(int x, int z, boolean all, LinkedHashSet<ChunkPos> previousDirty) {
+        var position = new ChunkPos(x, z);
+        if (all || Math.max(Math.abs(x - lastX), Math.abs(z - lastZ)) > lastRadius || previousDirty.contains(position)) {
+            dirty.add(position);
         }
+    }
+
+    int side() {
+        return side;
     }
 
     int bindAndUpdate(ClientLevel level, Vec3 camera, int chunks, ChunkLightIndex index, boolean update) {
         int cx = SectionPos.blockToSectionCoord(camera.x);
         int cz = SectionPos.blockToSectionCoord(camera.z);
         int height = level.getSectionsCount();
+        int requestedSide = chunks * 2 + 1;
+        if (texture != 0 && side != requestedSide) {
+            GL11.glDeleteTextures(texture);
+            texture = 0;
+        }
         if (texture == 0) {
-            if (height * SIDE > GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE)) {
+            int limit = GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE);
+            if (height * requestedSide > limit || SECTION_TEXELS * requestedSide > limit) {
                 return 0;
             }
+            side = requestedSide;
             sections = height;
             minSection = level.getMinSection();
             upload = directFloats(sections * SECTION_TEXELS * 4);
@@ -102,12 +118,12 @@ final class ChunkLightTexture {
                 GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, 0);
                 GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, 0);
                 GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, 0);
-                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA32F, SIDE * SECTION_TEXELS, SIDE * sections,
+                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA32F, side * SECTION_TEXELS, side * sections,
                         0, GL11.GL_RGBA, GL11.GL_FLOAT, (FloatBuffer) null);
                 // Initialize only the headers. Empty rows have no samples to read.
-                float[] emptyHeaders = new float[SIDE * sections * 4];
-                for (int x = 0; x < SIDE; x++) {
-                    GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, x * SECTION_TEXELS, 0, 1, SIDE * sections,
+                float[] emptyHeaders = new float[side * sections * 4];
+                for (int x = 0; x < side; x++) {
+                    GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, x * SECTION_TEXELS, 0, 1, side * sections,
                             GL11.GL_RGBA, GL11.GL_FLOAT, emptyHeaders);
                 }
             } finally {
@@ -190,9 +206,46 @@ final class ChunkLightTexture {
                 }
             }
         }
-        int u = Math.floorMod(position.x, SIDE) * SECTION_TEXELS;
-        int v = Math.floorMod(position.z, SIDE) * sections;
+        writeReceiverMasks();
+        int u = Math.floorMod(position.x, side) * SECTION_TEXELS;
+        int v = Math.floorMod(position.z, side) * sections;
         GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, u, v, SECTION_TEXELS, sections, GL11.GL_RGBA, GL11.GL_FLOAT, upload);
+    }
+
+    private void writeReceiverMasks() {
+        for (int section = 0; section < sections; section++) {
+            int header = section * SECTION_TEXELS * 4;
+            int count = (int) upload.get(header + 2);
+            if (count == 0) {
+                continue;
+            }
+
+            int areaMask = 0;
+            for (int i = 0; i < count; i++) {
+                if (upload.get(header + 11 + i * 8) < 0F) {
+                    areaMask |= 1 << i;
+                }
+            }
+            upload.put(header + 3, 1F + areaMask);
+            for (int octant = 0; octant < 8; octant++) {
+                int x = (octant & 1) * 8;
+                int z = (octant & 2) * 4;
+                int y = (octant & 4) * 2;
+                int candidates = 0;
+                for (int i = 0; i < count; i++) {
+                    int first = header + 4 + i * 8;
+                    double dx = distanceToInterval(upload.get(first), x, x + 8);
+                    double dy = distanceToInterval(upload.get(first + 1), y, y + 8);
+                    double dz = distanceToInterval(upload.get(first + 2), z, z + 8);
+                    // Include the surface bias and position rounding on octant boundaries.
+                    double radius = upload.get(first + 3) + BOUND_PADDING;
+                    if (dx * dx + dy * dy + dz * dz <= radius * radius) {
+                        candidates |= 1 << i;
+                    }
+                }
+                upload.put(header + MASK_OFFSET * 4 + octant, candidates);
+            }
+        }
     }
 
     private void insert(int section, BlockLight light, float radius, float score, int x, int y, int z) {

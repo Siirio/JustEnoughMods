@@ -1,3 +1,9 @@
+## 2026-11-15 - Reduce profiled Sandbox shadow work
+
+- User reported about 9 FPS near lights and missing lighting away from the village. With the camera fixed at 2560×1406, the on/off/on capture showed 41–45 FPS with JEM enabled and 161–165 FPS with it disabled
+- Bug / Client / JEM repeatedly filters section-wide light candidates and reads ray origins for each pixel sample. Java Flight Recorder also measured entity shadow rasterization on the render thread / in testing with receiver masks, shared ray starts, height bounds and sparse entity depth uploads
+- The implementation preserves source colors and the selected shadow sample grid. Native chunks missed during travel get a bounded rescan. Neo Voxy distant terrain has a separate lightmap and needs its own source and shadow data for JEM local lighting
+
 ## 2026-11-15 - Limit dense-light cost and add Sandbox atmosphere effects
 
 - User requested real-time lighting with stable frame times, research beyond Luxium, the approved river mist, snow gust and cave air studies, individual effect switches and one master switch in Embeddium

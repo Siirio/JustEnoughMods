@@ -196,7 +196,7 @@ public final class TerrainLighting {
             GL20.glUniform3f(uniforms.cameraFraction, (float) (camera.x - cameraBlock.getX()),
                     (float) (camera.y - cameraBlock.getY()), (float) (camera.z - cameraBlock.getZ()));
             GL20.glUniform2i(uniforms.worldSections, world.minSection(), world.sections());
-            GL20.glUniform4i(uniforms.chunkLayout, rows, level.getMinSection(), chunks, 0);
+            GL20.glUniform4i(uniforms.chunkLayout, rows, level.getMinSection(), chunks, CHUNK_LIGHTS.side());
             GL20.glUniform1i(uniforms.shadowSamples, LightingSettings.pointShadowSamples());
             float time = worldTime(level, client.getFrameTime());
             GL20.glUniform1f(uniforms.shadowTime, time);

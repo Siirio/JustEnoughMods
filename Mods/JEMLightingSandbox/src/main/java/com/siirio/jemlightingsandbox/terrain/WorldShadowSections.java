@@ -35,7 +35,7 @@ final class WorldShadowSections {
     private static final Logger LOGGER = LogUtils.getLogger();
     static final int RING = 69;
     private static final int CELLS = 16 * 16 * 16;
-    private static final int PAGE_WORDS = CELLS + 2;
+    private static final int PAGE_WORDS = CELLS + 3;
     private static final int STRIDE = PAGE_WORDS * Integer.BYTES;
     private static final int UPLOADS_PER_FRAME = 32;
     private static final int REMOVALS_PER_FRAME = 8;
@@ -43,6 +43,7 @@ final class WorldShadowSections {
     private static final int BANNER_OVERHANG = 1 << 30;
     private static final int CUTOUT_OVERHANG = 1 << 31;
     private static final int OFFSET_PRESENT = 1 << 14;
+    private static final int RAY_OCCLUDER = 1023 | BANNER_OVERHANG | CUTOUT_OVERHANG;
     private static final int MAX_BUFFER_BYTES = 256 * 1024 * 1024;
     private static final int UNIFORM = -1;
     private final BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
@@ -127,13 +128,17 @@ final class WorldShadowSections {
     }
 
     private static void markOccupiedSubcells(int[] data) {
+        int highest = 0;
         for (int i = 0; i < CELLS; i++) {
-            if (data[i] != 0) {
-                // Include cutout and banner overhangs as well as their owner cells.
+            if ((data[i] & RAY_OCCLUDER) != 0) {
+                // Emission and offset metadata alone do not block a ray.
                 int subcell = ((i >> 2) & 3) | ((i >> 4) & 12) | ((i >> 6) & 48);
                 data[CELLS + (subcell >> 5)] |= 1 << (subcell & 31);
+                highest = (i >> 8) + 1;
             }
         }
+        boolean fullyOccupied = data[CELLS] == -1 && data[CELLS + 1] == -1;
+        data[CELLS + 2] = (highest << 1) | (fullyOccupied ? 1 : 0);
     }
 
     private void captureOverhangs(ClientLevel level, LevelChunk chunk, int sectionIndex, SectionPos section,
@@ -363,7 +368,7 @@ final class WorldShadowSections {
                 page = UNIFORM;
                 metadata = data[0];
             } else {
-                metadata = data[CELLS] == -1 && data[CELLS + 1] == -1 ? 1 : 0;
+                metadata = data[CELLS + 2];
                 Integer slot = pages.get(section);
                 if (slot == null && replacesSlot) {
                     slot = pages.remove(previous);

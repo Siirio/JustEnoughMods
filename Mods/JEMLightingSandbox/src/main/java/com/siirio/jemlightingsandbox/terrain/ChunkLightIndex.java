@@ -274,16 +274,13 @@ public final class ChunkLightIndex {
     }
 
     private void revalidateColumns(WorldShadowSections shadows) {
-        // Forge posts events for individual packet loads and drops. Cache resizing can evict
-        // columns without posting a drop, so periodically recheck resident chunk identity.
+        // Recheck both replaced columns and missed arrivals after travel or cache resizing.
         if (revalidation == null && discovery == null && --ticksUntilRevalidation <= 0) {
             revalidation = new Discovery(window);
         }
         for (int count = 0; count < REVALIDATIONS_PER_TICK && revalidation != null; count++) {
             long key = revalidation.advance();
-            if (columns.containsKey(key)) {
-                refreshColumn(key, false, shadows);
-            }
+            refreshColumn(key, false, shadows);
             if (revalidation.finished()) {
                 revalidation = null;
                 ticksUntilRevalidation = REVALIDATION_INTERVAL;
