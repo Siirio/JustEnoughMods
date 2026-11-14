@@ -5,9 +5,6 @@ uniform sampler2D SceneDepth;
 uniform sampler2D SceneColor;
 uniform mat4 InverseViewProjection;
 uniform float Underwater;
-uniform vec4 AirFog;
-uniform vec4 AirFogGeometry;
-uniform vec4 FogWind;
 uniform float Heat;
 uniform vec4 HeatOrigin;
 uniform float AtmosphereTime;
@@ -47,33 +44,6 @@ void addTap(ivec2 pixel, float weight, ivec2 atmosphereSize, ivec2 depthSize, fl
     accumulatedWeight += weight;
 }
 
-vec4 airFog(vec4 target, bool sky) {
-    float targetLength = length(target.xyz);
-    vec3 ray = target.xyz / max(targetLength, 0.000001);
-    float distance = sky ? AirFogGeometry.w : targetLength / max(abs(target.w), 0.000001);
-    float start = AirFogGeometry.x;
-    float altitude = AirFogGeometry.y;
-    float enclosed = AirFogGeometry.z;
-    float span = max(distance - start, 0.0);
-    float width = 1.6 / AirFog.a;
-    vec2 wind = FogWind.xy;
-    vec3 point = ray * (start + min(span * 0.32, 35.0));
-    float layerHeight = altitude + point.y;
-    vec2 location = FogWind.zw + point.xz - wind * (2.8 * clamp(layerHeight, -8.0, 18.0));
-    vec2 phase = location * (6.2831853 / 1024.0);
-    float band = sin(dot(phase, vec2(23.0, 15.0)) + 0.7 * sin(dot(phase, vec2(-9.0, 29.0))));
-    float variation = mix(1.0, 0.92 + 0.19 * band, 1.0 - 0.45 * enclosed);
-    float exposure = mix(exp(-max(layerHeight - 9.0, 0.0) * 0.022), 1.0, enclosed);
-    float opacity = smoothstep(0.0, width, span * exposure * variation);
-    if (sky) {
-        float horizon = 1.0 - smoothstep(0.01, 0.24, abs(ray.y));
-        opacity *= mix(horizon * 0.38, 0.7, enclosed);
-    }
-    float upper = smoothstep(1.0, 23.0, layerHeight);
-    vec3 color = AirFog.rgb * mix(1.0, 0.63, upper);
-    return vec4(color * opacity, opacity);
-}
-
 void main() {
     ivec2 atmosphereSize = textureSize(AtmosphereTex, 0);
     ivec2 depthSize = textureSize(SceneDepth, 0);
@@ -98,10 +68,6 @@ void main() {
 
     // Fade where the reduced buffer cannot represent the geometry under this pixel.
     vec4 scatter = accumulated * (smoothstep(0.0, 0.15, weight) / max(weight, 0.00001));
-    if (AirFog.a > 0.0) {
-        vec4 target = InverseViewProjection * vec4(sceneUv * 2.0 - 1.0, rawDepth * 2.0 - 1.0, 1.0);
-        scatter += airFog(target, centerSky) * (1.0 - scatter.a);
-    }
     if (Underwater > 0.5) {
         vec2 wave = vec2(sin(sceneUv.y * 54.0 + AtmosphereTime * 1.7),
                 sin(sceneUv.x * 47.0 - AtmosphereTime * 1.35));

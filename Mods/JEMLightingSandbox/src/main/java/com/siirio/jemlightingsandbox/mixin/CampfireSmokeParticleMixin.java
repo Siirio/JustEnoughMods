@@ -18,6 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 abstract class CampfireSmokeParticleMixin extends TextureSheetParticle {
     @Unique private boolean jem$plume;
     @Unique private double jem$plumeCeiling;
+    @Unique private double jem$sourceHeight;
+    @Unique private float jem$baseQuadSize;
     @Unique private double jem$riseScale;
     @Unique private float jem$plumeOpacity;
     @Unique private int jem$fadeTicks;
@@ -51,9 +53,11 @@ abstract class CampfireSmokeParticleMixin extends TextureSheetParticle {
         float shade = 1f - 0.64f * density;
         setColor(shade, shade, shade);
         quadSize *= 1f + 0.45f * density;
+        jem$baseQuadSize = quadSize;
 
         double baseHeight = signal ? 18.5 : 10.0;
-        jem$plumeCeiling = source.getY() + Math.min(20.0, baseHeight + 1.5 * neighbors);
+        jem$sourceHeight = source.getY();
+        jem$plumeCeiling = jem$sourceHeight + Math.min(20.0, baseHeight + 1.5 * neighbors);
         lifetime = plumeLifetime;
         jem$fadeTicks = fadeTicks;
         jem$riseScale = (jem$plumeCeiling - y) / nativeRise;
@@ -67,6 +71,13 @@ abstract class CampfireSmokeParticleMixin extends TextureSheetParticle {
         var wind = SandboxWeather.campfireWind(level, getBoundingBox().getCenter());
         if (jem$plume) {
             y = Math.min(y * jem$riseScale, Math.max(0.0, jem$plumeCeiling - this.y));
+            double bendStart = jem$sourceHeight + 5.0;
+            double bendHeight = jem$plumeCeiling - bendStart;
+            double start = Math.max(0.0, (this.y - bendStart) / bendHeight);
+            double end = Math.max(0.0, (this.y + y - bendStart) / bendHeight);
+            var bend = wind.normalize().scale(4.0 * (end * end - start * start));
+            x += bend.x;
+            z += bend.z;
         }
         smoke.move(x + wind.x, y, z + wind.z);
     }
@@ -80,6 +91,7 @@ abstract class CampfireSmokeParticleMixin extends TextureSheetParticle {
             // The native cosy and signal providers set their initial alpha after construction.
             jem$plumeOpacity = Math.min(1f, alpha + jem$plumeOpacity);
         }
+        quadSize = jem$baseQuadSize * (1F + 0.025F * (float) Math.max(0.0, y - jem$sourceHeight - 5.0));
         float fade = Math.max(0f, (age - lifetime + jem$fadeTicks) / (float) jem$fadeTicks);
         alpha = jem$plumeOpacity * (1f - fade * fade * (3f - 2f * fade));
     }

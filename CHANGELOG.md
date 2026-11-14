@@ -1,3 +1,8 @@
+## 2026-11-14 - Remove built-in Sandbox biome fog and increase smoke sway
+
+- User requested removal of built-in biome fog in favor of a separate mod. Removed the fog pass, controls and client configuration keys
+- User requested four more blocks of sway at the plume top and 5% larger smoke particles per two blocks above five blocks. The implementation adds a curved offset downwind above that height and scales sprites continuously from their existing size
+
 ## 2026-11-14 - Revise Sandbox fog and celestial lighting
 
 - User rejected the previous fog and shafts. The replacement uses a gradual biome fog start and end, moving world-space bands that lean with the wind, and a lighter fog base with darker upper layers

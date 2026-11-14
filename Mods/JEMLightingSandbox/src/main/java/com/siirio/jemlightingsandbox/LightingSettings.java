@@ -23,14 +23,10 @@ public final class LightingSettings {
     private static final boolean DEFAULT_ATMOSPHERE = true;
     private static final int DEFAULT_RAIN_DENSITY = 100;
     private static final int DEFAULT_STORM_DENSITY = 150;
-    private static final int DEFAULT_FOG_DENSITY = 100;
-    private static final int DEFAULT_FOG_DISTANCE = 12;
     static final List<Integer> SHADOW_RESOLUTIONS = List.of(256, 512, 1024, 2048);
     private static final int DEFAULT_SHADOW_RESOLUTION = 256;
     static final int MIN_WEATHER_DENSITY = 25;
     static final int MAX_WEATHER_DENSITY = 200;
-    static final int MAX_FOG_DENSITY = 200;
-    static final int MAX_FOG_DISTANCE = 128;
     static final List<Integer> LIGHT_DISTANCES = List.of(8, 12, 15, 20);
     static final int MIN_LIGHTING_CHUNKS = 2;
     static final int MAX_LIGHTING_CHUNKS = 32;
@@ -43,8 +39,6 @@ public final class LightingSettings {
     private static final ForgeConfigSpec.BooleanValue ATMOSPHERE;
     private static final ForgeConfigSpec.IntValue RAIN_DENSITY;
     private static final ForgeConfigSpec.IntValue STORM_DENSITY;
-    private static final ForgeConfigSpec.IntValue FOG_DENSITY;
-    private static final ForgeConfigSpec.IntValue FOG_DISTANCE;
     private static final ForgeConfigSpec.ConfigValue<Integer> SHADOW_RESOLUTION;
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WIND_COLORS;
 
@@ -58,16 +52,12 @@ public final class LightingSettings {
                 .defineInRange("lightingChunks", DEFAULT_CHUNK_DISTANCE, MIN_LIGHTING_CHUNKS, MAX_LIGHTING_CHUNKS);
         FOLLOW_RENDER_DISTANCE = builder.comment("Use the effective Minecraft render distance for lighting.")
                 .define("followRenderDistance", DEFAULT_FOLLOW_RENDER_DISTANCE);
-        ATMOSPHERE = builder.comment("Enable sunlight shafts and distance haze.")
+        ATMOSPHERE = builder.comment("Enable light shafts and weather effects.")
                 .define("atmosphere", DEFAULT_ATMOSPHERE);
         RAIN_DENSITY = builder.comment("Particle density in ordinary precipitation across all biomes, in percent.")
                 .defineInRange("rainDensity", DEFAULT_RAIN_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
         STORM_DENSITY = builder.comment("Particle density during thunderstorms across all biomes, in percent.")
                 .defineInRange("stormDensity", DEFAULT_STORM_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
-        FOG_DENSITY = builder.comment("Density of biome fog, in percent. Zero disables atmospheric fog.")
-                .defineInRange("fogDensity", DEFAULT_FOG_DENSITY, 0, MAX_FOG_DENSITY);
-        FOG_DISTANCE = builder.comment("Distance from the camera where biome fog begins, in blocks.")
-                .defineInRange("fogDistance", DEFAULT_FOG_DISTANCE, 0, MAX_FOG_DISTANCE);
         SHADOW_RESOLUTION = builder.comment("Resolution of the sun and moon entity shadow map.")
                 .defineInList("shadowResolution", DEFAULT_SHADOW_RESOLUTION, SHADOW_RESOLUTIONS);
         WIND_COLORS = builder.comment("Optional storm wind colors: biome_id=#RRGGBB. Exact biome IDs override defaults.")
@@ -116,22 +106,6 @@ public final class LightingSettings {
 
     static void setWeatherDensity(boolean storm, int density) {
         saveInt(storm ? STORM_DENSITY : RAIN_DENSITY, density);
-    }
-
-    public static int fogDensity() {
-        return SPEC.isLoaded() ? FOG_DENSITY.get() : DEFAULT_FOG_DENSITY;
-    }
-
-    static void setFogDensity(int density) {
-        saveInt(FOG_DENSITY, density);
-    }
-
-    public static int fogDistance() {
-        return SPEC.isLoaded() ? FOG_DISTANCE.get() : DEFAULT_FOG_DISTANCE;
-    }
-
-    static void setFogDistance(int distance) {
-        saveInt(FOG_DISTANCE, distance);
     }
 
     public static int shadowResolution() {

@@ -88,16 +88,12 @@ public final class LightingSettingsScreen extends Screen {
                         CONTROL_HEIGHT, Component.translatable(SETTINGS + "shadow_resolution"),
                         (button, resolution) -> LightingSettings.setShadowResolution(resolution)));
 
-        int sectionWidth = (buttonWidth - 8) / 3;
-        addRenderableWidget(Button.builder(Component.translatable(SETTINGS + "fog"),
-                button -> minecraft.setScreen(new FogSettingsScreen(this)))
-                .bounds(left, top + 5 * ROW_SPACING, sectionWidth, CONTROL_HEIGHT).build());
         addRenderableWidget(Button.builder(Component.translatable(SETTINGS + "precipitation"),
                 button -> minecraft.setScreen(new WeatherDensityScreen(this)))
-                .bounds(left + sectionWidth + 4, top + 5 * ROW_SPACING, sectionWidth, CONTROL_HEIGHT).build());
+                .bounds(left, top + 5 * ROW_SPACING, atmosphereWidth, CONTROL_HEIGHT).build());
         addRenderableWidget(Button.builder(Component.translatable(SETTINGS + "wind_colors"),
                 button -> minecraft.setScreen(new WindColorScreen(this)))
-                .bounds(left + 2 * sectionWidth + 8, top + 5 * ROW_SPACING, buttonWidth - 2 * sectionWidth - 8,
+                .bounds(left + atmosphereWidth + 4, top + 5 * ROW_SPACING, buttonWidth - atmosphereWidth - 4,
                         CONTROL_HEIGHT).build());
         addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> onClose())
                 .bounds(left, top + 6 * ROW_SPACING + 8, buttonWidth, CONTROL_HEIGHT).build());
