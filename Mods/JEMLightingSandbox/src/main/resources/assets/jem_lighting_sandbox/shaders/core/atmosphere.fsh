@@ -1,16 +1,9 @@
 #version 150
 
 uniform sampler2D SceneDepth;
-uniform sampler2D ShaftVisibility;
 uniform mat4 InverseViewProjection;
-uniform vec3 ShaftMapOrigin;
-uniform vec3 ShaftMapDirection;
-uniform float ShaftMapWidth;
-uniform float ShaftMapReach;
 uniform vec3 SunDirection;
 uniform float SunStrength;
-uniform float ShaftStrength;
-uniform vec3 SunColor;
 uniform float OpenSky;
 uniform float Underwater;
 uniform vec3 WaterColor;
@@ -22,69 +15,6 @@ uniform float AtmosphereTime;
 
 in vec2 sceneUv;
 out vec4 fragColor;
-
-const float VIEW_REACH = 42.0;
-const int VIEW_SAMPLES = 18;
-
-float visibilityAt(vec2 uv, float depth) {
-    if (depth <= 0.0 || depth >= ShaftMapReach
-            || any(lessThanEqual(uv, vec2(0.0))) || any(greaterThanEqual(uv, vec2(1.0)))) {
-        return 1.0;
-    }
-    vec3 column = texture(ShaftVisibility, uv).rgb;
-    if (depth >= column.r - 0.005) return 0.0;
-    return depth >= column.g ? column.b : 1.0;
-}
-
-float celestialShafts(vec3 ray, float sceneDistance, bool sky) {
-    if (ShaftStrength <= 0.0) return 0.0;
-    float alignment = max(dot(ray, SunDirection), 0.0);
-    // The scene depth masks the sun or moon disk at the actual foreground silhouette.
-    float direct = sky ? 0.62 * pow(alignment, 110.0) : 0.0;
-    if (ShaftMapReach <= 0.0) return direct * ShaftStrength;
-
-    vec3 across = vec3(ShaftMapDirection.y, -ShaftMapDirection.x, 0.0);
-    vec3 relativeCamera = -ShaftMapOrigin;
-    vec2 startUv = vec2(dot(relativeCamera, across), relativeCamera.z) / ShaftMapWidth + 0.5;
-    vec2 uvSlope = vec2(dot(ray, across), ray.z) / ShaftMapWidth;
-    float startDepth = dot(relativeCamera, -ShaftMapDirection);
-    float depthSlope = dot(ray, -ShaftMapDirection);
-    float distanceLimit = min(sceneDistance, VIEW_REACH);
-    float shaft = 0.0;
-    float density = Underwater > 0.5 ? mix(0.17, 0.052, WaterClarity) : 0.028;
-    // Intersect each sample interval with the caster depth instead of rounding the hit to the sample center.
-    float previous = 0.10;
-    for (int step = 1; step <= VIEW_SAMPLES; step++) {
-        if (previous >= distanceLimit) break;
-        float fraction = float(step) / float(VIEW_SAMPLES);
-        float next = min(distanceLimit, 0.10 + VIEW_REACH * fraction * (0.35 + 0.65 * fraction));
-        float distance = 0.5 * (previous + next);
-        vec2 uv = startUv + uvSlope * distance;
-        float depth = startDepth + depthSlope * distance;
-        vec2 margin = min(uv, 1.0 - uv);
-        float edge = smoothstep(0.0, 0.065, min(margin.x, margin.y));
-        if (edge > 0.0 && depth > 0.0 && depth < ShaftMapReach) {
-            vec3 column = texture(ShaftVisibility, uv).rgb;
-            float halfSegment = (next - previous) * 0.5;
-            float halfDepth = max(0.01, abs(depthSlope) * halfSegment);
-            float lit = clamp((column.r - depth + halfDepth) / (2.0 * halfDepth), 0.0, 1.0);
-            if (lit > 0.0) {
-                float clear = clamp((column.g - depth + halfDepth) / (2.0 * halfDepth), 0.0, lit);
-                lit = mix(clear, lit, column.b);
-                // Measure broad local contrast on both axes. The light stays continuous along its projection.
-                float width = 0.9 / ShaftMapWidth;
-                float side = min(
-                        min(visibilityAt(uv - vec2(width, 0.0), depth), visibilityAt(uv + vec2(width, 0.0), depth)),
-                        min(visibilityAt(uv - vec2(0.0, width), depth), visibilityAt(uv + vec2(0.0, width), depth)));
-                float texturedLight = max(lit - side, 0.0);
-                shaft += (next - previous) * edge * exp(-distance * density) * texturedLight;
-            }
-        }
-        previous = next;
-    }
-    float phase = 0.62 + 0.60 * pow(alignment, 6.0);
-    return ShaftStrength * (direct + phase * (1.0 - exp(-0.42 * shaft)));
-}
 
 vec3 rainbowColor(float angle) {
     vec3 wavelength = (vec3(angle) - vec3(42.0, 41.0, 40.15)) / vec3(0.43, 0.52, 0.58);
@@ -131,10 +61,7 @@ void main() {
         haze = (1.0 - exp(-max(0.0, sceneDistance - 1.0) * waterDensity)) * 0.28;
     }
 
-    float beam = celestialShafts(ray, sceneDistance, sky);
-    vec3 beamColor = submerged ? mix(SunColor, max(WaterColor, vec3(0.12, 0.26, 0.30)), 0.53) : SunColor;
-    float opacity = haze + 0.18 * beam * (1.0 - haze);
-    vec4 scatter = vec4(WaterColor * haze + beamColor * beam * (1.0 - haze), opacity);
+    vec4 scatter = vec4(WaterColor * haze, haze);
 
     if (!submerged && OpenSky > 0.0) {
         if (sky && ray.y > 0.0) {

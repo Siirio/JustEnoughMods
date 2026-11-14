@@ -1,3 +1,8 @@
+## 2026-11-14 - Remove Sandbox celestial glare and god rays
+
+- Bug / Client / The celestial post-process adds direct glare and sampled shafts over scene geometry / in testing with the shaft shader and its GPU pass removed
+- User requested removal of the aura. Weather, heat distortion and terrain shadow rendering retain their existing paths
+
 ## 2026-11-14 - Add biome fog and sky color to Sandbox Lighting
 
 - User requested biome fog and sky color in Sandbox, supplied three screenshots and approved a Taste Engine pair without Gemini
