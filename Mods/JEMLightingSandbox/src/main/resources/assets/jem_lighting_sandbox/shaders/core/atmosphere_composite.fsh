@@ -5,6 +5,8 @@ uniform sampler2D SceneDepth;
 uniform sampler2D SceneColor;
 uniform mat4 InverseViewProjection;
 uniform float Underwater;
+uniform vec4 AirFog;
+uniform vec4 AirFogGeometry;
 uniform float Heat;
 uniform vec4 HeatOrigin;
 uniform float AtmosphereTime;
@@ -44,6 +46,29 @@ void addTap(ivec2 pixel, float weight, ivec2 atmosphereSize, ivec2 depthSize, fl
     accumulatedWeight += weight;
 }
 
+vec4 airFog(vec4 target, bool sky) {
+    float targetLength = length(target.xyz);
+    float rayY = target.y / max(targetLength, 0.000001);
+    float distance = sky ? AirFogGeometry.w : targetLength / max(abs(target.w), 0.000001);
+    float start = AirFogGeometry.x;
+    float altitude = AirFogGeometry.y;
+    float enclosed = AirFogGeometry.z;
+    float span = max(distance - start, 0.0);
+
+    // Sample vertical density along the depth ray. Outdoor haze thins above ground, while cave fog fills the space.
+    float nearHeight = altitude + (start + span * 0.15) * rayY;
+    float middleHeight = altitude + (start + span * 0.5) * rayY;
+    float farHeight = altitude + (start + span * 0.85) * rayY;
+    vec3 heightDensity = exp(-max(vec3(nearHeight, middleHeight, farHeight) - 2.0, vec3(0.0)) * 0.025);
+    float exposure = mix(dot(heightDensity, vec3(0.28, 0.44, 0.28)), 1.0, enclosed);
+    float opacity = 1.0 - exp(-span * AirFog.a * exposure);
+    if (sky) {
+        float horizon = 1.0 - smoothstep(0.02, 0.40, abs(rayY));
+        opacity *= mix(horizon * 0.65, 1.0, enclosed);
+    }
+    return vec4(AirFog.rgb * opacity, opacity);
+}
+
 void main() {
     ivec2 atmosphereSize = textureSize(AtmosphereTex, 0);
     ivec2 depthSize = textureSize(SceneDepth, 0);
@@ -68,6 +93,10 @@ void main() {
 
     // Fade where the reduced buffer cannot represent the geometry under this pixel.
     vec4 scatter = accumulated * (smoothstep(0.0, 0.15, weight) / max(weight, 0.00001));
+    if (AirFog.a > 0.0) {
+        vec4 target = InverseViewProjection * vec4(sceneUv * 2.0 - 1.0, rawDepth * 2.0 - 1.0, 1.0);
+        scatter += airFog(target, centerSky) * (1.0 - scatter.a);
+    }
     if (Underwater > 0.5) {
         vec2 wave = vec2(sin(sceneUv.y * 54.0 + AtmosphereTime * 1.7),
                 sin(sceneUv.x * 47.0 - AtmosphereTime * 1.35));

@@ -14,11 +14,13 @@
       {"property": "client.sandbox.light_distance", "operation": "set", "before": "fixed 15-block range at full emission", "after": "configurable 8, 12, 15 or 20 blocks at full emission"},
       {"property": "client.sandbox.light_coverage_chunks", "operation": "set", "before": "camera-local volume only", "after": "2 to 32 loaded chunks, optionally follows the effective render distance"},
       {"property": "client.sandbox.shadow_geometry", "operation": "set", "before": "full blocks and selected native shapes", "after": "baked rectangular model geometry or native outlines, with foliage transmission"},
-      {"property": "client.sandbox.precipitation", "operation": "replace", "before": "native vertical sheets with additional native falling particles", "after": "diagonal rain and ordinary snow, horizontal blizzards with two rotating flakes per accepted spawn, and horizontal sand, with native weather state and ground impacts"},
+      {"property": "client.sandbox.precipitation", "operation": "replace", "before": "native vertical sheets with additional native falling particles", "after": "three variants per mode with individual swirls, diagonal rain and ordinary snow, predominantly horizontal blizzards and sand, two flakes per accepted blizzard spawn, and native weather state and ground impacts"},
       {"property": "client.sandbox.outdoor_wind", "operation": "replace", "before": "sparse dust", "after": "animated calm curls, fast ground waves and diagonal storm gusts with configurable biome colors"},
       {"property": "client.sandbox.point_shadow_blend", "operation": "set", "before": "native light replacement depended on traced visibility", "after": "geometry-traced light replacement follows volume coverage and directional light follows visibility"},
       {"property": "client.sandbox.directional_casters", "operation": "replace", "before": "diffuse angle loss within a moving terrain volume and approximate entity ellipsoids", "after": "terrain loss depends on traced blockers and nearby entity model geometry casts sunlight silhouettes"},
-      {"property": "client.sandbox.precipitation_density", "operation": "set", "before": "fixed spawn budget", "after": "independent global rain and storm sliders, 25 to 200 percent, default 100 and 150 percent respectively"}
+      {"property": "client.sandbox.precipitation_density", "operation": "set", "before": "fixed spawn budget", "after": "independent global rain and storm sliders, 25 to 200 percent, default 100 and 150 percent respectively"},
+      {"property": "client.sandbox.biome_fog", "operation": "replace", "before": "lighting-volume distance haze", "after": "surface and underground biome fog based on scene depth, with 0 to 128 blocks before onset and independent 0 to 200 percent density, default 12 blocks and 100 percent"},
+      {"property": "client.sandbox.campfire_smoke", "operation": "set", "before": "native lifetime with outdoor wind drift", "after": "longer gradual fade, nominal 10-block rise for ordinary smoke, plus 1.5 blocks per nearby lit campfire to a shared 20-block ceiling, with darker and denser smoke in clusters"}
     ]
   },
   "cause": {
@@ -27,15 +29,18 @@
     "source_files": [
       "Mods/JEMLightingSandbox/build.gradle",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/AtmosphereRenderer.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/BiomeFog.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/SandboxWeather.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WindGusts.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WindColorScreen.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WeatherDensityScreen.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/FogSettingsScreen.java",
       "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/textures/weather/wind_gusts.png",
       "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/GPL-3.0.txt",
       "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/LGPL-3.0.txt",
       "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/NOTICE.txt",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/PrecipitationRenderer.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/CampfirePlumes.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/CampfireSmokeParticleMixin.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/LevelRendererWeatherMixin.java",
       "Mods/JEMLightingSandbox/art/wind/assemble-wind-atlas.lua",
@@ -84,7 +89,8 @@
     {"date": "2026-11-14", "commit": "1905982a5", "action": "expand_sandbox_atmosphere_and_stabilize_distant_lighting", "summary": "Preserve distant source contributions through the local trace transition. Add weather visuals, celestial scattering, water optics and approximate shadow casters."},
     {"date": "2026-11-14", "commit": "a3411aaea", "action": "replace_sandbox_precipitation_render", "summary": "Replace the native falling precipitation visuals with diagonal rain and snow and horizontal blizzards and sand. Keep native weather authority, custom dimension handlers and impacts."},
     {"date": "2026-11-14", "commit": "e99a97d28", "action": "animate_sandbox_wind_and_fix_point_shadows", "summary": "Add biome-tinted wind gusts and double blizzard flake density. Stop occluders from restoring the same point source's native light contribution."},
-    {"date": "2026-11-14", "commit": "SELF", "action": "repair_smoke_directional_shadows_and_weather_density", "summary": "Use a typed smoke movement redirect, fix directional blocker loss, project entity model geometry and expose global precipitation density controls."}
+    {"date": "2026-11-14", "commit": "0053a5281", "action": "repair_smoke_directional_shadows_and_weather_density", "summary": "Use a typed smoke movement redirect, fix directional blocker loss, project entity model geometry and expose global precipitation density controls."},
+    {"date": "2026-11-14", "commit": "SELF", "action": "tune_sandbox_smoke_biome_fog_and_precipitation", "summary": "Add cluster-responsive smoke, scene-depth biome fog and particle variation with three-dimensional weather motion."}
   ],
   "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["No gameplay registrations, server state or native block emission levels change. The standalone preview remains available."], "unresolved": ["Visual output and frame time require verification on Windows and macOS. Entity model shadows use a bounded directional pass. Better Clouds projection, per-light entity model shadows, Voxy LOD and shader-pack coexistence are outside this pass."]}
 }

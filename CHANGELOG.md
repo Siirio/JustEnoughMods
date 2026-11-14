@@ -1,3 +1,12 @@
+## 2026-11-14 - Tune Sandbox smoke, biome fog and precipitation
+
+- User requested longer-lived campfire smoke with a normal rise of about 10 blocks, plus 1–2 blocks per nearby lit campfire to a maximum of 20. Nearby lit campfires make the smoke darker and denser
+- The smoke implementation counts lit campfires within three blocks horizontally and one block vertically. It adds 1.5 blocks per neighbor and preserves the taller signal plume within the same ceiling
+- Bug / Client / Neo-Voxy overrides native terrain fog distances, while the previous JEM haze depends on the lighting volume / in testing with scene-depth fog and independent density and start-distance controls
+- User specified yellow desert, red desert, white winter, pink cherry grove, gray cave and green lush cave fog. The renderer also reads the registered fog colors of Alex's Caves biomes. The controls default to a 12-block start and 100% density
+- The Sandbox installation disables the separate Fog mod and the Neo-Voxy environmental fog through their local settings to prevent a second layer of biome fog
+- User requested three particle variants per precipitation type and more irregular trajectories. Individual particles now swirl in three dimensions. Rain and ordinary snow still fall at an angle. Blizzard and sand keep predominantly horizontal motion
+
 ## 2026-11-14 - Repair Sandbox smoke and directional shadows
 
 - Bug / Client / The campfire smoke Mixin required a generated argument class that Forge could not load / in testing with a typed redirect to the native particle movement call

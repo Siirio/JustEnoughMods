@@ -53,7 +53,7 @@ final class AtmosphereRenderer {
 
     static void render(RenderLevelStageEvent event) {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL || scattering == null || composite == null
-                || failed || !LightingSettings.atmosphereEnabled()) {
+                || failed || !LightingSettings.atmosphereEnabled() || TerrainLighting.isShaderPackActive()) {
             return;
         }
 
@@ -65,8 +65,10 @@ final class AtmosphereRenderer {
                 || (medium != FogType.NONE && medium != FogType.WATER) || hasRestrictedVision(camera)) {
             return;
         }
+        boolean underwater = medium == FogType.WATER;
+        int fogDensity = underwater ? 0 : LightingSettings.fogDensity();
         var volume = TerrainLighting.currentVolume(level);
-        if (volume == null) {
+        if (volume == null && fogDensity == 0) {
             return;
         }
         RenderTarget main = client.getMainRenderTarget();
@@ -76,7 +78,6 @@ final class AtmosphereRenderer {
         }
         var sun = TerrainLighting.sun(level, event.getPartialTick());
         float weather = level.getRainLevel(event.getPartialTick());
-        boolean underwater = medium == FogType.WATER;
         var block = camera.getBlockPosition();
         var biome = level.getBiome(block).value();
         long gameTime = level.getGameTime();
@@ -101,7 +102,7 @@ final class AtmosphereRenderer {
         float clock = ((gameTime % 81920L) + event.getPartialTick()) / 20F;
         float heat = underwater ? 0F : SandboxWeather.heat(client);
         var localLights = TerrainLighting.localLights(level);
-        if (!underwater && localLights.isEmpty()
+        if (!underwater && fogDensity == 0 && localLights.isEmpty()
                 && Math.max(Math.max(sun.strength(), weather), Math.max(heat, Math.max(aurora, flash))) < 0.01F) {
             return;
         }
@@ -109,7 +110,7 @@ final class AtmosphereRenderer {
         var inverseViewProjection = new Matrix4f().set(RenderSystem.getInverseViewRotationMatrix())
                 .mul(new Matrix4f(event.getProjectionMatrix()).invert());
         var position = camera.getPosition();
-        var sky = level.getSkyColor(position, event.getPartialTick());
+        BiomeFog.Medium fog = fogDensity == 0 ? null : BiomeFog.sample(level, position, event.getPartialTick(), weather, fogDensity);
         float sunHeight = Mth.clamp(sun.y() * 2.5F, 0F, 1F);
         float lowSun = 1F - sunHeight * sunHeight * (3F - 2F * sunHeight);
 
@@ -130,13 +131,17 @@ final class AtmosphereRenderer {
             reduced.bindWrite(true);
             scattering.setSampler("SceneDepth", depthCopy.getDepthTextureId());
             scattering.safeGetUniform("InverseViewProjection").set(inverseViewProjection);
-            scattering.safeGetUniform("VolumeOrigin").set((float) (volume.x() - position.x),
-                    (float) (volume.y() - position.y), (float) (volume.z() - position.z));
-            scattering.safeGetUniform("VolumeSize").set((float) volume.width(), (float) volume.height(), (float) volume.depth());
+            if (volume != null) {
+                scattering.safeGetUniform("VolumeOrigin").set((float) (volume.x() - position.x),
+                        (float) (volume.y() - position.y), (float) (volume.z() - position.z));
+                scattering.safeGetUniform("VolumeSize").set((float) volume.width(), (float) volume.height(), (float) volume.depth());
+            } else {
+                // The ray march exits before sampling either texture when the volume size is zero.
+                scattering.safeGetUniform("VolumeSize").set(0F, 0F, 0F);
+            }
             scattering.safeGetUniform("SunDirection").set(sun.x(), sun.y(), 0F);
             scattering.safeGetUniform("SunStrength").set(sun.strength());
             scattering.safeGetUniform("SunColor").set(1F, 0.94F - lowSun * 0.12F, 0.81F - lowSun * 0.26F);
-            scattering.safeGetUniform("AirColor").set((float) sky.x, (float) sky.y, (float) sky.z);
             scattering.safeGetUniform("CameraAltitude").set((float) position.y - level.getSeaLevel());
             scattering.safeGetUniform("Weather").set(weather);
             scattering.safeGetUniform("Underwater").set(underwater ? 1F : 0F);
@@ -152,7 +157,7 @@ final class AtmosphereRenderer {
             float clarity = Mth.clamp(0.30F + ((tint & 255) - (tint >> 16 & 255)) / 400F, 0.15F, 0.85F);
             scattering.safeGetUniform("WaterClarity").set(clarity);
             for (int index = 0; index < 2; index++) {
-                if (index < localLights.size()) {
+                if (volume != null && index < localLights.size()) {
                     var light = localLights.get(index);
                     scattering.safeGetUniform("LocalLight" + index).set((float) (light.x() - position.x),
                             (float) (light.y() - position.y), (float) (light.z() - position.z), Math.min(8F, light.emission() * 0.55F));
@@ -161,13 +166,21 @@ final class AtmosphereRenderer {
                     scattering.safeGetUniform("LocalLight" + index).set(0F, 0F, 0F, 0F);
                 }
             }
-            drawScattering(volume.id(), volume.shapes());
+            drawScattering(volume == null ? 0 : volume.id(), volume == null ? 0 : volume.shapes());
 
             main.bindWrite(true);
             composite.setSampler("AtmosphereTex", reduced.getColorTextureId());
             composite.setSampler("SceneDepth", depthCopy.getDepthTextureId());
             composite.setSampler("SceneColor", underwater || heat > 0.01F ? colorCopy.getColorTextureId() : reduced.getColorTextureId());
             composite.safeGetUniform("Underwater").set(underwater ? 1F : 0F);
+            if (fog == null) {
+                composite.safeGetUniform("AirFog").set(0F, 0F, 0F, 0F);
+            } else {
+                composite.safeGetUniform("AirFog").set((float) fog.color().x, (float) fog.color().y,
+                        (float) fog.color().z, fog.extinction());
+                composite.safeGetUniform("AirFogGeometry").set((float) LightingSettings.fogDistance(), fog.altitude(),
+                        fog.enclosure(), client.gameRenderer.getRenderDistance());
+            }
             composite.safeGetUniform("Heat").set(heat);
             var heatOrigin = SandboxWeather.heatOrigin(client);
             if (heatOrigin == null) {
@@ -264,6 +277,7 @@ final class AtmosphereRenderer {
     }
 
     static void releaseTargets() {
+        BiomeFog.clear();
         if (depthCopy != null) {
             depthCopy.destroyBuffers();
             depthCopy = null;

@@ -23,8 +23,12 @@ public final class LightingSettings {
     private static final boolean DEFAULT_ATMOSPHERE = true;
     private static final int DEFAULT_RAIN_DENSITY = 100;
     private static final int DEFAULT_STORM_DENSITY = 150;
+    private static final int DEFAULT_FOG_DENSITY = 100;
+    private static final int DEFAULT_FOG_DISTANCE = 12;
     static final int MIN_WEATHER_DENSITY = 25;
     static final int MAX_WEATHER_DENSITY = 200;
+    static final int MAX_FOG_DENSITY = 200;
+    static final int MAX_FOG_DISTANCE = 128;
     static final List<Integer> LIGHT_DISTANCES = List.of(8, 12, 15, 20);
     static final int MIN_LIGHTING_CHUNKS = 2;
     static final int MAX_LIGHTING_CHUNKS = 32;
@@ -37,6 +41,8 @@ public final class LightingSettings {
     private static final ForgeConfigSpec.BooleanValue ATMOSPHERE;
     private static final ForgeConfigSpec.IntValue RAIN_DENSITY;
     private static final ForgeConfigSpec.IntValue STORM_DENSITY;
+    private static final ForgeConfigSpec.IntValue FOG_DENSITY;
+    private static final ForgeConfigSpec.IntValue FOG_DISTANCE;
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WIND_COLORS;
 
     static {
@@ -55,6 +61,10 @@ public final class LightingSettings {
                 .defineInRange("rainDensity", DEFAULT_RAIN_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
         STORM_DENSITY = builder.comment("Particle density during thunderstorms across all biomes, in percent.")
                 .defineInRange("stormDensity", DEFAULT_STORM_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
+        FOG_DENSITY = builder.comment("Density of biome fog, in percent. Zero disables atmospheric fog.")
+                .defineInRange("fogDensity", DEFAULT_FOG_DENSITY, 0, MAX_FOG_DENSITY);
+        FOG_DISTANCE = builder.comment("Distance from the camera where biome fog begins, in blocks.")
+                .defineInRange("fogDistance", DEFAULT_FOG_DISTANCE, 0, MAX_FOG_DISTANCE);
         WIND_COLORS = builder.comment("Optional storm wind colors: biome_id=#RRGGBB. Exact biome IDs override defaults.")
                 .defineListAllowEmpty("windColors", List.<String>of(), value -> value instanceof String entry
                         && entry.matches("[a-z0-9_.-]+:[a-z0-9_./-]+=#[a-fA-F0-9]{6}"));
@@ -100,8 +110,28 @@ public final class LightingSettings {
     }
 
     static void setWeatherDensity(boolean storm, int density) {
-        if (SPEC.isLoaded() && density != weatherDensity(storm)) {
-            (storm ? STORM_DENSITY : RAIN_DENSITY).set(density);
+        saveInt(storm ? STORM_DENSITY : RAIN_DENSITY, density);
+    }
+
+    public static int fogDensity() {
+        return SPEC.isLoaded() ? FOG_DENSITY.get() : DEFAULT_FOG_DENSITY;
+    }
+
+    static void setFogDensity(int density) {
+        saveInt(FOG_DENSITY, density);
+    }
+
+    public static int fogDistance() {
+        return SPEC.isLoaded() ? FOG_DISTANCE.get() : DEFAULT_FOG_DISTANCE;
+    }
+
+    static void setFogDistance(int distance) {
+        saveInt(FOG_DISTANCE, distance);
+    }
+
+    private static void saveInt(ForgeConfigSpec.IntValue setting, int value) {
+        if (SPEC.isLoaded() && setting.get() != value) {
+            setting.set(value);
             SPEC.save();
         }
     }

@@ -187,13 +187,11 @@ public final class PrecipitationRenderer {
         if (!exposedAir(level, cursor.set(x, y, z))) {
             return false;
         }
-        double variation = 0.78 + RANDOM.nextDouble() * 0.46;
-        particles.add(new WeatherParticle(style, color, variation, new Vec3(x, y, z), wind));
+        particles.add(new WeatherParticle(style, color, new Vec3(x, y, z), wind));
         if (style == WeatherStyle.BLIZZARD) {
             double secondY = cursor.getY() + (y - cursor.getY() < 0.5 ? 0.82 : 0.18);
             Vec3 second = new Vec3(cursor.getX() + RANDOM.nextDouble(), secondY, cursor.getZ() + RANDOM.nextDouble());
-            double secondVariation = 0.78 + RANDOM.nextDouble() * 0.46;
-            particles.add(new WeatherParticle(style, color, secondVariation, second, wind));
+            particles.add(new WeatherParticle(style, color, second, wind));
         }
         return true;
     }
@@ -265,25 +263,30 @@ public final class PrecipitationRenderer {
     }
 
     private enum WeatherStyle {
-        RAIN(0.70, -0.88, 0.53, 0.014, 0.57F, 32, 0xA8C1DD),
-        HEAVY_RAIN(1.27, -1.02, 0.90, 0.022, 0.66F, 30, 0xA3BEDA),
-        SNOW(0.24, -0.10, 0.09, 0.042, 0.78F, 79, 0xF0F5FC),
-        BLIZZARD(1.26, 0, 0.18, 0.028, 0.82F, 50, 0xDCE9F6),
-        SANDBLOW(0.73, 0, 0.31, 0.045, 0.43F, 46, 0),
-        SANDSTORM(1.56, 0, 0.72, 0.074, 0.56F, 35, 0);
+        RAIN(0.70, -0.88, 0.20F, 0.06F, 0.53, 0.014, 0.57F, 32, 0xA8C1DD),
+        HEAVY_RAIN(1.27, -1.02, 0.34F, 0.13F, 0.90, 0.022, 0.66F, 30, 0xA3BEDA),
+        SNOW(0.24, -0.10, 0.47F, 0.04F, 0.09, 0.017, 0.78F, 79, 0xF0F5FC),
+        BLIZZARD(1.26, 0, 0.41F, 0.14F, 0.18, 0.028, 0.82F, 50, 0xDCE9F6),
+        SANDBLOW(0.73, 0, 0.32F, 0.08F, 0.31, 0.045, 0.43F, 46, 0),
+        SANDSTORM(1.56, 0, 0.43F, 0.17F, 0.72, 0.074, 0.56F, 35, 0);
 
         final double windSpeed;
         final double verticalSpeed;
+        final float lateralGust;
+        final float verticalGust;
         final double length;
         final double width;
         final float alpha;
         final int lifetime;
         final int color;
 
-        WeatherStyle(double windSpeed, double verticalSpeed, double length, double width,
+        WeatherStyle(double windSpeed, double verticalSpeed, float lateralGust, float verticalGust,
+                double length, double width,
                 float alpha, int lifetime, int color) {
             this.windSpeed = windSpeed;
             this.verticalSpeed = verticalSpeed;
+            this.lateralGust = lateralGust;
+            this.verticalGust = verticalGust;
             this.length = length;
             this.width = width;
             this.alpha = alpha;
@@ -292,27 +295,60 @@ public final class PrecipitationRenderer {
         }
     }
 
+    private enum ParticleShape {
+        SHORT(0.83, 1.22, 0.96, 2, 1.0),
+        TAPERED(1.00, 1.00, 0.56, 3, 1.0),
+        FINE(1.18, 0.79, 0.24, 3, 0.64);
+
+        private static final ParticleShape[] SHAPES = values();
+        final double lengthScale;
+        final double widthScale;
+        final double tailWidthScale;
+        final int flakeAxes;
+        final double flakeSideScale;
+
+        ParticleShape(double lengthScale, double widthScale, double tailWidthScale, int flakeAxes, double flakeSideScale) {
+            this.lengthScale = lengthScale;
+            this.widthScale = widthScale;
+            this.tailWidthScale = tailWidthScale;
+            this.flakeAxes = flakeAxes;
+            this.flakeSideScale = flakeSideScale;
+        }
+
+        static ParticleShape random() {
+            return SHAPES[RANDOM.nextInt(SHAPES.length)];
+        }
+    }
+
     private static final class WeatherParticle {
         private final WeatherStyle style;
+        private final ParticleShape shape;
         private final int color;
         private final double variation;
+        private final float phase;
         private Vec3 previous;
         private Vec3 position;
         private Vec3 velocity;
         private int age;
 
-        WeatherParticle(WeatherStyle style, int color, double variation, Vec3 position, Vec3 wind) {
+        WeatherParticle(WeatherStyle style, int color, Vec3 position, Vec3 wind) {
             this.style = style;
+            this.shape = ParticleShape.random();
             this.color = color;
-            this.variation = variation;
+            this.variation = 0.78 + RANDOM.nextDouble() * 0.46;
+            this.phase = RANDOM.nextFloat() * (float) (Math.PI * 2);
             this.previous = position;
             this.position = position;
             updateVelocity(wind);
         }
 
         private void updateVelocity(Vec3 wind) {
-            Vec3 drift = wind.scale(style.windSpeed * variation);
-            velocity = new Vec3(drift.x, style.verticalSpeed * variation, drift.z);
+            float time = age * (0.19F + (float) variation * 0.09F) + phase;
+            double forward = style.windSpeed * variation * (1 + 0.12F * Mth.sin(time * 1.71F - phase));
+            double sideways = style.windSpeed * variation * style.lateralGust
+                    * (0.72F * Mth.sin(time) + 0.28F * Mth.sin(time * 2.37F + phase));
+            double vertical = (style.verticalSpeed + style.verticalGust * Mth.cos(time * 0.79F + phase)) * variation;
+            velocity = new Vec3(wind.x * forward - wind.z * sideways, vertical, wind.z * forward + wind.x * sideways);
         }
 
         boolean advance(ClientLevel level, BlockPos.MutableBlockPos cursor, Vec3 wind, Vec3 camera) {
@@ -345,7 +381,7 @@ public final class PrecipitationRenderer {
             float red = (color >> 16 & 255) * daylight / 255F;
             float green = (color >> 8 & 255) * daylight / 255F;
             float blue = (color & 255) * daylight / 255F;
-            if (style == WeatherStyle.BLIZZARD) {
+            if (style == WeatherStyle.SNOW || style == WeatherStyle.BLIZZARD) {
                 emitSnowflake(buffer, center, age + partialTick, red, green, blue, alpha);
                 return;
             }
@@ -354,13 +390,15 @@ public final class PrecipitationRenderer {
             if (side.lengthSqr() < 1.0E-7) {
                 return;
             }
-            side = side.normalize().scale(style.width * variation * 0.5);
-            Vec3 front = center.add(direction.scale(style.length * variation * 0.35));
-            Vec3 rear = center.subtract(direction.scale(style.length * variation * 0.65));
+            side = side.normalize().scale(style.width * variation * shape.widthScale * 0.5);
+            double length = style.length * variation * shape.lengthScale;
+            Vec3 front = center.add(direction.scale(length * 0.35));
+            Vec3 rear = center.subtract(direction.scale(length * 0.65));
+            Vec3 tail = side.scale(shape.tailWidthScale);
             vertex(buffer, front.add(side), red, green, blue, alpha);
             vertex(buffer, front.subtract(side), red, green, blue, alpha);
-            vertex(buffer, rear.subtract(side), red, green, blue, alpha * 0.19F);
-            vertex(buffer, rear.add(side), red, green, blue, alpha * 0.19F);
+            vertex(buffer, rear.subtract(tail), red, green, blue, alpha * 0.19F);
+            vertex(buffer, rear.add(tail), red, green, blue, alpha * 0.19F);
         }
 
         private void emitSnowflake(BufferBuilder buffer, Vec3 center, float time, float red, float green, float blue,
@@ -372,16 +410,17 @@ public final class PrecipitationRenderer {
             }
             right = right.normalize();
             Vec3 up = view.cross(right).normalize();
-            double radius = style.length * variation * 0.5;
-            double halfWidth = style.width * variation * 0.5;
-            double rotation = time * 0.10 + variation * 12.0;
-            for (int axis = 0; axis < 3; axis++) {
-                double angle = rotation + axis * Math.PI / 3.0;
+            double radius = style.length * variation * shape.lengthScale * 0.5;
+            double halfWidth = style.width * variation * shape.widthScale * 0.5;
+            double rotation = time * (0.08 + variation * 0.03) + phase;
+            for (int axis = 0; axis < shape.flakeAxes; axis++) {
+                double angle = rotation + axis * Math.PI / shape.flakeAxes;
                 double cosine = Math.cos(angle);
                 double sine = Math.sin(angle);
-                double tipX = (right.x * cosine + up.x * sine) * radius;
-                double tipY = (right.y * cosine + up.y * sine) * radius;
-                double tipZ = (right.z * cosine + up.z * sine) * radius;
+                double axisRadius = axis == 0 ? radius : radius * shape.flakeSideScale;
+                double tipX = (right.x * cosine + up.x * sine) * axisRadius;
+                double tipY = (right.y * cosine + up.y * sine) * axisRadius;
+                double tipZ = (right.z * cosine + up.z * sine) * axisRadius;
                 double edgeX = (up.x * cosine - right.x * sine) * halfWidth;
                 double edgeY = (up.y * cosine - right.y * sine) * halfWidth;
                 double edgeZ = (up.z * cosine - right.z * sine) * halfWidth;

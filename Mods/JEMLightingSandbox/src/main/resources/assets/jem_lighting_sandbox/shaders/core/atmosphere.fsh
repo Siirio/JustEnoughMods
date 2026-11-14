@@ -9,7 +9,6 @@ uniform vec3 VolumeSize;
 uniform vec3 SunDirection;
 uniform float SunStrength;
 uniform vec3 SunColor;
-uniform vec3 AirColor;
 uniform float CameraAltitude;
 uniform float Weather;
 uniform float OpenSky;
@@ -241,24 +240,17 @@ void main() {
     float sceneDistance = sky ? 144.0 : min(144.0, targetLength / max(abs(target.w), 0.000001));
 
     bool submerged = Underwater > 0.5;
-    float hazeDistance = max(sceneDistance - 6.0, 0.0);
-    float horizon = 1.0 - smoothstep(0.02, 0.68, abs(ray.y));
-    float hazeDensity = atmosphereDensity(CameraAltitude + ray.y * min(sceneDistance * 0.5, 52.0));
-    float haze = (1.0 - exp(-hazeDistance * 0.012)) * hazeDensity;
-    haze *= mix(0.07, 0.18, horizon) * mix(0.3, 1.0, max(SunStrength, Weather)) * OpenSky;
-
-    vec3 mediumColor = AirColor;
+    float haze = 0.0;
     if (submerged) {
         float waterDensity = mix(0.10, 0.021, WaterClarity);
         haze = (1.0 - exp(-max(0.0, sceneDistance - 1.0) * waterDensity)) * 0.28;
-        mediumColor = WaterColor;
     }
 
     float path = litPath(ray, sceneDistance);
     float beam = (1.0 - exp(-0.030 * path)) * sunlightPhase(ray) * SunStrength * 0.78;
     vec3 beamColor = submerged ? mix(SunColor, max(WaterColor, vec3(0.12, 0.26, 0.30)), 0.53) : SunColor;
     float opacity = haze + beam * (1.0 - haze);
-    vec4 scatter = vec4(mediumColor * haze + beamColor * beam * (1.0 - haze), opacity);
+    vec4 scatter = vec4(WaterColor * haze + beamColor * beam * (1.0 - haze), opacity);
 
     vec4 local0 = localScatter(ray, sceneDistance, LocalLight0, LocalColor0);
     vec4 local1 = localScatter(ray, sceneDistance, LocalLight1, LocalColor1);
