@@ -11,6 +11,7 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.logging.LogUtils;
 import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
@@ -77,6 +78,8 @@ final class AtmosphereRenderer {
             return;
         }
         var sun = TerrainLighting.sun(level, event.getPartialTick());
+        var celestial = TerrainLighting.celestial(level, event.getPartialTick());
+        boolean moon = sun.y() < 0F;
         float weather = level.getRainLevel(event.getPartialTick());
         var block = camera.getBlockPosition();
         var biome = level.getBiome(block).value();
@@ -103,13 +106,16 @@ final class AtmosphereRenderer {
         float heat = underwater ? 0F : SandboxWeather.heat(client);
         var localLights = TerrainLighting.localLights(level);
         if (!underwater && fogDensity == 0 && localLights.isEmpty()
-                && Math.max(Math.max(sun.strength(), weather), Math.max(heat, Math.max(aurora, flash))) < 0.01F) {
+                && Math.max(Math.max(celestial.strength(), weather), Math.max(heat, Math.max(aurora, flash))) < 0.01F) {
             return;
         }
 
         var inverseViewProjection = new Matrix4f().set(RenderSystem.getInverseViewRotationMatrix())
                 .mul(new Matrix4f(event.getProjectionMatrix()).invert());
         var position = camera.getPosition();
+        var source = new Matrix4f(inverseViewProjection).invert()
+                .transform(new Vector4f(celestial.x(), celestial.y(), 0F, 0F));
+        float rayStrength = moon ? 0.65F * celestial.strength() : celestial.strength();
         BiomeFog.Medium fog = fogDensity == 0 ? null : BiomeFog.sample(level, position, event.getPartialTick(), weather, fogDensity);
         float sunHeight = Mth.clamp(sun.y() * 2.5F, 0F, 1F);
         float lowSun = 1F - sunHeight * sunHeight * (3F - 2F * sunHeight);
@@ -139,9 +145,13 @@ final class AtmosphereRenderer {
                 // The ray march exits before sampling either texture when the volume size is zero.
                 scattering.safeGetUniform("VolumeSize").set(0F, 0F, 0F);
             }
-            scattering.safeGetUniform("SunDirection").set(sun.x(), sun.y(), 0F);
-            scattering.safeGetUniform("SunStrength").set(sun.strength());
-            scattering.safeGetUniform("SunColor").set(1F, 0.94F - lowSun * 0.12F, 0.81F - lowSun * 0.26F);
+            scattering.safeGetUniform("SunDirection").set(celestial.x(), celestial.y(), 0F);
+            scattering.safeGetUniform("SunStrength").set(rayStrength);
+            scattering.safeGetUniform("SunColor").set(moon ? 0.48F : 1F, moon ? 0.67F : 0.94F - lowSun * 0.12F,
+                    moon ? 1F : 0.81F - lowSun * 0.26F);
+            float projectionW = Math.max(0.001F, source.w);
+            scattering.safeGetUniform("CelestialScreen").set(0.5F + 0.5F * source.x / projectionW,
+                    0.5F + 0.5F * source.y / projectionW, source.w > 0.04F ? 1F : 0F, 0F);
             scattering.safeGetUniform("CameraAltitude").set((float) position.y - level.getSeaLevel());
             scattering.safeGetUniform("Weather").set(weather);
             scattering.safeGetUniform("Underwater").set(underwater ? 1F : 0F);
@@ -190,6 +200,12 @@ final class AtmosphereRenderer {
                         (float) (heatOrigin.y - position.y + 0.8), (float) (heatOrigin.z - position.z), 1.3F);
             }
             composite.safeGetUniform("AtmosphereTime").set(clock);
+            if (fog != null) {
+                var wind = SandboxWeather.wind(level);
+                var offset = BiomeFog.windOffset(level, gameTime + (double) event.getPartialTick(), wind);
+                composite.safeGetUniform("FogWind").set((float) wind.x, (float) wind.z,
+                        (float) ((position.x - offset.x) % 1024), (float) ((position.z - offset.z) % 1024));
+            }
             composite.safeGetUniform("InverseViewProjection").set(inverseViewProjection);
             composite.apply();
             try {

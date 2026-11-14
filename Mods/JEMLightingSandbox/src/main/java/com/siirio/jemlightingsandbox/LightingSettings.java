@@ -25,6 +25,8 @@ public final class LightingSettings {
     private static final int DEFAULT_STORM_DENSITY = 150;
     private static final int DEFAULT_FOG_DENSITY = 100;
     private static final int DEFAULT_FOG_DISTANCE = 12;
+    static final List<Integer> SHADOW_RESOLUTIONS = List.of(256, 512, 1024, 2048);
+    private static final int DEFAULT_SHADOW_RESOLUTION = 256;
     static final int MIN_WEATHER_DENSITY = 25;
     static final int MAX_WEATHER_DENSITY = 200;
     static final int MAX_FOG_DENSITY = 200;
@@ -43,6 +45,7 @@ public final class LightingSettings {
     private static final ForgeConfigSpec.IntValue STORM_DENSITY;
     private static final ForgeConfigSpec.IntValue FOG_DENSITY;
     private static final ForgeConfigSpec.IntValue FOG_DISTANCE;
+    private static final ForgeConfigSpec.ConfigValue<Integer> SHADOW_RESOLUTION;
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WIND_COLORS;
 
     static {
@@ -65,6 +68,8 @@ public final class LightingSettings {
                 .defineInRange("fogDensity", DEFAULT_FOG_DENSITY, 0, MAX_FOG_DENSITY);
         FOG_DISTANCE = builder.comment("Distance from the camera where biome fog begins, in blocks.")
                 .defineInRange("fogDistance", DEFAULT_FOG_DISTANCE, 0, MAX_FOG_DISTANCE);
+        SHADOW_RESOLUTION = builder.comment("Resolution of the sun and moon entity shadow map.")
+                .defineInList("shadowResolution", DEFAULT_SHADOW_RESOLUTION, SHADOW_RESOLUTIONS);
         WIND_COLORS = builder.comment("Optional storm wind colors: biome_id=#RRGGBB. Exact biome IDs override defaults.")
                 .defineListAllowEmpty("windColors", List.<String>of(), value -> value instanceof String entry
                         && entry.matches("[a-z0-9_.-]+:[a-z0-9_./-]+=#[a-fA-F0-9]{6}"));
@@ -127,6 +132,15 @@ public final class LightingSettings {
 
     static void setFogDistance(int distance) {
         saveInt(FOG_DISTANCE, distance);
+    }
+
+    public static int shadowResolution() {
+        return SPEC.isLoaded() ? SHADOW_RESOLUTION.get() : DEFAULT_SHADOW_RESOLUTION;
+    }
+
+    static void setShadowResolution(int resolution) {
+        SHADOW_RESOLUTION.set(resolution);
+        SPEC.save();
     }
 
     private static void saveInt(ForgeConfigSpec.IntValue setting, int value) {

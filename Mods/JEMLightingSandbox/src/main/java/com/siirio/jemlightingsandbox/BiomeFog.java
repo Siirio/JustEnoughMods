@@ -16,6 +16,9 @@ final class BiomeFog {
     private static ClientLevel previousLevel;
     private static Profile previous;
     private static long previousFrame;
+    private static ClientLevel windLevel;
+    private static Vec3 drift = Vec3.ZERO;
+    private static double lastWindTick;
 
     private BiomeFog() {
     }
@@ -42,7 +45,7 @@ final class BiomeFog {
         previousFrame = now;
 
         float daylight = Mth.clamp((level.getSkyDarken(partialTick) - 0.2F) / 0.8F, 0F, 1F);
-        float illumination = Mth.lerp(previous.enclosure(), 0.32F + 0.68F * daylight, 0.65F);
+        float illumination = Mth.lerp(previous.enclosure(), 0.67F + 0.33F * daylight, 0.86F);
         float density = densityPercent / 100F;
         // The upper half of the density control compresses visibility to a few blocks beyond the start.
         float extinction = previous.extinction() * density * (1F + 5F * Math.max(0F, density - 1F))
@@ -53,6 +56,20 @@ final class BiomeFog {
     static void clear() {
         previousLevel = null;
         previous = null;
+        windLevel = null;
+        drift = Vec3.ZERO;
+    }
+
+    static Vec3 windOffset(ClientLevel level, double tick, Vec3 wind) {
+        if (windLevel != level) {
+            windLevel = level;
+            drift = Vec3.ZERO;
+            lastWindTick = tick;
+        }
+        double elapsed = Mth.clamp(tick - lastWindTick, 0.0, 2.0);
+        lastWindTick = tick;
+        drift = drift.add(wind.scale(elapsed * 0.18));
+        return drift;
     }
 
     private static Profile profile(ClientLevel level, BlockPos position, Holder<Biome> biome, float altitude) {

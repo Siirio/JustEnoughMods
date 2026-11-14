@@ -7,6 +7,7 @@ uniform mat4 InverseViewProjection;
 uniform float Underwater;
 uniform vec4 AirFog;
 uniform vec4 AirFogGeometry;
+uniform vec4 FogWind;
 uniform float Heat;
 uniform vec4 HeatOrigin;
 uniform float AtmosphereTime;
@@ -48,25 +49,29 @@ void addTap(ivec2 pixel, float weight, ivec2 atmosphereSize, ivec2 depthSize, fl
 
 vec4 airFog(vec4 target, bool sky) {
     float targetLength = length(target.xyz);
-    float rayY = target.y / max(targetLength, 0.000001);
+    vec3 ray = target.xyz / max(targetLength, 0.000001);
     float distance = sky ? AirFogGeometry.w : targetLength / max(abs(target.w), 0.000001);
     float start = AirFogGeometry.x;
     float altitude = AirFogGeometry.y;
     float enclosed = AirFogGeometry.z;
     float span = max(distance - start, 0.0);
-
-    // Sample vertical density along the depth ray. Outdoor haze thins above ground, while cave fog fills the space.
-    float nearHeight = altitude + (start + span * 0.15) * rayY;
-    float middleHeight = altitude + (start + span * 0.5) * rayY;
-    float farHeight = altitude + (start + span * 0.85) * rayY;
-    vec3 heightDensity = exp(-max(vec3(nearHeight, middleHeight, farHeight) - 2.0, vec3(0.0)) * 0.025);
-    float exposure = mix(dot(heightDensity, vec3(0.28, 0.44, 0.28)), 1.0, enclosed);
-    float opacity = 1.0 - exp(-span * AirFog.a * exposure);
+    float width = 1.6 / AirFog.a;
+    vec2 wind = FogWind.xy;
+    vec3 point = ray * (start + min(span * 0.32, 35.0));
+    float layerHeight = altitude + point.y;
+    vec2 location = FogWind.zw + point.xz - wind * (2.8 * clamp(layerHeight, -8.0, 18.0));
+    vec2 phase = location * (6.2831853 / 1024.0);
+    float band = sin(dot(phase, vec2(23.0, 15.0)) + 0.7 * sin(dot(phase, vec2(-9.0, 29.0))));
+    float variation = mix(1.0, 0.92 + 0.19 * band, 1.0 - 0.45 * enclosed);
+    float exposure = mix(exp(-max(layerHeight - 9.0, 0.0) * 0.022), 1.0, enclosed);
+    float opacity = smoothstep(0.0, width, span * exposure * variation);
     if (sky) {
-        float horizon = 1.0 - smoothstep(0.02, 0.40, abs(rayY));
-        opacity *= mix(horizon * 0.65, 1.0, enclosed);
+        float horizon = 1.0 - smoothstep(0.01, 0.24, abs(ray.y));
+        opacity *= mix(horizon * 0.38, 0.7, enclosed);
     }
-    return vec4(AirFog.rgb * opacity, opacity);
+    float upper = smoothstep(1.0, 23.0, layerHeight);
+    vec3 color = AirFog.rgb * mix(1.0, 0.63, upper);
+    return vec4(color * opacity, opacity);
 }
 
 void main() {

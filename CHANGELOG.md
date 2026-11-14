@@ -1,3 +1,10 @@
+## 2026-11-14 - Revise Sandbox fog and celestial lighting
+
+- User rejected the previous fog and shafts. The replacement uses a gradual biome fog start and end, moving world-space bands that lean with the wind, and a lighter fog base with darker upper layers
+- Bug / Client / Celestial scattering only used sunlight and depended entirely on the near-camera caster volume / in testing with terrain visibility sampling and a separate screen-depth pass for the sun and moon
+- User requested model-shaped entity shadows from local light sources and moonlight comparable to sunlight. Terrain light rays now intersect captured entity meshes. Moonlight uses the directional terrain and entity paths with cooler color and lower strength
+- The sun and moon entity map supports 256, 512, 1024 and 2048 pixels. The default remains 256
+
 ## 2026-11-14 - Tune Sandbox smoke, biome fog and precipitation
 
 - User requested longer-lived campfire smoke with a normal rise of about 10 blocks, plus 1–2 blocks per nearby lit campfire to a maximum of 20. Nearby lit campfires make the smoke darker and denser

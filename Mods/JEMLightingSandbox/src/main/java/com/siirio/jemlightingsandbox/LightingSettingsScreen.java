@@ -74,11 +74,19 @@ public final class LightingSettingsScreen extends Screen {
                         Component.translatable(SETTINGS + "distance"),
                         (button, distance) -> LightingSettings.setLightDistance(distance)));
 
+        int atmosphereWidth = (buttonWidth - 4) / 2;
         addRenderableWidget(CycleButton.onOffBuilder(LightingSettings.atmosphereEnabled())
                 .withTooltip(enabled -> Tooltip.create(Component.translatable(SETTINGS + "atmosphere.tooltip")))
-                .create(left, top + 4 * ROW_SPACING, buttonWidth, CONTROL_HEIGHT,
+                .create(left, top + 4 * ROW_SPACING, atmosphereWidth, CONTROL_HEIGHT,
                         Component.translatable(SETTINGS + "atmosphere"),
                         (button, enabled) -> LightingSettings.setAtmosphereEnabled(enabled)));
+        addRenderableWidget(CycleButton.<Integer>builder(resolution -> Component.literal(resolution + " px"))
+                .withValues(LightingSettings.SHADOW_RESOLUTIONS)
+                .withInitialValue(LightingSettings.shadowResolution())
+                .withTooltip(resolution -> Tooltip.create(Component.translatable(SETTINGS + "shadow_resolution.tooltip")))
+                .create(left + atmosphereWidth + 4, top + 4 * ROW_SPACING, buttonWidth - atmosphereWidth - 4,
+                        CONTROL_HEIGHT, Component.translatable(SETTINGS + "shadow_resolution"),
+                        (button, resolution) -> LightingSettings.setShadowResolution(resolution)));
 
         int sectionWidth = (buttonWidth - 8) / 3;
         addRenderableWidget(Button.builder(Component.translatable(SETTINGS + "fog"),

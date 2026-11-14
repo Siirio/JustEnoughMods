@@ -185,6 +185,48 @@ float jemCloudOcclusion(vec3 position, float skyLevel) {
     return coverage * jemCloud.w * jemSunDirectionStrength.w * smoothstep(0.5, 0.95, skyLevel);
 }
 
+uniform sampler2D jemEntityModels;
+uniform int jemEntityCasterCount;
+
+bool jemHitsTriangle(vec3 origin, vec3 direction, float limit, vec3 a, vec3 b, vec3 c) {
+    vec3 ab = b - a;
+    vec3 ac = c - a;
+    vec3 p = cross(direction, ac);
+    float determinant = dot(ab, p);
+    if (abs(determinant) < 0.00001) return false;
+    vec3 s = origin - a;
+    float u = dot(s, p) / determinant;
+    if (u < 0.0 || u > 1.0) return false;
+    vec3 q = cross(s, ab);
+    float v = dot(direction, q) / determinant;
+    float t = dot(ac, q) / determinant;
+    return v >= 0.0 && u + v <= 1.0 && t > 0.035 && t < limit - 0.02;
+}
+
+bool jemPointEntityShadow(vec3 position, vec3 direction, float distance) {
+    vec3 origin = position - jemEntityShadowOrigin;
+    vec3 safeDirection = max(abs(direction), vec3(0.00001)) * mix(vec3(-1.0), vec3(1.0), step(0.0, direction));
+    for (int caster = 0; caster < jemEntityCasterCount; caster++) {
+        vec4 minimum = texelFetch(jemEntityModels, ivec2(0, caster), 0);
+        vec4 maximum = texelFetch(jemEntityModels, ivec2(1, caster), 0);
+        vec3 t0 = (minimum.xyz - origin) / safeDirection;
+        vec3 t1 = (maximum.xyz - origin) / safeDirection;
+        vec3 enter = min(t0, t1);
+        vec3 leave = max(t0, t1);
+        if (max(0.0, max(enter.x, max(enter.y, enter.z))) >
+                min(distance, min(leave.x, min(leave.y, leave.z)))) continue;
+        for (int row = int(minimum.w); row < int(maximum.w); row++) {
+            vec3 a = texelFetch(jemEntityModels, ivec2(0, row), 0).xyz;
+            vec3 b = texelFetch(jemEntityModels, ivec2(1, row), 0).xyz;
+            vec3 c = texelFetch(jemEntityModels, ivec2(2, row), 0).xyz;
+            vec3 d = texelFetch(jemEntityModels, ivec2(3, row), 0).xyz;
+            if (jemHitsTriangle(origin, direction, distance, a, b, c)
+                    || jemHitsTriangle(origin, direction, distance, a, c, d)) return true;
+        }
+    }
+    return false;
+}
+
 float jemEntityOcclusion(vec3 position, vec3 normal, float skyLevel) {
     if (jemEntityShadowActive == 0) {
         return 0.0;
@@ -337,6 +379,10 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
                 ? jemVisibility(rayOrigin, direction, shadowRayLength, solidSource ? ivec3(-1) : sourceCell)
                 : nativeVisibility;
         float visibility = mix(nativeVisibility, tracedVisibility, traceWeight);
+        if (visibility > 0.0 && jemEntityCasterCount > 0
+                && jemPointEntityShadow(jemVolumeOrigin + rayOrigin, direction, shadowRayLength)) {
+            visibility = 0.0;
+        }
         if (solidSource) {
             incidence = mix(incidence, sqrt(incidence), 0.55);
         }
@@ -353,7 +399,8 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
     vec3 residualBlockLight = (nativeLinear - skyLinear) * (1.0 - replacedShare);
 
     // Apply directional occlusion only to the skylight component.
-    vec3 litSky = skyLinear * (vec3(1.0) - 0.55 * jemSunColor * sunlightOcclusion) * (1.0 - cloudOcclusion);
+    vec3 skyTint = mix(vec3(1.0), jemSunColor, jemSunDirectionStrength.w * 0.56);
+    vec3 litSky = skyLinear * skyTint * (1.0 - 0.55 * sunlightOcclusion) * (1.0 - cloudOcclusion);
     vec3 combined = litSky + residualBlockLight + jemLinearColor(albedo) * contributedLight;
     vec3 outputColor = pow(max(combined, vec3(0.0)), vec3(1.0 / 2.2));
     if (indexed || sceneWeight >= 1.0) {

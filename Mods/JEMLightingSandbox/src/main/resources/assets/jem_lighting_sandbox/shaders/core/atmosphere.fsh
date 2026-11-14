@@ -8,6 +8,7 @@ uniform vec3 VolumeOrigin;
 uniform vec3 VolumeSize;
 uniform vec3 SunDirection;
 uniform float SunStrength;
+uniform vec4 CelestialScreen;
 uniform vec3 SunColor;
 uniform float CameraAltitude;
 uniform float Weather;
@@ -115,14 +116,7 @@ float atmosphereDensity(float altitude) {
     return exp(-max(altitude, 0.0) * 0.018);
 }
 
-float sunlightPhase(vec3 ray) {
-    const float anisotropy = 0.68;
-    float denominator = 1.0 + anisotropy * anisotropy - 2.0 * anisotropy * dot(ray, SunDirection);
-    float peak = (1.0 - anisotropy) * (1.0 - anisotropy);
-    return 0.30 + 0.70 * pow(peak / max(denominator, peak), 1.5);
-}
-
-float litPath(vec3 ray, float sceneDistance) {
+float celestialShafts(vec3 ray, float sceneDistance) {
     vec3 cameraInVolume = -VolumeOrigin;
     vec2 interval = boxInterval(cameraInVolume, inverseDirection(ray), vec3(0.0), VolumeSize);
     float first = max(0.35, interval.x);
@@ -133,7 +127,8 @@ float litPath(vec3 ray, float sceneDistance) {
 
     float stride = (last - first) / float(VIEW_SAMPLES);
     vec3 inverseSun = inverseDirection(SunDirection);
-    float path = 0.0;
+    float obscured = 0.0;
+    float exposed = 0.0;
     for (int index = 0; index < VIEW_SAMPLES; ++index) {
         float distance = first + (float(index) + 0.5) * stride;
         vec3 point = cameraInVolume + ray * distance;
@@ -143,9 +138,35 @@ float litPath(vec3 ray, float sceneDistance) {
         if (Underwater > 0.5) {
             density = exp(-distance * mix(0.17, 0.045, WaterClarity));
         }
-        path += edge * density * lightVisibility(point, inverseSun, SUN_REACH, SUN_STEPS, ivec3(-1));
+        float weight = edge * density * exp(-distance * 0.018);
+        float visible = lightVisibility(point, inverseSun, SUN_REACH, SUN_STEPS, ivec3(-1));
+        exposed += weight * visible;
+        obscured += weight * (1.0 - visible);
     }
-    return path * stride;
+    float forward = 0.18 + 0.82 * pow(max(dot(ray, SunDirection), 0.0), 4.0);
+    float contrast = smoothstep(0.03, 0.36, obscured / max(exposed + obscured, 0.001));
+    return (1.0 - exp(-0.048 * exposed * stride)) * mix(0.26, 1.0, contrast) * forward;
+}
+
+float skyShafts(vec2 uv) {
+    if (CelestialScreen.z < 0.5 || SunStrength <= 0.0 || Underwater > 0.5) return 0.0;
+    vec2 source = CelestialScreen.xy;
+    vec2 edge = min(source, 1.0 - source);
+    float frame = smoothstep(-0.18, 0.02, min(edge.x, edge.y));
+    if (frame <= 0.0) return 0.0;
+    vec2 delta = source - uv;
+    float distance = length(delta);
+    float exposure = 0.0;
+    for (int i = 0; i < 18; i++) {
+        float along = (float(i) + 0.5) / 18.0;
+        vec2 sampleUv = uv + delta * (along * 0.91);
+        if (all(greaterThanEqual(sampleUv, vec2(0.0))) && all(lessThanEqual(sampleUv, vec2(1.0)))) {
+            exposure += step(0.999999, texture(SceneDepth, sampleUv).r) * (0.72 + 0.28 * along);
+        }
+    }
+    float fraction = exposure / 15.48;
+    float contrast = 4.0 * fraction * (1.0 - fraction);
+    return frame * contrast * exp(-3.4 * distance) * smoothstep(0.025, 0.12, distance) * 0.55;
 }
 
 vec4 localScatter(vec3 ray, float sceneDistance, vec4 light, vec4 color) {
@@ -246,8 +267,7 @@ void main() {
         haze = (1.0 - exp(-max(0.0, sceneDistance - 1.0) * waterDensity)) * 0.28;
     }
 
-    float path = litPath(ray, sceneDistance);
-    float beam = (1.0 - exp(-0.030 * path)) * sunlightPhase(ray) * SunStrength * 0.78;
+    float beam = max(celestialShafts(ray, sceneDistance), skyShafts(sceneUv)) * SunStrength;
     vec3 beamColor = submerged ? mix(SunColor, max(WaterColor, vec3(0.12, 0.26, 0.30)), 0.53) : SunColor;
     float opacity = haze + beam * (1.0 - haze);
     vec4 scatter = vec4(WaterColor * haze + beamColor * beam * (1.0 - haze), opacity);

@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.logging.LogUtils;
+import com.siirio.jemlightingsandbox.LightingSettings;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.util.Arrays;
@@ -37,17 +38,19 @@ import org.slf4j.Logger;
 /** Produces a small directional depth map from animated entity model quads. */
 public final class EntityShadowMap {
     private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int SIZE = 256;
+    private static int size;
     private static final float COVERAGE = 48F;
-    private static final float PIXELS_PER_BLOCK = SIZE / COVERAGE;
+    private static float pixelsPerBlock;
     private static final double RANGE_SQUARED = 32 * 32;
     private static final int MAX_ENTITIES = 12;
     private static final int MAX_MODEL_QUADS = 2048;
     private static final int MAX_TEXTURE_MASKS = 64;
     private static final int MAX_TEXTURE_PIXELS = 256 * 256;
     private static final float EMPTY = -10_000F;
-    private static final FloatBuffer UPLOAD = BufferUtils.createFloatBuffer(SIZE * SIZE);
-    private static final float[] DEPTH = new float[SIZE * SIZE];
+    private static FloatBuffer upload;
+    private static float[] depth;
+    private static final int ROW = 16;
+    private static final FloatBuffer MODELS = BufferUtils.createFloatBuffer(ROW * (MAX_ENTITIES + MAX_MODEL_QUADS));
     private static final Entity[] NEAREST = new Entity[MAX_ENTITIES];
     private static final double[] DISTANCES = new double[MAX_ENTITIES];
     private static final Set<Integer> CASTERS = new HashSet<>();
@@ -60,12 +63,13 @@ public final class EntityShadowMap {
     private static ClientLevel currentLevel;
     private static Map current;
     private static int texture;
+    private static int modelsTexture;
     private static boolean maskLoadedThisFrame;
 
     private EntityShadowMap() {
     }
 
-    public record Map(int texture, Vec3 origin, float sunX, float sunY) {
+    public record Map(int texture, Vec3 origin, float sunX, float sunY, int models, int casters) {
     }
 
     public static Map current(ClientLevel level) {
@@ -84,6 +88,10 @@ public final class EntityShadowMap {
         if (texture != 0) {
             GL11.glDeleteTextures(texture);
             texture = 0;
+        }
+        if (modelsTexture != 0) {
+            GL11.glDeleteTextures(modelsTexture);
+            modelsTexture = 0;
         }
         clearTextureMasks();
     }
@@ -104,8 +112,10 @@ public final class EntityShadowMap {
         if (level == null || !client.options.entityShadows().get() || TerrainLighting.currentVolume(level) == null) {
             return;
         }
-        var sun = TerrainLighting.sun(level, event.getPartialTick());
-        if (sun.strength() <= 0.01F || sun.y() <= 0.10F) {
+        var sun = TerrainLighting.celestial(level, event.getPartialTick());
+        boolean directional = sun.strength() > 0.01F && sun.y() > 0.10F;
+        boolean local = !TerrainLighting.localLights(level).isEmpty();
+        if (!directional && !local) {
             return;
         }
         var camera = event.getCamera().getPosition();
@@ -114,26 +124,39 @@ public final class EntityShadowMap {
             return;
         }
         try {
+            int requested = LightingSettings.shadowResolution();
+            if (requested != size) {
+                if (texture != 0) {
+                    GL11.glDeleteTextures(texture);
+                    texture = 0;
+                }
+                size = requested;
+                pixelsPerBlock = size / COVERAGE;
+                depth = new float[size * size];
+                upload = BufferUtils.createFloatBuffer(size * size);
+            }
             // Snapping in light space keeps depth texels on the same world grid as the camera moves.
-            double texel = 1.0 / PIXELS_PER_BLOCK;
+            double texel = 1.0 / pixelsPerBlock;
             double lateral = camera.x * sun.y() - camera.y * sun.x();
-            double depth = camera.x * sun.x() + camera.y * sun.y();
+            double cameraDepth = camera.x * sun.x() + camera.y * sun.y();
             lateral = Math.floor(lateral / texel) * texel;
-            var origin = new Vec3(lateral * sun.y() + depth * sun.x(), -lateral * sun.x() + depth * sun.y(),
+            var origin = new Vec3(lateral * sun.y() + cameraDepth * sun.x(), -lateral * sun.x() + cameraDepth * sun.y(),
                     Math.floor(camera.z / texel) * texel);
-            SINK.begin(sun.x(), sun.y());
-            Arrays.fill(DEPTH, EMPTY);
+            SINK.begin(sun.x(), sun.y(), directional, local);
+            if (directional) {
+                Arrays.fill(depth, EMPTY);
+            }
             LAYERS.clear();
             maskLoadedThisFrame = false;
             for (int index = 0; index < count && SINK.hasCapacity(); index++) {
                 capture(client, NEAREST[index], origin, event.getPartialTick());
             }
-            if (CASTERS.isEmpty()) {
+            if (CASTERS.isEmpty() && SINK.casters == 0) {
                 return;
             }
-            uploadDepth();
+            uploadDepth(directional);
             currentLevel = level;
-            current = new Map(texture, origin, sun.x(), sun.y());
+            current = new Map(directional ? texture : 0, origin, sun.x(), sun.y(), modelsTexture, SINK.casters);
         } finally {
             Arrays.fill(NEAREST, 0, count, null);
         }
@@ -174,6 +197,8 @@ public final class EntityShadowMap {
         var poses = new PoseStack();
         poses.translate(position.x, position.y, position.z);
         int before = SINK.drawnQuads;
+        int first = SINK.quads;
+        SINK.beginCaster();
         try {
             // Calling the model renderer directly bypasses the dispatcher's blob, fire and hitbox rendering.
             renderer.render(entity, entity.getViewYRot(partialTick), partialTick, poses, SINK,
@@ -182,12 +207,12 @@ public final class EntityShadowMap {
             UNSUPPORTED_RENDERERS.add(rendererClass);
             LOGGER.warn("Could not capture entity shadow vertices from {}", rendererClass.getName(), exception);
         }
-        if (SINK.drawnQuads > before) {
+        if (SINK.endCaster(first) || SINK.drawnQuads > before) {
             CASTERS.add(entity.getId());
         }
     }
 
-    private static void uploadDepth() {
+    private static void uploadDepth(boolean directional) {
         int active = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
         // Upload on the caller's active unit and restore it before the terrain draw.
         int previous = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
@@ -204,7 +229,26 @@ public final class EntityShadowMap {
             GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, 0);
             GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, 0);
             GL11.glPixelStorei(GL11.GL_UNPACK_SWAP_BYTES, 0);
-            UPLOAD.clear().put(DEPTH).flip();
+            if (SINK.casters > 0) {
+                if (modelsTexture == 0) {
+                    modelsTexture = GL11.glGenTextures();
+                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, modelsTexture);
+                    GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+                    GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+                    GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA32F, 4, MAX_ENTITIES + MAX_MODEL_QUADS,
+                            0, GL11.GL_RGBA, GL11.GL_FLOAT, (FloatBuffer) null);
+                } else {
+                    GL11.glBindTexture(GL11.GL_TEXTURE_2D, modelsTexture);
+                }
+                int rows = MAX_ENTITIES + SINK.quads;
+                MODELS.position(0).limit(rows * ROW);
+                GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 4, rows, GL11.GL_RGBA, GL11.GL_FLOAT, MODELS);
+                MODELS.clear();
+            }
+            if (!directional) {
+                return;
+            }
+            upload.clear().put(depth).flip();
             if (texture == 0) {
                 texture = GL11.glGenTextures();
                 GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
@@ -212,11 +256,11 @@ public final class EntityShadowMap {
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
-                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_R32F, SIZE, SIZE, 0,
-                        GL11.GL_RED, GL11.GL_FLOAT, UPLOAD);
+                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_R32F, size, size, 0,
+                        GL11.GL_RED, GL11.GL_FLOAT, upload);
             } else {
                 GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
-                GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, SIZE, SIZE, GL11.GL_RED, GL11.GL_FLOAT, UPLOAD);
+                GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, size, size, GL11.GL_RED, GL11.GL_FLOAT, upload);
             }
         } finally {
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, previous);
@@ -313,6 +357,12 @@ public final class EntityShadowMap {
         private final float[] u = new float[4];
         private final float[] v = new float[4];
         private final float[] alpha = new float[4];
+        private final float[] vertices = new float[12];
+        private final float[] min = new float[3];
+        private final float[] max = new float[3];
+        private int casters;
+        private boolean directional;
+        private boolean local;
         private float sunX;
         private float sunY;
         private float defaultAlpha = 1F;
@@ -321,11 +371,31 @@ public final class EntityShadowMap {
         private int drawnQuads;
         private AlphaMask mask = OPAQUE;
 
-        void begin(float x, float y) {
+        void begin(float x, float y, boolean directional, boolean local) {
             sunX = x;
             sunY = y;
             quads = 0;
             drawnQuads = 0;
+            casters = 0;
+            this.directional = directional;
+            this.local = local;
+        }
+
+        void beginCaster() {
+            Arrays.fill(min, Float.POSITIVE_INFINITY);
+            Arrays.fill(max, Float.NEGATIVE_INFINITY);
+        }
+
+        boolean endCaster(int first) {
+            if (!local || first == quads) {
+                return false;
+            }
+            int row = casters++ * ROW;
+            for (int axis = 0; axis < 3; axis++) {
+                MODELS.put(row + axis, min[axis]).put(row + 4 + axis, max[axis]);
+            }
+            MODELS.put(row + 3, MAX_ENTITIES + first).put(row + 7, MAX_ENTITIES + quads);
+            return true;
         }
 
         boolean hasCapacity() {
@@ -352,8 +422,11 @@ public final class EntityShadowMap {
 
         @Override
         public VertexConsumer vertex(double worldX, double worldY, double worldZ) {
-            x[slot] = (float) ((worldX * sunY - worldY * sunX) * PIXELS_PER_BLOCK + SIZE * 0.5F);
-            y[slot] = (float) (worldZ * PIXELS_PER_BLOCK + SIZE * 0.5F);
+            vertices[slot * 3] = (float) worldX;
+            vertices[slot * 3 + 1] = (float) worldY;
+            vertices[slot * 3 + 2] = (float) worldZ;
+            x[slot] = (float) ((worldX * sunY - worldY * sunX) * pixelsPerBlock + size * 0.5F);
+            y[slot] = (float) (worldZ * pixelsPerBlock + size * 0.5F);
             z[slot] = (float) (worldX * sunX + worldY * sunY);
             u[slot] = 0F;
             v[slot] = 0F;
@@ -377,8 +450,19 @@ public final class EntityShadowMap {
             }
             slot = 0;
             if (hasCapacity()) {
+                if (local) {
+                    int row = (MAX_ENTITIES + quads) * ROW;
+                    for (int vertex = 0; vertex < 4; vertex++) {
+                        for (int axis = 0; axis < 3; axis++) {
+                            float value = vertices[vertex * 3 + axis];
+                            MODELS.put(row + vertex * 4 + axis, value);
+                            min[axis] = Math.min(min[axis], value);
+                            max[axis] = Math.max(max[axis], value);
+                        }
+                    }
+                }
                 quads++;
-                if (rasterize(0, 1, 2) | rasterize(0, 2, 3)) {
+                if (directional && (rasterize(0, 1, 2) | rasterize(0, 2, 3))) {
                     drawnQuads++;
                 }
             }
@@ -392,8 +476,8 @@ public final class EntityShadowMap {
             float reciprocal = 1F / determinant;
             int minX = Math.max(0, Mth.floor(Math.min(x[a], Math.min(x[b], x[c]))));
             int minY = Math.max(0, Mth.floor(Math.min(y[a], Math.min(y[b], y[c]))));
-            int maxX = Math.min(SIZE - 1, Mth.floor(Math.max(x[a], Math.max(x[b], x[c]))));
-            int maxY = Math.min(SIZE - 1, Mth.floor(Math.max(y[a], Math.max(y[b], y[c]))));
+            int maxX = Math.min(size - 1, Mth.floor(Math.max(x[a], Math.max(x[b], x[c]))));
+            int maxY = Math.min(size - 1, Mth.floor(Math.max(y[a], Math.max(y[b], y[c]))));
             boolean drawn = false;
             for (int py = minY; py <= maxY; py++) {
                 for (int px = minX; px <= maxX; px++) {
@@ -405,11 +489,11 @@ public final class EntityShadowMap {
                     if (wa < 0 || wb < 0 || wc < 0) {
                         continue;
                     }
-                    float depth = wa * z[a] + wb * z[b] + wc * z[c];
-                    int index = py * SIZE + px;
-                    if (depth > DEPTH[index] && mask.visible(wa * u[a] + wb * u[b] + wc * u[c],
+                    float sample = wa * z[a] + wb * z[b] + wc * z[c];
+                    int index = py * size + px;
+                    if (sample > depth[index] && mask.visible(wa * u[a] + wb * u[b] + wc * u[c],
                             wa * v[a] + wb * v[b] + wc * v[c], wa * alpha[a] + wb * alpha[b] + wc * alpha[c])) {
-                        DEPTH[index] = depth;
+                        depth[index] = sample;
                         drawn = true;
                     }
                 }

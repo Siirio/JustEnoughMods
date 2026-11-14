@@ -30,6 +30,7 @@ import org.slf4j.Logger;
 public final class TerrainLighting {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final int ENTITY_SHADOW_TEXTURE_UNIT = 6;
+    private static final int ENTITY_MODELS_TEXTURE_UNIT = 11;
     private static final int TEXTURE_UNIT = 7;
     public static final int SHAPE_TEXTURE_UNIT = 8;
     private static final int LIGHT_TEXTURE_UNIT = 9;
@@ -50,6 +51,7 @@ public final class TerrainLighting {
     private static int previousLights;
     private static int previousCloud;
     private static int previousEntityShadow;
+    private static int previousEntityModels;
     private static TerrainLightVolume.Snapshot uploaded;
 
     private TerrainLighting() {
@@ -152,6 +154,7 @@ public final class TerrainLighting {
 
         // Each program must keep the volume sampler apart from Embeddium's 2D samplers.
         GL20.glUniform1i(uniforms.entityShadowTexture, ENTITY_SHADOW_TEXTURE_UNIT);
+        GL20.glUniform1i(uniforms.entityModelsTexture, ENTITY_MODELS_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.opacity, TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.shapes, SHAPE_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.chunkLights, LIGHT_TEXTURE_UNIT);
@@ -167,15 +170,17 @@ public final class TerrainLighting {
             return;
         }
 
-        if (!GL.getCapabilities().OpenGL33 || GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS) <= LIGHT_TEXTURE_UNIT) {
+        if (!GL.getCapabilities().OpenGL33 || GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS) <= CLOUD_TEXTURE_UNIT) {
             failed = true;
-            LOGGER.warn("JEM terrain lighting requires OpenGL 3.3 and ten fragment texture units");
+            LOGGER.warn("JEM terrain lighting requires OpenGL 3.3 and thirteen fragment texture units");
             return;
         }
 
         int activeTexture = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
         GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_SHADOW_TEXTURE_UNIT);
         previousEntityShadow = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_MODELS_TEXTURE_UNIT);
+        previousEntityModels = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         GL13.glActiveTexture(GL13.GL_TEXTURE0 + SHAPE_TEXTURE_UNIT);
         previousShape = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
@@ -258,6 +263,8 @@ public final class TerrainLighting {
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousLights);
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_SHADOW_TEXTURE_UNIT);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousEntityShadow);
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_MODELS_TEXTURE_UNIT);
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousEntityModels);
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + CLOUD_TEXTURE_UNIT);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousCloud);
             previousTexture = -1;
@@ -341,17 +348,21 @@ public final class TerrainLighting {
     }
 
     private static void setSun(Uniforms uniforms, ClientLevel level, float partialTick) {
-        Sun sun = sun(level, partialTick);
+        Sun sun = celestial(level, partialTick);
         GL20.glUniform4f(uniforms.sun, sun.x(), sun.y(), 0F, sun.strength());
-        GL20.glUniform3f(uniforms.sunColor, 1F, 1F, 1F);
+        boolean moon = Mth.cos(level.getSunAngle(partialTick)) < 0F;
+        GL20.glUniform3f(uniforms.sunColor, moon ? 0.64F : 1F, moon ? 0.79F : 1F, 1F);
     }
 
     private static void setEntityShadow(Uniforms uniforms, ClientLevel level, Vec3 camera) {
         var map = EntityShadowMap.current(level);
-        GL20.glUniform1i(uniforms.entityShadowActive, map == null ? 0 : 1);
+        GL20.glUniform1i(uniforms.entityShadowActive, map == null || map.texture() == 0 ? 0 : 1);
+        GL20.glUniform1i(uniforms.entityCasterCount, map == null ? 0 : map.casters());
         if (map != null) {
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_SHADOW_TEXTURE_UNIT);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, map.texture());
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_MODELS_TEXTURE_UNIT);
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, map.models());
             Vec3 origin = map.origin().subtract(camera);
             GL20.glUniform3f(uniforms.entityShadowOrigin, (float) origin.x, (float) origin.y, (float) origin.z);
             GL20.glUniform2f(uniforms.entityShadowDirection, map.sunX(), map.sunY());
@@ -382,6 +393,20 @@ public final class TerrainLighting {
             strength = Mth.clamp(altitude * 4F, 0F, 1F) * (1F - level.getRainLevel(partialTick) * 0.85F);
         }
         return new Sun(-Mth.sin(angle), altitude, strength);
+    }
+
+    public static Sun celestial(ClientLevel level, float partialTick) {
+        Sun day = sun(level, partialTick);
+        if (day.y() >= 0F) {
+            return day;
+        }
+        float strength = 0F;
+        if (level.dimensionType().hasSkyLight() && !level.dimensionType().hasCeiling()) {
+            float phase = level.getMoonBrightness();
+            strength = Mth.clamp(-day.y() * 4F, 0F, 1F) * (0.16F + 0.24F * phase)
+                    * (1F - level.getRainLevel(partialTick) * 0.85F);
+        }
+        return new Sun(-day.x(), -day.y(), strength);
     }
 
     public static VolumeTexture currentVolume(ClientLevel level) {
@@ -433,6 +458,8 @@ public final class TerrainLighting {
         private final int entityShadowTexture;
         private final int entityShadowOrigin;
         private final int entityShadowDirection;
+        private final int entityCasterCount;
+        private final int entityModelsTexture;
         private final int[] positions = new int[8];
         private final int[] colors = new int[8];
 
@@ -455,6 +482,8 @@ public final class TerrainLighting {
             entityShadowTexture = GL20.glGetUniformLocation(program, "jemEntityShadowTexture");
             entityShadowOrigin = GL20.glGetUniformLocation(program, "jemEntityShadowOrigin");
             entityShadowDirection = GL20.glGetUniformLocation(program, "jemEntityShadowDirection");
+            entityCasterCount = GL20.glGetUniformLocation(program, "jemEntityCasterCount");
+            entityModelsTexture = GL20.glGetUniformLocation(program, "jemEntityModels");
             for (int index = 0; index < positions.length; index++) {
                 positions[index] = GL20.glGetUniformLocation(program, "jemLightPositionRange[" + index + "]");
                 colors[index] = GL20.glGetUniformLocation(program, "jemLightColorStrength[" + index + "]");
