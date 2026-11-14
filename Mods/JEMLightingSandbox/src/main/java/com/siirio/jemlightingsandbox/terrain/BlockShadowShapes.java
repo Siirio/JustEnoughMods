@@ -14,6 +14,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
+import me.jellysquid.mods.sodium.client.render.texture.SpriteUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.RenderType;
@@ -214,7 +215,8 @@ public final class BlockShadowShapes {
         }
         var sprite = face.getSprite();
         var image = sprite.contents();
-        int frame = image.getUniqueFrames().findFirst().orElse(0);
+        // Static sprites upload the first tile even though getUniqueFrames returns 1.
+        int frame = SpriteUtil.hasAnimation(sprite) ? image.getUniqueFrames().findFirst().orElse(0) : 0;
         var pixels = image.getOriginalImage();
         boolean alpha = pixels.format().hasAlpha();
         int framesPerRow = pixels.getWidth() / image.width();

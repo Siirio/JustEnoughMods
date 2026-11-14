@@ -1,3 +1,15 @@
+## 2026-11-14 - Fix the Sandbox Lighting crash on world entry
+
+- User reported a crash after installing `0.5.11`
+- Bug / Client / Minecraft returns a synthetic frame index of 1 for static sprites. Shadow capture treated it as a real atlas frame and tried to read row 16 of a 16-pixel texture / in testing with Embeddium's animation check and origin sampling for static sprites
+- Built and installed `0.5.12` in Sandbox JustEnoughMods. The installed JAR matches the build by SHA-256. A new world entry awaits verification
+
+## 2026-11-14 - Install Sandbox Lighting 0.5.11
+
+- User requested installation in Sandbox JustEnoughMods
+- Bug / Client / The new shaft renderer omitted the Minecraft `Vec3` import, so Java could not compile the client module / in testing with the import restored and the JAR rebuilt
+- Installed the reobfuscated `0.5.11` JAR and retained `0.5.10` in the profile backup. The installed JAR matches the build by SHA-256. Visual appearance and frame time await an in-game check
+
 ## 2026-11-14 - Rework Sandbox light and shadow geometry
 
 - User specified brighter sun and moon beams, direct glare, continuous side beams, visible vegetation shadows and stable lamp light as the camera moves. The attached screenshots show a narrow wall under a lamp cutting the light across the path
