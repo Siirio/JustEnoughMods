@@ -1,6 +1,7 @@
 package com.siirio.jemlightingsandbox.mixin;
 
 import com.siirio.jemlightingsandbox.PrecipitationRenderer;
+import com.siirio.jemlightingsandbox.WindGusts;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.LightTexture;
@@ -21,7 +22,9 @@ public abstract class LevelRendererWeatherMixin {
         if (!PrecipitationRenderer.replacesVanilla(client)) {
             return rain;
         }
-        PrecipitationRenderer.draw(client, new Vec3(cameraX, cameraY, cameraZ), partialTick, rain);
+        var camera = new Vec3(cameraX, cameraY, cameraZ);
+        PrecipitationRenderer.draw(client, camera, partialTick, rain);
+        WindGusts.draw(client, camera, partialTick);
         return 0F;
     }
 }

@@ -14,7 +14,9 @@
       {"property": "client.sandbox.light_distance", "operation": "set", "before": "fixed 15-block range at full emission", "after": "configurable 8, 12, 15 or 20 blocks at full emission"},
       {"property": "client.sandbox.light_coverage_chunks", "operation": "set", "before": "camera-local volume only", "after": "2 to 32 loaded chunks, optionally follows the effective render distance"},
       {"property": "client.sandbox.shadow_geometry", "operation": "set", "before": "full blocks and selected native shapes", "after": "baked rectangular model geometry or native outlines, with foliage transmission"},
-      {"property": "client.sandbox.precipitation", "operation": "replace", "before": "native vertical sheets with additional native falling particles", "after": "diagonal rain and ordinary snow, horizontal blizzard and sand, with native weather state and ground impacts"}
+      {"property": "client.sandbox.precipitation", "operation": "replace", "before": "native vertical sheets with additional native falling particles", "after": "diagonal rain and ordinary snow, horizontal blizzards with two rotating flakes per accepted spawn, and horizontal sand, with native weather state and ground impacts"},
+      {"property": "client.sandbox.outdoor_wind", "operation": "replace", "before": "sparse dust", "after": "animated calm curls, fast ground waves and diagonal storm gusts with configurable biome colors"},
+      {"property": "client.sandbox.point_shadow_blend", "operation": "set", "before": "native light replacement depended on traced visibility", "after": "geometry-traced light replacement follows volume coverage and directional light follows visibility"}
     ]
   },
   "cause": {
@@ -24,9 +26,17 @@
       "Mods/JEMLightingSandbox/build.gradle",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/AtmosphereRenderer.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/SandboxWeather.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WindGusts.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WindColorScreen.java",
+      "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/textures/weather/wind_gusts.png",
+      "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/GPL-3.0.txt",
+      "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/LGPL-3.0.txt",
+      "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/NOTICE.txt",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/PrecipitationRenderer.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/CampfireSmokeParticleMixin.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/LevelRendererWeatherMixin.java",
+      "Mods/JEMLightingSandbox/art/wind/assemble-wind-atlas.lua",
+      "Mods/JEMLightingSandbox/art/wind/wind_gusts.aseprite",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EmbeddiumWaterMaterialMixin.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/WaterMaterial.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/WaterSurface.java",
@@ -67,7 +77,8 @@
     {"date": "2026-11-14", "commit": "5fce08c70", "action": "add_sandbox_sunlight_scattering_and_controls", "summary": "Add depth-aware daylight scattering and haze, adjustable volume update speed and lighting range, and exposed-face light origins for solid emitters."},
     {"date": "2026-11-14", "commit": "b0685cd43", "action": "index_lighting_chunks_and_trace_block_geometry", "summary": "Index loaded emitters by receiving section, trace supported baked block models or native outlines, and attenuate rays through leaves."},
     {"date": "2026-11-14", "commit": "1905982a5", "action": "expand_sandbox_atmosphere_and_stabilize_distant_lighting", "summary": "Preserve distant source contributions through the local trace transition. Add weather visuals, celestial scattering, water optics and approximate shadow casters."},
-    {"date": "2026-11-14", "commit": "SELF", "action": "replace_sandbox_precipitation_render", "summary": "Replace the native falling precipitation visuals with diagonal rain and snow and horizontal blizzards and sand. Keep native weather authority, custom dimension handlers and impacts."}
+    {"date": "2026-11-14", "commit": "a3411aaea", "action": "replace_sandbox_precipitation_render", "summary": "Replace the native falling precipitation visuals with diagonal rain and snow and horizontal blizzards and sand. Keep native weather authority, custom dimension handlers and impacts."},
+    {"date": "2026-11-14", "commit": "SELF", "action": "animate_sandbox_wind_and_fix_point_shadows", "summary": "Add biome-tinted wind gusts and double blizzard flake density. Stop occluders from restoring the same point source's native light contribution."}
   ],
   "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["No gameplay registrations, server state or native block emission levels change. The standalone preview remains available."], "unresolved": ["Visual output and frame time require verification on Windows and macOS. Dynamic models may use their native outline and full block-geometry tracing is local. Better Clouds projection, full entity model shadows, Voxy LOD and shader-pack coexistence are outside this pass."]}
 }

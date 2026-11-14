@@ -19,7 +19,6 @@ import org.joml.Vector3f;
 
 public final class SandboxWeather {
     private static final RandomSource RANDOM = RandomSource.create();
-    private static final DustParticleOptions WIND_DUST = dust(0.76F, 0.76F, 0.68F, 0.35F);
     private static final DustParticleOptions CAVE_DUST = dust(0.56F, 0.53F, 0.47F, 0.42F);
     private static ClientLevel heatLevel;
     private static long nextHeatScan;
@@ -55,10 +54,8 @@ public final class SandboxWeather {
             return;
         }
         long time = level.getGameTime();
-        Vec3 wind = wind(level);
-
         if (time % (status == ParticleStatus.DECREASED ? 8 : 4) == 0) {
-            spawnAirDust(client, level, center, position, wind);
+            spawnCaveDust(client, level, center, position);
         }
     }
 
@@ -132,8 +129,7 @@ public final class SandboxWeather {
         return wind(level).scale(0.032);
     }
 
-    private static void spawnAirDust(Minecraft client, ClientLevel level, Vec3 center, BlockPos.MutableBlockPos position,
-            Vec3 wind) {
+    private static void spawnCaveDust(Minecraft client, ClientLevel level, Vec3 center, BlockPos.MutableBlockPos position) {
         double x = center.x + spread(6);
         double z = center.z + spread(6);
         double y = center.y + spread(2.5);
@@ -141,12 +137,7 @@ public final class SandboxWeather {
         if (level.isOutsideBuildHeight(position) || !level.hasChunkAt(position) || !level.isEmptyBlock(position)) {
             return;
         }
-        if (outdoors(level, position)) {
-            Vec3 drift = wind.scale(0.05);
-            if (outdoors(level, position.set(x + drift.x * 10, y, z + drift.z * 10))) {
-                emit(client, WIND_DUST, x, y, z, drift, 0.003, 16);
-            }
-        } else if (isCave(level, position)) {
+        if (!outdoors(level, position) && isCave(level, position)) {
             emit(client, CAVE_DUST, x, y, z, new Vec3(spread(0.006), 0, spread(0.006)), 0.003, 29);
         }
     }

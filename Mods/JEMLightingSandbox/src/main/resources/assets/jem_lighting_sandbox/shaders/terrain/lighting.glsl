@@ -274,8 +274,10 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
         float lightLevel = max(0.0, properties.w - max(0.0, taxicabDistance - 1.0) / 15.0);
         float modeledSourceLevel = distanceFade * lightLevel;
         modeledBlockLevel = max(modeledBlockLevel, 0.35 * modeledSourceLevel);
+        bool sourceInVolume = jemInsideVolume(sourceCell);
+        float traceWeight = sourceInVolume ? sceneWeight : 0.0;
 
-        bool solidSource = jemInsideVolume(sourceCell) && jemVoxelData(sourceCell).y == 1;
+        bool solidSource = sourceInVolume && jemVoxelData(sourceCell).y == 1;
         if (solidSource) {
             vec3 emitterFace = jemExposedEmitterFace(sourceCell, rayOrigin);
             if (all(equal(emitterFace, vec3(0.0)))) {
@@ -292,15 +294,18 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
         }
         vec3 direction = shadowRay / shadowRayLength;
         float incidence = max(dot(normal, direction), 0.0);
+        // Remove the same native light share on both sides of a traced shadow.
+        // Keep the native diffuse estimate for sources outside the trace volume.
+        float replacementWeight = mix(incidence > 0.0 ? nativeVisibility : 0.0, 1.0, traceWeight);
+        modeledBlockLevel = max(modeledBlockLevel, mix(0.35, 1.0, replacementWeight) * modeledSourceLevel);
         if (incidence <= 0.0) {
             continue;
         }
         // Trace all intervening geometry for solid emitters, including the source's own other faces.
-        float tracedVisibility = sceneWeight > 0.0 && jemInsideVolume(sourceCell)
+        float tracedVisibility = traceWeight > 0.0
                 ? jemVisibility(rayOrigin, direction, shadowRayLength, solidSource ? ivec3(-1) : sourceCell)
                 : nativeVisibility;
-        float visibility = mix(nativeVisibility, tracedVisibility, sceneWeight);
-        modeledBlockLevel = max(modeledBlockLevel, mix(0.35, 1.0, visibility) * modeledSourceLevel);
+        float visibility = mix(nativeVisibility, tracedVisibility, traceWeight);
         if (solidSource) {
             incidence = mix(incidence, sqrt(incidence), 0.55);
         }

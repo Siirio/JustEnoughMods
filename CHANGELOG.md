@@ -1,3 +1,11 @@
+## 2026-11-14 - Animate Sandbox wind and correct lantern shadows
+
+- User requested the Windy icon's curl for calm weather, fast waves three to four blocks wide with rare nine-block waves, and diagonal gusts five to six blocks long that last about two seconds
+- Added the three outdoor gusts with a shared wind direction, red and ordinary desert colors, and per-biome RGB overrides in the lighting settings
+- Atlas assembly uses Windy artwork under LGPL-3.0-only. The gust timing, scale and terrain checks are implementation choices
+- Replaced blizzard streaks with rotating six-arm snowflakes. Each accepted spawn yields two flakes with horizontal movement
+- Bug / Client / Shared point-light shading restored part of an emitter's native diffuse light behind blockers, which could make a low lantern's shadow look brighter / in testing with native-light compensation independent of traced visibility
+
 ## 2026-11-14 - Replace the Sandbox precipitation render
 
 - User requested diagonal motion for light rain, heavy rain and ordinary snow, and horizontal motion for blizzards, sandblows and sandstorms

@@ -75,6 +75,7 @@ public final class LightingClient {
             TerrainLighting.tick(client);
             SandboxWeather.tick(client);
             PrecipitationRenderer.tick(client);
+            WindGusts.tick(client);
         }
     }
 
@@ -107,6 +108,7 @@ public final class LightingClient {
             client.execute(() -> {
                 TerrainLighting.clearWorld();
                 PrecipitationRenderer.clear();
+                WindGusts.clear();
                 AtmosphereRenderer.releaseTargets();
                 WaterSurface.release();
             });

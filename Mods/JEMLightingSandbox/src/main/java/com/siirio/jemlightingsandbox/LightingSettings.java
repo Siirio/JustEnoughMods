@@ -1,7 +1,10 @@
 package com.siirio.jemlightingsandbox;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
@@ -28,6 +31,7 @@ public final class LightingSettings {
     private static final ForgeConfigSpec.IntValue LIGHTING_CHUNKS;
     private static final ForgeConfigSpec.BooleanValue FOLLOW_RENDER_DISTANCE;
     private static final ForgeConfigSpec.BooleanValue ATMOSPHERE;
+    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WIND_COLORS;
 
     static {
         var builder = new ForgeConfigSpec.Builder();
@@ -41,6 +45,9 @@ public final class LightingSettings {
                 .define("followRenderDistance", DEFAULT_FOLLOW_RENDER_DISTANCE);
         ATMOSPHERE = builder.comment("Enable sunlight shafts and distance haze.")
                 .define("atmosphere", DEFAULT_ATMOSPHERE);
+        WIND_COLORS = builder.comment("Optional storm wind colors: biome_id=#RRGGBB. Exact biome IDs override defaults.")
+                .defineListAllowEmpty("windColors", List.<String>of(), value -> value instanceof String entry
+                        && entry.matches("[a-z0-9_.-]+:[a-z0-9_./-]+=#[a-fA-F0-9]{6}"));
         SPEC = builder.build();
     }
 
@@ -107,6 +114,33 @@ public final class LightingSettings {
 
     public static void setAtmosphereEnabled(boolean enabled) {
         ATMOSPHERE.set(enabled);
+        SPEC.save();
+    }
+
+    static int windColor(ResourceLocation biome) {
+        if (biome == null || !SPEC.isLoaded()) {
+            return -1;
+        }
+        String prefix = biome + "=#";
+        for (String entry : WIND_COLORS.get()) {
+            if (entry.startsWith(prefix)) {
+                return Integer.parseInt(entry.substring(prefix.length()), 16);
+            }
+        }
+        return -1;
+    }
+
+    static void setWindColor(ResourceLocation biome, int color) {
+        if (!SPEC.isLoaded()) {
+            return;
+        }
+        String prefix = biome + "=#";
+        var entries = new ArrayList<String>(WIND_COLORS.get());
+        entries.removeIf(entry -> entry.startsWith(prefix));
+        if (color >= 0) {
+            entries.add(prefix + String.format(Locale.ROOT, "%06X", color));
+        }
+        WIND_COLORS.set(entries);
         SPEC.save();
     }
 }

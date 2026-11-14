@@ -23,7 +23,7 @@ public final class LightingSettingsScreen extends Screen {
     private static final String SETTINGS = "screen.jem_lighting_sandbox.settings.";
     private static final int CONTROL_HEIGHT = 20;
     private static final int ROW_SPACING = 24;
-    private static final int ROWS_HEIGHT = 5 * ROW_SPACING + 8 + CONTROL_HEIGHT;
+    private static final int ROWS_HEIGHT = 6 * ROW_SPACING + 8 + CONTROL_HEIGHT;
     private final Screen parent;
     private ChunkDistanceSlider chunkDistance;
 
@@ -80,8 +80,11 @@ public final class LightingSettingsScreen extends Screen {
                         Component.translatable(SETTINGS + "atmosphere"),
                         (button, enabled) -> LightingSettings.setAtmosphereEnabled(enabled)));
 
+        addRenderableWidget(Button.builder(Component.translatable(SETTINGS + "wind_colors"),
+                button -> minecraft.setScreen(new WindColorScreen(this)))
+                .bounds(left, top + 5 * ROW_SPACING, buttonWidth, CONTROL_HEIGHT).build());
         addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> onClose())
-                .bounds(left, top + 5 * ROW_SPACING + 8, buttonWidth, CONTROL_HEIGHT).build());
+                .bounds(left, top + 6 * ROW_SPACING + 8, buttonWidth, CONTROL_HEIGHT).build());
     }
 
     private void updateChunkDistanceControl() {

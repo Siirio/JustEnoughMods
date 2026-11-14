@@ -15,6 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -27,11 +28,14 @@ import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.Tags;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL20;
 
 public final class PrecipitationRenderer {
-    private static final int MAX_PARTICLES = 2304;
+    private static final int BASE_PARTICLE_CAPACITY = 2304;
+    private static final int BLIZZARD_DENSITY_MULTIPLIER = 2;
+    private static final int MAX_PARTICLES = BASE_PARTICLE_CAPACITY * BLIZZARD_DENSITY_MULTIPLIER;
     private static final int SPAWN_RADIUS = 22;
     private static final int DRAW_RADIUS = 25;
     private static final int SAND_COLOR = 0xD7AA68;
@@ -77,11 +81,14 @@ public final class PrecipitationRenderer {
         }
         Vec3 wind = SandboxWeather.wind(level);
         BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+        int available = MAX_PARTICLES;
         for (int index = particles.size() - 1; index >= 0; index--) {
             WeatherParticle particle = particles.get(index);
             if (!particle.advance(level, cursor, wind, center)) {
                 particles.set(index, particles.get(particles.size() - 1));
                 particles.remove(particles.size() - 1);
+            } else {
+                available -= particle.style == WeatherStyle.BLIZZARD ? 1 : BLIZZARD_DENSITY_MULTIPLIER;
             }
         }
 
@@ -90,8 +97,10 @@ public final class PrecipitationRenderer {
         if (quality != ParticleStatus.ALL) {
             budget /= quality == ParticleStatus.DECREASED ? 2 : 4;
         }
-        for (int index = 0; index < budget && particles.size() < MAX_PARTICLES; index++) {
-            spawn(level, cursor, center, wind, storm);
+        for (int index = 0; index < budget && available >= BLIZZARD_DENSITY_MULTIPLIER; index++) {
+            if (spawn(level, cursor, center, wind, storm)) {
+                available -= BLIZZARD_DENSITY_MULTIPLIER;
+            }
         }
     }
 
@@ -121,7 +130,7 @@ public final class PrecipitationRenderer {
         if (vertices == null) {
             return;
         }
-        drawBatch(vertices);
+        drawBatch(vertices, GameRenderer.getPositionColorShader(), null);
     }
 
     static int sandColor(Holder<Biome> biome) {
@@ -136,18 +145,19 @@ public final class PrecipitationRenderer {
                 && SandboxWeather.hasOutdoorWeather(client.level) && !TerrainLighting.isShaderPackActive();
     }
 
-    private static void spawn(ClientLevel level, BlockPos.MutableBlockPos cursor, Vec3 camera, Vec3 wind, boolean storm) {
+    private static boolean spawn(ClientLevel level, BlockPos.MutableBlockPos cursor, Vec3 camera, Vec3 wind,
+            boolean storm) {
         double x = camera.x + (RANDOM.nextDouble() * 2 - 1) * SPAWN_RADIUS;
         double z = camera.z + (RANDOM.nextDouble() * 2 - 1) * SPAWN_RADIUS;
         if ((x - camera.x) * (x - camera.x) + (z - camera.z) * (z - camera.z) > SPAWN_RADIUS * SPAWN_RADIUS
                 || !level.hasChunkAt(cursor.set(x, camera.y, z))) {
-            return;
+            return false;
         }
         int roof = level.getHeight(Heightmap.Types.MOTION_BLOCKING, cursor.getX(), cursor.getZ());
         double bottom = Math.max(camera.y - 7, roof + 0.08);
         double top = Math.min(camera.y + 14, level.getMaxBuildHeight() - 0.1);
         if (bottom >= top) {
-            return;
+            return false;
         }
         double y = bottom + RANDOM.nextDouble() * (top - bottom);
         Holder<Biome> biome = level.getBiome(cursor.set(x, y, z));
@@ -157,7 +167,7 @@ public final class PrecipitationRenderer {
         if (sand != 0) {
             top = Math.min(top, roof + (storm ? 9 : 3));
             if (bottom >= top) {
-                return;
+                return false;
             }
             y = bottom + RANDOM.nextDouble() * (top - bottom);
             style = storm ? WeatherStyle.SANDSTORM : WeatherStyle.SANDBLOW;
@@ -167,23 +177,30 @@ public final class PrecipitationRenderer {
                 case RAIN -> style = storm ? WeatherStyle.HEAVY_RAIN : WeatherStyle.RAIN;
                 case SNOW -> style = storm ? WeatherStyle.BLIZZARD : WeatherStyle.SNOW;
                 default -> {
-                    return;
+                    return false;
                 }
             }
             color = style.color;
         }
         if (!exposedAir(level, cursor.set(x, y, z))) {
-            return;
+            return false;
         }
         double variation = 0.78 + RANDOM.nextDouble() * 0.46;
         particles.add(new WeatherParticle(style, color, variation, new Vec3(x, y, z), wind));
+        if (style == WeatherStyle.BLIZZARD) {
+            double secondY = cursor.getY() + (y - cursor.getY() < 0.5 ? 0.82 : 0.18);
+            Vec3 second = new Vec3(cursor.getX() + RANDOM.nextDouble(), secondY, cursor.getZ() + RANDOM.nextDouble());
+            double secondVariation = 0.78 + RANDOM.nextDouble() * 0.46;
+            particles.add(new WeatherParticle(style, color, secondVariation, second, wind));
+        }
+        return true;
     }
 
     private static boolean exposedAir(ClientLevel level, BlockPos pos) {
         return SandboxWeather.outdoors(level, pos) && level.isEmptyBlock(pos);
     }
 
-    private static void drawBatch(BufferBuilder.RenderedBuffer vertices) {
+    static void drawBatch(BufferBuilder.RenderedBuffer vertices, ShaderInstance shader, ResourceLocation texture) {
         var previousShader = RenderSystem.getShader();
         int previousProgram = GL11.glGetInteger(GL20.GL_CURRENT_PROGRAM);
         boolean depth = GL11.glIsEnabled(GL11.GL_DEPTH_TEST);
@@ -196,9 +213,19 @@ public final class PrecipitationRenderer {
         int destinationAlpha = GL11.glGetInteger(GL14.GL_BLEND_DST_ALPHA);
         int equationRgb = GL11.glGetInteger(GL20.GL_BLEND_EQUATION_RGB);
         int equationAlpha = GL11.glGetInteger(GL20.GL_BLEND_EQUATION_ALPHA);
-        var shader = GameRenderer.getPositionColorShader();
+        int activeTexture = 0;
+        int previousTexture = 0;
+        if (texture != null) {
+            activeTexture = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
+            GlStateManager._activeTexture(GL13.GL_TEXTURE0);
+            previousTexture = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
+            GlStateManager._activeTexture(activeTexture);
+        }
 
         try {
+            if (texture != null) {
+                shader.setSampler("Sampler0", Minecraft.getInstance().getTextureManager().getTexture(texture).getId());
+            }
             shader.MODEL_VIEW_MATRIX.set(RenderSystem.getModelViewMatrix());
             shader.PROJECTION_MATRIX.set(RenderSystem.getProjectionMatrix());
             shader.COLOR_MODULATOR.set(1F, 1F, 1F, 1F);
@@ -213,6 +240,11 @@ public final class PrecipitationRenderer {
             BufferUploader.draw(vertices);
         } finally {
             shader.clear();
+            if (texture != null) {
+                GlStateManager._activeTexture(GL13.GL_TEXTURE0);
+                GlStateManager._bindTexture(previousTexture);
+                GlStateManager._activeTexture(activeTexture);
+            }
             RenderSystem.setShader(() -> previousShader);
             GlStateManager._glUseProgram(previousProgram);
             RenderSystem.depthMask(depthMask);
@@ -234,7 +266,7 @@ public final class PrecipitationRenderer {
         RAIN(0.70, -0.88, 0.53, 0.014, 0.57F, 32, 0xA8C1DD),
         HEAVY_RAIN(1.27, -1.02, 0.90, 0.022, 0.66F, 30, 0xA3BEDA),
         SNOW(0.24, -0.10, 0.09, 0.042, 0.78F, 79, 0xF0F5FC),
-        BLIZZARD(1.26, 0, 0.39, 0.035, 0.82F, 50, 0xDCE9F6),
+        BLIZZARD(1.26, 0, 0.18, 0.028, 0.82F, 50, 0xDCE9F6),
         SANDBLOW(0.73, 0, 0.31, 0.045, 0.43F, 46, 0),
         SANDSTORM(1.56, 0, 0.72, 0.074, 0.56F, 35, 0);
 
@@ -308,6 +340,13 @@ public final class PrecipitationRenderer {
             if (alpha < 0.016F) {
                 return;
             }
+            float red = (color >> 16 & 255) * daylight / 255F;
+            float green = (color >> 8 & 255) * daylight / 255F;
+            float blue = (color & 255) * daylight / 255F;
+            if (style == WeatherStyle.BLIZZARD) {
+                emitSnowflake(buffer, center, age + partialTick, red, green, blue, alpha);
+                return;
+            }
             Vec3 direction = velocity.normalize();
             Vec3 side = direction.cross(center);
             if (side.lengthSqr() < 1.0E-7) {
@@ -316,13 +355,43 @@ public final class PrecipitationRenderer {
             side = side.normalize().scale(style.width * variation * 0.5);
             Vec3 front = center.add(direction.scale(style.length * variation * 0.35));
             Vec3 rear = center.subtract(direction.scale(style.length * variation * 0.65));
-            float red = (color >> 16 & 255) * daylight / 255F;
-            float green = (color >> 8 & 255) * daylight / 255F;
-            float blue = (color & 255) * daylight / 255F;
             vertex(buffer, front.add(side), red, green, blue, alpha);
             vertex(buffer, front.subtract(side), red, green, blue, alpha);
             vertex(buffer, rear.subtract(side), red, green, blue, alpha * 0.19F);
             vertex(buffer, rear.add(side), red, green, blue, alpha * 0.19F);
+        }
+
+        private void emitSnowflake(BufferBuilder buffer, Vec3 center, float time, float red, float green, float blue,
+                float alpha) {
+            Vec3 view = center.normalize();
+            Vec3 right = new Vec3(view.z, 0, -view.x);
+            if (right.lengthSqr() < 1.0E-7) {
+                right = new Vec3(1, 0, 0);
+            }
+            right = right.normalize();
+            Vec3 up = view.cross(right).normalize();
+            double radius = style.length * variation * 0.5;
+            double halfWidth = style.width * variation * 0.5;
+            double rotation = time * 0.10 + variation * 12.0;
+            for (int axis = 0; axis < 3; axis++) {
+                double angle = rotation + axis * Math.PI / 3.0;
+                double cosine = Math.cos(angle);
+                double sine = Math.sin(angle);
+                double tipX = (right.x * cosine + up.x * sine) * radius;
+                double tipY = (right.y * cosine + up.y * sine) * radius;
+                double tipZ = (right.z * cosine + up.z * sine) * radius;
+                double edgeX = (up.x * cosine - right.x * sine) * halfWidth;
+                double edgeY = (up.y * cosine - right.y * sine) * halfWidth;
+                double edgeZ = (up.z * cosine - right.z * sine) * halfWidth;
+                buffer.vertex(center.x + tipX + edgeX, center.y + tipY + edgeY, center.z + tipZ + edgeZ)
+                        .color(red, green, blue, alpha).endVertex();
+                buffer.vertex(center.x + tipX - edgeX, center.y + tipY - edgeY, center.z + tipZ - edgeZ)
+                        .color(red, green, blue, alpha).endVertex();
+                buffer.vertex(center.x - tipX - edgeX, center.y - tipY - edgeY, center.z - tipZ - edgeZ)
+                        .color(red, green, blue, alpha).endVertex();
+                buffer.vertex(center.x - tipX + edgeX, center.y - tipY + edgeY, center.z - tipZ + edgeZ)
+                        .color(red, green, blue, alpha).endVertex();
+            }
         }
 
         private static void vertex(BufferBuilder buffer, Vec3 point, float red, float green, float blue, float alpha) {
