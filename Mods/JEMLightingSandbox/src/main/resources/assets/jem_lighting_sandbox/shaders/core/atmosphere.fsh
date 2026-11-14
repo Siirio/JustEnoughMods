@@ -22,7 +22,7 @@ uniform float AtmosphereTime;
 in vec2 sceneUv;
 out vec4 fragColor;
 
-const int MAX_VIEW_SAMPLES = 32;
+const int MAX_VIEW_SAMPLES = 16;
 const int SUN_STEPS = 36;
 const float SUN_REACH = 24.0;
 const float VIEW_REACH = 36.0;
@@ -66,7 +66,7 @@ bool hitsShape(int shape, vec3 localOrigin, vec3 inverseRay, float entering, flo
     return false;
 }
 
-float lightVisibility(vec3 origin, vec3 inverseRay, float reach, int steps) {
+float lightVisibility(vec3 origin, vec3 inverseRay) {
     ivec3 cell = ivec3(floor(origin));
     ivec3 stepDirection = ivec3(sign(inverseRay));
     vec3 cellEdge = vec3(cell) + max(vec3(stepDirection), vec3(0.0));
@@ -77,12 +77,11 @@ float lightVisibility(vec3 origin, vec3 inverseRay, float reach, int steps) {
     float visibility = 1.0;
 
     for (int index = 0; index < SUN_STEPS; ++index) {
-        if (index >= steps
-                || any(lessThan(cell, ivec3(0))) || any(greaterThanEqual(cell, volumeEnd))) {
+        if (any(lessThan(cell, ivec3(0))) || any(greaterThanEqual(cell, volumeEnd))) {
             break;
         }
         float leaving = min(nextCrossing.x, min(nextCrossing.y, nextCrossing.z));
-        float segmentEnd = min(leaving, reach);
+        float segmentEnd = min(leaving, SUN_REACH);
         int shape = int(texelFetch(JemVoxels, cell, 0).g * 255.0 + 0.5);
         if (shape == 13) {
             visibility *= exp(-0.32 * max(segmentEnd - entering, 0.0));
@@ -92,7 +91,7 @@ float lightVisibility(vec3 origin, vec3 inverseRay, float reach, int steps) {
         } else if (hitsShape(shape, origin - vec3(cell), inverseRay, entering, segmentEnd)) {
             return 0.0;
         }
-        if (leaving >= reach) {
+        if (leaving >= SUN_REACH) {
             break;
         }
         bvec3 crossed = lessThanEqual(nextCrossing, vec3(leaving + 0.00001));
@@ -121,8 +120,9 @@ float celestialShafts(vec3 ray, float sceneDistance) {
     float lengthInVolume = last - first;
     float stride = max(0.40, lengthInVolume / float(MAX_VIEW_SAMPLES));
     vec3 inverseSun = inverseDirection(SunDirection);
-    float lit = 0.0;
-    float shadowed = 0.0;
+    // Test the beam across its axis. The offset is in world space and follows the light, not the camera.
+    vec3 acrossLight = normalize(vec3(SunDirection.y, -SunDirection.x, 0.0));
+    float shaft = 0.0;
     for (int index = 0; index < MAX_VIEW_SAMPLES; ++index) {
         float segment = first + float(index) * stride;
         float span = min(stride, last - segment);
@@ -130,20 +130,23 @@ float celestialShafts(vec3 ray, float sceneDistance) {
         float distance = segment + (0.14 + 0.72 * phase) * span;
         vec3 point = cameraInVolume + ray * distance;
         vec3 edges = min(point, VolumeSize - point);
-        float edge = smoothstep(0.0, 3.0, min(edges.x, min(edges.y, edges.z)));
+        float edge = smoothstep(0.95, 4.0, min(edges.x, min(edges.y, edges.z)));
+        if (edge <= 0.0) continue;
+        float visible = lightVisibility(point, inverseSun);
+        if (visible < 0.025) continue;
+        vec3 lateral = (index % 2 == 0 ? acrossLight : vec3(0.0, 0.0, 1.0)) * 0.74;
+        float sideA = lightVisibility(point + lateral, inverseSun);
+        float sideB = lightVisibility(point - lateral, inverseSun);
+        float separation = visible - min(sideA, sideB);
+        float contrast = smoothstep(0.12, 0.75, separation);
         float density = atmosphereDensity(CameraAltitude + ray.y * distance);
         if (Underwater > 0.5) {
             density = exp(-distance * mix(0.17, 0.045, WaterClarity));
         }
-        float weight = span * edge * density * exp(-distance * 0.018);
-        float visible = lightVisibility(point, inverseSun, SUN_REACH, SUN_STEPS);
-        lit += weight * visible;
-        shadowed += weight * (1.0 - visible);
+        shaft += span * edge * density * exp(-distance * 0.023) * visible * contrast;
     }
-    // Only show shafts where actual terrain interrupts the light along this view.
-    float contrast = smoothstep(0.12, 1.4, shadowed);
     float forward = 0.30 + 0.70 * pow(max(dot(ray, SunDirection), 0.0), 3.0);
-    return (1.0 - exp(-0.21 * lit)) * contrast * forward;
+    return 0.70 * (1.0 - exp(-0.26 * shaft)) * forward;
 }
 
 vec3 rainbowColor(float angle) {

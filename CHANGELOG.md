@@ -1,3 +1,9 @@
+## 2026-11-14 - Restrict Sandbox shafts to light beside blockers
+
+- User reported broad light patches on tree trunks and snow after the recent shaft change
+- Bug / Client / The shaft shader combined lit and occluded samples from different points along a view ray, so a blocker could boost the full visible air column / in testing with contrast sampled across the light direction at each point
+- Reduced compositing gain where a shaft crosses a visible foreground surface
+
 ## 2026-11-14 - Smooth Sandbox celestial shafts and remove local light haze
 
 - User requested stronger sun and moon shafts and removal of haze around local emitters
