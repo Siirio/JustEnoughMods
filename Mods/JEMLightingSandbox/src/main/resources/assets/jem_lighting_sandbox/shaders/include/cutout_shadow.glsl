@@ -1,13 +1,13 @@
-vec3 jemCutoutOffset(ivec2 bytes) {
-    int packedOffset = bytes.x | (bytes.y << 8);
-    if (packedOffset == 0) {
+vec3 jemCutoutOffset(uint voxel) {
+    int packedOffset = int((voxel >> 15) & 32767u);
+    if ((voxel & (1u << 14)) == 0u) {
         return vec3(0.0);
     }
-    ivec3 steps = (ivec3(packedOffset) >> ivec3(0, 5, 10)) & ivec3(31);
-    return vec3(steps - ivec3(16)) / 60.0;
+    ivec3 steps = (ivec3(packedOffset) >> ivec3(0, 6, 9)) & ivec3(63, 7, 63);
+    return vec3(steps) / vec3(126.0, 35.0, 126.0) - vec3(0.25, 0.2, 0.25);
 }
 
-bool jemHitsCutout(sampler2D palette, int shape, int faceCount,
+float jemCutoutHit(sampler2D palette, int shape, int faceCount,
         vec3 origin, vec3 ray, float entering, float leaving) {
     for (int face = 0; face < faceCount; ++face) {
         int column = face * 7;
@@ -20,7 +20,7 @@ bool jemHitsCutout(sampler2D palette, int shape, int faceCount,
             continue;
         }
         float hit = dot(normal, a - origin) / denominator;
-        if (hit < max(entering - 0.0001, 0.0001) || hit > leaving + 0.0001) {
+        if (hit < max(entering, 0.0001) || hit >= leaving) {
             continue;
         }
         vec3 local = origin + ray * hit - a;
@@ -32,8 +32,8 @@ bool jemHitsCutout(sampler2D palette, int shape, int faceCount,
         ivec2 pixel = ivec2(clamp(st * 16.0, vec2(0.0), vec2(15.0)));
         vec4 masks = texelFetch(palette, ivec2(column + 3 + pixel.y / 4, shape), 0);
         if ((int(masks[pixel.y % 4]) & (1 << pixel.x)) != 0) {
-            return true;
+            leaving = hit;
         }
     }
-    return false;
+    return leaving;
 }

@@ -16,12 +16,16 @@ import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL21;
 import org.lwjgl.opengl.GL30;
+import org.lwjgl.opengl.GL31;
+import org.lwjgl.opengl.GL15;
 import org.slf4j.Logger;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,9 +35,12 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 
 final class AtmosphereRenderer {
     private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int VOXEL_UNIT = 7;
-    private static final int VISIBILITY_COLUMNS = 8;
-    private static final double LIGHT_ANGLE_STEP = Math.PI / 90.0;
+    private static final int SECTION_UNIT = 7;
+    private static final int PALETTE_UNIT = 8;
+    private static final int VOXEL_UNIT = 13;
+    private static final float MAP_WIDTH = 72F;
+    private static final float MAP_REACH = 110F;
+    private static final double LIGHT_ANGLE_STEP = Math.PI / 360.0;
 
     private static ShaderInstance scattering;
     private static ShaderInstance composite;
@@ -43,7 +50,7 @@ final class AtmosphereRenderer {
     private static TextureTarget colorCopy;
     private static TextureTarget visibility;
     private static long visibilityRevision = -1L;
-    private static int visibilityAngle;
+    private static ShaftMap shaftMap;
     private static ClientLevel weatherLevel;
     private static long lastRain = Long.MIN_VALUE;
     private static boolean failed;
@@ -74,7 +81,7 @@ final class AtmosphereRenderer {
             return;
         }
         boolean underwater = medium == FogType.WATER;
-        var volume = TerrainLighting.currentVolume(level);
+        var shadowWorld = TerrainLighting.currentWorld(level);
         RenderTarget main = client.getMainRenderTarget();
         if (main.width < 2 || main.height < 2 || main.width != main.viewWidth || main.height != main.viewHeight
                 || !main.useDepth || main.getDepthTextureId() <= 0) {
@@ -134,26 +141,27 @@ final class AtmosphereRenderer {
             GL11.glColorMask(true, true, true, true);
             RenderSystem.disableBlend();
 
-            boolean drawShafts = volume != null && visibilityShader != null && rayStrength >= 0.01F;
-            if (drawShafts) {
-                updateVisibility(volume, celestial);
+            boolean hasMap = shadowWorld != null && visibilityShader != null && rayStrength >= 0.01F;
+            if (hasMap) {
+                updateVisibility(shadowWorld, celestial, position);
             }
             reduced.bindWrite(true);
             scattering.setSampler("SceneDepth", depthCopy.getDepthTextureId());
-            scattering.setSampler("ShaftVisibility", drawShafts ? visibility.getColorTextureId() : depthCopy.getDepthTextureId());
+            boolean shaftsEnabled = TerrainLighting.isTerrainEnabled();
+            scattering.setSampler("ShaftVisibility", hasMap ? visibility.getColorTextureId() : depthCopy.getDepthTextureId());
             scattering.safeGetUniform("InverseViewProjection").set(inverseViewProjection);
-            if (drawShafts) {
-                scattering.safeGetUniform("VolumeOrigin").set((float) (volume.x() - position.x),
-                        (float) (volume.y() - position.y), (float) (volume.z() - position.z));
-                scattering.safeGetUniform("VolumeSize").set((float) volume.width(), (float) volume.height(), (float) volume.depth());
-            } else {
-                scattering.safeGetUniform("VolumeSize").set(0F, 0F, 0F);
+            if (hasMap) {
+                Vec3 origin = shaftMap.origin().subtract(position);
+                scattering.safeGetUniform("ShaftMapOrigin").set((float) origin.x, (float) origin.y, (float) origin.z);
+                scattering.safeGetUniform("ShaftMapDirection").set(shaftMap.x(), shaftMap.y(), 0F);
             }
+            scattering.safeGetUniform("ShaftMapReach").set(hasMap ? MAP_REACH : 0F);
+            scattering.safeGetUniform("ShaftMapWidth").set(MAP_WIDTH);
+            scattering.safeGetUniform("ShaftStrength").set(shaftsEnabled ? rayStrength : 0F);
             scattering.safeGetUniform("SunDirection").set(celestial.x(), celestial.y(), 0F);
             scattering.safeGetUniform("SunStrength").set(rayStrength);
             scattering.safeGetUniform("SunColor").set(moon ? 0.48F : 1F, moon ? 0.67F : 0.94F - lowSun * 0.12F,
                     moon ? 1F : 0.81F - lowSun * 0.26F);
-            scattering.safeGetUniform("CameraAltitude").set((float) position.y - level.getSeaLevel());
             scattering.safeGetUniform("Underwater").set(underwater ? 1F : 0F);
             scattering.safeGetUniform("OpenSky").set(openSky);
             scattering.safeGetUniform("Aurora").set(aurora);
@@ -221,53 +229,91 @@ final class AtmosphereRenderer {
                 && (entity.hasEffect(MobEffects.BLINDNESS) || entity.hasEffect(MobEffects.DARKNESS));
     }
 
-    private static void updateVisibility(TerrainLighting.VolumeTexture volume, TerrainLighting.Sun celestial) {
-        int angle = (int) Math.round(Math.atan2(celestial.y(), celestial.x()) / LIGHT_ANGLE_STEP);
-        if (visibilityRevision == volume.revision() && visibilityAngle == angle) {
+    private static void updateVisibility(TerrainLighting.ShadowWorld world, TerrainLighting.Sun light, Vec3 camera) {
+        int angle = (int) Math.round(Math.atan2(light.y(), light.x()) / LIGHT_ANGLE_STEP);
+        int size = LightingSettings.shadowResolution();
+        boolean sameProjection = shaftMap != null && shaftMap.angle() == angle
+                && camera.distanceToSqr(shaftMap.center()) < 36;
+        boolean sameResources = shaftMap != null && visibility.width == size && world.revision() == visibilityRevision;
+        if (sameProjection && sameResources) {
             return;
         }
-        int width = volume.width() * VISIBILITY_COLUMNS;
-        int rows = (volume.depth() + VISIBILITY_COLUMNS - 1) / VISIBILITY_COLUMNS;
-        int height = volume.height() * rows;
-        if (visibility == null || visibility.width != width || visibility.height != height) {
-            if (visibility != null) {
-                visibility.destroyBuffers();
-            }
-            visibility = new TextureTarget(width, height, false, Minecraft.ON_OSX);
-            visibility.setFilterMode(GL11.GL_LINEAR);
+
+        double radians = angle * LIGHT_ANGLE_STEP;
+        float x = (float) Math.cos(radians);
+        float y = (float) Math.sin(radians);
+        double texel = MAP_WIDTH / size;
+        var direction = new Vec3(x, y, 0F);
+        var side = new Vec3(y, -x, 0F);
+        Vec3 center = sameProjection ? shaftMap.center() : camera;
+        Vec3 origin = side.scale(Math.floor(center.dot(side) / texel) * texel)
+                .add(direction.scale(Math.floor(center.dot(direction) / texel) * texel + 54F))
+                .add(0.0, 0.0, Math.floor(center.z / texel) * texel);
+        if (visibility == null || visibility.width != size) {
+            if (visibility != null) visibility.destroyBuffers();
+            visibility = createVisibilityTarget(size);
         }
+        BlockPos cameraBlock = BlockPos.containing(camera);
+        Vec3 sectionOrigin = origin.subtract(cameraBlock.getX() & ~15, cameraBlock.getY() & ~15, cameraBlock.getZ() & ~15);
         visibility.bindWrite(true);
-        visibilityShader.safeGetUniform("VolumeSize").set((float) volume.width(), (float) volume.height(), (float) volume.depth());
-        double cachedAngle = angle * LIGHT_ANGLE_STEP;
-        visibilityShader.safeGetUniform("SunDirection").set((float) Math.cos(cachedAngle), (float) Math.sin(cachedAngle), 0F);
+        visibilityShader.safeGetUniform("jemWorldSections").set(world.minSection(), world.sectionCount());
+        visibilityShader.safeGetUniform("jemCameraBlock").set(cameraBlock.getX(), cameraBlock.getY(), cameraBlock.getZ());
+        visibilityShader.safeGetUniform("MapOrigin").set((float) sectionOrigin.x, (float) sectionOrigin.y, (float) sectionOrigin.z);
+        visibilityShader.safeGetUniform("MapDirection").set(x, y, 0F);
+        visibilityShader.safeGetUniform("MapWidth").set(MAP_WIDTH);
+        visibilityShader.safeGetUniform("MapReach").set(MAP_REACH);
         visibilityShader.apply();
         try {
             int active = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
-            int shapeUnit = TerrainLighting.SHAPE_TEXTURE_UNIT;
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + SECTION_UNIT);
+            int previousSection = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + PALETTE_UNIT);
             int previousShape = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + VOXEL_UNIT);
-            int previous = GL11.glGetInteger(GL12.GL_TEXTURE_BINDING_3D);
+            int previousVoxels = GL11.glGetInteger(GL31.GL_TEXTURE_BINDING_BUFFER);
             try {
-                GL11.glBindTexture(GL12.GL_TEXTURE_3D, volume.id());
-                GL20.glUniform1i(GL20.glGetUniformLocation(visibilityShader.getId(), "JemVoxels"), VOXEL_UNIT);
-                GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, volume.shapes());
-                GL20.glUniform1i(GL20.glGetUniformLocation(visibilityShader.getId(), "JemShapes"), shapeUnit);
+                bindShadowSampler("jemSections", SECTION_UNIT, GL11.GL_TEXTURE_2D, world.sections());
+                bindShadowSampler("jemShapes", PALETTE_UNIT, GL11.GL_TEXTURE_2D, world.shapes());
+                bindShadowSampler("jemVoxels", VOXEL_UNIT, GL31.GL_TEXTURE_BUFFER, world.voxels());
                 drawQuad();
             } finally {
-                GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
+                GL13.glActiveTexture(GL13.GL_TEXTURE0 + SECTION_UNIT);
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousSection);
+                GL13.glActiveTexture(GL13.GL_TEXTURE0 + PALETTE_UNIT);
                 GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousShape);
                 GL13.glActiveTexture(GL13.GL_TEXTURE0 + VOXEL_UNIT);
-                GL11.glBindTexture(GL12.GL_TEXTURE_3D, previous);
+                GL11.glBindTexture(GL31.GL_TEXTURE_BUFFER, previousVoxels);
                 GL13.glActiveTexture(active);
             }
         } finally {
             visibilityShader.clear();
         }
-        visibilityRevision = volume.revision();
-        visibilityAngle = angle;
+        shaftMap = new ShaftMap(angle, x, y, center, origin);
+        visibilityRevision = world.revision();
     }
+
+    private static void bindShadowSampler(String name, int unit, int target, int id) {
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + unit);
+        GL11.glBindTexture(target, id);
+        GL20.glUniform1i(GL20.glGetUniformLocation(visibilityShader.getId(), name), unit);
+    }
+
+    private static TextureTarget createVisibilityTarget(int size) {
+        int unpack = GL11.glGetInteger(GL21.GL_PIXEL_UNPACK_BUFFER_BINDING);
+        try {
+            GL15.glBindBuffer(GL21.GL_PIXEL_UNPACK_BUFFER, 0);
+            TextureTarget target = new TextureTarget(size, size, false, Minecraft.ON_OSX);
+            GlStateManager._bindTexture(target.getColorTextureId());
+            // Store sub-block distances without a fixed-point conversion or filtered depth edges.
+            GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA32F, size, size,
+                    0, GL11.GL_RGBA, GL11.GL_FLOAT, (java.nio.FloatBuffer) null);
+            return target;
+        } finally {
+            GL15.glBindBuffer(GL21.GL_PIXEL_UNPACK_BUFFER, unpack);
+        }
+    }
+
+    private record ShaftMap(int angle, float x, float y, Vec3 center, Vec3 origin) {}
 
     private static void drawQuad() {
         var buffer = Tesselator.getInstance().getBuilder();
@@ -298,6 +344,7 @@ final class AtmosphereRenderer {
             visibility = null;
         }
         visibilityRevision = -1L;
+        shaftMap = null;
         if (depthCopy != null) {
             depthCopy.destroyBuffers();
             depthCopy = null;

@@ -3,12 +3,14 @@
 uniform sampler2D SceneDepth;
 uniform sampler2D ShaftVisibility;
 uniform mat4 InverseViewProjection;
-uniform vec3 VolumeOrigin;
-uniform vec3 VolumeSize;
+uniform vec3 ShaftMapOrigin;
+uniform vec3 ShaftMapDirection;
+uniform float ShaftMapWidth;
+uniform float ShaftMapReach;
 uniform vec3 SunDirection;
 uniform float SunStrength;
+uniform float ShaftStrength;
 uniform vec3 SunColor;
-uniform float CameraAltitude;
 uniform float OpenSky;
 uniform float Underwater;
 uniform vec3 WaterColor;
@@ -21,79 +23,67 @@ uniform float AtmosphereTime;
 in vec2 sceneUv;
 out vec4 fragColor;
 
-const int VIEW_SAMPLES = 12;
-const float VIEW_REACH = 36.0;
+const float VIEW_REACH = 42.0;
+const int VIEW_SAMPLES = 18;
 
-vec3 inverseDirection(vec3 direction) {
-    vec3 directionSign = 2.0 * vec3(greaterThanEqual(direction, vec3(0.0))) - 1.0;
-    return directionSign / max(abs(direction), vec3(0.000001));
-}
-
-vec2 boxInterval(vec3 origin, vec3 inverseRay, vec3 low, vec3 high) {
-    vec3 a = (low - origin) * inverseRay;
-    vec3 b = (high - origin) * inverseRay;
-    vec3 nearPlane = min(a, b);
-    vec3 farPlane = max(a, b);
-    return vec2(max(nearPlane.x, max(nearPlane.y, nearPlane.z)),
-            min(farPlane.x, min(farPlane.y, farPlane.z)));
-}
-
-float visibilitySlice(vec2 st, int slice, ivec3 grid) {
-    ivec2 tile = ivec2(slice % 8, slice / 8);
-    vec2 pixel = vec2(tile * grid.xy) + st + 0.5;
-    return texture(ShaftVisibility, pixel / vec2(textureSize(ShaftVisibility, 0))).r;
-}
-
-float cachedVisibility(vec3 point, ivec3 grid) {
-    vec3 sampleCell = point - 0.5;
-    vec3 clamped = clamp(sampleCell, vec3(0.0), vec3(grid - 1));
-    int slice = int(clamped.z);
-    return mix(visibilitySlice(clamped.xy, slice, grid),
-            visibilitySlice(clamped.xy, min(slice + 1, grid.z - 1), grid), fract(clamped.z));
-}
-
-float aperture(vec3 point, vec3 across, ivec3 grid, float light) {
-    float left = cachedVisibility(point - across, grid);
-    float right = cachedVisibility(point + across, grid);
-    return smoothstep(0.12, 0.58, light - max(left, right));
-}
-
-float celestialShafts(vec3 ray, float sceneDistance) {
-    if (SunStrength <= 0.0 || min(VolumeSize.x, min(VolumeSize.y, VolumeSize.z)) <= 0.0) {
-        return 0.0;
+float visibilityAt(vec2 uv, float depth) {
+    if (depth <= 0.0 || depth >= ShaftMapReach
+            || any(lessThanEqual(uv, vec2(0.0))) || any(greaterThanEqual(uv, vec2(1.0)))) {
+        return 1.0;
     }
-    vec3 cameraInVolume = -VolumeOrigin;
-    vec2 interval = boxInterval(cameraInVolume, inverseDirection(ray), vec3(0.0), VolumeSize);
-    float first = max(0.75, interval.x);
-    float last = min(min(sceneDistance, VIEW_REACH), interval.y);
-    if (last <= first) {
-        return 0.0;
-    }
+    vec3 column = texture(ShaftVisibility, uv).rgb;
+    if (depth >= column.r - 0.005) return 0.0;
+    return depth >= column.g ? column.b : 1.0;
+}
 
-    ivec3 grid = ivec3(VolumeSize);
-    vec3 acrossLight = vec3(SunDirection.y, -SunDirection.x, 0.0) * 1.75;
-    vec3 acrossZ = vec3(0.0, 0.0, 1.75);
-    float stride = (last - first) / float(VIEW_SAMPLES);
+float celestialShafts(vec3 ray, float sceneDistance, bool sky) {
+    if (ShaftStrength <= 0.0) return 0.0;
+    float alignment = max(dot(ray, SunDirection), 0.0);
+    // The scene depth masks the sun or moon disk at the actual foreground silhouette.
+    float direct = sky ? 0.62 * pow(alignment, 110.0) : 0.0;
+    if (ShaftMapReach <= 0.0) return direct * ShaftStrength;
+
+    vec3 across = vec3(ShaftMapDirection.y, -ShaftMapDirection.x, 0.0);
+    vec3 relativeCamera = -ShaftMapOrigin;
+    vec2 startUv = vec2(dot(relativeCamera, across), relativeCamera.z) / ShaftMapWidth + 0.5;
+    vec2 uvSlope = vec2(dot(ray, across), ray.z) / ShaftMapWidth;
+    float startDepth = dot(relativeCamera, -ShaftMapDirection);
+    float depthSlope = dot(ray, -ShaftMapDirection);
+    float distanceLimit = min(sceneDistance, VIEW_REACH);
     float shaft = 0.0;
-    for (int index = 0; index < VIEW_SAMPLES; ++index) {
-        float distance = first + (float(index) + 0.5) * stride;
-        vec3 point = cameraInVolume + ray * distance;
-        vec3 edges = min(point, VolumeSize - point);
-        float edge = smoothstep(2.5, 5.0, min(edges.x, min(edges.y, edges.z)));
-        if (edge <= 0.0) {
-            continue;
+    float density = Underwater > 0.5 ? mix(0.17, 0.052, WaterClarity) : 0.028;
+    // Intersect each sample interval with the caster depth instead of rounding the hit to the sample center.
+    float previous = 0.10;
+    for (int step = 1; step <= VIEW_SAMPLES; step++) {
+        if (previous >= distanceLimit) break;
+        float fraction = float(step) / float(VIEW_SAMPLES);
+        float next = min(distanceLimit, 0.10 + VIEW_REACH * fraction * (0.35 + 0.65 * fraction));
+        float distance = 0.5 * (previous + next);
+        vec2 uv = startUv + uvSlope * distance;
+        float depth = startDepth + depthSlope * distance;
+        vec2 margin = min(uv, 1.0 - uv);
+        float edge = smoothstep(0.0, 0.065, min(margin.x, margin.y));
+        if (edge > 0.0 && depth > 0.0 && depth < ShaftMapReach) {
+            vec3 column = texture(ShaftVisibility, uv).rgb;
+            float halfSegment = (next - previous) * 0.5;
+            float halfDepth = max(0.01, abs(depthSlope) * halfSegment);
+            float lit = clamp((column.r - depth + halfDepth) / (2.0 * halfDepth), 0.0, 1.0);
+            if (lit > 0.0) {
+                float clear = clamp((column.g - depth + halfDepth) / (2.0 * halfDepth), 0.0, lit);
+                lit = mix(clear, lit, column.b);
+                // Measure broad local contrast on both axes. The light stays continuous along its projection.
+                float width = 0.9 / ShaftMapWidth;
+                float side = min(
+                        min(visibilityAt(uv - vec2(width, 0.0), depth), visibilityAt(uv + vec2(width, 0.0), depth)),
+                        min(visibilityAt(uv - vec2(0.0, width), depth), visibilityAt(uv + vec2(0.0, width), depth)));
+                float texturedLight = max(lit - side, 0.0);
+                shaft += (next - previous) * edge * exp(-distance * density) * texturedLight;
+            }
         }
-        float visible = cachedVisibility(point, grid);
-        if (visible <= 0.12) {
-            continue;
-        }
-        float opening = max(aperture(point, acrossLight, grid, visible), aperture(point, acrossZ, grid, visible));
-        float density = Underwater > 0.5 ? mix(0.17, 0.045, WaterClarity) : 0.036;
-        float altitude = Underwater > 0.5 ? 1.0 : exp(-max(CameraAltitude + ray.y * distance, 0.0) * 0.018);
-        shaft += stride * edge * altitude * exp(-distance * density) * visible * opening;
+        previous = next;
     }
-    float forward = 0.40 + 0.60 * pow(max(dot(ray, SunDirection), 0.0), 3.0);
-    return 0.38 * (1.0 - exp(-0.16 * shaft)) * forward;
+    float phase = 0.62 + 0.60 * pow(alignment, 6.0);
+    return ShaftStrength * (direct + phase * (1.0 - exp(-0.42 * shaft)));
 }
 
 vec3 rainbowColor(float angle) {
@@ -141,9 +131,9 @@ void main() {
         haze = (1.0 - exp(-max(0.0, sceneDistance - 1.0) * waterDensity)) * 0.28;
     }
 
-    float beam = celestialShafts(ray, sceneDistance) * SunStrength;
+    float beam = celestialShafts(ray, sceneDistance, sky);
     vec3 beamColor = submerged ? mix(SunColor, max(WaterColor, vec3(0.12, 0.26, 0.30)), 0.53) : SunColor;
-    float opacity = haze + 0.10 * beam * (1.0 - haze);
+    float opacity = haze + 0.18 * beam * (1.0 - haze);
     vec4 scatter = vec4(WaterColor * haze + beamColor * beam * (1.0 - haze), opacity);
 
     if (!submerged && OpenSky > 0.0) {

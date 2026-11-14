@@ -1,31 +1,14 @@
 {
   "vertex": "jem_lighting_sandbox:atmosphere",
   "fragment": "jem_lighting_sandbox:shaft_visibility",
-  "attributes": [
-    "Position",
-    "UV0"
-  ],
+  "attributes": ["Position", "UV0"],
   "samplers": [],
   "uniforms": [
-    {
-      "name": "VolumeSize",
-      "type": "float",
-      "count": 3,
-      "values": [
-        0.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "name": "SunDirection",
-      "type": "float",
-      "count": 3,
-      "values": [
-        0.0,
-        1.0,
-        0.0
-      ]
-    }
+    { "name": "jemWorldSections", "type": "int", "count": 2, "values": [0, 0] },
+    { "name": "jemCameraBlock", "type": "int", "count": 3, "values": [0, 0, 0] },
+    { "name": "MapOrigin", "type": "float", "count": 3, "values": [0, 0, 0] },
+    { "name": "MapDirection", "type": "float", "count": 3, "values": [0, 1, 0] },
+    { "name": "MapWidth", "type": "float", "count": 1, "values": [1] },
+    { "name": "MapReach", "type": "float", "count": 1, "values": [1] }
   ]
 }

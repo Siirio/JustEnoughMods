@@ -96,7 +96,13 @@ final class ChunkLightTexture {
                 GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, 0);
                 GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, 0);
                 GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA32F, SIDE * SECTION_TEXELS, SIDE * sections,
-                        0, GL11.GL_RGBA, GL11.GL_FLOAT, directFloats(SIDE * SIDE * sections * SECTION_TEXELS * 4));
+                        0, GL11.GL_RGBA, GL11.GL_FLOAT, (FloatBuffer) null);
+                // Initialize only the headers. Empty rows have no samples to read.
+                float[] emptyHeaders = new float[SIDE * sections * 4];
+                for (int x = 0; x < SIDE; x++) {
+                    GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, x * SECTION_TEXELS, 0, 1, SIDE * sections,
+                            GL11.GL_RGBA, GL11.GL_FLOAT, emptyHeaders);
+                }
             } finally {
                 GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, rowLength);
                 GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, skipRows);
@@ -179,7 +185,7 @@ final class ChunkLightTexture {
         GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D, 0, u, v, SECTION_TEXELS, sections, GL11.GL_RGBA, GL11.GL_FLOAT, upload);
     }
 
-    private void insert(int section, TerrainLightVolume.Light light, float radius, float score, int x, int y, int z) {
+    private void insert(int section, BlockLight light, float radius, float score, int x, int y, int z) {
         int header = section * SECTION_TEXELS * 4;
         int count = (int) upload.get(header + 2);
         int row = section * LIGHTS_PER_SECTION;
@@ -203,7 +209,7 @@ final class ChunkLightTexture {
         upload.put(first, (float) (light.x() - x)).put(first + 1, (float) (light.y() - y))
                 .put(first + 2, (float) (light.z() - z)).put(first + 3, radius)
                 .put(first + 4, light.red()).put(first + 5, light.green()).put(first + 6, light.blue())
-                .put(first + 7, light.emission() / 15F);
+                .put(first + 7, light.emission() / (light.area() ? -15F : 15F));
         upload.put(header + 2, Math.min(count + 1, LIGHTS_PER_SECTION));
     }
 

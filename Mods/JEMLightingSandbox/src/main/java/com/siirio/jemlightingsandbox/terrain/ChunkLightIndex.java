@@ -55,9 +55,10 @@ public final class ChunkLightIndex {
     private Discovery revalidation;
     private int ticksUntilRevalidation;
     private int viewSectionY;
-    private long revision;
+    private int litColumns;
 
-    public void tick(ClientLevel currentLevel, Vec3 camera, int chunkRadius, LightingSettings.Mode mode) {
+    public void tick(ClientLevel currentLevel, Vec3 camera, int chunkRadius, LightingSettings.Mode mode,
+            WorldShadowSections shadows) {
         if (level != currentLevel) {
             clear();
             level = currentLevel;
@@ -65,11 +66,11 @@ public final class ChunkLightIndex {
         int cameraX = SectionPos.blockToSectionCoord(Mth.floor(camera.x));
         int cameraY = SectionPos.blockToSectionCoord(Mth.floor(camera.y));
         int cameraZ = SectionPos.blockToSectionCoord(Mth.floor(camera.z));
-        Window next = new Window(cameraX, cameraZ, Mth.clamp(chunkRadius, 2, 32));
+        Window next = new Window(cameraX, cameraZ, Mth.clamp(chunkRadius, 2, 32) + 2);
         boolean moved = !next.equals(window) || cameraY != viewSectionY;
         viewSectionY = cameraY;
         if (!next.equals(window)) {
-            moveWindow(next);
+            moveWindow(next, shadows);
         }
         if (moved) {
             pending.clear();
@@ -83,24 +84,24 @@ public final class ChunkLightIndex {
         int packetBudget = discovery == null ? LOOKUPS_PER_TICK : LOOKUPS_PER_TICK / 2;
         int used = 0;
         while (!lookups.isEmpty() && used < packetBudget) {
-            refreshColumn(lookups.removeFirstLong(), true);
+            refreshColumn(lookups.removeFirstLong(), true, shadows);
             used++;
         }
         while (discovery != null && used < LOOKUPS_PER_TICK) {
-            refreshColumn(discovery.advance(), false);
+            refreshColumn(discovery.advance(), false, shadows);
             if (discovery.finished()) {
                 discovery = null;
             }
             used++;
         }
-        revalidateColumns();
+        revalidateColumns(shadows);
 
         int reads = switch (mode) {
             case SLOW -> 4;
             case FAST -> 12;
             case REALTIME -> 20;
         };
-        for (int sectionBudget = 128; sectionBudget > 0 && reads > 0 && !pending.isEmpty(); sectionBudget--) {
+        while (reads > 0 && !pending.isEmpty()) {
             Column column = pending.remove();
             column.queued = false;
             if (columns.get(column.key) != column) {
@@ -108,7 +109,7 @@ public final class ChunkLightIndex {
             }
             LevelChunk chunk = loadedChunk(column.key);
             if (chunk != column.chunk) {
-                refreshColumn(column.key, false);
+                refreshColumn(column.key, false, shadows);
                 continue;
             }
 
@@ -118,12 +119,13 @@ public final class ChunkLightIndex {
                 column.preferredSection = -1;
             }
             var section = chunk.getSection(sectionIndex);
+            shadows.capture(currentLevel, chunk, sectionIndex);
             if (section.hasOnlyAir() || !section.maybeHas(ChunkLightIndex::mayEmit)) {
                 publishSection(column, sectionIndex, List.of());
             } else {
                 publishSection(column, sectionIndex, scanSection(column, sectionIndex));
-                reads--;
             }
+            reads--;
             enqueue(column);
         }
     }
@@ -140,8 +142,8 @@ public final class ChunkLightIndex {
         int maxX = SectionPos.blockToSectionCoord(position.getX() + 1);
         int minZ = SectionPos.blockToSectionCoord(position.getZ() - 1);
         int maxZ = SectionPos.blockToSectionCoord(position.getZ() + 1);
-        int minY = SectionPos.blockToSectionCoord(position.getY() - 1);
-        int maxY = SectionPos.blockToSectionCoord(position.getY() + 1);
+        int minY = SectionPos.blockToSectionCoord(position.getY() - 2);
+        int maxY = SectionPos.blockToSectionCoord(position.getY() + 2);
         for (int z = minZ; z <= maxZ; z++) {
             for (int x = minX; x <= maxX; x++) {
                 Column column = columns.get(ChunkPos.asLong(x, z));
@@ -169,10 +171,22 @@ public final class ChunkLightIndex {
     public void invalidateChunk(ChunkPos chunk) {
         if (window != null && window.contains(chunk.x, chunk.z)) {
             lookups.addAndMoveToFirst(chunk.toLong());
+            // Offset faces can extend across the border of a newly loaded or removed column.
+            for (int z = chunk.z - 1; z <= chunk.z + 1; z++) {
+                for (int x = chunk.x - 1; x <= chunk.x + 1; x++) {
+                    if (x != chunk.x || z != chunk.z) {
+                        Column neighbor = columns.get(ChunkPos.asLong(x, z));
+                        if (neighbor != null) {
+                            neighbor.dirtySections.set(0, neighbor.chunk.getSectionsCount());
+                            enqueue(neighbor);
+                        }
+                    }
+                }
+            }
         }
     }
 
-    public List<TerrainLightVolume.Light> sources(int chunkX, int chunkZ) {
+    List<BlockLight> sources(int chunkX, int chunkZ) {
         Column column = columns.get(ChunkPos.asLong(chunkX, chunkZ));
         return column == null ? List.of() : column.sources;
     }
@@ -190,8 +204,8 @@ public final class ChunkLightIndex {
         return result;
     }
 
-    public long revision() {
-        return revision;
+    boolean hasLights() {
+        return litColumns > 0;
     }
 
     public int coveredChunks() {
@@ -208,10 +222,10 @@ public final class ChunkLightIndex {
         revalidation = null;
         ticksUntilRevalidation = 0;
         level = null;
-        revision++;
+        litColumns = 0;
     }
 
-    private void moveWindow(Window next) {
+    private void moveWindow(Window next, WorldShadowSections shadows) {
         Window previous = window;
         window = next;
         var entries = columns.long2ObjectEntrySet().fastIterator();
@@ -220,7 +234,9 @@ public final class ChunkLightIndex {
             if (!next.contains(entry.getLongKey())) {
                 if (!entry.getValue().sources.isEmpty()) {
                     changed(entry.getLongKey());
+                    litColumns--;
                 }
+                removeShadows(shadows, entry.getValue().chunk);
                 entries.remove();
             }
         }
@@ -253,7 +269,7 @@ public final class ChunkLightIndex {
         }
     }
 
-    private void revalidateColumns() {
+    private void revalidateColumns(WorldShadowSections shadows) {
         // Forge posts events for individual packet loads and drops. Cache resizing can evict
         // columns without posting a drop, so periodically recheck resident chunk identity.
         if (revalidation == null && discovery == null && --ticksUntilRevalidation <= 0) {
@@ -262,7 +278,7 @@ public final class ChunkLightIndex {
         for (int count = 0; count < REVALIDATIONS_PER_TICK && revalidation != null; count++) {
             long key = revalidation.advance();
             if (columns.containsKey(key)) {
-                refreshColumn(key, false);
+                refreshColumn(key, false, shadows);
             }
             if (revalidation.finished()) {
                 revalidation = null;
@@ -271,7 +287,7 @@ public final class ChunkLightIndex {
         }
     }
 
-    private void refreshColumn(long key, boolean invalidateSections) {
+    private void refreshColumn(long key, boolean invalidateSections, WorldShadowSections shadows) {
         if (!window.contains(key)) {
             return;
         }
@@ -281,7 +297,9 @@ public final class ChunkLightIndex {
             columns.remove(key);
             if (!previous.sources.isEmpty()) {
                 changed(key);
+                litColumns--;
             }
+            removeShadows(shadows, previous.chunk);
             previous = null;
         }
         if (chunk == null || (previous != null && !invalidateSections)) {
@@ -291,6 +309,10 @@ public final class ChunkLightIndex {
         columns.put(key, column);
         column.dirtySections.set(0, chunk.getSectionsCount());
         enqueue(column);
+    }
+
+    private static void removeShadows(WorldShadowSections shadows, LevelChunk chunk) {
+        shadows.remove(chunk.getPos(), chunk.getMinSection(), chunk.getMaxSection());
     }
 
     private LevelChunk loadedChunk(long key) {
@@ -316,7 +338,7 @@ public final class ChunkLightIndex {
         return state.getLightEmission() > 0 || (!state.isAir() && CONTEXTUAL_EMISSION.get(state.getBlock().getClass()));
     }
 
-    private List<TerrainLightVolume.Light> scanSection(Column column, int sectionIndex) {
+    private List<BlockLight> scanSection(Column column, int sectionIndex) {
         int startX = column.chunk.getPos().getMinBlockX();
         int startY = SectionPos.sectionToBlockCoord(column.chunk.getSectionYFromSectionIndex(sectionIndex));
         int startZ = column.chunk.getPos().getMinBlockZ();
@@ -350,7 +372,7 @@ public final class ChunkLightIndex {
             }
         }
 
-        var sources = new ArrayList<TerrainLightVolume.Light>();
+        var sources = new ArrayList<BlockLight>();
         for (int source : brightest) {
             if (source == 0) {
                 continue;
@@ -360,13 +382,13 @@ public final class ChunkLightIndex {
             int z = (index >> 4) & 15;
             int y = index >> 8;
             cursor.set(startX + x, startY + y, startZ + z);
-            sources.add(TerrainLightVolume.lightAt(level, cursor, section.getBlockState(x, y, z), source >> 12));
+            sources.add(BlockLight.at(level, cursor, section.getBlockState(x, y, z), source >> 12));
         }
         return List.copyOf(sources);
     }
 
-    private void publishSection(Column column, int index, List<TerrainLightVolume.Light> lights) {
-        List<TerrainLightVolume.Light> previous = column.sections.getOrDefault(index, List.of());
+    private void publishSection(Column column, int index, List<BlockLight> lights) {
+        List<BlockLight> previous = column.sections.getOrDefault(index, List.of());
         if (previous.equals(lights)) {
             return;
         }
@@ -375,9 +397,12 @@ public final class ChunkLightIndex {
         } else {
             column.sections.put(index, lights);
         }
-        var combined = new ArrayList<TerrainLightVolume.Light>();
+        var combined = new ArrayList<BlockLight>();
         for (int section = 0; section < column.chunk.getSectionsCount(); section++) {
             combined.addAll(column.sections.getOrDefault(section, List.of()));
+        }
+        if (column.sources.isEmpty() != combined.isEmpty()) {
+            litColumns += combined.isEmpty() ? -1 : 1;
         }
         column.sources = List.copyOf(combined);
         changed(column.key);
@@ -385,15 +410,14 @@ public final class ChunkLightIndex {
 
     private void changed(long key) {
         changes.add(key);
-        revision++;
     }
 
     private static final class Column {
         private final long key;
         private final LevelChunk chunk;
-        private final Map<Integer, List<TerrainLightVolume.Light>> sections = new HashMap<>();
+        private final Map<Integer, List<BlockLight>> sections = new HashMap<>();
         private final BitSet dirtySections = new BitSet();
-        private List<TerrainLightVolume.Light> sources = List.of();
+        private List<BlockLight> sources = List.of();
         private int preferredSection = -1;
         private int priority;
         private boolean queued;

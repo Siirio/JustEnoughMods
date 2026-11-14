@@ -1,7 +1,9 @@
 package com.siirio.jemlightingsandbox.terrain;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
+import com.mojang.math.Axis;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -16,32 +18,40 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.blockentity.BannerRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.WallBannerBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.RotationSegment;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.client.model.data.ModelData;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 import org.slf4j.Logger;
 
 /** A palette for the native block geometry visible to the terrain shadow rays. */
 public final class BlockShadowShapes {
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final int TEXTURE_WIDTH = 64;
-    public static final int TEXTURE_HEIGHT = 256;
+    public static final int TEXTURE_HEIGHT = 1024;
     static final int EMPTY = 0;
     static final int FULL = 1;
-    private static final int FOLIAGE = 13;
-    private static final int FIRST_CUSTOM = 14;
+    static final int FOLIAGE = 2;
+    static final int WALL_BANNER = 3;
+    static final int STANDING_BANNER = 7;
+    static final int FIRST_CUSTOM = 23;
     private static final int BOX_LIMIT = 8;
     private static final int CUTOUT_FACE_LIMIT = 8;
     private static final int CUTOUT_FACE_TEXELS = 7;
     private static final int MASK_SIZE = 16;
+    private static final int CUTOUT_ALPHA = 26;
     private static final int FACE_LIMIT = 96;
     private static final int GRID_LIMIT = 4096;
     private static final int GRID_SCALE = 256;
@@ -61,9 +71,45 @@ public final class BlockShadowShapes {
     private final Map<List<Box>, Integer> ids = new HashMap<>();
     private int nextBoxId = FIRST_CUSTOM;
     private int nextCutoutId = TEXTURE_HEIGHT - 1;
-    private FloatBuffer published;
+    private int firstDirty = TEXTURE_HEIGHT;
+    private int lastDirty = -1;
+
+    BlockShadowShapes() {
+        var banner = BannerRenderer.createBodyLayer().bakeRoot();
+        // The renderer supplies the model parts and uses these same placement transforms.
+        String[] parts = {"bar", BannerRenderer.FLAG, "pole"};
+        for (int id = WALL_BANNER; id < FIRST_CUSTOM; id++) {
+            boolean wall = id < STANDING_BANNER;
+            float yaw = wall ? Direction.from2DDataValue(id - WALL_BANNER).toYRot()
+                    : RotationSegment.convertToDegrees(id - STANDING_BANNER);
+            var poses = new PoseStack();
+            poses.translate(0.5F, wall ? -1F / 6F : 0.5F, 0.5F);
+            poses.mulPose(Axis.YP.rotationDegrees(-yaw));
+            if (wall) {
+                poses.translate(0F, -0.3125F, -0.4375F);
+            }
+            int row = id * TEXTURE_WIDTH * 4;
+            var origin = poses.last().pose().transformPosition(0F, 0F, 0F, new Vector3f());
+            texture.put(row + 24, origin.x).put(row + 25, origin.y).put(row + 26, origin.z);
+            texture.put(row + 28, Mth.cos(yaw * Mth.DEG_TO_RAD)).put(row + 29, Mth.sin(yaw * Mth.DEG_TO_RAD));
+            for (int index = 0; index < (wall ? 2 : 3); index++) {
+                int corner = row + index * 8;
+                banner.getChild(parts[index]).visit(new PoseStack(), (pose, path, partIndex, cube) -> {
+                    texture.put(corner, cube.minX / 16F).put(corner + 1, cube.minY / 16F).put(corner + 2, cube.minZ / 16F);
+                    texture.put(corner + 4, cube.maxX / 16F).put(corner + 5, cube.maxY / 16F).put(corner + 6, cube.maxZ / 16F);
+                });
+            }
+            markDirty(id);
+        }
+    }
 
     int id(BlockState state, ClientLevel level, BlockPos position) {
+        if (state.getBlock() instanceof WallBannerBlock) {
+            return WALL_BANNER + state.getValue(WallBannerBlock.FACING).get2DDataValue();
+        }
+        if (state.getBlock() instanceof BannerBlock) {
+            return STANDING_BANNER + state.getValue(BannerBlock.ROTATION);
+        }
         if (state.isAir() || state.getRenderShape() == RenderShape.INVISIBLE) {
             return EMPTY;
         }
@@ -94,11 +140,26 @@ public final class BlockShadowShapes {
         return created;
     }
 
-    FloatBuffer texture() {
-        if (published == null) {
-            published = texture.asReadOnlyBuffer();
-        }
-        return published;
+    int firstDirty() {
+        return firstDirty;
+    }
+
+    int dirtyRows() {
+        return lastDirty < firstDirty ? 0 : lastDirty - firstDirty + 1;
+    }
+
+    FloatBuffer dirtyData() {
+        return texture.duplicate().position(firstDirty * TEXTURE_WIDTH * 4).limit((lastDirty + 1) * TEXTURE_WIDTH * 4);
+    }
+
+    void uploaded() {
+        firstDirty = TEXTURE_HEIGHT;
+        lastDirty = -1;
+    }
+
+    private void markDirty(int id) {
+        firstDirty = Math.min(firstDirty, id);
+        lastDirty = Math.max(lastDirty, id);
     }
 
     boolean isCutout(int id) {
@@ -138,8 +199,8 @@ public final class BlockShadowShapes {
             writeCutoutFace(row + face * CUTOUT_FACE_TEXELS * 4, faces.get(face), stride);
         }
         texture.put(row + (TEXTURE_WIDTH - 1) * 4, faces.size());
-        texture.put(row + (TEXTURE_WIDTH - 1) * 4 + 1, foliage ? 0.64f : 0.30f);
-        published = null;
+        texture.put(row + (TEXTURE_WIDTH - 1) * 4 + 1, foliage ? 0.87F : 1F);
+        markDirty(id);
         return id;
     }
 
@@ -154,6 +215,11 @@ public final class BlockShadowShapes {
         var sprite = face.getSprite();
         var image = sprite.contents();
         int frame = image.getUniqueFrames().findFirst().orElse(0);
+        var pixels = image.getOriginalImage();
+        boolean alpha = pixels.format().hasAlpha();
+        int framesPerRow = pixels.getWidth() / image.width();
+        int frameX = frame % framesPerRow * image.width();
+        int frameY = frame / framesPerRow * image.height();
         float u = Float.intBitsToFloat(vertices[4]);
         float v = Float.intBitsToFloat(vertices[5]);
         float us = Float.intBitsToFloat(vertices[stride + 4]) - u;
@@ -167,7 +233,7 @@ public final class BlockShadowShapes {
                 float s = (column + 0.5f) / MASK_SIZE;
                 int x = spritePixel(u + s * us + t * ut, sprite.getU0(), sprite.getU1(), image.width());
                 int y = spritePixel(v + s * vs + t * vt, sprite.getV0(), sprite.getV1(), image.height());
-                if (!image.isTransparent(frame, x, y)) {
+                if (!alpha || Byte.toUnsignedInt(pixels.getLuminanceOrAlpha(frameX + x, frameY + y)) >= CUTOUT_ALPHA) {
                     mask |= 1 << column;
                 }
             }
@@ -270,7 +336,7 @@ public final class BlockShadowShapes {
             writeCorner(offset, box.minX, box.minY, box.minZ);
             writeCorner(offset + 4, box.maxX, box.maxY, box.maxZ);
         }
-        published = null;
+        markDirty(id);
         return id;
     }
 

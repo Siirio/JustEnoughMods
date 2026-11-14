@@ -109,12 +109,12 @@ public final class EntityShadowMap {
         CASTERS.clear();
         var client = Minecraft.getInstance();
         var level = client.level;
-        if (level == null || !client.options.entityShadows().get() || TerrainLighting.currentVolume(level) == null) {
+        if (level == null || !client.options.entityShadows().get() || TerrainLighting.currentWorld(level) == null) {
             return;
         }
         var sun = TerrainLighting.celestial(level, event.getPartialTick());
         boolean directional = sun.strength() > 0.01F && sun.y() > 0.10F;
-        boolean local = !TerrainLighting.localLights(level).isEmpty();
+        boolean local = TerrainLighting.hasBlockLights(level);
         if (!directional && !local) {
             return;
         }

@@ -12,6 +12,7 @@ public final class EmbeddiumTerrainShaders {
     private static final String STOCK_ROOT = "assets/sodium/shaders/";
     private static final String LIGHTING = "/assets/jem_lighting_sandbox/shaders/terrain/lighting.glsl";
     private static final String CUTOUT_SHADOW = "/assets/jem_lighting_sandbox/shaders/include/cutout_shadow.glsl";
+    private static final String WORLD_SHADOW = "/assets/jem_lighting_sandbox/shaders/include/world_shadow.glsl";
     private static final String VERTEX_COLOR = "out vec4 v_Color;";
     private static final String VERTEX_LIGHTMAP =
             "    v_Color = _vert_color * _sample_lightmap(u_LightTex, _vert_tex_light_coord);";
@@ -58,8 +59,9 @@ public final class EmbeddiumTerrainShaders {
         String fragment = read(stockLoader.getResourceAsStream(STOCK_ROOT + FRAGMENT), FRAGMENT);
         String lighting = read(EmbeddiumTerrainShaders.class.getResourceAsStream(LIGHTING), LIGHTING);
         String cutout = read(EmbeddiumTerrainShaders.class.getResourceAsStream(CUTOUT_SHADOW), CUTOUT_SHADOW);
+        String world = read(EmbeddiumTerrainShaders.class.getResourceAsStream(WORLD_SHADOW), WORLD_SHADOW);
         return new Sources(new Stage(vertex, patchVertex(vertex)),
-                new Stage(fragment, patchFragment(fragment, cutout + "\n" + lighting)));
+                new Stage(fragment, patchFragment(fragment, cutout + "\n" + world + "\n" + lighting)));
     }
 
     private static String patchVertex(String source) {

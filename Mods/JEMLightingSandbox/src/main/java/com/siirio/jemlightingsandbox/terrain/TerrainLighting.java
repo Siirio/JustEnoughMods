@@ -3,9 +3,7 @@ package com.siirio.jemlightingsandbox.terrain;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import com.siirio.jemlightingsandbox.LightingSettings;
-import java.nio.FloatBuffer;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import net.irisshaders.iris.api.v0.IrisApi;
 import net.minecraft.client.Minecraft;
@@ -19,41 +17,37 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL21;
-import org.lwjgl.opengl.GL30;
+import org.lwjgl.opengl.GL31;
 import org.slf4j.Logger;
 
 public final class TerrainLighting {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final int ENTITY_SHADOW_TEXTURE_UNIT = 6;
-    private static final int ENTITY_MODELS_TEXTURE_UNIT = 11;
-    private static final int TEXTURE_UNIT = 7;
-    public static final int SHAPE_TEXTURE_UNIT = 8;
+    private static final int ENTITY_MODELS_TEXTURE_UNIT = 14;
+    private static final int SECTION_TEXTURE_UNIT = 7;
+    private static final int SHAPE_TEXTURE_UNIT = 8;
     private static final int LIGHT_TEXTURE_UNIT = 9;
     private static final int CLOUD_TEXTURE_UNIT = 12;
-    private static long volumeRevision;
+    private static final int VOXEL_TEXTURE_UNIT = 13;
     private static final ResourceLocation CLOUD_TEXTURE = ResourceLocation.tryParse("minecraft:textures/environment/clouds.png");
-    private static final TerrainLightVolume VOLUME = new TerrainLightVolume();
+    private static final WorldShadowSections SHADOWS = new WorldShadowSections();
     private static final ChunkLightIndex LIGHT_INDEX = new ChunkLightIndex();
     private static final ChunkLightTexture CHUNK_LIGHTS = new ChunkLightTexture();
     private static final Map<Integer, Uniforms> PROGRAMS = new HashMap<>();
 
     private static boolean enabled = true;
     private static boolean failed;
-    private static int voxelTexture;
-    private static int shapeTexture;
-    private static FloatBuffer uploadedShapes;
-    private static int previousTexture = -1;
+    private static WorldShadowSections.Texture world;
+    private static ClientLevel currentLevel;
+    private static int previousSections = -1;
+    private static int previousVoxels;
     private static int previousShape;
     private static int previousLights;
     private static int previousCloud;
     private static int previousEntityShadow;
     private static int previousEntityModels;
-    private static TerrainLightVolume.Snapshot uploaded;
 
     private TerrainLighting() {
     }
@@ -85,37 +79,42 @@ public final class TerrainLighting {
         if (PROGRAMS.values().stream().noneMatch(uniforms -> uniforms.active >= 0)) {
             return "waiting for a compatible Embeddium terrain draw";
         }
-        var snapshot = VOLUME.snapshot();
         return "on, " + LIGHT_INDEX.coveredChunks() + " indexed chunks";
     }
 
     public static void tick(Minecraft client) {
         ClientLevel level = client.level;
         if (level == null || !available()) {
-            if (VOLUME.snapshot() != null || level == null) {
+            if (currentLevel != null) {
                 clearWorld();
             }
             return;
         }
+        if (currentLevel != level) {
+            clearWorld();
+            currentLevel = level;
+        }
         if (client.gameRenderer.getMainCamera().isInitialized()) {
             Vec3 camera = client.gameRenderer.getMainCamera().getPosition();
-            VOLUME.tick(level, camera);
-            LIGHT_INDEX.tick(level, camera, lightingChunks(client), LightingSettings.mode());
+            LIGHT_INDEX.tick(level, camera, lightingChunks(client), LightingSettings.mode(), SHADOWS);
         }
     }
 
     public static void invalidate(BlockPos position) {
-        VOLUME.invalidate(position);
         LIGHT_INDEX.invalidate(position);
     }
 
     public static void invalidateChunk(ChunkPos position) {
-        VOLUME.invalidateChunk(position);
         LIGHT_INDEX.invalidateChunk(position);
     }
 
+    public static void reloadModels() {
+        clearWorld();
+        failed = false;
+    }
+
     public static void clearWorld() {
-        VOLUME.clear();
+        currentLevel = null;
         LIGHT_INDEX.clear();
         if (!RenderSystem.isOnRenderThread()) {
             RenderSystem.recordRenderCall(TerrainLighting::releaseTexture);
@@ -125,18 +124,10 @@ public final class TerrainLighting {
     }
 
     private static void releaseTexture() {
-        uploaded = null;
-        uploadedShapes = null;
+        world = null;
+        SHADOWS.clear();
         CHUNK_LIGHTS.clear();
         EntityShadowMap.clear();
-        if (shapeTexture != 0) {
-            GL11.glDeleteTextures(shapeTexture);
-            shapeTexture = 0;
-        }
-        if (voxelTexture != 0) {
-            GL11.glDeleteTextures(voxelTexture);
-            voxelTexture = 0;
-        }
     }
 
     public static void invalidateProgram(int program) {
@@ -153,84 +144,63 @@ public final class TerrainLighting {
             return;
         }
 
-        // Each program must keep the volume sampler apart from Embeddium's 2D samplers.
+        // The section table, palette and voxel buffer have distinct sampler types.
         GL20.glUniform1i(uniforms.entityShadowTexture, ENTITY_SHADOW_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.entityModelsTexture, ENTITY_MODELS_TEXTURE_UNIT);
-        GL20.glUniform1i(uniforms.opacity, TEXTURE_UNIT);
+        GL20.glUniform1i(uniforms.sections, SECTION_TEXTURE_UNIT);
+        GL20.glUniform1i(uniforms.voxels, VOXEL_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.shapes, SHAPE_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.chunkLights, LIGHT_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.cloudTex, CLOUD_TEXTURE_UNIT);
         GL20.glUniform1i(uniforms.active, 0);
-        if (!receivesLighting) {
+        if (!receivesLighting || !available()) {
             return;
         }
         Minecraft client = Minecraft.getInstance();
-        VOLUME.refreshChangedBlocks(client.level);
-        var snapshot = VOLUME.snapshot();
-        if (!available() || snapshot == null || snapshot.level() != client.level) {
+        ClientLevel level = client.level;
+        if (level == null || level != currentLevel || !client.gameRenderer.getMainCamera().isInitialized()) {
             return;
         }
-
-        if (!GL.getCapabilities().OpenGL33 || GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS) <= CLOUD_TEXTURE_UNIT) {
+        if (!GL.getCapabilities().OpenGL33 || GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS) <= ENTITY_MODELS_TEXTURE_UNIT) {
             failed = true;
-            LOGGER.warn("JEM terrain lighting requires OpenGL 3.3 and thirteen fragment texture units");
+            LOGGER.warn("JEM terrain lighting requires OpenGL 3.3 and fifteen fragment texture units");
             return;
         }
-
-        int activeTexture = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
-        GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_SHADOW_TEXTURE_UNIT);
-        previousEntityShadow = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
-        GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_MODELS_TEXTURE_UNIT);
-        previousEntityModels = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
-        GL13.glActiveTexture(GL13.GL_TEXTURE0 + SHAPE_TEXTURE_UNIT);
-        previousShape = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
-        GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
-        previousLights = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
-        GL13.glActiveTexture(GL13.GL_TEXTURE0 + CLOUD_TEXTURE_UNIT);
-        previousCloud = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
-        GL13.glActiveTexture(GL13.GL_TEXTURE0 + TEXTURE_UNIT);
+        int active = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
         try {
-            previousTexture = GL11.glGetInteger(GL12.GL_TEXTURE_BINDING_3D);
-            if (voxelTexture == 0) {
-                voxelTexture = GL11.glGenTextures();
-            }
-            GL11.glBindTexture(GL12.GL_TEXTURE_3D, voxelTexture);
-            if (uploaded != snapshot) {
-                uploadVoxels(snapshot);
-                uploaded = snapshot;
-                volumeRevision++;
-            }
+            previousSections = capture2D(SECTION_TEXTURE_UNIT);
+            GL13.glActiveTexture(GL13.GL_TEXTURE0 + VOXEL_TEXTURE_UNIT);
+            previousVoxels = GL11.glGetInteger(GL31.GL_TEXTURE_BINDING_BUFFER);
+            previousShape = capture2D(SHAPE_TEXTURE_UNIT);
+            previousLights = capture2D(LIGHT_TEXTURE_UNIT);
+            previousCloud = capture2D(CLOUD_TEXTURE_UNIT);
+            previousEntityShadow = capture2D(ENTITY_SHADOW_TEXTURE_UNIT);
+            previousEntityModels = capture2D(ENTITY_MODELS_TEXTURE_UNIT);
 
+            world = SHADOWS.bind(level, SECTION_TEXTURE_UNIT, SHAPE_TEXTURE_UNIT, VOXEL_TEXTURE_UNIT);
+            if (world == null) {
+                return;
+            }
             Vec3 camera = client.gameRenderer.getMainCamera().getPosition();
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + SHAPE_TEXTURE_UNIT);
-            bindShapes(snapshot.shapePalette());
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
             int chunks = lightingChunks(client);
             CHUNK_LIGHTS.reachChanged(LightingSettings.lightDistance(), camera, chunks);
             for (var changed : LIGHT_INDEX.drainChanges()) {
                 CHUNK_LIGHTS.mark(changed);
             }
-            int rows = CHUNK_LIGHTS.bindAndUpdate(snapshot.level(), camera, chunks, LIGHT_INDEX);
+            int rows = CHUNK_LIGHTS.bindAndUpdate(level, camera, chunks, LIGHT_INDEX);
             BlockPos cameraBlock = BlockPos.containing(camera);
             GL20.glUniform3i(uniforms.cameraBlock, cameraBlock.getX(), cameraBlock.getY(), cameraBlock.getZ());
             GL20.glUniform3f(uniforms.cameraFraction, (float) (camera.x - cameraBlock.getX()),
                     (float) (camera.y - cameraBlock.getY()), (float) (camera.z - cameraBlock.getZ()));
-            GL20.glUniform4i(uniforms.chunkLayout, rows, snapshot.level().getMinSection(), chunks, 0);
-            GL20.glUniform3f(uniforms.origin, (float) (snapshot.minX() - camera.x),
-                    (float) (snapshot.minY() - camera.y), (float) (snapshot.minZ() - camera.z));
-            GL20.glUniform3i(uniforms.size, snapshot.sizeX(), snapshot.sizeY(), snapshot.sizeZ());
-            GL20.glUniform1i(uniforms.lightCount, snapshot.lights().size());
-            int index = 0;
-            for (var light : snapshot.lights()) {
-                GL20.glUniform4f(uniforms.positions[index], (float) (light.x() - camera.x),
-                        (float) (light.y() - camera.y), (float) (light.z() - camera.z),
-                        light.emission() * LightingSettings.lightDistance() / 15F + 0.5F);
-                GL20.glUniform4f(uniforms.colors[index], light.red(), light.green(), light.blue(), light.emission() / 15F);
-                index++;
-            }
-            setSun(uniforms, snapshot.level(), client.getFrameTime());
-            setEntityShadow(uniforms, snapshot.level(), camera);
-            setCloudShadow(uniforms, client, snapshot.level(), camera);
+            GL20.glUniform2i(uniforms.worldSections, world.minSection(), world.sections());
+            GL20.glUniform4i(uniforms.chunkLayout, rows, level.getMinSection(), chunks, 0);
+            GL20.glUniform1i(uniforms.shadowSamples, LightingSettings.pointShadowSamples());
+            float time = worldTime(level, client.getFrameTime());
+            GL20.glUniform1f(uniforms.shadowTime, time);
+            setSun(uniforms, level, client.getFrameTime());
+            setEntityShadow(uniforms, level, camera);
+            setCloudShadow(uniforms, client, level, camera);
             GL20.glUniform1i(uniforms.active, 1);
         } catch (RuntimeException exception) {
             failed = true;
@@ -238,115 +208,53 @@ public final class TerrainLighting {
             restoreTextureBinding();
             LOGGER.error("Could not prepare JEM terrain lighting", exception);
         } finally {
-            GL13.glActiveTexture(activeTexture);
+            GL13.glActiveTexture(active);
         }
     }
 
     public static void end() {
-        if (previousTexture < 0) {
+        if (previousSections < 0) {
             return;
         }
-        int activeTexture = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
-        GL13.glActiveTexture(GL13.GL_TEXTURE0 + TEXTURE_UNIT);
+        int active = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
         try {
             restoreTextureBinding();
         } finally {
-            GL13.glActiveTexture(activeTexture);
+            GL13.glActiveTexture(active);
         }
     }
 
+    private static int capture2D(int unit) {
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + unit);
+        return GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
+    }
+
     private static void restoreTextureBinding() {
-        if (previousTexture >= 0) {
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + TEXTURE_UNIT);
-            GL11.glBindTexture(GL12.GL_TEXTURE_3D, previousTexture);
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + SHAPE_TEXTURE_UNIT);
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousShape);
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousLights);
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_SHADOW_TEXTURE_UNIT);
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousEntityShadow);
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + ENTITY_MODELS_TEXTURE_UNIT);
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousEntityModels);
-            GL13.glActiveTexture(GL13.GL_TEXTURE0 + CLOUD_TEXTURE_UNIT);
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, previousCloud);
-            previousTexture = -1;
+        if (previousSections < 0) {
+            return;
         }
+        restore2D(SECTION_TEXTURE_UNIT, previousSections);
+        restore2D(SHAPE_TEXTURE_UNIT, previousShape);
+        restore2D(LIGHT_TEXTURE_UNIT, previousLights);
+        restore2D(ENTITY_SHADOW_TEXTURE_UNIT, previousEntityShadow);
+        restore2D(ENTITY_MODELS_TEXTURE_UNIT, previousEntityModels);
+        restore2D(CLOUD_TEXTURE_UNIT, previousCloud);
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + VOXEL_TEXTURE_UNIT);
+        GL11.glBindTexture(GL31.GL_TEXTURE_BUFFER, previousVoxels);
+        previousSections = -1;
+    }
+
+    private static void restore2D(int unit, int id) {
+        GL13.glActiveTexture(GL13.GL_TEXTURE0 + unit);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, id);
     }
 
     private static int lightingChunks(Minecraft client) {
         return LightingSettings.lightingChunks(client.options.getEffectiveRenderDistance());
     }
 
-    private static void bindShapes(FloatBuffer shapes) {
-        if (shapeTexture == 0) {
-            shapeTexture = GL11.glGenTextures();
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, shapeTexture);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-        } else {
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, shapeTexture);
-        }
-        if (uploadedShapes != shapes) {
-            int buffer = GL11.glGetInteger(GL21.GL_PIXEL_UNPACK_BUFFER_BINDING);
-            int rowLength = GL11.glGetInteger(GL11.GL_UNPACK_ROW_LENGTH);
-            int skipPixels = GL11.glGetInteger(GL11.GL_UNPACK_SKIP_PIXELS);
-            int skipRows = GL11.glGetInteger(GL11.GL_UNPACK_SKIP_ROWS);
-            try {
-                GL15.glBindBuffer(GL21.GL_PIXEL_UNPACK_BUFFER, 0);
-                GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, 0);
-                GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, 0);
-                GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, 0);
-                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL30.GL_RGBA32F,
-                        BlockShadowShapes.TEXTURE_WIDTH, BlockShadowShapes.TEXTURE_HEIGHT,
-                        0, GL11.GL_RGBA, GL11.GL_FLOAT, shapes);
-                uploadedShapes = shapes;
-            } finally {
-                GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, rowLength);
-                GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, skipPixels);
-                GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, skipRows);
-                GL15.glBindBuffer(GL21.GL_PIXEL_UNPACK_BUFFER, buffer);
-            }
-        }
-    }
-
-    private static void uploadVoxels(TerrainLightVolume.Snapshot snapshot) {
-        int unpackBuffer = GL11.glGetInteger(GL21.GL_PIXEL_UNPACK_BUFFER_BINDING);
-        int alignment = GL11.glGetInteger(GL11.GL_UNPACK_ALIGNMENT);
-        int rowLength = GL11.glGetInteger(GL11.GL_UNPACK_ROW_LENGTH);
-        int imageHeight = GL11.glGetInteger(GL12.GL_UNPACK_IMAGE_HEIGHT);
-        int skipPixels = GL11.glGetInteger(GL11.GL_UNPACK_SKIP_PIXELS);
-        int skipRows = GL11.glGetInteger(GL11.GL_UNPACK_SKIP_ROWS);
-        int skipImages = GL11.glGetInteger(GL12.GL_UNPACK_SKIP_IMAGES);
-        try {
-            GL15.glBindBuffer(GL21.GL_PIXEL_UNPACK_BUFFER, 0);
-            GL11.glPixelStorei(GL11.GL_UNPACK_ALIGNMENT, 1);
-            GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, 0);
-            GL11.glPixelStorei(GL12.GL_UNPACK_IMAGE_HEIGHT, 0);
-            GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, 0);
-            GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, 0);
-            GL11.glPixelStorei(GL12.GL_UNPACK_SKIP_IMAGES, 0);
-            if (uploaded == null || uploaded.sizeX() != snapshot.sizeX() || uploaded.sizeY() != snapshot.sizeY()
-                    || uploaded.sizeZ() != snapshot.sizeZ()) {
-                GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-                GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-                GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
-                GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
-                GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL12.GL_TEXTURE_WRAP_R, GL12.GL_CLAMP_TO_EDGE);
-                GL12.glTexImage3D(GL12.GL_TEXTURE_3D, 0, GL11.GL_RGBA8, snapshot.sizeX(), snapshot.sizeY(), snapshot.sizeZ(),
-                        0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, snapshot.voxelData());
-            } else {
-                GL12.glTexSubImage3D(GL12.GL_TEXTURE_3D, 0, 0, 0, 0, snapshot.sizeX(), snapshot.sizeY(),
-                        snapshot.sizeZ(), GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, snapshot.voxelData());
-            }
-        } finally {
-            GL11.glPixelStorei(GL11.GL_UNPACK_ALIGNMENT, alignment);
-            GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, rowLength);
-            GL11.glPixelStorei(GL12.GL_UNPACK_IMAGE_HEIGHT, imageHeight);
-            GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, skipPixels);
-            GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, skipRows);
-            GL11.glPixelStorei(GL12.GL_UNPACK_SKIP_IMAGES, skipImages);
-            GL15.glBindBuffer(GL21.GL_PIXEL_UNPACK_BUFFER, unpackBuffer);
-        }
+    public static float worldTime(ClientLevel level, float partialTick) {
+        return Math.floorMod(level.getGameTime(), 100L) + partialTick;
     }
 
     private static void setSun(Uniforms uniforms, ClientLevel level, float partialTick) {
@@ -411,21 +319,25 @@ public final class TerrainLighting {
         return new Sun(-day.x(), -day.y(), strength);
     }
 
-    public static VolumeTexture currentVolume(ClientLevel level) {
-        if (!available() || uploaded == null || uploaded.level() != level || voxelTexture == 0) {
+    public static ShadowWorld currentWorld(ClientLevel level) {
+        if (!available() || currentLevel != level || world == null) {
             return null;
         }
-        return new VolumeTexture(voxelTexture, shapeTexture, volumeRevision, uploaded.minX(), uploaded.minY(), uploaded.minZ(),
-                uploaded.sizeX(), uploaded.sizeY(), uploaded.sizeZ());
+        return new ShadowWorld(world.table(), world.palette(), world.voxels(), world.minSection(), world.sections(),
+                world.revision());
     }
 
-    public static List<TerrainLightVolume.Light> localLights(ClientLevel level) {
-        return uploaded == null || uploaded.level() != level ? List.of() : uploaded.lights();
+    public static boolean hasBlockLights(ClientLevel level) {
+        return currentLevel == level && LIGHT_INDEX.hasLights();
+    }
+
+    public static boolean isTerrainEnabled() {
+        return available();
     }
 
     public record Sun(float x, float y, float strength) {}
 
-    public record VolumeTexture(int id, int shapes, long revision, int x, int y, int z, int width, int height, int depth) {}
+    public record ShadowWorld(int sections, int shapes, int voxels, int minSection, int sectionCount, long revision) {}
 
     static boolean available() {
         return enabled && !failed && canPatchStockShaders() && !isShaderPackActive();
@@ -443,15 +355,16 @@ public final class TerrainLighting {
 
     private static final class Uniforms {
         private final int active;
-        private final int opacity;
+        private final int sections;
+        private final int voxels;
+        private final int worldSections;
+        private final int shadowSamples;
+        private final int shadowTime;
         private final int shapes;
         private final int chunkLights;
         private final int cameraBlock;
         private final int cameraFraction;
         private final int chunkLayout;
-        private final int origin;
-        private final int size;
-        private final int lightCount;
         private final int sun;
         private final int sunColor;
         private final int cloud;
@@ -462,20 +375,19 @@ public final class TerrainLighting {
         private final int entityShadowDirection;
         private final int entityCasterCount;
         private final int entityModelsTexture;
-        private final int[] positions = new int[8];
-        private final int[] colors = new int[8];
 
         private Uniforms(int program) {
             active = GL20.glGetUniformLocation(program, "jemActive");
-            opacity = GL20.glGetUniformLocation(program, "jemOpacity");
+            sections = GL20.glGetUniformLocation(program, "jemSections");
+            voxels = GL20.glGetUniformLocation(program, "jemVoxels");
+            worldSections = GL20.glGetUniformLocation(program, "jemWorldSections");
+            shadowSamples = GL20.glGetUniformLocation(program, "jemShadowSamples");
+            shadowTime = GL20.glGetUniformLocation(program, "jemShadowTime");
             shapes = GL20.glGetUniformLocation(program, "jemShapes");
             chunkLights = GL20.glGetUniformLocation(program, "jemChunkLights");
             cameraBlock = GL20.glGetUniformLocation(program, "jemCameraBlock");
             cameraFraction = GL20.glGetUniformLocation(program, "jemCameraFraction");
             chunkLayout = GL20.glGetUniformLocation(program, "jemChunkLayout");
-            origin = GL20.glGetUniformLocation(program, "jemVolumeOrigin");
-            size = GL20.glGetUniformLocation(program, "jemVolumeSize");
-            lightCount = GL20.glGetUniformLocation(program, "jemLightCount");
             sun = GL20.glGetUniformLocation(program, "jemSunDirectionStrength");
             sunColor = GL20.glGetUniformLocation(program, "jemSunColor");
             cloud = GL20.glGetUniformLocation(program, "jemCloud");
@@ -486,10 +398,6 @@ public final class TerrainLighting {
             entityShadowDirection = GL20.glGetUniformLocation(program, "jemEntityShadowDirection");
             entityCasterCount = GL20.glGetUniformLocation(program, "jemEntityCasterCount");
             entityModelsTexture = GL20.glGetUniformLocation(program, "jemEntityModels");
-            for (int index = 0; index < positions.length; index++) {
-                positions[index] = GL20.glGetUniformLocation(program, "jemLightPositionRange[" + index + "]");
-                colors[index] = GL20.glGetUniformLocation(program, "jemLightColorStrength[" + index + "]");
-            }
         }
     }
 }

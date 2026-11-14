@@ -1,3 +1,10 @@
+## 2026-11-14 - Rework Sandbox light and shadow geometry
+
+- User specified brighter sun and moon beams, direct glare, continuous side beams, visible vegetation shadows and stable lamp light as the camera moves. The attached screenshots show a narrow wall under a lamp cutting the light across the path
+- Bug / Client / The old light path used one sample at the center of a luminous face and switched to native light outside a moving caster volume. Its shaft cache stored one value per block and required darkness on both sides of a beam. The shadow setting only reached the celestial entity map / in testing with world section geometry, luminous face samples and a directional shaft map
+- The implementation uses the native banner model, stronger cutout shadows and a grid of 4, 9, 16 or 25 samples per luminous face. The shaft map uses the selected resolution and stores the depth of the actual blocker
+- Scope is Sandbox JustEnoughMods. In-game appearance and frame time await verification
+
 ## 2026-11-14 - Fix Sandbox sun and moon shafts
 
 - User reported broad fans, a visible dot pattern and a large FPS drop around god rays

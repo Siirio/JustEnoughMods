@@ -45,7 +45,7 @@ public final class LightingSettings {
 
     static {
         var builder = new ForgeConfigSpec.Builder();
-        MODE = builder.comment("How frequently the local light volume is refreshed.")
+        MODE = builder.comment("How quickly loaded sections update their lighting and shadow geometry.")
                 .defineEnum("mode", DEFAULT_MODE);
         LIGHT_DISTANCE = builder.comment("Maximum distance of a local light source, in blocks.")
                 .defineInList("lightDistance", DEFAULT_DISTANCE, LIGHT_DISTANCES);
@@ -61,7 +61,7 @@ public final class LightingSettings {
                 .defineInRange("stormDensity", DEFAULT_STORM_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
         DARK_CAMPFIRE_SMOKE = builder.comment("Use darker campfire smoke. Otherwise keep the native smoke color.")
                 .define("darkCampfireSmoke", false);
-        SHADOW_RESOLUTION = builder.comment("Resolution of the sun and moon entity shadow map.")
+        SHADOW_RESOLUTION = builder.comment("Resolution of celestial shadows and quality of block light shadows.")
                 .defineInList("shadowResolution", DEFAULT_SHADOW_RESOLUTION, SHADOW_RESOLUTIONS);
         WIND_COLORS = builder.comment("Optional storm wind colors: biome_id=#RRGGBB. Exact biome IDs override defaults.")
                 .defineListAllowEmpty("windColors", List.<String>of(), value -> value instanceof String entry
@@ -122,6 +122,15 @@ public final class LightingSettings {
 
     public static int shadowResolution() {
         return SPEC.isLoaded() ? SHADOW_RESOLUTION.get() : DEFAULT_SHADOW_RESOLUTION;
+    }
+
+    public static int pointShadowSamples() {
+        return switch (shadowResolution()) {
+            case 2048 -> 5;
+            case 1024 -> 4;
+            case 512 -> 3;
+            default -> 2;
+        };
     }
 
     static void setShadowResolution(int resolution) {

@@ -127,7 +127,7 @@ public final class LightingClient {
 
         @SubscribeEvent
         public static void registerShaders(RegisterShadersEvent event) {
-            EntityShadowMap.clearTextureMasks();
+            TerrainLighting.reloadModels();
             sceneShader = null;
             atmosphere = null;
             atmosphereComposite = null;
