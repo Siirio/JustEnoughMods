@@ -1,5 +1,7 @@
 #version 150
 
+#moj_import <jem_lighting_sandbox:cutout_shadow.glsl>
+
 uniform sampler2D SceneDepth;
 uniform sampler3D JemVoxels;
 uniform sampler2D JemShapes;
@@ -82,11 +84,18 @@ float lightVisibility(vec3 origin, vec3 inverseRay) {
         }
         float leaving = min(nextCrossing.x, min(nextCrossing.y, nextCrossing.z));
         float segmentEnd = min(leaving, SUN_REACH);
-        int shape = int(texelFetch(JemVoxels, cell, 0).g * 255.0 + 0.5);
+        ivec4 voxel = ivec4(round(texelFetch(JemVoxels, cell, 0) * 255.0));
+        int shape = voxel.y;
+        vec2 cutout = shape >= 14 ? texelFetch(JemShapes, ivec2(63, shape), 0).xy : vec2(0.0);
         if (shape == 13) {
             visibility *= exp(-0.32 * max(segmentEnd - entering, 0.0));
             if (visibility < 0.02) {
                 return 0.0;
+            }
+        } else if (cutout.x > 0.0) {
+            if (jemHitsCutout(JemShapes, shape, int(cutout.x),
+                    origin - vec3(cell) - jemCutoutOffset(voxel.zw), 1.0 / inverseRay, entering, segmentEnd)) {
+                visibility *= 1.0 - cutout.y;
             }
         } else if (hitsShape(shape, origin - vec3(cell), inverseRay, entering, segmentEnd)) {
             return 0.0;

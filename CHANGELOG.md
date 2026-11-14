@@ -1,3 +1,11 @@
+## 2026-11-14 - Trace Sandbox cutout shadows and extend campfire smoke
+
+- User requested shadows that follow the texture silhouette of grass and leaves, a native smoke color with a darker option, a 45-block plume including sway and 15% sprite growth per block
+- Bug / Client / Grass used an outline box and leaves had uniform transmission regardless of texture / in testing with ray intersections against baked cutout faces and sprite transparency
+- The implementation uses 16-by-16 masks per supported face and allows partial light through foliage. The original block models and sprite assets supply the geometry and transparency
+- Smoke uses the native color by default. The Precipitation screen offers dark smoke. Growth adds 15% of the starting size per block above five blocks and the limit counts movement in every direction
+- Scope is Sandbox JustEnoughMods. Visual appearance and frame time await an in-game check
+
 ## 2026-11-14 - Restrict Sandbox shafts to light beside blockers
 
 - User reported broad light patches on tree trunks and snow after the recent shaft change

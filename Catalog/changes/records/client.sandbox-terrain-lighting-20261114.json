@@ -13,7 +13,7 @@
       {"property": "client.sandbox.light_update", "operation": "set", "before": "fixed scan budget", "after": "slow, fast or realtime"},
       {"property": "client.sandbox.light_distance", "operation": "set", "before": "fixed 15-block range at full emission", "after": "configurable 8, 12, 15 or 20 blocks at full emission"},
       {"property": "client.sandbox.light_coverage_chunks", "operation": "set", "before": "camera-local volume only", "after": "2 to 32 loaded chunks, optionally follows the effective render distance"},
-      {"property": "client.sandbox.shadow_geometry", "operation": "set", "before": "full blocks and selected native shapes", "after": "baked rectangular model geometry or native outlines, with foliage transmission"},
+      {"property": "client.sandbox.shadow_geometry", "operation": "set", "before": "baked rectangular model geometry or native outlines, with uniform foliage transmission", "after": "baked cutout faces and sprite transparency for supported models, with partial transmission through foliage and preserved solid geometry"},
       {"property": "client.sandbox.precipitation", "operation": "replace", "before": "native vertical sheets with additional native falling particles", "after": "three variants per mode with individual swirls, diagonal rain and ordinary snow, predominantly horizontal blizzards and sand, two flakes per accepted blizzard spawn, and native weather state and ground impacts"},
       {"property": "client.sandbox.outdoor_wind", "operation": "replace", "before": "sparse dust", "after": "animated calm curls, fast ground waves and diagonal storm gusts with configurable biome colors"},
       {"property": "client.sandbox.point_shadow_blend", "operation": "set", "before": "native light replacement depended on traced visibility", "after": "geometry-traced light replacement follows volume coverage and directional light follows visibility"},
@@ -23,7 +23,7 @@
       {"property": "client.sandbox.precipitation_density", "operation": "set", "before": "fixed spawn budget", "after": "independent global rain and storm sliders, 25 to 200 percent, default 100 and 150 percent respectively"},
       {"property": "client.sandbox.local_light_scattering", "operation": "set", "before": "glow around nearby light sources", "after": false},
       {"property": "client.sandbox.biome_fog", "operation": "set", "before": "built-in surface and underground biome fog", "after": false},
-      {"property": "client.sandbox.campfire_smoke", "operation": "set", "before": "native lifetime with outdoor wind drift", "after": "longer gradual fade, nominal 10-block rise for ordinary smoke, plus 1.5 blocks per nearby lit campfire to a shared 20-block ceiling, with darker and denser smoke in clusters. Above 5 blocks, the sprite grows 5 percent per 2 blocks and an exposed plume bends up to 4 extra blocks downwind"}
+      {"property": "client.sandbox.campfire_smoke", "operation": "set", "before": "up to 20 blocks of rise, automatic cluster darkening and 5 percent sprite growth per two blocks above five blocks", "after": "native color by default with an optional darker variant, a 45-block limit along the plume including wind drift, stronger wind curvature and 15 percent of base sprite size per block above five blocks"}
     ]
   },
   "cause": {
@@ -74,7 +74,8 @@
       "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere_composite.json",
       "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere_composite.vsh",
       "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere_composite.fsh",
-      "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/terrain/lighting.glsl"
+      "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/terrain/lighting.glsl",
+      "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/include/cutout_shadow.glsl"
     ]
   },
   "rationale": {
@@ -98,7 +99,8 @@
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/FogSettingsScreen.java"
     ]},
     {"date": "2026-11-14", "commit": "76415aab9", "action": "smooth_celestial_shafts_and_remove_light_haze", "summary": "Use one stronger terrain-occluded path for sun and moon shafts and remove point-light haze."},
-    {"date": "2026-11-14", "commit": "SELF", "action": "restrict_shafts_to_local_contrast", "summary": "Use contrast across the light direction at each sample to concentrate celestial scattering near blocker edges."}
+    {"date": "2026-11-14", "commit": "c5d992121", "action": "restrict_shafts_to_local_contrast", "summary": "Use contrast across the light direction at each sample to concentrate celestial scattering near blocker edges."},
+    {"date": "2026-11-14", "commit": "SELF", "action": "trace_cutout_block_shadows_and_extend_smoke", "summary": "Use baked faces and native sprite transparency for terrain shadows. Add the optional dark smoke setting and cap wind-driven plume travel."}
   ],
   "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["No gameplay registrations, server state or native block emission levels change. The standalone preview remains available."], "unresolved": ["Visual output and frame time require verification on Windows and macOS. Local entity occlusion uses captured model faces without texel alpha testing. Dedicated Better Clouds projection, Voxy LOD shadow receivers and shader-pack coexistence are outside this pass."]}
 }

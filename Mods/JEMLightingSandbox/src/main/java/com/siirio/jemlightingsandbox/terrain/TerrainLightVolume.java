@@ -31,7 +31,7 @@ public final class TerrainLightVolume {
     private static final int SIZE_X = 48;
     private static final int SIZE_Y = 40;
     private static final int SIZE_Z = 48;
-    private static final int BYTES_PER_VOXEL = 2;
+    private static final int BYTES_PER_VOXEL = 4;
     private static final int CELLS_PER_TICK = 8192;
     private static final int MAX_LIGHTS = 8;
     private static final int RECENTER_DISTANCE = 8;
@@ -242,7 +242,15 @@ public final class TerrainLightVolume {
             position.set(x, y, z);
             BlockState state = chunk.getBlockState(position);
             int emission = Mth.clamp(state.getLightEmission(level, position), 0, EMISSION_MASK);
-            writeVoxel(index, emission, shapes.id(state, level, position));
+            int shape = shapes.id(state, level, position);
+            writeVoxel(index, emission, shape);
+            if (shapes.isCutout(shape) && state.hasOffsetFunction()) {
+                Vec3 modelOffset = state.getOffset(level, position);
+                int packed = packOffset(modelOffset.x) | packOffset(modelOffset.y) << 5 | packOffset(modelOffset.z) << 10;
+                int offset = index * BYTES_PER_VOXEL;
+                voxelData.put(offset + 2, (byte) packed);
+                voxelData.put(offset + 3, (byte) (packed >> 8));
+            }
             if (emission == 0) {
                 emitters.remove(index);
             } else {
@@ -254,6 +262,12 @@ public final class TerrainLightVolume {
             int offset = index * BYTES_PER_VOXEL;
             voxelData.put(offset, (byte) emission);
             voxelData.put(offset + 1, (byte) shape);
+            voxelData.put(offset + 2, (byte) 0);
+            voxelData.put(offset + 3, (byte) 0);
+        }
+
+        private static int packOffset(double coordinate) {
+            return Mth.clamp((int) Math.round(coordinate * 60) + 16, 1, 31);
         }
 
         @Nullable

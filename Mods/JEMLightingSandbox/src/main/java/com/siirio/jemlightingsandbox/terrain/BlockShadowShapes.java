@@ -32,13 +32,16 @@ import org.slf4j.Logger;
 /** A palette for the native block geometry visible to the terrain shadow rays. */
 public final class BlockShadowShapes {
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static final int TEXTURE_WIDTH = 16;
+    public static final int TEXTURE_WIDTH = 64;
     public static final int TEXTURE_HEIGHT = 256;
     static final int EMPTY = 0;
     static final int FULL = 1;
     private static final int FOLIAGE = 13;
     private static final int FIRST_CUSTOM = 14;
-    private static final int BOX_LIMIT = TEXTURE_WIDTH / 2;
+    private static final int BOX_LIMIT = 8;
+    private static final int CUTOUT_FACE_LIMIT = 8;
+    private static final int CUTOUT_FACE_TEXELS = 7;
+    private static final int MASK_SIZE = 16;
     private static final int FACE_LIMIT = 96;
     private static final int GRID_LIMIT = 4096;
     private static final int GRID_SCALE = 256;
@@ -54,20 +57,31 @@ public final class BlockShadowShapes {
             .order(ByteOrder.nativeOrder()).asFloatBuffer();
     private final RandomSource random = RandomSource.create(42L);
     private final Map<BlockState, Integer> stateIds = new IdentityHashMap<>();
+    private final Map<BlockState, Integer> cutoutIds = new IdentityHashMap<>();
     private final Map<List<Box>, Integer> ids = new HashMap<>();
+    private int nextBoxId = FIRST_CUSTOM;
+    private int nextCutoutId = TEXTURE_HEIGHT - 1;
     private FloatBuffer published;
 
     int id(BlockState state, ClientLevel level, BlockPos position) {
         if (state.isAir() || state.getRenderShape() == RenderShape.INVISIBLE) {
             return EMPTY;
         }
-        if (state.is(BlockTags.LEAVES)) {
-            return FOLIAGE;
-        }
-        if (state.isSolidRender(level, position)) {
+        boolean foliage = state.is(BlockTags.LEAVES);
+        if (!foliage && state.isSolidRender(level, position)) {
             return FULL;
         }
         var block = state.getBlock();
+        if (state.getRenderShape() == RenderShape.MODEL && !state.hasBlockEntity()) {
+            Integer cutout = cutoutIds.get(state);
+            if (cutout == null) {
+                cutout = cutoutId(state, position, foliage);
+                cutoutIds.put(state, cutout);
+            }
+            if (cutout != EMPTY) {
+                return cutout;
+            }
+        }
         if (block.hasDynamicShape() || state.hasOffsetFunction() || state.hasBlockEntity()) {
             return nativeShape(state, level, position);
         }
@@ -85,6 +99,84 @@ public final class BlockShadowShapes {
             published = texture.asReadOnlyBuffer();
         }
         return published;
+    }
+
+    boolean isCutout(int id) {
+        return id > nextCutoutId;
+    }
+
+    private int cutoutId(BlockState state, BlockPos position, boolean foliage) {
+        var model = Minecraft.getInstance().getBlockRenderer().getBlockModel(state);
+        long seed = state.getSeed(position);
+        random.setSeed(seed);
+        var faces = new ArrayList<BakedQuad>();
+        try {
+            for (var layer : model.getRenderTypes(state, random, ModelData.EMPTY)) {
+                if (layer != RenderType.cutout() && layer != RenderType.cutoutMipped()
+                        && !(foliage && layer == RenderType.solid())) {
+                    continue;
+                }
+                for (Direction direction : DIRECTIONS) {
+                    random.setSeed(seed);
+                    faces.addAll(model.getQuads(state, direction, random, ModelData.EMPTY, layer));
+                }
+                random.setSeed(seed);
+                faces.addAll(model.getQuads(state, null, random, ModelData.EMPTY, layer));
+            }
+        } catch (RuntimeException exception) {
+            LOGGER.debug("Could not sample cutout model for {}", state, exception);
+            return foliage ? FOLIAGE : EMPTY;
+        }
+        int stride = DefaultVertexFormat.BLOCK.getIntegerSize();
+        if (faces.isEmpty() || faces.size() > CUTOUT_FACE_LIMIT || nextCutoutId < nextBoxId
+                || faces.stream().anyMatch(face -> face.getVertices().length != 4 * stride)) {
+            return foliage ? FOLIAGE : EMPTY;
+        }
+        int id = nextCutoutId--;
+        int row = id * TEXTURE_WIDTH * 4;
+        for (int face = 0; face < faces.size(); face++) {
+            writeCutoutFace(row + face * CUTOUT_FACE_TEXELS * 4, faces.get(face), stride);
+        }
+        texture.put(row + (TEXTURE_WIDTH - 1) * 4, faces.size());
+        texture.put(row + (TEXTURE_WIDTH - 1) * 4 + 1, foliage ? 0.64f : 0.30f);
+        published = null;
+        return id;
+    }
+
+    private void writeCutoutFace(int offset, BakedQuad face, int stride) {
+        int[] vertices = face.getVertices();
+        for (int axis = 0; axis < 3; axis++) {
+            float start = Float.intBitsToFloat(vertices[axis]);
+            texture.put(offset + axis, start);
+            texture.put(offset + 4 + axis, Float.intBitsToFloat(vertices[stride + axis]) - start);
+            texture.put(offset + 8 + axis, Float.intBitsToFloat(vertices[3 * stride + axis]) - start);
+        }
+        var sprite = face.getSprite();
+        var image = sprite.contents();
+        int frame = image.getUniqueFrames().findFirst().orElse(0);
+        float u = Float.intBitsToFloat(vertices[4]);
+        float v = Float.intBitsToFloat(vertices[5]);
+        float us = Float.intBitsToFloat(vertices[stride + 4]) - u;
+        float vs = Float.intBitsToFloat(vertices[stride + 5]) - v;
+        float ut = Float.intBitsToFloat(vertices[3 * stride + 4]) - u;
+        float vt = Float.intBitsToFloat(vertices[3 * stride + 5]) - v;
+        for (int row = 0; row < MASK_SIZE; row++) {
+            float t = (row + 0.5f) / MASK_SIZE;
+            int mask = 0;
+            for (int column = 0; column < MASK_SIZE; column++) {
+                float s = (column + 0.5f) / MASK_SIZE;
+                int x = spritePixel(u + s * us + t * ut, sprite.getU0(), sprite.getU1(), image.width());
+                int y = spritePixel(v + s * vs + t * vt, sprite.getV0(), sprite.getV1(), image.height());
+                if (!image.isTransparent(frame, x, y)) {
+                    mask |= 1 << column;
+                }
+            }
+            texture.put(offset + 12 + row, mask);
+        }
+    }
+
+    private static int spritePixel(float uv, float min, float max, int size) {
+        return Mth.clamp(Mth.floor((uv - min) * size / (max - min)), 0, size - 1);
     }
 
     private int staticShape(BlockState state, ClientLevel level, BlockPos position) {
@@ -167,10 +259,10 @@ public final class BlockShadowShapes {
         if (existing != null) {
             return existing;
         }
-        int id = FIRST_CUSTOM + ids.size();
-        if (id >= TEXTURE_HEIGHT) {
+        if (nextBoxId > nextCutoutId) {
             return EMPTY;
         }
+        int id = nextBoxId++;
         ids.put(key, id);
         for (int index = 0; index < key.size(); index++) {
             Box box = key.get(index);

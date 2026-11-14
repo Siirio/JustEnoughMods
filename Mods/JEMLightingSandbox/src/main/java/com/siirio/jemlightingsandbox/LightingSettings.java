@@ -39,6 +39,7 @@ public final class LightingSettings {
     private static final ForgeConfigSpec.BooleanValue ATMOSPHERE;
     private static final ForgeConfigSpec.IntValue RAIN_DENSITY;
     private static final ForgeConfigSpec.IntValue STORM_DENSITY;
+    private static final ForgeConfigSpec.BooleanValue DARK_CAMPFIRE_SMOKE;
     private static final ForgeConfigSpec.ConfigValue<Integer> SHADOW_RESOLUTION;
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WIND_COLORS;
 
@@ -58,6 +59,8 @@ public final class LightingSettings {
                 .defineInRange("rainDensity", DEFAULT_RAIN_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
         STORM_DENSITY = builder.comment("Particle density during thunderstorms across all biomes, in percent.")
                 .defineInRange("stormDensity", DEFAULT_STORM_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
+        DARK_CAMPFIRE_SMOKE = builder.comment("Use darker campfire smoke. Otherwise keep the native smoke color.")
+                .define("darkCampfireSmoke", false);
         SHADOW_RESOLUTION = builder.comment("Resolution of the sun and moon entity shadow map.")
                 .defineInList("shadowResolution", DEFAULT_SHADOW_RESOLUTION, SHADOW_RESOLUTIONS);
         WIND_COLORS = builder.comment("Optional storm wind colors: biome_id=#RRGGBB. Exact biome IDs override defaults.")
@@ -106,6 +109,15 @@ public final class LightingSettings {
 
     static void setWeatherDensity(boolean storm, int density) {
         saveInt(storm ? STORM_DENSITY : RAIN_DENSITY, density);
+    }
+
+    public static boolean darkCampfireSmoke() {
+        return SPEC.isLoaded() && DARK_CAMPFIRE_SMOKE.get();
+    }
+
+    static void setDarkCampfireSmoke(boolean enabled) {
+        DARK_CAMPFIRE_SMOKE.set(enabled);
+        SPEC.save();
     }
 
     public static int shadowResolution() {

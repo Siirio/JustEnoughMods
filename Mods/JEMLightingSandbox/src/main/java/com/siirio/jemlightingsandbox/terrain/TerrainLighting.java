@@ -330,11 +330,11 @@ public final class TerrainLighting {
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
                 GL11.glTexParameteri(GL12.GL_TEXTURE_3D, GL12.GL_TEXTURE_WRAP_R, GL12.GL_CLAMP_TO_EDGE);
-                GL12.glTexImage3D(GL12.GL_TEXTURE_3D, 0, GL30.GL_RG8, snapshot.sizeX(), snapshot.sizeY(), snapshot.sizeZ(),
-                        0, GL30.GL_RG, GL11.GL_UNSIGNED_BYTE, snapshot.voxelData());
+                GL12.glTexImage3D(GL12.GL_TEXTURE_3D, 0, GL11.GL_RGBA8, snapshot.sizeX(), snapshot.sizeY(), snapshot.sizeZ(),
+                        0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, snapshot.voxelData());
             } else {
                 GL12.glTexSubImage3D(GL12.GL_TEXTURE_3D, 0, 0, 0, 0, snapshot.sizeX(), snapshot.sizeY(),
-                        snapshot.sizeZ(), GL30.GL_RG, GL11.GL_UNSIGNED_BYTE, snapshot.voxelData());
+                        snapshot.sizeZ(), GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, snapshot.voxelData());
             }
         } finally {
             GL11.glPixelStorei(GL11.GL_UNPACK_ALIGNMENT, alignment);

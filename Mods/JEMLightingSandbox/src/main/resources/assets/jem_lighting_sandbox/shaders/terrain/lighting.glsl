@@ -76,8 +76,8 @@ bool jemInsideVolume(ivec3 cell) {
     return all(greaterThanEqual(cell, ivec3(0))) && all(lessThan(cell, jemVolumeSize));
 }
 
-ivec2 jemVoxelData(ivec3 cell) {
-    return ivec2(round(texelFetch(jemOpacity, cell, 0).rg * 255.0));
+ivec4 jemVoxelData(ivec3 cell) {
+    return ivec4(round(texelFetch(jemOpacity, cell, 0) * 255.0));
 }
 
 bool jemHitsBox(vec3 low, vec3 high, vec3 origin, vec3 inverseRay, float entering, float leaving) {
@@ -106,7 +106,8 @@ float jemVisibility(vec3 origin, vec3 direction, float reach, ivec3 lightCell) {
             break;
         }
         float leaving = min(nextCrossing.x, min(nextCrossing.y, nextCrossing.z));
-        int shape = jemVoxelData(cell).y;
+        ivec4 voxel = jemVoxelData(cell);
+        int shape = voxel.y;
         float end = min(leaving, reach);
         if (end - entering > JEM_RAY_EPSILON) {
             if (shape == 1) {
@@ -118,14 +119,23 @@ float jemVisibility(vec3 origin, vec3 direction, float reach, ivec3 lightCell) {
                     return 0.02;
                 }
             } else if (shape >= 14) {
-                for (int box = 0; box < 8; ++box) {
-                    vec4 low = texelFetch(jemShapes, ivec2(box * 2, shape), 0);
-                    if (low.w < 0.5) {
-                        break;
+                vec2 cutout = texelFetch(jemShapes, ivec2(63, shape), 0).xy;
+                vec3 localOrigin = origin - vec3(cell);
+                if (cutout.x > 0.0) {
+                    if (jemHitsCutout(jemShapes, shape, int(cutout.x), localOrigin - jemCutoutOffset(voxel.zw),
+                            direction, entering, end)) {
+                        visibility *= 1.0 - cutout.y;
                     }
-                    vec3 high = texelFetch(jemShapes, ivec2(box * 2 + 1, shape), 0).xyz;
-                    if (jemHitsBox(low.xyz, high, origin - vec3(cell), inverseRay, entering, end)) {
-                        return 0.0;
+                } else {
+                    for (int box = 0; box < 8; ++box) {
+                        vec4 low = texelFetch(jemShapes, ivec2(box * 2, shape), 0);
+                        if (low.w < 0.5) {
+                            break;
+                        }
+                        vec3 high = texelFetch(jemShapes, ivec2(box * 2 + 1, shape), 0).xyz;
+                        if (jemHitsBox(low.xyz, high, localOrigin, inverseRay, entering, end)) {
+                            return 0.0;
+                        }
                     }
                 }
             }
