@@ -35,7 +35,8 @@ import org.lwjgl.opengl.GL20;
 public final class PrecipitationRenderer {
     private static final int BASE_PARTICLE_CAPACITY = 2304;
     private static final int BLIZZARD_DENSITY_MULTIPLIER = 2;
-    private static final int MAX_PARTICLES = BASE_PARTICLE_CAPACITY * BLIZZARD_DENSITY_MULTIPLIER;
+    private static final int MAX_PARTICLES = BASE_PARTICLE_CAPACITY * BLIZZARD_DENSITY_MULTIPLIER
+            * LightingSettings.MAX_WEATHER_DENSITY / 100;
     private static final int SPAWN_RADIUS = 22;
     private static final int DRAW_RADIUS = 25;
     private static final int SAND_COLOR = 0xD7AA68;
@@ -81,7 +82,8 @@ public final class PrecipitationRenderer {
         }
         Vec3 wind = SandboxWeather.wind(level);
         BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-        int available = MAX_PARTICLES;
+        int density = LightingSettings.weatherDensity(storm);
+        int available = BASE_PARTICLE_CAPACITY * BLIZZARD_DENSITY_MULTIPLIER * density / 100;
         for (int index = particles.size() - 1; index >= 0; index--) {
             WeatherParticle particle = particles.get(index);
             if (!particle.advance(level, cursor, wind, center)) {
@@ -92,7 +94,7 @@ public final class PrecipitationRenderer {
             }
         }
 
-        int budget = Mth.ceil(rain * Mth.lerp(thunder, 48F, 118F));
+        int budget = Mth.ceil(rain * Mth.lerp(thunder, 48F, 118F) * density / 100F);
         ParticleStatus quality = client.options.particles().get();
         if (quality != ParticleStatus.ALL) {
             budget /= quality == ParticleStatus.DECREASED ? 2 : 4;

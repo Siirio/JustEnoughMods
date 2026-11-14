@@ -12,9 +12,10 @@ uniform vec4 jemLightPositionRange[8];
 uniform vec4 jemLightColorStrength[8];
 uniform vec4 jemSunDirectionStrength;
 uniform vec3 jemSunColor;
-uniform int jemEntityCount;
-uniform vec3 jemEntityMin[8];
-uniform vec3 jemEntityMax[8];
+uniform int jemEntityShadowActive;
+uniform sampler2D jemEntityShadowTexture;
+uniform vec3 jemEntityShadowOrigin;
+uniform vec2 jemEntityShadowDirection;
 uniform sampler2D jemWaterScene;
 uniform sampler2D jemWaterDepth;
 uniform int jemWaterActive;
@@ -137,22 +138,6 @@ float jemVisibility(vec3 origin, vec3 direction, float reach, ivec3 lightCell) {
         nextCrossing += vec3(crossed) * distancePerCell;
         entering = leaving;
     }
-    if (jemEntityCount > 0) {
-        vec3 cameraOrigin = origin + jemVolumeOrigin;
-        for (int entity = 0; entity < jemEntityCount; ++entity) {
-            vec3 low = jemEntityMin[entity];
-            vec3 high = jemEntityMax[entity];
-            vec3 center = (low + high) * 0.5;
-            vec3 halfSize = max((high - low) * vec3(0.45, 0.50, 0.45), vec3(0.01));
-            vec3 ray = direction / halfSize;
-            vec3 relative = (cameraOrigin - center) / halfSize;
-            float t = -dot(relative, ray) / dot(ray, ray);
-            if (t > 0.008 && t < reach) {
-                vec3 offset = relative + ray * t;
-                visibility *= mix(0.38, 1.0, smoothstep(0.5, 1.0, dot(offset, offset)));
-            }
-        }
-    }
     return visibility;
 }
 
@@ -175,14 +160,59 @@ ivec2 jemChunkLightRow(vec3 position, out vec3 sectionOrigin) {
 
 float jemSunlight(vec3 rayOrigin, vec3 normal, float skyLevel) {
     float strength = jemSunDirectionStrength.w * smoothstep(0.45, 1.0, skyLevel);
+    vec3 direction = jemSunDirectionStrength.xyz;
+    float incidence = smoothstep(0.0, 0.12, dot(normal, direction));
+    if (strength <= 0.0 || incidence <= 0.0 || !jemInsideVolume(ivec3(floor(rayOrigin)))) {
+        return 0.0;
+    }
+
+    // Limit the fade to the space available along this light ray.
+    vec3 distanceToBoundary = mix(rayOrigin, vec3(jemVolumeSize) - rayOrigin, greaterThanEqual(direction, vec3(0.0)));
+    vec3 exitDistance = distanceToBoundary / max(abs(direction), vec3(0.000001));
+    float reach = min(JEM_SUN_SHADOW_REACH, min(exitDistance.x, min(exitDistance.y, exitDistance.z)));
+    float coverage = smoothstep(0.0, 10.0, reach);
+    float visibility = jemVisibility(rayOrigin, direction, reach, ivec3(-1));
+    return strength * incidence * (1.0 - visibility) * coverage;
+}
+
+float jemCloudOcclusion(vec3 position, float skyLevel) {
+    if (jemCloud.w <= 0.0 || jemSunDirectionStrength.y <= 0.10 || position.y >= jemCloud.z) {
+        return 0.0;
+    }
+    float travel = (jemCloud.z - position.y) / jemSunDirectionStrength.y;
+    vec2 uv = fract(jemCloud.xy + (position.xz + jemSunDirectionStrength.xz * travel) / 3072.0);
+    float coverage = textureLod(jemCloudTexture, uv, 0.0).a;
+    return coverage * jemCloud.w * jemSunDirectionStrength.w * smoothstep(0.5, 0.95, skyLevel);
+}
+
+float jemEntityOcclusion(vec3 position, vec3 normal, float skyLevel) {
+    if (jemEntityShadowActive == 0) {
+        return 0.0;
+    }
+    vec2 direction = jemEntityShadowDirection;
+    float strength = jemSunDirectionStrength.w * smoothstep(0.45, 1.0, skyLevel)
+            * smoothstep(0.0, 0.12, dot(normal.xy, direction));
     if (strength <= 0.0) {
         return 0.0;
     }
-    vec3 direction = jemSunDirectionStrength.xyz;
-    float incidence = max(dot(normal, direction), 0.0);
-    float visibility = incidence > 0.0
-            ? jemVisibility(rayOrigin, direction, JEM_SUN_SHADOW_REACH, ivec3(-1)) : 0.0;
-    return strength * (1.0 - incidence * visibility);
+    vec3 relative = position - jemEntityShadowOrigin;
+    vec2 uv = vec2(dot(relative.xy, vec2(direction.y, -direction.x)), relative.z) / 48.0 + 0.5;
+    vec2 edge = min(uv, 1.0 - uv);
+    float coverage = smoothstep(0.004, 0.045, min(edge.x, edge.y));
+    if (coverage <= 0.0) {
+        return 0.0;
+    }
+    float depth = dot(relative.xy, direction);
+    vec2 texel = 1.0 / vec2(textureSize(jemEntityShadowTexture, 0));
+    float occlusion = 0.0;
+    for (int y = -1; y <= 1; y += 2) {
+        for (int x = -1; x <= 1; x += 2) {
+            float sampleDepth = textureLod(jemEntityShadowTexture, uv + vec2(x, y) * texel * 0.45, 0.0).r;
+            float travel = sampleDepth - depth;
+            occlusion += step(0.06, travel) * (1.0 - smoothstep(21.0, 24.0, travel));
+        }
+    }
+    return 0.25 * strength * coverage * occlusion;
 }
 
 vec3 jemExposedEmitterFace(ivec3 sourceCell, vec3 receiver) {
@@ -235,21 +265,22 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
     ivec2 lightRow = jemChunkLightRow(receiverPosition, sectionOrigin);
     int indexedCount = lightRow.x < 0 ? 0 : int(texelFetch(jemChunkLights, lightRow, 0).z);
     bool indexed = indexedCount > 0;
-    if (!indexed && sceneWeight <= 0.0) {
+    vec3 rayOrigin = localPosition + normal * JEM_SURFACE_BIAS;
+    float sunlightOcclusion = max(jemSunlight(rayOrigin, normal, lightLevels.y),
+            jemEntityOcclusion(position, normal, lightLevels.y));
+    float cloudOcclusion = jemCloudOcclusion(position, lightLevels.y);
+    if (!indexed && sceneWeight <= 0.0 && sunlightOcclusion <= 0.0 && cloudOcclusion <= 0.0) {
         return nativeColor;
     }
 
-    vec3 rayOrigin = localPosition + normal * JEM_SURFACE_BIAS;
     ivec3 receiverCell = ivec3(floor(receiverPosition - jemVolumeOrigin));
     float receiverEmission = jemInsideVolume(receiverCell) ? float(jemVoxelData(receiverCell).x) / 15.0 : 0.0;
     // Native block light indicates that light reaches the surface. It is not a measure of this ray's transmission.
     float nativeVisibility = smoothstep(0.5, 3.0, lightLevels.x * 15.0);
     vec3 contributedLight = vec3(0.0);
     float modeledBlockLevel = 0.0;
-    for (int index = 0; index < JEM_MAX_LIGHTS; ++index) {
-        if (index >= (indexed ? indexedCount : jemLightCount)) {
-            break;
-        }
+    int lightCount = indexed ? indexedCount : (sceneWeight > 0.0 ? jemLightCount : 0);
+    for (int index = 0; index < min(lightCount, JEM_MAX_LIGHTS); ++index) {
         vec4 source = indexed ? texelFetch(jemChunkLights, lightRow + ivec2(1 + index * 2, 0), 0)
                 : jemLightPositionRange[index];
         vec4 properties = indexed ? texelFetch(jemChunkLights, lightRow + ivec2(2 + index * 2, 0), 0)
@@ -321,17 +352,14 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
     float replacedShare = 0.65 * min(modeledBlockLevel, externalLevel) / max(lightLevels.x, 1.0 / 15.0);
     vec3 residualBlockLight = (nativeLinear - skyLinear) * (1.0 - replacedShare);
 
-    float sunlightOcclusion = sceneWeight > 0.0 ? jemSunlight(rayOrigin, normal, lightLevels.y) : 0.0;
-    // The vanilla sky term already contains daylight. Darken its directional share
-    // while keeping an ambient floor, instead of adding another full sun light.
-    vec3 litSky = skyLinear * (vec3(1.0) - 0.55 * jemSunColor * sunlightOcclusion * sceneWeight);
-    if (jemCloud.w > 0.0 && jemSunDirectionStrength.y > 0.10 && position.y < jemCloud.z) {
-        float travel = (jemCloud.z - position.y) / jemSunDirectionStrength.y;
-        vec2 uv = fract(jemCloud.xy + (position.xz + jemSunDirectionStrength.xz * travel) / 3072.0);
-        float coverage = textureLod(jemCloudTexture, uv, 0.0).a;
-        litSky *= 1.0 - coverage * jemCloud.w * jemSunDirectionStrength.w * smoothstep(0.5, 0.95, lightLevels.y);
-    }
+    // Apply directional occlusion only to the skylight component.
+    vec3 litSky = skyLinear * (vec3(1.0) - 0.55 * jemSunColor * sunlightOcclusion) * (1.0 - cloudOcclusion);
     vec3 combined = litSky + residualBlockLight + jemLinearColor(albedo) * contributedLight;
     vec3 outputColor = pow(max(combined, vec3(0.0)), vec3(1.0 / 2.2));
-    return mix(nativeColor, outputColor, indexed ? 1.0 : sceneWeight);
+    if (indexed || sceneWeight >= 1.0) {
+        return outputColor;
+    }
+    // The local point-light fade must not change directional or cloud shadow coverage.
+    vec3 shadowedNative = pow(max(nativeLinear - skyLinear + litSky, vec3(0.0)), vec3(1.0 / 2.2));
+    return mix(shadowedNative, outputColor, sceneWeight);
 }

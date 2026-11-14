@@ -21,6 +21,10 @@ public final class LightingSettings {
     private static final int DEFAULT_CHUNK_DISTANCE = 8;
     private static final boolean DEFAULT_FOLLOW_RENDER_DISTANCE = true;
     private static final boolean DEFAULT_ATMOSPHERE = true;
+    private static final int DEFAULT_RAIN_DENSITY = 100;
+    private static final int DEFAULT_STORM_DENSITY = 150;
+    static final int MIN_WEATHER_DENSITY = 25;
+    static final int MAX_WEATHER_DENSITY = 200;
     static final List<Integer> LIGHT_DISTANCES = List.of(8, 12, 15, 20);
     static final int MIN_LIGHTING_CHUNKS = 2;
     static final int MAX_LIGHTING_CHUNKS = 32;
@@ -31,6 +35,8 @@ public final class LightingSettings {
     private static final ForgeConfigSpec.IntValue LIGHTING_CHUNKS;
     private static final ForgeConfigSpec.BooleanValue FOLLOW_RENDER_DISTANCE;
     private static final ForgeConfigSpec.BooleanValue ATMOSPHERE;
+    private static final ForgeConfigSpec.IntValue RAIN_DENSITY;
+    private static final ForgeConfigSpec.IntValue STORM_DENSITY;
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WIND_COLORS;
 
     static {
@@ -45,6 +51,10 @@ public final class LightingSettings {
                 .define("followRenderDistance", DEFAULT_FOLLOW_RENDER_DISTANCE);
         ATMOSPHERE = builder.comment("Enable sunlight shafts and distance haze.")
                 .define("atmosphere", DEFAULT_ATMOSPHERE);
+        RAIN_DENSITY = builder.comment("Particle density in ordinary precipitation across all biomes, in percent.")
+                .defineInRange("rainDensity", DEFAULT_RAIN_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
+        STORM_DENSITY = builder.comment("Particle density during thunderstorms across all biomes, in percent.")
+                .defineInRange("stormDensity", DEFAULT_STORM_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);
         WIND_COLORS = builder.comment("Optional storm wind colors: biome_id=#RRGGBB. Exact biome IDs override defaults.")
                 .defineListAllowEmpty("windColors", List.<String>of(), value -> value instanceof String entry
                         && entry.matches("[a-z0-9_.-]+:[a-z0-9_./-]+=#[a-fA-F0-9]{6}"));
@@ -82,6 +92,18 @@ public final class LightingSettings {
 
     public static boolean atmosphereEnabled() {
         return SPEC.isLoaded() ? ATMOSPHERE.get() : DEFAULT_ATMOSPHERE;
+    }
+
+    static int weatherDensity(boolean storm) {
+        return SPEC.isLoaded() ? (storm ? STORM_DENSITY : RAIN_DENSITY).get()
+                : storm ? DEFAULT_STORM_DENSITY : DEFAULT_RAIN_DENSITY;
+    }
+
+    static void setWeatherDensity(boolean storm, int density) {
+        if (SPEC.isLoaded() && density != weatherDensity(storm)) {
+            (storm ? STORM_DENSITY : RAIN_DENSITY).set(density);
+            SPEC.save();
+        }
     }
 
     public static void setMode(Mode mode) {

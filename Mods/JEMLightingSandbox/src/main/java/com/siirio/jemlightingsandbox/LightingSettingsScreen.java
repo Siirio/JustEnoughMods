@@ -80,9 +80,14 @@ public final class LightingSettingsScreen extends Screen {
                         Component.translatable(SETTINGS + "atmosphere"),
                         (button, enabled) -> LightingSettings.setAtmosphereEnabled(enabled)));
 
+        int halfWidth = (buttonWidth - 4) / 2;
+        addRenderableWidget(Button.builder(Component.translatable(SETTINGS + "precipitation"),
+                button -> minecraft.setScreen(new WeatherDensityScreen(this)))
+                .bounds(left, top + 5 * ROW_SPACING, halfWidth, CONTROL_HEIGHT).build());
         addRenderableWidget(Button.builder(Component.translatable(SETTINGS + "wind_colors"),
                 button -> minecraft.setScreen(new WindColorScreen(this)))
-                .bounds(left, top + 5 * ROW_SPACING, buttonWidth, CONTROL_HEIGHT).build());
+                .bounds(left + halfWidth + 4, top + 5 * ROW_SPACING, buttonWidth - halfWidth - 4,
+                        CONTROL_HEIGHT).build());
         addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> onClose())
                 .bounds(left, top + 6 * ROW_SPACING + 8, buttonWidth, CONTROL_HEIGHT).build());
     }

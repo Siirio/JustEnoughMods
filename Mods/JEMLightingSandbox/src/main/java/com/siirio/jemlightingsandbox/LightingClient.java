@@ -2,6 +2,7 @@ package com.siirio.jemlightingsandbox;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
+import com.siirio.jemlightingsandbox.terrain.EntityShadowMap;
 import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
 import com.siirio.jemlightingsandbox.terrain.WaterSurface;
 import java.io.IOException;
@@ -60,6 +61,7 @@ public final class LightingClient {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void renderAtmosphere(RenderLevelStageEvent event) {
+        EntityShadowMap.render(event);
         AtmosphereRenderer.render(event);
     }
 
@@ -124,6 +126,7 @@ public final class LightingClient {
 
         @SubscribeEvent
         public static void registerShaders(RegisterShadersEvent event) {
+            EntityShadowMap.clearTextureMasks();
             sceneShader = null;
             atmosphere = null;
             atmosphereComposite = null;

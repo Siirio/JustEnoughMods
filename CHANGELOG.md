@@ -1,3 +1,10 @@
+## 2026-11-14 - Repair Sandbox smoke and directional shadows
+
+- Bug / Client / The campfire smoke Mixin required a generated argument class that Forge could not load / in testing with a typed redirect to the native particle movement call
+- Bug / Client / The sun shader darkened unblocked faces inside a camera-local volume / in testing with loss based on actual blocker visibility. Vanilla cloud projection applies independently of the point-light fade
+- User requested model-shaped entity shadows and separate global rain and thunder particle controls. Projected nearby entity meshes into the directional shadow pass and removed the shared ellipsoid approximation
+- Added rain and storm controls from 25% to 200% in the precipitation menu. Defaults are 100% for rain and 150% for storms. The multiplier applies to native-biome rain, snow and sand modes
+
 ## 2026-11-14 - Animate Sandbox wind and correct lantern shadows
 
 - User requested the Windy icon's curl for calm weather, fast waves three to four blocks wide with rare nine-block waves, and diagonal gusts five to six blocks long that last about two seconds
