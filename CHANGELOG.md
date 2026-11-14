@@ -1,3 +1,10 @@
+## 2026-11-14 - Add biome fog and sky color to Sandbox Lighting
+
+- User requested biome fog and sky color in Sandbox, supplied three screenshots and approved a Taste Engine pair without Gemini
+- JEM Lighting supplies pink cherry grove, straw-gold desert, teal Deep Dark and amber dripstone fog profiles. Cherry grove and desert use distinct sky colors that blend across biome borders and follow native day and weather changes
+- The implementation uses Fog's exact biome resources. When Neo Voxy suppresses terrain fog, the existing JEM atmosphere compositor restores distance haze for the four biomes. Palette values and haze ranges are implementation choices. In-game appearance is pending review
+- Built and installed `0.5.13` in Sandbox JustEnoughMods. The installed JAR matches the reobfuscated build by SHA-256. The previous JAR is in the profile's visual backups
+
 ## 2026-11-14 - Fix the Sandbox Lighting crash on world entry
 
 - User reported a crash after installing `0.5.11`

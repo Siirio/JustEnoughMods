@@ -5,6 +5,8 @@ uniform sampler2D SceneDepth;
 uniform sampler2D SceneColor;
 uniform mat4 InverseViewProjection;
 uniform float Underwater;
+uniform vec3 BiomeFogRange;
+uniform vec3 BiomeFogColor;
 uniform float Heat;
 uniform vec4 HeatOrigin;
 uniform float AtmosphereTime;
@@ -68,6 +70,12 @@ void main() {
 
     // Fade where the reduced buffer cannot represent the geometry under this pixel.
     vec4 scatter = accumulated * (smoothstep(0.0, 0.15, weight) / max(weight, 0.00001));
+    if (!centerSky && BiomeFogRange.z > 0.0) {
+        vec4 target = InverseViewProjection * vec4(sceneUv * 2.0 - 1.0, rawDepth * 2.0 - 1.0, 1.0);
+        float distance = length(target.xyz) / max(abs(target.w), 0.00001);
+        float fogAlpha = smoothstep(BiomeFogRange.x, BiomeFogRange.y, distance) * BiomeFogRange.z;
+        scatter += vec4(BiomeFogColor * fogAlpha, fogAlpha) * (1.0 - scatter.a);
+    }
     if (Underwater > 0.5) {
         vec2 wave = vec2(sin(sceneUv.y * 54.0 + AtmosphereTime * 1.7),
                 sin(sceneUv.x * 47.0 - AtmosphereTime * 1.35));

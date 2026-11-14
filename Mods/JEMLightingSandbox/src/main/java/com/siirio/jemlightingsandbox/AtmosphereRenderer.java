@@ -68,7 +68,11 @@ final class AtmosphereRenderer {
     }
 
     static void render(RenderLevelStageEvent event) {
-        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL || scattering == null || composite == null
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL) {
+            return;
+        }
+        Vec3 fogColor = BiomeFog.takeTerrainColor();
+        if (scattering == null || composite == null
                 || failed || !LightingSettings.atmosphereEnabled() || TerrainLighting.isShaderPackActive()) {
             return;
         }
@@ -115,14 +119,15 @@ final class AtmosphereRenderer {
         }
         float clock = ((gameTime % 81920L) + event.getPartialTick()) / 20F;
         float heat = underwater ? 0F : SandboxWeather.heat(client);
-        if (!underwater
+        var position = camera.getPosition();
+        var biomeFog = !underwater && fogColor != null ? BiomeFog.sample(level, block, fogColor) : null;
+        if (!underwater && biomeFog == null
                 && Math.max(Math.max(celestial.strength(), weather), Math.max(heat, Math.max(aurora, flash))) < 0.01F) {
             return;
         }
 
         var inverseViewProjection = new Matrix4f().set(RenderSystem.getInverseViewRotationMatrix())
                 .mul(new Matrix4f(event.getProjectionMatrix()).invert());
-        var position = camera.getPosition();
         float rayStrength = moon ? (float) Math.sqrt(celestial.strength()) * 0.82F : celestial.strength();
         float sunHeight = Mth.clamp(sun.y() * 2.5F, 0F, 1F);
         float lowSun = 1F - sunHeight * sunHeight * (3F - 2F * sunHeight);
@@ -187,6 +192,14 @@ final class AtmosphereRenderer {
             composite.setSampler("SceneDepth", depthCopy.getDepthTextureId());
             composite.setSampler("SceneColor", underwater || heat > 0.01F ? colorCopy.getColorTextureId() : reduced.getColorTextureId());
             composite.safeGetUniform("Underwater").set(underwater ? 1F : 0F);
+            if (biomeFog == null) {
+                composite.safeGetUniform("BiomeFogRange").set(0F, 0F, 0F);
+            } else {
+                var range = biomeFog.range();
+                Vec3 color = biomeFog.color();
+                composite.safeGetUniform("BiomeFogRange").set(range.start(), range.end(), range.opacity());
+                composite.safeGetUniform("BiomeFogColor").set((float) color.x, (float) color.y, (float) color.z);
+            }
             composite.safeGetUniform("Heat").set(heat);
             var heatOrigin = SandboxWeather.heatOrigin(client);
             if (heatOrigin == null) {

@@ -53,7 +53,7 @@ public final class LightingSettings {
                 .defineInRange("lightingChunks", DEFAULT_CHUNK_DISTANCE, MIN_LIGHTING_CHUNKS, MAX_LIGHTING_CHUNKS);
         FOLLOW_RENDER_DISTANCE = builder.comment("Use the effective Minecraft render distance for lighting.")
                 .define("followRenderDistance", DEFAULT_FOLLOW_RENDER_DISTANCE);
-        ATMOSPHERE = builder.comment("Enable light shafts and weather effects.")
+        ATMOSPHERE = builder.comment("Enable light shafts, weather effects, sky tint and Voxy terrain haze.")
                 .define("atmosphere", DEFAULT_ATMOSPHERE);
         RAIN_DENSITY = builder.comment("Particle density in ordinary precipitation across all biomes, in percent.")
                 .defineInRange("rainDensity", DEFAULT_RAIN_DENSITY, MIN_WEATHER_DENSITY, MAX_WEATHER_DENSITY);

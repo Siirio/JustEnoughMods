@@ -11,8 +11,10 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterClientCommandsEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -61,6 +63,10 @@ public final class LightingClient {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void renderAtmosphere(RenderLevelStageEvent event) {
+        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_SOLID_BLOCKS) {
+            BiomeFog.captureTerrainColor();
+            return;
+        }
         EntityShadowMap.render(event);
         AtmosphereRenderer.render(event);
     }
@@ -111,6 +117,7 @@ public final class LightingClient {
                 TerrainLighting.clearWorld();
                 PrecipitationRenderer.clear();
                 WindGusts.clear();
+                BiomeFog.clear();
                 AtmosphereRenderer.releaseTargets();
                 WaterSurface.release();
             });
@@ -123,6 +130,11 @@ public final class LightingClient {
         private static ShaderInstance atmosphereComposite;
         private static ShaderInstance shaftVisibility;
         private ShaderEvents() {
+        }
+
+        @SubscribeEvent
+        public static void registerReloadListeners(RegisterClientReloadListenersEvent event) {
+            event.registerReloadListener((ResourceManagerReloadListener) BiomeFog::reload);
         }
 
         @SubscribeEvent
