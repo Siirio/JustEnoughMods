@@ -35,6 +35,7 @@ public final class TerrainLighting {
     public static final int SHAPE_TEXTURE_UNIT = 8;
     private static final int LIGHT_TEXTURE_UNIT = 9;
     private static final int CLOUD_TEXTURE_UNIT = 12;
+    private static long volumeRevision;
     private static final ResourceLocation CLOUD_TEXTURE = ResourceLocation.tryParse("minecraft:textures/environment/clouds.png");
     private static final TerrainLightVolume VOLUME = new TerrainLightVolume();
     private static final ChunkLightIndex LIGHT_INDEX = new ChunkLightIndex();
@@ -197,6 +198,7 @@ public final class TerrainLighting {
             if (uploaded != snapshot) {
                 uploadVoxels(snapshot);
                 uploaded = snapshot;
+                volumeRevision++;
             }
 
             Vec3 camera = client.gameRenderer.getMainCamera().getPosition();
@@ -413,7 +415,7 @@ public final class TerrainLighting {
         if (!available() || uploaded == null || uploaded.level() != level || voxelTexture == 0) {
             return null;
         }
-        return new VolumeTexture(voxelTexture, shapeTexture, uploaded.minX(), uploaded.minY(), uploaded.minZ(),
+        return new VolumeTexture(voxelTexture, shapeTexture, volumeRevision, uploaded.minX(), uploaded.minY(), uploaded.minZ(),
                 uploaded.sizeX(), uploaded.sizeY(), uploaded.sizeZ());
     }
 
@@ -423,7 +425,7 @@ public final class TerrainLighting {
 
     public record Sun(float x, float y, float strength) {}
 
-    public record VolumeTexture(int id, int shapes, int x, int y, int z, int width, int height, int depth) {}
+    public record VolumeTexture(int id, int shapes, long revision, int x, int y, int z, int width, int height, int depth) {}
 
     static boolean available() {
         return enabled && !failed && canPatchStockShaders() && !isShaderPackActive();

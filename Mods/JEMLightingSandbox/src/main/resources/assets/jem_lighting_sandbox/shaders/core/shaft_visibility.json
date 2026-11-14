@@ -1,0 +1,31 @@
+{
+  "vertex": "jem_lighting_sandbox:atmosphere",
+  "fragment": "jem_lighting_sandbox:shaft_visibility",
+  "attributes": [
+    "Position",
+    "UV0"
+  ],
+  "samplers": [],
+  "uniforms": [
+    {
+      "name": "VolumeSize",
+      "type": "float",
+      "count": 3,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "SunDirection",
+      "type": "float",
+      "count": 3,
+      "values": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    }
+  ]
+}

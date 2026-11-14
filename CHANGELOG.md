@@ -1,3 +1,10 @@
+## 2026-11-14 - Fix Sandbox sun and moon shafts
+
+- User reported broad fans, a visible dot pattern and a large FPS drop around god rays
+- Bug / Client / A repeating screen-space phase sampled up to three terrain rays at each of 16 points per reduced-resolution pixel. One-sided edge contrast also lit long roof and ridge silhouettes / in testing with shared world-space visibility and contrast across both sides of a local opening
+- The implementation refreshes the visibility field when terrain changes or the light direction crosses a two-degree increment. The screen pass blends cached samples, stops at scene depth and applies a lower scattering gain
+- Actual frame time and appearance require in-game comparison
+
 ## 2026-11-14 - Trace Sandbox cutout shadows and extend campfire smoke
 
 - User requested shadows that follow the texture silhouette of grass and leaves, a native smoke color with a darker option, a 45-block plume including sway and 15% sprite growth per block

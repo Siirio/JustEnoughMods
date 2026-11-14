@@ -121,6 +121,7 @@ public final class LightingClient {
     public static final class ShaderEvents {
         private static ShaderInstance atmosphere;
         private static ShaderInstance atmosphereComposite;
+        private static ShaderInstance shaftVisibility;
         private ShaderEvents() {
         }
 
@@ -130,7 +131,8 @@ public final class LightingClient {
             sceneShader = null;
             atmosphere = null;
             atmosphereComposite = null;
-            AtmosphereRenderer.shaders(null, null);
+            shaftVisibility = null;
+            AtmosphereRenderer.shaders(null, null, null);
             try {
                 var shader = new ShaderInstance(event.getResourceProvider(),
                         new ResourceLocation(JemLightingSandbox.ID, "shadow_preview"), DefaultVertexFormat.POSITION_TEX);
@@ -143,13 +145,19 @@ public final class LightingClient {
                         new ResourceLocation(JemLightingSandbox.ID, "atmosphere"), DefaultVertexFormat.POSITION_TEX);
                 event.registerShader(scattering, loaded -> {
                     atmosphere = loaded;
-                    AtmosphereRenderer.shaders(atmosphere, atmosphereComposite);
+                    AtmosphereRenderer.shaders(atmosphere, atmosphereComposite, shaftVisibility);
                 });
                 var compositing = new ShaderInstance(event.getResourceProvider(),
                         new ResourceLocation(JemLightingSandbox.ID, "atmosphere_composite"), DefaultVertexFormat.POSITION_TEX);
                 event.registerShader(compositing, loaded -> {
                     atmosphereComposite = loaded;
-                    AtmosphereRenderer.shaders(atmosphere, atmosphereComposite);
+                    AtmosphereRenderer.shaders(atmosphere, atmosphereComposite, shaftVisibility);
+                });
+                var visibility = new ShaderInstance(event.getResourceProvider(),
+                        new ResourceLocation(JemLightingSandbox.ID, "shaft_visibility"), DefaultVertexFormat.POSITION_TEX);
+                event.registerShader(visibility, loaded -> {
+                    shaftVisibility = loaded;
+                    AtmosphereRenderer.shaders(atmosphere, atmosphereComposite, shaftVisibility);
                 });
             } catch (IOException exception) {
                 LOGGER.error("Could not load the JEM atmosphere shaders", exception);

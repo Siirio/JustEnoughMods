@@ -32,12 +32,18 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 final class AtmosphereRenderer {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final int VOXEL_UNIT = 7;
+    private static final int VISIBILITY_COLUMNS = 8;
+    private static final double LIGHT_ANGLE_STEP = Math.PI / 90.0;
 
     private static ShaderInstance scattering;
     private static ShaderInstance composite;
+    private static ShaderInstance visibilityShader;
     private static TextureTarget depthCopy;
     private static TextureTarget reduced;
     private static TextureTarget colorCopy;
+    private static TextureTarget visibility;
+    private static long visibilityRevision = -1L;
+    private static int visibilityAngle;
     private static ClientLevel weatherLevel;
     private static long lastRain = Long.MIN_VALUE;
     private static boolean failed;
@@ -45,9 +51,11 @@ final class AtmosphereRenderer {
     private AtmosphereRenderer() {
     }
 
-    static void shaders(ShaderInstance scatterShader, ShaderInstance compositeShader) {
+    static void shaders(ShaderInstance scatterShader, ShaderInstance compositeShader, ShaderInstance shaftShader) {
         scattering = scatterShader;
         composite = compositeShader;
+        visibilityShader = shaftShader;
+        visibilityRevision = -1L;
         failed = false;
     }
 
@@ -124,16 +132,21 @@ final class AtmosphereRenderer {
             RenderSystem.disableCull();
             GL11.glDisable(GL11.GL_STENCIL_TEST);
             GL11.glColorMask(true, true, true, true);
+            RenderSystem.disableBlend();
 
+            boolean drawShafts = volume != null && visibilityShader != null && rayStrength >= 0.01F;
+            if (drawShafts) {
+                updateVisibility(volume, celestial);
+            }
             reduced.bindWrite(true);
             scattering.setSampler("SceneDepth", depthCopy.getDepthTextureId());
+            scattering.setSampler("ShaftVisibility", drawShafts ? visibility.getColorTextureId() : depthCopy.getDepthTextureId());
             scattering.safeGetUniform("InverseViewProjection").set(inverseViewProjection);
-            if (volume != null) {
+            if (drawShafts) {
                 scattering.safeGetUniform("VolumeOrigin").set((float) (volume.x() - position.x),
                         (float) (volume.y() - position.y), (float) (volume.z() - position.z));
                 scattering.safeGetUniform("VolumeSize").set((float) volume.width(), (float) volume.height(), (float) volume.depth());
             } else {
-                // The ray march exits before sampling either texture when the volume size is zero.
                 scattering.safeGetUniform("VolumeSize").set(0F, 0F, 0F);
             }
             scattering.safeGetUniform("SunDirection").set(celestial.x(), celestial.y(), 0F);
@@ -153,7 +166,12 @@ final class AtmosphereRenderer {
             int tint = biome.getWaterColor();
             float clarity = Mth.clamp(0.30F + ((tint & 255) - (tint >> 16 & 255)) / 400F, 0.15F, 0.85F);
             scattering.safeGetUniform("WaterClarity").set(clarity);
-            drawScattering(volume == null ? 0 : volume.id(), volume == null ? 0 : volume.shapes());
+            scattering.apply();
+            try {
+                drawQuad();
+            } finally {
+                scattering.clear();
+            }
 
             main.bindWrite(true);
             composite.setSampler("AtmosphereTex", reduced.getColorTextureId());
@@ -203,10 +221,27 @@ final class AtmosphereRenderer {
                 && (entity.hasEffect(MobEffects.BLINDNESS) || entity.hasEffect(MobEffects.DARKNESS));
     }
 
-    private static void drawScattering(int voxelTexture, int shapeTexture) {
-        scattering.apply();
+    private static void updateVisibility(TerrainLighting.VolumeTexture volume, TerrainLighting.Sun celestial) {
+        int angle = (int) Math.round(Math.atan2(celestial.y(), celestial.x()) / LIGHT_ANGLE_STEP);
+        if (visibilityRevision == volume.revision() && visibilityAngle == angle) {
+            return;
+        }
+        int width = volume.width() * VISIBILITY_COLUMNS;
+        int rows = (volume.depth() + VISIBILITY_COLUMNS - 1) / VISIBILITY_COLUMNS;
+        int height = volume.height() * rows;
+        if (visibility == null || visibility.width != width || visibility.height != height) {
+            if (visibility != null) {
+                visibility.destroyBuffers();
+            }
+            visibility = new TextureTarget(width, height, false, Minecraft.ON_OSX);
+            visibility.setFilterMode(GL11.GL_LINEAR);
+        }
+        visibility.bindWrite(true);
+        visibilityShader.safeGetUniform("VolumeSize").set((float) volume.width(), (float) volume.height(), (float) volume.depth());
+        double cachedAngle = angle * LIGHT_ANGLE_STEP;
+        visibilityShader.safeGetUniform("SunDirection").set((float) Math.cos(cachedAngle), (float) Math.sin(cachedAngle), 0F);
+        visibilityShader.apply();
         try {
-            RenderSystem.disableBlend();
             int active = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
             int shapeUnit = TerrainLighting.SHAPE_TEXTURE_UNIT;
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
@@ -214,11 +249,11 @@ final class AtmosphereRenderer {
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + VOXEL_UNIT);
             int previous = GL11.glGetInteger(GL12.GL_TEXTURE_BINDING_3D);
             try {
-                GL11.glBindTexture(GL12.GL_TEXTURE_3D, voxelTexture);
-                GL20.glUniform1i(GL20.glGetUniformLocation(scattering.getId(), "JemVoxels"), VOXEL_UNIT);
+                GL11.glBindTexture(GL12.GL_TEXTURE_3D, volume.id());
+                GL20.glUniform1i(GL20.glGetUniformLocation(visibilityShader.getId(), "JemVoxels"), VOXEL_UNIT);
                 GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, shapeTexture);
-                GL20.glUniform1i(GL20.glGetUniformLocation(scattering.getId(), "JemShapes"), shapeUnit);
+                GL11.glBindTexture(GL11.GL_TEXTURE_2D, volume.shapes());
+                GL20.glUniform1i(GL20.glGetUniformLocation(visibilityShader.getId(), "JemShapes"), shapeUnit);
                 drawQuad();
             } finally {
                 GL13.glActiveTexture(GL13.GL_TEXTURE0 + shapeUnit);
@@ -228,8 +263,10 @@ final class AtmosphereRenderer {
                 GL13.glActiveTexture(active);
             }
         } finally {
-            scattering.clear();
+            visibilityShader.clear();
         }
+        visibilityRevision = volume.revision();
+        visibilityAngle = angle;
     }
 
     private static void drawQuad() {
@@ -256,6 +293,11 @@ final class AtmosphereRenderer {
     }
 
     static void releaseTargets() {
+        if (visibility != null) {
+            visibility.destroyBuffers();
+            visibility = null;
+        }
+        visibilityRevision = -1L;
         if (depthCopy != null) {
             depthCopy.destroyBuffers();
             depthCopy = null;

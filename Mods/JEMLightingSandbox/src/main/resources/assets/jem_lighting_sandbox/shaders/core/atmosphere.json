@@ -2,7 +2,7 @@
   "vertex": "jem_lighting_sandbox:atmosphere",
   "fragment": "jem_lighting_sandbox:atmosphere",
   "attributes": ["Position", "UV0"],
-  "samplers": [{ "name": "SceneDepth" }],
+  "samplers": [{ "name": "SceneDepth" }, { "name": "ShaftVisibility" }],
   "uniforms": [
     {
       "name": "InverseViewProjection",

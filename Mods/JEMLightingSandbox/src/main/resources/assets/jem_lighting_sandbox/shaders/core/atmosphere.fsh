@@ -1,10 +1,7 @@
 #version 150
 
-#moj_import <jem_lighting_sandbox:cutout_shadow.glsl>
-
 uniform sampler2D SceneDepth;
-uniform sampler3D JemVoxels;
-uniform sampler2D JemShapes;
+uniform sampler2D ShaftVisibility;
 uniform mat4 InverseViewProjection;
 uniform vec3 VolumeOrigin;
 uniform vec3 VolumeSize;
@@ -24,11 +21,8 @@ uniform float AtmosphereTime;
 in vec2 sceneUv;
 out vec4 fragColor;
 
-const int MAX_VIEW_SAMPLES = 16;
-const int SUN_STEPS = 36;
-const float SUN_REACH = 24.0;
+const int VIEW_SAMPLES = 12;
 const float VIEW_REACH = 36.0;
-const float RAY_EPSILON = 0.0001;
 
 vec3 inverseDirection(vec3 direction) {
     vec3 directionSign = 2.0 * vec3(greaterThanEqual(direction, vec3(0.0))) - 1.0;
@@ -44,118 +38,62 @@ vec2 boxInterval(vec3 origin, vec3 inverseRay, vec3 low, vec3 high) {
             min(farPlane.x, min(farPlane.y, farPlane.z)));
 }
 
-bool hitsShape(int shape, vec3 localOrigin, vec3 inverseRay, float entering, float leaving) {
-    if (shape == 0 || leaving - entering <= RAY_EPSILON) {
-        return false;
-    }
-    if (shape == 1) {
-        return true;
-    }
-
-    if (shape >= 14) {
-        for (int box = 0; box < 8; ++box) {
-            vec4 low = texelFetch(JemShapes, ivec2(box * 2, shape), 0);
-            if (low.w < 0.5) {
-                break;
-            }
-            vec3 high = texelFetch(JemShapes, ivec2(box * 2 + 1, shape), 0).xyz;
-            vec2 interval = boxInterval(localOrigin, inverseRay, low.xyz, high);
-            if (min(interval.y, leaving) - max(interval.x, entering) > RAY_EPSILON) {
-                return true;
-            }
-        }
-    }
-    return false;
+float visibilitySlice(vec2 st, int slice, ivec3 grid) {
+    ivec2 tile = ivec2(slice % 8, slice / 8);
+    vec2 pixel = vec2(tile * grid.xy) + st + 0.5;
+    return texture(ShaftVisibility, pixel / vec2(textureSize(ShaftVisibility, 0))).r;
 }
 
-float lightVisibility(vec3 origin, vec3 inverseRay) {
-    ivec3 cell = ivec3(floor(origin));
-    ivec3 stepDirection = ivec3(sign(inverseRay));
-    vec3 cellEdge = vec3(cell) + max(vec3(stepDirection), vec3(0.0));
-    vec3 nextCrossing = (cellEdge - origin) * inverseRay;
-    vec3 cellDistance = abs(inverseRay);
-    ivec3 volumeEnd = ivec3(VolumeSize);
-    float entering = 0.0;
-    float visibility = 1.0;
-
-    for (int index = 0; index < SUN_STEPS; ++index) {
-        if (any(lessThan(cell, ivec3(0))) || any(greaterThanEqual(cell, volumeEnd))) {
-            break;
-        }
-        float leaving = min(nextCrossing.x, min(nextCrossing.y, nextCrossing.z));
-        float segmentEnd = min(leaving, SUN_REACH);
-        ivec4 voxel = ivec4(round(texelFetch(JemVoxels, cell, 0) * 255.0));
-        int shape = voxel.y;
-        vec2 cutout = shape >= 14 ? texelFetch(JemShapes, ivec2(63, shape), 0).xy : vec2(0.0);
-        if (shape == 13) {
-            visibility *= exp(-0.32 * max(segmentEnd - entering, 0.0));
-            if (visibility < 0.02) {
-                return 0.0;
-            }
-        } else if (cutout.x > 0.0) {
-            if (jemHitsCutout(JemShapes, shape, int(cutout.x),
-                    origin - vec3(cell) - jemCutoutOffset(voxel.zw), 1.0 / inverseRay, entering, segmentEnd)) {
-                visibility *= 1.0 - cutout.y;
-            }
-        } else if (hitsShape(shape, origin - vec3(cell), inverseRay, entering, segmentEnd)) {
-            return 0.0;
-        }
-        if (leaving >= SUN_REACH) {
-            break;
-        }
-        bvec3 crossed = lessThanEqual(nextCrossing, vec3(leaving + 0.00001));
-        cell += ivec3(crossed) * stepDirection;
-        nextCrossing += vec3(crossed) * cellDistance;
-        entering = leaving;
-    }
-    return visibility;
+float cachedVisibility(vec3 point, ivec3 grid) {
+    vec3 sampleCell = point - 0.5;
+    vec3 clamped = clamp(sampleCell, vec3(0.0), vec3(grid - 1));
+    int slice = int(clamped.z);
+    return mix(visibilitySlice(clamped.xy, slice, grid),
+            visibilitySlice(clamped.xy, min(slice + 1, grid.z - 1), grid), fract(clamped.z));
 }
 
-float atmosphereDensity(float altitude) {
-    return exp(-max(altitude, 0.0) * 0.018);
+float aperture(vec3 point, vec3 across, ivec3 grid, float light) {
+    float left = cachedVisibility(point - across, grid);
+    float right = cachedVisibility(point + across, grid);
+    return smoothstep(0.12, 0.58, light - max(left, right));
 }
 
 float celestialShafts(vec3 ray, float sceneDistance) {
+    if (SunStrength <= 0.0 || min(VolumeSize.x, min(VolumeSize.y, VolumeSize.z)) <= 0.0) {
+        return 0.0;
+    }
     vec3 cameraInVolume = -VolumeOrigin;
     vec2 interval = boxInterval(cameraInVolume, inverseDirection(ray), vec3(0.0), VolumeSize);
-    float first = max(0.35, interval.x);
+    float first = max(0.75, interval.x);
     float last = min(min(sceneDistance, VIEW_REACH), interval.y);
-    if (last <= first || SunStrength <= 0.0 || min(VolumeSize.x, min(VolumeSize.y, VolumeSize.z)) <= 0.0) {
+    if (last <= first) {
         return 0.0;
     }
 
-    // Fixed subpixel phases break up aligned sample planes without temporal flicker.
-    float phase = fract(dot(mod(gl_FragCoord.xy, 8.0), vec2(0.75487767, 0.56984029)));
-    float lengthInVolume = last - first;
-    float stride = max(0.40, lengthInVolume / float(MAX_VIEW_SAMPLES));
-    vec3 inverseSun = inverseDirection(SunDirection);
-    // Test the beam across its axis. The offset is in world space and follows the light, not the camera.
-    vec3 acrossLight = normalize(vec3(SunDirection.y, -SunDirection.x, 0.0));
+    ivec3 grid = ivec3(VolumeSize);
+    vec3 acrossLight = vec3(SunDirection.y, -SunDirection.x, 0.0) * 1.75;
+    vec3 acrossZ = vec3(0.0, 0.0, 1.75);
+    float stride = (last - first) / float(VIEW_SAMPLES);
     float shaft = 0.0;
-    for (int index = 0; index < MAX_VIEW_SAMPLES; ++index) {
-        float segment = first + float(index) * stride;
-        float span = min(stride, last - segment);
-        if (span <= 0.0) break;
-        float distance = segment + (0.14 + 0.72 * phase) * span;
+    for (int index = 0; index < VIEW_SAMPLES; ++index) {
+        float distance = first + (float(index) + 0.5) * stride;
         vec3 point = cameraInVolume + ray * distance;
         vec3 edges = min(point, VolumeSize - point);
-        float edge = smoothstep(0.95, 4.0, min(edges.x, min(edges.y, edges.z)));
-        if (edge <= 0.0) continue;
-        float visible = lightVisibility(point, inverseSun);
-        if (visible < 0.025) continue;
-        vec3 lateral = (index % 2 == 0 ? acrossLight : vec3(0.0, 0.0, 1.0)) * 0.74;
-        float sideA = lightVisibility(point + lateral, inverseSun);
-        float sideB = lightVisibility(point - lateral, inverseSun);
-        float separation = visible - min(sideA, sideB);
-        float contrast = smoothstep(0.12, 0.75, separation);
-        float density = atmosphereDensity(CameraAltitude + ray.y * distance);
-        if (Underwater > 0.5) {
-            density = exp(-distance * mix(0.17, 0.045, WaterClarity));
+        float edge = smoothstep(2.5, 5.0, min(edges.x, min(edges.y, edges.z)));
+        if (edge <= 0.0) {
+            continue;
         }
-        shaft += span * edge * density * exp(-distance * 0.023) * visible * contrast;
+        float visible = cachedVisibility(point, grid);
+        if (visible <= 0.12) {
+            continue;
+        }
+        float opening = max(aperture(point, acrossLight, grid, visible), aperture(point, acrossZ, grid, visible));
+        float density = Underwater > 0.5 ? mix(0.17, 0.045, WaterClarity) : 0.036;
+        float altitude = Underwater > 0.5 ? 1.0 : exp(-max(CameraAltitude + ray.y * distance, 0.0) * 0.018);
+        shaft += stride * edge * altitude * exp(-distance * density) * visible * opening;
     }
-    float forward = 0.30 + 0.70 * pow(max(dot(ray, SunDirection), 0.0), 3.0);
-    return 0.70 * (1.0 - exp(-0.26 * shaft)) * forward;
+    float forward = 0.40 + 0.60 * pow(max(dot(ray, SunDirection), 0.0), 3.0);
+    return 0.38 * (1.0 - exp(-0.16 * shaft)) * forward;
 }
 
 vec3 rainbowColor(float angle) {
@@ -205,7 +143,7 @@ void main() {
 
     float beam = celestialShafts(ray, sceneDistance) * SunStrength;
     vec3 beamColor = submerged ? mix(SunColor, max(WaterColor, vec3(0.12, 0.26, 0.30)), 0.53) : SunColor;
-    float opacity = haze + 0.30 * beam * (1.0 - haze);
+    float opacity = haze + 0.10 * beam * (1.0 - haze);
     vec4 scatter = vec4(WaterColor * haze + beamColor * beam * (1.0 - haze), opacity);
 
     if (!submerged && OpenSky > 0.0) {
