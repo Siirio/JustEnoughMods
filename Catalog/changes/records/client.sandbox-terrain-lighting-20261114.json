@@ -26,6 +26,7 @@
       {"property": "client.sandbox.biome_sky_color", "operation": "derive", "before": "Two exact sky palettes followed by native time and weather", "after": "Biome colors feed native sky blending. Red-sand biomes have an orange sky, regular deserts have a warm gold sky, and rain and thunder apply distinct cooling and darkening over native weather."},
       {"property": "client.sandbox.sky_horizon_color", "operation": "derive", "before": "BadOptimizations could bypass JEM sky sampling inside a biome. The horizon had a separate palette.", "after": "The BadOptimizations sky-cache exclusion lets the JEM sky sampler run. Open-air horizon and sky use the same biome and weather result."},
       {"property": "client.sandbox.birch_plains_cloud_color", "operation": "set", "before": "Better Clouds blends the biome fog color into its cloud tint", "after": "Birch Forest, Old Growth Birch Forest, Plains and Sunflower Plains keep neutral cloud tint in clear weather."},
+      {"property": "client.sandbox.canopy_leaves", "operation": "derive", "before": "Native leaf particles only", "after": "Exposed canopy edges release small staggered groups of leaves in two calm wind patterns. Registered foliage supplies the baked sprite and tint. Needle, petal, savanna, snowy and pale oak variants use the same client renderer."},
       {"property": "client.sandbox.campfire_smoke", "operation": "set", "before": "up to 20 blocks of rise, automatic cluster darkening and 5 percent sprite growth per two blocks above five blocks", "after": "native color by default with an optional darker variant, a 45-block limit along the plume including wind drift, stronger wind curvature and 15 percent of base sprite size per block above five blocks"}
     ]
   },
@@ -37,6 +38,9 @@
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/AtmosphereRenderer.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/BiomeFog.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/AtmospherePalette.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/CanopyLeaves.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/CanopyLeafParticle.java",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/ParticleUtilsLeafMixin.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/BetterCloudsTintMixin.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/SandboxWeather.java",
       "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WindGusts.java",
@@ -123,7 +127,8 @@
       "Mods/JEMLightingSandbox/src/main/resources/assets/minecraft/fog_definitions/biome/deep_dark.json",
       "Mods/JEMLightingSandbox/src/main/resources/assets/minecraft/fog_definitions/biome/dripstone_caves.json"
     ]},
-    {"date": "2026-11-15", "commit": "SELF", "action": "keep_sandbox_sky_color_at_biome_edges", "summary": "Use the supported BadOptimizations sky-cache exclusion, use one outdoor sky and horizon color, and retain neutral clear-weather clouds in birch and plains biomes."}
+    {"date": "2026-11-15", "commit": "SELF", "action": "keep_sandbox_sky_color_at_biome_edges", "summary": "Use the supported BadOptimizations sky-cache exclusion, use one outdoor sky and horizon color, and retain neutral clear-weather clouds in birch and plains biomes."},
+    {"date": "2026-11-15", "commit": "SELF", "action": "add_calm_canopy_leaves", "summary": "Apply the approved light flutter and loose gust from exposed tree crowns. Use installed foliage model textures and tint, including future Pale Oak without a mandatory backport dependency."}
   ],
   "impacts": {"systems": ["client rendering", "Sandbox"], "relations": [], "notes": ["No gameplay registrations, server state or native block emission levels change. The standalone preview remains available. The cached shaft map records the rest pose of a banner, while terrain shadows use the animated pose."], "unresolved": ["Visual output and frame time require verification on Windows and macOS. Local entity occlusion uses captured model faces without texel alpha testing. Dedicated Better Clouds projection, Voxy LOD shadow receivers and shader-pack coexistence are outside this pass."]}
 }

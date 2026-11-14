@@ -89,6 +89,7 @@ public final class LightingClient {
             SandboxWeather.tick(client);
             PrecipitationRenderer.tick(client);
             WindGusts.tick(client);
+            CanopyLeaves.tick(client);
         }
     }
 
@@ -122,6 +123,7 @@ public final class LightingClient {
                 TerrainLighting.clearWorld();
                 PrecipitationRenderer.clear();
                 WindGusts.clear();
+                CanopyLeaves.clear();
                 BiomeFog.clear();
                 AtmospherePalette.clear();
                 AtmosphereRenderer.releaseTargets();

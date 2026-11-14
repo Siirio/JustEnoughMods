@@ -1,3 +1,10 @@
+## 2026-11-15 - Add calm canopy leaves to Sandbox Lighting
+
+- User approved the prolonged leaf motion and requested tree and biome variants based on the Test JustEnoughMods foliage. The user requested the new JAR in Sandbox and deferred Test installation and Pale Oak runtime testing
+- JEM lifts leaves as they leave the tree. A light flutter releases a few leaves in sequence. The larger gust releases a staggered group that slowly spreads. The implementation uses the loaded block model sprite, position tint, a species silhouette and a light frost treatment in snowy biomes
+- VanillaBackport Pale Oak uses the same renderer when the registered block is available. Cherry and Backport particles retain their native behavior outside the brief JEM release at the same canopy block
+- The new renderer is client-only and needs no added particle or block registration. Minecraft was not launched for this revision
+
 ## 2026-11-15 - Keep Sandbox sky color across biome borders
 
 - User prefers the full-sky color shown near the red desert border in both render modes and allows white clouds in birch and plains biomes
