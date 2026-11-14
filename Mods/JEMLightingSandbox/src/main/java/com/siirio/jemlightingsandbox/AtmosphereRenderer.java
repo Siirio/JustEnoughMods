@@ -26,8 +26,6 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
@@ -53,13 +51,18 @@ final class AtmosphereRenderer {
         failed = false;
     }
 
+    static boolean canCompositeFog() {
+        RenderTarget main = Minecraft.getInstance().getMainRenderTarget();
+        return scattering != null && composite != null && !failed && main.useDepth && main.getDepthTextureId() > 0
+                && main.width >= 2 && main.height >= 2 && main.width == main.viewWidth && main.height == main.viewHeight;
+    }
+
     static void render(RenderLevelStageEvent event) {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL) {
             return;
         }
-        Vec3 fogColor = BiomeFog.takeTerrainColor();
-        if (scattering == null || composite == null
-                || failed || !LightingSettings.atmosphereEnabled() || TerrainLighting.isShaderPackActive()) {
+        var biomeFog = BiomeFog.takeFrame();
+        if (!canCompositeFog() || !LightingSettings.atmosphereEnabled() || TerrainLighting.isShaderPackActive()) {
             return;
         }
 
@@ -67,20 +70,20 @@ final class AtmosphereRenderer {
         ClientLevel level = client.level;
         Camera camera = event.getCamera();
         FogType medium = camera.getFluidInCamera();
-        if (level == null || !level.dimensionType().hasSkyLight() || level.dimensionType().hasCeiling()
-                || (medium != FogType.NONE && medium != FogType.WATER) || hasRestrictedVision(camera)) {
+        if (level == null || (medium != FogType.NONE && medium != FogType.WATER)
+                || BiomeFog.hasRestrictedVision(camera)) {
             return;
         }
+        boolean openDimension = level.dimensionType().hasSkyLight() && !level.dimensionType().hasCeiling();
         boolean underwater = medium == FogType.WATER;
-        RenderTarget main = client.getMainRenderTarget();
-        if (main.width < 2 || main.height < 2 || main.width != main.viewWidth || main.height != main.viewHeight
-                || !main.useDepth || main.getDepthTextureId() <= 0) {
+        if ((!openDimension && biomeFog == null) || (underwater && !openDimension)) {
             return;
         }
+        RenderTarget main = client.getMainRenderTarget();
         var sun = TerrainLighting.sun(level, event.getPartialTick());
         var celestial = TerrainLighting.celestial(level, event.getPartialTick());
         boolean moon = sun.y() < 0F;
-        float weather = level.getRainLevel(event.getPartialTick());
+        float weather = openDimension ? level.getRainLevel(event.getPartialTick()) : 0F;
         var block = camera.getBlockPosition();
         var biome = level.getBiome(block).value();
         long gameTime = level.getGameTime();
@@ -91,21 +94,21 @@ final class AtmosphereRenderer {
         if (weather > 0.55F) {
             lastRain = gameTime;
         }
-        float openSky = Mth.clamp((level.getBrightness(LightLayer.SKY, block) - 8F) / 7F, 0F, 1F);
-        float aurora = biome.coldEnoughToSnow(block) ? Mth.clamp(-sun.y() * 3F, 0F, 1F) * (1F - weather) : 0F;
-        float rainbow = lastRain == Long.MIN_VALUE ? 0F : (1F - weather)
+        float openSky = openDimension ? Mth.clamp((level.getBrightness(LightLayer.SKY, block) - 8F) / 7F, 0F, 1F) : 0F;
+        float aurora = openDimension && biome.coldEnoughToSnow(block)
+                ? Mth.clamp(-sun.y() * 3F, 0F, 1F) * (1F - weather) : 0F;
+        float rainbow = !openDimension || lastRain == Long.MIN_VALUE ? 0F : (1F - weather)
                 * Mth.clamp(1F - (gameTime - lastRain) / 900F, 0F, 1F) * sun.strength();
         float flash = 0F;
-        if (!client.options.hideLightningFlash().get()) {
+        if (openDimension && !client.options.hideLightningFlash().get()) {
             float thunder = level.getThunderLevel(event.getPartialTick());
             float timeSinceFlash = (gameTime % 227L + event.getPartialTick());
             float distant = thunder * 0.35F * Math.max(0F, 1F - timeSinceFlash / 7F);
             flash = Math.max(distant, Mth.clamp(level.getSkyFlashTime() / 3F, 0F, 1F));
         }
         float clock = ((gameTime % 81920L) + event.getPartialTick()) / 20F;
-        float heat = underwater ? 0F : SandboxWeather.heat(client);
+        float heat = underwater || !openDimension ? 0F : SandboxWeather.heat(client);
         var position = camera.getPosition();
-        var biomeFog = !underwater && fogColor != null ? BiomeFog.sample(level, block, fogColor) : null;
         if (!underwater && biomeFog == null
                 && Math.max(Math.max(celestial.strength(), weather), Math.max(heat, Math.max(aurora, flash))) < 0.01F) {
             return;
@@ -162,9 +165,8 @@ final class AtmosphereRenderer {
             if (biomeFog == null) {
                 composite.safeGetUniform("BiomeFogRange").set(0F, 0F, 0F);
             } else {
-                var range = biomeFog.range();
                 Vec3 color = biomeFog.color();
-                composite.safeGetUniform("BiomeFogRange").set(range.start(), range.end(), range.opacity());
+                composite.safeGetUniform("BiomeFogRange").set(biomeFog.start(), biomeFog.end(), biomeFog.opacity());
                 composite.safeGetUniform("BiomeFogColor").set((float) color.x, (float) color.y, (float) color.z);
             }
             composite.safeGetUniform("Heat").set(heat);
@@ -203,11 +205,6 @@ final class AtmosphereRenderer {
         GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, colorCopy.frameBufferId);
         GL30.glBlitFramebuffer(0, 0, main.width, main.height, 0, 0, main.width, main.height,
                 GL11.GL_COLOR_BUFFER_BIT, GL11.GL_NEAREST);
-    }
-
-    private static boolean hasRestrictedVision(Camera camera) {
-        return camera.getEntity() instanceof LivingEntity entity
-                && (entity.hasEffect(MobEffects.BLINDNESS) || entity.hasEffect(MobEffects.DARKNESS));
     }
 
     private static void drawQuad() {

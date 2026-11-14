@@ -1,3 +1,9 @@
+## 2026-11-15 - Extend Sandbox atmosphere to every biome
+
+- User approved Neo Voxy compatibility and the Deep Dark and dripstone fog. User requested atmosphere in every biome with Voxy and Fog disabled, a more orange red-desert sky, clear and thunder sky changes, and distinct lush and ordinary cave fog
+- Bug / Client / JEM created fog only for four biome IDs and only after Voxy suppressed native terrain fog. The sky sampler tinted two exact IDs before native thunder removed most of the tint / in testing with a renderer-independent biome medium, shared sand classification and a weather tint after the native sky calculation
+- The implementation uses biome tags and registered colors for broad coverage, enclosure for ordinary caves, and the existing Voxy-compatible scene-depth compositor. Deep Dark and dripstone retain their original range and color mix. The new color and distance settings await in-game review
+
 ## 2026-11-14 - Remove Sandbox celestial glare and god rays
 
 - Bug / Client / The celestial post-process adds direct glare and sampled shafts over scene geometry / in testing with the shaft shader and its GPU pass removed

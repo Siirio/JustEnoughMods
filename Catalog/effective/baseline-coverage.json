@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "180dcb4ff61c22cb2621957fda1518171475887b259e96c78dcfa6978739c8e1",
+  "change_records_sha256": "96ba7ae3440d4e0ee14b9d4e7acc5e315c603825ec6384d1d59b5ab88ebcea5d",
   "totals": {
-    "watched": 7181,
-    "covered": 5571,
-    "unresolved": 1610
+    "watched": 7176,
+    "covered": 5568,
+    "unresolved": 1608
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1516,13 +1516,10 @@
       ]
     },
     "Mods/JEMLightingSandbox": {
-      "watched": 55,
-      "covered": 53,
-      "unresolved": 2,
-      "unresolved_paths": [
-        "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shaft_visibility.fsh",
-        "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shaft_visibility.json"
-      ]
+      "watched": 50,
+      "covered": 50,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMLuxium": {
       "watched": 17,

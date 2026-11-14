@@ -136,10 +136,14 @@ public final class PrecipitationRenderer {
     }
 
     static int sandColor(Holder<Biome> biome) {
-        if (biome.is(BiomeTags.IS_BADLANDS) || biome.is(RED_OASIS)) {
+        if (hasRedSand(biome)) {
             return RED_SAND_COLOR;
         }
         return biome.is(Tags.Biomes.IS_DESERT) || biome.is(STRATIFIED_DESERT) ? SAND_COLOR : 0;
+    }
+
+    static boolean hasRedSand(Holder<Biome> biome) {
+        return biome.is(BiomeTags.IS_BADLANDS) || biome.is(RED_OASIS);
     }
 
     private static boolean canRender(Minecraft client) {

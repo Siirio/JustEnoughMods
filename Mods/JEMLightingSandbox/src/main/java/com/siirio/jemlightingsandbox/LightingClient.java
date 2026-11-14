@@ -11,12 +11,11 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterClientCommandsEvent;
-import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
+import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.level.ChunkEvent;
@@ -62,11 +61,17 @@ public final class LightingClient {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void prepareBiomeFog(ViewportEvent.ComputeFogColor event) {
+        BiomeFog.prepare(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
+    public static void keepTerrainFogAtEdge(ViewportEvent.RenderFog event) {
+        BiomeFog.keepTerrainEdge(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void renderAtmosphere(RenderLevelStageEvent event) {
-        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_SOLID_BLOCKS) {
-            BiomeFog.captureTerrainColor();
-            return;
-        }
         EntityShadowMap.render(event);
         AtmosphereRenderer.render(event);
     }
@@ -118,6 +123,7 @@ public final class LightingClient {
                 PrecipitationRenderer.clear();
                 WindGusts.clear();
                 BiomeFog.clear();
+                AtmospherePalette.clear();
                 AtmosphereRenderer.releaseTargets();
                 WaterSurface.release();
             });
@@ -129,11 +135,6 @@ public final class LightingClient {
         private static ShaderInstance atmosphere;
         private static ShaderInstance atmosphereComposite;
         private ShaderEvents() {
-        }
-
-        @SubscribeEvent
-        public static void registerReloadListeners(RegisterClientReloadListenersEvent event) {
-            event.registerReloadListener((ResourceManagerReloadListener) BiomeFog::reload);
         }
 
         @SubscribeEvent
