@@ -25,6 +25,7 @@ import net.minecraftforge.common.extensions.IForgeBlock;
 /** Indexes native emitters from resident client columns without requesting any chunks. */
 public final class ChunkLightIndex {
     private static final int LOOKUPS_PER_TICK = 96;
+    private static final long SCAN_BUDGET_NANOS = 2_000_000;
     private static final int REVALIDATIONS_PER_TICK = 32;
     private static final int REVALIDATION_INTERVAL = 20;
     private static final int LIGHTS_PER_SUBCELL = 4;
@@ -101,7 +102,9 @@ public final class ChunkLightIndex {
             case FAST -> 12;
             case REALTIME -> 20;
         };
-        while (reads > 0 && !pending.isEmpty()) {
+        long deadline = System.nanoTime() + SCAN_BUDGET_NANOS;
+        boolean scanned = false;
+        while (reads > 0 && !pending.isEmpty() && (!scanned || System.nanoTime() < deadline)) {
             Column column = pending.remove();
             column.queued = false;
             if (columns.get(column.key) != column) {
@@ -126,6 +129,7 @@ public final class ChunkLightIndex {
                 publishSection(column, sectionIndex, scanSection(column, sectionIndex));
             }
             reads--;
+            scanned = true;
             enqueue(column);
         }
     }

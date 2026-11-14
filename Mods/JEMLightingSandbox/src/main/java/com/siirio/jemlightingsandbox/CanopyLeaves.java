@@ -156,7 +156,7 @@ public final class CanopyLeaves {
     }
 
     private static boolean enabled(ClientLevel level) {
-        if (level == null || !LightingSettings.atmosphereEnabled() || !SandboxWeather.hasOutdoorWeather(level)) {
+        if (level == null || !LightingSettings.canopyLeavesEnabled() || !SandboxWeather.hasOutdoorWeather(level)) {
             return false;
         }
         var client = Minecraft.getInstance();

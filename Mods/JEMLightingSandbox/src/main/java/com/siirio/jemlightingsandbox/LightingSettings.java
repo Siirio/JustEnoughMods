@@ -1,9 +1,8 @@
 package com.siirio.jemlightingsandbox;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Objects;
+import java.util.List;
+import java.util.regex.Pattern;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -31,7 +30,14 @@ public final class LightingSettings {
     static final int MIN_LIGHTING_CHUNKS = 2;
     static final int MAX_LIGHTING_CHUNKS = 32;
 
+    private static final Pattern WIND_COLOR_ENTRY = Pattern.compile("[a-z0-9_.-]+:[a-z0-9_./-]+=#[a-fA-F0-9]{6}");
     private static final ForgeConfigSpec SPEC;
+    private static final ForgeConfigSpec.BooleanValue ENABLED;
+    private static final ForgeConfigSpec.BooleanValue WIND;
+    private static final ForgeConfigSpec.BooleanValue RIVER_MIST;
+    private static final ForgeConfigSpec.BooleanValue SNOW_GUST;
+    private static final ForgeConfigSpec.BooleanValue CAVE_AIR;
+    private static final ForgeConfigSpec.BooleanValue CANOPY_LEAVES;
     private static final ForgeConfigSpec.EnumValue<Mode> MODE;
     private static final ForgeConfigSpec.ConfigValue<Integer> LIGHT_DISTANCE;
     private static final ForgeConfigSpec.IntValue LIGHTING_CHUNKS;
@@ -45,6 +51,12 @@ public final class LightingSettings {
 
     static {
         var builder = new ForgeConfigSpec.Builder();
+        ENABLED = builder.comment("Enable JEM Lighting and its atmosphere effects.").define("enabled", true);
+        WIND = builder.comment("Show outdoor wind trails.").define("wind", true);
+        RIVER_MIST = builder.comment("Show low mist over rivers and other bodies of water.").define("riverMist", true);
+        SNOW_GUST = builder.comment("Show drifting gusts of snow near the ground.").define("snowGust", true);
+        CAVE_AIR = builder.comment("Show airborne dust in caves.").define("caveAir", true);
+        CANOPY_LEAVES = builder.comment("Show leaves falling from tree canopies.").define("canopyLeaves", true);
         MODE = builder.comment("How quickly loaded sections update their lighting and shadow geometry.")
                 .defineEnum("mode", DEFAULT_MODE);
         LIGHT_DISTANCE = builder.comment("Maximum distance of a local light source, in blocks.")
@@ -65,7 +77,7 @@ public final class LightingSettings {
                 .defineInList("shadowResolution", DEFAULT_SHADOW_RESOLUTION, SHADOW_RESOLUTIONS);
         WIND_COLORS = builder.comment("Optional storm wind colors: biome_id=#RRGGBB. Exact biome IDs override defaults.")
                 .defineListAllowEmpty("windColors", List.<String>of(), value -> value instanceof String entry
-                        && entry.matches("[a-z0-9_.-]+:[a-z0-9_./-]+=#[a-fA-F0-9]{6}"));
+                        && WIND_COLOR_ENTRY.matcher(entry).matches());
         SPEC = builder.build();
     }
 
@@ -98,8 +110,40 @@ public final class LightingSettings {
                 : requestedChunkDistance();
     }
 
+    public static boolean enabled() {
+        return configured(ENABLED, true);
+    }
+
+    public static boolean atmosphereConfigured() {
+        return configured(ATMOSPHERE, DEFAULT_ATMOSPHERE);
+    }
+
     public static boolean atmosphereEnabled() {
-        return SPEC.isLoaded() ? ATMOSPHERE.get() : DEFAULT_ATMOSPHERE;
+        return enabled() && atmosphereConfigured();
+    }
+
+    public static boolean windEnabled() {
+        return atmosphereEnabled() && configured(WIND, true);
+    }
+
+    public static boolean riverMistEnabled() {
+        return atmosphereEnabled() && configured(RIVER_MIST, true);
+    }
+
+    public static boolean snowGustEnabled() {
+        return atmosphereEnabled() && configured(SNOW_GUST, true);
+    }
+
+    public static boolean caveAirEnabled() {
+        return atmosphereEnabled() && configured(CAVE_AIR, true);
+    }
+
+    public static boolean canopyLeavesEnabled() {
+        return atmosphereEnabled() && configured(CANOPY_LEAVES, true);
+    }
+
+    private static boolean configured(ForgeConfigSpec.BooleanValue setting, boolean defaultValue) {
+        return SPEC.isLoaded() ? setting.get() : defaultValue;
     }
 
     static int weatherDensity(boolean storm) {
@@ -107,17 +151,8 @@ public final class LightingSettings {
                 : storm ? DEFAULT_STORM_DENSITY : DEFAULT_RAIN_DENSITY;
     }
 
-    static void setWeatherDensity(boolean storm, int density) {
-        saveInt(storm ? STORM_DENSITY : RAIN_DENSITY, density);
-    }
-
     public static boolean darkCampfireSmoke() {
         return SPEC.isLoaded() && DARK_CAMPFIRE_SMOKE.get();
-    }
-
-    static void setDarkCampfireSmoke(boolean enabled) {
-        DARK_CAMPFIRE_SMOKE.set(enabled);
-        SPEC.save();
     }
 
     public static int shadowResolution() {
@@ -133,51 +168,6 @@ public final class LightingSettings {
         };
     }
 
-    static void setShadowResolution(int resolution) {
-        SHADOW_RESOLUTION.set(resolution);
-        SPEC.save();
-    }
-
-    private static void saveInt(ForgeConfigSpec.IntValue setting, int value) {
-        if (SPEC.isLoaded() && setting.get() != value) {
-            setting.set(value);
-            SPEC.save();
-        }
-    }
-
-    public static void setMode(Mode mode) {
-        MODE.set(Objects.requireNonNull(mode));
-        SPEC.save();
-    }
-
-    public static void setLightDistance(int distance) {
-        if (!LIGHT_DISTANCES.contains(distance)) {
-            throw new IllegalArgumentException("Unsupported light distance: " + distance);
-        }
-        LIGHT_DISTANCE.set(distance);
-        SPEC.save();
-    }
-
-    public static void setRequestedChunkDistance(int distance) {
-        if (distance < MIN_LIGHTING_CHUNKS || distance > MAX_LIGHTING_CHUNKS) {
-            throw new IllegalArgumentException("Unsupported lighting chunk distance: " + distance);
-        }
-        if (distance != requestedChunkDistance()) {
-            LIGHTING_CHUNKS.set(distance);
-            SPEC.save();
-        }
-    }
-
-    public static void setFollowsRenderDistance(boolean follow) {
-        FOLLOW_RENDER_DISTANCE.set(follow);
-        SPEC.save();
-    }
-
-    public static void setAtmosphereEnabled(boolean enabled) {
-        ATMOSPHERE.set(enabled);
-        SPEC.save();
-    }
-
     static int windColor(ResourceLocation biome) {
         if (biome == null || !SPEC.isLoaded()) {
             return -1;
@@ -191,17 +181,70 @@ public final class LightingSettings {
         return -1;
     }
 
-    static void setWindColor(ResourceLocation biome, int color) {
-        if (!SPEC.isLoaded()) {
-            return;
+    static List<String> parseWindColors(String value) {
+        if (value.isBlank()) {
+            return List.of();
         }
-        String prefix = biome + "=#";
-        var entries = new ArrayList<String>(WIND_COLORS.get());
-        entries.removeIf(entry -> entry.startsWith(prefix));
-        if (color >= 0) {
-            entries.add(prefix + String.format(Locale.ROOT, "%06X", color));
+        var entries = new ArrayList<String>();
+        for (String text : value.split(",", -1)) {
+            String entry = text.strip();
+            if (!WIND_COLOR_ENTRY.matcher(entry).matches()) {
+                return null;
+            }
+            entries.add(entry);
         }
-        WIND_COLORS.set(entries);
-        SPEC.save();
+        return List.copyOf(entries);
+    }
+
+    static final class Options {
+        boolean enabled = LightingSettings.enabled();
+        boolean atmosphere = atmosphereConfigured();
+        boolean wind = configured(WIND, true);
+        boolean riverMist = configured(RIVER_MIST, true);
+        boolean snowGust = configured(SNOW_GUST, true);
+        boolean caveAir = configured(CAVE_AIR, true);
+        boolean canopyLeaves = configured(CANOPY_LEAVES, true);
+        Mode mode = mode();
+        int reachIndex = LIGHT_DISTANCES.indexOf(lightDistance());
+        int chunkDistance = requestedChunkDistance();
+        boolean followRenderDistance = followsRenderDistance();
+        int shadowIndex = SHADOW_RESOLUTIONS.indexOf(shadowResolution());
+        int rainDensity = weatherDensity(false);
+        int stormDensity = weatherDensity(true);
+        boolean darkSmoke = darkCampfireSmoke();
+        String windColors = SPEC.isLoaded() ? String.join(", ", WIND_COLORS.get()) : "";
+
+        void setEnabled(boolean value) {
+            enabled = value;
+            if (SPEC.isLoaded()) {
+                // Embeddium reloads the renderer before it persists option storage.
+                ENABLED.set(value);
+            }
+        }
+
+        void save() {
+            if (!SPEC.isLoaded()) {
+                return;
+            }
+            ATMOSPHERE.set(atmosphere);
+            WIND.set(wind);
+            RIVER_MIST.set(riverMist);
+            SNOW_GUST.set(snowGust);
+            CAVE_AIR.set(caveAir);
+            CANOPY_LEAVES.set(canopyLeaves);
+            MODE.set(mode);
+            LIGHT_DISTANCE.set(LIGHT_DISTANCES.get(reachIndex));
+            LIGHTING_CHUNKS.set(chunkDistance);
+            FOLLOW_RENDER_DISTANCE.set(followRenderDistance);
+            SHADOW_RESOLUTION.set(SHADOW_RESOLUTIONS.get(shadowIndex));
+            RAIN_DENSITY.set(rainDensity);
+            STORM_DENSITY.set(stormDensity);
+            DARK_CAMPFIRE_SMOKE.set(darkSmoke);
+            var entries = parseWindColors(windColors);
+            if (entries != null) {
+                WIND_COLORS.set(entries);
+            }
+            SPEC.save();
+        }
     }
 }

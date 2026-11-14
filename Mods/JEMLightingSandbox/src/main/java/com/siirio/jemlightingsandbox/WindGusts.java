@@ -56,7 +56,7 @@ public final class WindGusts {
         var camera = client.gameRenderer.getMainCamera();
         ClientLevel level = client.level;
         ParticleStatus quality = client.options.particles().get();
-        if (level == null || !LightingSettings.atmosphereEnabled() || !SandboxWeather.hasOutdoorWeather(level)
+        if (level == null || !LightingSettings.windEnabled() || !SandboxWeather.hasOutdoorWeather(level)
                 || TerrainLighting.isShaderPackActive() || quality == ParticleStatus.MINIMAL
                 || !camera.isInitialized() || camera.getFluidInCamera() != FogType.NONE) {
             clear();
@@ -124,7 +124,7 @@ public final class WindGusts {
 
     public static void draw(Minecraft client, Vec3 camera, float partialTick) {
         ClientLevel level = client.level;
-        if (level == null || level != currentLevel || GUSTS.isEmpty()
+        if (!LightingSettings.windEnabled() || level == null || level != currentLevel || GUSTS.isEmpty()
                 || client.gameRenderer.getMainCamera().getFluidInCamera() != FogType.NONE) {
             return;
         }

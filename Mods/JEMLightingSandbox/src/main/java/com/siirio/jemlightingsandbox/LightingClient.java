@@ -28,6 +28,7 @@ import org.slf4j.Logger;
 public final class LightingClient {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static ShaderInstance sceneShader;
+    private static boolean effectsActive;
 
     private LightingClient() {
     }
@@ -44,18 +45,10 @@ public final class LightingClient {
             return 1;
         }).then(Commands.literal("terrain")
                 .executes(context -> reportTerrainStatus())
-                .then(Commands.literal("status").executes(context -> reportTerrainStatus()))
-                .then(Commands.literal("on").executes(context -> {
-                    TerrainLighting.setEnabled(true);
-                    return reportTerrainStatus();
-                }))
-                .then(Commands.literal("off").executes(context -> {
-                    TerrainLighting.setEnabled(false);
-                    return reportTerrainStatus();
-                })))
+                .then(Commands.literal("status").executes(context -> reportTerrainStatus())))
                 .then(Commands.literal("settings").executes(context -> {
                     Minecraft client = Minecraft.getInstance();
-                    client.tell(() -> client.setScreen(new LightingSettingsScreen(client.screen)));
+                    client.tell(() -> client.setScreen(LightingOptions.open(client.screen)));
                     return 1;
                 })));
     }
@@ -86,10 +79,25 @@ public final class LightingClient {
         if (event.phase == TickEvent.Phase.END) {
             Minecraft client = Minecraft.getInstance();
             TerrainLighting.tick(client);
+            if (!LightingSettings.atmosphereEnabled()) {
+                if (effectsActive) {
+                    clearAtmosphere();
+                    effectsActive = false;
+                }
+                return;
+            }
+            effectsActive = true;
             SandboxWeather.tick(client);
             PrecipitationRenderer.tick(client);
             WindGusts.tick(client);
             CanopyLeaves.tick(client);
+        }
+    }
+
+    @SubscribeEvent
+    public static void beginFrame(TickEvent.RenderTickEvent event) {
+        if (event.phase == TickEvent.Phase.START) {
+            TerrainLighting.beginFrame();
         }
     }
 
@@ -121,15 +129,21 @@ public final class LightingClient {
         if (event.getLevel() == client.level) {
             client.execute(() -> {
                 TerrainLighting.clearWorld();
-                PrecipitationRenderer.clear();
-                WindGusts.clear();
-                CanopyLeaves.clear();
-                BiomeFog.clear();
-                AtmospherePalette.clear();
-                AtmosphereRenderer.releaseTargets();
-                WaterSurface.release();
+                clearAtmosphere();
+                effectsActive = false;
             });
         }
+    }
+
+    private static void clearAtmosphere() {
+        PrecipitationRenderer.clear();
+        WindGusts.clear();
+        CanopyLeaves.clear();
+        BiomeFog.clear();
+        AtmospherePalette.clear();
+        AtmosphereRenderer.clearWorldEffects();
+        AtmosphereRenderer.releaseTargets();
+        WaterSurface.release();
     }
 
     @Mod.EventBusSubscriber(modid = JemLightingSandbox.ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)

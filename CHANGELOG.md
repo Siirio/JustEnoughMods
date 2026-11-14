@@ -1,3 +1,18 @@
+## 2026-11-15 - Limit dense-light cost and add Sandbox atmosphere effects
+
+- User requested real-time lighting with stable frame times, research beyond Luxium, the approved river mist, snow gust and cave air studies, individual effect switches and one master switch in Embeddium
+- Bug / Client / The terrain shader traces repeated geometry and entity checks for overlapping full-block lights per visible pixel. Chunk indexing and shadow texture uploads also schedule expensive work in bursts / in testing with bounded overlap sampling, empty-voxel skipping, entity candidate filtering and paced updates
+- Embeddium now owns the settings interface and Apply state. The Effects page has separate switches for wind, river mist, snow gusts, smoky cave air and canopy leaves. The master switch reloads the terrain renderer and disables JEM atmosphere
+- JEM keeps full shadow quality for the dominant light and uses fewer rays for other overlapping full-block lights. The sample budget, voxel occupancy mask and upload deadlines are implementation choices. Secondary soft-shadow edges can differ in dense clusters
+- The three effects use the existing reduced-resolution atmosphere pass. The choice to use scene depth and bounded local terrain checks keeps the effects attached to the world without new render targets
+
+## 2026-11-15 - Retire weather and Luxium integrations and expand surface roads
+
+- User requested removal of Fog, Immersive Storms, Moog's Mineshafts Reimagined and every active Luxium integration. Fog and Immersive Storms artifacts and configuration are removed. The remaining Moog localization, quest proof and generated search-source references are replaced with vanilla and Hopo Better Mineshaft ownership. JEMLuxium source, public release preparation, Sandbox scope and active inventory entries are removed
+- RoadWeaver now predicts structures only in the Overworld. Its exact allowlist covers villages, land outposts, selected surface settlements, towers and ruins, and surface-projected boss arenas. Cave, deep-underground, ocean-floor, Nether, End and sky-only structures remain excluded because RoadWeaver has no general underground classifier
+- Structure Layout Optimizer and Structurify remain together. Installed bytecode and configuration show separate owners. Structure Layout Optimizer changes jigsaw assembly performance. Structurify changes placement settings and overlap prevention. No shared method overwrite was found
+- Existing generated roads remain unchanged. Fresh-chunk route density and appearance require player review
+
 ## 2026-11-15 - Add calm canopy leaves to Sandbox Lighting
 
 - User approved the prolonged leaf motion and requested tree and biome variants based on the Test JustEnoughMods foliage. The user requested the new JAR in Sandbox and deferred Test installation and Pale Oak runtime testing

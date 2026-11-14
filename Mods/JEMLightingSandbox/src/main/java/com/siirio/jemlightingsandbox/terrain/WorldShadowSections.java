@@ -1,9 +1,12 @@
 package com.siirio.jemlightingsandbox.terrain;
 
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -32,7 +35,11 @@ final class WorldShadowSections {
     private static final Logger LOGGER = LogUtils.getLogger();
     static final int RING = 69;
     private static final int CELLS = 16 * 16 * 16;
-    private static final int STRIDE = CELLS * Integer.BYTES;
+    private static final int PAGE_WORDS = CELLS + 2;
+    private static final int STRIDE = PAGE_WORDS * Integer.BYTES;
+    private static final int UPLOADS_PER_FRAME = 32;
+    private static final int REMOVALS_PER_FRAME = 8;
+    private static final long UPLOAD_BUDGET_NANOS = 750_000;
     private static final int BANNER_OVERHANG = 1 << 30;
     private static final int CUTOUT_OVERHANG = 1 << 31;
     private static final int OFFSET_PRESENT = 1 << 14;
@@ -40,6 +47,9 @@ final class WorldShadowSections {
     private static final int UNIFORM = -1;
     private final BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
     private final Map<SectionPos, int[]> pending = new LinkedHashMap<>();
+    private final LinkedHashSet<SectionPos> removals = new LinkedHashSet<>();
+    private final Int2ObjectOpenHashMap<SectionPos> published = new Int2ObjectOpenHashMap<>();
+    private final int[] captured = new int[PAGE_WORDS];
     private final Map<SectionPos, Integer> pages = new HashMap<>();
     private final ArrayDeque<Integer> freePages = new ArrayDeque<>();
 
@@ -64,7 +74,8 @@ final class WorldShadowSections {
         if (shapes == null) {
             shapes = new BlockShadowShapes();
         }
-        int[] data = new int[CELLS];
+        int[] data = captured;
+        Arrays.fill(data, 0);
         if (!section.hasOnlyAir()) {
             for (int i = 0; i < CELLS; i++) {
                 int x = i & 15;
@@ -101,11 +112,28 @@ final class WorldShadowSections {
         int value = data[0];
         for (int i = 1; i < CELLS; i++) {
             if (data[i] != value) {
-                pending.put(key, data);
+                markOccupiedSubcells(data);
+                removals.remove(key);
+                pending.put(key, data.clone());
                 return;
             }
         }
-        pending.put(key, new int[]{value});
+        if (value == 0) {
+            discard(key);
+        } else {
+            removals.remove(key);
+            pending.put(key, new int[]{value});
+        }
+    }
+
+    private static void markOccupiedSubcells(int[] data) {
+        for (int i = 0; i < CELLS; i++) {
+            if (data[i] != 0) {
+                // Include cutout and banner overhangs as well as their owner cells.
+                int subcell = ((i >> 2) & 3) | ((i >> 4) & 12) | ((i >> 6) & 48);
+                data[CELLS + (subcell >> 5)] |= 1 << (subcell & 31);
+            }
+        }
     }
 
     private void captureOverhangs(ClientLevel level, LevelChunk chunk, int sectionIndex, SectionPos section,
@@ -198,12 +226,19 @@ final class WorldShadowSections {
 
     void remove(ChunkPos position, int firstSection, int lastSection) {
         for (int y = firstSection; y < lastSection; y++) {
-            pending.put(SectionPos.of(position, y), null);
+            discard(SectionPos.of(position, y));
         }
     }
 
-    Texture bind(ClientLevel level, int tableUnit, int paletteUnit, int voxelUnit) {
-        if (level.getSectionsCount() * RING > GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE)) {
+    private void discard(SectionPos section) {
+        pending.remove(section);
+        if (section.equals(published.get(tableSlot(section)))) {
+            removals.add(section);
+        }
+    }
+
+    Texture bind(ClientLevel level, int tableUnit, int paletteUnit, int voxelUnit, boolean update) {
+        if (table == 0 && level.getSectionsCount() * RING > GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE)) {
             return null;
         }
         int buffer = GL11.glGetInteger(GL21.GL_PIXEL_UNPACK_BUFFER_BINDING);
@@ -221,7 +256,7 @@ final class WorldShadowSections {
             bindTable(level.getSectionsCount());
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + voxelUnit);
             if (voxels == 0) {
-                maxPages = Math.min(MAX_BUFFER_BYTES / STRIDE, GL11.glGetInteger(GL31.GL_MAX_TEXTURE_BUFFER_SIZE) / CELLS);
+                maxPages = Math.min(MAX_BUFFER_BYTES / STRIDE, GL11.glGetInteger(GL31.GL_MAX_TEXTURE_BUFFER_SIZE) / PAGE_WORDS);
                 voxels = GL11.glGenTextures();
                 GL11.glBindTexture(GL31.GL_TEXTURE_BUFFER, voxels);
                 reserve(Math.min(64, maxPages));
@@ -229,7 +264,7 @@ final class WorldShadowSections {
                 GL11.glBindTexture(GL31.GL_TEXTURE_BUFFER, voxels);
             }
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + tableUnit);
-            if (!pending.isEmpty()) {
+            if (update && (!pending.isEmpty() || !removals.isEmpty())) {
                 try (var stack = MemoryStack.stackPush()) {
                     upload(level, stack.mallocInt(4));
                 }
@@ -277,46 +312,62 @@ final class WorldShadowSections {
     }
 
     private void upload(ClientLevel level, IntBuffer header) {
-        var removals = pending.entrySet().iterator();
-        boolean changed = false;
+        long deadline = System.nanoTime() + UPLOAD_BUDGET_NANOS;
+        var removed = removals.iterator();
+        int used = 0;
         header.put(0, 0).put(1, 0).put(2, 0).put(3, 0);
-        while (removals.hasNext()) {
-            var entry = removals.next();
-            if (entry.getValue() == null) {
-                releasePage(entry.getKey());
-                writeEntry(level, entry.getKey(), header);
-                removals.remove();
-                changed = true;
+        int removalLimit = pending.isEmpty() ? UPLOADS_PER_FRAME : REMOVALS_PER_FRAME;
+        while (removed.hasNext() && used < removalLimit && canUpload(used, deadline)) {
+            SectionPos section = removed.next();
+            int key = tableSlot(section);
+            if (section.equals(published.get(key))) {
+                releasePage(section);
+                published.remove(key);
+                writeEntry(level, section, header);
+            }
+            removed.remove();
+            used++;
+        }
+        if (!pending.isEmpty()) {
+            int previousUpload = GL11.glGetInteger(GL15.GL_ARRAY_BUFFER_BINDING);
+            try {
+                GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, backing);
+                used = uploadPages(level, header, used, deadline);
+            } finally {
+                GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, previousUpload);
             }
         }
-        var iterator = pending.entrySet().iterator();
-        int previousUpload = GL11.glGetInteger(GL15.GL_ARRAY_BUFFER_BINDING);
-        try {
-            GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, backing);
-            changed |= uploadPages(level, header);
-        } finally {
-            GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, previousUpload);
-        }
-        if (changed) {
+        if (used > 0) {
             revision++;
         }
     }
 
-    private boolean uploadPages(ClientLevel level, IntBuffer header) {
+    private static boolean canUpload(int used, long deadline) {
+        return used < UPLOADS_PER_FRAME && (used == 0 || System.nanoTime() < deadline);
+    }
+
+    private int uploadPages(ClientLevel level, IntBuffer header, int used, long deadline) {
         var iterator = pending.entrySet().iterator();
-        boolean changed = false;
-        while (iterator.hasNext()) {
+        int firstUpload = used;
+        while (iterator.hasNext() && (used == firstUpload || canUpload(used, deadline))) {
             var entry = iterator.next();
             SectionPos section = entry.getKey();
+            int key = tableSlot(section);
+            SectionPos previous = published.get(key);
+            boolean replacesSlot = previous != null && !previous.equals(section);
             int[] data = entry.getValue();
             int page;
-            int uniform = 0;
+            int metadata;
             if (data.length == 1) {
                 releasePage(section);
                 page = UNIFORM;
-                uniform = data[0];
+                metadata = data[0];
             } else {
+                metadata = data[CELLS] == -1 && data[CELLS + 1] == -1 ? 1 : 0;
                 Integer slot = pages.get(section);
+                if (slot == null && replacesSlot) {
+                    slot = pages.remove(previous);
+                }
                 if (slot == null) {
                     if (!freePages.isEmpty()) {
                         slot = freePages.removeFirst();
@@ -332,24 +383,35 @@ final class WorldShadowSections {
                             reportedCapacity = true;
                         }
                         iterator.remove();
+                        used++;
                         continue;
                     }
-                    pages.put(section, slot);
                 }
+                pages.put(section, slot);
                 GL15.glBufferSubData(GL15.GL_ARRAY_BUFFER, (long) slot * STRIDE, data);
                 page = slot + 1;
             }
-            header.put(0, section.x()).put(1, section.z()).put(2, page).put(3, uniform);
+            if (replacesSlot) {
+                releasePage(previous);
+                removals.remove(previous);
+            }
+            header.put(0, section.x()).put(1, section.z()).put(2, page).put(3, metadata);
             writeEntry(level, section, header);
+            published.put(key, section);
             iterator.remove();
-            changed = true;
+            used++;
         }
-        return changed;
+        return used;
     }
 
     private void releasePage(SectionPos section) {
         Integer released = pages.remove(section);
         if (released != null) freePages.addLast(released);
+    }
+
+    private static int tableSlot(SectionPos section) {
+        return Math.floorMod(section.x(), RING)
+                + (Math.floorMod(section.z(), RING) + section.y() * RING) * RING;
     }
 
     private static void writeEntry(ClientLevel level, SectionPos section, IntBuffer entry) {
@@ -385,6 +447,8 @@ final class WorldShadowSections {
 
     void clear() {
         pending.clear();
+        removals.clear();
+        published.clear();
         pages.clear();
         freePages.clear();
         shapes = null;

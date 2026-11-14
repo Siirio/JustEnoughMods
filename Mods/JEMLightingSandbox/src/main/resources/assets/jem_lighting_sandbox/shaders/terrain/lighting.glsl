@@ -60,7 +60,8 @@ vec4 jemWaterSurface(vec4 base, vec3 position, vec2 lightLevels) {
 
 const int JEM_MAX_LIGHTS = 8;
 
-ivec2 jemChunkLightRow(vec3 position, out vec3 sectionOrigin) {
+ivec2 jemChunkLightRow(vec3 position, out vec3 sectionOrigin, out int lightCount) {
+    lightCount = 0;
     ivec3 cameraSection = jemCameraBlock >> 4;
     ivec3 relativeBlock = ivec3(floor(position + vec3(jemCameraBlock & 15) + jemCameraFraction));
     ivec3 relativeSection = relativeBlock >> 4;
@@ -77,6 +78,7 @@ ivec2 jemChunkLightRow(vec3 position, out vec3 sectionOrigin) {
         return ivec2(-1);
     }
     sectionOrigin = vec3((section << 4) - jemCameraBlock) - jemCameraFraction;
+    lightCount = min(int(header.z), JEM_MAX_LIGHTS);
     return row;
 }
 
@@ -119,10 +121,26 @@ bool jemHitsTriangle(vec3 origin, vec3 direction, float limit, vec3 a, vec3 b, v
     return v >= 0.0 && u + v <= 1.0 && t > 0.035 && t < limit - 0.02;
 }
 
-bool jemPointEntityShadow(vec3 position, vec3 direction, float distance) {
+uint jemAreaEntityMask(vec3 position, vec3 sampleCenter) {
+    // The box encloses every sample segment, including the near-zero direction clamp.
+    vec3 low = min(position, sampleCenter - vec3(0.501)) - jemEntityShadowOrigin - vec3(0.001);
+    vec3 high = max(position, sampleCenter + vec3(0.501)) - jemEntityShadowOrigin + vec3(0.001);
+    uint mask = 0u;
+    for (int caster = 0; caster < jemEntityCasterCount; caster++) {
+        vec3 minimum = texelFetch(jemEntityModels, ivec2(0, caster), 0).xyz;
+        vec3 maximum = texelFetch(jemEntityModels, ivec2(1, caster), 0).xyz;
+        if (all(lessThanEqual(minimum, high)) && all(greaterThanEqual(maximum, low))) {
+            mask |= 1u << uint(caster);
+        }
+    }
+    return mask;
+}
+
+bool jemPointEntityShadow(vec3 position, vec3 direction, float distance, uint casterMask) {
     vec3 origin = position - jemEntityShadowOrigin;
     vec3 safeDirection = max(abs(direction), vec3(0.00001)) * mix(vec3(-1.0), vec3(1.0), step(0.0, direction));
     for (int caster = 0; caster < jemEntityCasterCount; caster++) {
+        if ((casterMask & (1u << uint(caster))) == 0u) continue;
         vec4 minimum = texelFetch(jemEntityModels, ivec2(0, caster), 0);
         vec4 maximum = texelFetch(jemEntityModels, ivec2(1, caster), 0);
         vec3 t0 = (minimum.xyz - origin) / safeDirection;
@@ -173,18 +191,21 @@ float jemEntityOcclusion(vec3 position, vec3 normal, float skyLevel) {
     return 0.25 * strength * coverage * occlusion;
 }
 
-float jemPointTransmission(vec3 origin, vec3 cameraOrigin, vec3 direction, float distance, ivec3 sourceCell) {
+float jemPointTransmission(vec3 origin, vec3 cameraOrigin, vec3 direction, float distance, ivec3 sourceCell,
+        uint casterMask) {
     float energy = jemVisibility(origin, direction, distance, sourceCell);
-    if (energy > 0.0 && jemEntityCasterCount > 0 && jemPointEntityShadow(cameraOrigin, direction, distance)) {
+    if (energy > 0.0 && casterMask != 0u && jemPointEntityShadow(cameraOrigin, direction, distance, casterMask)) {
         return 0.0;
     }
     return energy;
 }
 
-float jemBlockFaceLight(vec3 origin, vec3 cameraOrigin, vec3 normal, vec3 center) {
+float jemBlockFaceLight(vec3 origin, vec3 cameraOrigin, vec3 normal, vec3 center, int grid, uint casterMask) {
+    if (casterMask != 0u && grid > 1) {
+        casterMask = jemAreaEntityMask(cameraOrigin, center - origin + cameraOrigin);
+    }
     vec3 delta = origin - center;
     vec3 faceSign = sign(delta);
-    int grid = jemShadowSamples;
     float cell = 1.0 / float(grid);
     float weight = cell * cell;
     float light = 0.0;
@@ -195,9 +216,10 @@ float jemBlockFaceLight(vec3 origin, vec3 cameraOrigin, vec3 normal, vec3 center
         faceNormal[axis] = faceSign[axis];
         int side = (axis + 1) % 3;
         int up = (axis + 2) % 3;
+        vec3 faceCenter = center + faceNormal * 0.501;
         for (int y = 0; y < grid; y++) {
             for (int x = 0; x < grid; x++) {
-                vec3 samplePosition = center + faceNormal * 0.501;
+                vec3 samplePosition = faceCenter;
                 samplePosition[side] += (float(x) + 0.5) * cell - 0.5;
                 samplePosition[up] += (float(y) + 0.5) * cell - 0.5;
                 vec3 ray = samplePosition - origin;
@@ -207,7 +229,8 @@ float jemBlockFaceLight(vec3 origin, vec3 cameraOrigin, vec3 normal, vec3 center
                 float projectedArea = weight * max(0.0, dot(faceNormal, -direction));
                 totalWeight += projectedArea;
                 if (facing > 0.0 && projectedArea > 0.0) {
-                    float visibility = jemPointTransmission(origin, cameraOrigin, direction, travel, JEM_NO_SOURCE);
+                    float visibility = jemPointTransmission(origin, cameraOrigin, direction, travel, JEM_NO_SOURCE,
+                            casterMask);
                     light += visibility * projectedArea * mix(facing, sqrt(facing), 0.55);
                 }
             }
@@ -218,6 +241,48 @@ float jemBlockFaceLight(vec3 origin, vec3 cameraOrigin, vec3 normal, vec3 center
 
 vec3 jemLinearColor(vec3 color) {
     return pow(max(color, vec3(0.0)), vec3(2.2));
+}
+
+int jemAreaLightCount(ivec2 row, int lightCount, vec3 sectionOrigin, vec3 position, vec3 rayOrigin,
+        vec3 cameraInSection, ivec3 receiverCell, vec3 normal, out int dominant, out uint areaMask) {
+    int count = 0;
+    dominant = -1;
+    areaMask = 0u;
+    float topEnergy = -1.0;
+    float facingMargin = 0.501 * dot(abs(normal), vec3(1.0)) + 0.00001;
+    for (int index = 0; index < lightCount; index++) {
+        vec4 source = texelFetch(jemChunkLights, row + ivec2(1 + index * 2, 0), 0);
+        source.xyz += sectionOrigin;
+        vec3 toLight = source.xyz - position;
+        float distanceSquared = dot(toLight, toLight);
+        if (distanceSquared >= source.w * source.w || distanceSquared < 1.0e-6
+                || dot(normal, toLight) <= -0.87) continue;
+        vec3 center = source.xyz + cameraInSection;
+        vec3 ray = center - rayOrigin;
+        if (all(equal(receiverCell, ivec3(floor(center))))
+                || all(lessThanEqual(abs(ray), vec3(0.501)))
+                || dot(normal, ray) < -facingMargin) continue;
+
+        vec4 properties = texelFetch(jemChunkLights, row + ivec2(2 + index * 2, 0), 0);
+        if (properties.w >= 0.0) continue;
+        areaMask |= 1u << uint(index);
+        count++;
+        float fade = smoothstep(0.0, 2.0, source.w - sqrt(distanceSquared));
+        float channel = max(properties.r, max(properties.g, properties.b));
+        float energy = fade * -properties.w * channel / (1.0 + 0.08 * distanceSquared);
+        if (energy > topEnergy) {
+            topEnergy = energy;
+            dominant = index;
+        }
+    }
+    return count;
+}
+
+int jemSecondaryAreaGrid(int otherCount, int secondary) {
+    // At most 48 secondary rays across the three eligible faces of each source.
+    if (otherCount == 1) return 3;
+    if (otherCount <= 4 || secondary < 3) return 2;
+    return 1;
 }
 
 vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 position, vec2 lightLevels,
@@ -247,8 +312,8 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
             jemEntityOcclusion(position, normal, lightLevels.y));
     float cloudOcclusion = jemCloudOcclusion(position, lightLevels.y);
     vec3 sectionOrigin = vec3(0.0);
-    ivec2 lightRow = jemChunkLightRow(receiverPosition, sectionOrigin);
-    int lightCount = lightRow.x < 0 ? 0 : int(texelFetch(jemChunkLights, lightRow, 0).z);
+    int lightCount;
+    ivec2 lightRow = jemChunkLightRow(receiverPosition, sectionOrigin, lightCount);
     if (lightCount == 0 && sunlightOcclusion <= 0.0 && cloudOcclusion <= 0.0) {
         return nativeColor;
     }
@@ -256,9 +321,18 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
     float receiverEmission = float((jemCellData(receiverCell) >> 10) & 15u) / 15.0;
     vec3 contributedLight = vec3(0.0);
     float modeledBlockLevel = 0.0;
-    for (int index = 0; index < min(lightCount, JEM_MAX_LIGHTS); ++index) {
+    int dominant = -1;
+    uint areaMask = 0u;
+    int areaCount = 0;
+    bool limitOverlap = lightCount > 2 || (lightCount > 1 && jemShadowSamples > 2);
+    if (limitOverlap) {
+        areaCount = jemAreaLightCount(lightRow, lightCount, sectionOrigin, position, rayOrigin, cameraInSection,
+                receiverCell, normal, dominant, areaMask);
+    }
+    int secondary = 0;
+    uint casterMask = (1u << uint(jemEntityCasterCount)) - 1u;
+    for (int index = 0; index < lightCount; ++index) {
         vec4 source = texelFetch(jemChunkLights, lightRow + ivec2(1 + index * 2, 0), 0);
-        vec4 properties = texelFetch(jemChunkLights, lightRow + ivec2(2 + index * 2, 0), 0);
         source.xyz += sectionOrigin;
         vec3 toLight = source.xyz - position;
         float distanceSquared = dot(toLight, toLight);
@@ -271,6 +345,7 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
             continue;
         }
 
+        vec4 properties = texelFetch(jemChunkLights, lightRow + ivec2(2 + index * 2, 0), 0);
         float emission = abs(properties.w);
         float distanceFade = smoothstep(0.0, 2.0, source.w - sqrt(distanceSquared));
         vec3 absoluteDelta = abs(vec3(sourceCell) + 0.5 - rayOrigin);
@@ -280,8 +355,15 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
 
         float lit = 0.0;
         if (properties.w < 0.0) {
-            if (dot(normal, toLight) > -0.87) {
-                lit = jemBlockFaceLight(rayOrigin, cameraRayOrigin, normal, lightPosition);
+            bool activeArea = limitOverlap ? (areaMask & (1u << uint(index))) != 0u
+                    : dot(normal, toLight) > -0.87;
+            if (activeArea) {
+                int grid = jemShadowSamples;
+                if (areaCount > 1 && index != dominant) {
+                    grid = jemShadowSamples == 2 ? (areaCount <= 2 ? 2 : 1)
+                            : min(jemShadowSamples, jemSecondaryAreaGrid(areaCount - 1, secondary++));
+                }
+                lit = jemBlockFaceLight(rayOrigin, cameraRayOrigin, normal, lightPosition, grid, casterMask);
             }
         } else {
             vec3 shadowRay = lightPosition - rayOrigin;
@@ -289,7 +371,8 @@ vec3 jemApplyLighting(vec3 nativeColor, vec3 skyBaseColor, vec3 albedo, vec3 pos
             vec3 direction = shadowRay / max(reach, 0.00001);
             float facing = max(dot(normal, direction), 0.0);
             if (facing > 0.0 && reach > 0.0001) {
-                lit = facing * jemPointTransmission(rayOrigin, cameraRayOrigin, direction, reach, sourceCell);
+                lit = facing * jemPointTransmission(rayOrigin, cameraRayOrigin, direction, reach, sourceCell,
+                        casterMask);
             }
         }
         float attenuation = distanceFade * 1.35 * emission / (1.0 + 0.08 * distanceSquared);

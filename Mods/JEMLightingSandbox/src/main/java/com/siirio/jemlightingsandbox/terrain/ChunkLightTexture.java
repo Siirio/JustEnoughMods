@@ -19,6 +19,7 @@ final class ChunkLightTexture {
     private static final int LIGHTS_PER_SECTION = 8;
     private static final int SECTION_TEXELS = 1 + LIGHTS_PER_SECTION * 2;
     private static final int COLUMNS_PER_UPLOAD = 10;
+    private static final long UPLOAD_BUDGET_NANOS = 750_000;
     private final LinkedHashSet<ChunkPos> dirty = new LinkedHashSet<>();
     private int texture;
     private int sections;
@@ -31,11 +32,17 @@ final class ChunkLightTexture {
     private float[] scores;
 
     void mark(ChunkPos changed) {
-        for (int z = changed.z - 2; z <= changed.z + 2; z++) {
-            for (int x = changed.x - 2; x <= changed.x + 2; x++) {
+        int cells = sourceColumnRadius();
+        for (int z = changed.z - cells; z <= changed.z + cells; z++) {
+            for (int x = changed.x - cells; x <= changed.x + cells; x++) {
                 dirty.add(new ChunkPos(x, z));
             }
         }
+    }
+
+    private int sourceColumnRadius() {
+        // A source at the edge still has to cross a full intervening chunk at reaches below 16 blocks.
+        return sourceReach >= 16 ? 2 : 1;
     }
 
     void reachChanged(int reach, Vec3 camera, int chunks) {
@@ -68,14 +75,14 @@ final class ChunkLightTexture {
         }
     }
 
-    int bindAndUpdate(ClientLevel level, Vec3 camera, int chunks, ChunkLightIndex index) {
+    int bindAndUpdate(ClientLevel level, Vec3 camera, int chunks, ChunkLightIndex index, boolean update) {
         int cx = SectionPos.blockToSectionCoord(camera.x);
         int cz = SectionPos.blockToSectionCoord(camera.z);
         int height = level.getSectionsCount();
-        if (height * SIDE > GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE)) {
-            return 0;
-        }
         if (texture == 0) {
+            if (height * SIDE > GL11.glGetInteger(GL11.GL_MAX_TEXTURE_SIZE)) {
+                return 0;
+            }
             sections = height;
             minSection = level.getMinSection();
             upload = directFloats(sections * SECTION_TEXELS * 4);
@@ -112,7 +119,7 @@ final class ChunkLightTexture {
         } else {
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
         }
-        if (!dirty.isEmpty()) {
+        if (update && !dirty.isEmpty()) {
             uploadChanges(cx, cz, chunks, index);
         }
         return sections;
@@ -131,8 +138,10 @@ final class ChunkLightTexture {
             GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_ROWS, 0);
             GL11.glPixelStorei(GL11.GL_UNPACK_SKIP_PIXELS, 0);
             int remaining = COLUMNS_PER_UPLOAD;
+            long deadline = System.nanoTime() + UPLOAD_BUDGET_NANOS;
             var pending = dirty.iterator();
-            while (pending.hasNext() && remaining > 0) {
+            while (pending.hasNext() && remaining > 0
+                    && (remaining == COLUMNS_PER_UPLOAD || System.nanoTime() < deadline)) {
                 ChunkPos position = pending.next();
                 pending.remove();
                 if (Math.max(Math.abs(position.x - centerX), Math.abs(position.z - centerZ)) > chunks) {
@@ -157,8 +166,9 @@ final class ChunkLightTexture {
         }
         int x = position.getMinBlockX();
         int z = position.getMinBlockZ();
-        for (int neighborZ = position.z - 2; neighborZ <= position.z + 2; neighborZ++) {
-            for (int neighborX = position.x - 2; neighborX <= position.x + 2; neighborX++) {
+        int neighbors = sourceColumnRadius();
+        for (int neighborZ = position.z - neighbors; neighborZ <= position.z + neighbors; neighborZ++) {
+            for (int neighborX = position.x - neighbors; neighborX <= position.x + neighbors; neighborX++) {
                 for (var light : index.sources(neighborX, neighborZ)) {
                     float radius = light.emission() * sourceReach / 15F + 0.5F;
                     double dx = distanceToInterval(light.x(), x, x + 16);
@@ -189,12 +199,12 @@ final class ChunkLightTexture {
         int header = section * SECTION_TEXELS * 4;
         int count = (int) upload.get(header + 2);
         int row = section * LIGHTS_PER_SECTION;
+        if (count == LIGHTS_PER_SECTION && scores[row + count - 1] <= score) {
+            return;
+        }
         int slot = count;
         while (slot > 0 && scores[row + slot - 1] > score) {
             slot--;
-        }
-        if (slot >= LIGHTS_PER_SECTION) {
-            return;
         }
         int last = Math.min(count, LIGHTS_PER_SECTION - 1);
         for (int entry = last; entry > slot; entry--) {
@@ -217,6 +227,8 @@ final class ChunkLightTexture {
         dirty.clear();
         sourceReach = 0;
         lastRadius = -1;
+        upload = null;
+        scores = null;
         if (texture != 0) {
             GL11.glDeleteTextures(texture);
             texture = 0;

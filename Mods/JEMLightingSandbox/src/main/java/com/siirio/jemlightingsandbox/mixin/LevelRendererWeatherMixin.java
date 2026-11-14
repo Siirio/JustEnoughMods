@@ -1,5 +1,6 @@
 package com.siirio.jemlightingsandbox.mixin;
 
+import com.siirio.jemlightingsandbox.LightingSettings;
 import com.siirio.jemlightingsandbox.PrecipitationRenderer;
 import com.siirio.jemlightingsandbox.WindGusts;
 import net.minecraft.client.Minecraft;
@@ -18,13 +19,19 @@ public abstract class LevelRendererWeatherMixin {
             index = 9)
     private float jem$renderWindDrivenPrecipitation(float rain, LightTexture lightTexture, float partialTick,
             double cameraX, double cameraY, double cameraZ) {
+        if (!LightingSettings.atmosphereEnabled()) {
+            return rain;
+        }
         var client = Minecraft.getInstance();
-        if (!PrecipitationRenderer.replacesVanilla(client)) {
+        boolean replacePrecipitation = PrecipitationRenderer.replacesVanilla(client);
+        if (!replacePrecipitation && !LightingSettings.windEnabled()) {
             return rain;
         }
         var camera = new Vec3(cameraX, cameraY, cameraZ);
-        PrecipitationRenderer.draw(client, camera, partialTick, rain);
+        if (replacePrecipitation) {
+            PrecipitationRenderer.draw(client, camera, partialTick, rain);
+        }
         WindGusts.draw(client, camera, partialTick);
-        return 0F;
+        return replacePrecipitation ? 0F : rain;
     }
 }

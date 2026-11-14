@@ -25,6 +25,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.material.FogType;
@@ -33,6 +34,10 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 
 final class AtmosphereRenderer {
     private static final Logger LOGGER = LogUtils.getLogger();
+    private static final String[] RIVER_BANK_UNIFORMS = {"RiverBank0", "RiverBank1", "RiverBank2"};
+    private static final Vec3 CAVE_SMOKE_TINT = Vec3.fromRGB24(0xA69C90);
+    private static final GroundAtmosphere GROUND_AIR = new GroundAtmosphere();
+    private static final ResourceLocation CAVE_SMOKE = new ResourceLocation("minecraft", "textures/particle/big_smoke_4.png");
     private static ShaderInstance scattering;
     private static ShaderInstance composite;
     private static TextureTarget depthCopy;
@@ -49,6 +54,7 @@ final class AtmosphereRenderer {
         scattering = scatterShader;
         composite = compositeShader;
         failed = false;
+        clearWorldEffects();
     }
 
     static boolean canCompositeFog() {
@@ -109,7 +115,9 @@ final class AtmosphereRenderer {
         float clock = ((gameTime % 81920L) + event.getPartialTick()) / 20F;
         float heat = underwater || !openDimension ? 0F : SandboxWeather.heat(client);
         var position = camera.getPosition();
-        if (!underwater && biomeFog == null
+        var groundAir = GROUND_AIR.sample(client, level, position, block, event.getPartialTick(), weather,
+                openDimension, underwater);
+        if (!underwater && biomeFog == null && !groundAir.active()
                 && Math.max(Math.max(celestial.strength(), weather), Math.max(heat, Math.max(aurora, flash))) < 0.01F) {
             return;
         }
@@ -144,6 +152,7 @@ final class AtmosphereRenderer {
             scattering.safeGetUniform("Rainbow").set(rainbow);
             scattering.safeGetUniform("DistantFlash").set(flash);
             scattering.safeGetUniform("AtmosphereTime").set(clock);
+            applyGroundAir(client, groundAir, position, biomeFog);
             int water = biome.getWaterFogColor();
             scattering.safeGetUniform("WaterColor").set((water >> 16 & 255) / 255F, (water >> 8 & 255) / 255F,
                     (water & 255) / 255F);
@@ -195,6 +204,31 @@ final class AtmosphereRenderer {
         } finally {
             state.restore();
         }
+    }
+
+    private static void applyGroundAir(Minecraft client, GroundAtmosphere.Frame air, Vec3 eye, BiomeFog.Medium biomeFog) {
+        for (int i = 0; i < GroundAtmosphere.RIVER_BANKS; i++) {
+            Vec3 river = i < air.rivers().size() ? air.rivers().get(i) : null;
+            groundAnchor(RIVER_BANK_UNIFORMS[i], river, eye, air.riverOpacity());
+        }
+        groundAnchor("CaveBank", air.cave(), eye, air.caveOpacity());
+        groundAnchor("SnowBank", air.snow(), eye, air.snowOpacity());
+        scattering.safeGetUniform("GroundWind").set((float) air.wind().x, (float) air.wind().z,
+                (float) air.snowDirection().x, (float) air.snowDirection().z);
+        Vec3 caveColor = biomeFog == null ? CAVE_SMOKE_TINT : biomeFog.color().lerp(CAVE_SMOKE_TINT, 0.48);
+        scattering.safeGetUniform("CaveSmokeColor").set((float) caveColor.x, (float) caveColor.y, (float) caveColor.z);
+        scattering.setSampler("CaveSmokeMask", air.caveOpacity() > 0.002F
+                ? client.getTextureManager().getTexture(CAVE_SMOKE) : depthCopy.getDepthTextureId());
+    }
+
+    private static void groundAnchor(String name, Vec3 anchor, Vec3 eye, float opacity) {
+        Vec3 offset = anchor == null ? Vec3.ZERO : anchor.subtract(eye);
+        scattering.safeGetUniform(name).set((float) offset.x, (float) offset.y, (float) offset.z,
+                anchor == null ? 0F : opacity);
+    }
+
+    static void clearWorldEffects() {
+        GROUND_AIR.clear();
     }
 
     private static void copySceneColor(RenderTarget main) {

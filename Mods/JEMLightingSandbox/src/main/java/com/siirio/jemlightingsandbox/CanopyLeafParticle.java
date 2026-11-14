@@ -93,6 +93,10 @@ final class CanopyLeafParticle extends TextureSheetParticle {
 
     @Override
     public void tick() {
+        if (!LightingSettings.canopyLeavesEnabled()) {
+            remove();
+            return;
+        }
         oRoll = roll;
         if (settledAge < 0) {
             float wake = 1F - Mth.clamp(age / (gust ? 108F : 90F), 0F, 1F);
@@ -120,6 +124,9 @@ final class CanopyLeafParticle extends TextureSheetParticle {
 
     @Override
     public void render(VertexConsumer buffer, Camera camera, float partialTick) {
+        if (!LightingSettings.canopyLeavesEnabled()) {
+            return;
+        }
         float time = Math.max(0F, age - 1F + partialTick);
         float fadeIn = Mth.clamp(time / 8F, 0F, 1F);
         float fadeOut = Mth.clamp((lifetime - time) / 24F, 0F, 1F);

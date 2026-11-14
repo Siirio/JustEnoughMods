@@ -37,8 +37,9 @@ public final class TerrainLighting {
     private static final ChunkLightTexture CHUNK_LIGHTS = new ChunkLightTexture();
     private static final Map<Integer, Uniforms> PROGRAMS = new HashMap<>();
 
-    private static boolean enabled = true;
     private static boolean failed;
+    private static boolean checkCapabilities = true;
+    private static boolean updatePending = true;
     private static WorldShadowSections.Texture world;
     private static ClientLevel currentLevel;
     private static int previousSections = -1;
@@ -52,23 +53,9 @@ public final class TerrainLighting {
     private TerrainLighting() {
     }
 
-    public static boolean canPatchStockShaders() {
-        return !ModList.get().isLoaded("luxium");
-    }
-
-    public static void setEnabled(boolean value) {
-        enabled = value;
-        if (!enabled) {
-            clearWorld();
-        }
-    }
-
     public static String status() {
-        if (!enabled) {
+        if (!LightingSettings.enabled()) {
             return "off";
-        }
-        if (!canPatchStockShaders()) {
-            return "inactive (Luxium owns the terrain shaders)";
         }
         if (isShaderPackActive()) {
             return "inactive (Oculus shader pack enabled)";
@@ -80,6 +67,10 @@ public final class TerrainLighting {
             return "waiting for a compatible Embeddium terrain draw";
         }
         return "on, " + LIGHT_INDEX.coveredChunks() + " indexed chunks";
+    }
+
+    public static void beginFrame() {
+        updatePending = true;
     }
 
     public static void tick(Minecraft client) {
@@ -111,6 +102,7 @@ public final class TerrainLighting {
     public static void reloadModels() {
         clearWorld();
         failed = false;
+        checkCapabilities = true;
     }
 
     public static void clearWorld() {
@@ -145,13 +137,16 @@ public final class TerrainLighting {
         }
 
         // The section table, palette and voxel buffer have distinct sampler types.
-        GL20.glUniform1i(uniforms.entityShadowTexture, ENTITY_SHADOW_TEXTURE_UNIT);
-        GL20.glUniform1i(uniforms.entityModelsTexture, ENTITY_MODELS_TEXTURE_UNIT);
-        GL20.glUniform1i(uniforms.sections, SECTION_TEXTURE_UNIT);
-        GL20.glUniform1i(uniforms.voxels, VOXEL_TEXTURE_UNIT);
-        GL20.glUniform1i(uniforms.shapes, SHAPE_TEXTURE_UNIT);
-        GL20.glUniform1i(uniforms.chunkLights, LIGHT_TEXTURE_UNIT);
-        GL20.glUniform1i(uniforms.cloudTex, CLOUD_TEXTURE_UNIT);
+        if (!uniforms.samplersInitialized) {
+            GL20.glUniform1i(uniforms.entityShadowTexture, ENTITY_SHADOW_TEXTURE_UNIT);
+            GL20.glUniform1i(uniforms.entityModelsTexture, ENTITY_MODELS_TEXTURE_UNIT);
+            GL20.glUniform1i(uniforms.sections, SECTION_TEXTURE_UNIT);
+            GL20.glUniform1i(uniforms.voxels, VOXEL_TEXTURE_UNIT);
+            GL20.glUniform1i(uniforms.shapes, SHAPE_TEXTURE_UNIT);
+            GL20.glUniform1i(uniforms.chunkLights, LIGHT_TEXTURE_UNIT);
+            GL20.glUniform1i(uniforms.cloudTex, CLOUD_TEXTURE_UNIT);
+            uniforms.samplersInitialized = true;
+        }
         GL20.glUniform1i(uniforms.active, 0);
         if (!receivesLighting || !available()) {
             return;
@@ -161,10 +156,13 @@ public final class TerrainLighting {
         if (level == null || level != currentLevel || !client.gameRenderer.getMainCamera().isInitialized()) {
             return;
         }
-        if (!GL.getCapabilities().OpenGL33 || GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS) <= ENTITY_MODELS_TEXTURE_UNIT) {
-            failed = true;
-            LOGGER.warn("JEM terrain lighting requires OpenGL 3.3 and fifteen fragment texture units");
-            return;
+        if (checkCapabilities) {
+            checkCapabilities = false;
+            if (!GL.getCapabilities().OpenGL33 || GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS) <= ENTITY_MODELS_TEXTURE_UNIT) {
+                failed = true;
+                LOGGER.warn("JEM terrain lighting requires OpenGL 3.3 and fifteen fragment texture units");
+                return;
+            }
         }
         int active = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
         try {
@@ -177,18 +175,22 @@ public final class TerrainLighting {
             previousEntityShadow = capture2D(ENTITY_SHADOW_TEXTURE_UNIT);
             previousEntityModels = capture2D(ENTITY_MODELS_TEXTURE_UNIT);
 
-            world = SHADOWS.bind(level, SECTION_TEXTURE_UNIT, SHAPE_TEXTURE_UNIT, VOXEL_TEXTURE_UNIT);
+            boolean update = updatePending;
+            updatePending = false;
+            world = SHADOWS.bind(level, SECTION_TEXTURE_UNIT, SHAPE_TEXTURE_UNIT, VOXEL_TEXTURE_UNIT, update);
             if (world == null) {
                 return;
             }
             Vec3 camera = client.gameRenderer.getMainCamera().getPosition();
             GL13.glActiveTexture(GL13.GL_TEXTURE0 + LIGHT_TEXTURE_UNIT);
             int chunks = lightingChunks(client);
-            CHUNK_LIGHTS.reachChanged(LightingSettings.lightDistance(), camera, chunks);
-            for (var changed : LIGHT_INDEX.drainChanges()) {
-                CHUNK_LIGHTS.mark(changed);
+            if (update) {
+                CHUNK_LIGHTS.reachChanged(LightingSettings.lightDistance(), camera, chunks);
+                for (var changed : LIGHT_INDEX.drainChanges()) {
+                    CHUNK_LIGHTS.mark(changed);
+                }
             }
-            int rows = CHUNK_LIGHTS.bindAndUpdate(level, camera, chunks, LIGHT_INDEX);
+            int rows = CHUNK_LIGHTS.bindAndUpdate(level, camera, chunks, LIGHT_INDEX, update);
             BlockPos cameraBlock = BlockPos.containing(camera);
             GL20.glUniform3i(uniforms.cameraBlock, cameraBlock.getX(), cameraBlock.getY(), cameraBlock.getZ());
             GL20.glUniform3f(uniforms.cameraFraction, (float) (camera.x - cameraBlock.getX()),
@@ -340,7 +342,7 @@ public final class TerrainLighting {
     public record ShadowWorld(int sections, int shapes, int voxels, int minSection, int sectionCount, long revision) {}
 
     static boolean available() {
-        return enabled && !failed && canPatchStockShaders() && !isShaderPackActive();
+        return LightingSettings.enabled() && !failed && !isShaderPackActive();
     }
 
     public static boolean isShaderPackActive() {
@@ -375,6 +377,7 @@ public final class TerrainLighting {
         private final int entityShadowDirection;
         private final int entityCasterCount;
         private final int entityModelsTexture;
+        private boolean samplersInitialized;
 
         private Uniforms(int program) {
             active = GL20.glGetUniformLocation(program, "jemActive");

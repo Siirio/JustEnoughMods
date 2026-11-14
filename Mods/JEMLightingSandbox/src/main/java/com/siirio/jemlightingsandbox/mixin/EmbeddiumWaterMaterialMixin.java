@@ -1,5 +1,6 @@
 package com.siirio.jemlightingsandbox.mixin;
 
+import com.siirio.jemlightingsandbox.LightingSettings;
 import com.siirio.jemlightingsandbox.terrain.WaterMaterial;
 import me.jellysquid.mods.sodium.client.render.chunk.terrain.material.Material;
 import net.minecraft.tags.FluidTags;
@@ -16,7 +17,7 @@ public abstract class EmbeddiumWaterMaterialMixin {
     @Inject(method = "forFluidState(Lnet/minecraft/world/level/material/FluidState;)Lme/jellysquid/mods/sodium/client/render/chunk/terrain/material/Material;",
             at = @At("RETURN"), cancellable = true, remap = false)
     private static void jemLightingSandbox$markWater(FluidState state, CallbackInfoReturnable<Material> callback) {
-        if (state.is(FluidTags.WATER)) {
+        if (LightingSettings.enabled() && state.is(FluidTags.WATER)) {
             callback.setReturnValue(WaterMaterial.flagged(callback.getReturnValue()));
         }
     }

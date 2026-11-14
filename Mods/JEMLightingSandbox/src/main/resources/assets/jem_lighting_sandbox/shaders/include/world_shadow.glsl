@@ -7,6 +7,7 @@ uniform vec3 jemCameraFraction;
 uniform float jemShadowTime;
 
 const int JEM_SECTION_RING = 69;
+const int JEM_PAGE_WORDS = 4098;
 const uint JEM_SHAPE_MASK = 1023u;
 const uint JEM_BANNER_OVERHANG = 1u << 30;
 const uint JEM_CUTOUT_OVERHANG = 1u << 31;
@@ -36,7 +37,7 @@ uint jemCellData(ivec4 section, ivec3 cell) {
     if (section.z == 0) return 0u;
     ivec3 local = cell & 15;
     int index = local.x + (local.z << 4) + (local.y << 8);
-    return texelFetch(jemVoxels, (section.z - 1) * 4096 + index).r;
+    return texelFetch(jemVoxels, (section.z - 1) * JEM_PAGE_WORDS + index).r;
 }
 
 uint jemCellData(ivec3 cell) {
@@ -98,6 +99,18 @@ float jemBannerHit(int shape, ivec3 cell, vec3 origin, vec3 ray, float entering,
     return jemBoxHit(low, high, clothOrigin, clothDirection, entering, hit);
 }
 
+void jemSkipEmptyCube(vec3 origin, vec3 direction, vec3 inverseRay, ivec3 stepDirection,
+        vec3 positive, int shift, inout ivec3 cell, inout vec3 edges, out float entering) {
+    ivec3 boundaryCell = ((cell >> shift) + ivec3(positive)) << shift;
+    vec3 boundary = (vec3(boundaryCell) - origin) * inverseRay;
+    entering = min(boundary.x, min(boundary.y, boundary.z));
+    bvec3 crossed = lessThanEqual(boundary, vec3(entering + JEM_RAY_EPSILON));
+    vec3 position = origin + direction * entering;
+    vec3 next = floor(position + direction * JEM_RAY_EPSILON);
+    cell = ivec3(mix(next, vec3(boundaryCell) + min(vec3(stepDirection), vec3(0.0)), crossed));
+    edges = (vec3(cell) + positive - origin) * inverseRay;
+}
+
 // Trace material transmission and the first opaque and partial hits.
 vec3 jemRaycast(vec3 origin, vec3 direction, float reach, ivec3 ignoredCell, bool animatedBanners) {
     ivec3 cell = ivec3(floor(origin));
@@ -112,25 +125,38 @@ vec3 jemRaycast(vec3 origin, vec3 direction, float reach, ivec3 ignoredCell, boo
     float partial = reach;
     ivec3 sectionPos = (cell >> 4) + 1;
     ivec4 section = ivec4(0);
+    ivec3 lastSubcell = ivec3(2147483647);
+    int lastWord = -1;
+    uint occupancy = 0u;
     for (int index = 0; index < 192 && entering < reach; index++) {
         if (any(notEqual(sectionPos, cell >> 4))) {
             sectionPos = cell >> 4;
             section = jemSectionAt(sectionPos);
+            lastWord = -1;
         }
         if (section.z == -1 && section.w == 1 && !all(equal(cell, ignoredCell))) {
             return vec3(visibility, entering, partial);
         }
         if (section.z == 0 || (section.z == -1 && section.w == 0)) {
-            // Empty sections can be crossed without visiting all sixteen block cells.
-            vec3 boundary = (vec3(sectionPos + ivec3(positive)) * 16.0 - origin) * inverseRay;
-            entering = min(boundary.x, min(boundary.y, boundary.z));
-            bvec3 crossed = lessThanEqual(boundary, vec3(entering + JEM_RAY_EPSILON));
-            vec3 position = origin + direction * entering;
-            vec3 next = floor(position + direction * JEM_RAY_EPSILON);
-            vec3 boundaryCell = vec3((sectionPos + ivec3(positive)) << 4) + min(vec3(stepDirection), vec3(0.0));
-            cell = ivec3(mix(next, boundaryCell, crossed));
-            edges = (vec3(cell) + positive - origin) * inverseRay;
+            jemSkipEmptyCube(origin, direction, inverseRay, stepDirection, positive, 4, cell, edges, entering);
             continue;
+        }
+        if (section.z > 0 && section.w == 0) {
+            ivec3 subcell = cell >> 2;
+            if (any(notEqual(subcell, lastSubcell))) {
+                lastSubcell = subcell;
+                ivec3 local = subcell & 3;
+                int bit = local.x | (local.z << 2) | (local.y << 4);
+                int word = bit >> 5;
+                if (word != lastWord) {
+                    lastWord = word;
+                    occupancy = texelFetch(jemVoxels, (section.z - 1) * JEM_PAGE_WORDS + 4096 + word).r;
+                }
+                if ((occupancy & (1u << uint(bit & 31))) == 0u) {
+                    jemSkipEmptyCube(origin, direction, inverseRay, stepDirection, positive, 2, cell, edges, entering);
+                    continue;
+                }
+            }
         }
         float leaving = min(edges.x, min(edges.y, edges.z));
         float end = min(reach, leaving);
