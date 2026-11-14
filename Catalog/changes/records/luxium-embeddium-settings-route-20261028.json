@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "change_id": "luxium.embeddium-settings-route",
-  "status": "conditional",
+  "status": "superseded",
   "selectors": [
     {
       "type": "namespace",
@@ -72,20 +72,10 @@
     "owner": "JEMLuxium.client",
     "kind": "client_gui_compatibility",
     "source_files": [
-      "Mods/JEMLuxium/gradle.properties",
-      "Mods/JEMLuxium/build.gradle",
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumActionControl.java",
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumShaderController.java",
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionPage.java",
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumYouTubeButton.java",
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VideoSettingsHubDirectEmbeddiumMixin.java",
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/SodiumOptionsGuiLuxiumMixin.java",
-      "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/en_us.json",
-      "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/ru_ru.json",
-      "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json",
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/config/LuxiumClientConfig.java",
+      "Docs/gui-sandbox/luxium-install-2026-10-27.json",
+      "Docs/gui-sandbox/luxium-oculus-conflict-fix-2026-10-27.json",
       "Client/ManagedPack/config/oculus.properties",
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VoxyCelestialShadowPassMixin.java"
+      "CHANGELOG.md"
     ]
   },
   "rationale": {

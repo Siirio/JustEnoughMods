@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "change_id": "client.luxium-alpha-warning-suppression-20261030",
-  "status": "active",
+  "status": "superseded",
   "selectors": [
     {"type": "registry", "registry": "*", "value": "*"}
   ],
@@ -24,8 +24,8 @@
     "owner": "JEM Luxium exact-version UI compatibility",
     "kind": "bug_fix",
     "source_files": [
-      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/AlphaWarningScreenSuppressMixin.java",
-      "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json"
+      "Docs/gui-sandbox/luxium-install-2026-10-27.json",
+      "CHANGELOG.md"
     ]
   },
   "rationale": {

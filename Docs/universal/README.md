@@ -8,7 +8,7 @@ Current source contract: 2026-10-22. One Forge 1.20.1 / Forge 47.4.10 / Java 17 
 
 A standalone domain installs on a fresh compatible Forge instance with its explicitly required foundations and those foundations' own dependencies. It does not require the complete JEM modpack, a launcher-specific profile, a network backend or an unrelated JEM gameplay domain. It does not mean every JEM JAR has zero dependencies. Economy, Races and Settlements each retain their own JAR and require Identity; Races also requires the preserved Lodestone particle renderer. Create is genuinely required by the drill addon. Server is a combined host module with the hard dependencies listed below.
 
-After the files and required libraries are installed, integrated gameplay is local and offline. Multiplayer requires its host and matching gameplay modules. Client presentation cannot provide absent server authority or override world settings. Adaptive Culling and Luxium integration are client-only; arbitrary non-JEM-server compatibility is not established for the remaining shared modules.
+After the files and required libraries are installed, integrated gameplay is local and offline. Multiplayer requires its host and matching gameplay modules. Client presentation cannot provide absent server authority or override world settings. Adaptive Culling is client-only. Arbitrary non-JEM-server compatibility is not established for the remaining shared modules.
 
 ## Production JEM inventory
 
@@ -19,7 +19,6 @@ In the dependency column, `F` means declared Forge `[47.4.10,)`; `M` means decla
 | Production source / mod ID | Purpose | Exact direct mandatory metadata | Client / dedicated / singleplayer contract |
 | --- | --- | --- | --- |
 | [JEMAdaptiveCulling](../../Mods/JEMAdaptiveCulling) / `jem_adaptive_culling` | Entity/block-entity rendering visibility and bounded culling | `F`, `M`, both declarations CLIENT | Client-only rendering in solo/multiplayer; no dedicated JAR required; `IGNORE_SERVER_VERSION` |
-| [JEMLuxium](../../Mods/JEMLuxium) / `jem_luxium` | Direct Embeddium video settings with a native Luxium page | `F`, `M`, `embeddium [0.3.31+mc1.20.1]`, `oculus [1.8.0]`, all declarations CLIENT | Client-only mutually exclusive renderer adapter. The Luxium tab contains the owner toggle, full Luxium settings action and upstream YouTube artwork. Luxium suspends Oculus, directly enabling Oculus disables Luxium, and every owner change rebuilds through Embeddium's managed OpenGL context |
 | [JEMAchievementGuide](../../Mods/JEMAchievementGuide/README.md) / `jem_advancements` | Advancement proof adapters, curated guide/localization and optional content-aware FTB book | `F`; no other direct mandatory mod | Shared logical-server criteria/book state and client guide integration; integrated enabled |
 | [JEMCompat](../../Mods/JEMCompat/README.md) / `jemcompat` | Native compatibility, equipment/catalog helpers, Excavation, biome/season/bounty policies and optional backpack/vehicle adapters | `F`, `M`; no other direct mandatory mod | Shared logical-server mechanics and client presentation; relevant optional adapters require their native owner |
 | [JEMFood](../../Mods/JEMFood) / `jemfood` | Standalone food quality, one Food Blessing, thirty talents and dietary variety | `F`, `M`, no other mandatory dependency | Matching protocol 2 on both sides, optional food assignments and effects remain optional |
@@ -62,7 +61,7 @@ Professions, Villager Talking and Claims remain development-only and are exclude
 
 Bootstrap revision `jem.9` keeps the native AutoModpack downloader/planner/CAS/hash/trust/transaction owners. Its source change fixes long-path acquisition/projection through the native file-tree transfer boundary and replaces repeated warnings/countdowns with a file list, one risk consent and Download. It does not approve executable bytes, reset ownership, bypass integrity or turn publication into proof of installation. Bootstrap is included with the shareable archive but remains separately updated from the served managed pack.
 
-Shaders are optional and disabled by default in the shared Oculus configuration. Luxium and its standalone JEM adapter are currently available for Sandbox testing. Select a shader archive in Oculus that supports your GPU and operating system.
+Shaders are optional and disabled by default in the shared Oculus configuration. Oculus is the only retained shader selector. Select a shader archive that supports your GPU and operating system.
 
 The installed Epic Fight `20.14.17` has a narrower optional native cosmetic service: its Linux helper is ELF x86-64, while both bundled macOS helper paths contain a thin ARM64 Mach-O library. Linux ARM64 and Intel macOS JVMs therefore cannot load those respective helpers. Native load failure is caught, and the observed `supported()` guard uses the default cape instead. This limits that online cosmetic feature; it does not establish a gameplay or startup failure. Bootstrap's bundled Windows x86-64 DLL is separately guarded by OS/architecture and is not required on Linux or macOS.
 

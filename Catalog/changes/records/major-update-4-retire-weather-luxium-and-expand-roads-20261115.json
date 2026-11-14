@@ -1,0 +1,139 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4-retire-weather-luxium-and-expand-roads-20261115",
+  "status": "active",
+  "selectors": [
+    {"type": "namespace", "registry": "*", "value": "fog"},
+    {"type": "namespace", "registry": "*", "value": "immersive_storms"},
+    {"type": "namespace", "registry": "structures", "value": "mmr"},
+    {"type": "namespace", "registry": "*", "value": "luxium"},
+    {"type": "namespace", "registry": "*", "value": "jem_luxium"},
+    {"type": "namespace", "registry": "*", "value": "roadweaver"}
+  ],
+  "conditions": [
+    {"world_generation": "Road endpoint changes apply only to roads planned for ungenerated chunks"},
+    {"road_scope": "Only the Overworld and exact surface structure IDs in the native RoadWeaver allowlist are eligible"}
+  ],
+  "precedence": {
+    "layer": "major_update_4_distribution_and_worldgen",
+    "priority": 116,
+    "overrides": [
+      "client.luxium-alpha-warning-suppression-20261030",
+      "client.luxium-sandbox-only-20261114",
+      "luxium.embeddium-settings-route"
+    ]
+  },
+  "change": {
+    "summary": "Remove Fog, Immersive Storms, Moog's Mineshafts integration and Luxium, then route RoadWeaver only to selected surface Overworld structures",
+    "modifiers": [
+      {
+        "property": "distribution.client.fog",
+        "operation": "set",
+        "before": true,
+        "after": false
+      },
+      {
+        "property": "distribution.immersive_storms",
+        "operation": "set",
+        "before": "client and server",
+        "after": false
+      },
+      {
+        "property": "worldgen.mineshaft_owner",
+        "operation": "replace",
+        "before": "Moog's Mineshafts integration records remained after its runtime artifact was removed",
+        "after": "Hopo Better Mineshaft and vanilla mineshafts are the only active mineshaft quest and localization owners"
+      },
+      {
+        "property": "distribution.luxium",
+        "operation": "set",
+        "before": "Luxium was absent from the managed pack but JEMLuxium source, Sandbox scope and public release records remained active",
+        "after": false
+      },
+      {
+        "property": "worldgen.roadweaver.endpoint_policy",
+        "operation": "replace",
+        "before": "Village tag and vanilla pillager outpost across Overworld, Nether and End prediction dimensions",
+        "after": "Overworld-only exact allowlist of villages, land outposts, selected surface settlements, towers, ruins and surface-projected boss arenas"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM managed distribution, native RoadWeaver configuration and active integration catalogs",
+    "kind": "user_requested_removal_and_worldgen_policy",
+    "source_files": [
+      "Client/ManagedPack/config/roadweaver/roadweaver.json",
+      "Server/config/roadweaver/roadweaver.json",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java",
+      "Mods/JEMAchievementGuide/tools/questbook/book.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+      "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/TerrainLighting.java",
+      "tools/module-inventory.json",
+      "Docs/public-mods/release-matrix.md",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove rejected weather and renderer integrations, keep one mineshaft owner and extend roads without sending players to underground or non-Overworld structures",
+    "decision_source": "The user requested removal of Fog, Immersive Storms, Moog's Mineshafts Reimagined and all Luxium-related active scope, then approved an Overworld surface-only RoadWeaver allowlist with surface bosses",
+    "implementation_choices": "Retain historical records as superseded evidence, replace Moog quest proof with installed vanilla and Hopo registry IDs, and use exact installed structure IDs because RoadWeaver has no general underground-classification filter"
+  },
+  "introduced": {
+    "date": "2026-11-15",
+    "commit": "SELF",
+    "action": "retire_integrations_and_expand_surface_roads",
+    "summary": "Remove the four rejected integrations and configure RoadWeaver for selected surface Overworld destinations"
+  },
+  "history": [
+    {
+      "date": "2026-11-15",
+      "commit": "SELF",
+      "action": "retire_integrations_and_expand_surface_roads",
+      "summary": "Delete active Fog, Immersive Storms, Moog and Luxium surfaces, migrate the mineshaft proof owner and publish an exact RoadWeaver surface allowlist",
+      "source_files": [
+        "Client/ManagedPack/config/roadweaver/roadweaver.json",
+        "Server/config/roadweaver/roadweaver.json",
+        "Client/ManagedPack/config/immersive_storms.json5",
+        "Server/config/immersive_storms.json5",
+        "Client/ManagedPack/mods/Fog-forge-1.5.3-1.20.1.jar",
+        "Client/ManagedPack/mods/immersive_storms-1.0.0-forge.jar",
+        "Server/mods/immersive_storms-1.0.0-forge.jar",
+        "Client/ManagedPack/kubejs/assets/mmr/lang/ru_ru.json",
+        "Server/kubejs/assets/mmr/lang/ru_ru.json",
+        "Mods/JEMLuxium/**",
+        "Docs/public-mods/unofficial-luxium-compatibility/**",
+        "Mods/JEMAchievementGuide/tools/questbook/book.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+        "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/TerrainLighting.java",
+        "tools/module-inventory.json",
+        "Docs/public-mods/release-matrix.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "managed client distribution",
+      "dedicated server distribution",
+      "client rendering",
+      "weather presentation",
+      "mineshaft quest proof",
+      "structure road planning",
+      "AutoModpack"
+    ],
+    "relations": [
+      "Oculus remains the shader selector",
+      "Hopo Better Mineshaft remains the dedicated mineshaft overhaul",
+      "Structure Layout Optimizer remains the jigsaw assembly optimizer",
+      "Structurify remains the placement and overlap owner"
+    ],
+    "notes": [
+      "Ocean, ocean-floor, cave, deep-underground, Nether, End and sky-only structures are absent from the RoadWeaver allowlist",
+      "Existing generated road blocks are not removed"
+    ],
+    "unresolved": [
+      "Fresh-chunk RoadWeaver endpoint density and visual acceptance require authorized gameplay review"
+    ]
+  }
+}

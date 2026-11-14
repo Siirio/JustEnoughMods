@@ -9761,21 +9761,32 @@
             "reward_purpose": "Rails and Andesite Alloy connect expedition resources to workshop and transport uses.",
             "visual_route": "expeditions",
             "coverage_keys": [
-              "mmr:exploration",
-              "mmr:pack_integration"
+              "hopo:exploration",
+              "hopo:pack_integration"
             ],
             "requires_hook": true,
             "hook_contract": {
               "advancement": "jem_advancements:quest_v3/v3_world_mineshaft",
               "action": "v3_world_mineshaft",
-              "success_condition": "Server confirms actor is inside a valid generated StructureStart from exact whitelist [\"mmr:mineshaft\", \"mmr:desert_mineshaft\", \"mmr:jungle_mineshaft\", \"mmr:mesa_mineshaft\", \"mmr:snowy_mineshaft\"] and successfully opens one naturally generated loot container owned by that start. Moving placed player chests inside does not qualify; preserve native loot/open ownership; no locate commands or broad world scan.",
+              "success_condition": "Server confirms actor is inside a valid generated vanilla or Hopo Better Mineshaft StructureStart from the exact registry whitelist and successfully opens one naturally generated loot container owned by that start. Moving placed player chests inside does not qualify; preserve native loot/open ownership; no locate commands or broad world scan.",
               "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut",
               "registry_whitelist": [
-                "mmr:mineshaft",
-                "mmr:desert_mineshaft",
-                "mmr:jungle_mineshaft",
-                "mmr:mesa_mineshaft",
-                "mmr:snowy_mineshaft"
+                "minecraft:mineshaft",
+                "minecraft:mineshaft_mesa",
+                "hopo:mineshaft/acacia_mineshaft",
+                "hopo:mineshaft/bamboo_mineshaft",
+                "hopo:mineshaft/biomes/dripstone_mineshaft",
+                "hopo:mineshaft/biomes/lush_mineshaft",
+                "hopo:mineshaft/birch_mineshaft",
+                "hopo:mineshaft/cherry_mineshaft",
+                "hopo:mineshaft/dark_oak_mineshaft",
+                "hopo:mineshaft/deepslate_mineshaft",
+                "hopo:mineshaft/jungle_mineshaft",
+                "hopo:mineshaft/mangrove_mineshaft",
+                "hopo:mineshaft/mud_mineshaft",
+                "hopo:mineshaft/oak_mineshaft",
+                "hopo:mineshaft/spruce_mineshaft",
+                "hopo:mineshaft/stone_mineshaft"
               ]
             },
             "visual_group": "fieldcraft"
@@ -9783,7 +9794,7 @@
           "mechanic_sections": [
             {
               "keys": [
-                "mmr:exploration"
+                "hopo:exploration"
               ],
               "title_ru": "Возможности рядом",
               "title_en": "Related possibilities",
@@ -9792,7 +9803,7 @@
             },
             {
               "keys": [
-                "mmr:pack_integration"
+                "hopo:pack_integration"
               ],
               "title_ru": "Возможности рядом",
               "title_en": "Related possibilities",

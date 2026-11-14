@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "aebb3edbb1169b9fe080e6726d62601d4e9fdc26cb2d968daa2a6d78d05cbd1f",
+  "change_records_sha256": "bf3a739c072ca6f78fe5f192132c270cf53e2461e6842af20735cd763ebbc687",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -510,7 +510,7 @@
     },
     {
       "change_id": "client.luxium-alpha-warning-suppression-20261030",
-      "status": "active",
+      "status": "superseded",
       "summary": "Skip Luxium 2.8.0's first-run alpha warning gate on JEM clients.",
       "record": "Catalog/changes/records/client.luxium-alpha-warning-suppression-20261030.json",
       "selectors": [
@@ -525,7 +525,7 @@
     },
     {
       "change_id": "client.luxium-sandbox-only-20261114",
-      "status": "active",
+      "status": "superseded",
       "summary": "Remove Luxium from the managed development pack and keep it available in Sandbox.",
       "record": "Catalog/changes/records/client.luxium-sandbox-only-20261114.json",
       "selectors": [
@@ -1898,7 +1898,7 @@
     },
     {
       "change_id": "luxium.embeddium-settings-route",
-      "status": "conditional",
+      "status": "superseded",
       "summary": "Route Video Settings directly to Embeddium and keep Luxium-owned actions inside the existing Luxium page.",
       "record": "Catalog/changes/records/luxium-embeddium-settings-route-20261028.json",
       "selectors": [
@@ -2141,6 +2141,46 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "major-update-4-retire-weather-luxium-and-expand-roads-20261115",
+      "status": "active",
+      "summary": "Remove Fog, Immersive Storms, Moog's Mineshafts integration and Luxium, then route RoadWeaver only to selected surface Overworld structures",
+      "record": "Catalog/changes/records/major-update-4-retire-weather-luxium-and-expand-roads-20261115.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "fog"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "immersive_storms"
+        },
+        {
+          "type": "namespace",
+          "registry": "structures",
+          "value": "mmr"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "luxium"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_luxium"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "roadweaver"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 17
     },
     {
       "change_id": "major-update-4-road-locator-cleanup-20261113",
@@ -4563,7 +4603,7 @@
     }
   ],
   "source_fingerprints": {
-    "CHANGELOG.md": "831dd4b1e36ace7898b78abac4ee344c181ebcfc501cdcc4b3ba6262fc1fabdc",
+    "CHANGELOG.md": "eda465a35b368de532493fc1b8a54efd4335fe764abcf61c87f451d168a11925",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -4623,7 +4663,6 @@
     "Client/ManagedPack/config/ftbquests/quests/reward_tables/v2_home_h06_09.snbt": "b45b7fa473ea242ef7f19c1e335589b3c7a7c1da6fcc7daf521375f408c7cac4",
     "Client/ManagedPack/config/ftbquests/quests/reward_tables/v2_home_housewarming.snbt": "83fa96932416df48a287a0f0faafedb3d50845c73679e8ef0e9a20073ffe4d3b",
     "Client/ManagedPack/config/ftbquests/quests/reward_tables/v2_home_trade_05.snbt": "7300cfda79668f83c95e43cacf3fb1b63653efb8be443fbdc587f29b7f3f1326",
-    "Client/ManagedPack/config/immersive_storms.json5": "6283bfb40b2aa551b6838b9bf85f9a72dbfca3d14edb5abe854fcd6da2167b7b",
     "Client/ManagedPack/config/inventorytabs-client.toml": "673774b94e0dbc9d28022920f481fe844b086d4bb597d31900687abc9628ab2d",
     "Client/ManagedPack/config/item_obliterator.json5": "9ee77ac619568af88a8dd6827cbfbf8f7f19e02c7b3972b520a33106ef64ffbf",
     "Client/ManagedPack/config/jei/ingredient-list-mod-sort-order.ini": "c0f7e20a23441042ceca1d664baeb6c18d97570c2cd7745db3fd689f4da5a359",
@@ -4657,7 +4696,7 @@
     "Client/ManagedPack/config/paxi/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip": "6474ca9582bccb35c96851f5c8f51657fe0d09b139004144c30cad88264d2fea",
     "Client/ManagedPack/config/quickskin-client.json": "3e646bae5faaf41b169277e367783a937c683f18d41b4f54dd8a928700ffecfb",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
-    "Client/ManagedPack/config/roadweaver/roadweaver.json": "d5a8a11e1dbf510e07034a298e2db9e47cb857b71b045c940fb417fc676bb943",
+    "Client/ManagedPack/config/roadweaver/roadweaver.json": "34637addd887d6ec47eeca95a20b172540c389e130ad9ba465b2fea0000e6245",
     "Client/ManagedPack/config/streamsreflowing-client.properties": "5ceb8e0e27e984deaf922b83d79314b294a0ae9bab8002bcf20a37bade0f1349",
     "Client/ManagedPack/config/streamsreflowing.properties": "63fe54e7a2031541c5b84e6e11db8d1f38fec5d9c3cc47ef5d4e91d1f47883f2",
     "Client/ManagedPack/config/streamsreflowing/bank_features/jem_fallen_logs.json": "faf4309167591390d467cf2b2a182e9725225e522b7a81331bd614ba176f128a",
@@ -4771,7 +4810,6 @@
     "Client/ManagedPack/kubejs/assets/midnightlib/lang/ru_ru.json": "cbd3eeec0a05783713a0e7ca56f32002f2fccec35d9864e69d11487dcf39d042",
     "Client/ManagedPack/kubejs/assets/minecraft-cursor/lang/ru_ru.json": "c48655710476a8aaa6116e2d7e115845d00e43030768f544fe7a1dbdad1ce06a",
     "Client/ManagedPack/kubejs/assets/minecraft/lang/ru_ru.json": "9f1982f148b6e79c7d2016e310bd966a40704388b8af31357e9f3594c688420f",
-    "Client/ManagedPack/kubejs/assets/mmr/lang/ru_ru.json": "3f345d28188227fb4fdff4adefcd2e0718fab2a34c9deabdd4b919d324df6c08",
     "Client/ManagedPack/kubejs/assets/mns/lang/ru_ru.json": "528829fd83980e5aed2d99e82b50752a77317695af95aa6731eeec322f9d9d51",
     "Client/ManagedPack/kubejs/assets/modernfix/lang/ru_ru.json": "c052daf1da24711f9d7b95dc2582efa53337a7ab5e7099300368999a0a07f485",
     "Client/ManagedPack/kubejs/assets/moogs_structures/lang/ru_ru.json": "c5679e19706dd8f0917ef1353ecd96c9811e3c3df0ae275a770a635213a8b511",
@@ -4849,7 +4887,6 @@
     "Client/ManagedPack/kubejs/server_scripts/jem/streams_recipe_policy.js": "02d705ca18d8d73bd98275d32d6592c71230202cbf8894dc3720094cacd4a8dd",
     "Client/ManagedPack/kubejs/server_scripts/jem/twelve_eye_campaign.js": "3df41fc154cb177b06c680d1d6bf55e0646ba14bc325a5eda44593ad4401a8e0",
     "Client/ManagedPack/mods/Camerapture-1.10.12+mc1.20.1-forge.jar": "d4e35231c00608f75a8155120d7e0457fae7181e2cb796f5844e550e921b04e2",
-    "Client/ManagedPack/mods/Fog-forge-1.5.3-1.20.1.jar": "e6945f170729829b42ea2716e25db16f5251ffa91dd834b94d069792f79ebf7b",
     "Client/ManagedPack/mods/LocatorBar-forge-1.2.2+1.20.1.jar": "efb3b503760a13b8daf53360221b3b8adb6b4e7f5a9cd43cbd0539c13e3e2125",
     "Client/ManagedPack/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar": "413e4999c09a2488ad3faf63c02b185f705c20fc6f4248ad50fff8c36b9bdc6e",
     "Client/ManagedPack/mods/StreamsReflowing-1.20.1-forge-2.17.1.jar": "de5ea64740532b3d1ecbb99d1e433ba7e2aa9febeab56890abb98c6499da7dd0",
@@ -4893,7 +4930,7 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt": "976619824ac657b1dc06518f9133181e73febb4a09233fe9ede77179d70ca2de",
-    "Docs/DEVELOPMENT.md": "ff01e4bb6bf111819158ba66f3935b8217c75c3f174a9c508aaefe0891ad47b6",
+    "Docs/DEVELOPMENT.md": "5ffdd03c79645751a98cc8e5e6a0d0e67143756300761cc02716859ca1f042b6",
     "Docs/MODS.md": "e8706907ceef453373611a8daf7150b308c556f38b238706dfbb3fb51f2416cf",
     "Docs/SERVER_COMMANDS.md": "70f44d76010dc872bc7d4c2ff6734f25376f91436de312d5b687c73abef12596",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -4927,6 +4964,8 @@
     "Docs/food/README.md": "ab9771b48cf4f2500cd43d77738f1e59ce634cbdac299ecacb480b55a47e23a0",
     "Docs/gui-sandbox/README.md": "1a214541d51641377ce3164155c3b7fbd4704202cd4154d0792979985b10ea8b",
     "Docs/gui-sandbox/delivery.json": "3fb24f79b64842b32147980c0b9ff641f0ae90d4d3f5cf992f40e2a39cd626ef",
+    "Docs/gui-sandbox/luxium-install-2026-10-27.json": "e3eb01b1011e10dcf348052ac8c46d7ae1761bb51079de4802d7d4e8bf37ab57",
+    "Docs/gui-sandbox/luxium-oculus-conflict-fix-2026-10-27.json": "0c8b117654a3b373cfdc47d6c9a663b84c8dcf781fe11df572fd2efa027cc885",
     "Docs/handbook/README.md": "a7a8a06c9521418a47a34e1bcc1505451a6d7eafac0829ac7595b471ed139e96",
     "Docs/handbook/boss-drop-links.json": "b80da928090b2e993a157eaa12c3c31a633072dcc9b8c795040c27578b919d37",
     "Docs/handbook/bosses-coverage.json": "0aa60e1117058fd49080718ff2516ad6462a6a6692dabd7e6aeff94c1efb81ac",
@@ -4955,6 +4994,7 @@
     "Docs/power-system/README.md": "6126ef340f35b28de6734c00c4f76fbf304cd542d65eb6efa589bd98dac55a58",
     "Docs/power-system/Weapons.md": "5a67dada7b91f501c6ce9da04690102441a718ebb6e05a5d30aa1f3978ade479",
     "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/skarrier/manifest.json": "42e3c46095986c686e5582a746f3bc96de8376ff3db03e4591c1971db1fa2406",
+    "Docs/public-mods/release-matrix.md": "c88e7f73842895d6eb613a56e1b3e43c93f42626d30c6fc33430c7be32c761cd",
     "Docs/races/README.md": "b0d8b2a4d287cf31e3d7063b739b65f96300835686506f8a6e579c775a7cf990",
     "Docs/races/VFX_REFERENCE_BRIEFS.md": "e6e6f81334f8fdaf0b5f2197562ee4afc0eb8c2e2b1e6cf3d33d56c2e2233c87",
     "Docs/races/assets/guardian-dome/PLAN.md": "8519ffb62d2ed6f61ccb8e21cb907cd2a1a0563f1a839ca1afb40b17b1dc5f52",
@@ -5078,7 +5118,7 @@
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StorageNetworkAccess.java": "ed765d0c017fa28614095c569a15d88d496cd6d6f165d11355925590329ee2d7",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StorageTierQuestProof.java": "787853a12fed26707ed5aa234396a3cf8b548ff0a3cc00a56ff44f90869a11a5",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootOrigin.java": "a3976b79e1441e65533a7eedd9e35d7277b41ba7401ad48fa3b90333e1e4f7f3",
-    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java": "8e82a26d4186ee46e8bf204e931e06cef511ba4fe55b261a302b626a7eca6f25",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java": "0994e3876c0fe889ce821550c28c4d44c4899d0aaa5d080e15bfd4d053dcf716",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsCableTransferProof.java": "87a0256b8099b5c3f338e537301a9fcef2b62fa68dce55b63eaf83d2703681ae",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsFilterEndpointAccess.java": "e90940755780d8cafa18da201bdc4306724987cbb5a05bbdde1777966aab3b02",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsFilterProof.java": "b6d91dfd63a2f558ae892f0211e7cf54815703915710b67ef8fc2c3fa66e8532",
@@ -6389,7 +6429,7 @@
     "Mods/JEMAchievementGuide/src/main/resources/META-INF/mods.toml": "d53afe0ff613a0852a6c025c891928cfbdb45dbebcf349508e98982fcf2e14e3",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json": "fd7e5b382ee3d3fd06c2326cfd58744b02b2cc8430bfd85c18d4e6f13ac70581",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json": "467815c3d857ee8b816d8fb49211d56ef687f1a9cb9438acb3f68e23dac68308",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json": "665493dc714c07c46959a6cc7e1990194034add71b6601f6b2c0452d01869f34",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json": "3fa5ee318c8c4fc84a7c792265802d9f678379391fbf55f8180a7ddcf8331fea",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/handbook/manuals.json": "09c5040709868b0c1bed7105fa37f128f19a4737659d86a4e23706124fea9911",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/bosses/alexscaves/luxtructosaurus.json": "c0707bf4826b35118ef8ea29bb484669973c11cb872af625d58f05cdb3f73e68",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/bosses/aquamirae/captain_cornelia.json": "e406987174a3fc620613e2a8cece9849396a0cc041dd9c584c682a904926ae75",
@@ -8495,7 +8535,7 @@
     "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_store_filter_void.json": "a806b98354d2f43678ab90e33278c400d529e5f9c773783bd92f93bda0e90943",
     "Mods/JEMAchievementGuide/tools/questbook/audit_book.py": "fe2309334145403cdba150ca0b2432e2d49f882bf921b2b2f8a50a59ed456ad6",
     "Mods/JEMAchievementGuide/tools/questbook/audit_rescue_v3.py": "0dc1a08f9f438d48d675e7af2658ee237be4fe19ee8f93bf1c886dfcc0861e12",
-    "Mods/JEMAchievementGuide/tools/questbook/book.json": "aae073da80530b9def013856b63864f7ca0ba0ba79d5f2c4dd77294d55bc897a",
+    "Mods/JEMAchievementGuide/tools/questbook/book.json": "703eb80a8eea21608f48faa0e6bdb8d8ee3319c86edad0011fb76075855fc8a7",
     "Mods/JEMAchievementGuide/tools/questbook/compiled-files.json": "d3e111f692c5ad8abbcb15c0193487ebe202fbd3abb29b610eb14e7afe45db91",
     "Mods/JEMAchievementGuide/tools/questbook/legacy/bosses_12_eyes.snbt": "681eb69e90b43a7491540a3e14397b60d59ef8479c102311dc4ba53582f92e4c",
     "Mods/JEMAchievementGuide/tools/questbook/legacy/create.snbt": "6f3b8cff13553a1f6e9a783d0d1d3a834bee98c79bc3226b20e6f5eb37095ed5",
@@ -8795,7 +8835,7 @@
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/building_purchase_prices.json": "ed2fd0e9b95125ee977d34d9af26b237467fabddbecfa25df74c05dc60af61c0",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json": "731683068af52541bb04d2f735dec8449d095616e933f668a378e6ccf37197bf",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_limits.json": "03cbaeef637161748ece1b6440c885c1bd71f1164346999d61e81d04f7b0f772",
-    "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json": "daf75ac30ef0e78466cfad1ffdd94eeb955e5a9bf40a3f06df503d79c7f75eb0",
+    "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json": "9bd43c960d87a079684ceaf116f516856524bf7e3463317bcb51abd0a3bb212d",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json": "a02935861a7c9d9fb1e649dec1288358578177d91589f656ac4f4cc1226960ec",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/profession_pools.json": "ac971e9378979a211c84af354310ac5cbcf199b91599d57c72e5c4ff7c62e873",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json": "8335a1d234f93ce08b7b5e996487cb03279172d3819951e928aaca2ce8c09f7a",
@@ -8950,20 +8990,6 @@
     "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/LGPL-3.0.txt": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
     "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/NOTICE.txt": "077c2aabfdc5dde3592a2a21af1d740980893f5cf871590718d9a3a4f60984e1",
     "Mods/JEMLightingSandbox/src/main/resources/pack.mcmeta": "8a5beefa7c02d85d835d3c3e1b84fdff1652d0f1751307a53397dd06dec9e525",
-    "Mods/JEMLuxium/build.gradle": "0b039b4082baf554815b1922d47f4e5a97b48027cf27074c61cc2a3b894c586f",
-    "Mods/JEMLuxium/gradle.properties": "3c365a9eedf339702683dfcf33250a2c7a12110a396e2365e7ba3d3e2d6f744f",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumActionControl.java": "63175bbff6fbfc4dbc75a93daaee5edd50ee699c7069c6744d88862f917448ca",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionPage.java": "5539d984d36aa41129e6cfd976b8ae15df373677dedcc4d556d8d3c49fe522ba",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumShaderController.java": "3caae8021692ef424f52070b9cdb3410d4573da1c62f75d46593f62be31acef3",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumYouTubeButton.java": "0ab8e4c2125ecfba441e66de7f3284b79a0e98f185c735721783e41e95d51cde",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/config/LuxiumClientConfig.java": "2d25a6272bfb2a51d483affe7585d9b71397866944379e112d4a043cf57a983b",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/AlphaWarningScreenSuppressMixin.java": "27992487b64d734a90b3dbe2bc98a36bfccebf1990d44783e93ada7ed6db5085",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/SodiumOptionsGuiLuxiumMixin.java": "9e1102feec68de977d938d0d786e2bbdcd23124855fbc2d08493bf2d58c0a28a",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VideoSettingsHubDirectEmbeddiumMixin.java": "b86c3d0216c5e8f0d431af5a41c8bd7a45c19fe17725739e46876dc14338ec25",
-    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VoxyCelestialShadowPassMixin.java": "bc28d6bec21b10a8f07c24fbdc767df3ae3d88fd2a3f18a79a672a6e92abec99",
-    "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/en_us.json": "0a7635fbe8d055ac1ca6386d65316235ea34b0f84b27c0ad3f93b8a427f4fde2",
-    "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/ru_ru.json": "9f2b71ffcb20fc1f798134e7680ed14ce18dceacc4aca19c7eb9446cf400cc5a",
-    "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json": "800157ec7ad8b869232e6b5fc0eecb43d9c1b8376ccfe733f0db2f78c7599cf0",
     "Mods/JEMProfessions/build.gradle": "7d0d86a770a3d33b79d32866f2016490bd74a3568979af16a8efd061ca646e91",
     "Mods/JEMProfessions/prepare-sandbox-data.py": "53329ec0252d0bea01093ccc9c1c51067297209dc8ab3e2c56cb44a5fcc62778",
     "Mods/JEMProfessions/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
@@ -10077,8 +10103,8 @@
     "Mods/RoadWeaver/upstream.json": "5169af659172b847cd84d73e00ab519628794c66ee50b76f902e127dd222ee7b",
     "Server/automodpack/server.conf": "9f6f18c2187c4610c93b85e03b8c208265865a2a2258b504899d86ee09180d6a",
     "Server/config/blockrunner.json": "ff609c9e941141097a1961413e3ba4f683257585cee4fc345bb82cf4df934515",
-    "Server/config/immersive_storms.json5": "6283bfb40b2aa551b6838b9bf85f9a72dbfca3d14edb5abe854fcd6da2167b7b",
     "Server/config/item_obliterator.json5": "d74c4bae2131e2fb6bba259697c51aaf911ea023ad66cc91acc2ebcb99590ae0",
+    "Server/config/roadweaver/roadweaver.json": "34637addd887d6ec47eeca95a20b172540c389e130ad9ba465b2fea0000e6245",
     "Server/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Server/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json": "0c2f19322b3f385388a186f899d7443007fabb476766e857f0d0cd99aba3b419",
     "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json": "3e305a680de6018ce89ac8ff3bdbcd8049478fa86bdb22b022741b8e4dcbd238",
@@ -10097,7 +10123,7 @@
     "tools/build_jem_release_resource_pack.py": "b69a3cebba55980a260059f7e7a9029f86e931fb8d188f54e1b15c6b29e26d5a",
     "tools/generate_profession_skills.py": "44f8c18425e5a22681b982811116d9eefd8e50cb28d62d87c00478968f0c256c",
     "tools/jem.py": "dadbc1e4616944e697351f21c1aea6e50721ebcef94896861eff5f05af799b62",
-    "tools/module-inventory.json": "83bf3e61274e4190ad03e1c20c330a2437e7f1af36cec6b895fb41a68af5fd02",
+    "tools/module-inventory.json": "d239bc23fd2aae5f538be292d2847294873c7dc39db2a700aaf8be7c4ef8d584",
     "tools/state/packSyncHost-sync.json": "2f0015f1c3ae409d8d07c70932a1e78dba1d3a14dc39c57a5c7eeb25476e9875",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }

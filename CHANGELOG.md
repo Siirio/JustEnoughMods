@@ -9,8 +9,10 @@
 ## 2026-11-15 - Retire weather and Luxium integrations and expand surface roads
 
 - User requested removal of Fog, Immersive Storms, Moog's Mineshafts Reimagined and every active Luxium integration. Fog and Immersive Storms artifacts and configuration are removed. The remaining Moog localization, quest proof and generated search-source references are replaced with vanilla and Hopo Better Mineshaft ownership. JEMLuxium source, public release preparation, Sandbox scope and active inventory entries are removed
+- Sandbox JustEnoughMods no longer registers Luxium in `TLauncherAdditional.json`. Its active Luxium configuration files are deleted. Exact Luxium and JEMLuxium copies from disabled and backup locations were moved to the Windows Recycle Bin without removing unrelated backup files
 - RoadWeaver now predicts structures only in the Overworld. Its exact allowlist covers villages, land outposts, selected surface settlements, towers and ruins, and surface-projected boss arenas. Cave, deep-underground, ocean-floor, Nether, End and sky-only structures remain excluded because RoadWeaver has no general underground classifier
 - Structure Layout Optimizer and Structurify remain together. Installed bytecode and configuration show separate owners. Structure Layout Optimizer changes jigsaw assembly performance. Structurify changes placement settings and overlap prevention. No shared method overwrite was found
+- Native AutoModpack publication 164 contains two replacements and four deletions. Test JustEnoughMods applied content token `d7c9d786a5a499ad47a20dc6ed813bc88f185948` and verified all 329 managed JARs. The ordinary local server could not reach its console because the existing AudioYT startup failure occurred before publication, so the installed native publisher completed the same journal operation offline
 - Existing generated roads remain unchanged. Fresh-chunk route density and appearance require player review
 
 ## 2026-11-15 - Add calm canopy leaves to Sandbox Lighting

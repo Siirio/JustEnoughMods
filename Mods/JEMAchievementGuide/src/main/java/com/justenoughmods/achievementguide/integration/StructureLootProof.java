@@ -74,7 +74,15 @@ public final class StructureLootProof {
         Map<String, String> result = new LinkedHashMap<>();
         add(result, "v3_world_desert_temple", "betterdeserttemples:desert_temple");
         add(result, "v3_world_fortress", "betterfortresses:fortress", "mns:mega_fortress", "mns:nether_tower", "mns:large_nether_brick", "mns:medium_house");
-        add(result, "v3_world_mineshaft", "mmr:mineshaft", "mmr:desert_mineshaft", "mmr:jungle_mineshaft", "mmr:mesa_mineshaft", "mmr:snowy_mineshaft");
+        add(result, "v3_world_mineshaft",
+                "minecraft:mineshaft", "minecraft:mineshaft_mesa",
+                "hopo:mineshaft/acacia_mineshaft", "hopo:mineshaft/bamboo_mineshaft",
+                "hopo:mineshaft/biomes/dripstone_mineshaft", "hopo:mineshaft/biomes/lush_mineshaft",
+                "hopo:mineshaft/birch_mineshaft", "hopo:mineshaft/cherry_mineshaft",
+                "hopo:mineshaft/dark_oak_mineshaft", "hopo:mineshaft/deepslate_mineshaft",
+                "hopo:mineshaft/jungle_mineshaft", "hopo:mineshaft/mangrove_mineshaft",
+                "hopo:mineshaft/mud_mineshaft", "hopo:mineshaft/oak_mineshaft",
+                "hopo:mineshaft/spruce_mineshaft", "hopo:mineshaft/stone_mineshaft");
         add(result, "v3_world_monument", "betteroceanmonuments:ocean_monument");
         add(result, "v3_world_ocean_ruins", "mos:ruined_castle", "mos:ruined_church", "mos:small_ocean_temple", "mos:ruins_atlantis", "trek:overworld/rare/sunken_city");
         add(result, "v3_world_ruins", "mvs:castle_ruins", "mtr:jungle_temple", "mtr:badlands_temple", "trek:overworld/medium/jungle_treehouse", "trek:overworld/rare/castle");

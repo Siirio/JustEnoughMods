@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "aebb3edbb1169b9fe080e6726d62601d4e9fdc26cb2d968daa2a6d78d05cbd1f",
+  "change_records_sha256": "bf3a739c072ca6f78fe5f192132c270cf53e2461e6842af20735cd763ebbc687",
   "totals": {
     "watched": 7180,
-    "covered": 5572,
-    "unresolved": 1608
+    "covered": 5557,
+    "unresolved": 1623
   },
   "groups": {
     "Client/ManagedPack/config": {
       "watched": 1396,
-      "covered": 84,
-      "unresolved": 1312,
+      "covered": 83,
+      "unresolved": 1313,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -250,6 +250,7 @@
         "Client/ManagedPack/config/immediatelyfast.json",
         "Client/ManagedPack/config/immersive_aircraft.json",
         "Client/ManagedPack/config/immersive_melodies.json",
+        "Client/ManagedPack/config/immersive_storms.json5",
         "Client/ManagedPack/config/immersive_weathering-client.toml",
         "Client/ManagedPack/config/immersive_weathering-common.toml",
         "Client/ManagedPack/config/immersivelanterns-client.toml",
@@ -1517,19 +1518,34 @@
     },
     "Mods/JEMLightingSandbox": {
       "watched": 54,
-      "covered": 54,
-      "unresolved": 0,
-      "unresolved_paths": []
+      "covered": 51,
+      "unresolved": 3,
+      "unresolved_paths": [
+        "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingSettingsScreen.java",
+        "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WeatherDensityScreen.java",
+        "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WindColorScreen.java"
+      ]
     },
     "Mods/JEMLuxium": {
       "watched": 17,
-      "covered": 12,
-      "unresolved": 5,
+      "covered": 1,
+      "unresolved": 16,
       "unresolved_paths": [
+        "Mods/JEMLuxium/gradle.properties",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/JEMLuxium.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumActionControl.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumClientBootstrap.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionPage.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionStorage.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumShaderController.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumYouTubeButton.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/config/LuxiumClientConfig.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/AlphaWarningScreenSuppressMixin.java",
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/NeoSkyCelestiaOculusGuardMixin.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/SodiumOptionsGuiLuxiumMixin.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VideoSettingsHubDirectEmbeddiumMixin.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/VoxyCelestialShadowPassMixin.java",
+        "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json",
         "Mods/JEMLuxium/src/main/resources/pack.mcmeta"
       ]
     },
