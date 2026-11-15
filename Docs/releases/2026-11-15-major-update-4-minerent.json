@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "releaseMode": "minerent_and_hosted_automodpack_with_manual_client_application",
+  "userScope": {
+    "mineRentDeployment": true,
+    "nativeAutoModpackPublication": true,
+    "localServerUpdate": false,
+    "clientProfileApplication": false,
+    "friendPackage": false,
+    "releaseBaselinePromotion": false
+  },
+  "source": {
+    "branch": "develop",
+    "commit": "9dc472dae5214baf55b914cc5ec94ada2fe60d36",
+    "preflightVerifiedAt": "2026-11-15T15:04:26.445011+05:00",
+    "releaseInventorySha256": "7462384d8f5806a9ac7e0dda680688efc7c5efede911e9b95f63eaedfad24fa4",
+    "packSyncInventorySha256": "5bbba9ee5721260735d5dc31d80885edbc64adc93b97c233482282b04d2338fd",
+    "releaseFiles": 2952,
+    "packSyncFiles": 2945
+  },
+  "payload": {
+    "filename": "minerent-major-update-4-20261115-145005.zip",
+    "sha256": "29aad65a4b6db87071170d6da0767f9588cb2e1d68431afae2d8ef8993cbf0ec",
+    "size": 382226578,
+    "runtimeCopied": 472,
+    "hostedCopied": 493,
+    "runtimeManifestDeletions": 65,
+    "hostedManifestDeletions": 67,
+    "temporaryArchiveRemoved": true
+  },
+  "server": {
+    "name": "JustEnough",
+    "panel": "https://my.minerent.net/server/0618360f",
+    "state": "running",
+    "nativeDoneAt": "2026-11-15T15:37:22+05:00",
+    "nativeDoneDurationSeconds": 1.424,
+    "primaryAddress": "ForeverSMP.minerent.io:25565",
+    "dynamicFallbackAddress": "109.236.57.44:31604"
+  },
+  "startupRepair": {
+    "status": "in testing",
+    "rootCause": "The live inventory retained Simpler Exposure after its required Exposure dependency was intentionally removed from Major Update 4",
+    "forgeRequirement": "exposure >=1.9.21 and <1.10",
+    "removedRuntime": [
+      "/mods/simpler_exposure-1.0.0.jar",
+      "/config/simpler_exposure-common.toml"
+    ],
+    "removedHosted": [
+      "/automodpack/host-modpack/main/mods/simpler_exposure-1.0.0.jar",
+      "/automodpack/host-modpack/main/config/simpler_exposure-common.toml"
+    ]
+  },
+  "voxyServerSide": {
+    "filename": "vss-0.3.5-forge-1.20.1.jar",
+    "sha256": "5f8f40bfc83a4bb6a049921668ee0f889730572f191c7a349526d75c97c0f730",
+    "runtimeCommandVerified": true,
+    "stats": {
+      "onlinePlayers": 0,
+      "activeSessions": 0,
+      "queued": 0,
+      "rejected": 0,
+      "failed": 0,
+      "timedOut": 0
+    },
+    "neoVoxyRedistributed": false,
+    "neoVoxyClientAction": "manual installation required"
+  },
+  "publication": {
+    "published": true,
+    "publishedAt": "2026-11-15T15:43:02+05:00",
+    "contentTokenShort": "498d00c",
+    "preview": {
+      "added": 98,
+      "changed": 394,
+      "deleted": 57,
+      "excluded": 2
+    },
+    "postPublicationPreviewAt": "2026-11-15T15:43:27+05:00",
+    "postPublicationPreview": {
+      "added": 0,
+      "changed": 0,
+      "deleted": 0,
+      "excluded": 2
+    },
+    "excluded": [
+      "main/mods/jem-bootstrap.jar",
+      "main/options.txt"
+    ]
+  },
+  "preservedClientState": {
+    "stableProfileChanged": false,
+    "friendPackageCreated": false,
+    "releaseBaselinePromoted": false,
+    "manualClientApplication": true
+  },
+  "playerAcceptance": "in testing",
+  "automatedTestsRun": false,
+  "gameplayLaunched": false
+}

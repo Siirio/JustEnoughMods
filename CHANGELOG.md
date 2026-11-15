@@ -1,3 +1,13 @@
+## 2026-11-15 - Deploy Major Update 4 to MineRENT
+
+- User authorized the prepared Major Update 4 deployment to MineRENT and its hosted AutoModpack catalogue, while keeping the stable client and release baseline unchanged. The user will accept the client update manually
+- Uploaded and extracted the approved `develop` snapshot `9dc472dae5214baf55b914cc5ec94ada2fe60d36` from the 382,226,578-byte release archive with SHA-256 `29aad65a4b6db87071170d6da0767f9588cb2e1d68431afae2d8ef8993cbf0ec`, then applied all 65 runtime and 67 hosted catalogue deletions from the prepared manifest
+- Bug / Both Sided / the live MineRENT inventory retained `simpler_exposure-1.0.0.jar` after Exposure was intentionally removed, so Forge stopped at the dependency gate because Simpler Exposure requires Exposure 1.9.21 or later and earlier than 1.10 / in testing through user-directed deletion of Simpler Exposure and `simpler_exposure-common.toml` from both the live runtime and hosted AutoModpack source
+- MineRENT returned to `Работает` and reached native `Done (1.424s)` at `2026-11-15T15:37:22+05:00`. The runtime VSS command reported zero failed, rejected, queued or timed-out work with no players online
+- Native hosted publication completed at `2026-11-15T15:43:02+05:00` with content token `498d00c` and diff `+98 ~394 -57 (2 excluded)`. The follow-up preview at `15:43:27+05:00` returned `+0 ~0 -0`, with `mods/jem-bootstrap.jar` and `options.txt` excluded as designed
+- Primary address is `ForeverSMP.minerent.io:25565`. The dynamic fallback observed on the MineRENT Network page is `109.236.57.44:31604`
+- The stable `JustEnoughMods` profile, friend package and immutable release baseline were not changed. Neo Voxy remains a manual client installation because its license does not permit redistribution. No automated tests, gameplay launch or player acceptance was performed
+
 ## 2026-11-15 - Prepare Major Update 4 production release
 
 - User requested promotion of the complete Major Update 4 state to MineRENT and inclusion of the Voxy pair
