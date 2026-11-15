@@ -16,8 +16,10 @@ This plan covers the regressions reported after the Major Update 4 MineRENT publ
 - Keep the native AutoModpack state directory and repair only its managed projection and transactions
 - Make a disconnect from a hosted boss fight an immediate defeat and release the arena
 - Restore reliable FTB Quests menu access and reward claiming
+- Make JEM Rewards side-slot claims respond immediately while the server remains authoritative
 - Restore arena borders for every registered structural boss
-- Repair the F6 race/player preview renderer
+- Repair the first-login race preview and the F6 race/player preview renderer
+- Distribute Sodium Extras entity and block-entity culling as 56 blocks horizontally and 26 blocks vertically
 - Remove Blast From The Past camera shake from Frostomper and Psycho Bear attacks
 - Offer Boss Raid only when a matching Raid event is active
 - Restore the Events tab in `/smp`
@@ -35,13 +37,16 @@ This document does not implement, build, publish, deploy, or launch any change
 
 `develop` and `main` are not equal
 
-- `develop` is at `df0be060a2` and matches `origin/develop`
-- `main` is at `b244bda4a`
-- `origin/main...origin/develop` reports `0 135`
-- `develop` contains 135 commits that are not in `main`
+- The investigation base for this plan is `develop` at `0e0cae0aa6`, matching `origin/develop` before this documentation commit
+- `origin/main` is at `b244bda4a`
+- The stale local `main` ref is at `8408ae454f` and is 17 commits behind `origin/main`. It must not be used as a production base
+- `origin/main...origin/develop` reports `0 137`
+- `develop` contains 137 commits that are not in `main`
 - The current `develop` history includes the Major Update 4 merge and MineRENT deployment record
 
-Implementation must continue on `develop`. Promotion to `main` is a separate production release action
+This plan remains on `develop`
+
+At implementation time, fetch the remote, confirm that `develop` is the freshest reviewed base, and create `bugfix/major-update-4-stabilization` from that exact commit. Do not create the implementation branch during planning. Promotion to `main` remains a separate production release action
 
 ## Investigation result
 
@@ -54,6 +59,11 @@ Implementation must continue on `develop`. Promotion to `main` is a separate pro
 | Partial client projection | The stable profile contains old and new copies of several JEM JARs | The installed token can match the published head while stale live files remain, so token equality alone is not a sufficient readiness check |
 | Keybind loss | The stable `options.txt` has Hotbar 1 through 9 and FTB Quests set to `key.keyboard.unknown` | The live player state was changed. The exact writer is not yet proven |
 | Resource-pack order loss | Stable `options.txt` has a different order and a different set from the maintained template | The live player state was changed. AutoModpack excludes `options.txt`, so the exact writer must be traced before a fix |
+| Dedicated FTB Quests identity failure | The MineRENT client log reports `Local player id 918bacc0-970d-445c-a0cc-922e59fd57ba was not found in the known players list` and FTB Teams says it cannot function correctly. Exact 2001.3.2 bytecode shows `ClientTeamManagerImpl.initSelfDetails()` looks up `selfKnownPlayer` with `Minecraft.getUser().getGameProfile().getId()` | The launcher account UUID differs from the server-issued player UUID. FTB Teams resolves the wrong client identity on the dedicated server, while singleplayer uses a matching identity |
+| FTB claim-all server stall | The integrated-server watchdog repeatedly shows `ClaimAllRewardsMessage` entering `FtbRewardClaimMixin`, `BookMigration.invoke()`, `BookXpReward.claimFrom()`, and `BookXpReward.persist()`. That method calls `saveEverything()` for every host XP reward and waits in chunk saving for more than 200 seconds | JEM performs a synchronous whole-world durability save inside each reward of FTB's all-quests loop |
+| Delayed JEM Rewards side slots | `RewardsPanel` changes only after a new server snapshot. `RewardsNetwork.handle()` silently returns when any request arrives fewer than two server ticks after the session snapshot, including a valid claim, and the client polls again only every 20 ticks | A fast click can be discarded without acknowledgement and the panel has no local pending state, so the slot can appear unchanged for about one second or longer |
+| First-login race preview | `RaceExperienceClient.tick()` opens the mandatory screen as soon as player, level, status, and an empty screen exist. `RaceStageRenderer` then renders a detached `RemotePlayer` that never joins the level and deliberately returns no Forge capabilities | The screen can render before the native player presentation is ready, and installed renderer adapters receive an actor without their required capability and join lifecycle. The right-side ordinary entity preview can render while the detached player remains blank |
+| Sodium Extras distances | Both managed and local Server copies of `sodiumextras-client.toml` already use squared horizontal distance `3136`, which is 56 blocks, but both entity sections use vertical distance `28` | The horizontal target is already correct. The distributed vertical target is two blocks too high for entities and block entities |
 | Raid without an event | `StructureStaging.raidAvailable()` falls back to `RaidArenaApi.compatible(...)`, and `chooseInScope()` creates `manual:raid:*` | JEM Server intentionally creates an ordinary manual Raid when no Raid event exists |
 | Missing Events tab | `DomainFeatures` exposes Events only when `EventRuntime.enabled(server)` is true. The current world config has `enabled = false` | UI visibility is incorrectly coupled to scheduler activation |
 | Delayed disconnect defeat | `EncounterContext.expireDisconnected()` and the hosted encounter owner use `HostedEncounterApi.disconnectGraceMillis()` | Disconnects keep a participant reservation during the grace interval instead of ending the attempt immediately |
@@ -61,7 +71,7 @@ Implementation must continue on `develop`. Promotion to `main` is a separate pro
 | Blast From The Past camera shake | Installed bytecode sends `ScreenShakePayload(20.0F, 60)` from both Frostomper and Psycho Bear and installs it through `ClientPayloadHandler.handleScreenShake()` | The mod has a private unconditional screen-shake path and no relevant config option |
 | Oversized handbook bosses | All generated boss entries use the unbounded native `patchouli:entity` page without per-entity fitting data | Sirok and other large entities can leave the page viewport |
 | Complex handbook text | `Mods/JEMAchievementGuide/src/main/handbook/bosses.json` generates the long technical pages shown in the screenshots | The authored source is engineering-oriented and duplicates implementation detail instead of player actions and rewards |
-| JEI "Остальное" overflow | `JemCatalogCategories.classify()` sends ores and listed non-building resources directly to `Kind.OTHER`, has no resource-family category, and lets many unmatched Create and farming blocks fall through to the same catch-all | The classifier has no canonical "Руды" owner and relies on short name heuristics instead of installed tags plus bounded exceptions |
+| JEI "Остальное" overflow | `JemCatalogCategories.classify()` sends ores and listed non-building resources directly to `Kind.OTHER`, explicitly sends vanilla functional workstations to `OTHER`, excludes every unmatched `EntityBlock` from Building, and sends every unmatched item to the final `OTHER` catch-all | The classifier has no canonical "Руды" owner, no reasoned residual contract, and uses a short ordered keyword waterfall that hides missing semantic ownership |
 | Misclassified requested items | The exact installed IDs include `create:andesite_table_cloth`, `create:brass_table_cloth`, `create:copper_table_cloth`, `brewery:sideboard`, `unearthed_journey:canoe_item`, and `farm_and_charm:chicken_coop` | Furniture, transport, and farming classifiers do not cover these installed identities or their full semantic families |
 | Better Villages competition | Grand Capitals replaces the five `minecraft:village_*` definitions with `revampedvillages:start`, while Better Villages replaces NBT under vanilla village paths and can replace village-set placement through its Mixin | Reinstalling Better Villages on the same five IDs would either be inactive behind Grand Capitals or restore two owners for the vanilla village route |
 | Abridged and RoadWeaver bridge conflict | Abridged registers the separate `abridged:bridge` structure at `surface_structures`, while RoadWeaver places its road feature later at `top_layer_modification` and selects both short and long native bridge builders from its own span masks | RoadWeaver can see Abridged starts before it places blocks, but its current generic avoidance checks only one exact segment center inside a surface structure piece, has no 15–20 block clearance, and does not suppress the complete RoadWeaver bridge range |
@@ -76,26 +86,17 @@ Implementation must continue on `develop`. Promotion to `main` is a separate pro
 
 ### Causes that still require runtime proof
 
-#### FTB Quests menu
+#### FTB Quests acceptance boundary
 
-Static evidence shows:
+The first incorrect dedicated-client state is proven:
 
-- FTB Quests 2001.4.22 loads its quest data and `ftbquests:open_quest_book`
-- `disable_gui` is false
-- The inventory sidebar button is enabled
-- The latest client log has no FTB quest parse failure
-- The stable FTB Quests keybind is unbound
-- `QuestBookItem.use()` and the inventory route should call the native `ClientQuestFile.openGui()` path
+- FTB Quests 2001.4.22 loads its quest data and `disable_gui` is false
+- Singleplayer opens and renders the native `QuestScreen`
+- MineRENT supplies a known-player set that contains the server UUID but not the launcher-account UUID used by `ClientTeamManagerImpl.initSelfDetails()`
+- FTB Teams leaves `selfKnownPlayer` null and explicitly reports that it cannot function correctly
+- The stable FTB Quests key is also unbound, but that separate input defect cannot explain failure from the book and inventory button
 
-The missing keyboard route is proven, but it does not explain failure from both the book and inventory. Add bounded one-shot diagnostics at these points before changing behavior:
-
-1. FTB key click and inventory sidebar click
-2. Quest book item use
-3. `ClientQuestFile.INSTANCE` presence
-4. Entry into `ClientQuestFile.openGui()`
-5. `Minecraft.setScreen(QuestScreen)` result on the next client tick
-
-Fix the first missing transition only. Do not replace the native FTB Quest GUI or reward owner
+After the identity correction, keep bounded one-shot diagnostics for the three native entry routes and remove them after acceptance. If a route still fails, fix its first missing transition only. Do not replace the native FTB Quest GUI, team state, or reward owner
 
 #### False arena occupancy
 
@@ -108,17 +109,17 @@ The current blocker query cannot select a fully offline player. Instrument each 
 
 The final UI must name each real blocker. A prompt must be invalidated immediately when its blocker list becomes empty
 
-#### F6 player renderer
+#### First-login and F6 player renderer
 
-The input and screen-open path works. The failure is inside `JEMRoles` presentation:
+The input and screen-open path works. The same presentation defect affects the mandatory first-login screen and later F6 opens:
 
 - `RaceExperienceScreen`
 - `RaceStageRenderer`
-- The detached `RemotePlayer`
+- The detached `RemotePlayer` never joins the level and exposes no Forge capabilities
 - The custom viewport and projection state
 - Native player renderer compatibility, including Customizable Player Models
 
-Add one-frame diagnostics for entity readiness, skin/model readiness, renderer selection, pose stack, viewport, scissor, depth state, and render exceptions. Compare the custom path with the native inventory player-render helper. Keep the server race state unchanged
+Add one-frame diagnostics for local-player readiness, skin/model readiness, selected renderer, capability availability, pose stack, viewport, scissor, depth state, and render exceptions. Compare the detached actor with the real `LocalPlayer` through the native inventory player-render helper. Do not use a fixed time delay as a readiness substitute. Keep the server race state unchanged
 
 ## Implementation plan
 
@@ -202,27 +203,67 @@ This flow must cover JARs, configs, resource packs, and obsolete managed directo
 
 ### Phase 7: Restore FTB Quests access
 
-1. Restore a valid default FTB Quests key only when the player has no intentional binding
-2. Run the bounded native diagnostic described above
-3. Fix the first missing transition in the native FTB flow
-4. Keep the FTB quest book item, inventory sidebar, native QuestScreen, team progress, rewards, and claims as the owners
-5. Keep In Chat FTB as a link adapter only
-6. Remove diagnostics after the cause is proven
-7. Verify all three entry routes: key, book item, and inventory button
-8. Verify a completed unclaimed quest can open and claim its native reward
-9. Retest with JEM Security installed to prove there is no security regression
+1. Add one exact-version client compatibility correction for FTB Teams 2001.3.2 at `ClientTeamManagerImpl.initSelfDetails()`
+2. Resolve the local identity from the connected `LocalPlayer` UUID after join, not from the launcher `User` profile UUID
+3. Fall back to the native account UUID only when no connected local player exists
+4. Keep the team ID supplied by the native sync packet, the server known-player map, FTB team membership, and all FTB packet formats unchanged
+5. Fail closed if the exact method signature changes. Do not patch a broad FTB Teams surface
+6. Restore a valid default FTB Quests key only when the player has no intentional binding
+7. Keep one-shot diagnostics for key, book, inventory button, `ClientQuestFile`, native open call, selected screen, resolved player UUID, and resolved team UUID
+8. Keep the FTB quest book item, inventory sidebar, native QuestScreen, team progress, rewards, and claims as the owners
+9. Keep In Chat FTB as a link adapter only
+10. Remove diagnostics after the identity and all three entry routes are accepted
+11. Replace per-reward `BookXpReward.persist()` whole-world saves with a bounded reward transaction
+12. For one reward, persist and verify the player receipt once without saving all chunks
+13. For "Claim all", collect JEM XP receipts during the native loop and perform one persistence boundary after the batch
+14. Preserve exact-once XP, native claimed bits, retry behavior, and JEM reward receipts when persistence fails
+15. Verify all three entry routes on MineRENT and singleplayer
+16. Verify single reward, choice reward, XP reward, and "Claim all" without a server-tick stall
+17. Retest with JEM Security installed to prove there is no security regression
 
-### Phase 8: Repair F6 player rendering
+### Phase 8: Repair first-login and F6 player rendering
 
 1. Remove stale duplicate JEM Roles artifacts through the native client repair from Phase 1
 2. Add the bounded render diagnostic described above
-3. Prefer the native inventory player-render helper if it can provide the required stage presentation
-4. Otherwise restore every viewport, scissor, projection, lighting, depth, and pose state after the custom render pass
-5. Derive preview scale from the model bounding box and GUI viewport
-6. Support the active player skin and Customizable Player Models without making CPM a required dependency
-7. Keep F6 input, server race state, unlocks, and progression unchanged
+3. Do not open the mandatory presentation until the connected `LocalPlayer`, skin/model information, and native renderer are available
+4. Make readiness event-driven from actual player and renderer state. Do not add a fixed sleep or arbitrary tick delay
+5. Prefer the real `LocalPlayer` through the native inventory player-render helper so Epic Fight, CPM, and other renderer adapters see their initialized actor and capabilities
+6. Isolate player pose and rotation changes and restore them after the preview without changing world position or gameplay state
+7. If the native helper cannot provide the stage camera, retain a narrow custom camera wrapper around the real player and restore every viewport, scissor, projection, lighting, depth, model-view, fog, and pose state
+8. Do not keep a detached actor that suppresses capabilities required by installed render adapters
+9. Rebuild the preview when the active skin, model type, player instance, level, or renderer compatibility state changes
+10. Derive preview scale from the model bounding box and GUI viewport
+11. Support the active player skin and Customizable Player Models without making CPM a required dependency
+12. Verify the mandatory first world join, first dedicated-server join, later F6 open, race switch, GUI-scale change, and reconnect
+13. Keep F6 input, server race state, unlocks, and progression unchanged
 
-### Phase 9: Remove Blast From The Past camera shake
+### Phase 9: Make JEM Rewards side-slot claims immediate
+
+1. Keep `PendingRewardContainer`, `RewardsData`, and the server inventory as the only claim authority
+2. Remove the global two-tick silent return for valid claim actions
+3. Apply rate control only to refresh polling, or replace it with request IDs that deduplicate exact repeated actions without discarding a first claim
+4. Send an acknowledgement or fresh snapshot for every accepted, rejected, stale, full-inventory, or duplicate claim request
+5. On left click, mark the exact row pending immediately and hide or dim it in the same client frame
+6. Key pending state by session, revision, bundle UUID, and item index
+7. Commit the visual removal only when the server snapshot confirms it
+8. Restore the row and show a short native error when the server rejects the claim or inventory has no capacity
+9. Prevent a second click on the pending row without mutating the client inventory or cursor
+10. Keep right click, drag, throw, deposit, hotbar swap, and carried-stack behavior blocked as before
+11. Keep native inventory synchronization authoritative, including the Creative inventory full-content path
+12. Verify rapid first click after opening, repeated clicks, high latency, full inventory, page navigation, stale revision, and disconnect
+
+### Phase 10: Distribute Sodium Extras render distances
+
+1. Keep distance culling enabled for both `tileEntities` and `entities`
+2. Keep `cullingMaxDistanceX = 3136`, because Sodium Extras stores the squared horizontal value and `3136 = 56 x 56`
+3. Set `cullingMaxDistanceY = 26` for both block entities and entities
+4. Apply the values to the canonical managed client config, not to `options.txt`
+5. Preserve the existing block-entity and entity whitelists
+6. Synchronize the ordinary local Server projection only as a managed-pack mirror. Do not treat this client config as server gameplay authority
+7. Publish the config through native AutoModpack during implementation so every managed client receives the same 56 by 26 limits
+8. Confirm the installed Test profile has both values after native application and has no pending transaction
+
+### Phase 11: Remove Blast From The Past camera shake
 
 1. Add a narrow optional client compatibility adapter for exact installed mod ID `blastfromthepast`
 2. Suppress only the mod's `ScreenShakePayload` effect produced by Frostomper and Psycho Bear
@@ -230,7 +271,7 @@ This flow must cover JARs, configs, resource packs, and obsolete managed directo
 4. Do not disable global Minecraft hurt movement or camera effects from other mods
 5. Bind the adapter to the inspected 1.0.3 class and method signatures and fail closed if the upstream signature changes
 
-### Phase 10: Rework the boss handbook
+### Phase 12: Rework the boss handbook
 
 Canonical authored source: `Mods/JEMAchievementGuide/src/main/handbook/bosses.json`
 
@@ -271,7 +312,7 @@ Visual rules:
 - Review `/smp` changes against `Forge-1.20.1-jem-smp-screens`
 - Run the required visual audit on the actual in-game result before delivery
 
-### Phase 11: Add the top-level "Руды" catalog section
+### Phase 13: Add the top-level "Руды" catalog section
 
 Canonical owners:
 
@@ -291,24 +332,38 @@ Canonical owners:
 9. Include equivalent families from all other installed mods when the exact registry and tags prove the same material role
 10. Keep decorative bricks, stairs, slabs, walls, machines, tools, armor, and ordinary construction blocks outside "Руды" even when their recipe uses an ore material
 11. Give the category a stable representative ore icon and place it near the existing material and building sections
-12. Add a catalog audit report that lists every remaining "Остальное" item by mod and reason, so the catch-all contains only items that truly have no better owner
+12. Build the audit from every displayable stack in the live installed Forge registry, including stack variants that have distinct native names or behavior
+13. Export item ID, namespace, display name, item class, block class, block-entity flag, tags, recipes, selected category, and machine-readable reason code
+14. Compare the runtime export with the static Atlas inventory so missing dynamic registrations and false static positives remain explicit
+15. Add a catalog audit report that lists every remaining "Остальное" item by mod and reason, so the catch-all contains only items that truly have no better owner
 
 The screenshots are representative evidence. They are not a closed item allowlist
 
-### Phase 12: Correct catalog ownership outside "Руды"
+### Phase 14: Correct catalog ownership outside "Руды"
 
-1. Audit all Create items currently in "Остальное" and assign machines, mechanisms, workstations, tools, logistics, and redstone parts to their existing semantic categories
-2. Put Create table-cloth countertops and all equivalent installed countertop families in `Building -> Furniture`
-3. Put `brewery:sideboard` and equivalent sideboards or buffets in `Building -> Furniture`
-4. Put `unearthed_journey:canoe_item` and equivalent rideable canoes in `Transport`. Keep spawn eggs in `Spawn Eggs`
-5. Put `farm_and_charm:chicken_coop` in `Food and Cooking`
-6. Audit all Let's Do Farm & Charm items and put cooking stations, food processing blocks, farm production blocks, utensils, ingredients, and related functional storage in `Food and Cooking`
-7. Keep purely decorative Farm & Charm building pieces in the appropriate Building leaf instead of moving the whole mod by namespace
-8. Prefer exact native tags, block classes, recipes, and source-backed families over translated-name matching
-9. Add explicit regression coverage to the implementation review matrix without creating automated tests or test fixtures
-10. Confirm that no requested family falls back to "Остальное" after the full installed-registry audit
+1. Replace the hidden final catch-all with an explicit classification result that includes category and reason
+2. Evaluate exact tags and native classes first, then recipes and registered behavior, then bounded source-backed exceptions, and only then stable ID words
+3. Classify functional `EntityBlock` items by their actual function before the generic Building exclusion. A block entity must not become "Остальное" only because it has a block entity
+4. Audit all Create items currently in "Остальное" and assign machines, mechanisms, workstations, tools, logistics, and redstone parts to their existing semantic categories
+5. Put vanilla and modded crafting, smithing, enchanting, cutting, grinding, weaving, and comparable workstations in the established engineering or functional category instead of the current forced `OTHER` branch
+6. Put Create table-cloth countertops and all equivalent installed countertop families in `Building -> Furniture`
+7. Put `brewery:sideboard` and equivalent sideboards or buffets in `Building -> Furniture`
+8. Put `unearthed_journey:canoe_item` and equivalent rideable canoes in `Transport`. Keep spawn eggs in `Spawn Eggs`
+9. Put `farm_and_charm:chicken_coop` in `Food and Cooking`
+10. Audit all Let's Do Farm & Charm items and put cooking stations, food processing blocks, farm production blocks, utensils, ingredients, and related functional storage in `Food and Cooking`
+11. Keep purely decorative Farm & Charm building pieces in the appropriate Building leaf instead of moving the whole mod by namespace
+12. Audit every remaining namespace, with separate review groups for non-block components, unmatched block entities, functional workstations, tools, machine parts, upgrade items, templates, tokens, debug items, and admin-only items
+13. Assign machine parts and production components to `Create and Redstone` when installed recipes and behavior prove an engineering role
+14. Assign storage, furniture, transport, food, farming, fishing, books, potions, wearable items, weapons, spawn eggs, nature, light, glass, holiday decor, and building materials through their existing semantic owners
+15. Keep an item in "Остальное" only through an explicit exact-ID allowlist with a written reason such as debug-only, admin-only, abstract progression token, or no player-facing semantic owner
+16. Treat an unreasoned `OTHER` result as an implementation failure and show it in the audit report
+17. Do not classify a complete mod namespace as one category when its items have different roles
+18. Prefer exact native tags, block classes, recipes, and source-backed families over translated-name matching
+19. Add explicit regression coverage to the implementation review matrix without creating automated tests or test fixtures
+20. Confirm that every runtime registry stack has one category, one reason, and no duplicate leaf owner
+21. Confirm that no requested family falls back to "Остальное" after the full installed-registry audit
 
-### Phase 13: Give Abridged priority, restore terrain blending, and add Better Villages safely
+### Phase 15: Give Abridged priority, restore terrain blending, and add Better Villages safely
 
 The user's "Path Weaver" name refers to the installed `RoadWeaver` mod. RoadWeaver remains installed
 
@@ -342,7 +397,7 @@ The user's "Path Weaver" name refers to the installed `RoadWeaver` mod. RoadWeav
 
 The noncompetition target is the current Grand Capitals village owner plus the unique Trek and Nature's Spirit village routes. This is the safest complete interpretation of the unfinished phrase "make so that it wont compete with"
 
-### Phase 14: Package and release as one client-and-server boundary
+### Phase 16: Package and release as one client-and-server boundary
 
 This work is not a server-only update. It changes client state handling, client rendering, handbook assets, configs, optional client compatibility, and server encounter behavior
 
@@ -371,7 +426,12 @@ Automated tests and gameplay test fixtures are prohibited by the project rules. 
 - No active Luxium or JEM Luxium file, page, config, or build target remains
 - No old and new JEM JAR pair remains in the client `mods` directory
 - FTB Quests opens from the key, quest book, and inventory button
+- MineRENT no longer logs that the local player UUID is absent from the FTB Teams known-player map
+- FTB Teams resolves the native server-issued player identity and team on both dedicated and integrated servers
 - A native quest reward can be claimed
+- "Claim all" completes without a long server tick, repeated whole-world save, duplicate reward, or lost entitlement
+- A JEM Rewards side slot reacts in the click frame and reconciles with the next authoritative server snapshot
+- A rejected or full-inventory reward claim restores the exact row and never duplicates or loses the reward
 - Disconnecting during a hosted boss fight records defeat immediately
 - Other players can start the encounter immediately after that disconnect
 - The disconnected player returns outside the arena on the next login
@@ -379,7 +439,9 @@ Automated tests and gameplay test fixtures are prohibited by the project rules. 
 - Underground borders do not extend to the sky
 - Raid is absent when no matching Raid event is active
 - `/smp` keeps the Events tab and shows an empty state when applicable
-- F6 shows the player model with the active skin and preserves GUI render state
+- The first mandatory race screen and later F6 screen show the player model with the active skin and preserve GUI render state
+- Race preview works immediately after singleplayer start, dedicated-server join, and reconnect without an arbitrary delay
+- Sodium Extras uses 56 horizontal and 26 vertical blocks for both entity and block-entity culling on every managed client
 - Frostomper and Psycho Bear no longer shake the camera
 - Other native and modded camera effects still work
 - Boss pages use simple Russian, verified mechanics, exact drops, and verified XP
@@ -402,6 +464,8 @@ Automated tests and gameplay test fixtures are prohibited by the project rules. 
 ## Protected behavior
 
 - Native FTB Quest state and rewards remain owned by FTB Quests
+- FTB Teams retains native server-issued teams and known-player data. The compatibility fix changes only which connected client UUID is used for self lookup
+- JEM Rewards remains server-authoritative and never predicts inventory contents or claim success
 - JEM Security attestation, anti-xray, creative provenance, and forbidden-pack checks remain active
 - Player-owned Xaero waypoints and settings remain private
 - Boss combat remains server-authoritative
@@ -414,9 +478,10 @@ Automated tests and gameplay test fixtures are prohibited by the project rules. 
 - Grand Capitals remains the owner of the five current vanilla village definitions
 - Structurify remains the only physical-overlap owner
 - Existing generated roads, bridges, and structures are not rewritten
+- Sodium Extras whitelists and all unrelated graphics settings remain unchanged
 
 ## Delivery gate
 
 Do not mark this plan resolved until all confirmed causes have owner-level fixes and all unresolved causes have runtime evidence. A successful build, matching token, or server start is not player acceptance
 
-After every implementation and acceptance gate passes, report "Все готово". Then perform the planned normal `develop` to `main` production promotion, push `main` without force, and verify that MineRENT, the stable client release, release metadata, and the immutable baseline describe the same reviewed production boundary. Do not promote `main` before those gates pass
+After implementation on `bugfix/major-update-4-stabilization`, merge the reviewed result into `develop` through the normal non-force path. After every implementation and acceptance gate passes, report "Все готово". Then perform the planned normal `develop` to `main` production promotion, push `main` without force, and verify that MineRENT, the stable client release, release metadata, and the immutable baseline describe the same reviewed production boundary. Do not promote `main` before those gates pass
