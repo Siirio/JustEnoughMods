@@ -14,7 +14,6 @@ This matrix freezes the approved standalone CurseForge scope from 2026-10-28. It
 | JEM Inventory Shortcuts | `jem_inventory_shortcuts` | `JEMInventoryShortcuts` | Client and server required | Forge 47.4.10+, Minecraft 1.20.1 | Sophisticated Core, Sophisticated Storage, Sophisticated Backpacks | Minecraft menus, JEI, Sophisticated Core, Sophisticated Storage, Sophisticated Backpacks | `jemcompat:inventory_delete` channel and protocol, Delete and Shift+Delete bindings and fail-closed slot rules | Inventory key handler, network and optional storage adapter in `JEMCompat` |
 | In Chat FTB | `in_chat_ftb` | `JEMInChatFTB` | Client-only | Forge 47.4.10+, Minecraft 1.20.1, FTB Quests 2001.4.22 | FTB Library as the upstream transitive API dependency | FTB Quests, FTB Library | Mod ID, clickable cyan quest-name presentation and native quest-page navigation | Existing standalone `JEMInChatFTB` |
 | JEM Adaptive Culling | `jem_adaptive_culling` | `JEMAdaptiveCulling` | Client-only | Forge 47.4.10+, Minecraft 1.20.1 | Embeddium 0.3.31, Oculus 1.8.0 | Minecraft renderer, Embeddium, Oculus | Mod ID, configuration keys, visibility caches, geometry invalidation and compatibility exclusions | Existing standalone `JEMAdaptiveCulling` |
-| Unofficial Luxium Compatibility | `jem_luxium` | `JEMLuxium` | Client-only | Forge 47.4.10+, Minecraft 1.20.1, official unmodified Luxium 2.8.0-pre-alpha, Embeddium 0.3.31, Oculus 1.8.0 | None | Luxium, Embeddium, Oculus | Mod ID, mutual-exclusion state, restart persistence and managed-context reload behavior | Existing standalone `JEMLuxium` |
 
 ## Compatibility scope notes
 
@@ -87,12 +86,6 @@ The future project must keep all 18 content integrations optional and data-drive
 
 JEM Animal Hints, JEM Drill Durability, In Chat FTB, JEM Seasons HUD, and JEM Adaptive Culling declare upstream integrations as dependencies. They do not carry additional credit obligations beyond accurate dependency and compatibility information
 
-Unofficial Luxium Compatibility is the only project in this matrix with the special unofficial and Vinlanx credit block. Its required public line is:
-
-> This is unofficial compatability mod - credits to the author of Luxium for an insanely optimized shaders
-
-The line must be followed by a statement that the project is not affiliated with or endorsed by Luxium or Vinlanx. The project may link only to the official Luxium project or download page. It must never bundle, mirror, patch, repackage, or redistribute Luxium code, shaders, assets, branding, or JAR content
-
 ## Side meanings
 
 - Client-only projects use `displayTest="IGNORE_SERVER_VERSION"` and are never required by a dedicated server
@@ -105,4 +98,4 @@ The line must be followed by a statement that the project is not affiliated with
 
 ## Evidence used for the freeze
 
-The matrix was reconciled with `tools/module-inventory.json`, current module metadata, and the installed managed-pack artifacts. The inspected integration versions were Jade 11.13.3, Create 6.0.8, FTB Quests 2001.4.22, Serene Seasons 9.1.0.3, Embeddium 0.3.31, Oculus 1.8.0, and Luxium 2.8.0-pre-alpha
+The matrix was reconciled with `tools/module-inventory.json`, current module metadata, and the installed managed-pack artifacts. The inspected integration versions were Jade 11.13.3, Create 6.0.8, FTB Quests 2001.4.22, Serene Seasons 9.1.0.3, Embeddium 0.3.31 and Oculus 1.8.0

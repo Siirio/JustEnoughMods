@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-13",
+  "scope": "Local Test JustEnoughMods Luxium shadow reconciliation",
+  "branch": "feature/major-update-4",
+  "status": "in testing",
+  "rootCause": "The compatibility adapter proved Luxium's internal shadow frame but did not reconcile Embeddium's visible receiver programs after world entry and renderer lifecycle work completed.",
+  "artifacts": {
+    "officialLuxium": {
+      "file": "Luxium Let there be light-2.8.0-pre-alpha.jar",
+      "sha256": "0530b80481b233d865eded0be55e9558562893fb48edec176d730d4789a9369469"
+    },
+    "oculus": {
+      "file": "oculus-mc1.20.1-1.8.0.jar",
+      "sha256": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef"
+    },
+    "jemLuxium": {
+      "file": "jem_luxium-1.0.12.jar",
+      "sha256": "c9fb26898bd4f076daab80485c3d75069569f12fc416b3e01378ddf9cffbe627"
+    }
+  },
+  "nativePublication": {
+    "contentToken": "87822e5ab915abc4a890a24564604b0b416bf226",
+    "journalSequence": 156,
+    "manifestSha1": "f70e482403eded5d78604233d41b0f1f39fa23d7",
+    "published": true,
+    "installedInClosedTestProfile": true,
+    "verifiedManagedJars": 334,
+    "pendingTransaction": false,
+    "legacyGameDirState": false
+  },
+  "chunky": {
+    "world": "minecraft:overworld",
+    "shape": "square",
+    "center": [0, 0],
+    "radiusBlocks": 2400,
+    "targetChunks": 90000,
+    "forceLoadExistingChunks": false,
+    "continueOnRestart": true,
+    "backgroundServerRestarted": true,
+    "resumeLog": "Task continuing for minecraft:overworld"
+  },
+  "limits": {
+    "clientLaunched": false,
+    "gameplayQaRun": false,
+    "visibleShadowAcceptance": "Pending user review",
+    "stableProfileChanged": false,
+    "mineRentChanged": false,
+    "releaseBaselineChanged": false
+  }
+}

@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 const here=path.dirname(fileURLToPath(import.meta.url));
-const sdk='C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin';
+const sdk='C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin';
 const {Client}=await import(pathToFileURL(sdk+'/node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js'));
 const {StreamableHTTPClientTransport}=await import(pathToFileURL(sdk+'/node_modules/@modelcontextprotocol/sdk/dist/esm/client/streamableHttp.js'));
 const c=new Client({name:'native-root-review',version:'1'});

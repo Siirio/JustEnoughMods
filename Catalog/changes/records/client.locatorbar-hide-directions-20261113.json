@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "change_id": "client.locatorbar-hide-directions-20261113",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "locatorbar"
+    }
+  ],
+  "precedence": {
+    "layer": "client_hud",
+    "priority": 126
+  },
+  "change": {
+    "summary": "Hide the four compass directions on the experience-bar locator",
+    "modifiers": [
+      {
+        "property": "client.locatorbar.world_directions",
+        "operation": "replace",
+        "before": true,
+        "after": false
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Locator Bar native configuration",
+    "kind": "runtime_correction",
+    "source_files": [
+      "Client/ManagedPack/config/locatorbar.json",
+      "Client/ManagedPack/config/locatorbar-server.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Apply the user request through the native client and server settings",
+    "decision_source": "User report or request on 2026-11-13"
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Hide the four compass directions on the experience-bar locator"
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Hide the four compass directions on the experience-bar locator"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_hud",
+      "local_distribution"
+    ],
+    "relations": [
+      "Native local or multiplayer settings -> compass-letter draw gate"
+    ],
+    "unresolved": [
+      "In-game HUD appearance requires player acceptance"
+    ]
+  }
+}

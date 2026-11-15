@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "asset": "assets/cosmeticarmorreworked/textures/gui/cosarmorinventory.png",
+  "canvas": {
+    "width": 256,
+    "height": 256,
+    "origin": "top-left",
+    "coordinates": "zero-based",
+    "color_mode": "RGBA"
+  },
+  "screen_bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 176,
+    "height": 166
+  },
+  "jem_inventory_source": {
+    "asset": "assets/minecraft/textures/gui/container/inventory.png",
+    "copy_bounds": [0, 0, 176, 166],
+    "sampling": "pixel-exact"
+  },
+  "equipment_slot_source": {
+    "bounds": [7, 83, 25, 101],
+    "width": 18,
+    "height": 18
+  },
+  "equipment_slot_origins": [
+    [7, 7],
+    [7, 25],
+    [7, 43],
+    [7, 61],
+    [77, 61],
+    [97, 61],
+    [115, 61],
+    [133, 61],
+    [151, 61]
+  ],
+  "protected_regions": [
+    {
+      "description": "Every native mod pixel outside the rendered screen bounds",
+      "rule": "byte-identical RGBA pixels"
+    }
+  ],
+  "runtime_drawn": [
+    "player entity",
+    "item stacks",
+    "empty-slot icons",
+    "crafting label",
+    "recipe book",
+    "toggle states"
+  ],
+  "changed_pixels_from_native": 24039,
+  "resampling": false
+}

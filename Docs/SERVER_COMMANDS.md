@@ -96,6 +96,10 @@ Exact evidence, exclusions and lifecycle ownership live only in [Boss Fight](eve
 - `tpa accept` / `tpaccept` — принять запрос телепортации.
 - История смертей открывается владельцем из собственного профиля `/smp`.
 
+## Player teleport to fresh terrain
+
+Direct player chat `/tp` and `/teleport` to coordinates in the current dimension can queue the destination when the command targets only its sender. The server holds temporary chunk tickets for the destination and its collision footprint, then completes the native teleport when those chunks are ready. Pending requests expire after two minutes. Console, functions, `/execute`, other targets and facing arguments use native command behavior.
+
 ## JEM Pack Sync
 
 - `jempack preview` — показать add/change/delete delta без публикации.
@@ -109,7 +113,7 @@ Exact evidence, exclusions and lifecycle ownership live only in [Boss Fight](eve
 
 ## Chunk pre-generation
 
-Chunky `1.3.146` доступен server console и OP. Pre-generation создаёт настоящие чанки заранее и уменьшает server worldgen stalls; VSS/Voxy больше не входят в сборку.
+Chunky `1.3.146` доступен server console и OP. Pre-generation создаёт настоящие чанки заранее и уменьшает server worldgen stalls. VSS `0.3.5` передаёт сохранённые terrain columns клиентам с вручную установленным совместимым Neo Voxy. Production config не разрешает VSS генерировать отсутствующие chunks и не передаёт prediction metadata.
 
 - `chunky world <world>` — выбрать dimension.
 - `chunky center <x> <z>` — установить центр.

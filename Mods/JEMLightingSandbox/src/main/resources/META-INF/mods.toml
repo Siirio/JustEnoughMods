@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved, except Windy artwork under LGPL-3.0-only"
+
+[[mods]]
+modId="jem_lighting_sandbox"
+version="0.5.19"
+displayName="JEM Lighting Sandbox"
+displayTest="IGNORE_ALL_VERSION"
+description='''Independent point lighting and sun shadows for Embeddium terrain in Sandbox JustEnoughMods.'''
+
+[[dependencies.jem_lighting_sandbox]]
+modId="forge"
+mandatory=true
+versionRange="[47.4,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jem_lighting_sandbox]]
+modId="embeddium"
+mandatory=true
+versionRange="[0.3.31,0.3.32)"
+ordering="AFTER"
+side="CLIENT"
+
+[[dependencies.jem_lighting_sandbox]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="CLIENT"
+
+["badoptimizations:incompatibilities"]
+options = ["enable_sky_color_caching"]

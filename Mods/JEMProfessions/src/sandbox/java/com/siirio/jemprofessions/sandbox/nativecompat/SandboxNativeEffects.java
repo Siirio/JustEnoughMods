@@ -34,7 +34,6 @@ public final class SandboxNativeEffects {
 
     public static void register() {
         MinecraftForge.EVENT_BUS.register(SandboxNativeEffects.class);
-        if (ModList.get().isLoaded("irons_spellbooks")) SandboxMagicEffects.register();
         if (ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.register();
         if (ModList.get().isLoaded("playerrevive")) SandboxReviveEffects.register();
     }
@@ -42,7 +41,7 @@ public final class SandboxNativeEffects {
     public static boolean activate(ServerPlayer player, String node, CompoundTag input) {
         if (!SandboxProfessionSupport.allowed(player)) return false;
         if (ModList.get().isLoaded("create") && SandboxEngineerEffects.activate(player, node, input)) return true;
-        return ModList.get().isLoaded("irons_spellbooks") && SandboxMagicEffects.activate(player, node, input);
+        return false;
     }
 
     static boolean eligible(ServerPlayer player) {
@@ -113,7 +112,6 @@ public final class SandboxNativeEffects {
                     && BuiltInRegistries.BLOCK.getKey(player.serverLevel().getBlockState(placement.pos).getBlock()).equals(placement.block))
                 engineerPlacement(player, placement.pos, placement.block);
         }
-        if (ModList.get().isLoaded("irons_spellbooks")) SandboxMagicEffects.tick(player);
         if (ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.tick(player);
         SandboxSchematicProjection.tick(player);
     }
@@ -123,7 +121,6 @@ public final class SandboxNativeEffects {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         PLACEMENTS.remove(player);
         SandboxSchematicProjection.logout(player);
-        if (ModList.get().isLoaded("irons_spellbooks")) SandboxMagicEffects.logout(player);
         if (ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.logout(player);
         if (ModList.get().isLoaded("playerrevive")) SandboxReviveEffects.logout(player);
         if (ModList.get().isLoaded("create")) SandboxEngineerEffects.logout(player);

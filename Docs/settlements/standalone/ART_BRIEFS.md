@@ -4,7 +4,7 @@ Status: **production contracts plus one editable control-family candidate; no ac
 
 ## Active direction and sources
 
-Exact Taste Engine pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md`. Taste is READY for labelled pixel/material preferences; technical workflow remains PROVISIONAL and runtime output unverified. The present user brief specifies this deliverable's compact native style, overriding unrelated broader themes.
+Exact Taste Engine pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md`. Taste is READY for labelled pixel/material preferences; technical workflow remains PROVISIONAL and runtime output unverified. The present user brief specifies this deliverable's compact native style, overriding unrelated broader themes.
 
 User-supplied references:
 

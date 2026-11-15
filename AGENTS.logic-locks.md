@@ -39,6 +39,14 @@
 - Unlock condition: Explicit user request to replace this exact production-source policy.
 - Created: 2026-10-31
 - Amended: 2026-10-31 after the user explicitly removed manual SHA approval and required production work to continue automatically once clean pushed develop passes preflight.
+## LOCKED: Production releases originate only from explicitly approved develop
+- Scope: tools/jem.py production actions, MineRENT deployment workflow, stable JustEnoughMods synchronization, release packaging, release-baseline promotion and main promotion
+- Approved signal: Сделай так, чтобы никогда больше вот эти вот обновления не брались из feature веток, только с develop, который я одобрил.
+- Protected behavior: No production or MineRENT release may originate from feature, sandbox, main, detached HEAD or another checkout. The source must be local develop exactly equal to fetched origin/develop and to the full commit SHA explicitly approved by the user. A production preflight records the actual release and AutoModpack inventory identities, and every guarded production action refuses changed branch, commit, controlled source or inventory. Local stage-pack-sync, test jem publication and recovery remain development operations and never grant production approval.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Strengthen the fail-closed preflight, approval receipt, inventory binding or diagnostics while preserving ordinary local feature/sandbox testing and requiring a fresh explicit approval after any source or inventory change.
+- Unlock condition: Explicit user request to replace this exact production-source policy.
+- Created: 2026-10-31
 
 ## LOCKED: One active event and SMP GUI specification
 - Scope: `Docs/events/*.md`, `Docs/SERVER_COMMANDS.md`, and `Docs/smp-gui/README.md`
@@ -128,4 +136,12 @@
 - Allowed changes: Localization wording, typography and presentation surface may change while preserving the one-unit thresholds, Minecraft-day semantics and trailing-plus rule. A specific feature may use a different format only after an explicit user instruction for that feature.
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-11-01
+## LOCKED: JEM Bootstrap jem.9 multi-screen consent
+- Scope: Mods/JEMBootstrap source and every deployed mods/jem-bootstrap.jar in Client installers, stable profiles and dedicated servers
+- Approved signal: User supplied the working jem.9 JAR and explicitly said to leave this Bootstrap because its four separate windows update correctly
+- Protected behavior: Use the exact approved jem.9 source and artifact workflow with separate server consent, explicit risk acceptance, old-file keep or remove choice, and final review or apply. Old files stay active only after an explicit keep choice. Do not collapse these decisions into one preload modal or default to keeping old files active
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Documentation, packaging and deployment synchronization may change around the exact artifact. Replace or modify the Bootstrap only after an explicit user request that names the new behavior
+- Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
+- Created: 2026-10-31
 

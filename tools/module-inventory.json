@@ -10,8 +10,7 @@
     {"name": "JEM Seasons HUD", "module": "JEMSeasonsHud", "modId": "jem_seasons_hud", "side": "client-only"},
     {"name": "JEM Inventory Shortcuts", "module": "JEMInventoryShortcuts", "modId": "jem_inventory_shortcuts", "side": "client-and-server-required"},
     {"name": "In Chat FTB", "module": "JEMInChatFTB", "modId": "in_chat_ftb", "side": "client-only"},
-    {"name": "JEM Adaptive Culling", "module": "JEMAdaptiveCulling", "modId": "jem_adaptive_culling", "side": "client-only"},
-    {"name": "Unofficial Luxium Compatibility", "module": "JEMLuxium", "modId": "jem_luxium", "side": "client-only"}
+    {"name": "JEM Adaptive Culling", "module": "JEMAdaptiveCulling", "modId": "jem_adaptive_culling", "side": "client-only"}
   ],
   "modules": [
     {
@@ -54,12 +53,12 @@
       ]
     },
     {
-      "name": "JEMLuxium",
-      "status": "production",
-      "java": true,
-      "side": "client-only",
+      "name": "JEMUnofficialOffgrid",
+      "status": "retired",
+      "java": false,
+      "side": "client-and-server-required",
       "modIds": [
-        "jem_luxium"
+        "unofficial_offgrid"
       ]
     },
     {
@@ -186,12 +185,20 @@
       ]
     },
     {
-      "name": "SimplerExposure",
-      "status": "production",
+      "name": "JEMLightingSandbox",
+      "status": "development",
       "java": true,
+      "side": "client-only",
+      "modIds": [
+        "jem_lighting_sandbox"
+      ]
+    },
+    {
+      "name": "SimplerExposure",
+      "status": "retired",
+      "java": false,
       "side": "client-and-server-required",
       "modIds": [
-        "simpler_exposure"
       ]
     },
     {

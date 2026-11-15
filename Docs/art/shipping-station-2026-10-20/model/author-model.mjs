@@ -1,10 +1,10 @@
 // Structured Blockbench MCP geometry authoring. No eval and no raster operations.
-import {Client} from 'file:///C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin/node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js';
-import {StreamableHTTPClientTransport} from 'file:///C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin/node_modules/@modelcontextprotocol/sdk/dist/esm/client/streamableHttp.js';
+import {Client} from 'file:///C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin/node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js';
+import {StreamableHTTPClientTransport} from 'file:///C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin/node_modules/@modelcontextprotocol/sdk/dist/esm/client/streamableHttp.js';
 import {writeFile,mkdir} from 'node:fs/promises';
 import {dirname} from 'node:path';import{fileURLToPath}from'node:url';
 const root=dirname(fileURLToPath(import.meta.url)).replaceAll('\\','/');
-const workspace='C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/blockbench/models/shipping-station-20261020';
+const workspace='C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/blockbench/models/shipping-station-20261020';
 await mkdir(workspace,{recursive:true});
 const groups={crate:[],iron:[],brass:[],pans:[]};
 function box(group,name,from,to){groups[group].push({name,from,to,origin:[8,8,8]});}

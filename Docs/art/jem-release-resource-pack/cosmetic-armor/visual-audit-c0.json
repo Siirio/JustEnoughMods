@@ -1,0 +1,33 @@
+{
+  "candidate": "Docs/art/jem-release-resource-pack/cosmetic-armor/production/cosarmorinventory.png",
+  "revision": "C0",
+  "pair": "Minecraft/Textures (Resource packs)/Minecraft-java-1.20.1-vanilla-gui-resource-packs",
+  "references_inspected": [
+    "C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/For_JEM_Resource_Pack/Exact Wanted GUI Approach and Style 3.png",
+    "C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/For_JEM_Resource_Pack/Exact Wanted GUI Approach and Style 4.png",
+    "C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/For_JEM_Resource_Pack/Buttons and Layout 1.png",
+    "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/inventory.png",
+    "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar!/assets/cosmeticarmorreworked/textures/gui/cosarmorinventory.png"
+  ],
+  "cold_read": {
+    "subject": "Cosmetic Armor inventory using the same dark inventory bank and warm crafting material as JEM Release",
+    "focus": "live player and equipment slots above the shared player inventory bank",
+    "ambiguity": "runtime player, items, ghost slot icons and labels are intentionally absent from the static atlas"
+  },
+  "axes": {
+    "reference_brief_fidelity": "PASS - exact JEM Release inventory pixels replace the bright native panel without importing reference artwork",
+    "tool_pixel_provenance": "PASS - native-size Aseprite source and direct PNG export preserve a deterministic pixel-exact builder composite",
+    "silhouette_hierarchy": "PASS - crafting, equipment and player inventory groups remain distinct at native scale",
+    "geometry_controls": "PASS - 256x256 canvas, 176x166 screen bounds, nine 18x18 equipment origins and protected native sprites are preserved",
+    "values_color_light": "PASS - warm crafting controls remain separated from the dark recessed inventory and equipment slots",
+    "pixel_clusters_materials": "PASS - the candidate reuses approved JEM Release clusters with no resizing, smoothing, tracing or generated pixels",
+    "composition_legibility": "PASS - no baked text or content overlaps live controls and the original slot grouping remains intact",
+    "motion_spatial_flow": "N/A - static GUI atlas",
+    "glow_effects": "N/A - no glow or particle content",
+    "export_actual_use": "PASS_STATIC - archive winner, PNG dimensions, CRC and protected-pixel checks pass, runtime capture remains unobserved"
+  },
+  "automatic_corrections": 0,
+  "result": "AGENT_PASS_STATIC",
+  "runtime_verified": false,
+  "user_approved": false
+}

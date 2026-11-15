@@ -5,7 +5,7 @@ import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 const here = path.dirname(fileURLToPath(import.meta.url));
-const sdk = process.env.BLOCKBENCH_MCP_ROOT || 'C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin';
+const sdk = process.env.BLOCKBENCH_MCP_ROOT || 'C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin';
 const { Client } = await import(pathToFileURL(path.join(sdk, 'node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js')));
 const { StreamableHTTPClientTransport } = await import(pathToFileURL(path.join(sdk, 'node_modules/@modelcontextprotocol/sdk/dist/esm/client/streamableHttp.js')));
 const source = path.resolve(here, '../../Docs/races/assets/bloom_r3_candidate');

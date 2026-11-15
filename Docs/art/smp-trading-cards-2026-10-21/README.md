@@ -22,7 +22,7 @@ Latest decision, 2026-10-22: **USER_REJECTED**. The user explicitly rejects `smp
 
 ## Оригинальные references, осмотренные в этом проходе
 
-Базовый путь: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/`.
+Базовый путь: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/`.
 
 | Оригинал | Классификация пользователя / наблюдаемые качества |
 | --- | --- |
@@ -41,7 +41,7 @@ Latest decision, 2026-10-22: **USER_REJECTED**. The user explicitly rejects `smp
 
 ## Production provenance
 
-Канонический внешний study: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/aseprite/Projects/JEM-1.20.1/Studies/Smp-trading-cards-2026-10-21`.
+Канонический внешний study: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/aseprite/Projects/JEM-1.20.1/Studies/Smp-trading-cards-2026-10-21`.
 
 `paint.lua` задаёт оригинальные формы, связанные плоскости и целевые пиксельные кластеры. Rasterization, слои, bitmap-font preview и PNG exports выполняются **в Aseprite1.3.18.6-dev**. Скрипт — сохраняемый способ редактирования исходных художественных решений, не внешний PNG rasterizer. PNG1× не проходили image conversion, resampling или downsampling. Font inputs — существующие read-only Minecraft font providers из art input cache; готовые reference/icon sprites не импортируются. Для повторного запуска скрипта этот локальный font cache нужен; редактируемые `.aseprite` самостоятельны.
 

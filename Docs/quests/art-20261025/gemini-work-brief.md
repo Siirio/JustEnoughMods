@@ -6,9 +6,9 @@ Work only in C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025. Ot
 
 Read the exact Pair guidance fully:
 
-- C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Background Images/gemini-pixel-environment-backgrounds/TASTE.md and TECHNICAL.md
-- C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Logos/gemini-minecraft-pixel-title-emblems/TASTE.md and TECHNICAL.md
-- C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/ART_DIRECTION.md
+- C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/Background Images/gemini-pixel-environment-backgrounds/TASTE.md and TECHNICAL.md
+- C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/Logos/gemini-minecraft-pixel-title-emblems/TASTE.md and TECHNICAL.md
+- C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/ART_DIRECTION.md
 
 Open all six actual supplied originals from originals/ and sources.json. Also inspect the relevant classified positive originals listed by the Pairs. The six supplied originals are the chosen identity art. The user explicitly requests extending the space around them by continuing each background color so the result works as a whole quest-page background. Outer space means surrounding empty canvas, not a request to turn every theme into cosmic scenery.
 

@@ -1,0 +1,146 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4.remove-irons-spells-20261106",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "irons_spellbooks"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "irons_lib"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "irons_patreon_lib"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "efs_iss"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "efiscompat"
+    }
+  ],
+  "precedence": {
+    "layer": "distribution_inventory",
+    "priority": 900
+  },
+  "change": {
+    "summary": "Major Update 4 removes Iron's Spells 'n Spellbooks, Iron's Spells Epic Fight integration, its Epic Fight compatibility adapter, and the now-unused Iron's Library dependency from the managed client and dedicated server.",
+    "modifiers": [
+      {
+        "property": "distribution.installed_mod_family",
+        "operation": "replace",
+        "before": [
+          "irons_spellbooks-1.20.1-3.15.6.jar",
+          "irons_lib-1.20.1-1.0.2.jar",
+          "efs_iss-1.0.3.jar",
+          "efiscompat-2.6.0.jar"
+        ],
+        "after": [],
+        "notes": "Shared Curios, GeckoLib, Player Animator, Epic Fight, and other independently owned dependencies remain installed. Existing worlds are not regenerated or rewritten."
+      },
+      {
+        "property": "questbook.irons_owned_content",
+        "operation": "replace",
+        "before": "31 Iron/add-on-owned quest cards plus Iron-only rewards on surviving quests",
+        "after": "31 owned cards removed; surviving quest identities and reward slots retained with installed vanilla replacements"
+      },
+      {
+        "property": "jem.optional_irons_adapters",
+        "operation": "deny",
+        "before": "Optional spell, summon, race, profession, boss-tier, trade, handbook, and quest adapters",
+        "after": "No active JEM runtime adapter or distribution resource targets the removed mod family"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Major Update 4 distribution, JEM adapters, questbook, economy, companion recovery, and registry projections",
+    "kind": "user_requested_mod_family_removal",
+    "source_files": [
+      "Client/ManagedPack/config/ftbquests/quests/**",
+      "Client/ManagedPack/config/irons_spellbooks-client.toml*",
+      "Client/ManagedPack/kubejs/assets/efs_iss/**",
+      "Client/ManagedPack/kubejs/assets/irons_lib/**",
+      "Client/ManagedPack/kubejs/assets/irons_patreon_lib/**",
+      "Client/ManagedPack/kubejs/assets/irons_spellbooks/**",
+      "Server/config/efiscompat.toml*",
+      "Server/config/ftbquests/quests/**",
+      "Server/config/irons_spellbooks_spell_config/**",
+      "Server/kubejs/assets/efs_iss/**",
+      "Server/kubejs/assets/irons_lib/**",
+      "Server/kubejs/assets/irons_patreon_lib/**",
+      "Server/kubejs/assets/irons_spellbooks/**",
+      "Mods/JEMAchievementGuide/**",
+      "Mods/JEMCompat/**",
+      "Mods/JEMEconomy/**",
+      "Mods/JEMFood/**",
+      "Mods/JEMProfessions/**",
+      "Mods/JEMRoles/**",
+      "Mods/JEMWorldBossTiers/**",
+      "Mods/MobHome/**",
+      "tools/generate_profession_skills.py",
+      "Catalog/changes/companion-recovery-species.json",
+      "Catalog/changes/food-quality-assignments.json",
+      "Catalog/changes/major_update_4_boss_exclusions.json",
+      "Catalog/changes/major_update_4_spawn_egg_candidates.json",
+      "Catalog/changes/major_update_4_spawn_egg_review.json",
+      "Catalog/changes/sets/ftb-questbook-reward-subjects.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove Iron's Spells completely without leaving broken quests, missing reward stacks, optional class linkage, generated spawn eggs, economy rows, handbook entries, or recovery policies.",
+    "decision_source": "The user explicitly required removal of Iron's Spells 'n Spellbooks from the Major Update branch and identified world generation and FTB Quests as required consequence surfaces. Codex selected in-place installed-item reward replacements to preserve surviving quest identities and reward indexes."
+  },
+  "introduced": {
+    "date": "2026-11-06",
+    "commit": "SELF",
+    "action": "remove_mod_family",
+    "summary": "Remove Iron's Spells and its exclusive integration/dependency family for Major Update 4."
+  },
+  "history": [
+    {
+      "date": "2026-11-06",
+      "commit": "SELF",
+      "action": "remove_mod_family",
+      "summary": "Deleted the four client/server JARs and configs, removed active integrations, retired 31 owned quests, replaced invalid surviving rewards, and refreshed dependent catalogs.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/tools/questbook/book.json",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/compat/PackCompanionAdapter.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeCatalog.java",
+        "Catalog/changes/companion-recovery-species.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "managed client inventory",
+      "dedicated server inventory",
+      "world generation compatibility",
+      "FTB Quests",
+      "JEM handbook",
+      "races and professions",
+      "boss tiers",
+      "companion recovery",
+      "economy and food effects",
+      "spawn egg generation"
+    ],
+    "relations": [
+      "Iron-owned registry objects become absent from new chunks and unavailable in existing worlds after Forge remaps missing entries",
+      "surviving quests keep their native identities and reward ordering",
+      "shared dependencies remain because they have non-Iron owners"
+    ],
+    "notes": "No world save, release baseline, stable profile, or MineRENT deployment is part of this change.",
+    "unresolved": []
+  }
+}

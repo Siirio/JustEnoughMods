@@ -5,10 +5,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
 enum HandbookSection {
-    START("start", 0x6EBE4B, Items.OAK_SAPLING),
     BOSSES("bosses", 0xD95855, Items.NETHER_STAR),
     ENCHANTMENTS("enchantments", 0xB775D6, Items.ENCHANTED_BOOK),
-    ITEMS("items", 0xE9AE45, Items.CHEST),
     QUESTS("quests", 0x63B5E5, Items.MAP),
     MANUALS("manuals", 0x6298DA, Items.WRITABLE_BOOK);
 

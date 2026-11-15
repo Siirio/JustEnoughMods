@@ -17,8 +17,8 @@ and nearest-neighbour contact sheet visually inspected. Game/editor application
 and user visual acceptance are not claimed. Original screenshots3/4 are absent.
 
 Exact Taste pairs read in full:
-- `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md`
-- `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Textures (Resource packs)/Minecraft-item-generation/{TASTE,TECHNICAL}.md`
+- `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md`
+- `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/Textures (Resource packs)/Minecraft-item-generation/{TASTE,TECHNICAL}.md`
 
 ## Visual direction and references
 

@@ -45,6 +45,16 @@
     },
     {
       "type": "id",
+      "registry": "items",
+      "value": "minecraft:spyglass"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "paraglider:paraglider"
+    },
+    {
+      "type": "id",
       "registry": "entities",
       "value": "minecraft:player"
     }
@@ -52,8 +62,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Physically dedicated JEM SMP; IdentityPolicy canonical verified account owns entitlement. Kit eligibility begins after auth, independent of race completion.",
-      "implementation_assumption": "One entitlement per canonical account, including existing players; cooked beef selected by Codex and announced, not separately approved in a reply."
+      "runtime": "Integrated or dedicated logical server with JEM Rewards. Dedicated authentication and pre-choice protection remain a separate JEM Server contract.",
+      "implementation_assumption": "One base entitlement per player and world. Existing recipients receive only the versioned exploration extension."
     }
   ],
   "precedence": {
@@ -62,12 +72,12 @@
     "overrides": []
   },
   "change": {
-    "summary": "Add durable starter item entitlement without changing20Gold, and deny incoming/outgoing combat until authoritative verification and race choice exist.",
+    "summary": "Move the durable starter entitlement to universal JEM Rewards, add a spyglass and Paraglider, and retain the dedicated authentication/race combat guard.",
     "modifiers": [
       {
-        "property": "smp.starter_item_entitlement",
-        "operation": "add",
-        "before": null,
+        "property": "modpack.starter_item_entitlement",
+        "operation": "replace",
+        "before": "JEM Server issues the starter kit only while the dedicated SMP environment is active.",
         "after": {
           "kit": {
             "minecraft:cooked_beef": 64,
@@ -77,12 +87,14 @@
             "minecraft:leather_leggings": 1,
             "minecraft:leather_boots": 1,
             "naturescompass:naturescompass": 1,
-            "sophisticatedbackpacks:backpack": 1
+            "sophisticatedbackpacks:backpack": 1,
+            "minecraft:spyglass": 1,
+            "paraglider:paraglider": 1
           },
-          "scope": "Once per canonical verified account including existing players; no race wait after authentication.",
+          "scope": "Once per player and world on integrated and dedicated logical servers. Existing base recipients receive only the exploration extension.",
           "currency": "Existing20Gold grant, finite funding and receipt unchanged; no money regrant.",
-          "delivery": "Inventory-first bounded insertion; undelivered remainder remains journaled, never drops or equips over worn items.",
-          "durability": "Pending account operation -> native inventory+persisted player account/operation receipt save and exact readback -> remaining entitlement commit. Reconcile interrupted pending operations and copy receipt on death clone.",
+          "delivery": "JEM Rewards take-only container; unclaimed remainder remains journaled and never drops or equips over worn items.",
+          "durability": "Preserve the original base source ID, import completed and interrupted jem_starter_kits.dat rows, honor matching legacy player receipts and use a versioned exploration-extension receipt.",
           "failure": "Missing required native item/storage failure refuses completion; disconnect on unacknowledged inventory persistence failure.",
           "status": "in testing; no runtime/delivery claimed",
           "backpack_replacement": "Exact empty unissued starter backpack NBT IDs are replaced before reward transfer. Delivered/custom-data inventories are not converted."
@@ -104,25 +116,27 @@
     ]
   },
   "cause": {
-    "owner": "JEMServer StarterWelcome and StarterEntitlements/StarterKitDelivery/NativePlayerFiles; existing native player save accessor",
-    "kind": "user_requested_starter_and_protection",
+    "owner": "JEMRewards ModpackStarterKit and PendingRewardContainer; JEMServer StarterWelcome retains only dedicated pre-choice protection",
+    "kind": "user_requested_universal_starter_and_existing_protection",
     "source_files": [
+      "Mods/JEMRewards/build.gradle",
+      "Mods/JEMRewards/gradle.properties",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/JemRewards.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/ModpackStarterKit.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/PendingRewardContainer.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsData.java",
+      "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/en_us.json",
+      "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/ru_ru.json",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
-      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
-      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
       "Docs/smp-gui/README.md",
-      "Docs/DEVELOPMENT.md",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
+      "Docs/DEVELOPMENT.md"
     ]
   },
   "rationale": {
-    "purpose": "Provide requested starter supplies safely through authentication and initial race selection without repeat grants, ground drops or protected-player attacks.",
-    "decision_source": "Latest user starter/protection addition21October2026, with Codex-announced once-per-account and food-choice assumptions.",
-    "user_requested": "Starter food/materials/leather armor/backpack/compass and damage protection until authentication and race choice. Existing20Gold unchanged.",
-    "codex_choices": "Once per verified canonical account including current players; cooked beef, durable per-account remaining journal, native player operation receipt and death-clone persistence."
+    "purpose": "Provide the starter kit in singleplayer and multiplayer, add the requested exploration items, and prevent repeat grants during the ownership migration.",
+    "decision_source": "User requested modpack-level starter delivery plus a spyglass and glider on 2026-11-09. The earlier dedicated protection contract remains unchanged.",
+    "user_requested": "Starter kit available on server and singleplayer, with a spyglass and glider.",
+    "codex_choices": "Use universal JEM Rewards, preserve the original base source ID, give existing recipients only a versioned exploration extension and migrate legacy server journals."
   },
   "introduced": {
     "date": "2026-10-21",
@@ -179,6 +193,21 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java"
       ]
+    },
+    {
+      "date": "2026-11-09",
+      "commit": "SELF",
+      "action": "promote_to_modpack_level_and_extend",
+      "summary": "Move new starter issuance from dedicated JEM Server to universal JEM Rewards, preserve legacy receipts and add one spyglass plus one Paraglider.",
+      "source_files": [
+        "Mods/JEMRewards/build.gradle",
+        "Mods/JEMRewards/gradle.properties",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/JemRewards.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/ModpackStarterKit.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java"
+      ]
     }
   ],
   "impacts": {
@@ -192,14 +221,22 @@
       "pvp",
       "projectile_ownership",
       "backpacked",
-      "natures_compass"
+      "natures_compass",
+      "spyglass",
+      "paraglider",
+      "integrated_singleplayer",
+      "reward_claims"
     ],
-    "relations": "StarterKitData owns item entitlement only; IdentityPolicy owns verification, Roles owns effective race, CurrencyCore keeps the separate20Gold receipt. Native item IDs are reused without new registries.",
-    "notes": "No tests/build/runtime/copyrepair/deployment claim. Existing players qualify once under the announced implementation assumption; full-inventory remainder is retained.",
+    "relations": [
+      "JEM Rewards owns starter item issuance and durable claims",
+      "JEM Server owns dedicated authentication and pre-choice protection only",
+      "IdentityPolicy owns verification and Roles owns effective race",
+      "Economy keeps the separate20Gold receipt"
+    ],
+    "notes": "No gameplay launch or player acceptance claim. Existing recipients receive only the exploration extension. Full-inventory remainder is retained in JEM Rewards.",
     "unresolved": [
       "In testing; user/runtime acceptance pending.",
-      "Once-only entitlement and cooked-beef implementation choices were announced, no separate approving reply yet.",
-      "Fresh artifact/delivery and runtime protection/recovery evidence remain separate execution steps."
+      "Fresh artifact delivery and integrated/dedicated runtime acceptance remain separate execution steps."
     ]
   }
 }

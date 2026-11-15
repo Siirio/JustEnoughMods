@@ -23,7 +23,11 @@ public final class SourceNameTooltipFilter {
         if (JEMClientConfig.SHOW_MOD_NAMES.get()) {
             return;
         }
-        event.getToolTip().removeIf(line -> ModNames.ALL.contains(
+        var tooltip = event.getToolTip();
+        if (tooltip.size() <= 1) {
+            return;
+        }
+        tooltip.subList(1, tooltip.size()).removeIf(line -> ModNames.ALL.contains(
                 ChatFormatting.stripFormatting(line.getString()).trim()));
     }
 

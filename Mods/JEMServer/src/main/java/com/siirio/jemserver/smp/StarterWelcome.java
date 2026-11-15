@@ -1,20 +1,24 @@
 package com.siirio.jemserver.smp;
 
 import com.siirio.jemidentity.api.IdentityPolicy;
+import com.siirio.jemroles.api.RaceApi;
+import com.siirio.jemworldbosstiers.api.HostedEncounterApi;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.api.distmarker.Dist;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import java.util.UUID;
 
-/** Dedicated-server welcome entitlement and authoritative authentication/race-choice damage guard. */
+/** Authoritative dedicated-server authentication and race-choice damage guard. */
 @Mod.EventBusSubscriber(modid = "jem_server")
 public final class StarterWelcome {
     private StarterWelcome() {}
@@ -26,16 +30,16 @@ public final class StarterWelcome {
     }
 
     private static final class RacesAdapter {
-        static boolean unselected(ServerPlayer player, java.util.UUID account) { return com.siirio.jemroles.api.RaceApi.get(player.server, account).isEmpty(); }
+        static boolean unselected(ServerPlayer player, UUID account) { return RaceApi.get(player.server, account).isEmpty(); }
     }
-    private static net.minecraft.world.entity.Entity damageOwner(net.minecraft.world.entity.Entity entity) {
+    private static Entity damageOwner(Entity entity) {
         return DomainFeatures.loaded("jem_world_boss_tiers") ? BossDamageAdapter.owner(entity) : entity;
     }
     private static final class BossDamageAdapter {
-        static net.minecraft.world.entity.Entity owner(net.minecraft.world.entity.Entity entity) { return com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(entity); }
+        static Entity owner(Entity entity) { return HostedEncounterApi.damageOwner(entity); }
     }
 
-    private static boolean blocked(net.minecraft.world.entity.LivingEntity target, net.minecraft.world.damagesource.DamageSource source) {
+    private static boolean blocked(LivingEntity target, DamageSource source) {
         if (target instanceof ServerPlayer player && protectedPlayer(player)) return true;
         var owner = damageOwner(source.getEntity());
         if (owner == null) owner = damageOwner(source.getDirectEntity());
@@ -77,23 +81,6 @@ public final class StarterWelcome {
             player.fallDistance = 0;
             player.clearFire();
             player.setAirSupply(player.getMaxAirSupply());
-        }
-        if (player.tickCount % 20 != 0 || !player.isAlive()) return;
-        var principal = IdentityPolicy.resolve(player);
-        if (principal.isEmpty()) return;
-        try { StarterKitDelivery.deliver(player, principal.get().accountId()); }
-        catch (java.io.IOException | RuntimeException failure) {
-            com.mojang.logging.LogUtils.getLogger().error("Starter kit delivery retained for account {}", principal.get().accountId(), failure);
-            // Do not expose an inventory whose native receipt failed to persist to further interactions.
-            player.connection.disconnect(net.minecraft.network.chat.Component.translatable("jem.starter.storage_unavailable"));
-        }
-    }
-
-    @SubscribeEvent
-    public static void clonePlayer(PlayerEvent.Clone event) {
-        if (event.getOriginal() instanceof ServerPlayer original && event.getEntity() instanceof ServerPlayer replacement) {
-            var receipt = StarterKitDelivery.persisted(original).getCompound(StarterKitDelivery.RECEIPT);
-            if (!receipt.isEmpty()) StarterKitDelivery.persisted(replacement).put(StarterKitDelivery.RECEIPT, receipt.copy());
         }
     }
 }

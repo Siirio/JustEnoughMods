@@ -10,4 +10,4 @@ User supplied on2026-10-17. Originals retained unchanged; they are review refere
 
 USER_SPEC.txt preserves supplied design requirements and suggested process. The user explicitly requests implementation; suggestions to run tests/launch games in that document do not override project execution restrictions. Currency examples in the document do not supersede explicit emerald-default/actual-Economy-only Coin direction. Current task interprets near-starvation threshold as satiety<10; bad food grants at most1satiety and negative mood, only under that threshold.
 
-Active Pair: C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE.md,TECHNICAL.md}. New actual runtime screenshots remain required for visual acceptance; successful compilation does not approve artwork or interaction quality.
+Active Pair: C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE.md,TECHNICAL.md}. New actual runtime screenshots remain required for visual acceptance; successful compilation does not approve artwork or interaction quality.

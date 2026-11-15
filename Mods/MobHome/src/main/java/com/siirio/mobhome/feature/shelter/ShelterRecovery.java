@@ -55,10 +55,7 @@ public final class ShelterRecovery {
         if (level.getServer().getPlayerList().getPlayer(pet.owner) == null) { pet.blocked = "owner_offline"; data.setDirty(); return; }
         if (!homeValid(level, pet)) { pet.blocked = "home_unavailable"; data.setDirty(); return; }
         if (!com.siirio.mobhome.feature.shelter.compat.PackCompanionAdapter.recoveryAllowed(pet.pending, level)) {
-            CompoundTag nativeExtra = pet.pending.getCompound("ForgeData");
-            pet.blocked = pet.pending.getString("id").startsWith("irons_spellbooks:")
-                    && (!nativeExtra.hasUUID("jemShelterNativeSummoner") || nativeExtra.getLong("jemShelterNativeSummonDeadline") <= 0)
-                    ? "native_lifetime_unavailable" : "native_expired";
+            pet.blocked = "native_expired";
             data.setDirty(); return;
         }
         Entity restored = EntityType.loadEntityRecursive(pet.pending.copy(), level, entity -> entity);

@@ -34,6 +34,11 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.combat.EpicFightRollRestoreMixin")) {
+            var epicFight = FMLLoader.getLoadingModList().getModFileById("epicfight");
+            return epicFight != null && epicFight.getMods().stream().anyMatch(mod -> mod.getModId().equals("epicfight")
+                    && mod.getVersion().toString().equals("20.14.17"));
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.worldgen.DeepDarkAncientFossilPlacementMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("deep_dark_regrowth");
             boolean supported = file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("deep_dark_regrowth")
@@ -81,6 +86,16 @@ public final class OptionalMixins implements IMixinConfigPlugin {
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ServerLoginRespawnPacketMixin")) {
             return FMLLoader.getDist().isDedicatedServer()
                     && FMLLoader.getLoadingModList().getModFileById("serverlogin") != null;
+        }
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.audioyt.AudioYtJukeboxMonitorMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("audioyt_1_20_1");
+            return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("audioyt_1_20_1")
+                    && mod.getVersion().toString().equals("1.0.1"));
+        }
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.spawner.SpawnerSpiritOrbLootMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("paraglider");
+            return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("paraglider")
+                    && mod.getVersion().toString().equals("20.1.3"));
         }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("fabric_object_builder_api_v1");

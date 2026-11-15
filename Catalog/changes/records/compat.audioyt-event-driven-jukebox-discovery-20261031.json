@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.audioyt-event-driven-jukebox-discovery-20261031",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:jukebox"
+    }
+  ],
+  "conditions": [
+    {
+      "installed_audioyt_version": "1.0.1",
+      "side": "logical_server",
+      "scope": "AudioYT jukebox discovery and change tracking"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 66
+  },
+  "change": {
+    "summary": "Discover AudioYT jukeboxes from loaded chunk block entities instead of repeatedly scanning nearby block coordinates.",
+    "modifiers": [
+      {
+        "property": "audioyt.jukebox.discovery",
+        "operation": "replace",
+        "before": {
+          "discovery": "Every 5 server ticks, scan 33x17x33 block positions around every player.",
+          "missing_chunk": "Direct ServerLevel.getBlockState may synchronously load or generate an absent chunk."
+        },
+        "after": {
+          "discovery": "Inspect the block-entity map once when an already loaded LevelChunk enters the logical server and register each JukeboxBlockEntity through AudioYT's native forceCheck API.",
+          "updates": "AudioYT's native JukeboxBlockEntity setItem Mixin updates disc changes, and its known-jukebox loop retains its hasChunkAt guard.",
+          "missing_chunk": "No discovery path requests or generates an absent chunk."
+        },
+        "notes": "Playback, disc metadata, record state, recipes and the vanilla jukebox registry remain owned by AudioYT and Minecraft."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat AudioYT adapter",
+    "kind": "version_gated_event_driven_native_adapter",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/gradle.properties",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/audioyt/AudioYtJukeboxEvents.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/audioyt/AudioYtJukeboxMonitorMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent AudioYT jukebox discovery from blocking the server tick while preserving native playback and disc-change behavior.",
+    "decision_source": "User requested a better solution than constant scanning on 2026-10-31. The local watchdog trace and exact installed AudioYT 1.0.1 bytecode identify the unguarded repeated block scan, while AudioYT's existing setItem hook and loaded-only known-position loop provide the native incremental path."
+  },
+  "introduced": {
+    "date": "2026-10-31",
+    "commit": "SELF",
+    "action": "replace_audioyt_spatial_scan",
+    "summary": "Replace repeated nearby block scanning with loaded-chunk jukebox discovery and native incremental updates.",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/gradle.properties",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/audioyt/AudioYtJukeboxEvents.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/audioyt/AudioYtJukeboxMonitorMixin.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "replace_audioyt_spatial_scan",
+      "summary": "Keep discovery inside loaded chunk block-entity maps after AudioYT's direct nearby block read caused a local watchdog crash.",
+      "source_files": [
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/gradle.properties",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/audioyt/AudioYtJukeboxEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/audioyt/AudioYtJukeboxMonitorMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "AudioYT",
+      "jukebox_playback",
+      "server_tick",
+      "loaded_chunk_reads",
+      "world_generation",
+      "player_join_availability"
+    ],
+    "relations": [
+      "minecraft:jukebox -> AudioYT custom disc playback",
+      "LevelChunk load -> existing JukeboxBlockEntity -> AudioYT forceCheck",
+      "JukeboxBlockEntity setItem -> AudioYT native incremental update"
+    ],
+    "notes": [
+      "The vanilla jukebox registration and recipe graph remain unchanged.",
+      "The adapter is enabled only for the inspected AudioYT 1.0.1 artifact."
+    ],
+    "unresolved": [
+      "Player rejoin, sustained server uptime and custom-disc playback after this change remain in testing until runtime acceptance."
+    ]
+  }
+}

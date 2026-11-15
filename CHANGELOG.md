@@ -1,3 +1,17 @@
+## 2026-11-15 - Prepare Major Update 4 production release
+
+- User requested promotion of the complete Major Update 4 state to MineRENT and inclusion of the Voxy pair
+- Merged the reviewed `feature/major-update-4` state into `develop`, retained newer `develop` fixes, and resolved generated Atlas data through one canonical rebuild
+- Bug / Both Sided / Exposure was removed from the Major Update 4 distribution, but JEM Advancements still needs its guarded optional compatibility classes at compile time / in testing through an explicit compile-only artifact path that uses the retained local reference and does not restore Exposure to any release runtime
+- Built the changed production artifacts with Java 17 and `reobfJar`: JEM Advancements 5.3.4, JEMCompat 3.10.4, JEM Building 1.0.1, In Chat FTB 1.0.1, JEM Economy 1.3.3, JEM Holidays 1.0.7 and JEM Security 1.0.8
+- Restored MIT-licensed Voxy Server Side 0.3.5 to the managed client and dedicated server with bounded client and server configuration. Server chunk generation, prediction metadata and distant-player sync stay disabled
+- Neo Voxy remains outside AutoModpack, the stable bootstrap source and friend packages because the installed JAR is All Rights Reserved and upstream does not publish redistributable build artifacts. Players must install a compatible Neo Voxy Forge client build manually
+- Removed Fog, Immersive Storms, Moog's Mineshafts Reimagined, Luxium and JEM Luxium from the active release. RoadWeaver keeps the approved surface structure and surface-boss route policy while underground bosses and deep structures remain excluded
+- Bug / Client Sided / the managed pack retained both In Chat FTB 1.0.0 and 1.0.1 under different filenames, which made native AutoModpack plan an owned rename while leaving duplicate mod identities in the canonical source / resolved by deleting 1.0.0, republishing the corrected source and permitting only hash-verified owned JAR renames inside `mods` in the native application guard
+- Native local AutoModpack publication reached journal sequence 166 with full content token `3e267707cd89f8691f0c2288d952d8f91cb8285a`; the second preview returned `+0 ~0 -0`. The closed `Test JustEnoughMods` profile had already committed this token with 331 managed JARs and no pending transaction when the user narrowed the remaining release steps to MineRENT only
+- User requested no further client update and will accept the hosted update manually. The remaining release excludes stable-profile synchronization, friend packaging and baseline promotion
+- Atlas rebuild, coverage audit and validation completed with 32,581 canonical objects and 225 change records. Player acceptance and the MineRENT deployment remain pending
+
 ## 2026-11-02 - Publish the four-fix MineRENT and AutoModpack release
 
 - User explicitly authorized publishing the prepared ghost-block, FTB, Luxium and Void Walker fixes to MineRENT and its native AutoModpack catalogue only. The ordinary local Server, stable JustEnoughMods, test jem and other client profiles remain untouched, and the user applies the client update manually
@@ -208,6 +222,814 @@
 - Uploaded only `Server/config/serverlogin-common.toml` from the approved `develop` snapshot and restarted MineRENT after the console confirmed every dimension had been saved
 - MineRENT returned to `Работает`, loaded 11 ServerLogin accounts and the original `JustEnoughMods` client completed AutoModpack verification, logged in as `Sirio_o` and loaded the multiplayer world
 - No client files, bootstrap, stable profile, AutoModpack generation, release baseline or feature-branch artifact changed in this server-only hotfix
+## 2026-11-15 - Reduce profiled Sandbox shadow work
+
+- User reported about 9 FPS near lights and missing lighting away from the village. With the camera fixed at 2560×1406, the on/off/on capture showed 41–45 FPS with JEM enabled and 161–165 FPS with it disabled
+- Bug / Client / JEM repeatedly filters section-wide light candidates and reads ray origins for each pixel sample. Java Flight Recorder also measured entity shadow rasterization on the render thread / in testing with receiver masks, shared ray starts, height bounds and sparse entity depth uploads
+- The implementation preserves source colors and the selected shadow sample grid. Native chunks missed during travel get a bounded rescan. Neo Voxy distant terrain has a separate lightmap and needs its own source and shadow data for JEM local lighting
+
+## 2026-11-15 - Limit dense-light cost and add Sandbox atmosphere effects
+
+- User requested real-time lighting with stable frame times, research beyond Luxium, the approved river mist, snow gust and cave air studies, individual effect switches and one master switch in Embeddium
+- Bug / Client / The terrain shader traces repeated geometry and entity checks for overlapping full-block lights per visible pixel. Chunk indexing and shadow texture uploads also schedule expensive work in bursts / in testing with bounded overlap sampling, empty-voxel skipping, entity candidate filtering and paced updates
+- Embeddium now owns the settings interface and Apply state. The Effects page has separate switches for wind, river mist, snow gusts, smoky cave air and canopy leaves. The master switch reloads the terrain renderer and disables JEM atmosphere
+- JEM keeps full shadow quality for the dominant light and uses fewer rays for other overlapping full-block lights. The sample budget, voxel occupancy mask and upload deadlines are implementation choices. Secondary soft-shadow edges can differ in dense clusters
+- The three effects use the existing reduced-resolution atmosphere pass. The choice to use scene depth and bounded local terrain checks keeps the effects attached to the world without new render targets
+
+## 2026-11-15 - Retire weather and Luxium integrations and expand surface roads
+
+- User requested removal of Fog, Immersive Storms, Moog's Mineshafts Reimagined and every active Luxium integration. Fog and Immersive Storms artifacts and configuration are removed. The remaining Moog localization, quest proof and generated search-source references are replaced with vanilla and Hopo Better Mineshaft ownership. JEMLuxium source, public release preparation, Sandbox scope and active inventory entries are removed
+- Sandbox JustEnoughMods no longer registers Luxium in `TLauncherAdditional.json`. Its active Luxium configuration files are deleted. Exact Luxium and JEMLuxium copies from disabled and backup locations were moved to the Windows Recycle Bin without removing unrelated backup files
+- RoadWeaver now predicts structures only in the Overworld. Its exact allowlist covers villages, land outposts, selected surface settlements, towers and ruins, and surface-projected boss arenas. Cave, deep-underground, ocean-floor, Nether, End and sky-only structures remain excluded because RoadWeaver has no general underground classifier
+- Structure Layout Optimizer and Structurify remain together. Installed bytecode and configuration show separate owners. Structure Layout Optimizer changes jigsaw assembly performance. Structurify changes placement settings and overlap prevention. No shared method overwrite was found
+- Native AutoModpack publication 164 contains two replacements and four deletions. Test JustEnoughMods applied content token `d7c9d786a5a499ad47a20dc6ed813bc88f185948` and verified all 329 managed JARs. The ordinary local server could not reach its console because the existing AudioYT startup failure occurred before publication, so the installed native publisher completed the same journal operation offline
+- Existing generated roads remain unchanged. Fresh-chunk route density and appearance require player review
+
+## 2026-11-15 - Add calm canopy leaves to Sandbox Lighting
+
+- User approved the prolonged leaf motion and requested tree and biome variants based on the Test JustEnoughMods foliage. The user requested the new JAR in Sandbox and deferred Test installation and Pale Oak runtime testing
+- JEM lifts leaves as they leave the tree. A light flutter releases a few leaves in sequence. The larger gust releases a staggered group that slowly spreads. The implementation uses the loaded block model sprite, position tint, a species silhouette and a light frost treatment in snowy biomes
+- VanillaBackport Pale Oak uses the same renderer when the registered block is available. Cherry and Backport particles retain their native behavior outside the brief JEM release at the same canopy block
+- The new renderer is client-only and needs no added particle or block registration. Minecraft was not launched for this revision
+
+## 2026-11-15 - Keep Sandbox sky color across biome borders
+
+- User prefers the full-sky color shown near the red desert border in both render modes and allows white clouds in birch and plains biomes
+- Bug / Client / BadOptimizations returns its cached native sky color inside a biome before the JEM tint runs. JEM calculated the fog horizon separately from the sky / in testing with the supported sky-cache exclusion and shared outdoor sky and horizon color
+- The implementation uses a Better Clouds tint hook for clear-weather Birch Forest, Old Growth Birch Forest, Plains and Sunflower Plains. Particle effects remain under discussion. In-game appearance awaits review
+
+## 2026-11-15 - Extend Sandbox atmosphere to every biome
+
+- User approved Neo Voxy compatibility and the Deep Dark and dripstone fog. User requested atmosphere in every biome with Voxy and Fog disabled, a more orange red-desert sky, clear and thunder sky changes, and distinct lush and ordinary cave fog
+- Bug / Client / JEM created fog only for four biome IDs and only after Voxy suppressed native terrain fog. The sky sampler tinted two exact IDs before native thunder removed most of the tint / in testing with a renderer-independent biome medium, shared sand classification and a weather tint after the native sky calculation
+- The implementation uses biome tags and registered colors for broad coverage, enclosure for ordinary caves, and the existing Voxy-compatible scene-depth compositor. Deep Dark and dripstone retain their original range and color mix. The new color and distance settings await in-game review
+
+## 2026-11-14 - Remove Sandbox celestial glare and god rays
+
+- Bug / Client / The celestial post-process adds direct glare and sampled shafts over scene geometry / in testing with the shaft shader and its GPU pass removed
+- User requested removal of the aura. Weather, heat distortion and terrain shadow rendering retain their existing paths
+
+## 2026-11-14 - Add biome fog and sky color to Sandbox Lighting
+
+- User requested biome fog and sky color in Sandbox, supplied three screenshots and approved a Taste Engine pair without Gemini
+- JEM Lighting supplies pink cherry grove, straw-gold desert, teal Deep Dark and amber dripstone fog profiles. Cherry grove and desert use distinct sky colors that blend across biome borders and follow native day and weather changes
+- The implementation uses Fog's exact biome resources. When Neo Voxy suppresses terrain fog, the existing JEM atmosphere compositor restores distance haze for the four biomes. Palette values and haze ranges are implementation choices. In-game appearance is pending review
+- Built and installed `0.5.13` in Sandbox JustEnoughMods. The installed JAR matches the reobfuscated build by SHA-256. The previous JAR is in the profile's visual backups
+
+## 2026-11-14 - Fix the Sandbox Lighting crash on world entry
+
+- User reported a crash after installing `0.5.11`
+- Bug / Client / Minecraft returns a synthetic frame index of 1 for static sprites. Shadow capture treated it as a real atlas frame and tried to read row 16 of a 16-pixel texture / in testing with Embeddium's animation check and origin sampling for static sprites
+- Built and installed `0.5.12` in Sandbox JustEnoughMods. The installed JAR matches the build by SHA-256. A new world entry awaits verification
+
+## 2026-11-14 - Install Sandbox Lighting 0.5.11
+
+- User requested installation in Sandbox JustEnoughMods
+- Bug / Client / The new shaft renderer omitted the Minecraft `Vec3` import, so Java could not compile the client module / in testing with the import restored and the JAR rebuilt
+- Installed the reobfuscated `0.5.11` JAR and retained `0.5.10` in the profile backup. The installed JAR matches the build by SHA-256. Visual appearance and frame time await an in-game check
+
+## 2026-11-14 - Rework Sandbox light and shadow geometry
+
+- User specified brighter sun and moon beams, direct glare, continuous side beams, visible vegetation shadows and stable lamp light as the camera moves. The attached screenshots show a narrow wall under a lamp cutting the light across the path
+- Bug / Client / The old light path used one sample at the center of a luminous face and switched to native light outside a moving caster volume. Its shaft cache stored one value per block and required darkness on both sides of a beam. The shadow setting only reached the celestial entity map / in testing with world section geometry, luminous face samples and a directional shaft map
+- The implementation uses the native banner model, stronger cutout shadows and a grid of 4, 9, 16 or 25 samples per luminous face. The shaft map uses the selected resolution and stores the depth of the actual blocker
+- Scope is Sandbox JustEnoughMods. In-game appearance and frame time await verification
+
+## 2026-11-14 - Fix Sandbox sun and moon shafts
+
+- User reported broad fans, a visible dot pattern and a large FPS drop around god rays
+- Bug / Client / A repeating screen-space phase sampled up to three terrain rays at each of 16 points per reduced-resolution pixel. One-sided edge contrast also lit long roof and ridge silhouettes / in testing with shared world-space visibility and contrast across both sides of a local opening
+- The implementation refreshes the visibility field when terrain changes or the light direction crosses a two-degree increment. The screen pass blends cached samples, stops at scene depth and applies a lower scattering gain
+- Actual frame time and appearance require in-game comparison
+
+## 2026-11-14 - Trace Sandbox cutout shadows and extend campfire smoke
+
+- User requested shadows that follow the texture silhouette of grass and leaves, a native smoke color with a darker option, a 45-block plume including sway and 15% sprite growth per block
+- Bug / Client / Grass used an outline box and leaves had uniform transmission regardless of texture / in testing with ray intersections against baked cutout faces and sprite transparency
+- The implementation uses 16-by-16 masks per supported face and allows partial light through foliage. The original block models and sprite assets supply the geometry and transparency
+- Smoke uses the native color by default. The Precipitation screen offers dark smoke. Growth adds 15% of the starting size per block above five blocks and the limit counts movement in every direction
+- Scope is Sandbox JustEnoughMods. Visual appearance and frame time await an in-game check
+
+## 2026-11-14 - Restrict Sandbox shafts to light beside blockers
+
+- User reported broad light patches on tree trunks and snow after the recent shaft change
+- Bug / Client / The shaft shader combined lit and occluded samples from different points along a view ray, so a blocker could boost the full visible air column / in testing with contrast sampled across the light direction at each point
+- Reduced compositing gain where a shaft crosses a visible foreground surface
+
+## 2026-11-14 - Smooth Sandbox celestial shafts and remove local light haze
+
+- User requested stronger sun and moon shafts and removal of haze around local emitters
+- Bug / Client / A screen-depth radial pass drew over nearby geometry while seven aligned volume samples produced visible bands / in testing with one terrain-occluded pass and up to 32 spatially staggered samples
+- Removed local light scattering from the atmosphere pass. Campfire particles and surface lighting keep their existing paths
+
+## 2026-11-14 - Remove built-in Sandbox biome fog and increase smoke sway
+
+- User requested removal of built-in biome fog in favor of a separate mod. Removed the fog pass, controls and client configuration keys
+- User requested four more blocks of sway at the plume top and 5% larger smoke particles per two blocks above five blocks. The implementation adds a curved offset downwind above that height and scales sprites continuously from their existing size
+
+## 2026-11-14 - Revise Sandbox fog and celestial lighting
+
+- User rejected the previous fog and shafts. The replacement uses a gradual biome fog start and end, moving world-space bands that lean with the wind, and a lighter fog base with darker upper layers
+- Bug / Client / Celestial scattering only used sunlight and depended entirely on the near-camera caster volume / in testing with terrain visibility sampling and a separate screen-depth pass for the sun and moon
+- User requested model-shaped entity shadows from local light sources and moonlight comparable to sunlight. Terrain light rays now intersect captured entity meshes. Moonlight uses the directional terrain and entity paths with cooler color and lower strength
+- The sun and moon entity map supports 256, 512, 1024 and 2048 pixels. The default remains 256
+
+## 2026-11-14 - Tune Sandbox smoke, biome fog and precipitation
+
+- User requested longer-lived campfire smoke with a normal rise of about 10 blocks, plus 1–2 blocks per nearby lit campfire to a maximum of 20. Nearby lit campfires make the smoke darker and denser
+- The smoke implementation counts lit campfires within three blocks horizontally and one block vertically. It adds 1.5 blocks per neighbor and preserves the taller signal plume within the same ceiling
+- Bug / Client / Neo-Voxy overrides native terrain fog distances, while the previous JEM haze depends on the lighting volume / in testing with scene-depth fog and independent density and start-distance controls
+- User specified yellow desert, red desert, white winter, pink cherry grove, gray cave and green lush cave fog. The renderer also reads the registered fog colors of Alex's Caves biomes. The controls default to a 12-block start and 100% density
+- The Sandbox installation disables the separate Fog mod and the Neo-Voxy environmental fog through their local settings to prevent a second layer of biome fog
+- User requested three particle variants per precipitation type and more irregular trajectories. Individual particles now swirl in three dimensions. Rain and ordinary snow still fall at an angle. Blizzard and sand keep predominantly horizontal motion
+
+## 2026-11-14 - Repair Sandbox smoke and directional shadows
+
+- Bug / Client / The campfire smoke Mixin required a generated argument class that Forge could not load / in testing with a typed redirect to the native particle movement call
+- Bug / Client / The sun shader darkened unblocked faces inside a camera-local volume / in testing with loss based on actual blocker visibility. Vanilla cloud projection applies independently of the point-light fade
+- User requested model-shaped entity shadows and separate global rain and thunder particle controls. Projected nearby entity meshes into the directional shadow pass and removed the shared ellipsoid approximation
+- Added rain and storm controls from 25% to 200% in the precipitation menu. Defaults are 100% for rain and 150% for storms. The multiplier applies to native-biome rain, snow and sand modes
+
+## 2026-11-14 - Animate Sandbox wind and correct lantern shadows
+
+- User requested the Windy icon's curl for calm weather, fast waves three to four blocks wide with rare nine-block waves, and diagonal gusts five to six blocks long that last about two seconds
+- Added the three outdoor gusts with a shared wind direction, red and ordinary desert colors, and per-biome RGB overrides in the lighting settings
+- Atlas assembly uses Windy artwork under LGPL-3.0-only. The gust timing, scale and terrain checks are implementation choices
+- Replaced blizzard streaks with rotating six-arm snowflakes. Each accepted spawn yields two flakes with horizontal movement
+- Bug / Client / Shared point-light shading restored part of an emitter's native diffuse light behind blockers, which could make a low lantern's shadow look brighter / in testing with native-light compensation independent of traced visibility
+
+## 2026-11-14 - Replace the Sandbox precipitation render
+
+- User requested diagonal motion for light rain, heavy rain and ordinary snow, and horizontal motion for blizzards, sandblows and sandstorms
+- Bug / Client / Minecraft still drew vertical rain and snow sheets while the additional particles used native factories with gravity / in testing with a single custom falling precipitation pass and world-space motion
+- The replacement reads native biome and weather state and shares the wind direction with campfire smoke. It preserves native weather sounds, ground impacts and custom dimension weather
+- The previous Sandbox JAR and client settings are archived separately from the approved 0.4.0 backup
+
+## 2026-11-14 - Expand Sandbox atmosphere and stabilize distant lighting
+
+- User requested an approved 0.4.0 backup, stable distant colored light, and a wider Sandbox atmosphere. Shader-pack compatibility and removal of overlapping mods require separate approval
+- Bug / Client / Distant lighting used a relative vanilla light threshold that could suppress the contribution when a surface left the camera's detailed shadow volume / in testing with a stable receiver-section lookup and a low absolute block-light gate
+- Added water-only screen-space reflection and refraction, biome water tint and underwater absorption, local light scattering, aurora, rainbows and distant thunder glow. Weather particles use native precipitation types and thunder intensity. Added wind, cave dust, campfire smoke drift, and heat shimmer
+- Added approximate shadows from nearby living entity bounds and a projected texture for vanilla cloud shadows. Better Clouds uses a separate pipeline that needs its own shadow integration
+- Preserved the installed 0.4.0 JAR and client config in the local Sandbox backup. Visuals and frame time for 0.5.0 require in-game confirmation
+
+## 2026-11-14 - Extend Sandbox light coverage and trace block geometry
+
+- User requested lighting at a distance, a 2–32 chunk setting with a render-distance checkbox, and shadows through fence gaps and foliage
+- Indexed emitters from loaded chunks and selected nearby sources for each receiving terrain section. Distant visible terrain can show colored light before the player reaches it. The separate source reach still controls how far each lamp illuminates its surroundings
+- Bug / Client / The old pass selected eight sources around the camera and used a small camera-centered volume for their entire contribution / in testing with section-local source lists and native block light guiding distant illumination
+- Bug / Client / The old caster palette omitted most non-cubic shapes and treated terrain foliage as empty / in testing with geometry reconstructed from supported baked models and native outlines for other shapes. Leaf layers attenuate transmitted light by thickness
+- Detailed ray-traced shadows apply within the local caster volume. Distant terrain retains its native occlusion cues. The 32-chunk scan covers only chunks already loaded by the client
+
+## 2026-11-14 - Add Sandbox atmosphere and lighting settings
+
+- User requested sunlight shafts, atmospheric effects, three lighting update modes and adjustable light distance in Sandbox
+- Added half-resolution sunlight scattering and distance haze. The effect uses scene depth and the existing terrain volume, including partial shade from foliage. The settings screen controls atmosphere, update speed and an 8–20 block light distance
+- Slow retains the existing scan budget. Fast scans the volume faster. Realtime applies known block changes before the next draw, with a bounded scan for new areas. The 20-block option expands the sampled volume
+- Bug / Client / The center of a flush redstone lamp was behind the ceiling plane, so the shader rejected its direct contribution while reducing native diffuse light / in testing with a source point on an exposed face and greater retention of native diffuse light in occluded areas
+- This revision requires in-game visual and frame-time checks on Windows and macOS
+
+## 2026-11-14 - Correct Sandbox terrain lighting near walls, doors and snow
+
+- User reported jagged bands and abrupt changes in colored lighting around walls, a spruce door and snow layers
+- Bug / Client / The terrain shader treated small projected fragments as degenerate faces, skipped the ray's starting voxel and modeled all casters as full cubes / in testing with normalized surface derivatives and ray intersections against native door and snow bounds
+- Matched torch and lantern light origins to the visible flame or lamp body. Cutout terrain receives the same lighting as solid terrain, with derivatives computed before its alpha discard. The light mix preserves part of the native diffuse light and the emitter's glow
+- The Sandbox build uses the existing OpenGL 3.3 path. In-game visual review of this revision is pending
+
+## 2026-11-14 - Add independent block-light shadows to Sandbox terrain
+
+- User requested the approved lighting effect on ordinary Embeddium chunks in Sandbox, with simultaneous block and sunlight shadows on Windows and macOS
+- Added a client-side voxel volume of loaded chunks. Forge block states supply native emission levels. The renderer selects up to eight nearby sources and evaluates a separate shadow ray for each source, plus sunlight
+- The first terrain pass covers opaque surfaces and full-block casters. Native block light remains the baseline outside the local volume. Luxium is isolated in a reversible Sandbox backup because it replaces the same stock shader
+- The terrain renderer uses OpenGL 3.3 features. Visual appearance and frame time on Windows and macOS remain unverified
+
+## 2026-11-14 - Add the independent lighting preview to Sandbox
+
+- User requested a JEM renderer prototype with two colored lamps, a column and sun in Sandbox only
+- Added `/jemlighting` with an original GLSL scene. Each source checks its own occlusion and contributes independently. The preview screen isolates this first check from ordinary terrain, Luxium and Voxy
+- Added separate lamp and sun controls and camera orbit. Windows and macOS visual acceptance remains pending
+
+## 2026-11-14 - Correct torch darkening in Sandbox
+
+- User reported that placing a torch darkened the scene until they left its shadow or broke the torch
+- Bug / Client / NeoCPU composited a reference frame without Luxium celestial lighting over areas covered by its torch shadow mask / in testing with NeoCPU disabled and NeoFlood enabled only in Sandbox. NeoFlood computes block light separately from sky light. Its source radius is capped at 16 blocks and local entity casters are off
+- Bug / Client / The installed JEM Luxium 1.0.5 adapter failed to find its OptionsScreen target during Forge startup / in testing with the previously working 1.0.12 artifact restored from the matching local build. The old JAR and prior config were backed up
+
+## 2026-11-14 - Enable local block shadows in Sandbox
+
+- User reported that torches and lamps lit blocks without casting shadows while sun and moon shadows worked
+- Bug / Client / Sandbox had all local shadow modes disabled. Luxium 2.8.0 also disables celestial shadows when either GPU local receiver is active / in testing with native NeoCPU block shadows enabled in Sandbox
+- Set the NeoCPU scene capture to half resolution per axis and disabled local entity casters to limit render cost. The celestial settings were preserved. Visible shadows and FPS await in-game confirmation
+
+## 2026-11-14 - Keep Luxium in Sandbox only
+
+- User reported that Luxium shadows still failed in Test JustEnoughMods and requested removal from that profile. Removed Luxium and its JEM adapter from the managed pack and kept Oculus for shader selection
+- Bug / Client / Sandbox Taste and Oculus both redirected the first-person hand render call. The required Oculus Mixin failed during Forge startup / in testing with Taste moved to a reversible Sandbox backup
+- User requested the Voxy setup in Sandbox. Installed the local Neo Voxy 0.4.0beta build and VSS 0.3.5 with the settings used in Test JustEnoughMods. Luxium remains available for Sandbox rendering checks
+- Published local AutoModpack generation 163 and completed its native application in Test JustEnoughMods. Restored the saved Oculus shader setting and archived the generated Luxium configuration
+
+## 2026-11-14 - Install the Luxium fix in both local profiles
+
+- User closed Minecraft and requested the Luxium fix in Test JustEnoughMods and Sandbox JustEnoughMods
+- Applied published AutoModpack generation 162 to Test JustEnoughMods. Confirmed the active token and that the native transaction cleared
+- Installed the same JEM Luxium adapter, Luxium and Oculus in Sandbox JustEnoughMods. Enabled Luxium with celestial shadows and saved the existing Oculus shader preference for when Luxium is switched off. Verified the three installed JAR hashes in both profiles
+- Bug / Client / Voxy entered Luxium's celestial depth pass / in testing with the viewport guard installed. Visible shadows and frame rate await in-game confirmation
+
+## 2026-11-13 - Isolate Luxium celestial depth from Voxy
+
+- User reported absent visible Luxium shadows after the preset repair. The client log confirms that both celestial cascades were active
+- Bug / Client / Voxy rendered its ordinary perspective LOD pass into Luxium's orthographic celestial depth framebuffer during Embeddium's cutout pass / in testing with a client-only viewport guard scoped to celestial terrain capture. Voxy keeps its ordinary main-world rendering
+- Built the reobfuscated adapter and published native generation 162 on the local server. Test JustEnoughMods remained open, so client installation and visible shadow acceptance are pending
+
+## 2026-11-13 - Set Weather Glass detail to 32 pixels
+
+- User requested 32 by 32 as the Weather Glass default. Set its native rain, snow and dust detail to 32 and kept the existing effect amounts
+- Compared the two repository-local control templates and both managed mod keybind files with Test JustEnoughMods. All 204 template bindings and both mod files already match. No keybind file was changed
+- The local dedicated server started with the updated Security artifact and Royal Variations script. AutoModpack published and applied generation 161 to Test JustEnoughMods. The active token and changed artifact hashes match
+
+## 2026-11-13 - Restore playable shadows, block use and royal mob admission
+
+- User requested a playable Luxium default, compatible JEM Security block use, and a World Tier III lock for every Royal Variations mob
+- Bug / Client / Direct GPU local cubemaps redrew the world around the torch and prevented Luxium 2.8.0 from building celestial shadow maps / in testing with a one-time recovery of the exact previous preset. Fresh installations select native celestial shadows with ordinary torch lighting. Existing Oculus preferences remain editable
+- Bug / Server / The right-click guard could reject a visible block face because it traced only to the block center / in testing with server-verified hit position, face, reach and obstruction. Rejections record a reason in the existing audit. Luxium does not participate in admission
+- Bug / Both Sided / The Royal Variations script discarded the entity without cancelling its join event / in testing with native cancellation for all four variants below Tier III, including entities loaded from saves. Native spawn weights apply at Tier III and above
+
+## 2026-11-13 - Restore race previews and dedicated chunk delivery
+
+- User reported missing player models across all races in both F6 scenes, missing Luxium shadows, and terrain gaps on the local dedicated server. The user also requested removal of the four cardinal directions from Locator Bar
+- Bug / Client / Both detached race preview players reused the live player UUID, which allowed installed world render hooks to cancel either preview / in testing with separate display UUIDs and the live player's native appearance
+- Bug / Server / AntiXray could resize a copied palette through the live callback and write filtered data into a buffer sized for the original chunk / in testing with independent section palettes and measured packet length. The configured ore mask stays active
+- Bug / Client / The local Luxium master and GPU local shadows were off / in testing with both enabled in Test JustEnoughMods, existing sky shadows enabled and Oculus inactive. Selected hard cubemap shadows for the placed-light path
+- Set native Locator Bar `showWorldDirections` to false in the managed client settings and local server. Waypoint and player marker settings are preserved
+- Increased the local client's ordinary render distance from 2 to 8 after Neo Voxy warned about culling near the screen edges at 2. Set its LOD subdivision threshold to 28 for finer detail
+- Bug / Client / Neo Voxy 0.3.5 discarded some half-occupied cells while reducing terrain detail / in testing with a local build of upstream 0.4.0beta at commit 08e30e0cc. The beta retains those surfaces and migrates existing LOD data. The previous JAR and cache were backed up
+- The local dedicated server completed startup. Native AutoModpack generation 159 published both rebuilt modules and both Locator Bar configs. Test JustEnoughMods applied token `2a95facc37101f622c56b914448ebc69193d6908` and verified 333 managed JARs
+- F6, placed-light shadows, VSS transfer and the terrain near `397 110 277` still require in-game acceptance
+
+## 2026-11-13 - Install Voxy for local use
+
+- User requested Voxy on the client and local dedicated server, then startup of the local server
+- Installed the existing Java 17 Neo Voxy 0.3.5 Forge client build in Test JustEnoughMods and VSS 0.3.5 on both sides. Kept Neo Voxy outside the managed pack because its license prohibits redistribution
+- Configured VSS to serve existing terrain over the local loopback connection. Disabled background generation, seed prediction sync, distant player sync and the client Xaero bridge. Shared distribution requires separate compatibility work with JEMSecurity's chunk filter
+- The local dedicated server reached `Done` on `127.0.0.1:31604`. Its `vss stats` command responded after resource reload. The client files match the existing artifacts. Client rendering and LOD transfer await a player connection
+- Bug / Client Sided / Luxium initializes its daytime shadow maps, but the reported terrain shadows remain absent / in investigation pending a trace from the shadow draw pass to the terrain shader
+
+## 2026-11-13 - Remove Radium for the chunk visibility investigation
+
+- User requested removal of Radium and explicit approval before reinstating it, even if the delay persists
+- Bug / Both Sided / Radium's movement collision sweeper can wait synchronously for an in-flight chunk on the server thread / in testing after removing Radium and its default configuration from the managed client and local dedicated server
+- The singleplayer capture separately shows server backlog and delayed terrain display. The client sometimes identified blocks before drawing them. The effect of removing Radium on terrain display remains unverified
+- The local dedicated server completed startup without Radium after a retry. The first startup hit the watchdog while Epic Fight hashed Nightfall animation data during resource reload
+- Native AutoModpack preview reported `+0 ~1 -2` and published the update with content token `03b9e79b06bc96e14a5fa1bcef2e5e6e8f182efe`
+- Test JustEnoughMods applied generation 158. All 333 managed JARs match the source and no update transaction remains pending. AutoModpack also restored existing Streams bank-style examples removed by the prior mod startup
+
+## 2026-11-13 - Reduce fresh-terrain stalls and disable the Beachparty bottle
+
+- User requested removal of StructBlend and Beachparty's Message in a Bottle, and retention of Streams Reflowing during the generation performance work
+- Bug / Both Sided / Beachparty could spawn a bottle whose use invokes a synchronous structure search / in testing after disabling spawning, blacklisting the exact item and its interactions, and removing it from native and JEM market offers
+- Removed StructBlend 1.0.3 and its configuration from both local pack sources. Fresh terrain uses the structures' native adaptation
+- Replaced Streams Reflowing 2.13.1 with 2.17.1 on both sides. Migrated the properties and Russian settings labels, retained MEDIUM rivers and lakes, and selected legacy shaping for continuity with existing worlds
+- Renamed the six retained bank scenery rules with a JEM prefix after startup showed that the upstream migration withdraws the old stock filenames
+- Kept the new Flow Wand recipe and withheld the Carve Wand survival recipe until its terrain edits can be checked against JEM protection rules
+- Bug / Both Sided / Direct player teleport to fresh land synchronously waited for the target and collision-neighbor chunks on the logical server thread / in testing with bounded FULL chunk tickets and deferred server-thread arrival
+- Bug / Both Sided / Epic Fight roll restores a player box through nearby collision because the native resize path skips player displacement / in testing with a loaded-area collision check, native compact poses and bounded server-side correction. The camera symptom still requires manual acceptance
+- Added BiomeSpy 1.3.3 for biome searches. JEM Compat excludes its structure-locate injection with Structurify present because that injection bypasses the native call used by Structurify's placement rules
+- Fixed Gradle inventory configuration for the retired Unofficial Offgrid and Simpler Exposure modules so production artifacts can build again
+- Native AutoModpack published generation 157 with content token `b0379683376d4f5c71b23ef5c6aa5659badc5c12`. The closed Test JustEnoughMods profile committed that token, matches all 334 canonical JARs, and has no pending transaction
+- Bug / Client / The offline application verifier mistook the native integrated server's `automodpack/server.conf` for leftover legacy client state / in testing with validation that allows the server config and continues checking the active client token and JAR hashes
+- The local dedicated server loaded the new artifacts and retained all six JEM riverbank scenery definitions. Teleport latency, fresh chunk throughput and the first- and third-person roll display remain unverified in gameplay
+
+## 2026-11-13 - Regenerate the local Major Update 4 world
+
+- User requested deletion of the local world affected by the RoadWeaver terrain wall and creation of a clean world with the same seed
+- Removed `Server/world-major-update-4` from the active Server runtime after verifying its `level.dat` and seed `-4403480805445476436`
+- Preserved the removed save outside Server at `C:/Users/user/AppData/Local/Temp/jem-removed-worlds/world-major-update-4-before-root-fix-20261113-0455` for emergency recovery
+- Set the local server seed to `-4403480805445476436` and generated a new `world-major-update-4`
+- The new `level.dat` confirms the same seed. The dedicated server reached `Done (269.091s)`, completed its follow-up resource reload and listens on `127.0.0.1:31604`
+- MineRENT, stable `JustEnoughMods`, the immutable release baseline and managed client generation remain unchanged
+
+## 2026-11-13 - Ground-anchor roads and move the locator to the experience bar
+
+- User reported that RoadWeaver created a large artificial terrain wall in the sky instead of starting on existing ground and rising toward the destination
+- Bug / Both Sided / RoadWeaver 2.1.1 applied a backward slope pass from the high endpoint, raised the low endpoint of an ordinary road and then filled every air block from natural terrain to that target without a height bound / in testing after replacing the artifact with `2.1.1-1.20.1-jem.1`
+- Five Whys: the wall existed because RoadWeaver filled to a high road target, the target was high because backward smoothing propagated the destination height toward the low endpoint, both endpoints were treated as mandatory slope anchors, the generated profile had no maximum lift over recorded terrain, and the terrain adapter trusted that profile without a fill-height guard
+- The patched profile starts at the lower recorded terrain endpoint, moves toward the higher endpoint under the native slope limit and caps ordinary-road lift to the configured causeway depth. Native bridge spans remain unchanged
+- The correction also replaces persisted placement profiles in ungenerated chunks. It does not remove road-wall blocks that already exist in the world
+- User requested the newer vanilla-style locator position. Locator Bar now uses its built-in `CLASSIC` renderer with `elementsOnXpBar=true` instead of the `REWORKED` top-center HUD
+- User requested removal of Do a Barrel Roll. Its client artifact and generated server config are absent from the updated pack
+- Confirmed that Respawning Structures is not installed. JEM restores registered boss entities and encounter state, but it does not rebuild destroyed structure blocks
+- Native AutoModpack preview reported `+3 ~1 -2` and published generation 155 with content token `94ee6654d8a90c1665dfb820f75db50f71576ef3`
+- Applied generation 155 to the closed `Test JustEnoughMods` profile. The active projection and gameDir match the canonical patched RoadWeaver and locator configurations, both retired JARs are absent and no transaction remains pending
+- The local server loaded the patched RoadWeaver artifact and remains running at `127.0.0.1:31604`. New-road generation and player-visible locator placement remain in testing because the client was not launched
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
+## 2026-11-13 - Restrict Inventory Tabs to loaded client state
+
+- User requested a patched Inventory Tabs build that works only with loaded chunks, removal of the upstream artifact and installation in Test JEM
+- Bug / Client Sided / Inventory Tabs 0.10.1 constructed every registered entity type in a synthetic `FakeLevel` during Forge's client login event, Brewery's `RopeKnotEntity` constructor queried a block position, the synthetic chunk source returned no chunk and the exception aborted `ClientboundLoginPacket` handling while leaving the connection screen over a partially loaded world / in testing after replacing startup probing with loaded-entity discovery and explicit loaded-chunk guards
+- Five Whys: the connection screen remained because client login packet handling aborted, handling aborted because Inventory Tabs propagated an exception from entity registration, registration failed because it constructed Brewery's rope-knot type in a synthetic level, that constructor reads its supporting block and requested a chunk, and Inventory Tabs had no contract limiting discovery to actual loaded client state
+- Rebuilt pinned MIT upstream commit `ed11c477a1cb6e6b184d73df1e8784ee22268a04` as `0.10.1-jem.1`. The production JAR removes `FakeLevel`, discovers entity tabs only from actual nearby entities and checks `Level.hasChunkAt` before block matching, line-of-sight, hover text, stale-tab handling and opening
+- Preserved native block, chest, villager, horse, chest-boat and generic inventory tabs, public registration methods, configuration and `inventorytabs` mod ID. The patch adds no server component or network channel
+- Production `reobfJar` build succeeded with Java 17 and tests disabled. Artifact SHA-256 is `7912952426d4c1733295742f6266deafb463dcd0f3a5985527f8a2e9cc2bf021`
+- The earlier Bootstrap screen fixes remain installed, but current runtime evidence proved that token matching already completed before the Inventory Tabs exception. Those changes were not the owner of this login failure
+- Native AutoModpack preview reported `+1 ~1 -1` and published generation 154 with content token `4b692bbae1f573a4326765ae9f5944b12ef93814` and manifest SHA-1 `ebc791b01b8df6123d575bd20a2d628ba8dc01c0`
+- Applied the published generation to the closed `Test JustEnoughMods` profile. All 335 managed JARs match, the original Inventory Tabs JAR is absent and no native transaction remains pending
+- The local server remains running at `127.0.0.1:31604`. The client was not launched, so runtime player acceptance remains pending
+
+## 2026-11-13 - Keep equal-token login screen-neutral
+
+- User confirmed that revision `jem.24` still left "Connecting to world" over a world that had already loaded
+- Bug / Client Sided / the equal-token branch still called both `resumeLogin()` and the updater's ordinary `close()`, and both operations could schedule Pack Sync screen restoration during vanilla login / in testing after revision `jem.25` made the equal-token branch release updater resources without any screen operation
+- Five Whys: the connection message remained because a stale `ConnectScreen` became current over the loaded level, it became current because Pack Sync restored login UI after the token matched, restoration still ran because equal-token cleanup reused the ordinary updater close path, ordinary close owns restoration for review and download flows, and the equal-token fast path had no separate screen-neutral cleanup contract
+- Revision `jem.25` adds a resource-only updater close operation and uses it only after an equal installed generation token. Different-token updates, review screens, downloads, cancellation, certificate trust and error restoration keep the ordinary close contract
+- Fresh client and server logs proved that the server accepted the player at `23:52:41`, the client reached `in-game` at `23:52:54`, and only the stale connection screen remained. This excludes token mismatch, failed login and world loading as the cause
+- Built revision `jem.25` without tests. The artifact is 3,491,445 bytes with SHA-256 `d3515ceec590b3e748e5564037ca2417730dbb3bb88241e1382829728ceead74`
+- Installed the exact artifact in `Client/ManagedPack`, the bootstrap installer template, closed Test JEM profile and local Server. The server reached `Done (2.573s)` and listens at `127.0.0.1:31604`
+- Native preview reported `+0 ~0 -0`, publish returned `NO_CHANGES`, and generation 153 retained token `1eb452bd56d358e8b2ffb5bf16459e588e36b3d8`. Test JEM has 335 managed JARs, the matching token and no active transaction. Runtime player acceptance remains pending
+
+## 2026-11-12 - Stop the stale connection screen from covering the loaded world
+
+- User reported that Test JEM entered the server and rendered the world and HUD, but continued to show "Connecting to world"
+- Bug / Client Sided / Pack Sync queued restoration of the interrupted vanilla `ConnectScreen`, but vanilla could complete login and replace its screen before the queued render-thread action ran, so the late action restored an obsolete connection screen over the loaded world / in testing after revision `jem.24` made restoration conditional on the Pack Sync transient screen still owning the display
+- Five Whys: the message remained because the old `ConnectScreen` became current again, it became current because the equal-token path queued an asynchronous restoration, that restoration ran after vanilla advanced to its next login screen, it did not check the current screen before replacing it, and the revision `jem.23` screen-ownership contract covered the saved parent but not render-thread ordering
+- Revision `jem.24` restores the saved connection screen only while a Pack Sync preparation or download screen is still current. If vanilla already advanced, Pack Sync clears only its transient bookkeeping and does not replace the newer screen
+- Equal-token login, different-token native updates, certificate trust, cancellation, transactions and ordinary screen recovery remain unchanged
+- Built revision `jem.24` without tests. The production artifact is 3,491,379 bytes with SHA-256 `ad75ae8ec01bdf0e19bac060035cc238be61e9b6022119f20ae58069bcd2e8b5`. Installed the exact artifact in the managed source, bootstrap installer template, closed Test JEM profile and current local server
+- The local server loaded 337 mods, reached `Done (3.664s)` and listens at `127.0.0.1:31604`. Native preview reported `+0 ~0 -0`, publish returned `NO_CHANGES`, and generation 153 retained token `1eb452bd56d358e8b2ffb5bf16459e588e36b3d8`
+- The closed Test JEM profile retains the same active token, all 335 managed JARs match and no native transaction remains pending. Runtime player acceptance remains pending until the user reconnects
+
+## 2026-11-12 - Remove the Windy post-login crash
+
+- User reported that Test JEM crashed after the Pack Sync login repair
+- Bug / Client Sided / Windy 1.2.0 registers custom Forge particle types while it is installed only on the client, so dedicated-server registry synchronization removes `windy:mote` and Windy's first level tick dereferences the absent registry object / in testing after removing Windy and its managed config
+- Five Whys: the client crashed because `WindDirector` called `MOTE.get()`, the registry object was absent because the server registry snapshot did not contain Windy's particle IDs, the server did not contain them because Windy was classified as client-only, that classification conflicts with Windy's synchronized Forge registrations, and this failure can occur only after a dedicated-server level join
+- The client log confirms that the equal-token Pack Sync path completed and the server fully admitted the player before Windy crashed. The Bootstrap login repair remains unchanged
+- Removed Windy 1.2.0 and its managed client configuration. Fog 1.5.3 and Better Clouds 1.3.37 beta remain installed
+- Rebuilt and validated the Registry Atlas. Native preview reported `+0 ~1 -2`, and AutoModpack published generation 153 with content token `1eb452bd56d358e8b2ffb5bf16459e588e36b3d8` and manifest SHA-1 `ac85ad5691076999664f199632e92ef55b31625d`
+- Applied the published generation to the closed `Test JustEnoughMods` profile. All 335 managed JARs match, Windy is absent and no native transaction remains pending. Runtime player acceptance remains pending until the user reconnects
+
+## 2026-11-12 - Resume live login after an equal Pack Sync token
+
+- User reported that the client remained on "Preparing update" after accepting the local server certificate, although the installed and published generation tokens matched
+- Bug / Client Sided / the equal-token login path returned `CONTINUE` to Forge but left Pack Sync's transient preparation screen in control, so the completed update check looked active and the underlying live connection screen never returned / in testing after revision `jem.23` added an explicit live-login resume path
+- Five Whys: the client appeared to keep checking because the preparation screen stayed visible, it stayed visible because the token fast path only closed the updater, generic close could not restore the connection because ordinary restoration correctly treats a connection screen as abandoned, the certificate prompt had replaced that screen without retaining a dedicated live-login reference, and the new token shortcut did not include the matching UI transition
+- Pack Sync now retains the exact vanilla connection screen while its certificate and preparation screens temporarily own the display. An equal token restores that live screen before the updater closes and then continues the same Forge login
+- Different-token updates, detached joins, cancellation, failure handling, native review, transaction safety and the token comparison remain unchanged
+- Built revision `jem.23` without tests. Artifact size is 3,491,284 bytes and SHA-256 is `0fc9548fdd08b1172f82cad1057a28f20925767dbbfd4cde4c95012e3a310bc`. Installed the exact artifact in the managed source, bootstrap installer template, current local server and closed `Test JustEnoughMods` profile
+- The local server loaded 337 mods and reached `Done (5.183s)`. Native preview reported `+0 ~0 -0`, publish returned `NO_CHANGES`, and generation 152 retained token `933d264392e86508b8d4b2b1902aa5106d68e7e9`
+- The closed Test profile has the same active token, all 336 managed JARs match the canonical source and no native transaction remains pending. Runtime player acceptance remains pending until the user reconnects
+
+## 2026-11-12 - Replace the Major Update 4 camera, mineshaft and royal-mob stack
+
+- User requested Camerapture, Royal Variations, Epic Fight Extra, Fog, Better Clouds and Hopo Better Mineshafts in Test JEM. The user also requested removal of Immersive Paintings, Exposure, Exposure Polaroid, the Exposure bridge, the custom Unofficial Offgrid addon and any competing mineshaft overhaul
+- Replaced Exposure and Immersive Paintings with Camerapture 1.10.12. Removed all four camera and painting artifacts, their managed configs, localization and copied native advancement data
+- Replaced Moog's Mineshafts Reimagined 1.0.2 with Hopo Better Mineshaft 1.2.2d. Other Moog structure mods remain because they do not overhaul mineshafts
+- Kept the original Offgrid 1.0.4, Underlay 1.0.5, Inventory Tabs 0.10.1 and Swinging Signs 1.0.1 artifacts. Removed the custom Unofficial Offgrid artifact and marked its module retired
+- Added Epic Fight Extra 1.2.1 to both logical sides after verifying its Epic Fight 20.14+ dependency against the installed Epic Fight 20.14.17. Added Fog 1.5.3 and Better Clouds 1.3.37 beta to the client only with their already installed dependencies
+- Bug / Both Sided / Enhanced AI Leaders were enabled with a five-percent chance and native bonus stats that multiply base health to four times normal and add 15 armor, which created the reported high-health royal mobs / in testing after disabling Enhanced AI Leaders
+- Five Whys: mobs had anomalous health because Enhanced AI applied leader bonus stats, it applied those stats because Leaders were enabled, Leaders were mistaken for World Tier scaling because both affect hostile mobs, the pack did not separate named variants from ordinary tier scaling, and the previous configuration retained Enhanced AI's default leader chance
+- Ordinary JEM World Tier hostile scaling remains unchanged. It continues to increase ordinary hostile health and damage by 10 percent at Tier 3, 15 percent at Tier 4 and 20 percent at Tier 5
+- Added Royal Variations 2.0.5 to both logical sides. A server-owned KubeJS adapter reads the canonical World Tier API and removes its four royal mob variants below Tier 3. Native Royal Variations spawn weights apply from Tier 3
+- Added Locator Bar 1.2.2 to both logical sides after the user's follow-up. It shows friend player markers on the locator HUD and offers the classic layout near the experience bar
+- Rebuilt and validated the full Registry Atlas. The local dedicated server loaded 337 mods, reached `Done (4.226s)` and loaded all six KubeJS server scripts with zero errors or warnings
+- Native AutoModpack published generation 152 with content token `933d264392e86508b8d4b2b1902aa5106d68e7e9` and manifest SHA-1 `8d2a7dc45e18e4854a1dba5b52bb369399ccee42`. Applied the reviewed `+8 ~2 -23` generation to the closed `Test JustEnoughMods` profile, verified all 336 managed JARs and confirmed no pending transaction
+- The local dedicated server remains running after publication. Minecraft client launch and player acceptance were not performed
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Minecraft client launch and player acceptance remain pending
+
+## 2026-11-12 - Add Exposure Polaroid and retire custom simplification
+
+- User requested replacement of Exposure and JEM's Exposure simplification with Exposure Polaroid in Major Update 4, then confirmed that the Immersive Paintings Exposure bridge can remain
+- Exposure Polaroid 1.1.4 is an addon rather than a standalone replacement. Its embedded Forge metadata requires Exposure 1.9.14 or newer on both logical sides, so Exposure 1.9.21 remains installed only as the mandatory runtime and photograph-state dependency
+- Added the exact Forge 1.20.1 Exposure Polaroid 1.1.4 artifact to the managed client and local dedicated server. The downloaded artifact matches the author's Modrinth SHA-512 `197b46b55ea5ab541be50eff7eeb0414328ebef36bd5e166078ee67786772c0560f3177eaa68254dd70068952c633ad1de38f2758154fb1a89cf31019f157b2c`
+- Retained the client-only Immersive Paintings × Exposure 1.0.0 bridge after the user's follow-up. It continues to expose native Exposure photographs in the Immersive Paintings editor
+- The custom Simpler Exposure module is not present in the Major Update 4 branch or runtime. Marked it retired in the canonical module inventory so the newer `develop` lineage does not restore it during later integration
+- Exposure Polaroid owns the Instant Camera and Instant Slides. Exposure continues to own native Photograph metadata and storage. Existing Exposure items and saved photographs remain valid
+- Rebuilt and validated the full Registry Atlas. The local dedicated server loaded 337 mods, including Exposure 1.9.21 and Exposure Polaroid 1.1.4, and reached `Done`
+- Native AutoModpack published generation 151 with content token `ebd633a23cf7e55d18ac48849ad614ee5eba1c8e` and manifest SHA-1 `f58e4d427037ff04a96ccc961a5bbf30e4ee51bd`. Applied the exact two-operation plan to the closed `Test JustEnoughMods` profile, verified all 335 managed JARs and confirmed no pending transaction
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Minecraft client launch and player acceptance remain pending
+
+## 2026-11-12 - Add the Offgrid building tranche to Major Update 4
+
+- User requested transfer of JEM Unofficial Offgrid, Inventory Tabs, Swinging Signs and Underlay from Sandbox into Test JEM on `feature/major-update-4`. The user also requested a Forge 1.20.1 adaptation of the downloaded Olaf's Relatively Placed Blocks behavior as part of an "Unofficial Offgrid" mod
+- Added unchanged Offgrid 1.0.4 and Underlay 1.0.5 artifacts to the managed client and dedicated server. Added Inventory Tabs 0.10.1 and Swinging Signs 1.0.1 to the managed client only because they own client presentation and input
+- Built `Unofficial Offgrid` 1.0.0 as a separate required Offgrid addon. It preserves the original All Rights Reserved Offgrid JAR byte-for-byte and extends only Offgrid's native placement eligibility with Olaf 2.0.2 shape classification. Offgrid remains the sole owner of multipart state, synchronization, rendering, breaking and placement
+- The addon uses CC0-1.0 for its original implementation, requires exact Offgrid 1.0.4, clears its eligibility cache after tag updates and excludes Offgrid's native blocklog route. Built the production reobfuscated Forge artifact without tests using Java 21. Artifact size is 8,365 bytes and SHA-256 is `c437a21082b1699371e0a080650b32bec5e8ec37c860728a7ed065b244a7c264`
+- Rebuilt and validated the full Registry Atlas. The local dedicated server loaded 336 mods, including Offgrid, Underlay and Unofficial Offgrid, reached `Done (5.144s)`, published the reviewed `+9 ~1 -0` delta and then saved all eight dimensions before it stopped
+- Native AutoModpack published generation 150 with content token `134b96fb07071a3053748aa0a154cc128c75957a` and manifest SHA-1 `3d35642bc00734ca2c687e4f10e53f025edf4161`. Applied it to the closed `Test JustEnoughMods` profile, verified all 334 managed JARs and confirmed no pending transaction
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Minecraft client launch and player acceptance remain pending
+
+## 2026-11-12 - Make Pack Sync login token-driven
+
+- User required an equal client/server update token to bypass the Pack Sync file check, and a different token to start the default AutoModpack update immediately instead of holding login for 60 seconds
+- Bug / Client Sided / the login query performed a complete projection scan, protection pass, generation-history check and update-plan decision before it answered the server, so a valid generation could exceed the fixed 60-second login timeout / in testing after revision `jem.22` made the committed content token the attached-client login witness
+- Five Whys: the server disconnected because its login query had no answer, the client had no answer because it inspected thousands of managed paths, it inspected them because the login path reused the full update verdict, the full verdict was retained after update discovery moved out of startup, and the design did not use the already committed generation token as the fast login boundary
+- An attached client with the same token now returns `CONTINUE` without file verification. A different token now leaves the connecting screen immediately and enters the existing native reviewed updater. Detached packs keep their explicit prompt because token equality does not prove unchanged local files
+- Native manifest trust, consent, transaction, ownership, restart, recovery and rollback behavior remain unchanged. Bootstrap remains outside the served managed generation, so this repair does not create a new pack token
+- Built revision `jem.22` without tests. Artifact size is 3,491,022 bytes and SHA-256 is `63d85180156e398cf9522c91e6b7f2c0c4e52da1ee5b7e673815b8da782de199`. Installed the exact artifact in the managed source, bootstrap installer template, current local server and closed `Test JustEnoughMods` profile. Runtime player acceptance remains pending
+- The local server loaded 333 mods and reached `Done (2.609s)`. Native preview reported `+0 ~0 -0`, publish returned `NO_CHANGES`, and generation 149 retained token `df2877a424a152666f3672be8a7e4733ece2d117`. The Test profile has the same active token and no pending transaction. The server saved all dimensions and stopped after publication
+
+## 2026-11-12 - Remove legacy client state and retired local server
+
+- User required deletion of the old client `automodpack` folder, the retired local server that used the old layout and all Bootstrap migration logic connected to that folder. MineRENT and the current local server world remain outside the deletion
+- Bug / Client Sided / integrated client hosting still created `certificate.crt` and `private-key.pem` through game-local server constants, while connection trust opened the external client state and rejected the two different credential pairs / in testing after revision `jem.21` moved integrated-host TLS material to the external role-aware root and removed game-local client migration
+- Five Whys: connection trust stopped because two TLS pairs disagreed, the second pair existed because integrated hosting used `SERVER_CERT_FILE` directly, that constant resolves under gameDir, the earlier credential repair covered only `provisioning-secret`, and the patch chain still treated the forbidden client folder as a migration source instead of removing its ownership completely
+- Removed `ClientStateMigration`, the legacy shared-object import patch and every Bootstrap call or patch entry that migrated game-local client state. Client service state now has one owner at `%LOCALAPPDATA%/JEM/pack-sync/<profile-id>`. A configured client root inside gameDir remains explicitly rejected. Transaction validation now checks game content and external client state against their separate canonical roots without referencing the retired folder
+- Sent `Test JustEnoughMods/automodpack` and the 21,449,028,924-byte `retired-test-jem-server-20261111` archive to the Windows Recycle Bin. The active local server, its world, `Server/automodpack` and MineRENT were not deleted
+- Built Bootstrap revision `jem.21` without tests. Artifact size is 3,491,005 bytes and SHA-256 is `41dffa967251bcf818f60dcd349804ed608a354834a6826d89bb693f51b2b6e7`. Installed the exact artifact in the managed source, bootstrap installer template, current local server and closed `Test JustEnoughMods` profile
+- The local server loaded 333 mods and reached `Done (5.893s)`. Native Pack Sync preview and publish returned `+0 ~0 -0` and retained generation 149 with content token `df2877a424a152666f3672be8a7e4733ece2d117`, because Bootstrap is not a managed download. Minecraft client launch and player connection acceptance remain pending
+
+## 2026-11-12 - Restore the Major Update 4 local server runtime
+
+- User reported that `Test JustEnoughMods` could not connect to the local server
+- Bug / Both Sided / the 2026-11-11 local-server transition preserved the world, configs and AutoModpack host state but left `Server/mods` with only `jem-bootstrap.jar`, so the server advertised none of the installed gameplay channels and every login timed out after the native Pack Sync check / in testing after restoring the filtered 279-JAR dedicated-server runtime
+- Five Whys: Forge rejected the login because required channels were absent, those channels were absent because only Bootstrap loaded, only Bootstrap loaded because the transition synchronized the transport layer but not the dedicated-server mod inventory, the transition receipt checked `Done` against that bootstrap-only runtime, and it did not compare the server runtime inventory with the current managed generation
+- Restored the 329 current managed JARs, added the two server-only `ServerCore 1.5.2` and `ServerLogin 1.0.3` artifacts from the supplied MineRENT backup, then removed 52 client-only JARs from the dedicated side. The final server folder contains 279 JARs and loads 333 mods including all Major Update 4 gameplay and world-generation owners
+- Bug / Server Sided / native `Luxium 2.8.0-pre-alpha` constructs a Forge mod instance that directly loads `net.minecraft.client.gui.screens.Screen`, so installing it on a dedicated server aborts mod loading / in testing after classifying native Luxium and `jem_luxium` as client-only and excluding both from the server runtime
+- AutoModpack was not the Luxium failure owner. Its generation 149 remained unchanged and loaded successfully from content token `df2877a424a152666f3672be8a7e4733ece2d117`
+- The restored server loaded 333 mods, 15,724 recipes, 591 FTB Quests entries and the Structurify overlap configuration, then reached `Done (5.286s)` after the 198-second full startup. It is listening at `127.0.0.1:31604`. Player connection acceptance remains pending
+
+## 2026-11-12 - Keep client-host credentials in external Pack Sync state
+
+- User reported that `Test JustEnoughMods` crashed immediately after startup
+- Bug / Client Sided / integrated client-host initialization still wrote `provisioning-secret` through the legacy game-directory constant after all other client state moved to the external profile root, so the next startup rejected the conflicting credentials before Forge loaded / in testing after routing the credential through `DataRootResolver`
+- Five Whys: startup stopped because migration found two different provisioning secrets, the legacy secret was generated at 16:56 after the earlier migration, integrated client hosting called `ProvisioningSecretStore.ensure()`, that store alone still used `StoragePaths.PROVISIONING_SECRET_FILE` directly, and the external-state migration had no role-aware credential-path adapter
+- Revision `jem.20` resolves the provisioning secret through the same role-aware data location as other Pack Sync state. Dedicated servers retain their game-directory credential path, while clients use `%LOCALAPPDATA%/JEM/pack-sync/<profile-id>/credentials`
+- Migration keeps the existing external client credential authoritative and removes only a stale conflicting legacy provisioning secret created by the old client-host path. All other state conflicts remain fail-closed
+- Built revision `jem.20` with SHA-256 `70eaf4c03de104b2b5103caa8a515bf746392549aebfaabe5d0714d54accb671` and installed the exact artifact in the canonical managed source, bootstrap-only installer, local dedicated server and closed `Test JustEnoughMods` profile. The stable profile, MineRENT and release baseline remain unchanged
+- Native pack preview retained generation 149 with content token `df2877a424a152666f3672be8a7e4733ece2d117` and reported `+0 ~0 -0`, because Bootstrap remains outside the served pack. Client startup acceptance remains pending
+
+## 2026-11-11 - Bound Atlas work for packaging-only repairs
+
+- User required future narrow JEM repairs to avoid the 41-minute delivery path observed during the Sift reobfuscation fix
+- Added a permanent packaging-only fast path to the canonical `jem-registry-keeper` workflow
+- Packaging-only repairs now use one build, one focused artifact comparison, one Atlas refresh and validation path, one pack publication and application, and one consolidated final check
+- The workflow now forbids the shared Atlas publisher, independent reproducibility stores, repository-wide archive scans and repeated full Atlas passes unless the user or owning project documentation explicitly requires them
+- A mandatory command that exceeds five minutes must be reported, while optional diagnostics stop after the root cause is confirmed
+
+## 2026-11-11 - Repair the Sift production artifact
+
+- User requested repair of the `Test JustEnoughMods` startup crash and all required delivery work
+- Bug / Client Sided / the Java 17 Sift Backport artifact retained Mojmap development method names because ForgeGradle reobfuscation was disabled and the build invoked only `jar` / in testing after replacing it with the Java 17 Forge SRG production artifact
+- Enabled ForgeGradle reobfuscation in the pinned upstream patch and made `reobfJar` the required production task. Sift Java source, resources, registries, gameplay and network behavior are unchanged
+- Built class version 61 artifact SHA-256 `413e4999c09a2488ad3faf63c02b185f705c20fc6f4248ad50fff8c36b9bdc6e`. Static bytecode inspection confirms `SoundEvent.m_262824_` and `BlockBehaviour.Properties.m_284310_` replace the two crashing Mojmap calls. Every non-class, non-manifest JAR entry matches the previous artifact byte-for-byte
+- Rebuilt and validated the full Registry Atlas. Sift IDs remain present with the new artifact hash, no installed-artifact drift remains, and representative Sift behavior queries report no conflicts
+- Published native AutoModpack generation 149 with token `df2877a424a152666f3672be8a7e4733ece2d117` and manifest SHA-1 `86b6e1ee1dcc3b44c8dc24b0394cae474004ed5f`. Applied it to the closed `Test JustEnoughMods` profile, verified 329 managed JARs, matching Sift SHA-256 and no pending transaction
+- The local server remains available at `127.0.0.1:31604`. Minecraft was not launched, so client startup and player acceptance remain pending
+
+## 2026-11-11 - Diagnose the Sift client startup crash
+
+- User reported that `Test JustEnoughMods` crashed after local generation 148 was installed and the local server was started
+- Bug / Client Sided / the Java 17 Sift Backport artifact retained Mojmap development method names because the inherited ForgeGradle configuration set `minecraft.reobf = false` and the pinned build invoked only `jar` / in testing with no replacement artifact published yet
+- Five Whys: Forge registry dispatch failed because Sift called `SoundEvent.createVariableRangeEvent` and `BlockBehaviour.Properties.of`, those names do not exist in the Forge 47.4.10 SRG runtime, the artifact kept development mappings because reobfuscation was disabled, the Java 17 patch intentionally inherited the upstream packaging configuration, and static verification checked the class version and content but did not inspect production symbol names or launch the client
+- The later Alex's Caves, Alex's Mobs, Forge fluid and 748 registry-ID errors are rollback consequences after Sift's first two `NoSuchMethodError` failures, not separate root causes
+- The client failed during game initialization before it connected to the local server. The server remained ready on `127.0.0.1:31604`
+- No source fix, rebuild, managed-pack replacement, publication or client launch was performed during this diagnosis
+
+## 2026-11-11 - Reduce the Major Update 4 stack and add Sift
+
+- User removed Advancement Frames, Rose Gold Equipment, Dungeons and Taverns, Dungeons and Taverns Ancient City Overhaul and Oh The Trees You'll Grow. The user selected Structurify as the only overlapping structure-control owner and requested the Sift addition in the same implementation task
+- Removed the five content artifacts and StructureOverlapless from the canonical managed generation. Advancement Frames integration, its optional dependency, selector code and teaching card are also removed
+- Added Structurify 2.0.43 as the single physical overlap owner. Native spacing remains active, overlap padding is zero, and the priority pillager outpost plus all 23 canonical JEM boss structures are excluded from overlap prevention
+- Retained Structure Layout Optimizer, StructBlend and RoadWeaver because they separately own jigsaw layout calculation, terrain blending and road generation
+- Built Sift Backport 1.0.5.1 from pinned MIT upstream commit `82a7428b31e29bcebaa127c3118214c9f17421fa` with Java 17 class version 61. The patch changes only the toolchain, release target and disclosure manifest fields. Artifact SHA-256 is `28184197726aed7541829ceadba68277e72519ec313ab5f5350c8d677415d970`
+- Bug / Build / Sift source verification compared LF archive bytes with CRLF Windows-checkout hashes / resolved by recording the exact pinned `git archive` hashes before applying the unchanged patch
+- Bug / Build / JEM modules still resolved compile-only dependencies from the retired full `Server/mods` inventory after the new bootstrap-only local-server transition / resolved by moving only those build-time paths to canonical `Client/ManagedPack/mods`
+- Bug / Client / the native local-apply helper rejected ownership-proven `REMOVE_OWNED` collisions after recovery from another server generation / resolved by accepting only same-path replacements whose old hash matches the active ownership ledger plan and whose new hash matches the canonical managed pack
+- Compiled the canonical questbook to 590 mapped cards and built JEM Advancements 5.3.3 without tests. Artifact SHA-256 is `4787d7995f5573d581089a33afe3723cbc0269181df382912c70d7069e56f198`
+- Added `Docs/major-update-4/Мои Задачи.md` with the user's manual checks for the roll blue-screen defect, barriers, FTB Quests and Luxium
+- Published native local generation 148 with content token `cb5325182ded9de31120c1453e941630cd33c3a3` and applied it to `Test JustEnoughMods`. No native transaction remains pending
+- Minecraft launch, fresh-chunk generation and player acceptance were not performed
+
+## 2026-11-11 - Replace the local test environment for Major Update 4
+
+- User requested deletion of the old `test jem` client and server, rename of `jem sandbox`, creation of `Test JustEnoughMods` from stable `JustEnoughMods`, and reconstruction of the local server from the supplied MineRENT backup with a new world and Major Update 4
+- Renamed the sandbox profile and its internal TLauncher version to `Sandbox JustEnoughMods`. Created `Test JustEnoughMods` as a byte copy of stable before assigning its own internal version name and unique TLauncher IDs. Stable `JustEnoughMods` remains unchanged and the old `test jem` profile is absent
+- Audited and extracted `43cc4557-07e4-42d9-bfdb-3ee187aa7b17.tar.zst`. Reused its server operations base without restoring its world, AutoModpack state, backups or logs. Current Major Update 4 files and generation 147 replaced those surfaces
+- Bug / Client Sided / the first external-state migration moved the state files but did not import legacy shared CAS objects referenced by the installed generation, so native witness validation could not prove the old installation / in testing after revision `jem.19` imports only referenced legacy objects through verified links before validation
+- Five Whys: validation failed because the external object store lacked a referenced policy object, the migration moved only the former gameDir state tree, older client objects lived in the shared `%LOCALAPPDATA%\automodpack\data` store, the external-state design assumed every required object was inside the moved tree, and no referenced-object import stage existed
+- Bug / Client Sided / native commit rejected valid external projection operations because every transaction root was confined to gameDir / in testing after revision `jem.19` confines `GAME_DIR` to gameDir and confines `PROJECTION` and `OVERLAY` to the external client state root
+- Five Whys: commit stopped because the projection path was outside gameDir, the validator applied one containment root to all operation types, the earlier layout stored projection under gameDir, the external-state migration changed that ownership boundary, and transaction validation had not been updated with the new root contract
+- Built the Forge 1.20.1 `jem.19` production artifact without tests. Size is 3,495,874 bytes and SHA-256 is `3ed4d26bd8cc269de686ac3b10117ddaee258a53b2717f7068ad39780c564a30`
+- Published native AutoModpack generation 147 with token `2f9f5b33826b2f51765c783802c803b10c0f2a8f` and manifest SHA-1 `39a57e9a0d2b97824d0a51ae55731a9f55033dcc`. Applied it to the closed `Test JustEnoughMods` profile through the native transaction and verified 327 managed JAR hashes
+- The client active token matches the published head, no native transaction remains pending and the gameDir has no `automodpack` folder. The service state is under `%LOCALAPPDATA%\JEM\pack-sync\a346954f6e91a4358d0be710b1ca972da28d8a84`
+- Replaced the active local Server contents and retained the former server outside the repository at `JustEnoughMods-updates/retired-test-jem-server-20261111` as a recovery archive. The new server contains no backup world
+- The server created `world-major-update-4`, loaded generation 147, reached `Done (23.816s)` and stopped cleanly after saving all dimensions. Minecraft client, gameplay QA, MineRENT deployment and player acceptance remain pending
+
+## 2026-11-11 - Move pack synchronization outside the game directory
+
+- User required AutoModpack to stop checking the remembered server during ordinary Minecraft startup, install managed content into the standard profile folders and leave no client `automodpack` directory in gameDir. The user also required safe handling of personal mods, confirmed that `test jem` migration is outside this task and asked whether friends, MineRENT and singleplayer retain their expected behavior
+- Bug / Client Sided / JEM Bootstrap ran remembered-server lookup, full projection verification and update planning during every ordinary launch, while Forge also loaded managed mods from the internal active projection / in testing after moving synchronization to the native server login query and removing the projection from Forge mod discovery
+- Five Whys: startup took several extra minutes because Bootstrap performed synchronization before server selection, the flow treated launch as an update trigger, remembered connection metadata supplied a server before the player selected one, the active projection was also the loader source, and transaction storage and runtime layout were not separated
+- Bug / Client Sided / client object, projection, transaction, helper and recovery state remained under `gameDir/automodpack`, which duplicated immutable managed bytes and exposed an internal layout as a second apparent modpack folder / in testing after moving all client service state to `%LOCALAPPDATA%\JEM\pack-sync\<profile-id>`, adding a verified one-time migration and using verified hard links for immutable standard-root files when supported
+- Bug / Client Sided / revision `jem.16` planned every target path as a live copy before duplicate-ID disposition, so a stale or personal same-ID JAR at that path could bypass the explicit conflict row / in testing after making all surviving standard-root mods participate in ledger-aware duplicate review
+- Revision `jem.17` keeps the native downloader, consent, risk, old-file choice, final review, trust checks, object store, transaction, rollback and ownership ledger. BootRecovery can finish only an already accepted transaction during startup and does not begin a new server check
+- Every selected managed path is installed transactionally at its standard gameDir root, including `mods`, `resourcepacks` and `shaderpacks`. Forge loads `gameDir/mods`. The internal active projection remains in external per-profile state as an installed-generation and rollback witness
+- After successful migration, the client gameDir has no `automodpack` directory. MineRENT and every other dedicated server keep their server-side `gameDir/automodpack/server` state. Each friend gets an independent local profile-state directory on their own computer
+- Unique personal mods remain. Same-ID files enter explicit review. Ledger-proven old managed versions can be removed, unknown local bytes are preserved for review and pinned mod IDs remain protected
+- Managed immutable mods, resource packs and shader packs share verified CAS bytes through same-volume hard links when supported. A verified copy is used as fallback. Editable config, KubeJS and default-config files remain independent
+- After one successful server installation, singleplayer starts without a server check. Dedicated-only SMP, parties and JEM Events/Raid remain disabled in integrated worlds. A new clean client still needs one server connection to receive its first generation
+- A login that changes JARs still requires the native restart before the connection can continue
+- The Forge 1.20.1 production JAR built successfully without tests. Its revision is `jem.17`, size is 3,494,165 bytes and SHA-256 is `df3096a998b2331133e9262aaa7c7a0028ad6d9c480d016009ce4703ec4aff01`
+- Synchronized only the canonical managed source, clean bootstrap installer and ordinary local Server. The `test jem` profile, stable `JustEnoughMods`, MineRENT and immutable release baseline remain unchanged. Bootstrap remains excluded from the managed AutoModpack generation, so no generation publication is required
+- No Minecraft launch, migration or runtime timing measurement was performed. The previous 10-minute to 2-minute target remains a player-acceptance goal, not a verified result
+
+## 2026-11-10 - Expand Major Update 4 structures and assign overlap ownership
+
+- User requested eleven additional structure and worldgen projects, priority for Improved Pillager Outpost, Luki ownership over Better Villages, conditional mansion and ancient-city overhauls, and one non-duplicated structure-control stack
+- Added Lio's Hobbit Hill Village 0.0.5, Oh The Trees You'll Grow 1.7.4, ATi Structures file V1.4.7, Cult of Azazel 1.1.4.12, Abridged 2.0.0, Luki's Grand Capitals 1.1.3, Moog's Soaring Structures 2.2.0 and Lio's Spiral Tower Villages 0.0.4 to the managed client and local server
+- Ember's Ancient Remnants 1.0.2.2 was already present and remains unchanged. No duplicate artifact was added
+- Removed Better Villages 3.3.1 and its config because its vanilla village templates overlap Luki's Grand Capitals. The merged village structure set retains one copy of each Luki-owned vanilla village and all unique Nature's Spirit and Trek village IDs
+- Added Luki's Woodland Mansions 1-v.1.0 because Grand Capitals 1.1.3 no longer includes the mansion. Added Dungeons and Taverns Ancient City Overhaul because the installed pack had no vanilla ancient-city overhaul
+- Added Improved Pillager Outpost v5 as the only vanilla outpost template owner. The compatibility datapack restores the exact vanilla 1.20.1 outpost route, so Trek and Luki outpost overrides cannot replace its templates
+- Selected Structure Layout Optimizer 1.0.11 for jigsaw performance and StructureOverlapless 1.20.1-1.2.0 for physical overlap control. Seed-parity-changing pool deduplication is disabled, while the outpost and all 23 registered JEM boss structures are unskippable
+- Added StructBlend 1.0.3 as the separate terrain-blending owner recommended alongside StructureOverlapless. The priority outpost and all 23 canonical boss structures are excluded so their template and arena geometry remain unchanged
+- Added RoadWeaver 2.1.1-1.20.1 to both logical sides as the road owner for the expanded village catalog and the priority vanilla pillager outpost. Canonical boss structures remain outside its whitelist
+- Excluded Structurify, Dimensional Structure Restrict and Respawning Structures because they duplicate placement, dimension or boss-lifecycle ownership without a proven missing function
+- Bug / Both Sided / the official Sift Backport Forge 1.20.1 files are compiled for Java 21 class version 65, while this Forge 1.20.1 runtime uses Java 17 class version 61 / excluded after the first ordinary server start failed and both available official Forge 1.20.1 releases were inspected
+- Bug / Both Sided / Luki's Woodland Mansions 1-v.1.0 uses the unsupported `value` field for its referenced common loot table, so Forge 1.20.1 rejects `mansions:mansion_common` / in testing after a narrow Paxi override replaces only that field with the required `name` field
+- The final ordinary local server loaded 333 mods, initialized StructBlend, loaded RoadWeaver with 795 discovered structures and 103 tags, completed datapack loading, reached `Done (19.310s)` on the preserved Major Update 4 world and stopped cleanly. The final priority pack also removed Luki's invalid `mansions:mansion_common` loot-table parse error. Fresh-chunk player acceptance remains pending
+- Native AutoModpack published generation 146 with content token `2e0aa9c7d1fe958f52346ecb8f6e0531c1c7a6c6` and reviewed delta `+35 ~1 -11`, then applied it to the closed `test jem` profile. The installed token and reviewed artifact hashes match, and no update transaction remains pending
+- Client launch, fresh-chunk structure generation and player acceptance remain pending. MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
+## 2026-11-10 - Add the remembered structure expansion to Major Update 4
+
+- User requested Towns and Towers and asked for the other structure mod retained from the old Iron's Spells-era pack
+- Local profile evidence identifies the remembered mod as Dungeons and Taverns. The retained `Medieval RPG [JEM]` profile loaded Dungeons and Taverns 3.0.3.f and Towns and Towers 1.12 together
+- Added exact official-hash Forge 1.20.1 artifacts for Towns and Towers 1.12, Dungeons and Taverns 3.0.3.f and required Cristel Lib 1.1.6 to the canonical managed client and ordinary local server
+- Preserved all Towns and Towers structures and native spacing. Both structure catalogs affect only newly generated chunks
+- Preserved Cristel Lib's native Minecraft structure enablement and placement values. Its generated defaults match the retained old JEM profile line for line
+- Static collision review found that the new artifacts use `replace=true` on eight vanilla structure-biome tags also extended by Terralith. Added a narrow Paxi datapack that restores only the exact Terralith members without replacing the new native entries
+- Preserved the established JEM Twelve Eyes final ownership of witch loot. Dungeons and Taverns does not restore bypass loot, while its native tick function safely merges with True Ending through `replace=false`
+- The rebuilt Atlas validates 17,074 items, 12,100 blocks, 1,567 entities, 673 structures and all 198 active change records with no uncovered task change
+- The ordinary local server loaded all three artifacts. Native AutoModpack generation 144 published the reviewed `+14 ~1 -0` structure transition, then generation 145 published the two deterministic Cristel Lib defaults with final content token `b8cf870a25ccf894d939c2ef5d60c05fdf722cfa` and reviewed delta `+2 ~1 -0`
+- Bug / Client Tooling / Windows Explorer held two directory handles on the inactive `test jem` projection, so AutoModpack preserved the approved transaction but deferred its atomic directory swap / in testing after identifying the exact owner, restarting only Explorer and completing native transaction recovery
+- Five Whys: native commit deferred because the active projection could not be renamed, the rename was blocked by two open `active/mods` directory handles, both handles belonged to Windows Explorer rather than Minecraft or the updater, Windows denied targeted handle closure, and the desktop shell retained a browsed mod-directory handle outside AutoModpack's lifecycle ownership
+- Applied generation 145 to the closed `test jem` profile through the native planner and ownership ledger. Its active token, both structure configs and all three JAR hashes match the canonical publication, and no native update transaction remains pending
+- Exact embedded metadata, dependencies, structure resources and client/server hashes were reviewed. Client launch, fresh-chunk generation and player acceptance remain pending
+- MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
+## 2026-11-09 - Explain non-crafted items through native JEI
+
+- User required every unclear non-crafted item to explain where it is found, how it is obtained and why or how it is used, with access through ordinary JEI focus and the `U` uses key
+- Expanded the existing native JEI Information projection from first-spotlight-only pages to every exact registered item ID in localized Guide aliases and spotlight selectors
+- Native JEI 15.49.0.194 exposes Information ingredients under both INPUT and OUTPUT focus, so the same pages open through `U` and ordinary recipe lookup without a custom replacement screen
+- Added verified Russian and English pages for Cultist Axe, Pumpkin Helmet, Eye of Methuselah, Paraglider Spirit Orb and Paraglider Essence
+- Verified the five reported examples against installed JAR bytecode, loot modifiers, bargain recipes, effective configuration and existing research records
+- Static source coverage now includes 646 localized entries, 2,307 entry-item information pairs and 2,094 unique item IDs
+- Bug / Build / JEM Achievement Guide still referenced the retired `jem-rewards-1.0.0.jar` filename, so the first selective build could not resolve its compile dependency / resolved by using the canonical `:JEMRewards` project output instead of a versioned local JAR path
+- Built JEM Advancements 5.3.2 with SHA-256 `92cb60aeff44060cb544de568776b335f224a1a3263fa806c04eee4a58602042` and JEM Compat 3.10.3 with SHA-256 `b7c8b8773dd75699d3d5fd2ad946cd86e54beec85436e8180eb6c85af53294d0` under Java 17, then installed the exact outputs in the canonical managed client and ordinary local server
+- The rebuilt Atlas validates 17,074 items, 12,100 blocks, 1,567 entities, 556 structures and all 197 active change records with no uncovered task change
+- Native AutoModpack published the cumulative change as generation 142 with reviewed delta `+19 ~4 -3`, then published the final duplicate-owner correction as generation 143 with content token `f1b6db480ab7414a94db47408d339db241ad2641` and reviewed delta `+0 ~2 -0`
+- Applied generation 143 to the closed `test jem` profile. The active token and exact JEM Advancements hash match the canonical publication, and no native update transaction remains pending
+- Runtime Minecraft and player acceptance remain pending
+
+## 2026-11-09 - Install the approved video-plan community layer
+
+- User approved the complete `JEM_All_3_Videos_Master_Plan.md` scope and the previously shortlisted Bibliophilia and shureee's Potions resource packs
+- Installed exact Forge 1.20.1 artifacts for Backported Spears, Rose Gold Equipment, Visual Workbench, Block Runner, Structory, Ocean Lily Pad Village, AmbientSounds 6, Windy, Do a Barrel Roll, Weather Glass and the audited Immersive Storms port
+- Added Forge CIT and configured Paxi to activate Bibliophilia 1.17 and shureee's Potions 2.0 for all managed clients. Bibliophilia includes selected modded-enchantment support, while unsupported modded potions keep their native appearance
+- Removed FastWorkbench from client and server because its pooled crafting-result cache conflicts with Visual Workbench's persistent grid and shift-click ownership. Existing FastSuite remains unchanged
+- Removed the stale `TreeChop-1.20.1-forge-0.19.0-fixed.jar.url` Windows shortcut from managed transfer. The real TreeChop JAR remains installed on client and server with matching hashes
+- Reused installed CreativeCore 2.12.40 and Puzzles Lib 8.1.33. No duplicate dependency version was added
+- Set conservative defaults: AmbientSounds volume 0.4, Block Runner road multiplier 1.15, subtle Windy density, 16-pixel Weather Glass, and reduced Immersive Storms particles without dense fog, duplicate wind audio or server damage
+- Native preview confirmed that generation 142 deletes only the stale TreeChop URL shortcut, FastWorkbench and its config. The real TreeChop JAR remains outside the delete plan with SHA-256 `219fbe5bf8d862dc7b524ca5a0151f66bba4d53a01010858e136a9e8c4d55d4f`
+- Applied the exact generation to the closed `test jem` profile through the native planner and ownership ledger. All 14 new or replaced JAR hashes match the publication, all three planned paths are absent and no transaction remains pending
+- Static metadata, dependency, registry and side-gating review is complete. Runtime gameplay, shader, fresh-chunk worldgen and player acceptance remain pending
+- This is the community-content tranche of the approved master plan. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
+## 2026-11-09 - Correct potion and enchanted-book resource-pack direction
+
+- User clarified that Major Update 4 must use suitable existing resource packs instead of newly authored JEM textures
+- Removed the original Aseprite potion candidate and its static visual-audit files from the branch
+- Shortlisted `Bibliophilia | Enchanted Books` for vanilla and supported modded enchantments and `shureee's Potions` for distinct vanilla potion silhouettes on Minecraft 1.20.1
+- Both candidates require a CIT implementation on Forge 1.20.1. `Forge CIT` is the compatible client-side dependency under review
+- No third-party archive, dependency, managed client file, local server file or AutoModpack publication changed pending the user's pack selection
+
+## 2026-11-09 - Remove two Guide tabs and repair JEI mode switching
+
+- User requested complete removal of the "Getting started" and "Items" tabs from JEM Guide, then reported that the curated category search remained visible after switching to standard JEI
+- JEM Guide now exposes only Bosses, Enchantments, Quests and Mod manuals as ribbon tabs. Existing item reference data remains available through direct help, search and JEI without a visible Items tab
+- Bug / Client Sided / the curated category search was registered as a native screen widget, so Minecraft continued to render and focus it after JEM stopped its manual overlay render for standard JEI / in testing after binding widget visibility, activity and focus to curated mode during pre-render and mode switching
+- The standard JEI search and recipe ownership remain native. The mode switch does not clear either search query
+- Built JEM Guide 5.3.2 and JEM Compat 3.10.3 under Java 17. The ordinary local server loaded both artifacts, and Atlas validation completed with 16,958 items, 12,095 blocks, 1,567 entities and no uncovered task change
+- Native AutoModpack published the cumulative transition as generation 140, then published the final identity-gated JEM Rewards correction as generation 141 with content token `715a0513839d76b04c99fd52ac316e223c18390d` and reviewed delta `+0 ~2 -0`. Native recovery completed its deferred projection swap in the closed `test jem` profile
+- The active token and JAR hashes match the canonical publication, all four retired versioned artifacts are absent and no transaction remains pending
+- Runtime GUI acceptance remains pending. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
+## 2026-11-09 - Restore first race preview and universal starter supplies
+
+- User reported that the player model is absent during the first race choice on dedicated and integrated servers, required starter-kit ownership at the modpack level, and added a spyglass plus glider to the kit
+- Bug / Client Sided / the detached race-preview player exposed Forge capabilities without receiving the client-level join lifecycle, so Epic Fight could replace the native renderer with an incomplete player patch / in testing after moving both race stages to one capability-free detached player
+- Five Whys: the model was absent because the native player renderer was replaced, Epic Fight found its player capability, Forge attached that capability during display-entity construction, the detached entity never received `EntityJoinLevelEvent`, and the preview owner did not isolate world-lifecycle capabilities from a screen-only entity
+- Bug / Both Sided / starter issuance was called only from JEM Server while `SmpEnvironment.active` requires a dedicated host, so integrated singleplayer never entered the delivery path / in testing after moving new issuance and legacy migration to universal JEM Rewards
+- The user selected `minecraft:spyglass` and a glider. The implementation uses the installed native `paraglider:paraglider`, preserves the original starter source ID, gives prior recipients only one versioned exploration extension, and prevents replay of completed or interrupted server-owned grants
+- JEM Server retains only dedicated authentication and pre-choice combat protection. JEM Rewards now owns the same durable starter behavior on integrated and dedicated logical servers, while JEM Identity keeps offline dedicated issuance behind the existing Server Login verification gate
+- Built JEM Roles 2.0.3, JEM Rewards 1.1.0 and the updated JEM Server 2.0.0-dev artifact under Java 17, then installed the exact outputs in the canonical managed client and ordinary local server
+- Native AutoModpack generation 141 installs the matching client artifacts in `test jem`. The active profile files resolve to JEM Roles SHA-256 `c98f3f9a360af54cd5292c9239d6ef335dc4093afc355e9f449e081c398ec0e2`, JEM Rewards `d13db58b5dab2f030d0f492d3684ef10f59513247bdafdd01af6001981034c7f` and JEM Server `922c6a95765555e1b71300b504a5c79691edcda8cfefba88842c46e0a1786d9b`
+- Runtime player acceptance remains pending. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
+## 2026-11-07 - Restore dedicated-server quest access in Major Update 4
+
+- User reported that the universal FTB quest book remains locked on MineRENT and local dedicated servers while it is available in singleplayer, then requested the fix and local `test jem` delivery
+- Bug / Both Sided / Major Update 4 branched before the established JEM Advancements 5.2.4 native team-unlock correction, so dedicated servers running 5.3.0 no longer cleared a resolved FTB team's persisted `locked` flag and instead resent the locked full TeamData / in testing after restoring the FTB Teams login and team-change reconciliation in JEM Advancements 5.3.1
+- Five Whys: quests stayed locked because server-authoritative TeamData retained `locked=true`, the 5.3.0 adapter never called `setLocked(false)`, its feature branch lacked the later 5.2.4 correction, full TeamData synchronization propagated the stale lock instead of repairing it, and the branch boundary did not preserve the established optional FTB lifecycle adapter
+- The restored adapter waits for the exact native team, clears and saves only a changed lock, relies on FTB's native lock delta, and leaves full TeamData to the post-definition `RequestTeamDataMessage` handshake
+- Authored quest IDs, task progress, completed quests, rewards, claims, permissions, projection rules and Advancement Frames integration remain unchanged
+- Built JEM Advancements 5.3.1 under Java 17 with SHA-256 `7eca031eb3710ce3c4263c1150cb0b8aeb0a8905574dbc51dceb6033f8fcd0ab`, installed the matching artifact on the ordinary local server and confirmed Forge loaded it with all 591 FTB quests
+- Native AutoModpack published generation 139 with content token `6ad8ac115ca98bafcb87a1c4b1cc38c8ccf024c6` and reviewed delta `+1 ~1 -1`, then applied it to the closed `test jem` profile through the native planner and ownership ledger
+- The active token and JEM Advancements hash match the canonical publication, the retired 5.3.0 artifact is absent and no transaction remains pending. MineRENT and stable `JustEnoughMods` remain unchanged, while player-visible login acceptance remains pending
+
+## 2026-11-07 - Restore Luxium ownership in Major Update 4
+
+- User corrected the reported renderer name from "Luminous" to "Luxium" and suspected that AutoModpack projection explains why Luxium does not work while packs using an ordinary `mods` directory do
+- Bug / Client Sided / Major Update 4 distributed Luxium's generated personal `luxium-client.toml` with `luxiumEnabled=false`, so each native AutoModpack generation could reassert the disabled master setting while Oculus remained a separately preserved personal preference / in testing after removing Luxium's personal config from managed ownership and carrying forward the established JEM Luxium 1.0.11 repair
+- Five Whys: Luxium appeared inactive because its master switch was false, that false value came from the managed pack default, the default was projected separately from the player's editable Oculus state, `test jem` retained Oculus disabled while Luxium was also reset disabled, and renderer preference ownership was split between AutoModpack and the two native renderer configs
+- Ported only the established owner-scoped Luxium repair from `develop`: renderer changes refresh Luxium's cached GPU feature mask, reload native core entity shaders through Luxium's own accessor, rebuild Embeddium through its managed context and emit one bounded world-state diagnostic snapshot
+- Replaced JEM Luxium 1.0.9 with the existing source-matching 1.0.11 artifact, SHA-256 `e7e4dc7fb00c7be5fad8e7c151f9a2e142b3890074715bc28a516da8738d720a`. No Gradle build or gameplay launch was performed
+- Native AutoModpack published generation 138 with content token `db2f0033fd07306b2418b68c38c5ddf2ec7a4f85`, reviewed delta `+1 ~1 -2`, then applied it to the closed `test jem` profile through the native planner and ownership ledger
+- The active token and JEM Luxium hash match the published canonical files, JEM Luxium's adapter state and editable Oculus preference retain their exact pre-update hashes, both retired managed paths are absent and no transaction remains pending. Luxium will generate its now-local native config on the next authorized client launch
+- The official unmodified Luxium 2.8.0-pre-alpha JAR, Embeddium 0.3.31, Oculus 1.8.0, the reversible Luxium/Oculus mutual-exclusion contract and editable Oculus shader preference remain unchanged
+- Corrected the earlier changelog entry below by removing the unrelated Luminous Beasts and Luminous Nether diagnosis that resulted from Codex misunderstanding the mod name
+- MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Runtime shadow appearance and player acceptance remain pending
+
+## 2026-11-07 - Guarantee Xaero cave sharing
+
+- User requested that Xaero cave-map sharing reach every player in Major Update 4
+- Verified the complete Xaero chain in the canonical managed client, ordinary local server and active native AutoModpack generation: World Map 1.46.0, Unified Xaero Worldmap 2.0.1, embedded XaeroLib 1.7.3, client Minimap 26.4.2 and JEM Server 2.0.0-dev
+- JEM Server's shipped artifact contains the existing all-dimension reconciliation and full-cave acceptance mixins. Major Update 4 now explicitly requires the matching client/server chain through AutoModpack's mandatory `main` group, while personal waypoints, homes, death points, labels, colors, groups and settings remain private and native
+- No managed client file changed, so generation 137 and content token `56c8a9caa4e95e1544d5c3ee7814bd3fca21d112` remain the fresh published and installed Major Update 4 head. MineRENT, stable `JustEnoughMods` and the immutable release baseline remain unchanged
+
+## 2026-11-06 - Match Cosmetic Armor to JEM Release
+
+- User reported that Cosmetic Armor's bright native inventory visually overtook the JEM Release player interface and requested that the screen reuse the existing JEM Release assets on the same Major Update branch
+- Bug / Client / the earlier ownership repair excluded the complete `assets/cosmeticarmorreworked` namespace from JEM Release, which prevented the rejected Immersive Interfaces repaint but also left the mod's vanilla-looking atlas as the active winner / in testing after replacing only that presentation outcome with a dedicated JEM Release composite
+- The deterministic builder now combines the exact released JEM inventory bank, crafting material and recessed slot pixels with Cosmetic Armor's native `256x256` atlas and `176x166` screen geometry
+- All nine equipment-slot origins, the live player render, recipe book, item rendering, toggle behavior, native sprites outside the screen region and client/server synchronization remain owned by Cosmetic Armor Reworked
+- The rebuilt `JEM Release v0.3.zip` contains 3,442 entries and 1,074 validated PNGs with no winner, PNG or CRC failure. Static visual audit passes at C0 without a correction round, while runtime appearance and player acceptance remain unobserved
+- Native AutoModpack published generation 137 with content token `56c8a9caa4e95e1544d5c3ee7814bd3fca21d112` and reviewed delta `+0 ~2 -0`, then applied exactly the manifest and rebuilt JEM Release archive to the closed `test jem` profile. The active token and archive SHA-256 `8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727` match the canonical publication and no transaction remains pending
+- MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
+## 2026-11-06 - Remove Iron's Spells for Major Update 4
+
+- User requested complete removal of Iron's Spells 'n Spellbooks from the existing Major Update branch and explicitly called out world generation and FTB Quests as required consequence surfaces
+- Removed Iron's Spells 3.15.6, Iron's Library 1.0.2, Epic Fight Skill - Iron's Spells 1.0.3 and EFIS Compat 2.6.0 from the canonical managed client and ordinary local dedicated server
+- Deleted their client/server configs and localization overlays, then removed optional spell, cast, race, profession, boss-tier, healing, summon, companion recovery, handbook, merchant audit and input-default integrations from the owning JEM modules
+- Retired 31 Iron/add-on-owned quest cards while preserving 591 surviving cards. The 121 surviving cards that used Iron rewards retain their quest IDs, native FTB IDs, reward ordering and counts with installed vanilla replacement items
+- Recompiled the canonical questbook into matching client and local-server FTB chapters, removed retired advancement producers and the Iron native-manual route, and regenerated the spawn-egg system without Iron entities
+- Removed Iron registry subjects from active companion recovery, boss exclusion, economy, food-effect and spawn-egg projections. Historical change records and the inactive pre-V4 quest migration archive remain as history, not current runtime ownership
+- Rebuilt the seven affected production artifacts under Java 17. The exact selective Gradle build completed successfully with reobfuscated JARs for WorldBossTiers, AchievementGuide, Races, MobHome, Economy, Food and Compat
+- Bug / Both Sided / `JEMWorldBossTiers` source declared internal version `2.5.0` while the established server and Twelve Eyes dependency floor is `2.5.0-dev`, so the first local publication startup rejected the freshly rebuilt artifact before world load / in testing after correcting the source-owned Gradle version and rebuilding the exact artifact without weakening either dependency gate
+- The corrected Iron-free server loaded the existing Major Update 4 world, projected 591 FTB quests, omitted the retired pocket dimension from the active server levels and stopped with all active dimensions saved. Forge reported the expected missing historical Iron datapack and dimension references during the first load without restoring their runtime ownership
+- Native AutoModpack published generation 136 with content token `0764e38ac929eabab756fc07f2477fb51f7a5fca` and reviewed delta `+0 ~14 -10`, then applied the cumulative Major Update 4 head to the closed `test jem` profile through its native planner and ownership ledger. The installed token is active, all seven rebuilt JEM JAR hashes match the canonical managed client and no transaction remains pending
+- Existing worlds are not regenerated or rewritten. Shared Curios, GeckoLib, Player Animator, Epic Fight and independently owned dependencies remain installed
+- MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged. Local native AutoModpack publication and player acceptance are separate completion steps
+
+## 2026-11-04 - Repair local visual workflow references
+
+- User requested that shared-checkout residue be traced to its owning session and committed instead of being stashed or mixed into a new sandbox branch
+- The earlier `Ultimate-Skills` to `Ultimate-Skills-Local` migration left 37 JEM visual documentation and authoring-script references pointing at the renamed local workflow tree
+- Updated only those path references so the established Taste Engine, Blockbench and visual-review sources remain reachable without changing visual behavior or assets
+
+## 2026-11-03 - Include Colorize and Immersive Paintings in Major Update 4
+
+- User requested Colorize, Immersive Paintings and the Exposure + Immersive Paintings compatibility addon for Major Update 4, then clarified that the work belongs on the existing `feature/major-update-4` branch rather than `develop`
+- Selected the exact Forge 1.20.1-compatible artifacts: Colorize 1.6.0, Immersive Paintings 0.6.13 and Immersive Paintings × Exposure 1.0.0
+- Colorize and Immersive Paintings are added to both the canonical managed client and ordinary local dedicated server because they own shared block interactions, custom painting state and multiplayer synchronization
+- The Exposure bridge remains client-only because exact bytecode registers only client GUI integration and defines no network channel, while Exposure and Immersive Paintings remain installed on both sides
+- Existing Exposure 1.9.21 camera and photograph metadata remain unchanged. The addon only exposes existing photographs inside the native Immersive Paintings selection flow
+- Bug / Client and Server Sided / ignored physical mod inventories retained later `develop` artifacts after Git switched to `feature/major-update-4`, so the branch source and runtime binaries initially described different snapshots / in testing after restoring the exact Major Update 4 objects from native AutoModpack history, including JEMCompat 3.10.2 SHA-256 `58e33853523dc4c71ca95a45d504d9921f037816e9e73953fe576288b5b54a77`, and rebuilding the Atlas from the corrected inventories
+- The full Atlas rebuild validates 738 artifacts and resolves both `immersive_paintings:painting` and `exposure:photograph` in the canonical registry
+- The ordinary local dedicated server loaded Colorize 1.6.0, Immersive Paintings 0.6.13 and JEMCompat 3.10.2, then native AutoModpack published journal sequence 135 with content token `144a1661eedd977c8276ffe87630741af32e3ef3`. The final native preview reports `+0 ~0 -0`
+- MineRENT, stable `JustEnoughMods`, release baseline, `develop`, `main` and production runtime remain unchanged. Player acceptance remains pending
+
+## 2026-11-01 - Isolate shared-checkout residue by owner
+
+- User requested that unrelated changes left by concurrent Codex sessions be assigned to their owning feature or hotfix branches instead of remaining mixed in the shared checkout
+- The Luxium owner moved its durable fix to `hotfix/luxium-immediate-shadows` and pushed commit `881d36226`
+- The remaining Atlas refresh and economy coverage report identify snapshot `8ea8bc137`, which exists only in `feature/major-update-4`, so that generated batch remains owned by this feature branch
+- Runtime-generated server configuration, player TPA data, logs, Spark files, MapSyncer cache and stale local publication snapshots are not product changes and are excluded from feature history
+
+## 2026-10-31 - Remove Major Update 4 from MineRENT production
+
+- User clarified that JEM Advancements 5.3.0, Sitting Plus, Advancement Frames, Icy's Better Horses and the other Major Update 4 files belong only to the unfinished `feature/major-update-4` work and must not be present on MineRENT
+- Bug / Both Sided / MineRENT AutoModpack was published directly from the feature checkout even though `develop`, `origin/develop` and `origin/main` still pointed to production commit `b244bda4a`, so production clients received feature-only Forge channels that the dedicated server did not install / in testing
+- Five Whys: production clients could not connect because their channel list contained unfinished mods, those mods came from AutoModpack generation 17, generation 17 was built from the physical `Client/ManagedPack` state of the active feature checkout, MineRENT publication did not prove that the source snapshot belonged to the approved production branch, and the established feature to develop to main promotion boundary was bypassed during an emergency client update
+- Native history proved generation 16 with content token `b3b16bde689df823f19c00ad9b18a4ad8f733aa7` was the final pre-feature production state, while generation 17 token `d27a271` introduced the characteristic `+12 ~2 -9` Major Update 4 delta and generation 18 changed only the excluded Bootstrap boundary
+- MineRENT AutoModpack was reverted to generation 16 without deleting the feature branch or its local managed source
+- The physical MineRENT host source was reconstructed byte-for-byte from generation 16's native object store, restoring 13 target files, removing 13 feature-only files and verifying every restored SHA-1
+- Final native preview reports content token `b3b16bd`, `Diff: +0 ~0 -0` and no catalogue changes, so a later publication cannot silently reintroduce the leaked feature snapshot from the host directory
+- The dedicated server contained only one leaked replacement, JEM Holidays 1.0.7. It was moved to `/backups/jem_holidays-1.0.7-feature-leak-20261031.jar`, exact generation 16 JEM Holidays 1.0.6 was restored with SHA-1 `20e0d7cc8963b706aa64bf3ef9805e73978fbe97`, and MineRENT restarted successfully with its SRV target port open
+- The local `feature/major-update-4` checkout and its unfinished implementation remain intact. The running stable client still needs to close and apply the native rollback before player acceptance can be recorded
+
+## 2026-10-31 - Restore the proven jem.9 Bootstrap workflow
+
+- User rejected the simplified Bootstrap workflow after another failed production update, supplied the previously working JAR and explicitly required that exact Bootstrap and its separate confirmation screens remain in use
+- Bug / Client Sided / revisions `jem.13` through `jem.15` moved approval into one preload modal that approved the complete prepared plan before the native in-game consent, risk, old-file and final review sequence could own those decisions / in testing
+- Five Whys: the client presented one Update All screen because the preload owner had no Minecraft screen service, that modal approved the complete plan before Forge initialization, the later native screens therefore no longer owned consent and old-file cleanup independently, the replacement checkbox added in `jem.14` covered only one first-install branch, and the Bootstrap redesign replaced the user-approved native decision sequence instead of preserving it
+- The supplied file is the existing official `jem.9` artifact, not an unknown binary. Its manifest identifies upstream AutoModpack `5.0.0-rc.1`, JEM revision `jem.9` and pinned commit `4348bf2532bb8261af3297cf2480a3a0ee91befb`, while SHA-256 `75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8` exactly matches `Docs/universal/DELIVERY.json`
+- Canonical Bootstrap source was restored to `jem.9`. The exact supplied artifact replaced only `jem-bootstrap.jar` in the canonical managed source, clean installer and closed stable `JustEnoughMods` profile, leaving every managed gameplay, configuration and native AutoModpack state file untouched
+- The restored workflow keeps server consent, explicit risk acceptance, old-file keep or remove choice and final review as separate native decisions. Old files remain active only after an explicit keep choice, while the default removal path retains timeline safety copies without loading them
+- The ordinary local dedicated server was already running under another active session and was deliberately not modified or restarted
+- MineRENT was stopped cleanly, its previous Bootstrap was moved to `/backups/jem-bootstrap-pre-jem9-20261031-133144.jar`, and the exact supplied `jem.9` artifact was installed atomically as `/mods/jem-bootstrap.jar`
+- The remote artifact was verified after installation with size `3486754` and SHA-256 `75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8`
+- MineRENT restarted successfully. The dedicated server completed Forge loading in 49.896 seconds, AutoModpack resumed its login-holepunch host and JEM Holidays reported `halloweenNight=true`
+- Bootstrap remains excluded from the managed AutoModpack catalogue, so this rollback did not publish or alter the existing client generation. No client launch or player acceptance was performed, and the defect remains `in testing` until the player exercises the restored native sequence
+
+## 2026-10-31 - Repair no-op bootstrap updates and fit Halloween mob pumpkins
+
+- User reported that the production client failed after preparing an AutoModpack update and then clarified that seasonal pumpkins were too small to cover mob heads
+- Bug / Client Sided / the active client and current server head could carry the same content token with different legitimate journal records, while bootstrap required the complete records to be equal and rejected the zero-file transition / in testing
+- Five Whys: connection stopped because transaction validation failed, validation compared the active record with the target record, both records described the same file tree but different publication events, `contentToken` intentionally identifies the tree rather than the journal event, and the validator incorrectly treated a newer record for identical content as corrupted active state
+- JEM Bootstrap `jem.15` keeps independent verification of the installed generation witness but no longer requires it to equal a newer target record that the transaction already validates from the server journal
+- Bug / Client Sided / the `jem.14` language patch declared two fewer output lines than it contained, so both generated JSON files ended before their tooltip and closing brace and Minecraft displayed raw translation keys / in testing
+- The corrected patch sizes retain complete valid English and Russian localization resources
+- Bug / Client Sided / Halloween pumpkins used only 72 percent of a humanoid bounding-box width, producing a shell smaller than the vanilla 8 by 8 head and 9 by 9 outer hat layer / in testing
+- JEM Holidays 1.0.7 scales the full-bright jack-o-lantern shell to 25/24 of rendered humanoid width, applies vanilla's 1.5-times relative baby-head scale and uses a 48 percent height cap, covering the complete head and hat layer for adults, babies and large humanoids
+- The existing mob selector is unchanged, so players, creepers and other non-humanoid mobs remain excluded
+- Production artifacts were built and synchronized to the ordinary local Server and managed client source. JEM Bootstrap SHA-256 is `6304c1acff7985970cd25860fc3f78b1737ed3950bec16d0b5686c398ff5c32a`, and JEM Holidays 1.0.7 SHA-256 is `1fc7dad9fee123eadc0fbe21850ac141f5f688414fe0fcaa3f7b46bd4b3f83`
+- The closed stable `JustEnoughMods` profile received only the matching standalone bootstrap JAR, preserving native AutoModpack ownership of every managed file
+- MineRENT loaded JEM Holidays 1.0.7 and the matching bootstrap, reached the running state and reported `halloweenNight=true` for 2026-10-31
+- Native AutoModpack published content token `6cd1f68` with the reviewed `+1 ~1 -1` replacement. The recoverable 1.0.6 backup was moved outside `host-modpack/main` before publication, and the final preview reported `+0 ~0 -0`
+- No client launch or player acceptance was performed. Both defects remain `in testing` until the player completes a native update and visually verifies the mob pumpkin fit
+
+## 2026-10-31 - Restore the first-install old-file choice
+
+- User explicitly asked to restore the bootstrap screen that asks whether old local files should stay active, while keeping every non-bootstrap local file unchanged
+- Bug / Client Sided / the simplified first-install confirmation hardcoded `setFirstInstallLocalModCleanup(true)`, so the player could approve the complete update but could no longer choose whether detected pre-existing local mods remained active / in testing
+- Five Whys: the choice disappeared because confirmation always requested cleanup, cleanup was hardcoded when the UI was simplified, the prior checkbox was removed with the upstream multi-screen flow, the replacement preserved transaction safety but not this first-install preference, and bootstrap is the only owner that can expose the native local-mod decision before projection
+- JEM Bootstrap revision `jem.14` restores one first-install-only checkbox when old local mods are actually detected. Unchecked remains the safe default and removes those files from the active pack, while checked keeps them active. Removed files still remain in the native instance timeline as a safety copy
+- Risk consent and "Update all" still approve the complete reviewed plan including replacements and deletions. No trust bypass, managed-file copy, active-state edit, cache deletion or AutoModpack generation change was added
+- The production artifact was built from the pinned upstream source and synchronized byte-for-byte to the clean bootstrap installer, ordinary local Server, closed stable `JustEnoughMods` profile and MineRENT. SHA-256 is `da3624251289903956b39144eccdb8c5769870dae350af314443dba6608df8e5`
+- MineRENT restarted successfully, loaded unchanged production content token `d27a271534211afbe224c1d0b130a582a5c2382c` and reached `Done (1.197s)`. The stable profile retains that same active token, remains attached and has no pending update transaction
+- No client launch or first-install player acceptance was performed. The restored choice remains `in testing` until the player sees and exercises it
+
+## 2026-10-31 - Close the movable-spawner orb loop and preserve Magnet tooltips
+
+- User reported unlimited Paraglider Spirit Orb farming by breaking and replacing a Mineable Spawner, and a Minecraft crash when attempting to take Item Magnet
+- Bug / Server Sided / Paraglider 20.1.3 admits every `minecraft:spawner` block to its Spirit Orb global loot modifier while Mineable Spawner 2.4.2 drops a reusable generic spawner with no placement provenance, so the same block can earn the finite exploration reward after every replacement / in testing
+- Five Whys: Spirit Orbs were renewable because every replacement qualified again, qualification used only the spawner block state, the dropped item carried no natural-origin identity, Paraglider therefore could not distinguish discovery from player placement, and the integration lacked a persistent provenance signal at the loot boundary
+- JEMCompat 3.10.2 marks every player-placed spawner persistently and skips only Paraglider's spawner reward for that provenance. Natural spawners retain the native configured reward, while spawner contents, Silk Touch behavior and spawning rules remain unchanged
+- Bug / Client Sided / JEMCompat source-name filtering removed Item Magnet's only tooltip component because the native item title and mod display name are both "Item Magnet", leaving CreativeModeInventoryScreen to insert its tab label at index 1 of an empty list / in testing
+- Five Whys: the creative screen crashed because its tooltip list was empty, JEMCompat removed the only title component, the title matched an installed mod display name, the filter treated the title and source metadata as interchangeable, and it had no invariant protecting tooltip line zero
+- JEMCompat now filters source-mod metadata only after the title line. Item titles remain native and the existing hidden-source-name preference is preserved
+- Production JAR packaging completed successfully. JEMCompat 3.10.2 SHA-256 is `58e33853523dc4c71ca95a45d504d9921f037816e9e73953fe576288b5b54a77`
+- The ordinary local dedicated server loaded JEMCompat 3.10.2 and reached `Done (17.922s)` on the preserved Major Update 4 world
+- Native AutoModpack published content token `b132227d1acbd95f02b1eeb38bdf224076be7583` with the reviewed `+1 ~1 -1` JEMCompat replacement. The closed `test jem` profile applied that head natively with the exact artifact hash and no pending transaction, and the final server preview reported `Diff: +0 ~0 -0`
+- No client launch or gameplay acceptance was performed. Both defects remain `in testing` until the player verifies a natural and replaced spawner plus Item Magnet pickup
+
+## 2026-10-31 - Bind JEM Security attestation to the server challenge context
+
+- User reported that production now reached the world but MineRENT disconnected with "JEM Security did not receive the required client attestation"
+- Bug / Both Sided / JEM Security 1.0.6 received the challenge and logged a nominal response at 11:13:40, but its generic client sender performed a second `isRemotePresent` lookup and logged success even when that guard could suppress the packet, so MineRENT received no attestation and enforced its deadline at 11:13:53 / in testing
+- Five Whys: MineRENT disconnected because the deadline expired; the server never accepted an attestation; the 1.0.6 response used the generic optional-event sender; that sender could return without queuing after a second channel-presence lookup; the required challenge path failed to preserve Forge's already-proven inbound reply context as its transport owner
+- JEM Security 1.0.7 answers the required challenge with Forge `SimpleChannel.reply` on the exact inbound `NetworkEvent.Context`. Optional resource-pack and audit sends retain the remote-channel guard, and their success log is emitted only when a packet was actually queued
+- Server authority, the fail-closed deadline, attestation contents, banned-mod and resource-pack policy, Anti-Xray, audit logging and explicit JEM Freecam allowance are unchanged
+- MineRENT loaded JEM Security 1.0.7 and reached `Done` at 2026-10-31 11:49 Asia/Yekaterinburg
+- MineRENT first published intermediate content token `b3b16bde689df823f19c00ad9b18a4ad8f733aa7` containing only the JEM Security replacement. That incomplete head was superseded before approval by the full production generation `d27a271534211afbe224c1d0b130a582a5c2382c`, whose final preview reported `Diff: +0 ~0 -0`
+- The stable client contains the exact reviewed JEM Security bytes and the complete production generation. Its first connection entered native AutoModpack reconciliation and disconnected before the JEM Security challenge stage, so player acceptance remains `in testing` until a successful `client_attested` event is observed
+
+## 2026-10-31 - Restore explicit preload consent for JEM JAR updates
+
+- User asked why accepting the risk did not allow the update and explicitly requested restoring the trust confirmation in bootstrap
+- Bug / Client Sided / preload correctly detected an unverified locally authored JEM JAR but had no Minecraft screen service yet, so it aborted before the existing in-game confirmation could open and kept loading the crash-prone old active generation / in testing
+- Five Whys: the old generation remained active because preload refused the JAR plan; it refused because no approval existed; approval normally belongs to the Minecraft confirmation screen; that screen is installed only after Forge initialization; the preload owner had no equivalent bounded consent adapter
+- JEM Bootstrap revision `jem.13` now shows one preload modal containing the exact planned file operations, one per-update risk checkbox, Update All and Cancel. Update All stays disabled until the checkbox is selected, then approves the complete plan including replacements and deletions so obsolete managed files do not remain active
+- Approval applies only to the already prepared native plan in that launch. Cancel, closing the window, unavailable AWT or a UI failure leave the active generation unchanged. No blanket consent, trust bypass, raw file copy, active-pointer edit or cache deletion was added
+- The production `jem.13` artifact was built from the pinned source and synchronized byte-for-byte to the ordinary local Server, clean bootstrap-only installer, closed stable profile and MineRENT. Its SHA-256 is `877f26f0de3c21bc45c5abf565dc5c363d1fb8b32296156464a4a5bc584191e3`
+- MineRENT was restarted with the new bootstrap and left running. Native `jempack publish` reported `NO_CHANGES` for content token `995c4e1`, and the final preview confirmed `Diff: +0 ~0 -0`, so the already published managed generation exactly matches the hosted source while bootstrap remains correctly excluded from managed content
+
+## 2026-10-31 - Keep JEM Security replies on their owning login connection
+
+- User reported a fourth production join failure after the complete AutoModpack download and authorized autonomous repair, bootstrap deployment and repeated MineRENT verification while preserving the unfinished work in the other active session
+- Bug / Both Sided / MineRENT accepted the player and completed the join, then the JEM Security attestation response used Forge's global `sendToServer` lookup while the client connection field was changing, so the client threw a null `ClientPacketListener` exception and disconnected itself one second after joining / in testing
+- Five Whys: the client disconnected because Forge dereferenced a null global listener; JEM Security called `SimpleChannel.sendToServer` from the server-challenge handler; that helper performs a second unsynchronized `Minecraft.getConnection()` lookup; the login lifecycle can replace or clear the field between checks; the security protocol already had the exact inbound `Connection` but discarded it instead of preserving ownership
+- JEM Security 1.0.6 sends attestation, audit-log and blocked-pack replies through one captured live `Connection`. The server challenge passes its exact network manager into the client handler, and later client actions snapshot the listener once before resolving its connection
+- Security policy, attestation contents, blocked-mod and blocked-resource-pack enforcement, audit logging and server authority are unchanged
+
+## 2026-10-31 - Implement Major Update 4 for test jem
+
+- User supplied the complete Major Update 4 specification and seven downloaded mod artifacts, required the work to start from `develop`, remain outside `main`, reuse the local downloads and finish with a new local-server world for testing in `test jem`
+- Added Advancement Frames 1.20-2.2.8, Ember's Ancient Remnants 1.0.2.2, Icy's Better Horses 2.1.8, Item Magnet 1.0.0, Mineable Spawner 1-v2.4.2, sittingplus 2.0.5 and client-only Shadow Drop 3.0.4. Retired Horseman 1.3.17, its configs, Russian overlay and quest integration
+- Generated 430 reviewed spawn egg recipes from the supplied catalog, including 15 Better Horses breeds and 25 reusable JEM fallback eggs for eligible installed entities without usable native eggs. Every recipe fills the complete 3x3 grid and has a unique ingredient multiset, while every class-review exclusion is named with its reason and no eligible candidate remains unresolved
+- JEMCompat 3.10.0 makes one generated policy authoritative for spawn egg insertion and slow-spawner output. `NO` rejects only reprogramming without consuming the egg and never suppresses an existing or natural spawner, `YES` remains native and `SLOW_24000_TICKS` permits at most one successful spawn per spawner per Minecraft day. Silk Touch preserves the spawner block entity without bonus egg drops
+- JEMEconomy 1.3.2 permanently excludes every spawn egg from NPC buying and selling
+- JEMSettlements 2.1.1 allows recruits to use approved vanilla leather-through-diamond armor, swords, axes, bows, crossbows and shields. Native equipment GUI slots reject forbidden gear before debit, while server-tick enforcement removes any forbidden gear introduced through another entry path and returns it through recruit storage, the online owner's inventory or a final no-loss world drop
+- MobHome 1.0.1 extends its native companion adapter to all 15 exact Better Horses entity classes. Existing Recruits support already accepts their `AbstractHorse` base and no duplicate ownership system was added
+- JEM Advancements 5.3.0 extends the native Advancement Frame selector with completed FTB Quests. The server validates distance, block identity and TeamData completion, persists the selecting completer identity and stable quest ID, and rebuilds presentation from the current quest definition after reload without changing progress or rewards
+- Added 16 bilingual teaching quests covering structured egg collections, Better Horses native milestones, Ancient Remnants structures, Sitting+, Item Magnet, Advancement Frames and Silk Touch spawners, plus a bilingual Handbook link to the native Better Horses Stable Handbook. The retired Horseman proof was removed while legacy quest `31D39460913B197C`, its progress identity and exact rewards remain preserved on a native Better Horses milestone
+- Item Magnet requires no JEM Rewards adapter because it only moves world item entities and cannot access unclaimed server-owned pending rewards
+- Rebuilt the complete Registry Atlas, recorded the effective policy and refreshed historical artifact references after the version replacements. The final impact scan is valid with no installed-artifact drift
+- Bug / Both Sided / static registry metadata advertised 11 native spawn-egg item ids that the installed live Forge registry does not contain, so their generated recipes initially had empty results / in testing. The generator now records those runtime-missing ids and registers JEM fallback eggs for them
+- Bug / Both Sided / the Advancement Frames persistence mixin named Mojmap methods on an installed dependency that remains SRG-obfuscated at runtime, so its save hook initially had no target / in testing. The hooks now target the exact installed `m_183515_` and `m_142466_` methods
+- Production JAR packaging and Java compilation completed successfully. A fresh dedicated-server world reached `Done`, all task-owned recipes parsed, and the task-owned mixins applied without errors. No automated tests, client launch or gameplay QA were run under the project testing prohibition
+
+## 2026-10-31 - Let native bootstrap recovery finish
+
+- User confirmed that the latest failed launch only needed more time and explicitly authorized the previously deferred bootstrap update
+- Bug / Client Sided / JEM Bootstrap stopped prelaunch after a fixed three-minute helper-lease wait, while real Windows recovery runs in the stable profile legitimately took between 203 and 428 seconds and the latest helper completed successfully 33 seconds after the client aborted / in testing
+- Five Whys: the client stopped because the lease deadline expired; the lease remained held because the detached helper was still completing the pending transaction; parent-process exit and Windows projection locks make native recovery take several minutes; the three-minute constant was shorter than observed healthy runs; bootstrap owns prelaunch readiness and therefore must allow its healthy transaction owner to finish without loading the modpack early
+- JEM Bootstrap revision `jem.12` raises the bounded helper-lease wait to ten minutes. The operating-system lease remains authoritative, recovery still retries only after release, and a helper that remains stuck beyond the bound still stops the launch before managed mods load
+- AutoModpack cache, active-state pointers, managed gameplay files, the confirmation flow and preservation rules are unchanged
 
 ## 2026-10-31 - Lock production releases to explicitly approved develop
 
@@ -218,6 +1040,7 @@
 - `baseline`, `promote-baseline`, `sync-stable` and every release-package action now require the same full SHA and a matching approval receipt. A branch, commit, controlled-source or ManagedPack byte change invalidates the receipt before mutation
 - Local `stage-pack-sync`, native publication to `test jem`, `sync-test` and native recovery remain available on development branches and cannot create production approval
 - The MineRENT deployment skill, development contract and permanent logic lock now require a second successful preflight immediately before any external MineRENT mutation and forbid feature, sandbox, main, detached HEAD and other checkouts as release sources
+
 
 ## 2026-10-31 - Stabilize the JEM Races login connection snapshot
 
@@ -1422,6 +2245,23 @@ Production JAR builds and pinned Bootstrap patch reproduction were completed on 
 - Implementation choices: fixed 8px material corners, repeated edges/centers, precise alpha cleanup, responsive landscape event cards, live text and state. These technical choices were selected by Codex. User approval covers concept direction; actual game rendering remains in testing pending visual acceptance. Both full reobfuscated production builds passed; local Server and ManagedPack match exact outputs. Native publication and application to test jem completed with matching token/hashes and no pending transaction; evidence is recorded beside the asset sources. No automated tests or gameplay/client launch.
 
 # Changelog
+
+## 2026-11-13 - Stop local Chunky generation before player entry
+
+- User explicitly requested that the active local Chunky pre-generation stop so the player can join immediately
+- Bug / Server Sided / Chunky 1.3.146 automatically resumed the saved 300 by 300 chunk task and scheduled chunk-state work through the main server event loop, after which one server tick exceeded the 60-second watchdog limit and stopped the server / in testing
+- The saved `minecraft:overworld` task is cancelled and `continueOnRestart` is disabled. Existing generated chunks and the world remain unchanged
+- The local dedicated server is restarted without Chunky generation. Luxium client artifacts, native AutoModpack state, MineRENT, the stable profile and the release baseline remain unchanged
+
+## 2026-11-13 - Reconcile Luxium shadows after world entry
+
+- User reported that Luxium still had no visible shadows in Test JustEnoughMods and required recovery of the last actually working Sandbox behavior instead of relying on the earlier incomplete "Luxium + Oculus is working" statement
+- Bug / Client Sided / JEM Luxium verified Luxium's internal sky mode and generated cascade maps but had no post-world owner that reconciled Embeddium's visible receiver programs after the renderer switch and world-entry lifecycle completed / in testing
+- Five Whys: visible terrain had no confirmed shadow receiver because the adapter logged only Luxium's internal frame, the only renderer rebuild occurred during the earlier settings transition, later world and renderer lifecycle work could finish after that rebuild, no stable-world reconciliation existed, and the compatibility adapter incorrectly treated an enabled shadow frame as proof of the final visible pipeline
+- JEM Luxium 1.0.12 retains the immediate GPU feature refresh and managed renderer reload, then performs one deferred core-and-terrain rebuild after Luxium is selected in a stable loaded world
+- The official Luxium 2.8.0 JAR, Oculus 1.8.0 mutual exclusion, saved renderer preference and unrelated renderer mods remain unchanged. Runtime player acceptance remains pending
+- The reobfuscated client artifact has SHA-256 `c9fb26898bd4f076daab80485c3d75069569f12fc416b3e01378ddf9cffbe627`. Native AutoModpack published and installed content token `87822e5ab915abc4a890a24564604b0b416bf226` in the closed `Test JustEnoughMods` profile, verified all 334 managed JARs and left no pending transaction
+- The interrupted Chunky request was restored as a 300 by 300 chunk square in `minecraft:overworld`, centered at `0,0` with a 2400-block radius. Existing chunks remain reusable, and the local server is configured to continue the saved task after restart
 
 ## 2026-10-30 - Prepare the cumulative Jalloween production release and first-login handbook
 
@@ -2892,6 +3732,13 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - User reported that the stable JustEnoughMods client still did not load after the Jalloween production update
 - Bug / Client Sided / the MineRENT release archive was extracted over the existing AutoModpack host tree, so the published catalogue contained additions and replacements but retained 29 retired paths. The stable client consequently loaded `jem-pack-core-2.0.0-dev.jar` beside `jem-advancements-5.1.0.jar` and `jem-advancements-5.2.2.jar`, and Java module resolution aborted before Forge mod loading because both modules exported `com.justenoughmods.achievementguide.client` / in testing
 - Resolution mechanism: replace only MineRENT `automodpack/host-modpack/main` with the complete canonical local host tree over SFTP, repair the interrupted `AudioYT-1.0.1.jar` transfer before publication, and publish native content token `9b91261` with exact diff `+0 ~0 -29`. The stable profile then recovered and committed the native generation as full active token `9b912612f5202368e236e59e757e513505a74fea`, removed all 29 retired paths, matched all 300 managed JARs, retained the separately installed excluded bootstrap, and reached Forge's `355 mods loaded` stage with no pending transaction. No files, cache pointers or errors were manually repaired. Player acceptance remains pending
+
+## 2026-10-31 - Replace AudioYT's repeated jukebox scan
+
+- Bug / Server / AudioYT 1.0.1 scanned 33x17x33 block positions around every player every 5 ticks and called `ServerLevel.getBlockState` without a loaded-chunk guard, so a join near absent terrain synchronously generated chunks on the server thread until the 60-second watchdog stopped it / in testing, JEMCompat now discovers jukebox block entities once from already loaded chunks and disables only the repeated spatial scan
+- Evidence: the local watchdog crash stopped in `JukeboxMonitor.scanNearbyJukeboxes` through `ServerChunkCache.getChunkBlocking`. The same AudioYT artifact already calls `forceCheck` from its jukebox `setItem` Mixin and guards its known-jukebox loop with `hasChunkAt`
+- User request and technical direction: stop constant scanning and choose the better solution after the user needed nine reconnect attempts and saw unloaded terrain. The user did not request changes to playback, disc data or ordinary chunk loading
+- Codex implementation choice: retain AudioYT as the owner of playback and disc mutation, register jukebox block entities on `ChunkEvent.Load`, version-gate the adapter to exact AudioYT 1.0.1 and leave unloaded chunks entirely on Minecraft's normal lifecycle. MapSyncer's misleading absence message was a consequence of the blocked server thread, not a missing MapSyncer installation
 
 ## 2026-11-01 - Start the isolated JEM Building and Test JEM tracks
 

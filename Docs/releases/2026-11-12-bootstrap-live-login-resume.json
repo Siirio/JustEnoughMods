@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-12",
+  "status": "local test client and current local server prepared, player acceptance pending",
+  "cause": "the equal-token login response continued Forge login while Pack Sync's preparation screen remained active",
+  "bootstrap": {
+    "revision": "jem.23",
+    "nativeVersion": "5.0.0-rc.1",
+    "upstreamCommit": "4348bf2532bb8261af3297cf2480a3a0ee91befb",
+    "bytes": 3491284,
+    "sha256": "0fc9548fdd08b1172f82cad1057a28f20925767dbbfd4cde4c95012e3a310bc",
+    "productionBuild": "successful",
+    "testsRun": false
+  },
+  "loginContract": {
+    "attachedEqualToken": "restore the interrupted live connection screen and continue without file verification",
+    "attachedDifferentToken": "disconnect immediately and start the native reviewed updater",
+    "detachedClient": "retain the explicit join or sync prompt",
+    "nativeTrustAndTransactionChecksChanged": false
+  },
+  "installation": {
+    "managedSource": true,
+    "bootstrapInstaller": true,
+    "currentLocalServer": true,
+    "testProfile": true,
+    "stableProfile": false,
+    "mineRent": false,
+    "releaseBaseline": false
+  },
+  "publication": {
+    "journalSequence": 152,
+    "contentToken": "933d264392e86508b8d4b2b1902aa5106d68e7e9",
+    "publishedManifestSha1": "8d2a7dc45e18e4854a1dba5b52bb369399ccee42",
+    "stagedManifestSha1": "8d2a7dc45e18e4854a1dba5b52bb369399ccee42",
+    "generationChanged": false,
+    "nativePreview": "+0 ~0 -0",
+    "publishResult": "NO_CHANGES",
+    "reason": "bootstrap is excluded from the served managed pack"
+  },
+  "runtime": {
+    "minecraftClientLaunchedByDelivery": false,
+    "serverStartupReachedDone": true,
+    "serverModCount": 337,
+    "serverListening": "127.0.0.1:31604",
+    "testProfileActiveToken": "933d264392e86508b8d4b2b1902aa5106d68e7e9",
+    "verifiedManagedJars": 336,
+    "pendingTransaction": false,
+    "playerAcceptance": "pending"
+  }
+}

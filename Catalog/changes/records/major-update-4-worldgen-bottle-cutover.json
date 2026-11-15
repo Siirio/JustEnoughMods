@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4.worldgen-bottle-cutover",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "beachparty:message_in_a_bottle"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "beachparty:message_in_a_bottle"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "streamsreflowing"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "biomespy"
+    }
+  ],
+  "precedence": {
+    "layer": "major_update_4",
+    "priority": 1100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Disable Beachparty message bottles and install the newer Streams planner with compatible biome search.",
+    "modifiers": [
+      {
+        "property": "beachparty.message_in_a_bottle.available",
+        "operation": "deny",
+        "before": "Natural spawns, native merchant availability and held-item use could produce a structure map.",
+        "after": "Disable natural spawning, NPC trade and held-item use for the exact bottle ID. Existing placed blocks have no open action."
+      },
+      {
+        "property": "streamsreflowing.generation",
+        "operation": "replace",
+        "before": "2.13.1 TOML configuration",
+        "after": "2.17.1 properties, MEDIUM rivers and lakes, legacy shaping for old-world continuity, and JEM biome exclusions."
+      },
+      {
+        "property": "biomespy.search",
+        "operation": "allow",
+        "before": "Native biome search",
+        "after": "BiomeSpy 1.3.3 biome search with Structurify's structure search retained when both mods are loaded."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Beachparty, Item Obliterator, JEM Economy, Streams Reflowing and JEM Compat",
+    "kind": "pack_config_and_compatibility",
+    "source_files": [
+      "Client/ManagedPack/config/beachparty.toml",
+      "Client/ManagedPack/config/item_obliterator.json5",
+      "Client/ManagedPack/config/streamsreflowing.properties",
+      "Client/ManagedPack/config/streamsreflowing-client.properties",
+      "Client/ManagedPack/config/streamsreflowing/bank_features/jem_fallen_logs.json",
+      "Client/ManagedPack/config/streamsreflowing/bank_features/jem_fallen_tree_jungle.json",
+      "Client/ManagedPack/config/streamsreflowing/bank_features/jem_fallen_tree_savanna.json",
+      "Client/ManagedPack/config/streamsreflowing/bank_features/jem_pale_driftwood_beach.json",
+      "Client/ManagedPack/config/streamsreflowing/bank_features/jem_pale_driftwood_dry.json",
+      "Client/ManagedPack/config/streamsreflowing/bank_features/jem_taiga_fallen_logs.json",
+      "Client/ManagedPack/kubejs/assets/streamsreflowing/lang/ru_ru.json",
+      "Client/ManagedPack/kubejs/server_scripts/jem/streams_recipe_policy.js",
+      "Client/ManagedPack/mods/StreamsReflowing-1.20.1-forge-2.17.1.jar",
+      "Client/ManagedPack/mods/biomespy-1.3.3-all.jar",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/worldgen/BiomeSpyStructureMixinCanceller.java",
+      "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/building_purchase_prices.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json",
+      "gradle/module-settings.gradle",
+      "tools/module-inventory.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove the bottle's structure-search trigger and reduce generation work without dropping rivers, lakes or structure placement rules.",
+    "decision_source": "The user requested bottle removal, retained Streams Reflowing and approved the performance work.",
+    "implementation_choices": "Use native bottle spawner and interaction configuration, the existing trade owner, a matching upstream Streams release and an exact-version MixinSquared gate for the conflicting locator. Correct retired module inventory so active artifacts can build."
+  },
+  "introduced": {
+    "date": "2026-11-13",
+    "commit": "SELF",
+    "action": "install_worldgen_and_bottle_cutover",
+    "summary": "Disable the message bottle and migrate Streams and biome search."
+  },
+  "history": [
+    {
+      "date": "2026-11-13",
+      "commit": "SELF",
+      "action": "install_worldgen_and_bottle_cutover",
+      "summary": "Retire the legacy Streams configs and replace the pinned artifact.",
+      "source_files": [
+        "Client/ManagedPack/config/streamsreflowing-common.toml",
+        "Client/ManagedPack/config/streamsreflowing/bank_features/fallen_logs.json",
+        "Client/ManagedPack/config/streamsreflowing/bank_features/fallen_tree_jungle.json",
+        "Client/ManagedPack/config/streamsreflowing/bank_features/fallen_tree_savanna.json",
+        "Client/ManagedPack/config/streamsreflowing/bank_features/pale_driftwood_beach.json",
+        "Client/ManagedPack/config/streamsreflowing/bank_features/pale_driftwood_dry.json",
+        "Client/ManagedPack/config/streamsreflowing/bank_features/taiga_fallen_logs.json",
+        "Client/ManagedPack/config/streamsreflowing-client.toml",
+        "Client/ManagedPack/mods/StreamsReflowing-1.20.1-forge-2.13.1.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "worldgen",
+      "biome_search",
+      "loot",
+      "trade",
+      "client_render",
+      "runtime_distribution"
+    ],
+    "relations": [
+      "Beachparty spawner -> existing bottle item -> native structure map search",
+      "JEM Economy and Item Obliterator -> exact bottle acquisition and use denial",
+      "Streams Reflowing -> waterway terrain, vegetation and currents",
+      "Structurify -> placement-aware locate structure"
+    ],
+    "notes": [
+      "2.17.1 adds Flow Wand and Carve Wand brush variants. JEM removes the exact Carve Wand survival recipe pending verification of terrain editing permissions.",
+      "No offline save scan or rewrite is required."
+    ],
+    "unresolved": [
+      "Manual acceptance and before/after exploration latency are pending."
+    ]
+  }
+}

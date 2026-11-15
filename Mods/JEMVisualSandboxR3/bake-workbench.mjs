@@ -4,7 +4,7 @@ import path from 'node:path';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 const here=path.dirname(fileURLToPath(import.meta.url));
-const art='C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/blockbench';
+const art='C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/blockbench';
 const sdk=art+'/mcp/blockbench-mcp-plugin';
 const {Client}=await import(pathToFileURL(sdk+'/node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js'));
 const {StdioClientTransport}=await import(pathToFileURL(sdk+'/node_modules/@modelcontextprotocol/sdk/dist/esm/client/stdio.js'));

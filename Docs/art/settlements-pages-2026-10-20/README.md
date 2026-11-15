@@ -10,7 +10,7 @@
 
 ## Просмотренные оригиналы и извлечение
 
-Exact Pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/` (`TASTE.md` и `TECHNICAL.md`). Положительные оригиналы открыты из `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/`:
+Exact Pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/` (`TASTE.md` и `TECHNICAL.md`). Положительные оригиналы открыты из `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/`:
 
 | ID / оригинал | Видимые качества, применённые в кандидате |
 | --- | --- |

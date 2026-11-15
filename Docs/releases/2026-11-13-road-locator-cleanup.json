@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-13",
+  "branch": "feature/major-update-4",
+  "scope": "Local Major Update 4 Test JustEnoughMods update",
+  "roadweaver": {
+    "artifact": "roadweaver-forge-2.1.1-1.20.1-jem.1.jar",
+    "sha256": "5fc80e1233a98eea99438dea398397487bf9b55361017d2d92c693809778a395",
+    "cause": "The upstream backward slope pass raised low road endpoints and the terrain adapter filled the full air column to that target height",
+    "resolution": "Anchor ordinary runs to the lower recorded terrain endpoint, apply one-direction slope limits and cap lift to causeway depth",
+    "existing_blocks": "not modified"
+  },
+  "locatorbar": {
+    "style": "CLASSIC",
+    "elementsOnXpBar": true,
+    "renderer_owner": "Locator Bar 1.2.2 native Classic renderer"
+  },
+  "removed": [
+    "do_a_barrel_roll-forge-3.5.6+1.20.1.jar"
+  ],
+  "boss_structure_restoration": {
+    "respawning_structures_installed": false,
+    "jem_scope": "registered boss entity and encounter revival only",
+    "whole_structure_block_rebuild": false
+  },
+  "native_publication": {
+    "journal_sequence": 155,
+    "content_token": "94ee6654d8a90c1665dfb820f75db50f71576ef3",
+    "preview_diff": "+3 ~1 -2",
+    "installed_in_test_profile": true,
+    "pending_transaction": false
+  },
+  "runtime_acceptance": "Server loaded the patched RoadWeaver artifact and published generation 155. Player-visible road generation and locator placement remain in testing"
+}

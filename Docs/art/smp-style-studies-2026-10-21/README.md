@@ -20,21 +20,21 @@ Latest decision, 2026-10-22: **variant1 / USER_REJECTED**. The user explicitly r
 
 ## Прочитанные источники и осмотренные оригиналы
 
-Exact pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md`. Shared art direction и `aseprite/MCP.md` также прочитаны.
+Exact pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md`. Shared art direction и `aseprite/MCP.md` также прочитаны.
 
 Оригиналы открыты непосредственно через image viewer, не по контактному листу:
 
-- GUI+05: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181050.png` — пользовательский positive. Извлечены тёмная кладка, глубокие посадочные места, красный тканевый акцент и разрывы внешнего силуэта.
+- GUI+05: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181050.png` — пользовательский positive. Извлечены тёмная кладка, глубокие посадочные места, красный тканевый акцент и разрывы внешнего силуэта.
 - GUI+06: там же `Снимок экрана 2026-10-16 181055.png` — positive. Извлечены широкие деревянные плоскости, смещённые торцы, стыки, направленные световые кластеры и редкая листва.
 - GUI+09: там же `Снимок экрана 2026-10-16 181117.png` — positive. Извлечены предметность поверхности, тёплые верхние плоскости и ясно отделённые углубления. Манекен/верстак и травяной ряд не переносятся буквально в меню.
-- GUI−18: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_dont_like/Снимок экрана 2026-10-15 200030.png` — пользовательский negative. Осмотрен реальный плоский коричневый SMP-список с мелкими иконками; не использовать как желаемый уровень художественной отделки.
+- GUI−18: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_dont_like/Снимок экрана 2026-10-15 200030.png` — пользовательский negative. Осмотрен реальный плоский коричневый SMP-список с мелкими иконками; не использовать как желаемый уровень художественной отделки.
 - Текущий исходный кандидат ящика `Docs/art/shipping-station-2026-10-20/native/shipping-ui-preview-1x.png` был непосредственно осмотрен в предыдущей части этой сессии: дерево/металл, inset controls и нативные слоты — связь семейства, не разрешение копировать весь экран.
 
 Оригинальные references не вырезались, не трассировались и не превращались в текстуры. Файлы/исходные пользовательские классификации остаются по своим адресам. Новых утверждений о личном вкусе пользователя из этих трёх предложений не выведено.
 
 ## Производство и редактирование
 
-- Канонический внешний study: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/aseprite/Projects/JEM-1.20.1/Studies/Smp-styles-2026-10-21`.
+- Канонический внешний study: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/aseprite/Projects/JEM-1.20.1/Studies/Smp-styles-2026-10-21`.
 - В этой папке проекта сохранена точная архивная копия финальных источников и экспортов. Это документационные кандидаты, не Minecraft resources.
 - Aseprite 1.3.18.6-dev создаёт каждый raster pixel на canvas **512×320**. `author.mjs` описывает вручную заданные кластеры/формы/layout, а `paint.lua` рисует их непосредственно в Aseprite; внешний PNG rasterizer и image generation не использовались.
 - Пять слоёв: structural materials; recesses/control bounds; joinery/cloth/states; authored vignettes/native icons; preview-only text. `.aseprite` полностью открывается самостоятельно.

@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.voxy-server-support-production-20261115",
+  "status": "conditional",
+  "selectors": [
+    {"type": "namespace", "registry": "*", "value": "vss"}
+  ],
+  "exceptions": [],
+  "conditions": [
+    {"client_renderer": "Players install a compatible Neo Voxy Forge client build themselves. JEM does not redistribute its All Rights Reserved JAR."},
+    {"server_runtime": "Voxy Server Side 0.3.5 is installed on the dedicated server and participating clients."}
+  ],
+  "precedence": {
+    "layer": "native_mod_dependencies",
+    "priority": 125
+  },
+  "change": {
+    "summary": "Restore the redistributable Voxy Server Side transport for the production server while keeping Neo Voxy outside every shared JEM package.",
+    "modifiers": [
+      {
+        "property": "distribution.vss",
+        "operation": "add",
+        "before": "VSS and its managed configuration are absent from the production client and server distribution.",
+        "after": "VSS 0.3.5 and bounded client/server configuration are present on both logical sides. The server does not generate missing chunks, does not send prediction metadata and does not synchronize distant players."
+      },
+      {
+        "property": "distribution.neo_voxy",
+        "operation": "preserve",
+        "before": "The local Neo Voxy build is excluded from shared distribution because its JAR is All Rights Reserved.",
+        "after": "Unchanged. Players who want Voxy rendering must install a compatible Neo Voxy Forge build manually."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Voxy Server Side with a separately installed Neo Voxy client renderer",
+    "kind": "user_requested_runtime_dependency",
+    "source_files": [
+      "Client/ManagedPack/mods/vss-0.3.5-forge-1.20.1.jar",
+      "Client/ManagedPack/config/vss-client-config.json",
+      "Server/mods/vss-0.3.5-forge-1.20.1.jar",
+      "Server/config/vss-server-config.json",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md",
+      "Docs/SERVER_COMMANDS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Provide the requested server-to-client Voxy LOD transport without redistributing a prohibited client renderer.",
+    "decision_source": "Direct user request on 2026-11-15",
+    "user_requested": "Deploy MineRENT with the Voxy pair as well.",
+    "implementation_choices": "Distribute the MIT VSS component and its bounded configuration. Keep Neo Voxy manual because the installed build declares All Rights Reserved and the upstream project does not publish redistributable build artifacts."
+  },
+  "introduced": {
+    "date": "2026-11-15",
+    "commit": "SELF",
+    "action": "restore_vss_without_redistributing_neo_voxy",
+    "summary": "Add VSS 0.3.5 to the production release and retain the manual Neo Voxy installation boundary.",
+    "source_files": [
+      "Client/ManagedPack/mods/vss-0.3.5-forge-1.20.1.jar",
+      "Client/ManagedPack/config/vss-client-config.json",
+      "Server/mods/vss-0.3.5-forge-1.20.1.jar",
+      "Server/config/vss-server-config.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-15",
+      "commit": "SELF",
+      "action": "restore_vss_without_redistributing_neo_voxy",
+      "summary": "Add VSS 0.3.5 and bounded configuration to both logical sides while preserving the manual Neo Voxy client boundary.",
+      "source_files": [
+        "Client/ManagedPack/mods/vss-0.3.5-forge-1.20.1.jar",
+        "Client/ManagedPack/config/vss-client-config.json",
+        "Server/mods/vss-0.3.5-forge-1.20.1.jar",
+        "Server/config/vss-server-config.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["client rendering", "dedicated server networking", "AutoModpack", "MineRENT", "friend distribution"],
+    "relations": [
+      "server terrain columns -> VSS network channel -> manually installed Neo Voxy renderer",
+      "VSS client configuration -> bounded download distance and bandwidth",
+      "VSS server configuration -> no background chunk generation or prediction sync"
+    ],
+    "notes": [
+      "VSS is MIT and can be included in shared JEM packages.",
+      "Neo Voxy is not included in AutoModpack, the stable bootstrap source or friend update ZIPs."
+    ],
+    "unresolved": [
+      "MineRENT runtime loading and player-visible LOD transfer require deployment verification.",
+      "Players without a manually installed compatible Neo Voxy renderer receive no Voxy terrain rendering."
+    ]
+  }
+}

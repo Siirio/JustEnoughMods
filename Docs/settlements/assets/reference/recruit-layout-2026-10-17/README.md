@@ -9,7 +9,7 @@ User also requests gradual health recovery after eating and a happiness fill tha
 
 Production reuses Minecraft spruce-plank/vine sprites and shared pixel metal corners. Reference art is not used as production texture. Source implementation is not visual acceptance; no client/gameplay launch occurred.
 
-Active pair: C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens.
+Active pair: C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens.
 
 
 ## Follow-up calibration — 2026-10-17

@@ -46,7 +46,7 @@ public final class ProfessionRadialScreen extends Screen {
     private void buildGraph(){
         roots.clear();nodes.clear();
         for(ProfessionId id:ProfessionId.values()){
-            double angle=-Math.PI/2+id.ordinal()*Math.PI/5;roots.put(id,point(angle,116,0));
+            double angle=-Math.PI/2+id.ordinal()*Math.PI*2/ProfessionId.values().length;roots.put(id,point(angle,116,0));
             var branches=ProfessionCatalog.branches(id);
             for(var node:ProfessionCatalog.nodes(id))nodes.put(new Ref(id,node),point(angle,280+(node.rank()-1)*100,(branches.indexOf(node.branch())-(branches.size()-1)/2.0)*60));
         }
@@ -131,6 +131,6 @@ public final class ProfessionRadialScreen extends Screen {
     private boolean unlocked(ProfessionId id,ProfessionNode node){return status.unlocked().contains(id.name()+":"+node.id());}
     private boolean ready(ProfessionId id,ProfessionNode node){return status.authenticated()&&!unlocked(id,node)&&status.levels()[id.ordinal()]>=node.level()&&status.points()[id.ordinal()]>0&&(node.parentId().isBlank()||status.unlocked().contains(id.name()+":"+node.parentId()));}
     private static Item item(String id){return BuiltInRegistries.ITEM.getOptional(new ResourceLocation(id)).orElse(Items.BOOK);}
-    private static Item rootIcon(ProfessionId id){return switch(id){case ARCHITECT->Items.BRICKS;case FARMER->Items.WHEAT;case FISHER->Items.FISHING_ROD;case MINER->Items.IRON_PICKAXE;case EXPLORER->Items.COMPASS;case ENGINEER->item("create:wrench");case WARRIOR->Items.IRON_SWORD;case MERCHANT->Items.EMERALD;case MAYOR->Items.BELL;case MAGE->item("irons_spellbooks:iron_spell_book");};}
+    private static Item rootIcon(ProfessionId id){return switch(id){case ARCHITECT->Items.BRICKS;case FARMER->Items.WHEAT;case FISHER->Items.FISHING_ROD;case MINER->Items.IRON_PICKAXE;case EXPLORER->Items.COMPASS;case ENGINEER->item("create:wrench");case WARRIOR->Items.IRON_SWORD;case MERCHANT->Items.EMERALD;case MAYOR->Items.BELL;};}
     private record Point(double x,double y){}private record Ref(ProfessionId profession,ProfessionNode node){}
 }

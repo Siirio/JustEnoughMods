@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "change_id": "windy.dedicated-registry-crash-removal-20261112",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "windy"
+    }
+  ],
+  "precedence": {
+    "layer": "client_distribution",
+    "priority": 90
+  },
+  "change": {
+    "summary": "Remove Windy from the managed client because its custom particle registry is incompatible with a dedicated server that does not install Windy.",
+    "modifiers": [
+      {
+        "property": "distribution.installed",
+        "operation": "deny",
+        "before": "Windy 1.2.0 installed as a client-only visual mod",
+        "after": "Windy JAR and managed client config removed; Fog and Better Clouds remain"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Major Update 4 client distribution",
+    "kind": "client_crash_fix",
+    "source_files": [
+      "Docs/DEVELOPMENT.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent the deterministic post-login client crash caused by Windy's absent synchronized particle registry entries.",
+    "decision_source": "User reported the crash; the client crash report and server login log established the registry synchronization cause."
+  },
+  "introduced": {
+    "date": "2026-11-12",
+    "commit": "SELF",
+    "action": "remove",
+    "summary": "Remove Windy 1.2.0 and its managed client config after the dedicated-server post-login crash.",
+    "source_files": [
+      "Client/ManagedPack/mods/windy-forge-1.20.1.jar",
+      "Client/ManagedPack/config/windy-client.toml"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-12",
+      "commit": "SELF",
+      "action": "remove",
+      "summary": "Remove Windy 1.2.0 and its managed client config after the dedicated-server post-login crash.",
+      "source_files": [
+        "Client/ManagedPack/mods/windy-forge-1.20.1.jar",
+        "Client/ManagedPack/config/windy-client.toml"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Managed client visual effects",
+      "Forge particle registry synchronization",
+      "Dedicated-server client login"
+    ],
+    "relations": [],
+    "notes": [
+      "Windy initialized before connection, but the dedicated server did not advertise Windy's custom particle registry entries.",
+      "The crash occurred after the player fully joined, which confirms that Pack Sync token acceptance was not the crash owner.",
+      "Fog and Better Clouds remain the active client atmosphere stack."
+    ],
+    "unresolved": [
+      "Player reconnect acceptance pending"
+    ]
+  }
+}

@@ -4,7 +4,7 @@ import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 const root=path.dirname(fileURLToPath(import.meta.url));
-const sdk='C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin';
+const sdk='C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/blockbench/mcp/blockbench-mcp-plugin';
 const {Client}=await import(pathToFileURL(sdk+'/node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js'));
 const {StreamableHTTPClientTransport}=await import(pathToFileURL(sdk+'/node_modules/@modelcontextprotocol/sdk/dist/esm/client/streamableHttp.js'));
 const c=new Client({name:'guardian-indexed-export',version:'1'});

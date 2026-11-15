@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "a89a978895f3ba301003fb722a7b876e5ad90d6d",
+  "generation": {
+    "generated_utc": "2026-11-14T21:54:05.096389+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jemcompat",
+    "name": "JustEnoughMods Compatibility",
+    "version": "3.10.3"
+  },
+  "records": [
+    {
+      "item_id": "jemcompat:spawn_egg_blastfromthepast_speartooth",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jemcompat",
+      "mod_name": "JustEnoughMods Compatibility",
+      "mod_version": "3.10.3",
+      "source_jar": "jemcompat-3.10.3.jar",
+      "source_sha256": "bcea210a770ce3d7b8c6ae84b2ea1f6550f609ecb4d59ebbd53a0c72952250bd",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/jemcompat/lang/en_us.json",
+        "assets/jemcompat/lang/ru_ru.json",
+        "assets/jemcompat/models/item/spawn_egg_blastfromthepast_speartooth.json",
+        "data/jemcompat/recipes/spawn_eggs/blastfromthepast_speartooth.json"
+      ],
+      "display_name_en_us": "Speartooth Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва саблезуба",
+      "source_provenance": [
+        "jemcompat-3.10.3.jar:assets/jemcompat/lang/en_us.json",
+        "jemcompat-3.10.3.jar:assets/jemcompat/lang/ru_ru.json",
+        "jemcompat-3.10.3.jar:assets/jemcompat/models/item/spawn_egg_blastfromthepast_speartooth.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/blastfromthepast_speartooth.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "spear"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "2e5744e23681d88851471a096b7eeafbfc9a3a03",
+  "snapshot_sha": "a89a978895f3ba301003fb722a7b876e5ad90d6d",
   "generation": {
-    "generated_utc": "2026-11-02T09:05:15.209298+00:00",
+    "generated_utc": "2026-11-14T21:54:05.096389+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -23,12 +23,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/american_paint_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/american_paint_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_american_paint_horse.json"
       ],
       "display_name_en_us": "American Paint Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва пейнтхорса",
@@ -36,12 +37,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/american_paint_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/american_paint_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_american_paint_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -62,7 +64,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_american_paint_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:american_paint_horse_spawn_egg"
@@ -77,12 +81,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/andalusian_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/andalusian_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_andalusian_horse.json"
       ],
       "display_name_en_us": "Andalusian Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва андалузской лошади",
@@ -90,12 +95,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/andalusian_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/andalusian_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_andalusian_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -116,7 +122,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_andalusian_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:andalusian_horse_spawn_egg"
@@ -131,12 +139,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/appaloosa_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/appaloosa_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_appaloosa_horse.json"
       ],
       "display_name_en_us": "Appaloosa Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва аппалузы",
@@ -144,12 +153,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/appaloosa_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/appaloosa_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_appaloosa_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -170,7 +180,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_appaloosa_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:appaloosa_horse_spawn_egg"
@@ -185,12 +197,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/arabian_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/arabian_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_arabian_horse.json"
       ],
       "display_name_en_us": "Arabian Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва арабской лошади",
@@ -198,12 +211,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/arabian_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/arabian_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_arabian_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -224,7 +238,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_arabian_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:arabian_horse_spawn_egg"
@@ -239,12 +255,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/belgian_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/belgian_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_belgian_horse.json"
       ],
       "display_name_en_us": "Belgian Draft Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва бельгийской лошади",
@@ -252,12 +269,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/belgian_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/belgian_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_belgian_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -278,7 +296,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_belgian_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:belgian_horse_spawn_egg"
@@ -293,7 +313,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -353,7 +373,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -405,12 +425,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/clydesdale_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/clydesdale_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_clydesdale_horse.json"
       ],
       "display_name_en_us": "Clydesdale Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва клейдесдаля",
@@ -418,12 +439,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/clydesdale_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/clydesdale_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_clydesdale_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -444,7 +466,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_clydesdale_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:clydesdale_horse_spawn_egg"
@@ -459,12 +483,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/friesian_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/friesian_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_friesian_horse.json"
       ],
       "display_name_en_us": "Friesian Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва фризской лошади",
@@ -472,12 +497,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/friesian_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/friesian_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_friesian_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -498,7 +524,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_friesian_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:friesian_horse_spawn_egg"
@@ -513,12 +541,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/haflinger_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/haflinger_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_haflinger_horse.json"
       ],
       "display_name_en_us": "Haflinger Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва хафлингера",
@@ -526,12 +555,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/haflinger_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/haflinger_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_haflinger_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -552,7 +582,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_haflinger_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:haflinger_horse_spawn_egg"
@@ -567,7 +599,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -627,7 +659,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -679,7 +711,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -740,7 +772,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -792,7 +824,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -852,7 +884,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -904,7 +936,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -964,7 +996,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -1016,12 +1048,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/icelandic_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/icelandic_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_icelandic_horse.json"
       ],
       "display_name_en_us": "Icelandic Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва исландской лошади",
@@ -1029,12 +1062,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/icelandic_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/icelandic_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_icelandic_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1055,7 +1089,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_icelandic_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:icelandic_horse_spawn_egg"
@@ -1070,12 +1106,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/morgan_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/morgan_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_morgan_horse.json"
       ],
       "display_name_en_us": "Morgan Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва моргана",
@@ -1083,12 +1120,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/morgan_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/morgan_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_morgan_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1109,7 +1147,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_morgan_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:morgan_horse_spawn_egg"
@@ -1124,12 +1164,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/mustang_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/mustang_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_mustang_horse.json"
       ],
       "display_name_en_us": "Mustang Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва мустанга",
@@ -1137,12 +1178,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/mustang_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/mustang_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_mustang_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1163,7 +1205,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_mustang_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:mustang_horse_spawn_egg"
@@ -1178,12 +1222,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/percheron_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/percheron_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_percheron_horse.json"
       ],
       "display_name_en_us": "Percheron Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва першерона",
@@ -1191,12 +1236,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/percheron_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/percheron_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_percheron_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1217,7 +1263,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_percheron_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:percheron_horse_spawn_egg"
@@ -1232,12 +1280,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/quarter_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/quarter_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_quarter_horse.json"
       ],
       "display_name_en_us": "Quarter Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва квотерхорса",
@@ -1245,12 +1294,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/quarter_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/quarter_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_quarter_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1271,7 +1321,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_quarter_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:quarter_horse_spawn_egg"
@@ -1286,12 +1338,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/shire_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/shire_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_shire_horse.json"
       ],
       "display_name_en_us": "Shire Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва шайра",
@@ -1299,12 +1352,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/shire_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/shire_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_shire_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1325,7 +1379,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_shire_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:shire_horse_spawn_egg"
@@ -1340,7 +1396,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/models/item/stable_handbook_book.json"
@@ -1390,12 +1446,13 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
         "assets/icys-better-horses/lang/ru_ru.json",
-        "assets/icys-better-horses/models/item/thoroughbred_horse_spawn_egg.json"
+        "assets/icys-better-horses/models/item/thoroughbred_horse_spawn_egg.json",
+        "data/jemcompat/recipes/spawn_eggs/icys-better-horses_thoroughbred_horse.json"
       ],
       "display_name_en_us": "Thoroughbred Horse Spawn Egg",
       "display_name_ru_ru": "Яйцо призыва чистокровной лошади",
@@ -1403,12 +1460,13 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/en_us.json",
         "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/lang/ru_ru.json",
-        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/thoroughbred_horse_spawn_egg.json"
+        "icys-better-horses-2.1.8-forge-1.20.1.jar:assets/icys-better-horses/models/item/thoroughbred_horse_spawn_egg.json",
+        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/icys-better-horses_thoroughbred_horse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1429,7 +1487,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "jemcompat:spawn_eggs/icys-better-horses_thoroughbred_horse"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:icys-better-horses:thoroughbred_horse_spawn_egg"
@@ -1444,7 +1504,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -1504,7 +1564,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -1556,7 +1616,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",
@@ -1616,7 +1676,7 @@
       "source_jar": "icys-better-horses-2.1.8-forge-1.20.1.jar",
       "source_sha256": "eb7bdbf9b9c053f26a5ecf5086a4aca27818ce82ee3f350e4ffced02a611ed4f",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/icys-better-horses/lang/en_us.json",

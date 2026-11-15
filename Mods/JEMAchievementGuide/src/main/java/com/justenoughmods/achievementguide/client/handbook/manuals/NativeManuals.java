@@ -10,9 +10,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
-import vazkii.patchouli.api.PatchouliAPI;
-import vazkii.patchouli.client.book.gui.GuiBook;
-import vazkii.patchouli.common.book.BookRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +17,6 @@ import java.util.List;
 /** Read-only entry points verified against the installed native manuals. */
 public final class NativeManuals {
     private static final Logger LOGGER = LogUtils.getLogger();
-    private static final ResourceLocation IRON_BOOK = new ResourceLocation("irons_spellbooks", "iss_guide_book");
-
     private NativeManuals() {}
 
     public static List<Manual> available() {
@@ -47,18 +42,6 @@ public final class NativeManuals {
         add(result, "unearthed_journey", "unearthed_journey:journey_guide", "item.unearthed_journey.journey_guide",
                 "unearthed journey guide путешествие путеводитель", "net.mcreator.unearthedjourney.client.gui.",
                 () -> CommonManuals.open(CommonManuals.Route.UNEARTHED), "read");
-        if (ModList.get().isLoaded("irons_spellbooks") && ModList.get().isLoaded("patchouli")
-                && BookRegistry.INSTANCE.books.containsKey(IRON_BOOK)) {
-            ItemStack icon = PatchouliAPI.get().getBookStack(IRON_BOOK);
-            if (!icon.isEmpty()) result.add(new Manual("irons_spellbooks", Component.translatable("jem.handbook.manual.irons_spellbooks"),
-                    icon, "iron spells spellbooks guide magic магия заклинания книга", "vazkii.patchouli.client.book.gui.",
-                    () -> {
-                        if (!BookRegistry.INSTANCE.books.containsKey(IRON_BOOK)) {
-                            throw new ReflectiveOperationException("Native Patchouli book is no longer registered: " + IRON_BOOK);
-                        }
-                        PatchouliAPI.get().openBookGUI(IRON_BOOK);
-                    }, Component.translatable("jem.handbook.manual.status.read"), true));
-        }
         // Aquamirae stores the actual topic and content on each acquired logbook.
         // A blank stack would invent access to a document the player has not found.
         if (ModList.get().isLoaded("aquamirae") && ForgeRegistries.ITEMS.containsKey(new ResourceLocation("aquamirae:logbook"))) {
@@ -101,8 +84,7 @@ public final class NativeManuals {
                 || name.startsWith("net.imasillylittleguy.cnc.client.gui.FieldGuide")
                 || name.startsWith("net.mcreator.luminousbeasts.client.gui.BeastBook")
                 || isUnearthedGuideScreen(name)
-                || name.equals("dev.obscuria.aquamirae.client.screen.LogBookViewScreen")
-                || (screen instanceof GuiBook book && IRON_BOOK.equals(book.book.id));
+                || name.equals("dev.obscuria.aquamirae.client.screen.LogBookViewScreen");
     }
 
     public static boolean isScreenFor(Manual manual, Screen screen) {

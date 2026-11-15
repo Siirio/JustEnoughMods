@@ -149,12 +149,12 @@
       "backend": "bridge",
       "topic_ru": "Скорость передвижения",
       "topic_en": "Movement speed",
-      "preferred_effect_id": "irons_spellbooks:hastened",
+      "preferred_effect_id": "minecraft:speed",
       "fallback_vanilla_effect_id": "minecraft:speed",
       "preferred_amplifier": 0,
       "fallback_amplifier": 0,
-      "description_ru": "Ускорение I до 20/30/40 с; исходный эффект выбирается только если доступен.",
-      "description_en": "Speed I for 20/30/40s; use preferred effect only when available.",
+      "description_ru": "Скорость I на 20/30/40 с.",
+      "description_en": "Speed I for 20/30/40s.",
       "mechanic": {
         "trigger": "native_bridge",
         "parameter": "duration_ticks",
@@ -164,7 +164,7 @@
           "3": 800
         },
         "units": "ticks",
-        "hook_contract": "Forge registry-resolved owned potion, use only safe verified preferred effect; otherwise Speed I"
+        "hook_contract": "registry-resolved vanilla Speed I"
       }
     },
     {
@@ -461,12 +461,12 @@
       "backend": "bridge",
       "topic_ru": "Защита",
       "topic_en": "Defense",
-      "preferred_effect_id": "irons_spellbooks:oakskin",
+      "preferred_effect_id": "minecraft:resistance",
       "fallback_vanilla_effect_id": "minecraft:resistance",
       "preferred_amplifier": 0,
       "fallback_amplifier": 0,
-      "description_ru": "Дубовая кожа или Сопротивление I на 8/12/16 с, 120 с общий откат.",
-      "description_en": "Oakskin or Resistance I for 8/12/16s; 120s shared cooldown.",
+      "description_ru": "Сопротивление I на 8/12/16 с, общий откат 120 с.",
+      "description_en": "Resistance I for 8/12/16s with a shared 120s cooldown.",
       "mechanic": {
         "trigger": "native_bridge",
         "parameter": "duration_ticks",
@@ -476,7 +476,7 @@
           "3": 320
         },
         "units": "ticks",
-        "hook_contract": "owned preferred Oakskin only if audited safe; fallback Resistance I; cooldown 2400 ticks"
+        "hook_contract": "vanilla Resistance I with a 2400-tick internal cooldown"
       }
     },
     {

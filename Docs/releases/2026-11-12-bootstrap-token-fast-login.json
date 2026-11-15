@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-12",
+  "status": "local test client and current local server prepared, player acceptance pending",
+  "cause": "the login query performed a complete managed-file verdict before answering the server and could exceed the fixed 60-second login timeout",
+  "bootstrap": {
+    "revision": "jem.22",
+    "nativeVersion": "5.0.0-rc.1",
+    "upstreamCommit": "4348bf2532bb8261af3297cf2480a3a0ee91befb",
+    "bytes": 3491022,
+    "sha256": "63d85180156e398cf9522c91e6b7f2c0c4e52da1ee5b7e673815b8da782de199",
+    "productionBuild": "successful",
+    "testsRun": false
+  },
+  "loginContract": {
+    "attachedEqualToken": "continue immediately without file verification",
+    "attachedDifferentToken": "disconnect immediately and start the native reviewed updater",
+    "detachedClient": "retain the explicit join or sync prompt",
+    "nativeTrustAndTransactionChecksChanged": false
+  },
+  "installation": {
+    "managedSource": true,
+    "bootstrapInstaller": true,
+    "currentLocalServer": true,
+    "testProfile": true,
+    "stableProfile": false,
+    "mineRent": false,
+    "releaseBaseline": false
+  },
+  "publication": {
+    "journalSequence": 149,
+    "contentToken": "df2877a424a152666f3672be8a7e4733ece2d117",
+    "publishedManifestSha1": "86b6e1ee1dcc3b44c8dc24b0394cae474004ed5f",
+    "stagedManifestSha1": "86b6e1ee1dcc3b44c8dc24b0394cae474004ed5f",
+    "generationChanged": false,
+    "nativePreview": "+0 ~0 -0",
+    "publishResult": "NO_CHANGES",
+    "reason": "bootstrap is excluded from the served managed pack"
+  },
+  "runtime": {
+    "minecraftClientLaunched": false,
+    "localServerStartedAfterInstallation": true,
+    "serverStartupReachedDone": true,
+    "serverStoppedAfterPublication": true,
+    "testProfileActiveToken": "df2877a424a152666f3672be8a7e4733ece2d117",
+    "testProfileState": "ACTIVE",
+    "pendingTransaction": false,
+    "playerAcceptance": "pending"
+  }
+}

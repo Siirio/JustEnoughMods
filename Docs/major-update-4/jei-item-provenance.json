@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-09",
+  "branch": "feature/major-update-4",
+  "owner": "JEMAchievementGuide item-help content projected through JEMCompat into native JEI Information recipes",
+  "request": "Explain where non-crafted items come from, how to obtain them and why or how to use them. The route must open through ordinary JEI recipe focus and the U uses key",
+  "implementation": {
+    "native_jei_contract": "JEI 15.49.0.194 Information recipes expose the same item as a visible INPUT and an invisible OUTPUT. INPUT focus supports U and OUTPUT focus supports ordinary recipe lookup",
+    "selector_contract": "Every exact registered item ID in jem_items, jem_aliases or a spotlight selector is projected. Authored item pages take priority over generated quest projections",
+    "description_contract": "Each JEI recipe uses the description of its exact source entry instead of reselecting the first tooltip entry for that item",
+    "static_coverage": {
+      "localized_entries_with_registered_item_selectors": 646,
+      "information_recipe_pairs": 2307,
+      "unique_item_ids": 2094
+    }
+  },
+  "curated_examples": [
+    {
+      "item": "luminous_nether:gold_cultist_axe",
+      "where": "Armed Piglin Cultists and Cultist Riders associated with the Luminous Nether cultist group",
+      "how": "Rare native mob-equipment drop. Looting improves equipment-drop chances",
+      "purpose": "Axe tool and melee weapon with installed tier durability 1200, mining speed 6 and attack bonus 5",
+      "evidence": [
+        "Installed Luminous Nether 1.3.3 entity bytecode equips the item in the main hand",
+        "Installed GoldCultistAxeItem bytecode supplies the native axe tier values"
+      ]
+    },
+    {
+      "item": "luminous_beasts:pumpkin_helmet_helmet",
+      "where": "The Scarecrow encounter in plains during a full moon",
+      "how": "The installed Scarecrow death procedure drops one helmet. Horseless Headsman also has a separate conditional route",
+      "purpose": "Head armor with 3 armor and 363 durability. It refreshes Strength during a full moon",
+      "evidence": [
+        "Installed Luminous Beasts 1.2.7 ScarecrowdiesProcedure",
+        "Installed PumpkinHelmetDropProcedure and PumpkinHelmetHelmetTickEventProcedure"
+      ]
+    },
+    {
+      "item": "unearthed_journey:eye_of_methuselah",
+      "where": "Temple to Methuselah in jungle biomes",
+      "how": "The installed Methuselah boss death method drops one eye",
+      "purpose": "Activates a complete Forgotten Portal whose four corners select one Cenozoic era",
+      "evidence": [
+        "Installed Unearthed Journey 2.2.3 MethuselahBossEntity bytecode",
+        "Installed EyeOfMethuselahRightclickedOnBlockProcedure",
+        "Catalog/research/web-mechanics/unearthed_journey.json"
+      ]
+    },
+    {
+      "item": "paraglider:spirit_orb",
+      "where": "Stronghold, Bastion, Nether Fortress, Desert Pyramid, Jungle Temple, Ocean Ruin and Buried Treasure chests, plus spawner breaking",
+      "how": "Installed global loot modifiers add one orb with an exact per-table condition. JEM has spiritOrbGens enabled",
+      "purpose": "Four orbs buy one Heart Container or Stamina Vessel at a Goddess Statue",
+      "evidence": [
+        "Installed Paraglider 20.1.3 global loot modifiers",
+        "Installed goddess statue bargain recipes",
+        "Server/config/paraglider-common.toml"
+      ]
+    },
+    {
+      "item": "paraglider:essence",
+      "where": "Horned Statue bargains in village, underground and Nether statue structures",
+      "how": "Sell one Heart Container or Stamina Vessel for one Essence and five emeralds",
+      "purpose": "Use the held item to add one internal essence. One essence plus six emeralds buys a vessel back at a Horned Statue",
+      "evidence": [
+        "Installed Paraglider 20.1.3 horned statue bargain recipes",
+        "Installed EssenceItem and VesselItem bytecode"
+      ]
+    }
+  ],
+  "runtime_status": "Source and static JEI API review complete. Minecraft launch and player acceptance were not performed"
+}

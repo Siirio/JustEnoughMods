@@ -1,0 +1,31 @@
+{
+  "vertex": "jem_lighting_sandbox:atmosphere",
+  "fragment": "jem_lighting_sandbox:atmosphere",
+  "attributes": ["Position", "UV0"],
+  "samplers": [{ "name": "SceneDepth" }, { "name": "CaveSmokeMask" }],
+  "uniforms": [
+    {
+      "name": "InverseViewProjection",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    },
+    { "name": "SunDirection", "type": "float", "count": 3, "values": [0.0, 1.0, 0.0] },
+    { "name": "SunStrength", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "OpenSky", "type": "float", "count": 1, "values": [1.0] },
+    { "name": "Underwater", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "WaterColor", "type": "float", "count": 3, "values": [0.08, 0.31, 0.44] },
+    { "name": "WaterClarity", "type": "float", "count": 1, "values": [0.6] },
+    { "name": "Aurora", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "Rainbow", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "DistantFlash", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "AtmosphereTime", "type": "float", "count": 1, "values": [0.0] },
+    { "name": "RiverBank0", "type": "float", "count": 4, "values": [0, 0, 0, 0] },
+    { "name": "RiverBank1", "type": "float", "count": 4, "values": [0, 0, 0, 0] },
+    { "name": "RiverBank2", "type": "float", "count": 4, "values": [0, 0, 0, 0] },
+    { "name": "CaveBank", "type": "float", "count": 4, "values": [0, 0, 0, 0] },
+    { "name": "SnowBank", "type": "float", "count": 4, "values": [0, 0, 0, 0] },
+    { "name": "GroundWind", "type": "float", "count": 4, "values": [0, 0, 0, 0] },
+    { "name": "CaveSmokeColor", "type": "float", "count": 3, "values": [0, 0, 0] }
+  ]
+}

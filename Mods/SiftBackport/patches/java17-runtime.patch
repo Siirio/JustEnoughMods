@@ -1,0 +1,15 @@
+diff --git a/forge/1.20.1/build.gradle b/forge/1.20.1/build.gradle
+index be7c16a..01ba767 100644
+--- a/forge/1.20.1/build.gradle
++++ b/forge/1.20.1/build.gradle
+@@ -28 +28 @@ java {
+-    toolchain.languageVersion = JavaLanguageVersion.of(21)
++    toolchain.languageVersion = JavaLanguageVersion.of(17)
+@@ -48 +48 @@ minecraft {
+-    reobf = false
++    reobf = true
+@@ -197,0 +198,2 @@ tasks.named('jar', Jar).configure {
++                    "JEM-Recompiled-Target"   : "Java 17",
++                    "JEM-Upstream-Commit"     : "82a7428b31e29bcebaa127c3118214c9f17421fa",
+@@ -203,0 +206 @@ tasks.withType(JavaCompile).configureEach {
++    options.release = 17

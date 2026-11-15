@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemlightingsandbox.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_lighting_sandbox.refmap.json",
+  "client": [
+    "BetterCloudsTintMixin",
+    "CampfireSmokeParticleMixin",
+    "ClientLevelMixin",
+    "EmbeddiumChunkRendererMixin",
+    "EmbeddiumShaderLoaderMixin",
+    "EmbeddiumWaterMaterialMixin",
+    "EntityShadowBlobMixin",
+    "LevelRendererWeatherMixin",
+    "ParticleUtilsLeafMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -2,7 +2,7 @@
 
 Current user direction: 2026-10-21, refined 2026-10-22. The user requires precise game assets, persistent references, a consumer-specific grid, preserved alpha and approved parts, and one finished PNG before integration or a series. The first example requested is SMP GUI. The two old previews `smp-style-studies-2026-10-21/01-trading-station-1x.png` and `smp-trading-cards-2026-10-21/smp-cards-review.png` are explicitly rejected on 2026-10-22; do not use either as a target, source of parts or production foundation. Historical choices remain history.
 
-The execution owner is `C:/Users/user/.codex/skills/General/taste-engine/SKILL.md`, together with the exact Pair and `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/ART_DIRECTION.md`. Aseprite source/export details live in that engine's `aseprite/MCP.md`; `visual-auditor` owns the bounded art review. This document defines JEM storage and handoff, without replacing those workflows.
+The execution owner is `C:/Users/user/.codex/skills/General/taste-engine/SKILL.md`, together with the exact Pair and `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/ART_DIRECTION.md`. Aseprite source/export details live in that engine's `aseprite/MCP.md`; `visual-auditor` owns the bounded art review. This document defines JEM storage and handoff, without replacing those workflows.
 
 ## Find existing material first
 

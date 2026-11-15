@@ -14,6 +14,33 @@ consult `Catalog/research/README.md` and run
 This evidence-only supplement never overrides installed source or canonical
 registry, changes and effective behavior. Follow its version and detection limits.
 
+## Bounded packaging-only path
+
+Use this path when an installed JAR changes only to repair its toolchain,
+reobfuscation, manifest, signing, compression or delivery packaging, and direct
+comparison proves that registry IDs, resources, recipes, configuration and gameplay
+semantics are unchanged. This path overrides repeated full-Atlas work below.
+
+1. Perform one production build and one focused artifact comparison
+2. Record the new artifact hash and packaging cause in the owning change record
+3. Use the smallest project Atlas refresh that records the new artifact evidence,
+   then run one final `scan` and `validate`
+4. If the current project tools require a full Atlas rebuild for the new JAR hash,
+   run the full `rebuild`, `audit`, `scan`, `validate` sequence once only
+5. Do not repeat Atlas generation or validation unless a task-owned input changed
+   after the successful result
+6. Never invoke the shared Atlas publisher, an independent reproducibility store or
+   `jem-atlas-engine` for an ordinary JEM repair unless the user explicitly requests
+   it or the owning project documentation requires it
+7. Do not scan every repository archive to diagnose an optional external Atlas tool
+   after the canonical project Atlas has passed
+8. Run one pack preview, one publication and application, and one consolidated final
+   state check
+
+After the root cause is confirmed, stop optional diagnostics. If a mandatory command
+runs longer than five minutes, report the active command and continue only the
+required owner workflow. Do not add broader audits to use the waiting time.
+
 ## Required workflow
 
 1. From the repository root, read `Catalog/README.md`,
@@ -42,7 +69,8 @@ registry, changes and effective behavior. Follow its version and detection limit
 
 8. Query representative exact IDs again and inspect conflicts and recipe impact.
    Regenerate the full Atlas only when installed registrations/JARs changed or the
-   original registry snapshot is otherwise stale.
+   original registry snapshot is otherwise stale. Apply the bounded packaging-only
+   path when the JAR change is proven not to change registrations or gameplay.
 
 Follow `references/workflow.md` for selector, precedence, history and impact review
 details. Project prohibitions on builds, tests, profiles and deployment still apply.

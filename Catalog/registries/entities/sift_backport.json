@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "registry_type": "entities",
+  "snapshot_sha": "a89a978895f3ba301003fb722a7b876e5ad90d6d",
+  "generation": {
+    "generated_utc": "2026-11-14T21:54:05.096389+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "sift_backport",
+    "name": "Sift Backport",
+    "version": "1.0.5.1"
+  },
+  "records": [
+    {
+      "registry_id": "sift:blub",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "sift_backport",
+      "mod_name": "Sift Backport",
+      "mod_version": "1.0.5.1",
+      "source_jar": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
+      "source_sha256": "413e4999c09a2488ad3faf63c02b185f705c20fc6f4248ad50fff8c36b9bdc6e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/sift/lang/en_us.json"
+      ],
+      "display_name_en_us": "Blub",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar:assets/sift/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

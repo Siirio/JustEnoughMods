@@ -591,7 +591,7 @@
 	#Adds a new push resistance attribute to mobs. This is added to some vanilla mobs through MPR data pack
 	"Enable Push resistance" = true
 	#Allows mobs to call reinforcements (like vanilla zombies can, but better) and have leaders that have a high chance to call reinforcements. Only entity types in the `enhancedai:mobs/leaders` tag can jump. PLEASE NOTE that this feature uses a custom attribute (enhancedai:spawn_reinforcements_chance) instead of the vanilla one. This feature has also an MPR condition `enhancedai:is_leader` to check if the mob is a leader.
-	"Enable Leaders" = true
+	"Enable Leaders" = false
 	"Enable Spawning" = true
 	#Make mobs angry when a block is broken. Check the mod's config folder Mobs/Break Anger/break_anger_config.json to change blocks and entities triggered.
 	"Enable Break anger" = true

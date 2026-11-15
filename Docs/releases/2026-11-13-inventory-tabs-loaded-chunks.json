@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-13",
+  "status": "local test client prepared, player acceptance pending",
+  "cause": "Inventory Tabs 0.10.1 constructed every registered entity type in FakeLevel during client login, and Brewery RopeKnotEntity requested a chunk that FakeLevel could not provide",
+  "artifact": {
+    "name": "inventorytabs-forge-1.20.1-0.10.1-jem.1.jar",
+    "upstreamVersion": "0.10.1",
+    "upstreamCommit": "ed11c477a1cb6e6b184d73df1e8784ee22268a04",
+    "patchRevision": "loaded-chunks.1",
+    "bytes": 108292,
+    "sha256": "7912952426d4c1733295742f6266deafb463dcd0f3a5985527f8a2e9cc2bf021",
+    "productionBuild": "successful",
+    "testsRun": false
+  },
+  "behavior": {
+    "entityTabs": "discover only actual nearby entities in the loaded client level",
+    "blockTabs": "read, match, hover and open only positions whose chunks are loaded",
+    "fakeLevelIncluded": false,
+    "nativeModIdPreserved": true,
+    "serverComponentAdded": false
+  },
+  "installation": {
+    "managedSource": true,
+    "currentLocalServer": "client-only artifact is absent as designed",
+    "testProfile": true,
+    "originalArtifactPresent": false,
+    "stableProfile": false,
+    "mineRent": false,
+    "releaseBaseline": false
+  },
+  "publication": {
+    "journalSequence": 154,
+    "contentToken": "4b692bbae1f573a4326765ae9f5944b12ef93814",
+    "manifestSha1": "ebc791b01b8df6123d575bd20a2d628ba8dc01c0",
+    "nativePreview": "+1 ~1 -1",
+    "published": true
+  },
+  "runtime": {
+    "minecraftClientLaunchedByDelivery": false,
+    "serverListening": "127.0.0.1:31604",
+    "testProfileActiveToken": "4b692bbae1f573a4326765ae9f5944b12ef93814",
+    "verifiedManagedJars": 335,
+    "activeTransaction": false,
+    "playerAcceptance": "pending"
+  }
+}

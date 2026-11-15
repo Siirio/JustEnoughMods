@@ -15,7 +15,7 @@ public final class SandboxMixinPlugin implements IMixinConfigPlugin {
     @Override public String getRefMapperConfig(){return null;}
     @Override public boolean shouldApplyMixin(String target,String mixin){
         if(FMLEnvironment.dist!=Dist.CLIENT||FMLLoader.getLoadingModList().getModFileById("jem_professions_sandbox")==null)return false;
-        String required=mixin.contains(".Epic")?"epicfight":mixin.contains(".Revive")?"playerrevive":mixin.contains(".IronCast")?"irons_spellbooks":null;
+        String required=mixin.contains(".Epic")?"epicfight":mixin.contains(".Revive")?"playerrevive":null;
         return required==null||FMLLoader.getLoadingModList().getModFileById(required)!=null;
     }
     @Override public void acceptTargets(Set<String> mine,Set<String> others){}

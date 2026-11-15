@@ -113,7 +113,6 @@ public final class SandboxNetwork {
         void handle(Supplier<NetworkEvent.Context> supplier){var c=supplier.get();c.enqueueWork(()->{
             net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->{
                 com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.receive(value);
-                com.siirio.jemvisualsandbox.client.races.OptionalRacePresentation.accept(value);
                 BlockbenchWorkbench.acceptRace(value);
             });
         });c.setPacketHandled(true);}

@@ -22,13 +22,13 @@ The configured Pixelorama executable is present. The skill's referenced `Mods/JE
 
 ## Reference decisions
 
-Exact pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md`. Taste is READY for labelled material preferences; technical readiness remains PROVISIONAL for game rendering.
+Exact pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens/{TASTE,TECHNICAL}.md`. Taste is READY for labelled material preferences; technical readiness remains PROVISIONAL for game rendering.
 
 Actually inspected original labelled references:
 
-- GUI+05: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181050.png`. Extracted construction cue: dark, readable cut material and stepped pixel boundaries. Its banner/vines/layout were not copied or prescribed for this family.
-- GUI+06: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181055.png`. Extracted cue: solid edge planes and a coherent physical surface family. Its wooden inventory art was not cropped or reproduced.
-- GUI-01: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_dont_like/Снимок экрана 2026-10-14 194553.png`. Rejection comparison: tiny text-heavy brown cards and thin frames do not establish visual finish. This candidate deliberately stays a control swatch rather than claiming a full screen based on the same formula.
+- GUI+05: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181050.png`. Extracted construction cue: dark, readable cut material and stepped pixel boundaries. Its banner/vines/layout were not copied or prescribed for this family.
+- GUI+06: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_like/Снимок экрана 2026-10-16 181055.png`. Extracted cue: solid edge planes and a coherent physical surface family. Its wooden inventory art was not cropped or reproduced.
+- GUI-01: `C:/MyProjects/Coding/Solo/Ultimate-Skills-Local/Taste-Engine/Pairs/Minecraft/GUI/Reference/I_dont_like/Снимок экрана 2026-10-14 194553.png`. Rejection comparison: tiny text-heavy brown cards and thin frames do not establish visual finish. This candidate deliberately stays a control swatch rather than claiming a full screen based on the same formula.
 
 Also inspected the actual vanilla 1.20.1 `assets/minecraft/textures/gui/widgets.png` and `container/inventory.png` from the installed client JAR. This informed native 20px button height, restrained bevels, integer pixels and compact proportions. No vanilla texture pixels were incorporated in the eight sprite exports. A web reference search additionally located [widgets.png documentation](https://minecraft.wiki/w/Widgets.png); the installed version's actual pixels, not a newer web screenshot, were used for version-specific inspection.
 

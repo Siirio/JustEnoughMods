@@ -68,13 +68,6 @@ public final class NativeTradeCatalog {
                     "com.github.alexthe666.alexsmobs.misc.ItemsForEmeraldsTrade",
                     "com.github.alexthe666.alexsmobs.misc.EmeraldsForItemsTrade",
                     "org.primal.registry.Primal_VillagerCustomTrades$ItemsForEmeralds",
-                    "io.redspace.ironsspellbooks.player.AdditionalWanderingTrades$ExilirBuyTrade",
-                    "io.redspace.ironsspellbooks.player.AdditionalWanderingTrades$ExilirSellTrade",
-                    "io.redspace.ironsspellbooks.player.AdditionalWanderingTrades$InkBuyTrade",
-                    "io.redspace.ironsspellbooks.player.AdditionalWanderingTrades$InkSellTrade",
-                    "io.redspace.ironsspellbooks.player.AdditionalWanderingTrades$PotionSellTrade",
-                    "io.redspace.ironsspellbooks.player.AdditionalWanderingTrades$SimpleBuy",
-                    "io.redspace.ironsspellbooks.player.AdditionalWanderingTrades$SimpleSell",
                     "net.satisfy.vinery.core.util.VillagerUtil$SellItemFactory",
                     "net.satisfy.vinery.core.util.VillagerUtil$BuyForOneEmeraldFactory" -> true;
             default -> false;
@@ -86,8 +79,6 @@ public final class NativeTradeCatalog {
         boolean verifiedLambda = auditedLambda(provider, "net.hibiscus.naturespirit.NatureSpirit", "natures_spirit", "2.2.5-1.20.1")
                 || auditedLambda(provider, "net.satisfy.farm_and_charm.core.registry.VillagerTradeRegistryHandler", "farm_and_charm", "1.0.14");
         // Treasure map providers query/generate structures. Other optional providers remain uninvoked.
-        // Iron's RandomScroll mutates its provider templates; RandomCurio and ScrollPouch
-        // execute world loot tables. SimpleTrade itself accepts arbitrary callbacks.
         if ((!provider.startsWith("net.minecraft.world.entity.npc.VillagerTrades$") && !verifiedItemFactory && !verifiedLambda)
                 || provider.endsWith("$TreasureMapForEmeralds")) {
             row.addProperty("sample_status", "not invoked: world-dependent or optional provider"); return row;

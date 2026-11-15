@@ -21,25 +21,12 @@ final class BookStackProofs {
                 Object identifier = BookSignals.call(stack.getItem(), "getIdentifier", new Class<?>[]{ItemStack.class}, stack);
                 yield !Boolean.TRUE.equals(BookSignals.call(identifier, "isEmpty"));
             }
-            case "scroll" -> {
-                String owner = "io.redspace.ironsspellbooks.api.spells.ISpellContainer";
-                if (!Boolean.TRUE.equals(BookSignals.call(owner, "isSpellContainer", new Class<?>[]{ItemStack.class}, stack))) yield false;
-                Object container = BookSignals.call(owner, "get", new Class<?>[]{ItemStack.class}, stack);
-                yield container != null && !Boolean.TRUE.equals(BookSignals.call(container, "isEmpty"));
-            }
             case "filled_flask" -> stack.hasTag() && !stack.getTag().getList("CustomPotionEffects", net.minecraft.nbt.Tag.TAG_COMPOUND).isEmpty();
             default -> throw new IllegalArgumentException("Unknown native stack proof " + proof);
         };
     }
 
     static ItemStack prepareReward(ItemStack source) {
-        ItemStack stack = source.copy();
-        if (QuestSignals.loaded("irons_spellbooks")) {
-            try {
-                Class<?> nativeDefault = Class.forName("io.redspace.ironsspellbooks.api.backwards_compat.IBackwardsCompatDefaultNbtItem");
-                if (nativeDefault.isInstance(stack.getItem())) nativeDefault.getMethod("setupItem", ItemStack.class).invoke(stack.getItem(), stack);
-            } catch (ReflectiveOperationException failure) { throw new IllegalStateException("Native reward ItemStack initializer changed", failure); }
-        }
-        return stack;
+        return source.copy();
     }
 }

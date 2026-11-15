@@ -228,7 +228,7 @@ def report():
             translation_keys.add(value)
     missing_translations = {lang:sorted(translation_keys-set(values)) for lang,values in language.items()}
     provenance = []
-    forbidden = re.compile(r"\b(?:FTB(?: Quests| Teams)?|JEI|Sophisticated Backpacks|Sophisticated Storage|Epic Fight|JEMRoles|JEMRewards|JEMCompat|Alex['’]s (?:Mobs|Caves)|Kaleidoscope(?: Cookery| Nether| End)?|Toms Simple Storage|Handcrafted|efs_iss|efiscompat)\b", re.I)
+    forbidden = re.compile(r"\b(?:FTB(?: Quests| Teams)?|JEI|Sophisticated Backpacks|Sophisticated Storage|Epic Fight|JEMRoles|JEMRewards|JEMCompat|Alex['’]s (?:Mobs|Caves)|Kaleidoscope(?: Cookery| Nether| End)?|Toms Simple Storage|Handcrafted)\b", re.I)
     namespace = re.compile(r"\b[a-z][a-z0-9_]*:[a-z][a-z0-9_./-]+\b")
     for lang, values in language.items():
         for key,value in values.items():

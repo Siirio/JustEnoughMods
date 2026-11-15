@@ -12,8 +12,7 @@ public enum ProfessionId {
     ENGINEER,
     WARRIOR,
     MERCHANT,
-    MAYOR,
-    MAGE;
+    MAYOR;
 
     public static Optional<ProfessionId> parse(String value) {
         try {

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "2e5744e23681d88851471a096b7eeafbfc9a3a03",
+  "snapshot_sha": "a89a978895f3ba301003fb722a7b876e5ad90d6d",
   "generation": {
-    "generated_utc": "2026-11-02T09:05:15.209298+00:00",
+    "generated_utc": "2026-11-14T21:54:05.096389+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -2561,7 +2561,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
+      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
@@ -2577,7 +2577,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
+      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
