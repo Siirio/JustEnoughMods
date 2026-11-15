@@ -65,7 +65,7 @@ public final class SmpRuntime {
         com.siirio.jemserver.map.ProjectCommands.register(event.getDispatcher());
         event.getDispatcher().register(Commands.literal("smp")
                 .requires(source -> SmpEnvironment.active(source.getServer())).executes(c -> {
-            SmpNetwork.open(c.getSource().getPlayerOrException(), EventRuntime.enabled(c.getSource().getServer()) ? "events" : "parties", null);
+            SmpNetwork.open(c.getSource().getPlayerOrException(), "events", null);
             return 1;
         }).then(Commands.literal("event-return")
                 .then(Commands.argument("party", UuidArgument.uuid())

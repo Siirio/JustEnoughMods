@@ -11,57 +11,36 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "cataclysm:the_leviathan",
-      "name": "The Leviathan",
-      "rotate": true,
-      "text": ""
+      "icon": "cataclysm:tidal_claws",
+      "name": "The Leviathan"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "Look for the encounter at: Sunken City."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "Craft Abyssal Sacrifice and place it in the Altar of Abyss in the Sunken City. A successful summon consumes the offering. Prepare underwater breathing, visibility and a clear swimming route: this is an aquatic fight."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat. It checks the boss itself: luring it onto land does not create a helpless target. Possessing an item does not replace a recorded victory. Reading the handbook does not grant an Eye or record a victory."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Sunken City.",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Tidal Claws, Abyssal Egg, Music Disc. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory. In an active campaign this main-boss victory is linked to the Guardian Eye. First record the branch victories: Captain Cornelia, Sea Viper. Reading the handbook does not grant an Eye or record a victory.",
       "drops": [
         "cataclysm:abyssal_egg",
         "cataclysm:music_disc_the_leviathan",
         "cataclysm:tidal_claws"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Summon and equip",
-      "text": "Craft Abyssal Sacrifice and place it in the Altar of Abyss in the Sunken City. A successful summon consumes the offering. Prepare underwater breathing, visibility and a clear swimming route: this is an aquatic fight."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Why damage fails",
-      "text": "The current configuration enables Leviathan protection out of water. It checks the boss itself: luring it onto land does not create a helpless target. Resume fighting in water. Its second-phase transition separately rejects normal damage; wait for the animation to finish."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Movement",
-      "text": "The mouth threatens bites and rushes; move across the rush line. Avoid hugging the tail during its swing. Tentacles can hold a target, while beams and portals demand changes in swimming direction. Breathing supplies buy maneuvering time, not attack immunity."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Tidal Claws, Abyssal Egg, Music Disc. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Campaign",
-      "text": "In an active campaign this main-boss victory is linked to the Guardian Eye. First record the branch victories: Captain Cornelia, Sea Viper. Reading the handbook does not grant an Eye or record a victory."
     }
   ],
   "jem_dimension": "minecraft:overworld"

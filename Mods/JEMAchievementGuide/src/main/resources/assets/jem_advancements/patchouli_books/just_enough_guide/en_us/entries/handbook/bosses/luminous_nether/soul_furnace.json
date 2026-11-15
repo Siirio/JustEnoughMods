@@ -11,32 +11,36 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "luminous_nether:soul_furnace",
-      "name": "Soul Furnace",
-      "rotate": true,
-      "text": ""
+      "icon": "minecraft:iron_sword",
+      "name": "Soul Furnace"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "Soul Furnace rejects arrows, fire contact and the ordinary explosion damage type. It is distinct from the Luminous Beasts Furnace despite similar protection checks. Prepare direct weapons and room to retreat after its response action."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "Avoid clearly signalled attacks and strike after they finish."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "Soul Furnace rejects arrows, fire contact and the ordinary explosion damage type."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Source defenses",
-      "text": "Soul Furnace rejects arrows, fire contact and the ordinary explosion damage type. It is distinct from the Luminous Beasts Furnace despite similar protection",
+      "title": "Drops",
+      "text": "",
       "drops": [
         "luminous_nether:furnace_disk",
         "luminous_nether:molten_coal",
         "luminous_nether:soul_furnace_trophy"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Source defenses",
-      "text": "checks. Prepare direct weapons and room to retreat after its response action."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
     }
   ],
   "jem_dimension": "minecraft:the_nether"

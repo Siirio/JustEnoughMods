@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.PlayerModelPart;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 
-/** A display-only player that deliberately has no world capability lifecycle. */
+/** A display-only player that reuses the connected player's render capabilities. */
 final class DetachedPreviewPlayer extends RemotePlayer {
     private final LocalPlayer source;
 
@@ -31,11 +31,10 @@ final class DetachedPreviewPlayer extends RemotePlayer {
     @Override public String getModelName() { return source.getModelName(); }
     @Override public boolean isModelPartShown(PlayerModelPart part) { return source.isModelPartShown(part); }
 
-    /**
-     * This entity never joins its level. Exposing capabilities attached during construction would
-     * let render adapters consume a patch that never received its required join event.
-     */
     @Override public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction side) {
-        return LazyOptional.empty();
+        // Epic Fight, CPM and similar render adapters initialize their player patch on the real
+        // LocalPlayer. Delegating read access keeps the detached actor out of the world lifecycle
+        // while allowing the same renderer to draw it on the first mandatory screen and on F6.
+        return source.getCapability(capability, side);
     }
 }

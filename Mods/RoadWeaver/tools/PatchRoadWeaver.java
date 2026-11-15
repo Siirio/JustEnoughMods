@@ -13,6 +13,8 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnList;
+import org.objectweb.asm.tree.JumpInsnNode;
+import org.objectweb.asm.tree.LabelNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
@@ -21,6 +23,8 @@ public final class PatchRoadWeaver {
     private static final String ROAD = "net/shiroha233/roadweaver/features/path/pathlogic/core/Road.class";
     private static final String PROFILE = "net/shiroha233/roadweaver/features/path/pathlogic/surface/HeightProfileService.class";
     private static final String HELPER_OWNER = "net/shiroha233/roadweaver/features/path/pathlogic/surface/GroundAnchoredHeightProfile";
+    private static final String BRIDGE_PLANNER = "net/shiroha233/roadweaver/features/path/pathlogic/bridge/BridgeSegmentPlannerNew.class";
+    private static final String BRIDGE_HELPER_OWNER = "net/shiroha233/roadweaver/features/path/pathlogic/bridge/AbridgedBridgePriority";
 
     private PatchRoadWeaver() {
     }
@@ -33,6 +37,7 @@ public final class PatchRoadWeaver {
         Path output = Path.of(arguments[1]);
         Path helperRoot = Path.of(arguments[2]);
         Path helperClass = helperRoot.resolve(HELPER_OWNER + ".class");
+        Path bridgeHelperClass = helperRoot.resolve(BRIDGE_HELPER_OWNER + ".class");
         Set<String> patched = new HashSet<>();
 
         Files.createDirectories(output.getParent());
@@ -44,6 +49,7 @@ public final class PatchRoadWeaver {
                 if (entry.getName().equals(HELPER_OWNER + ".class")) {
                     continue;
                 }
+                if (entry.getName().equals(BRIDGE_HELPER_OWNER + ".class")) continue;
                 destination.putNextEntry(new JarEntry(entry.getName()));
                 if (!entry.isDirectory()) {
                     try (InputStream content = source.getInputStream(entry)) {
@@ -54,6 +60,9 @@ public final class PatchRoadWeaver {
                         } else if (entry.getName().equals(PROFILE)) {
                             bytes = patchProfile(bytes);
                             patched.add(PROFILE);
+                        } else if (entry.getName().equals(BRIDGE_PLANNER)) {
+                            bytes = patchBridgePlanner(bytes);
+                            patched.add(BRIDGE_PLANNER);
                         }
                         destination.write(bytes);
                     }
@@ -65,6 +74,10 @@ public final class PatchRoadWeaver {
             destination.write(Files.readAllBytes(helperClass));
             destination.closeEntry();
 
+            destination.putNextEntry(new JarEntry(BRIDGE_HELPER_OWNER + ".class"));
+            destination.write(Files.readAllBytes(bridgeHelperClass));
+            destination.closeEntry();
+
             destination.putNextEntry(new JarEntry("META-INF/jem-roadweaver-patch.txt"));
             destination.write(("RoadWeaver 2.1.1-1.20.1 JEM ground-anchor patch\n"
                     + "Prevents backward slope smoothing from raising low terrain endpoints\n"
@@ -72,10 +85,33 @@ public final class PatchRoadWeaver {
             destination.closeEntry();
         }
 
-        if (!patched.equals(Set.of(ROAD, PROFILE))) {
+        if (!patched.equals(Set.of(ROAD, PROFILE, BRIDGE_PLANNER))) {
             Files.deleteIfExists(output);
             throw new IllegalStateException("Expected RoadWeaver classes were not patched: " + patched);
         }
+    }
+
+    private static byte[] patchBridgePlanner(byte[] input) {
+        ClassNode type = read(input);
+        int changes = 0;
+        for (MethodNode method : type.methods) {
+            if (!method.name.equals("processSegment") || !method.desc.endsWith(")Z")) continue;
+            LabelNode continuePlacement = new LabelNode();
+            InsnList guard = new InsnList();
+            guard.add(new VarInsnNode(Opcodes.ALOAD, 0));
+            guard.add(new VarInsnNode(Opcodes.ALOAD, 3));
+            guard.add(new VarInsnNode(Opcodes.ALOAD, 4));
+            guard.add(new MethodInsnNode(Opcodes.INVOKESTATIC, BRIDGE_HELPER_OWNER, "shouldSuppress",
+                    "(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Z", false));
+            guard.add(new JumpInsnNode(Opcodes.IFEQ, continuePlacement));
+            guard.add(new org.objectweb.asm.tree.InsnNode(Opcodes.ICONST_0));
+            guard.add(new org.objectweb.asm.tree.InsnNode(Opcodes.IRETURN));
+            guard.add(continuePlacement);
+            method.instructions.insert(guard);
+            changes++;
+        }
+        if (changes != 1) throw new IllegalStateException("BridgeSegmentPlannerNew.processSegment was not patched exactly once");
+        return write(type);
     }
 
     private static byte[] patchRoad(byte[] input) {

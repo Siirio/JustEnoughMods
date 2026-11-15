@@ -42,7 +42,7 @@ import java.util.function.Predicate;
 
 /** Shared item-category owner for the client recipe browser and server purchase admission. */
 public final class JemCatalogCategories {
-    public enum Kind { WEAPONS, WEARABLE, FOOD, CREATE_REDSTONE, BUILDING, FURNITURE, NATURE, CONTAINERS,
+    public enum Kind { WEAPONS, WEARABLE, FOOD, ORES, CREATE_REDSTONE, BUILDING, FURNITURE, NATURE, CONTAINERS,
         HOLIDAY, BUILDING_BLOCKS, GLASS, LIGHT, FISHING, BOOKS, POTIONS, TRANSPORT, SPAWN_EGGS, OTHER }
     private static final Predicate<ItemStack> CURIO = ModList.get().isLoaded("curios")
             ? new CuriosEquipment() : stack -> false;
@@ -81,7 +81,7 @@ public final class JemCatalogCategories {
         String namespace = id == null ? "" : id.getNamespace();
         String path = id == null ? "" : id.getPath();
         String identity = id == null ? "" : id.toString();
-        if (NON_BUILDING_RESOURCES.contains(identity) || isOre(stack, path)) return Kind.OTHER;
+        if (NON_BUILDING_RESOURCES.contains(identity) || isOreMaterial(stack, path)) return Kind.ORES;
         if (namespace.equals("infinitybuttons")) return Kind.CREATE_REDSTONE;
         if (namespace.equals("xtraarrows")) return Kind.WEAPONS;
         if (isDoll(namespace, path)) return Kind.WEARABLE;
@@ -91,7 +91,8 @@ public final class JemCatalogCategories {
         if (Set.of("casualswing", "shutterup", "chimes", "secretdoors").contains(namespace))
             return Kind.FURNITURE;
         if (identity.equals("minecraft:tnt")) return Kind.CREATE_REDSTONE;
-        if (identity.equals("animal_feeding_trough:feeding_trough") || isPlacedFood(stack, path)) return Kind.FOOD;
+        if (identity.equals("animal_feeding_trough:feeding_trough")
+                || identity.equals("farm_and_charm:chicken_coop") || isPlacedFood(stack, path)) return Kind.FOOD;
         if (isDisplayDecor(stack, namespace, path)) return Kind.FURNITURE;
         if (isStorage(stack, namespace, path)) return Kind.CONTAINERS;
         if (namespace.equals("beachparty") && (path.equals("palm_bar") || path.equals("mini_fridge"))) return Kind.FOOD;
@@ -195,7 +196,7 @@ public final class JemCatalogCategories {
         if (stack.is(TRANSPORT) || stack.getItem() instanceof BoatItem || stack.getItem() instanceof MinecartItem) return true;
         if (Set.of("create", "railways", "bellsandwhistles", "create_train_parts", "createrailwaysnavigator").contains(namespace))
             return hasWord(path, "train", "station", "track", "schedule", "controls", "conductor", "locomotive", "bogey", "carriage");
-        return hasWord(path, "wagon", "cart", "sled", "ship", "boat");
+        return hasWord(path, "wagon", "cart", "sled", "ship", "boat", "canoe");
     }
 
     private static boolean isCreateOrRedstone(ItemStack stack, String namespace, String path) {
@@ -209,11 +210,22 @@ public final class JemCatalogCategories {
                         "conveyor", "millstone", "crushing_wheel", "steam_engine", "steam_whistle", "mechanical");
     }
 
-    private static boolean isOre(ItemStack stack, String path) {
-        return path.endsWith("_ore") || path.contains("_ore_") || path.equals("ancient_debris")
-                || stack.getTags().anyMatch(tag -> (tag.location().getNamespace().equals("forge")
-                || tag.location().getNamespace().equals("c"))
-                && (tag.location().getPath().equals("ores") || tag.location().getPath().startsWith("ores/")));
+    private static boolean isOreMaterial(ItemStack stack, String path) {
+        if (path.endsWith("_ore") || path.contains("_ore_") || path.equals("ancient_debris")) return true;
+        boolean materialName = hasWord(path, "raw", "ingot", "nugget", "gem", "crystal", "dust", "powder",
+                "crushed", "shard", "chunk", "plate", "sheet", "rod", "wire");
+        boolean materialTag = stack.getTags().anyMatch(tag -> {
+            if (!tag.location().getNamespace().equals("forge") && !tag.location().getNamespace().equals("c")) return false;
+            String value = tag.location().getPath();
+            return value.equals("ores") || value.startsWith("ores/") || value.equals("raw_materials")
+                    || value.startsWith("raw_materials/") || value.equals("ingots") || value.startsWith("ingots/")
+                    || value.equals("nuggets") || value.startsWith("nuggets/") || value.equals("gems")
+                    || value.startsWith("gems/") || value.equals("dusts") || value.startsWith("dusts/")
+                    || value.equals("storage_blocks") || value.startsWith("storage_blocks/")
+                    || value.equals("plates") || value.startsWith("plates/") || value.equals("rods")
+                    || value.startsWith("rods/") || value.equals("wires") || value.startsWith("wires/");
+        });
+        return materialTag || materialName && !(stack.getItem() instanceof BlockItem);
     }
 
     private static boolean isPlacedFood(ItemStack stack, String path) {
@@ -279,7 +291,8 @@ public final class JemCatalogCategories {
     private static boolean isFurniture(String namespace, String path) {
         return (namespace.equals("beachparty") && BEACH_FURNITURE.contains(path))
                 || namespace.equals("fairylights") && FAIRY_LIGHTS_PENNANTS.contains(path)
-                || hasWord(path, "chair", "table", "sofa", "couch", "stool", "bench", "curtain",
+                || hasWord(path, "chair", "table", "table_cloth", "sideboard", "buffet", "countertop",
+                "sofa", "couch", "stool", "bench", "curtain",
                 "carpet", "painting", "decoration", "display", "parasol", "towel", "radio", "urn",
                 "shelf", "banner", "sign", "bed", "lamp", "cushion", "sheet", "desk", "pennant", "bunting");
     }

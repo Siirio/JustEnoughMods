@@ -31,6 +31,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Barnyard Buddies | `0.6..4` | Client + server |  |
 | Better Advancements | `0.6.0.73` | Client |  |
 | Better Clouds | `1.3.37-beta+1.20.1-forge.rev.e63efe2` | Client | Major Update 4 cloud renderer |
+| Better Villages | `3.3.1` | Client + server | Separate `jem:better_village_*` structure routes; custom spacing disabled so Grand Capitals retains the vanilla village IDs |
 | BetterF3 | `7.0.2` | Client |  |
 | Blast From The Past | `1.0.3` | Client + server |  |
 | Blueprint | `7.1.5` | Client + server |  |
@@ -296,7 +297,8 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | BiomeSpy | `1.3.3` | Logical server | JEM Compat preserves Structurify's structure locator |
 | Structure Layout Optimizer | `1.0.11` | Client + server | Major Update 4 structure-layout performance owner |
 | Structurify | `2.0.43` | Client + server | Major Update 4 overlap owner with protected outpost and boss structures excluded |
-| RoadWeaver | `2.1.1-1.20.1-jem.1` | Client + server | Major Update 4 ground-anchored settlement-road generation owner |
+| StructBlend | `1.0.3` | Server | Surface terrain blending with underground, deep-cave, seabed and underground-boss exclusions |
+| RoadWeaver | `2.1.1-1.20.1-jem.1` | Client + server | Ground-anchored settlement roads; nearby Abridged structures suppress only RoadWeaver bridge templates |
 | Swinging Signs | `1.0.1` | Client | Major Update 4 |
 | Tectonic | `3.0.17` | Client + server |  |
 | TerraBlender | `3.0.1.10` | Client + server |  |

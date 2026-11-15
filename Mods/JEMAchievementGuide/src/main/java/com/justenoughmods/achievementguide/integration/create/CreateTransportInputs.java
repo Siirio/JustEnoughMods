@@ -49,12 +49,6 @@ public final class CreateTransportInputs {
     public static void committed(ServerLevel level, TransportedItemStack output) {
         CreateTransportProof nativeProof = (CreateTransportProof)(Object)output;
         CompoundTag completed = nativeProof.jem$transportProof();
-        if (completed.getBoolean("film")) {
-            UUID actor = nativeProof.jem$supplier();
-            completed.remove("film");
-            nativeProof.jem$transportProof(completed);
-            CreateRunProofs.emit(level, actor, "v3_eng_photo_develop");
-        }
         if (completed.getBoolean("spout")) {
             UUID actor = nativeProof.jem$supplier();
             completed.remove("spout");

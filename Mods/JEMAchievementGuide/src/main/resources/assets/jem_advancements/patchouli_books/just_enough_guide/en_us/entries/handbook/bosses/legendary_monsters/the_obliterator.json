@@ -11,35 +11,34 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "legendary_monsters:the_obliterator",
-      "name": "The Obliterator",
-      "rotate": true,
-      "text": ""
-    },
-    {
-      "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Space Station.",
-      "drops": [
-        "legendary_monsters:portal_shard"
-      ],
-      "drop_status": "Native loot conditions still apply"
+      "icon": "legendary_monsters:portal_shard",
+      "name": "The Obliterator"
     },
     {
       "type": "patchouli:text",
-      "title": "Defense and response",
+      "title": "Where to find",
+      "text": "Look for the encounter at: Space Station."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
       "text": "With the current setting, phase one blocks the arrow and mob_projectile damage types. Parries, arm blocks, teleportation and specific animations provide other rejection conditions. A phase transition can reduce damage rather than cancel it. Change your rhythm: wait out the block and strike in a short sequence."
     },
     {
       "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
+      "title": "What does not work",
+      "text": "With the current setting, phase one blocks the arrow and mob_projectile damage types. Possessing an item does not replace a recorded victory."
     },
     {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Portal Shard. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
+      "type": "jem_advancements:boss_description",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Portal Shard. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
+      "drops": [
+        "legendary_monsters:portal_shard"
+      ],
+      "drop_status": "Native loot conditions still apply"
     }
   ],
   "jem_dimension": "minecraft:the_end"

@@ -50,7 +50,8 @@ public final class RewardsNetwork {
         if(request.action<0 || request.action>2 || request.page<0 || request.page>100000 || request.item<0 || request.item>100000) return;
         long now=player.server.overworld().getGameTime();
         Session session=SESSIONS.get(player.getUUID());
-        if(session!=null && now-session.touched<2) return;
+        // Bound background refresh traffic, but never discard a player claim or page action.
+        if(request.action==0 && session!=null && now-session.touched<2) return;
         RewardsData data=RewardsData.get(player.server);data.recover(player);
         if(request.action!=0 && (session==null || !session.token.equals(request.session) || now-session.touched>1200 || session.revision!=request.revision || data.revision()!=request.revision)) { snapshot(player,0,now);return; }
         if(request.action==1) {

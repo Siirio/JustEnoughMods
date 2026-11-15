@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a89a978895f3ba301003fb722a7b876e5ad90d6d",
+  "snapshot_sha": "0ff23b052c23d882a32a5692e1bf5bb1463e652d",
   "generation": {
-    "generated_utc": "2026-11-14T21:54:05.096389+00:00",
+    "generated_utc": "2026-11-15T20:12:30.381471+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1804,7 +1804,7 @@
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/apparition_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/netherexp_apparition.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/netherexp_apparition.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2000,7 +2000,7 @@
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/banshee_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/netherexp_banshee.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/netherexp_banshee.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3340,7 +3340,7 @@
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/carcass_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/netherexp_carcass.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/netherexp_carcass.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3484,15 +3484,15 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 2174133,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1000000,
       "quota_family": "netherexp:cerebrage",
       "quota_units": 1,
       "bulk_1024": null,
@@ -3500,7 +3500,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -4510,7 +4510,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -4530,7 +4530,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -6297,7 +6297,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -6315,7 +6315,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -7497,15 +7497,15 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 29403,
+      "sell_copper": 9801,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 2500,
       "quota_family": "netherexp:hogham",
       "quota_units": 1,
       "bulk_1024": null,
@@ -7513,7 +7513,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -8482,7 +8482,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
@@ -8498,7 +8498,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -10630,7 +10630,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -10648,7 +10648,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -17466,7 +17466,7 @@
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/vessel_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/netherexp_vessel.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/netherexp_vessel.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -18346,7 +18346,7 @@
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
         "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/wisp_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/netherexp_wisp.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/netherexp_wisp.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -18506,7 +18506,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -18514,9 +18514,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 15,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "netherexp:wraithing_flesh",
       "quota_units": 1,
       "bulk_1024": null,
@@ -18524,7 +18524,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },

@@ -9,6 +9,7 @@ enum CatalogCategory {
     WEAPONS("gui.jemcompat.jei.weapons", "minecraft:diamond_sword"),
     WEARABLE("gui.jemcompat.jei.wearable", "minecraft:netherite_chestplate"),
     FOOD("gui.jemcompat.jei.food", "farm_and_charm:cooking_pot"),
+    ORES("gui.jemcompat.jei.ores", "minecraft:raw_iron"),
     CREATE_REDSTONE("gui.jemcompat.jei.create_redstone", "create:cogwheel"),
     BUILDING("gui.jemcompat.jei.building", "jem_building:builder_hammer"),
     FURNITURE("gui.jemcompat.jei.furniture", "minecraft:painting"),
@@ -48,6 +49,7 @@ enum CatalogCategory {
     private Item fallbackIcon() {
         return switch (this) {
             case FOOD -> net.minecraft.world.item.Items.BAKED_POTATO;
+            case ORES -> net.minecraft.world.item.Items.RAW_IRON;
             case CREATE_REDSTONE -> net.minecraft.world.item.Items.REDSTONE;
             case BUILDING, FURNITURE -> net.minecraft.world.item.Items.PAINTING;
             case NATURE -> net.minecraft.world.item.Items.MOSS_BLOCK;

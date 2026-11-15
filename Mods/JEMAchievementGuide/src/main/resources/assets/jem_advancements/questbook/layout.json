@@ -7074,7 +7074,7 @@
       "padding": 0.5
     },
     "regular_node_size": 1.2,
-    "milestone_node_size": 1.65,
+    "milestone_node_size": 1.4,
     "ordinary_entry": "overview",
     "explicit_search": "native_target",
     "min_zoom": "fit_zoom",
@@ -7241,48 +7241,6 @@
         "size": 1.4,
         "shape": "circle"
       },
-      "2C024CCFDE0FF191": {
-        "source_id": "v2_home_h06_01",
-        "x": 12.8,
-        "y": 4.8,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "228A1CE7769CFA8C": {
-        "source_id": "v2_home_print",
-        "x": 12.8,
-        "y": 7.1,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "2FBB45C17FC2C466": {
-        "source_id": "v2_home_h06_04",
-        "x": 17.4,
-        "y": 7.1,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "25204A0C35C03E09": {
-        "source_id": "v2_home_h06_05",
-        "x": 17.4,
-        "y": 4.8,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "289A57F5909FBA37": {
-        "source_id": "v2_home_h06_07",
-        "x": 12.8,
-        "y": 9.4,
-        "size": 1.4,
-        "shape": "hexagon"
-      },
-      "26F4E4196369C7CA": {
-        "source_id": "v2_home_h06_08",
-        "x": 17.4,
-        "y": 9.4,
-        "size": 1.4,
-        "shape": "circle"
-      },
       "2404E2F3B2833608": {
         "source_id": "v2_home_h06_09",
         "x": -9.2,
@@ -7345,13 +7303,6 @@
         "y": 11.5,
         "size": 1.4,
         "shape": "circle"
-      },
-      "2AC93052E038889C": {
-        "source_id": "v2_home_housewarming",
-        "x": 0,
-        "y": 10.3,
-        "size": 1.65,
-        "shape": "diamond"
       },
       "33A56ACB8C1BAC8F": {
         "source_id": "v3_cave_cave_painting",
@@ -7427,48 +7378,6 @@
         "source_id": "v3_home_play_music",
         "x": -6.9,
         "y": -1.2,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "32FB6BCE073A9C58": {
-        "source_id": "v3_home_first_frame",
-        "x": 15.1,
-        "y": 4.8,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "36AD38E958C9BF16": {
-        "source_id": "v3_home_real_print",
-        "x": 15.1,
-        "y": 7.1,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "374A9AC59A2B8D93": {
-        "source_id": "v3_home_color_print",
-        "x": 19.7,
-        "y": 7.1,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "3281FDB90D052AEF": {
-        "source_id": "v3_home_chromatic",
-        "x": 19.7,
-        "y": 9.4,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "30A995E53B172904": {
-        "source_id": "v3_home_remote_frame",
-        "x": 19.7,
-        "y": 4.8,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "3C0F538AFF4F95EB": {
-        "source_id": "v3_home_album",
-        "x": 15.1,
-        "y": 9.4,
         "size": 1.4,
         "shape": "circle"
       },
@@ -7878,18 +7787,6 @@
         "title_ru": "Фотолаборатория",
         "title_en": "Photography lab",
         "quest_ids": [
-          "v2_home_h06_01",
-          "v3_home_first_frame",
-          "v2_home_h06_05",
-          "v3_home_remote_frame",
-          "v2_home_print",
-          "v3_home_real_print",
-          "v2_home_h06_04",
-          "v3_home_color_print",
-          "v2_home_h06_07",
-          "v3_home_album",
-          "v2_home_h06_08",
-          "v3_home_chromatic",
           "v3_qol_map_gallery"
         ],
         "bounds": [
@@ -7963,9 +7860,7 @@
         "id": "home_finale",
         "title_ru": "Новоселье",
         "title_en": "Housewarming finale",
-        "quest_ids": [
-          "v2_home_housewarming"
-        ],
+        "quest_ids": [],
         "bounds": [
           -1.0,
           9.3,
@@ -9560,402 +9455,6 @@
         "semantics": "visual_relationship_only"
       },
       {
-        "from": "2C024CCFDE0FF191",
-        "to": "32FB6BCE073A9C58",
-        "from_source": "v2_home_h06_01",
-        "to_source": "v3_home_first_frame",
-        "start": [
-          12.8,
-          4.8
-        ],
-        "end": [
-          15.1,
-          4.8
-        ],
-        "points": [
-          [
-            12.8,
-            4.8
-          ],
-          [
-            15.1,
-            4.8
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "32FB6BCE073A9C58",
-        "to": "25204A0C35C03E09",
-        "from_source": "v3_home_first_frame",
-        "to_source": "v2_home_h06_05",
-        "start": [
-          15.1,
-          4.8
-        ],
-        "end": [
-          17.4,
-          4.8
-        ],
-        "points": [
-          [
-            15.1,
-            4.8
-          ],
-          [
-            17.4,
-            4.8
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "25204A0C35C03E09",
-        "to": "30A995E53B172904",
-        "from_source": "v2_home_h06_05",
-        "to_source": "v3_home_remote_frame",
-        "start": [
-          17.4,
-          4.8
-        ],
-        "end": [
-          19.7,
-          4.8
-        ],
-        "points": [
-          [
-            17.4,
-            4.8
-          ],
-          [
-            19.7,
-            4.8
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "32FB6BCE073A9C58",
-        "to": "36AD38E958C9BF16",
-        "from_source": "v3_home_first_frame",
-        "to_source": "v3_home_real_print",
-        "start": [
-          15.1,
-          4.8
-        ],
-        "end": [
-          15.1,
-          7.1
-        ],
-        "points": [
-          [
-            15.1,
-            4.8
-          ],
-          [
-            15.1,
-            7.1
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "36AD38E958C9BF16",
-        "to": "228A1CE7769CFA8C",
-        "from_source": "v3_home_real_print",
-        "to_source": "v2_home_print",
-        "start": [
-          15.1,
-          7.1
-        ],
-        "end": [
-          12.8,
-          7.1
-        ],
-        "points": [
-          [
-            15.1,
-            7.1
-          ],
-          [
-            12.8,
-            7.1
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "36AD38E958C9BF16",
-        "to": "2FBB45C17FC2C466",
-        "from_source": "v3_home_real_print",
-        "to_source": "v2_home_h06_04",
-        "start": [
-          15.1,
-          7.1
-        ],
-        "end": [
-          17.4,
-          7.1
-        ],
-        "points": [
-          [
-            15.1,
-            7.1
-          ],
-          [
-            17.4,
-            7.1
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "2FBB45C17FC2C466",
-        "to": "374A9AC59A2B8D93",
-        "from_source": "v2_home_h06_04",
-        "to_source": "v3_home_color_print",
-        "start": [
-          17.4,
-          7.1
-        ],
-        "end": [
-          19.7,
-          7.1
-        ],
-        "points": [
-          [
-            17.4,
-            7.1
-          ],
-          [
-            19.7,
-            7.1
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "374A9AC59A2B8D93",
-        "to": "3281FDB90D052AEF",
-        "from_source": "v3_home_color_print",
-        "to_source": "v3_home_chromatic",
-        "start": [
-          19.7,
-          7.1
-        ],
-        "end": [
-          19.7,
-          9.4
-        ],
-        "points": [
-          [
-            19.7,
-            7.1
-          ],
-          [
-            19.7,
-            9.4
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "36AD38E958C9BF16",
-        "to": "3C0F538AFF4F95EB",
-        "from_source": "v3_home_real_print",
-        "to_source": "v3_home_album",
-        "start": [
-          15.1,
-          7.1
-        ],
-        "end": [
-          15.1,
-          9.4
-        ],
-        "points": [
-          [
-            15.1,
-            7.1
-          ],
-          [
-            15.1,
-            9.4
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "3C0F538AFF4F95EB",
-        "to": "289A57F5909FBA37",
-        "from_source": "v3_home_album",
-        "to_source": "v2_home_h06_07",
-        "start": [
-          15.1,
-          9.4
-        ],
-        "end": [
-          12.8,
-          9.4
-        ],
-        "points": [
-          [
-            15.1,
-            9.4
-          ],
-          [
-            12.8,
-            9.4
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "289A57F5909FBA37",
-        "to": "3819E843C2D27D8A",
-        "from_source": "v2_home_h06_07",
-        "to_source": "v3_qol_map_gallery",
-        "start": [
-          12.8,
-          9.4
-        ],
-        "end": [
-          12.8,
-          11.7
-        ],
-        "points": [
-          [
-            12.8,
-            9.4
-          ],
-          [
-            12.8,
-            11.7
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "3C0F538AFF4F95EB",
-        "to": "26F4E4196369C7CA",
-        "from_source": "v3_home_album",
-        "to_source": "v2_home_h06_08",
-        "start": [
-          15.1,
-          9.4
-        ],
-        "end": [
-          17.4,
-          9.4
-        ],
-        "points": [
-          [
-            15.1,
-            9.4
-          ],
-          [
-            17.4,
-            9.4
-          ]
-        ],
-        "kind": "route",
-        "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
         "from": "2404E2F3B2833608",
         "to": "34960F38BF0ADDA1",
         "from_source": "v2_home_h06_09",
@@ -10556,9 +10055,7 @@
       "v3_home_personal_touch",
       "v3_home_swing"
     ],
-    "finale_ids": [
-      "v2_home_housewarming"
-    ]
+    "finale_ids": []
   },
   "2737629454E291BB": {
     "source_id": "tab-03",
@@ -14366,13 +13863,6 @@
         "size": 1.4,
         "shape": "circle"
       },
-      "38BE50F74E7BE3E4": {
-        "source_id": "v3_eng_photo_develop",
-        "x": 9.2,
-        "y": -6.9,
-        "size": 1.4,
-        "shape": "circle"
-      },
       "3A25F3AE43F5E970": {
         "source_id": "v3_eng_excavate",
         "x": -12.65,
@@ -14435,8 +13925,7 @@
           "v2_eng_fluid",
           "v2_eng_steam",
           "v3_eng_deployer",
-          "v2_eng_workshop",
-          "v3_eng_photo_develop"
+          "v2_eng_workshop"
         ],
         "bounds": [
           1.3499999999999999,
@@ -15415,72 +14904,6 @@
         ],
         "kind": "branch",
         "color": "#b39bd8",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "266B05EFEAB514A3",
-        "to": "38BE50F74E7BE3E4",
-        "from_source": "v2_eng_steam",
-        "to_source": "v3_eng_photo_develop",
-        "start": [
-          9.2,
-          -9.2
-        ],
-        "end": [
-          9.2,
-          -6.9
-        ],
-        "points": [
-          [
-            9.2,
-            -9.2
-          ],
-          [
-            9.2,
-            -6.9
-          ]
-        ],
-        "kind": "branch",
-        "color": "#b39bd8",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "38BE50F74E7BE3E4",
-        "to": "241141E90EEAFF1F",
-        "from_source": "v3_eng_photo_develop",
-        "to_source": "v2_eng_package",
-        "start": [
-          9.2,
-          -6.9
-        ],
-        "end": [
-          12.65,
-          -3.4
-        ],
-        "points": [
-          [
-            9.2,
-            -6.9
-          ],
-          [
-            12.65,
-            -3.4
-          ]
-        ],
-        "kind": "branch",
-        "color": "#cf929e",
         "opacity": 0.45,
         "width_gui": 1.0,
         "dash_gui": [

@@ -1,7 +1,6 @@
 package com.justenoughmods.achievementguide.mixin;
 
 import com.justenoughmods.achievementguide.integration.create.CreateSpoutProofs;
-import com.justenoughmods.achievementguide.integration.create.CreateFilmProofs;
 import com.justenoughmods.achievementguide.integration.create.CreateSpoutRun;
 import com.justenoughmods.achievementguide.integration.create.CreateTransportInputs;
 import com.justenoughmods.achievementguide.integration.create.CreateTransportProof;
@@ -34,7 +33,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class CreateSpoutQuestMixin implements CreateSpoutRun {
     @Shadow SmartFluidTankBehaviour tank;
     @Unique private UUID jem$fillingActor;
-    @Unique private boolean jem$film;
     @Unique private FluidStack jem$expected = FluidStack.EMPTY;
     @Unique private ItemStack jem$result = ItemStack.EMPTY;
     @Unique private List<TransportedItemStack> jem$outputs = List.of();
@@ -75,7 +73,6 @@ public abstract class CreateSpoutQuestMixin implements CreateSpoutRun {
     }
     @Inject(method = "whenItemHeld", at = @At("HEAD"), remap = false)
     private void jem$beginFill(TransportedItemStack item, TransportedItemStackHandlerBehaviour handler, CallbackInfoReturnable<ProcessingResult> callback) {
-        jem$film = false;
         jem$fillingActor = null; jem$expected = FluidStack.EMPTY; jem$result = ItemStack.EMPTY; jem$outputs = List.of();
     }
     @Redirect(method = "whenItemHeld", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/fluids/spout/FillingBySpout;fillItem(Lnet/minecraft/world/level/Level;ILnet/minecraft/world/item/ItemStack;Lnet/minecraftforge/fluids/FluidStack;)Lnet/minecraft/world/item/ItemStack;"), remap = false)
@@ -84,7 +81,6 @@ public abstract class CreateSpoutQuestMixin implements CreateSpoutRun {
         CompoundTag proof = jem$fluidProof();
         UUID supplier = ((CreateTransportProof)(Object)transported).jem$supplier();
         ItemStack before = input.copy();
-        FluidStack supplied = fluid.copy();
         FluidStack expected = fluid.copy();
         expected.shrink(required);
         boolean eligible = world instanceof ServerLevel && required > 0 && supplier != null && proof.hasUUID("actor")
@@ -92,7 +88,6 @@ public abstract class CreateSpoutQuestMixin implements CreateSpoutRun {
         ItemStack result = FillingBySpout.fillItem(world, required, input, fluid);
         if (eligible && !result.isEmpty() && !ItemStack.isSameItemSameTags(before, result)) {
             jem$fillingActor = supplier; jem$expected = expected; jem$result = result.copy();
-            jem$film = CreateFilmProofs.completed(before, result, supplied, required);
         }
         return result;
     }
@@ -112,7 +107,6 @@ public abstract class CreateSpoutQuestMixin implements CreateSpoutRun {
             proof.putUUID("actor", jem$fillingActor);
             proof.put("stack", output.stack.save(new CompoundTag()));
             proof.putBoolean("spout", true);
-            proof.putBoolean("film", jem$film);
             ((CreateTransportProof)(Object)output).jem$transportProof(proof);
         }
         // Depot installs during the native callback. Belt queues install later through the existing native insert hook.

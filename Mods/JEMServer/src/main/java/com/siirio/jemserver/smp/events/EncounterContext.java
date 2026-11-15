@@ -339,7 +339,15 @@ public final class EncounterContext {
     private void disconnectedInScope(ServerPlayer player) {
         if (!data.state().equals("ACTIVE") || !data.combatStarted()
                 || !isParticipant(player.getUUID()) || !new EventSession(data).accepted(player.getUUID())) return;
-        data.memberOrEmpty(player.getUUID()).eventDisconnectedAt(System.currentTimeMillis());
+        var member = data.memberOrEmpty(player.getUUID());
+        member.clearEventDisconnectedAt();
+        member.eliminated(true);
+        member.eventAbsenceDefeatPending(true);
+        SmpData.get(player.server).flush(player.server);
+        if (data.activity().equals("BOSS_RAID") && (host(player.server, player.getUUID())
+                || participantIds().stream().allMatch(id -> data.memberOrEmpty(id).eliminated()))) {
+            EventScheduler.failAttempt(player.server, data);
+        }
 
     }
 

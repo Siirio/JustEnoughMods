@@ -64,7 +64,9 @@ public final class HostedEncounterApi {
     }
 
     public static boolean canHost(LivingEntity boss) {
-        return WorldTierApi.profile(boss).filter(com.siirio.jemworldbosstiers.balance.BossProfile::hostedEncounter).isPresent()
+        var type = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType());
+        return WorldTierApi.profile(boss).filter(profile -> profile.hostedEncounter()
+                        || com.siirio.jemworldbosstiers.api.StructureEncounterApi.structuralBoss(type)).isPresent()
                 && !com.siirio.jemworldbosstiers.encounter.HostedGroup.member(boss);
     }
 

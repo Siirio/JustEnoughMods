@@ -11,35 +11,34 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "cataclysm:ender_golem",
-      "name": "Ender Golem",
-      "rotate": true,
-      "text": ""
-    },
-    {
-      "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Ruined Citadel.",
-      "drops": [
-        "cataclysm:void_core"
-      ],
-      "drop_status": "Native loot conditions still apply"
+      "icon": "cataclysm:void_core",
+      "name": "Ender Golem"
     },
     {
       "type": "patchouli:text",
-      "title": "Preparation and combat",
+      "title": "Where to find",
+      "text": "Look for the encounter at: Ruined Citadel."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
       "text": "Find the Ender Golem in the Ruined Citadel. Its ground slam affects an area: do not stay close at impact. Leave the zone, then retaliate. The Void Core obtained afterward has its own use; defeating this golem is not the same as defeating the Ender Guardian."
     },
     {
       "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
+      "title": "What does not work",
+      "text": "Possessing an item does not replace a recorded victory."
     },
     {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Void Core. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
+      "type": "jem_advancements:boss_description",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Void Core. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
+      "drops": [
+        "cataclysm:void_core"
+      ],
+      "drop_status": "Native loot conditions still apply"
     }
   ],
   "jem_dimension": "minecraft:the_end"

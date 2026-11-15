@@ -882,8 +882,15 @@ public final class HostedEncounters {
     public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         LivingEntity boss = encounter(event.getEntity().getUUID());
         if (boss != null) {
-            participant(boss, event.getEntity().getUUID()).putLong("DisconnectUntil", now(boss) + HostedConfig.GRACE.get());
+            CompoundTag entry = participant(boss, event.getEntity().getUUID());
+            HostedSettlement.eliminate(entry, false);
+            entry.remove("DisconnectUntil");
+            entry.remove("BleedoutUntil");
             persistAttempt(boss);
+            boolean remains = players(boss).getAllKeys().stream()
+                    .map(players(boss)::getCompound)
+                    .anyMatch(value -> !ELIMINATED.equals(value.getString("State")));
+            if (!remains) close(boss, false);
         }
     }
 
@@ -966,9 +973,8 @@ public final class HostedEncounters {
             }
             for (String id : players(boss).getAllKeys()) {
                 CompoundTag entry = players(boss).getCompound(id);
-                if (boss.getServer().getPlayerList().getPlayer(UUID.fromString(id)) == null && !entry.contains("DisconnectUntil")) {
-                    entry.putLong("DisconnectUntil", now(boss) + HostedConfig.GRACE.get());
-                }
+                if (boss.getServer().getPlayerList().getPlayer(UUID.fromString(id)) == null
+                        && !ELIMINATED.equals(entry.getString("State"))) HostedSettlement.eliminate(entry, false);
             }
             if (settlement == null) persistAttempt(boss);
         }

@@ -11,55 +11,34 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "legendary_monsters:frostbitten_golem",
-      "name": "Frostbitten Golem",
-      "rotate": true,
-      "text": ""
-    },
-    {
-      "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Frostbitten Temple.",
-      "drops": [
-        "legendary_monsters:frozen_rune"
-      ],
-      "drop_status": "Native loot conditions still apply"
+      "icon": "legendary_monsters:frozen_rune",
+      "name": "Frostbitten Golem"
     },
     {
       "type": "patchouli:text",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
+      "title": "Where to find",
+      "text": "Look for the encounter at: Frostbitten Temple."
     },
     {
       "type": "patchouli:text",
-      "title": "Preparation",
+      "title": "How to fight",
       "text": "Look for the Frostbitten Temple in snowy regions. Bring reliable melee equipment, food and healing, and leave a route out of the frontal sector. The current configuration enables arrow protection. Direct damage from thrown potions and area-effect clouds is also rejected."
     },
     {
       "type": "patchouli:text",
-      "title": "Wind-up → leave the sector",
-      "text": "Area strikes check broad frontal arcs. Move sideways and out of reach during the wind-up, then retaliate after the strike. Native sleep also rejects normal damage; distinguish it from a dedicated server waiting for Start."
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat. The current configuration enables arrow protection. An attack color does not identify its damage type or the right defense. This profile does not use hosted preparation. Possessing an item does not replace a recorded victory."
     },
     {
-      "type": "patchouli:text",
-      "title": "Difficulty and damage",
-      "text": "JEM corrects the inverted native difficulty offsets: the same attack is weaker on Easy than Normal and stronger on Hard. World tier and encounter mode further affect actual damage. An attack color does not identify its damage type or the right defense."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Ordinary combat",
-      "text": "This profile does not use hosted preparation. Fight it normally rather than looking for Start. Defeating this enemy contributes to world-tier progression."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Frozen Rune. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Next step",
-      "text": "This victory belongs to the branch for: Maledictus. The other victories in that branch are also required. Sibling prerequisite encounters can be completed in any order."
+      "type": "jem_advancements:boss_description",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Frozen Rune. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
+      "drops": [
+        "legendary_monsters:frozen_rune"
+      ],
+      "drop_status": "Native loot conditions still apply"
     }
   ],
   "jem_dimension": "minecraft:overworld"

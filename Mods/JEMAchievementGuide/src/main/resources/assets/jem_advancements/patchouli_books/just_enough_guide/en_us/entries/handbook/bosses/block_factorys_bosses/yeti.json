@@ -11,45 +11,34 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "block_factorys_bosses:yeti",
-      "name": "Skor, The Yeti",
-      "rotate": true,
-      "text": ""
-    },
-    {
-      "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Yeti Hideout.",
-      "drops": [
-        "block_factorys_bosses:ice_gauntlet"
-      ],
-      "drop_status": "Native loot conditions still apply"
+      "icon": "block_factorys_bosses:ice_gauntlet",
+      "name": "Skor, The Yeti"
     },
     {
       "type": "patchouli:text",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
+      "title": "Where to find",
+      "text": "Look for the encounter at: Yeti Hideout."
     },
     {
       "type": "patchouli:text",
-      "title": "Defense and tactics",
+      "title": "How to fight",
       "text": "This is Skor, distinct from the Luminous Beasts Yeti. Arrows retain 15% of initial damage and trident damage retains 30%; this is reduction, not immunity. Spawning, certain rage states and a long ground-smash action reject normal damage. Wait for the action to finish and use the melee opening."
     },
     {
       "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat. Arrows retain 15% of initial damage and trident damage retains 30%; this is reduction, not immunity. Possessing an item does not replace a recorded victory."
     },
     {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Skor Gauntlet. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Next step",
-      "text": "This victory belongs to the branch for: Maledictus. The other victories in that branch are also required. Sibling prerequisite encounters can be completed in any order."
+      "type": "jem_advancements:boss_description",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Skor Gauntlet. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
+      "drops": [
+        "block_factorys_bosses:ice_gauntlet"
+      ],
+      "drop_status": "Native loot conditions still apply"
     }
   ],
   "jem_dimension": "minecraft:overworld"

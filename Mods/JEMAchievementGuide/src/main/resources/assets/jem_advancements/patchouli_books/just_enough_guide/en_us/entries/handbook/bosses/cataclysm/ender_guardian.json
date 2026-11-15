@@ -11,41 +11,35 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "cataclysm:ender_guardian",
-      "name": "Ender Guardian",
-      "rotate": true,
-      "text": ""
+      "icon": "cataclysm:gauntlet_of_guard",
+      "name": "Ender Guardian"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "Look for the encounter at: Ruined Citadel."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "The Ender Guardian is found in the Ruined Citadel. Create distance and leave the frontal sector when it prepares a wide strike. Breaking its helmet changes the boss’s state; do not assume that its defenses stay identical throughout the fight."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "Direct arrow hits are rejected while the helmet is intact. Possessing an item does not replace a recorded victory."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Ruined Citadel.",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Gauntlet of Guard, Music Disc. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
       "drops": [
         "cataclysm:gauntlet_of_guard",
         "cataclysm:music_disc_ender_guardian"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Preparation and combat",
-      "text": "The Ender Guardian is found in the Ruined Citadel. Create distance and leave the frontal sector when it prepares a wide strike. Breaking its helmet changes the boss’s state; do not assume that its defenses stay identical throughout the fight."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Helmet and arrows",
-      "text": "Direct arrow hits are rejected while the helmet is intact. Losing the helmet removes that condition. Shulker bullets and its own guardian bullets are rejected separately; golem attacks are halved. Normal damage is rejected during mass destruction."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Gauntlet of Guard, Music Disc. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
     }
   ],
   "jem_dimension": "minecraft:the_end"

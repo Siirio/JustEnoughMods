@@ -27,14 +27,18 @@ public final class RewardsPanel {
     private static long refreshed=-1;
     private static int x,y;
     private static boolean compactExpanded;
+    private static boolean claimPending;
     public static void accept(RewardsNetwork.Snapshot value) {
-        if(Minecraft.getInstance().screen==active) snapshot=value;
+        if(Minecraft.getInstance().screen==active) {
+            snapshot=value;
+            claimPending=false;
+        }
     }
     @SubscribeEvent public static void init(ScreenEvent.Init.Post event) {
         if(!(event.getScreen() instanceof AbstractContainerScreen<?> screen)
                 || !(screen instanceof InventoryScreen || screen instanceof CreativeModeInventoryScreen)
                 || Minecraft.getInstance().screen!=screen)return;
-        active=screen;snapshot=null;refreshed=-1;compactExpanded=false;
+        active=screen;snapshot=null;refreshed=-1;compactExpanded=false;claimPending=false;
         previous=Button.builder(Component.literal("<"),b->request(2,Math.max(0,snapshot.page()-1),ZERO,0)).bounds(0,0,20,20).build();
         next=Button.builder(Component.literal(">"),b->request(2,snapshot.page()+1,ZERO,0)).bounds(0,0,20,20).build();
         reveal=Button.builder(Component.translatable("jem_rewards.title"),b->{
@@ -53,7 +57,7 @@ public final class RewardsPanel {
     @SubscribeEvent public static void close(ScreenEvent.Closing event) {
         if(event.getScreen()!=active)return;
         if(snapshot!=null)request(3,snapshot.page(),ZERO,0);
-        active=null;snapshot=null;compactExpanded=false;
+        active=null;snapshot=null;compactExpanded=false;claimPending=false;
     }
     private static void request(int action,int page,UUID bundle,int item) {
         RewardsNetwork.send(new RewardsNetwork.Request(action,snapshot==null?ZERO:snapshot.session(),snapshot==null?0:snapshot.revision(),page,bundle,item));
@@ -103,8 +107,12 @@ public final class RewardsPanel {
             if(event.getMouseX()<sx || event.getMouseX()>=sx+18 || event.getMouseY()<sy || event.getMouseY()>=sy+18)continue;
             event.setCanceled(true);
             // Every non-take interaction is consumed without sending any mutation.
-            if(event.getButton()==0 && Minecraft.getInstance().player.inventoryMenu.getCarried().isEmpty()) {
-                CompoundTag row=snapshot.rows().getCompound(i);request(1,snapshot.page(),row.getUUID("Bundle"),row.getInt("Item"));
+            if(event.getButton()==0 && !claimPending && Minecraft.getInstance().player.inventoryMenu.getCarried().isEmpty()) {
+                CompoundTag row=snapshot.rows().getCompound(i);
+                claimPending=true;
+                request(1,snapshot.page(),row.getUUID("Bundle"),row.getInt("Item"));
+                // The row reacts in the click frame. The next authoritative snapshot restores it on rejection.
+                snapshot.rows().remove(i);
             }
             return;
         }

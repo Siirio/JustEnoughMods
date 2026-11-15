@@ -11,41 +11,35 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "luminous_beasts:bone_stalker",
-      "name": "Bone Stalker",
-      "rotate": true,
-      "text": ""
+      "icon": "luminous_beasts:bone_stalker_disc",
+      "name": "Bone Stalker"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "The Bone Stalker replaces an immediate ordinary hit with an animation and delayed damage. Do not mistake the initial wind-up for a miss: retreat until the strike finishes. Its action can apply Darkness and conceal the enemy with Invisibility; regain awareness before continuing a combo."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat. Possessing an item does not replace a recorded victory."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat.",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Music Disc, Bone Stalker Trophy. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
       "drops": [
         "luminous_beasts:bone_stalker_disc",
         "luminous_beasts:bone_stalker_trophy"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Cue and response",
-      "text": "The Bone Stalker replaces an immediate ordinary hit with an animation and delayed damage. Do not mistake the initial wind-up for a miss: retreat until the strike finishes. Its action can apply Darkness and conceal the enemy with Invisibility; regain awareness before continuing a combo."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Music Disc, Bone Stalker Trophy. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Next step",
-      "text": "This victory belongs to the branch for: Possessed Paladin. The other victories in that branch are also required. Sibling prerequisite encounters can be completed in any order."
     }
   ],
   "jem_dimension": "minecraft:overworld"

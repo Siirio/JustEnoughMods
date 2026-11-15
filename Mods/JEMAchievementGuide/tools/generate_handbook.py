@@ -25,6 +25,37 @@ def intro_parts(text):
     return [*parts, current] if current else parts
 
 
+def compact_boss_pages(entry, localized, language):
+    pages = localized["pages"]
+    first = pages[0]
+    excluded = ("указател", "начало боя", "добыча", "кампания") if language == "ru_ru" else (
+        "locator", "starting combat", "loot", "campaign")
+    combat = next((page for page in pages[1:] if not any(word in page.get("title", "").lower() for word in excluded)), None)
+    if combat is None:
+        combat = {"text": "Избегайте заметных атак и бейте после их завершения." if language == "ru_ru"
+                  else "Avoid clearly signalled attacks and strike after they finish."}
+    sentences = re.split(r"(?<=[.!?])\s+", " ".join(page.get("text", "") for page in pages))
+    immunity_words = ("не действ", "невосприим", "стрел", "яд") if language == "ru_ru" else (
+        "does not", "immune", "arrow", "poison")
+    immunities = " ".join(sentence for sentence in sentences if any(word in sentence.lower() for word in immunity_words))
+    if not immunities:
+        immunities = "Особых иммунитетов не подтверждено." if language == "ru_ru" else "No special immunity is confirmed."
+    loot = next((page.get("text", "") for page in pages if ("добыча" if language == "ru_ru" else "loot") in page.get("title", "").lower()), "")
+    campaign = next((page.get("text", "") for page in pages if ("кампания" if language == "ru_ru" else "campaign") in page.get("title", "").lower()), "")
+    if entry["subject"] == "block_factorys_bosses:sandworm":
+        campaign += " Награда: 300 XP." if language == "ru_ru" else " Reward: 300 XP."
+    return [
+        {"type": "jem_advancements:boss_preview", "entity": entry["subject"], "icon": entry["icon"], "name": localized["name"]},
+        {"type": "patchouli:text", "title": "Где найти" if language == "ru_ru" else "Where to find", "text": first.get("text", "")},
+        {"type": "patchouli:text", "title": "Как сражаться" if language == "ru_ru" else "How to fight", "text": combat.get("text", "")},
+        {"type": "patchouli:text", "title": "Что не действует" if language == "ru_ru" else "What does not work", "text": immunities},
+        {"type": "jem_advancements:boss_description", "title": "Что выпадает" if language == "ru_ru" else "Drops",
+         "text": (loot + " " + campaign).strip(), "drops": entry.get("drops", []),
+         "drop_status": ("Список добычи не подтверждён" if language == "ru_ru" else "Drop list is not confirmed")
+         if entry.get("drop_unresolved") else ("Нативные условия добычи сохраняются" if language == "ru_ru" else "Native loot conditions still apply")}
+    ]
+
+
 def generate_navigation(resources=RESOURCES, *, questbook_source=MODULE / "tools/questbook/book.json"):
     assets = resources / "assets/jem_advancements"
     book = assets / "patchouli_books/just_enough_guide"
@@ -80,6 +111,16 @@ def generate_authored_content(book=BOOK):
         if not path.exists():
             continue
         authored = json.loads(path.read_text(encoding="utf-8"))
+        if section == "items":
+            # Exposure is retired from the pack. Remove its old authored projections and stale output.
+            authored["entries"] = [entry for entry in authored["entries"]
+                                   if not entry.get("subject", "").startswith("exposure:")]
+            for language in ("ru_ru", "en_us"):
+                retired = book / language / "entries/handbook/items/exposure"
+                if retired.exists():
+                    for old in retired.glob("*.json"):
+                        old.unlink()
+                    retired.rmdir()
         if section == "bosses":
             # Remove retired projections in both languages, including stale prior output.
             retained = {entry["id"] for entry in authored["entries"] if entry.get("handbook_role", "boss") == "boss"}
@@ -101,17 +142,7 @@ def generate_authored_content(book=BOOK):
                 if section == "bosses":
                     if "dimension" in entry:
                         value["jem_dimension"] = entry["dimension"]
-                    first, *remaining = localized["pages"]
-                    intro, *continuation = intro_parts(first.get("text", "")) or [""]
-                    value["pages"] = [
-                        {"type": "patchouli:entity", "entity": entry["subject"],
-                         "name": localized["name"], "rotate": True, "text": ""},
-                        {"type": "jem_advancements:boss_description", "title": first.get("title", localized["name"]),
-                         "text": intro, "drops": entry.get("drops", []),
-                         "drop_status": ("Список добычи не подтверждён" if language == "ru_ru" else "Drop list is not confirmed")
-                         if entry.get("drop_unresolved") else
-                         ("Нативные условия добычи сохраняются" if language == "ru_ru" else "Native loot conditions still apply")},
-                        *[{**first, "text": text} for text in continuation], *remaining]
+                    value["pages"] = compact_boss_pages(entry, localized, language)
                 write(book / language / "entries" / (entry["id"] + ".json"), value)
 
 

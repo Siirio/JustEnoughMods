@@ -1590,7 +1590,7 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePl
 +	/** Only presentation preferences opt into sticky player ownership; server gameplay configs retain native policy. */
 +	private static boolean personalPreference(String path) {
 +		String relative = LogicalPath.normalize(path);
-+		return Set.of("config/oculus.properties", "config/iris.properties",
++		return Set.of("options.txt", "config/oculus.properties", "config/iris.properties",
 +				"config/quickskin-client.json", "config/quickskin_preferences.json",
 +				"config/fzzy_config/keybinds.toml", "config/punchy/triggerable-keybindings.json").contains(relative)
 +				|| relative.startsWith("shaderpacks/") && relative.endsWith(".txt")
@@ -2461,7 +2461,7 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMa
 +	// walks away comes back well inside 15 minutes. A parent still alive past that is not coming back - a
 +	// reused PID of some immortal process or a hung game - and holding the lease for it would park every
 +	// future boot's recovery wait. Giving up leaves the transaction pending; the next game launch retries it.
-+	private static final long PARENT_EXIT_TIMEOUT_MILLIS = Duration.ofMinutes(15).toMillis();
++	private static final long PARENT_EXIT_TIMEOUT_MILLIS = Duration.ofMinutes(3).toMillis();
 +	private static final DateTimeFormatter TIMESTAMP = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withLocale(Locale.ROOT);
 +
 +	private UpdateHelperMain() {}

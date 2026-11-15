@@ -42,7 +42,9 @@ public final class HostedGroup {
     public static boolean member(LivingEntity entity) { return entity.getPersistentData().contains(ARENA); }
 
     private static boolean support(BossProfile profile, LivingEntity entity) {
-        return !WorldTierApi.profile(entity).map(BossProfile::hostedEncounter).orElse(false)
+        var type = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
+        return !WorldTierApi.profile(entity).map(value -> value.hostedEncounter()
+                        || com.siirio.jemworldbosstiers.api.StructureEncounterApi.structuralBoss(type)).orElse(false)
                 && profile.allyTags().stream().anyMatch(id -> entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, id)));
     }
 

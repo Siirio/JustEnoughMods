@@ -160,7 +160,7 @@ public final class StructureStaging {
         EventState event = EventScheduler.active(player.server, "BOSS_RAID");
         if (area == null || !area.near(player.serverLevel(), player.position())
                 || party(player.serverLevel(), id) != null) return false;
-        if (event == null) return RaidArenaApi.compatible(player.server, id.toString(), area.boss());
+        if (event == null) return false;
         if (event.combatStarted()) return false;
         return event.hasRaidArenaId() ? event.raidArenaId().equals(id.toString())
                 : RaidArenaApi.compatible(player.server, id.toString(), area.boss());
@@ -191,18 +191,7 @@ public final class StructureStaging {
         if (mode.equals("BOSS_RAID")) {
             EventState event = EventScheduler.active(player.server, "BOSS_RAID");
             SmpRecords.require(raidAvailable(player, id), "raid_unavailable");
-            boolean created = event == null;
-            if (created) {
-                event = SmpData.get(player.server).events().create(player.getUUID());
-                event.slot("manual:raid:" + event.id());
-                event.activity("BOSS_RAID");
-                event.ordinaryRaid(true);
-                event.state("ACTIVE");
-                event.started(System.currentTimeMillis());
-                event.ends(System.currentTimeMillis() + Math.min(3, SmpConfig.EVENT_HOURS.get()) * 3600000L);
-            }
             if (!RaidEvent.claimArena(player.server, event, id.toString(), area.boss(), area.dimension(), area.center(), area.bounds())) {
-                if (created) EventScheduler.cancelPreparation(player.server, event);
                 SmpRecords.require(false, "arena_busy");
             }
             PARTY_CACHE.remove(id);

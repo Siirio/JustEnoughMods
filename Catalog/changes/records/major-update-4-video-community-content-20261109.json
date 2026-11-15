@@ -3,11 +3,31 @@
   "change_id": "major-update-4-video-community-content-20261109",
   "status": "active",
   "selectors": [
-    {"type": "namespace", "registry": "*", "value": "spears"},
-    {"type": "namespace", "registry": "*", "value": "ocean_lily_pad_village"},
-    {"type": "namespace", "registry": "*", "value": "structory"},
-    {"type": "namespace", "registry": "*", "value": "visualworkbench"},
-    {"type": "namespace", "registry": "*", "value": "blockrunner"}
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "spears"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "ocean_lily_pad_village"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "structory"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "visualworkbench"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "blockrunner"
+    }
   ],
   "conditions": [
     {
@@ -65,7 +85,6 @@
       "Client/ManagedPack/config/paxi/resourcepack_load_order.json",
       "Client/ManagedPack/config/ambientsounds-client.json",
       "Client/ManagedPack/config/blockrunner.json",
-      "Client/ManagedPack/config/weatherglass.properties",
       "Server/config/blockrunner.json"
     ]
   },
@@ -122,6 +141,15 @@
       "summary": "Remove Do a Barrel Roll from the managed client by direct user request",
       "source_files": [
         "Client/ManagedPack/mods/do_a_barrel_roll-forge-3.5.6+1.20.1.jar"
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "commit": "SELF",
+      "action": "retire_deleted_sources_20261116",
+      "summary": "Move removed Weather Glass and Exposure implementation paths from current ownership to historical evidence.",
+      "source_files": [
+        "Client/ManagedPack/config/weatherglass.properties"
       ]
     }
   ],

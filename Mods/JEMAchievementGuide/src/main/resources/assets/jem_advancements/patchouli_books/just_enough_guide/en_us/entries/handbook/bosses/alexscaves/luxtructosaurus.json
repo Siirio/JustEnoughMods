@@ -11,50 +11,34 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "alexscaves:luxtructosaurus",
-      "name": "Luxtructosaurus",
-      "rotate": true,
-      "text": ""
-    },
-    {
-      "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Volcano.",
-      "drops": [
-        "alexscaves:tectonic_shard"
-      ],
-      "drop_status": "Native loot conditions still apply"
+      "icon": "alexscaves:tectonic_shard",
+      "name": "Luxtructosaurus"
     },
     {
       "type": "patchouli:text",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
+      "title": "Where to find",
+      "text": "Look for the encounter at: Volcano."
     },
     {
       "type": "patchouli:text",
-      "title": "Volcano offering",
+      "title": "How to fight",
       "text": "Craft Ominous Catalyst from Amber Curiosity and Heavy Bones. Throw it toward the Volcanic Core inside the volcano: the core attracts the item and consumes one after a successful summon. Prepare Fire Resistance, healing and room to evade falling tephra."
     },
     {
       "type": "patchouli:text",
-      "title": "Attack cues",
-      "text": "Rearing up precedes a ground slam: leave the landing area. A long tail swing threatens nearby targets and can disable shields. A loud roar empowers the boss and adds fire breath; avoid the mouth’s line. It can jump or break obstructions to reach prey."
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat. Possessing an item does not replace a recorded victory. Reading the handbook does not grant an Eye or record a victory."
     },
     {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Tectonic Shard. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Campaign",
-      "text": "In an active campaign this main-boss victory is linked to the Exotic Eye. First record the branch victories: Skeletosaurus. Reading the handbook does not grant an Eye or record a victory."
+      "type": "jem_advancements:boss_description",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Tectonic Shard. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory. In an active campaign this main-boss victory is linked to the Exotic Eye. First record the branch victories: Skeletosaurus. Reading the handbook does not grant an Eye or record a victory.",
+      "drops": [
+        "alexscaves:tectonic_shard"
+      ],
+      "drop_status": "Native loot conditions still apply"
     }
   ],
   "jem_dimension": "minecraft:overworld"

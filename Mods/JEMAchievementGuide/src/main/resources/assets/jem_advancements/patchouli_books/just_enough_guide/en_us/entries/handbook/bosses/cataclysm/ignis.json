@@ -11,46 +11,35 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "cataclysm:ignis",
-      "name": "Ignis",
-      "rotate": true,
-      "text": ""
+      "icon": "cataclysm:ignitium_ingot",
+      "name": "Ignis"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "Look for the encounter at: Burning Arena."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "Obtain Burning Ashes from an Ignited Revenant and place one in the Altar of Fire at the Burning Arena. Prepare food, healing and room to circle before making the offering. Fire Resistance helps with fire; it does not cancel sword strikes or grabs."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "Fire Resistance helps with fire; it does not cancel sword strikes or grabs. Extra maximum health does not neutralize attacks with a target-health component. Possessing an item does not replace a recorded victory."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Burning Arena.",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Ignitium Ingot, Music Disc. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
       "drops": [
         "cataclysm:ignitium_ingot",
         "cataclysm:music_disc_ignis"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Summon and prepare",
-      "text": "Obtain Burning Ashes from an Ignited Revenant and place one in the Altar of Fire at the Burning Arena. Prepare food, healing and room to circle before making the offering. Fire Resistance helps with fire; it does not cancel sword strikes or grabs."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Shield and reflection",
-      "text": "A raised shield protects the front. Circle Ignis and strike during openings. His ordinary fireballs do not hurt him. Strike an abyss fireball to send it back: a reflected one with a new owner bypasses the directional shield and damages it. Three such hits bring the shield to its breaking point."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Cue → response",
-      "text": "A sword or shield wind-up leads into an area attack: leave the frontal sector, then retaliate. Sidestep a thrust rather than standing in front of the blade for the grab. Normal damage is rejected during phase transitions; wait for the animation to finish. Extra maximum health does not neutralize attacks with a target-health component."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Ignitium Ingot, Music Disc. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
     }
   ],
   "jem_dimension": "minecraft:the_nether"

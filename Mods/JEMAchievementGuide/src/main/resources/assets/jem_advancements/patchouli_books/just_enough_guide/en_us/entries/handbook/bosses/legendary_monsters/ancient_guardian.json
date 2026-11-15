@@ -11,40 +11,34 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "legendary_monsters:ancient_guardian",
-      "name": "Ancient Guardian",
-      "rotate": true,
-      "text": ""
-    },
-    {
-      "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Ancient Tower Remains.",
-      "drops": [
-        "legendary_monsters:anchor_handle"
-      ],
-      "drop_status": "Native loot conditions still apply"
+      "icon": "legendary_monsters:anchor_handle",
+      "name": "Ancient Guardian"
     },
     {
       "type": "patchouli:text",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the End. It marks the site on your map; the locator itself does not begin combat."
+      "title": "Where to find",
+      "text": "Look for the encounter at: Ancient Tower Remains."
     },
     {
       "type": "patchouli:text",
-      "title": "Defense and response",
+      "title": "How to fight",
       "text": "Arrow protection is enabled. Direct damage attributed to thrown potions and area-effect clouds is rejected as well. Native sleep blocks normal hits. Wait for its active state and retaliate with melee after a wind-up."
     },
     {
       "type": "patchouli:text",
-      "title": "Ordinary combat",
-      "text": "This profile does not use hosted preparation. Fight it normally rather than looking for Start. Defeating this enemy contributes to world-tier progression."
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat. Arrow protection is enabled. This profile does not use hosted preparation. Possessing an item does not replace a recorded victory."
     },
     {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Anchor Handle. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
+      "type": "jem_advancements:boss_description",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Anchor Handle. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
+      "drops": [
+        "legendary_monsters:anchor_handle"
+      ],
+      "drop_status": "Native loot conditions still apply"
     }
   ],
   "jem_dimension": "minecraft:the_end"

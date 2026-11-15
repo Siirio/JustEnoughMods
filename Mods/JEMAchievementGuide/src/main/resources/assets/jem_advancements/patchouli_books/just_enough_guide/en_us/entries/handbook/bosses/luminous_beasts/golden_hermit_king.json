@@ -11,37 +11,36 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "luminous_beasts:golden_hermit_king",
-      "name": "Golden Hermit King",
-      "rotate": true,
-      "text": ""
+      "icon": "minecraft:iron_sword",
+      "name": "Golden Hermit King"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "When the Golden Hermit King hides in its shell, its native handler cancels incoming attacks and plays a block sound. Stop spending a combo into the closed shell and wait for it to emerge. Leave the nearby area during its attack and retaliate when it is exposed again."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat.",
+      "title": "Drops",
+      "text": "",
       "drops": [
         "luminous_beasts:hermit_king_disc",
         "luminous_beasts:rare_hermit_king_trophy",
         "luminous_beasts:shellmet_helmet"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Cue and response",
-      "text": "When the Golden Hermit King hides in its shell, its native handler cancels incoming attacks and plays a block sound. Stop spending a combo into the closed shell and wait for it to emerge. Leave the nearby area during its attack and retaliate when it is exposed again."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Next step",
-      "text": "This victory belongs to the branch for: Ancient Remnant. The other victories in that branch are also required. Sibling prerequisite encounters can be completed in any order."
     }
   ],
   "jem_dimension": "minecraft:overworld"

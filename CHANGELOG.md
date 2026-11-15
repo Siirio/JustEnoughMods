@@ -1,3 +1,25 @@
+## 2026-11-16 - Implement the Major Update 4 stabilization release
+
+- User authorized implementation, MineRENT deployment, and production promotion to `main` after the release is complete
+- Removed Weather Glass and all active Exposure and Simpler Exposure integration from the managed pack, quests, handbook, rewards, and JEM source. Historical migration records remain inert history
+- Bug / Client Sided / FTB Teams used the launcher UUID instead of MineRENT's connected-player UUID, so the dedicated-server Quest screen could not resolve the local team / in testing through an exact FTB Teams 2001.3.2 connected-`LocalPlayer` identity adapter
+- Bug / Both Sided / native FTB "Claim all" persisted the whole world once per JEM XP reward / in testing through one scheduled persistence flush per claim batch with failure rollback
+- Bug / Client Sided / race previews used a detached player with no Forge capabilities and JEM Rewards throttled real claim requests while showing no pending state / in testing through connected-player capability delegation, claim-only throttle removal, immediate pending rows, and authoritative snapshot reconciliation
+- Bug / Server Sided / hosted encounters retained logged-out participants and admitted manual Raid staging without an active event / in testing through immediate logout defeat and release plus active `BOSS_RAID` admission only
+- Bug / Both Sided / registered structural bosses outside the old hosted flag had no shared arena shell / in testing through the registered structural-boss owner used by the ordinary hosted lifecycle
+- Restored the `/smp` Events tab on eligible dedicated SMP servers, suppressed only Blast From The Past screen shake, and kept all other mob behavior unchanged
+- Added the top-level JEI "Руды" category and reassigned Create, furniture, canoe, countertop, sideboard, buffet, chicken-coop, and similar remainder families to their semantic categories
+- Kept RoadWeaver and added a 20-block priority check for the exact `abridged:bridge` structure before either RoadWeaver bridge builder can place blocks
+- Added Better Villages 3.3.1 under separate JEM structure IDs, disabled its vanilla replacement mode, and merged those IDs into the existing village set so Grand Capitals remains the vanilla-village owner
+- Added server-only StructBlend 1.0.3 with underground and deep-structure exclusions. Structure Layout Optimizer remains the jigsaw performance owner and Structurify remains the overlap owner
+- Reworked boss handbook pages to use short player language, explicit defenses and attacks, explicit drops, and a fitted clipped entity preview
+- Updated Sodium Extras to 56 blocks horizontally and 26 blocks vertically for entities and block entities. Bootstrap `jem.26` preserves personal `options.txt`, gives the helper three minutes after Minecraft closes, and shows direct locked-file guidance
+- Atlas rebuild, effective-data rebuild, coverage audit, impact scan, and validation completed successfully with 32,581 canonical objects and 226 change records
+- Production artifacts built successfully. Automated tests, gameplay QA, and Minecraft client launch were not run
+- Local dedicated startup reached `Done`, Better Villages did not replace the vanilla village set, and native AutoModpack journal sequence 167 published token `1cc7c922ef931fcc7b134830b3a893469363fa41` with reviewed delta `+8 ~16 -3` and follow-up preview `+0 ~0 -0`
+- Closed `Test JustEnoughMods` received that generation through the native planner and transaction commit. Its active token matches the published head, all 331 managed JARs match the canonical source, and no transaction remains pending
+- MineRENT deployment, player acceptance, and `main` promotion remain pending at this point
+
 ## 2026-11-16 - Extend the stabilization plan with client and FTB evidence
 
 - User requested deeper investigation and plan additions for the blank first-login race preview, delayed JEM Rewards side slots, the complete JEI "Остальное" remainder, shared Sodium Extras distances, and FTB Quests working in singleplayer but not on MineRENT
@@ -3824,4 +3846,20 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - The native active-enchantment movement, other enchantments, F7 binding, saved state, network protocol and support-only fall reset remain unchanged. Ordinary jump and Epic Fight Phantom Jump can no longer reacquire this enchantment's synthetic support while it is disabled, subject to player runtime acceptance
 - Built reobfuscated JEMCompat 3.9.4 with Java 17, SHA-256 `13ccf292cb526f5aa9ed3c4ea22b89a641b527c1a8358a003dc520412f07de18`. Verified that its refmap targets the living-entity enchantment query `m_44836_`, and that the two removed ineffective Mixin classes are absent
 - Updated the canonical ManagedPack artifact alongside the already prepared FTB 5.2.4 and Luxium 1.0.11 changes. Local runtime and production deployment remain unchanged, native publication and player movement acceptance remain pending
+
+## 2026-11-16 - Implement Major Update 4 stabilization
+
+- User authorized implementation, a normal client-and-server MineRENT release, and production promotion after the release gates
+- Bug / Client Sided / FTB Teams used the launcher UUID instead of the server-issued connected-player UUID, which left the dedicated client without a native self team and blocked QuestScreen / in testing through an exact-version connected `LocalPlayer` identity redirect
+- Bug / Both Sided / FTB Claim All persisted the complete singleplayer world once per JEM XP reward / in testing through one scheduled persistence boundary for the complete native claim batch with reward reset on persistence failure
+- Bug / Both Sided / JEM Rewards dropped valid same-tick claim packets and showed no pending response / in testing through action-specific throttling and immediate client row removal reconciled by the next authoritative snapshot
+- Bug / Server Sided / hosted disconnect grace retained the participant and arena, while manual Raid admission existed without an event / in testing through immediate logout elimination, safe-return persistence, arena release and active-event-only Raid admission
+- Bug / Both Sided / registered structural bosses with `hosted_encounter: false` missed the shared 3D arena lifecycle / in testing through registry-backed structural identity for every exact registered boss
+- Bug / Client Sided / the first race and F6 detached player exposed no Forge capabilities / in testing through connected-player capability delegation while preserving the detached preview entity
+- Bug / Client Sided / Blast From The Past installed unconditional camera shake for Frostomper and Psycho Bear / in testing through a narrow client payload-handler cancellation that leaves every non-shake packet unchanged
+- Bug / Client Sided / boss pages used an unbounded Patchouli entity preview and long engineering prose / in testing through a clipped bounds-fitted custom preview and compact find, fight, immunity and drop pages
+- Bug / Client Sided / ore and material families plus requested furniture, canoe and chicken-coop items fell into "Остальное" / in testing through the new top-level "Руды" owner and semantic Furniture, Transport and Food routes
+- World generation keeps RoadWeaver but suppresses only its direct bridge template when a valid `abridged:bridge` intersects the candidate span plus 20 blocks. StructBlend returns as the server terrain owner with exact underground and seabed exclusions. Better Villages returns under separate `jem:better_village_*` IDs with custom spacing disabled, while Grand Capitals keeps the five vanilla village IDs
+- Removed Weather Glass. Luxium and JEM Luxium remain absent. Sodium Extras now distributes 56 horizontal and 26 vertical entity and block-entity render distances
+- Bootstrap revision `jem.26` preserves managed `options.txt` as personal state when present, keeps native AutoModpack state, waits for Minecraft to close, and tells the player to allow up to three minutes for locked-file completion
 

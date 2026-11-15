@@ -47,9 +47,10 @@ def main():
         shutil.rmtree(classes)
     classes.mkdir(parents=True)
     helper = MODULE / "src/net/shiroha233/roadweaver/features/path/pathlogic/surface/GroundAnchoredHeightProfile.java"
+    bridge_helper = MODULE / "src/net/shiroha233/roadweaver/features/path/pathlogic/bridge/AbridgedBridgePriority.java"
     patcher = MODULE / "tools/PatchRoadWeaver.java"
     compile_classpath = os.pathsep.join((str(minecraft), str(upstream)))
-    subprocess.run(["javac", "--release", "17", "-cp", compile_classpath, "-d", str(classes), str(helper)], check=True)
+    subprocess.run(["javac", "--release", "17", "-cp", compile_classpath, "-d", str(classes), str(helper), str(bridge_helper)], check=True)
     asm_classpath = os.pathsep.join((str(asm), str(asm_tree)))
     subprocess.run(["javac", "--release", "17", "-cp", asm_classpath, "-d", str(classes), str(patcher)], check=True)
 

@@ -1,0 +1,212 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4-stabilization-implementation-20261116",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_advancements"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jemcompat"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_server"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_world_boss_tiers"
+    },
+    {
+      "type": "namespace",
+      "registry": "structures",
+      "value": "jem"
+    },
+    {
+      "type": "namespace",
+      "registry": "structures",
+      "value": "abridged"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "bettervillage"
+    }
+  ],
+  "conditions": [
+    {
+      "world_generation": "Structure and bridge changes apply only to newly generated chunks"
+    },
+    {
+      "release_state": "Gameplay fixes remain in testing until player acceptance"
+    }
+  ],
+  "precedence": {
+    "layer": "major_update_4_stabilization",
+    "priority": 118,
+    "overrides": [
+      "major-update-4-structure-catalog-expansion-20261110",
+      "major-update-4-retire-weather-luxium-and-expand-roads-20261115"
+    ]
+  },
+  "change": {
+    "summary": "Stabilize Major Update 4 client state, quests, rewards, hosted bosses, handbook, JEI and structure ownership",
+    "modifiers": [
+      {
+        "property": "client.weather_glass",
+        "operation": "set",
+        "before": true,
+        "after": false
+      },
+      {
+        "property": "client.entity_culling",
+        "operation": "set",
+        "before": {
+          "horizontal": 56,
+          "vertical": 28
+        },
+        "after": {
+          "horizontal": 56,
+          "vertical": 26
+        }
+      },
+      {
+        "property": "quests.dedicated_client_identity",
+        "operation": "replace",
+        "before": "launcher profile UUID",
+        "after": "connected LocalPlayer UUID"
+      },
+      {
+        "property": "hosted_encounter.disconnect",
+        "operation": "replace",
+        "before": "grace reservation",
+        "after": "immediate defeat, participant removal and arena release"
+      },
+      {
+        "property": "hosted_encounter.structural_bosses",
+        "operation": "allow",
+        "before": "profile hosted flag only",
+        "after": "all exact registered structural bosses use the shared arena lifecycle"
+      },
+      {
+        "property": "boss_raid.admission",
+        "operation": "replace",
+        "before": "manual raid could be created without an event",
+        "after": "an active matching Boss Raid event is required"
+      },
+      {
+        "property": "handbook.boss_pages",
+        "operation": "replace",
+        "before": "unbounded model and engineering prose",
+        "after": "clipped bounds-fitted preview with short find, fight, immunity and drop pages"
+      },
+      {
+        "property": "jei.catalog.ores",
+        "operation": "add",
+        "before": "ore families entered Other",
+        "after": "top-level Ores category owns tagged ore and material families"
+      },
+      {
+        "property": "worldgen.roadweaver_bridge",
+        "operation": "deny",
+        "before": "RoadWeaver could place a bridge through Abridged",
+        "after": "skip only the RoadWeaver bridge when a valid Abridged bridge intersects the span plus 20 blocks"
+      },
+      {
+        "property": "worldgen.structure_terrain_blending",
+        "operation": "replace",
+        "before": "native terrain adaptation only",
+        "after": "StructBlend owns eligible surface blending and excludes exact underground and seabed structures"
+      },
+      {
+        "property": "worldgen.better_villages",
+        "operation": "add",
+        "before": false,
+        "after": "separate JEM structure IDs use Better Villages vanilla pools inside the merged village set with custom spacing disabled"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM domain modules, bootstrap, managed pack and exact-version structure adapters",
+    "kind": "user_requested_major_update_stabilization",
+    "source_files": [
+      "Client/ManagedPack/config/bettervillage_1.properties",
+      "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/**",
+      "Client/ManagedPack/config/sodiumextras-client.toml",
+      "Client/ManagedPack/mods/bettervillage-forge-1.20.1-3.3.1-all.jar",
+      "Mods/JEMAchievementGuide/**",
+      "Mods/JEMBootstrap/**",
+      "Mods/JEMCompat/**",
+      "Mods/JEMRewards/**",
+      "Mods/JEMRoles/**",
+      "Mods/JEMServer/**",
+      "Mods/JEMWorldBossTiers/**",
+      "Mods/RoadWeaver/**",
+      "Server/config/structblend-common.toml",
+      "Server/mods/structblend-1.0.3.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Fix the reported production regressions while retaining one authority for each gameplay, UI and world-generation fact",
+    "decision_source": "User reports and explicit implementation, MineRENT deployment and later main-promotion request",
+    "implementation_choices": "Use narrow exact-version adapters, server authority, registry-backed structural boss identity and separate village IDs instead of replacing native interfaces"
+  },
+  "introduced": {
+    "date": "2026-11-16",
+    "commit": "SELF",
+    "action": "implement_major_update_4_stabilization",
+    "summary": "Implement the complete stabilization plan and prepare one client-and-server release"
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "commit": "SELF",
+      "action": "implement_major_update_4_stabilization",
+      "summary": "Correct client preservation, quest identity and persistence, reward response, hosted encounter lifecycle, handbook, JEI and world-generation ownership"
+    },
+    {
+      "date": "2026-11-16",
+      "commit": "SELF",
+      "action": "retire_deleted_sources_20261116",
+      "summary": "Move removed Weather Glass and Exposure implementation paths from current ownership to historical evidence.",
+      "source_files": [
+        "Client/ManagedPack/config/weatherglass.properties",
+        "Client/ManagedPack/mods/weatherglass-0.5.0-1.20.1-forge.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "AutoModpack",
+      "FTB Quests",
+      "JEM Rewards",
+      "races",
+      "hosted bosses",
+      "Boss Raid",
+      "SMP UI",
+      "handbook",
+      "JEI",
+      "world generation"
+    ],
+    "relations": [
+      "Structure Layout Optimizer retains jigsaw performance ownership",
+      "Structurify retains physical overlap ownership",
+      "Abridged retains native bridge ownership",
+      "Grand Capitals retains the five vanilla village IDs"
+    ],
+    "notes": [
+      "The AutoModpack state directory remains durable and is not deleted",
+      "StructBlend is dedicated-server-only",
+      "Better Villages custom spacing is disabled"
+    ],
+    "unresolved": [
+      "Fresh-chunk visuals, first-login rendering, FTB dedicated GUI and boss handbook presentation require player acceptance after deployment"
+    ]
+  }
+}

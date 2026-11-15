@@ -2,7 +2,7 @@
 
 Date: 2026-11-15
 
-Status: plan only
+Status: implemented, release verification in progress
 
 Target branch: `develop`
 
@@ -31,7 +31,7 @@ This plan covers the regressions reported after the Major Update 4 MineRENT publ
 - Restore StructBlend as the terrain-blending owner without replacing Structurify or Structure Layout Optimizer
 - Add Better Villages through a separate village route that does not replace the current Grand Capitals, Trek, or Nature's Spirit routes
 
-This document does not implement, build, publish, deploy, or launch any change
+Implementation is complete in `bugfix/major-update-4-stabilization`. Production publication, MineRENT deployment and branch promotion remain release steps until their evidence is recorded below
 
 ## Branch baseline
 

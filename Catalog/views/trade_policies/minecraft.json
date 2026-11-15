@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a89a978895f3ba301003fb722a7b876e5ad90d6d",
+  "snapshot_sha": "0ff23b052c23d882a32a5692e1bf5bb1463e652d",
   "generation": {
-    "generated_utc": "2026-11-14T21:54:05.096389+00:00",
+    "generated_utc": "2026-11-15T20:12:30.381471+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1295,18 +1295,18 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "vinery:apples"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 40,
-      "sell_copper": 7657,
-      "buy_denominator": 64,
-      "sell_denominator": 62500,
+      "buy_copper": null,
+      "sell_copper": 208333,
+      "buy_denominator": 1,
+      "sell_denominator": 1000000,
       "quota_family": "minecraft:apple",
       "quota_units": 1,
       "bulk_1024": null,
@@ -1314,7 +1314,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "crops",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -1671,7 +1671,7 @@
       "display_name_en_us": "Axolotl Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_axolotl.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_axolotl.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -1748,7 +1748,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -1767,9 +1767,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 5513,
+      "sell_copper": 5,
       "buy_denominator": 1,
-      "sell_denominator": 40000,
+      "sell_denominator": 32,
       "quota_family": "minecraft:baked_potato",
       "quota_units": 1,
       "bulk_1024": null,
@@ -1777,7 +1777,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -2708,7 +2708,7 @@
       "display_name_en_us": "Bat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bat.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -2803,7 +2803,7 @@
       "display_name_en_us": "Bee Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bee.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bee.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -2856,13 +2856,13 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Exact approved income anchor.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 16,
+      "buy_copper": null,
       "sell_copper": 4,
       "buy_denominator": 1,
       "sell_denominator": 1,
@@ -2873,7 +2873,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "animal_products",
-      "price_basis": "Exact approved income anchor.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -2949,18 +2949,18 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Base crop",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "farm_and_charm:beetroot_from_bag"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 4,
-      "sell_copper": 80,
+      "buy_copper": null,
+      "sell_copper": 1333333,
       "buy_denominator": 1,
-      "sell_denominator": 64,
+      "sell_denominator": 1000000,
       "quota_family": "minecraft:beetroot",
       "quota_units": 1,
       "bulk_1024": null,
@@ -2968,7 +2968,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "crops",
-      "price_basis": "Base crop",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3045,7 +3045,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -3064,7 +3064,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -4753,7 +4753,7 @@
       "display_name_en_us": "Blaze Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_blaze.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_blaze.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -5933,8 +5933,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -5945,8 +5945,8 @@
         "minecraft:bread"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 4,
-      "sell_copper": 117577,
+      "buy_copper": null,
+      "sell_copper": 121387,
       "buy_denominator": 1,
       "sell_denominator": 1000000,
       "quota_family": "minecraft:bread",
@@ -5956,7 +5956,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "cooking",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -7395,8 +7395,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -7406,19 +7406,19 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
+      "sell_copper": 20,
+      "buy_denominator": 1,
+      "sell_denominator": 1,
+      "quota_family": "minecraft:cake",
+      "quota_units": 1,
       "bulk_1024": null,
       "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
+      "daily_player_units": 64,
+      "daily_global_units": 2048,
+      "demand_group": "cooking",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
     },
     {
       "item_id": "minecraft:calcite",
@@ -7536,7 +7536,7 @@
       "display_name_en_us": "Camel Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_camel.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_camel.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -7689,18 +7689,18 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "farm_and_charm:carrot_from_bag"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 30,
-      "sell_copper": 8,
-      "buy_denominator": 64,
-      "sell_denominator": 64,
+      "buy_copper": null,
+      "sell_copper": 5,
+      "buy_denominator": 1,
+      "sell_denominator": 32,
       "quota_family": "minecraft:carrot",
       "quota_units": 1,
       "bulk_1024": null,
@@ -7708,7 +7708,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "crops",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -7827,7 +7827,7 @@
       "display_name_en_us": "Cat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cat.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -7924,7 +7924,7 @@
       "display_name_en_us": "Cave Spider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cave_spider.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cave_spider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -9075,16 +9075,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Breeding and slaughter; eggs permit automation, conservative payout Evidence: loaded registry, installed tags/recipes/loot",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 8,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:chicken",
       "quota_units": 1,
       "bulk_1024": null,
@@ -9092,7 +9092,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "animal_products",
-      "price_basis": "Breeding and slaughter; eggs permit automation, conservative payout Evidence: loaded registry, installed tags/recipes/loot",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -9115,7 +9115,7 @@
       "display_name_en_us": "Chicken Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_chicken.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_chicken.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -9580,15 +9580,15 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:chorus_fruit",
       "quota_units": 1,
       "bulk_1024": null,
@@ -9596,7 +9596,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -10375,13 +10375,13 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Exact approved income anchor.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 12,
+      "buy_copper": null,
       "sell_copper": 3,
       "buy_denominator": 1,
       "sell_denominator": 1,
@@ -10392,7 +10392,7 @@
       "daily_player_units": 32,
       "daily_global_units": 1280,
       "demand_group": "fishing",
-      "price_basis": "Exact approved income anchor.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -10768,8 +10768,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -10787,10 +10787,10 @@
         "minecraft:cooked_beef_from_smoking"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 8,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 1333333,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 500000,
       "quota_family": "minecraft:cooked_beef",
       "quota_units": 1,
       "bulk_1024": null,
@@ -10798,7 +10798,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "cooking",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -10849,8 +10849,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -10868,10 +10868,10 @@
         "minecraft:cooked_chicken_from_smoking"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 6,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:cooked_chicken",
       "quota_units": 1,
       "bulk_1024": null,
@@ -10879,7 +10879,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "cooking",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -10930,8 +10930,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -10949,10 +10949,10 @@
         "minecraft:cooked_cod_from_smoking"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 6,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:cooked_cod",
       "quota_units": 1,
       "bulk_1024": null,
@@ -10960,7 +10960,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "cooking",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -11011,8 +11011,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -11030,10 +11030,10 @@
         "minecraft:cooked_mutton_from_smoking"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 6,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:cooked_mutton",
       "quota_units": 1,
       "bulk_1024": null,
@@ -11041,7 +11041,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "cooking",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -11092,8 +11092,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -11111,10 +11111,10 @@
         "minecraft:cooked_porkchop_from_smoking"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 8,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:cooked_porkchop",
       "quota_units": 1,
       "bulk_1024": null,
@@ -11122,7 +11122,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "cooking",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -11174,7 +11174,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -11193,9 +11193,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:cooked_rabbit",
       "quota_units": 1,
       "bulk_1024": null,
@@ -11203,7 +11203,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -11254,8 +11254,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -11273,10 +11273,10 @@
         "minecraft:cooked_salmon_from_smoking"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 8,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 1333333,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 500000,
       "quota_family": "minecraft:cooked_salmon",
       "quota_units": 1,
       "bulk_1024": null,
@@ -11284,7 +11284,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "cooking",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -11315,7 +11315,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -11323,9 +11323,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 634001,
+      "sell_copper": 23,
       "buy_denominator": 1,
-      "sell_denominator": 1000000,
+      "sell_denominator": 32,
       "quota_family": "minecraft:cookie",
       "quota_units": 1,
       "bulk_1024": null,
@@ -11333,7 +11333,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -11487,7 +11487,7 @@
       "display_name_en_us": "Cow Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cow.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cow.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -11917,7 +11917,7 @@
       "display_name_en_us": "Creeper Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_creeper.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_creeper.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -16281,7 +16281,7 @@
       "display_name_en_us": "Dolphin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_dolphin.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_dolphin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -16329,7 +16329,7 @@
       "display_name_en_us": "Donkey Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_donkey.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_donkey.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -16499,7 +16499,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -16519,9 +16519,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 588059,
+      "sell_copper": 333333,
       "buy_denominator": 1,
-      "sell_denominator": 1000000,
+      "sell_denominator": 500000,
       "quota_family": "minecraft:dried_kelp",
       "quota_units": 1,
       "bulk_1024": null,
@@ -16529,7 +16529,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -16699,7 +16699,7 @@
       "display_name_en_us": "Drowned Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_drowned.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_drowned.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17157,7 +17157,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
@@ -17173,7 +17173,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -17755,7 +17755,7 @@
       "display_name_en_us": "Enderman Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_enderman.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_enderman.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17803,7 +17803,7 @@
       "display_name_en_us": "Endermite Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_endermite.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_endermite.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17851,7 +17851,7 @@
       "display_name_en_us": "Evoker Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_evoker.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_evoker.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20213,7 +20213,7 @@
       "display_name_en_us": "Fox Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_fox.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_fox.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20351,7 +20351,7 @@
       "display_name_en_us": "Frog Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_frog.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_frog.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20507,7 +20507,7 @@
       "display_name_en_us": "Ghast Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ghast.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ghast.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20938,16 +20938,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 25,
-      "sell_copper": 91883,
-      "buy_denominator": 64,
-      "sell_denominator": 1000000,
+      "buy_copper": null,
+      "sell_copper": 52083,
+      "buy_denominator": 1,
+      "sell_denominator": 500000,
       "quota_family": "minecraft:glow_berries",
       "quota_units": 1,
       "bulk_1024": null,
@@ -20955,7 +20955,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "crops",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -21076,7 +21076,7 @@
       "display_name_en_us": "Glow Squid Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_glow_squid.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_glow_squid.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21265,7 +21265,7 @@
       "display_name_en_us": "Goat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_goat.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_goat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21544,7 +21544,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -21552,9 +21552,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 7319441,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1000000,
       "quota_family": "minecraft:golden_apple",
       "quota_units": 1,
       "bulk_1024": null,
@@ -21562,7 +21562,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -21691,7 +21691,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -21699,9 +21699,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 166957,
+      "sell_copper": 946373,
       "buy_denominator": 1,
-      "sell_denominator": 200000,
+      "sell_denominator": 1000000,
       "quota_family": "minecraft:golden_carrot",
       "quota_units": 1,
       "bulk_1024": null,
@@ -21709,7 +21709,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -23464,7 +23464,7 @@
       "display_name_en_us": "Guardian Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_guardian.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_guardian.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -23889,7 +23889,7 @@
       "display_name_en_us": "Hoglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_hoglin.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_hoglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -23992,7 +23992,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -24000,9 +24000,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 29403,
+      "sell_copper": 5333333,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1000000,
       "quota_family": "minecraft:honey_bottle",
       "quota_units": 1,
       "bulk_1024": null,
@@ -24010,7 +24010,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -24267,7 +24267,7 @@
       "display_name_en_us": "Horse Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_horse.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_horse.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -24452,7 +24452,7 @@
       "display_name_en_us": "Husk Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_husk.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_husk.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -32308,7 +32308,7 @@
       "display_name_en_us": "Llama Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_llama.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_llama.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -33145,7 +33145,7 @@
       "display_name_en_us": "Magma Cube Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_magma_cube.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_magma_cube.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -34014,18 +34014,18 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Crop",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "farm_and_charm:mincer/melon_slice"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 2,
-      "sell_copper": 914759,
+      "buy_copper": null,
+      "sell_copper": 1,
       "buy_denominator": 1,
-      "sell_denominator": 1000000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:melon_slice",
       "quota_units": 1,
       "bulk_1024": null,
@@ -34033,7 +34033,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "crops",
-      "price_basis": "Crop",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -34337,7 +34337,7 @@
       "display_name_en_us": "Mooshroom Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mooshroom.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mooshroom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -35228,7 +35228,7 @@
       "display_name_en_us": "Mule Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mule.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mule.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -35284,7 +35284,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -35292,9 +35292,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 29403,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:mushroom_stew",
       "quota_units": 1,
       "bulk_1024": null,
@@ -35302,7 +35302,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -36910,16 +36910,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Sheep provide meat plus renewable wool; capped mixed yield Evidence: loaded registry, installed tags/recipes/loot",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 8,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:mutton",
       "quota_units": 1,
       "bulk_1024": null,
@@ -36927,7 +36927,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "animal_products",
-      "price_basis": "Sheep provide meat plus renewable wool; capped mixed yield Evidence: loaded registry, installed tags/recipes/loot",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -39066,7 +39066,7 @@
       "display_name_en_us": "Ocelot Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ocelot.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ocelot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -39975,7 +39975,7 @@
       "display_name_en_us": "Panda Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_panda.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_panda.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40077,7 +40077,7 @@
       "display_name_en_us": "Parrot Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_parrot.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_parrot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40174,7 +40174,7 @@
       "display_name_en_us": "Phantom Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_phantom.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_phantom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40222,7 +40222,7 @@
       "display_name_en_us": "Pig Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pig.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pig.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40360,7 +40360,7 @@
       "display_name_en_us": "Piglin Brute Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_piglin_brute.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_piglin_brute.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40453,7 +40453,7 @@
       "display_name_en_us": "Pillager Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pillager.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pillager.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -41349,7 +41349,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
@@ -41365,7 +41365,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -41388,7 +41388,7 @@
       "display_name_en_us": "Polar Bear Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_polar_bear.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_polar_bear.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -42790,16 +42790,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Breeding/slaughter food; processed food stays profession-owned Evidence: loaded registry, installed tags/recipes/loot",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 10,
-      "sell_copper": 29403,
+      "buy_copper": null,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:porkchop",
       "quota_units": 1,
       "bulk_1024": null,
@@ -42807,7 +42807,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "animal_products",
-      "price_basis": "Breeding/slaughter food; processed food stays profession-owned Evidence: loaded registry, installed tags/recipes/loot",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -42836,18 +42836,18 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "farm_and_charm:potato_from_bag"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": 30,
-      "sell_copper": 91883,
-      "buy_denominator": 64,
-      "sell_denominator": 1000000,
+      "buy_copper": null,
+      "sell_copper": 5,
+      "buy_denominator": 1,
+      "sell_denominator": 32,
       "quota_family": "minecraft:potato",
       "quota_units": 1,
       "bulk_1024": null,
@@ -42855,7 +42855,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "crops",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -47182,16 +47182,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Raw fishing ingredient; not villager food",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 10,
-      "sell_copper": 29403,
+      "buy_copper": null,
+      "sell_copper": 3333333,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1000000,
       "quota_family": "minecraft:pufferfish",
       "quota_units": 1,
       "bulk_1024": null,
@@ -47199,7 +47199,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "fishing",
-      "price_basis": "Raw fishing ingredient; not villager food",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -47321,7 +47321,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -47329,9 +47329,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 5650793,
       "buy_denominator": 1,
-      "sell_denominator": 2500,
+      "sell_denominator": 1000000,
       "quota_family": "minecraft:pumpkin_pie",
       "quota_units": 1,
       "bulk_1024": null,
@@ -47339,7 +47339,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -48486,16 +48486,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Less convenient breeding and variable drops Evidence: loaded registry, installed tags/recipes/loot",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": 29403,
+      "buy_copper": null,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:rabbit",
       "quota_units": 1,
       "bulk_1024": null,
@@ -48503,7 +48503,7 @@
       "daily_player_units": 16,
       "daily_global_units": 256,
       "demand_group": "animal_products",
-      "price_basis": "Less convenient breeding and variable drops Evidence: loaded registry, installed tags/recipes/loot",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -48616,7 +48616,7 @@
       "display_name_en_us": "Rabbit Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_rabbit.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_rabbit.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -48675,7 +48675,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -48695,7 +48695,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -48812,7 +48812,7 @@
       "display_name_en_us": "Ravager Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ravager.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ravager.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -50634,7 +50634,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "User 2026-10-21: base sale price 0.5 Copper per item; existing demand bonuses and quotas remain.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -50646,7 +50646,7 @@
       "buy_copper": null,
       "sell_copper": 1,
       "buy_denominator": 1,
-      "sell_denominator": 2,
+      "sell_denominator": 1,
       "quota_family": "minecraft:rotten_flesh",
       "quota_units": 1,
       "bulk_1024": null,
@@ -50654,7 +50654,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "User 2026-10-21: base sale price 0.5 Copper per item; existing demand bonuses and quotas remain.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -50734,13 +50734,13 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Exact approved income anchor.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 16,
+      "buy_copper": null,
       "sell_copper": 4,
       "buy_denominator": 1,
       "sell_denominator": 1,
@@ -50751,7 +50751,7 @@
       "daily_player_units": 32,
       "daily_global_units": 1280,
       "demand_group": "fishing",
-      "price_basis": "Exact approved income anchor.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -51528,7 +51528,7 @@
       "display_name_en_us": "Sheep Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_sheep.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_sheep.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -52573,7 +52573,7 @@
       "display_name_en_us": "Shulker Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_shulker.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_shulker.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -52713,7 +52713,7 @@
       "display_name_en_us": "Silverfish Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_silverfish.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_silverfish.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -52806,7 +52806,7 @@
       "display_name_en_us": "Skeleton Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_skeleton.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_skeleton.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -53143,7 +53143,7 @@
       "display_name_en_us": "Slime Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_slime.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_slime.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -55033,16 +55033,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Renewable spider ingredient; low automated-farm payout Evidence: loaded registry, installed tags/recipes/loot",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 6,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 1,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:spider_eye",
       "quota_units": 1,
       "bulk_1024": null,
@@ -55050,7 +55050,7 @@
       "daily_player_units": 16,
       "daily_global_units": 256,
       "demand_group": "drops",
-      "price_basis": "Renewable spider ingredient; low automated-farm payout Evidence: loaded registry, installed tags/recipes/loot",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -55073,7 +55073,7 @@
       "display_name_en_us": "Spider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_spider.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_spider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -59388,7 +59388,7 @@
       "display_name_en_us": "Squid Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_squid.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_squid.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -60359,7 +60359,7 @@
       "display_name_en_us": "Stray Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_stray.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_stray.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -60407,7 +60407,7 @@
       "display_name_en_us": "Strider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_strider.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_strider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -61561,15 +61561,15 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 29403,
+      "sell_copper": 2,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:suspicious_stew",
       "quota_units": 1,
       "bulk_1024": null,
@@ -61577,7 +61577,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -61605,16 +61605,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 20,
-      "sell_copper": 76569,
-      "buy_denominator": 64,
-      "sell_denominator": 1000000,
+      "buy_copper": null,
+      "sell_copper": 52083,
+      "buy_denominator": 1,
+      "sell_denominator": 500000,
       "quota_family": "minecraft:sweet_berries",
       "quota_units": 1,
       "bulk_1024": null,
@@ -61622,7 +61622,7 @@
       "daily_player_units": 128,
       "daily_global_units": 4096,
       "demand_group": "crops",
-      "price_basis": "Authorized agrarian/food batch anchor; native counts unchanged.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -61690,7 +61690,7 @@
       "display_name_en_us": "Tadpole Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_tadpole.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_tadpole.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -65674,16 +65674,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Raw fishing ingredient",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": 3528359,
+      "buy_copper": null,
+      "sell_copper": 4,
       "buy_denominator": 1,
-      "sell_denominator": 1000000,
+      "sell_denominator": 1,
       "quota_family": "minecraft:tropical_fish",
       "quota_units": 1,
       "bulk_1024": null,
@@ -65691,7 +65691,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "fishing",
-      "price_basis": "Raw fishing ingredient",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -65949,7 +65949,7 @@
       "display_name_en_us": "Turtle Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_turtle.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_turtle.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -66134,7 +66134,7 @@
       "display_name_en_us": "Vindicator Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_vindicator.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_vindicator.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -68858,7 +68858,7 @@
       "display_name_en_us": "Witch Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_witch.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_witch.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -68952,7 +68952,7 @@
       "display_name_en_us": "Wither Skeleton Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wither_skeleton.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wither_skeleton.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -69045,7 +69045,7 @@
       "display_name_en_us": "Wolf Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wolf.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wolf.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -69982,7 +69982,7 @@
       "display_name_en_us": "Zoglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zoglin.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zoglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70075,7 +70075,7 @@
       "display_name_en_us": "Zombie Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombie.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombie.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70168,7 +70168,7 @@
       "display_name_en_us": "Zombified Piglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombified_piglin.json",
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombified_piglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",

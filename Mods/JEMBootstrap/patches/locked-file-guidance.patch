@@ -1,0 +1,12 @@
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateRecovery.java b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateRecovery.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateRecovery.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateRecovery.java
+@@ -26,7 +26,7 @@ public final class UpdateRecovery {
+	static final long MAX_BACKOFF_MILLIS = 5_000;
+	// Two deferred restarts for the same transaction id; the third failed recover rolls back to the last finalized generation. The id is the episode; the count does not expire.
+	static final int MAX_DEFERRED_RESTARTS = 2;
+	// AWT preload dialog; Minecraft locale files are not loaded yet.
+-	private static final String DEFERRED_POPUP_MESSAGE = "The modpack update paused on a busy file. Close programs using the modpack folder, including File Explorer windows, then restart again; if this keeps appearing, please send your latest log file.";
++	private static final String DEFERRED_POPUP_MESSAGE = "The modpack update paused on a file used by Minecraft. Close Minecraft and wait up to 3 minutes while the helper finishes the update. Then start the game again. If this keeps appearing, please send your latest log file.";
+
+	private UpdateRecovery() {}

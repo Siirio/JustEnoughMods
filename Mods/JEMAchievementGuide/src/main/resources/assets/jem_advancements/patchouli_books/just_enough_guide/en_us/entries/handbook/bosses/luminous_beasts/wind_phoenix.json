@@ -11,30 +11,34 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "luminous_beasts:wind_phoenix",
-      "name": "Wind Phoenix",
-      "rotate": true,
-      "text": ""
+      "icon": "minecraft:iron_sword",
+      "name": "Wind Phoenix"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "Fire contact does not damage the Phoenix. This is a specific check, not a claim of immunity to every effect with fiery particles. Keep the airborne target in view and maintain room to move; avoid edges that are difficult to recover from."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "Avoid clearly signalled attacks and strike after they finish."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "Fire contact does not damage the Phoenix."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Preparation and defense",
-      "text": "Fire contact does not damage the Phoenix. This is a specific check, not a claim of immunity to every effect with fiery particles. Keep the airborne target in",
+      "title": "Drops",
+      "text": "",
       "drops": [
         "luminous_beasts:wind_phoenix_egg"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Preparation and defense",
-      "text": "view and maintain room to move; avoid edges that are difficult to recover from."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
     }
   ]
 }

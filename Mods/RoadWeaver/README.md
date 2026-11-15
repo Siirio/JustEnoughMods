@@ -8,6 +8,8 @@ The JEM patch keeps the lower end of each ordinary road run anchored to its reco
 
 The patch also recalculates placement profiles from each road's recorded terrain points. This applies the corrected rule to ungenerated chunks of roads that were planned before the patch. Blocks already generated in the world are not removed
 
+Before RoadWeaver places one of its direct bridge templates, the patch checks the complete candidate span plus 20 horizontal blocks for a valid `abridged:bridge` structure start. If one exists, RoadWeaver keeps the road but skips its own bridge template so Abridged owns the crossing
+
 `prepare.py --build` downloads the exact upstream JAR, verifies its SHA-256, compiles the small helper class, inserts two narrow calls into the upstream bytecode, and writes `build/libs/roadweaver-forge-2.1.1-1.20.1-jem.1.jar`
 
 RoadWeaver is MIT licensed. The upstream license and all upstream resources remain in the patched JAR

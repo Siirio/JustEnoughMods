@@ -11,45 +11,34 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "legendary_monsters:skeletosaurus",
-      "name": "Skeletosaurus",
-      "rotate": true,
-      "text": ""
-    },
-    {
-      "type": "jem_advancements:boss_description",
-      "title": "Where to look",
-      "text": "Look for the encounter at: Skeletosaurus Nest.",
-      "drops": [
-        "legendary_monsters:dinosaur_bone"
-      ],
-      "drop_status": "Native loot conditions still apply"
+      "icon": "legendary_monsters:dinosaur_bone",
+      "name": "Skeletosaurus"
     },
     {
       "type": "patchouli:text",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the Nether. It marks the site on your map; the locator itself does not begin combat."
+      "title": "Where to find",
+      "text": "Look for the encounter at: Skeletosaurus Nest."
     },
     {
       "type": "patchouli:text",
-      "title": "Defense and response",
+      "title": "How to fight",
       "text": "Sleep blocks normal hits. Direct damage attributed to thrown potions and area-effect clouds, burning and falling is rejected separately. Prepare healing and melee equipment; leave the frontal sector on a wind-up instead of trading hits."
     },
     {
       "type": "patchouli:text",
-      "title": "Ordinary combat",
-      "text": "This profile does not use hosted preparation. Fight it normally rather than looking for Start. Defeating this enemy contributes to world-tier progression."
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat. This profile does not use hosted preparation. Possessing an item does not replace a recorded victory."
     },
     {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: Dinosaur Bone. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Next step",
-      "text": "This victory belongs to the branch for: Luxtructosaurus. The other victories in that branch are also required. Sibling prerequisite encounters can be completed in any order."
+      "type": "jem_advancements:boss_description",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: Dinosaur Bone. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
+      "drops": [
+        "legendary_monsters:dinosaur_bone"
+      ],
+      "drop_status": "Native loot conditions still apply"
     }
   ],
   "jem_dimension": "minecraft:the_nether"

@@ -26,7 +26,6 @@ TAB_ICONS = {
 EXACT_UPSTREAM_ADVANCEMENTS = {
     "jem_guide:building/9_1": "immersive_weathering:immersive_weathering/crack_on",
     "jem_guide:building/9_2": "immersive_weathering:immersive_weathering/moss_off",
-    "jem_guide:cool_stuff/4": "exposure:adventure/exposure",
     "jem_guide:fishing/5_3": "tide:fish_in_void",
     "jem_guide:mobs/8_3": "minecraft:primal/give_petrified_fruit",
     "jem_guide:mobs/15_1": "alexscaves:alexscaves/atlatitan_stomp",
@@ -42,7 +41,6 @@ EXACT_UPSTREAM_ADVANCEMENTS = {
     "jem_guide:bosses/5": "alexscaves:alexscaves/summon_luxtructosaurus",
     "jem_guide:world/6_2": "alexscaves:alexscaves/cave_codex",
     "jem_guide:fishing/7_2": "luminousworld:crab_rave",
-    "jem_guide:cool_stuff/4_6": "exposure:adventure/spotlight",
 }
 EXACT_JAVA_CALLERS = {
     "jem_guide:qol/5": "SearchManagerMixin#afterSuccessfulSearch",

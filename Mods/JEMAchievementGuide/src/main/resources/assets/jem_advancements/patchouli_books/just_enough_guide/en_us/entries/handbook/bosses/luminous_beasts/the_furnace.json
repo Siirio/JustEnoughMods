@@ -11,41 +11,35 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "luminous_beasts:the_furnace",
-      "name": "Furnace",
-      "rotate": true,
-      "text": ""
+      "icon": "luminous_beasts:furnace_trophy",
+      "name": "Furnace"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "Use this encounter’s locator in the Nether. It marks the site on your map; the locator itself does not begin combat."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "The Furnace rejects arrow hits, the ordinary explosion type and fire contact. This does not establish immunity to every ranged attack: specific sources are checked. Prepare melee equipment and watch for the response after a hit."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "It marks the site on your map; the locator itself does not begin combat. The Furnace rejects arrow hits, the ordinary explosion type and fire contact. This does not establish immunity to every ranged attack: specific sources are checked. Possessing an item does not replace a recorded victory."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Locator search",
-      "text": "Use this encounter’s locator in the Nether. It marks the site on your map; the locator itself does not begin combat.",
+      "title": "Drops",
+      "text": "Native loot for this encounter includes: The Furnace Trophy, Music Disc. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory.",
       "drops": [
         "luminous_beasts:furnace_disc",
         "luminous_beasts:furnace_trophy"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Preparation and defense",
-      "text": "The Furnace rejects arrow hits, the ordinary explosion type and fire contact. This does not establish immunity to every ranged attack: specific sources are checked. Prepare melee equipment and watch for the response after a hit."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Loot and use",
-      "text": "Native loot for this encounter includes: The Furnace Trophy, Music Disc. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Next step",
-      "text": "This victory belongs to the branch for: Ashlord, The Infernal Dragon. The other victories in that branch are also required. Sibling prerequisite encounters can be completed in any order."
     }
   ],
   "jem_dimension": "minecraft:the_nether"

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a89a978895f3ba301003fb722a7b876e5ad90d6d",
+  "snapshot_sha": "0ff23b052c23d882a32a5692e1bf5bb1463e652d",
   "generation": {
-    "generated_utc": "2026-11-14T21:54:05.096389+00:00",
+    "generated_utc": "2026-11-15T20:12:30.381471+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -123,7 +123,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/beaver_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_beaver.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_beaver.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -173,7 +173,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/bewitched_timber_wolf_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_bewitched_timber_wolf.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_bewitched_timber_wolf.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -267,7 +267,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/black_bear_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_black_bear.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_black_bear.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -697,7 +697,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/caribou_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_caribou.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_caribou.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -891,7 +891,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -901,9 +901,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 29403,
+      "sell_copper": 5333333,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1000000,
       "quota_family": "cnc:cooked_game",
       "quota_units": 1,
       "bulk_1024": null,
@@ -911,7 +911,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -942,8 +942,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The older exact certificate has no positive bound for this previously inactive endpoint, so the supported minimum quantum is used pending recertification; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -952,19 +952,19 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
+      "sell_copper": 1,
+      "buy_denominator": 1,
+      "sell_denominator": 1000000,
+      "quota_family": "cnc:cooked_turkey",
+      "quota_units": 1,
       "bulk_1024": null,
       "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
+      "daily_player_units": 64,
+      "daily_global_units": 2048,
+      "demand_group": "cooking",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The older exact certificate has no positive bound for this previously inactive endpoint, so the supported minimum quantum is used pending recertification; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
     },
     {
       "item_id": "cnc:cooked_venison",
@@ -998,7 +998,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -1008,9 +1008,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 29403,
+      "sell_copper": 5333333,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1000000,
       "quota_family": "cnc:cooked_venison",
       "quota_units": 1,
       "bulk_1024": null,
@@ -1018,7 +1018,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -1054,7 +1054,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -1064,9 +1064,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 29403,
+      "sell_copper": 5333333,
       "buy_denominator": 1,
-      "sell_denominator": 10000,
+      "sell_denominator": 1000000,
       "quota_family": "cnc:cooked_waterfowl",
       "quota_units": 1,
       "bulk_1024": null,
@@ -1074,7 +1074,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -1188,7 +1188,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/cougar_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_cougar.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_cougar.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1554,7 +1554,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/elk_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_elk.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_elk.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1607,8 +1607,8 @@
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/field_guide.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/field_guide.json",
-        "jem-advancements-5.3.3.jar:assets/jem_advancements/lang/en_us.json",
-        "jem-advancements-5.3.3.jar:assets/jem_advancements/lang/ru_ru.json"
+        "jem-advancements-5.3.4.jar:assets/jem_advancements/lang/en_us.json",
+        "jem-advancements-5.3.4.jar:assets/jem_advancements/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1792,7 +1792,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/giant_boar_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_giant_boar.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_giant_boar.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1932,7 +1932,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/goose_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_goose.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_goose.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2072,7 +2072,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/howler_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_howler.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_howler.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2128,7 +2128,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -2146,7 +2146,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -2396,7 +2396,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/marmot_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_marmot.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_marmot.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2534,7 +2534,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/mouse_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_mouse.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_mouse.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2628,7 +2628,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/mule_deer_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_mule_deer.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_mule_deer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2958,7 +2958,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -2968,9 +2968,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 5333333,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1000000,
       "quota_family": "cnc:parcooked_game",
       "quota_units": 1,
       "bulk_1024": null,
@@ -2978,7 +2978,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3010,7 +3010,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "SELL_ONLY",
-      "reason": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -3018,9 +3018,9 @@
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
-      "sell_copper": 9801,
+      "sell_copper": 1103373,
       "buy_denominator": 1,
-      "sell_denominator": 1250,
+      "sell_denominator": 50000,
       "quota_family": "cnc:pemmican",
       "quota_units": 1,
       "bulk_1024": null,
@@ -3028,7 +3028,7 @@
       "daily_player_units": 64,
       "daily_global_units": 2048,
       "demand_group": "cooking",
-      "price_basis": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3054,7 +3054,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/pit_viper_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_pit_viper.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_pit_viper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3245,16 +3245,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary nonboss raw food; compare current chicken/mutton BUY8 SELL2. Low payout accommodates multi-drop/Looting/breeding; prepared output remains profession-owned. Evidence: cnc:entities/beaver,cnc:entities/black_bear,cnc:entities/cougar; exact loaded registry and installed recipes.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 8,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 5333333,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1000000,
       "quota_family": "cnc:raw_game",
       "quota_units": 1,
       "bulk_1024": null,
@@ -3262,7 +3262,7 @@
       "daily_player_units": 16,
       "daily_global_units": 256,
       "demand_group": "animal_products",
-      "price_basis": "Ordinary nonboss raw food; compare current chicken/mutton BUY8 SELL2. Low payout accommodates multi-drop/Looting/breeding; prepared output remains profession-owned. Evidence: cnc:entities/beaver,cnc:entities/black_bear,cnc:entities/cougar; exact loaded registry and installed recipes.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3337,16 +3337,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Deer yield several meat plus hide/antlers. SELL2 avoids multiplying beef-scale rewards over the whole carcass; BUY8 equals mutton/chicken baseline. Evidence: cnc:entities/caribou,cnc:entities/elk,cnc:entities/mule_deer; exact loaded registry and installed recipes.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 8,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 5333333,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1000000,
       "quota_family": "cnc:raw_venison",
       "quota_units": 1,
       "bulk_1024": null,
@@ -3354,7 +3354,7 @@
       "daily_player_units": 16,
       "daily_global_units": 256,
       "demand_group": "animal_products",
-      "price_basis": "Deer yield several meat plus hide/antlers. SELL2 avoids multiplying beef-scale rewards over the whole carcass; BUY8 equals mutton/chicken baseline. Evidence: cnc:entities/caribou,cnc:entities/elk,cnc:entities/mule_deer; exact loaded registry and installed recipes.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3383,16 +3383,16 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary nonboss raw food; compare current chicken/mutton BUY8 SELL2. Low payout accommodates multi-drop/Looting/breeding; prepared output remains profession-owned. Evidence: cnc:entities/goose; exact loaded registry and installed recipes.",
+      "trade_outcome": "SELL_ONLY",
+      "reason": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": 8,
-      "sell_copper": 9801,
+      "buy_copper": null,
+      "sell_copper": 5333333,
       "buy_denominator": 1,
-      "sell_denominator": 5000,
+      "sell_denominator": 1000000,
       "quota_family": "cnc:raw_waterfowl",
       "quota_units": 1,
       "bulk_1024": null,
@@ -3400,7 +3400,7 @@
       "daily_player_units": 16,
       "daily_global_units": 256,
       "demand_group": "animal_products",
-      "price_basis": "Ordinary nonboss raw food; compare current chicken/mutton BUY8 SELL2. Low payout accommodates multi-drop/Looting/breeding; prepared output remains profession-owned. Evidence: cnc:entities/goose; exact loaded registry and installed recipes.",
+      "price_basis": "User 2026-11-01: verified live JEMFood Item is sell-only. The curated nominal unit price is bounded by the existing exact recipe-potential certificate; the tier cap applies after demand and modifiers. Canonical stack/NBT validation and funded market settlement remain mandatory.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3602,7 +3602,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/ringtail_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_ringtail.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_ringtail.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3920,7 +3920,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/skunk_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_skunk.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_skunk.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4060,7 +4060,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/squonk_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_squonk.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_squonk.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4198,7 +4198,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/timber_wolf_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_timber_wolf.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_timber_wolf.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4248,7 +4248,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/turkey_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_turkey.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_turkey.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4664,7 +4664,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/white_tailed_deer_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_white_tailed_deer.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_white_tailed_deer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4804,7 +4804,7 @@
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/wolverine_spawn_egg.json",
-        "jemcompat-3.10.3.jar:data/jemcompat/recipes/spawn_eggs/cnc_wolverine.json"
+        "jemcompat-3.10.4.jar:data/jemcompat/recipes/spawn_eggs/cnc_wolverine.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

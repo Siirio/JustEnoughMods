@@ -11,32 +11,36 @@
   ],
   "pages": [
     {
-      "type": "patchouli:entity",
+      "type": "jem_advancements:boss_preview",
       "entity": "luminous_nether:warped_mushlin_king",
-      "name": "Warped Mushlin King",
-      "rotate": true,
-      "text": ""
+      "icon": "minecraft:iron_sword",
+      "name": "Warped Mushlin King"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to find",
+      "text": "The Warped Mushlin King uses a separate shooting state. A spit sound and appearance change accompany the projectile launch: move across the line, then retaliate in the pause. Shooting completion and movement recovery are tracked separately, so avoid waiting directly in front of it."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to fight",
+      "text": "Avoid clearly signalled attacks and strike after they finish."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What does not work",
+      "text": "No special immunity is confirmed."
     },
     {
       "type": "jem_advancements:boss_description",
-      "title": "Cue and response",
-      "text": "The Warped Mushlin King uses a separate shooting state. A spit sound and appearance change accompany the projectile launch: move across the line, then retaliate",
+      "title": "Drops",
+      "text": "",
       "drops": [
         "luminous_nether:music_disc_sunset_at_glengrom",
         "luminous_nether:spore_bundle",
         "luminous_nether:warped_spewer_trophy"
       ],
       "drop_status": "Native loot conditions still apply"
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Cue and response",
-      "text": "in the pause. Shooting completion and movement recovery are tracked separately, so avoid waiting directly in front of it."
-    },
-    {
-      "type": "patchouli:text",
-      "title": "Starting combat",
-      "text": "Waiting for Start on a dedicated server is separate preparation protection. Start combat from the boss encounter menu. In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
     }
   ],
   "jem_dimension": "minecraft:the_nether"

@@ -8,7 +8,9 @@ import dev.ftb.mods.ftbquests.quest.reward.RewardType;
 import dev.ftb.mods.ftbquests.quest.reward.RewardTypes;
 import dev.ftb.mods.ftbquests.quest.reward.XPReward;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -25,6 +27,7 @@ public final class BookXpReward extends XPReward {
     static final String RECEIPTS = "jem_quest_xp_receipts";
     // Failed player saves are retryable delivery operations, not another completion ledger.
     private static final Map<ServerPlayer, Set<Long>> UNFLUSHED = new WeakHashMap<>();
+    private static final Map<ServerPlayer, PendingSave> PENDING_SAVES = new WeakHashMap<>();
     private static final RewardType TYPE = RewardTypes.register(new ResourceLocation("jem_advancements", "quest_xp"),
             BookXpReward::new, () -> Icon.getIcon("minecraft:item/experience_bottle"));
     public BookXpReward(long id, Quest quest) { super(id, quest); }
@@ -49,9 +52,7 @@ public final class BookXpReward extends XPReward {
                 player.getPersistentData().put(RECEIPTS, receipts);
             }
             UNFLUSHED.computeIfAbsent(player, ignored -> new HashSet<>()).add(id);
-            persist(player);
-            // This save included every pending receipt for this exact player instance.
-            UNFLUSHED.remove(player);
+            schedulePersist(player, origin, parent);
         } catch (RuntimeException failure) {
             if (parent != null && !issued(player, id)) {
                 origin.resetReward(player.getUUID(), parent);
@@ -60,11 +61,41 @@ public final class BookXpReward extends XPReward {
             throw failure;
         }
     }
+
+    private static void schedulePersist(ServerPlayer player, TeamData origin, Reward parent) {
+        PendingSave pending = PENDING_SAVES.computeIfAbsent(player, ignored -> new PendingSave());
+        pending.deliveries.add(new Delivery(origin, parent));
+        if (pending.scheduled) return;
+        pending.scheduled = true;
+        player.server.execute(() -> flush(player));
+    }
+
+    private static void flush(ServerPlayer player) {
+        PendingSave pending = PENDING_SAVES.remove(player);
+        if (pending == null) return;
+        try {
+            persist(player);
+            // One save covers every XP receipt created by the current native packet or claim batch.
+            UNFLUSHED.remove(player);
+        } catch (RuntimeException failure) {
+            boolean reset = false;
+            for (Delivery delivery : pending.deliveries) {
+                if (delivery.parent() == null) continue;
+                delivery.origin().resetReward(player.getUUID(), delivery.parent());
+                reset = true;
+            }
+            if (reset && pending.deliveries.get(0).origin().getFile()
+                    instanceof dev.ftb.mods.ftbquests.quest.ServerQuestFile file) file.saveNow();
+            com.mojang.logging.LogUtils.getLogger().error("Could not persist a JEM quest XP claim batch for {}",
+                    player.getGameProfile().getName(), failure);
+        }
+    }
+
     private static void persist(ServerPlayer player) {
         CompoundTag expected = player.saveWithoutId(new CompoundTag());
-        player.server.getPlayerList().saveAll();
         boolean host = player.server.isSingleplayerOwner(player.getGameProfile());
         if (host) player.server.saveEverything(false, true, true);
+        else player.server.getPlayerList().saveAll();
         try {
             var path = host ? player.server.getWorldPath(LevelResource.LEVEL_DATA_FILE)
                     : player.server.getWorldPath(LevelResource.PLAYER_DATA_DIR).resolve(player.getUUID() + ".dat");
@@ -83,5 +114,12 @@ public final class BookXpReward extends XPReward {
             Set<Long> pending = UNFLUSHED.remove(before);
             if (pending != null) UNFLUSHED.put(after, pending);
         }
+    }
+
+    private record Delivery(TeamData origin, Reward parent) { }
+
+    private static final class PendingSave {
+        private final List<Delivery> deliveries = new ArrayList<>();
+        private boolean scheduled;
     }
 }

@@ -44,6 +44,59 @@ EGG_COLLECTIONS = (
 )
 
 
+RETIRED_EXPOSURE_CARDS = {
+    "v2_home_h06_01", "v2_home_print", "v2_home_h06_04", "v2_home_h06_05",
+    "v2_home_h06_07", "v2_home_h06_08", "v2_home_housewarming",
+    "v3_home_first_frame", "v3_home_real_print", "v3_home_color_print",
+    "v3_home_chromatic", "v3_home_remote_frame", "v3_home_album",
+    "v3_eng_photo_develop",
+}
+
+
+def uses_retired_exposure(card: dict) -> bool:
+    return card.get("id") in RETIRED_EXPOSURE_CARDS
+
+
+def retire_exposure_dependencies(card: dict) -> None:
+    """Remove optional Exposure rewards and the retired expedition photo gate."""
+    reward = card.get("reward", {})
+    reward["items"] = [item for item in reward.get("items", [])
+                       if not item.get("id", "").startswith("exposure:")]
+    if reward and "reason" in reward:
+        reward["reason"] = "The remaining rewards support this quest's native activity."
+
+    for language, localized in card.get("localization", {}).items():
+        reward_text = localized.get("reward", "")
+        parts = [part.strip() for part in reward_text.split(";")]
+        localized["reward"] = "; ".join(part for part in parts if not any(word in part.lower() for word in (
+            "film", "photograph", "photo", "плён", "плен", "фото"
+        )))
+
+    if card.get("id") != "v2_bio_expedition_finale":
+        return
+
+    def exposure_binding(binding: dict) -> bool:
+        return any(any(value.startswith("exposure:") for value in target.get("ids", []))
+                   for target in binding.get("targets", []))
+
+    card["bindings"] = [binding for binding in card.get("bindings", []) if not exposure_binding(binding)]
+    card["conditions"] = [condition for condition in card.get("conditions", [])
+                          if not exposure_binding(condition.get("exact_binding", condition))]
+    card["condition"] = "Посети палеоген, неоген и плейстоцен, затем прокатись на корабле и субмарине."
+    card["purpose"] = "Объедини путешествия во времени и морскую разведку в одну экспедицию."
+    card["tip"] = "Выполняй условия в любом порядке. Это итог разных экспедиций, а не требование пройти все ветки."
+    card["localization"]["ru_ru"].update({
+        "condition": card["condition"],
+        "purpose": card["purpose"],
+        "tip": card["tip"],
+    })
+    card["localization"]["en_us"].update({
+        "condition": "Visit Paleogene, Neogene and Pleistocene, then board a ship and a submarine.",
+        "purpose": "Bring time travel and sea travel into one expedition career.",
+        "tip": "Complete these in any order. This is a representative expedition finale, not a demand to finish every branch.",
+    })
+
+
 def free_position(chapter: dict) -> list[float]:
     occupied = [tuple(card.get("position", (999, 999))) for card in chapter["cards"]]
     for y in range(-18, 19, 3):
@@ -57,7 +110,25 @@ def main() -> None:
     book = json.loads(SOURCE.read_text(encoding="utf-8"))
     for chapter in book["chapters"]:
         chapter["cards"] = [card for card in chapter["cards"]
-                            if "horseman" not in json.dumps(card, ensure_ascii=False).lower()]
+                            if "horseman" not in json.dumps(card, ensure_ascii=False).lower()
+                            and not uses_retired_exposure(card)]
+        for card in chapter["cards"]:
+            retire_exposure_dependencies(card)
+            card["after"] = [value for value in card.get("after", [])
+                             if value not in RETIRED_EXPOSURE_CARDS]
+        chapter["visual_edges"] = [edge for edge in chapter.get("visual_edges", [])
+                                   if edge.get("from") not in RETIRED_EXPOSURE_CARDS
+                                   and edge.get("to") not in RETIRED_EXPOSURE_CARDS]
+        for group in chapter.get("layout_groups", []):
+            group["quest_ids"] = [value for value in group.get("quest_ids", [])
+                                  if value not in RETIRED_EXPOSURE_CARDS]
+        for route in chapter.get("quest_routes", []):
+            route["cards"] = [value for value in route.get("cards", [])
+                              if value not in RETIRED_EXPOSURE_CARDS]
+        design = chapter.get("design", {})
+        for key in ("visual_entry_ids", "visual_finale_ids"):
+            design[key] = [value for value in design.get(key, [])
+                           if value not in RETIRED_EXPOSURE_CARDS]
         for card in chapter["cards"]:
             if card.get("id", "").startswith("mu4_"):
                 card["required_mods"] = ["icys_better_horses" if value == "icys-better-horses" else value

@@ -21,6 +21,7 @@ PATCHES = (
     MODULE / "patches" / "resume-live-login.patch",
     MODULE / "patches" / "resume-live-login-race.patch",
     MODULE / "patches" / "equal-token-screen-neutral.patch",
+    MODULE / "patches" / "locked-file-guidance.patch",
 )
 
 
