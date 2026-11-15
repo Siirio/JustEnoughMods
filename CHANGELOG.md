@@ -1,3 +1,18 @@
+## 2026-11-15 - Plan Major Update 4 stabilization
+
+- User requested investigation of the current `develop` code and a plan only for the reported Major Update 4 regressions. No gameplay, pack, runtime, client profile, or MineRENT implementation was authorized
+- Confirmed that `develop` is not equal to `main`: `origin/develop` at `0a71923c1` is 134 commits ahead of `origin/main` at `b244bda4a`, with no commits unique to `main`
+- Bug / Client Sided / Weather Glass remains in the canonical ManagedPack, while retired Luxium client configs and duplicate old and new JEM JARs remain in the stable profile after a partial native projection / planned through canonical deletion, native ownership-ledger cleanup, and a readiness check that verifies live files as well as the generation token
+- Bug / Client Sided / stable `options.txt` no longer contains the expected hotbar and FTB Quests bindings or resource-pack order, but AutoModpack excludes `options.txt`, so the exact writer is not yet proven / planned through timestamp and transaction tracing, semantic preservation, and post-commit comparison without assigning an unsupported cause
+- Bug / Server Sided / `StructureStaging` creates `manual:raid:*` when no Raid event exists, and `/smp` hides Events whenever `EventRuntime.enabled()` is false / planned by requiring an active matching Raid event and keeping an Events empty state visible on eligible dedicated SMP servers
+- Bug / Server Sided / hosted encounter disconnect handling retains participants for the configured grace interval, while the user requires immediate defeat and arena release / planned through authoritative logout elimination plus durable safe exit on the next login
+- Bug / Both Sided / structural Legendary Monsters profiles such as Frostbitten Golem and Overgrown Colossus are marked outside the hosted encounter lifecycle, so shared structure-volume borders are not created / planned through an all-structural-boss Atlas and installed-JAR audit rather than two entity exceptions
+- Bug / Client Sided / Blast From The Past 1.0.3 sends its own unconditional `ScreenShakePayload(20.0F, 60)` from Frostomper and Psycho Bear and exposes no relevant config / planned through a narrow exact-version client adapter that preserves all non-shake mechanics
+- Bug / Client Sided / F6 opens `RaceExperienceScreen`, but the custom detached-player render path produces no visible model / planned through bounded render-state evidence and a native player-render path where possible
+- Bug / Client Sided / FTB quest data loads and native GUI routes exist, while the keyboard binding is lost and failure from the book and inventory remains unproven / planned through one-shot diagnostics at each native open transition. JEM Security was ruled out as the primary screen or packet owner
+- Bug / Client Sided / generated boss handbook pages expose engineering text and use an unbounded native entity page, causing difficult guidance, `Format error`, placeholder output, and oversized multipart models such as Sirok / planned through the canonical handbook source, verified mechanic and loot data, simple player language, measured model fitting, and clipped rendering
+- Added `Docs/plans/2026-11-15-major-update-4-stabilization.md` with implementation phases, protected behavior, manual acceptance criteria, and a client-and-server release boundary. No build, automated test, game launch, native publication, client application, or deployment was performed
+
 ## 2026-11-15 - Deploy Major Update 4 to MineRENT
 
 - User authorized the prepared Major Update 4 deployment to MineRENT and its hosted AutoModpack catalogue, while keeping the stable client and release baseline unchanged. The user will accept the client update manually
