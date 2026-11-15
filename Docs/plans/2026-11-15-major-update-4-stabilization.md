@@ -25,7 +25,7 @@ This plan covers the regressions reported after the Major Update 4 MineRENT publ
 - Fit every boss model inside its handbook viewport
 - Add one top-level "Руды" section to the JEM JEI overhaul and move complete resource families out of "Остальное"
 - Correct the ownership of Create workstations, countertops, furniture, transport, and Let's Do Farm & Charm content
-- Remove RoadWeaver and its active road-generation surfaces
+- Keep RoadWeaver and give every Abridged bridge priority over nearby or intersecting RoadWeaver bridge spans
 - Restore StructBlend as the terrain-blending owner without replacing Structurify or Structure Layout Optimizer
 - Add Better Villages through a separate village route that does not replace the current Grand Capitals, Trek, or Nature's Spirit routes
 
@@ -64,7 +64,8 @@ Implementation must continue on `develop`. Promotion to `main` is a separate pro
 | JEI "Остальное" overflow | `JemCatalogCategories.classify()` sends ores and listed non-building resources directly to `Kind.OTHER`, has no resource-family category, and lets many unmatched Create and farming blocks fall through to the same catch-all | The classifier has no canonical "Руды" owner and relies on short name heuristics instead of installed tags plus bounded exceptions |
 | Misclassified requested items | The exact installed IDs include `create:andesite_table_cloth`, `create:brass_table_cloth`, `create:copper_table_cloth`, `brewery:sideboard`, `unearthed_journey:canoe_item`, and `farm_and_charm:chicken_coop` | Furniture, transport, and farming classifiers do not cover these installed identities or their full semantic families |
 | Better Villages competition | Grand Capitals replaces the five `minecraft:village_*` definitions with `revampedvillages:start`, while Better Villages replaces NBT under vanilla village paths and can replace village-set placement through its Mixin | Reinstalling Better Villages on the same five IDs would either be inactive behind Grand Capitals or restore two owners for the vanilla village route |
-| Structure stack change | Structure Layout Optimizer owns jigsaw assembly performance, Structurify owns placement and overlap prevention, RoadWeaver owns roads, and StructBlend is absent | StructBlend can own terrain blending without method or responsibility overlap, but it does not replace RoadWeaver's roads |
+| Abridged and RoadWeaver bridge conflict | Abridged registers the separate `abridged:bridge` structure at `surface_structures`, while RoadWeaver places its road feature later at `top_layer_modification` and selects both short and long native bridge builders from its own span masks | RoadWeaver can see Abridged starts before it places blocks, but its current generic avoidance checks only one exact segment center inside a surface structure piece, has no 15–20 block clearance, and does not suppress the complete RoadWeaver bridge range |
+| Structure stack change | Structure Layout Optimizer owns jigsaw assembly performance, Structurify owns placement and overlap prevention, RoadWeaver owns roads, and StructBlend is absent | StructBlend can own terrain blending without method or responsibility overlap and without replacing RoadWeaver's roads |
 
 ### Ruled out as the primary owner
 
@@ -307,30 +308,37 @@ The screenshots are representative evidence. They are not a closed item allowlis
 9. Add explicit regression coverage to the implementation review matrix without creating automated tests or test fixtures
 10. Confirm that no requested family falls back to "Остальное" after the full installed-registry audit
 
-### Phase 13: Replace roads with terrain blending and add Better Villages safely
+### Phase 13: Give Abridged priority, restore terrain blending, and add Better Villages safely
 
-The phrase "Path Weaver" is treated as the installed `RoadWeaver` mod because no installed or historical active mod named Path Weaver exists
+The user's "Path Weaver" name refers to the installed `RoadWeaver` mod. RoadWeaver remains installed
 
-1. Remove the RoadWeaver JAR, active client and server configuration, generated preset ownership, structure cache, patched release surface, and current integration documentation
-2. Publish RoadWeaver deletions through the native AutoModpack ownership transaction. Do not raw-delete managed client files
-3. Retain historical Atlas and changelog evidence and mark the current RoadWeaver rules as superseded
-4. Do not remove road blocks already generated in existing chunks
-5. State the behavior change clearly: new chunks will no longer receive RoadWeaver roads between structures
-6. Add StructBlend 1.0.3 as the server-side terrain-blending owner for eligible newly generated structures
-7. Keep Structure Layout Optimizer as the jigsaw assembly performance owner
-8. Keep Structurify as the structure placement and physical-overlap owner, with its current global spacing modifier disabled
-9. Do not add StructureOverlapless. It would duplicate Structurify
-10. Configure StructBlend exclusions from exact installed structure IDs for underground, ocean-floor, sky-only, moving or special-terrain structures, plus registered boss arenas where blending can damage registered walls, safe arrival, or safe exit geometry
-11. Keep ordinary surface villages and compatible surface structures eligible for StructBlend after the exclusion audit
-12. Add Better Villages 3.3.1 and use the already installed Library Ferret 4.0.0 dependency
-13. Disable Better Villages custom spacing so it cannot replace the merged JEM village structure-set placement
-14. Keep the five current `minecraft:village_*` definitions owned by Grand Capitals and keep the unique Trek and Nature's Spirit structure IDs once each
-15. Create separate JEM-owned Better Villages structure IDs that start from the vanilla biome-specific village pools whose NBT is supplied by Better Villages
-16. Add those separate IDs to the one merged village structure set with reviewed weights. Do not overwrite Grand Capitals definitions or duplicate Trek and Nature's Spirit IDs
-17. Confirm with exact datapack and JAR inspection that each village variant has one definition owner, one template route, and one placement owner
-18. Treat Better Villages as client and server content. Before publication, prove that the selected distribution route permits the All Rights Reserved JAR to be delivered to players. If redistribution is not permitted, require an official user-installed delivery route and do not embed the JAR in AutoModpack
-19. Treat StructBlend as server-side only and obtain its artifact from the official source. Do not send it to clients unless its exact metadata and license require that
-20. Record the superseding structure decision in Atlas, `Docs/DEVELOPMENT.md`, `Docs/MODS.md`, and the Major Update 4 structure receipt during implementation
+1. Preserve RoadWeaver's current structure routes, ground-anchor correction, ordinary roads, and bridges when no Abridged bridge is nearby
+2. Treat `abridged:bridge` as the authoritative bridge owner in every direct or nearby conflict
+3. Use a 20-block horizontal clearance around the union of the real Abridged structure-piece bounding boxes. This uses the safer upper limit of the requested 15–20 block range
+4. Scan Abridged starts in every chunk touched by the candidate RoadWeaver bridge footprint plus that clearance. Do not rely on the current exact-center `getAllStructuresAt` check
+5. Match by the exact registered structure ID `abridged:bridge`, not by bridge materials, template names, water blocks, or translated names
+6. Evaluate priority after RoadWeaver calculates a complete bridge range and before it chooses the short `BridgeSegmentPlanner` or long `BridgeSegmentPlannerNew` path
+7. Expand the candidate RoadWeaver footprint by its road width and configured bridge ramps before testing it against the Abridged clearance volume
+8. If the candidate footprint intersects the protected Abridged volume, mark the complete RoadWeaver bridge range and its ramps as skipped. Do not place a RoadWeaver deck, piers, rails, buoys, fill, paving, signs, or decoration inside that suppressed range
+9. Keep RoadWeaver segments outside the suppressed range unchanged. Do not reroute, replace, edit, or decorate the Abridged bridge
+10. Apply the rule to newly generated chunks. Do not rewrite existing generated bridges or roads
+11. Keep the generic RoadWeaver structure-avoidance rule for all other structures. The Abridged rule is a stronger exact-ID priority layer, not a replacement for generic avoidance
+12. Extend the disclosed exact-version RoadWeaver patch with one isolated Abridged priority service and one call before bridge-path branching. Do not add a broad Mixin into Abridged
+13. Add StructBlend 1.0.3 as the server-side terrain-blending owner for eligible newly generated structures
+14. Keep Structure Layout Optimizer as the jigsaw assembly performance owner
+15. Keep Structurify as the structure placement and physical-overlap owner, with its current global spacing modifier disabled
+16. Do not add StructureOverlapless. It would duplicate Structurify
+17. Configure StructBlend exclusions from exact installed structure IDs for underground, ocean-floor, sky-only, moving or special-terrain structures, plus registered boss arenas where blending can damage registered walls, safe arrival, or safe exit geometry
+18. Keep ordinary surface villages, Abridged bridges, and compatible surface structures eligible for StructBlend only after the exclusion and native-terrain audit proves that their geometry is preserved
+19. Add Better Villages 3.3.1 and use the already installed Library Ferret 4.0.0 dependency
+20. Disable Better Villages custom spacing so it cannot replace the merged JEM village structure-set placement
+21. Keep the five current `minecraft:village_*` definitions owned by Grand Capitals and keep the unique Trek and Nature's Spirit structure IDs once each
+22. Create separate JEM-owned Better Villages structure IDs that start from the vanilla biome-specific village pools whose NBT is supplied by Better Villages
+23. Add those separate IDs to the one merged village structure set with reviewed weights. Do not overwrite Grand Capitals definitions or duplicate Trek and Nature's Spirit IDs
+24. Confirm with exact datapack and JAR inspection that each village variant has one definition owner, one template route, and one placement owner
+25. Treat Better Villages as client and server content. Before publication, prove that the selected distribution route permits the All Rights Reserved JAR to be delivered to players. If redistribution is not permitted, require an official user-installed delivery route and do not embed the JAR in AutoModpack
+26. Treat StructBlend as server-side only and obtain its artifact from the official source. Do not send it to clients unless its exact metadata and license require that
+27. Record the superseding structure decision in Atlas, `Docs/DEVELOPMENT.md`, `Docs/MODS.md`, and the Major Update 4 structure receipt during implementation
 
 The noncompetition target is the current Grand Capitals village owner plus the unique Trek and Nature's Spirit village routes. This is the safest complete interpretation of the unfinished phrase "make so that it wont compete with"
 
@@ -382,7 +390,11 @@ Automated tests and gameplay test fixtures are prohibited by the project rules. 
 - Unearthed Journey canoe appears under Transport
 - Farm & Charm chicken coop and all verified cooking or production families appear under Food and Cooking
 - The remaining "Остальное" report contains no item with an established semantic owner
-- RoadWeaver is absent from both logical sides and new chunks generate no RoadWeaver roads
+- RoadWeaver still generates ordinary roads and non-conflicting bridges
+- A direct overlap with `abridged:bridge` suppresses the complete RoadWeaver bridge range and its ramps
+- A RoadWeaver bridge footprint within 20 horizontal blocks of an Abridged bridge is suppressed before either RoadWeaver bridge builder runs
+- A RoadWeaver bridge more than 20 blocks from Abridged remains unchanged
+- Abridged bridge blocks, pieces, terrain behavior, loot, and generation rate remain native
 - StructBlend changes terrain only around eligible new structures and does not damage excluded boss, underground, ocean-floor, or sky structures
 - Structure Layout Optimizer and Structurify retain their separate current responsibilities
 - Grand Capitals, Better Villages, Trek, and Nature's Spirit village routes each generate through one definition and placement path without duplicate village IDs
@@ -401,7 +413,7 @@ Automated tests and gameplay test fixtures are prohibited by the project rules. 
 - Decorative and gameplay category ownership remains semantic. A whole mod namespace is not forced into one category
 - Grand Capitals remains the owner of the five current vanilla village definitions
 - Structurify remains the only physical-overlap owner
-- Existing generated roads and structures are not rewritten
+- Existing generated roads, bridges, and structures are not rewritten
 
 ## Delivery gate
 

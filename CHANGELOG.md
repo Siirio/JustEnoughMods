@@ -1,3 +1,12 @@
+## 2026-11-15 - Keep RoadWeaver and prioritize Abridged bridges in the plan
+
+- User corrected the plan: keep RoadWeaver and suppress only its bridge generation when an Abridged bridge intersects it or is within approximately 15–20 blocks
+- Investigation confirmed that Abridged 2.0.0 registers `abridged:bridge` as a separate `surface_structures` structure with real structure pieces. It is not an unregistered part of a path
+- Bug / Server Sided / RoadWeaver places its road feature later at `top_layer_modification`, but its generic structure avoidance tests only the exact center of one segment against surface structure pieces and has no nearby-clearance rule / planned through an exact `abridged:bridge` priority scan and complete bridge-range suppression
+- RoadWeaver has separate short and long bridge builders selected after its full span masks exist. The plan puts the Abridged priority check before that branch so both builders, ramps, piers, fill, paving and decoration obey the same result
+- The plan uses a 20-block horizontal clearance, the safer upper limit of the user's 15–20 block range, around actual Abridged piece bounds. It preserves RoadWeaver everywhere else and does not rewrite generated chunks
+- This entry supersedes only the prior plan text that removed RoadWeaver. No mod, config, source, runtime, client profile, AutoModpack generation, MineRENT state or `main` branch was changed
+
 ## 2026-11-15 - Extend the Major Update 4 stabilization plan
 
 - User added JEI catalog, structure-stack and village coexistence requirements to the existing plan. No implementation, build, runtime publication, profile change, MineRENT deployment or `main` promotion was authorized in this prompt
