@@ -23,6 +23,11 @@ This plan covers the regressions reported after the Major Update 4 MineRENT publ
 - Restore the Events tab in `/smp`
 - Rework all boss handbook pages into short player-facing combat and reward guidance
 - Fit every boss model inside its handbook viewport
+- Add one top-level "Руды" section to the JEM JEI overhaul and move complete resource families out of "Остальное"
+- Correct the ownership of Create workstations, countertops, furniture, transport, and Let's Do Farm & Charm content
+- Remove RoadWeaver and its active road-generation surfaces
+- Restore StructBlend as the terrain-blending owner without replacing Structurify or Structure Layout Optimizer
+- Add Better Villages through a separate village route that does not replace the current Grand Capitals, Trek, or Nature's Spirit routes
 
 This document does not implement, build, publish, deploy, or launch any change
 
@@ -30,10 +35,10 @@ This document does not implement, build, publish, deploy, or launch any change
 
 `develop` and `main` are not equal
 
-- `develop` is at `0a71923c1` and matches `origin/develop`
+- `develop` is at `df0be060a2` and matches `origin/develop`
 - `main` is at `b244bda4a`
-- `origin/main...origin/develop` reports `0 134`
-- `develop` contains 134 commits that are not in `main`
+- `origin/main...origin/develop` reports `0 135`
+- `develop` contains 135 commits that are not in `main`
 - The current `develop` history includes the Major Update 4 merge and MineRENT deployment record
 
 Implementation must continue on `develop`. Promotion to `main` is a separate production release action
@@ -56,6 +61,10 @@ Implementation must continue on `develop`. Promotion to `main` is a separate pro
 | Blast From The Past camera shake | Installed bytecode sends `ScreenShakePayload(20.0F, 60)` from both Frostomper and Psycho Bear and installs it through `ClientPayloadHandler.handleScreenShake()` | The mod has a private unconditional screen-shake path and no relevant config option |
 | Oversized handbook bosses | All generated boss entries use the unbounded native `patchouli:entity` page without per-entity fitting data | Sirok and other large entities can leave the page viewport |
 | Complex handbook text | `Mods/JEMAchievementGuide/src/main/handbook/bosses.json` generates the long technical pages shown in the screenshots | The authored source is engineering-oriented and duplicates implementation detail instead of player actions and rewards |
+| JEI "Остальное" overflow | `JemCatalogCategories.classify()` sends ores and listed non-building resources directly to `Kind.OTHER`, has no resource-family category, and lets many unmatched Create and farming blocks fall through to the same catch-all | The classifier has no canonical "Руды" owner and relies on short name heuristics instead of installed tags plus bounded exceptions |
+| Misclassified requested items | The exact installed IDs include `create:andesite_table_cloth`, `create:brass_table_cloth`, `create:copper_table_cloth`, `brewery:sideboard`, `unearthed_journey:canoe_item`, and `farm_and_charm:chicken_coop` | Furniture, transport, and farming classifiers do not cover these installed identities or their full semantic families |
+| Better Villages competition | Grand Capitals replaces the five `minecraft:village_*` definitions with `revampedvillages:start`, while Better Villages replaces NBT under vanilla village paths and can replace village-set placement through its Mixin | Reinstalling Better Villages on the same five IDs would either be inactive behind Grand Capitals or restore two owners for the vanilla village route |
+| Structure stack change | Structure Layout Optimizer owns jigsaw assembly performance, Structurify owns placement and overlap prevention, RoadWeaver owns roads, and StructBlend is absent | StructBlend can own terrain blending without method or responsibility overlap, but it does not replace RoadWeaver's roads |
 
 ### Ruled out as the primary owner
 
@@ -261,7 +270,71 @@ Visual rules:
 - Review `/smp` changes against `Forge-1.20.1-jem-smp-screens`
 - Run the required visual audit on the actual in-game result before delivery
 
-### Phase 11: Package and release as one client-and-server boundary
+### Phase 11: Add the top-level "Руды" catalog section
+
+Canonical owners:
+
+- `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java`
+- `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java`
+- `Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json`
+- `Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json`
+
+1. Add one first-class category with the stable internal ID `ORES` and the Russian label "Руды"
+2. Keep one leaf owner per item. An item must never appear in both "Руды" and "Строительство"
+3. Classify resource families from installed Forge or common tags first: ores, raw materials, ingots, nuggets, gems, dusts, shards, crystals, and storage blocks
+4. Use exact installed recipes, tags, registry data, and bounded source-backed exceptions for untagged mod resources
+5. Audit every installed namespace, not only the screenshot examples
+6. Include the full applicable Create families such as zinc, brass, copper nuggets, crushed raw materials, andesite alloy, and their resource blocks
+7. Include the full applicable Alex's Caves families such as galena and uranium ores, uranium and tectonic shards, sulfur dust, scrap metals, neodymium ingots, gems, and resource blocks
+8. Include the full applicable Unearthed Journey families such as stone-variant ores, raw lead, lead ingots and nuggets, manganese steel, and resource blocks
+9. Include equivalent families from all other installed mods when the exact registry and tags prove the same material role
+10. Keep decorative bricks, stairs, slabs, walls, machines, tools, armor, and ordinary construction blocks outside "Руды" even when their recipe uses an ore material
+11. Give the category a stable representative ore icon and place it near the existing material and building sections
+12. Add a catalog audit report that lists every remaining "Остальное" item by mod and reason, so the catch-all contains only items that truly have no better owner
+
+The screenshots are representative evidence. They are not a closed item allowlist
+
+### Phase 12: Correct catalog ownership outside "Руды"
+
+1. Audit all Create items currently in "Остальное" and assign machines, mechanisms, workstations, tools, logistics, and redstone parts to their existing semantic categories
+2. Put Create table-cloth countertops and all equivalent installed countertop families in `Building -> Furniture`
+3. Put `brewery:sideboard` and equivalent sideboards or buffets in `Building -> Furniture`
+4. Put `unearthed_journey:canoe_item` and equivalent rideable canoes in `Transport`. Keep spawn eggs in `Spawn Eggs`
+5. Put `farm_and_charm:chicken_coop` in `Food and Cooking`
+6. Audit all Let's Do Farm & Charm items and put cooking stations, food processing blocks, farm production blocks, utensils, ingredients, and related functional storage in `Food and Cooking`
+7. Keep purely decorative Farm & Charm building pieces in the appropriate Building leaf instead of moving the whole mod by namespace
+8. Prefer exact native tags, block classes, recipes, and source-backed families over translated-name matching
+9. Add explicit regression coverage to the implementation review matrix without creating automated tests or test fixtures
+10. Confirm that no requested family falls back to "Остальное" after the full installed-registry audit
+
+### Phase 13: Replace roads with terrain blending and add Better Villages safely
+
+The phrase "Path Weaver" is treated as the installed `RoadWeaver` mod because no installed or historical active mod named Path Weaver exists
+
+1. Remove the RoadWeaver JAR, active client and server configuration, generated preset ownership, structure cache, patched release surface, and current integration documentation
+2. Publish RoadWeaver deletions through the native AutoModpack ownership transaction. Do not raw-delete managed client files
+3. Retain historical Atlas and changelog evidence and mark the current RoadWeaver rules as superseded
+4. Do not remove road blocks already generated in existing chunks
+5. State the behavior change clearly: new chunks will no longer receive RoadWeaver roads between structures
+6. Add StructBlend 1.0.3 as the server-side terrain-blending owner for eligible newly generated structures
+7. Keep Structure Layout Optimizer as the jigsaw assembly performance owner
+8. Keep Structurify as the structure placement and physical-overlap owner, with its current global spacing modifier disabled
+9. Do not add StructureOverlapless. It would duplicate Structurify
+10. Configure StructBlend exclusions from exact installed structure IDs for underground, ocean-floor, sky-only, moving or special-terrain structures, plus registered boss arenas where blending can damage registered walls, safe arrival, or safe exit geometry
+11. Keep ordinary surface villages and compatible surface structures eligible for StructBlend after the exclusion audit
+12. Add Better Villages 3.3.1 and use the already installed Library Ferret 4.0.0 dependency
+13. Disable Better Villages custom spacing so it cannot replace the merged JEM village structure-set placement
+14. Keep the five current `minecraft:village_*` definitions owned by Grand Capitals and keep the unique Trek and Nature's Spirit structure IDs once each
+15. Create separate JEM-owned Better Villages structure IDs that start from the vanilla biome-specific village pools whose NBT is supplied by Better Villages
+16. Add those separate IDs to the one merged village structure set with reviewed weights. Do not overwrite Grand Capitals definitions or duplicate Trek and Nature's Spirit IDs
+17. Confirm with exact datapack and JAR inspection that each village variant has one definition owner, one template route, and one placement owner
+18. Treat Better Villages as client and server content. Before publication, prove that the selected distribution route permits the All Rights Reserved JAR to be delivered to players. If redistribution is not permitted, require an official user-installed delivery route and do not embed the JAR in AutoModpack
+19. Treat StructBlend as server-side only and obtain its artifact from the official source. Do not send it to clients unless its exact metadata and license require that
+20. Record the superseding structure decision in Atlas, `Docs/DEVELOPMENT.md`, `Docs/MODS.md`, and the Major Update 4 structure receipt during implementation
+
+The noncompetition target is the current Grand Capitals village owner plus the unique Trek and Nature's Spirit village routes. This is the safest complete interpretation of the unfinished phrase "make so that it wont compete with"
+
+### Phase 14: Package and release as one client-and-server boundary
 
 This work is not a server-only update. It changes client state handling, client rendering, handbook assets, configs, optional client compatibility, and server encounter behavior
 
@@ -303,6 +376,16 @@ Automated tests and gameplay test fixtures are prohibited by the project rules. 
 - Other native and modded camera effects still work
 - Boss pages use simple Russian, verified mechanics, exact drops, and verified XP
 - Sirok and every other boss model stay inside the handbook art slot at all GUI scales
+- The top-level "Руды" section contains all verified installed ore and material families, not only the screenshot examples
+- Decorative masonry remains in Building while resource storage blocks remain in "Руды"
+- Create countertops and Brewery sideboards appear under Building -> Furniture
+- Unearthed Journey canoe appears under Transport
+- Farm & Charm chicken coop and all verified cooking or production families appear under Food and Cooking
+- The remaining "Остальное" report contains no item with an established semantic owner
+- RoadWeaver is absent from both logical sides and new chunks generate no RoadWeaver roads
+- StructBlend changes terrain only around eligible new structures and does not damage excluded boss, underground, ocean-floor, or sky structures
+- Structure Layout Optimizer and Structurify retain their separate current responsibilities
+- Grand Capitals, Better Villages, Trek, and Nature's Spirit village routes each generate through one definition and placement path without duplicate village IDs
 
 ## Protected behavior
 
@@ -315,7 +398,13 @@ Automated tests and gameplay test fixtures are prohibited by the project rules. 
 - Integrated and LAN worlds do not gain JEM SMP, Events, or Raid
 - Neo Voxy remains a manual client install
 - Stable `JustEnoughMods` remains untouched until an explicit release request
+- Decorative and gameplay category ownership remains semantic. A whole mod namespace is not forced into one category
+- Grand Capitals remains the owner of the five current vanilla village definitions
+- Structurify remains the only physical-overlap owner
+- Existing generated roads and structures are not rewritten
 
 ## Delivery gate
 
 Do not mark this plan resolved until all confirmed causes have owner-level fixes and all unresolved causes have runtime evidence. A successful build, matching token, or server start is not player acceptance
+
+After every implementation and acceptance gate passes, report "Все готово". Then perform the planned normal `develop` to `main` production promotion, push `main` without force, and verify that MineRENT, the stable client release, release metadata, and the immutable baseline describe the same reviewed production boundary. Do not promote `main` before those gates pass

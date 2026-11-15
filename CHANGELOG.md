@@ -1,3 +1,14 @@
+## 2026-11-15 - Extend the Major Update 4 stabilization plan
+
+- User added JEI catalog, structure-stack and village coexistence requirements to the existing plan. No implementation, build, runtime publication, profile change, MineRENT deployment or `main` promotion was authorized in this prompt
+- Bug / Client Sided / `JemCatalogCategories` has no resource-family category, sends ores and listed non-building resources to `OTHER`, and lets unmatched Create and farming blocks fall through to the same catch-all / planned through one top-level "Руды" category based on installed tags, recipes and bounded exact exceptions, plus a complete remaining-`OTHER` audit
+- Bug / Client Sided / exact installed countertop, sideboard, canoe and chicken-coop identities are not covered by their semantic category classifiers / planned through family-level Furniture, Transport and Food and Cooking ownership instead of one-off screenshot-only entries
+- User requested removal of the installed RoadWeaver, restoration of StructBlend, and addition of Better Villages without competition. The plan keeps Structure Layout Optimizer as the jigsaw performance owner and Structurify as the only overlap owner
+- Investigation found that Grand Capitals redirects the five vanilla village definitions to `revampedvillages:start`, while Better Villages supplies replacement NBT under vanilla village paths and can replace placement through its Mixin. The plan therefore gives Better Villages separate JEM structure IDs, disables its custom spacing and keeps one merged village-set placement owner
+- The phrase "Path Weaver" is interpreted as the installed RoadWeaver because no active Path Weaver artifact exists. The plan states that StructBlend restores terrain blending but does not preserve RoadWeaver roads in new chunks
+- Better Villages is All Rights Reserved and runs on both logical sides. The implementation plan requires a permitted official player-delivery route before it can enter a shared release. StructBlend remains server-side only unless exact metadata proves otherwise
+- The final plan gate now says to report "Все готово" only after implementation and acceptance, then complete the normal reviewed `develop` to `main` production promotion without force. No promotion was performed now
+
 ## 2026-11-15 - Plan Major Update 4 stabilization
 
 - User requested investigation of the current `develop` code and a plan only for the reported Major Update 4 regressions. No gameplay, pack, runtime, client profile, or MineRENT implementation was authorized
