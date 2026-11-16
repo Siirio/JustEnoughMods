@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -106,10 +107,20 @@ class ApplyPublishedJemPack {{
  static void require(boolean condition,String message) {{ if(!condition)throw new IllegalStateException(message); }}
  static void run()throws Exception {{
   Constants.LOADER="forge";Constants.MC_VERSION="1.20.1";Constants.LOADER_VERSION="47.4.10";Constants.preload=false;
+  Constants.THIS_MOD_JAR=Path.of({java_string(bootstrap)});
   Constants.MODPACK_LOADER=new pl.skidam.automodpack_loader_core_forge.mods.ModpackLoader();
   var storage=ClientStorage.open(Path.of(System.getProperty("user.dir")));
   System.out.println("STATE_ROOT="+storage.clientDirectory());
   Constants.clientConfig=ReconfConfigs.read(storage.clientConfigFile(),ClientConfigJsons.ClientConfigFieldsV3.class).orElseThrow();
+  if(Files.exists(storage.transactionFile())){{
+   var pending=UpdateTransaction.read(storage.transactionFile());
+   require(pending.purpose==UpdateTransaction.Purpose.MODPACK_UPDATE,"Pending transaction is not a modpack update");
+   require(pending.plan!=null&&pending.packTarget().contentToken().equals({json.dumps(expected_token)}),"Pending transaction targets a different publication");
+   System.out.println("DEFERRED_TRANSACTION="+pending.transactionId);
+   DetachedUpdateHelper.launch();
+   System.out.println("DETACHED_HELPER_STARTED");
+   return;
+  }}
   var active=storage.readActiveState();require(active!=null,"No installed AutoModpack generation to update");
   if(active.contentToken.equals({json.dumps(expected_token)})){{
    require(new ClientGenerationStore(storage).headMatchesActive(active.modpackId,active.contentToken),"Installed head differs");
@@ -166,7 +177,15 @@ class ApplyPublishedJemPack {{
     }} else throw new IllegalStateException("Unreviewed native operation: "+operation.operation()+" "+relative);
    }}
    require(!plan.operations().isEmpty(),"Native plan contains no update");
-   ((UpdateAttempt)session).approve();((UpdateAttempt)session).commit();
+   ((UpdateAttempt)session).approve();
+   try {{
+    ((UpdateAttempt)session).commit();
+   }} catch(UpdateDeferredException deferred) {{
+    System.out.println("DEFERRED_TRANSACTION="+deferred.getTransactionId());
+    DetachedUpdateHelper.launch();
+    System.out.println("DETACHED_HELPER_STARTED");
+    return;
+   }}
    var installed=storage.readActiveState();
    require(installed!=null&&installed.contentToken.equals({json.dumps(expected_token)}),"Native generation did not commit");
    require(new ClientGenerationStore(storage).headMatchesActive(installed.modpackId,installed.contentToken),"Installed head differs");
@@ -191,7 +210,11 @@ try {{ ApplyPublishedJemPack.run(); }} catch(Throwable failure) {{ failure.print
     output = log_path.read_text(encoding="utf-8", errors="replace")
     print(output[-16000:])
     require(result.returncode == 0, f"Native client apply exited with {result.returncode}")
-    require(f"INSTALLED_TOKEN={expected_token}" in output, "Native client apply did not report the published token")
+    deferred = "DETACHED_HELPER_STARTED" in output
+    require(
+        f"INSTALLED_TOKEN={expected_token}" in output or deferred,
+        "Native client apply did not report the published token or start the detached helper",
+    )
     game_dir_pack = profile / "automodpack"
     if game_dir_pack.exists():
         # AutoModpack creates server.conf for the integrated server.
@@ -205,6 +228,21 @@ try {{ ApplyPublishedJemPack.run(); }} catch(Throwable failure) {{ failure.print
 
     state_root_line = next(line for line in output.splitlines() if line.startswith("STATE_ROOT="))
     state_root = Path(state_root_line.removeprefix("STATE_ROOT=").strip())
+    if deferred:
+        deadline = time.monotonic() + 600
+        while time.monotonic() < deadline:
+            active_state_path = state_root / "active-state.json"
+            pending_path = state_root / "update-transaction.json"
+            if active_state_path.is_file():
+                current = json.loads(active_state_path.read_text(encoding="utf-8"))
+                if current.get("contentToken") == expected_token and not pending_path.exists():
+                    break
+            time.sleep(0.5)
+        else:
+            helper_log = state_root.parent / "update-helper.log"
+            detail = helper_log.read_text(encoding="utf-8", errors="replace")[-8000:] if helper_log.is_file() else "helper log is absent"
+            raise RuntimeError("Detached helper did not finish the native update within 10 minutes\n" + detail)
+
     active_state = json.loads((state_root / "active-state.json").read_text(encoding="utf-8"))
     require(active_state["contentToken"] == expected_token, "External active state differs from the published head")
     require(not (state_root / "update-transaction.json").exists(), "External native transaction remains pending")

@@ -1,6 +1,6 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-16T11:25:33.529104+00:00` for `6d952c6aff57ee90a7ddf4f8da835d9b53c76aff`.
+Generated from Atlas schema 1 at `2026-11-16T16:58:35.223068+00:00` for `adb27bb787ce72096fbedd26f04434cbd1d8b3d8`.
 
 Static evidence observed 17,106 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
