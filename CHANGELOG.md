@@ -8,6 +8,9 @@
 - Production `oneJar` built Bootstrap revision `jem.28` without tests. The artifact is 3,492,173 bytes with SHA-256 `11747e6443898bd55efa6da77d4ead922b760b8b260e31a90b05e74ade4e048b`
 - Installed the exact artifact as the only Bootstrap JAR in `Client/ManagedPack`, the bootstrap-only installer, the ordinary local Server and the closed stable `JustEnoughMods` profile. The stale transaction was retained so the next launch exercises normal audited recovery
 - The pack-sync staging audit copied and deleted no managed files because Bootstrap remains excluded. No managed generation was published, no release baseline was promoted and no Minecraft client was launched
+- MineRENT was stopped cleanly and `/mods/jem-bootstrap.jar` was replaced with the same 3,492,173-byte `jem.28` artifact with SHA-256 `11747e6443898bd55efa6da77d4ead922b760b8b260e31a90b05e74ade4e048b`. The remote `mods` inventory contained exactly one Bootstrap or AutoModpack JAR after the upload
+- MineRENT returned to `Работает`. The console confirmed completed dedicated-server loading at `2026-11-16T15:18:29+05:00` and active AutoModpack hosting through the Minecraft Login holepunch
+- The hosted managed generation was not changed or republished, so its existing content token `c033093` remains in service. The user will launch the stable client and accept the managed update manually
 
 ## 2026-11-16 - Defer reviewed client updates until Minecraft exits
 
