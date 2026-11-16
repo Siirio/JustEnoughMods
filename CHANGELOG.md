@@ -3952,3 +3952,14 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - Removed Weather Glass. Luxium and JEM Luxium remain absent. Sodium Extras now distributes 56 horizontal and 26 vertical entity and block-entity render distances
 - Bootstrap revision `jem.26` preserves managed `options.txt` as personal state when present, keeps native AutoModpack state, waits for Minecraft to close, and tells the player to allow up to three minutes for locked-file completion
 
+## 2026-11-17 - Release Major Update 4 stabilization
+
+- User authorized deployment to the open MineRENT server, native stable-client update and production promotion after completion
+- Production artifacts are JEM Compat 3.10.5 SHA-256 `d1424e430811a4f358fd188197640f0a3c1d30e9e15900d6dca5414f142b6cac` and JEM Advancements 5.3.5 SHA-256 `067d430642f6671ac63f7191315bed610b59925626804d26a2f82704a629bb01`
+- MineRENT runtime now contains only those two current JEM versions. The 3.10.4 and 5.3.4 runtime JARs and their matching AutoModpack host copies were removed after explicit confirmation
+- Hosted JEM Pack preview reported `+2 ~1 -2`, publication completed with content token `d42a053f141728dc9fc16c51020807267dae80c0`, and the follow-up preview reported `+0 ~0 -0`. `jem-bootstrap.jar` and personal `options.txt` remain excluded by policy
+- The stable `JustEnoughMods` profile applied the published generation through the native reviewed transaction and detached helper. The active token matches `d42a053f141728dc9fc16c51020807267dae80c0`, all 331 managed JARs match canonical sources and no transaction remains pending
+- The cumulative friend update is `JustEnoughMods-update-2026-11-16_22-06-05.zip`, SHA-256 `7ce1aeb789e16a01d4f52d6ebb2681db9d7faa45825bbfcb7d6ff410db0f322b`
+- MineRENT reached the running state after deployment. The primary address is `ForeverSMP.minerent.io:25565`. The dynamic fallback shown on the Network page is `109.236.57.44:31604`
+- No automated tests, gameplay launch or player acceptance run was performed
+
