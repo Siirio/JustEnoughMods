@@ -1,3 +1,17 @@
+## 2026-11-16 - Prevent the F6 race preview constructor crash
+
+- User opened F6 in the stable client and reported an immediate crash with severe lag before the process closed. The user also reported that Weather Glass still existed in that profile
+- Bug / Client Sided / `DetachedPreviewPlayer.getCapability` dereferenced `source` while Forge was attaching capabilities inside the `RemotePlayer` superclass constructor, before Java could assign the subclass field / in testing through a construction-only empty capability result followed by normal connected-player delegation after assignment
+- Runtime evidence is `crash-2026-11-16_16.04.36-client.txt`. The render thread failed at `DetachedPreviewPlayer.java:38` through `InvincibleCapabilities.attachEntityCapabilities`, `RemotePlayer.<init>`, `RaceStageRenderer.prepare` and the F6 `RaceExperienceScreen` render path
+- Five Whys: F6 closed because its player preview threw a null-pointer exception, the preview threw because `getCapability` used a null `source`, `source` was null because the superclass constructor was still active, Forge called the override because installed entity capability listeners attach during player construction, and the detached preview did not protect that Java constructor-order window
+- The preview returns `LazyOptional.empty()` only before `source` assignment. After construction, it continues to delegate read access to the connected player so installed render adapters retain their initialized state. Separate preview UUIDs, live skin data, copied equipment and world detachment are unchanged
+- JEM Races advances to `2.0.4` in both its artifact name and Forge metadata. The first local startup exposed and corrected a stale `2.0.3` metadata literal before publication
+- Weather Glass is absent from `Client/ManagedPack`, the ordinary local Server and the staged host pack. Native publication sequence 167 already records exact tombstones for `mods/weatherglass-0.5.0-1.20.1-forge.jar` and `config/weatherglass.properties`. The user required the same two paths to be removed from MineRENT and the stable client with no backup copies
+- Production `reobfJar` built JEM Races `2.0.4` without tests. The artifact is 7,113,888 bytes with SHA-256 `1861c2f57f53c5282869a8a00f3b822970b2642c68006b96ae61267773d6ef21`
+- The ordinary local Server loaded Forge metadata `jem_roles 2.0.4`. The fresh native JEM Pack Sync publication is sequence 168 with content token `6a6d26c9cef7c0a81a23f296c3a61f8f65891952`. Its reviewed diff replaced JEM Races `2.0.3` with `2.0.4` and the follow-up preview returned `+0 ~0 -0`
+- Atlas rebuild, maintenance audit, source scan and validation completed with no installed-artifact drift. Canonical counts are 17,106 items, 12,165 blocks, 1,596 entities, 434 effects, 221 enchantments, 266 biomes, 745 structures, 51 creative tabs and 23,620 recipes
+- MineRENT deployment, stable-client native synchronization and player acceptance are pending
+
 ## 2026-11-16 - Recover a pending update after Bootstrap replacement
 
 - User reported that the local stable client closed during preload after the authorized `jem.27` Bootstrap replacement and requested a fix

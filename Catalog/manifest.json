@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "0ff23b052c23d882a32a5692e1bf5bb1463e652d",
-  "generated_utc": "2026-11-15T20:12:30.381471+00:00",
+  "snapshot_sha": "6d952c6aff57ee90a7ddf4f8da835d9b53c76aff",
+  "generated_utc": "2026-11-16T11:25:33.529104+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -1017,8 +1017,7 @@
           "mods": [],
           "namespaces": [],
           "sides": [
-            "client",
-            "server"
+            "client"
           ],
           "nested_dependencies": []
         },
@@ -1043,8 +1042,7 @@
           ],
           "namespaces": [],
           "sides": [
-            "client",
-            "server"
+            "client"
           ],
           "nested_dependencies": [
             {
@@ -1089,8 +1087,7 @@
           ],
           "namespaces": [],
           "sides": [
-            "client",
-            "server"
+            "client"
           ],
           "nested_dependencies": [
             {
@@ -1107,141 +1104,7 @@
               "mods": [],
               "namespaces": [],
               "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "filename": "better-clouds-1.3.37-beta+1.20.1-forge.rev.e63efe2.jar",
-      "sha256": "985b0e93156819847d3e825fa19f4267b8f2aa0efafeeb2d9c681bf52d040ca3",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "betterclouds",
-          "name": "Better Clouds",
-          "version": "1.3.37-beta+1.20.1-forge.rev.e63efe2",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "betterclouds"
-      ],
-      "source_path": "Server\\mods\\better-clouds-1.3.37-beta+1.20.1-forge.rev.e63efe2.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/api-5.0.0.jar",
-          "sha256": "4d0ef27b7a2889a7444e734a00d5aad690944967231571ac497cc5aecbb3894b",
-          "identifier": {
-            "group": "gs.mclo",
-            "artifact": "api"
-          },
-          "version": {
-            "range": "[5.0.0,)",
-            "artifactVersion": "5.0.0"
-          },
-          "mods": [],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": []
-        },
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
-          "sha256": "23210ec6c25e445823f75fac4bb8209cdfcfb43aaa3ffa5fb659451063604d2b",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        },
-        {
-          "path": "META-INF/jars/mixinsquared-forge-0.2.0.jar",
-          "sha256": "332c16da4ea88be4af4b6a3d6d9ef7e9ea934d10ad037107d0e67dd2be89aa84",
-          "identifier": {
-            "group": "com.github.bawnorton.mixinsquared",
-            "artifact": "mixinsquared-forge"
-          },
-          "version": {
-            "range": "[0.2.0,)",
-            "artifactVersion": "0.2.0"
-          },
-          "mods": [
-            {
-              "id": "mixinsquared",
-              "name": "MixinSquared",
-              "version": "0.2.0",
-              "display_test": "unknown"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinSquared-0.2.0.jar",
-              "sha256": "853a3008cc1839163e8b713be6b6ff6a582ba0e9720db2b4ca0e2c00e26619b8",
-              "identifier": {
-                "group": "com.github.Bawnorton",
-                "artifact": "MixinSquared"
-              },
-              "version": {
-                "range": "[0.2.0,)",
-                "artifactVersion": "0.2.0"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
+                "client"
               ],
               "nested_dependencies": []
             }
@@ -9718,28 +9581,6 @@
       "nested_dependencies": []
     },
     {
-      "filename": "inventorytabs-forge-1.20.1-0.10.1-jem.1.jar",
-      "sha256": "7912952426d4c1733295742f6266deafb463dcd0f3a5985527f8a2e9cc2bf021",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "inventorytabs",
-          "name": "Inventory Tabs",
-          "version": "${file.jarVersion}",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "inventorytabs",
-        "techreborn"
-      ],
-      "source_path": "Server\\mods\\inventorytabs-forge-1.20.1-0.10.1-jem.1.jar",
-      "nested_dependencies": []
-    },
-    {
       "filename": "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar",
       "sha256": "b131bcb1e74456d74677716587771277b6fee384ae0b95d22c8d9b9777bcce4e",
       "sides": [
@@ -10247,7 +10088,7 @@
     },
     {
       "filename": "jem-bootstrap.jar",
-      "sha256": "5737168e889be25b21c7290a4c4b6df4e8037809a68adf15503b3a73a7bff3f6",
+      "sha256": "11747e6443898bd55efa6da77d4ead922b760b8b260e31a90b05e74ade4e048b",
       "sides": [
         "client"
       ],
@@ -10268,7 +10109,7 @@
     },
     {
       "filename": "jem-bootstrap.jar",
-      "sha256": "5737168e889be25b21c7290a4c4b6df4e8037809a68adf15503b3a73a7bff3f6",
+      "sha256": "11747e6443898bd55efa6da77d4ead922b760b8b260e31a90b05e74ade4e048b",
       "sides": [
         "server"
       ],
@@ -10374,8 +10215,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jem-races-2.0.3.jar",
-      "sha256": "0d86f4f3f82790152ec2fc6934d8f07c80c1ba4242d17a3e970f7da19a6467ef",
+      "filename": "jem-races-2.0.4.jar",
+      "sha256": "1861c2f57f53c5282869a8a00f3b822970b2642c68006b96ae61267773d6ef21",
       "sides": [
         "client"
       ],
@@ -10384,7 +10225,7 @@
         {
           "id": "jem_roles",
           "name": "JEM Races",
-          "version": "2.0.3",
+          "version": "2.0.4",
           "display_test": "unknown"
         }
       ],
@@ -10393,12 +10234,12 @@
         "jem_roles",
         "jem_visual_sandbox"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jem-races-2.0.3.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jem-races-2.0.4.jar",
       "nested_dependencies": []
     },
     {
-      "filename": "jem-races-2.0.3.jar",
-      "sha256": "0d86f4f3f82790152ec2fc6934d8f07c80c1ba4242d17a3e970f7da19a6467ef",
+      "filename": "jem-races-2.0.4.jar",
+      "sha256": "1861c2f57f53c5282869a8a00f3b822970b2642c68006b96ae61267773d6ef21",
       "sides": [
         "server"
       ],
@@ -10407,7 +10248,7 @@
         {
           "id": "jem_roles",
           "name": "JEM Races",
-          "version": "2.0.3",
+          "version": "2.0.4",
           "display_test": "unknown"
         }
       ],
@@ -10416,7 +10257,7 @@
         "jem_roles",
         "jem_visual_sandbox"
       ],
-      "source_path": "Server\\mods\\jem-races-2.0.3.jar",
+      "source_path": "Server\\mods\\jem-races-2.0.4.jar",
       "nested_dependencies": []
     },
     {
@@ -14331,8 +14172,7 @@
               "mods": [],
               "namespaces": [],
               "sides": [
-                "client",
-                "server"
+                "client"
               ],
               "nested_dependencies": []
             }
@@ -20344,8 +20184,7 @@
           "mods": [],
           "namespaces": [],
           "sides": [
-            "client",
-            "server"
+            "client"
           ],
           "nested_dependencies": [
             {
@@ -20362,69 +20201,7 @@
               "mods": [],
               "namespaces": [],
               "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "filename": "swingingsigns-forge-1.0.1-mc1.20.1.jar",
-      "sha256": "36b19a3c59208d42bf2af9d3bfce150ee4e70dee4d5fb982612ea1a443cdb3f2",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "swingingsigns",
-          "name": "Swinging Hanging Signs",
-          "version": "1.0.1+mc1.20.1",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "swingingsigns"
-      ],
-      "source_path": "Server\\mods\\swingingsigns-forge-1.0.1-mc1.20.1.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jarjar/mixinextras-forge-0.5.5.jar",
-          "sha256": "42564e02756fbdf78e1f1fd2115fe2d01fb42497ba3be2a3c261da2058122533",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.5.5,)",
-            "artifactVersion": "0.5.5"
-          },
-          "mods": [],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.5.5.jar",
-              "sha256": "a3590ce69cec77141990eb439de790b9c162504fab2ba29fec77850136120b0b",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.5.5,)",
-                "artifactVersion": "0.5.5"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
+                "client"
               ],
               "nested_dependencies": []
             }

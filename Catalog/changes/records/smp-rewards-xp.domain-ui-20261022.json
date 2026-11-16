@@ -22,13 +22,13 @@
     "overrides": []
   },
   "change": {
-    "summary": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share a capability-free detached native preview with immediate default skin and live skin resolution",
+    "summary": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share a construction-safe detached native preview with immediate default skin and live skin resolution",
     "modifiers": [
       {
         "property": "domain.independent_presentation",
         "operation": "replace",
         "before": "Market lacks explicit independent command; race stage renders live camera player",
-        "after": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share a capability-free detached native preview with immediate default skin and live skin resolution"
+        "after": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share a detached native preview that has no independent gameplay state and delegates capability reads only after construction"
       }
     ]
   },
@@ -67,6 +67,12 @@
       "commit": "SELF",
       "action": "isolate_detached_preview_capabilities",
       "summary": "Keep the detached native race preview capability-free because it never receives the client-level join lifecycle required by installed entity render adapters"
+    },
+    {
+      "date": "2026-11-16",
+      "commit": "SELF",
+      "action": "correct_detached_preview_capability_lifecycle",
+      "summary": "Return no capability during RemotePlayer construction, then delegate render-adapter capability reads to the connected LocalPlayer"
     }
   ],
   "impacts": {
@@ -80,7 +86,7 @@
     ],
     "relations": [],
     "notes": [
-      "The detached preview delegates skin, model and visible parts to the real player and copies equipment. It hides only world-lifecycle Forge capabilities.",
+      "The detached preview delegates skin, model, visible parts and post-construction capability reads to the real player and copies equipment. It returns no capability during superclass construction and never joins the client level.",
       "Production source/build evidence is separate from gameplay acceptance. No automated tests or gameplay launch."
     ],
     "unresolved": [

@@ -32,6 +32,11 @@ final class DetachedPreviewPlayer extends RemotePlayer {
     @Override public boolean isModelPartShown(PlayerModelPart part) { return source.isModelPartShown(part); }
 
     @Override public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction side) {
+        // Forge gathers capabilities during the RemotePlayer constructor, before Java can assign
+        // this subclass field. The detached actor has no capability source during that short phase.
+        if (source == null) {
+            return LazyOptional.empty();
+        }
         // Epic Fight, CPM and similar render adapters initialize their player patch on the real
         // LocalPlayer. Delegating read access keeps the detached actor out of the world lifecycle
         // while allowing the same renderer to draw it on the first mandatory screen and on F6.
