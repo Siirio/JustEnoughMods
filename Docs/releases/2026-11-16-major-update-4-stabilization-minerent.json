@@ -1,0 +1,103 @@
+{
+  "format": 1,
+  "releaseMode": "minerent_and_hosted_automodpack_with_manual_client_application",
+  "userScope": {
+    "mineRentDeployment": true,
+    "nativeAutoModpackPublication": true,
+    "localServerUpdate": true,
+    "clientProfileApplication": false,
+    "friendPackage": false,
+    "releaseBaselinePromotion": false,
+    "productionMainPromotion": true
+  },
+  "source": {
+    "branch": "develop",
+    "commit": "2875269620fc035a1a4480838caa716cb12adff8",
+    "preflightVerifiedAt": "2026-11-16T02:06:49.672766+05:00",
+    "releaseInventorySha256": "de04a09c1d9197f41c8f0dcf907d4e578530aca583bd7712553b508546e2416e",
+    "packSyncInventorySha256": "c05067a14355d31aae0be8113703d8f2715c36404120bcc3cad10590034b1aef",
+    "releaseFiles": 2957,
+    "packSyncFiles": 2950
+  },
+  "payload": {
+    "filename": "minerent-mu4-stabilization-20261116-020559.zip",
+    "sha256": "cb1603af0fd953c627a669f9b85aa8a1059d8d7fa037abdc3b5436ee45aa1d73",
+    "size": 113156007,
+    "transfer": "sftp",
+    "uploadedFiles": 49,
+    "runtimeCopied": 25,
+    "hostedCopied": 24,
+    "runtimeDeleted": [
+      "/config/ftbquests/quests/reward_tables/v2_home_housewarming.snbt",
+      "/config/weatherglass.properties",
+      "/mods/weatherglass-0.5.0-1.20.1-forge.jar"
+    ],
+    "hostedDeleted": [
+      "/automodpack/host-modpack/main/config/ftbquests/quests/reward_tables/v2_home_housewarming.snbt",
+      "/automodpack/host-modpack/main/config/weatherglass.properties",
+      "/automodpack/host-modpack/main/mods/weatherglass-0.5.0-1.20.1-forge.jar"
+    ],
+    "temporaryArchiveRemoved": true
+  },
+  "server": {
+    "name": "JustEnough",
+    "panel": "https://my.minerent.net/server/0618360f",
+    "state": "running",
+    "readyAt": "2026-11-16T12:05:26+05:00",
+    "readyEvidence": "MineRENT reported running and ModernFix reported a completed 45.366-second dedicated-server startup",
+    "primaryAddress": "ForeverSMP.minerent.io:25565",
+    "dynamicFallbackAddress": "109.236.57.44:31604"
+  },
+  "runtimeEvidence": {
+    "ftbQuestChapters": 15,
+    "ftbQuests": 613,
+    "ftbRewardTables": 8,
+    "roadWeaverStructures": 750,
+    "roadWeaverTags": 92,
+    "productionPrivilegesDisabled": true
+  },
+  "publication": {
+    "published": true,
+    "publishedAt": "2026-11-16T12:06:09+05:00",
+    "contentTokenShort": "17bda46",
+    "preview": {
+      "added": 8,
+      "changed": 16,
+      "deleted": 3,
+      "excluded": 2
+    },
+    "postPublicationPreviewAt": "2026-11-16T12:06:21+05:00",
+    "postPublicationPreview": {
+      "added": 0,
+      "changed": 0,
+      "deleted": 0,
+      "excluded": 2
+    },
+    "excluded": [
+      "main/mods/jem-bootstrap.jar",
+      "main/options.txt"
+    ]
+  },
+  "localPublication": {
+    "journalSequence": 167,
+    "contentToken": "1cc7c922ef931fcc7b134830b3a893469363fa41",
+    "manifestSha1": "efba77b9db45ad6924a460c76136d09bdd82c33a",
+    "testProfileApplied": true,
+    "managedJarMatches": 331,
+    "pendingTransaction": false
+  },
+  "productionPromotion": {
+    "branch": "main",
+    "method": "normal-fast-forward",
+    "status": "complete"
+  },
+  "preservedClientState": {
+    "stableProfileChanged": false,
+    "friendPackageCreated": false,
+    "releaseBaselinePromoted": false,
+    "manualClientApplication": true
+  },
+  "playerAcceptance": "in testing",
+  "automatedTestsRun": false,
+  "gameplayLaunched": false
+}

@@ -1,3 +1,16 @@
+## 2026-11-16 - Deploy Major Update 4 stabilization to MineRENT
+
+- User authorized the completed stabilization release on MineRENT, requested manual client acceptance, and requested production promotion to `main`
+- Uploaded the exact 49-file payload from approved `develop` commit `2875269620fc035a1a4480838caa716cb12adff8` through SFTP after the MineRENT archive extractor could not reach the stopped server node
+- The payload archive was 113,156,007 bytes with SHA-256 `cb1603af0fd953c627a669f9b85aa8a1059d8d7fa037abdc3b5436ee45aa1d73`. SFTP verified the expected sizes for JEM Server, Bootstrap, StructBlend, its config, and the hosted manifest
+- Removed only the three approved obsolete runtime paths and their three hosted counterparts: Weather Glass, its config, and the retired `v2_home_housewarming.snbt` reward table. The temporary uploaded archive was also removed
+- MineRENT returned to `Работает`. The fresh runtime loaded 613 quests and 8 reward tables, discovered 750 RoadWeaver structures and 92 tags, and reported a completed 45.366-second dedicated-server startup
+- Native hosted publication completed at `2026-11-16T12:06:09+05:00` with content token `17bda46` and reviewed diff `+8 ~16 -3 (2 excluded)`. The follow-up preview at `12:06:21+05:00` returned `+0 ~0 -0`
+- Primary address is `ForeverSMP.minerent.io:25565`. The dynamic fallback observed on the MineRENT Network page is `109.236.57.44:31604`
+- The stable `JustEnoughMods` profile, friend package, and immutable release baseline were not changed. The user will accept the client update manually through AutoModpack
+- Production `main` was updated by normal fast-forward after the release receipt was committed to `develop`. Player acceptance remains `in testing`
+- No automated tests, gameplay QA, or Minecraft client launch was performed
+
 ## 2026-11-16 - Implement the Major Update 4 stabilization release
 
 - User authorized implementation, MineRENT deployment, and production promotion to `main` after the release is complete
