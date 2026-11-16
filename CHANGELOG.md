@@ -7,7 +7,8 @@
 - MineRENT returned to `Работает`. The fresh runtime loaded 613 quests and 8 reward tables, discovered 750 RoadWeaver structures and 92 tags, and reported a completed 45.366-second dedicated-server startup
 - Native hosted publication completed at `2026-11-16T12:06:09+05:00` with content token `17bda46` and reviewed diff `+8 ~16 -3 (2 excluded)`. The follow-up preview at `12:06:21+05:00` returned `+0 ~0 -0`
 - Primary address is `ForeverSMP.minerent.io:25565`. The dynamic fallback observed on the MineRENT Network page is `109.236.57.44:31604`
-- The stable `JustEnoughMods` profile, friend package, and immutable release baseline were not changed. The user will accept the client update manually through AutoModpack
+- The stable `JustEnoughMods` profile initially remained unchanged. After deployment, the user explicitly requested installation of the matching bootstrap, so `sync-stable` replaced only `mods/jem-bootstrap.jar` with SHA-256 `5737168e889be25b21c7290a4c4b6df4e8037809a68adf15503b3a73a7bff3f6`. The native managed update still requires manual acceptance through AutoModpack
+- The friend package and immutable release baseline were not changed
 - Production `main` was updated by normal fast-forward after the release receipt was committed to `develop`. Player acceptance remains `in testing`
 - No automated tests, gameplay QA, or Minecraft client launch was performed
 

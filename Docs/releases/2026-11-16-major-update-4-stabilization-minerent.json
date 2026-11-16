@@ -86,13 +86,23 @@
     "managedJarMatches": 331,
     "pendingTransaction": false
   },
+  "stableBootstrap": {
+    "installed": true,
+    "installedAt": "2026-11-16T12:13:42+05:00",
+    "method": "python tools/jem.py sync-stable",
+    "path": "mods/jem-bootstrap.jar",
+    "sha256": "5737168e889be25b21c7290a4c4b6df4e8037809a68adf15503b3a73a7bff3f6",
+    "otherProfileFilesChanged": false,
+    "managedUpdateApplied": false
+  },
   "productionPromotion": {
     "branch": "main",
     "method": "normal-fast-forward",
     "status": "complete"
   },
   "preservedClientState": {
-    "stableProfileChanged": false,
+    "stableProfileChanged": true,
+    "stableProfileChange": "matching bootstrap only",
     "friendPackageCreated": false,
     "releaseBaselinePromoted": false,
     "manualClientApplication": true
