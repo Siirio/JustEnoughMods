@@ -1,0 +1,45 @@
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/ReviewedUpdatePlan.java b/core/src/main/java/pl/skidam/automodpack_core/update/ReviewedUpdatePlan.java
+index e75b63134..e63cdd92c 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/ReviewedUpdatePlan.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/ReviewedUpdatePlan.java
+@@ -12,7 +12,7 @@ import pl.skidam.automodpack_core.update.UpdatePlan.ProjectedFile;
+ 
+ /**
+  * Owns the finite lifecycle and the outcome contract of one player-reviewed update plan. The review approves the
+- * outcome - the target generation, the projected final state, and the planned client configuration - never the work
++ * outcome - the target generation, selected managed projection, generated copies, and planned client configuration - never the work
+  * description, so a plan rebuilt after a partial apply is judged by the one predicate both the live replan seam and
+  * boot recovery share: {@link #outcomeCompatible(UpdatePlan, UpdatePlan)}.
+  */
+@@ -90,15 +90,17 @@ public final class ReviewedUpdatePlan {
+ 		List<String> drifted = new ArrayList<>();
+ 		if (!left.modpackId().equals(right.modpackId())) drifted.add("modpack");
+ 		if (!left.generation().equals(right.generation())) drifted.add("target generation");
+-		if (!left.projected().equals(right.projected())) drifted.add("projected final state");
++		if (!left.projected().equals(right.projected())) drifted.add("selected managed projection");
+ 		if (!left.generatedCopies().equals(right.generatedCopies())) drifted.add("generated copies");
+ 		if (!Objects.equals(left.config(), right.config())) drifted.add("planned client configuration");
+ 		return drifted;
+ 	}
+ 
+ 	/**
+-	 * The approved outcome: destination files that remain, never leftover absent rows from already-applied deletes, and
+-	 * the generated-copy index finalize will write (path/sha1/size, never NestedCopy.ids).
++	 * The approved outcome: selected managed projection files that remain, never mutable game-directory or editable
++	 * overlay observations, plus the generated-copy index finalize will write (path/sha1/size, never NestedCopy.ids).
++	 * Mutable roots still keep their transaction preconditions and final-state verification; they are omitted only from
++	 * the review-compatibility identity so a safe replan can observe their current bytes.
+ 	 */
+ 	private record OutcomeTuple(String modpackId, PackTarget generation, List<ProjectedFile> projected, List<GeneratedCopyIdentity> generatedCopies,
+ 			ClientConfigJsons.ClientConfigFieldsV3 config) {}
+@@ -112,7 +114,9 @@ public final class ReviewedUpdatePlan {
+ 
+ 	private static List<ProjectedFile> destination(UpdatePlan plan) {
+ 		List<ProjectedFile> present = new ArrayList<>();
+-		if (plan.projectedFinalState() != null) for (ProjectedFile file : plan.projectedFinalState()) if (file != null && file.present()) present.add(file);
++		if (plan.projectedFinalState() != null)
++			for (ProjectedFile file : plan.projectedFinalState())
++				if (file != null && file.root() == UpdatePlan.Root.PROJECTION && file.present()) present.add(file);
+ 		present.sort(Comparator.comparingInt((ProjectedFile file) -> file.root().ordinal()).thenComparing(ProjectedFile::relativePath));
+ 		return present;
+ 	}

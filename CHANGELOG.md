@@ -1,3 +1,14 @@
+## 2026-11-16 - Recover a pending update after Bootstrap replacement
+
+- User reported that the local stable client closed during preload after the authorized `jem.27` Bootstrap replacement and requested a fix
+- Bug / Client Sided / pending-update review compatibility compared every observed `GAME_DIR` and overlay file, so the authorized replacement of excluded `mods/jem-bootstrap.jar` changed the recorded projected final state and stopped boot recovery before it could replace the stale transaction / in testing through Bootstrap revision `jem.28`, which identifies review compatibility by the selected managed projection while retaining generated-copy, target-generation and client-configuration checks
+- Runtime evidence is transaction `4ffcad76-35fb-49f0-8883-3b6e195b0019`. Its reviewed plan recorded the old Bootstrap at 3,491,460 bytes with SHA-1 `917ffd6536c7adb4b18195ba4d0fbd427074338d`, while the authorized `jem.27` file was 3,492,137 bytes with SHA-1 `92384ae04cf4f9fbee7c6e6bd1ecb7f7599ac0cc`. The log then reported `Projected target changed during update` for that exact path
+- Five Whys: preload stopped because pending recovery required a new review, the review identity changed because it included the Bootstrap bytes, those bytes changed because the user installed the required excluded Bootstrap, the excluded Bootstrap appeared in the identity because the plan used all observed final-state roots, and `ReviewedUpdatePlan` did not separate the player-approved managed projection from mutable external observations
+- `ReviewedUpdatePlan` now compares only present `PROJECTION` files for review compatibility. Transaction preconditions, projected final-state validation for every root, hash checks, target-generation identity, generated-copy identity, planned configuration and the trust gate remain active
+- Production `oneJar` built Bootstrap revision `jem.28` without tests. The artifact is 3,492,173 bytes with SHA-256 `11747e6443898bd55efa6da77d4ead922b760b8b260e31a90b05e74ade4e048b`
+- Installed the exact artifact as the only Bootstrap JAR in `Client/ManagedPack`, the bootstrap-only installer, the ordinary local Server and the closed stable `JustEnoughMods` profile. The stale transaction was retained so the next launch exercises normal audited recovery
+- The pack-sync staging audit copied and deleted no managed files because Bootstrap remains excluded. No managed generation was published, no release baseline was promoted and no Minecraft client was launched
+
 ## 2026-11-16 - Defer reviewed client updates until Minecraft exits
 
 - User reported repeated `UpdateReplanRequiredException` failures and required a download path that also works for friends whose client predates the spawn-egg release
@@ -11,6 +22,10 @@
 - Production `oneJar` built Bootstrap revision `jem.27` without tests. The artifact is 3,492,137 bytes with SHA-256 `9a6bf57540b749f4a83b5f169b451309049b072470368df159e2a863d286cdcb`
 - Installed the exact artifact as the only Bootstrap JAR in `Client/ManagedPack`, the bootstrap-only installer, the ordinary local Server and the closed stable `JustEnoughMods` profile. No other stable client file was changed, and the user will accept the managed modpack update manually
 - Bootstrap remains excluded from the managed generation. The required staging audit found unrelated pre-existing Better Villages source drift, so no AutoModpack generation was published as part of this Bootstrap-only rollout and the release baseline remains unchanged
+- MineRENT was stopped cleanly and `/mods/jem-bootstrap.jar` was replaced with the same 3,492,137-byte `jem.27` artifact with SHA-256 `9a6bf57540b749f4a83b5f169b451309049b072470368df159e2a863d286cdcb`. The remote `mods` inventory contained exactly one Bootstrap or AutoModpack JAR, so no duplicate remote JAR required deletion
+- MineRENT returned to `Работает`. The console confirmed completed dedicated-server loading at `2026-11-16T15:00:17+05:00`, active AutoModpack hosting through the Minecraft Login holepunch and no Bootstrap load failure
+- The hosted managed generation was not changed or republished. Its existing content token `c033093` remains in service, and the user will download and accept that managed update manually
+- No automated tests, gameplay QA or Minecraft client launch was performed
 
 ## 2026-11-16 - Correct the hosted Luxium catalogue
 

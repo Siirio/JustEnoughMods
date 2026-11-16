@@ -23,6 +23,7 @@ PATCHES = (
     MODULE / "patches" / "equal-token-screen-neutral.patch",
     MODULE / "patches" / "locked-file-guidance.patch",
     MODULE / "patches" / "offline-running-game-updates.patch",
+    MODULE / "patches" / "reviewed-managed-projection.patch",
 )
 
 
