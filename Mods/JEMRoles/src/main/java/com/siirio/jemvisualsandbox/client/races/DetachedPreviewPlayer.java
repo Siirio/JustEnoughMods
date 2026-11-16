@@ -5,13 +5,10 @@ import java.util.UUID;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.player.RemotePlayer;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
 
-/** A display-only player that reuses the connected player's render capabilities. */
+/** A display-only player that reuses appearance without borrowing gameplay state. */
 final class DetachedPreviewPlayer extends RemotePlayer {
     private final LocalPlayer source;
 
@@ -30,16 +27,4 @@ final class DetachedPreviewPlayer extends RemotePlayer {
     @Override public ResourceLocation getElytraTextureLocation() { return source.getElytraTextureLocation(); }
     @Override public String getModelName() { return source.getModelName(); }
     @Override public boolean isModelPartShown(PlayerModelPart part) { return source.isModelPartShown(part); }
-
-    @Override public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction side) {
-        // Forge gathers capabilities during the RemotePlayer constructor, before Java can assign
-        // this subclass field. The detached actor has no capability source during that short phase.
-        if (source == null) {
-            return LazyOptional.empty();
-        }
-        // Epic Fight, CPM and similar render adapters initialize their player patch on the real
-        // LocalPlayer. Delegating read access keeps the detached actor out of the world lifecycle
-        // while allowing the same renderer to draw it on the first mandatory screen and on F6.
-        return source.getCapability(capability, side);
-    }
 }

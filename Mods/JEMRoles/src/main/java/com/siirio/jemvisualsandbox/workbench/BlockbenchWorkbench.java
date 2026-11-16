@@ -62,6 +62,14 @@ public final class BlockbenchWorkbench {
     private static long startTick;
     private static float yaw;
     private BlockbenchWorkbench() {}
+    public static Component castKeyLabel() { return CAST.getTranslatedKeyMessage(); }
+    public static Component secondaryKeyLabel() { return SECONDARY.getTranslatedKeyMessage(); }
+    public static boolean matchesCast(int key, int scanCode) {
+        return CAST.isActiveAndMatches(InputConstants.getKey(key, scanCode));
+    }
+    public static boolean matchesSecondary(int key, int scanCode) {
+        return SECONDARY.isActiveAndMatches(InputConstants.getKey(key, scanCode));
+    }
     @Mod.EventBusSubscriber(modid="jem_roles", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static final class Keys {
         @SubscribeEvent public static void register(RegisterKeyMappingsEvent event) {

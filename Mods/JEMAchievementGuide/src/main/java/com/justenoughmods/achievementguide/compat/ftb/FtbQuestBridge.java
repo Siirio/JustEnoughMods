@@ -6,6 +6,7 @@ import dev.ftb.mods.ftbquests.net.SyncQuestsMessage;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.task.CustomTask;
 import dev.ftb.mods.ftbteams.api.event.TeamEvent;
+import com.justenoughmods.achievementguide.integration.travel.TravelProof;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -75,7 +76,12 @@ public final class FtbQuestBridge {
         // Native reload reads its normal team files. Flush first so an enable/disable cannot lose recent progress.
         file.saveNow();
         file.load();
-        // Native clients request TeamData after installing these definitions.
+        // Unlock authoritative team data before the quest definitions reach clients. The native
+        // SyncQuestsMessage handler requests team data only after ClientQuestFile is installed.
+        // Sending team data here can decode against a null ClientQuestFile and crash the client.
+        for (var player : event.getServer().getPlayerList().getPlayers()) {
+            unlockNativeTeamData(file, player);
+        }
         new SyncQuestsMessage(file).sendToAll(event.getServer());
     }
 
@@ -87,14 +93,24 @@ public final class FtbQuestBridge {
         while (iterator.hasNext()) {
             var pending = iterator.next();
             var player = event.getServer().getPlayerList().getPlayer(pending.getKey());
-            if (player != null) {
-                var data = file.getOrCreateTeamData(pending.getValue());
-                if (data.setLocked(false)) data.saveIfChanged();
-                // setLocked sends the native lock update. The full login snapshot is
-                // owned by FTB's post-definition RequestTeamDataMessage handshake.
+            if (player == null) {
+                iterator.remove();
+                continue;
             }
+            if (!TravelProof.authenticated(player)) continue;
+            var data = file.getOrCreateTeamData(pending.getValue());
+            if (data.setLocked(false)) data.saveIfChanged();
+            // ServerLogin can reject FTB's first team-data request while the player is still
+            // locked. Re-send the native quest definition after admission so FTB installs its
+            // client file first and then issues its own team-data request in the correct order.
+            new SyncQuestsMessage(file).sendTo(player);
             iterator.remove();
         }
+    }
+
+    private static void unlockNativeTeamData(ServerQuestFile file, net.minecraft.server.level.ServerPlayer player) {
+        var data = file.getOrCreateTeamData(player);
+        if (data.setLocked(false)) data.saveIfChanged();
     }
 
     @SubscribeEvent

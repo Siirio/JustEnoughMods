@@ -3,6 +3,7 @@ package com.siirio.jemvisualsandbox.client.races;
 import com.siirio.jemvisualsandbox.workbench.RaceExperience;
 import com.siirio.jemvisualsandbox.workbench.RacePowerStages;
 import com.siirio.jemvisualsandbox.workbench.BloomMechanics;
+import com.siirio.jemvisualsandbox.workbench.BlockbenchWorkbench;
 import com.siirio.jemvisualsandbox.workbench.SandboxNetwork;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,8 +99,8 @@ public final class RaceExperienceScreen extends Screen {
             preparedSignature=signature;preparedSecondary=secondary;
             List<Line> lines=new ArrayList<>();
             if(showCooldowns) {
-                lines.add(new Line(cooldown("V",status.signatureRemaining()),0xDEDEDE));
-                lines.add(new Line(cooldown("B",status.secondaryRemaining()),0xDEDEDE));
+                lines.add(new Line(cooldown(primaryKey(),status.signatureRemaining()),0xDEDEDE));
+                lines.add(new Line(cooldown(secondaryKey(),status.secondaryRemaining()),0xDEDEDE));
             }
             if(!previewVisible())lines.add(new Line(text("Уменьши масштаб GUI для 3D-просмотра","Reduce GUI scale to show the 3D preview"),0xD8BD8D));
             WrappedRows wrapped=wrapRows(lines,staticContentHeight);
@@ -157,8 +158,8 @@ public final class RaceExperienceScreen extends Screen {
                 Component.translatable("jem.roles.select"), b -> confirm()));
         int previewWidth = panelWidth() - 24;
         int slotWidth = previewWidth / 2;
-        addRenderableWidget(new QuietButton(panelLeft()+12, 75, slotWidth, 18, Component.literal("V"), b -> selectPreview(0)));
-        addRenderableWidget(new QuietButton(panelLeft()+12+slotWidth, 75, slotWidth, 18, Component.literal("B / И"), b -> selectPreview(1)));
+        addRenderableWidget(new QuietButton(panelLeft()+12, 75, slotWidth, 18, primaryKey(), b -> selectPreview(0)));
+        addRenderableWidget(new QuietButton(panelLeft()+12+slotWidth, 75, slotWidth, 18, secondaryKey(), b -> selectPreview(1)));
         previewLevel=null;
         {
         int controlsY=previewVisible()?previewBottom()+2:96;
@@ -228,7 +229,7 @@ public final class RaceExperienceScreen extends Screen {
             developerTier.setMessage(text("DEV · уровень " + tier(), "DEV · tier " + tier()));
         }
         if (resetProgress != null) resetProgress.active = !busy && status.selected() && status.race() == race;
-        if (previewLevel != null) previewLevel.setMessage(Component.literal((previewSlot==0?"V":"B")+" · ")
+        if (previewLevel != null) previewLevel.setMessage((previewSlot==0?primaryKey():secondaryKey()).copy().append(" · ")
                 .append(stageName(previewTier))
                 .append(text(previewUnlocked()?" · открыт":" · закрыт",previewUnlocked()?" · unlocked":" · locked")));
         if (bloomUnlock != null) {
@@ -355,7 +356,9 @@ public final class RaceExperienceScreen extends Screen {
         lines.add(Line.gap());
         lines.add(new Line(Component.translatable("jem.roles.strengths"), 0xB5DBA4));
         for (int i = 1; i <= 5; i++) {
-            lines.add(new Line(Component.literal("+ ").append(tr("buff." + i)), 0xE5E5E5));
+            Component buff=tr("buff." + i);
+            Component binding=buffBinding(i);
+            lines.add(new Line(Component.literal("+ ").append(buff).append(binding==null?Component.empty():Component.literal(" [").append(binding).append("]")), 0xE5E5E5));
             lines.add(new Line(tr("buff.detail." + i), 0xB2B2B2));
         }
         lines.add(Line.gap());
@@ -372,11 +375,12 @@ public final class RaceExperienceScreen extends Screen {
     private List<Line> progressionLines() {
         List<Line> lines = new ArrayList<>();
         boolean chosen = status.selected() && status.race() == race;
-        lines.add(new Line(text("АКТИВНОЕ УМЕНИЕ · V", "ACTIVE ABILITY · V"), ACCENTS[race]));
+        lines.add(new Line(text("АКТИВНОЕ УМЕНИЕ · ", "ACTIVE ABILITY · ").copy().append(primaryKey()), ACCENTS[race]));
         lines.add(new Line(tr("spell.short"), 0xF1F1F1));
         lines.add(new Line(tr("spell.detail"), 0xBEBEBE));
-        lines.add(new Line(text("B / Shift+B — контекстные действия; см. происхождение.",
-                "B / Shift+B — contextual actions; see Origin."), 0xA5A5A5));
+        lines.add(new Line(secondaryKey().copy().append(" / ").append(modifiedSecondaryKey())
+                .append(text(" — контекстные действия; см. происхождение.",
+                        " — contextual actions; see Origin.")), 0xA5A5A5));
         lines.add(Line.gap());
         lines.add(new Line(text("ПАССИВНЫЕ ЧЕРТЫ", "PASSIVE TRAITS"), ACCENTS[race]));
         lines.add(new Line(text("Все пять преимуществ и две слабости — во вкладке «Происхождение».",
@@ -391,8 +395,9 @@ public final class RaceExperienceScreen extends Screen {
             lines.add(new Line(text("УЛУЧШЕНИЯ КОРНЕЙ", "ROOT UPGRADES"), ACCENTS[race]));
             lines.add(new Line(text("I · блокировка действий; II · 2,7 урона/сек.; III · яд после захвата.",
                     "I · action lock; II · 2.7 damage/sec; III · poison after release."), 0xDEDEDE));
-            lines.add(new Line(text("Выбери нужное улучшение в просмотре V; кнопка под ним открывает следующий доступный этап без пропусков.",
-                    "Inspect an upgrade under V; its button unlocks the next available stage in order."), 0xB2B2B2));
+            lines.add(new Line(text("Выбери нужное улучшение в просмотре ", "Inspect an upgrade under ").copy()
+                    .append(primaryKey()).append(text("; кнопка под ним открывает следующий доступный этап без пропусков.",
+                            "; its button unlocks the next available stage in order.")), 0xB2B2B2));
         }
         if (chosen) {
             lines.add(Line.gap());
@@ -464,9 +469,9 @@ public final class RaceExperienceScreen extends Screen {
                 en="Five eruptions at every stage. Damage per eruption: "+number(RacePowerStages.eruptionDamage(previewTier))+" HP; fire "+days(RacePowerStages.fireSeconds(previewTier)*20L)+".";
             }
         } else switch(race) {
-            case 0 -> {ru="Автоматический страж появляется при здоровье ниже 40%; срок жизни "+days(RacePowerStages.guardianTicks(previewTier))+" B не является атакой.";en="Automatic guardian appears below 40% health; lifetime "+days(RacePowerStages.guardianTicks(previewTier))+". B is not an attack.";}
-            case 1 -> {ru="Удерживай B "+days(10L)+": жемчуг с настоящей траекторией. Shift+B: отрицание гравитации на "+days(RacePowerStages.gravityTicks(previewTier))+"";en="Hold B for "+days(10L)+": pearl with its real trajectory. Shift+B: gravity denial for "+days(RacePowerStages.gravityTicks(previewTier))+".";}
-            case 2 -> {ru="B включает/выключает временный лиственный мост: "+days(RacePowerStages.bridgeTicks(previewTier))+", "+RacePowerStages.bridgeForward(previewTier)+" блоков вперёд.";en="B toggles a temporary leaf bridge: "+days(RacePowerStages.bridgeTicks(previewTier))+", "+RacePowerStages.bridgeForward(previewTier)+" blocks forward.";}
+            case 0 -> {ru="Автоматический страж появляется при здоровье ниже 40%; срок жизни "+days(RacePowerStages.guardianTicks(previewTier))+" "+secondaryKey().getString()+" не является атакой.";en="Automatic guardian appears below 40% health; lifetime "+days(RacePowerStages.guardianTicks(previewTier))+". "+secondaryKey().getString()+" is not an attack.";}
+            case 1 -> {ru="Удерживай "+secondaryKey().getString()+" "+days(10L)+": жемчуг с настоящей траекторией. "+modifiedSecondaryKey().getString()+": отрицание гравитации на "+days(RacePowerStages.gravityTicks(previewTier))+"";en="Hold "+secondaryKey().getString()+" for "+days(10L)+": pearl with its real trajectory. "+modifiedSecondaryKey().getString()+": gravity denial for "+days(RacePowerStages.gravityTicks(previewTier))+".";}
+            case 2 -> {ru=secondaryKey().getString()+" включает/выключает временный лиственный мост: "+days(RacePowerStages.bridgeTicks(previewTier))+", "+RacePowerStages.bridgeForward(previewTier)+" блоков вперёд.";en=secondaryKey().getString()+" toggles a temporary leaf bridge: "+days(RacePowerStages.bridgeTicks(previewTier))+", "+RacePowerStages.bridgeForward(previewTier)+" blocks forward.";}
             case 3 -> {ru="Без 25 резонанса: эхо-зрение в радиусе "+RacePowerStages.echoRadius(previewTier)+" блоков. При 25 резонанса: восстановление +"+RacePowerStages.recoveryHeal(previewTier)+" HP; весь резонанс сбрасывается в 0; поглощение на "+days(RacePowerStages.absorptionTicks(previewTier))+" Это разные контекстные действия.";en="Below 25 resonance: echo vision within "+RacePowerStages.echoRadius(previewTier)+" blocks. At 25 resonance: recover +"+RacePowerStages.recoveryHeal(previewTier)+" HP; all resonance resets to 0; absorption for "+days(RacePowerStages.absorptionTicks(previewTier))+". These are distinct contextual actions.";}
             case 4 -> {ru="Всегда три последовательных огненных рассечения. Урон каждого: "+number(RacePowerStages.slashDamage(previewTier))+" HP; огонь "+days(RacePowerStages.fireSeconds(previewTier)*20L)+"";en="Always three successive fiery slashes. Each deals "+number(RacePowerStages.slashDamage(previewTier))+" HP; fire "+days(RacePowerStages.fireSeconds(previewTier)*20L)+".";}
         }
@@ -476,16 +481,32 @@ public final class RaceExperienceScreen extends Screen {
         return lines;
     }
     private Component abilityName(){
-        if(previewSlot==0)return Component.literal("V · ").append(tr("spell.short"));
+        if(previewSlot==0)return primaryKey().copy().append(" · ").append(tr("spell.short"));
         String[] ru={"Автоматический страж", "Жемчуг / гравитация", "Лиственный мост", "Эхо / восстановление", "Огненные рассечения"};
         String[] en={"Automatic guardian", "Pearl / gravity", "Leaf Bridge", "Echo / recovery", "Fiery slashes"};
-        return Component.literal("B · ").append(text(ru[race],en[race]));
+        return secondaryKey().copy().append(" · ").append(text(ru[race],en[race]));
     }
 
-    private Component cooldown(String key, long ticks) {
+    private Component cooldown(Component key, long ticks) {
         long remaining = RaceExperienceClient.remaining(ticks);
-        return Component.literal(key + " · ").append(remaining == 0 ? text("готово", "ready")
+        return key.copy().append(" · ").append(remaining == 0 ? text("готово", "ready")
                 : text(days(remaining)+"", days(remaining)+""));
+    }
+
+    private Component primaryKey() { return BlockbenchWorkbench.castKeyLabel(); }
+    private Component secondaryKey() { return BlockbenchWorkbench.secondaryKeyLabel(); }
+    private Component modifiedSecondaryKey() {
+        return minecraft.options.keyShift.getTranslatedKeyMessage().copy().append("+").append(secondaryKey());
+    }
+    private Component buffBinding(int index) {
+        return switch(race) {
+            case 0 -> index==5?primaryKey():null;
+            case 1 -> index==3?secondaryKey():index==4?primaryKey():index==5?modifiedSecondaryKey():null;
+            case 2 -> index==1?primaryKey():index==2?secondaryKey():null;
+            case 3 -> index==2?primaryKey():index==3?secondaryKey():null;
+            case 4 -> index==3?secondaryKey():index==4?primaryKey():null;
+            default -> null;
+        };
     }
 
     private int tier() { return RacePowerStages.clamp(status.tierAt(race)); }
@@ -497,7 +518,7 @@ public final class RaceExperienceScreen extends Screen {
         if(race==0&&suffix.equals("tier.short.3"))return text("III · поглощение при полном здоровье", "III · absorption at full health");
         // Explicit sandbox contracts differ from production only in these authored abilities.
         if (race == 3) {
-            if (suffix.equals("spell.short") || suffix.equals("buff.2")) return text("Звуковая волна [V]", "Sonic Wave [V]");
+            if (suffix.equals("spell.short") || suffix.equals("buff.2")) return text("Звуковая волна", "Sonic Wave");
             if (suffix.equals("spell.detail") || suffix.equals("buff.detail.2")) return text(
                     "Расходящаяся звуковая волна поражает враждебных существ в радиусе 8 блоков: 12 урона, один раз по каждой цели.",
                     "An expanding sonic wave strikes hostile creatures within 8 blocks: 12 damage, once per target.");
@@ -506,14 +527,14 @@ public final class RaceExperienceScreen extends Screen {
             if (suffix.equals("tier.short.3"))return text("III · временный скалк и усиление внутри", "III · temporary sculk and empowerment inside");
 
         }
-        if (race == 4 && suffix.equals("buff.3")) return text("Огненные рассечения [B]", "Fiery slashes [B]");
-        if(race==4&&suffix.equals("spell.detail"))return text("Пять извержений идут вперёд по поверхности; перезарядка V — "+days(1200L)+" B — сохранённая цепочка трёх рассечений.","Five eruptions advance along the surface; V cooldown is "+days(1200L)+". B uses the preserved three-slash combo.");
+        if (race == 4 && suffix.equals("buff.3")) return text("Огненные рассечения", "Fiery slashes");
+        if(race==4&&suffix.equals("spell.detail"))return text("Пять извержений идут вперёд по поверхности; перезарядка "+primaryKey().getString()+" — "+days(1200L)+" "+secondaryKey().getString()+" — сохранённая цепочка трёх рассечений.","Five eruptions advance along the surface; "+primaryKey().getString()+" cooldown is "+days(1200L)+". "+secondaryKey().getString()+" uses the preserved three-slash combo.");
         if(race==4&&suffix.startsWith("tier.short.")){int t=suffix.charAt(suffix.length()-1)-'0';return text("Уровень "+t+": "+number(RacePowerStages.eruptionDamage(t))+" урона, огонь "+days(RacePowerStages.fireSeconds(t)*20L)+"", "Tier "+t+": "+number(RacePowerStages.eruptionDamage(t))+" damage, "+days(RacePowerStages.fireSeconds(t)*20L)+" of fire");}
         if(race==1&&suffix.equals("tier.short.1"))return text("I · дальность разлома 32 блока", "I · rift reach 32 blocks");
         if(race==1&&suffix.equals("tier.short.2"))return text("II · замедление "+days(RacePowerStages.riftSlowTicks(2))+", радиус 4", "II · slow "+days(RacePowerStages.riftSlowTicks(2))+", radius 4");
         if(race==1&&suffix.equals("tier.short.3"))return text("III · замедление "+days(RacePowerStages.riftSlowTicks(3))+", радиус 8", "III · slow "+days(RacePowerStages.riftSlowTicks(3))+", radius 8");
-        if (race == 4 && suffix.equals("buff.detail.3")) return text("B выполняет три последовательных огненных рассечения с рывками вперёд.",
-                "B performs three successive fiery slashes with forward pulls.");
+        if (race == 4 && suffix.equals("buff.detail.3")) return text(secondaryKey().getString()+" выполняет три последовательных огненных рассечения с рывками вперёд.",
+                secondaryKey().getString()+" performs three successive fiery slashes with forward pulls.");
         if (race == 2) {
             if (suffix.equals("spell.detail") || suffix.equals("buff.detail.1")) return text("Корни удерживают врагов рядом на месте "+days(BloomMechanics.GRIP_TICKS)+" Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Босса удерживает "+days(20L)+", затем защищает от повторных корней "+days(160L)+" В базе цель может атаковать; I блокирует действия, II добавляет сжатие, III — яд после освобождения.",
                     "Roots hold nearby enemies in place for "+days(BloomMechanics.GRIP_TICKS)+". Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Bosses are held for "+days(20L)+", followed by "+days(160L)+" of shared root protection. Base targets can attack; I locks actions, II adds constriction, III adds poison after release.");
@@ -521,7 +542,12 @@ public final class RaceExperienceScreen extends Screen {
             if (suffix.equals("tier.short.2")) return text("II · сжатие "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/с", "II · constriction "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/s");
             if (suffix.equals("tier.short.3")) return text("III · яд после освобождения", "III · poison after release");
         }
-        return Component.translatable("jem.roles.race." + RACES[race] + "." + suffix);
+        String translated=net.minecraft.client.resources.language.I18n.get("jem.roles.race." + RACES[race] + "." + suffix);
+        String primary=java.util.regex.Matcher.quoteReplacement(primaryKey().getString());
+        String secondary=java.util.regex.Matcher.quoteReplacement(secondaryKey().getString());
+        String modified=java.util.regex.Matcher.quoteReplacement(modifiedSecondaryKey().getString());
+        return Component.literal(translated.replaceAll("Sneak\\+B|Shift\\+B",modified)
+                .replaceAll("\\bV\\b",primary).replaceAll("\\bB\\b",secondary));
     }
     private Component text(String russian, String english) {
         return Component.literal(minecraft.options.languageCode.startsWith("ru") ? russian : english);
@@ -549,8 +575,8 @@ public final class RaceExperienceScreen extends Screen {
 
     @Override public boolean keyPressed(int key, int scanCode, int modifiers) {
         if (entryAt != 0 || requested >= 0) return true;
-        if (key == GLFW.GLFW_KEY_V) { selectPreview(0); return true; }
-        if (key == GLFW.GLFW_KEY_B) { selectPreview(1); return true; }
+        if (BlockbenchWorkbench.matchesCast(key,scanCode)) { selectPreview(0); return true; }
+        if (BlockbenchWorkbench.matchesSecondary(key,scanCode)) { selectPreview(1); return true; }
         if (key == GLFW.GLFW_KEY_LEFT) { switchRace(-1); return true; }
         if (key == GLFW.GLFW_KEY_RIGHT) { switchRace(1); return true; }
         if (key == GLFW.GLFW_KEY_PAGE_DOWN) { scroll += 80; return true; }

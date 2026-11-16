@@ -17,10 +17,13 @@ public final class RaceAbilityHud {
         var icon=switch(s.race()){case 0->Items.TOTEM_OF_UNDYING;case 1->Items.ENDER_PEARL;case 2->Items.FLOWERING_AZALEA;case 3->Items.ECHO_SHARD;default->Items.FIRE_CHARGE;};
         g.renderItem(new ItemStack(icon),x,y);
         long remaining=RaceExperienceClient.remaining(s.signatureRemaining());
-        g.drawString(c.font,POWERS[s.race()]+" · "+(remaining>0?String.format(java.util.Locale.ROOT,"%.1fs",remaining/20.):"V"),x+21,y+3,remaining>0?0xb9b1a7:0xffedbd,false);
+        String cast=com.siirio.jemvisualsandbox.workbench.BlockbenchWorkbench.castKeyLabel().getString();
+        String secondary=com.siirio.jemvisualsandbox.workbench.BlockbenchWorkbench.secondaryKeyLabel().getString();
+        String shift=c.options.keyShift.getTranslatedKeyMessage().getString();
+        g.drawString(c.font,POWERS[s.race()]+" · "+(remaining>0?String.format(java.util.Locale.ROOT,"%.1fs",remaining/20.):cast),x+21,y+3,remaining>0?0xb9b1a7:0xffedbd,false);
         long utility=RaceExperienceClient.remaining(s.secondaryRemaining());
-        String label=switch(s.race()){case 0->"Guardian";case 1->"Pearl / Shift+B gravity";case 2->"Leaf Bridge";case 3->"Echo / Resonance";default->"Fiery Slash";};
-        g.drawString(c.font,"B · "+label+(utility>0?String.format(java.util.Locale.ROOT," · %.1fs",utility/20.):""),x,y+20,0xd1c9bb,false);
+        String label=switch(s.race()){case 0->"Guardian";case 1->"Pearl / "+shift+"+"+secondary+" gravity";case 2->"Leaf Bridge";case 3->"Echo / Resonance";default->"Fiery Slash";};
+        g.drawString(c.font,secondary+" · "+label+(utility>0?String.format(java.util.Locale.ROOT," · %.1fs",utility/20.):""),x,y+20,0xd1c9bb,false);
         if(s.developerMode())g.drawString(c.font,"DEV · normal progression preserved",x,y-13,0xffb26b,false);
     }
 }

@@ -26,7 +26,7 @@ import net.minecraft.commands.Commands;
 @Mod.EventBusSubscriber(modid = "jemcompat", value = Dist.CLIENT)
 public final class CuratedKeyPreset {
     private static final String REVISION = "2026-10-20";
-    private static final String RELEASE_PRESET_REVISION = "2026-11-16-major-update-4-v2";
+    private static final String RELEASE_PRESET_REVISION = "2026-11-17-resource-pack-v3";
     // Compared with the GitHub original-controls snapshot. TrashSlot and Backpacked were retired.
     private static final Set<String> NEW_SINCE_ORIGINAL = Set.of(
             "key.jemcompat.free_camera", "key.puffish_skills.open", "key.sophisticatedbackpacks.open_backpack");

@@ -14,7 +14,7 @@
     "priority": 126
   },
   "change": {
-    "summary": "Give both race preview models a construction-safe display-only identity",
+    "summary": "Render both race preview models through a neutral GUI-owned vanilla player pipeline",
     "modifiers": [
       {
         "property": "race_preview.player_render_identity",
@@ -26,7 +26,19 @@
         "property": "race_preview.capability_construction",
         "operation": "replace",
         "before": "The capability override dereferences its live-player source while the RemotePlayer superclass is still constructing",
-        "after": "Capability access is empty only during superclass construction and delegates to the connected player after source assignment"
+        "after": "The detached preview never borrows gameplay capabilities and copies only skin, model-part and equipment appearance from the connected player"
+      },
+      {
+        "property": "race_preview.render_pipeline",
+        "operation": "replace",
+        "before": "The preview uses the world EntityRenderDispatcher, so camera direction, Epic Fight patches and detailed-animation resource hooks can hide, rotate or offset it",
+        "after": "A GUI-owned vanilla PlayerModel renders at a fixed neutral pose with native armor and cape layers, independent of the world camera and Epic Fight combat mode"
+      },
+      {
+        "property": "race_preview.control_labels",
+        "operation": "replace",
+        "before": "The screen and descriptions hard-code V, B and Shift+B even after the player changes those bindings",
+        "after": "Buttons, shortcuts, cooldowns and descriptions use the active localized KeyMapping labels and match those same bindings"
       }
     ]
   },
@@ -35,8 +47,17 @@
     "kind": "runtime_correction",
     "source_files": [
       "Mods/JEMRoles/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/DetachedPreviewPlayer.java",
-      "Client/ManagedPack/mods/jem-races-2.0.4.jar",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/NeutralPlayerRenderer.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+      "Mods/JEMRoles/build.gradle",
+      "Client/ManagedPack/mods/jem-races-2.0.7.jar",
       "Docs/races/README.md"
     ]
   },
@@ -62,6 +83,12 @@
       "commit": "SELF",
       "action": "guard_superclass_capability_lookup",
       "summary": "Keep Forge capability attachment from dereferencing the live-player source before the detached preview constructor assigns it"
+    },
+    {
+      "date": "2026-11-17",
+      "commit": "SELF",
+      "action": "isolate_gui_player_rendering",
+      "summary": "Replace world-dispatcher preview rendering with a fixed vanilla GUI model, remove capability borrowing and show the active localized key bindings"
     }
   ],
   "impacts": {
@@ -69,13 +96,17 @@
       "race selection",
       "client_presentation",
       "Forge capabilities",
-      "F6 race screen"
+      "F6 race screen",
+      "Epic Fight",
+      "resource-pack animation hooks",
+      "native KeyMapping registry"
     ],
     "relations": [
-      "Detached display identity -> native PlayerRenderer -> live skin and equipment appearance"
+      "Detached display identity -> neutral GUI PlayerModel -> live skin and equipment appearance",
+      "Active KeyMapping -> localized screen label -> matching shortcut"
     ],
     "unresolved": [
-      "Both scenes require player acceptance in game"
+      "MineRENT player acceptance remains pending after the local dedicated-server QA pass"
     ]
   }
 }

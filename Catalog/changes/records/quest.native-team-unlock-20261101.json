@@ -10,13 +10,13 @@
   ],
   "precedence": { "layer": "jem_compatibility", "priority": 1160 },
   "change": {
-    "summary": "Keep the universal authored quest book available by reconciling the native FTB team lock at login.",
+    "summary": "Keep the universal authored quest book available by reconciling the native FTB team lock after ServerLogin admission.",
     "modifiers": [
       {
         "property": "ftbquests.team_data.locked",
         "operation": "replace",
         "before": "A persisted or newly resolved native team may retain locked=true and make every entry report Quests locked!.",
-        "after": "The optional adapter waits for FTB Teams to resolve the team, calls TeamData.setLocked(false) and saves only a changed file. The exact native post-definition request path repeats the idempotent unlock before FTB sends its own full TeamData snapshot, so a no-op persisted false value still corrects a stale locked client. Native progress, rewards and claims remain authoritative."
+        "after": "The optional adapter waits for FTB Teams and ServerLogin authentication, clears the native lock, saves only changed data and re-sends the native quest definitions. FTB installs its ClientQuestFile and issues its own TeamData request in the correct order. Reloads unlock authoritative team data before definitions are sent. Native progress, rewards and claims remain authoritative."
       }
     ]
   },
@@ -29,6 +29,7 @@
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbTeamDataRequestMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
       "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+      "Client/ManagedPack/mods/jem-advancements-5.3.9.jar",
       "Mods/JEMAchievementGuide/README.md"
     ]
   },
@@ -78,12 +79,18 @@
       "commit": "SELF",
       "action": "reconcile_before_native_team_snapshot",
       "summary": "Repeat the idempotent unlock inside FTB's post-definition request before its native full TeamData response, including when the persisted flag was already false and no delta packet was emitted."
+    },
+    {
+      "date": "2026-11-17",
+      "commit": "SELF",
+      "action": "resynchronize_after_serverlogin_admission",
+      "summary": "Wait for ServerLogin authentication, then resend native quest definitions so FTB requests the unlocked TeamData snapshot only after its client quest file exists."
     }
   ],
   "impacts": {
-    "systems": ["FTB Quests", "FTB Teams", "JEMAchievementGuide", "dedicated_server", "integrated_server"],
-    "relations": ["FTB Teams resolved login or team change -> exact native FTB TeamData -> unlocked quest presentation"],
-    "notes": ["One server tick does not prove that a client has installed its quest definitions. The native client acknowledgement/request owns the full TeamData response, and the narrow adapter only corrects its data immediately before that response."],
-    "unresolved": ["Player-visible acceptance remains pending after local deployment."]
+    "systems": ["FTB Quests", "FTB Teams", "ServerLogin", "JEMAchievementGuide", "dedicated_server", "integrated_server"],
+    "relations": ["FTB Teams resolved login -> ServerLogin admission -> native quest definitions -> native TeamData request -> unlocked quest presentation"],
+    "notes": ["The local dedicated-server QA session opened the FTB quest map and a concrete quest after authentication without a locked message."],
+    "unresolved": ["MineRENT player acceptance remains pending after deployment."]
   }
 }

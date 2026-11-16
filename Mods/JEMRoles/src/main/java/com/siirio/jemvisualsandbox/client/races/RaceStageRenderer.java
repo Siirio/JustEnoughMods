@@ -94,10 +94,7 @@ final class RaceStageRenderer {
                 poses.last().pose().set(view);
                 poses.last().normal().set(new Matrix3f(view));
                 poses.translate(0, Math.sin(System.nanoTime() / 1_000_000_000.0 * 1.7) * .009 * (1 - enter), 0);
-                // Use a detached native player so camera-player animation hooks cannot hide the preview.
-                // Skipping dispatcher.render avoids world shadows, fire and hitboxes
-                // without changing any of the dispatcher's corresponding flags.
-                RenderSystem.runAsFancy(() -> dispatcher.getRenderer(player).render(player, 0, 0, poses, buffers, 15728880));
+                NeutralPlayerRenderer.render(player, 0, poses, buffers, 15728880);
                 buffers.endBatch();
             } finally {
                 player.yBodyRot = body; player.yBodyRotO = oldBody;

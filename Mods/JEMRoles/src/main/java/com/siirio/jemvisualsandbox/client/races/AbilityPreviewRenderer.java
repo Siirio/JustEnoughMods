@@ -211,7 +211,12 @@ public final class AbilityPreviewRenderer {
         };
         return switch(race) {
             case 0 -> (ru?"HP < 40% · страж ":"HP < 40% · guardian ")+RacePowerStages.guardianTicks(tier)/20+(ru?" с":"s");
-            case 1 -> age<24?(ru?"B · заряженный жемчуг":"B · charged pearl"):("Shift+B · "+RacePowerStages.gravityTicks(tier)/20+(ru?" с без гравитации":"s gravity denial"));
+            case 1 -> {
+                var client=Minecraft.getInstance();
+                String secondary=com.siirio.jemvisualsandbox.workbench.BlockbenchWorkbench.secondaryKeyLabel().getString();
+                String modified=client.options.keyShift.getTranslatedKeyMessage().getString()+"+"+secondary;
+                yield age<24?secondary+(ru?" · заряженный жемчуг":" · charged pearl"):(modified+" · "+RacePowerStages.gravityTicks(tier)/20+(ru?" с без гравитации":"s gravity denial"));
+            }
             case 2 -> (ru?"Мост ":"Bridge ")+RacePowerStages.bridgeForward(tier)+(ru?" вперёд · ":" forward · ")+RacePowerStages.bridgeTicks(tier)/20+(ru?" с":"s");
             case 3 -> age<40?(ru?"Резонанс <25 · эхо ":"Resonance <25 · echo ")+RacePowerStages.echoRadius(tier)
                     :(ru?"Резонанс ≥25 · +":"Resonance ≥25 · +")+RacePowerStages.recoveryHeal(tier)+" HP · "+RacePowerStages.absorptionTicks(tier)/20+(ru?" с":"s");
@@ -228,8 +233,12 @@ public final class AbilityPreviewRenderer {
     private static <T extends Entity> void drawEntity(T entity, Vec3 at, PoseStack poses, float partialTick) {
         var client = Minecraft.getInstance();
         poses.pushPose(); poses.translate(at.x, at.y, at.z);
-        RenderSystem.runAsFancy(() -> client.getEntityRenderDispatcher().getRenderer(entity)
-                .render(entity, entity.getYRot(), partialTick, poses, client.renderBuffers().bufferSource(), 15728880));
+        if (entity instanceof DetachedPreviewPlayer player) {
+            NeutralPlayerRenderer.render(player, partialTick, poses, client.renderBuffers().bufferSource(), 15728880);
+        } else {
+            RenderSystem.runAsFancy(() -> client.getEntityRenderDispatcher().getRenderer(entity)
+                    .render(entity, entity.getYRot(), partialTick, poses, client.renderBuffers().bufferSource(), 15728880));
+        }
         poses.popPose();
     }
     private static float smooth(float value) {
