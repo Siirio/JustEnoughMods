@@ -1,0 +1,176 @@
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
+index 33557e7..3ff784a 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
+@@ -196,6 +196,6 @@ public class ModpackUpdater implements Closeable {
+ 		// The switch flow reports its failure through its own caller, so its failure handling carries the failure out of the harness.
+ 		AtomicReference<Exception> propagated = new AtomicReference<>();
+-		runReviewedFlow(new ApplyFlow("Installed modpack switch", () -> new ReLauncher(UpdateType.SELECT, changelogs).restart(false), propagated::set, this::close),
++		runReviewedFlow(new ApplyFlow("Installed modpack switch", () -> new ReLauncher(UpdateType.PENDING, changelogs).restart(false), propagated::set, this::close),
+ 				() -> restartAfterApply(commitFlow(switchPlan)));
+ 		if (propagated.get() != null) throw propagated.get();
+ 	}
+@@ -353,7 +353,10 @@ public class ModpackUpdater implements Closeable {
+ 		} catch (UpdateDeferredException e) {
+ 			close();
+ 			if (review.isCancelledByPlayer()) return UpdateOutcome.INCOMPLETE;
+-			LOGGER.warn("Update transaction {} is waiting for the detached helper to release {}", e.getTransactionId(), e.getBlockedPath());
++			if (e.getBlockedPath() == null)
++				LOGGER.info("Update transaction {} is staged for the detached helper to apply after Minecraft exits", e.getTransactionId());
++			else
++				LOGGER.warn("Update transaction {} is waiting for the detached helper to release {}", e.getTransactionId(), e.getBlockedPath());
+ 			deferToHelper();
+-			new ReLauncher(UpdateType.UPDATE, changelogs).restart(preload);
++			new ReLauncher(UpdateType.PENDING, changelogs).restart(preload);
+ 			return UpdateOutcome.INCOMPLETE;
+@@ -374,6 +377,6 @@ public class ModpackUpdater implements Closeable {
+ 	 */
+ 	private void applySelectedTargetWithoutReview(boolean applyFirstInstall, boolean offline) {
+-		runReviewedFlow(new ApplyFlow(offline ? "Offline launch apply" : "Launch apply", () -> new ReLauncher(UpdateType.UPDATE, changelogs).restart(true), e -> {
++		runReviewedFlow(new ApplyFlow(offline ? "Offline launch apply" : "Launch apply", () -> new ReLauncher(UpdateType.PENDING, changelogs).restart(true), e -> {
+ 			LOGGER.error("Failed to apply the selected modpack; no projection changes were made outside the existing transaction guarantees", e);
+ 			if (!preload && !review.abortedByPlayer(e)) showUpdateFailure(e);
+ 		}, this::closeLaunchApply), () -> launchApply(applyFirstInstall, offline));
+@@ -614,7 +617,7 @@ public class ModpackUpdater implements Closeable {
+ 			return ApplyStatus.FAILED;
+ 		}
+ 		return runReviewedFlow(new ApplyFlow("Update", () -> {
+-			if (!review.isCancelledByPlayer()) new ReLauncher(UpdateType.UPDATE, changelogs).restart(preload);
++			if (!review.isCancelledByPlayer()) new ReLauncher(UpdateType.PENDING, changelogs).restart(preload);
+ 		}, e -> {
+ 			if (review.abortedByPlayer(e)) LOGGER.info("Modpack update apply was aborted by the player");
+ 			else showUpdateFailure(e);
+@@ -659,6 +662,9 @@ public class ModpackUpdater implements Closeable {
+ 			return ApplyStatus.APPLIED;
+ 		} catch (UpdateDeferredException e) {
+-			LOGGER.warn("{} transaction {} is waiting for the detached helper to release {}", flow.name(), e.getTransactionId(), e.getBlockedPath());
++			if (e.getBlockedPath() == null)
++				LOGGER.info("{} transaction {} is staged for the detached helper to apply after Minecraft exits", flow.name(), e.getTransactionId());
++			else
++				LOGGER.warn("{} transaction {} is waiting for the detached helper to release {}", flow.name(), e.getTransactionId(), e.getBlockedPath());
+ 			deferToHelper();
+ 			flow.deferredRestart().run();
+ 			return ApplyStatus.DEFERRED;
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateType.java b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateType.java
+index e36de52..8b0a524 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateType.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateType.java
+@@ -3,7 +3,7 @@ package pl.skidam.automodpack_core.client;
+ import java.util.Locale;
+ 
+ public enum UpdateType {
+-	FULL, UPDATE, SELECT, AUTOMODPACK;
++	FULL, UPDATE, SELECT, AUTOMODPACK, PENDING;
+ 
+ 	@Override
+ 	public String toString() {
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransaction.java b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransaction.java
+index 9f209aa..67e97b7 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransaction.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransaction.java
+@@ -237,6 +237,7 @@ public final class UpdateTransaction {
+ 	public enum Status {
+ 		SUCCESS,
+ 		DEFERRED_LOCKED,
++		DEFERRED_EXIT,
+ 		REPLAN_REQUIRED,
+ 		FAILED
+ 	}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
+index ae41165..74840f8 100644
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
+@@ -20,4 +20,5 @@ import java.util.concurrent.atomic.AtomicReference;
+ 
++import pl.skidam.automodpack_core.Constants;
+ import pl.skidam.automodpack_core.config.ClientConfigJsons;
+ import pl.skidam.automodpack_core.config.ClientStorageJsons;
+ import pl.skidam.automodpack_core.config.ConfigTools;
+@@ -73,8 +74,9 @@ public final class UpdateTransactionExecutor {
+ 	}
+ 
+ 	/**
+-	 * One apply outcome. {@code held} is the lock probe's receipt for a {@code DEFERRED_LOCKED} result: which
+-	 * paths stayed held open and by which processes, when Windows could answer; null for every other status.
++	 * One apply outcome. {@code held} is the lock probe's receipt for a {@code DEFERRED_LOCKED} result: which paths
++	 * stayed held open and by which processes, when Windows could answer. {@code DEFERRED_EXIT} has no blocked path:
++	 * it means the reviewed transaction is durable and waits for the detached helper to apply it after Minecraft exits.
+ 	 */
+ 	public record Execution(UpdateTransaction.Status status, UpdateTransaction transaction, String operation, Path blockedPath, String message, String held) {
+ 		public boolean success() {
+@@ -134,9 +136,30 @@ public final class UpdateTransactionExecutor {
+ 			// its ownership receipt, so the journaled plan's objects must be pinned by name before apply runs.
+ 			ClientObjectStore.publishOwnership(context.storage());
++			if (mustApplyAfterGameExit(transaction)) return deferUntilGameExit(transaction);
+ 			return executePersisted(transaction);
+ 		});
+ 	}
+ 
++	/**
++	 * A running mod may rewrite or hold a managed file at any point before process exit. Keep the reviewed plan and
++	 * object ownership durable, but do not race live mod config watchers. Preload recovery still applies before mods
++	 * load, and the detached helper applies this exact hash-checked transaction only after the parent process exits.
++	 */
++	private boolean mustApplyAfterGameExit(UpdateTransaction transaction) {
++		return transaction.purpose == UpdateTransaction.Purpose.MODPACK_UPDATE && Boolean.FALSE.equals(Constants.preload);
++	}
++
++	private Execution deferUntilGameExit(UpdateTransaction transaction) throws IOException {
++		String message = "The reviewed update is staged and will be applied after Minecraft exits";
++		transaction.phase = UpdateTransaction.Phase.DEFERRED;
++		transaction.resultStatus = UpdateTransaction.Status.DEFERRED_EXIT;
++		transaction.resultOperation = null;
++		transaction.resultPath = null;
++		transaction.resultMessage = message;
++		ConfigTools.writeAtomic(context.storage().transactionFile(), transaction);
++		return new Execution(UpdateTransaction.Status.DEFERRED_EXIT, transaction, null, null, message, null);
++	}
++
+ 	private void preparePendingReplacement() throws IOException {
+ 		ClientStorage storage = context.storage();
+ 		if (Files.exists(storage.repairJournalFile(), LinkOption.NOFOLLOW_LINKS)) throw new IOException("An offline repair must finish before an update can start");
+diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/RestartScreen.java b/src/main/java/pl/skidam/automodpack/client/ui/screen/RestartScreen.java
+index 5063cef..11c0064 100644
+--- a/src/main/java/pl/skidam/automodpack/client/ui/screen/RestartScreen.java
++++ b/src/main/java/pl/skidam/automodpack/client/ui/screen/RestartScreen.java
+@@ -62,8 +62,10 @@ public class RestartScreen extends VersionedScreen {
+ 	private List<MutableComponent> buildBodyLines() {
+ 		int wrapWidth = Math.max(1, panelWidth(BODY) - 8);
+ 		List<MutableComponent> lines = new ArrayList<>();
+-		lines.addAll(wrapParagraph(this.font, VersionedText.str("automodpack.restart.description"), wrapWidth));
+-		lines.addAll(wrapParagraph(this.font, VersionedText.str("automodpack.restart.secDescription"), wrapWidth));
++		String description = updateType == UpdateType.PENDING ? "automodpack.restart.pendingDescription" : "automodpack.restart.description";
++		String secondary = updateType == UpdateType.PENDING ? "automodpack.restart.pendingSecDescription" : "automodpack.restart.secDescription";
++		lines.addAll(wrapParagraph(this.font, VersionedText.str(description), wrapWidth));
++		lines.addAll(wrapParagraph(this.font, VersionedText.str(secondary), wrapWidth));
+ 		if (changelogs != null) {
+ 			ChangeSet.Summary summary = changelogs.changeSet().summary();
+ 			boolean hasDiff = summary.addedFiles() > 0 || summary.modifiedFiles() > 0 || summary.removedFiles() > 0 || summary.preservedFiles() > 0 || summary.unsafeFiles() > 0;
+diff --git a/src/main/resources/assets/automodpack/lang/en_us.json b/src/main/resources/assets/automodpack/lang/en_us.json
+index 20f5e98..77d20c8 100644
+--- a/src/main/resources/assets/automodpack/lang/en_us.json
++++ b/src/main/resources/assets/automodpack/lang/en_us.json
+@@ -3,6 +3,9 @@
+   "automodpack.restart.update": "The modpack update is ready.",
+   "automodpack.restart.select": "The modpack required by the server is selected.",
+   "automodpack.restart.automodpack": "AutoModpack now matches the version required by the server.",
++  "automodpack.restart.pending": "The update will finish after Minecraft closes.",
++  "automodpack.restart.pendingDescription": "Close Minecraft. AutoModpack will apply the reviewed files after the game process fully exits.",
++  "automodpack.restart.pendingSecDescription": "Wait up to 3 minutes before you start Minecraft again.",
+   "automodpack.restart.description": "Restart the game to play.",
+   "automodpack.restart.secDescription": "Do you want to restart now?",
+   "automodpack.restart.confirm": "Yes, close the game",
+diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/resources/assets/automodpack/lang/ru_ru.json
+index 99696c0..ea121d8 100644
+--- a/src/main/resources/assets/automodpack/lang/ru_ru.json
++++ b/src/main/resources/assets/automodpack/lang/ru_ru.json
+@@ -3,6 +3,9 @@
+   "automodpack.restart.update": "Обновление модпака готово.",
+   "automodpack.restart.select": "Выбран модпак, требуемый сервером.",
+   "automodpack.restart.automodpack": "Версия AutoModpack теперь совпадает с требуемой сервером.",
++  "automodpack.restart.pending": "Обновление завершится после закрытия Minecraft.",
++  "automodpack.restart.pendingDescription": "Закройте Minecraft. AutoModpack применит проверенные файлы после полного завершения процесса игры.",
++  "automodpack.restart.pendingSecDescription": "Подождите до 3 минут перед следующим запуском Minecraft.",
+   "automodpack.restart.description": "Перезапустите игру, чтобы играть.",
+   "automodpack.restart.secDescription": "Перезапустить сейчас?",
+   "automodpack.restart.confirm": "Да, закрыть игру",

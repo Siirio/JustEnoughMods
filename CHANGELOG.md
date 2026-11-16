@@ -1,3 +1,13 @@
+## 2026-11-16 - Defer reviewed client updates until Minecraft exits
+
+- User reported repeated `UpdateReplanRequiredException` failures and required a download path that also works for friends whose client predates the spawn-egg release
+- Bug / Client Sided / Streams Reflowing reloaded and rewrote `config/streamsreflowing-client.properties` while AutoModpack was applying the reviewed update inside the running game, so the live result no longer matched the reviewed projected final state / in testing through Bootstrap revision `jem.27`, which durably stages the reviewed transaction and applies its managed file operations only after Minecraft fully exits
+- Five Whys: AutoModpack rejected the update because the projected final state changed, the state changed because a managed config returned to its old bytes, Streams Reflowing wrote those bytes from its live config watcher, the watcher was active because apply ran after Forge loaded the mods, and the updater only deferred after a lock failure instead of treating every in-game managed update as post-exit work
+- Implementation keeps the reviewed plan, object ownership receipt, hash validation, native replan and trust gates. It adds a distinct `DEFERRED_EXIT` receipt, launches the existing detached helper, waits up to three minutes for the parent process and tells the player to wait before the next start
+- Preload recovery before mods load, modpack removal and deactivation transactions keep their existing behavior. No mutable-input check or file-integrity check was disabled
+- Friends with an older Bootstrap still require one matching `jem-bootstrap.jar` replacement because Bootstrap remains excluded from the hosted managed pack and cannot repair its own already-loaded update classes
+- Source revision and documentation changed on `bugfix/automodpack-reviewed-plan`. No Bootstrap artifact was built, no client profile or local Server was changed, no AutoModpack generation was published, and MineRENT and the release baseline remain unchanged
+
 ## 2026-11-16 - Correct the hosted Luxium catalogue
 
 - User reported that the closed stable client stopped during native update recovery and authorized removal of the exact stale JEM Luxium file from MineRENT plus a fresh hosted publication
