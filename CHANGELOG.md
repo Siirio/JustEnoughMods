@@ -1,3 +1,11 @@
+## 2026-11-16 - Correct the hosted Luxium catalogue
+
+- User reported that the closed stable client stopped during native update recovery and authorized removal of the exact stale JEM Luxium file from MineRENT plus a fresh hosted publication
+- Bug / Client Sided / `UpdateTransactionExecutor.verifyManagedFinalState` applies the immutable named-object cache check to mutable live `GAME_DIR` and overlay files, so normal changes to PatPat and Entity Texture Features configs can invalidate a reviewed transaction even when the projected live hashes are correct / diagnosed and unresolved in source
+- Bug / Client Sided / the production hosted catalogue still contained `main/mods/jem_luxium-1.0.11.jar` although the canonical managed pack and live server runtime excluded Luxium / resolved at the distribution layer by deleting only that hosted file while the server was stopped
+- MineRENT restarted successfully. Native preview reported only `-1` for JEM Luxium, publication completed at `2026-11-16T13:46:02+05:00` with content token `c033093`, and the follow-up preview returned `+0 ~0 -0`
+- No repository source, bootstrap JAR, stable client file, friend package, immutable release baseline, or `main` branch was changed. Client acceptance remains `in testing`
+
 ## 2026-11-16 - Deploy Major Update 4 stabilization to MineRENT
 
 - User authorized the completed stabilization release on MineRENT, requested manual client acceptance, and requested production promotion to `main`
