@@ -6,7 +6,11 @@
 - Implementation keeps the reviewed plan, object ownership receipt, hash validation, native replan and trust gates. It adds a distinct `DEFERRED_EXIT` receipt, launches the existing detached helper, waits up to three minutes for the parent process and tells the player to wait before the next start
 - Preload recovery before mods load, modpack removal and deactivation transactions keep their existing behavior. No mutable-input check or file-integrity check was disabled
 - Friends with an older Bootstrap still require one matching `jem-bootstrap.jar` replacement because Bootstrap remains excluded from the hosted managed pack and cannot repair its own already-loaded update classes
-- Source revision and documentation changed on `bugfix/automodpack-reviewed-plan`. No Bootstrap artifact was built, no client profile or local Server was changed, no AutoModpack generation was published, and MineRENT and the release baseline remain unchanged
+- Source revision and documentation were prepared on `bugfix/automodpack-reviewed-plan`, then fast-forwarded to `develop` for the user-authorized Bootstrap rollout
+- The fresh-source build exposed a pre-existing malformed context prefix in `locked-file-guidance.patch`. Its unified-diff formatting was corrected without changing the guidance text or runtime behavior
+- Production `oneJar` built Bootstrap revision `jem.27` without tests. The artifact is 3,492,137 bytes with SHA-256 `9a6bf57540b749f4a83b5f169b451309049b072470368df159e2a863d286cdcb`
+- Installed the exact artifact as the only Bootstrap JAR in `Client/ManagedPack`, the bootstrap-only installer, the ordinary local Server and the closed stable `JustEnoughMods` profile. No other stable client file was changed, and the user will accept the managed modpack update manually
+- Bootstrap remains excluded from the managed generation. The required staging audit found unrelated pre-existing Better Villages source drift, so no AutoModpack generation was published as part of this Bootstrap-only rollout and the release baseline remains unchanged
 
 ## 2026-11-16 - Correct the hosted Luxium catalogue
 
