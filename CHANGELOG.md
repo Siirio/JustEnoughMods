@@ -3961,5 +3961,6 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - The stable `JustEnoughMods` profile applied the published generation through the native reviewed transaction and detached helper. The active token matches `d42a053f141728dc9fc16c51020807267dae80c0`, all 331 managed JARs match canonical sources and no transaction remains pending
 - The cumulative friend update is `JustEnoughMods-update-2026-11-16_22-06-05.zip`, SHA-256 `7ce1aeb789e16a01d4f52d6ebb2681db9d7faa45825bbfcb7d6ff410db0f322b`
 - MineRENT reached the running state after deployment. The primary address is `ForeverSMP.minerent.io:25565`. The dynamic fallback shown on the Network page is `109.236.57.44:31604`
+- The immutable production baseline was promoted at `2026-11-17T00:25:03.285828+05:00` from the same published inventory and cumulative point update
 - No automated tests, gameplay launch or player acceptance run was performed
 
