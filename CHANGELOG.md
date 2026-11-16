@@ -1,3 +1,12 @@
+## 2026-11-16 - Restore client preferences and FTB Quest access
+
+- User reported that the released keybinds and resource-pack order were not applied and that FTB Quests remained locked on the dedicated server
+- Confirmed that the previous stabilization work is merged. `origin/develop` and `origin/main` both started this correction at `3cefbd59e`. This work uses `bugfix/client-prefs-ftb-quests` from that exact `develop` state
+- Bug / Client Sided / the existing profile already contained the October one-time key-preset receipt, so the corrected release could not apply the preset again. AutoModpack correctly excluded `options.txt`, but no runtime owner applied the resource-pack order / in testing through a new versioned JEMCompat migration that applies registered keys and the order of currently available packs once, then preserves later player edits
+- Hotbar 1 through 9 now use keys 1 through 9. The previously unbound FTB Quests action uses Numpad 7. JEMCompat does not copy, replace or distribute `options.txt`
+- Bug / Both Sided / JEM Advancements 5.3.4 corrected the connected-player UUID, but team unlock reconciliation depended on `TeamData.setLocked(false)` changing the persisted Boolean. When the server already stored false, FTB emitted no lock delta and the client could retain its earlier locked snapshot / in testing through an exact installed-version adapter that repeats the idempotent unlock inside FTB's post-definition `RequestTeamDataMessage` path before FTB sends its native full team snapshot
+- No Gradle build, Minecraft launch, local AutoModpack publication, client-profile mutation or MineRENT deployment was performed in this source correction
+
 ## 2026-11-16 - Prevent the F6 race preview constructor crash
 
 - User opened F6 in the stable client and reported an immediate crash with severe lag before the process closed. The user also reported that Weather Glass still existed in that profile

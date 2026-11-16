@@ -14,7 +14,7 @@
     "priority": 40
   },
   "change": {
-    "summary": "Key-only layout reproduced from the versioned GitHub controls snapshot, excluding bindings for the retired Backpacked and TrashSlot mods; forced exactly once per client profile for the 2026-10-28 release migration.",
+    "summary": "Curated key layout and available resource-pack order are applied through one versioned native preference migration, without distributing options.txt.",
     "modifiers": [
       {
         "property": "client.curated-key-preset",
@@ -39,6 +39,12 @@
         "operation": "replace",
         "before": "Existing profiles with an older receipt would not automatically consume a replaced embedded preset.",
         "after": "Every client profile applies the GitHub-derived preset once when its versioned 2026-10-28 receipt is absent. The receipt lives inside that profile, so test jem cannot consume the future JustEnoughMods/friend migration, and later launches or AutoModpack generations preserve player edits."
+      },
+      {
+        "property": "client.requested_2026_11_16_preference_recovery",
+        "operation": "replace",
+        "before": "The October receipt prevented the corrected key preset from running again, and no runtime owner applied the canonical resource-pack order because AutoModpack intentionally excludes options.txt.",
+        "after": "A new Major Update 4 receipt applies registered keys once, restores Hotbar 1-9, assigns FTB Quests to Numpad 7, and selects the canonical order of only currently available resource packs through native PackRepository APIs. Later player edits remain untouched."
       }
     ]
   },
@@ -49,9 +55,10 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_resource_packs.json",
       "Mods/JEMCompat/gradle.properties",
       "Docs/releases/2026-10-26-original-controls-development-inventory/original-keybinds.txt",
-      "Client/ManagedPack/mods/jemcompat-3.10.4.jar"
+      "Docs/input/README.md"
     ]
   },
   "rationale": {
@@ -113,12 +120,25 @@
         "Mods/JEMCompat/gradle.properties",
         "Client/ManagedPack/mods/jemcompat-3.9.0.jar"
       ]
+    },
+    {
+      "date": "2026-11-16",
+      "commit": "SELF",
+      "action": "repair_major_update_4_preferences",
+      "summary": "Issue a new one-time native migration for the corrected registered key map and canonical available resource-pack order without transferring options.txt.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_resource_packs.json",
+        "Docs/input/README.md"
+      ]
     }
   ],
   "impacts": {
     "systems": [
       "native KeyMapping registry",
       "Forge modifiers",
+      "native PackRepository",
       "options serialization",
       "client-only commands"
     ],

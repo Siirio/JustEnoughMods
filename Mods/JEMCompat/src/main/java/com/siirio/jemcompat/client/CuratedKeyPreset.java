@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import net.minecraft.client.KeyMapping;
@@ -21,11 +22,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 
-/** Explicit, versioned key-only preset. Existing personal options are never a distribution input. */
+/** Explicit, versioned input preset. Existing personal options are never a distribution input. */
 @Mod.EventBusSubscriber(modid = "jemcompat", value = Dist.CLIENT)
 public final class CuratedKeyPreset {
     private static final String REVISION = "2026-10-20";
-    private static final String RELEASE_PRESET_REVISION = "2026-10-28-github-keymap-v1";
+    private static final String RELEASE_PRESET_REVISION = "2026-11-16-major-update-4-v2";
     // Compared with the GitHub original-controls snapshot. TrashSlot and Backpacked were retired.
     private static final Set<String> NEW_SINCE_ORIGINAL = Set.of(
             "key.jemcompat.free_camera", "key.puffish_skills.open", "key.sophisticatedbackpacks.open_backpack");
@@ -44,6 +45,15 @@ public final class CuratedKeyPreset {
             return new Gson().fromJson(new java.io.InputStreamReader(stream, StandardCharsets.UTF_8),
                     new TypeToken<LinkedHashMap<String, String>>() { }.getType());
         } catch (java.io.IOException failure) { throw new IllegalStateException("Cannot read JEM key preset", failure); }
+    }
+    private static List<String> desiredResourcePacks() {
+        try (var stream = CuratedKeyPreset.class.getResourceAsStream("/assets/jemcompat/input/default_resource_packs.json")) {
+            if (stream == null) throw new java.io.IOException("Missing curated resource-pack resource");
+            return new Gson().fromJson(new java.io.InputStreamReader(stream, StandardCharsets.UTF_8),
+                    new TypeToken<List<String>>() { }.getType());
+        } catch (java.io.IOException failure) {
+            throw new IllegalStateException("Cannot read JEM resource-pack preset", failure);
+        }
     }
     private static Map<KeyMapping, String> changes() {
         Map<KeyMapping, String> result = new LinkedHashMap<>();
@@ -112,6 +122,12 @@ public final class CuratedKeyPreset {
         Path receipt = releasePresetMarker();
         if (Files.exists(receipt)) return;
         var changes = changes();
+        var minecraft = Minecraft.getInstance();
+        var repository = minecraft.getResourcePackRepository();
+        repository.reload();
+        var available = repository.getAvailableIds();
+        var desiredPacks = desiredResourcePacks().stream().filter(available::contains).toList();
+        boolean packsChanged = !desiredPacks.equals(List.copyOf(repository.getSelectedIds()));
         // Record this profile before mutation so a restart can never reapply over later player edits.
         try {
             Files.createDirectories(receipt.getParent());
@@ -127,7 +143,12 @@ public final class CuratedKeyPreset {
         });
         if (!changes.isEmpty()) {
             KeyMapping.resetMapping();
-            Minecraft.getInstance().options.save();
+        }
+        if (packsChanged) {
+            repository.setSelected(desiredPacks);
+            minecraft.options.updateResourcePacks(repository);
+        } else if (!changes.isEmpty()) {
+            minecraft.options.save();
         }
     }
     @SubscribeEvent public static void commands(RegisterClientCommandsEvent event) {

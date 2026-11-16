@@ -978,6 +978,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.FtbRewardClaimMixin", List.<String>of("ftbquests")),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.FtbChoiceClaimMixin", List.<String>of("ftbquests")),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.FtbClientIdentityMixin", List.<String>of("ftbteams")),
+            Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.FtbTeamDataRequestMixin", List.<String>of("ftbquests")),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.BlastFromThePastScreenShakeMixin", List.<String>of("blastfromthepast")),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.FtbPastRewardsMixin", List.<String>of("ftbquests")),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.CastingNetItemMixin", List.<String>of("spawn")),
