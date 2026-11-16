@@ -10,7 +10,14 @@
 - Production `reobfJar` built JEM Races `2.0.4` without tests. The artifact is 7,113,888 bytes with SHA-256 `1861c2f57f53c5282869a8a00f3b822970b2642c68006b96ae61267773d6ef21`
 - The ordinary local Server loaded Forge metadata `jem_roles 2.0.4`. The fresh native JEM Pack Sync publication is sequence 168 with content token `6a6d26c9cef7c0a81a23f296c3a61f8f65891952`. Its reviewed diff replaced JEM Races `2.0.3` with `2.0.4` and the follow-up preview returned `+0 ~0 -0`
 - Atlas rebuild, maintenance audit, source scan and validation completed with no installed-artifact drift. Canonical counts are 17,106 items, 12,165 blocks, 1,596 entities, 434 effects, 221 enchantments, 266 biomes, 745 structures, 51 creative tabs and 23,620 recipes
-- MineRENT deployment, stable-client native synchronization and player acceptance are pending
+- MineRENT runtime and hosted source were aligned to the canonical managed pack while the server was stopped. The stale In Chat FTB, JEM Advancements, JEM Holidays, JEM Twelve Eyes, JEM World Boss Tiers and JEMCompat JARs were removed from the hosted source, and the applicable stale runtime JARs were removed from `/mods`. Temporary upload archives were also removed
+- MineRENT native preview reported the exact canonical-alignment delta `+1 ~8 -6 (2 excluded)`. Publication completed at `2026-11-16T17:52:16+05:00` with full content token `6a6d26c9cef7c0a81a23f296c3a61f8f65891952` and journal head 29. The follow-up preview returned `+0 ~0 -0`, and MineRENT remains `Работает`
+- The downloaded MineRENT projection contains 2,950 managed paths and matches the local canonical projection with zero added, missing or changed file records. Both projections have policy SHA-1 `e4924d2dc21ce4c7b4ed22c6a6421f2200219828` and the same full content token
+- The closed stable `JustEnoughMods` profile applied the published generation through the native deferred transaction and BootRecovery path. Recovery committed 48 changed and 8 removed operations, installed the exact published token, left no pending transaction and verified all 331 managed JARs against `Client/ManagedPack`
+- Stable and `Test JustEnoughMods` now use the same active token. Stable contains only `jem-races-2.0.4.jar` for JEM Roles, with SHA-256 `1861c2f57f53c5282869a8a00f3b822970b2642c68006b96ae61267773d6ef21`. Its game-directory `automodpack` folder contains only native `server.conf`
+- Fog, Immersive Storms, Moog's Mineshafts Reimagined, Luxium, JEM Luxium, Weather Glass and Simpler Exposure are absent from the final hosted projection and the stable client. No backup copy was created
+- The cumulative friend update is `JustEnoughMods-update-2026-11-16_16-40-55.zip` with SHA-256 `b5ce747ea18159e062231defeb9ab9fb2ef448f73db1f19452f423585f18e918`
+- The immutable client release baseline was promoted at `2026-11-16T18:10:32+05:00` from the verified stable snapshot. Automated tests and gameplay QA were not run. F6 player acceptance remains `in testing`
 
 ## 2026-11-16 - Recover a pending update after Bootstrap replacement
 
