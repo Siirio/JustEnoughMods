@@ -44,7 +44,7 @@
         "property": "client.requested_2026_11_16_preference_recovery",
         "operation": "replace",
         "before": "The October receipt prevented the corrected key preset from running again, and no runtime owner applied the canonical resource-pack order because AutoModpack intentionally excludes options.txt.",
-        "after": "A new Major Update 4 receipt applies registered keys once, restores Hotbar 1-9, assigns FTB Quests to Numpad 7, and selects the canonical order of only currently available resource packs through native PackRepository APIs. The 2026-11-17 revision includes JEM Release v0.3 in that native selection. Later player edits remain untouched."
+        "after": "A new Major Update 4 receipt applies registered keys once, restores Hotbar 1-9, assigns FTB Quests to Numpad 7, and places the canonical pack order into native options before the initial PackRepository reload. The 2026-11-17 revision includes JEM Release v0.3. The first client tick saves without starting a second reload, and later player edits remain untouched."
       }
     ]
   },
@@ -57,7 +57,7 @@
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_resource_packs.json",
       "Mods/JEMCompat/gradle.properties",
-      "Client/ManagedPack/mods/jemcompat-3.10.6.jar",
+      "Client/ManagedPack/mods/jemcompat-3.10.7.jar",
       "Docs/releases/2026-10-26-original-controls-development-inventory/original-keybinds.txt",
       "Docs/input/README.md"
     ]
@@ -145,6 +145,19 @@
         "Mods/JEMCompat/gradle.properties",
         "Client/ManagedPack/mods/jemcompat-3.10.6.jar"
       ]
+    },
+    {
+      "date": "2026-11-17",
+      "commit": "SELF",
+      "action": "move_pack_preset_before_initial_reload",
+      "summary": "Prepare the one-time native resource-pack order during Options.load so Minecraft uses it for the initial reload, then save keys and the filtered selection without a second runtime reload.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
+        "Mods/JEMCompat/gradle.properties",
+        "Client/ManagedPack/mods/jemcompat-3.10.7.jar",
+        "Docs/input/README.md"
+      ]
     }
   ],
   "impacts": {
@@ -160,7 +173,7 @@
       "Exact installed-source inspection and same-task Atlas lookup/scan precede implementation."
     ],
     "unresolved": [
-      "MineRENT player acceptance remains pending after the local native migration confirmed JEM Release v0.3 in options.txt and showed the JEM Edition menu."
+      "Fresh startup acceptance remains pending after moving the one-time resource-pack order before Minecraft's initial resource reload."
     ]
   }
 }

@@ -27,6 +27,13 @@ public abstract class OptionsKeyRetentionMixin {
         com.siirio.jemcompat.client.CuratedKeyPreset.observeOptions(optionsFile.toPath());
     }
 
+    @Inject(method="load",at=@At("TAIL"))
+    private void jemcompat$prepareReleaseResourcePacks(CallbackInfo ci) {
+        var options=(Options)(Object)this;
+        com.siirio.jemcompat.client.CuratedKeyPreset.prepareReleaseResourcePacks(
+                optionsFile.toPath(),options.resourcePacks);
+    }
+
     @Inject(method="save",at=@At("HEAD"))
     private void jemcompat$captureKeys(CallbackInfo ci) {
         try {

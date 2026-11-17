@@ -30,14 +30,16 @@ public final class CuratedKeyPreset {
     // Compared with the GitHub original-controls snapshot. TrashSlot and Backpacked were retired.
     private static final Set<String> NEW_SINCE_ORIGINAL = Set.of(
             "key.jemcompat.free_camera", "key.puffish_skills.open", "key.sophisticatedbackpacks.open_backpack");
-    private static boolean cleanOptions, initialized;
+    private static boolean cleanOptions, initialized, releaseResourcePacksPrepared;
     private CuratedKeyPreset() { }
     public static void observeOptions(Path file) { if (!Files.exists(file)) cleanOptions = true; }
     private static Path marker() { return Minecraft.getInstance().gameDirectory.toPath().resolve("config/jemcompat-key-preset.applied"); }
     private static Path upgradeMarker() { return Minecraft.getInstance().gameDirectory.toPath().resolve("config/jemcompat-new-keybinds-2026-10-27.applied"); }
+    private static Path releasePresetMarker(Path gameDirectory) {
+        return gameDirectory.resolve("config/jemcompat-key-preset-" + RELEASE_PRESET_REVISION + ".applied");
+    }
     private static Path releasePresetMarker() {
-        return Minecraft.getInstance().gameDirectory.toPath()
-                .resolve("config/jemcompat-key-preset-" + RELEASE_PRESET_REVISION + ".applied");
+        return releasePresetMarker(Minecraft.getInstance().gameDirectory.toPath());
     }
     private static Map<String, String> desired() {
         try (var stream = CuratedKeyPreset.class.getResourceAsStream("/assets/jemcompat/input/default_keys.json")) {
@@ -54,6 +56,15 @@ public final class CuratedKeyPreset {
         } catch (java.io.IOException failure) {
             throw new IllegalStateException("Cannot read JEM resource-pack preset", failure);
         }
+    }
+    /** Select the one-time pack preset before Minecraft's initial resource reload. */
+    public static void prepareReleaseResourcePacks(Path optionsFile, List<String> resourcePacks) {
+        Path gameDirectory = optionsFile.getParent();
+        if (gameDirectory == null || Files.exists(releasePresetMarker(gameDirectory))) return;
+        var desiredPacks = desiredResourcePacks();
+        resourcePacks.clear();
+        resourcePacks.addAll(desiredPacks);
+        releaseResourcePacksPrepared = true;
     }
     private static Map<KeyMapping, String> changes() {
         Map<KeyMapping, String> result = new LinkedHashMap<>();
@@ -121,13 +132,10 @@ public final class CuratedKeyPreset {
     private static void applyReleasePresetOnce() {
         Path receipt = releasePresetMarker();
         if (Files.exists(receipt)) return;
+        // Options.load must install the pack list before the initial reload. Never trigger a second full reload here.
+        if (!releaseResourcePacksPrepared) return;
         var changes = changes();
         var minecraft = Minecraft.getInstance();
-        var repository = minecraft.getResourcePackRepository();
-        repository.reload();
-        var available = repository.getAvailableIds();
-        var desiredPacks = desiredResourcePacks().stream().filter(available::contains).toList();
-        boolean packsChanged = !desiredPacks.equals(List.copyOf(repository.getSelectedIds()));
         // Record this profile before mutation so a restart can never reapply over later player edits.
         try {
             Files.createDirectories(receipt.getParent());
@@ -144,12 +152,9 @@ public final class CuratedKeyPreset {
         if (!changes.isEmpty()) {
             KeyMapping.resetMapping();
         }
-        if (packsChanged) {
-            repository.setSelected(desiredPacks);
-            minecraft.options.updateResourcePacks(repository);
-        } else if (!changes.isEmpty()) {
-            minecraft.options.save();
-        }
+        // The initial PackRepository load already filtered unavailable entries and selected this in-memory order.
+        // A direct save persists the keys and selected list without Minecraft.reloadResourcePacks().
+        minecraft.options.save();
     }
     @SubscribeEvent public static void commands(RegisterClientCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("jemkeys")

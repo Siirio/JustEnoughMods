@@ -1,3 +1,14 @@
+## 2026-11-17 - Prevent the release preset from reloading resources after startup
+
+- User launched the new stable update and reported that the original client closed during startup. The user also asked whether JEM forced the resource-pack order after launch
+- Bug / Client Sided / JEMCompat waited for the first client tick, then called `Options.updateResourcePacks`, which started a second complete resource reload after the initial reload had already finished / in testing by placing the one-time pack order into native `Options` before Minecraft's initial `PackRepository` selection and saving the filtered order later without calling `Minecraft.reloadResourcePacks`
+- Evidence: the initial reload finished at 11:56:37, the JEM migration started another reload at 11:56:43, the log stopped during that second atlas rebuild at 11:57:22, and Windows Application Hang 1002 closed Java at 11:57:24 without a Forge crash report
+- Five Whys: the client closed because Windows terminated an unresponsive Java process, Java became unresponsive during a second full resource reload, the second reload started because the one-time migration changed the selected list after startup, that happened because the migration ran on the first client tick, and JEMCompat owned no pre-initial-reload preference stage
+- Existing one-time receipts remain valid, later player pack edits remain untouched, unavailable packs still use vanilla filtering, and AutoModpack still does not own or transfer personal `options.txt`
+- Built and reobfuscated `jemcompat-3.10.7.jar` with SHA-256 `869eca2b80648322799da989f5e50be1304011d52ae1dfa3e7ce295c8c001bdd`. Static bytecode inspection confirms the one-time tick path saves options without calling `PackRepository.reload`, `Options.updateResourcePacks`, or `Minecraft.reloadResourcePacks`
+- Local native publication preview showed only `+1 ~1 -1`: add `jemcompat-3.10.7.jar`, change `jem-pack/manifest.json`, and remove `jemcompat-3.10.6.jar`. AutoModpack published content token `58188bd73862a29c0dd063a58fa8341dd552e9cb`
+- The closed `Test JustEnoughMods` profile applied that exact generation through the native planner and detached helper. Its active token matches the published head, all 331 managed JARs match canonical hashes, and no native transaction remains pending. Minecraft gameplay and a fresh player startup remain unrun and `in testing`
+
 ## 2026-11-17 - Repair the F6 preview, release pack selection and quest team sync
 
 - User reported that `JEM Release v0.3.zip` was present but not enabled, that the F6 player preview disappeared or moved with camera direction and Epic Fight mode, that the screen showed hardcoded `V` and `B / И` labels, and that FTB Quests still opened as locked on the dedicated server
