@@ -8,6 +8,10 @@
 - Built and reobfuscated `jemcompat-3.10.7.jar` with SHA-256 `869eca2b80648322799da989f5e50be1304011d52ae1dfa3e7ce295c8c001bdd`. Static bytecode inspection confirms the one-time tick path saves options without calling `PackRepository.reload`, `Options.updateResourcePacks`, or `Minecraft.reloadResourcePacks`
 - Local native publication preview showed only `+1 ~1 -1`: add `jemcompat-3.10.7.jar`, change `jem-pack/manifest.json`, and remove `jemcompat-3.10.6.jar`. AutoModpack published content token `58188bd73862a29c0dd063a58fa8341dd552e9cb`
 - The closed `Test JustEnoughMods` profile applied that exact generation through the native planner and detached helper. Its active token matches the published head, all 331 managed JARs match canonical hashes, and no native transaction remains pending. Minecraft gameplay and a fresh player startup remain unrun and `in testing`
+- MineRENT replaced only `mods/jemcompat-3.10.6.jar` with `mods/jemcompat-3.10.7.jar` while the server was stopped. The server returned to `Работает`, and `latest.log` reached `Done (1.238s)!` at `2026-11-17T18:13:36+05:00`
+- The stable `JustEnoughMods` profile already matched the managed release. Final status reports no release delta, no stable drift, and identical staged and published manifest SHA-1 `b4bbb0c24c0b5dbbc1bf45e38a63cfc1476449f8`
+- The cumulative friend update is `JustEnoughMods-update-2026-11-17_17-56-15.zip` with SHA-256 `94e9ba0105da54d1c321f672e4d3a8b22bff10cba19160560d2bc1aaa4490cb1`
+- The immutable production baseline was promoted at `2026-11-17T18:16:47.343277+05:00`. Player acceptance remains `in testing`
 
 ## 2026-11-17 - Repair the F6 preview, release pack selection and quest team sync
 
