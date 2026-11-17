@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "releaseMode": "minerent_and_hosted_automodpack_with_native_client_application",
+  "source": {
+    "branch": "develop",
+    "commit": "47a112cc1d8c8692e647e5ca204a85ea5b4fc142",
+    "preflightVerifiedAt": "2026-11-17T10:41:06.820981+05:00",
+    "releaseInventorySha256": "1f943a39202fcfa28a8000230181514d043893bf99e82be74e45d520a8227c44",
+    "packSyncInventorySha256": "fe33b6e5cd5f44b8fd6fceeb03355505ec914b2d9a492fbb89b71412cfdccee6",
+    "releaseFiles": 2957,
+    "packSyncFiles": 2950
+  },
+  "artifacts": {
+    "jem-races-2.0.7.jar": "f670dfd9d4748760999f6675191fcfb23d8190063314c4de75a835fc9dd9350b",
+    "jemcompat-3.10.6.jar": "5dfade333dbd0165c6a5e4e8d84414b9c6d04825de7d880bf391fdd679aab661",
+    "jem-advancements-5.3.9.jar": "5889cfdb03409b709fa341c7b2c5e167c7f2d4509f4262da1dde201d41a7101f"
+  },
+  "server": {
+    "panel": "https://my.minerent.net/server/0618360f",
+    "state": "running",
+    "readyAt": "2026-11-17T10:56:40+05:00",
+    "startupSeconds": 43.273,
+    "ftbQuestChapters": 15,
+    "ftbQuests": 613,
+    "ftbRewardTables": 8
+  },
+  "publication": {
+    "published": true,
+    "publishedAt": "2026-11-17T10:57:19+05:00",
+    "contentToken": "944e80eb061fe9e397420e7a5226817e314409f8",
+    "preview": {
+      "added": 3,
+      "changed": 1,
+      "deleted": 3,
+      "excluded": 2
+    },
+    "postPublicationPreviewAt": "2026-11-17T10:57:28+05:00",
+    "postPublicationPreview": {
+      "added": 0,
+      "changed": 0,
+      "deleted": 0,
+      "excluded": 2
+    },
+    "excluded": [
+      "main/mods/jem-bootstrap.jar",
+      "main/options.txt"
+    ]
+  },
+  "client": {
+    "stableProfileSynchronized": true,
+    "pendingTransaction": false,
+    "friendPackage": "C:/MyProjects/Minecraft/JustEnoughMods-updates/JustEnoughMods-update-2026-11-17_04-42-49.zip",
+    "friendPackageSha256": "7bac7c44afb03cf6f27b7ba6acdadba99140a7598da734a9b04ae53bc7c907e7"
+  },
+  "cleanup": {
+    "supersededRuntimeJarsDeleted": 3,
+    "supersededHostedJarsDeleted": 3,
+    "temporaryArchiveRemoved": true,
+    "backupCopiesCreated": false
+  },
+  "shutdownNote": "The existing MapSyncer shutdown issue left the saved process running, so MineRENT force-stop was used only after all dimensions completed saving",
+  "playerAcceptance": "in testing",
+  "automatedTestsRun": false,
+  "productionPromotion": {
+    "baseline": "complete",
+    "baselineCreatedAt": "2026-11-17T11:02:37.575967+05:00",
+    "main": "complete",
+    "mainMethod": "normal-fast-forward"
+  }
+}

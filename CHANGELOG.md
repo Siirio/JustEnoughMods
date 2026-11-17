@@ -11,7 +11,12 @@
 - Local dedicated-server acceptance passed for all requested cases. `JEM Release v0.3.zip` is enabled, both F6 player previews remain visible and neutral after world-camera turns outside and inside Epic Fight combat mode, the screen shows the localized current `Up` and `Down` bindings, and a concrete native FTB quest detail opens without a locked message
 - The temporary local ServerLogin account change used for dedicated QA was reverted. The original users database was restored byte-for-byte with SHA-256 `9e5f940e5e527f1b9ee80d4904cc68d1d4848126c5cb8c5e074bbbc518356675`
 - The final Atlas rebuild, audit, source scan and validation passed after runtime acceptance. The Atlas reports no uncovered changes, no installed-artifact drift and no required full regeneration
-- MineRENT deployment, stable-client synchronization, release baseline promotion and production `main` promotion remain pending until the single final release stage
+- MineRENT received only JEM Races `2.0.7`, JEM Compat `3.10.6`, JEM Advancements `5.3.9` and the matching managed manifest. The six superseded runtime and hosted JAR copies plus the temporary upload archive were deleted after explicit user confirmation
+- MineRENT reached `Работает` after the dedicated server loaded 15 FTB Quest chapters, 613 quests and 8 reward tables. The shutdown needed one force-stop only after every dimension had saved because the existing MapSyncer shutdown issue did not finish the process
+- Native MineRENT publication reported `+3 ~1 -3` with content token `944e80e`. The final `/jempack preview` reported `+0 ~0 -0`, with only `jem-bootstrap.jar` and personal `options.txt` excluded by policy
+- The stable `JustEnoughMods` profile matches the published managed generation. The cumulative friend update is `JustEnoughMods-update-2026-11-17_04-42-49.zip`, SHA-256 `7bac7c44afb03cf6f27b7ba6acdadba99140a7598da734a9b04ae53bc7c907e7`
+- The immutable production baseline was promoted at `2026-11-17T11:02:37.575967+05:00` from the same managed inventory and cumulative point update. Player acceptance remains `in testing`
+- Production `main` received the same final `develop` snapshot through a normal fast-forward promotion
 
 ## 2026-11-16 - Restore client preferences and FTB Quest access
 
