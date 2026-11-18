@@ -5,23 +5,28 @@
   "selectors": [{"type": "namespace", "registry": "*", "value": "radium"}],
   "precedence": {"layer": "major_update_4", "priority": 1100},
   "change": {
-    "summary": "Remove Radium from the managed client and local dedicated server.",
+    "summary": "Restore the maintained Radium fork on the managed client and local dedicated server without its blocking chunk-access replacement.",
     "modifiers": [{
       "property": "radium.installed",
       "operation": "set",
-      "before": "0.12.4+git.26c9d8e with default lithium.properties",
-      "after": false
+      "before": false,
+      "after": "0.15.0+git.626588c with mixin.world.chunk_access=false"
     }]
   },
   "cause": {
     "owner": "JEM managed pack and local dedicated mod inventory",
-    "kind": "mod_removal",
-    "source_files": ["Docs/MODS.md", "tools/state/packSyncHost-sync.json"]
+    "kind": "mod_restoration",
+    "source_files": [
+      "Client/ManagedPack/config/lithium.properties",
+      "Server/config/lithium.properties",
+      "Docs/MODS.md",
+      "tools/state/packSyncHost-sync.json"
+    ]
   },
   "rationale": {
-    "purpose": "Remove the observed Radium collision wait path and isolate the effect on terrain visibility.",
-    "decision_source": "The user requested removal and explicit approval before reinstating Radium.",
-    "implementation_choices": "Remove the matching Radium artifact and its configuration on both sides. Keep the other renderer inputs constant."
+    "purpose": "Restore Radium's compatible performance optimizations without restoring the known synchronous chunk-wait owner.",
+    "decision_source": "The user explicitly requested Radium on the client and server and asked for a newer compatible version when available.",
+    "implementation_choices": "Use the maintained Radium Re-Reforged 0.15.0 artifact on both sides and disable only mixin.world.chunk_access through the shared lithium.properties configuration."
   },
   "introduced": {"date": "2026-11-13", "commit": "SELF", "action": "remove_radium", "summary": "Remove Radium and its configuration."},
   "history": [{
@@ -35,11 +40,22 @@
       "Client/ManagedPack/config/lithium.properties",
       "Server/config/lithium.properties"
     ]
+  }, {
+    "date": "2026-11-18",
+    "commit": "SELF",
+    "action": "restore_radium_guarded",
+    "summary": "Restore Radium Re-Reforged 0.15.0 on both sides while keeping its synchronous chunk-access replacement disabled.",
+    "source_files": [
+      "Client/ManagedPack/mods/radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar",
+      "Server/mods/radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar",
+      "Client/ManagedPack/config/lithium.properties",
+      "Server/config/lithium.properties"
+    ]
   }],
   "impacts": {
     "systems": ["chunk_loading", "entity_collision", "runtime_distribution"],
-    "relations": ["Radium movement collision sweeper -> synchronous chunk lookup on the logical server"],
-    "notes": ["Installed Radium SHA-256 was b42584e2672d6b5329959ec2b0f342395b19389fed0ee4d86ea71072f42f77a0. The artifact supplied no gameplay registry resources."],
-    "unresolved": ["Effect on movement stalls and client terrain visibility requires player comparison."]
+    "relations": ["Radium performance mixins -> client and logical-server execution", "mixin.world.chunk_access -> synchronous wait for an in-flight chunk -> disabled by managed configuration"],
+    "notes": ["Radium Re-Reforged 0.15.0 SHA-256 is 8e9388101a7323efe3d4e43f985c9da2609edc28590193b20a2c416e9191e5b8. The artifact supplies no gameplay registry resources."],
+    "unresolved": ["Player acceptance is required for terrain display, movement stalls and general runtime compatibility."]
   }
 }

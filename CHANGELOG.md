@@ -1,3 +1,19 @@
+## 2026-11-18 - Restore guarded Radium and add Particle Rain
+
+- User corrected the requested performance mod from Rubidium to Radium, requested it on the client and server, approved a newer compatible release, and requested Particle Rain
+- Added Radium Re-Reforged `0.15.0+git.626588c` to `Client/ManagedPack` and the local dedicated server with SHA-256 `8e9388101a7323efe3d4e43f985c9da2609edc28590193b20a2c416e9191e5b8`
+- Bug / Both Sided / the maintained Radium fork still replaces `ServerChunkCache.getChunk` with a path that can wait synchronously for an in-flight chunk / in testing with `mixin.world.chunk_access=false` on both sides, which keeps the remaining Radium optimizations but leaves Forge's guarded chunk lookup in control
+- Five Whys: the old server could stall because Radium waited for a chunk future, the wait ran on the logical server thread, Radium replaced the guarded Forge chunk lookup, the default mixin set enabled that replacement, and the old pack used the default empty `lithium.properties`
+- Added Particle Rain `4.0.3` to the managed client with SHA-256 `44bc0ab3ed373fe0d004b4457d09f91137d01ca6f8c195a5f530cb48064cb14f`
+- Exact artifact inspection shows that Particle Rain exits before registration on a dedicated server, so it remains client-only even though its distribution page marks both environments
+- Particle Rain `4.0.3` includes upstream Forge, Iris and texture-corruption compatibility work, but player acceptance with this pack's Oculus, Particle Core and ImmediatelyFast combination remains required
+- Updated the Registry Atlas change and research records for the restored Radium boundary and the new Particle Rain owner
+- The local dedicated server loaded Radium `0.15.0+git.626588c` with the guarded override, completed startup, published native AutoModpack journal sequence 175 and content token `31cc541e99e9850b829cb10b7fd981656f400a93` with reviewed diff `+3 ~1 -0`, and returned `+0 ~0 -0` on the final preview
+- The closed `Test JustEnoughMods` profile applied that exact generation through the native planner and detached helper. Its active token matches the published head, all 333 managed JARs match canonical hashes, and no native transaction remains pending
+- Final status reports matching staged and published manifest SHA-1 `53353ef6d0f057eb4ff7b4e3246593f2a3320347`
+- The local server saved all dimensions and stopped cleanly after publication. Minecraft gameplay and Particle Rain visual acceptance remain unrun and `in testing`
+- MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
 ## 2026-11-17 - Prevent the release preset from reloading resources after startup
 
 - User launched the new stable update and reported that the original client closed during startup. The user also asked whether JEM forced the resource-pack order after launch

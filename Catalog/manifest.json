@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "0d1a68f25f0cc66d4d8167f639cb9ada68713824",
-  "generated_utc": "2026-11-17T07:34:26.924190+00:00",
+  "snapshot_sha": "c0bb316b83c2976e2486f766eca17a92bbeaeaac",
+  "generated_utc": "2026-11-18T06:09:04.370479+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -15219,6 +15219,67 @@
       ]
     },
     {
+      "filename": "particlerain-4.0.3+1.20.1-forge.jar",
+      "sha256": "44bc0ab3ed373fe0d004b4457d09f91137d01ca6f8c195a5f530cb48064cb14f",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "particlerain",
+          "name": "Particle Rain",
+          "version": "4.0.3",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "particlerain"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\particlerain-4.0.3+1.20.1-forge.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.5.0.jar",
+          "sha256": "12eed47509e3733a59135a52edd8a90807332248d292b7f1668afd42407ca01d",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.5.0,)",
+            "artifactVersion": "0.5.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.5.0.jar",
+              "sha256": "6e248dea7fad8045da6063ffeb905db7a25ac6c6a10211ae393b0e1b196f71a7",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.5.0,)",
+                "artifactVersion": "0.5.0"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "filename": "particular-1.20.1-Forge-1.5.7.jar",
       "sha256": "b6689b09b75a54690797308f853969e083b8ae89343676163ddb03bd0755b079",
       "sides": [
@@ -16459,6 +16520,88 @@
       ],
       "source_path": "Server\\mods\\Quick%20Skin%20-%20Forge%20-%201.20.1-2.6.2.4.jar",
       "nested_dependencies": []
+    },
+    {
+      "filename": "radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar",
+      "sha256": "8e9388101a7323efe3d4e43f985c9da2609edc28590193b20a2c416e9191e5b8",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "radium",
+          "name": "Radium Re-Reforged",
+          "version": "0.15.0+git.626588c",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "lithium"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/NanoLiveConfig-1.2.1.jar",
+          "sha256": "2ed1474815ea58b92c351f93bca17debc6620f811196ad4aa02f26d074964378",
+          "identifier": {
+            "group": "com.github.dima_dencep.mods",
+            "artifact": "NanoLiveConfig"
+          },
+          "version": {
+            "range": "[1.2.1,)",
+            "artifactVersion": "1.2.1"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
+    },
+    {
+      "filename": "radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar",
+      "sha256": "8e9388101a7323efe3d4e43f985c9da2609edc28590193b20a2c416e9191e5b8",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "radium",
+          "name": "Radium Re-Reforged",
+          "version": "0.15.0+git.626588c",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "lithium"
+      ],
+      "source_path": "Server\\mods\\radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/NanoLiveConfig-1.2.1.jar",
+          "sha256": "2ed1474815ea58b92c351f93bca17debc6620f811196ad4aa02f26d074964378",
+          "identifier": {
+            "group": "com.github.dima_dencep.mods",
+            "artifact": "NanoLiveConfig"
+          },
+          "version": {
+            "range": "[1.2.1,)",
+            "artifactVersion": "1.2.1"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
     },
     {
       "filename": "recruits-1.20.1-1.15.2.jar",

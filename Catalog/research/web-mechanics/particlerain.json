@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "mod_id": "particlerain",
+  "installed_version": "4.0.3",
+  "pack_snapshot_sha": "c0bb316b83c2976e2486f766eca17a92bbeaeaac",
+  "researched_on": "2026-11-18",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://modrinth.com/mod/particle-rain/version/h02qswpu",
+      "publisher": "PigCart",
+      "scope": "installed_static",
+      "reviewed_on": "2026-11-18",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/particlerain-4.0.3+1.20.1-forge.jar",
+        "sha256": "44bc0ab3ed373fe0d004b4457d09f91137d01ca6f8c195a5f530cb48064cb14f",
+        "resource": "META-INF/mods.toml"
+      }
+    },
+    {
+      "id": "author_release",
+      "url": "https://github.com/PigCart/particle-rain/releases/tag/v4.0.3",
+      "publisher": "Particle Rain project authors",
+      "scope": "release_notes",
+      "reviewed_on": "2026-11-18"
+    }
+  ],
+  "observations": [
+    {
+      "key": "particlerain:installed_role",
+      "kind": "compatibility",
+      "title": "Particle Rain role and integration boundary",
+      "player_action": "Use normal rain, snow and weather while the client renders the configured particle effects.",
+      "outcome": "Replaces client weather presentation with configurable particles and keeps dedicated-server execution inactive.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata and Forge entry-point bytecode were inspected.",
+        "Upstream 4.0.3 reports compatibility and texture-corruption fixes, but this pack's exact renderer combination still requires player acceptance."
+      ],
+      "source_ids": ["installed_metadata", "author_release"],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The exact Forge artifact exits before registration on a dedicated server, so JEM installs it only in the managed client."
+    }
+  ]
+}

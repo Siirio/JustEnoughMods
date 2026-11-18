@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "change_id": "major-update-4.particle-rain",
+  "status": "active",
+  "selectors": [{"type": "namespace", "registry": "*", "value": "particlerain"}],
+  "precedence": {"layer": "major_update_4", "priority": 1100},
+  "change": {
+    "summary": "Add Particle Rain to the managed client as the weather-particle presentation owner.",
+    "modifiers": [{
+      "property": "particlerain.installed",
+      "operation": "set",
+      "before": false,
+      "after": "4.0.3"
+    }]
+  },
+  "cause": {
+    "owner": "JEM managed client mod inventory",
+    "kind": "mod_addition",
+    "source_files": ["Docs/MODS.md", "tools/state/packSyncHost-sync.json"]
+  },
+  "rationale": {
+    "purpose": "Replace vanilla weather rendering with the requested configurable weather-particle presentation.",
+    "decision_source": "The user requested Particle Rain.",
+    "implementation_choices": "Install the latest stable Forge 1.20.1 release only on the client. Exact artifact inspection shows that its Forge entry point returns before registration on a dedicated server."
+  },
+  "introduced": {
+    "date": "2026-11-18",
+    "commit": "SELF",
+    "action": "add_particle_rain",
+    "summary": "Add Particle Rain 4.0.3 to the managed client.",
+    "source_files": ["Client/ManagedPack/mods/particlerain-4.0.3+1.20.1-forge.jar"]
+  },
+  "history": [{
+    "date": "2026-11-18",
+    "commit": "SELF",
+    "action": "add_particle_rain",
+    "summary": "Add the latest stable Forge 1.20.1 Particle Rain release to the managed client.",
+    "source_files": ["Client/ManagedPack/mods/particlerain-4.0.3+1.20.1-forge.jar"]
+  }],
+  "impacts": {
+    "systems": ["weather_rendering", "particles", "client_runtime_distribution"],
+    "relations": ["Particle Rain -> client weather particle rendering", "Particle Core asynchronous ticking -> shared client particle lifecycle", "ImmediatelyFast -> shared client render batching"],
+    "notes": ["Particle Rain 4.0.3 SHA-256 is 44bc0ab3ed373fe0d004b4457d09f91137d01ca6f8c195a5f530cb48064cb14f. Upstream 4.0.3 includes Forge, Iris and texture-corruption compatibility fixes."],
+    "unresolved": ["Player acceptance is required with the installed Oculus, Particle Core and ImmediatelyFast versions."]
+  }
+}

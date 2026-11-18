@@ -237,6 +237,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | PacketFixer | `3.3.2` | Client + server |  |
 | Paraglider | `20.1.3` | Client + server |  |
 | Particle Core | `0.3.3+1.20.1+forge` | Client |  |
+| Particle Rain | `4.0.3` | Client | Latest stable Forge 1.20.1 weather-particle renderer |
 | Particular Reforged | `1.5.7` | Client + server |  |
 | Patchouli | `1.20.1-85-FORGE` | Client + server |  |
 | PatPat | `1.3.1+1.20.1+forge` | Server |  |
@@ -257,6 +258,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Puzzles Lib | `8.1.33` | Client + server |  |
 | QuickSkin | `2.6.2.4` | Server |  |
 | QuickSkin | `2.6.2.4` | Client |  |
+| Radium | `0.15.0+git.626588c` | Client + server | Maintained Re-Reforged fork with the blocking chunk-access replacement disabled |
 | Reconnectible Chains | `2.2.5` | Client + server |  |
 | Resourceful Lib | `2.1.29` | Client + server |  |
 | Resourcefulconfig | `2.1.3` | Client + server |  |
