@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "d8ed9000f6c984797856fbe836e6886cffd2de40e6978b8a16961aa839f4c898",
+  "change_records_sha256": "ff006166ed29abb98fc427d62b0b73a77e0bebf22c728769e5ed45d3d335a8e0",
   "totals": {
     "watched": 7151,
-    "covered": 5673,
-    "unresolved": 1478
+    "covered": 5671,
+    "unresolved": 1480
   },
   "groups": {
     "Client/ManagedPack/config": {
       "watched": 1402,
-      "covered": 91,
-      "unresolved": 1311,
+      "covered": 88,
+      "unresolved": 1314,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -136,6 +136,7 @@
         "Client/ManagedPack/config/betterfortresses/forge-1_20/itemframes.json",
         "Client/ManagedPack/config/betteroceanmonuments-forge-1_20.toml",
         "Client/ManagedPack/config/block_factorys_bosses-client.toml",
+        "Client/ManagedPack/config/blockrunner.json",
         "Client/ManagedPack/config/blueprint-client.toml",
         "Client/ManagedPack/config/blueprint-common.toml",
         "Client/ManagedPack/config/boss_checklist/boss_checklist-client.json",
@@ -268,6 +269,7 @@
         "Client/ManagedPack/config/incontrol/summonaid.json",
         "Client/ManagedPack/config/infinitybuttons.toml",
         "Client/ManagedPack/config/insanelib.toml",
+        "Client/ManagedPack/config/inventorytabs-client.toml",
         "Client/ManagedPack/config/invincible-common.toml",
         "Client/ManagedPack/config/jade/hide-blocks.json",
         "Client/ManagedPack/config/jade/hide-entities.json",
@@ -1297,6 +1299,7 @@
         "Client/ManagedPack/config/visuality/particle_emitters/block_step.json",
         "Client/ManagedPack/config/visuality/particle_emitters/entity_armor.json",
         "Client/ManagedPack/config/visuality/particle_emitters/entity_hit.json",
+        "Client/ManagedPack/config/vss-client-config.json",
         "Client/ManagedPack/config/wakes-client.toml",
         "Client/ManagedPack/config/watut-client.toml",
         "Client/ManagedPack/config/watut-common.toml",
@@ -1362,11 +1365,9 @@
     },
     "Client/ManagedPack/mods": {
       "watched": 1,
-      "covered": 0,
-      "unresolved": 1,
-      "unresolved_paths": [
-        "Client/ManagedPack/mods/tinyinv-1.20.1-1.1.0.1.jar"
-      ]
+      "covered": 1,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMAchievementGuide": {
       "watched": 3796,

@@ -25,9 +25,11 @@ public final class CuratedJeiOverlay {
     private static final int SEARCH_HEIGHT = 18;
     private static final int NAVIGATION_HEIGHT = 24;
     private static CatalogCategory selected = CatalogCategory.WEAPONS;
+    private static CatalogCategory weapon = CatalogCategory.WEAPON_TOTEMS;
     private static CatalogCategory building = CatalogCategory.BUILDING_BLOCKS;
     private static int page;
     private static int categoryRailOffset;
+    private static int weaponRailOffset;
     private static int buildingRailOffset;
     private static Screen owner;
     private static EditBox categorySearch;
@@ -135,6 +137,18 @@ public final class CuratedJeiOverlay {
                     return;
                 }
             }
+        } else if (selected == CatalogCategory.WEAPONS) {
+            List<CatalogCategory> children = CuratedJeiCatalog.weapons();
+            int childStart = railStart(children, layout, true);
+            for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
+                if (inside(mouseX, mouseY, layout.subRailX(), layout.top() + (index - childStart) * BUTTON, BUTTON, BUTTON)) {
+                    weapon = children.get(index);
+                    categorySearch.setValue("");
+                    page = 0;
+                    event.setCanceled(true);
+                    return;
+                }
+            }
         }
         if (lastPage(layout) > 0) {
             int navigationY = layout.navigationY();
@@ -226,11 +240,16 @@ public final class CuratedJeiOverlay {
             }
             return;
         }
-        if (selected == CatalogCategory.BUILDING
+        if ((selected == CatalogCategory.BUILDING || selected == CatalogCategory.WEAPONS)
                 && inside(mouseX, mouseY, layout.subRailX(), layout.top(), BUTTON, railHeight)) {
             if (event.getScrollDelta() != 0) {
-                buildingRailOffset = scrollRail(buildingRailOffset, CuratedJeiCatalog.building().size(), layout,
-                        event.getScrollDelta() < 0 ? 1 : -1);
+                if (selected == CatalogCategory.BUILDING) {
+                    buildingRailOffset = scrollRail(buildingRailOffset, CuratedJeiCatalog.building().size(), layout,
+                            event.getScrollDelta() < 0 ? 1 : -1);
+                } else {
+                    weaponRailOffset = scrollRail(weaponRailOffset, CuratedJeiCatalog.weapons().size(), layout,
+                            event.getScrollDelta() < 0 ? 1 : -1);
+                }
                 event.setCanceled(true);
             }
             return;
@@ -296,13 +315,23 @@ public final class CuratedJeiOverlay {
                 renderButton(graphics, category.icon(), layout.subRailX(), y, category == building);
                 renderLabel(graphics, category.translationKey(), layout.subRailX(), y, mouseX, mouseY);
             }
+        } else if (selected == CatalogCategory.WEAPONS) {
+            List<CatalogCategory> children = CuratedJeiCatalog.weapons();
+            int childStart = railStart(children, layout, true);
+            for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
+                CatalogCategory category = children.get(index);
+                int y = layout.top() + (index - childStart) * BUTTON;
+                renderButton(graphics, category.icon(), layout.subRailX(), y, category == weapon);
+                renderLabel(graphics, category.translationKey(), layout.subRailX(), y, mouseX, mouseY);
+            }
         }
     }
 
     private static int railStart(List<CatalogCategory> categories, CatalogLayout layout, boolean children) {
-        int offset = children ? buildingRailOffset : categoryRailOffset;
+        int offset = children ? selected == CatalogCategory.WEAPONS ? weaponRailOffset : buildingRailOffset : categoryRailOffset;
         int clamped = Math.min(offset, Math.max(0, categories.size() - layout.railSlots()));
-        if (children) buildingRailOffset = clamped;
+        if (children && selected == CatalogCategory.WEAPONS) weaponRailOffset = clamped;
+        else if (children) buildingRailOffset = clamped;
         else categoryRailOffset = clamped;
         return clamped;
     }
@@ -414,7 +443,8 @@ public final class CuratedJeiOverlay {
     }
 
     private static List<ItemStack> activeStacks() {
-        return CuratedJeiCatalog.stacks(selected == CatalogCategory.BUILDING ? building : selected);
+        return CuratedJeiCatalog.stacks(selected == CatalogCategory.BUILDING ? building
+                : selected == CatalogCategory.WEAPONS ? weapon : selected);
     }
 
     private static void select(CatalogCategory category) {
@@ -429,7 +459,8 @@ public final class CuratedJeiOverlay {
         int railX = screen.width - BUTTON - MARGIN;
         int subRailX = railX - BUTTON - 4;
         int top = MARGIN;
-        int right = selected == CatalogCategory.BUILDING ? subRailX - MARGIN : railX - MARGIN;
+        int right = selected == CatalogCategory.BUILDING || selected == CatalogCategory.WEAPONS
+                ? subRailX - MARGIN : railX - MARGIN;
         int rightGridX = screen.getGuiLeft() + screen.getXSize() + MARGIN;
         int leftAvailable = screen.getGuiLeft() - MARGIN * 2;
         int rightAvailable = right - rightGridX;

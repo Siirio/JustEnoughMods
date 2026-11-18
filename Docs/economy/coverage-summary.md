@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-18T06:09:04.370479+00:00` for `c0bb316b83c2976e2486f766eca17a92bbeaeaac`.
+Generated from Atlas schema 1 at `2026-11-18T21:13:38.192543+00:00` for `2af88834b335aef7bd60e7cbcac0d3f109cec33f`.
 
-Static evidence observed 17,106 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 16,959 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -50,7 +50,6 @@ Static evidence observed 17,106 canonical item IDs. This is not a Forge runtime 
 | geckolib | 21 | 0 | 21 | 0 | 21 |
 | golemoverhaul | 13 | 0 | 13 | 0 | 13 |
 | gravestone | 2 | 0 | 2 | 0 | 2 |
-| guardvillagers | 4 | 0 | 4 | 0 | 4 |
 | handcrafted | 285 | 63 | 222 | 0 | 222 |
 | herbalbrews | 48 | 19 | 29 | 3 | 29 |
 | icys_better_horses | 30 | 0 | 30 | 0 | 30 |
@@ -61,7 +60,6 @@ Static evidence observed 17,106 canonical item IDs. This is not a Forge runtime 
 | infinitybuttons | 372 | 0 | 372 | 0 | 372 |
 | invincible | 3 | 0 | 3 | 0 | 3 |
 | item_magnet | 2 | 0 | 2 | 0 | 2 |
-| jacksgravestones | 1 | 0 | 1 | 0 | 1 |
 | jem_building | 11 | 0 | 11 | 0 | 11 |
 | jem_economy | 6 | 0 | 6 | 0 | 6 |
 | jem_twelve_eyes | 32 | 0 | 32 | 0 | 32 |
@@ -89,7 +87,6 @@ Static evidence observed 17,106 canonical item IDs. This is not a Forge runtime 
 | natures_spirit | 717 | 189 | 528 | 57 | 528 |
 | naturescompass | 32 | 0 | 32 | 0 | 32 |
 | netherexp | 397 | 16 | 381 | 0 | 381 |
-| netherman | 142 | 0 | 142 | 0 | 142 |
 | oceanicrealms | 43 | 9 | 34 | 0 | 34 |
 | p1nero_ec | 1 | 0 | 1 | 0 | 1 |
 | paraglider | 14 | 0 | 14 | 0 | 14 |

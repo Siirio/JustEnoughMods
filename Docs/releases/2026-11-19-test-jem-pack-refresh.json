@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "releaseMode": "local_test_profile_only",
+  "source": {
+    "branch": "feature/test-jem-pack-refresh",
+    "base": "origin/develop",
+    "baseCommit": "2af88834b335aef7bd60e7cbcac0d3f109cec33f"
+  },
+  "artifacts": {
+    "DistantHorizons-3.3.3-1.20.1-fabric-forge.jar": "a537a71171d935540b56b7598d0de2c106f6f5026336c713d89a1d9ea0ea14e3",
+    "gianttorii-1.0.0-forge-1.20.1.jar": "6c154c5aa8ac72de2472a92272d1ef3e779aa0c33641e0f930574a5a491c20ec",
+    "weatherglass-0.6.2-1.20.1-forge.jar": "2c58e2b6386d93ffd93b8086a9ddc2e8a81c89c49cdefcd9fd4dd17cd75de615",
+    "jem-advancements-5.3.9.jar": "08af6446feb251cc09d5ca6772c3c844ba1a2f180cc7073a86aa3a1d2bbaaa34",
+    "jemcompat-3.10.7.jar": "f118460ad6755208e60dea709df6c1a3ea833b1fcc167bd57b020e856ff15fe9",
+    "jem-world-boss-tiers-2.5.0-dev.jar": "7612d8d6be9798788257153e9e3c3be883ce03204a24bcefad34e3b54431bc05"
+  },
+  "publication": {
+    "published": true,
+    "journalSequence": 176,
+    "contentToken": "9e86753bd2fd0a36c17f0ef4ebeef32dcfacff57",
+    "manifestSha1": "2c2b6a4e3bf8ad86e0c7cfe01f6c24cde377839e",
+    "preview": {
+      "added": 3,
+      "changed": 4,
+      "deleted": 15
+    },
+    "postPublicationPreview": {
+      "added": 0,
+      "changed": 0,
+      "deleted": 0
+    }
+  },
+  "client": {
+    "profile": "Test JustEnoughMods",
+    "activeTokenMatchesPublished": true,
+    "verifiedManagedJars": 328,
+    "pendingTransaction": false,
+    "retiredManualFilesArchive": "C:/MyProjects/Minecraft/JustEnoughMods-updates/retired-test-voxy-20261119-0242"
+  },
+  "server": {
+    "state": "stopped",
+    "savedCleanly": true,
+    "watchdogRestoredMillis": 60000
+  },
+  "validation": {
+    "atlasValid": true,
+    "buildsCompleted": [
+      "JEM Advancements 5.3.9",
+      "JEM Compat 3.10.7",
+      "JEM World Boss Tiers 2.5.0-dev"
+    ],
+    "automatedTestsRun": false,
+    "gameplayQaRun": false,
+    "playerAcceptance": "in testing"
+  },
+  "production": {
+    "minerentChanged": false,
+    "stableProfileChanged": false,
+    "releaseBaselineChanged": false,
+    "recruitCapPending": "[Recruits] MaxRecruitsForPlayer = 30"
+  }
+}

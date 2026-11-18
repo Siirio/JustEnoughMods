@@ -57,7 +57,7 @@ dependencies {
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Trials-2.3.3.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/rottencreatures-forge-1.20.1-1.1.0.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/guardvillagers-1.20.1-1.6.19.jar"))
+    // Guard Villagers is not part of the JEM runtime, so the guide has no Guard-specific compile edge.
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/fairylights-7.0.0-1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/casualswing-0.1.0-1.20.1-Forge.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/copperagebackport-forge-1.20.1-0.1.5.jar"))

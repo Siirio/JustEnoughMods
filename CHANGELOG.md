@@ -1,3 +1,20 @@
+## 2026-11-19 - Refresh Test JEM mods and weapon navigation
+
+- User requested a new branch from `develop` and a Test JEM-only update. MineRENT, the stable profile and the immutable release baseline remain unchanged
+- Removed Inventory Tabs, Block Runner, Cult of Azazel, Guard Villagers, Jack's Gravestones, Let Me Despawn, Structory 1.3.5, VSS and the manual Neo Voxy client component
+- Kept GraveStone 1.0.35 as the only active grave owner
+- Added client-only Weather Glass 0.6.2, added Giant Torii 1.0.0 on both sides, and installed Distant Horizons 3.3.3 on both sides with its single shared Forge JAR
+- Removed the Guard Villagers compile edge and Guard-specific quest hooks from JEM Advancements. Existing quest metadata stays hidden because its required mod is absent
+- User requested three JEI Weapons sections. JEM Compat now partitions only items that were already in Weapons into Totems, Ranged Weapons and Melee Weapons. Other JEI categories are unchanged
+- User requested Sirok's barrier to be 30 blocks wider. JEM World Boss Tiers adds 15 blocks to each horizontal side of the registered Sandworm Nest bounds and preserves the native structure identity, respawn anchor and encounter state
+- User requested a maximum of 30 recruits per player on MineRENT only. The exact upstream server property is `[Recruits] MaxRecruitsForPlayer = 30`. It is recorded for the later MineRENT server-only release and is not added to managed client defaults or the local Test server
+- Static structure audit found one unresolved exact overwrite. Nullscape and Trek both define `minecraft:end_cities`. Existing JEM data resolves the village and pillager-outpost overlaps. Hopo Better Mineshaft has no competing mineshaft overhaul. Nether fortress-like mods use separate IDs and can increase density without an exact registry collision
+- Implementation choice: Weather Glass stays client-only, Giant Torii stays on both sides, and Distant Horizons uses the same 3.3.3 JAR on the client and server because no separate server companion exists
+- Production builds for JEM Advancements 5.3.9, JEM Compat 3.10.7 and JEM World Boss Tiers 2.5.0-dev completed without tests. Automated tests and Minecraft gameplay were not run. Player acceptance remains `in testing`
+- The local dedicated server loaded Distant Horizons 3.3.3 and Giant Torii 1.0.0, then published native AutoModpack journal sequence 176 with content token `9e86753bd2fd0a36c17f0ef4ebeef32dcfacff57`. The reviewed diff was `+3 ~4 -15`, and the final preview returned `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied that exact generation through the native planner and detached helper. Its active token matches the published head, 328 managed JARs match canonical hashes, and no active transaction remains. Four unmanaged Voxy, VSS and Block Runner leftovers were moved to the recoverable archive `C:/MyProjects/Minecraft/JustEnoughMods-updates/retired-test-voxy-20261119-0242`
+- The local server saved all dimensions and stopped. The normal 60-second watchdog was restored after the slow first resource reload. MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
 ## 2026-11-19 - Release guarded Radium and Particle Rain
 
 - User requested completion of the prepared update on MineRENT and the local client, followed by production promotion

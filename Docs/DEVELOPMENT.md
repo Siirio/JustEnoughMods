@@ -188,10 +188,12 @@ WorldTier и TwelveEyes имеют разные content policies. WorldTier фи
 
 ## Pack и runtime contracts
 
-- ServerCore 1.5.2 сохраняет `activation-range.enabled=false`, а Chunky 1.3.146 остаётся operator-controlled server pre-generation владельцем. VSS 0.3.5 снова входит в server/client distribution по прямому запросу 2026-11-15. Его production config отключает server chunk generation, prediction metadata и distant-player sync. Neo Voxy остаётся обязательной ручной client-side установкой для Voxy rendering. JEM не распространяет его All Rights Reserved JAR через AutoModpack или friend packages. GGTU отсутствует и не является dependency.
+- ServerCore 1.5.2 сохраняет `activation-range.enabled=false`, а Chunky 1.3.146 остаётся operator-controlled server pre-generation владельцем. Distant Horizons 3.3.3 заменяет VSS и ручной Neo Voxy в текущем Test JEM. Один и тот же Forge JAR находится на клиенте и сервере. Отдельный server companion не нужен. Клиент без Distant Horizons может подключиться, но не получает полный DH обмен LOD. Weather Glass 0.6.2 остаётся client-only. Giant Torii 1.0.0 находится на обеих сторонах. GGTU отсутствует и не является dependency.
 - Fiw AntiCheat (`fiw_mods_api`) отсутствует в server runtime и client distribution: версия 2.1.0 объявляет `side = BOTH`, принимает только protocol `1` для `fiw_mods_api:main` на обеих сторонах и требует client challenge/response для модов и resource packs, поэтому её нельзя считать server-only защитой или включать без отдельного одобренного feature contract.
 
-- GraveStone 1.0.35 владеет новыми смертями; Jack's Gravestones сохраняет legacy registry/saved-data recovery, но не захватывает новые inventories при наличии GraveStone.
+- Inventory Tabs, Block Runner, Cult of Azazel, Guard Villagers, Jack's Gravestones, Let Me Despawn и Structory 1.3.5 удалены из текущего Test JEM. Guard-specific quest hooks удалены из JEM Advancements. Скрытая историческая quest metadata не является активной интеграцией без `guardvillagers`.
+
+- GraveStone 1.0.35 является единственным активным владельцем могил. Jack's Gravestones удалён из текущей сборки. Его старые registry и saved-data записи остаются неактивной историей и не используются для новых смертей.
 - Все неполученные graves сохраняются между смертями; любой player может recover/break grave, environment/mobs не уничтожают grave, Backpacked-specific equipped-backpack retention is retired with removal of that mod.
 - TPA new-world cooldown равен пяти секундам; Death History принадлежит профилю `/smp`, `/back` остаётся TPA.
 - `options.txt` distribution template сохраняет data version `3465`, language, полный resource-pack order и все Legacy keybinds.

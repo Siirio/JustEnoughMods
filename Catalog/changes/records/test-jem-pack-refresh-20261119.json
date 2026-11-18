@@ -1,0 +1,193 @@
+{
+  "schema_version": 2,
+  "change_id": "test-jem-pack-refresh-20261119",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "gianttorii"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_advancements"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jemcompat"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_world_boss_tiers"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "weatherglass"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime_scope": "Test JEM and the ordinary local server only"
+    },
+    {
+      "minerent_recruits": "MaxRecruitsForPlayer = 30 is prepared for a later MineRENT server-only release and is not a managed-pack default"
+    },
+    {
+      "world_generation": "Giant Torii and removal of Structory affect newly generated chunks"
+    }
+  ],
+  "precedence": {
+    "layer": "test_jem_pack_refresh",
+    "priority": 119,
+    "overrides": [
+      "major-update-4-stabilization-implementation-20261116"
+    ]
+  },
+  "change": {
+    "summary": "Refresh Test JEM mods, split the JEI Weapons tab, widen Sirok's arena and prepare the MineRENT recruit cap",
+    "modifiers": [
+      {
+        "property": "distribution.removed_mods",
+        "operation": "remove",
+        "before": [
+          "inventorytabs",
+          "blockrunner",
+          "cultofazazel",
+          "guardvillagers",
+          "jacksgravestones",
+          "letmedespawn",
+          "structory",
+          "vss",
+          "neo_voxy"
+        ],
+        "after": []
+      },
+      {
+        "property": "distribution.added_mods",
+        "operation": "add",
+        "before": [],
+        "after": [
+          "weatherglass:0.6.2",
+          "gianttorii:1.0.0",
+          "distanthorizons:3.3.3"
+        ]
+      },
+      {
+        "property": "jei.catalog.weapons",
+        "operation": "partition",
+        "before": "one Weapons item list",
+        "after": [
+          "Totems",
+          "Ranged Weapons",
+          "Melee Weapons"
+        ]
+      },
+      {
+        "property": "hosted_encounter.sirok.horizontal_padding",
+        "operation": "set",
+        "before": 0,
+        "after": 15
+      },
+      {
+        "property": "minerent.recruits.MaxRecruitsForPlayer",
+        "operation": "prepare",
+        "before": 100,
+        "after": 30
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Managed pack, JEM Advancements, JEM Compat and JEM World Boss Tiers",
+    "kind": "user_requested_test_pack_refresh",
+    "source_files": [
+      "Client/ManagedPack/mods/**",
+      "Docs/major-update-4/structure-conflict-audit-2026-11-19.md",
+      "Mods/JEMAchievementGuide/**",
+      "Mods/JEMCompat/**",
+      "Mods/JEMWorldBossTiers/**",
+      "Server/mods/**"
+    ]
+  },
+  "rationale": {
+    "purpose": "Apply the requested Test JEM content set while keeping the recruit limit server-owned and preserving unrelated JEI categories",
+    "decision_source": "User-requested removals, additions, category split, Sirok boundary increase and MineRENT-only recruit cap",
+    "implementation_choices": "Use the same Distant Horizons JAR on client and server, add 15 blocks to each horizontal side of Sirok's native structure bounds, and classify only items already owned by the Weapons tab"
+  },
+  "introduced": {
+    "date": "2026-11-19",
+    "commit": "SELF",
+    "action": "refresh_test_jem_pack",
+    "summary": "Implement the requested Test JEM pack and gameplay changes"
+  },
+  "history": [
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "refresh_test_jem_pack",
+      "summary": "Remove the retired mods, add the approved replacements, update JEM integrations and record structure ownership",
+      "source_files": [
+        "Client/ManagedPack/config/blockrunner.json",
+        "Client/ManagedPack/config/guardvillagers-client.toml",
+        "Client/ManagedPack/config/guardvillagers-common.toml",
+        "Client/ManagedPack/config/inventorytabs-client.toml",
+        "Client/ManagedPack/config/letmedespawn.json",
+        "Client/ManagedPack/config/vss-client-config.json",
+        "Client/ManagedPack/mods/BlockRunner-v8.0.4-1.20.1-Forge.jar",
+        "Client/ManagedPack/mods/DistantHorizons-3.3.3-1.20.1-fabric-forge.jar",
+        "Client/ManagedPack/mods/Structory_1.20.x_v1.3.5.jar",
+        "Client/ManagedPack/mods/cultofazazelforge-1.1.4.12.jar",
+        "Client/ManagedPack/mods/gianttorii-1.0.0-forge-1.20.1.jar",
+        "Client/ManagedPack/mods/guardvillagers-1.20.1-1.6.19.jar",
+        "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1-jem.1.jar",
+        "Client/ManagedPack/mods/jacks-gravestones-forge-1.20.1-1.0.6.jar",
+        "Client/ManagedPack/mods/letmedespawn-1.20.x-forge-1.5.0.jar",
+        "Client/ManagedPack/mods/vss-0.3.5-forge-1.20.1.jar",
+        "Client/ManagedPack/mods/weatherglass-0.6.2-1.20.1-forge.jar",
+        "Server/config/blockrunner.json",
+        "Server/config/guardvillagers-client.toml",
+        "Server/config/guardvillagers-common.toml",
+        "Server/config/letmedespawn.json",
+        "Server/config/vss-server-config.json",
+        "Server/mods/BlockRunner-v8.0.4-1.20.1-Forge.jar",
+        "Server/mods/DistantHorizons-3.3.3-1.20.1-fabric-forge.jar",
+        "Server/mods/Structory_1.20.x_v1.3.5.jar",
+        "Server/mods/cultofazazelforge-1.1.4.12.jar",
+        "Server/mods/gianttorii-1.0.0-forge-1.20.1.jar",
+        "Server/mods/guardvillagers-1.20.1-1.6.19.jar",
+        "Server/mods/jacks-gravestones-forge-1.20.1-1.0.6.jar",
+        "Server/mods/letmedespawn-1.20.x-forge-1.5.0.jar",
+        "Server/mods/vss-0.3.5-forge-1.20.1.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "AutoModpack",
+      "Distant Horizons",
+      "FTB Quests",
+      "JEI",
+      "hosted bosses",
+      "structures"
+    ],
+    "relations": [
+      "GraveStone remains the only active grave owner",
+      "Weather Glass is client-only",
+      "Giant Torii and Distant Horizons use the same exact versions on every required side",
+      "The recruit cap is not written to Client/ManagedPack/defaultconfigs"
+    ],
+    "notes": [
+      "Sirok gains 15 blocks on each X and Z side for 30 blocks more total width per horizontal axis",
+      "Guard-specific quest hooks are removed with Guard Villagers",
+      "No MineRENT, stable profile or release baseline mutation is part of this branch"
+    ],
+    "unresolved": [
+      "Nullscape and Trek both define minecraft:end_cities, so data-pack order still selects one owner",
+      "Gameplay and visual acceptance require the user's Test JEM session",
+      "The MineRENT recruit cap is pending a later approved production deployment"
+    ]
+  }
+}

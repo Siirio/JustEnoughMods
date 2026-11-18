@@ -1,36 +1,35 @@
 {
   "schema_version": 1,
-  "registry_type": "entities",
-  "snapshot_sha": "c0bb316b83c2976e2486f766eca17a92bbeaeaac",
+  "registry_type": "structures",
+  "snapshot_sha": "2af88834b335aef7bd60e7cbcac0d3f109cec33f",
   "generation": {
-    "generated_utc": "2026-11-18T06:09:04.390884+00:00",
+    "generated_utc": "2026-11-18T21:13:38.192543+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
-    "id": "guardvillagers",
-    "name": "Guard Villagers",
-    "version": "${file.jarVersion}"
+    "id": "gianttorii",
+    "name": "GiantTorii",
+    "version": "1.0.0"
   },
   "records": [
     {
-      "registry_id": "guardvillagers:guard",
-      "registry_type": "entity_type",
+      "registry_id": "gianttorii:giant_torii",
+      "registry_type": "structure",
       "schema_version": 1,
-      "mod_id": "guardvillagers",
-      "mod_name": "Guard Villagers",
-      "mod_version": "${file.jarVersion}",
-      "source_jar": "guardvillagers-1.20.1-1.6.19.jar",
-      "source_sha256": "4c48c88144bcd8d47820baa5ca0d0c1cab8984da4ec2ceeb7ed164c27d1266f3",
+      "mod_id": "gianttorii",
+      "mod_name": "GiantTorii",
+      "mod_version": "1.0.0",
+      "source_jar": "gianttorii-1.0.0-forge-1.20.1.jar",
+      "source_sha256": "6c154c5aa8ac72de2472a92272d1ef3e779aa0c33641e0f930574a5a491c20ec",
       "side_availability": [
         "client"
       ],
       "observed_in": [
-        "assets/guardvillagers/lang/en_us.json",
-        "assets/guardvillagers/lang/ru_ru.json"
+        "data/gianttorii/worldgen/structure/giant_torii.json"
       ],
-      "display_name_en_us": "Guard",
-      "display_name_ru_ru": "Стражник",
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [],
@@ -39,8 +38,7 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "guardvillagers-1.20.1-1.6.19.jar:assets/guardvillagers/lang/en_us.json",
-        "guardvillagers-1.20.1-1.6.19.jar:assets/guardvillagers/lang/ru_ru.json"
+        "gianttorii-1.0.0-forge-1.20.1.jar:data/gianttorii/worldgen/structure/giant_torii.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

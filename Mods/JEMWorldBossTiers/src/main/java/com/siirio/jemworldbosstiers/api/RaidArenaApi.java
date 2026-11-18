@@ -50,7 +50,17 @@ public final class RaidArenaApi {
             if (data.raidReplacementPending(id)) restoreNormalBoss(server, registered, entityType);
             return;
         }
-        // A registration signal cannot erase an existing arena's ownership.
+        // The same native structure owner may update effective boundary geometry without replacing
+        // its identity, respawn anchor, unlock state or active encounter reservation.
+        if(current!=null&&current.profileKey().equals(profile.key())&&current.dimension().equals(dimension.toString())) {
+            ArenaRecord registered=current.withBounds(bounds).asStructureArena();
+            if (!registered.unlocked() && data.defeatedBosses().contains(profile.key())) registered=registered.unlock();
+            data.putArena(registered);
+            ArenaService.reconcileStructure(data,registered);
+            if (data.raidReplacementPending(id)) restoreNormalBoss(server, registered, entityType);
+            return;
+        }
+        // A registration signal cannot erase a different arena owner's state.
         if(current!=null) return;
         ArenaRecord exact = ArenaRecord.create(id, profile.key(), dimension.toString(), bounds.minX(), bounds.minY(), bounds.minZ(),
                 bounds.maxX(), bounds.maxY(), bounds.maxZ()).asStructureArena();
