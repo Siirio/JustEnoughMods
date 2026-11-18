@@ -11,6 +11,11 @@
     {
       "type": "namespace",
       "registry": "*",
+      "value": "inventorytabs"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
       "value": "jem_advancements"
     },
     {
@@ -21,12 +26,42 @@
     {
       "type": "namespace",
       "registry": "*",
+      "value": "jem_economy"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_settlements"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
       "value": "jem_world_boss_tiers"
     },
     {
       "type": "namespace",
       "registry": "*",
       "value": "weatherglass"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "tiny_takeover_backport"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "vanillabackport"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "platform"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
     }
   ],
   "conditions": [
@@ -48,11 +83,11 @@
     ]
   },
   "change": {
-    "summary": "Refresh Test JEM mods, split the JEI Weapons tab, widen Sirok's arena and prepare the MineRENT recruit cap",
+    "summary": "Refresh Test JEM mods, quests, shaders, menu scale and settlement breeding admission",
     "modifiers": [
       {
         "property": "distribution.removed_mods",
-        "operation": "remove",
+        "operation": "replace",
         "before": [
           "inventorytabs",
           "blockrunner",
@@ -64,21 +99,43 @@
           "vss",
           "neo_voxy"
         ],
-        "after": []
+        "after": [
+          "blockrunner",
+          "cultofazazel",
+          "guardvillagers",
+          "jacksgravestones",
+          "letmedespawn",
+          "structory",
+          "vss",
+          "neo_voxy",
+          "copperagebackport",
+          "spear_backport"
+        ]
       },
       {
         "property": "distribution.added_mods",
-        "operation": "add",
+        "operation": "replace",
         "before": [],
         "after": [
           "weatherglass:0.6.2",
           "gianttorii:1.0.0",
-          "distanthorizons:3.3.3"
+          "distanthorizons:3.3.3",
+          "inventorytabs:0.10.1-jem.1",
+          "vanillabackport:1.2.2",
+          "tiny_takeover_backport:1.8.2",
+          "platform:1.4.2"
         ]
       },
       {
+        "property": "dependencies.platform",
+        "operation": "replace",
+        "before": "1.3.4",
+        "after": "1.4.2",
+        "notes": "VanillaBackport 1.2.2 requires Platform [1.4,). Rotten Creatures accepts [1.2.4,)."
+      },
+      {
         "property": "jei.catalog.weapons",
-        "operation": "partition",
+        "operation": "replace",
         "before": "one Weapons item list",
         "after": [
           "Totems",
@@ -94,28 +151,82 @@
       },
       {
         "property": "minerent.recruits.MaxRecruitsForPlayer",
-        "operation": "prepare",
+        "operation": "document",
         "before": 100,
         "after": 30
+      },
+      {
+        "property": "inventorytabs.discovery_scope",
+        "operation": "set",
+        "before": "removed from Test JEM",
+        "after": "restored with real loaded client chunks and nearby loaded entities only"
+      },
+      {
+        "property": "ftb_quests.coin_rewards",
+        "operation": "add",
+        "before": null,
+        "after": {
+          "source_account": "OPERATIONS",
+          "enabled_condition": "JEM Economy enabled",
+          "per_quest_tier_copper": {
+            "starter": 1,
+            "field": 2,
+            "flavor": 2,
+            "expedition": 3,
+            "advanced": 3,
+            "specialist": 4,
+            "expert": 5,
+            "capstone": 10
+          }
+        }
+      },
+      {
+        "property": "client.main_menu.gui_scale",
+        "operation": "set",
+        "before": "follow player GUI scale",
+        "after": 4,
+        "conditions": [
+          {
+            "screen": "TitleScreen only"
+          }
+        ]
+      },
+      {
+        "property": "minecraft:villager.breeding_home",
+        "operation": "add",
+        "before": "native breeding admission only",
+        "after": "each parent has a bound HOME whose loaded 3x3x3 cube contains a bed, an acquirable villager job-site POI and a normal or trapped chest",
+        "notes": "This is an additional post-native admission check. Food, age, willingness, spare child bed, path validation, housing happiness, roof and personal-space rules retain their owners."
+      },
+      {
+        "property": "client.shader_inventory",
+        "operation": "replace",
+        "before": "mixed old versions, BVS, Rethinking Voxels and customized Complementary variants",
+        "after": "current retained shaders plus Derivative 26.3, with one original Complementary Unbound and native medium profiles"
       }
     ]
   },
   "cause": {
-    "owner": "Managed pack, JEM Advancements, JEM Compat and JEM World Boss Tiers",
+    "owner": "Managed pack, JEM Advancements, JEM Compat, JEM Economy, JEM Settlements and JEM World Boss Tiers",
     "kind": "user_requested_test_pack_refresh",
     "source_files": [
       "Client/ManagedPack/mods/**",
+      "Client/ManagedPack/config/inventorytabs-client.toml",
+      "Client/ManagedPack/config/oculus.properties",
+      "Client/ManagedPack/shaderpacks/**",
       "Docs/major-update-4/structure-conflict-audit-2026-11-19.md",
       "Mods/JEMAchievementGuide/**",
       "Mods/JEMCompat/**",
+      "Mods/JEMEconomy/**",
+      "Mods/JEMSettlements/**",
       "Mods/JEMWorldBossTiers/**",
       "Server/mods/**"
     ]
   },
   "rationale": {
-    "purpose": "Apply the requested Test JEM content set while keeping the recruit limit server-owned and preserving unrelated JEI categories",
-    "decision_source": "User-requested removals, additions, category split, Sirok boundary increase and MineRENT-only recruit cap",
-    "implementation_choices": "Use the same Distant Horizons JAR on client and server, add 15 blocks to each horizontal side of Sirok's native structure bounds, and classify only items already owned by the Weapons tab"
+    "purpose": "Apply the requested Test JEM content, presentation, quest-economy and settlement rules while keeping the recruit limit server-owned and preserving unrelated gameplay owners",
+    "decision_source": "User-requested removals, additions, Inventory Tabs restoration, shader refresh, FTB Coin rewards, fixed main-menu scale, settlement breeding home, category split, Sirok boundary increase and MineRENT-only recruit cap",
+    "implementation_choices": "Use the same Distant Horizons JAR on client and server, add 15 blocks to each horizontal side of Sirok's native structure bounds, classify only items already owned by the Weapons tab, fund quest rewards from OPERATIONS, require one complete bound home cube for each breeding parent, and update Platform to the current Forge release that satisfies VanillaBackport 1.2.2"
   },
   "introduced": {
     "date": "2026-11-19",
@@ -162,6 +273,36 @@
         "Server/mods/letmedespawn-1.20.x-forge-1.5.0.jar",
         "Server/mods/vss-0.3.5-forge-1.20.1.jar"
       ]
+    },
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "complete_test_jem_pack_refresh",
+      "summary": "Restore loaded-chunk-only Inventory Tabs, update VanillaBackport ownership, add Tiny Takeover, refresh shaders, add funded quest Coins, fix title scale and add settlement breeding-home admission",
+      "source_files": [
+        "Client/ManagedPack/config/copperagebackport.json",
+        "Client/ManagedPack/config/inventorytabs-client.toml",
+        "Client/ManagedPack/config/oculus.properties",
+        "Client/ManagedPack/kubejs/assets/minecraft/lang/ru_ru.json",
+        "Client/ManagedPack/mods/copperagebackport-forge-1.20.1-0.1.5.jar",
+        "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1-jem.1.jar",
+        "Client/ManagedPack/mods/Platform-forge-1.20.1-1.3.4.jar",
+        "Client/ManagedPack/mods/Platform-forge-1.20.1-1.4.2.jar",
+        "Client/ManagedPack/mods/spear-backport-forge-1.4.7-1.20.1.jar",
+        "Client/ManagedPack/mods/tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
+        "Client/ManagedPack/mods/VanillaBackport-forge-1.20.1-1.2.2.jar",
+        "Mods/JEMAchievementGuide/**",
+        "Mods/JEMCompat/**",
+        "Mods/JEMEconomy/**",
+        "Mods/JEMSettlements/**",
+        "Server/config/copperagebackport.json",
+        "Server/mods/Platform-forge-1.20.1-1.3.4.jar",
+        "Server/mods/Platform-forge-1.20.1-1.4.2.jar",
+        "Server/mods/copperagebackport-forge-1.20.1-0.1.5.jar",
+        "Server/mods/spear-backport-forge-1.4.7-1.20.1.jar",
+        "Server/mods/tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
+        "Server/mods/VanillaBackport-forge-1.20.1-1.2.2.jar"
+      ]
     }
   ],
   "impacts": {
@@ -169,7 +310,12 @@
       "AutoModpack",
       "Distant Horizons",
       "FTB Quests",
+      "Fresh Animations",
       "JEI",
+      "JEM Economy",
+      "JEM Settlements",
+      "Oculus shaders",
+      "Platform",
       "hosted bosses",
       "structures"
     ],
@@ -177,11 +323,18 @@
       "GraveStone remains the only active grave owner",
       "Weather Glass is client-only",
       "Giant Torii and Distant Horizons use the same exact versions on every required side",
-      "The recruit cap is not written to Client/ManagedPack/defaultconfigs"
+      "The recruit cap is not written to Client/ManagedPack/defaultconfigs",
+      "VanillaBackport owns the overlapping Copper Age and spear backports while Trials remains installed",
+      "Platform 1.4.2 satisfies VanillaBackport 1.2.2 and remains inside Rotten Creatures' open dependency range",
+      "Tiny Takeover uses vanilla entity types and swaps only its baby model during render, so Fresh Animations has no unsupported Tiny Takeover entity IDs"
     ],
     "notes": [
       "Sirok gains 15 blocks on each X and Z side for 30 blocks more total width per horizontal axis",
       "Guard-specific quest hooks are removed with Guard Villagers",
+      "Inventory Tabs is restored with its loaded-chunk-only JEM patch and client configuration",
+      "The title screen enforces logical GUI scale 4 without changing the saved in-game GUI option",
+      "Villager breeding retains native admission and adds one complete loaded home cube for each parent",
+      "The first local server start exposed Platform 1.3.4 as the earliest invalid dependency state. The managed client and server now use the same Platform 1.4.2 artifact",
       "No MineRENT, stable profile or release baseline mutation is part of this branch"
     ],
     "unresolved": [

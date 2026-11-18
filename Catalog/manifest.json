@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "2af88834b335aef7bd60e7cbcac0d3f109cec33f",
-  "generated_utc": "2026-11-18T21:13:38.192543+00:00",
+  "snapshot_sha": "f3b5c91e7331e6f4ec4edde59c8cb98789780254",
+  "generated_utc": "2026-11-18T23:16:06.323559+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -2802,56 +2802,6 @@
         "coolrain"
       ],
       "source_path": "Server\\mods\\coolrain-1.20.1-Forge-1.0.3.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "copperagebackport-forge-1.20.1-0.1.5.jar",
-      "sha256": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "copperagebackport",
-          "name": "Copper-Age-Backport",
-          "version": "0.1.5",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "c",
-        "copperagebackport",
-        "create",
-        "forge",
-        "minecraft"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\copperagebackport-forge-1.20.1-0.1.5.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "copperagebackport-forge-1.20.1-0.1.5.jar",
-      "sha256": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "copperagebackport",
-          "name": "Copper-Age-Backport",
-          "version": "0.1.5",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "c",
-        "copperagebackport",
-        "create",
-        "forge",
-        "minecraft"
-      ],
-      "source_path": "Server\\mods\\copperagebackport-forge-1.20.1-0.1.5.jar",
       "nested_dependencies": []
     },
     {
@@ -9511,6 +9461,28 @@
       ]
     },
     {
+      "filename": "inventorytabs-forge-1.20.1-0.10.1-jem.1.jar",
+      "sha256": "7912952426d4c1733295742f6266deafb463dcd0f3a5985527f8a2e9cc2bf021",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "inventorytabs",
+          "name": "Inventory Tabs",
+          "version": "${file.jarVersion}",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "inventorytabs",
+        "techreborn"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\inventorytabs-forge-1.20.1-0.10.1-jem.1.jar",
+      "nested_dependencies": []
+    },
+    {
       "filename": "Item-Magnet-Forge-1.20.1-1.0.0 (1).jar",
       "sha256": "b131bcb1e74456d74677716587771277b6fee384ae0b95d22c8d9b9777bcce4e",
       "sides": [
@@ -9905,8 +9877,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jem-advancements-5.3.9.jar",
-      "sha256": "08af6446feb251cc09d5ca6772c3c844ba1a2f180cc7073a86aa3a1d2bbaaa34",
+      "filename": "jem-advancements-5.3.10.jar",
+      "sha256": "36973088dd5c57b0016cb41f572f065e47256efe0cb23117e93d5b5fa1424976",
       "sides": [
         "client"
       ],
@@ -9936,12 +9908,12 @@
         "tide",
         "treechop"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jem-advancements-5.3.9.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jem-advancements-5.3.10.jar",
       "nested_dependencies": []
     },
     {
-      "filename": "jem-advancements-5.3.9.jar",
-      "sha256": "08af6446feb251cc09d5ca6772c3c844ba1a2f180cc7073a86aa3a1d2bbaaa34",
+      "filename": "jem-advancements-5.3.10.jar",
+      "sha256": "36973088dd5c57b0016cb41f572f065e47256efe0cb23117e93d5b5fa1424976",
       "sides": [
         "server"
       ],
@@ -9971,7 +9943,7 @@
         "tide",
         "treechop"
       ],
-      "source_path": "Server\\mods\\jem-advancements-5.3.9.jar",
+      "source_path": "Server\\mods\\jem-advancements-5.3.10.jar",
       "nested_dependencies": []
     },
     {
@@ -10017,8 +9989,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jem-economy-1.3.3.jar",
-      "sha256": "06f5fba540af5f561f95b9e107f2506b4ac13416aa3fe38757b4f71c4f25b001",
+      "filename": "jem-economy-1.3.4.jar",
+      "sha256": "8e1048376ae4aebdc2e240707f41ac593d650b86eb76a19e8c39a29b6252075d",
       "sides": [
         "client"
       ],
@@ -10027,7 +9999,7 @@
         {
           "id": "jem_economy",
           "name": "JEM Economy",
-          "version": "1.3.3",
+          "version": "1.3.4",
           "display_test": "unknown"
         }
       ],
@@ -10035,12 +10007,12 @@
         "jem_economy",
         "minecraft"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jem-economy-1.3.3.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jem-economy-1.3.4.jar",
       "nested_dependencies": []
     },
     {
-      "filename": "jem-economy-1.3.3.jar",
-      "sha256": "06f5fba540af5f561f95b9e107f2506b4ac13416aa3fe38757b4f71c4f25b001",
+      "filename": "jem-economy-1.3.4.jar",
+      "sha256": "8e1048376ae4aebdc2e240707f41ac593d650b86eb76a19e8c39a29b6252075d",
       "sides": [
         "server"
       ],
@@ -10049,7 +10021,7 @@
         {
           "id": "jem_economy",
           "name": "JEM Economy",
-          "version": "1.3.3",
+          "version": "1.3.4",
           "display_test": "unknown"
         }
       ],
@@ -10057,7 +10029,7 @@
         "jem_economy",
         "minecraft"
       ],
-      "source_path": "Server\\mods\\jem-economy-1.3.3.jar",
+      "source_path": "Server\\mods\\jem-economy-1.3.4.jar",
       "nested_dependencies": []
     },
     {
@@ -10239,8 +10211,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jem-settlements-2.1.1.jar",
-      "sha256": "d802239a354bf046cc566b24be1b908cf38b8b2647c6cdf3e1d479a57b227fb0",
+      "filename": "jem-settlements-2.1.2.jar",
+      "sha256": "3664bae0bcce7900a3d974d8a7d92fe3bef423aa2af1156c0c4189d32f523b9c",
       "sides": [
         "client"
       ],
@@ -10249,19 +10221,19 @@
         {
           "id": "jem_settlements",
           "name": "JEM Settlements",
-          "version": "2.1.1",
+          "version": "2.1.2",
           "display_test": "unknown"
         }
       ],
       "namespaces": [
         "jem_settlements"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jem-settlements-2.1.1.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jem-settlements-2.1.2.jar",
       "nested_dependencies": []
     },
     {
-      "filename": "jem-settlements-2.1.1.jar",
-      "sha256": "d802239a354bf046cc566b24be1b908cf38b8b2647c6cdf3e1d479a57b227fb0",
+      "filename": "jem-settlements-2.1.2.jar",
+      "sha256": "3664bae0bcce7900a3d974d8a7d92fe3bef423aa2af1156c0c4189d32f523b9c",
       "sides": [
         "server"
       ],
@@ -10270,14 +10242,14 @@
         {
           "id": "jem_settlements",
           "name": "JEM Settlements",
-          "version": "2.1.1",
+          "version": "2.1.2",
           "display_test": "unknown"
         }
       ],
       "namespaces": [
         "jem_settlements"
       ],
-      "source_path": "Server\\mods\\jem-settlements-2.1.1.jar",
+      "source_path": "Server\\mods\\jem-settlements-2.1.2.jar",
       "nested_dependencies": []
     },
     {
@@ -10722,8 +10694,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jemcompat-3.10.7.jar",
-      "sha256": "f118460ad6755208e60dea709df6c1a3ea833b1fcc167bd57b020e856ff15fe9",
+      "filename": "jemcompat-3.10.8.jar",
+      "sha256": "35694c718e7851156feca02372a862207e9c11032324cac53caf0a6a38e1c002",
       "sides": [
         "client"
       ],
@@ -10732,7 +10704,7 @@
         {
           "id": "jemcompat",
           "name": "JustEnoughMods Compatibility",
-          "version": "3.10.7",
+          "version": "3.10.8",
           "display_test": "unknown"
         }
       ],
@@ -10745,12 +10717,12 @@
         "minecraft",
         "sereneseasons"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jemcompat-3.10.7.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jemcompat-3.10.8.jar",
       "nested_dependencies": []
     },
     {
-      "filename": "jemcompat-3.10.7.jar",
-      "sha256": "f118460ad6755208e60dea709df6c1a3ea833b1fcc167bd57b020e856ff15fe9",
+      "filename": "jemcompat-3.10.8.jar",
+      "sha256": "35694c718e7851156feca02372a862207e9c11032324cac53caf0a6a38e1c002",
       "sides": [
         "server"
       ],
@@ -10759,7 +10731,7 @@
         {
           "id": "jemcompat",
           "name": "JustEnoughMods Compatibility",
-          "version": "3.10.7",
+          "version": "3.10.8",
           "display_test": "unknown"
         }
       ],
@@ -10772,7 +10744,7 @@
         "minecraft",
         "sereneseasons"
       ],
-      "source_path": "Server\\mods\\jemcompat-3.10.7.jar",
+      "source_path": "Server\\mods\\jemcompat-3.10.8.jar",
       "nested_dependencies": []
     },
     {
@@ -15664,8 +15636,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "Platform-forge-1.20.1-1.3.4.jar",
-      "sha256": "e35c013fb8cbd62900ccdf0872fc6c14b9858a711f6b2279c479f4b4f668d870",
+      "filename": "Platform-forge-1.20.1-1.4.2.jar",
+      "sha256": "90a8dbe620614f4be677e43071cfaf01bbad382ad3354088d6caaf182fca7166",
       "sides": [
         "client"
       ],
@@ -15674,19 +15646,59 @@
         {
           "id": "platform",
           "name": "Platform",
-          "version": "1.3.4",
+          "version": "1.4.2",
           "display_test": "unknown"
         }
       ],
       "namespaces": [
         "platform"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\Platform-forge-1.20.1-1.3.4.jar",
-      "nested_dependencies": []
+      "source_path": "Client\\ManagedPack\\mods\\Platform-forge-1.20.1-1.4.2.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/mixinextras-forge-0.5.0.jar",
+          "sha256": "8ca0afb3731a749f94dee8b4f78ff5f4eb4ab1bd302eb9af2a48ce88bc7fc5b4",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.5.0,)",
+            "artifactVersion": "0.5.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.5.0.jar",
+              "sha256": "6e248dea7fad8045da6063ffeb905db7a25ac6c6a10211ae393b0e1b196f71a7",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.5.0,)",
+                "artifactVersion": "0.5.0"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
     },
     {
-      "filename": "Platform-forge-1.20.1-1.3.4.jar",
-      "sha256": "e35c013fb8cbd62900ccdf0872fc6c14b9858a711f6b2279c479f4b4f668d870",
+      "filename": "Platform-forge-1.20.1-1.4.2.jar",
+      "sha256": "90a8dbe620614f4be677e43071cfaf01bbad382ad3354088d6caaf182fca7166",
       "sides": [
         "server"
       ],
@@ -15695,15 +15707,55 @@
         {
           "id": "platform",
           "name": "Platform",
-          "version": "1.3.4",
+          "version": "1.4.2",
           "display_test": "unknown"
         }
       ],
       "namespaces": [
         "platform"
       ],
-      "source_path": "Server\\mods\\Platform-forge-1.20.1-1.3.4.jar",
-      "nested_dependencies": []
+      "source_path": "Server\\mods\\Platform-forge-1.20.1-1.4.2.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jars/mixinextras-forge-0.5.0.jar",
+          "sha256": "8ca0afb3731a749f94dee8b4f78ff5f4eb4ab1bd302eb9af2a48ce88bc7fc5b4",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.5.0,)",
+            "artifactVersion": "0.5.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.5.0.jar",
+              "sha256": "6e248dea7fad8045da6063ffeb905db7a25ac6c6a10211ae393b0e1b196f71a7",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.5.0,)",
+                "artifactVersion": "0.5.0"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
     },
     {
       "filename": "player-animation-lib-forge-1.0.2-rc1+1.20.jar",
@@ -19015,142 +19067,6 @@
       "nested_dependencies": []
     },
     {
-      "filename": "spear-backport-forge-1.4.7-1.20.1.jar",
-      "sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "spears",
-          "name": "Backported Spears",
-          "version": "1.4.7",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "caverns_and_chasms",
-        "dragonloot",
-        "ender_dragon_loot",
-        "enderitemod",
-        "item",
-        "minecraft",
-        "oreganized",
-        "spears"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\spear-backport-forge-1.4.7-1.20.1.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.5.2.jar",
-          "sha256": "1dd5a3c42edb3f7225fa7d127050c83d34082526ea8ab15c82be58c9fcfa9ed9",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.5.2,)",
-            "artifactVersion": "0.5.2"
-          },
-          "mods": [],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.5.2.jar",
-              "sha256": "8e830a2803e70644cd50bce6887910cc63f99f1ffb399ad604840eacf8de235f",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.5.2,)",
-                "artifactVersion": "0.5.2"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "filename": "spear-backport-forge-1.4.7-1.20.1.jar",
-      "sha256": "54849b707ac5ecb121c57a22f3de43cf790c60b4f36d5763d1a5cbdb4de2ae9d",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "spears",
-          "name": "Backported Spears",
-          "version": "1.4.7",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "caverns_and_chasms",
-        "dragonloot",
-        "ender_dragon_loot",
-        "enderitemod",
-        "item",
-        "minecraft",
-        "oreganized",
-        "spears"
-      ],
-      "source_path": "Server\\mods\\spear-backport-forge-1.4.7-1.20.1.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.5.2.jar",
-          "sha256": "1dd5a3c42edb3f7225fa7d127050c83d34082526ea8ab15c82be58c9fcfa9ed9",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.5.2,)",
-            "artifactVersion": "0.5.2"
-          },
-          "mods": [],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.5.2.jar",
-              "sha256": "8e830a2803e70644cd50bce6887910cc63f99f1ffb399ad604840eacf8de235f",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.5.2,)",
-                "artifactVersion": "0.5.2"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
       "filename": "SpiderOverhaul-0.0.6-Forge-v1.20.jar",
       "sha256": "8d9e056e836271646c71ba3f3f2ff222199396a1b1c63539e3b95fbaaca1e5fd",
       "sides": [
@@ -20418,6 +20334,130 @@
       ],
       "source_path": "Server\\mods\\tide-forge-1.20.1-2.1.1-hotfix.jar",
       "nested_dependencies": []
+    },
+    {
+      "filename": "tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
+      "sha256": "42439f30cb981161eb7af74eb4b450ac0ad53df7f228a7cf9fb66be3b4593036",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "tiny_takeover_backport",
+          "name": "Tiny Takeover Backport",
+          "version": "1.8.2",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "minecraft",
+        "tiny_takeover_backport"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.5.0.jar",
+          "sha256": "12eed47509e3733a59135a52edd8a90807332248d292b7f1668afd42407ca01d",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.5.0,)",
+            "artifactVersion": "0.5.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.5.0.jar",
+              "sha256": "6e248dea7fad8045da6063ffeb905db7a25ac6c6a10211ae393b0e1b196f71a7",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.5.0,)",
+                "artifactVersion": "0.5.0"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
+      "sha256": "42439f30cb981161eb7af74eb4b450ac0ad53df7f228a7cf9fb66be3b4593036",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "tiny_takeover_backport",
+          "name": "Tiny Takeover Backport",
+          "version": "1.8.2",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "minecraft",
+        "tiny_takeover_backport"
+      ],
+      "source_path": "Server\\mods\\tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.5.0.jar",
+          "sha256": "12eed47509e3733a59135a52edd8a90807332248d292b7f1668afd42407ca01d",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.5.0,)",
+            "artifactVersion": "0.5.0"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.5.0.jar",
+              "sha256": "6e248dea7fad8045da6063ffeb905db7a25ac6c6a10211ae393b0e1b196f71a7",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.5.0,)",
+                "artifactVersion": "0.5.0"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
     },
     {
       "filename": "tinyinv-1.20.1-1.1.0.1.jar",
@@ -23690,8 +23730,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
-      "sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "filename": "VanillaBackport-forge-1.20.1-1.2.2.jar",
+      "sha256": "d009a371a86a2d0cd48a64739035213ab24e35ad67e0fa0b7b46550b930bffb5",
       "sides": [
         "client"
       ],
@@ -23700,7 +23740,7 @@
         {
           "id": "vanillabackport",
           "name": "VanillaBackport",
-          "version": "1.1.7.10",
+          "version": "1.2.2",
           "display_test": "unknown"
         }
       ],
@@ -23711,59 +23751,12 @@
         "minecraft",
         "vanillabackport"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\VanillaBackport-forge-1.20.1-1.1.7.10.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
-          "sha256": "45943690cf37eee4759f0562d5fbed00928e8af72c7eef66e8a91880e7bb00a1",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
+      "source_path": "Client\\ManagedPack\\mods\\VanillaBackport-forge-1.20.1-1.2.2.jar",
+      "nested_dependencies": []
     },
     {
-      "filename": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
-      "sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "filename": "VanillaBackport-forge-1.20.1-1.2.2.jar",
+      "sha256": "d009a371a86a2d0cd48a64739035213ab24e35ad67e0fa0b7b46550b930bffb5",
       "sides": [
         "server"
       ],
@@ -23772,7 +23765,7 @@
         {
           "id": "vanillabackport",
           "name": "VanillaBackport",
-          "version": "1.1.7.10",
+          "version": "1.2.2",
           "display_test": "unknown"
         }
       ],
@@ -23783,55 +23776,8 @@
         "minecraft",
         "vanillabackport"
       ],
-      "source_path": "Server\\mods\\VanillaBackport-forge-1.20.1-1.1.7.10.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jars/mixinextras-forge-0.4.1.jar",
-          "sha256": "45943690cf37eee4759f0562d5fbed00928e8af72c7eef66e8a91880e7bb00a1",
-          "identifier": {
-            "group": "io.github.llamalad7",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.4.1,)",
-            "artifactVersion": "0.4.1"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.4.1",
-              "display_test": "IGNORE_SERVER_VERSION"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
-              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.4.1,)",
-                "artifactVersion": "0.4.1"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
+      "source_path": "Server\\mods\\VanillaBackport-forge-1.20.1-1.2.2.jar",
+      "nested_dependencies": []
     },
     {
       "filename": "visuality-forge-2.2.0.jar",

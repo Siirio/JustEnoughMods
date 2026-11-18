@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "effects",
-  "snapshot_sha": "2af88834b335aef7bd60e7cbcac0d3f109cec33f",
+  "snapshot_sha": "f3b5c91e7331e6f4ec4edde59c8cb98789780254",
   "generation": {
-    "generated_utc": "2026-11-18T21:13:38.192543+00:00",
+    "generated_utc": "2026-11-18T23:16:06.323559+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -155,6 +155,42 @@
       "acquisition_class": "unresolved",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:breath_of_the_nautilus",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Breath of the Nautilus",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

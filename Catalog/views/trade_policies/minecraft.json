@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "2af88834b335aef7bd60e7cbcac0d3f109cec33f",
+  "snapshot_sha": "f3b5c91e7331e6f4ec4edde59c8cb98789780254",
   "generation": {
-    "generated_utc": "2026-11-18T21:13:38.192543+00:00",
+    "generated_utc": "2026-11-18T23:16:06.323559+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1671,7 +1671,7 @@
       "display_name_en_us": "Axolotl Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_axolotl.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_axolotl.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -2708,7 +2708,7 @@
       "display_name_en_us": "Bat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bat.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -2803,7 +2803,7 @@
       "display_name_en_us": "Bee Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bee.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bee.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -4291,55 +4291,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:black_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "data/alexscaves/recipes/black_wool_from_dark_tatters.json",
-        "data/minecraft/recipes/dye_black_wool.json"
-      ],
-      "display_name_en_us": "Black Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "alexscaves-2.0.2.jar:data/alexscaves/recipes/black_wool_from_dark_tatters.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_black_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_black_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "alexscaves:black_wool_from_dark_tatters",
-        "minecraft:dye_black_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:black_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_black_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:blackstone_slab",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -4753,7 +4704,7 @@
       "display_name_en_us": "Blaze Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_blaze.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_blaze.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -5323,53 +5274,6 @@
       "daily_global_units": 262144,
       "demand_group": "building_supply",
       "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:blue_terracotta output 8; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
-      "item_id": "minecraft:blue_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_blue_wool.json"
-      ],
-      "display_name_en_us": "Blue Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_blue_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_blue_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_blue_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:blue_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_blue_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -6840,55 +6744,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:brown_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "data/alexsmobs/recipes/bison_fur_to_wool.json",
-        "data/minecraft/recipes/dye_brown_wool.json"
-      ],
-      "display_name_en_us": "Brown Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "alexsmobs-1.22.9.jar:data/alexsmobs/recipes/bison_fur_to_wool.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_brown_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_brown_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "alexsmobs:bison_fur_to_wool",
-        "minecraft:dye_brown_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:brown_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_brown_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:brush",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -7055,13 +6910,11 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/minecraft/datapacks/bundle/data/minecraft/recipes/bundle.json",
-        "data/minecraft/recipes/bundle.json"
+        "data/minecraft/datapacks/bundle/data/minecraft/recipes/bundle.json"
       ],
       "display_name_en_us": "Bundle",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/bundle.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/datapacks/bundle/data/minecraft/recipes/bundle.json"
       ],
@@ -7110,8 +6963,8 @@
       "display_name_en_us": "Empty",
       "display_name_ru_ru": "Пустой",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -7156,8 +7009,8 @@
       "display_name_en_us": "Can hold a mixed stack of items",
       "display_name_ru_ru": "Вмещает стопку разных предметов",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -7202,8 +7055,8 @@
       "display_name_en_us": "Full",
       "display_name_ru_ru": "Полный",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -7384,7 +7237,6 @@
       "display_name_en_us": "Cake",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/cake.json",
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/cake_from_cake_layer.json",
         "blueprint-1.20.1-7.1.5.jar:data/minecraft/recipes/cake.json",
         "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/curiosities/cake.json",
@@ -7536,7 +7388,7 @@
       "display_name_en_us": "Camel Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_camel.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_camel.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -7827,7 +7679,7 @@
       "display_name_en_us": "Cat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cat.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -7924,7 +7776,7 @@
       "display_name_en_us": "Cave Spider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cave_spider.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cave_spider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -9115,7 +8967,7 @@
       "display_name_en_us": "Chicken Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_chicken.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_chicken.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -9206,13 +9058,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/chiseled_deepslate.json",
-        "data/minecraft/recipes/chiseled_deepslate_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/chiseled_deepslate_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/chiseled_deepslate_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Chiseled Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chiseled_deepslate.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chiseled_deepslate_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chiseled_deepslate_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/chiseled_deepslate_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9223,7 +9077,8 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "minecraft:chiseled_deepslate",
-        "minecraft:chiseled_deepslate_from_cobbled_deepslate_stonecutting"
+        "minecraft:chiseled_deepslate_from_cobbled_deepslate_stonecutting",
+        "minecraft:chiseled_deepslate_from_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -9955,6 +9810,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:cobbled_deepslate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/minecraft/recipes/cobbled_deepslate_from_deepslate_stonecutting.json"
+      ],
+      "display_name_en_us": "Cobbled Deepslate",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobbled_deepslate_from_deepslate_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "minecraft:cobbled_deepslate_from_deepslate_stonecutting"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:cobbled_deepslate_slab",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -9969,13 +9870,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobbled_deepslate_slab.json",
-        "data/minecraft/recipes/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/cobbled_deepslate_slab_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Cobbled Deepslate Slab",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_slab.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobbled_deepslate_slab_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -9986,7 +9889,8 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "minecraft:cobbled_deepslate_slab",
-        "minecraft:cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting"
+        "minecraft:cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting",
+        "minecraft:cobbled_deepslate_slab_from_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -10019,13 +9923,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobbled_deepslate_stairs.json",
-        "data/minecraft/recipes/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/cobbled_deepslate_stairs_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Cobbled Deepslate Stairs",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_stairs.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobbled_deepslate_stairs_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -10036,7 +9942,8 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "minecraft:cobbled_deepslate_stairs",
-        "minecraft:cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting"
+        "minecraft:cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting",
+        "minecraft:cobbled_deepslate_stairs_from_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -10069,13 +9976,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobbled_deepslate_wall.json",
-        "data/minecraft/recipes/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/cobbled_deepslate_wall_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Cobbled Deepslate Wall",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_wall.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobbled_deepslate_wall_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -10086,7 +9995,8 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "minecraft:cobbled_deepslate_wall",
-        "minecraft:cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting"
+        "minecraft:cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting",
+        "minecraft:cobbled_deepslate_wall_from_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -10119,6 +10029,7 @@
       "observed_in": [
         "data/farm_and_charm/recipes/mincer/cobblestone.json",
         "data/kaleidoscope_cookery/recipes/millstone/cobblestone_from_stone.json",
+        "data/minecraft/recipes/cobblestone_from_stone_stonecutting.json",
         "data/terralith/recipes/cobblestone_from_stone_slab.json"
       ],
       "display_name_en_us": "Cobblestone",
@@ -10126,7 +10037,8 @@
       "source_provenance": [
         "Terralith_1.20.x_v2.5.4.jar:data/terralith/recipes/cobblestone_from_stone_slab.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/cobblestone_from_stone.json",
-        "letsdo-farm_and_charm-forge-1.0.14.jar:data/farm_and_charm/recipes/mincer/cobblestone.json"
+        "letsdo-farm_and_charm-forge-1.0.14.jar:data/farm_and_charm/recipes/mincer/cobblestone.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobblestone_from_stone_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -10138,6 +10050,7 @@
       "independent_ordinary_routes": [
         "farm_and_charm:mincer/cobblestone",
         "kaleidoscope_cookery:millstone/cobblestone_from_stone",
+        "minecraft:cobblestone_from_stone_stonecutting",
         "terralith:cobblestone_from_stone_slab"
       ],
       "recipe_dependency_evidence": [],
@@ -10171,13 +10084,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobblestone_slab.json",
-        "data/minecraft/recipes/cobblestone_slab_from_cobblestone_stonecutting.json"
+        "data/minecraft/recipes/cobblestone_slab_from_cobblestone_stonecutting.json",
+        "data/minecraft/recipes/cobblestone_slab_from_stone_stonecutting.json"
       ],
       "display_name_en_us": "Cobblestone Slab",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_slab.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_slab_from_cobblestone_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_slab_from_cobblestone_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobblestone_slab_from_stone_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -10188,7 +10103,8 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "minecraft:cobblestone_slab",
-        "minecraft:cobblestone_slab_from_cobblestone_stonecutting"
+        "minecraft:cobblestone_slab_from_cobblestone_stonecutting",
+        "minecraft:cobblestone_slab_from_stone_stonecutting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -10221,13 +10137,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobblestone_stairs.json",
-        "data/minecraft/recipes/cobblestone_stairs_from_cobblestone_stonecutting.json"
+        "data/minecraft/recipes/cobblestone_stairs_from_cobblestone_stonecutting.json",
+        "data/minecraft/recipes/cobblestone_stairs_from_stone_stonecutting.json"
       ],
       "display_name_en_us": "Cobblestone Stairs",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_stairs.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_stairs_from_cobblestone_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_stairs_from_cobblestone_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobblestone_stairs_from_stone_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -10238,7 +10156,8 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "minecraft:cobblestone_stairs",
-        "minecraft:cobblestone_stairs_from_cobblestone_stonecutting"
+        "minecraft:cobblestone_stairs_from_cobblestone_stonecutting",
+        "minecraft:cobblestone_stairs_from_stone_stonecutting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -10271,13 +10190,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobblestone_wall.json",
-        "data/minecraft/recipes/cobblestone_wall_from_cobblestone_stonecutting.json"
+        "data/minecraft/recipes/cobblestone_wall_from_cobblestone_stonecutting.json",
+        "data/minecraft/recipes/cobblestone_wall_from_stone_stonecutting.json"
       ],
       "display_name_en_us": "Cobblestone Wall",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_wall.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_wall_from_cobblestone_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_wall_from_cobblestone_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobblestone_wall_from_stone_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -10288,7 +10209,8 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "minecraft:cobblestone_wall",
-        "minecraft:cobblestone_wall_from_cobblestone_stonecutting"
+        "minecraft:cobblestone_wall_from_cobblestone_stonecutting",
+        "minecraft:cobblestone_wall_from_stone_stonecutting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -11405,7 +11327,6 @@
         "data/minecraft/recipes/copper_ingot_from_blasting_copper_ore.json",
         "data/minecraft/recipes/copper_ingot_from_blasting_deepslate_copper_ore.json",
         "data/minecraft/recipes/copper_ingot_from_blasting_raw_copper.json",
-        "data/minecraft/recipes/copper_ingot_from_nuggets.json",
         "data/minecraft/recipes/copper_ingot_from_smelting_copper_ore.json",
         "data/minecraft/recipes/copper_ingot_from_smelting_deepslate_copper_ore.json",
         "data/minecraft/recipes/copper_ingot_from_smelting_raw_copper.json",
@@ -11414,7 +11335,6 @@
       "display_name_en_us": "Copper Ingot",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "copperagebackport-forge-1.20.1-0.1.5.jar:data/minecraft/recipes/copper_ingot_from_nuggets.json",
         "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/blasting/copper_ingot_from_crushed.json",
         "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/materials/copper_ingot.json",
         "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/copper_ingot_from_crushed.json",
@@ -11446,7 +11366,6 @@
         "minecraft:copper_ingot_from_blasting_copper_ore",
         "minecraft:copper_ingot_from_blasting_deepslate_copper_ore",
         "minecraft:copper_ingot_from_blasting_raw_copper",
-        "minecraft:copper_ingot_from_nuggets",
         "minecraft:copper_ingot_from_smelting_copper_ore",
         "minecraft:copper_ingot_from_smelting_deepslate_copper_ore",
         "minecraft:copper_ingot_from_smelting_raw_copper",
@@ -11487,7 +11406,7 @@
       "display_name_en_us": "Cow Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cow.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cow.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -11917,7 +11836,7 @@
       "display_name_en_us": "Creeper Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_creeper.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_creeper.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -13472,53 +13391,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:cyan_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_cyan_wool.json"
-      ],
-      "display_name_en_us": "Cyan Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_cyan_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_cyan_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_cyan_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:cyan_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_cyan_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:danger_pottery_shard",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -14823,6 +14695,7 @@
         "data/minecraft/recipes/deepslate_brick_slab.json",
         "data/minecraft/recipes/deepslate_brick_slab_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_slab_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_brick_slab_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_slab_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Brick Slab",
@@ -14831,7 +14704,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab_from_deepslate_bricks_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_brick_slab_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -14844,6 +14718,7 @@
         "minecraft:deepslate_brick_slab",
         "minecraft:deepslate_brick_slab_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_brick_slab_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_brick_slab_from_deepslate_stonecutting",
         "minecraft:deepslate_brick_slab_from_polished_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
@@ -14879,6 +14754,7 @@
         "data/minecraft/recipes/deepslate_brick_stairs.json",
         "data/minecraft/recipes/deepslate_brick_stairs_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_stairs_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_brick_stairs_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_stairs_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Brick Stairs",
@@ -14887,7 +14763,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs_from_deepslate_bricks_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_brick_stairs_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -14900,6 +14777,7 @@
         "minecraft:deepslate_brick_stairs",
         "minecraft:deepslate_brick_stairs_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_brick_stairs_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_brick_stairs_from_deepslate_stonecutting",
         "minecraft:deepslate_brick_stairs_from_polished_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
@@ -14935,6 +14813,7 @@
         "data/minecraft/recipes/deepslate_brick_wall.json",
         "data/minecraft/recipes/deepslate_brick_wall_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_wall_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_brick_wall_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_wall_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Brick Wall",
@@ -14943,7 +14822,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall_from_deepslate_bricks_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_brick_wall_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -14956,6 +14836,7 @@
         "minecraft:deepslate_brick_wall",
         "minecraft:deepslate_brick_wall_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_brick_wall_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_brick_wall_from_deepslate_stonecutting",
         "minecraft:deepslate_brick_wall_from_polished_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
@@ -14990,6 +14871,7 @@
         "data/immersive_weathering/recipes/deepslate_bricks_from_brick.json",
         "data/minecraft/recipes/deepslate_bricks.json",
         "data/minecraft/recipes/deepslate_bricks_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/deepslate_bricks_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_bricks_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Bricks",
@@ -14998,7 +14880,8 @@
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/deepslate_bricks_from_brick.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_bricks.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_bricks_from_cobbled_deepslate_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_bricks_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_bricks_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_bricks_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -15011,6 +14894,7 @@
         "immersive_weathering:deepslate_bricks_from_brick",
         "minecraft:deepslate_bricks",
         "minecraft:deepslate_bricks_from_cobbled_deepslate_stonecutting",
+        "minecraft:deepslate_bricks_from_deepslate_stonecutting",
         "minecraft:deepslate_bricks_from_polished_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
@@ -15046,6 +14930,7 @@
         "data/minecraft/recipes/deepslate_tile_slab.json",
         "data/minecraft/recipes/deepslate_tile_slab_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_slab_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_tile_slab_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_slab_from_deepslate_tiles_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_slab_from_polished_deepslate_stonecutting.json"
       ],
@@ -15056,7 +14941,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_deepslate_bricks_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_deepslate_tiles_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_tile_slab_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -15069,6 +14955,7 @@
         "minecraft:deepslate_tile_slab",
         "minecraft:deepslate_tile_slab_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_tile_slab_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_tile_slab_from_deepslate_stonecutting",
         "minecraft:deepslate_tile_slab_from_deepslate_tiles_stonecutting",
         "minecraft:deepslate_tile_slab_from_polished_deepslate_stonecutting"
       ],
@@ -15105,6 +14992,7 @@
         "data/minecraft/recipes/deepslate_tile_stairs.json",
         "data/minecraft/recipes/deepslate_tile_stairs_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_tiles_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_stairs_from_polished_deepslate_stonecutting.json"
       ],
@@ -15115,7 +15003,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_bricks_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_tiles_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -15128,6 +15017,7 @@
         "minecraft:deepslate_tile_stairs",
         "minecraft:deepslate_tile_stairs_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_tile_stairs_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_tile_stairs_from_deepslate_stonecutting",
         "minecraft:deepslate_tile_stairs_from_deepslate_tiles_stonecutting",
         "minecraft:deepslate_tile_stairs_from_polished_deepslate_stonecutting"
       ],
@@ -15164,6 +15054,7 @@
         "data/minecraft/recipes/deepslate_tile_wall.json",
         "data/minecraft/recipes/deepslate_tile_wall_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_wall_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_tile_wall_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_wall_from_deepslate_tiles_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_wall_from_polished_deepslate_stonecutting.json"
       ],
@@ -15174,7 +15065,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_deepslate_bricks_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_deepslate_tiles_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_tile_wall_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -15187,6 +15079,7 @@
         "minecraft:deepslate_tile_wall",
         "minecraft:deepslate_tile_wall_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_tile_wall_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_tile_wall_from_deepslate_stonecutting",
         "minecraft:deepslate_tile_wall_from_deepslate_tiles_stonecutting",
         "minecraft:deepslate_tile_wall_from_polished_deepslate_stonecutting"
       ],
@@ -15223,6 +15116,7 @@
         "data/minecraft/recipes/deepslate_tiles.json",
         "data/minecraft/recipes/deepslate_tiles_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tiles_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_tiles_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tiles_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Tiles",
@@ -15232,7 +15126,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles_from_deepslate_bricks_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_tiles_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -15246,6 +15141,7 @@
         "minecraft:deepslate_tiles",
         "minecraft:deepslate_tiles_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_tiles_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_tiles_from_deepslate_stonecutting",
         "minecraft:deepslate_tiles_from_polished_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
@@ -16281,7 +16177,7 @@
       "display_name_en_us": "Dolphin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_dolphin.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_dolphin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -16329,7 +16225,7 @@
       "display_name_en_us": "Donkey Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_donkey.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_donkey.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -16699,7 +16595,7 @@
       "display_name_en_us": "Drowned Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_drowned.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_drowned.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17755,7 +17651,7 @@
       "display_name_en_us": "Enderman Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_enderman.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_enderman.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17803,7 +17699,7 @@
       "display_name_en_us": "Endermite Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_endermite.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_endermite.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -17851,7 +17747,7 @@
       "display_name_en_us": "Evoker Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_evoker.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_evoker.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20213,7 +20109,7 @@
       "display_name_en_us": "Fox Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_fox.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_fox.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20351,7 +20247,7 @@
       "display_name_en_us": "Frog Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_frog.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_frog.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -20507,7 +20403,7 @@
       "display_name_en_us": "Ghast Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ghast.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ghast.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21076,7 +20972,7 @@
       "display_name_en_us": "Glow Squid Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_glow_squid.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_glow_squid.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21265,7 +21161,7 @@
       "display_name_en_us": "Goat Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_goat.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_goat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21461,9 +21357,7 @@
         "data/kaleidoscope_cookery/recipes/millstone/gold_nugget_from_nether_gold_ore.json",
         "data/minecraft/recipes/gold_nugget.json",
         "data/minecraft/recipes/gold_nugget_from_blasting.json",
-        "data/minecraft/recipes/gold_nugget_from_smelting.json",
-        "data/spears/recipes/gold_nugget_from_blasting_spear.json",
-        "data/spears/recipes/gold_nugget_from_smelting_spear.json"
+        "data/minecraft/recipes/gold_nugget_from_smelting.json"
       ],
       "display_name_en_us": "Gold Nugget",
       "display_name_ru_ru": null,
@@ -21477,9 +21371,7 @@
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/gold_nugget.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/gold_nugget_from_blasting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/gold_nugget_from_smelting.json",
-        "spear-backport-forge-1.4.7-1.20.1.jar:data/spears/recipes/gold_nugget_from_blasting_spear.json",
-        "spear-backport-forge-1.4.7-1.20.1.jar:data/spears/recipes/gold_nugget_from_smelting_spear.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/gold_nugget_from_smelting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -21497,9 +21389,7 @@
         "kaleidoscope_cookery:millstone/gold_nugget_from_nether_gold_ore",
         "minecraft:gold_nugget",
         "minecraft:gold_nugget_from_blasting",
-        "minecraft:gold_nugget_from_smelting",
-        "spears:gold_nugget_from_blasting_spear",
-        "spears:gold_nugget_from_smelting_spear"
+        "minecraft:gold_nugget_from_smelting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": 700,
@@ -22566,7 +22456,7 @@
       "display_name_en_us": "Gray Dye",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/gray_dye_from_closed_eyeblossom.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:data/minecraft/recipes/gray_dye_from_closed_eyeblossom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/gray_dye.json"
       ],
@@ -22785,53 +22675,6 @@
       "daily_global_units": 262144,
       "demand_group": "building_supply",
       "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:gray_terracotta output 8; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
-      "item_id": "minecraft:gray_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_gray_wool.json"
-      ],
-      "display_name_en_us": "Gray Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_gray_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_gray_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_gray_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:gray_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_gray_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -23343,53 +23186,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:green_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_green_wool.json"
-      ],
-      "display_name_en_us": "Green Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_green_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_green_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_green_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:green_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_green_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:grindstone",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -23464,7 +23260,7 @@
       "display_name_en_us": "Guardian Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_guardian.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_guardian.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -23889,7 +23685,7 @@
       "display_name_en_us": "Hoglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_hoglin.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_hoglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -24267,7 +24063,7 @@
       "display_name_en_us": "Horse Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_horse.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_horse.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -24452,7 +24248,7 @@
       "display_name_en_us": "Husk Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_husk.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_husk.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -25243,9 +25039,7 @@
         "data/minecraft/recipes/iron_nugget_from_blasting.json",
         "data/minecraft/recipes/iron_nugget_from_smelting.json",
         "data/netherexp/recipes/cooking/iron_nugget_from_iron_scrap.json",
-        "data/netherexp/recipes/cooking/iron_nugget_from_iron_scrap_blasting.json",
-        "data/spears/recipes/iron_nugget_from_blasting_spear.json",
-        "data/spears/recipes/iron_nugget_from_smelting_spear.json"
+        "data/netherexp/recipes/cooking/iron_nugget_from_iron_scrap_blasting.json"
       ],
       "display_name_en_us": "Iron Nugget",
       "display_name_ru_ru": null,
@@ -25267,9 +25061,7 @@
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_nugget.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_nugget_from_blasting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_nugget_from_smelting.json",
-        "spear-backport-forge-1.4.7-1.20.1.jar:data/spears/recipes/iron_nugget_from_blasting_spear.json",
-        "spear-backport-forge-1.4.7-1.20.1.jar:data/spears/recipes/iron_nugget_from_smelting_spear.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_nugget_from_smelting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -25295,9 +25087,7 @@
         "minecraft:iron_nugget_from_blasting",
         "minecraft:iron_nugget_from_smelting",
         "netherexp:cooking/iron_nugget_from_iron_scrap",
-        "netherexp:cooking/iron_nugget_from_iron_scrap_blasting",
-        "spears:iron_nugget_from_blasting_spear",
-        "spears:iron_nugget_from_smelting_spear"
+        "netherexp:cooking/iron_nugget_from_iron_scrap_blasting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": 500,
@@ -26712,7 +26502,6 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "DustyDecorations_1.20.1Forge_V1.13.jar:data/dustydecorations/recipes/lead_recipe.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/lead.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/lead.json"
       ],
@@ -27671,53 +27460,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:light_blue_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_light_blue_wool.json"
-      ],
-      "display_name_en_us": "Light Blue Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_light_blue_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_light_blue_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_light_blue_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:light_blue_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_light_blue_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:light_gray_banner",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -28212,53 +27954,6 @@
       "daily_global_units": 262144,
       "demand_group": "building_supply",
       "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:light_gray_terracotta output 8; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
-      "item_id": "minecraft:light_gray_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_light_gray_wool.json"
-      ],
-      "display_name_en_us": "Light Gray Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_light_gray_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_light_gray_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_light_gray_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:light_gray_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_light_gray_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -28842,53 +28537,6 @@
       "daily_global_units": 262144,
       "demand_group": "building_supply",
       "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:lime_terracotta output 8; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
-      "item_id": "minecraft:lime_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_lime_wool.json"
-      ],
-      "display_name_en_us": "Lime Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_lime_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_lime_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_lime_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:lime_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_lime_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -32308,7 +31956,7 @@
       "display_name_en_us": "Llama Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_llama.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_llama.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -32356,7 +32004,6 @@
       "display_name_en_us": "Lodestone",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/lodestone.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/lodestone.json"
       ],
       "confidence": "inferred",
@@ -32982,53 +32629,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:magenta_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_magenta_wool.json"
-      ],
-      "display_name_en_us": "Magenta Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_magenta_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_magenta_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_magenta_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:magenta_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_magenta_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:magma_block",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -33145,7 +32745,7 @@
       "display_name_en_us": "Magma Cube Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_magma_cube.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_magma_cube.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -34337,7 +33937,7 @@
       "display_name_en_us": "Mooshroom Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mooshroom.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mooshroom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -35228,7 +34828,7 @@
       "display_name_en_us": "Mule Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mule.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mule.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -35688,7 +35288,7 @@
       "display_name_en_us": "fingerspit - Bounce",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -36003,8 +35603,8 @@
       "display_name_en_us": "Hyper Potions - Lava Chicken",
       "display_name_ru_ru": "Hyper Potions - Lava Chicken",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -36679,8 +36279,8 @@
       "display_name_en_us": "Amos Roddy - Tears",
       "display_name_ru_ru": "Эймос Родди - Tears",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -36946,6 +36546,7 @@
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
         "data/create/recipes/crafting/appliances/name_tag.json",
+        "data/minecraft/recipes/name_tag.json",
         "data/unearthed_journey/recipes/nametag_r.json"
       ],
       "display_name_en_us": "Name Tag",
@@ -36954,6 +36555,7 @@
         "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/name_tag.json",
         "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/name_tag.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/name_tag.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/nametag_r.json"
       ],
       "confidence": "inferred",
@@ -36965,6 +36567,7 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "create:crafting/appliances/name_tag",
+        "minecraft:name_tag",
         "unearthed_journey:nametag_r"
       ],
       "recipe_dependency_evidence": [],
@@ -39066,7 +38669,7 @@
       "display_name_en_us": "Ocelot Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ocelot.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ocelot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -39366,7 +38969,7 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "Jadens-Nether-Expansion-2.3.5.jar:data/netherexp/recipes/igneous_reeds_orange_dye.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/orange_dye_from_open_eyeblossom.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:data/minecraft/recipes/orange_dye_from_open_eyeblossom.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/orange_dye_from_orange_tulip.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/orange_dye_from_torchflower.json",
         "natures_spirit-2.2.5-1.20.1.jar:data/natures_spirit/recipes/orange_dye_from_begonia.json",
@@ -39602,53 +39205,6 @@
       "daily_global_units": 262144,
       "demand_group": "building_supply",
       "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:orange_terracotta output 8; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
-      "item_id": "minecraft:orange_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_orange_wool.json"
-      ],
-      "display_name_en_us": "Orange Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_orange_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_orange_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_orange_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:orange_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_orange_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -39975,7 +39531,7 @@
       "display_name_en_us": "Panda Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_panda.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_panda.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40077,7 +39633,7 @@
       "display_name_en_us": "Parrot Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_parrot.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_parrot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40174,7 +39730,7 @@
       "display_name_en_us": "Phantom Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_phantom.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_phantom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40222,7 +39778,7 @@
       "display_name_en_us": "Pig Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pig.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pig.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40360,7 +39916,7 @@
       "display_name_en_us": "Piglin Brute Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_piglin_brute.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_piglin_brute.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40453,7 +40009,7 @@
       "display_name_en_us": "Pillager Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pillager.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pillager.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40755,7 +40311,7 @@
       "display_name_en_us": "Pink Dye",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/pink_dye_from_cactus_flower.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:data/minecraft/recipes/pink_dye_from_cactus_flower.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/pink_dye_from_peony.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/pink_dye_from_pink_petals.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/pink_dye_from_pink_tulip.json",
@@ -40998,53 +40554,6 @@
       "daily_global_units": 262144,
       "demand_group": "building_supply",
       "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:pink_terracotta output 8; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
-      "item_id": "minecraft:pink_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_pink_wool.json"
-      ],
-      "display_name_en_us": "Pink Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_pink_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_pink_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_pink_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:pink_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_pink_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -41388,7 +40897,7 @@
       "display_name_en_us": "Polar Bear Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_polar_bear.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_polar_bear.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -42177,7 +41686,8 @@
         "data/kaleidoscope_cookery/recipes/millstone/polished_deepslate_from_cobbled_deepslate.json",
         "data/kaleidoscope_cookery/recipes/millstone/polished_deepslate_from_deepslate.json",
         "data/minecraft/recipes/polished_deepslate.json",
-        "data/minecraft/recipes/polished_deepslate_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/polished_deepslate_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/polished_deepslate_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Polished Deepslate",
       "display_name_ru_ru": null,
@@ -42185,7 +41695,8 @@
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/polished_deepslate_from_cobbled_deepslate.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/polished_deepslate_from_deepslate.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/polished_deepslate_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -42198,7 +41709,8 @@
         "kaleidoscope_cookery:millstone/polished_deepslate_from_cobbled_deepslate",
         "kaleidoscope_cookery:millstone/polished_deepslate_from_deepslate",
         "minecraft:polished_deepslate",
-        "minecraft:polished_deepslate_from_cobbled_deepslate_stonecutting"
+        "minecraft:polished_deepslate_from_cobbled_deepslate_stonecutting",
+        "minecraft:polished_deepslate_from_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -42232,6 +41744,7 @@
       "observed_in": [
         "data/minecraft/recipes/polished_deepslate_slab.json",
         "data/minecraft/recipes/polished_deepslate_slab_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/polished_deepslate_slab_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/polished_deepslate_slab_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Polished Deepslate Slab",
@@ -42239,7 +41752,8 @@
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_slab.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_slab_from_cobbled_deepslate_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_slab_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_slab_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/polished_deepslate_slab_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -42251,6 +41765,7 @@
       "independent_ordinary_routes": [
         "minecraft:polished_deepslate_slab",
         "minecraft:polished_deepslate_slab_from_cobbled_deepslate_stonecutting",
+        "minecraft:polished_deepslate_slab_from_deepslate_stonecutting",
         "minecraft:polished_deepslate_slab_from_polished_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
@@ -42285,6 +41800,7 @@
       "observed_in": [
         "data/minecraft/recipes/polished_deepslate_stairs.json",
         "data/minecraft/recipes/polished_deepslate_stairs_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/polished_deepslate_stairs_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/polished_deepslate_stairs_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Polished Deepslate Stairs",
@@ -42292,7 +41808,8 @@
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_stairs.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_stairs_from_cobbled_deepslate_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_stairs_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_stairs_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/polished_deepslate_stairs_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -42304,6 +41821,7 @@
       "independent_ordinary_routes": [
         "minecraft:polished_deepslate_stairs",
         "minecraft:polished_deepslate_stairs_from_cobbled_deepslate_stonecutting",
+        "minecraft:polished_deepslate_stairs_from_deepslate_stonecutting",
         "minecraft:polished_deepslate_stairs_from_polished_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
@@ -42338,6 +41856,7 @@
       "observed_in": [
         "data/minecraft/recipes/polished_deepslate_wall.json",
         "data/minecraft/recipes/polished_deepslate_wall_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/polished_deepslate_wall_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/polished_deepslate_wall_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Polished Deepslate Wall",
@@ -42345,7 +41864,8 @@
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_wall.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_wall_from_cobbled_deepslate_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_wall_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_wall_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/polished_deepslate_wall_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -42357,6 +41877,7 @@
       "independent_ordinary_routes": [
         "minecraft:polished_deepslate_wall",
         "minecraft:polished_deepslate_wall_from_cobbled_deepslate_stonecutting",
+        "minecraft:polished_deepslate_wall_from_deepslate_stonecutting",
         "minecraft:polished_deepslate_wall_from_polished_deepslate_stonecutting"
       ],
       "recipe_dependency_evidence": [],
@@ -47312,7 +46833,6 @@
       "display_name_en_us": "Pumpkin Pie",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/pumpkin_pie.json",
         "blueprint-1.20.1-7.1.5.jar:data/minecraft/recipes/pumpkin_pie.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/pumpkin_pie.json"
@@ -47890,53 +47410,6 @@
       "daily_global_units": 262144,
       "demand_group": "building_supply",
       "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:purple_terracotta output 8; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
-      "item_id": "minecraft:purple_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_purple_wool.json"
-      ],
-      "display_name_en_us": "Purple Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_purple_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_purple_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_purple_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:purple_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_purple_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -48616,7 +48089,7 @@
       "display_name_en_us": "Rabbit Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_rabbit.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_rabbit.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -48812,7 +48285,7 @@
       "display_name_en_us": "Ravager Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ravager.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ravager.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -50198,53 +49671,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:red_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_red_wool.json"
-      ],
-      "display_name_en_us": "Red Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_red_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_red_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_red_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:red_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_red_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:redstone",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -50673,13 +50099,11 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/minecraft/recipes/saddle.json",
         "data/unearthed_journey/recipes/hidesaddle.json"
       ],
       "display_name_en_us": "Saddle",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/saddle.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hidesaddle.json"
       ],
@@ -50691,7 +50115,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "minecraft:saddle",
         "unearthed_journey:hidesaddle"
       ],
       "recipe_dependency_evidence": [],
@@ -51528,7 +50951,7 @@
       "display_name_en_us": "Sheep Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_sheep.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_sheep.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -52573,7 +51996,7 @@
       "display_name_en_us": "Shulker Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_shulker.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_shulker.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -52713,7 +52136,7 @@
       "display_name_en_us": "Silverfish Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_silverfish.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_silverfish.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -52806,7 +52229,7 @@
       "display_name_en_us": "Skeleton Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_skeleton.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_skeleton.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -53143,7 +52566,7 @@
       "display_name_en_us": "Slime Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_slime.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_slime.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -55073,7 +54496,7 @@
       "display_name_en_us": "Spider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_spider.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_spider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -59388,7 +58811,7 @@
       "display_name_en_us": "Squid Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_squid.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_squid.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -60359,7 +59782,7 @@
       "display_name_en_us": "Stray Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_stray.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_stray.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -60407,7 +59830,7 @@
       "display_name_en_us": "Strider Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_strider.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_strider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -61690,7 +61113,7 @@
       "display_name_en_us": "Tadpole Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_tadpole.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_tadpole.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -65832,56 +65255,6 @@
       "review_status": "unresolved"
     },
     {
-      "item_id": "minecraft:tuff",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
-        "data/unearthed_journey/recipes/stone_cut_breccia_tuff.json"
-      ],
-      "display_name_en_us": "Tuff",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
-        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_tuff.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:tuff_from_stone_types_tuff_stonecutting output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "create:tuff_from_stone_types_tuff_stonecutting",
-        "unearthed_journey:stone_cut_breccia_tuff"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 7,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:tuff",
-      "quota_units": 1,
-      "bulk_1024": 100,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:tuff_from_stone_types_tuff_stonecutting output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:turtle_helmet",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -65949,7 +65322,7 @@
       "display_name_en_us": "Turtle Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_turtle.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_turtle.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -66134,7 +65507,7 @@
       "display_name_en_us": "Vindicator Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_vindicator.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_vindicator.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -68740,59 +68113,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:white_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_white_wool.json",
-        "data/minecraft/recipes/white_wool_from_string.json",
-        "data/unearthed_journey/recipes/down_recipe.json"
-      ],
-      "display_name_en_us": "White Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_white_wool.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/white_wool_from_string.json",
-        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/down_recipe.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:splashing/wool output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_white_wool",
-        "minecraft:white_wool_from_string",
-        "unearthed_journey:down_recipe"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 7,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:white_wool",
-      "quota_units": 1,
-      "bulk_1024": 100,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:splashing/wool output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:wild_armor_trim_smithing_template",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -68858,7 +68178,7 @@
       "display_name_en_us": "Witch Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_witch.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_witch.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -68952,7 +68272,7 @@
       "display_name_en_us": "Wither Skeleton Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wither_skeleton.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wither_skeleton.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -69045,7 +68365,7 @@
       "display_name_en_us": "Wolf Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wolf.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wolf.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -69682,7 +69002,7 @@
       "display_name_en_us": "Yellow Dye",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/yellow_dye_from_wildflowers.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:data/minecraft/recipes/yellow_dye_from_wildflowers.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/yellow_dye_from_dandelion.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/yellow_dye_from_sunflower.json",
         "natures_spirit-2.2.5-1.20.1.jar:data/natures_spirit/recipes/yellow_dye_from_aureate_succulent.json",
@@ -69917,53 +69237,6 @@
       "review_status": "reviewed"
     },
     {
-      "item_id": "minecraft:yellow_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_yellow_wool.json"
-      ],
-      "display_name_en_us": "Yellow Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_yellow_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_yellow_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "minecraft:dye_yellow_wool"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": 12,
-      "sell_copper": null,
-      "buy_denominator": 64,
-      "sell_denominator": 1,
-      "quota_family": "minecraft:yellow_wool",
-      "quota_units": 1,
-      "bulk_1024": 180,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 65536,
-      "daily_global_units": 262144,
-      "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_yellow_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names.",
-      "arbitrage_risk": "reviewed",
-      "review_status": "reviewed"
-    },
-    {
       "item_id": "minecraft:zoglin_spawn_egg",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -69982,7 +69255,7 @@
       "display_name_en_us": "Zoglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zoglin.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zoglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70075,7 +69348,7 @@
       "display_name_en_us": "Zombie Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombie.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombie.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70168,7 +69441,7 @@
       "display_name_en_us": "Zombified Piglin Spawn Egg",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.10.7.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombified_piglin.json",
+        "jemcompat-3.10.8.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombified_piglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",

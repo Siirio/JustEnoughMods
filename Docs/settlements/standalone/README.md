@@ -1,5 +1,13 @@
 # Settlements standalone design
 
+## Breeding home admission — 2026-11-19
+
+JEM Settlements adds one condition after native villager breeding admission. Each parent must have a bound `HOME` in the current dimension. The loaded 3×3×3 cube centered on that HOME must contain a bed, an acquirable villager job-site POI and a normal or trapped chest. An unloaded block in the cube fails closed until the chunk is loaded.
+
+This rule does not replace native food, age, willingness, spare child bed or path validation. It does not replace JEM housing happiness, roof, personal-space, settlement membership or child-registration logic. The intentional behavior change is narrow: a spare child bed alone no longer permits a birth when either parent's home unit is incomplete. The rule applies on integrated and dedicated logical servers because the current universal Settlements module is active on both.
+
+Source and production artifacts are implemented. In-game birth acceptance is not run.
+
 ## Universal production contract - 2026-10-22
 
 The same production `jem-settlements-2.1.0.jar` now runs on integrated and dedicated logical servers. The older sandbox-only build requirement below is historical. `JEMIdentity` is required; Economy and Recruits are optional isolated adapters. Economy enabled uses its canonical Coin ledger; absent/off uses the existing EmeraldTreasury. Pending obligations keep their original currency and day watermark, rather than replaying income in the replacement provider. No settlement-count limit is applied in solo. Prices, happiness and workforce authority remain in their existing owners. See [universal inventory](../../universal/README.md) for distribution and acceptance limits.

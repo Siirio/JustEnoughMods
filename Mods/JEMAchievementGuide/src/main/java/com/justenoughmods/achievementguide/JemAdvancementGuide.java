@@ -30,6 +30,9 @@ public final class JemAdvancementGuide {
         if (net.minecraftforge.fml.ModList.get().isLoaded("treechop")) {
             com.justenoughmods.achievementguide.integration.treechop.TreeChopIntegration.register();
         }
+        if (net.minecraftforge.fml.ModList.get().isLoaded("vanillabackport")) {
+            MinecraftForge.EVENT_BUS.register(com.justenoughmods.achievementguide.integration.home.HomeCopperProof.class);
+        }
         if (net.minecraftforge.fml.ModList.get().isLoaded("ftbquests")) {
             com.justenoughmods.achievementguide.compat.ftb.FtbQuestBridge.register();
         }

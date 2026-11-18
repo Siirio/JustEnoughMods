@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "ff006166ed29abb98fc427d62b0b73a77e0bebf22c728769e5ed45d3d335a8e0",
+  "change_records_sha256": "33c9433b7e9b5f0fa5e43427400942ab6c4d75c2779fceb5976d0f4a5e40d5f7",
   "totals": {
-    "watched": 7151,
-    "covered": 5671,
-    "unresolved": 1480
+    "watched": 7141,
+    "covered": 5680,
+    "unresolved": 1461
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1402,
-      "covered": 88,
-      "unresolved": 1314,
+      "watched": 1396,
+      "covered": 87,
+      "unresolved": 1309,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -136,7 +136,6 @@
         "Client/ManagedPack/config/betterfortresses/forge-1_20/itemframes.json",
         "Client/ManagedPack/config/betteroceanmonuments-forge-1_20.toml",
         "Client/ManagedPack/config/block_factorys_bosses-client.toml",
-        "Client/ManagedPack/config/blockrunner.json",
         "Client/ManagedPack/config/blueprint-client.toml",
         "Client/ManagedPack/config/blueprint-common.toml",
         "Client/ManagedPack/config/boss_checklist/boss_checklist-client.json",
@@ -152,6 +151,7 @@
         "Client/ManagedPack/config/companions.toml",
         "Client/ManagedPack/config/connectiblechains.toml",
         "Client/ManagedPack/config/connectivity.json",
+        "Client/ManagedPack/config/copperagebackport.json",
         "Client/ManagedPack/config/cosycritters.json",
         "Client/ManagedPack/config/create-client.toml",
         "Client/ManagedPack/config/create-common.toml",
@@ -244,8 +244,6 @@
         "Client/ManagedPack/config/golemoverhaul.jsonc",
         "Client/ManagedPack/config/gouge.toml",
         "Client/ManagedPack/config/gravestone-client.toml",
-        "Client/ManagedPack/config/guardvillagers-client.toml",
-        "Client/ManagedPack/config/guardvillagers-common.toml",
         "Client/ManagedPack/config/herbalbrews.toml",
         "Client/ManagedPack/config/icarus.jsonc",
         "Client/ManagedPack/config/immediatelyfast.json",
@@ -269,7 +267,6 @@
         "Client/ManagedPack/config/incontrol/summonaid.json",
         "Client/ManagedPack/config/infinitybuttons.toml",
         "Client/ManagedPack/config/insanelib.toml",
-        "Client/ManagedPack/config/inventorytabs-client.toml",
         "Client/ManagedPack/config/invincible-common.toml",
         "Client/ManagedPack/config/jade/hide-blocks.json",
         "Client/ManagedPack/config/jade/hide-entities.json",
@@ -304,7 +301,6 @@
         "Client/ManagedPack/config/leawind_third_person.json",
         "Client/ManagedPack/config/legendary_monsters-common.toml",
         "Client/ManagedPack/config/legendarytooltips-common.toml",
-        "Client/ManagedPack/config/letmedespawn.json",
         "Client/ManagedPack/config/libraryferret_1.properties",
         "Client/ManagedPack/config/lithostitched.json",
         "Client/ManagedPack/config/lodestone-client.toml",
@@ -1299,7 +1295,6 @@
         "Client/ManagedPack/config/visuality/particle_emitters/block_step.json",
         "Client/ManagedPack/config/visuality/particle_emitters/entity_armor.json",
         "Client/ManagedPack/config/visuality/particle_emitters/entity_hit.json",
-        "Client/ManagedPack/config/vss-client-config.json",
         "Client/ManagedPack/config/wakes-client.toml",
         "Client/ManagedPack/config/watut-client.toml",
         "Client/ManagedPack/config/watut-common.toml",
@@ -1370,8 +1365,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 3796,
-      "covered": 3796,
+      "watched": 3792,
+      "covered": 3792,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1591,24 +1586,9 @@
     },
     "Mods/JEMSettlements": {
       "watched": 203,
-      "covered": 189,
-      "unresolved": 14,
-      "unresolved_paths": [
-        "Mods/JEMSettlements/gradle.properties",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountRoster.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitReadinessAdapter.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownFoundPacket.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownViewPacket.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TreasuryActionPacket.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/AmenitySnapshot.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/ProductionObligation.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationState.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SimulationJournalEntry.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownSpecialization.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownTier.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceType.java",
-        "Mods/JEMSettlements/src/main/resources/pack.mcmeta"
-      ]
+      "covered": 203,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMTwelveEyes": {
       "watched": 161,
