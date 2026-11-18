@@ -1,3 +1,17 @@
+## 2026-11-19 - Release guarded Radium and Particle Rain
+
+- User requested completion of the prepared update on MineRENT and the local client, followed by production promotion
+- Production preflight verified pushed `develop` commit `dc480ce4736d444fc9009afcf434b955471a19bd` with release inventory SHA-256 `59aecd6b6a6d3ba593affe64775448600c166124ffd473d7655a958bbdf07536` and pack-sync inventory SHA-256 `b59a901d90ac2787e042eae9d3a410ab8caf11386f81c5839b9f979c9c5c7963`
+- MineRENT received the guarded Radium JAR and `config/lithium.properties` at server runtime, plus Radium, Particle Rain, the same configuration and the managed manifest in the hosted source
+- The server saved every dimension before an existing MapSyncer shutdown failure left the process open. MineRENT force-stop was used only after the save completed
+- MineRENT returned to `Работает`. Native preview reported `+3 ~1 -0`, publication completed at `2026-11-19T01:37:27+05:00` with content-token prefix `4446772`, and the final preview reported `+0 ~0 -0`
+- The local native generation remains `31cc541e99e9850b829cb10b7fd981656f400a93`. `Test JustEnoughMods` applied it with matching managed JAR hashes and no pending transaction
+- The stable profile uses bootstrap-only direct synchronization and native managed installation. Its Bootstrap SHA-256 is `11747e6443898bd55efa6da77d4ead922b760b8b260e31a90b05e74ade4e048b`
+- The cumulative friend update is `JustEnoughMods-update-2026-11-18_11-52-20.zip` with SHA-256 `4243bdc65606edf429ed1de301d40859ca801615034f621662514c22c6fab56d`
+- Bug / Release Tooling / `promote-baseline` rewrote the stable synchronization tracker from the bootstrap-only installer inventory to the full managed inventory / resolved by deriving that tracker only from `Client/JustEnoughMods/mods/jem-bootstrap.jar`
+- Five Whys: the tracker expanded because promotion wrote the full release inventory, it used that inventory because baseline promotion reused the managed source result, the stable client has a different direct-sync contract, that contract was enforced only by `sync-stable`, and the baseline owner did not share the bootstrap-only invariant
+- The immutable production baseline was promoted at `2026-11-19T01:39:03.503246+05:00`. Automated tests and Minecraft gameplay were not run. Player acceptance remains `in testing`
+
 ## 2026-11-18 - Restore guarded Radium and add Particle Rain
 
 - User corrected the requested performance mod from Rubidium to Radium, requested it on the client and server, approved a newer compatible release, and requested Particle Rain

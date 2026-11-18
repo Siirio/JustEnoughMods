@@ -1,0 +1,75 @@
+{
+  "format": 1,
+  "releaseMode": "minerent_and_hosted_automodpack_with_native_client_application",
+  "source": {
+    "branch": "develop",
+    "artifactCommit": "dc480ce4736d444fc9009afcf434b955471a19bd",
+    "preflightVerifiedAt": "2026-11-19T00:57:28.297041+05:00",
+    "releaseInventorySha256": "59aecd6b6a6d3ba593affe64775448600c166124ffd473d7655a958bbdf07536",
+    "packSyncInventorySha256": "b59a901d90ac2787e042eae9d3a410ab8caf11386f81c5839b9f979c9c5c7963",
+    "releaseFiles": 2960,
+    "packSyncFiles": 2953
+  },
+  "artifacts": {
+    "radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar": "8e9388101a7323efe3d4e43f985c9da2609edc28590193b20a2c416e9191e5b8",
+    "particlerain-4.0.3+1.20.1-forge.jar": "44bc0ab3ed373fe0d004b4457d09f91137d01ca6f8c195a5f530cb48064cb14f",
+    "jem-bootstrap.jar": "11747e6443898bd55efa6da77d4ead922b760b8b260e31a90b05e74ade4e048b"
+  },
+  "server": {
+    "panel": "https://my.minerent.net/server/0618360f",
+    "state": "running",
+    "verifiedAt": "2026-11-19T01:37:41+05:00",
+    "runtimeUploads": [
+      "mods/radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar",
+      "config/lithium.properties"
+    ],
+    "hostedUploads": [
+      "automodpack/host-modpack/main/mods/radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar",
+      "automodpack/host-modpack/main/mods/particlerain-4.0.3+1.20.1-forge.jar",
+      "automodpack/host-modpack/main/config/lithium.properties",
+      "automodpack/host-modpack/main/jem-pack/manifest.json"
+    ]
+  },
+  "publication": {
+    "published": true,
+    "publishedAt": "2026-11-19T01:37:27+05:00",
+    "contentTokenPrefix": "4446772",
+    "preview": {
+      "added": 3,
+      "changed": 1,
+      "deleted": 0,
+      "excluded": 2
+    },
+    "postPublicationPreviewAt": "2026-11-19T01:37:41+05:00",
+    "postPublicationPreview": {
+      "added": 0,
+      "changed": 0,
+      "deleted": 0,
+      "excluded": 2
+    },
+    "excluded": [
+      "main/mods/jem-bootstrap.jar",
+      "main/options.txt"
+    ]
+  },
+  "localPublication": {
+    "journalSequence": 175,
+    "contentToken": "31cc541e99e9850b829cb10b7fd981656f400a93",
+    "manifestSha1": "53353ef6d0f057eb4ff7b4e3246593f2a3320347"
+  },
+  "client": {
+    "stableProfileSynchronized": true,
+    "stableDirectSyncMode": "bootstrap_only",
+    "pendingTransaction": false,
+    "friendPackage": "C:/MyProjects/Minecraft/JustEnoughMods-updates/JustEnoughMods-update-2026-11-18_11-52-20.zip",
+    "friendPackageSha256": "4243bdc65606edf429ed1de301d40859ca801615034f621662514c22c6fab56d"
+  },
+  "shutdownNote": "The existing MapSyncer shutdown issue left the saved process running, so MineRENT force-stop was used only after every dimension completed saving",
+  "playerAcceptance": "in testing",
+  "automatedTestsRun": false,
+  "productionPromotion": {
+    "baseline": "complete",
+    "baselineCreatedAt": "2026-11-19T01:39:03.503246+05:00",
+    "main": "pending"
+  }
+}

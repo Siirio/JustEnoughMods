@@ -216,6 +216,14 @@ def release_inventory(config):
     return source_files
 
 
+def stable_bootstrap_inventory(config):
+    installer_files = inventory(config["installerSource"], config["stableExcluded"])
+    bootstrap_path = "mods/jem-bootstrap.jar"
+    if bootstrap_path not in installer_files:
+        raise SystemExit("Stable installer bootstrap is missing")
+    return {bootstrap_path: installer_files[bootstrap_path]}
+
+
 def baseline(config):
     destination = baseline_path(config)
     if destination.exists():
@@ -229,7 +237,7 @@ def baseline(config):
         "files": source_files,
     }
     write_json_atomic(destination, payload)
-    write_json_atomic(sync_state_path(config, "stableClient"), exclude_inventory(source_files, config["stableExcluded"]))
+    write_json_atomic(sync_state_path(config, "stableClient"), stable_bootstrap_inventory(config))
     print(f"Baseline fixed: {len(source_files)} files")
 
 
@@ -324,7 +332,7 @@ def promote_baseline(config):
         "files": source_files,
     }
     write_json_atomic(destination, payload)
-    write_json_atomic(sync_state_path(config, "stableClient"), exclude_inventory(source_files, config["stableExcluded"]))
+    write_json_atomic(sync_state_path(config, "stableClient"), stable_bootstrap_inventory(config))
     print(json.dumps({key: payload[key] for key in ("createdAt", "previousCreatedAt", "publishedDelta", "pointUpdate")}, ensure_ascii=False, indent=2))
 
 
