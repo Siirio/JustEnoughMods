@@ -1,3 +1,12 @@
+## 2026-11-19 - Capture the revised stable keybind preset
+
+- User updated the keybinds in the stable `JustEnoughMods` profile and required that exact new layout to reach `main` first, then Test JEM, then players in the next MineRENT update only
+- Captured all 253 saved keybinding rows from the stable profile at `2026-11-19T03:17:23.8573836+05:00` with source SHA-256 `31939ac471eef9d67b9d4146d5b4c31b9ab41069b76c91b3ef3180c38448320e`
+- Updated the tracked JEMCompat preset and refreshed the ignored local ManagedPack `options.txt` template while preserving repository-only mappings for newly installed mods
+- Added a separate one-time player-key receipt revision so the next client update applies these bindings without reapplying them during later updates
+- Personal video, sound, server-address and resource-pack selections were not copied from the stable profile
+- This source snapshot does not change MineRENT, the stable profile, the published AutoModpack generation or the immutable release baseline
+
 ## 2026-11-19 - Release guarded Radium and Particle Rain
 
 - User requested completion of the prepared update on MineRENT and the local client, followed by production promotion
