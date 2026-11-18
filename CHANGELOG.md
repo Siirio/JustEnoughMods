@@ -11,6 +11,7 @@
 - Bug / Release Tooling / `promote-baseline` rewrote the stable synchronization tracker from the bootstrap-only installer inventory to the full managed inventory / resolved by deriving that tracker only from `Client/JustEnoughMods/mods/jem-bootstrap.jar`
 - Five Whys: the tracker expanded because promotion wrote the full release inventory, it used that inventory because baseline promotion reused the managed source result, the stable client has a different direct-sync contract, that contract was enforced only by `sync-stable`, and the baseline owner did not share the bootstrap-only invariant
 - The immutable production baseline was promoted at `2026-11-19T01:39:03.503246+05:00`. Automated tests and Minecraft gameplay were not run. Player acceptance remains `in testing`
+- Production `main` received the final `develop` release snapshot through normal fast-forward promotion
 
 ## 2026-11-18 - Restore guarded Radium and add Particle Rain
 
