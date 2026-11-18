@@ -27,6 +27,7 @@ import net.minecraft.commands.Commands;
 public final class CuratedKeyPreset {
     private static final String REVISION = "2026-10-20";
     private static final String RELEASE_PRESET_REVISION = "2026-11-17-resource-pack-v3";
+    private static final String PLAYER_KEY_PRESET_REVISION = "2026-11-19-stable-keys-v1";
     // Compared with the GitHub original-controls snapshot. TrashSlot and Backpacked were retired.
     private static final Set<String> NEW_SINCE_ORIGINAL = Set.of(
             "key.jemcompat.free_camera", "key.puffish_skills.open", "key.sophisticatedbackpacks.open_backpack");
@@ -40,6 +41,10 @@ public final class CuratedKeyPreset {
     }
     private static Path releasePresetMarker() {
         return releasePresetMarker(Minecraft.getInstance().gameDirectory.toPath());
+    }
+    private static Path playerKeyPresetMarker() {
+        return Minecraft.getInstance().gameDirectory.toPath()
+                .resolve("config/jemcompat-key-preset-" + PLAYER_KEY_PRESET_REVISION + ".applied");
     }
     private static Map<String, String> desired() {
         try (var stream = CuratedKeyPreset.class.getResourceAsStream("/assets/jemcompat/input/default_keys.json")) {
@@ -156,6 +161,27 @@ public final class CuratedKeyPreset {
         // A direct save persists the keys and selected list without Minecraft.reloadResourcePacks().
         minecraft.options.save();
     }
+    private static void applyPlayerKeyPresetOnce() {
+        Path receipt = playerKeyPresetMarker();
+        if (Files.exists(receipt)) return;
+        var changes = changes();
+        try {
+            Files.createDirectories(receipt.getParent());
+            Files.writeString(receipt, PLAYER_KEY_PRESET_REVISION + "\n", StandardCharsets.UTF_8,
+                    java.nio.file.StandardOpenOption.CREATE_NEW);
+        } catch (java.io.IOException failure) {
+            throw new IllegalStateException("Cannot record the one-time JEM player key preset", failure);
+        }
+        changes.forEach((mapping, value) -> {
+            String[] parts = value.split(":", 2);
+            mapping.setKeyModifierAndCode(parts.length == 1 ? KeyModifier.NONE : KeyModifier.valueOf(parts[1]),
+                    InputConstants.getKey(parts[0]));
+        });
+        if (!changes.isEmpty()) {
+            KeyMapping.resetMapping();
+            Minecraft.getInstance().options.save();
+        }
+    }
     @SubscribeEvent public static void commands(RegisterClientCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("jemkeys")
                 .executes(context -> preview(context.getSource()))
@@ -171,6 +197,7 @@ public final class CuratedKeyPreset {
         initialized = true;
         if (cleanOptions) apply();
         applyReleasePresetOnce();
+        applyPlayerKeyPresetOnce();
         applyNewDefaults();
     }
 }
