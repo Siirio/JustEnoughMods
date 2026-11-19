@@ -1,3 +1,15 @@
+## 2026-11-19 - Keep Chunky on the dedicated server
+
+- User reported that `Test JustEnoughMods` crashed again after the transport publication
+- Bug / Client / Distant Horizons 3.3.3 registered its installed Chunky integration before Chunky 1.3.146 received `ServerStartingEvent` in the integrated server, then called `ChunkyProvider.get()` during the first chunk promotion and stopped the client with `IllegalStateException: Chunky is not loaded` / in testing through dedicated-server-only Chunky distribution
+- Five Whys: the client stopped because Distant Horizons called an absent Chunky provider; the provider is created only from Chunky's server-starting callback; the Distant Horizons accessor bound earlier from its client and integrated-server lifecycle; the managed client included an administrative pregeneration mod that only the dedicated server needs; the earlier shared distribution treated class presence as compatibility without exercising the integrated-server startup order
+- Installed bytecode confirms that `ChunkyForge.onServerStarting` creates and registers the provider, while the Distant Horizons accessor calls the provider without a lifecycle guard. This is independent of the repaired JEM movement and transport mixins
+- Chunky 1.3.146 remains unchanged on the ordinary local dedicated server with its server config, saved task and commands. Distant Horizons 3.3.3 remains on both sides. The managed client removes only Chunky through native AutoModpack deletion
+- The ordinary local server loaded Chunky 1.3.146 and Distant Horizons 3.3.3, reached `Done (4.435s)` and remains available on `127.0.0.1:31604`. Native preview reported `+0 ~1 -1`, limited to the manifest and `main/mods/Chunky-1.3.146.jar`. Journal sequence 181 published content token `df762454fa67b2002bfb33e071eee18bb3d13027`, and the final preview reported `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied the publication through the native AutoModpack planner and detached helper. Its active token matches the published head, all 327 managed JARs match canonical hashes, client Chunky is absent, server Chunky retains SHA-256 `996a3c9b53e6c0e0850fb9e78d3546d2c37a1b789ddaf529b17e4fe62ab23141`, and no native transaction remains pending
+- Pack Sync status reports `published: true` with matching staged and published manifest SHA-1 `7608c9b22b75cba6893387b272d3579b8fed71e0`. The rebuilt Registry Atlas contains 783 artifacts and validates with no installed-artifact drift
+- Stable `JustEnoughMods`, MineRENT and the immutable release baseline remain unchanged. Client relaunch and singleplayer acceptance remain `in testing`
+
 ## 2026-11-19 - Repair Test JEM startup and prepare transport publication
 
 - User reported that `Test JustEnoughMods` crashes and requested the transport and carriage changes on the test client and ordinary local server

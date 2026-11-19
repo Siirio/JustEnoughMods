@@ -46,7 +46,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | ChatAnimation | `1.3.0` | Client |  |
 | Cherished Worlds | `6.1.7+1.20.1` | Client |  |
 | Chimes | `2.1.1` | Client + server |  |
-| Chunky | `1.3.146` | Client + server |  |
+| Chunky | `1.3.146` | Server | Dedicated-server pregeneration owner. Excluded from the managed client because the Distant Horizons 3.3.3 integrated-server accessor can call Chunky before its `ServerStartingEvent` provider exists |
 | Cinematic Cataclysm | `1.0.1` | Client |  |
 | Citadel | `2.6.3` | Client + server |  |
 | clickadv mod | `1.20.1-3.9` | Client |  |
