@@ -12,7 +12,10 @@ from pathlib import Path
 
 MODULE = Path(__file__).resolve().parent
 CONFIG = MODULE / "upstream.json"
-PATCH = MODULE / "patches" / "loaded-chunks-only.patch"
+PATCHES = [
+    MODULE / "patches" / "loaded-chunks-only.patch",
+    MODULE / "patches" / "single-row-pagination.patch",
+]
 
 
 def prepare(config, source):
@@ -20,12 +23,17 @@ def prepare(config, source):
     receipt = destination / "jem-source.json"
     identity = {
         "commit": config["commit"],
-        "patchSha256": hashlib.sha256(PATCH.read_bytes()).hexdigest(),
+        "patches": {
+            patch.name: hashlib.sha256(patch.read_bytes()).hexdigest()
+            for patch in PATCHES
+        },
     }
     if receipt.is_file():
         previous = json.loads(receipt.read_text(encoding="utf-8"))
         if all(previous.get(key) == value for key, value in identity.items()):
             return destination
+    if destination.exists():
+        shutil.rmtree(destination)
     if not destination.exists():
         if source is not None:
             archive = subprocess.run(
@@ -60,7 +68,13 @@ def prepare(config, source):
             raise SystemExit(f"Pinned upstream source differs: {relative}")
     patch_environment = dict(os.environ)
     patch_environment["GIT_CEILING_DIRECTORIES"] = str(destination.parent.resolve())
-    subprocess.run(["git", "apply", str(PATCH)], cwd=destination, env=patch_environment, check=True)
+    for patch in PATCHES:
+        subprocess.run(
+            ["git", "apply", "--no-index", "--ignore-space-change", "--whitespace=fix", str(patch)],
+            cwd=destination,
+            env=patch_environment,
+            check=True,
+        )
     receipt.write_text(json.dumps(identity, indent=2) + "\n", encoding="utf-8")
     return destination
 

@@ -1163,6 +1163,12 @@ The adjacent dropdown callback also captured an extra `slotBackground` integer a
 
 The Home screen does not create an empty isometric scene when a resident has no bound home. It shows the resident name, "Нет жилья" or "No home", and one Back button. A valid snapshot contains only bed Y and higher levels. The client also rejects negative relative Y cells, so older or malformed snapshots cannot restore underground blocks. Live block entities in the current client world use their native renderer inside the detached view
 
+### Home isometry and merchant tabs correction, 2026-11-19
+
+The detached home view renders the baked model for every `MODEL` block and then adds an available block-entity layer. This keeps the full lectern and model-based lamp visible while preserving native animated block entities such as chests. The family home light check reads actual server block light within the saved home domain instead of testing only direct source emission
+
+Inventory Tabs uses one top row per page on merchant screens. Overflow tabs use its existing page arrows and never form a detached row below the inventory. The Settlements Home button is anchored to the native merchant container and stays one row above the inventory tabs. Existing textures, native trading controls and house bounds remain unchanged
+
 The general resident light score uses the highest known block-light sample in the checked home footprint. Sky light remains excluded. This means one sufficient torch, jack-o-lantern or other light source can satisfy the rule. The separate family 3x3x3 home rule continues to accept any block with positive light emission in its domain
 
 Village recruit seeding requires a valid generated structure start in `#minecraft:village` at the meeting bell. Villager count and POI density do not authorize recruits. A valid village creates at most one queued recruit per server tick until its existing one-time target of four or five is reached

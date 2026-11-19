@@ -1,3 +1,15 @@
+## 2026-11-19 - Correct Sandbox home isometry and merchant tab pagination
+
+- User reported that the resident home isometry omitted the librarian lectern and a lamp, merchant inventory tabs overflowed below the GUI instead of using pages, and the Home button overlapped the tab row
+- Bug / Client Sided / the home renderer selected either a block-entity renderer or the baked block model, so a lectern block entity suppressed the lectern model and the same rule could suppress model-based lamps / in testing by always rendering `MODEL` geometry and then adding its block-entity layer, while animated blocks such as chests keep their native block-entity renderer
+- Bug / Both Sided / the family home light rule duplicated an emission-only scan instead of reading the actual block-light field / in testing by accepting any positive server block-light value inside the saved home domain, including light that reaches the home from a valid source
+- Bug / Client Sided / upstream Inventory Tabs treated a second bottom row as part of each page, so the merchant screen displayed overflow tabs below the inventory and delayed pagination / in testing with one top row per page and the mod's existing page arrows
+- Bug / Client Sided / the Settlements Home button used screen-center coordinates instead of the native container origin / in testing with placement relative to `guiLeft` and `guiTop`, one row above the Inventory Tabs row
+- Codex kept the existing housing bounds, native merchant screen and existing tab art. No new textures or visual assets were added
+- Built reobfuscated Inventory Tabs `0.10.1-jem.2` and JEM Settlements `2.2.2` without tests. Their SHA-256 values are `6072d121ecee82b6a18a30f19f874bf2ef8673d50bb34719c44c6a0bf8764107` and `b316a815f062e77db196c3e3473f831399d3525ad3a20e08551a5840de08a9ae`
+- Installed the exact artifacts into the closed `Sandbox JustEnoughMods` profile. The previous JARs remain recoverable in the sandbox backup directory
+- Atlas, `develop`, `Test JustEnoughMods`, the ordinary local Server, MineRENT, the stable profile, the managed pack and the release baseline remain unchanged. Minecraft gameplay was not launched and visual acceptance remains `in testing`
+
 ## 2026-11-19 - Correct Settlements homes, Coin slots and village recruits in Sandbox
 
 - User requested a quick `Sandbox JustEnoughMods` deployment of Settlements and Economy without Atlas changes

@@ -2,6 +2,7 @@ package com.siirio.jemsettlements.client;
 
 import com.siirio.jemsettlements.JemSettlements;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.MerchantScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,7 +18,12 @@ public final class FamilyScreenTabs {
         if (!FamilyClientState.active()) return; String name = event.getScreen().getClass().getName();
         if (!(event.getScreen() instanceof MerchantScreen) && !name.startsWith("com.talhanation.recruits.client.gui.")) return;
         int width = 66, x = event.getScreen().width/2 - 88;
-        int y = Math.max(4, event.getScreen().height/2 - (event.getScreen() instanceof MerchantScreen ? 105 : 92));
+        int y = Math.max(4, event.getScreen().height/2 - 92);
+        if (event.getScreen() instanceof MerchantScreen merchant) {
+            AbstractContainerScreen<?> container = merchant;
+            x = container.getGuiLeft();
+            y = Math.max(4, container.getGuiTop() - 52);
+        }
         event.addListener(Button.builder(Component.translatable("jem.settlements.family.home_tab"), button -> FamilyClientState.open()).bounds(x,y,width,20).build());
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { FamilyClientState.clear(); }

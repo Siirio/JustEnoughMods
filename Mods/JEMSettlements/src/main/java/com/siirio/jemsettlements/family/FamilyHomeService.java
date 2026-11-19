@@ -10,6 +10,7 @@ import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.nbt.CompoundTag;
@@ -27,7 +28,7 @@ public final class FamilyHomeService {
         BlockPos chest = validInZone(level, bed, record.chest(), true) && !usedChests.contains(record.chest().pos()) ? record.chest().pos() : find(level, bed, usedChests, true);
         BlockPos work = child ? null : validInZone(level, bed, record.workstation(), false) && !usedWork.contains(record.workstation().pos()) ? record.workstation().pos() : find(level, bed, usedWork, false);
         record.chest(chest == null ? null : GlobalPos.of(level.dimension(), chest)); record.workstation(work == null ? null : GlobalPos.of(level.dimension(), work));
-        boolean light = false; for (BlockPos pos : zone(bed)) if (level.hasChunkAt(pos) && level.getBlockState(pos).getLightEmission(level, pos) > 0) { light = true; break; }
+        boolean light = false; for (BlockPos pos : zone(bed)) if (level.hasChunkAt(pos) && level.getBrightness(LightLayer.BLOCK, pos) > 0) { light = true; break; }
         int missing = (chest == null ? 1 : 0) + (!child && work == null ? 1 : 0) + (!light ? 1 : 0); int happiness = 100 - missing * 15; record.happiness(happiness);
         String complaint = chest == null ? "chest" : !light ? "light" : !child && work == null ? "workstation" : "";
         return new Status(true, chest != null, child || work != null, light, child, happiness, complaint);

@@ -14,6 +14,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Matrix4f;
@@ -169,7 +170,9 @@ public final class HousingInspector {
                     int spanZ=Math.max(1,Math.min(stride,snapshot.getInt("MaxZ")-anchor.getZ()-pos.getZ()+1));
                     pose.scale(spanX,1,spanZ);
                 }
-                if(!renderBlockEntity(cell,pose,buffers))mc.getBlockRenderer().renderSingleBlock(cell.state(),pose,buffers,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY);
+                RenderShape shape=cell.state().getRenderShape();
+                if(shape==RenderShape.MODEL)mc.getBlockRenderer().renderSingleBlock(cell.state(),pose,buffers,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY);
+                if(shape==RenderShape.ENTITYBLOCK_ANIMATED||shape==RenderShape.MODEL)renderBlockEntity(cell,pose,buffers);
                 if(cell.relevant())LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),0,0,0,1,1,1,cell.facts().getBoolean("Bed")?.3F:.25F,cell.facts().getBoolean("Bed")?1F:.65F,cell.facts().getBoolean("Bed")?.4F:1F,.85F);
                 pose.popPose();
                 Vector3f projected=matrix.transformPosition(cell.center());double distance=Math.pow(projected.x-mouseX,2)+Math.pow(projected.y-mouseY,2);
