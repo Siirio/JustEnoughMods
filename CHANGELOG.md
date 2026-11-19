@@ -1,3 +1,14 @@
+## 2026-11-19 - Promote Settlements, Economy and Inventory Tabs to Test
+
+- User approved the Sandbox Settlements work for `develop`, requested installation into `Test JustEnoughMods`, confirmed that Inventory Tabs must be included, required the ordinary local server to remain running with the new changes and explicitly prohibited Atlas work
+- Fast-forwarded `sandbox/settlements` commits `f22778d9d` and `4827d4a20` into `develop` without changing Atlas records
+- Built production artifacts without tests: Inventory Tabs `0.10.1-jem.2`, JEM Economy `1.3.5` and JEM Settlements `2.2.2`
+- Published native AutoModpack journal sequence 182 with reviewed preview `+3 ~1 -3`, content token `cba62661d22118718efd74a8b0c5080e6e241319` and final preview `+0 ~0 -0`
+- Applied the complete published generation to the closed `Test JustEnoughMods` profile through the native planner. The planner updated 40 current files, removed the three obsolete mod JARs, verified 327 managed JARs and left no pending transaction
+- Verified matching SHA-256 values between the Test profile and managed source: Inventory Tabs `e6cb2fffcc0dc8cde4de6654fd6f99cc2f09ebdb1031dff72d32f57d05ff6d64`, JEM Economy `ff3cbcecb189d121d67160811c11d9d3dbc5ff37a3fd57dfe467942869a13900` and JEM Settlements `bb6f9495df184733ac8c3b6e5b51ff0e875b9299c8b5401531a1a3602855451b`
+- Synchronized the ordinary local dedicated server with JEM Economy `1.3.5` and JEM Settlements `2.2.2`. Startup loaded both versions, reached `Done (15.275s)!` and the server remains running on `127.0.0.1:31604` as requested
+- Minecraft client gameplay was not launched. MineRENT, `main`, the stable profile and the immutable release baseline remain unchanged. Player acceptance remains `in testing`
+
 ## 2026-11-19 - Correct Sandbox home isometry and merchant tab pagination
 
 - User reported that the resident home isometry omitted the librarian lectern and a lamp, merchant inventory tabs overflowed below the GUI instead of using pages, and the Home button overlapped the tab row
