@@ -1,0 +1,75 @@
+diff --git a/src/main/java/com/kqp/inventorytabs/mixin/VanillaScreenTabAdder.java b/src/main/java/com/kqp/inventorytabs/mixin/VanillaScreenTabAdder.java
+index 21926301d..03acaa83c 100644
+--- a/src/main/java/com/kqp/inventorytabs/mixin/VanillaScreenTabAdder.java
++++ b/src/main/java/com/kqp/inventorytabs/mixin/VanillaScreenTabAdder.java
+@@ -5,5 +5,6 @@ import java.util.Set;
+-
++
+ import org.spongepowered.asm.mixin.Mixin;
++import org.spongepowered.asm.mixin.Unique;
+ import org.spongepowered.asm.mixin.injection.At;
+ import org.spongepowered.asm.mixin.injection.Inject;
+ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+@@ -112,8 +113,8 @@ public abstract class VanillaScreenTabAdder extends Screen implements TabRenderi
+     protected void drawBackgroundTabs(GuiGraphics gui, int mouseX, int mouseY, float delta,
+             CallbackInfo callbackInfo) {
+         if (InventoryTabsClient.shouldRenderTabs(this)) {
++            TabManager tabManager = inventorytabs$getTabManagerForCurrentScreen();
+             if (!screenDoesDumbBlock()) {
+-                TabManager tabManager = TabManager.getInstance();
+-
++
+                 tabManager.tabRenderer.renderBackground(gui);
+             }
+@@ -123,7 +124,7 @@ public abstract class VanillaScreenTabAdder extends Screen implements TabRenderi
+     protected void drawForegroundTabs(GuiGraphics gui, int mouseX, int mouseY, float delta,
+                                       CallbackInfo callbackInfo) {
+         if (InventoryTabsClient.shouldRenderTabs(this)) {
+-            TabManager tabManager = TabManager.getInstance();
++            TabManager tabManager = inventorytabs$getTabManagerForCurrentScreen();
+-
++
+             tabManager.tabRenderer.renderForeground(gui, mouseX, mouseY);
+             tabManager.tabRenderer.renderHoverTooltips(gui, mouseX, mouseY);
+@@ -133,7 +134,7 @@ public abstract class VanillaScreenTabAdder extends Screen implements TabRenderi
+     @Inject(method = "mouseClicked", at = @At("HEAD"), cancellable = true)
+     public void mouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> callbackInfo) {
+         if (InventoryTabsClient.shouldRenderTabs(this)) {
+-            TabManager tabManager = TabManager.getInstance();
++            TabManager tabManager = inventorytabs$getTabManagerForCurrentScreen();
+-
++
+             if (tabManager.mouseClicked(mouseX, mouseY, button)) {
+                 callbackInfo.setReturnValue(true);
+@@ -148,7 +149,7 @@ public abstract class VanillaScreenTabAdder extends Screen implements TabRenderi
+             InventoryTabsConfig.renderTabs.set(!InventoryTabsConfig.renderTabs.get());
+         }
+         if (InventoryTabsClient.shouldRenderTabs(this)) {
+-            TabManager tabManager = TabManager.getInstance();
++            TabManager tabManager = inventorytabs$getTabManagerForCurrentScreen();
+-
++
+             if (tabManager.keyPressed(keyCode, scanCode, modifiers)) {
+                 callbackInfo.setReturnValue(true);
+@@ -157,6 +158,19 @@ public abstract class VanillaScreenTabAdder extends Screen implements TabRenderi
+     }
+-
++
+-
++
++    @Unique
++    private TabManager inventorytabs$getTabManagerForCurrentScreen() {
++        TabManager tabManager = TabManager.getInstance();
++        AbstractContainerScreen<?> screen = (AbstractContainerScreen<?>) (Object) this;
++
++        if (tabManager.getCurrentScreen() != screen) {
++            tabManager.onScreenOpen(screen);
++        }
++
++        return tabManager;
++    }
++
++
+     @Override
+     public int getTopRowXOffset() {
+         if (!IS_BRB_LOADED) {

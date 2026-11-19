@@ -1,3 +1,16 @@
+## 2026-11-19 - Repair the starter-kit backpack screen crash
+
+- User reported that `Test JustEnoughMods` crashed immediately after the starter kit gave the backpack and requested the repair on a new branch from `develop`
+- Bug / Client Sided / Curios `CuriosScreenV2` overrides the container `init()` method without calling the vanilla implementation, while Inventory Tabs initialized its `currentScreen` only from an injected vanilla `init()` return hook, so its first tab render dereferenced a null screen / in testing with Inventory Tabs `0.10.1-jem.3`, which synchronizes the actual supported container screen before tab rendering or input handling
+- Five Whys: the client stopped because Inventory Tabs calculated tab width from a null `currentScreen`; that field was null because its screen-open callback did not run; the callback existed only in the vanilla container `init()` lifecycle; Curios uses its own initialization path without calling that lifecycle; Inventory Tabs accepted all container screens but did not enforce its screen-state invariant at its own render boundary
+- The crash report and installed bytecode confirm the chain `CuriosScreenV2` -> Inventory Tabs `TabRenderer` -> `TabManager.getMaxRowLength()`. The completed quest line `Карман побольше` preceded the screen opening, but the backpack item, starter-kit reward and Curios data did not cause the null state
+- Codex selected one Inventory Tabs lifecycle repair for all supported third-party container screens. The fix does not add a Curios-only mixin and does not hide invalid state with a null guard
+- Built the reobfuscated client-only production artifact without tests. Inventory Tabs `0.10.1-jem.3` has SHA-256 `08b8b8db8059700d6278b13852c804cfe4f54ff827ed9771bf640cc1a9ea8ecc`. Manifest and bytecode inspection confirm patch revision `loaded-chunks.pagination.screen-lifecycle.3` and screen synchronization before every tab entry point
+- Restored the Atlas source references for the already-promoted Economy `1.3.5` and Settlements `2.2.2` artifacts, regenerated the full Atlas from 783 installed artifacts and validated 231 change records with no artifact drift
+- Published native AutoModpack journal sequence 183 with reviewed delta `+1 ~1 -1`, content token `c76a2da2f3a8a8413bbb77d1795601fd0a21e275` and final preview `+0 ~0 -0`
+- Applied the exact generation to the closed `Test JustEnoughMods` profile through the native planner and detached helper. The active token matches the published head, all 327 managed JARs match canonical hashes, Inventory Tabs matches the artifact SHA-256 above and no native transaction remains pending
+- The ordinary local dedicated server remains running on `127.0.0.1:31604`. Minecraft gameplay was not launched. MineRENT, `main`, the stable profile and the immutable release baseline remain unchanged. Player acceptance remains `in testing`
+
 ## 2026-11-19 - Promote Settlements, Economy and Inventory Tabs to Test
 
 - User approved the Sandbox Settlements work for `develop`, requested installation into `Test JustEnoughMods`, confirmed that Inventory Tabs must be included, required the ordinary local server to remain running with the new changes and explicitly prohibited Atlas work
