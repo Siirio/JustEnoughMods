@@ -1,3 +1,18 @@
+## 2026-11-20 - Add Punchy Moves and local filming tools to Test JEM
+
+- User requested a fast local `develop` update for `Test JustEnoughMods` and the ordinary local server, explicitly prohibited Atlas work, and required Motion Capture, Freecam and GreenScreen to remain outside future updates
+- Added managed Punchy Moves `1.0.9` and the supplied `Fluid & Foolish 1.0.1` resource pack, then enabled the resource pack in the closed Test profile
+- Upgraded only the local Test profile from Forge `47.4.10` to the already installed Sandbox-compatible Forge `47.4.28`, because Punchy Moves `1.0.9` requires Forge `47.4.13` or newer
+- Removed Detailed Animations Reworked and the custom `JEM Detailed Animations Fix` player and cape model pack from the published generation and selected resource-pack list
+- Preserved both Detailed Animations packages, the prior Test options and the prior Test Forge descriptor under `C:/MyProjects/Minecraft/JustEnoughMods-updates/local-test-filming-tools-20261120/detailed-animations-backup`
+- Installed Motion Capture `1.3.8` and Blabov's Green Screen `1.0.0` only in the local Test profile and ordinary local server. These JARs are not in `Client/ManagedPack`, Git, Atlas, MineRENT or shared packages
+- Kept the existing local JEM Freecam `1.0.1` installation. No duplicate Freecam mod was added and its established project ownership was not changed
+- The ordinary local server loaded `mocap 1.3.8` and `blabovs_green_screen 1.0.0`, reached `Done (5.279s)!` and remains available on `127.0.0.1:31604`
+- Native Pack Sync journal sequence 185 published the two additions and manifest update. Sequence 186 published the four Detailed Animations deletions, and the final preview reported `+0 ~0 -0`
+- The closed Test profile applied content token `eb3e9417b51e3cc5112069616bd2db2c85183f4d`, verified all 328 managed JARs and left no pending native transaction
+- Pack Sync status reports `published: true` with matching staged and published manifest SHA-1 `289c89d4ca00f4c8509d987319d67afbb631cf45`
+- Atlas, MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Minecraft gameplay was not launched and player acceptance remains `in testing`
+
 ## 2026-11-20 - Replace Distant Horizons with Voxy in Test JEM
 
 - User reported that Distant Horizons did not work and requested a quick replacement with the prior Voxy server-client setup from `develop`
