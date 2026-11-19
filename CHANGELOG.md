@@ -1,3 +1,21 @@
+## 2026-11-19 - Implement the transport and carriage source candidate
+
+- User authorized implementation of the complete transport and carriage plan as ready code on a separate branch for a later merge into `develop`
+- User selected 16-item plain minecart stacks with the native recipe, route caps of 18 blocks/s on straight level rail, 14 blocks/s while ascending, and 12 blocks/s through curves
+- Fueled furnace minecarts now use the same route caps instead of retaining the previous 10 blocks/s straight cap. Their existing coal-block fueling behavior remains
+- User selected 32 normal rails from six iron ingots and one stick and 16 powered rails from six gold ingots, one stick, and one redstone
+- User selected a six-block fall before elytra deployment and a batch of eight successful elytra firework boosts. The eighth boost starts one two-minute wall-clock cooldown that restores all eight charges together
+- User removed portable-backpack Inception and all stack upgrades. Occupied backpack slots apply the approved one-third percentage-point on-foot burden with a 70% cap and a synchronized hotbar indicator
+- User selected 128-item stacks inside shulker boxes only for block items whose native stack limit is 64. Backpacks and shulker boxes cannot contain each other
+- User confirmed that no player owns a shulker box. The implementation has no legacy shulker migration or old-state preservation path
+- User kept Create trains, ice boats, TPA, existing mount and wagon rules, and the existing biplane speed, fuel, and ascent contract unchanged
+- User added two concept-only backlog entries: bounded structure loot improvement by distance from spawn and ice melting within one Minecraft day in every non-snowy biome
+- Codex selected narrow Forge and installed-mod seams, a strict JEMCompat client/server transport channel, native transient movement attributes, persisted wall-clock boost state, and a durable backpack migration journal with JEM Rewards overflow delivery
+- Codex encoded an exact 128 count through vanilla byte-count NBT and network paths by marking eligible saved stacks and restoring only the signed-byte `-128` representation. No replacement shulker item, container, or screen was added
+- Codex reused the native Sophisticated Backpacks item render for the burden indicator and added only clipped fill, color, and text. No new visual asset was authored
+- JEMCompat source version advances from 3.10.7 to 3.11.0 because the update adds mandatory client/server gameplay and network contracts
+- Source candidate only on `feature/transport-carriage`. Gradle build, Minecraft launch, HUD observation, player acceptance, local Server synchronization, native AutoModpack publication, stable profile, MineRENT, and release baseline remain unchanged
+
 ## 2026-11-19 - Record transport and long-term design owners
 
 - User requested one permanent long-term ideas document and required every future long-term idea to be added there

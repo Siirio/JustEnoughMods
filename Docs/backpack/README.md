@@ -2,6 +2,14 @@
 
 The user replaced Backpacked with Sophisticated Backpacks, Sophisticated Storage and Sophisticated Core. Their native interfaces and upgrades own current backpack/storage behavior. JEM no longer registers the former Workbench, Furnace or Auto Feed augments or Backpacked mixins. Starter supplies now use `sophisticatedbackpacks:backpack`. The subsequent user request adds the saved-content migration below. The remaining sections describe retired implementation history.
 
+## Current portable-backpack transport policy — 2026-11-19 candidate
+
+The current source candidate removes Inception and every portable Sophisticated Backpacks stack-upgrade tier from recipes, upgrade admission, creative tabs, and JEI. Stationary Sophisticated Storage upgrades remain native. Existing carried, equipped, or opened placed backpacks use a durable migration journal. Nested backpacks are detached with their NBT, oversized contents split to native item limits, and overflow is delivered through JEM Rewards. Portable backpacks and shulker boxes cannot contain each other.
+
+Each occupied storage slot across carried and equipped backpacks adds one third of one percentage point of on-foot movement reduction, capped at 70%. Item count does not affect the result. Riding, swimming, climbing, elytra flight, and creative flight suppress the transient movement modifier. The client receives only occupied slots, total slots, and the reduction rounded to one decimal place. It renders the native backpack icon near the hotbar with bottom-up fill and `-N%` text.
+
+This candidate is not built or installed. Runtime migration, movement exclusions, HUD rendering, and menu behavior remain unobserved. See [the transport plan](../plans/2026-11-19-transport-and-carriage.md) for exact values and the complete carriage scope.
+
 ## Saved-content migration for the next release
 
 The user requires existing players to receive Sophisticated bags containing their old belongings. `JEMServer/migration/backpack/BackpackMigration` owns the dedicated-server cutover before world loading and player admission. It reads raw saved NBT without installing Backpacked again. The inspected source is Backpacked3.0.9 with Sophisticated Backpacks3.26.14.2226 and Core1.5.15.2427. A different target format stops an uncompleted cutover instead of guessing.

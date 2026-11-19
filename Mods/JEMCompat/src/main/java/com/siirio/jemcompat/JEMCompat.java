@@ -8,6 +8,7 @@ import com.siirio.jemcompat.feature.kaleidoscope.VoidWalkerEvents;
 import com.siirio.jemcompat.feature.kaleidoscope.VoidWalkerNetwork;
 import com.siirio.jemcompat.feature.transport.TransportContent;
 import com.siirio.jemcompat.feature.transport.TransportEvents;
+import com.siirio.jemcompat.feature.transport.TransportNetwork;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -28,6 +29,7 @@ public final class JEMCompat {
     public JEMCompat() {
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
         VoidWalkerNetwork.register(modBus);
+        TransportNetwork.register(modBus);
         com.siirio.jemcompat.feature.spawning.CreatureSpawnProbability.SERIALIZERS.register(modBus);
         TransportContent.register(modBus);
         com.siirio.jemcompat.feature.spawner.GeneratedSpawnEggContent.register(modBus);
@@ -40,6 +42,10 @@ public final class JEMCompat {
         MinecraftForge.EVENT_BUS.register(UniversalLeashEvents.class);
         MinecraftForge.EVENT_BUS.register(ElementalImpactEvents.class);
         MinecraftForge.EVENT_BUS.register(TransportEvents.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.transport.FireworkBoostPolicy.class);
+        if (ModList.get().isLoaded("sophisticatedbackpacks")) {
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.transport.BackpackPolicy.class);
+        }
         MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.spawner.SpawnEggPolicy.class);
         if (ModList.get().isLoaded("paraglider"))
             MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.spawner.SpawnerSpiritOrbPolicy.class);
@@ -65,6 +71,9 @@ public final class JEMCompat {
                     var stack = item.getDefaultInstance();
                     if (!event.getEntries().contains(stack)) event.accept(() -> item);
                 });
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS || event.getTabKey() == CreativeModeTabs.SEARCH) {
+            com.siirio.jemcompat.feature.transport.BackpackPolicy.retiredItems().forEach(id -> removeFromTab(event, id));
+        }
     }
 
     private static void removeFromTab(BuildCreativeModeTabContentsEvent event, ResourceLocation id) {
