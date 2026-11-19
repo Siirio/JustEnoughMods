@@ -113,7 +113,7 @@ Direct player chat `/tp` and `/teleport` to coordinates in the current dimension
 
 ## Chunk pre-generation
 
-Chunky `1.3.146` доступен только на dedicated server через server console и OP. Pre-generation создаёт настоящие чанки заранее и уменьшает server worldgen stalls. Managed client не содержит Chunky. Distant Horizons остаётся отдельным client-and-server владельцем LOD и не меняет команды Chunky.
+Chunky `1.3.146` доступен только на dedicated server через server console и OP. Pre-generation создаёт настоящие чанки заранее и уменьшает server worldgen stalls. Managed client не содержит Chunky. Voxy Server Side передаёт существующие LOD клиенту и не меняет команды Chunky.
 
 - `chunky world <world>` — выбрать dimension.
 - `chunky center <x> <z>` — установить центр.

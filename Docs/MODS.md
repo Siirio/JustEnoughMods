@@ -46,7 +46,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | ChatAnimation | `1.3.0` | Client |  |
 | Cherished Worlds | `6.1.7+1.20.1` | Client |  |
 | Chimes | `2.1.1` | Client + server |  |
-| Chunky | `1.3.146` | Server | Dedicated-server pregeneration owner. Excluded from the managed client because the Distant Horizons 3.3.3 integrated-server accessor can call Chunky before its `ServerStartingEvent` provider exists |
+| Chunky | `1.3.146` | Server | Dedicated-server pregeneration owner. Excluded from the managed client |
 | Cinematic Cataclysm | `1.0.1` | Client |  |
 | Citadel | `2.6.3` | Client + server |  |
 | clickadv mod | `1.20.1-3.9` | Client |  |
@@ -327,6 +327,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | VanillaBackport | `1.1.7.10` | Client + server |  |
 | Villager Recruits Mod | `1.15.2` | Client + server |  |
 | Visuality: Reforged | `2.2.0` | Client |  |
+| Neo Voxy | `0.4.0beta` | Client, manual local install | All Rights Reserved JAR is not redistributed through AutoModpack |
 | Voxy Server Side | `0.3.5-forge-1.20.1` | Client + server | Neo Voxy renderer requires a separate manual client install |
 | Wakes | `1.4.1` | Client + server |  |
 | Whaleborne | `1.20.1-1.2.4b` | Client + server |  |

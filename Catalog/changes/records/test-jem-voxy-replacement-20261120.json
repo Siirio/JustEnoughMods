@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.test-jem-voxy-replacement-20261120",
+  "status": "active",
+  "selectors": [
+    {"type": "namespace", "registry": "*", "value": "distanthorizons"},
+    {"type": "namespace", "registry": "*", "value": "vss"},
+    {"type": "namespace", "registry": "*", "value": "voxy"}
+  ],
+  "exceptions": [],
+  "conditions": [
+    {"runtime_scope": "Test JustEnoughMods and the ordinary local dedicated server"},
+    {"neo_voxy_distribution": "Manual local client installation only because the JAR is All Rights Reserved"}
+  ],
+  "precedence": {
+    "layer": "native_mod_dependencies",
+    "priority": 130,
+    "overrides": [
+      "test-jem-pack-refresh-20261119",
+      "distribution.voxy-server-support-production-20261115"
+    ]
+  },
+  "change": {
+    "summary": "Replace Distant Horizons with the prior Voxy server-client setup in Test JEM",
+    "modifiers": [
+      {
+        "property": "distribution.distant_horizons",
+        "operation": "replace",
+        "before": "Distant Horizons 3.3.3 is installed on the managed client and ordinary local server",
+        "after": "Distant Horizons is absent from the managed client and ordinary local server"
+      },
+      {
+        "property": "distribution.vss",
+        "operation": "replace",
+        "before": "Voxy Server Side is absent from current Test JEM",
+        "after": "Voxy Server Side 0.3.5 and bounded client/server configuration are installed on both logical sides"
+      },
+      {
+        "property": "distribution.neo_voxy",
+        "operation": "replace",
+        "before": "Neo Voxy is absent from the current Test profile",
+        "after": "Neo Voxy 0.4.0beta is installed manually in the local Test profile and remains excluded from shared distribution"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Voxy Server Side with a separately installed Neo Voxy client renderer",
+    "kind": "user_requested_dependency_replacement",
+    "source_files": [
+      "Client/ManagedPack/mods/vss-0.3.5-forge-1.20.1.jar",
+      "Client/ManagedPack/config/vss-client-config.json",
+      "Server/mods/vss-0.3.5-forge-1.20.1.jar",
+      "Server/config/vss-server-config.json",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md",
+      "Docs/SERVER_COMMANDS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore the previously used Voxy LOD path after the user rejected the current Distant Horizons setup",
+    "decision_source": "Direct user request on 2026-11-20",
+    "user_requested": "Install the Voxy server-client setup and update the server and client without extra work",
+    "implementation_choices": "Reuse the existing compatible VSS 0.3.5 and Neo Voxy 0.4.0beta artifacts. Preserve the Neo Voxy redistribution boundary"
+  },
+  "introduced": {
+    "date": "2026-11-20",
+    "commit": "SELF",
+    "action": "replace_distant_horizons_with_voxy",
+    "summary": "Install VSS on both logical sides and restore the manual Neo Voxy client renderer",
+    "source_files": [
+      "Client/ManagedPack/mods/vss-0.3.5-forge-1.20.1.jar",
+      "Client/ManagedPack/config/vss-client-config.json",
+      "Server/mods/vss-0.3.5-forge-1.20.1.jar",
+      "Server/config/vss-server-config.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-20",
+      "commit": "SELF",
+      "action": "replace_distant_horizons_with_voxy",
+      "summary": "Replace Distant Horizons with the prior bounded Voxy server-client setup"
+    }
+  ],
+  "impacts": {
+    "systems": ["client rendering", "dedicated server networking", "AutoModpack"],
+    "relations": [
+      "server terrain columns -> VSS network channel -> manual Neo Voxy renderer",
+      "VSS client configuration -> bounded LOD distance and bandwidth",
+      "VSS server configuration -> no background chunk generation, prediction metadata or distant-player sync"
+    ],
+    "notes": [
+      "VSS is MIT and is included in the managed Test JEM distribution",
+      "Neo Voxy is All Rights Reserved and is installed only in the local Test profile",
+      "MineRENT, the stable profile and the release baseline remain unchanged"
+    ],
+    "unresolved": [
+      "Player-visible Voxy rendering requires the user's client startup",
+      "The reported Distant Horizons failure mechanism was not investigated by direct user request"
+    ]
+  }
+}

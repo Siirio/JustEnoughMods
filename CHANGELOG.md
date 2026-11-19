@@ -1,3 +1,17 @@
+## 2026-11-20 - Replace Distant Horizons with Voxy in Test JEM
+
+- User reported that Distant Horizons did not work and requested a quick replacement with the prior Voxy server-client setup from `develop`
+- Replaced Distant Horizons 3.3.3 on the managed client and ordinary local server with MIT-licensed Voxy Server Side 0.3.5. Restored the bounded client and server configuration that disables prediction, missing-chunk generation and distant-player sync
+- Restored the existing Neo Voxy 0.4.0beta Forge client build only in the local `Test JustEnoughMods` profile. Its All Rights Reserved JAR remains outside AutoModpack and every shared package
+- Preserved the already installed Inventory Tabs `0.10.1-jem.3` Curios lifecycle repair so this publication cannot restore the starter-kit backpack crash
+- The Distant Horizons runtime files are recoverable from `C:/MyProjects/Minecraft/JustEnoughMods-updates/retired-distant-horizons-20261120-voxy-switch`. The reported Distant Horizons failure mechanism was not investigated because the user explicitly requested direct replacement without extra work
+- The ordinary local server loaded VSS 0.3.5, reached `Done (4.595s)!` and remains running on `127.0.0.1:31604`. Distant Horizons is absent from its mod inventory
+- Native Pack Sync preview reported `+2 ~1 -1`, limited to the VSS client config, VSS JAR, manifest and Distant Horizons deletion. Journal sequence 184 published content token `64bd2ac7ee418e45a7163af3d6a8ae6f005badb0`, and the final preview reported `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied the publication through the native planner and detached helper. Its active token matches the published head, all 327 managed JARs match canonical hashes, Distant Horizons is absent and no native transaction remains pending
+- Installed Neo Voxy 0.4.0beta manually in the local Test profile with SHA-256 `2f6a0ee0fb4fdd991c3c5e7f1c9371dca7b7c6cf344f5a2c986506bd7d440d5d`. The managed VSS JAR has SHA-256 `5f8f40bfc83a4bb6a049921668ee0f889730572f191c7a349526d75c97c0f730`
+- Pack Sync status reports `published: true` with matching staged and published manifest SHA-1 `a909d4aac093a9a65d14799571aecfca85ce4137`
+- Minecraft gameplay was not launched. MineRENT, `main`, stable `JustEnoughMods` and the immutable release baseline remain unchanged. Player acceptance remains `in testing`
+
 ## 2026-11-19 - Promote Settlements, Economy and Inventory Tabs to Test
 
 - User approved the Sandbox Settlements work for `develop`, requested installation into `Test JustEnoughMods`, confirmed that Inventory Tabs must be included, required the ordinary local server to remain running with the new changes and explicitly prohibited Atlas work

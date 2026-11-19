@@ -15,6 +15,7 @@ CONFIG = MODULE / "upstream.json"
 PATCHES = [
     MODULE / "patches" / "loaded-chunks-only.patch",
     MODULE / "patches" / "single-row-pagination.patch",
+    MODULE / "patches" / "screen-lifecycle.patch",
 ]
 
 

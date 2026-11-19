@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.inventory-tabs-curios-screen-lifecycle-20261119",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "inventorytabs"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "distribution": "Test JustEnoughMods client"
+    },
+    {
+      "runtime": "Minecraft 1.20.1 Forge client with Inventory Tabs 0.10.1-jem.3 and Curios 5.14.1+1.20.1"
+    }
+  ],
+  "precedence": {
+    "layer": "client_compatibility",
+    "priority": 130,
+    "overrides": [
+      "compat.inventory-tabs-loaded-chunks-20261113",
+      "test-jem-pack-refresh-20261119"
+    ]
+  },
+  "change": {
+    "summary": "Synchronize Inventory Tabs with third-party container screens that bypass the vanilla init lifecycle",
+    "modifiers": [
+      {
+        "property": "inventorytabs.current_screen_lifecycle",
+        "operation": "replace",
+        "before": "Set the current container screen only from the injected AbstractContainerScreen.init return hook",
+        "after": "Set and refresh the current container screen at the first tab render or input entry point when screen identity changed"
+      },
+      {
+        "property": "distribution.test_just_enough_mods.mods.inventorytabs",
+        "operation": "replace",
+        "before": "0.10.1-jem.2 patched client artifact",
+        "after": "0.10.1-jem.3 patched client artifact"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Inventory Tabs container-screen lifecycle",
+    "kind": "client_container_screen_compatibility_repair",
+    "source_files": [
+      "Mods/InventoryTabs/README.md",
+      "Mods/InventoryTabs/prepare.py",
+      "Mods/InventoryTabs/upstream.json",
+      "Mods/InventoryTabs/patches/loaded-chunks-only.patch",
+      "Mods/InventoryTabs/patches/screen-lifecycle.patch"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent a null current-screen dereference when CuriosScreenV2 is the first supported container screen rendered by Inventory Tabs",
+    "decision_source": "User report on 2026-11-19 that the client crashed immediately after receiving the starter-kit backpack",
+    "user_requested": "Find and repair the crash that occurred when the starter-kit backpack was received",
+    "implementation_choices": "Repair the Inventory Tabs lifecycle owner once for every supported third-party container screen instead of adding a Curios-only injection or hiding the invalid state with a null guard"
+  },
+  "introduced": {
+    "date": "2026-11-19",
+    "commit": "SELF",
+    "action": "repair_inventory_tabs_container_screen_lifecycle",
+    "summary": "Build Inventory Tabs 0.10.1-jem.3 with render and input entry-point screen synchronization",
+    "source_files": [
+      "Mods/InventoryTabs/README.md",
+      "Mods/InventoryTabs/prepare.py",
+      "Mods/InventoryTabs/upstream.json",
+      "Mods/InventoryTabs/patches/loaded-chunks-only.patch",
+      "Mods/InventoryTabs/patches/screen-lifecycle.patch",
+      "Client/ManagedPack/mods/inventorytabs-forge-1.20.1-0.10.1-jem.3.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "repair_inventory_tabs_container_screen_lifecycle",
+      "summary": "Bound the tab manager to the actual supported container screen before tab rendering or input handling"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_presentation",
+      "native_mod_dependencies",
+      "runtime_distribution"
+    ],
+    "relations": [
+      "CuriosScreenV2 render -> Inventory Tabs render injection -> current screen synchronization -> safe tab geometry",
+      "third-party container screen identity change -> one tab refresh -> native Inventory Tabs rendering",
+      "starter-kit backpack reward -> Curios inventory access -> supported container screen"
+    ],
+    "notes": [
+      "The backpack item, starter-kit reward and Curios inventory data remain unchanged",
+      "Inventory Tabs remains client-only and retains its loaded-chunk and single-row pagination patches",
+      "The patched production artifact SHA-256 is 08b8b8db8059700d6278b13852c804cfe4f54ff827ed9771bf640cc1a9ea8ecc",
+      "MineRENT, the stable JustEnoughMods profile and the immutable release baseline remain unchanged"
+    ],
+    "unresolved": [
+      "Player acceptance remains pending until Test JustEnoughMods opens the Curios inventory with the patched artifact"
+    ]
+  }
+}
