@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.distant-horizons-chunky-client-separation-20261119",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "chunky"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Distant Horizons 3.3.3 is present in the managed Forge 1.20.1 client and Chunky 1.3.146 remains available on the ordinary dedicated server"
+    }
+  ],
+  "precedence": {
+    "layer": "packaging",
+    "priority": 100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Keep Chunky as a dedicated-server pregeneration tool and remove it from the managed client so Distant Horizons cannot call an uninitialized integrated-server Chunky provider",
+    "modifiers": [
+      {
+        "property": "distribution.side",
+        "operation": "set",
+        "before": "client_and_dedicated_server",
+        "after": "dedicated_server_only",
+        "conditions": [
+          "Distant Horizons 3.3.3 remains installed on the client and dedicated server"
+        ],
+        "notes": "This changes only Chunky's distribution. Its dedicated-server JAR, configuration, saved task and operator commands remain unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Client/ManagedPack inventory and dedicated Server inventory",
+    "kind": "installed_mod_distribution_repair",
+    "source_files": [
+      "Server/mods/Chunky-1.3.146.jar",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md",
+      "Docs/SERVER_COMMANDS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent a repeatable integrated-server startup crash while preserving operator-controlled pregeneration on the dedicated server.",
+    "decision_source": "The user reported a repeat client crash on 2026-11-19. The fresh crash report and installed bytecode show Distant Horizons calling ChunkyProvider.get during the first chunk promotion before ChunkyForge.onServerStarting creates the provider."
+  },
+  "introduced": {
+    "date": "2026-11-19",
+    "commit": "SELF",
+    "action": "separate_chunky_from_managed_client",
+    "summary": "Remove Chunky 1.3.146 from the managed client and retain the identical dedicated-server artifact and runtime state.",
+    "source_files": [
+      "Client/ManagedPack/mods/Chunky-1.3.146.jar",
+      "Server/mods/Chunky-1.3.146.jar",
+      "Docs/DEVELOPMENT.md",
+      "Docs/MODS.md",
+      "Docs/SERVER_COMMANDS.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "separate_chunky_from_managed_client",
+      "summary": "Selected dedicated-server-only Chunky distribution after the installed Distant Horizons accessor crashed the integrated server before Chunky's provider lifecycle completed.",
+      "source_files": [
+        "Client/ManagedPack/mods/Chunky-1.3.146.jar",
+        "Server/mods/Chunky-1.3.146.jar",
+        "Docs/DEVELOPMENT.md",
+        "Docs/MODS.md",
+        "Docs/SERVER_COMMANDS.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "chunky",
+      "distant_horizons",
+      "integrated_server",
+      "dedicated_server",
+      "automodpack",
+      "registry_atlas"
+    ],
+    "relations": [
+      "managed client -> Distant Horizons without the optional Chunky accessor target",
+      "dedicated server -> unchanged Chunky pregeneration commands and saved runtime state"
+    ],
+    "notes": [
+      "No JEM fallback or exception suppression is added because distribution owns the invalid client lifecycle combination.",
+      "Native AutoModpack publication removes the exact client JAR instead of mutating the installed profile directly.",
+      "No registry IDs or gameplay values change."
+    ],
+    "unresolved": [
+      "Player acceptance remains pending until the user relaunches Test JustEnoughMods and opens an integrated world."
+    ]
+  }
+}

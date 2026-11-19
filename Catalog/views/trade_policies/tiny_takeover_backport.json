@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "b42c705ed374d252a16f6d5a8a2d86d34b19e222",
+  "generation": {
+    "generated_utc": "2026-11-19T06:09:16.787649+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "tiny_takeover_backport",
+    "name": "Tiny Takeover Backport",
+    "version": "1.8.2"
+  },
+  "records": [
+    {
+      "item_id": "minecraft:golden_dandelion",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "tiny_takeover_backport",
+      "mod_name": "Tiny Takeover Backport",
+      "mod_version": "1.8.2",
+      "source_jar": "tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
+      "source_sha256": "42439f30cb981161eb7af74eb4b450ac0ad53df7f228a7cf9fb66be3b4593036",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/models/item/golden_dandelion.json",
+        "data/minecraft/recipes/golden_dandelion.json"
+      ],
+      "display_name_en_us": "Golden Dandelion",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:assets/minecraft/lang/en_us.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:assets/minecraft/models/item/golden_dandelion.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/golden_dandelion.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "minecraft:golden_dandelion"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

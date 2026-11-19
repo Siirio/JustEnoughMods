@@ -1,6 +1,6 @@
 # Transport and Carriage Plan
 
-Status: design only. Do not implement this plan until the user gives a separate implementation request.
+Status: source implementation candidate on `feature/transport-carriage`. It is not merged into `develop`, built, published, installed, or accepted in gameplay.
 
 This document records the current transport direction for the modpack. It separates verified current behavior, user decisions, and numeric implementation proposals.
 
@@ -56,13 +56,15 @@ The Inception upgrade lets one backpack contain and combine access to other back
 
 This scope applies to Sophisticated Backpacks. It does not remove Sophisticated Storage stack upgrades from stationary storage unless the user expands the scope later.
 
-Removal must preserve existing possessions:
+Removal preserves existing backpack possessions:
 
 - Extract nested backpacks recursively with their full NBT
 - Split oversized backpack stacks into native-size stacks
 - Return removed upgrade items and overflow through durable JEM Rewards delivery
 - Never delete or ground-drop overflow during migration
 - Disable the recipes, upgrade effects, upgrade-slot admission, and ordinary recipe-view exposure after migration
+
+The user confirmed that no player owns a shulker box. The shulker capacity change therefore has no legacy migration or old-state preservation path. Existing backpack migration remains necessary because the removed Inception and stack upgrades can contain player-owned items.
 
 ### Exact movement formula
 
@@ -93,9 +95,9 @@ Show one backpack icon near the hotbar while the player carries or equips at lea
 
 - Fill the icon from bottom to top by occupied slots divided by total available backpack slots
 - Change the fill color from green through yellow and orange to red by the actual 0% to 70% movement reduction
-- Show the exact rounded movement reduction beside the icon, such as `-40%`
-- Update only when backpack inventory, carried backpacks, equipment, or dimension state changes
-- Do not scan every item count each render frame
+- Show the movement reduction to one decimal place when needed, such as `-0.3%`, and use whole percentages such as `-40%` when exact
+- Synchronize only when the occupied-slot result or carried capacity changes
+- Use one bounded logical-server inventory scan every five player ticks and never scan inventory during HUD rendering
 
 ## Shulker boxes
 
@@ -138,7 +140,7 @@ The user selected iron ingots for normal rails and gold ingots for powered rails
 - Six gold ingots, one stick, and one redstone produce 16 powered rails instead of 6
 - Detector and activator rail recipes remain native
 
-These output counts are Codex working values for review before implementation. They make a 1,000-block main line cost about 188 iron ingots before powered-rail spacing and station equipment.
+These approved output counts make a 1,000-block main line cost about 188 iron ingots before powered-rail spacing and station equipment.
 
 ## Elytra
 
@@ -176,13 +178,15 @@ Recommended server state:
 
 ## Mounts
 
-No direct horse, donkey, mule, or llama speed increase is approved in this plan.
+No new horse, donkey, mule, or llama speed increase is approved in this update.
 
 - Horses keep their native individual speed range
-- Donkeys and mules keep their native speed and 15 storage slots
+- Donkeys keep the existing JEM six-column chest with 18 cargo slots. Mules keep their native 15 cargo slots
 - Llamas keep their native 3 to 15 storage slots and caravan behavior
 - The existing JEM llama catch-up bonus remains 30% when a caravan llama is more than six blocks behind its leader
 - Mounted movement ignores the backpack on-foot penalty
+
+Existing JEM caps and adapters for other rideable entities and wagons remain unchanged unless this document names them. This update gives mountables a stronger relative role through the backpack on-foot exclusion instead of another broad speed increase.
 
 This gives mounts an immediate job. A player with one full netherite backpack moves 40% slower on foot but keeps the mount's full speed while riding.
 
@@ -205,13 +209,13 @@ Aircraft rules belong to universal modpack gameplay in JEMCompat. The logical se
 - Do not change Create train speed
 - Do not buff ice boats
 - Do not cap elytra flight speed in this plan
-- Do not implement any part of this document yet
 
-## Implementation ownership when approved
+## Implementation ownership
 
 - JEMCompat owns universal transport, backpack burden, shulker capacity, minecart, elytra, and aircraft adapters
 - Data or configuration owns recipes when it can express them without Java
 - Native mod interfaces and signals remain in control where available
 - Server authority validates gameplay state and clients render synchronized presentation
 - The Registry Atlas change record and effective behavior must be updated in the same implementation task
-- Any HUD asset requires the Minecraft visual workflow and user review before shipment
+- The burden HUD reuses the installed native backpack item rendering with a code-drawn clipped fill and text. It adds no production PNG or replacement screen
+- Runtime HUD geometry, color, legibility, and scaled-screen behavior remain unobserved until the candidate is built and opened in Minecraft

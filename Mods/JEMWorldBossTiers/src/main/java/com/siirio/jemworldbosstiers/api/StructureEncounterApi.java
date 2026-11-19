@@ -32,7 +32,8 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = JemWorldBossTiers.MOD_ID)
 public final class StructureEncounterApi {
     public record Arena(UUID id, String dimension, ResourceLocation boss, BoundingBox bounds) { }
-    private static volatile Map<ResourceLocation, ResourceLocation> structures = Map.of();
+    private record StructureProfile(ResourceLocation boss, int horizontalPadding) { }
+    private static volatile Map<ResourceLocation, StructureProfile> structures = Map.of();
     private static volatile Set<ResourceLocation> activationBlocks = Set.of();
     private static volatile Set<ResourceLocation> activationItems = Set.of();
     private static volatile long revision;
@@ -42,15 +43,16 @@ public final class StructureEncounterApi {
     public static void reload(AddReloadListenerEvent event) {
         event.addListener(new SimpleJsonResourceReloadListener(new Gson(), "jem/events/structures") {
             @Override protected void apply(Map<ResourceLocation, JsonElement> files, ResourceManager manager, ProfilerFiller profiler) {
-                var registered = new HashMap<ResourceLocation, ResourceLocation>();
+                var registered = new HashMap<ResourceLocation, StructureProfile>();
                 var blocks = new HashSet<ResourceLocation>();
                 var items = new HashSet<ResourceLocation>();
                 for (var file : files.values()) {
                     var root = file.getAsJsonObject();
                     for (var value : root.getAsJsonArray("structures")) {
                         var entry = value.getAsJsonObject();
+                        int padding = entry.has("horizontal_padding") ? Math.max(0, entry.get("horizontal_padding").getAsInt()) : 0;
                         registered.put(new ResourceLocation(entry.get("structure").getAsString()),
-                                new ResourceLocation(entry.get("boss").getAsString()));
+                                new StructureProfile(new ResourceLocation(entry.get("boss").getAsString()), padding));
                     }
                     root.getAsJsonArray("activation_blocks").forEach(value -> blocks.add(new ResourceLocation(value.getAsString())));
                     root.getAsJsonArray("activation_items").forEach(value -> items.add(new ResourceLocation(value.getAsString())));
@@ -69,7 +71,7 @@ public final class StructureEncounterApi {
 
     /** Registered native structure ownership, independent from hosted-combat eligibility. */
     public static boolean structuralBoss(ResourceLocation entityType) {
-        return structures.containsValue(entityType);
+        return structures.values().stream().anyMatch(profile -> profile.boss().equals(entityType));
     }
 
     /** Saved canonical geometry is authoritative even before a player discovers the arena. */
@@ -119,12 +121,17 @@ public final class StructureEncounterApi {
         for (var start : starts) {
             if (!start.isValid()) continue;
             ResourceLocation structure = registry.getKey(start.getStructure());
-            ResourceLocation boss = structures.get(structure);
+            StructureProfile structureProfile = structures.get(structure);
+            ResourceLocation boss = structureProfile == null ? null : structureProfile.boss();
             if (boss == null || com.siirio.jemworldbosstiers.balance.BalanceRegistry.boss(boss).isEmpty()
                     || !net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES.containsKey(boss)) continue;
-            BoundingBox bounds = start.getBoundingBox();
+            BoundingBox nativeBounds = start.getBoundingBox();
+            BoundingBox bounds = structureProfile.horizontalPadding() == 0 ? nativeBounds
+                    : new BoundingBox(nativeBounds.minX() - structureProfile.horizontalPadding(), nativeBounds.minY(),
+                    nativeBounds.minZ() - structureProfile.horizontalPadding(), nativeBounds.maxX() + structureProfile.horizontalPadding(),
+                    nativeBounds.maxY(), nativeBounds.maxZ() + structureProfile.horizontalPadding());
             String dimension = level.dimension().location().toString();
-            String key = dimension + ":" + structure + ":" + bounds.minX() + ":" + bounds.minZ();
+            String key = dimension + ":" + structure + ":" + nativeBounds.minX() + ":" + nativeBounds.minZ();
             UUID id = UUID.nameUUIDFromBytes(key.getBytes(StandardCharsets.UTF_8));
             RaidArenaApi.register(level.getServer(), id.toString(), boss, level.dimension().location(), bounds);
             RaidArenaApi.migrateNativeAnchor(level.getServer(), id.toString(), boss, start);

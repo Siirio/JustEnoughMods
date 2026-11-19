@@ -41178,7 +41178,7 @@
             8
           ],
           "required_mods": [
-            "copperagebackport"
+            "vanillabackport"
           ],
           "icon": "sophisticatedstorage:barrel",
           "status": "active",
@@ -41227,10 +41227,10 @@
             "reward_purpose": "Demonstrate genuine golem storage help; a barrel and honeycomb expand and preserve the storage area.",
             "visual_route": "functional_home",
             "coverage_keys": [
-              "copperagebackport:button",
-              "copperagebackport:sort",
-              "copperagebackport:summon",
-              "copperagebackport:wax"
+              "vanillabackport:button",
+              "vanillabackport:sort",
+              "vanillabackport:summon",
+              "vanillabackport:wax"
             ],
             "requires_hook": true,
             "hook_contract": {
@@ -41243,89 +41243,89 @@
           },
           "teaching_sections": [
             {
-              "key": "copperagebackport:summon",
+              "key": "vanillabackport:summon",
               "ru_ru": "Вырезанная тыква над медным блоком создаёт медного голема по настоящей сборке.",
               "en_us": "Place a carved pumpkin on a copper block. Summon the backported Copper Golem.",
               "evidence": [
                 {
                   "type": "provided_research_observation",
-                  "mod_id": "copperagebackport",
-                  "version": "0.1.5",
-                  "key": "copperagebackport:summon",
+                  "mod_id": "vanillabackport",
+                  "version": "1.2.2",
+                  "key": "vanillabackport:summon",
                   "source_ids": [
                     "main"
                   ],
-                  "verification": "EXTERNAL_SOURCE_ONLY",
+                  "verification": "INSTALLED_JAR_BYTECODE",
                   "runtime_verified": false,
                   "source_conditions": [
-                    "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
-                    "Backported vanilla features may use minecraft namespace; never infer copperagebackport IDs from the owning mod ID."
+                    "The installed VanillaBackport 1.2.2 JAR owns the Copper Golem assembly used by this quest.",
+                    "Backported vanilla features use the minecraft namespace; never infer registry IDs from the owning mod ID."
                   ]
                 }
               ]
             },
             {
-              "key": "copperagebackport:sort",
+              "key": "vanillabackport:sort",
               "ru_ru": "Медный голем переносит предметы из медного сундука в допустимые приёмники; нужен законченный перенос, а не стоящий рядом голем.",
               "en_us": "Provide a Copper Golem with Copper Chests and items to transport. Use its native item-transport behavior, subject to configuration.",
               "evidence": [
                 {
                   "type": "provided_research_observation",
-                  "mod_id": "copperagebackport",
-                  "version": "0.1.5",
-                  "key": "copperagebackport:sort",
+                  "mod_id": "vanillabackport",
+                  "version": "1.2.2",
+                  "key": "vanillabackport:sort",
                   "source_ids": [
                     "main"
                   ],
-                  "verification": "EXTERNAL_SOURCE_ONLY",
+                  "verification": "INSTALLED_JAR_BYTECODE",
                   "runtime_verified": false,
                   "source_conditions": [
-                    "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
-                    "Backported vanilla features may use minecraft namespace; never infer copperagebackport IDs from the owning mod ID."
+                    "The installed VanillaBackport 1.2.2 JAR owns Copper Golem container transport and Copper Chests.",
+                    "Backported vanilla features use the minecraft namespace; never infer registry IDs from the owning mod ID."
                   ]
                 }
               ]
             },
             {
-              "key": "copperagebackport:button",
+              "key": "vanillabackport:button",
               "ru_ru": "Голем может случайно нажимать поддерживаемые медные кнопки. Это отдельное поведение, которое не доказывает сортировку.",
               "en_us": "Place Copper Buttons near a Copper Golem. Let the golem randomly press nearby supported buttons.",
               "evidence": [
                 {
                   "type": "provided_research_observation",
-                  "mod_id": "copperagebackport",
-                  "version": "0.1.5",
-                  "key": "copperagebackport:button",
+                  "mod_id": "vanillabackport",
+                  "version": "1.2.2",
+                  "key": "vanillabackport:button",
                   "source_ids": [
                     "main"
                   ],
-                  "verification": "EXTERNAL_SOURCE_ONLY",
+                  "verification": "INSTALLED_JAR_BYTECODE",
                   "runtime_verified": false,
                   "source_conditions": [
-                    "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
-                    "Backported vanilla features may use minecraft namespace; never infer copperagebackport IDs from the owning mod ID."
+                    "The installed VanillaBackport 1.2.2 JAR owns Copper Golem button interaction.",
+                    "Backported vanilla features use the minecraft namespace; never infer registry IDs from the owning mod ID."
                   ]
                 }
               ]
             },
             {
-              "key": "copperagebackport:wax",
+              "key": "vanillabackport:wax",
               "ru_ru": "Вощение сохраняет стадию окисления медного сундука; двойная форма поддерживается штатно, без копирования содержимого.",
               "en_us": "Wax a Copper Chest. Control oxidation of copper storage; the author also supports double chests.",
               "evidence": [
                 {
                   "type": "provided_research_observation",
-                  "mod_id": "copperagebackport",
-                  "version": "0.1.5",
-                  "key": "copperagebackport:wax",
+                  "mod_id": "vanillabackport",
+                  "version": "1.2.2",
+                  "key": "vanillabackport:wax",
                   "source_ids": [
                     "main"
                   ],
-                  "verification": "EXTERNAL_SOURCE_ONLY",
+                  "verification": "INSTALLED_JAR_BYTECODE",
                   "runtime_verified": false,
                   "source_conditions": [
-                    "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
-                    "Backported vanilla features may use minecraft namespace; never infer copperagebackport IDs from the owning mod ID."
+                    "The installed VanillaBackport 1.2.2 JAR owns Copper Chest waxing and oxidation.",
+                    "Backported vanilla features use the minecraft namespace; never infer registry IDs from the owning mod ID."
                   ]
                 }
               ]
@@ -41334,7 +41334,7 @@
           "mechanic_sections": [
             {
               "keys": [
-                "copperagebackport:summon"
+                "vanillabackport:summon"
               ],
               "title_ru": "Возможности рядом",
               "title_en": "Related possibilities",
@@ -41343,7 +41343,7 @@
             },
             {
               "keys": [
-                "copperagebackport:sort"
+                "vanillabackport:sort"
               ],
               "title_ru": "Возможности рядом",
               "title_en": "Related possibilities",
@@ -41352,7 +41352,7 @@
             },
             {
               "keys": [
-                "copperagebackport:button"
+                "vanillabackport:button"
               ],
               "title_ru": "Возможности рядом",
               "title_en": "Related possibilities",
@@ -41361,7 +41361,7 @@
             },
             {
               "keys": [
-                "copperagebackport:wax"
+                "vanillabackport:wax"
               ],
               "title_ru": "Возможности рядом",
               "title_en": "Related possibilities",

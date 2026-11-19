@@ -1,5 +1,17 @@
 # Settlements standalone design
 
+## Universal villager families and individual homes — 2026-11-19
+
+JEM Settlements owns one modpack-level family system for ordinary villagers, zombie villagers and supported Recruits on integrated and dedicated logical servers. Town membership is separate. Persistent identity contains a Jade-only generated name, immutable sex and orientation, spouse, parents, assignments, death and remarriage state. Same-sex orientation has a deterministic 5% chance. Nitwits and village-origin or independent Recruits are eternal-single. Table-origin Recruits stay family-capable through native promotion.
+
+Every person owns one bed-head anchored 3×3×3 zone from bed Y through Y+2. Adults require unique bed, chest and job-site POI plus one light-emitting block. Children require unique bed, chest and light. Spouses keep individual zones. Separate beds and adjacent double-bed placement are both valid for spouses. Other nearby beds retain privacy refusal. Missing home resources reduce happiness and prevent birth, but do not prevent sleep. Shared lighting penalties use one maximum rather than two deductions.
+
+The bounded JEM courtship and birth loop replaces `VillagerMakeLove` so Villagers and Recruits use one authority. Villager food and Recruits hunger/morale remain native eligibility inputs. Births always create a normal villager child and do not require a prepared child home. Adult children need a complete adult home before courtship. Direct relatives through grandparents and siblings are excluded. Confirmed spouse death permits remarriage after 1–10 Minecraft days.
+
+Jade shows the generated name, gender, family and orientation. Entity-linked complaints use a 5-second visible and 10-second hidden cycle. Native Villager trade and Recruits screens retain their layouts and receive a top Home tab. Unemployed Villagers and Nitwits open Home directly. The existing HousingInspector renders the exact zone. The map action opens native Xaero World Map centered on the assigned home without creating a waypoint.
+
+JEM adds recipes for the six installed Recruits workstations. Each loaded bell village is topped up once to four or five basic Recruit, Bowman and Shieldman guards. Existing guards count. The persisted bell marker prevents later duplication. Source compilation is complete. In-game family, GUI and village acceptance is not run.
+
 ## Universal production contract - 2026-10-22
 
 The same production `jem-settlements-2.1.0.jar` now runs on integrated and dedicated logical servers. The older sandbox-only build requirement below is historical. `JEMIdentity` is required; Economy and Recruits are optional isolated adapters. Economy enabled uses its canonical Coin ledger; absent/off uses the existing EmeraldTreasury. Pending obligations keep their original currency and day watermark, rather than replaying income in the replacement provider. No settlement-count limit is applied in solo. Prices, happiness and workforce authority remain in their existing owners. See [universal inventory](../../universal/README.md) for distribution and acceptance limits.

@@ -34,6 +34,108 @@
 - Built reobfuscated JEM Economy 1.3.5 and JEM Settlements 2.2.1 without tests. Installed the exact JARs and JEM Identity 1.0.0 into the closed `Sandbox JustEnoughMods` profile. The previous `jem-settlements-2.1.0-sandbox.jar` is recoverable from `sandbox-backups/settlements-20261119`
 - JEM Economy SHA-256 is `cee38832c8c175a43eb6d6764d6348962f482ecd86cf0ac84f0498655f62a65c`. JEM Settlements SHA-256 is `ffcac35531c2ccb5c6fc16ba0a629477fe73814232bb95cb1d2bd8a72f2c3d09`
 - `Test JustEnoughMods`, the ordinary local Server, MineRENT, the stable profile, the managed pack and the release baseline remain unchanged. Minecraft gameplay was not launched and player acceptance remains `in testing`
+## 2026-11-19 - Keep Chunky on the dedicated server
+
+- User reported that `Test JustEnoughMods` crashed again after the transport publication
+- Bug / Client / Distant Horizons 3.3.3 registered its installed Chunky integration before Chunky 1.3.146 received `ServerStartingEvent` in the integrated server, then called `ChunkyProvider.get()` during the first chunk promotion and stopped the client with `IllegalStateException: Chunky is not loaded` / in testing through dedicated-server-only Chunky distribution
+- Five Whys: the client stopped because Distant Horizons called an absent Chunky provider; the provider is created only from Chunky's server-starting callback; the Distant Horizons accessor bound earlier from its client and integrated-server lifecycle; the managed client included an administrative pregeneration mod that only the dedicated server needs; the earlier shared distribution treated class presence as compatibility without exercising the integrated-server startup order
+- Installed bytecode confirms that `ChunkyForge.onServerStarting` creates and registers the provider, while the Distant Horizons accessor calls the provider without a lifecycle guard. This is independent of the repaired JEM movement and transport mixins
+- Chunky 1.3.146 remains unchanged on the ordinary local dedicated server with its server config, saved task and commands. Distant Horizons 3.3.3 remains on both sides. The managed client removes only Chunky through native AutoModpack deletion
+- The ordinary local server loaded Chunky 1.3.146 and Distant Horizons 3.3.3, reached `Done (4.435s)` and remains available on `127.0.0.1:31604`. Native preview reported `+0 ~1 -1`, limited to the manifest and `main/mods/Chunky-1.3.146.jar`. Journal sequence 181 published content token `df762454fa67b2002bfb33e071eee18bb3d13027`, and the final preview reported `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied the publication through the native AutoModpack planner and detached helper. Its active token matches the published head, all 327 managed JARs match canonical hashes, client Chunky is absent, server Chunky retains SHA-256 `996a3c9b53e6c0e0850fb9e78d3546d2c37a1b789ddaf529b17e4fe62ab23141`, and no native transaction remains pending
+- Pack Sync status reports `published: true` with matching staged and published manifest SHA-1 `7608c9b22b75cba6893387b272d3579b8fed71e0`. The rebuilt Registry Atlas contains 783 artifacts and validates with no installed-artifact drift
+- Stable `JustEnoughMods`, MineRENT and the immutable release baseline remain unchanged. Client relaunch and singleplayer acceptance remain `in testing`
+
+## 2026-11-19 - Repair Test JEM startup and prepare transport publication
+
+- User reported that `Test JustEnoughMods` crashes and requested the transport and carriage changes on the test client and ordinary local server
+- Bug / Both Sided / JEM Advancements 5.3.10 injected one HEAD and three independent RETURN callbacks into the large vanilla `Entity.move` method, and Forge frame recomputation left one callback local uninitialized on an early-return path, so the JVM stopped during vanilla bootstrap with `VerifyError: Bad local variable type` / in testing through one consolidated movement observer in JEM Advancements 5.3.11
+- Five Whys: the client stopped because the JVM rejected transformed `Entity.move`; the frame referenced an uninitialized callback local; four JEM movement callbacks created separate locals across early returns; three quest features injected the same method independently; the production build and Pack Sync verified artifacts but did not execute the combined runtime transformation
+- The single movement observer preserves tentacle-pull, rune-control and battle-armor quest proof behavior while reducing JEM Advancements to one HEAD and one RETURN callback for `Entity.move`
+- This local Test update also carries the approved transport and carriage rules from JEM Compat 3.11.1. Stable `JustEnoughMods`, MineRENT and the immutable release baseline remain unchanged
+- Bug / Both Sided / the first transport build shadowed inherited `AbstractContainerMenu.moveItemStackTo` from a `ShulkerBoxMenu` mixin, so Mixin could not locate the method on the concrete target and rejected the shulker quick-move transformation / in testing through a same-superclass mixin bridge that calls the protected inherited method directly
+- Production builds completed under JDK 21 with Java 17 output and without tests. JEM Advancements 5.3.11 has SHA-256 `8d5c3522a5f93f5e260a7671921e858d1a947ea1e680f7504ab8a6b9a66d30cf`. JEM Compat 3.11.1 has SHA-256 `a2fcce6cf2ab9963c321b21cf026b5eade75b7187910f6c9c63db3796aea4aec`
+- Artifact inspection confirms that JEM Advancements contains `EntityMovementQuestMixin` and no longer contains `CombatPullMovementQuestMixin` or `WorldBattleArmorQuestMoveMixin`. Minecraft gameplay was not launched and player acceptance remains `in testing`
+- The ordinary local server loaded JEM Advancements 5.3.11 and JEM Compat 3.11.1 without the prior `VerifyError`, invalid movement transformation, or rejected `ShulkerBoxMenuMixin`. The server then saved all dimensions and stopped
+- Native Pack Sync preview reported `+2 ~1 -2`, limited to the manifest and the two JEM replacements. Journal sequence 180 published content token `e40620e3b02bdff773846f92044cd1a47cc09d1d`, and the final preview reported `+0 ~0 -0`
+- Pack Sync status reports `published: true` with matching staged and published manifest SHA-1 `f5add90d142537ec0e1122e07b3ea19b13584041`
+- The closed `Test JustEnoughMods` profile applied the publication through the native AutoModpack planner and detached helper. Its active token matches the published head, all 328 managed JARs match canonical hashes, the old 5.3.10 and 3.10.8 JARs are absent, and no native transaction remains pending
+- The complete Registry Atlas refresh found 784 artifacts, 17,160 items, 12,194 blocks, 1,575 entities and 23,904 recipes. Its final impact scan and validation passed. The shulker selector now uses the observed item tag `c:items/shulker_boxes`
+- Minecraft gameplay and HUD rendering were not launched. Player acceptance remains `in testing`
+
+## 2026-11-19 - Implement the transport and carriage source candidate
+
+- User authorized implementation of the complete transport and carriage plan as ready code on a separate branch for a later merge into `develop`
+- User selected 16-item plain minecart stacks with the native recipe, route caps of 18 blocks/s on straight level rail, 14 blocks/s while ascending, and 12 blocks/s through curves
+- Fueled furnace minecarts now use the same route caps instead of retaining the previous 10 blocks/s straight cap. Their existing coal-block fueling behavior remains
+- User selected 32 normal rails from six iron ingots and one stick and 16 powered rails from six gold ingots, one stick, and one redstone
+- User selected a six-block fall before elytra deployment and a batch of eight successful elytra firework boosts. The eighth boost starts one two-minute wall-clock cooldown that restores all eight charges together
+- User removed portable-backpack Inception and all stack upgrades. Occupied backpack slots apply the approved one-third percentage-point on-foot burden with a 70% cap and a synchronized hotbar indicator
+- User selected 128-item stacks inside shulker boxes only for block items whose native stack limit is 64. Backpacks and shulker boxes cannot contain each other
+- User confirmed that no player owns a shulker box. The implementation has no legacy shulker migration or old-state preservation path
+- User kept Create trains, ice boats, TPA, existing mount and wagon rules, and the existing biplane speed, fuel, and ascent contract unchanged
+- User added two concept-only backlog entries: bounded structure loot improvement by distance from spawn and ice melting within one Minecraft day in every non-snowy biome
+- Codex selected narrow Forge and installed-mod seams, a strict JEMCompat client/server transport channel, native transient movement attributes, persisted wall-clock boost state, and a durable backpack migration journal with JEM Rewards overflow delivery
+- Codex encoded an exact 128 count through vanilla byte-count NBT and network paths by marking eligible saved stacks and restoring only the signed-byte `-128` representation. No replacement shulker item, container, or screen was added
+- Codex reused the native Sophisticated Backpacks item render for the burden indicator and added only clipped fill, color, and text. No new visual asset was authored
+- JEMCompat source version advances from 3.10.7 to 3.11.0 because the update adds mandatory client/server gameplay and network contracts
+- Source candidate only on `feature/transport-carriage`. Gradle build, Minecraft launch, HUD observation, player acceptance, local Server synchronization, native AutoModpack publication, stable profile, MineRENT, and release baseline remain unchanged
+
+## 2026-11-19 - Add universal villager families and individual homes
+
+- User replaced the earlier narrow breeding-home rule with a modpack-level family and home system for every ordinary Villager, Zombie Villager and supported Recruit. Settlement membership does not change the rules
+- Added persistent Jade-only international names, immutable male/female sex, 5% same-sex orientation, spouse names and family status. Nitwits and village-origin or independent Recruits show "Forever single"
+- Added permanent spouses after mutual courtship, spouse-death remarriage after 1–10 Minecraft days and exclusions for parents, children, siblings, grandparents and grandchildren. Same-sex spouses create heart particles but do not create children
+- Replaced vanilla `VillagerMakeLove` with one bounded server-owned Villager/Recruits loop. Villager food and native Recruits hunger/morale remain eligibility inputs. Recruit births create ordinary Villager children. Children can be born before a child home exists, but an adult child needs a complete adult home before courtship
+- Added one upward 3×3×3 zone per person, anchored at the bed head. Adults need unique bed, chest and workstation assignments plus a light-emitting block. Children need unique bed, chest and light. Spouses may use separate or adjacent beds without a privacy penalty
+- Missing chest, workstation or light reduces happiness and blocks birth without blocking sleep. The family light penalty and existing housing-light penalty use one maximum, so the same cause is not charged twice
+- Added 5-second world complaints with 10-second quiet intervals, Jade family rows, a Home tab on native trade and Recruits screens, direct Home opening for unemployed Villagers and Nitwits, an exact HousingInspector snapshot and native Xaero map centering without waypoint mutation
+- Bug / Both Sided / the first complaint schedule compared 300-tick entity residues from a loop that runs only every 100 ticks, so two thirds of residue classes could never send their bubble / in testing through a three-slot cadence derived from the actual 100-tick family cycle
+- Preserved family identity and assignments through Villager infection/cure, Recruits workstation conversion and native Recruits promotion
+- Added recipes for all six installed Recruits workstations. Each loaded bell village is topped up once to four or five basic Recruit, Bowman and Shieldman guards. Existing guards count and a saved bell marker prevents repeats
+- Implementation choice: table-origin Recruits remain family-capable through special promotions. Village and independent origin remains eternal-single. Assassins remain outside the family actor set
+- Updated JEM Settlements protocol to 12 and module version to 2.2.0. The production JAR SHA-256 is `7568f057ad487262350412bb6369a1d1f9b0ca27242ef6716bf5af09e3d81a99`. Source compilation completed under JDK 21 with Java 17 output. The full Registry Atlas rebuild, impact scan and validation completed successfully. Automated tests and Minecraft gameplay were not run. Player acceptance remains `in testing`
+- The ordinary local dedicated server loaded JEM Settlements 2.2.0 and the six Recruits workstation recipes. The initial family publication was generation 178. The complaint-cadence correction then produced the reviewed `+0 ~2 -0` delta and final generation 179 with content token `c9555e1bc4e8975f716e5a5b803de602b905b9f7`. The final preview reported `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied final generation 179 through native AutoModpack. Its active token matches the published head, 328 managed JARs match canonical hashes and no native transaction remains pending. The local server then saved all dimensions and stopped
+- Final pack status reports matching staged and published manifest SHA-1 `e82da094d48835f3b340a472fe9fa92138ebcda1`
+- This implementation targets the modpack and matching integrated or dedicated servers. MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
+## 2026-11-19 - Refresh Test JEM mods and weapon navigation
+
+- User requested a new branch from `develop` and a Test JEM-only update. MineRENT, the stable profile and the immutable release baseline remain unchanged
+- Removed Block Runner, Cult of Azazel, Guard Villagers, Jack's Gravestones, Let Me Despawn, Structory 1.3.5, VSS and the manual Neo Voxy client component
+- User corrected the Inventory Tabs decision. Restored `inventorytabs-forge-1.20.1-0.10.1-jem.1.jar` and its client configuration. The existing JEM patch reads only real loaded chunks and nearby loaded entities
+- Kept GraveStone 1.0.35 as the only active grave owner
+- Added client-only Weather Glass 0.6.2, added Giant Torii 1.0.0 on both sides, and installed Distant Horizons 3.3.3 on both sides with its single shared Forge JAR
+- Removed the Guard Villagers compile edge and Guard-specific quest hooks from JEM Advancements. Existing quest metadata stays hidden because its required mod is absent
+- User requested three JEI Weapons sections. JEM Compat now partitions only items that were already in Weapons into Totems, Ranged Weapons and Melee Weapons. Other JEI categories are unchanged
+- User requested Sirok's barrier to be 30 blocks wider. JEM World Boss Tiers adds 15 blocks to each horizontal side of the registered Sandworm Nest bounds and preserves the native structure identity, respawn anchor and encounter state
+- User requested a maximum of 30 recruits per player on MineRENT only. The exact upstream server property is `[Recruits] MaxRecruitsForPlayer = 30`. It is recorded for the later MineRENT server-only release and is not added to managed client defaults or the local Test server
+- Static structure audit found one unresolved exact overwrite. Nullscape and Trek both define `minecraft:end_cities`. Existing JEM data resolves the village and pillager-outpost overlaps. Hopo Better Mineshaft has no competing mineshaft overhaul. Nether fortress-like mods use separate IDs and can increase density without an exact registry collision
+- Implementation choice: Weather Glass stays client-only, Giant Torii stays on both sides, and Distant Horizons uses the same 3.3.3 JAR on the client and server because no separate server companion exists
+- User requested the current VanillaBackport and Tiny Takeover Backport. Updated VanillaBackport from 1.1.7.10 to 1.2.2 on both sides and added Tiny Takeover Backport 1.8.2 on both sides. Removed the overlapping Copper Age Backport and Spear Backport. Trials remains installed because VanillaBackport does not own the complete Trial Chamber implementation
+- Bug / Both Sided / VanillaBackport 1.2.2 requires Platform 1.4 or newer, but the pack still contained Platform 1.3.4, so Forge stopped during pre-loading / in testing with the current official Platform 1.4.2 on the managed client and local Server
+- Five Whys: the server could not load because VanillaBackport rejected Platform 1.3.4, the old dependency remained because only VanillaBackport was updated, the managed set did not include the new minimum version, `stage-pack-sync` checks file ownership and hashes but not Forge dependency ranges, and the dependency-set owner did not enforce the transitive update before publication
+- Migrated the Copper Golem quest proof from Copper Age Backport to VanillaBackport 1.2.2. Exact installed bytecode remains the source for assembly, Copper Chest transport, button interaction and waxing
+- Tiny Takeover uses vanilla entity types and swaps its own baby model only during baby rendering, then restores the prior renderer model. Fresh Animations has no unsupported Tiny Takeover entity IDs. In-game visual acceptance remains unrun
+- User requested a shader refresh. Removed BVS, Rethinking Voxels and the cinematic and comfortable Complementary variants. Kept one original Complementary Unbound, added Derivative 26.3, updated the retained shader archives and set their native medium profiles where available. Pack Sync owns the shader archives, option sidecars and Oculus configuration
+- User requested FTB Quest Coin rewards when Economy is enabled. Every active quest now has an idempotent player reward funded from OPERATIONS. Codex selected 1 Copper for starter, 2 for field and flavor, 3 for expedition and advanced, 4 for specialist, 5 for expert and 10 for capstone
+- User requested the main screen to remain at interface level 4. JEM Compat enforces logical GUI scale 4 on `TitleScreen`, including after a resize, without changing the saved option used by other screens
+- User requested a 3×3×3 breeding home in Settlements. Each parent now needs a bound HOME cube that contains a bed, an acquirable villager workstation POI and a normal or trapped chest. This is an additional post-native admission check. Food, age, willingness, spare child bed, path validation, housing happiness, roof, personal space and child registration remain unchanged
+- Production builds for JEM Advancements 5.3.10, JEM Economy 1.3.4, JEM Settlements 2.1.2, JEM Compat 3.10.8 and JEM World Boss Tiers 2.5.0-dev completed without tests. Their SHA-256 values are `36973088dd5c57b0016cb41f572f065e47256efe0cb23117e93d5b5fa1424976`, `8e1048376ae4aebdc2e240707f41ac593d650b86eb76a19e8c39a29b6252075d`, `3664bae0bcce7900a3d974d8a7d92fe3bef423aa2af1156c0c4189d32f523b9c`, `35694c718e7851156feca02372a862207e9c11032324cac53caf0a6a38e1c002` and `7612d8d6be9798788257153e9e3c3be883ce03204a24bcefad34e3b54431bc05`. Automated tests and Minecraft gameplay were not run. Player acceptance remains `in testing`
+- The local dedicated server loaded Platform 1.4.2, VanillaBackport 1.2.2, Distant Horizons 3.3.3, Giant Torii 1.0.0 and the new JEM modules, then published native AutoModpack journal sequence 177 with content token `ca752ef7a93e579b69da21da49a09baa0f24f4f5`. The reviewed final publication diff was `+26 ~12 -952`, and the final preview returned `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied that exact generation through the native planner and detached helper. Its active token matches the published head, 328 managed JARs match canonical hashes, and no active transaction remains. Four unmanaged Voxy, VSS and Block Runner leftovers were moved to the recoverable archive `C:/MyProjects/Minecraft/JustEnoughMods-updates/retired-test-voxy-20261119-0242`
+- Final pack status reports matching staged and published manifest SHA-1 `cb54bc652fddced050e35474da95cfba2569e64c`
+- The local server saved all dimensions and stopped. The normal 60-second watchdog was restored after the slow first resource reload. MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
+## 2026-11-19 - Capture the revised stable keybind preset
+
+- User updated the keybinds in the stable `JustEnoughMods` profile and required that exact new layout to reach `main` first, then Test JEM, then players in the next MineRENT update only
+- Captured all 253 saved keybinding rows from the stable profile at `2026-11-19T03:17:23.8573836+05:00` with source SHA-256 `31939ac471eef9d67b9d4146d5b4c31b9ab41069b76c91b3ef3180c38448320e`
+- Updated the tracked JEMCompat preset and refreshed the ignored local ManagedPack `options.txt` template while preserving repository-only mappings for newly installed mods
+- Added a separate one-time player-key receipt revision so the next client update applies these bindings without reapplying them during later updates
+- Personal video, sound, server-address and resource-pack selections were not copied from the stable profile
+- This source snapshot does not change MineRENT, the stable profile, the published AutoModpack generation or the immutable release baseline
 
 ## 2026-11-19 - Record transport and long-term design owners
 

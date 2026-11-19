@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.justenoughmods'
-version = '5.3.9'
+version = '5.3.11'
 
 def instanceOverride = findProperty('jemRuntimeRoot') ?: findProperty('jem_instance') ?: System.getenv('JEM_INSTANCE')
 def jemRuntimeRoot = file(instanceOverride?.toString()?.trim() ?: '../../Client/ManagedPack')
@@ -57,10 +57,10 @@ dependencies {
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Trials-2.3.3.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/rottencreatures-forge-1.20.1-1.1.0.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/guardvillagers-1.20.1-1.6.19.jar"))
+    // Guard Villagers is not part of the JEM runtime, so the guide has no Guard-specific compile edge.
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/fairylights-7.0.0-1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/casualswing-0.1.0-1.20.1-Forge.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/copperagebackport-forge-1.20.1-0.1.5.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/VanillaBackport-forge-1.20.1-1.2.2.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/kaleidoscopedoll-1.4.1-forge+mc1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/primal-1.1.6%2B1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/alexsmobs-1.22.9.jar"))

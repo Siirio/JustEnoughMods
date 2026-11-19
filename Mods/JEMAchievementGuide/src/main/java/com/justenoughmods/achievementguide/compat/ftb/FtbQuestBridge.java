@@ -32,6 +32,7 @@ public final class FtbQuestBridge {
     public static void register() {
         BookItemReward.register();
         BookXpReward.register();
+        BookCoinReward.register();
         PastRewardsNetwork.register();
         MinecraftForge.EVENT_BUS.register(BookEvents.class);
         if (QuestSignals.loaded("jem_economy")) BookEconomyEvents.register();

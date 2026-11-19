@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "registry_type": "armor",
+  "snapshot_sha": "b42c705ed374d252a16f6d5a8a2d86d34b19e222",
+  "generation": {
+    "generated_utc": "2026-11-19T06:09:16.787649+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "vanillabackport",
+    "name": "VanillaBackport",
+    "version": "1.2.2"
+  },
+  "records": [
+    {
+      "item_id": "minecraft:copper_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.2.2",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.2.2.jar",
+      "source_sha256": "d009a371a86a2d0cd48a64739035213ab24e35ad67e0fa0b7b46550b930bffb5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/copper_boots.json",
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Copper Boots",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/minecraft/models/item/copper_boots.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_chestplate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.2.2",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.2.2.jar",
+      "source_sha256": "d009a371a86a2d0cd48a64739035213ab24e35ad67e0fa0b7b46550b930bffb5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/copper_chestplate.json",
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Copper Chestplate",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/minecraft/models/item/copper_chestplate.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "chestplate",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.2.2",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.2.2.jar",
+      "source_sha256": "d009a371a86a2d0cd48a64739035213ab24e35ad67e0fa0b7b46550b930bffb5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/copper_helmet.json",
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Copper Helmet",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/minecraft/models/item/copper_helmet.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.2.2",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.2.2.jar",
+      "source_sha256": "d009a371a86a2d0cd48a64739035213ab24e35ad67e0fa0b7b46550b930bffb5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/copper_leggings.json",
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Copper Leggings",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/minecraft/models/item/copper_leggings.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

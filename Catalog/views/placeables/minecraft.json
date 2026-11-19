@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "c0bb316b83c2976e2486f766eca17a92bbeaeaac",
+  "snapshot_sha": "b42c705ed374d252a16f6d5a8a2d86d34b19e222",
   "generation": {
-    "generated_utc": "2026-11-18T06:09:04.390884+00:00",
+    "generated_utc": "2026-11-19T06:09:16.787649+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1501,6 +1501,104 @@
       ]
     },
     {
+      "item_id": "minecraft:barrier",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+        "data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+        "data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+        "data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
+      ],
+      "display_name_en_us": "Barrier",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "minecraft:barrier",
+      "placed_registry_ids": [
+        "minecraft:barrier"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "sophisticatedbackpacks:inception_upgrade",
+        "sophisticatedbackpacks:stack_downgrade_tier_1",
+        "sophisticatedbackpacks:stack_downgrade_tier_2",
+        "sophisticatedbackpacks:stack_downgrade_tier_3",
+        "sophisticatedbackpacks:stack_upgrade_omega_tier",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier_to_tier_1_conversion",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier_to_tier_2_conversion",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier_to_tier_3_conversion",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier_to_tier_4_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_1",
+        "sophisticatedbackpacks:stack_upgrade_tier_1_from_starter",
+        "sophisticatedbackpacks:stack_upgrade_tier_1_to_tier_2_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_1_to_tier_3_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_1_to_tier_4_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_2",
+        "sophisticatedbackpacks:stack_upgrade_tier_2_to_tier_3_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_2_to_tier_4_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_3",
+        "sophisticatedbackpacks:stack_upgrade_tier_3_to_tier_4_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_4"
+      ]
+    },
+    {
       "item_id": "minecraft:beacon",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -2464,47 +2562,6 @@
       ]
     },
     {
-      "item_id": "minecraft:black_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "data/alexscaves/recipes/black_wool_from_dark_tatters.json",
-        "data/minecraft/recipes/dye_black_wool.json"
-      ],
-      "display_name_en_us": "Black Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "alexscaves-2.0.2.jar:data/alexscaves/recipes/black_wool_from_dark_tatters.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_black_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:black_wool",
-      "placed_registry_ids": [
-        "minecraft:black_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "alexscaves:black_wool_from_dark_tatters",
-        "minecraft:dye_black_wool"
-      ]
-    },
-    {
       "item_id": "minecraft:blackstone_slab",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -3077,45 +3134,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:blue_terracotta"
-      ]
-    },
-    {
-      "item_id": "minecraft:blue_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_blue_wool.json"
-      ],
-      "display_name_en_us": "Blue Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_blue_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:blue_wool",
-      "placed_registry_ids": [
-        "minecraft:blue_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_blue_wool"
       ]
     },
     {
@@ -3801,47 +3819,6 @@
       ]
     },
     {
-      "item_id": "minecraft:brown_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "data/alexsmobs/recipes/bison_fur_to_wool.json",
-        "data/minecraft/recipes/dye_brown_wool.json"
-      ],
-      "display_name_en_us": "Brown Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "alexsmobs-1.22.9.jar:data/alexsmobs/recipes/bison_fur_to_wool.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_brown_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:brown_wool",
-      "placed_registry_ids": [
-        "minecraft:brown_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "alexsmobs:bison_fur_to_wool",
-        "minecraft:dye_brown_wool"
-      ]
-    },
-    {
       "item_id": "minecraft:bubble_coral_block",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -3899,7 +3876,6 @@
       "display_name_en_us": "Cake",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/cake.json",
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/cake_from_cake_layer.json",
         "blueprint-1.20.1-7.1.5.jar:data/minecraft/recipes/cake.json",
         "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/curiosities/cake.json",
@@ -4825,13 +4801,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/chiseled_deepslate.json",
-        "data/minecraft/recipes/chiseled_deepslate_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/chiseled_deepslate_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/chiseled_deepslate_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Chiseled Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chiseled_deepslate.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chiseled_deepslate_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chiseled_deepslate_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/chiseled_deepslate_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4849,7 +4827,8 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:chiseled_deepslate",
-        "minecraft:chiseled_deepslate_from_cobbled_deepslate_stonecutting"
+        "minecraft:chiseled_deepslate_from_cobbled_deepslate_stonecutting",
+        "minecraft:chiseled_deepslate_from_deepslate_stonecutting"
       ]
     },
     {
@@ -5236,6 +5215,44 @@
       ]
     },
     {
+      "item_id": "minecraft:cobbled_deepslate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/minecraft/recipes/cobbled_deepslate_from_deepslate_stonecutting.json"
+      ],
+      "display_name_en_us": "Cobbled Deepslate",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobbled_deepslate_from_deepslate_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "minecraft:cobbled_deepslate",
+      "placed_registry_ids": [
+        "minecraft:cobbled_deepslate"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "minecraft:cobbled_deepslate_from_deepslate_stonecutting"
+      ]
+    },
+    {
       "item_id": "minecraft:cobbled_deepslate_slab",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -5250,13 +5267,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobbled_deepslate_slab.json",
-        "data/minecraft/recipes/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/cobbled_deepslate_slab_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Cobbled Deepslate Slab",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_slab.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobbled_deepslate_slab_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5274,7 +5293,8 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:cobbled_deepslate_slab",
-        "minecraft:cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting"
+        "minecraft:cobbled_deepslate_slab_from_cobbled_deepslate_stonecutting",
+        "minecraft:cobbled_deepslate_slab_from_deepslate_stonecutting"
       ]
     },
     {
@@ -5292,13 +5312,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobbled_deepslate_stairs.json",
-        "data/minecraft/recipes/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/cobbled_deepslate_stairs_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Cobbled Deepslate Stairs",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_stairs.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobbled_deepslate_stairs_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5316,7 +5338,8 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:cobbled_deepslate_stairs",
-        "minecraft:cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting"
+        "minecraft:cobbled_deepslate_stairs_from_cobbled_deepslate_stonecutting",
+        "minecraft:cobbled_deepslate_stairs_from_deepslate_stonecutting"
       ]
     },
     {
@@ -5334,13 +5357,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobbled_deepslate_wall.json",
-        "data/minecraft/recipes/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/cobbled_deepslate_wall_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Cobbled Deepslate Wall",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_wall.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobbled_deepslate_wall_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5358,7 +5383,8 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:cobbled_deepslate_wall",
-        "minecraft:cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting"
+        "minecraft:cobbled_deepslate_wall_from_cobbled_deepslate_stonecutting",
+        "minecraft:cobbled_deepslate_wall_from_deepslate_stonecutting"
       ]
     },
     {
@@ -5376,6 +5402,7 @@
       "observed_in": [
         "data/farm_and_charm/recipes/mincer/cobblestone.json",
         "data/kaleidoscope_cookery/recipes/millstone/cobblestone_from_stone.json",
+        "data/minecraft/recipes/cobblestone_from_stone_stonecutting.json",
         "data/terralith/recipes/cobblestone_from_stone_slab.json"
       ],
       "display_name_en_us": "Cobblestone",
@@ -5383,7 +5410,8 @@
       "source_provenance": [
         "Terralith_1.20.x_v2.5.4.jar:data/terralith/recipes/cobblestone_from_stone_slab.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/cobblestone_from_stone.json",
-        "letsdo-farm_and_charm-forge-1.0.14.jar:data/farm_and_charm/recipes/mincer/cobblestone.json"
+        "letsdo-farm_and_charm-forge-1.0.14.jar:data/farm_and_charm/recipes/mincer/cobblestone.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobblestone_from_stone_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5402,6 +5430,7 @@
       "acquisition_routes": [
         "farm_and_charm:mincer/cobblestone",
         "kaleidoscope_cookery:millstone/cobblestone_from_stone",
+        "minecraft:cobblestone_from_stone_stonecutting",
         "terralith:cobblestone_from_stone_slab"
       ]
     },
@@ -5420,13 +5449,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobblestone_slab.json",
-        "data/minecraft/recipes/cobblestone_slab_from_cobblestone_stonecutting.json"
+        "data/minecraft/recipes/cobblestone_slab_from_cobblestone_stonecutting.json",
+        "data/minecraft/recipes/cobblestone_slab_from_stone_stonecutting.json"
       ],
       "display_name_en_us": "Cobblestone Slab",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_slab.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_slab_from_cobblestone_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_slab_from_cobblestone_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobblestone_slab_from_stone_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5444,7 +5475,8 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:cobblestone_slab",
-        "minecraft:cobblestone_slab_from_cobblestone_stonecutting"
+        "minecraft:cobblestone_slab_from_cobblestone_stonecutting",
+        "minecraft:cobblestone_slab_from_stone_stonecutting"
       ]
     },
     {
@@ -5462,13 +5494,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobblestone_stairs.json",
-        "data/minecraft/recipes/cobblestone_stairs_from_cobblestone_stonecutting.json"
+        "data/minecraft/recipes/cobblestone_stairs_from_cobblestone_stonecutting.json",
+        "data/minecraft/recipes/cobblestone_stairs_from_stone_stonecutting.json"
       ],
       "display_name_en_us": "Cobblestone Stairs",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_stairs.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_stairs_from_cobblestone_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_stairs_from_cobblestone_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobblestone_stairs_from_stone_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5486,7 +5520,8 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:cobblestone_stairs",
-        "minecraft:cobblestone_stairs_from_cobblestone_stonecutting"
+        "minecraft:cobblestone_stairs_from_cobblestone_stonecutting",
+        "minecraft:cobblestone_stairs_from_stone_stonecutting"
       ]
     },
     {
@@ -5504,13 +5539,15 @@
       ],
       "observed_in": [
         "data/minecraft/recipes/cobblestone_wall.json",
-        "data/minecraft/recipes/cobblestone_wall_from_cobblestone_stonecutting.json"
+        "data/minecraft/recipes/cobblestone_wall_from_cobblestone_stonecutting.json",
+        "data/minecraft/recipes/cobblestone_wall_from_stone_stonecutting.json"
       ],
       "display_name_en_us": "Cobblestone Wall",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_wall.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_wall_from_cobblestone_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cobblestone_wall_from_cobblestone_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/cobblestone_wall_from_stone_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5528,7 +5565,8 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:cobblestone_wall",
-        "minecraft:cobblestone_wall_from_cobblestone_stonecutting"
+        "minecraft:cobblestone_wall_from_cobblestone_stonecutting",
+        "minecraft:cobblestone_wall_from_stone_stonecutting"
       ]
     },
     {
@@ -7119,45 +7157,6 @@
       ]
     },
     {
-      "item_id": "minecraft:cyan_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_cyan_wool.json"
-      ],
-      "display_name_en_us": "Cyan Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_cyan_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:cyan_wool",
-      "placed_registry_ids": [
-        "minecraft:cyan_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_cyan_wool"
-      ]
-    },
-    {
       "item_id": "minecraft:dark_oak_button",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -7942,6 +7941,7 @@
         "data/minecraft/recipes/deepslate_brick_slab.json",
         "data/minecraft/recipes/deepslate_brick_slab_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_slab_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_brick_slab_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_slab_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Brick Slab",
@@ -7950,7 +7950,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab_from_deepslate_bricks_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_slab_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_brick_slab_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -7970,6 +7971,7 @@
         "minecraft:deepslate_brick_slab",
         "minecraft:deepslate_brick_slab_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_brick_slab_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_brick_slab_from_deepslate_stonecutting",
         "minecraft:deepslate_brick_slab_from_polished_deepslate_stonecutting"
       ]
     },
@@ -7990,6 +7992,7 @@
         "data/minecraft/recipes/deepslate_brick_stairs.json",
         "data/minecraft/recipes/deepslate_brick_stairs_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_stairs_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_brick_stairs_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_stairs_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Brick Stairs",
@@ -7998,7 +8001,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs_from_deepslate_bricks_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_stairs_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_brick_stairs_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8018,6 +8022,7 @@
         "minecraft:deepslate_brick_stairs",
         "minecraft:deepslate_brick_stairs_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_brick_stairs_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_brick_stairs_from_deepslate_stonecutting",
         "minecraft:deepslate_brick_stairs_from_polished_deepslate_stonecutting"
       ]
     },
@@ -8038,6 +8043,7 @@
         "data/minecraft/recipes/deepslate_brick_wall.json",
         "data/minecraft/recipes/deepslate_brick_wall_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_wall_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_brick_wall_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_brick_wall_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Brick Wall",
@@ -8046,7 +8052,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall_from_deepslate_bricks_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_brick_wall_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_brick_wall_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8066,6 +8073,7 @@
         "minecraft:deepslate_brick_wall",
         "minecraft:deepslate_brick_wall_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_brick_wall_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_brick_wall_from_deepslate_stonecutting",
         "minecraft:deepslate_brick_wall_from_polished_deepslate_stonecutting"
       ]
     },
@@ -8085,6 +8093,7 @@
         "data/immersive_weathering/recipes/deepslate_bricks_from_brick.json",
         "data/minecraft/recipes/deepslate_bricks.json",
         "data/minecraft/recipes/deepslate_bricks_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/deepslate_bricks_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_bricks_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Bricks",
@@ -8093,7 +8102,8 @@
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/deepslate_bricks_from_brick.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_bricks.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_bricks_from_cobbled_deepslate_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_bricks_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_bricks_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_bricks_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8113,6 +8123,7 @@
         "immersive_weathering:deepslate_bricks_from_brick",
         "minecraft:deepslate_bricks",
         "minecraft:deepslate_bricks_from_cobbled_deepslate_stonecutting",
+        "minecraft:deepslate_bricks_from_deepslate_stonecutting",
         "minecraft:deepslate_bricks_from_polished_deepslate_stonecutting"
       ]
     },
@@ -8133,6 +8144,7 @@
         "data/minecraft/recipes/deepslate_tile_slab.json",
         "data/minecraft/recipes/deepslate_tile_slab_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_slab_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_tile_slab_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_slab_from_deepslate_tiles_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_slab_from_polished_deepslate_stonecutting.json"
       ],
@@ -8143,7 +8155,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_deepslate_bricks_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_deepslate_tiles_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_slab_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_tile_slab_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8163,6 +8176,7 @@
         "minecraft:deepslate_tile_slab",
         "minecraft:deepslate_tile_slab_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_tile_slab_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_tile_slab_from_deepslate_stonecutting",
         "minecraft:deepslate_tile_slab_from_deepslate_tiles_stonecutting",
         "minecraft:deepslate_tile_slab_from_polished_deepslate_stonecutting"
       ]
@@ -8184,6 +8198,7 @@
         "data/minecraft/recipes/deepslate_tile_stairs.json",
         "data/minecraft/recipes/deepslate_tile_stairs_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_tiles_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_stairs_from_polished_deepslate_stonecutting.json"
       ],
@@ -8194,7 +8209,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_bricks_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_tiles_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_stairs_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_tile_stairs_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8214,6 +8230,7 @@
         "minecraft:deepslate_tile_stairs",
         "minecraft:deepslate_tile_stairs_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_tile_stairs_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_tile_stairs_from_deepslate_stonecutting",
         "minecraft:deepslate_tile_stairs_from_deepslate_tiles_stonecutting",
         "minecraft:deepslate_tile_stairs_from_polished_deepslate_stonecutting"
       ]
@@ -8235,6 +8252,7 @@
         "data/minecraft/recipes/deepslate_tile_wall.json",
         "data/minecraft/recipes/deepslate_tile_wall_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_wall_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_tile_wall_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_wall_from_deepslate_tiles_stonecutting.json",
         "data/minecraft/recipes/deepslate_tile_wall_from_polished_deepslate_stonecutting.json"
       ],
@@ -8245,7 +8263,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_deepslate_bricks_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_deepslate_tiles_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tile_wall_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_tile_wall_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8265,6 +8284,7 @@
         "minecraft:deepslate_tile_wall",
         "minecraft:deepslate_tile_wall_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_tile_wall_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_tile_wall_from_deepslate_stonecutting",
         "minecraft:deepslate_tile_wall_from_deepslate_tiles_stonecutting",
         "minecraft:deepslate_tile_wall_from_polished_deepslate_stonecutting"
       ]
@@ -8286,6 +8306,7 @@
         "data/minecraft/recipes/deepslate_tiles.json",
         "data/minecraft/recipes/deepslate_tiles_from_cobbled_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tiles_from_deepslate_bricks_stonecutting.json",
+        "data/minecraft/recipes/deepslate_tiles_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate_tiles_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Deepslate Tiles",
@@ -8295,7 +8316,8 @@
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles_from_cobbled_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles_from_deepslate_bricks_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate_tiles_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/deepslate_tiles_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8316,6 +8338,7 @@
         "minecraft:deepslate_tiles",
         "minecraft:deepslate_tiles_from_cobbled_deepslate_stonecutting",
         "minecraft:deepslate_tiles_from_deepslate_bricks_stonecutting",
+        "minecraft:deepslate_tiles_from_deepslate_stonecutting",
         "minecraft:deepslate_tiles_from_polished_deepslate_stonecutting"
       ]
     },
@@ -10231,45 +10254,6 @@
       ]
     },
     {
-      "item_id": "minecraft:gray_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_gray_wool.json"
-      ],
-      "display_name_en_us": "Gray Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_gray_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:gray_wool",
-      "placed_registry_ids": [
-        "minecraft:gray_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_gray_wool"
-      ]
-    },
-    {
       "item_id": "minecraft:green_banner",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -10627,45 +10611,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:green_terracotta"
-      ]
-    },
-    {
-      "item_id": "minecraft:green_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_green_wool.json"
-      ],
-      "display_name_en_us": "Green Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_green_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:green_wool",
-      "placed_registry_ids": [
-        "minecraft:green_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_green_wool"
       ]
     },
     {
@@ -12305,45 +12250,6 @@
       ]
     },
     {
-      "item_id": "minecraft:light_blue_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_light_blue_wool.json"
-      ],
-      "display_name_en_us": "Light Blue Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_light_blue_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:light_blue_wool",
-      "placed_registry_ids": [
-        "minecraft:light_blue_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_light_blue_wool"
-      ]
-    },
-    {
       "item_id": "minecraft:light_gray_banner",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -12701,45 +12607,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:light_gray_terracotta"
-      ]
-    },
-    {
-      "item_id": "minecraft:light_gray_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_light_gray_wool.json"
-      ],
-      "display_name_en_us": "Light Gray Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_light_gray_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:light_gray_wool",
-      "placed_registry_ids": [
-        "minecraft:light_gray_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_light_gray_wool"
       ]
     },
     {
@@ -13181,45 +13048,6 @@
       ]
     },
     {
-      "item_id": "minecraft:lime_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_lime_wool.json"
-      ],
-      "display_name_en_us": "Lime Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_lime_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:lime_wool",
-      "placed_registry_ids": [
-        "minecraft:lime_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_lime_wool"
-      ]
-    },
-    {
       "item_id": "minecraft:lodestone",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -13238,7 +13066,6 @@
       "display_name_en_us": "Lodestone",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:data/minecraft/recipes/lodestone.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/lodestone.json"
       ],
       "confidence": "inferred",
@@ -13656,45 +13483,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:magenta_terracotta"
-      ]
-    },
-    {
-      "item_id": "minecraft:magenta_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_magenta_wool.json"
-      ],
-      "display_name_en_us": "Magenta Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_magenta_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:magenta_wool",
-      "placed_registry_ids": [
-        "minecraft:magenta_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_magenta_wool"
       ]
     },
     {
@@ -16254,45 +16042,6 @@
       ]
     },
     {
-      "item_id": "minecraft:orange_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_orange_wool.json"
-      ],
-      "display_name_en_us": "Orange Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_orange_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:orange_wool",
-      "placed_registry_ids": [
-        "minecraft:orange_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_orange_wool"
-      ]
-    },
-    {
       "item_id": "minecraft:oxidized_cut_copper",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -16865,45 +16614,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:pink_terracotta"
-      ]
-    },
-    {
-      "item_id": "minecraft:pink_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_pink_wool.json"
-      ],
-      "display_name_en_us": "Pink Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_pink_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:pink_wool",
-      "placed_registry_ids": [
-        "minecraft:pink_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_pink_wool"
       ]
     },
     {
@@ -17671,7 +17381,8 @@
         "data/kaleidoscope_cookery/recipes/millstone/polished_deepslate_from_cobbled_deepslate.json",
         "data/kaleidoscope_cookery/recipes/millstone/polished_deepslate_from_deepslate.json",
         "data/minecraft/recipes/polished_deepslate.json",
-        "data/minecraft/recipes/polished_deepslate_from_cobbled_deepslate_stonecutting.json"
+        "data/minecraft/recipes/polished_deepslate_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/polished_deepslate_from_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Polished Deepslate",
       "display_name_ru_ru": null,
@@ -17679,7 +17390,8 @@
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/polished_deepslate_from_cobbled_deepslate.json",
         "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone/polished_deepslate_from_deepslate.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_from_cobbled_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_from_cobbled_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/polished_deepslate_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17699,7 +17411,8 @@
         "kaleidoscope_cookery:millstone/polished_deepslate_from_cobbled_deepslate",
         "kaleidoscope_cookery:millstone/polished_deepslate_from_deepslate",
         "minecraft:polished_deepslate",
-        "minecraft:polished_deepslate_from_cobbled_deepslate_stonecutting"
+        "minecraft:polished_deepslate_from_cobbled_deepslate_stonecutting",
+        "minecraft:polished_deepslate_from_deepslate_stonecutting"
       ]
     },
     {
@@ -17718,6 +17431,7 @@
       "observed_in": [
         "data/minecraft/recipes/polished_deepslate_slab.json",
         "data/minecraft/recipes/polished_deepslate_slab_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/polished_deepslate_slab_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/polished_deepslate_slab_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Polished Deepslate Slab",
@@ -17725,7 +17439,8 @@
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_slab.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_slab_from_cobbled_deepslate_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_slab_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_slab_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/polished_deepslate_slab_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17744,6 +17459,7 @@
       "acquisition_routes": [
         "minecraft:polished_deepslate_slab",
         "minecraft:polished_deepslate_slab_from_cobbled_deepslate_stonecutting",
+        "minecraft:polished_deepslate_slab_from_deepslate_stonecutting",
         "minecraft:polished_deepslate_slab_from_polished_deepslate_stonecutting"
       ]
     },
@@ -17763,6 +17479,7 @@
       "observed_in": [
         "data/minecraft/recipes/polished_deepslate_stairs.json",
         "data/minecraft/recipes/polished_deepslate_stairs_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/polished_deepslate_stairs_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/polished_deepslate_stairs_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Polished Deepslate Stairs",
@@ -17770,7 +17487,8 @@
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_stairs.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_stairs_from_cobbled_deepslate_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_stairs_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_stairs_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/polished_deepslate_stairs_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17789,6 +17507,7 @@
       "acquisition_routes": [
         "minecraft:polished_deepslate_stairs",
         "minecraft:polished_deepslate_stairs_from_cobbled_deepslate_stonecutting",
+        "minecraft:polished_deepslate_stairs_from_deepslate_stonecutting",
         "minecraft:polished_deepslate_stairs_from_polished_deepslate_stonecutting"
       ]
     },
@@ -17808,6 +17527,7 @@
       "observed_in": [
         "data/minecraft/recipes/polished_deepslate_wall.json",
         "data/minecraft/recipes/polished_deepslate_wall_from_cobbled_deepslate_stonecutting.json",
+        "data/minecraft/recipes/polished_deepslate_wall_from_deepslate_stonecutting.json",
         "data/minecraft/recipes/polished_deepslate_wall_from_polished_deepslate_stonecutting.json"
       ],
       "display_name_en_us": "Polished Deepslate Wall",
@@ -17815,7 +17535,8 @@
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_wall.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_wall_from_cobbled_deepslate_stonecutting.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_wall_from_polished_deepslate_stonecutting.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/polished_deepslate_wall_from_polished_deepslate_stonecutting.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/polished_deepslate_wall_from_deepslate_stonecutting.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17834,6 +17555,7 @@
       "acquisition_routes": [
         "minecraft:polished_deepslate_wall",
         "minecraft:polished_deepslate_wall_from_cobbled_deepslate_stonecutting",
+        "minecraft:polished_deepslate_wall_from_deepslate_stonecutting",
         "minecraft:polished_deepslate_wall_from_polished_deepslate_stonecutting"
       ]
     },
@@ -18115,8 +17837,7 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/powered_rail.json"
@@ -18124,6 +17845,7 @@
       "display_name_en_us": "Powered Rail",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.11.1.jar:data/minecraft/recipes/powered_rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/powered_rail.json"
       ],
       "confidence": "inferred",
@@ -18804,45 +18526,6 @@
       ]
     },
     {
-      "item_id": "minecraft:purple_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_purple_wool.json"
-      ],
-      "display_name_en_us": "Purple Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_purple_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:purple_wool",
-      "placed_registry_ids": [
-        "minecraft:purple_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_purple_wool"
-      ]
-    },
-    {
       "item_id": "minecraft:purpur_block",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -19227,8 +18910,7 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/rail.json"
@@ -19236,6 +18918,7 @@
       "display_name_en_us": "Rail",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.11.1.jar:data/minecraft/recipes/rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/rail.json"
       ],
       "confidence": "inferred",
@@ -20099,45 +19782,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:red_terracotta"
-      ]
-    },
-    {
-      "item_id": "minecraft:red_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_red_wool.json"
-      ],
-      "display_name_en_us": "Red Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_red_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:red_wool",
-      "placed_registry_ids": [
-        "minecraft:red_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_red_wool"
       ]
     },
     {
@@ -23758,48 +23402,6 @@
       ]
     },
     {
-      "item_id": "minecraft:tuff",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
-        "data/unearthed_journey/recipes/stone_cut_breccia_tuff.json"
-      ],
-      "display_name_en_us": "Tuff",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
-        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_tuff.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:tuff",
-      "placed_registry_ids": [
-        "minecraft:tuff"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "create:tuff_from_stone_types_tuff_stonecutting",
-        "unearthed_journey:stone_cut_breccia_tuff"
-      ]
-    },
-    {
       "item_id": "minecraft:warped_button",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -25640,51 +25242,6 @@
       ]
     },
     {
-      "item_id": "minecraft:white_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_white_wool.json",
-        "data/minecraft/recipes/white_wool_from_string.json",
-        "data/unearthed_journey/recipes/down_recipe.json"
-      ],
-      "display_name_en_us": "White Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_white_wool.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/white_wool_from_string.json",
-        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/down_recipe.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:white_wool",
-      "placed_registry_ids": [
-        "minecraft:white_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_white_wool",
-        "minecraft:white_wool_from_string",
-        "unearthed_journey:down_recipe"
-      ]
-    },
-    {
       "item_id": "minecraft:wither_skeleton_skull",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -26080,45 +25637,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:yellow_terracotta"
-      ]
-    },
-    {
-      "item_id": "minecraft:yellow_wool",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "data/minecraft/recipes/dye_yellow_wool.json"
-      ],
-      "display_name_en_us": "Yellow Wool",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dye_yellow_wool.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "source_item_id": "minecraft:yellow_wool",
-      "placed_registry_ids": [
-        "minecraft:yellow_wool"
-      ],
-      "place_action": "BlockItem inferred by matching installed item/block IDs",
-      "placement_conditions": null,
-      "dimensions": null,
-      "blockstate_or_entity_variants": null,
-      "consumed_on_place": true,
-      "break_drops": null,
-      "permissions": "native Forge placement checks",
-      "acquisition_routes": [
-        "minecraft:dye_yellow_wool"
       ]
     }
   ]

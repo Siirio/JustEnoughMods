@@ -1,0 +1,194 @@
+{
+  "schema_version": 2,
+  "change_id": "transport.carriage-rebalance-20261119",
+  "status": "active",
+  "selectors": [
+    {"type": "id", "registry": "items", "value": "minecraft:minecart"},
+    {"type": "id", "registry": "items", "value": "minecraft:rail"},
+    {"type": "id", "registry": "items", "value": "minecraft:powered_rail"},
+    {"type": "id", "registry": "items", "value": "minecraft:elytra"},
+    {"type": "id", "registry": "items", "value": "minecraft:firework_rocket"},
+    {"type": "tag", "registry": "items", "value": "c:items/shulker_boxes"},
+    {"type": "namespace", "registry": "items", "value": "sophisticatedbackpacks"},
+    {"type": "namespace", "registry": "entities", "value": "minecraft"}
+  ],
+  "exceptions": [
+    {"type": "namespace", "registry": "entities", "value": "create"},
+    {"type": "namespace", "registry": "items", "value": "sophisticatedstorage"}
+  ],
+  "conditions": [
+    {"scope": "JEMCompat 3.11.1 is installed on Test JustEnoughMods and the ordinary local server. HUD observation and player acceptance are pending."},
+    {"scope": "Minecart route caps apply only to vanilla minecart entities on vanilla rail blocks."},
+    {"scope": "Shulker capacity 128 applies only to block items whose native maximum stack size is 64."}
+  ],
+  "precedence": {
+    "layer": "explicit_player_feedback",
+    "priority": 1450,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Give rail, backpack, shulker, mount, aircraft, and elytra transport distinct bounded roles.",
+    "modifiers": [
+      {
+        "property": "sophisticatedbackpacks.portable_inception_and_stack_upgrades",
+        "operation": "deny",
+        "before": "Native recipes, upgrade admission, and portable stack multiplication are available.",
+        "after": "Inception, portable stack tiers, downgrades, and conversion recipes are retired from crafting, upgrade admission, creative tabs, and JEI. Existing backpack contents use durable extraction and native-size normalization."
+      },
+      {
+        "property": "player.on_foot_backpack_burden",
+        "operation": "derive",
+        "before": "Carried backpack occupancy does not change movement speed.",
+        "after": "Each occupied carried or equipped backpack slot reduces on-foot movement by one third of one percentage point, capped at 70%. Riding, swimming, climbing, elytra flight, and creative flight are excluded."
+      },
+      {
+        "property": "portable_container_nesting",
+        "operation": "deny",
+        "before": "Native portable-container admission rules apply.",
+        "after": "Backpacks cannot enter shulker boxes and shulker boxes cannot enter backpacks."
+      },
+      {
+        "property": "minecraft.shulker_box.native_64_block_stack_limit",
+        "operation": "set",
+        "before": 64,
+        "after": 128,
+        "conditions": ["Only native 64-stack block items", "Shulker item stack remains 1", "No legacy shulker migration because no player owns a shulker box"]
+      },
+      {
+        "property": "minecraft.minecart.item_stack_limit",
+        "operation": "set",
+        "before": 1,
+        "after": 16
+      },
+      {
+        "property": "minecraft.minecart.route_speed_blocks_per_second",
+        "operation": "replace",
+        "before": {"native_cap": 8},
+        "after": {"straight_level": 18, "ascending": 14, "curve": 12},
+        "conditions": ["Vanilla minecart entity", "Vanilla rail block", "Native motion sources and braking remain"]
+      },
+      {
+        "property": "minecraft.rail.recipe_output",
+        "operation": "set",
+        "before": 16,
+        "after": 32
+      },
+      {
+        "property": "minecraft.powered_rail.recipe_output",
+        "operation": "set",
+        "before": 6,
+        "after": 16
+      },
+      {
+        "property": "elytra.minimum_fall_distance_blocks",
+        "operation": "set",
+        "before": 0,
+        "after": 6,
+        "conditions": ["No air-clearance rule", "Native manual deployment input remains"]
+      },
+      {
+        "property": "elytra.firework_boost_budget",
+        "operation": "replace",
+        "before": "Every available rocket can boost elytra flight.",
+        "after": "Eight successful boosts are available. The eighth starts a two-minute wall-clock cooldown, then all eight charges return together. Denied boosts consume no charge or rocket."
+      },
+      {
+        "property": "transport.explicit_non_changes",
+        "operation": "document",
+        "before": "Not specified as one implementation boundary.",
+        "after": "Create trains, ice boats, TPA, existing mount and wagon rules, and the existing biplane speed, fuel, and ascent contract remain unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat universal transport adapters and data resources",
+    "kind": "user_requested_gameplay_rebalance",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/gradle.properties",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/TransportBurdenClient.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/BackpackPolicy.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/FireworkBoostPolicy.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/ShulkerCapacity.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportNetwork.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/BackpackBlockEntityMigrationMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/BackpackInventoryPolicyMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/BackpackUpgradePolicyMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/FireworkRocketItemMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/FriendlyByteBufWideCountMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/HopperShulkerInsertMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/ItemStackWideCountMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/MinecartItemStackMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/MinecartSpeedMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/PlayerElytraMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/ShulkerBoxBlockEntityMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/ShulkerBoxMenuMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/ShulkerBoxSlotMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/ShulkerSlotLimitMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/SidedShulkerHandlerMixin.java",
+      "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+      "Mods/JEMCompat/src/main/resources/data/minecraft/recipes/rail.json",
+      "Mods/JEMCompat/src/main/resources/data/minecraft/recipes/powered_rail.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+      "Mods/JEMCompat/src/main/resources/data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json",
+      "Docs/plans/2026-11-19-transport-and-carriage.md",
+      "Docs/backpack/README.md",
+      "Mods/JEMCompat/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep infrastructure, mounts, aircraft, backpacks, shulker boxes, and elytra useful in different transport and cargo situations.",
+    "decision_source": "Direct user transport and carriage decisions on 2026-11-19.",
+    "codex_choices": "Narrow installed-version adapters, signed-byte 128 restoration, native transient movement attributes, strict state synchronization, durable backpack extraction, and no new HUD asset."
+  },
+  "introduced": {
+    "date": "2026-11-19",
+    "commit": "SELF",
+    "action": "implement_source_candidate",
+    "summary": "Implement the transport and carriage rebalance in JEMCompat source and data."
+  },
+  "history": [
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "implement_source_candidate",
+      "summary": "Implement backpack burden, bounded shulker bulk storage, rail travel, and elytra takeoff and boost budgets."
+    },
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "publish_test_transport_generation",
+      "summary": "Build JEMCompat 3.11.1, load it on the ordinary local server, publish AutoModpack journal sequence 180, and apply content token e40620e3b02bdff773846f92044cd1a47cc09d1d to the closed Test JustEnoughMods profile."
+    }
+  ],
+  "impacts": {
+    "systems": ["JEMCompat", "Sophisticated Backpacks", "Curios", "JEM Rewards", "vanilla shulker boxes", "minecarts", "recipes", "elytra", "client HUD", "network synchronization"],
+    "relations": ["Create train speed remains native", "Ice boat speed remains native", "Biplane policy remains unchanged", "TPA remains unchanged", "Stationary Sophisticated Storage upgrades remain native"],
+    "notes": ["No legacy shulker migration exists because the user confirmed no player owns a shulker box.", "Backpack migration remains because removed upgrades can hold player-owned contents."],
+    "unresolved": ["Player acceptance is unobserved.", "HUD geometry and color are unobserved in the game."]
+  }
+}

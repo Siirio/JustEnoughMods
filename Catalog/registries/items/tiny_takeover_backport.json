@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "b42c705ed374d252a16f6d5a8a2d86d34b19e222",
+  "generation": {
+    "generated_utc": "2026-11-19T06:09:16.787649+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "tiny_takeover_backport",
+    "name": "Tiny Takeover Backport",
+    "version": "1.8.2"
+  },
+  "records": [
+    {
+      "registry_id": "minecraft:golden_dandelion",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "tiny_takeover_backport",
+      "mod_name": "Tiny Takeover Backport",
+      "mod_version": "1.8.2",
+      "source_jar": "tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
+      "source_sha256": "42439f30cb981161eb7af74eb4b450ac0ad53df7f228a7cf9fb66be3b4593036",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/models/item/golden_dandelion.json",
+        "data/minecraft/recipes/golden_dandelion.json"
+      ],
+      "display_name_en_us": "Golden Dandelion",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:items/piglin_loved",
+        "minecraft:items/small_flowers"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:assets/minecraft/lang/en_us.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:assets/minecraft/models/item/golden_dandelion.json",
+        "tiny_takeover_backport-forge-1.20.1-1.8.2.jar:data/minecraft/recipes/golden_dandelion.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "minecraft:golden_dandelion",
+      "acquisition_routes": [
+        "minecraft:golden_dandelion"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:golden_dandelion"
+    }
+  ]
+}

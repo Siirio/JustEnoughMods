@@ -47,3 +47,59 @@ Exploration should reveal different resources, threats, and opportunities instea
 - Decide which entries are exclusive and which use probability weighting
 - Define how Nature's Compass, maps, quests, villagers, or guide entries communicate the regions
 - Measure travel cost after the transportation update is defined
+
+## Distance-scaled structure loot
+
+Status: concept only
+
+### User direction
+
+Structures found farther from world spawn should have better loot. The improvement must have a hard cap. Extreme coordinates must never create absurd rewards such as stacks of diamonds, netherite, or enchanted golden apples.
+
+### Design intent
+
+Long expeditions should have a stronger reward than repeated searches near spawn. Distance must improve the quality of an ordinary structure roll without replacing progression, boss rewards, or rare handcrafted loot tables.
+
+### Guardrails for later design
+
+- Use a bounded curve with an explicit maximum distance and maximum reward tier
+- Cap both item value and rare-item quantity
+- Keep structure identity relevant because a distant village chest and a distant endgame structure must not become equivalent
+- Do not scale unique boss rewards, quest rewards, player containers, or generated containers outside the selected structure classes
+- Decide how Nether and End coordinates map to the Overworld distance model
+- Do not reroll or multiply already generated loot
+- Provide deterministic Atlas-owned numbers before implementation
+
+### Open design work
+
+- Select eligible structure and loot-table classes
+- Define the distance curve, cap distance, tier boundaries, and per-tier budget
+- Define hard limits for diamonds, netherite materials, enchanted golden apples, and other exceptional items
+- Decide whether the system uses loot-table conditions, structure metadata, or a server-owned adapter
+
+## Climate-driven ice melting
+
+Status: concept only
+
+### User direction
+
+Ice should melt in every non-snowy biome within one Minecraft day.
+
+### Design intent
+
+Permanent ice routes should belong to cold regions. Warm and temperate regions should require a different transport route or active maintenance.
+
+### Guardrails for later design
+
+- Use the canonical biome climate or biome tags instead of biome-name matching
+- Specify whether the rule includes ice, packed ice, blue ice, frosted ice, and modded ice blocks
+- Decide whether natural and player-placed ice use the same rule
+- Define unloaded-chunk behavior without forcing chunk loads
+- Specify whether melting creates water, air, or the block's native result in each dimension
+- Preserve snowy-biome ice routes and do not change boat speed in this concept
+
+### Open design work
+
+- Select the exact cold-biome predicate and affected block tags
+- Define how the one-Minecraft-day deadline is stored and resumed
+- Inspect world generation, Create contraptions, waterlogging, dimensions, and existing ice-road use before implementation

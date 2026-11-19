@@ -46,7 +46,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | ChatAnimation | `1.3.0` | Client |  |
 | Cherished Worlds | `6.1.7+1.20.1` | Client |  |
 | Chimes | `2.1.1` | Client + server |  |
-| Chunky | `1.3.146` | Client + server |  |
+| Chunky | `1.3.146` | Server | Dedicated-server pregeneration owner. Excluded from the managed client because the Distant Horizons 3.3.3 integrated-server accessor can call Chunky before its `ServerStartingEvent` provider exists |
 | Cinematic Cataclysm | `1.0.1` | Client |  |
 | Citadel | `2.6.3` | Client + server |  |
 | clickadv mod | `1.20.1-3.9` | Client |  |
@@ -245,7 +245,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Paxi | `1.20-Forge-4.0` | Client + server |  |
 | Pehkui | `3.8.2+1.20.1-forge` | Client + server |  |
 | Placebo | `8.6.3` | Client + server |  |
-| Platform | `1.3.4` | Client + server |  |
+| Platform | `1.4.2` | Client + server | Required by VanillaBackport 1.2.2 |
 | Player Animator | `1.0.2-rc1+1.20` | Client + server |  |
 | PlayerRevive | `2.0.31` | Client + server |  |
 | Polymorph | `0.49.10+1.20.1` | Client + server |  |

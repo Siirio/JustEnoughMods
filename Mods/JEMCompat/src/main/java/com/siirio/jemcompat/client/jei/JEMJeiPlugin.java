@@ -48,6 +48,8 @@ public final class JEMJeiPlugin implements IModPlugin {
                 hideHammer(availableRuntime, new ResourceLocation("bbb", "hammer"));
             }
         }
+        com.siirio.jemcompat.feature.transport.BackpackPolicy.retiredItems()
+                .forEach(id -> hideHammer(availableRuntime, id));
         CuratedJeiCatalog.rebuild(availableRuntime);
         setNativeOverlayVisible(false);
     }

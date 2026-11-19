@@ -173,6 +173,26 @@ def item_reward(card, index, reward, choice=False):
             "team_reward": False}
 
 
+COIN_REWARDS = {
+    "starter": 1,
+    "field": 2,
+    "flavor": 2,
+    "expedition": 3,
+    "advanced": 3,
+    "specialist": 4,
+    "expert": 5,
+    "capstone": 10,
+}
+
+
+def coin_reward(card):
+    tier = card["reward"]["tier"]
+    if tier not in COIN_REWARDS:
+        raise ValueError(f"Missing Coin reward policy for tier: {tier}")
+    return {"id": identity("coins", card["id"]), "type": "jem_advancements:quest_coin",
+            "amount": COIN_REWARDS[tier], "team_reward": False}
+
+
 class Localization:
     def __init__(self):
         self.values = {"en_us": {}, "ru_ru": {}}
@@ -485,6 +505,7 @@ def compile_book(*, emit_reward_selector=True):
                 table_path = BOOK / "reward_tables" / (resource_stem(card["id"]) + ".snbt")
                 dump(table_path, table); generated.append(str(table_path.relative_to(BOOK)))
                 rewards.append({"id": identity("choice", card["id"]), "type": "choice", "table_id": table_id, "team_reward": False})
+            rewards.append(coin_reward(card))
             quest = {"id": card["ftb_id"], "title": text["title"], "subtitle": text["condition"],
                      "description": description, "icon": card["icon"], "x": card["position"][0], "y": card["position"][1],
                      "shape": "diamond" if reward["tier"] == "capstone" else "hexagon" if card["collection"] else "circle",

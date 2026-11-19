@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "change_id": "copperage.sophisticated-native-load-order-20261024",
-  "status": "active",
+  "status": "superseded",
   "selectors": [
     {
       "type": "namespace",
@@ -84,8 +84,6 @@
     "owner": "Native Copper Age Backport upstream dependency metadata, configuration and resources",
     "kind": "upstream_compatibility_fix",
     "source_files": [
-      "Client/ManagedPack/mods/copperagebackport-forge-1.20.1-0.1.5.jar",
-      "Client/ManagedPack/config/copperagebackport.json",
       "Docs/releases/2026-10-24-backpacks-eyes-barriers/receipt.json"
     ]
   },
@@ -105,6 +103,18 @@
       "commit": "SELF",
       "action": "upstream_compatibility_update",
       "summary": "Use native Copper Age Backport 0.1.5 fix #98 to load after Sophisticated Core/Storage while retaining native Copper content and existing settings"
+    },
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "supersede_removed_mod",
+      "summary": "Retire Copper Age Backport after VanillaBackport 1.2.2 becomes the active owner of the overlapping copper-age content",
+      "source_files": [
+        "Client/ManagedPack/mods/copperagebackport-forge-1.20.1-0.1.5.jar",
+        "Client/ManagedPack/config/copperagebackport.json",
+        "Server/mods/copperagebackport-forge-1.20.1-0.1.5.jar",
+        "Server/config/copperagebackport.json"
+      ]
     }
   ],
   "impacts": {

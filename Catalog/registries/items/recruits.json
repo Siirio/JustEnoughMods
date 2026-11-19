@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "c0bb316b83c2976e2486f766eca17a92bbeaeaac",
+  "snapshot_sha": "b42c705ed374d252a16f6d5a8a2d86d34b19e222",
   "generation": {
-    "generated_utc": "2026-11-18T06:09:04.390884+00:00",
+    "generated_utc": "2026-11-19T06:09:16.787649+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -26,7 +26,8 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/bowman_block.json"
+        "assets/recruits/models/item/bowman_block.json",
+        "data/recruits/recipes/bowman_block.json"
       ],
       "display_name_en_us": "Bowman's Table",
       "display_name_ru_ru": "Стол рекрута-лучника",
@@ -34,9 +35,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/bowman_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/bowman_block.json"
       ],
       "confidence": "inferred",
@@ -58,7 +60,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": "recruits:bowman_block",
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "recruits:bowman_block"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:recruits:bowman_block"
@@ -130,7 +134,8 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/crossbowman_block.json"
+        "assets/recruits/models/item/crossbowman_block.json",
+        "data/recruits/recipes/crossbowman_block.json"
       ],
       "display_name_en_us": "Crossbowman's Table",
       "display_name_ru_ru": "Стол рекрута-арбалетчика",
@@ -138,9 +143,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/crossbowman_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/crossbowman_block.json"
       ],
       "confidence": "inferred",
@@ -162,7 +168,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": "recruits:crossbowman_block",
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "recruits:crossbowman_block"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:recruits:crossbowman_block"
@@ -284,7 +292,8 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/horseman_block.json"
+        "assets/recruits/models/item/horseman_block.json",
+        "data/recruits/recipes/horseman_block.json"
       ],
       "display_name_en_us": "Horseman's Table",
       "display_name_ru_ru": "Стол рекрута-всадника",
@@ -292,9 +301,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/horseman_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/horseman_block.json"
       ],
       "confidence": "inferred",
@@ -316,7 +326,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": "recruits:horseman_block",
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "recruits:horseman_block"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:recruits:horseman_block"
@@ -388,7 +400,8 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/nomad_block.json"
+        "assets/recruits/models/item/nomad_block.json",
+        "data/recruits/recipes/nomad_block.json"
       ],
       "display_name_en_us": "Nomad's Table",
       "display_name_ru_ru": "Стол рекрута-кочевника",
@@ -396,9 +409,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/nomad_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/nomad_block.json"
       ],
       "confidence": "inferred",
@@ -420,7 +434,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": "recruits:nomad_block",
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "recruits:nomad_block"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:recruits:nomad_block"
@@ -492,7 +508,8 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/recruit_block.json"
+        "assets/recruits/models/item/recruit_block.json",
+        "data/recruits/recipes/recruit_block.json"
       ],
       "display_name_en_us": "Recruit's Table",
       "display_name_ru_ru": "Стол рекрута",
@@ -500,9 +517,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/recruit_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/recruit_block.json"
       ],
       "confidence": "inferred",
@@ -524,7 +542,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": "recruits:recruit_block",
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "recruits:recruit_block"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:recruits:recruit_block"
@@ -542,7 +562,8 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/recruit_shield_block.json"
+        "assets/recruits/models/item/recruit_shield_block.json",
+        "data/recruits/recipes/recruit_shield_block.json"
       ],
       "display_name_en_us": "Recruit Shieldman's Table",
       "display_name_ru_ru": "Стол рекрута-щитоносца",
@@ -550,9 +571,10 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/recruit_shield_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/recruit_shield_block.json"
       ],
       "confidence": "inferred",
@@ -574,7 +596,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": "recruits:recruit_shield_block",
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "recruits:recruit_shield_block"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:recruits:recruit_shield_block"
