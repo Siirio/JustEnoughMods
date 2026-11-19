@@ -1,17 +1,20 @@
 package com.siirio.jemsettlements.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
@@ -40,7 +43,8 @@ public final class HousingInspector {
         var palette=data.getList("Palette",Tag.TAG_COMPOUND);var rows=data.getList("Blocks",Tag.TAG_COMPOUND);BlockPos anchor=BlockPos.of(data.getLong("Anchor"));
         for(int i=0;i<Math.min(data.getBoolean("City")?16384:3179,rows.size());i++){
             var row=rows.getCompound(i);int id=row.getInt("State");
-            if(id>=0&&id<palette.size())actual.add(new Cell(BlockPos.of(row.getLong("Position")).subtract(anchor),NbtUtils.readBlockState(mc.level.registryAccess().lookupOrThrow(Registries.BLOCK),palette.getCompound(id)),row));
+            BlockPos relative=BlockPos.of(row.getLong("Position")).subtract(anchor);
+            if(id>=0&&id<palette.size()&&(data.getBoolean("City")||relative.getY()>=0))actual.add(new Cell(relative,NbtUtils.readBlockState(mc.level.registryAccess().lookupOrThrow(Registries.BLOCK),palette.getCompound(id)),row));
         }
         for(Cell cell:actual)surface.merge(net.minecraft.world.level.ChunkPos.asLong(cell.pos().getX(),cell.pos().getZ()),cell.pos().getY(),Math::max);
         for(int sx=-3;sx<=3;sx++)for(int sz=-3;sz<=3;sz++){
@@ -92,7 +96,7 @@ public final class HousingInspector {
                 minimum.min(new Vector3f(snapshot.getInt("MinX")-anchor.getX(),minimum.y,snapshot.getInt("MinZ")-anchor.getZ()));
                 maximum.max(new Vector3f(snapshot.getInt("MaxX")-anchor.getX()+1,maximum.y,snapshot.getInt("MaxZ")-anchor.getZ()+1));
             } else {
-                minimum.min(new Vector3f(-radius,-vertical,-radius));
+                minimum.min(new Vector3f(-radius,0,-radius));
                 maximum.max(new Vector3f(radius+1,vertical+1,radius+1));
             }
         }
@@ -123,6 +127,21 @@ public final class HousingInspector {
         if(example||!snapshot.getBoolean("City"))return 1;
         return cell.facts().getBoolean("Coarse")?Math.max(1,snapshot.getInt("Stride")):Math.max(1,cell.facts().getInt("Span"));
     }
+    private boolean renderBlockEntity(Cell cell,PoseStack pose,MultiBufferSource buffers){
+        var mc=Minecraft.getInstance();
+        if(mc.level==null||snapshot.getBoolean("City")||!snapshot.getString("Dimension").equals(mc.level.dimension().location().toString()))return false;
+        BlockPos absolute=BlockPos.of(snapshot.getLong("Anchor")).offset(cell.pos());
+        if(!mc.level.hasChunkAt(absolute))return false;
+        BlockEntity blockEntity=mc.level.getBlockEntity(absolute);
+        if(blockEntity==null||blockEntity.getBlockState().getBlock()!=cell.state().getBlock())return false;
+        return renderBlockEntity(blockEntity,pose,buffers,mc);
+    }
+    private static <E extends BlockEntity> boolean renderBlockEntity(E blockEntity,PoseStack pose,MultiBufferSource buffers,Minecraft mc){
+        BlockEntityRenderer<E> renderer=mc.getBlockEntityRenderDispatcher().getRenderer(blockEntity);
+        if(renderer==null)return false;
+        renderer.render(blockEntity,0,pose,buffers,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY);
+        return true;
+    }
     private float fittedScale(Matrix4f rotation,int width,int height){
         float extentX=1,extentY=1;
         for(int corner=0;corner<8;corner++){
@@ -150,7 +169,7 @@ public final class HousingInspector {
                     int spanZ=Math.max(1,Math.min(stride,snapshot.getInt("MaxZ")-anchor.getZ()-pos.getZ()+1));
                     pose.scale(spanX,1,spanZ);
                 }
-                mc.getBlockRenderer().renderSingleBlock(cell.state(),pose,buffers,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY);
+                if(!renderBlockEntity(cell,pose,buffers))mc.getBlockRenderer().renderSingleBlock(cell.state(),pose,buffers,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY);
                 if(cell.relevant())LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),0,0,0,1,1,1,cell.facts().getBoolean("Bed")?.3F:.25F,cell.facts().getBoolean("Bed")?1F:.65F,cell.facts().getBoolean("Bed")?.4F:1F,.85F);
                 pose.popPose();
                 Vector3f projected=matrix.transformPosition(cell.center());double distance=Math.pow(projected.x-mouseX,2)+Math.pow(projected.y-mouseY,2);
@@ -161,7 +180,7 @@ public final class HousingInspector {
                 if(snapshot.getBoolean("City")) {
                     BlockPos anchor=BlockPos.of(snapshot.getLong("Anchor"));
                     LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),snapshot.getInt("MinX")-anchor.getX(),minimum.y,snapshot.getInt("MinZ")-anchor.getZ(),snapshot.getInt("MaxX")-anchor.getX()+1,maximum.y,snapshot.getInt("MaxZ")-anchor.getZ()+1,.8F,.72F,.4F,.5F);
-                } else LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),-radius,-vertical,-radius,radius+1,vertical+1,radius+1,.8F,.72F,.4F,.22F);
+                } else LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),-radius,0,-radius,radius+1,vertical+1,radius+1,.8F,.72F,.4F,.22F);
                 if(!snapshot.getBoolean("City")&&!snapshot.getBoolean("BedPresent")&&!snapshot.getBoolean("Unloaded")&&!snapshot.getBoolean("NoHome"))LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),0,0,0,1,1,2,1,.2F,.2F,1);
             }
             buffers.endBatch();

@@ -1,10 +1,10 @@
 package com.siirio.jemeconomy.mixin;
 
 import com.siirio.jemeconomy.client.CoinPriceRenderer;
+import com.siirio.jemeconomy.client.CoinAmounts;
 import com.siirio.jemeconomy.client.NativeTradeClient;
 import com.siirio.jemeconomy.client.NativeTradeScreenAccess;
 import com.siirio.jemeconomy.merchant.NativeTradeQuote;
-import com.siirio.jemeconomy.physical.CoinDenomination;
 import com.siirio.jemcurrency.CurrencyItems;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -112,8 +112,7 @@ public abstract class MerchantScreenMixin extends AbstractContainerScreen<Mercha
             var offer = shopItem < menu.getOffers().size() ? menu.getOffers().get(shopItem) : null;
             boolean money = quote.direction() == NativeTradeQuote.Direction.PLAYER_SELLS && hoveredSlot.index == 2
                     || quote.direction() == NativeTradeQuote.Direction.PLAYER_BUYS && offer != null
-                    && (hoveredSlot.index == 0 && offer.getCostA().is(Items.EMERALD)
-                    || hoveredSlot.index == 1 && offer.getCostB().is(Items.EMERALD)) && !hoveredSlot.hasItem();
+                    && hoveredSlot.index >= 0 && hoveredSlot.index < Math.min(2, CoinAmounts.parts(quote.copper()).size()) && !hoveredSlot.hasItem();
             if (money) { jem$tooltip(g, quote, mouseX, mouseY); return; }
         }
         super.renderTooltip(g, mouseX, mouseY);
@@ -127,34 +126,25 @@ public abstract class MerchantScreenMixin extends AbstractContainerScreen<Mercha
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/inventory/MerchantMenu;getOffers()Lnet/minecraft/world/item/trading/MerchantOffers;", ordinal = 0))
     private void jem$selectedPrice(GuiGraphics g, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         var quote = NativeTradeClient.quote(menu, shopItem);
-        if (quote != null && jem$priced(quote) && shopItem < menu.getOffers().size()) {
-            Component label = Component.translatable(quote.direction() == NativeTradeQuote.Direction.PLAYER_BUYS ? "jem.economy.market.buy" : "jem.economy.market.sell");
-            int priceX = leftPos + 108 + font.width(label) + 6;
-            g.drawString(font, label, leftPos + 108, topPos + 63, 0xFF404040, false);
-            CoinPriceRenderer.draw(g, font, quote.copper(), priceX, topPos + 59, Math.max(1, leftPos + 268 - priceX), 0xFF404040);
-            if (quote.direction() == NativeTradeQuote.Direction.PLAYER_BUYS) {
-                var offer = menu.getOffers().get(shopItem);
-                for (int index = 0; index < 2; index++) {
-                    var cost = index == 0 ? offer.getCostA() : offer.getCostB();
-                    if (!cost.is(Items.EMERALD) || index == 1 && offer.getCostA().is(Items.EMERALD)) continue;
-                    var slot = menu.getSlot(index);
-                    if (!slot.hasItem()) g.renderFakeItem(new ItemStack(CurrencyItems.item(jem$face(quote.copper()))), leftPos + slot.x, topPos + slot.y);
-                }
-            }
+        if (quote == null || quote.direction() != NativeTradeQuote.Direction.PLAYER_BUYS || shopItem >= menu.getOffers().size()) return;
+        var snapshot = NativeTradeClient.snapshot(menu); if (snapshot == null) return;
+        long remaining = snapshot.wallet(); var parts = CoinAmounts.parts(quote.copper());
+        for (int index = 0; index < Math.min(2, parts.size()); index++) {
+            var part = parts.get(index); long required = part.count() * part.denomination().value();
+            boolean sufficient = remaining >= required; if (sufficient) remaining -= required;
+            var slot = menu.getSlot(index); if (slot.hasItem()) continue;
+            int x = leftPos + slot.x, y = topPos + slot.y;
+            if (!sufficient) g.fill(x - 1, y - 1, x + 17, y + 17, 0x88ff4444);
+            ItemStack coin = new ItemStack(CurrencyItems.item(part.denomination()));
+            g.renderFakeItem(coin, x, y);
+            g.renderItemDecorations(font, coin, x, y, part.count() > 1 ? Long.toString(part.count()) : null);
         }
     }
     @Inject(method = "render", at = @At("TAIL"))
     private void jem$priceTooltips(GuiGraphics g, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         var quote = NativeTradeClient.quote(menu,shopItem);
-        if (quote!=null && jem$priced(quote) && mouseX >= leftPos + 108 && mouseX < leftPos + 268 && mouseY >= topPos + 59 && mouseY < topPos + 75)
-            jem$tooltip(g, quote, mouseX, mouseY);
         // Native TradeOfferButton tooltips are suppressed only for these monetary hit regions.
         var hovered = jem$hoverQuote(mouseX, mouseY);
         if (hovered != null) jem$tooltip(g, hovered, mouseX, mouseY);
-    }
-    @Unique
-    private static CoinDenomination jem$face(long amount) {
-        for (var coin : CoinDenomination.descending()) if (amount >= coin.value()) return coin;
-        return CoinDenomination.COPPER;
     }
 }

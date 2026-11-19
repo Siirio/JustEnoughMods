@@ -1,5 +1,10 @@
 # Current native economy contract — 2026-10-16
 
+## Native selected Coin inputs - 2026-11-19
+
+The selected purchase no longer draws a second price summary above the native inventory label. Its denomination decomposition uses the two native input slots. Each visible component has its own Coin item and count. Wallet coverage is allocated from the highest required component to the lowest. Only a component that the remaining Wallet value cannot cover receives a red slot background. Native offers, input handling, result handling, stock, payment and server authority are unchanged
+
+
 ## Видимый результат нативной сделки — 2026-10-26
 
 Пользователь сообщил, что оплачиваемый товар выдавался по нажатию, но оставался невидимым в выходном слоте. Установленная по исходникам причина: клиентский `MerchantContainer.updateSellItem()` выполнял обычный пересчёт по предметам входных слотов после серверной проекции денежной котировки, хотя денежная оплата виртуальна. JEMEconomy сохраняет полученную от сервера проекцию для денежной сделки на клиенте. Выбор предложения не очищает локальный слот заранее, поскольку два предложения с одинаковым результатом могут не породить повторного slot packet. Native barter продолжает обычный пересчёт. Только серверная сессия разрешает получение результата, списывает Coins и учитывает stock/restock. Источник исправления — `mixin/ClientMerchantContainerMixin.java`, версия согласованного сетевого JAR обновляется вместе с клиентом и сервером

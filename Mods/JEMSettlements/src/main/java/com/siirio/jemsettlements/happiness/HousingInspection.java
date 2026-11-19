@@ -23,7 +23,7 @@ public final class HousingInspection {
         ListTag palette=new ListTag(),blocks=new ListTag();java.util.Map<net.minecraft.world.level.block.state.BlockState,Integer> ids=new java.util.LinkedHashMap<>();
         AmenityEvidence evidence=new AmenityEvidence();
         var projection=new SnapshotVisibility.Projection();projection.beginTick();
-        for(int y=-AmenityScanService.HEIGHT/2;y<=AmenityScanService.HEIGHT/2;y++)for(int z=-AmenityScanService.WIDTH/2;z<=AmenityScanService.WIDTH/2;z++)for(int x=-AmenityScanService.WIDTH/2;x<=AmenityScanService.WIDTH/2;x++){
+        for(int y=0;y<=AmenityScanService.HEIGHT/2;y++)for(int z=-AmenityScanService.WIDTH/2;z<=AmenityScanService.WIDTH/2;z++)for(int x=-AmenityScanService.WIDTH/2;x<=AmenityScanService.WIDTH/2;x++){
             BlockPos pos=anchor.offset(x,y,z);if(!level.hasChunkAt(pos)){result.putBoolean("Unloaded",true);continue;}
             var original=level.getBlockState(pos);var state=projection.project(level,pos,original);if(state==null)continue;
             int id=ids.computeIfAbsent(state,value->{palette.add(NbtUtils.writeBlockState(value));return palette.size()-1;});

@@ -165,7 +165,7 @@ public final class ResidentConditions {
         for (var point : LightingPolicy.sample(floor, 12)) {
             BlockPos sample = new BlockPos(point.x(), point.y(), point.z());
             if (!level.hasChunkAt(sample)) { known = false; continue; }
-            light = Math.min(light, level.getBrightness(LightLayer.BLOCK, sample));
+            light = Math.max(light, level.getBrightness(LightLayer.BLOCK, sample));
         }
         state.lightUnknown = !known;
         if (known) {

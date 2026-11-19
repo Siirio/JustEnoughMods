@@ -24,7 +24,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class SettlementNetwork {
-    private static final String VERSION = "11";
+    private static final String VERSION = "12";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemSettlements.MOD_ID, "town"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).serverAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).simpleChannel();
     private SettlementNetwork() {}
@@ -37,6 +37,9 @@ public final class SettlementNetwork {
     }
     public static boolean supported() { return ClientConnection.remote(CHANNEL); }
     public static void requestOpen() { action("open", null, new CompoundTag(), java.util.UUID.randomUUID()); }
+    public static void requestFamilyHome(int entityId) { if (supported()) CHANNEL.sendToServer(new FamilyRequestPacket(entityId)); }
+    public static void sendFamilyView(ServerPlayer player,int entityId,boolean open,CompoundTag view){if(CHANNEL.isRemotePresent(player.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new FamilyViewPacket(entityId,open,view));}
+    public static void sendFamilyComplaint(net.minecraft.world.entity.LivingEntity entity,String reason){if(!(entity.level() instanceof ServerLevel level))return;for(ServerPlayer player:level.players())if(player.distanceToSqr(entity)<=24*24&&CHANNEL.isRemotePresent(player.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new FamilyComplaintPacket(entity.getId(),entity.getUUID(),reason));}
     public static void action(String action, java.util.UUID townId, CompoundTag payload, java.util.UUID requestId) {
         if (supported()) {
             CompoundTag intent = payload.copy(); ClientConnection.bind(intent);
@@ -48,6 +51,9 @@ public final class SettlementNetwork {
     public static java.util.UUID newRequestId() { return ClientConnection.request(); }
     public static void sendStorageLabels(ServerPlayer player,CompoundTag view) { if(CHANNEL.isRemotePresent(player.connection.connection)) CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new StorageLabelsPacket(view)); }
     public static void register() {
+        CHANNEL.messageBuilder(FamilyComplaintPacket.class,11,NetworkDirection.PLAY_TO_CLIENT).encoder(FamilyComplaintPacket::encode).decoder(FamilyComplaintPacket::decode).consumerMainThread((packet,context)->{DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()->com.siirio.jemsettlements.client.FamilyComplaints.accept(packet));context.get().setPacketHandled(true);}).add();
+        CHANNEL.messageBuilder(FamilyRequestPacket.class,10,NetworkDirection.PLAY_TO_SERVER).encoder(FamilyRequestPacket::encode).decoder(FamilyRequestPacket::decode).consumerMainThread((packet,context)->{var player=context.get().getSender();if(player!=null)com.siirio.jemsettlements.family.FamilyRuntime.request(player,packet.entityId());context.get().setPacketHandled(true);}).add();
+        CHANNEL.messageBuilder(FamilyViewPacket.class,9,NetworkDirection.PLAY_TO_CLIENT).encoder(FamilyViewPacket::encode).decoder(FamilyViewPacket::decode).consumerMainThread((packet,context)->{DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()->com.siirio.jemsettlements.client.FamilyClientState.accept(packet));context.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(BedSpaceNoticePacket.class, 8, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(BedSpaceNoticePacket::encode).decoder(BedSpaceNoticePacket::decode).consumerMainThread((packet, context) -> {
                     DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> com.siirio.jemsettlements.client.BedSpaceNotices.accept(packet));

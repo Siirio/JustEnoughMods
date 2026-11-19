@@ -14,7 +14,7 @@ public final class HousingConditionConfig {
         BED_RADIUS = builder.comment("Horizontal personal bed spacing radius within the same room.").defineInRange("bedRadius", 2, 1, 8);
         FLOOR_PER_RESIDENT = builder.comment("Useful reachable interior floor blocks required per resident.").defineInRange("floorPerResident", 9, 1, 256);
         CROWD_MAX = builder.defineInRange("maximumCrowdingPenalty", 30, 0, 100);
-        LIGHT_GOOD = builder.comment("Minimum block light for a well-lit home; sky light is excluded.").defineInRange("goodBlockLight", 8, 0, 15);
+        LIGHT_GOOD = builder.comment("Block-light level at any checked home point that makes the home well-lit; sky light is excluded.").defineInRange("goodBlockLight", 8, 0, 15);
         LIGHT_MILD = builder.defineInRange("mildBlockLight", 4, 0, 15);
         LIGHT_MILD_PENALTY = builder.defineInRange("mildLightPenalty", 5, 0, 100);
         LIGHT_SEVERE_PENALTY = builder.defineInRange("severeLightPenalty", 10, 0, 100);

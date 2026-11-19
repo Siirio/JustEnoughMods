@@ -1,3 +1,17 @@
+## 2026-11-19 - Correct Settlements homes, Coin slots and village recruits in Sandbox
+
+- User requested a quick `Sandbox JustEnoughMods` deployment of Settlements and Economy without Atlas changes
+- User requires the Home screen to show the vanilla-style text "Нет жилья" instead of empty isometry when a resident has no home
+- User requires housing snapshots and bounds to exclude every block below bed Y, preserve blocks at bed Y and above, and render live block entities such as chests through their native renderer
+- User requires any sufficiently lit checked point in the home to satisfy the general lighting rule. The previous minimum across all floor samples made one dark corner override a nearby torch or jack-o-lantern
+- User requires the Home tab above native merchant screens and requires selected Coin costs only in the two native input slots. Each required denomination now has its own count, and only an insufficient component receives a red slot background. The separate price row above the inventory label was removed
+- Bug / Server Sided / recruit village seeding used `ServerLevel.isVillage`, which classifies POI clusters rather than generated structures, so player-made villager and bell clusters could create recruits / in testing with a valid `#minecraft:village` structure start required at the bell
+- Bug / Both Sided / every entity join initialized a complete family identity immediately, every five-second family cycle inspected every loaded actor, and one village seed created all recruits in one tick / in testing with four queued identity initializations per tick, eight family home evaluations per five-second cycle and one queued recruit spawn per tick
+- The bounded family work includes name, sex, orientation, spouse and marital status state. It remains on the logical server thread because Minecraft entities, worlds and SavedData are not thread-safe
+- Built reobfuscated JEM Economy 1.3.5 and JEM Settlements 2.2.1 without tests. Installed the exact JARs and JEM Identity 1.0.0 into the closed `Sandbox JustEnoughMods` profile. The previous `jem-settlements-2.1.0-sandbox.jar` is recoverable from `sandbox-backups/settlements-20261119`
+- JEM Economy SHA-256 is `cee38832c8c175a43eb6d6764d6348962f482ecd86cf0ac84f0498655f62a65c`. JEM Settlements SHA-256 is `ffcac35531c2ccb5c6fc16ba0a629477fe73814232bb95cb1d2bd8a72f2c3d09`
+- `Test JustEnoughMods`, the ordinary local Server, MineRENT, the stable profile, the managed pack and the release baseline remain unchanged. Minecraft gameplay was not launched and player acceptance remains `in testing`
+
 ## 2026-11-19 - Record transport and long-term design owners
 
 - User requested one permanent long-term ideas document and required every future long-term idea to be added there

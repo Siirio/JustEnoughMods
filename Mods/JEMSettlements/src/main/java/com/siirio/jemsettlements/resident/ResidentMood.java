@@ -56,16 +56,19 @@ public final class ResidentMood {
     private GlobalPos observedBed;
     public Optional<GlobalPos> observedBed() { return Optional.ofNullable(observedBed); }
     public void observedBed(GlobalPos value) { observedBed = value; }
-    private int crowdingPenalty, lightPenalty, fearPenalty;
+    private int crowdingPenalty, lightPenalty, familyLightPenalty, familyResourcePenalty, fearPenalty;
     private boolean conditionsUnknown;
     public int crowdingPenalty() { return crowdingPenalty; }
     public int lightPenalty() { return lightPenalty; }
     public int fearPenalty() { return fearPenalty; }
-    public int conditionsPenalty() { return crowdingPenalty + lightPenalty + fearPenalty; }
+    public int familyLightPenalty() { return familyLightPenalty; }
+    public int familyResourcePenalty() { return familyResourcePenalty; }
+    public int conditionsPenalty() { return crowdingPenalty + Math.max(lightPenalty, familyLightPenalty) + familyResourcePenalty + fearPenalty; }
     public boolean conditionsUnknown() { return conditionsUnknown; }
     public void crowdingPenalty(int value) { crowdingPenalty = clamp(value); }
     public void lightPenalty(int value) { lightPenalty = clamp(value); }
     public void fearPenalty(int value) { fearPenalty = clamp(value); }
+    public void familyHomePenalty(int resources, int light) { familyResourcePenalty = clamp(resources); familyLightPenalty = clamp(light); }
     public void conditionsUnknown(boolean value) { conditionsUnknown = value; }
     private int satiety = 50;
     private long lastServingGameTime = Long.MIN_VALUE;
@@ -224,7 +227,7 @@ public final class ResidentMood {
         tag.put("NeedObservation", needObservation.copy()); tag.putInt("Mood", mood); tag.putInt("EnvironmentBonus", environmentBonus); tag.putInt("SocialMoodCap", socialMoodCap); tag.putInt("Satiety", satiety); tag.putLong("LastServing", lastServingGameTime); tag.putLong("LastDailyUpdate", lastDailyUpdate); tag.putBoolean("Living", living);
         savePos(tag, "CrowdedHome", crowdedHome);
         savePos(tag, "ObservedBed", observedBed);
-        tag.putInt("CrowdingPenalty", crowdingPenalty); tag.putInt("LightPenalty", lightPenalty); tag.putInt("FearPenalty", fearPenalty); tag.putBoolean("ConditionsUnknown", conditionsUnknown);
+        tag.putInt("CrowdingPenalty", crowdingPenalty); tag.putInt("LightPenalty", lightPenalty); tag.putInt("FamilyLightPenalty", familyLightPenalty); tag.putInt("FamilyResourcePenalty", familyResourcePenalty); tag.putInt("FearPenalty", fearPenalty); tag.putBoolean("ConditionsUnknown", conditionsUnknown);
         tag.putInt("RegenerationTicks", regenerationTicks);
         tag.putLong("ServingDay", servingDay); CompoundTag servings = new CompoundTag(); servingsToday.forEach(servings::putInt); tag.put("ServingsToday", servings);
         tag.putBoolean("Craving", craving); tag.putInt("CravingThreshold", cravingThreshold); tag.putInt("CravingCycle", cravingCycle);
@@ -246,7 +249,7 @@ public final class ResidentMood {
         if(tag.getInt("HappinessModel")!=2){resident.needObservation.remove("Housing");resident.needObservation.remove("Food");}
         resident.crowdedHome = loadPos(tag, "CrowdedHome");
         resident.observedBed = loadPos(tag, "ObservedBed");
-        resident.crowdingPenalty = clamp(tag.getInt("CrowdingPenalty")); resident.lightPenalty = clamp(tag.getInt("LightPenalty")); resident.fearPenalty = clamp(tag.getInt("FearPenalty")); resident.conditionsUnknown = tag.getBoolean("ConditionsUnknown");
+        resident.crowdingPenalty = clamp(tag.getInt("CrowdingPenalty")); resident.lightPenalty = clamp(tag.getInt("LightPenalty")); resident.familyLightPenalty = clamp(tag.getInt("FamilyLightPenalty")); resident.familyResourcePenalty = clamp(tag.getInt("FamilyResourcePenalty")); resident.fearPenalty = clamp(tag.getInt("FearPenalty")); resident.conditionsUnknown = tag.getBoolean("ConditionsUnknown");
         resident.environmentBonus = clamp(tag.getInt("EnvironmentBonus")); resident.socialMoodCap = tag.contains("SocialMoodCap") ? clamp(tag.getInt("SocialMoodCap")) : 100;
         resident.mood = tag.contains("Mood") ? clamp(tag.getInt("Mood")) : 50; resident.satiety = tag.contains("Satiety") ? clamp(tag.getInt("Satiety")) : 50;
         resident.lastServingGameTime = tag.contains("LastServing") ? tag.getLong("LastServing") : Long.MIN_VALUE; resident.lastDailyUpdate = tag.contains("LastDailyUpdate") ? tag.getLong("LastDailyUpdate") : Long.MIN_VALUE;
