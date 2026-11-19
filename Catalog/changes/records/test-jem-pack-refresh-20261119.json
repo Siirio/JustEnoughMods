@@ -62,6 +62,16 @@
       "type": "id",
       "registry": "entities",
       "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:zombie_villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
     }
   ],
   "conditions": [
@@ -73,6 +83,9 @@
     },
     {
       "world_generation": "Giant Torii and removal of Structory affect newly generated chunks"
+    },
+    {
+      "architecture_scope": "The family and individual-home owner is modpack-level JEM Settlements on integrated and dedicated logical servers. Current distribution remains Test JEM and the ordinary local server."
     }
   ],
   "precedence": {
@@ -83,7 +96,7 @@
     ]
   },
   "change": {
-    "summary": "Refresh Test JEM mods, quests, shaders, menu scale and settlement breeding admission",
+    "summary": "Refresh Test JEM mods, quests, shaders and menu scale, then add the universal JEM Settlements family and individual-home system",
     "modifiers": [
       {
         "property": "distribution.removed_mods",
@@ -192,11 +205,19 @@
         ]
       },
       {
-        "property": "minecraft:villager.breeding_home",
-        "operation": "add",
-        "before": "native breeding admission only",
-        "after": "each parent has a bound HOME whose loaded 3x3x3 cube contains a bed, an acquirable villager job-site POI and a normal or trapped chest",
-        "notes": "This is an additional post-native admission check. Food, age, willingness, spare child bed, path validation, housing happiness, roof and personal-space rules retain their owners."
+        "property": "jem_settlements.villager_family_and_home",
+        "operation": "replace",
+        "before": "native VillagerMakeLove plus one additional parent HOME cube admission",
+        "after": {
+          "actors": ["minecraft:villager", "minecraft:zombie_villager", "supported recruits entities"],
+          "identity": "persistent Jade-only international name, immutable sex, 5 percent same-sex orientation, spouse and parent relations",
+          "home": "one bed-head anchored 3x3x3 zone from bed Y through Y+2 per person, with unique bed/chest/workstation and at least one light-emitting block; children do not require a workstation",
+          "family": "permanent spouse after courtship, remarriage 1-10 Minecraft days after spouse death, close-kin exclusion and ordinary villager children from every fertile pair",
+          "presentation": "Jade rows, 5-second complaint and 10-second quiet cycle, native trade and Recruits Home tabs, HousingInspector and native Xaero centering",
+          "villages": "one-time top-up to 4-5 basic village guards at a persisted bell anchor",
+          "recipes": "all six installed Recruits profession tables"
+        },
+        "notes": "JEM replaces VillagerMakeLove with one bounded family engine. Native Villager food and Recruits hunger/morale remain eligibility inputs. Missing home resources reduce happiness and block birth but do not block sleep. Spouse beds may be separate or adjacent."
       },
       {
         "property": "client.shader_inventory",
@@ -224,9 +245,9 @@
     ]
   },
   "rationale": {
-    "purpose": "Apply the requested Test JEM content, presentation, quest-economy and settlement rules while keeping the recruit limit server-owned and preserving unrelated gameplay owners",
-    "decision_source": "User-requested removals, additions, Inventory Tabs restoration, shader refresh, FTB Coin rewards, fixed main-menu scale, settlement breeding home, category split, Sirok boundary increase and MineRENT-only recruit cap",
-    "implementation_choices": "Use the same Distant Horizons JAR on client and server, add 15 blocks to each horizontal side of Sirok's native structure bounds, classify only items already owned by the Weapons tab, fund quest rewards from OPERATIONS, require one complete bound home cube for each breeding parent, and update Platform to the current Forge release that satisfies VanillaBackport 1.2.2"
+    "purpose": "Apply the requested Test JEM content, presentation, quest-economy and modpack-level villager-family rules while keeping the recruit limit server-owned and preserving unrelated gameplay owners",
+    "decision_source": "User-requested removals, additions, Inventory Tabs restoration, shader refresh, FTB Coin rewards, fixed main-menu scale, universal villager families and homes, category split, Sirok boundary increase and MineRENT-only recruit cap",
+    "implementation_choices": "Use the same Distant Horizons JAR on client and server, add 15 blocks to each horizontal side of Sirok's native structure bounds, classify only items already owned by the Weapons tab, fund quest rewards from OPERATIONS, use one persisted JEM family owner across Villager and Recruits replacements, retain table-origin family capability through promotions, seed villages by persisted bell anchor, and update Platform to the current Forge release that satisfies VanillaBackport 1.2.2"
   },
   "introduced": {
     "date": "2026-11-19",
@@ -303,6 +324,22 @@
         "Server/mods/tiny_takeover_backport-forge-1.20.1-1.8.2.jar",
         "Server/mods/VanillaBackport-forge-1.20.1-1.2.2.jar"
       ]
+    },
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "replace_breeding_home_with_universal_family_system",
+      "summary": "Replace the narrow parent-home admission with persistent families, individual homes, Recruits integration, Jade and native Home UI",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/family/**",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/Family**",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/XaeroHomeMap.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/recruits/**FamilyMixin.java",
+        "Mods/JEMSettlements/src/main/resources/data/recruits/recipes/**",
+        "Docs/settlements/DESIGN_JOURNAL.md",
+        "Docs/settlements/standalone/README.md"
+      ]
     }
   ],
   "impacts": {
@@ -312,10 +349,14 @@
       "FTB Quests",
       "Fresh Animations",
       "JEI",
+      "Jade",
       "JEM Economy",
       "JEM Settlements",
       "Oculus shaders",
       "Platform",
+      "Recruits",
+      "Villager families",
+      "Xaero World Map",
       "hosted bosses",
       "structures"
     ],
@@ -327,13 +368,17 @@
       "VanillaBackport owns the overlapping Copper Age and spear backports while Trials remains installed",
       "Platform 1.4.2 satisfies VanillaBackport 1.2.2 and remains inside Rotten Creatures' open dependency range",
       "Tiny Takeover uses vanilla entity types and swaps only its baby model during render, so Fresh Animations has no unsupported Tiny Takeover entity IDs"
+      ,"JEM Settlements is the single family authority. Settlement membership consumes its home penalties but does not define different family rules"
+      ,"Recruits workstation conversion and promotion replace entity bodies while retaining one persistent family person ID and provenance"
+      ,"Xaero receives only a temporary native camera destination and no waypoint mutation"
     ],
     "notes": [
       "Sirok gains 15 blocks on each X and Z side for 30 blocks more total width per horizontal axis",
       "Guard-specific quest hooks are removed with Guard Villagers",
       "Inventory Tabs is restored with its loaded-chunk-only JEM patch and client configuration",
       "The title screen enforces logical GUI scale 4 without changing the saved in-game GUI option",
-      "Villager breeding retains native admission and adds one complete loaded home cube for each parent",
+      "VillagerMakeLove is disabled. One bounded JEM engine handles Villager and Recruits courtship and birth with native food or hunger inputs",
+      "Each person owns an upward 3x3x3 zone. Spouse beds may be separate or adjacent, and home resource assignments remain unique",
       "The first local server start exposed Platform 1.3.4 as the earliest invalid dependency state. The managed client and server now use the same Platform 1.4.2 artifact",
       "No MineRENT, stable profile or release baseline mutation is part of this branch"
     ],

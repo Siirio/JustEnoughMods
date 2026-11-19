@@ -1,12 +1,16 @@
 # Settlements standalone design
 
-## Breeding home admission — 2026-11-19
+## Universal villager families and individual homes — 2026-11-19
 
-JEM Settlements adds one condition after native villager breeding admission. Each parent must have a bound `HOME` in the current dimension. The loaded 3×3×3 cube centered on that HOME must contain a bed, an acquirable villager job-site POI and a normal or trapped chest. An unloaded block in the cube fails closed until the chunk is loaded.
+JEM Settlements owns one modpack-level family system for ordinary villagers, zombie villagers and supported Recruits on integrated and dedicated logical servers. Town membership is separate. Persistent identity contains a Jade-only generated name, immutable sex and orientation, spouse, parents, assignments, death and remarriage state. Same-sex orientation has a deterministic 5% chance. Nitwits and village-origin or independent Recruits are eternal-single. Table-origin Recruits stay family-capable through native promotion.
 
-This rule does not replace native food, age, willingness, spare child bed or path validation. It does not replace JEM housing happiness, roof, personal-space, settlement membership or child-registration logic. The intentional behavior change is narrow: a spare child bed alone no longer permits a birth when either parent's home unit is incomplete. The rule applies on integrated and dedicated logical servers because the current universal Settlements module is active on both.
+Every person owns one bed-head anchored 3×3×3 zone from bed Y through Y+2. Adults require unique bed, chest and job-site POI plus one light-emitting block. Children require unique bed, chest and light. Spouses keep individual zones. Separate beds and adjacent double-bed placement are both valid for spouses. Other nearby beds retain privacy refusal. Missing home resources reduce happiness and prevent birth, but do not prevent sleep. Shared lighting penalties use one maximum rather than two deductions.
 
-Source and production artifacts are implemented. In-game birth acceptance is not run.
+The bounded JEM courtship and birth loop replaces `VillagerMakeLove` so Villagers and Recruits use one authority. Villager food and Recruits hunger/morale remain native eligibility inputs. Births always create a normal villager child and do not require a prepared child home. Adult children need a complete adult home before courtship. Direct relatives through grandparents and siblings are excluded. Confirmed spouse death permits remarriage after 1–10 Minecraft days.
+
+Jade shows the generated name, gender, family and orientation. Entity-linked complaints use a 5-second visible and 10-second hidden cycle. Native Villager trade and Recruits screens retain their layouts and receive a top Home tab. Unemployed Villagers and Nitwits open Home directly. The existing HousingInspector renders the exact zone. The map action opens native Xaero World Map centered on the assigned home without creating a waypoint.
+
+JEM adds recipes for the six installed Recruits workstations. Each loaded bell village is topped up once to four or five basic Recruit, Bowman and Shieldman guards. Existing guards count. The persisted bell marker prevents later duplication. Source compilation is complete. In-game family, GUI and village acceptance is not run.
 
 ## Universal production contract - 2026-10-22
 

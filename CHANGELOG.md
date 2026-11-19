@@ -1,3 +1,22 @@
+## 2026-11-19 - Add universal villager families and individual homes
+
+- User replaced the earlier narrow breeding-home rule with a modpack-level family and home system for every ordinary Villager, Zombie Villager and supported Recruit. Settlement membership does not change the rules
+- Added persistent Jade-only international names, immutable male/female sex, 5% same-sex orientation, spouse names and family status. Nitwits and village-origin or independent Recruits show "Forever single"
+- Added permanent spouses after mutual courtship, spouse-death remarriage after 1–10 Minecraft days and exclusions for parents, children, siblings, grandparents and grandchildren. Same-sex spouses create heart particles but do not create children
+- Replaced vanilla `VillagerMakeLove` with one bounded server-owned Villager/Recruits loop. Villager food and native Recruits hunger/morale remain eligibility inputs. Recruit births create ordinary Villager children. Children can be born before a child home exists, but an adult child needs a complete adult home before courtship
+- Added one upward 3×3×3 zone per person, anchored at the bed head. Adults need unique bed, chest and workstation assignments plus a light-emitting block. Children need unique bed, chest and light. Spouses may use separate or adjacent beds without a privacy penalty
+- Missing chest, workstation or light reduces happiness and blocks birth without blocking sleep. The family light penalty and existing housing-light penalty use one maximum, so the same cause is not charged twice
+- Added 5-second world complaints with 10-second quiet intervals, Jade family rows, a Home tab on native trade and Recruits screens, direct Home opening for unemployed Villagers and Nitwits, an exact HousingInspector snapshot and native Xaero map centering without waypoint mutation
+- Bug / Both Sided / the first complaint schedule compared 300-tick entity residues from a loop that runs only every 100 ticks, so two thirds of residue classes could never send their bubble / in testing through a three-slot cadence derived from the actual 100-tick family cycle
+- Preserved family identity and assignments through Villager infection/cure, Recruits workstation conversion and native Recruits promotion
+- Added recipes for all six installed Recruits workstations. Each loaded bell village is topped up once to four or five basic Recruit, Bowman and Shieldman guards. Existing guards count and a saved bell marker prevents repeats
+- Implementation choice: table-origin Recruits remain family-capable through special promotions. Village and independent origin remains eternal-single. Assassins remain outside the family actor set
+- Updated JEM Settlements protocol to 12 and module version to 2.2.0. The production JAR SHA-256 is `7568f057ad487262350412bb6369a1d1f9b0ca27242ef6716bf5af09e3d81a99`. Source compilation completed under JDK 21 with Java 17 output. The full Registry Atlas rebuild, impact scan and validation completed successfully. Automated tests and Minecraft gameplay were not run. Player acceptance remains `in testing`
+- The ordinary local dedicated server loaded JEM Settlements 2.2.0 and the six Recruits workstation recipes. The initial family publication was generation 178. The complaint-cadence correction then produced the reviewed `+0 ~2 -0` delta and final generation 179 with content token `c9555e1bc4e8975f716e5a5b803de602b905b9f7`. The final preview reported `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied final generation 179 through native AutoModpack. Its active token matches the published head, 328 managed JARs match canonical hashes and no native transaction remains pending. The local server then saved all dimensions and stopped
+- Final pack status reports matching staged and published manifest SHA-1 `e82da094d48835f3b340a472fe9fa92138ebcda1`
+- This implementation targets the modpack and matching integrated or dedicated servers. MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
 ## 2026-11-19 - Refresh Test JEM mods and weapon navigation
 
 - User requested a new branch from `develop` and a Test JEM-only update. MineRENT, the stable profile and the immutable release baseline remain unchanged

@@ -16,16 +16,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class VillagerBirthMixin {
     @Inject(method = "isBreedingPossible", at = @At("RETURN"), cancellable = true)
     private void jem$requireCompleteHomes(Villager villager, CallbackInfoReturnable<Boolean> cir) {
-        if (!cir.getReturnValue()) return;
-        Villager partner = villager.getBrain().getMemory(MemoryModuleType.BREED_TARGET)
-                .filter(Villager.class::isInstance).map(Villager.class::cast).orElse(null);
-        if (partner == null || !VillagerBreedingHome.eligiblePair(villager, partner)) {
-            cir.setReturnValue(false);
-        }
+        // JEM owns one bounded family engine for villagers and Recruits. Keeping the vanilla
+        // behavior active would create a second courtship loop and retain its spare-bed rule.
+        cir.setReturnValue(false);
     }
 
     @Inject(method = "breed", at = @At("RETURN"))
     private void jem$registeredChild(ServerLevel level, Villager first, Villager second, CallbackInfoReturnable<Optional<Villager>> cir) {
-        cir.getReturnValue().ifPresent(child -> com.siirio.jemsettlements.runtime.SettlementRuntime.registerBornChild(level, first, second, child));
+        // Birth registration is performed by FamilyRuntime at the same authoritative spawn.
     }
 }

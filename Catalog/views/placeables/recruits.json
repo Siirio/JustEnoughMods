@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "f3b5c91e7331e6f4ec4edde59c8cb98789780254",
+  "snapshot_sha": "9077492569467d0a295d9aeb657676dc1fdcaddd",
   "generation": {
-    "generated_utc": "2026-11-18T23:16:06.323559+00:00",
+    "generated_utc": "2026-11-19T02:05:09.887556+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -26,11 +26,13 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/bowman_block.json"
+        "assets/recruits/models/item/bowman_block.json",
+        "data/recruits/recipes/bowman_block.json"
       ],
       "display_name_en_us": "Bowman's Table",
       "display_name_ru_ru": "Стол рекрута-лучника",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/bowman_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/bowman_block.json"
       ],
       "confidence": "inferred",
@@ -47,7 +49,9 @@
       "consumed_on_place": true,
       "break_drops": null,
       "permissions": "native Forge placement checks",
-      "acquisition_routes": []
+      "acquisition_routes": [
+        "recruits:bowman_block"
+      ]
     },
     {
       "item_id": "recruits:crossbowman_block",
@@ -62,11 +66,13 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/crossbowman_block.json"
+        "assets/recruits/models/item/crossbowman_block.json",
+        "data/recruits/recipes/crossbowman_block.json"
       ],
       "display_name_en_us": "Crossbowman's Table",
       "display_name_ru_ru": "Стол рекрута-арбалетчика",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/crossbowman_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/crossbowman_block.json"
       ],
       "confidence": "inferred",
@@ -83,7 +89,9 @@
       "consumed_on_place": true,
       "break_drops": null,
       "permissions": "native Forge placement checks",
-      "acquisition_routes": []
+      "acquisition_routes": [
+        "recruits:crossbowman_block"
+      ]
     },
     {
       "item_id": "recruits:horseman_block",
@@ -98,11 +106,13 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/horseman_block.json"
+        "assets/recruits/models/item/horseman_block.json",
+        "data/recruits/recipes/horseman_block.json"
       ],
       "display_name_en_us": "Horseman's Table",
       "display_name_ru_ru": "Стол рекрута-всадника",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/horseman_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/horseman_block.json"
       ],
       "confidence": "inferred",
@@ -119,7 +129,9 @@
       "consumed_on_place": true,
       "break_drops": null,
       "permissions": "native Forge placement checks",
-      "acquisition_routes": []
+      "acquisition_routes": [
+        "recruits:horseman_block"
+      ]
     },
     {
       "item_id": "recruits:nomad_block",
@@ -134,11 +146,13 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/nomad_block.json"
+        "assets/recruits/models/item/nomad_block.json",
+        "data/recruits/recipes/nomad_block.json"
       ],
       "display_name_en_us": "Nomad's Table",
       "display_name_ru_ru": "Стол рекрута-кочевника",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/nomad_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/nomad_block.json"
       ],
       "confidence": "inferred",
@@ -155,7 +169,9 @@
       "consumed_on_place": true,
       "break_drops": null,
       "permissions": "native Forge placement checks",
-      "acquisition_routes": []
+      "acquisition_routes": [
+        "recruits:nomad_block"
+      ]
     },
     {
       "item_id": "recruits:recruit_block",
@@ -170,11 +186,13 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/recruit_block.json"
+        "assets/recruits/models/item/recruit_block.json",
+        "data/recruits/recipes/recruit_block.json"
       ],
       "display_name_en_us": "Recruit's Table",
       "display_name_ru_ru": "Стол рекрута",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/recruit_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/recruit_block.json"
       ],
       "confidence": "inferred",
@@ -191,7 +209,9 @@
       "consumed_on_place": true,
       "break_drops": null,
       "permissions": "native Forge placement checks",
-      "acquisition_routes": []
+      "acquisition_routes": [
+        "recruits:recruit_block"
+      ]
     },
     {
       "item_id": "recruits:recruit_shield_block",
@@ -206,11 +226,13 @@
         "client"
       ],
       "observed_in": [
-        "assets/recruits/models/item/recruit_shield_block.json"
+        "assets/recruits/models/item/recruit_shield_block.json",
+        "data/recruits/recipes/recruit_shield_block.json"
       ],
       "display_name_en_us": "Recruit Shieldman's Table",
       "display_name_ru_ru": "Стол рекрута-щитоносца",
       "source_provenance": [
+        "jem-settlements-2.2.0.jar:data/recruits/recipes/recruit_shield_block.json",
         "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/recruit_shield_block.json"
       ],
       "confidence": "inferred",
@@ -227,7 +249,9 @@
       "consumed_on_place": true,
       "break_drops": null,
       "permissions": "native Forge placement checks",
-      "acquisition_routes": []
+      "acquisition_routes": [
+        "recruits:recruit_shield_block"
+      ]
     }
   ]
 }

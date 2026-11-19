@@ -20,6 +20,7 @@ public final class JemSettlements {
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.network.SettlementActions.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.network.SettlementWarnings.class);
         MinecraftForge.EVENT_BUS.register(SettlementRuntime.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.family.FamilyRuntime.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.happiness.CityInspection.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.happiness.AnimalObservationService.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.happiness.GuardObservationService.class);
