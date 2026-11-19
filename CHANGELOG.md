@@ -35,6 +35,17 @@
 - Personal video, sound, server-address and resource-pack selections were not copied from the stable profile
 - This source snapshot does not change MineRENT, the stable profile, the published AutoModpack generation or the immutable release baseline
 
+## 2026-11-19 - Record transport and long-term design owners
+
+- User requested one permanent long-term ideas document and required every future long-term idea to be added there
+- Added the biome-identity concept for regional ores, mobs, fauna, flora, hostile mobs, and mechanics without selecting exact content or authorizing implementation
+- User selected `develop` and requested a repository instruction that makes the long-term backlog visible to later sessions
+- User fixed the current transport direction: remove backpack Inception and stack upgrades, make occupied backpack slots reduce on-foot movement, allow 128-block stacks inside shulker boxes, make minecart items stack to 16 without changing their recipe, require six blocks of falling before elytra deployment, and allow batches of eight elytra firework boosts followed by a two-minute refill cooldown
+- User kept only the biplane in active aircraft scope, required aircraft behavior at the universal modpack level, kept Create train speed native, kept TPA unchanged, and requested planning only
+- Codex selected exact working values of one third of one percentage point movement reduction per occupied backpack slot with a 70% cap, 18 blocks/s straight minecarts, 14 blocks/s ascents, 12 blocks/s curves, 32 normal rails and 16 powered rails per recipe, portable-container non-nesting, and a persisted all-at-once firework refill model
+- The plan records that native ice boats were not buffed and already reach about 40 blocks/s on normal or packed ice and about 72.7 blocks/s on blue ice
+- Documentation only, with no gameplay, recipe, configuration, JAR, client, server, AutoModpack, stable profile, or release baseline change
+
 ## 2026-11-19 - Release guarded Radium and Particle Rain
 
 - User requested completion of the prepared update on MineRENT and the local client, followed by production promotion
