@@ -66,6 +66,7 @@ public final class BedPersonalSpace {
         if (home == null) home = resident.observedBed().orElseGet(() -> resident.crowdedHome().orElse(null));
         if (home == null || !home.dimension().equals(level.dimension())) return;
         Space space = inspect(level, home.pos());
+        if (space == Space.CROWDED && com.siirio.jemsettlements.family.FamilyRuntime.spouseBedExemption(entity, home.pos())) space = Space.CLEAR;
         if (space == Space.CROWDED) {
             resident.crowdedHome(home);
             if (entity.isSleeping()) {
@@ -79,14 +80,14 @@ public final class BedPersonalSpace {
     public static boolean refuse(LivingEntity entity, BlockPos bed) {
         if (!(entity.level() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return false;
         var data = SettlementSavedData.get(level.getServer()); var resident = history(entity, data);
-        if (resident == null) return false;
         Space space = inspect(level, bed);
+        if (space == Space.CROWDED && com.siirio.jemsettlements.family.FamilyRuntime.spouseBedExemption(entity, bed)) space = Space.CLEAR;
         if (space == Space.NOT_BED) return false;
         // Pending topology cannot grant successful sleep before privacy is known.
         if (space == Space.UNAVAILABLE) return true;
-        resident.observedBed(GlobalPos.of(level.dimension(), head(bed, level.getBlockState(bed))));
-        if (space != Space.CROWDED) { resident.crowdedHome(null); data.changed(); return false; }
-        resident.crowdedHome(GlobalPos.of(level.dimension(), head(bed, level.getBlockState(bed))));
+        if (resident != null) resident.observedBed(GlobalPos.of(level.dimension(), head(bed, level.getBlockState(bed))));
+        if (space != Space.CROWDED) { if (resident != null) { resident.crowdedHome(null); data.changed(); } return false; }
+        if (resident != null) resident.crowdedHome(GlobalPos.of(level.dimension(), head(bed, level.getBlockState(bed))));
         if (entity instanceof Villager villager) {
             var home = villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null);
             if (home != null && home.dimension().equals(level.dimension()) && level.hasChunkAt(home.pos())
@@ -101,6 +102,6 @@ public final class BedPersonalSpace {
             entity.getPersistentData().putLong("JemBedSpaceNoticeAfter", now + 200);
             com.siirio.jemsettlements.network.SettlementNetwork.sendBedSpaceNotice(entity);
         }
-        data.changed(); return true;
+        if (resident != null) data.changed(); return true;
     }
 }

@@ -63,6 +63,20 @@ public final class EconomyApi {
         return EconomySavedData.get(authenticatedActor.getServer()).transfer(source.id(), destination, amount, idempotencyKey);
     }
 
+    /** Finite system-funded reward for the authenticated actor's own account. */
+    public static TransferResult fundedSystemReward(ServerPlayer authenticatedActor, SystemAccount source,
+                                                    long amount, String idempotencyKey) {
+        if (!CurrencyAuthority.active(authenticatedActor)) {
+            return new TransferResult(TransferResult.Status.UNAVAILABLE, null, 0L, 0L);
+        }
+        var principal = IdentityPolicy.resolve(authenticatedActor);
+        if (principal.isEmpty()) {
+            return new TransferResult(TransferResult.Status.UNAUTHENTICATED, null, 0L, 0L);
+        }
+        return EconomySavedData.get(authenticatedActor.getServer()).transfer(
+                source.id(), principal.get().accountId(), amount, idempotencyKey);
+    }
+
     public static PhysicalCoinService.WithdrawResult withdraw(ServerPlayer player, long amount, UUID requestId) {
         var principal = IdentityPolicy.resolve(player);
         if (!CurrencyAuthority.active(player)) return new PhysicalCoinService.WithdrawResult(PhysicalCoinService.Status.UNAVAILABLE, 0L, java.util.Map.of());

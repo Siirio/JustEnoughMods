@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "mobs",
-  "snapshot_sha": "c0bb316b83c2976e2486f766eca17a92bbeaeaac",
+  "snapshot_sha": "9077492569467d0a295d9aeb657676dc1fdcaddd",
   "generation": {
-    "generated_utc": "2026-11-18T06:09:04.390884+00:00",
+    "generated_utc": "2026-11-19T02:05:09.887556+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -123,7 +123,7 @@
       "display_name_en_us": "Armadillo",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -565,6 +565,51 @@
       "mount_eligibility": "unresolved"
     },
     {
+      "entity_id": "minecraft:camel_husk",
+      "registry_type": "entity_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Camel Husk",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "roles": [],
+      "living": null,
+      "attitude": null,
+      "default_health": null,
+      "default_attributes": null,
+      "natural_spawn": null,
+      "biomes": [],
+      "dimensions": [],
+      "structure_spawns": [],
+      "summoned_by_boss_ids": [],
+      "related_boss_ids": [],
+      "relationship_evidence": [],
+      "boss_campaign_role": null,
+      "taming_method": null,
+      "owner_mechanism": null,
+      "rideable": null,
+      "ride_control": null,
+      "breeding": null,
+      "despawn_behavior": null,
+      "drops": [],
+      "mount_eligibility": "unresolved"
+    },
+    {
       "entity_id": "minecraft:cat",
       "registry_type": "entity_view",
       "schema_version": 1,
@@ -899,14 +944,12 @@
         "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "assets/minecraft/lang/ru_ru.json"
+        "assets/vanillabackport/lang/en_us.json"
       ],
       "display_name_en_us": "Copper Golem",
-      "display_name_ru_ru": "Медный голем",
+      "display_name_ru_ru": null,
       "source_provenance": [
-        "copperagebackport-forge-1.20.1-0.1.5.jar:assets/minecraft/lang/en_us.json",
-        "copperagebackport-forge-1.20.1-0.1.5.jar:assets/minecraft/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -998,8 +1041,8 @@
       "display_name_en_us": "Creaking",
       "display_name_ru_ru": "Скрипун",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1046,6 +1089,96 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "roles": [],
+      "living": null,
+      "attitude": null,
+      "default_health": null,
+      "default_attributes": null,
+      "natural_spawn": null,
+      "biomes": [],
+      "dimensions": [],
+      "structure_spawns": [],
+      "summoned_by_boss_ids": [],
+      "related_boss_ids": [],
+      "relationship_evidence": [],
+      "boss_campaign_role": null,
+      "taming_method": null,
+      "owner_mechanism": null,
+      "rideable": null,
+      "ride_control": null,
+      "breeding": null,
+      "despawn_behavior": null,
+      "drops": [],
+      "mount_eligibility": "unresolved"
+    },
+    {
+      "entity_id": "minecraft:cushion",
+      "registry_type": "entity_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Cushion",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "roles": [],
+      "living": null,
+      "attitude": null,
+      "default_health": null,
+      "default_attributes": null,
+      "natural_spawn": null,
+      "biomes": [],
+      "dimensions": [],
+      "structure_spawns": [],
+      "summoned_by_boss_ids": [],
+      "related_boss_ids": [],
+      "relationship_evidence": [],
+      "boss_campaign_role": null,
+      "taming_method": null,
+      "owner_mechanism": null,
+      "rideable": null,
+      "ride_control": null,
+      "breeding": null,
+      "despawn_behavior": null,
+      "drops": [],
+      "mount_eligibility": "unresolved"
+    },
+    {
+      "entity_id": "minecraft:custom_boat",
+      "registry_type": "entity_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Boat",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2516,8 +2649,8 @@
       "display_name_en_us": "Happy Ghast",
       "display_name_ru_ru": "Счастливый гаст",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3465,6 +3598,51 @@
       "mount_eligibility": "unresolved"
     },
     {
+      "entity_id": "minecraft:nautilus",
+      "registry_type": "entity_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Nautilus",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "roles": [],
+      "living": null,
+      "attitude": null,
+      "default_health": null,
+      "default_attributes": null,
+      "natural_spawn": null,
+      "biomes": [],
+      "dimensions": [],
+      "structure_spawns": [],
+      "summoned_by_boss_ids": [],
+      "related_boss_ids": [],
+      "relationship_evidence": [],
+      "boss_campaign_role": null,
+      "taming_method": null,
+      "owner_mechanism": null,
+      "rideable": null,
+      "ride_control": null,
+      "breeding": null,
+      "despawn_behavior": null,
+      "drops": [],
+      "mount_eligibility": "unresolved"
+    },
+    {
       "entity_id": "minecraft:ocelot",
       "registry_type": "entity_view",
       "schema_version": 1,
@@ -3569,14 +3747,12 @@
         "client"
       ],
       "observed_in": [
-        "assets/vanillabackport/lang/en_us.json",
         "assets/vanillabackport/lang/ru_ru.json"
       ],
       "display_name_en_us": "Pale Oak Boat",
       "display_name_ru_ru": "Лодка из бледного дуба",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3619,11 +3795,11 @@
         "assets/vanillabackport/lang/en_us.json",
         "assets/vanillabackport/lang/ru_ru.json"
       ],
-      "display_name_en_us": "Pale Oak Boat with Chest",
+      "display_name_en_us": "Boat with Chest",
       "display_name_ru_ru": "Грузовая лодка из бледного дуба",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3670,6 +3846,51 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "roles": [],
+      "living": null,
+      "attitude": null,
+      "default_health": null,
+      "default_attributes": null,
+      "natural_spawn": null,
+      "biomes": [],
+      "dimensions": [],
+      "structure_spawns": [],
+      "summoned_by_boss_ids": [],
+      "related_boss_ids": [],
+      "relationship_evidence": [],
+      "boss_campaign_role": null,
+      "taming_method": null,
+      "owner_mechanism": null,
+      "rideable": null,
+      "ride_control": null,
+      "breeding": null,
+      "despawn_behavior": null,
+      "drops": [],
+      "mount_eligibility": "unresolved"
+    },
+    {
+      "entity_id": "minecraft:parched",
+      "registry_type": "entity_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Parched",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5095,8 +5316,8 @@
       "display_name_en_us": "Sulfur Cube",
       "display_name_ru_ru": "Серный куб",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5142,8 +5363,8 @@
       "display_name_en_us": "Contains: %s",
       "display_name_ru_ru": "Содержит: %s",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5189,8 +5410,8 @@
       "display_name_en_us": "Sulfur Cube explosions are disabled",
       "display_name_ru_ru": "Взрывы серных кубов выключены",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8834,6 +9055,51 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "roles": [],
+      "living": null,
+      "attitude": null,
+      "default_health": null,
+      "default_attributes": null,
+      "natural_spawn": null,
+      "biomes": [],
+      "dimensions": [],
+      "structure_spawns": [],
+      "summoned_by_boss_ids": [],
+      "related_boss_ids": [],
+      "relationship_evidence": [],
+      "boss_campaign_role": null,
+      "taming_method": null,
+      "owner_mechanism": null,
+      "rideable": null,
+      "ride_control": null,
+      "breeding": null,
+      "despawn_behavior": null,
+      "drops": [],
+      "mount_eligibility": "unresolved"
+    },
+    {
+      "entity_id": "minecraft:zombie_nautilus",
+      "registry_type": "entity_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Zombie Nautilus",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

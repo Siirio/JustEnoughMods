@@ -1,8 +1,8 @@
 package com.justenoughmods.achievementguide.integration.home;
 
-import com.github.smallinger.copperagebackport.block.CopperChestBlock;
-import com.github.smallinger.copperagebackport.entity.CopperGolemEntity;
-import com.github.smallinger.copperagebackport.entity.ai.behavior.TransportItemsBetweenContainers.TransportItemTarget;
+import com.blackgear.vanillabackport.common.level.blocks.CopperChestBlock;
+import com.blackgear.vanillabackport.common.level.entities.mob.animal.golem.copper_golem.CopperGolem;
+import com.blackgear.vanillabackport.common.level.entities.mob.animal.golem.copper_golem.TransportItemsBetweenContainers.TransportItemTarget;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -28,7 +28,7 @@ public final class HomeCopperProof {
 
     public static void created(Entity entity, BlockPos pumpkin) {
         ServerPlayer actor = HomeItemUseProof.actor();
-        if (!(entity instanceof CopperGolemEntity) || actor == null || actor.level() != entity.level()
+        if (!(entity instanceof CopperGolem) || actor == null || actor.level() != entity.level()
                 || !HomeItemUseProof.used(Items.CARVED_PUMPKIN)) return;
         var level = actor.serverLevel();
         BlockPos chest = pumpkin.below();
@@ -39,7 +39,7 @@ public final class HomeCopperProof {
 
     public static void begin(PathfinderMob mob, Container container, TransportItemTarget target, boolean pickup) {
         if (TRANSFERS.get().size() >= 16) TRANSFERS.get().clear();
-        boolean valid = mob instanceof CopperGolemEntity && target != null && target.container() == container
+        boolean valid = mob instanceof CopperGolem && target != null && target.container() == container
                 && validTarget(mob, target) && container.getContainerSize() <= 256;
         List<ItemStack> stock = new ArrayList<>();
         if (valid) for (int slot = 0; slot < container.getContainerSize(); slot++) stock.add(container.getItem(slot).copy());
@@ -53,7 +53,7 @@ public final class HomeCopperProof {
         ItemStack now = mob.getMainHandItem();
         if (pickup) {
             mob.getPersistentData().remove(CARGO);
-            if (!before.held.isEmpty() || now.isEmpty() || !before.target.state().is(com.github.smallinger.copperagebackport.ModTags.Blocks.COPPER_CHESTS)
+            if (!before.held.isEmpty() || now.isEmpty() || !(before.target.state().getBlock() instanceof CopperChestBlock)
                     || count(before.stock, now) - count(container, now) != now.getCount()) return;
             CompoundTag cargo = new CompoundTag();
             cargo.put("stack", now.save(new CompoundTag()));
@@ -80,7 +80,7 @@ public final class HomeCopperProof {
     }
 
     public static void assigned(Entity entity, EquipmentSlot slot) {
-        if (!(entity instanceof CopperGolemEntity) || slot != EquipmentSlot.MAINHAND) return;
+        if (!(entity instanceof CopperGolem) || slot != EquipmentSlot.MAINHAND) return;
         Transfer transfer = TRANSFERS.get().peek();
         if (transfer != null && transfer.mob == entity || LOADING.get().peek() == entity) return;
         entity.getPersistentData().remove(CARGO);
@@ -119,6 +119,12 @@ public final class HomeCopperProof {
             if (ItemStack.isSameItemSameTags(item, variant)) total += item.getCount();
         }
         return total;
+    }
+    @net.minecraftforge.eventbus.api.SubscribeEvent
+    public static void joined(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
+        if (event.getEntity() instanceof CopperGolem golem && event.getLevel() instanceof net.minecraft.server.level.ServerLevel) {
+            created(golem, golem.blockPosition());
+        }
     }
     private HomeCopperProof() {}
 }

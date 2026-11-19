@@ -1,7 +1,7 @@
 package com.justenoughmods.achievementguide.mixin;
 
-import com.github.smallinger.copperagebackport.entity.ai.behavior.TransportItemsBetweenContainers;
-import com.github.smallinger.copperagebackport.entity.ai.behavior.TransportItemsBetweenContainers.TransportItemTarget;
+import com.blackgear.vanillabackport.common.level.entities.mob.animal.golem.copper_golem.TransportItemsBetweenContainers;
+import com.blackgear.vanillabackport.common.level.entities.mob.animal.golem.copper_golem.TransportItemsBetweenContainers.TransportItemTarget;
 import com.justenoughmods.achievementguide.integration.home.HomeCopperProof;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.PathfinderMob;

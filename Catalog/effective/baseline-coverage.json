@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "d8ed9000f6c984797856fbe836e6886cffd2de40e6978b8a16961aa839f4c898",
+  "change_records_sha256": "6c8d1cfd02986536a246028702d986a7c670b09d8330caceeb07dab8c576e431",
   "totals": {
-    "watched": 7151,
-    "covered": 5673,
-    "unresolved": 1478
+    "watched": 7166,
+    "covered": 5706,
+    "unresolved": 1460
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1402,
-      "covered": 91,
-      "unresolved": 1311,
+      "watched": 1396,
+      "covered": 88,
+      "unresolved": 1308,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -243,8 +243,6 @@
         "Client/ManagedPack/config/golemoverhaul.jsonc",
         "Client/ManagedPack/config/gouge.toml",
         "Client/ManagedPack/config/gravestone-client.toml",
-        "Client/ManagedPack/config/guardvillagers-client.toml",
-        "Client/ManagedPack/config/guardvillagers-common.toml",
         "Client/ManagedPack/config/herbalbrews.toml",
         "Client/ManagedPack/config/icarus.jsonc",
         "Client/ManagedPack/config/immediatelyfast.json",
@@ -302,7 +300,6 @@
         "Client/ManagedPack/config/leawind_third_person.json",
         "Client/ManagedPack/config/legendary_monsters-common.toml",
         "Client/ManagedPack/config/legendarytooltips-common.toml",
-        "Client/ManagedPack/config/letmedespawn.json",
         "Client/ManagedPack/config/libraryferret_1.properties",
         "Client/ManagedPack/config/lithostitched.json",
         "Client/ManagedPack/config/lodestone-client.toml",
@@ -1362,15 +1359,13 @@
     },
     "Client/ManagedPack/mods": {
       "watched": 1,
-      "covered": 0,
-      "unresolved": 1,
-      "unresolved_paths": [
-        "Client/ManagedPack/mods/tinyinv-1.20.1-1.1.0.1.jar"
-      ]
+      "covered": 1,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 3796,
-      "covered": 3796,
+      "watched": 3792,
+      "covered": 3792,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1438,8 +1433,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMCompat": {
-      "watched": 158,
-      "covered": 158,
+      "watched": 159,
+      "covered": 159,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1589,25 +1584,10 @@
       "unresolved_paths": []
     },
     "Mods/JEMSettlements": {
-      "watched": 203,
-      "covered": 189,
-      "unresolved": 14,
-      "unresolved_paths": [
-        "Mods/JEMSettlements/gradle.properties",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountRoster.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitReadinessAdapter.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownFoundPacket.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownViewPacket.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TreasuryActionPacket.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/AmenitySnapshot.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/ProductionObligation.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationState.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SimulationJournalEntry.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownSpecialization.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownTier.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceType.java",
-        "Mods/JEMSettlements/src/main/resources/pack.mcmeta"
-      ]
+      "watched": 227,
+      "covered": 227,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMTwelveEyes": {
       "watched": 161,

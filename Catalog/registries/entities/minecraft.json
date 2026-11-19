@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "entities",
-  "snapshot_sha": "c0bb316b83c2976e2486f766eca17a92bbeaeaac",
+  "snapshot_sha": "9077492569467d0a295d9aeb657676dc1fdcaddd",
   "generation": {
-    "generated_utc": "2026-11-18T06:09:04.390884+00:00",
+    "generated_utc": "2026-11-19T02:05:09.887556+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -126,7 +126,7 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -522,6 +522,7 @@
         "enhancedai:entity_types/mobs/targeting/better_nearby_targeting",
         "enhancedai:entity_types/mobs/targeting/follow_range_override",
         "insanelib:entity_types/fix_follow_range",
+        "minecraft:entity_types/can_float_while_ridden",
         "minecraft:entity_types/dismounts_underwater",
         "minecraft:entity_types/followable_friendly_mobs",
         "netherexp:entity_types/ignores_treacherous_candle",
@@ -534,6 +535,44 @@
       "acquisition_class": "unresolved",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:camel_husk",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Camel Husk",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:entity_types/can_float_while_ridden"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -907,11 +946,10 @@
         "client"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "assets/minecraft/lang/ru_ru.json"
+        "assets/vanillabackport/lang/en_us.json"
       ],
       "display_name_en_us": "Copper Golem",
-      "display_name_ru_ru": "Медный голем",
+      "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
@@ -922,8 +960,7 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "copperagebackport-forge-1.20.1-0.1.5.jar:assets/minecraft/lang/en_us.json",
-        "copperagebackport-forge-1.20.1-0.1.5.jar:assets/minecraft/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1022,8 +1059,8 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1089,6 +1126,78 @@
       "acquisition_class": "unresolved",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cushion",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Cushion",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:custom_boat",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Boat",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1225,6 +1334,7 @@
         "icys-better-horses:entity_types/horses",
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/millstone_bindable",
+        "minecraft:entity_types/can_float_while_ridden",
         "minecraft:entity_types/dismounts_underwater",
         "minecraft:entity_types/followable_friendly_mobs",
         "netherexp:entity_types/ignores_treacherous_candle",
@@ -1540,6 +1650,7 @@
         "endermanoverhaul:entity_types/cant_be_teleported",
         "jem_world_boss_tiers:entity_types/boss_frenzy_excluded",
         "jemfood:entity_types/bosses",
+        "minecraft:entity_types/not_affected_by_geysers",
         "netherexp:entity_types/does_not_bleed",
         "netherexp:entity_types/ignores_treacherous_candle",
         "netherexp:entity_types/stampede_cannot_run_over",
@@ -2584,8 +2695,8 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2723,6 +2834,7 @@
         "icys-better-horses:entity_types/horses",
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/millstone_bindable",
+        "minecraft:entity_types/can_float_while_ridden",
         "minecraft:entity_types/dismounts_underwater",
         "minecraft:entity_types/followable_friendly_mobs",
         "netherexp:entity_types/ignores_treacherous_candle",
@@ -3507,6 +3619,7 @@
         "icys-better-horses:entity_types/horses",
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/millstone_bindable",
+        "minecraft:entity_types/can_float_while_ridden",
         "minecraft:entity_types/dismounts_underwater",
         "minecraft:entity_types/followable_friendly_mobs",
         "netherexp:entity_types/ignores_treacherous_candle",
@@ -3519,6 +3632,42 @@
       "acquisition_class": "unresolved",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:nautilus",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Nautilus",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3628,7 +3777,6 @@
         "client"
       ],
       "observed_in": [
-        "assets/vanillabackport/lang/en_us.json",
         "assets/vanillabackport/lang/ru_ru.json"
       ],
       "display_name_en_us": "Pale Oak Boat",
@@ -3641,8 +3789,7 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3669,7 +3816,7 @@
         "assets/vanillabackport/lang/en_us.json",
         "assets/vanillabackport/lang/ru_ru.json"
       ],
-      "display_name_en_us": "Pale Oak Boat with Chest",
+      "display_name_en_us": "Boat with Chest",
       "display_name_ru_ru": "Грузовая лодка из бледного дуба",
       "java_registry_class": null,
       "implementation_class": null,
@@ -3679,8 +3826,8 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3732,6 +3879,44 @@
       "acquisition_class": "unresolved",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:parched",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Parched",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:entity_types/skeletons"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4249,6 +4434,7 @@
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/rice_growth_booster",
         "minecraft:entity_types/axolotl_hunt_targets",
+        "minecraft:entity_types/nautilus_hostiles",
         "natures_spirit:entity_types/impermeable_to_azolla"
       ],
       "is_registered": null,
@@ -5345,8 +5531,8 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5383,8 +5569,8 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -5421,8 +5607,8 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
-        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -8631,6 +8817,7 @@
       "tags": [
         "icys-better-horses:entity_types/horses",
         "kaleidoscope_cookery:entity_types/millstone_bindable",
+        "minecraft:entity_types/can_float_while_ridden",
         "minecraft:entity_types/dismounts_underwater",
         "netherexp:entity_types/ignores_treacherous_candle",
         "spawn:entity_types/aggression/hunted_by_barracudas"
@@ -8641,6 +8828,42 @@
       "acquisition_class": "unresolved",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:zombie_nautilus",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vanillabackport/lang/en_us.json"
+      ],
+      "display_name_en_us": "Zombie Nautilus",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/vanillabackport/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

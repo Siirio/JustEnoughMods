@@ -36,6 +36,14 @@ public record ArenaRecord(
         return immutable.equals(respawnPosition) ? this : new ArenaRecord(id,profileKey,dimension,minX,minY,minZ,maxX,maxY,maxZ,immutable,structureArena,unlocked,activeEncounterId,activeSince);
     }
 
+    public ArenaRecord withBounds(BoundingBox bounds) {
+        int nextMinX=Math.min(bounds.minX(),bounds.maxX()),nextMinY=Math.min(bounds.minY(),bounds.maxY()),nextMinZ=Math.min(bounds.minZ(),bounds.maxZ());
+        int nextMaxX=Math.max(bounds.minX(),bounds.maxX()),nextMaxY=Math.max(bounds.minY(),bounds.maxY()),nextMaxZ=Math.max(bounds.minZ(),bounds.maxZ());
+        if(minX==nextMinX&&minY==nextMinY&&minZ==nextMinZ&&maxX==nextMaxX&&maxY==nextMaxY&&maxZ==nextMaxZ) return this;
+        return new ArenaRecord(id,profileKey,dimension,nextMinX,nextMinY,nextMinZ,nextMaxX,nextMaxY,nextMaxZ,
+                respawnPosition,structureArena,unlocked,activeEncounterId,activeSince);
+    }
+
     public ArenaRecord asStructureArena() {
         return structureArena ? this : new ArenaRecord(id,profileKey,dimension,minX,minY,minZ,maxX,maxY,maxZ,respawnPosition,true,unlocked,activeEncounterId,activeSince);
     }

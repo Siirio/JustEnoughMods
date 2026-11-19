@@ -7,6 +7,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 enum CatalogCategory {
     WEAPONS("gui.jemcompat.jei.weapons", "minecraft:diamond_sword"),
+    WEAPON_TOTEMS("gui.jemcompat.jei.weapon_totems", "minecraft:totem_of_undying"),
+    WEAPON_RANGED("gui.jemcompat.jei.weapon_ranged", "minecraft:bow"),
+    WEAPON_MELEE("gui.jemcompat.jei.weapon_melee", "minecraft:iron_sword"),
     WEARABLE("gui.jemcompat.jei.wearable", "minecraft:netherite_chestplate"),
     FOOD("gui.jemcompat.jei.food", "farm_and_charm:cooking_pot"),
     ORES("gui.jemcompat.jei.ores", "minecraft:raw_iron"),
@@ -65,6 +68,9 @@ enum CatalogCategory {
             case SPAWN_EGGS -> net.minecraft.world.item.Items.PIG_SPAWN_EGG;
             case OTHER -> net.minecraft.world.item.Items.BUNDLE;
             case WEAPONS -> net.minecraft.world.item.Items.DIAMOND_SWORD;
+            case WEAPON_TOTEMS -> net.minecraft.world.item.Items.TOTEM_OF_UNDYING;
+            case WEAPON_RANGED -> net.minecraft.world.item.Items.BOW;
+            case WEAPON_MELEE -> net.minecraft.world.item.Items.IRON_SWORD;
             case WEARABLE -> net.minecraft.world.item.Items.NETHERITE_CHESTPLATE;
         };
     }

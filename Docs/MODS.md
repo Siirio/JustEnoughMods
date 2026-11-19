@@ -245,7 +245,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Paxi | `1.20-Forge-4.0` | Client + server |  |
 | Pehkui | `3.8.2+1.20.1-forge` | Client + server |  |
 | Placebo | `8.6.3` | Client + server |  |
-| Platform | `1.3.4` | Client + server |  |
+| Platform | `1.4.2` | Client + server | Required by VanillaBackport 1.2.2 |
 | Player Animator | `1.0.2-rc1+1.20` | Client + server |  |
 | PlayerRevive | `2.0.31` | Client + server |  |
 | Polymorph | `0.49.10+1.20.1` | Client + server |  |
