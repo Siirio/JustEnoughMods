@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-18T23:16:06.323559+00:00` for `f3b5c91e7331e6f4ec4edde59c8cb98789780254`.
+Generated from Atlas schema 1 at `2026-11-19T04:03:39.834150+00:00` for `8b51c66cb478cb73c2c32b0124561a616b2ae761`.
 
-Static evidence observed 17,159 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,160 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -77,7 +77,7 @@ Static evidence observed 17,159 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 14 | 169 | 0 | 169 |
 | luminous_nether | 205 | 8 | 197 | 0 | 197 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1435 | 305 | 1130 | 58 | 1133 |
+| minecraft | 1436 | 305 | 1131 | 58 | 1134 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | mobhome | 2 | 0 | 2 | 0 | 2 |
 | modefite | 2 | 0 | 2 | 0 | 2 |

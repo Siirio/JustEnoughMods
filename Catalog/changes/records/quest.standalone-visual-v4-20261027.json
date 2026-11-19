@@ -608,7 +608,6 @@
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatNativeDropQuestMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPotionApplicationQuestMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPotionThrowQuestMixin.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPullMovementQuestMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPullPlayerMovementQuestMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneAnvilQuestMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBeeArrowQuestMixin.java",
@@ -1300,7 +1299,6 @@
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestFusionNativeMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestHurtMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestLavaNativeMixin.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestMoveMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestNativeDamageMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestSkullNativeMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestSnowBaselineMixin.java",
@@ -3294,6 +3292,17 @@
         "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_home_real_print.json",
         "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_home_remote_frame.json",
         "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_pet_*.json"
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "retire_parallel_entity_move_mixins",
+      "summary": "Move the two removed Entity.move observer mixins from current quest ownership to historical evidence after their proofs moved to the consolidated movement observer.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPullMovementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestMoveMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EntityMovementQuestMixin.java"
       ]
     }
   ],

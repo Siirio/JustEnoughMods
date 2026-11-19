@@ -96,7 +96,7 @@
     ]
   },
   "change": {
-    "summary": "Refresh Test JEM mods, quests, shaders and menu scale, then add the universal JEM Settlements family and individual-home system",
+    "summary": "Refresh Test JEM mods, quests, shaders and menu scale, add universal villager families, and repair the JEM entity-movement and shulker-menu transformations",
     "modifiers": [
       {
         "property": "distribution.removed_mods",
@@ -203,6 +203,20 @@
             "screen": "TitleScreen only"
           }
         ]
+      },
+      {
+        "property": "jem_advancements.entity_move_observation",
+        "operation": "replace",
+        "before": "three separate JEM mixins inject one HEAD callback and three RETURN callbacks into Entity.move",
+        "after": "one JEM mixin injects one HEAD callback and one RETURN callback into Entity.move, then dispatches the same pull, rune-control and battle-armor proof owners",
+        "notes": "The consolidated owner preserves every quest proof and removes the invalid local-variable frame produced when Forge recomputes the transformed method."
+      },
+      {
+        "property": "jemcompat.shulker_quick_move_bridge",
+        "operation": "replace",
+        "before": "ShulkerBoxMenu mixin shadows inherited AbstractContainerMenu.moveItemStackTo on the concrete menu target",
+        "after": "ShulkerBoxMenu mixin extends the target superclass and calls its protected inherited moveItemStackTo implementation directly",
+        "notes": "The first server startup rejected the shadow because the concrete ShulkerBoxMenu class does not declare that inherited method. The repaired bridge preserves the approved 128-block quick-move behavior."
       },
       {
         "property": "jem_settlements.villager_family_and_home",
@@ -340,6 +354,29 @@
         "Docs/settlements/DESIGN_JOURNAL.md",
         "Docs/settlements/standalone/README.md"
       ]
+    },
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "consolidate_entity_move_quest_observers",
+      "summary": "Replace three parallel Entity.move quest mixins with one movement observer after the published Test client failed JVM bytecode verification",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPullMovementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneControlQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EntityMovementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestMoveMixin.java",
+        "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "repair_shulker_menu_inherited_move_bridge",
+      "summary": "Replace the invalid concrete-menu shadow with a same-superclass bridge after the first transport server startup rejected the shulker quick-move mixin",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/ShulkerBoxMenuMixin.java",
+        "Mods/JEMCompat/gradle.properties"
+      ]
     }
   ],
   "impacts": {
@@ -371,6 +408,8 @@
       ,"JEM Settlements is the single family authority. Settlement membership consumes its home penalties but does not define different family rules"
       ,"Recruits workstation conversion and promotion replace entity bodies while retaining one persistent family person ID and provenance"
       ,"Xaero receives only a temporary native camera destination and no waypoint mutation"
+      ,"One JEM Advancements Entity.move mixin dispatches pull, rune-control and battle-armor movement proofs without changing their owning proof classes"
+      ,"The shulker quick-move mixin reaches the protected inherited container transfer method through the target's real AbstractContainerMenu superclass instead of a shadow on ShulkerBoxMenu"
     ],
     "notes": [
       "Sirok gains 15 blocks on each X and Z side for 30 blocks more total width per horizontal axis",
@@ -380,6 +419,7 @@
       "VillagerMakeLove is disabled. One bounded JEM engine handles Villager and Recruits courtship and birth with native food or hunger inputs",
       "Each person owns an upward 3x3x3 zone. Spouse beds may be separate or adjacent, and home resource assignments remain unique",
       "The first local server start exposed Platform 1.3.4 as the earliest invalid dependency state. The managed client and server now use the same Platform 1.4.2 artifact",
+      "The JVM rejected the prior Entity.move transformation because four JEM CallbackInfo locals existed across early-return frames and one return path referenced an uninitialized local. The consolidated movement owner reduces that transformation to two callback locals.",
       "No MineRENT, stable profile or release baseline mutation is part of this branch"
     ],
     "unresolved": [

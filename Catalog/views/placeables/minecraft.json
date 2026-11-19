@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "9077492569467d0a295d9aeb657676dc1fdcaddd",
+  "snapshot_sha": "8b51c66cb478cb73c2c32b0124561a616b2ae761",
   "generation": {
-    "generated_utc": "2026-11-19T02:05:09.887556+00:00",
+    "generated_utc": "2026-11-19T04:03:39.834150+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1498,6 +1498,104 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:barrel"
+      ]
+    },
+    {
+      "item_id": "minecraft:barrier",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+        "data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+        "data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+        "data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+        "data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
+      ],
+      "display_name_en_us": "Barrier",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "minecraft:barrier",
+      "placed_registry_ids": [
+        "minecraft:barrier"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "sophisticatedbackpacks:inception_upgrade",
+        "sophisticatedbackpacks:stack_downgrade_tier_1",
+        "sophisticatedbackpacks:stack_downgrade_tier_2",
+        "sophisticatedbackpacks:stack_downgrade_tier_3",
+        "sophisticatedbackpacks:stack_upgrade_omega_tier",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier_to_tier_1_conversion",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier_to_tier_2_conversion",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier_to_tier_3_conversion",
+        "sophisticatedbackpacks:stack_upgrade_starter_tier_to_tier_4_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_1",
+        "sophisticatedbackpacks:stack_upgrade_tier_1_from_starter",
+        "sophisticatedbackpacks:stack_upgrade_tier_1_to_tier_2_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_1_to_tier_3_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_1_to_tier_4_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_2",
+        "sophisticatedbackpacks:stack_upgrade_tier_2_to_tier_3_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_2_to_tier_4_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_3",
+        "sophisticatedbackpacks:stack_upgrade_tier_3_to_tier_4_conversion",
+        "sophisticatedbackpacks:stack_upgrade_tier_4"
       ]
     },
     {
@@ -17739,8 +17837,7 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/powered_rail.json"
@@ -17748,6 +17845,7 @@
       "display_name_en_us": "Powered Rail",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.11.1.jar:data/minecraft/recipes/powered_rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/powered_rail.json"
       ],
       "confidence": "inferred",
@@ -18812,8 +18910,7 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/rail.json"
@@ -18821,6 +18918,7 @@
       "display_name_en_us": "Rail",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "jemcompat-3.11.1.jar:data/minecraft/recipes/rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/rail.json"
       ],
       "confidence": "inferred",

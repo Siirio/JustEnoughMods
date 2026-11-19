@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
   "change_id": "transport.carriage-rebalance-20261119",
-  "status": "conditional",
+  "status": "active",
   "selectors": [
     {"type": "id", "registry": "items", "value": "minecraft:minecart"},
     {"type": "id", "registry": "items", "value": "minecraft:rail"},
     {"type": "id", "registry": "items", "value": "minecraft:powered_rail"},
     {"type": "id", "registry": "items", "value": "minecraft:elytra"},
     {"type": "id", "registry": "items", "value": "minecraft:firework_rocket"},
-    {"type": "tag", "registry": "items", "value": "minecraft:shulker_boxes"},
+    {"type": "tag", "registry": "items", "value": "c:items/shulker_boxes"},
     {"type": "namespace", "registry": "items", "value": "sophisticatedbackpacks"},
     {"type": "namespace", "registry": "entities", "value": "minecraft"}
   ],
@@ -17,7 +17,7 @@
     {"type": "namespace", "registry": "items", "value": "sophisticatedstorage"}
   ],
   "conditions": [
-    {"scope": "Source candidate on feature/transport-carriage. Build, runtime installation, HUD observation, and player acceptance are pending."},
+    {"scope": "JEMCompat 3.11.1 is installed on Test JustEnoughMods and the ordinary local server. HUD observation and player acceptance are pending."},
     {"scope": "Minecart route caps apply only to vanilla minecart entities on vanilla rail blocks."},
     {"scope": "Shulker capacity 128 applies only to block items whose native maximum stack size is 64."}
   ],
@@ -177,12 +177,18 @@
       "commit": "SELF",
       "action": "implement_source_candidate",
       "summary": "Implement backpack burden, bounded shulker bulk storage, rail travel, and elytra takeoff and boost budgets."
+    },
+    {
+      "date": "2026-11-19",
+      "commit": "SELF",
+      "action": "publish_test_transport_generation",
+      "summary": "Build JEMCompat 3.11.1, load it on the ordinary local server, publish AutoModpack journal sequence 180, and apply content token e40620e3b02bdff773846f92044cd1a47cc09d1d to the closed Test JustEnoughMods profile."
     }
   ],
   "impacts": {
     "systems": ["JEMCompat", "Sophisticated Backpacks", "Curios", "JEM Rewards", "vanilla shulker boxes", "minecarts", "recipes", "elytra", "client HUD", "network synchronization"],
     "relations": ["Create train speed remains native", "Ice boat speed remains native", "Biplane policy remains unchanged", "TPA remains unchanged", "Stationary Sophisticated Storage upgrades remain native"],
     "notes": ["No legacy shulker migration exists because the user confirmed no player owns a shulker box.", "Backpack migration remains because removed upgrades can hold player-owned contents."],
-    "unresolved": ["Gradle build was not authorized in this turn.", "Minecraft runtime and player acceptance are unobserved.", "HUD geometry and color are unobserved in the game.", "The isolated worktree lacks Git-ignored managed-pack JARs, so a complete installed-artifact Atlas scan must run after merge in the full checkout."]
+    "unresolved": ["Player acceptance is unobserved.", "HUD geometry and color are unobserved in the game."]
   }
 }

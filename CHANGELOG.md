@@ -1,3 +1,20 @@
+## 2026-11-19 - Repair Test JEM startup and prepare transport publication
+
+- User reported that `Test JustEnoughMods` crashes and requested the transport and carriage changes on the test client and ordinary local server
+- Bug / Both Sided / JEM Advancements 5.3.10 injected one HEAD and three independent RETURN callbacks into the large vanilla `Entity.move` method, and Forge frame recomputation left one callback local uninitialized on an early-return path, so the JVM stopped during vanilla bootstrap with `VerifyError: Bad local variable type` / in testing through one consolidated movement observer in JEM Advancements 5.3.11
+- Five Whys: the client stopped because the JVM rejected transformed `Entity.move`; the frame referenced an uninitialized callback local; four JEM movement callbacks created separate locals across early returns; three quest features injected the same method independently; the production build and Pack Sync verified artifacts but did not execute the combined runtime transformation
+- The single movement observer preserves tentacle-pull, rune-control and battle-armor quest proof behavior while reducing JEM Advancements to one HEAD and one RETURN callback for `Entity.move`
+- This local Test update also carries the approved transport and carriage rules from JEM Compat 3.11.1. Stable `JustEnoughMods`, MineRENT and the immutable release baseline remain unchanged
+- Bug / Both Sided / the first transport build shadowed inherited `AbstractContainerMenu.moveItemStackTo` from a `ShulkerBoxMenu` mixin, so Mixin could not locate the method on the concrete target and rejected the shulker quick-move transformation / in testing through a same-superclass mixin bridge that calls the protected inherited method directly
+- Production builds completed under JDK 21 with Java 17 output and without tests. JEM Advancements 5.3.11 has SHA-256 `8d5c3522a5f93f5e260a7671921e858d1a947ea1e680f7504ab8a6b9a66d30cf`. JEM Compat 3.11.1 has SHA-256 `a2fcce6cf2ab9963c321b21cf026b5eade75b7187910f6c9c63db3796aea4aec`
+- Artifact inspection confirms that JEM Advancements contains `EntityMovementQuestMixin` and no longer contains `CombatPullMovementQuestMixin` or `WorldBattleArmorQuestMoveMixin`. Minecraft gameplay was not launched and player acceptance remains `in testing`
+- The ordinary local server loaded JEM Advancements 5.3.11 and JEM Compat 3.11.1 without the prior `VerifyError`, invalid movement transformation, or rejected `ShulkerBoxMenuMixin`. The server then saved all dimensions and stopped
+- Native Pack Sync preview reported `+2 ~1 -2`, limited to the manifest and the two JEM replacements. Journal sequence 180 published content token `e40620e3b02bdff773846f92044cd1a47cc09d1d`, and the final preview reported `+0 ~0 -0`
+- Pack Sync status reports `published: true` with matching staged and published manifest SHA-1 `f5add90d142537ec0e1122e07b3ea19b13584041`
+- The closed `Test JustEnoughMods` profile applied the publication through the native AutoModpack planner and detached helper. Its active token matches the published head, all 328 managed JARs match canonical hashes, the old 5.3.10 and 3.10.8 JARs are absent, and no native transaction remains pending
+- The complete Registry Atlas refresh found 784 artifacts, 17,160 items, 12,194 blocks, 1,575 entities and 23,904 recipes. Its final impact scan and validation passed. The shulker selector now uses the observed item tag `c:items/shulker_boxes`
+- Minecraft gameplay and HUD rendering were not launched. Player acceptance remains `in testing`
+
 ## 2026-11-19 - Implement the transport and carriage source candidate
 
 - User authorized implementation of the complete transport and carriage plan as ready code on a separate branch for a later merge into `develop`
