@@ -1,3 +1,11 @@
+## 2026-11-20 - Remove RoadWeaver and correct boss scaling formulas
+
+- The user requested removal of RoadWeaver after the server crash and asked for boss health and attack reductions in the existing formulas
+- Bug / Server / the RoadWeaver bridge patch inserted a branch without a StackMapTable frame and the JVM rejected it during chunk generation / in testing with the mod and its owned config removed from both local runtimes
+- The existing World Tier health modifier now includes the 0.80 factor. Saved bosses discard the old separate modifier and retain their health fraction
+- The 0.50 attack factor now belongs to the existing damage formula. The Cataclysm adapters apply it to flat and percentage operands before they combine them
+- The local server started without RoadWeaver. AutoModpack generation 190 removed its JAR and managed config from Test JustEnoughMods and installed the matching World Boss Tiers JAR. The native transaction completed and verified 326 managed JARs
+
 ## 2026-11-20 - Reduce World Tier boss health and attack damage
 
 - The user requested 20% less maximum health and 50% less attack damage for all registered bosses at every World Tier, including the base values and existing tier additions

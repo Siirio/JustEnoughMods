@@ -39,8 +39,10 @@ public abstract class CataclysmHarbingerDamageMixin {
     private double jem$composeOperands(double attack, double percent) {
         int roll = jem$nativeChargeRandom;
         jem$nativeChargeRandom = 0;
-        return Math.min(attack, percent) + (attack + roll)
-                * (NativeBossDamage.flatFactor((LivingEntity) (Object) this) - 1);
+        var boss = (LivingEntity) (Object) this;
+        float scale = NativeBossDamage.percentScale(boss);
+        return Math.min(attack * scale, percent * scale) + (attack + roll)
+                * (NativeBossDamage.flatFactor(boss) - 1);
     }
 
     @Redirect(method = "blockbreak", at = @At(value = "INVOKE",

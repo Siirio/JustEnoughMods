@@ -26,7 +26,9 @@ public abstract class CataclysmMaledictusDamageMixin {
             at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(FF)F"),
             require = 11, expect = 11, remap = false)
     private float jem$composeOperands(float flat, float percent) {
-        return (float) (Math.min(flat, percent) + flat * (NativeBossDamage.flatFactor((LivingEntity) (Object) this) - 1));
+        var boss = (LivingEntity) (Object) this;
+        float scale = NativeBossDamage.percentScale(boss);
+        return (float) (Math.min(flat * scale, percent * scale) + flat * (NativeBossDamage.flatFactor(boss) - 1));
     }
 
     @Redirect(method = {"m_8107_", "ComboAreaAttack", "Grab", "ShieldSmashDamage", "Rushattack", "uppercut", "AreaAttack"},

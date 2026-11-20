@@ -25,6 +25,14 @@ public abstract class CataclysmDeathLaserDamageMixin {
         return caster == null ? getDamage() : (float) (getDamage() * NativeBossDamage.fixedFactor(caster));
     }
 
+    @Redirect(method = "m_8119_",
+            at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(DD)D"),
+            require = 1, expect = 1, remap = false)
+    private double jem$percentDamage(double cap, double percent) {
+        double scale = NativeBossDamage.percentScale(caster);
+        return Math.min(cap * scale, percent * scale);
+    }
+
     @Redirect(method = "m_8119_", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z", remap = true),
             require = 1, expect = 1, remap = false)

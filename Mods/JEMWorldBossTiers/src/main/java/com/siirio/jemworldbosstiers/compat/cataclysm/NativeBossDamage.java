@@ -2,6 +2,7 @@ package com.siirio.jemworldbosstiers.compat.cataclysm;
 
 import com.siirio.jemworldbosstiers.balance.BalanceRegistry;
 import com.siirio.jemworldbosstiers.balance.BossProfile;
+import com.siirio.jemworldbosstiers.balance.BossTierScaling;
 import com.siirio.jemworldbosstiers.balance.EncounterScaler;
 import com.siirio.jemworldbosstiers.encounter.HostedEncounters;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -40,7 +41,11 @@ public final class NativeBossDamage {
                 : profile.get().specialDamageMultiplier().valueAt(tier);
         factor *= HostedEncounters.damageFactor(boss);
         if (HostedEncounters.isHosted(boss)) factor *= 0.88D;
-        return factor;
+        return factor * BossTierScaling.DAMAGE_SCALE;
+    }
+
+    public static float percentScale(LivingEntity boss) {
+        return boss != null && supports(boss) ? BossTierScaling.DAMAGE_SCALE : 1.0F;
     }
 
     public static double fixedFactor(LivingEntity boss) {

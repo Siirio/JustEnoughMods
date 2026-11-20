@@ -23,6 +23,13 @@ public abstract class CataclysmIgnisDamageMixin {
     }
 
     @Redirect(method = {"AreaAttack", "BodyCheckAttack", "Poke", "ShieldSmashDamage", "UltimateAttack", "Phase_Transition"},
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getMaxHealth()F", remap = true),
+            require = 6, expect = 6, remap = false)
+    private float jem$percentDamageHealth(LivingEntity target) {
+        return target.getMaxHealth() * NativeBossDamage.percentScale((LivingEntity) (Object) this);
+    }
+
+    @Redirect(method = {"AreaAttack", "BodyCheckAttack", "Poke", "ShieldSmashDamage", "UltimateAttack", "Phase_Transition"},
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z", remap = true),
             require = 6, expect = 6, remap = false)
     private boolean jem$composedHit(LivingEntity target, DamageSource source, float amount) {

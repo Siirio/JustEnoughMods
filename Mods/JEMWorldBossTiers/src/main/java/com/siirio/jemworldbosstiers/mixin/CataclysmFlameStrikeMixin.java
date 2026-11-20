@@ -29,6 +29,13 @@ public abstract class CataclysmFlameStrikeMixin {
     }
 
     @Redirect(method = "damage(Lnet/minecraft/world/entity/LivingEntity;)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getMaxHealth()F", ordinal = 1, remap = true),
+            require = 1, expect = 1, remap = false)
+    private float jem$percentDamageHealth(LivingEntity target) {
+        return target.getMaxHealth() * NativeBossDamage.percentScale(getOwner());
+    }
+
+    @Redirect(method = "damage(Lnet/minecraft/world/entity/LivingEntity;)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z", remap = true),
             require = 2, expect = 2, remap = false)
     private boolean jem$perCastBudget(LivingEntity target, DamageSource source, float nativeAmount) {

@@ -160,13 +160,11 @@ public final class JemWorldBossTiers {
                 if (attackProfile.specialDamageMultiplier() != null)
                     factor *= attackProfile.specialDamageMultiplier().valueAt(tier);
                 factor *= HostedEncounters.damageFactor(livingAttacker);
-                event.setAmount((float) (event.getAmount() * factor));
+                event.setAmount((float) (event.getAmount() * (factor * BossTierScaling.DAMAGE_SCALE)));
             }
             if (HostedEncounters.isHosted(livingAttacker))
                 event.setAmount(event.getAmount() * HOSTED_BOSS_DAMAGE_STRENGTH);
         }
-        if (nativeScaled || attackProfile != null)
-            event.setAmount(event.getAmount() * BossTierScaling.FINAL_DAMAGE_FACTOR);
         ProgressionArmor.apply(event);
     }
 

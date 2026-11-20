@@ -29,6 +29,14 @@ public abstract class CataclysmIgnisFireballDamageMixin {
         return owner instanceof LivingEntity boss ? (float) (nativeFlat * NativeBossDamage.fixedFactor(boss)) : nativeFlat;
     }
 
+    @Redirect(method = "m_5790_",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getMaxHealth()F", remap = true),
+            require = 1, expect = 1, remap = false)
+    private float jem$percentDamageHealth(LivingEntity target) {
+        Entity owner = ((Projectile) (Object) this).getOwner();
+        return target.getMaxHealth() * NativeBossDamage.percentScale(owner instanceof LivingEntity living ? living : null);
+    }
+
     @Redirect(method = "m_5790_", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z", remap = true),
             require = 3, expect = 3, remap = false)
