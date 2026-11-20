@@ -2,6 +2,8 @@ package com.siirio.jemworldbosstiers;
 
 import com.siirio.jemworldbosstiers.balance.BalanceDataLoader;
 import com.siirio.jemworldbosstiers.balance.BalanceRegistry;
+import com.siirio.jemworldbosstiers.balance.BossProfile;
+import com.siirio.jemworldbosstiers.balance.BossTierScaling;
 import com.siirio.jemworldbosstiers.balance.EncounterScaler;
 import com.siirio.jemworldbosstiers.balance.EquipmentScaler;
 import com.siirio.jemworldbosstiers.balance.EquipmentRefreshPolicy;
@@ -14,6 +16,7 @@ import com.siirio.jemworldbosstiers.progression.TierAdvancements;
 import com.siirio.jemworldbosstiers.progression.BossDefeatPolicy;
 import com.siirio.jemworldbosstiers.encounter.EncounterData;
 import com.siirio.jemworldbosstiers.encounter.EncounterProvenance;
+import com.siirio.jemworldbosstiers.encounter.HostedEncounters;
 import com.siirio.jemworldbosstiers.command.TierCommands;
 import com.siirio.jemworldbosstiers.command.BossCommands;
 import com.siirio.jemworldbosstiers.event.WorldTierChangedEvent;
@@ -26,6 +29,7 @@ import com.siirio.jemworldbosstiers.revival.ArenaProtection;
 import com.siirio.jemworldbosstiers.revival.ArenaRecord;
 import com.siirio.jemworldbosstiers.revival.BossRespawnScheduler;
 import com.siirio.jemworldbosstiers.api.WorldTierApi;
+import com.siirio.jemworldbosstiers.api.HostedEncounterApi;
 import com.siirio.jemworldbosstiers.api.BossRevivalApi;
 import com.siirio.jemworldbosstiers.api.RaidArenaApi;
 import com.siirio.jemworldbosstiers.protection.WeaponProtection;
@@ -145,25 +149,24 @@ public final class JemWorldBossTiers {
             event.setAmount(amount);
         }
         boolean nativeScaled = com.siirio.jemworldbosstiers.compat.cataclysm.NativeBossDamage.consume(target, event.getSource());
-        Entity rootAttacker = com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(attacker);
-        if (rootAttacker == null) rootAttacker = com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(event.getSource().getDirectEntity());
-        if (!nativeScaled && rootAttacker instanceof LivingEntity livingAttacker && !eventOwned(livingAttacker)) {
-            boss(livingAttacker).ifPresent(profile -> {
-                int tier = EncounterScaler.ensureScaled(livingAttacker, profile);
-                double factor = profile.scalesWithWorldTier() ? com.siirio.jemworldbosstiers.balance.BossTierScaling.boost(tier) : 1;
-                if (profile.specialDamageMultiplier() != null) {
-                    factor *= profile.specialDamageMultiplier().valueAt(tier);
-                }
-                factor *= com.siirio.jemworldbosstiers.encounter.HostedEncounters.damageFactor(livingAttacker);
+        Entity rootAttacker = HostedEncounterApi.damageOwner(attacker);
+        if (rootAttacker == null) rootAttacker = HostedEncounterApi.damageOwner(event.getSource().getDirectEntity());
+        BossProfile attackProfile = rootAttacker instanceof LivingEntity living && !eventOwned(living)
+                ? boss(living).orElse(null) : null;
+        if (!nativeScaled && rootAttacker instanceof LivingEntity livingAttacker) {
+            if (attackProfile != null) {
+                int tier = EncounterScaler.ensureScaled(livingAttacker, attackProfile);
+                double factor = attackProfile.scalesWithWorldTier() ? BossTierScaling.boost(tier) : 1;
+                if (attackProfile.specialDamageMultiplier() != null)
+                    factor *= attackProfile.specialDamageMultiplier().valueAt(tier);
+                factor *= HostedEncounters.damageFactor(livingAttacker);
                 event.setAmount((float) (event.getAmount() * factor));
-            });
+            }
+            if (HostedEncounters.isHosted(livingAttacker))
+                event.setAmount(event.getAmount() * HOSTED_BOSS_DAMAGE_STRENGTH);
         }
-        Entity owner = com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(attacker);
-        if (owner == null) owner = com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(event.getSource().getDirectEntity());
-        if (!nativeScaled && owner instanceof LivingEntity hostedBoss
-                && com.siirio.jemworldbosstiers.encounter.HostedEncounters.isHosted(hostedBoss)) {
-            event.setAmount(event.getAmount() * HOSTED_BOSS_DAMAGE_STRENGTH);
-        }
+        if (nativeScaled || attackProfile != null)
+            event.setAmount(event.getAmount() * BossTierScaling.FINAL_DAMAGE_FACTOR);
         ProgressionArmor.apply(event);
     }
 

@@ -12,6 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -20,6 +21,8 @@ public final class EncounterScaler {
     private static final String HEALTH_SCALED_KEY = "HealthScaled";
     private static final String HEALTH_SYNC_PENDING_KEY = "HealthSyncPending";
     private static final String INITIAL_HEALTH_KEY = "InitialHealth";
+    private static final UUID FINAL_HEALTH_MODIFIER = UUID.nameUUIDFromBytes(
+            "jem-world-boss-tiers:final-health".getBytes(StandardCharsets.UTF_8));
 
     private EncounterScaler() {
     }
@@ -36,21 +39,26 @@ public final class EncounterScaler {
         }
         int tier = encounter.tier();
         CompoundTag data = entity.getPersistentData().getCompound(EncounterData.ROOT_KEY);
-        if (!profile.scalesWithWorldTier()) {
-            return tier;
-        }
+        float previousMaxHealth = entity.getMaxHealth();
         if (data.getBoolean(HEALTH_SYNC_PENDING_KEY)) {
+            applyFinalHealthFactor(entity);
+            if (previousMaxHealth > 0 && Float.compare(previousMaxHealth, entity.getMaxHealth()) != 0) {
+                data.putFloat(INITIAL_HEALTH_KEY, data.getFloat(INITIAL_HEALTH_KEY)
+                        * (entity.getMaxHealth() / previousMaxHealth));
+            }
             PendingHealthSync.enqueue(entity);
             return tier;
         }
-        float previousMaxHealth = entity.getMaxHealth();
         float healthRatio = previousMaxHealth == 0.0F ? 1.0F : entity.getHealth() / previousMaxHealth;
-        profile.attributes().forEach((attributeId, values) -> apply(entity, attributeId, values.valueAt(tier)));
-        if (profile.attributes().isEmpty()) {
-            applyMultiplier(entity, new ResourceLocation("minecraft", "generic.max_health"), genericMultiplier(tier));
-            applyMultiplier(entity, new ResourceLocation("minecraft", "generic.attack_damage"), genericMultiplier(tier));
+        if (profile.scalesWithWorldTier()) {
+            profile.attributes().forEach((attributeId, values) -> apply(entity, attributeId, values.valueAt(tier)));
+            if (profile.attributes().isEmpty()) {
+                applyMultiplier(entity, new ResourceLocation("minecraft", "generic.max_health"), genericMultiplier(tier));
+                applyMultiplier(entity, new ResourceLocation("minecraft", "generic.attack_damage"), genericMultiplier(tier));
+            }
+            applyTierHealthBoost(entity, tier);
         }
-        applyTierHealthBoost(entity, tier);
+        applyFinalHealthFactor(entity);
         if (data.getBoolean(HEALTH_SCALED_KEY) && Float.compare(previousMaxHealth, entity.getMaxHealth()) != 0)
             entity.setHealth(entity.getMaxHealth() * healthRatio);
         if (!data.getBoolean(HEALTH_SCALED_KEY)) {
@@ -148,6 +156,13 @@ public final class EncounterScaler {
         if (modifier != null && Double.compare(modifier.getAmount(), amount) == 0) return;
         health.removeModifier(id);
         health.addPermanentModifier(new AttributeModifier(id, "JEM world tier health boost", amount, AttributeModifier.Operation.MULTIPLY_TOTAL));
+    }
+
+    private static void applyFinalHealthFactor(LivingEntity entity) {
+        AttributeInstance health = entity.getAttribute(Attributes.MAX_HEALTH);
+        if (health == null || health.getModifier(FINAL_HEALTH_MODIFIER) != null) return;
+        health.addPermanentModifier(new AttributeModifier(FINAL_HEALTH_MODIFIER, "JEM boss final health",
+                BossTierScaling.FINAL_HEALTH_FACTOR - 1.0D, AttributeModifier.Operation.MULTIPLY_TOTAL));
     }
 
     private static double genericMultiplier(int tier) {

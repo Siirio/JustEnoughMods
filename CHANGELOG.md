@@ -1,3 +1,9 @@
+## 2026-11-20 - Reduce World Tier boss health and attack damage
+
+- The user requested 20% less maximum health and 50% less attack damage for all registered bosses at every World Tier, including the base values and existing tier additions
+- Applied one final health attribute modifier and one final damage multiplier in World Boss Tiers. Native and scripted hits use the same reduction, and saved bosses retain their encounter tier and health fraction
+- Installed the reobfuscated World Boss Tiers JAR on the local server and in Test JustEnoughMods through AutoModpack generation 189. The user requested that this update skip the Atlas
+
 ## 2026-11-20 - Restore the idle boss arena shell
 
 - The user reported that the solid arena walls disappeared after the admission change
