@@ -42,7 +42,7 @@ public final class EventNetwork {
         boolean structure=type==EventEntryKind.BOSS_STRUCTURE;
         CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new EventPrompt(id,type.name(),title,entityType,
                 structure && StructureStaging.raidAvailable(player,id),structure?StructureStaging.arenaState(player,id):"FREE",
-                structure?StructureStaging.occupants(player,id).stream().limit(MAX_PROMPT_OCCUPANTS).toList():List.of()));
+                List.of()));
     }
     public static void zones(ServerPlayer player,List<EventBoundary> bounds) { CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new EventZones(bounds)); }
     public static void select(EventPrompt prompt,String mode,boolean solo) { CHANNEL.sendToServer(new EventChoice(prompt.id(),EventEntryKind.valueOf(prompt.type()),EventEntryKind.valueOf(mode),solo)); }

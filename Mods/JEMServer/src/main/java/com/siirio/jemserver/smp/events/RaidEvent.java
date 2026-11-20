@@ -184,7 +184,7 @@ public final class RaidEvent {
             boss.getPersistentData().putBoolean("jem_solo", party.solo());
             boss.getPersistentData().putUUID(EVENT_ID, event.id());
             BoundingBox bounds=StructureStaging.prepareCombat(level,event,boss);
-            SmpRecords.require(StructureStaging.ejectUnrelated(level, bounds, boss, agreed), "arena_occupied");
+            com.siirio.jemworldbosstiers.encounter.HostedGroup.stage(boss);
             applyRaidScale(boss, bounds);
             SmpRecords.require(HostedEncounterApi.start(boss, agreed, true, bounds, party.id(),
                     attempt -> HostedParties.commitHostedStart(host.server, party, boss, attempt)), "unavailable");

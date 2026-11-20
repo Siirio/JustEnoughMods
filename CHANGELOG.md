@@ -1,3 +1,13 @@
+## 2026-11-20 - Open idle boss arenas and handle player logout
+
+- The user requested open inactive arenas, no mob evacuation, and a safe exit past the arena boundary when a player disconnects
+- Bug / Both Sided / structural Boss Fight and Boss Raid treated idle occupancy and failed mob evacuation as the start blocker / in testing with guarded entry during active combat, no mob evacuation, and saved player logout exit recovery
+- The implementation uses the canonical arena shell and the native safe-exit path. Campaign prerequisites and active combat boundaries still apply
+- The user requested delivery to the local Server and Test profile with no Atlas changes
+- Rebuilt and installed the reobfuscated JEM Server JAR on the local dedicated server. AutoModpack generation 187 contains the matching JAR and manifest
+- Test JustEnoughMods applied generation 187 through AutoModpack and verified 327 managed JARs. The client plan also restored missing files from the existing published pack. The native transaction completed
+- The server log recorded a 24-second tick backlog with the VSS map bridge disabled. The cause of the reported idle lag still needs a matching capture
+
 ## 2026-11-20 - Add Punchy Moves and local filming tools to Test JEM
 
 - User requested a fast local `develop` update for `Test JustEnoughMods` and the ordinary local server, explicitly prohibited Atlas work, and required Motion Capture, Freecam and GreenScreen to remain outside future updates

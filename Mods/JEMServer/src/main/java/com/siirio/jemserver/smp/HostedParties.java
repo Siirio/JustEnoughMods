@@ -414,6 +414,24 @@ public final class HostedParties {
         data.edit(() -> releaseOwned(server, data.parties().bind(row)));
     }
 
+    static void releaseUnstartedArena(ServerPlayer player) {
+        var data = SmpData.get(player.server);
+        for (var row : data.parties().currentRows()) {
+            if (!row.hasStructureId() || !row.owner().equals(player.getUUID()) || row.closed()
+                    || row.state().equals("ACTIVE") || row.state().equals("RECOVERY")
+                    || row.hasPartyTeleportSession() || row.hostedAttempt() != null) continue;
+            if (row.raid() && row.hasEventId()) {
+                var event = data.events().current(row.eventId());
+                if (event != null && event.hasParty() && event.party().equals(row.id())) {
+                    com.siirio.jemserver.smp.events.EventScheduler.failAttempt(player.server, event);
+                    continue;
+                }
+            }
+            releaseOwned(player.server, row);
+            row.state("CLOSED");
+        }
+    }
+
     private static void releaseOwned(net.minecraft.server.MinecraftServer server, PartyState row) {
         if (!row.hasBossEntity()) return;
         var level = server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, new net.minecraft.resources.ResourceLocation(row.dimension())));

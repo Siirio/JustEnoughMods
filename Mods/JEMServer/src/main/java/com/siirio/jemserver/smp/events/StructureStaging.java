@@ -20,7 +20,6 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -51,6 +50,7 @@ public final class StructureStaging {
     private static final int BOUNDARY_LIMIT = 16;
     private static final int LANDMARK_RADIUS = 10;
     private static final int EXIT_SEARCH_MARGIN = 6;
+    private static final String LOGOUT_ARENA = "jemArenaLogoutExit";
     private static final String RAID_EXIT_PENDING = "raidArenaExitPending";
     private static final LinkedHashMap<UUID, Area> AREAS = new LinkedHashMap<>();
     private static final Map<UUID, UUID> INSIDE = new HashMap<>();
@@ -187,7 +187,6 @@ public final class StructureStaging {
         SmpRecords.require(area != null && area.near(player.serverLevel(), player.position()), "travel_to_arena");
         SmpRecords.require(!locked(player, area), "unavailable");
         SmpRecords.require(party(player.serverLevel(), id) == null, "arena_busy");
-        SmpRecords.require(blockers(player.serverLevel(), area, Set.of(player.getUUID())).isEmpty(), "arena_occupied");
         if (mode.equals("BOSS_RAID")) {
             EventState event = EventScheduler.active(player.server, "BOSS_RAID");
             SmpRecords.require(raidAvailable(player, id), "raid_unavailable");
@@ -234,7 +233,6 @@ public final class StructureStaging {
         requireParticipants(host, row, ids, area);
         SmpRecords.require(!locked(host, area), "unavailable");
         SmpRecords.require(livingBoss(host.serverLevel(), area) != null, "boss_not_respawned");
-        SmpRecords.require(blockers(host.serverLevel(), area, new HashSet<>(ids)).isEmpty(), "arena_occupied");
         row.state("ACTIVE");
 
         bindExisting(host.serverLevel(), area, row, ids);
@@ -296,7 +294,8 @@ public final class StructureStaging {
             PartyMember member=party.member(id);
             if(!member.raidArenaExitPending()) continue;
             ServerPlayer player = server.getPlayerList().getPlayer(id);
-            if (player != null && player.isAlive() && !finishRaidExit(player, party, member)) throw new IllegalStateException("return_pending");
+            if (player != null && player.isAlive() && player.connection.isAcceptingMessages() && !hasLogoutExit(player)
+                    && !finishRaidExit(player, party, member)) throw new IllegalStateException("return_pending");
         }
         PartyTeleportFlow.finish(server, party);
 
@@ -432,13 +431,6 @@ public final class StructureStaging {
                 || state.is(net.minecraft.world.level.block.Blocks.NETHER_PORTAL);
     }
 
-    private static boolean safe(Mob mob,ServerLevel level,BlockPos position) {
-        if(!level.hasChunkAt(position)||!level.getWorldBorder().isWithinBounds(position)
-                ||!level.getBlockState(position.below()).isFaceSturdy(level,position.below(),net.minecraft.core.Direction.UP)
-                ||!level.getFluidState(position).isEmpty()||!level.getFluidState(position.above()).isEmpty()) return false;
-        return safeBody(mob,level,position);
-    }
-
     private static boolean safeBody(net.minecraft.world.entity.Entity entity,ServerLevel level,BlockPos position) {
         AABB box=SolidBoundary.destinationBox(entity,Vec3.atBottomCenterOf(position));
         if(box.minY<level.getMinBuildHeight() || box.maxY>=level.getMaxBuildHeight()
@@ -455,42 +447,6 @@ public final class StructureStaging {
 
     private static BlockPos safeExit(ServerPlayer player,ServerLevel level,Area area,BlockPos origin) {
         return safeOutside(player,level,area.shell(),origin);
-    }
-
-    private static BlockPos safeExit(Mob mob,ServerLevel level,Area area) {
-        return safeExit(mob,level,area.shell());
-    }
-
-    private static BlockPos safeExit(Mob mob,ServerLevel level,BoundingBox bounds) {
-        AABB volume=new AABB(bounds.minX()-SolidBoundary.WALL_THICKNESS,bounds.minY(),bounds.minZ()-SolidBoundary.WALL_THICKNESS,
-                bounds.maxX()+1D+SolidBoundary.WALL_THICKNESS,bounds.maxY()+1D,bounds.maxZ()+1D+SolidBoundary.WALL_THICKNESS);
-        return safeExit(level,bounds,mob.blockPosition(),position->!SolidBoundary.destinationBox(mob,Vec3.atBottomCenterOf(position)).intersects(volume)
-                &&safe(mob,level,position));
-    }
-
-    /** One activation preflight, not a tick scan. No valid boss/support/pet is removed. */
-    static boolean ejectUnrelated(ServerLevel level,BoundingBox bounds,LivingEntity boss,Collection<UUID> participants) {
-        com.siirio.jemworldbosstiers.encounter.HostedGroup.stage(boss);
-        var shell=arenaShell(bounds);
-        var volume=new AABB(shell.minX(),shell.minY(),shell.minZ(),shell.maxX()+1D,shell.maxY()+1D,shell.maxZ()+1D);
-        Map<Mob,BlockPos> exits=new LinkedHashMap<>();
-        for(Mob mob:level.getEntitiesOfClass(Mob.class,volume,entity->entity.isAlive()&&entity!=boss)) {
-            if(com.siirio.jemworldbosstiers.encounter.HostedGroup.owner(mob)==boss) continue;
-            var owner=HostedEncounterApi.damageOwner(mob);
-            if(owner instanceof ServerPlayer player&&participants.contains(player.getUUID())) continue;
-            // A neighboring registered boss is never collateral cleanup.
-            if(WorldTierApi.profile(mob).isPresent() || !SolidBoundary.players(mob).isEmpty()) return false;
-            var exit=safeExit(mob,level,shell);
-            if(exit==null) return false;
-            exits.put(mob,exit);
-        }
-        for(var exit:exits.entrySet()) {
-            Mob mob=exit.getKey();
-            if(!BossTeleportSafety.apply(mob,level,Vec3.atBottomCenterOf(exit.getValue()))) return false;
-            mob.getNavigation().stop();
-            mob.setTarget(null);
-        }
-        return true;
     }
 
     static BlockPos safeOutside(ServerPlayer player,ServerLevel level,BoundingBox bounds,BlockPos origin) {
@@ -565,7 +521,7 @@ public final class StructureStaging {
         if (row.hasBossEntity() || !row.nativePending() || HostedEncounterApi.isRaid(boss)) return;
         Area area = bossArea(level,boss);
         if (area == null || livingBoss(level, area) != boss) return;
-        SmpRecords.require(ejectUnrelated(level,area.bounds(),boss,ids), "arena_occupied");
+        com.siirio.jemworldbosstiers.encounter.HostedGroup.stage(boss);
         boss.getPersistentData().putBoolean("jem_solo", row.solo());
         if (HostedEncounterApi.start(boss, ids, false, prepareCombat(level,row,boss), row.id(),
                 attempt -> HostedParties.commitHostedStart(level.getServer(), row, boss, attempt))) {
@@ -635,6 +591,7 @@ public final class StructureStaging {
         if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)
                 || !SmpEnvironment.active(player) || !player.isAlive() || player.isSpectator()) return;
         if (player.tickCount % CHECK_INTERVAL != 0) return;
+        finishLogoutExit(player);
         finishPendingRaidExit(player);
         Area area = discover(player.serverLevel(), player.blockPosition());
         Area close = nearby(player.serverLevel(), player.position());
@@ -678,7 +635,7 @@ public final class StructureStaging {
         if (area == null) return "unavailable";
         try { requireParticipants(host, row, participants, area); }
         catch (IllegalArgumentException invalid) { return invalid.getMessage(); }
-        return blockers(host.serverLevel(), area, new HashSet<>(participants)).isEmpty() ? "" : "arena_occupied";
+        return "";
     }
 
     private static void requireParticipants(ServerPlayer host, PartyState row, Collection<UUID> participants, Area area) {
@@ -745,33 +702,23 @@ public final class StructureStaging {
 
     private record Presence(long tick, boolean livingBoss) {}
 
-    public static List<String> occupants(ServerPlayer player, UUID id) {
-        Area area = AREAS.get(id);
-        if (area == null) return List.of();
-        return blockers(player.serverLevel(), area, Set.of(player.getUUID())).stream()
-                .map(value -> value.getGameProfile().getName()).toList();
-    }
-
     public static String arenaState(ServerPlayer player, UUID id) {
         Area area = AREAS.get(id);
         if (area == null) return "UNAVAILABLE";
         PartyState row = party(player.serverLevel(), id);
         if (row != null) {
             boolean raid = row.raid();
-            return row.state().equals("ACTIVE") ? (raid ? "RAID_ACTIVE" : "BOSS_FIGHT_ACTIVE") : "STARTING";
+            return combatActive(row) ? (raid ? "RAID_ACTIVE" : "BOSS_FIGHT_ACTIVE") : "STARTING";
         }
-        return occupants(player, id).isEmpty() ? "FREE" : "OCCUPIED";
+        return "FREE";
     }
 
-    private static List<ServerPlayer> blockers(ServerLevel level, Area area, Set<UUID> participants) {
-        return level.getServer().getPlayerList().getPlayers().stream()
-                .filter(player -> player.serverLevel() == level && player.connection != null
-                        && player.connection.isAcceptingMessages()
-                        && !(player instanceof net.minecraftforge.common.util.FakePlayer))
-                .filter(player -> player.isAlive() && !player.isSpectator() && !player.hasPermissions(2))
-                .filter(player -> !participants.contains(player.getUUID()) && SolidBoundary.movementBox(player).intersects(
-                        new AABB(area.bounds().minX(), area.bounds().minY(), area.bounds().minZ(), area.bounds().maxX()+1D, area.bounds().maxY()+1D, area.bounds().maxZ()+1D)))
-                .toList();
+    private static boolean openToPlayers(ServerLevel level, Area area, PartyState party) {
+        return !combatActive(party) && !physicallyLocked(level, area);
+    }
+
+    private static boolean combatActive(PartyState party) {
+        return party != null && party.state().equals("ACTIVE") && party.hasBossEntity() && !party.nativePending();
     }
 
     public static List<EventBoundary> boundaries(ServerPlayer player) {
@@ -783,6 +730,7 @@ public final class StructureStaging {
             double distance = area.distance(player.position());
             if (distance > EventRules.BOUNDARY_DISTANCE.get() || !guarded(player.serverLevel(), area)) continue;
             PartyState row = party(player.serverLevel(), area.id());
+            if (openToPlayers(player.serverLevel(), area, row)) continue;
             boolean passable = row != null && HostedBoundary.passable(player, row);
             result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
                     bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), passable));
@@ -834,6 +782,7 @@ public final class StructureStaging {
             if (!guarded(level, area)) continue;
             List<ServerPlayer> players = SolidBoundary.players(entity);
             PartyState row = party(level, area.id());
+            if (!players.isEmpty() && openToPlayers(level, area, row)) continue;
             if (admission && row != null) players.forEach(player -> HostedBoundary.observe(player, row, bounds));
             boolean passable = admission && row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
             result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
@@ -870,6 +819,7 @@ public final class StructureStaging {
                 return BossTeleportSafety.Decision.redirect(recoveryBox != null && SolidBoundary.contains(recoveryBox, boundary)
                         && !SolidBoundary.intersectsWall(recoveryBox, boundary) && areaLevel.noCollision(player, recoveryBox) ? recovery : null);
             }
+            if (openToPlayers(areaLevel, area, row)) continue;
             if (!destinationInside && !destinationWall) continue;
             if (!destinationWall && row != null && HostedBoundary.authorized(player, row) && level.noCollision(player, destination)) continue;
             BlockPos safe = safeExit(player, areaLevel, area, BlockPos.containing(requested));
@@ -950,8 +900,51 @@ public final class StructureStaging {
         if (event.getEntity() instanceof ServerPlayer player) finishPendingRaidExit(player);
     }
 
-    @SubscribeEvent
-    public static void logout(PlayerEvent.PlayerLoggedOutEvent event) { UUID id = event.getEntity().getUUID(); INSIDE.remove(id); NEAR.remove(id); }
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
+        UUID id = event.getEntity().getUUID();
+        INSIDE.remove(id);
+        NEAR.remove(id);
+        if (!(event.getEntity() instanceof ServerPlayer player) || !SmpEnvironment.active(player)) return;
+        ServerLevel level = player.serverLevel();
+        refreshAreas(level);
+        if (player.isAlive() && !player.isSpectator()) {
+            AREAS.values().stream()
+                    .filter(area -> area.dimension().equals(level.dimension().location().toString()))
+                    .filter(area -> insideShell(player, area))
+                    .findFirst().ifPresent(area -> {
+                        player.getPersistentData().putUUID(LOGOUT_ARENA, area.id());
+                        moveOutsideOnLogout(player, area);
+                    });
+        }
+    }
+
+    static boolean hasLogoutExit(ServerPlayer player) {
+        return player.getPersistentData().hasUUID(LOGOUT_ARENA);
+    }
+
+    public static void finishLogoutExit(ServerPlayer player) {
+        if (!hasLogoutExit(player) || !player.isAlive() || player.isSpectator()) return;
+        ServerLevel level = player.serverLevel();
+        refreshAreas(level);
+        Area area = AREAS.get(player.getPersistentData().getUUID(LOGOUT_ARENA));
+        if (area != null && area.dimension().equals(level.dimension().location().toString())
+                && insideShell(player, area) && !moveOutsideOnLogout(player, area)) return;
+        player.getPersistentData().remove(LOGOUT_ARENA);
+    }
+
+    private static boolean insideShell(ServerPlayer player, Area area) {
+        BoundingBox shell = area.shell();
+        return SolidBoundary.movementBox(player).intersects(new AABB(shell.minX(), shell.minY(), shell.minZ(),
+                shell.maxX() + 1D, shell.maxY() + 1D, shell.maxZ() + 1D));
+    }
+
+    private static boolean moveOutsideOnLogout(ServerPlayer player, Area area) {
+        BlockPos exit = safeExit(player, player.serverLevel(), area);
+        if (exit == null) return false;
+        BossTeleportSafety.apply(player, player.serverLevel(), Vec3.atBottomCenterOf(exit), player.getYRot(), player.getXRot());
+        return !insideShell(player, area);
+    }
 
     @SubscribeEvent
     public static void stopped(ServerStoppedEvent event) { AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear(); REGISTERED_AT.clear(); }

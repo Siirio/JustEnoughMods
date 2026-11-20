@@ -147,6 +147,7 @@ public final class SmpRuntime {
             Profiles.login(p);
             Parties.resetReady(p);
             Navigation.accepted(p);
+            com.siirio.jemserver.smp.events.StructureStaging.finishLogoutExit(p);
             EventRuntime.login(p);
             PartyTeleportFlow.login(p);
         }
@@ -164,6 +165,7 @@ public final class SmpRuntime {
     private void logoutOwned(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer p && SmpEnvironment.active(p)) {
             EventRuntime.logout(p);
+            HostedParties.releaseUnstartedArena(p);
             com.siirio.jemserver.smp.events.HostedBoundary.clear(p.getUUID());
             Parties.resetReady(p);
             Navigation.logout(p);

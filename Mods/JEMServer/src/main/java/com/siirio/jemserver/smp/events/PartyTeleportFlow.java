@@ -127,10 +127,14 @@ public final class PartyTeleportFlow {
             PartyMember member = party.member(id);
             clearArenaAccess(member);
             if (member == null || member.returnPoint() == null) continue;
-            member.returnPending(true);
             ServerPlayer player = server.getPlayerList().getPlayer(id);
+            if (party.hasStructureId() && player != null && StructureStaging.hasLogoutExit(player)) {
+                clearReturn(member);
+                continue;
+            }
+            member.returnPending(true);
             if (discardNativeDeathReturn(member)) continue;
-            if (player != null && player.isAlive()) {
+            if (player != null && player.isAlive() && player.connection.isAcceptingMessages()) {
                 if (party.state().equals("COMPLETED") || party.pendingOutcome().equals("COMPLETED")) prompt(player, party.id(), party.partyTeleportSession());
                 else if (!returnNow(player, party)) throw new IllegalStateException("return_pending");
             }
@@ -291,6 +295,7 @@ public final class PartyTeleportFlow {
     }
 
     public static void login(ServerPlayer player) {
+        if (StructureStaging.hasLogoutExit(player)) return;
         var store = SmpData.get(player.server);
         store.edit(() -> {
             for (var party : store.parties().currentRows()) {
