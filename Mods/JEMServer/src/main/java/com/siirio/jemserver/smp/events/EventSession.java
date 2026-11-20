@@ -64,7 +64,12 @@ public record EventSession(EventState data) {
                 || !actor.isAlive() || !target.isAlive() || actor.isSpectator() || target.isSpectator()) return false;
         EventState source = combatForEntity(actor), destination = combatForEntity(target);
         if (source == null && destination == null) return true;
-        return source != null && destination != null && source.id().equals(destination.id())
+        if (source == null || destination == null) {
+            EventState active = source != null ? source : destination;
+            return active.activity().equals("BOSS_RAID")
+                    && com.siirio.jemworldbosstiers.encounter.HostedEncounters.canInteractWithArenaMob(actor, target);
+        }
+        return source.id().equals(destination.id())
                 && admitted(source, actor) && admitted(source, target);
     }
 

@@ -77,7 +77,8 @@ public final class HostedLobby {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void targeting(LivingChangeTargetEvent event) {
-        if (!event.getEntity().level().isClientSide && held(event.getEntity())) event.setCanceled(true);
+        if (!event.getEntity().level().isClientSide && event.getNewTarget() != null && held(event.getEntity()))
+            event.setCanceled(true);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)

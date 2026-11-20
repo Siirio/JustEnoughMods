@@ -1,3 +1,13 @@
+## 2026-11-20 - Restore the idle boss arena shell
+
+- The user reported that the solid arena walls disappeared after the admission change
+- Bug / Both Sided / the idle arena bypass removed the boundary from the client and skipped movement and teleport checks / in testing with the registered shell restored and the existing Start admission path
+- Logout relocation and the removal of mob evacuation still apply
+- The user also reported that participants could not fight arena mobs after Start and requested native target selection for all party members
+- Bug / Both Sided / combat compared hosted identity on both sides and rejected ordinary mobs, while the lobby canceled target clearing / in testing with native mob combat inside the registered arena and stale target clearing during dormancy
+- Installed the reobfuscated JEM Server and World Boss Tiers JARs on the local dedicated server and published them through AutoModpack generation 188
+- Test JustEnoughMods applied generation 188 and verified 327 managed JARs. AutoModpack completed its transaction
+
 ## 2026-11-20 - Open idle boss arenas and handle player logout
 
 - The user requested open inactive arenas, no mob evacuation, and a safe exit past the arena boundary when a player disconnects

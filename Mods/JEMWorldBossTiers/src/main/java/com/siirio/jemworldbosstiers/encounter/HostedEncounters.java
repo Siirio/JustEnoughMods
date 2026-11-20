@@ -355,7 +355,27 @@ public final class HostedEncounters {
         if (HostedLobby.held(actor) || HostedLobby.held(target)) return false;
         LivingEntity sourceBoss = combat(actor), targetBoss = combat(target);
         if (sourceBoss == null && targetBoss == null) return true;
-        return sourceBoss == targetBoss && admitted(sourceBoss, actor) && admitted(sourceBoss, target);
+        if (sourceBoss == targetBoss) return admitted(sourceBoss, actor) && admitted(sourceBoss, target);
+        return canInteractWithArenaMob(actor, target, sourceBoss, targetBoss);
+    }
+
+    public static boolean canInteractWithArenaMob(LivingEntity actor, LivingEntity target) {
+        return canInteractWithArenaMob(actor, target, combat(actor), combat(target));
+    }
+
+    private static boolean canInteractWithArenaMob(LivingEntity actor, LivingEntity target,
+                                                   LivingEntity sourceBoss, LivingEntity targetBoss) {
+        if ((sourceBoss == null) == (targetBoss == null)) return false;
+        LivingEntity boss = sourceBoss != null ? sourceBoss : targetBoss;
+        LivingEntity participant = sourceBoss != null ? actor : target;
+        LivingEntity mob = sourceBoss != null ? target : actor;
+        return data(boss).getIntArray("Bounds").length == 6 && combatOpen(boss)
+                && HostedEncounterApi.damageOwner(participant) instanceof ServerPlayer
+                && !HostedLobby.held(participant) && admitted(boss, participant)
+                && mob instanceof Mob && mob.isAlive() && inside(boss, mob)
+                && !(mob instanceof net.minecraft.world.entity.OwnableEntity owned && owned.getOwnerUUID() != null)
+                && HostedEncounterApi.damageOwner(mob) == mob && !HostedGroup.member(mob)
+                && !HostedLobby.held(mob) && !NativeEncounterSource.denied(mob);
     }
 
     public static void contribute(ServerPlayer player, double amount) {
@@ -448,8 +468,8 @@ public final class HostedEncounters {
         Entity owner = HostedEncounterApi.damageOwner(mob);
         var root = owner instanceof LivingEntity living && isHosted(living) ? living
                 : isHosted(mob) ? mob : HostedGroup.owner(mob);
-        if (mob.level().isClientSide || root == null || !isHosted(root) || target == null) return;
-        if (!canInteract(mob, target)) event.setCanceled(true);
+        if ((root != null && isHosted(root) || combat(target) != null) && !canInteract(mob, target))
+            event.setCanceled(true);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

@@ -713,10 +713,6 @@ public final class StructureStaging {
         return "FREE";
     }
 
-    private static boolean openToPlayers(ServerLevel level, Area area, PartyState party) {
-        return !combatActive(party) && !physicallyLocked(level, area);
-    }
-
     private static boolean combatActive(PartyState party) {
         return party != null && party.state().equals("ACTIVE") && party.hasBossEntity() && !party.nativePending();
     }
@@ -730,7 +726,6 @@ public final class StructureStaging {
             double distance = area.distance(player.position());
             if (distance > EventRules.BOUNDARY_DISTANCE.get() || !guarded(player.serverLevel(), area)) continue;
             PartyState row = party(player.serverLevel(), area.id());
-            if (openToPlayers(player.serverLevel(), area, row)) continue;
             boolean passable = row != null && HostedBoundary.passable(player, row);
             result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
                     bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), passable));
@@ -782,7 +777,6 @@ public final class StructureStaging {
             if (!guarded(level, area)) continue;
             List<ServerPlayer> players = SolidBoundary.players(entity);
             PartyState row = party(level, area.id());
-            if (!players.isEmpty() && openToPlayers(level, area, row)) continue;
             if (admission && row != null) players.forEach(player -> HostedBoundary.observe(player, row, bounds));
             boolean passable = admission && row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
             result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
@@ -819,7 +813,6 @@ public final class StructureStaging {
                 return BossTeleportSafety.Decision.redirect(recoveryBox != null && SolidBoundary.contains(recoveryBox, boundary)
                         && !SolidBoundary.intersectsWall(recoveryBox, boundary) && areaLevel.noCollision(player, recoveryBox) ? recovery : null);
             }
-            if (openToPlayers(areaLevel, area, row)) continue;
             if (!destinationInside && !destinationWall) continue;
             if (!destinationWall && row != null && HostedBoundary.authorized(player, row) && level.noCollision(player, destination)) continue;
             BlockPos safe = safeExit(player, areaLevel, area, BlockPos.containing(requested));
