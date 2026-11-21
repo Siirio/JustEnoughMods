@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import net.minecraft.core.registries.Registries;
@@ -58,6 +59,7 @@ public final class HostedEncounters {
     private static final String ELIMINATED = "ELIMINATED";
     private static final String DOWNED_MARKER = "JEMHostedDowned";
     private static final Map<UUID, LivingEntity> ACTIVE = new LinkedHashMap<>();
+    private static final Map<LivingEntity, UUID> PENDING_REMOVALS = new LinkedHashMap<>();
     private static final TagKey<Item> RESOURCES = TagKey.create(Registries.ITEM, new ResourceLocation(JemWorldBossTiers.MOD_ID, "raid_resources"));
     private static final TagKey<Item> FORBIDDEN = TagKey.create(Registries.ITEM, new ResourceLocation(JemWorldBossTiers.MOD_ID, "raid_forbidden"));
 
@@ -626,6 +628,7 @@ public final class HostedEncounters {
         if (!HostedEncounterApi.enabled(event.getServer()) || event.phase != TickEvent.Phase.END) {
             return;
         }
+        closeRemovedEncounters();
         if (event.getServer().getTickCount() % HostedConfig.DELIVERY_INTERVAL.get() == 0) {
             HostedRewards.get(event.getServer()).retryExperienceBatches(event.getServer());
             event.getServer().getPlayerList().getPlayers().forEach(player -> {
@@ -1002,14 +1005,27 @@ public final class HostedEncounters {
 
     @SubscribeEvent
     public static void left(EntityLeaveLevelEvent event) {
-        if (event.getEntity() instanceof LivingEntity boss && ACTIVE.containsKey(boss.getUUID())) {
-            if (boss.getRemovalReason() == Entity.RemovalReason.UNLOADED_TO_CHUNK) {
-                if (!data(boss).contains("VictoryAt")) persistAttempt(boss);
-                ACTIVE.remove(boss.getUUID());
-            } else {
-                close(boss, data(boss).contains("VictoryAt"));
-            }
+        if (event.getLevel().isClientSide() || !(event.getEntity() instanceof LivingEntity boss)
+                || ACTIVE.get(boss.getUUID()) != boss) return;
+
+        if (boss.getRemovalReason() == Entity.RemovalReason.UNLOADED_TO_CHUNK) {
+            if (!data(boss).contains("VictoryAt")) persistAttempt(boss);
+            ACTIVE.remove(boss.getUUID());
+        } else if (!data(boss).contains("VictoryAt")) {
+            // Returning players can change chunk tickets. Wait until chunk processing ends.
+            PENDING_REMOVALS.put(boss, attemptId(boss));
         }
+    }
+
+    private static void closeRemovedEncounters() {
+        if (PENDING_REMOVALS.isEmpty()) return;
+        var removals = new LinkedHashMap<>(PENDING_REMOVALS);
+        PENDING_REMOVALS.clear();
+        removals.forEach((boss, attempt) -> {
+            if (ACTIVE.get(boss.getUUID()) == boss && Objects.equals(attempt, attemptId(boss))) {
+                close(boss, false);
+            }
+        });
     }
 
     @SubscribeEvent
@@ -1018,5 +1034,6 @@ public final class HostedEncounters {
             if (!data(boss).contains("VictoryAt")) persistAttempt(boss);
         }
         ACTIVE.clear();
+        PENDING_REMOVALS.clear();
     }
 }

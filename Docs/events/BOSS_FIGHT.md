@@ -133,3 +133,7 @@ Paladin support uses the installed `legendary_monsters:possessed_armor_team` tag
 The user identified the second presence as a spirit. Installed bytecode identifies native SoulStrike as an owner-bound ThrowableProjectile rendered by the native `soul` renderer. The paladin constructs it with itself as the living owner. It has no independent hosted admission; owner resolution pauses its tick before Start, then preserves native combat ticks and presentation. This evidence does not claim an observed player session or a second registered living boss. Existing revive, unique defeats, native anchor and duplicate-repair controls remain intact.
 
 Status: in testing; local next-update work only. MineRENT remains unchanged under the explicit user instruction.
+
+## Hosted boss removal
+
+When removal of the active boss ends an attempt, hosted encounter cleanup runs at the end of the server tick, after chunk processing. Cleanup checks the boss instance and attempt ID before returning participants. Ordinary chunk unload keeps the saved attempt, and victory uses the settlement transaction.

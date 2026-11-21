@@ -1,3 +1,10 @@
+## 2026-11-20 - Defer hosted boss removal cleanup
+
+- The user reported that the local server crashed and confirmed develop for the fix
+- Bug / Server / hosted encounter cleanup returned players from an entity-leave callback while the chunk distance manager iterated tickets / in testing with the existing close transaction deferred to the end of the server tick
+- The deferred close checks both the active boss instance and the attempt ID before returning players
+- The local server loaded the update. Test JustEnoughMods applied AutoModpack generation 191 and verified 326 managed JARs
+
 ## 2026-11-20 - Remove RoadWeaver and correct boss scaling formulas
 
 - The user requested removal of RoadWeaver after the server crash and asked for boss health and attack reductions in the existing formulas
