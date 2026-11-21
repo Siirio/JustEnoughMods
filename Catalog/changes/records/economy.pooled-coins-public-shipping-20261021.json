@@ -102,6 +102,8 @@
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item",
       "Docs/economy/native-trading-design.md"
     ]
   },
@@ -160,6 +162,12 @@
     ]
   },
   "history": [
+    {
+      "date": "2026-11-21",
+      "commit": "SELF",
+      "action": "repair_lfs_texture_packaging",
+      "summary": "Rebuild JEM Economy from hydrated Git LFS sources after the prior 1.3.5 artifact packaged pointer text as coin and Shipping Box PNG resources. All 24 packaged PNG entries now have valid PNG signatures. The replacement artifact SHA-256 is f7c33a716041278476418e6e5110ff991cfd53ed7744554875ceb26d36a0de8e."
+    },
     {
       "date": "2026-10-21",
       "commit": "SELF",

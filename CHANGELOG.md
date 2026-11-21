@@ -1,3 +1,21 @@
+## 2026-11-21 - Replace JEI category inference with an exact manifest
+
+- The user selected `develop` and requested a normal categorized JEI overhaul based on the category decisions already recorded in this changelog
+- Bug / Client / JEMCompat recalculated every item category from ordered runtime heuristics when JEI started, so a pack change or a new category rule could move previously approved items / in testing with one checked-in exact registry-ID manifest and direct lookup
+- The initial manifest assigns 17,160 known item IDs to exactly one leaf and preserves the accepted Ores, furniture, counters, canoe, chicken-coop, spell-scroll, holiday, glass, light, container and death-prevention-totem decisions
+- Weapons keep three leaves. Only weapon assignments are split into Totems, Ranged Weapons and Melee Weapons. Protective death-prevention totems remain Wearable
+- The accepted Handcrafted cushion, sheet, desk and counter families are exact locked Furniture assignments. The legacy three-argument classifier maps all three new weapon leaves back to its former `WEAPONS` result for precompiled callers
+- The offline Registry Atlas generator preserves every existing assignment and adds only unknown IDs. Unknown live items appear in Other with a bounded warning instead of triggering heuristic reassignment
+- JEM Economy uses the same exact manifest adapter for building and nature admission. The prior reflective method remains as a binary compatibility shim
+- Implementation choice: JEI still enumerates its live visible ItemStack variants, but JEMCompat no longer scans recipe catalysts or evaluates class, tag, name, recipe and block-state rules for every stack
+- Bug / Client / the curated search EditBox had two render owners because it was registered as a native screen widget and also rendered by the curated overlay, so the native screen could keep drawing it in standard JEI mode / in testing with exclusive overlay ownership, direct input handling, hidden and inactive state, and focus clearing in standard mode
+- Bug / Client / the prior JEM Economy 1.3.5 artifact packaged Git LFS pointer text as the coin and Shipping Box PNG files / in testing with a clean build from hydrated source where all 24 packaged PNG resources have valid PNG signatures
+- Bug / Both Sided / the prior JEM Building runtime artifact combined stale Blueprint classes and recipes with stable develop registrations that did not register those items, producing an incoherent incremental JAR and an empty recipe result / in testing with a clean artifact from only the coherent develop construction source
+- The production JEMCompat JAR SHA-256 is `F6228EF53CD8F6CB6F1A4DFBB1E83B5F54C8AE864EDC039A39D2F586BF88F0AB`, JEM Economy 1.3.5 is `F7C33A716041278476418E6E5110FF991CFD53ED7744554875CEB26D36A0DE8E`, and JEM Building 1.0.1 is `174E949F0B1B447816120436D2ECFF5C4DF8D414F4C237924FF82A781065F8ED`
+- The ordinary local Server loaded the three fresh artifacts. Its recipe reload no longer reported the stale `jem_building:blueprint_roll` empty result. The server was stopped cleanly after native Pack Sync inspection
+- Native Pack Sync preview was intentionally not published because the current `develop` managed pack would also replace or remove unrelated content from the already-published Test profile generation 191. The reviewed preview was `+8 ~7 -5`, including Inventory Tabs, Settlements, Distant Horizons, RoadWeaver, VSS, Punchy Moves and resource-pack changes outside this request
+- Player acceptance and fresh runtime timing remain `in testing`. No Minecraft client launch is part of this change
+
 ## 2026-11-20 - Defer hosted boss removal cleanup
 
 - The user reported that the local server crashed and confirmed develop for the fix

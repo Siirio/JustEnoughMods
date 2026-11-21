@@ -1,0 +1,136 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.jei-exact-catalog-manifest-20261121",
+  "status": "conditional",
+  "inherits": [
+    "compat.jei-category-search-and-reclassification-20261026"
+  ],
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Curated JEM JEI catalog and shared JEM Economy category admission; player acceptance pending"
+    }
+  ],
+  "precedence": {
+    "layer": "explicit_player_feedback",
+    "priority": 1250,
+    "overrides": [
+      "compat.jei-category-search-and-reclassification-20261026"
+    ]
+  },
+  "change": {
+    "summary": "Lock each known JEI item registry ID to one reviewed leaf category and stop startup-time semantic reassignment.",
+    "modifiers": [
+      {
+        "property": "jemcompat.jei_leaf_assignment",
+        "operation": "replace",
+        "before": "Every JEI startup reclassified all live stacks from ordered class, tag, name, recipe and block-state heuristics, so a pack or rule change could move earlier approved items.",
+        "after": "One checked-in schema-versioned manifest assigns every known registry ID to one leaf. Runtime performs direct ID lookup, parent categories aggregate leaves, and unknown IDs fail visibly into OTHER without changing accepted assignments."
+      },
+      {
+        "property": "jemcompat.jei_catalog_generation",
+        "operation": "derive",
+        "before": "No durable assignment artifact or repeatable coverage check existed.",
+        "after": "The offline Registry Atlas generator preserves every existing manifest assignment, proposes only unknown IDs, and validates duplicate IDs, parent targets and schema completeness."
+      },
+      {
+        "property": "jemcompat.jei_mode_search_ownership",
+        "operation": "replace",
+        "before": "The curated search EditBox was both a native screen renderable and a manually rendered overlay child, so the screen could continue rendering it after standard JEI mode was selected.",
+        "after": "The curated overlay exclusively owns rendering and input for its search EditBox. Standard JEI mode makes it invisible and inactive and clears focus without clearing either saved search query."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat exact JEI catalog manifest",
+    "kind": "user_requested_architecture_correction",
+    "source_files": [
+      "Mods/JEMCompat/AGENTS.md",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogManifest.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+      "tools/generate_jei_catalog.py",
+      "Docs/catalog/JEI_CATALOG_MANIFEST.md",
+      "Docs/plans/2026-11-21-jei-catalog-manifest.md",
+      "Docs/DEVELOPMENT.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent category drift when the user adds categories or subcategories and remove repeated semantic work from JEI startup.",
+    "decision_source": "User request on 2026-11-21 plus the accepted JEI assignments recorded in CHANGELOG.md"
+  },
+  "introduced": {
+    "date": "2026-11-21",
+    "commit": null,
+    "action": "replace_runtime_inference_with_exact_manifest",
+    "summary": "Create the durable exact JEI assignment owner and shared runtime adapter.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogManifest.java",
+      "tools/generate_jei_catalog.py"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-21",
+      "commit": null,
+      "action": "lock_accepted_handcrafted_furniture_and_legacy_weapon_result",
+      "summary": "Correct the exact Handcrafted cushion, sheet, desk and counter families to Furniture before delivery and map all new weapon leaves back to WEAPONS through the legacy three-argument classifier overload.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+        "tools/generate_jei_catalog.py"
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "commit": null,
+      "action": "give_curated_search_one_render_owner",
+      "summary": "Remove the curated search EditBox from the native screen renderable list so standard JEI cannot display or focus it after a mode switch.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java"
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "commit": null,
+      "action": "replace_runtime_inference_with_exact_manifest",
+      "summary": "Lock 17,160 known item IDs to one leaf and preserve future reviewed assignments.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogManifest.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "JEI",
+      "client_catalog",
+      "economy_purchase_admission",
+      "Registry_Atlas",
+      "client_startup"
+    ],
+    "relations": [
+      "JEMCompat remains the only category owner for JEI and Economy.",
+      "JEI remains the recipe and visible ItemStack variant owner.",
+      "Unknown future registry IDs remain visible under OTHER until reviewed."
+    ],
+    "notes": [
+      "The initial manifest preserves the user's recorded category corrections and splits only weapon assignments into the three weapon leaves."
+    ],
+    "unresolved": [
+      "Runtime category layout and startup timing remain in testing until player acceptance."
+    ]
+  }
+}
