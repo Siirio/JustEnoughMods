@@ -1,3 +1,10 @@
+## 2026-11-21 - Finalize Test JEM refresh state
+
+- User assigned the next JEI overhaul to `develop` and required the completed Test JEM refresh branch to leave the shared checkout clean
+- Preserved the refreshed Economy coverage and the native Pack Sync host inventory that records the already published JEM artifact and Inventory Tabs changes
+- Removed task-owned `.codex-temp` backups and restored or deleted only server-launch-generated config residue that did not match the canonical `Client/ManagedPack` configuration
+- Kept the running Test JEM client and ordinary local server processes unchanged. No build, launch, automated test or gameplay acceptance was run for this cleanup
+
 ## 2026-11-19 - Add universal villager families and individual homes
 
 - User replaced the earlier narrow breeding-home rule with a modpack-level family and home system for every ordinary Villager, Zombie Villager and supported Recruit. Settlement membership does not change the rules
