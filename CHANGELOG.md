@@ -1,6 +1,7 @@
 ## 2026-11-21 - Replace JEI category inference with an exact manifest
 
 - The user selected `develop` and requested a normal categorized JEI overhaul based on the category decisions already recorded in this changelog
+- The user clarified that delivery must keep the complete existing Test JustEnoughMods generation and add only the new repairs on top. Codex reconstructed published generation 191 from its native journal and object store, reconciled `Client/ManagedPack` to that exact managed set, and retained only the three requested JEM JAR replacements as overlays
 - Bug / Client / JEMCompat recalculated every item category from ordered runtime heuristics when JEI started, so a pack change or a new category rule could move previously approved items / in testing with one checked-in exact registry-ID manifest and direct lookup
 - The initial manifest assigns 17,160 known item IDs to exactly one leaf and preserves the accepted Ores, furniture, counters, canoe, chicken-coop, spell-scroll, holiday, glass, light, container and death-prevention-totem decisions
 - Weapons keep three leaves. Only weapon assignments are split into Totems, Ranged Weapons and Melee Weapons. Protective death-prevention totems remain Wearable
@@ -13,7 +14,10 @@
 - Bug / Both Sided / the prior JEM Building runtime artifact combined stale Blueprint classes and recipes with stable develop registrations that did not register those items, producing an incoherent incremental JAR and an empty recipe result / in testing with a clean artifact from only the coherent develop construction source
 - The production JEMCompat JAR SHA-256 is `F6228EF53CD8F6CB6F1A4DFBB1E83B5F54C8AE864EDC039A39D2F586BF88F0AB`, JEM Economy 1.3.5 is `F7C33A716041278476418E6E5110FF991CFD53ED7744554875CEB26D36A0DE8E`, and JEM Building 1.0.1 is `174E949F0B1B447816120436D2ECFF5C4DF8D414F4C237924FF82A781065F8ED`
 - The ordinary local Server loaded the three fresh artifacts. Its recipe reload no longer reported the stale `jem_building:blueprint_roll` empty result. The server was stopped cleanly after native Pack Sync inspection
-- Native Pack Sync preview was intentionally not published because the current `develop` managed pack would also replace or remove unrelated content from the already-published Test profile generation 191. The reviewed preview was `+8 ~7 -5`, including Inventory Tabs, Settlements, Distant Horizons, RoadWeaver, VSS, Punchy Moves and resource-pack changes outside this request
+- The first native preview was intentionally not published because it contained unrelated rollbacks. After reconciliation, the final preview was exactly `+0 ~4 -0`: the manifest plus JEMCompat, JEM Economy and JEM Building, with all prior Test content preserved
+- Native AutoModpack generation 192 published content token `578042aa2e9cc067b6c6bfdd3959d59cce67754d`. The follow-up preview was `+0 ~0 -0`, with matching staged and published manifest SHA-1 `180814b98d2305a842811553c69a7154e2f8aa41`
+- The closed Test JustEnoughMods profile applied generation 192 through the native planner and detached helper. The active token matches, 327 managed JARs verify and no transaction remains pending. The planner also restored 36 already-owned Streams Reflowing example files that were absent from the prior game directory, without adding them to the four-path publication delta
+- The ordinary local Server loaded the final artifacts and then stopped cleanly. The replaced canonical pre-reconciliation files remain recoverable under `C:/MyProjects/Minecraft/JustEnoughMods-updates/pre-generation-191-reconcile-20261121`
 - Player acceptance and fresh runtime timing remain `in testing`. No Minecraft client launch is part of this change
 
 ## 2026-11-20 - Defer hosted boss removal cleanup

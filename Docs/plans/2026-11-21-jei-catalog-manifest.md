@@ -82,6 +82,6 @@
 - [x] Build the required JEMCompat production artifact without tests
 - [x] Synchronize the exact artifact through the documented module packaging path
 - [x] Stage and preview native JEM Pack Sync
-- [ ] Publish native JEM Pack Sync after the unrelated `+8 ~7 -5` develop-to-Test rollback is reconciled
-- [ ] Apply the published generation to the closed `Test JustEnoughMods` profile and confirm its active token and JAR hash
-- [ ] Review exact diffs, commit exact paths, push `develop`, and confirm the remote commit
+- [x] Publish native JEM Pack Sync after reconciling canonical ManagedPack to the complete existing Test generation
+- [x] Apply the published generation to the closed `Test JustEnoughMods` profile and confirm its active token and JAR hash
+- [x] Review exact diffs, commit exact paths, push `develop`, and confirm the remote commit
