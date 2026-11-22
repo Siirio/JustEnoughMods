@@ -1,0 +1,94 @@
+{
+  "rain": {
+    "weather": "DURING_WEATHER",
+    "precipitation": ["RAIN"],
+    "gravity": 0.9,
+    "windStrength": 0.4,
+    "stormWindStrength": 0.8,
+    "size": 0.75,
+    "spriteLocations": [
+      "particlerain:rain_0",
+      "particlerain:rain_4",
+      "particlerain:rain_8",
+      "particlerain:rain_12"
+    ],
+    "tintType": "WATER",
+    "rotationType": "RELATIVE_VELOCITY"
+  },
+  "snow": {
+    "weather": "DURING_WEATHER",
+    "precipitation": ["SNOW"],
+    "density": 0.3,
+    "gravity": 0.05,
+    "windStrength": 0.01,
+    "stormWindStrength": 0.1,
+    "rotationAmount": 0.4,
+    "size": 0.75,
+    "spriteLocations": [
+      "particlerain:snow_0",
+      "particlerain:snow_4",
+      "particlerain:snow_8",
+      "particlerain:snow_12"
+    ]
+  },
+  "sandstorm": {
+    "particleStyle": "BLOCK_MODEL",
+    "blockId": "minecraft:sand",
+    "weather": "DURING_WEATHER",
+    "precipitation": ["NONE"],
+    "biomeList": {
+      "entries": [
+        "minecraft:desert",
+        "natures_spirit:blooming_dunes",
+        "natures_spirit:drylands",
+        "natures_spirit:lively_dunes",
+        "natures_spirit:scorched_dunes",
+        "natures_spirit:stratified_desert",
+        "oceanicrealms:sandstone_ocean",
+        "spawn:sandy_island",
+        "terralith:ancient_sands",
+        "terralith:cave/desert_caves",
+        "terralith:desert_canyon",
+        "terralith:desert_oasis",
+        "terralith:desert_spires",
+        "terralith:gravel_desert",
+        "terralith:lush_desert",
+        "terralith:red_oasis",
+        "terralith:sandstone_valley"
+      ],
+      "isWhitelist": true
+    },
+    "spawnPos": "WORLD_SURFACE",
+    "density": 0.5,
+    "gravity": 0.1,
+    "windStrength": 0.7,
+    "stormWindStrength": 1.0,
+    "rotationAmount": 0.2,
+    "size": 0.25
+  },
+  "red_sandstorm": {
+    "particleStyle": "BLOCK_MODEL",
+    "blockId": "minecraft:red_sand",
+    "weather": "DURING_WEATHER",
+    "precipitation": ["NONE"],
+    "biomeList": {
+      "entries": [
+        "minecraft:badlands",
+        "minecraft:eroded_badlands",
+        "minecraft:wooded_badlands",
+        "terralith:savanna_badlands",
+        "terralith:snowy_badlands",
+        "terralith:warped_mesa",
+        "terralith:white_mesa"
+      ],
+      "isWhitelist": true
+    },
+    "spawnPos": "WORLD_SURFACE",
+    "density": 0.5,
+    "gravity": 0.1,
+    "windStrength": 0.7,
+    "stormWindStrength": 1.0,
+    "rotationAmount": 0.2,
+    "size": 0.25
+  }
+}

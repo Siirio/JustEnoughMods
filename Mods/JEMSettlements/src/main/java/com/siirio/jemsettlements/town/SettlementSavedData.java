@@ -17,6 +17,9 @@ public final class SettlementSavedData extends SavedData {
     private final Map<UUID, WorkforceRecord> workforce = new LinkedHashMap<>();
     private final Map<UUID, com.siirio.jemsettlements.payroll.EmployerPayroll> employers = new LinkedHashMap<>();
     private final Map<UUID, ResidentMood> residents = new LinkedHashMap<>();
+    private record TownChunk(net.minecraft.resources.ResourceLocation dimension, long chunk) { }
+    private final Map<TownChunk, java.util.List<TownRecord>> townsByChunk = new LinkedHashMap<>();
+    private boolean townIndexDirty = true;
     // Derived only: ResidentMood membership is immutable, so replacement is the move operation.
     private final Map<UUID, java.util.LinkedHashSet<UUID>> residentsByTown = new LinkedHashMap<>();
     private final net.minecraft.nbt.ListTag quarantine = new net.minecraft.nbt.ListTag();
@@ -40,6 +43,24 @@ public final class SettlementSavedData extends SavedData {
     public java.util.List<TownRecord> ownedTowns(UUID owner) { return towns.values().stream().filter(town -> town.owner().equals(owner)).toList(); }
     public Optional<TownRecord> town(UUID id) { return Optional.ofNullable(towns.get(id)); }
     public Collection<TownRecord> towns() { return java.util.List.copyOf(towns.values()); }
+    public Optional<TownRecord> townAt(net.minecraft.resources.ResourceLocation dimension, net.minecraft.core.BlockPos position) {
+        if (townIndexDirty) rebuildTownIndex();
+        TownChunk key = new TownChunk(dimension, net.minecraft.world.level.ChunkPos.asLong(position.getX() >> 4, position.getZ() >> 4));
+        return townsByChunk.getOrDefault(key, java.util.List.of()).stream().filter(town -> town.contains(position)).findFirst();
+    }
+    public void reindexTowns() { townIndexDirty = true; }
+    private void rebuildTownIndex() {
+        townsByChunk.clear();
+        for (TownRecord town : towns.values()) {
+            for (int x = town.territoryMinX() >> 4; x <= town.territoryMaxX() >> 4; x++) {
+                for (int z = town.territoryMinZ() >> 4; z <= town.territoryMaxZ() >> 4; z++) {
+                    TownChunk key = new TownChunk(town.dimension(), net.minecraft.world.level.ChunkPos.asLong(x, z));
+                    townsByChunk.computeIfAbsent(key, ignored -> new java.util.ArrayList<>()).add(town);
+                }
+            }
+        }
+        townIndexDirty = false;
+    }
     public Collection<WorkforceRecord> workforce(UUID town) { return workforce.values().stream().filter(record -> record.townId().equals(town)).toList(); }
     public Optional<WorkforceRecord> workforceEntity(UUID entity) { return Optional.ofNullable(workforce.get(entity)); }
     public Collection<ResidentMood> residents(UUID town) {
@@ -56,7 +77,7 @@ public final class SettlementSavedData extends SavedData {
     public long workforceCount(UUID town) { return workforce.values().stream().filter(record -> record.townId().equals(town)).count(); }
     public boolean entityAssigned(UUID entity) { return workforce.containsKey(entity); }
     public boolean residentAssigned(UUID entity) { return residents.containsKey(entity); }
-    public void add(TownRecord town) { towns.put(town.id(), town); setDirty(); }
+    public void add(TownRecord town) { towns.put(town.id(), town); townIndexDirty = true; setDirty(); }
     public void add(WorkforceRecord record) { workforce.put(record.entityId(), record); setDirty(); }
     public void add(ResidentMood resident) {
         indexResident(resident);
@@ -102,6 +123,7 @@ public final class SettlementSavedData extends SavedData {
     }
     public boolean removeTown(UUID town) {
         if (towns.remove(town) == null) return false;
+        townIndexDirty = true;
         var residentIds = residentsByTown.remove(town);
         if (residentIds != null) residentIds.forEach(residents::remove);
         workforce.values().removeIf(value -> value.townId().equals(town) && value.type() != com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT);

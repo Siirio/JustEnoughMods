@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "change_id": "gameplay.spawn-egg-source-extraction-20261122",
+  "status": "active",
+  "selectors": [{"type": "registry", "registry": "items"}],
+  "conditions": [{"side": "both", "installed_versions": ["JEMCompat current source"]}],
+  "precedence": {"layer": "source_ownership", "priority": 1725, "overrides": []},
+  "change": {"summary": "Move optional craftable spawn eggs out of JEMCompat and remove both spawn-egg and mineable-spawner features from the installed pack.", "modifiers": [{"property": "spawn_eggs.source_owner", "operation": "move", "before": "JEMCompat", "after": "Buildable but uninstalled JEMCraftableSpawnEggs source module with 425 recipes and 24 fallbacks"}, {"property": "mineable_spawners.distribution", "operation": "remove", "before": "Installed client and server JAR", "after": "Absent from managed client and local server"}]},
+  "cause": {"owner": "JEMCraftableSpawnEggs source module and managed pack inventory", "kind": "approved_module_extraction", "source_files": ["Mods/JEMCraftableSpawnEggs/**", "Mods/JEMCompat/src/generated/**", "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/spawner/**", "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/spawner/**", "tools/module-inventory.json", "Client/ManagedPack/mods", "Server/mods"]},
+  "rationale": {"purpose": "Keep optional source buildable without distributing the retired gameplay features.", "decision_source": "Approved 2026-11-22 one-shot plan", "user_requested": "Extract craftable spawn eggs and remove the installed spawn egg and mineable spawner features.", "codex_choices": "Preserve the observed exact 425 recipe and 24 fallback source set rather than inventing the plan estimate."},
+  "introduced": {"date": "2026-11-22", "commit": "SELF", "action": "extract_spawn_egg_module", "summary": "Create an uninstalled source module and remove installed ownership."},
+  "history": [{"date": "2026-11-22", "commit": "SELF", "action": "extract_spawn_egg_module", "summary": "Move generated recipes, models, policy, mixins, and generator out of JEMCompat."}],
+  "impacts": {"systems": ["JEMCompat", "spawn eggs", "spawners", "module inventory"], "relations": ["retired gameplay -> standalone source -> excluded distribution"], "notes": ["The removed mineable-spawner JAR remains recoverable in the task quarantine."], "unresolved": []}
+}

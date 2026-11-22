@@ -86,7 +86,7 @@ public final class NativeItemPricing {
     public static com.siirio.jemeconomy.policy.RationalPrice salePrice(ItemStack goods,int quantity,int multiplier) {
         if(goods.isEmpty()||quantity<=0||multiplier<=0)throw new ArithmeticException("Invalid native sale");
         var canonical=ItemPolicyRegistry.policy(goods).filter(ItemPolicy::sellable);
-        if(canonical.isPresent())return canonical.get().salePrice(quantity,multiplier);
+        if(canonical.isPresent())return ItemPolicyRegistry.salePrice(goods,quantity,multiplier);
         var policy=policy(goods).orElseThrow(()->new ArithmeticException("Unpriced native sale"));
         if(!policy.sellable())return com.siirio.jemeconomy.policy.RationalPrice.ZERO;
         var definition=NATIVE.get(ForgeRegistries.ITEMS.getKey(goods.getItem()));

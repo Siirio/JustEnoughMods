@@ -30,6 +30,7 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
     private EditBox count, cashCount, recipient;
     private int dropdown, dropdownIndex;
     private Button exchange, withdraw, deposit, sendButton, sourceChooser, targetChooser, cashChooser;
+    private Button depositAll;
     private UUID pending;
     private ContainerCurrencyPacket.Action pendingAction;
     private long wallet;
@@ -52,6 +53,9 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
         button(222,3,78,14,tr("exchange_tab"),()->changeTab(1));
         button(304,3,50,14,tr("tavern_tab"),()->MarketClientState.open(this));
         saleControls.add(button(190,137,164,22,tr("collect"),()->minecraft.gameMode.handleInventoryButtonClick(menu.containerId,1)));
+        depositAll=button(190,111,164,22,tr("deposit_all"),()->minecraft.gameMode.handleInventoryButtonClick(menu.containerId,4));
+        depositAll.setTooltip(Tooltip.create(tr("deposit_all_tooltip")));
+        saleControls.add(depositAll);
         sourceChooser=button(35,48,24,24,denomination(source),()->toggleDropdown(1));exchangeControls.add(sourceChooser);
         targetChooser=button(124,48,24,24,denomination(target),()->toggleDropdown(2));exchangeControls.add(targetChooser);
         count=field(16,91,76,oldCount,tr("source_count"));
@@ -139,6 +143,7 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
         boolean second=menu.tab()==1;
         if (!saleControls.isEmpty()) saleControls.get(0).setMessage(tr(menu.hasPayment()?"collect_payment":"sell"));
         saleControls.forEach(b->{b.visible=!second;b.active=!second;});exchangeControls.forEach(b->{b.visible=second;b.active=second&&pending==null;});
+        if(depositAll!=null)depositAll.active=!second&&!menu.paymentLocked()&&minecraft.player!=null&&minecraft.player.containerMenu==menu;
         if(count!=null){count.visible=second;count.active=second&&pending==null&&dropdown==0;}
         if(cashCount!=null){cashCount.visible=second;cashCount.active=second&&pending==null&&dropdown==0;}
         if(recipient!=null){recipient.visible=second;recipient.active=second&&pending==null&&dropdown==0;}

@@ -77,8 +77,6 @@ public final class ResidentConditions {
     }
     public static void tick(MinecraftServer server) {
         if (!SettlementAuthority.active(server)) return;
-        ResidentialRooms.tick(server);
-        ThreatAssessment.tick(server);
         var data = SettlementSavedData.get(server); long now = server.overworld().getGameTime();
         if (now >= nextRoster || now + 100 < nextRoster) {
             refreshRoster(data); nextRoster = now + 100;

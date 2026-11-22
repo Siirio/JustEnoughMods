@@ -39,8 +39,8 @@
     "owner": "JEMCompat",
     "kind": "installed_mod_loot_provenance_adapter",
     "source_files": [
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/spawner/SpawnerSpiritOrbPolicy.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/spawner/SpawnerSpiritOrbLootMixin.java",
+      "Mods/JEMCraftableSpawnEggs/src/main/java/com/siirio/jemcraftablespawneggs/SpawnerSpiritOrbPolicy.java",
+      "Mods/JEMCraftableSpawnEggs/src/main/java/com/siirio/jemcraftablespawneggs/mixin/SpawnerSpiritOrbLootMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
     ]
@@ -64,8 +64,8 @@
       "action": "add_spawner_reward_provenance",
       "summary": "Preserve the first natural-spawner reward while making every later placement ineligible",
       "source_files": [
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/spawner/SpawnerSpiritOrbPolicy.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/spawner/SpawnerSpiritOrbLootMixin.java"
+      "Mods/JEMCraftableSpawnEggs/src/main/java/com/siirio/jemcraftablespawneggs/SpawnerSpiritOrbPolicy.java",
+      "Mods/JEMCraftableSpawnEggs/src/main/java/com/siirio/jemcraftablespawneggs/mixin/SpawnerSpiritOrbLootMixin.java"
       ]
     }
   ],

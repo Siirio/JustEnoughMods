@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -38,11 +39,13 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
 import net.minecraftforge.event.entity.living.LivingConversionEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.fml.ModList;
 
 /** Universal modpack family authority. Town membership is only an optional mood adapter. */
@@ -59,6 +62,9 @@ public final class FamilyRuntime {
     private static final ArrayDeque<PendingRecruitSpawn> PENDING_RECRUITS = new ArrayDeque<>();
     private static final Set<UUID> PENDING_IDENTITY_IDS = new HashSet<>();
     private static final Map<ResourceKey<Level>, Integer> CYCLE_CURSORS = new HashMap<>();
+    private static final Map<ResourceKey<Level>, LinkedHashMap<UUID, LivingEntity>> LOADED_ACTORS = new HashMap<>();
+    private record ComplaintState(String reason, long nextReminder) { }
+    private static final Map<UUID, ComplaintState> COMPLAINTS = new HashMap<>();
     private FamilyRuntime() { }
 
     public static boolean supported(Entity entity) { return entity instanceof Villager || entity instanceof ZombieVillager || entity instanceof LivingEntity living && ModList.get().isLoaded("recruits") && RecruitsFamilySupport.isRecruit(living); }
@@ -66,19 +72,33 @@ public final class FamilyRuntime {
 
     @SubscribeEvent public static void joined(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getEntity() instanceof LivingEntity living) || !supported(living)) return;
+        if (familyActor(living)) LOADED_ACTORS.computeIfAbsent(level.dimension(), ignored -> new LinkedHashMap<>())
+                .put(living.getUUID(), living);
         if (ModList.get().isLoaded("recruits") && RecruitsFamilySupport.isRecruit(living)) {
             if(!living.getPersistentData().contains("JemRecruitProvenance")){boolean table=RecruitsFamilySupport.inferTableOrigin(living);living.getPersistentData().putString("JemRecruitProvenance",table?"table":"independent");}
         }
         if (PENDING_IDENTITY_IDS.add(living.getUUID())) PENDING_IDENTITIES.addLast(new PendingIdentity(level.dimension(), living.getUUID()));
+    }
+    @SubscribeEvent public static void left(EntityLeaveLevelEvent event) {
+        if (!(event.getLevel() instanceof ServerLevel level)) return;
+        var actors = LOADED_ACTORS.get(level.dimension());
+        if (actors != null) actors.remove(event.getEntity().getUUID());
+        COMPLAINTS.remove(event.getEntity().getUUID());
     }
     @SubscribeEvent public static void converted(LivingConversionEvent.Post event) {
         if (!(event.getEntity().level() instanceof ServerLevel level)) return; LivingEntity from=event.getEntity(),to=event.getOutcome(); if(!supported(from)||!supported(to))return;
         VillagerFamilySavedData.get(level.getServer()).transfer(from, to);
     }
     @SubscribeEvent public static void death(LivingDeathEvent event) {
-        if (!(event.getEntity().level() instanceof ServerLevel level) || !supported(event.getEntity())) return; VillagerFamilySavedData data = VillagerFamilySavedData.get(level.getServer());
+        if (!(event.getEntity().level() instanceof ServerLevel level) || !supported(event.getEntity())) return;
+        var actors = LOADED_ACTORS.get(level.dimension()); if (actors != null) actors.remove(event.getEntity().getUUID());
+        COMPLAINTS.remove(event.getEntity().getUUID()); VillagerFamilySavedData data = VillagerFamilySavedData.get(level.getServer());
         FamilyRecord dead = data.byEntity(event.getEntity().getUUID()).orElse(null); if (dead == null) return; long now = level.getGameTime(), cooldown = remarriageCooldown(dead.personId(), now);
         if (dead.spouse() != null) data.byPerson(dead.spouse()).ifPresent(spouse -> spouse.widowed(now, cooldown)); dead.died(now, cooldown); data.changed();
+    }
+    @SubscribeEvent public static void stopped(ServerStoppedEvent event) {
+        LOADED_ACTORS.clear(); COMPLAINTS.clear(); CYCLE_CURSORS.clear();
+        PENDING_IDENTITIES.clear(); PENDING_IDENTITY_IDS.clear(); PENDING_RECRUITS.clear();
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void interact(PlayerInteractEvent.EntityInteract event) { interaction(event.getEntity(), event.getTarget(), event); }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void interactSpecific(PlayerInteractEvent.EntityInteractSpecific event) { interaction(event.getEntity(), event.getTarget(), event); }
@@ -128,16 +148,17 @@ public final class FamilyRuntime {
         pending.next++;if(pending.next<pending.target)PENDING_RECRUITS.addLast(pending);
     }
     private static void cycle(ServerLevel level) {
-        VillagerFamilySavedData data = VillagerFamilySavedData.get(level.getServer()); List<LivingEntity> actors = new ArrayList<>();
-        for (Entity entity : level.getAllEntities()) if (entity instanceof LivingEntity living && living.isAlive() && familyActor(entity)) actors.add(living);
-        actors.sort(Comparator.comparing(Entity::getUUID));
+        VillagerFamilySavedData data = VillagerFamilySavedData.get(level.getServer());
+        var indexed = LOADED_ACTORS.computeIfAbsent(level.dimension(), ignored -> new LinkedHashMap<>());
+        indexed.values().removeIf(entity -> entity.isRemoved() || !entity.isAlive() || entity.level() != level);
+        List<LivingEntity> actors = new ArrayList<>(indexed.values());
         if (actors.isEmpty()) { CYCLE_CURSORS.remove(level.dimension()); return; }
         int start = Math.floorMod(CYCLE_CURSORS.getOrDefault(level.dimension(), 0), actors.size());
         int count = Math.min(ACTORS_PER_CYCLE, actors.size()), pairBudget = 2, birthBudget = 1;
         for (int offset = 0; offset < count; offset++) {
             LivingEntity entity = actors.get((start + offset) % actors.size());
             FamilyRecord record = initializeIdentity(entity); FamilyHomeService.Status home = FamilyHomeService.inspect(level, entity, record, data); syncSettlementMood(level, entity, home);
-            if (!home.complaint().isEmpty() && Math.floorMod(level.getGameTime() / 100L + entity.getId(), 3L) == 0L) SettlementNetwork.sendFamilyComplaint(entity, home.complaint());
+            updateComplaint(entity, home.complaint(), level.getGameTime());
             if (record.spouse() == null && pairBudget > 0 && eligibleCourtship(entity, record, home, level.getGameTime())) {
                 LivingEntity partner = findPartner(level, entity, record, actors, data); if (partner != null) { marry(level, entity, partner, data); pairBudget--; }
             }
@@ -146,6 +167,18 @@ public final class FamilyRuntime {
         }
         CYCLE_CURSORS.put(level.dimension(), (start + count) % actors.size());
         data.changed();
+    }
+    private static void updateComplaint(LivingEntity entity, String reason, long now) {
+        ComplaintState prior = COMPLAINTS.get(entity.getUUID());
+        if (reason.isEmpty()) {
+            if (prior != null) SettlementNetwork.sendFamilyComplaint(entity, "");
+            COMPLAINTS.remove(entity.getUUID());
+            return;
+        }
+        if (prior == null || !prior.reason().equals(reason) || now >= prior.nextReminder()) {
+            SettlementNetwork.sendFamilyComplaint(entity, reason);
+            COMPLAINTS.put(entity.getUUID(), new ComplaintState(reason, now + 2_400L));
+        }
     }
     private static void syncSettlementMood(ServerLevel level, LivingEntity entity, FamilyHomeService.Status status) {
         var mood = SettlementSavedData.get(level.getServer()).resident(entity.getUUID()).orElse(null); if (mood == null) return;

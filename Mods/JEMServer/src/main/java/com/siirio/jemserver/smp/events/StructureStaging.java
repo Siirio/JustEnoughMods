@@ -155,15 +155,7 @@ public final class StructureStaging {
     }
 
     public static boolean raidAvailable(ServerPlayer player, UUID id) {
-        if (!SmpEnvironment.active(player)) return false;
-        Area area = AREAS.get(id);
-        EventState event = EventScheduler.active(player.server, "BOSS_RAID");
-        if (area == null || !area.near(player.serverLevel(), player.position())
-                || party(player.serverLevel(), id) != null) return false;
-        if (event == null) return false;
-        if (event.combatStarted()) return false;
-        return event.hasRaidArenaId() ? event.raidArenaId().equals(id.toString())
-                : RaidArenaApi.compatible(player.server, id.toString(), area.boss());
+        return false;
     }
 
     public static RaidTarget availableRaid(ServerLevel level,BlockPos position) {
@@ -182,40 +174,7 @@ public final class StructureStaging {
     }
 
     private static void chooseInScope(ServerPlayer player, UUID id, String mode, boolean solo) {
-        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
-        Area area = AREAS.get(id);
-        SmpRecords.require(area != null && area.near(player.serverLevel(), player.position()), "travel_to_arena");
-        SmpRecords.require(!locked(player, area), "unavailable");
-        SmpRecords.require(party(player.serverLevel(), id) == null, "arena_busy");
-        if (mode.equals("BOSS_RAID")) {
-            EventState event = EventScheduler.active(player.server, "BOSS_RAID");
-            SmpRecords.require(raidAvailable(player, id), "raid_unavailable");
-            if (!RaidEvent.claimArena(player.server, event, id.toString(), area.boss(), area.dimension(), area.center(), area.bounds())) {
-                SmpRecords.require(false, "arena_busy");
-            }
-            PARTY_CACHE.remove(id);
-            EventParties.join(player, event, solo);
-            PARTY_CACHE.put(id, SmpData.get(player.server).parties().currentRows().stream()
-                    .filter(value -> value.hasStructureId() && value.structureId().equals(id) && !SmpData.closed(value)).map(value -> value.id()).findFirst());
-            return;
-        }
-        SmpRecords.require(mode.equals("BOSS_FIGHT"), "unavailable");
-        EventState activeRaid = EventScheduler.active(player.server, "BOSS_RAID");
-        SmpRecords.require(activeRaid == null || !activeRaid.raidArenaId().equals(id.toString()), "raid_unavailable");
-        SmpRecords.require(livingBoss(player.serverLevel(), area) != null, "boss_not_respawned");
-        PartyState row = party(player.serverLevel(), id);
-        if (row == null) {
-            row = Parties.createHosted(player, SmpPartyRequest.hosted(
-                    Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString(), solo));
-            attachArena(row,id,area.boss(),area.dimension(),area.center(),area.bounds());
-            row.nativePending(true);
-            PARTY_CACHE.put(id, Optional.of(row.id()));
-
-        }
-        if (solo) {
-            Parties.makeSolo(player, row);
-            HostedParties.start(player, row);
-        } else SmpNetwork.open(player, "parties", row.id());
+        SmpRecords.require(false, "unavailable");
     }
 
     public static boolean start(ServerPlayer host, PartyState row, List<UUID> ids) {
@@ -242,11 +201,7 @@ public final class StructureStaging {
     }
 
     public static void prompt(ServerPlayer player, UUID id) {
-        if (!SmpEnvironment.active(player)) return;
-        Area area = AREAS.get(id);
-        SmpRecords.require(area != null && area.near(player.serverLevel(), player.position()), "travel_to_arena");
-        SmpRecords.require(!physicallyLocked(player.serverLevel(), area) && !locked(player, area), "unavailable");
-        EventNetwork.prompt(player, area.id(), EventEntryKind.BOSS_STRUCTURE, Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString(), area.boss().toString());
+        // Structural bosses use their native interaction and combat flow.
     }
 
     public static boolean arrive(ServerPlayer player, PartyState row) {
@@ -537,8 +492,7 @@ public final class StructureStaging {
     }
 
     public static void stageBoss(ServerLevel level,SmpRecord record,LivingEntity boss) {
-        if(!boss.isAlive()||boss.isRemoved()) return;
-        HostedEncounterApi.hold(boss);
+        // Ordinary bosses are never held for a hosted start.
     }
 
 
@@ -571,19 +525,7 @@ public final class StructureStaging {
         if (!adminSpawn && (encounter == null || encounter.provenance() != com.siirio.jemworldbosstiers.encounter.EncounterProvenance.RAID_EVENT))
             RaidArenaApi.observeNativeBoss(level.getServer(), area.id().toString(), boss);
         if (encounter != null && encounter.provenance() == com.siirio.jemworldbosstiers.encounter.EncounterProvenance.RAID_EVENT) return;
-        com.siirio.jemworldbosstiers.encounter.HostedGroup.stage(boss);
-        HostedEncounterApi.hold(boss);
-        if (encounter == null) return;
-        PartyState row = party(level, area.id());
-        if (row == null || !row.state().equals("ACTIVE")) return;
-        level.getServer().execute(() -> {
-            var store = SmpData.get(level.getServer());
-            store.edit(() -> {
-                var current = store.parties().current(row.id());
-                if (boss.isAlive() && !boss.isRemoved() && current != null && current.state().equals("ACTIVE"))
-                    bind(level, boss, current, SmpRecords.memberIds(current).stream().filter(id -> Parties.accepted(current, id)).toList());
-            });
-        });
+        com.siirio.jemworldbosstiers.encounter.HostedEncounters.restoreNative(boss);
     }
 
     @SubscribeEvent
@@ -594,33 +536,12 @@ public final class StructureStaging {
         finishLogoutExit(player);
         finishPendingRaidExit(player);
         Area area = discover(player.serverLevel(), player.blockPosition());
-        Area close = nearby(player.serverLevel(), player.position());
-        if (close == null) NEAR.remove(player.getUUID());
-        else if (!close.id().equals(NEAR.put(player.getUUID(), close.id()))) {
-            PartyState closeParty = party(player.serverLevel(), close.id());
-            if (closeParty == null || !HostedBoundary.authorized(player, closeParty)) {
-                if (physicallyLocked(player.serverLevel(), close) || locked(player, close))
-                    com.siirio.jemtwelveeyes.api.CampaignApi.explainLocked(player, close.boss());
-                else player.sendSystemMessage(Component.literal("▣ ").withStyle(ChatFormatting.GOLD)
-                        .append(Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(close.boss()).getDescriptionId())).append(" ")
-                        .append(Component.translatable("jem.smp.open_fight").withStyle(style -> style.withColor(ChatFormatting.GREEN).withBold(true)
-                                .withClickEvent(new EventPromptRequest(EventPromptRequest.Kind.ARENA, close.id()).clickEvent()))));
-            }
-        }
+        NEAR.remove(player.getUUID());
         AREAS.values().stream()
                 .filter(candidate -> candidate.dimension().equals(player.level().dimension().location().toString()) && candidate.distance(player.position()) <= LANDMARK_RADIUS)
                 .forEach(candidate -> Landmarks.publishBoss(player.server, candidate.id(), candidate.boss(), player.level().dimension().location(), candidate.center(), candidate.bounds()));
         if (area == null) { INSIDE.remove(player.getUUID()); return; }
-        PartyState activeParty = party(player.serverLevel(), area.id());
-        if (activeParty != null) HostedBoundary.observe(player, activeParty, area.shell());
-        UUID before = INSIDE.put(player.getUUID(), area.id());
-        if (!area.id().equals(before)) {
-            PartyState row = party(player.serverLevel(), area.id());
-            if (row != null) {
-                if (row.state().equals("ACTIVE") && row.nativePending())
-                    bindExisting(player.serverLevel(), area, row, SmpRecords.memberIds(row).stream().filter(id -> Parties.accepted(row, id)).toList());
-            }
-        }
+        INSIDE.put(player.getUUID(), area.id());
     }
 
     private static boolean locked(ServerPlayer player, Area area) {
@@ -718,20 +639,7 @@ public final class StructureStaging {
     }
 
     public static List<EventBoundary> boundaries(ServerPlayer player) {
-        List<EventBoundary> result = new ArrayList<>();
-        if (!SmpEnvironment.active(player)) return result;
-        for (Area area : AREAS.values()) {
-            if (!area.dimension().equals(player.level().dimension().location().toString())) continue;
-            var bounds = area.shell();
-            double distance = area.distance(player.position());
-            if (distance > EventRules.BOUNDARY_DISTANCE.get() || !guarded(player.serverLevel(), area)) continue;
-            PartyState row = party(player.serverLevel(), area.id());
-            boolean passable = row != null && HostedBoundary.passable(player, row);
-            result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
-                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), passable));
-            if (result.size() >= BOUNDARY_LIMIT) break;
-        }
-        return result;
+        return List.of();
     }
 
     public static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity) {
@@ -739,15 +647,11 @@ public final class StructureStaging {
     }
 
     static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity, AABB query) {
-        if (!(entity.level() instanceof ServerLevel level) || !SmpEnvironment.active(level.getServer()) || entity.isSpectator()) return List.of();
-        refreshAreas(level);
-        return solidBoundaries(entity, level, query, true);
+        return List.of();
     }
 
     static List<EventBoundary> destinationBoundaries(net.minecraft.world.entity.Entity entity, ServerLevel level, Vec3 destination) {
-        if (!SmpEnvironment.active(level.getServer()) || entity.isSpectator()) return List.of();
-        refreshAreas(level);
-        return solidBoundaries(entity, level, SolidBoundary.destinationBox(entity, destination), false);
+        return List.of();
     }
 
     /** Only the exact held canonical boss may be restored at its verified native anchor. */
@@ -786,38 +690,6 @@ public final class StructureStaging {
     }
 
     static BossTeleportSafety.Decision safeTeleport(ServerPlayer player, ServerLevel level, Vec3 requested) {
-        if (!SmpEnvironment.active(player)) return BossTeleportSafety.Decision.unmatched();
-        discover(level, BlockPos.containing(requested));
-        AABB source = SolidBoundary.movementBox(player);
-        AABB destination = SolidBoundary.destinationBox(player, requested);
-        for (Area area : AREAS.values()) {
-            ServerLevel areaLevel = level(player.server, area);
-            if (areaLevel == null) continue;
-            BoundingBox shell = area.shell();
-            EventBoundary boundary = SolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
-                    shell.minY(), shell.maxY(), EventRules.RAID_COLOR.get(), false);
-            boolean sourceInside = player.serverLevel() == areaLevel && SolidBoundary.contains(source, boundary);
-            boolean destinationInside = level == areaLevel && SolidBoundary.contains(destination, boundary);
-            boolean destinationWall = level == areaLevel && SolidBoundary.intersectsWall(destination, boundary);
-            PartyState row = party(areaLevel, area.id());
-            if (!sourceInside && !destinationInside && !destinationWall && (row == null || !HostedBoundary.locked(player, row))) continue;
-            if (!guarded(areaLevel, area)) continue;
-            if (row != null && HostedBoundary.locked(player, row)) {
-                if (level != areaLevel) return BossTeleportSafety.Decision.redirect(null);
-                if (destinationInside && !destinationWall && level.noCollision(player, destination)) continue;
-                if (sourceInside && !SolidBoundary.intersectsWall(source, boundary) && areaLevel.noCollision(player, source))
-                    return BossTeleportSafety.Decision.redirect(player.position());
-                BlockPos respawn = RaidArenaApi.respawnPosition(player.server, area.id().toString(), area.boss()).orElse(null);
-                Vec3 recovery = respawn == null ? null : Vec3.atBottomCenterOf(respawn);
-                AABB recoveryBox = recovery == null ? null : SolidBoundary.destinationBox(player, recovery);
-                return BossTeleportSafety.Decision.redirect(recoveryBox != null && SolidBoundary.contains(recoveryBox, boundary)
-                        && !SolidBoundary.intersectsWall(recoveryBox, boundary) && areaLevel.noCollision(player, recoveryBox) ? recovery : null);
-            }
-            if (!destinationInside && !destinationWall) continue;
-            if (!destinationWall && row != null && HostedBoundary.authorized(player, row) && level.noCollision(player, destination)) continue;
-            BlockPos safe = safeExit(player, areaLevel, area, BlockPos.containing(requested));
-            return BossTeleportSafety.Decision.redirect(safe == null ? null : Vec3.atBottomCenterOf(safe));
-        }
         return BossTeleportSafety.Decision.unmatched();
     }
 
@@ -827,27 +699,22 @@ public final class StructureStaging {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void activateBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getLevel() instanceof ServerLevel level && com.siirio.jemworldbosstiers.api.StructureEncounterApi.activationBlock(BuiltInRegistries.BLOCK.getKey(level.getBlockState(event.getPos()).getBlock()))
-                && !allowNativeSpawn(level, event.getPos())) {
-            event.setCanceled(true);
-            event.getEntity().displayClientMessage(Component.translatable("jem.event.start_before_ritual"), true);
-        }
+        // Native structure activation is not gated by JEM.
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void activateItem(PlayerInteractEvent.RightClickItem event) {
-        if (event.getLevel() instanceof ServerLevel level && com.siirio.jemworldbosstiers.api.StructureEncounterApi.activationItem(BuiltInRegistries.ITEM.getKey(event.getItemStack().getItem()))
-                && !allowNativeSpawn(level, event.getEntity().blockPosition())) event.setCanceled(true);
+        // Native structure activation is not gated by JEM.
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void activateBoss(PlayerInteractEvent.EntityInteract event) {
-        if (event.getTarget() instanceof LivingEntity boss && managed(boss) && !allowNative(boss.level(), boss.blockPosition())) event.setCanceled(true);
+        // Native boss interaction is not gated by JEM.
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void activateBossPart(PlayerInteractEvent.EntityInteractSpecific event) {
-        if (event.getTarget() instanceof LivingEntity boss && managed(boss) && !allowNative(boss.level(), boss.blockPosition())) event.setCanceled(true);
+        // Native boss interaction is not gated by JEM.
     }
 
 

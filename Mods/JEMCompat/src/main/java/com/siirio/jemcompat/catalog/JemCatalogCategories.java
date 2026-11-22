@@ -11,18 +11,21 @@ public final class JemCatalogCategories {
         WEAPON_TOTEMS,
         WEAPON_RANGED,
         WEAPON_MELEE,
-        WEARABLE,
+        WEAPON_TRAINING,
+        WEARABLES,
         FOOD,
+        FOOD_EDIBLES,
+        FOOD_COOKING_EQUIPMENT,
         ORES,
         CREATE_REDSTONE,
         BUILDING,
-        FURNITURE,
-        NATURE,
-        CONTAINERS,
-        HOLIDAY,
+        BUILDING_FURNITURE,
+        BUILDING_NATURE,
+        BUILDING_CONTAINERS,
+        BUILDING_HOLIDAY,
         BUILDING_BLOCKS,
-        GLASS,
-        LIGHT,
+        BUILDING_GLASS,
+        BUILDING_LIGHT,
         FISHING,
         BOOKS,
         POTIONS,
@@ -44,7 +47,10 @@ public final class JemCatalogCategories {
                                 Predicate<ItemStack> cookingCatalyst) {
         Kind category = classify(stack);
         return switch (category) {
-            case WEAPON_TOTEMS, WEAPON_RANGED, WEAPON_MELEE -> Kind.WEAPONS;
+            case WEAPON_TOTEMS, WEAPON_RANGED, WEAPON_MELEE, WEAPON_TRAINING -> Kind.WEAPONS;
+            case FOOD_EDIBLES, FOOD_COOKING_EQUIPMENT -> Kind.FOOD;
+            case BUILDING_FURNITURE, BUILDING_NATURE, BUILDING_CONTAINERS, BUILDING_HOLIDAY,
+                    BUILDING_BLOCKS, BUILDING_GLASS, BUILDING_LIGHT -> Kind.BUILDING;
             default -> category;
         };
     }
@@ -56,7 +62,8 @@ public final class JemCatalogCategories {
 
     public static boolean isMarketBuilding(ItemStack stack) {
         return switch (classify(stack)) {
-            case CREATE_REDSTONE, FURNITURE, NATURE, CONTAINERS, HOLIDAY, BUILDING_BLOCKS, GLASS, LIGHT -> true;
+            case CREATE_REDSTONE, BUILDING_FURNITURE, BUILDING_NATURE, BUILDING_CONTAINERS,
+                    BUILDING_HOLIDAY, BUILDING_BLOCKS, BUILDING_GLASS, BUILDING_LIGHT -> true;
             default -> false;
         };
     }

@@ -29,9 +29,10 @@ public final class RecruitEquipmentPolicy {
         return stack.isEmpty() || ALLOWED.contains(stack.getItem());
     }
 
-    static void enforce(AbstractRecruitEntity recruit) {
-        if (recruit.level().isClientSide()) return;
+    static boolean enforce(AbstractRecruitEntity recruit) {
+        if (recruit.level().isClientSide()) return false;
         var inventory = recruit.getInventory();
+        boolean changed = false;
         for (int slot = 0; slot <= 5 && slot < inventory.getContainerSize(); slot++) {
             ItemStack stack = inventory.getItem(slot);
             if (allowed(stack)) continue;
@@ -40,12 +41,14 @@ public final class RecruitEquipmentPolicy {
             EquipmentSlot equipmentSlot = recruit.getEquipmentSlotIndex(slot);
             if (equipmentSlot != null) recruit.setItemSlot(equipmentSlot, ItemStack.EMPTY);
             returnSafely(recruit, returned);
+            changed = true;
             String id = BuiltInRegistries.ITEM.getKey(returned.getItem()).toString();
             if (recruit.getOwner() instanceof ServerPlayer owner) {
                 owner.sendSystemMessage(Component.translatable("message.jem_settlements.recruit_equipment_rejected", id));
             }
         }
-        recruit.onInventoryChanged();
+        if (changed) recruit.onInventoryChanged();
+        return changed;
     }
 
     private static void returnSafely(AbstractRecruitEntity recruit, ItemStack stack) {

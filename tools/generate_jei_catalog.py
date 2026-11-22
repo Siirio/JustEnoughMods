@@ -1,47 +1,83 @@
 #!/usr/bin/env python3
-"""Generate or validate JEMCompat's stable JEI item-category manifest."""
+"""Build and validate the exact JEM JEI item-to-leaf manifest."""
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ITEMS = ROOT / "Catalog" / "registries" / "items"
-VIEWS = ROOT / "Catalog" / "views"
 MANIFEST = ROOT / "Mods" / "JEMCompat" / "src" / "main" / "resources" / "assets" / "jemcompat" / "jei_catalog.json"
+REPORT = ROOT / "Docs" / "catalog" / "JEI_CATALOG_REVIEW.md"
 SCHEMA_VERSION = 1
 LEAVES = (
-    "WEAPON_TOTEMS", "WEAPON_RANGED", "WEAPON_MELEE", "WEARABLE", "FOOD", "ORES",
-    "CREATE_REDSTONE", "FURNITURE", "NATURE", "CONTAINERS", "HOLIDAY", "BUILDING_BLOCKS",
-    "GLASS", "LIGHT", "FISHING", "BOOKS", "POTIONS", "TRANSPORT", "SPAWN_EGGS", "OTHER",
+    "WEAPON_TOTEMS",
+    "WEAPON_TRAINING",
+    "WEAPON_MELEE",
+    "WEAPON_RANGED",
+    "WEARABLES",
+    "FOOD_EDIBLES",
+    "FOOD_COOKING_EQUIPMENT",
+    "FISHING",
+    "TRANSPORT",
+    "BUILDING_CONTAINERS",
+    "POTIONS",
+    "BOOKS",
+    "ORES",
+    "CREATE_REDSTONE",
+    "BUILDING_FURNITURE",
+    "BUILDING_NATURE",
+    "BUILDING_GLASS",
+    "BUILDING_LIGHT",
+    "BUILDING_HOLIDAY",
+    "BUILDING_BLOCKS",
+    "SPAWN_EGGS",
+    "OTHER",
 )
-PARENTS = {"WEAPONS", "BUILDING"}
+PARENTS = {"WEAPONS", "FOOD", "BUILDING"}
 ID_PATTERN = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
-HANDCRAFTED_COLORS = (
-    "black", "blue", "brown", "cyan", "gray", "green", "light_blue", "light_gray",
-    "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow",
-)
-HANDCRAFTED_WOODS = (
-    "acacia", "bamboo", "birch", "cherry", "crimson", "dark_oak", "jungle", "mangrove",
-    "oak", "spruce", "warped",
-)
-INITIAL_EXACT_ASSIGNMENTS = {
-    "irons_spellbooks:scroll": "WEAPON_MELEE",
-    **{
-        f"handcrafted:{color}_{suffix}": "FURNITURE"
-        for color in HANDCRAFTED_COLORS
-        for suffix in ("cushion", "sheet")
-    },
-    **{
-        f"handcrafted:{wood}_{suffix}": "FURNITURE"
-        for wood in HANDCRAFTED_WOODS
-        for suffix in ("counter", "desk")
-    },
+SKARRIER_TOTEMS = {
+    "skarrier_mobs:totem_of_extinction",
+    "skarrier_mobs:totem_of_freezing",
+    "skarrier_mobs:totem_of_melding",
+    "skarrier_mobs:totem_of_repulsion",
+    "skarrier_mobs:totem_of_seething",
+}
+EXACT = {
+    "companions:book_ice_shard": "WEARABLES",
+    "legendary_monsters:totem_of_moss": "OTHER",
+    "legendary_monsters:eye_of_moss": "OTHER",
+    "spawn:ant_crystal": "OTHER",
+    "spawn:moonshine": "OTHER",
+    "spawn:moonstone": "OTHER",
+    **{item_id: "WEAPON_TOTEMS" for item_id in SKARRIER_TOTEMS},
+}
+OLD_LEAF_MAP = {
+    "WEAPON_TOTEMS": "WEAPON_TOTEMS",
+    "WEAPON_RANGED": "WEAPON_RANGED",
+    "WEAPON_MELEE": "WEAPON_MELEE",
+    "WEARABLE": "WEARABLES",
+    "FOOD": "FOOD_COOKING_EQUIPMENT",
+    "ORES": "ORES",
+    "CREATE_REDSTONE": "CREATE_REDSTONE",
+    "FURNITURE": "BUILDING_FURNITURE",
+    "NATURE": "BUILDING_NATURE",
+    "CONTAINERS": "BUILDING_CONTAINERS",
+    "HOLIDAY": "BUILDING_HOLIDAY",
+    "BUILDING_BLOCKS": "BUILDING_BLOCKS",
+    "GLASS": "BUILDING_GLASS",
+    "LIGHT": "BUILDING_LIGHT",
+    "FISHING": "FISHING",
+    "BOOKS": "BOOKS",
+    "POTIONS": "POTIONS",
+    "TRANSPORT": "TRANSPORT",
+    "SPAWN_EGGS": "SPAWN_EGGS",
+    "OTHER": "OTHER",
 }
 
 
@@ -49,206 +85,583 @@ def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def records(folder: Path) -> list[dict]:
-    result: list[dict] = []
-    for path in sorted(folder.glob("*.json")):
-        result.extend(read_json(path).get("records", []))
-    return result
-
-
-def view_ids(name: str) -> set[str]:
-    return {row["item_id"] for row in records(VIEWS / name) if ID_PATTERN.fullmatch(row.get("item_id", ""))}
+def words(path: str) -> set[str]:
+    return {token for token in re.split(r"[^a-z0-9]+", path.casefold()) if token}
 
 
 def has_phrase(path: str, *phrases: str) -> bool:
-    padded = f"_{path.casefold().replace('/', '_')}_"
-    return any(f"_{phrase}_" in padded for phrase in phrases)
+    padded = "_" + path.casefold().replace("/", "_") + "_"
+    return any("_" + phrase + "_" in padded for phrase in phrases)
 
 
-def has_tag(tags: set[str], *needles: str) -> bool:
-    normalized = {tag.casefold().replace("items/", "") for tag in tags}
-    return any(any(needle in tag for needle in needles) for tag in normalized)
+def has_tag(row: dict, *needles: str) -> bool:
+    tags = {str(tag).casefold().removeprefix("items/") for tag in row.get("tags", [])}
+    return any(any(needle in tag for needle in needles) for tag in tags)
 
 
-def existing_assignments() -> dict[str, str]:
+def class_has(row: dict, *needles: str) -> bool:
+    names = (str(row.get("class_name", "")) + " " + str(row.get("block_class_name", ""))).casefold()
+    return any(needle.casefold() in names for needle in needles)
+
+
+def is_block(row: dict) -> bool:
+    return bool(row.get("block_item_id"))
+
+
+def migration_hints(valid_ids: set[str]) -> dict[str, str]:
     if not MANIFEST.exists():
         return {}
     data = read_json(MANIFEST)
-    validate(data)
-    return {item_id: category for category, ids in data["assignments"].items() for item_id in ids}
+    result: dict[str, str] = {}
+    for old_leaf, item_ids in data.get("assignments", {}).items():
+        leaf = OLD_LEAF_MAP.get(old_leaf)
+        if leaf is None:
+            continue
+        for item_id in item_ids:
+            if item_id in valid_ids:
+                result[item_id] = leaf
+    return result
 
 
-def category(row: dict, placeables: set[str], armor: set[str], tools: set[str], locked: dict[str, str]) -> str:
+def classify(row: dict, hint: str | None) -> str:
     item_id = row["registry_id"]
-    if item_id in locked:
-        return locked[item_id]
     namespace, path = item_id.split(":", 1)
-    tags = set(row.get("tags") or [])
-    placeable = item_id in placeables or bool(row.get("block_item_id"))
+    token_set = words(path)
 
-    if item_id in {"spawn:sunstone", "spawn:moonstone", "spawn:snail_shell", "minecraft:resin_clump",
-                   "minecraft:powder_snow_bucket", "minecraft:resin_brick"}:
-        return "ORES"
-    if path.endswith("_ore") or "_ore_" in path or path == "ancient_debris" or has_tag(
-            tags, "forge:ores", "forge:raw_materials", "forge:ingots", "forge:nuggets", "forge:gems",
-            "forge:dusts", "forge:storage_blocks", "forge:plates", "forge:rods", "forge:wires",
-            "c:ores", "c:raw_materials", "c:ingots", "c:nuggets", "c:gems", "c:dusts"):
-        return "ORES"
-    if not placeable and has_phrase(path, "raw", "ingot", "nugget", "gem", "crystal", "dust", "powder",
-                                    "crushed", "shard", "chunk", "plate", "sheet", "rod", "wire"):
-        return "ORES"
-    if namespace == "infinitybuttons" or item_id == "minecraft:tnt":
-        return "CREATE_REDSTONE"
-    if namespace in {"toms_storage", "sophisticatedbackpacks", "sophisticatedstorage", "mobhome"} \
-            or item_id == "jem_economy:shipping_box" or path == "backpack":
-        return "CONTAINERS"
-    if namespace.startswith("kaleidoscope_") or namespace in {"bakery", "herbalbrews"}:
-        return "FOOD"
-    if namespace in {"casualswing", "shutterup", "chimes", "secretdoors"}:
-        return "FURNITURE"
-    if item_id in {"animal_feeding_trough:feeding_trough", "farm_and_charm:chicken_coop"}:
-        return "FOOD"
-    if path.endswith("_trophy") or path.endswith("_skull") or path.endswith("_skull_block") \
-            or namespace == "minecraft" and path.endswith("_head") \
-            or namespace == "blastfromthepast" and path in {"antler_display", "broad_antler_display", "curly_antler_display", "spikey_antler_display"} \
-            or item_id in {"dustydecorations:displayed_oars", "infinitybuttons:hoglin_mount_button"}:
-        return "FURNITURE"
-    if namespace == "spawn" and path.startswith("clam_case_") or namespace == "beachparty" and path == "palm_cabinet" \
-            or placeable and has_phrase(path, "chest", "barrel", "crate", "drawer", "cupboard", "cabinet", "storage", "basket", "bookshelf"):
-        return "CONTAINERS"
-    if placeable and has_phrase(path, "torch", "lantern", "candle", "light", "lamp", "chandelier", "sconce", "brazier"):
-        return "LIGHT"
-    if placeable and (has_phrase(path, "glass", "glass_pane", "seaglass", "window", "window_pane")
-                      or has_tag(tags, "forge:glass", "c:glass")):
-        return "GLASS"
-    if has_tag(tags, "jemcompat:jei/create_redstone"):
-        return "CREATE_REDSTONE"
-    if has_tag(tags, "jemcompat:jei/fishing"):
-        return "FISHING"
-    if has_tag(tags, "jemcompat:transport") or namespace in {"immersive_aircraft", "trotting_wagons"} \
-            or has_phrase(path, "wagon", "cart", "sled", "ship", "boat", "canoe", "paraglider", "elytra", "aircraft", "biplane", "gyrodyne") \
-            or namespace in {"create", "railways", "bellsandwhistles", "create_train_parts", "createrailwaysnavigator"} \
-            and has_phrase(path, "train", "station", "track", "schedule", "controls", "conductor", "locomotive", "bogey", "carriage"):
-        return "TRANSPORT"
-    if path.endswith("_spawn_egg"):
+    if item_id in EXACT:
+        return EXACT[item_id]
+    if "hourglass" in token_set or {"sand", "clock"} <= token_set:
+        return "OTHER"
+
+    if class_has(row, "SpawnEggItem") or path.endswith("_spawn_egg"):
         return "SPAWN_EGGS"
-    if row.get("categories") and "food" in row["categories"] or has_tag(tags, "foods", "crops", "fruits", "vegetables", "drinks", "beverages", "dough", "flour") \
-            or has_phrase(path, "drink", "juice", "tea", "coffee", "wine", "beer", "cocktail", "crop", "flour", "dough", "cheese", "butter", "cooking_pot", "stove", "oven", "fryer", "kettle", "brewery", "kitchen", "watering_can", "sickle", "cultivator", "fertilizer", "bone_meal"):
-        return "FOOD"
-    if item_id == "irons_spellbooks:scroll":
+
+    if item_id == "minecraft:totem_of_undying" or (
+        namespace == "moretotems" and "totem" in token_set
+    ):
+        return "WEAPON_TOTEMS"
+
+    if namespace == "recruits" and path in {
+        "recruit_block",
+        "recruit_shield_block",
+        "bowman_block",
+        "crossbowman_block",
+        "horseman_block",
+        "nomad_block",
+    }:
+        return "WEAPON_TRAINING"
+
+    if "spear" in token_set and not ({"javelin", "trident"} & token_set):
         return "WEAPON_MELEE"
-    if item_id == "minecraft:totem_of_undying" or namespace == "moretotems" and path.endswith("_totem_of_undying") \
-            or has_tag(tags, "skarrier_mobs:totems"):
-        return "WEARABLE"
-    weapon = item_id in tools or namespace == "xtraarrows" or has_tag(tags, "minecraft:weapons", "forge:weapons") or has_phrase(
-        path, "sword", "dagger", "spear", "javelin", "trident", "mace", "battleaxe", "warhammer", "shield",
-        "bow", "crossbow", "arrow", "bolt", "chakram", "shuriken", "musket", "rifle", "pistol", "cannon",
-        "launcher", "blaster", "slingshot", "scythe", "halberd", "glaive", "katana", "claymore", "rapier",
-    )
-    if weapon:
-        if has_phrase(path, "totem") or has_tag(tags, "totem"):
-            return "WEAPON_TOTEMS"
-        if has_phrase(path, "bow", "crossbow", "arrow", "bolt", "spear", "javelin", "trident", "chakram",
-                      "shuriken", "gun", "rifle", "pistol", "musket", "cannon", "launcher", "blaster", "slingshot") \
-                or has_tag(tags, "bows", "crossbows", "arrows", "spears", "throwable", "ranged"):
-            return "WEAPON_RANGED"
+    if class_has(row, "SwordItem", "DiggerItem", "ShieldItem") or has_tag(
+        row, "minecraft:swords", "forge:tools/swords", "forge:weapons"
+    ) or has_phrase(
+        path,
+        "sword",
+        "dagger",
+        "mace",
+        "battleaxe",
+        "warhammer",
+        "shield",
+        "scythe",
+        "halberd",
+        "glaive",
+        "katana",
+        "claymore",
+        "rapier",
+        "shortsword",
+        "greatsword",
+        "saber",
+        "blade",
+    ):
         return "WEAPON_MELEE"
-    if item_id in armor or path.endswith("_doll") or namespace == "kaleidoscope_doll":
-        return "WEARABLE"
-    if has_phrase(path, "potion", "elixir", "tonic", "flask"):
-        return "POTIONS"
-    if has_phrase(path, "book", "tome", "guide", "journal", "manual", "codex", "grimoire"):
-        return "BOOKS"
-    if namespace == "tide" or has_tag(tags, "minecraft:fishes") or has_phrase(path, "fishing_rod", "fish_display", "fish_frame", "bait", "bobber", "fishing_hook"):
+
+    if {"javelin", "trident"} & token_set or class_has(row, "BowItem", "CrossbowItem") or has_tag(
+        row, "bows", "crossbows", "arrows", "spears", "throwable", "ranged"
+    ) or has_phrase(
+        path,
+        "bow",
+        "crossbow",
+        "arrow",
+        "bolt",
+        "javelin",
+        "trident",
+        "chakram",
+        "shuriken",
+        "gun",
+        "rifle",
+        "pistol",
+        "musket",
+        "cannon",
+        "launcher",
+        "blaster",
+        "slingshot",
+    ):
+        return "WEAPON_RANGED"
+
+    if row.get("armor_slot") or class_has(
+        row, "ArmorItem", "DollItem", "Curio", "BackpackItem", "Quiver"
+    ) or has_tag(row, "curios:", "forge:armors", "minecraft:head_armor", "minecraft:chest_armor") or has_phrase(
+        path,
+        "player_head",
+        "mob_head",
+        "skull",
+        "mask",
+        "crown",
+        "hat",
+        "helmet",
+        "chestplate",
+        "leggings",
+        "boots",
+        "cape",
+        "backpack",
+        "quiver",
+        "wearable",
+        "white_doll",
+    ):
+        return "WEARABLES"
+
+    if row.get("has_food_properties") or has_tag(
+        row, "foods", "crops", "fruits", "vegetables", "drinks", "beverages", "meat"
+    ) or has_phrase(
+        path,
+        "raw_meat",
+        "cooked_meat",
+        "steak",
+        "chop",
+        "fillet",
+        "fruit",
+        "vegetable",
+        "meal",
+        "sandwich",
+        "burger",
+        "soup",
+        "stew",
+        "drink",
+        "juice",
+        "tea",
+        "coffee",
+        "wine",
+        "beer",
+        "cocktail",
+    ):
+        return "FOOD_EDIBLES"
+
+    cooking_namespace = namespace in {
+        "bakery",
+        "brewery",
+        "farm_and_charm",
+        "herbalbrews",
+        "kaleidoscope_cookery",
+        "vinery",
+    }
+    if class_has(row, "CookingPot", "Stove", "Oven", "CuttingBoard", "Millstone") or (
+        cooking_namespace
+        and has_phrase(
+            path,
+            "furnace",
+            "oven",
+            "stove",
+            "grill",
+            "cutting_board",
+            "millstone",
+            "cooking_pot",
+            "cauldron",
+            "brewery",
+            "kitchen",
+            "worktop",
+            "basket",
+            "crate",
+            "cabinet",
+            "barrel",
+        )
+    ):
+        return "FOOD_COOKING_EQUIPMENT"
+
+    if namespace == "tide" or class_has(row, "FishingRod", "FishingBobber", "Fishing") or has_tag(
+        row, "minecraft:fishes"
+    ) or has_phrase(
+        path,
+        "fishing_rod",
+        "fish_display",
+        "fish_frame",
+        "fish_finder",
+        "fishing_journal",
+        "bait",
+        "bobber",
+        "fishing_hook",
+        "fish_bucket",
+    ) or path == "bucket" or path.endswith("_bucket"):
         return "FISHING"
-    if has_phrase(path, "redstone", "repeater", "comparator", "piston", "observer", "dispenser", "dropper",
-                  "hopper", "lever", "pressure_plate", "tripwire", "daylight_detector", "sculk_sensor", "target",
-                  "command_block", "button") or namespace in {"create", "railways", "bellsandwhistles", "create_train_parts", "createrailwaysnavigator"} \
-            and has_phrase(path, "cogwheel", "shaft", "gearbox", "press", "deployer", "mixer", "basin", "motor",
-                           "fan", "pump", "pipe", "boiler", "flywheel", "drill", "saw", "belt", "conveyor",
-                           "millstone", "crushing_wheel", "steam_engine", "steam_whistle", "mechanical"):
+
+    if class_has(row, "BoatItem", "MinecartItem", "SledItem", "Aircraft") or namespace in {
+        "immersive_aircraft",
+        "smallships",
+        "trotting_wagons",
+    } or has_phrase(
+        path,
+        "sled",
+        "ship",
+        "rowboat",
+        "galley",
+        "cog",
+        "dhow",
+        "drakkar",
+        "brigg",
+        "war_galley",
+        "boat",
+        "minecart",
+        "wagon",
+        "carriage",
+        "aircraft",
+        "biplane",
+        "gyrodyne",
+        "locomotive",
+        "mount_control",
+    ):
+        return "TRANSPORT"
+
+    if class_has(row, "ShulkerBox", "ChestBlock", "BarrelBlock", "ContainerBlock") or namespace in {
+        "sophisticatedstorage",
+        "toms_storage",
+    } or has_phrase(
+        path,
+        "shulker_box",
+        "bundle",
+        "chest",
+        "barrel",
+        "crate",
+        "sack",
+        "box",
+        "drawer",
+        "cupboard",
+        "cabinet",
+        "storage",
+        "basket",
+    ):
+        return "BUILDING_CONTAINERS"
+
+    if class_has(row, "PotionItem") or has_phrase(
+        path, "potion", "splash_potion", "lingering_potion", "elixir", "tonic", "status_flask"
+    ):
+        return "POTIONS"
+
+    if class_has(row, "BookItem", "WrittenBookItem") or has_phrase(
+        path, "book", "tome", "guide", "journal", "manual", "codex", "grimoire", "document"
+    ):
+        return "BOOKS"
+
+    if path.endswith("_ore") or "_ore_" in path or path == "ancient_debris" or has_tag(
+        row,
+        "forge:ores",
+        "forge:raw_materials",
+        "forge:ingots",
+        "forge:nuggets",
+        "forge:gems",
+        "forge:dusts",
+        "forge:storage_blocks",
+        "forge:plates",
+        "forge:rods",
+        "forge:wires",
+        "c:ores",
+        "c:raw_materials",
+        "c:ingots",
+        "c:nuggets",
+        "c:gems",
+        "c:dusts",
+    ) or (not is_block(row) and has_phrase(
+        path,
+        "raw",
+        "ingot",
+        "nugget",
+        "gem",
+        "crystal",
+        "dust",
+        "powder",
+        "crushed",
+        "shard",
+        "chunk",
+        "plate",
+        "sheet",
+        "rod",
+        "wire",
+    )):
+        return "ORES"
+
+    create_family = namespace in {
+        "create",
+        "railways",
+        "bellsandwhistles",
+        "create_train_parts",
+        "createrailwaysnavigator",
+    }
+    if namespace == "infinitybuttons" or item_id == "minecraft:tnt" or has_tag(
+        row, "jemcompat:jei/create_redstone"
+    ) or has_phrase(
+        path,
+        "redstone",
+        "repeater",
+        "comparator",
+        "piston",
+        "observer",
+        "dispenser",
+        "dropper",
+        "hopper",
+        "lever",
+        "pressure_plate",
+        "tripwire",
+        "daylight_detector",
+        "sculk_sensor",
+        "target",
+        "command_block",
+        "button",
+    ) or (
+        create_family
+        and has_phrase(
+            path,
+            "cogwheel",
+            "shaft",
+            "gearbox",
+            "press",
+            "deployer",
+            "mixer",
+            "basin",
+            "motor",
+            "fan",
+            "pump",
+            "pipe",
+            "boiler",
+            "flywheel",
+            "drill",
+            "saw",
+            "belt",
+            "conveyor",
+            "millstone",
+            "crushing_wheel",
+            "steam_engine",
+            "mechanical",
+            "circuit",
+        )
+    ):
         return "CREATE_REDSTONE"
+
+    if namespace in {"beachparty", "casualswing", "chimes", "secretdoors", "shutterup"} or has_phrase(
+        path,
+        "chair",
+        "table",
+        "table_cloth",
+        "sideboard",
+        "buffet",
+        "counter",
+        "countertop",
+        "sofa",
+        "couch",
+        "stool",
+        "bench",
+        "curtain",
+        "carpet",
+        "painting",
+        "decoration",
+        "display",
+        "parasol",
+        "towel",
+        "radio",
+        "urn",
+        "shelf",
+        "banner",
+        "sign",
+        "bed",
+        "cushion",
+        "sheet",
+        "desk",
+        "pennant",
+        "bunting",
+    ):
+        return "BUILDING_FURNITURE"
+
+    if has_tag(
+        row,
+        "jemcompat:jei/nature",
+        "minecraft:leaves",
+        "minecraft:logs",
+        "minecraft:saplings",
+        "minecraft:flowers",
+        "minecraft:corals",
+        "minecraft:dirt",
+    ) or has_phrase(
+        path,
+        "leaf_pile",
+        "leaves",
+        "log",
+        "wood",
+        "sapling",
+        "flower",
+        "grass",
+        "coral",
+        "natural_soil",
+        "moss",
+        "lichen",
+        "ivy",
+        "roots",
+        "sprout",
+        "vine",
+        "seastar",
+    ):
+        return "BUILDING_NATURE"
+
+    if has_tag(row, "forge:glass", "c:glass") or has_phrase(
+        path, "glass", "glass_pane", "stained_glass", "framed_glass", "seaglass", "window", "window_pane"
+    ):
+        return "BUILDING_GLASS"
+
+    if has_phrase(
+        path, "torch", "lantern", "candle", "light", "lamp", "chandelier", "sconce", "brazier"
+    ):
+        return "BUILDING_LIGHT"
+
     if namespace in {"moa_decor_holidays", "snowyspirit", "giftypresent"} or has_phrase(
-            path, "christmas", "halloween", "holiday", "snowman", "wreath", "garland", "tinsel", "pumpkin_lantern"):
-        return "HOLIDAY"
-    if namespace == "beachparty" or namespace == "fairylights" and has_phrase(path, "pennant_bunting", "spearhead_pennant", "square_pennant", "swallowtail_pennant", "triangle_pennant") \
-            or has_phrase(path, "chair", "table", "table_cloth", "sideboard", "buffet", "counter", "countertop", "sofa", "couch",
-                          "stool", "bench", "curtain", "carpet", "painting", "decoration", "display", "parasol", "towel",
-                          "radio", "urn", "shelf", "banner", "sign", "bed", "cushion", "sheet", "desk", "pennant", "bunting"):
-        return "FURNITURE"
-    if has_tag(tags, "jemcompat:jei/nature", "minecraft:leaves") or has_phrase(
-            path, "leaf_pile", "leaves", "sapling", "icicle", "moss", "lichen", "ivy", "roots", "sprout", "flower", "vine", "seastar", "seastars"):
-        return "NATURE"
-    if placeable and path not in {"crafting_table", "smithing_table", "enchanting_table", "cartography_table",
-                                  "fletching_table", "grindstone", "stonecutter", "loom", "anvil", "chipped_anvil", "damaged_anvil"}:
+        path, "christmas", "halloween", "easter", "holiday", "snowman", "wreath", "garland", "tinsel", "pumpkin_lantern"
+    ):
+        return "BUILDING_HOLIDAY"
+
+    if is_block(row):
         return "BUILDING_BLOCKS"
+
+    if hint and hint != "OTHER":
+        return hint
     return "OTHER"
 
 
-def validate(data: dict) -> None:
+def validate(data: dict, registered_ids: set[str] | None = None) -> None:
     if data.get("schema_version") != SCHEMA_VERSION:
-        raise ValueError(f"Expected schema_version {SCHEMA_VERSION}")
+        raise ValueError("Expected schema_version 1")
     assignments = data.get("assignments")
     if not isinstance(assignments, dict) or set(assignments) != set(LEAVES):
-        raise ValueError("Manifest must contain every leaf category and no other assignment target")
+        raise ValueError("Manifest must contain every leaf and no parent assignment")
     seen: dict[str, str] = {}
-    for name, ids in assignments.items():
-        if name in PARENTS or name not in LEAVES or not isinstance(ids, list):
-            raise ValueError(f"Invalid assignment category {name}")
-        if ids != sorted(ids) or len(ids) != len(set(ids)):
-            raise ValueError(f"Category {name} must contain sorted unique IDs")
-        for item_id in ids:
+    for leaf, item_ids in assignments.items():
+        if leaf in PARENTS or not isinstance(item_ids, list):
+            raise ValueError(f"Invalid assignment leaf {leaf}")
+        if item_ids != sorted(item_ids) or len(item_ids) != len(set(item_ids)):
+            raise ValueError(f"Leaf {leaf} must contain sorted unique IDs")
+        for item_id in item_ids:
             if not isinstance(item_id, str) or not ID_PATTERN.fullmatch(item_id):
                 raise ValueError(f"Invalid item ID {item_id!r}")
-            if item_id in seen:
-                raise ValueError(f"Duplicate assignment {item_id}: {seen[item_id]} and {name}")
-            seen[item_id] = name
+            previous = seen.setdefault(item_id, leaf)
+            if previous != leaf:
+                raise ValueError(f"Duplicate assignment {item_id}: {previous} and {leaf}")
     if data.get("item_count") != len(seen):
         raise ValueError("item_count does not match assignments")
+    if registered_ids is not None:
+        unknown = set(seen) - registered_ids
+        missing = registered_ids - set(seen)
+        if unknown:
+            raise ValueError(f"Manifest has {len(unknown)} IDs absent from runtime export, first: {sorted(unknown)[0]}")
+        if missing:
+            raise ValueError(f"Manifest misses {len(missing)} registered IDs, first: {sorted(missing)[0]}")
 
 
-def generate() -> dict:
-    locked = existing_assignments()
-    item_rows = {row["registry_id"]: row for row in records(ITEMS) if ID_PATTERN.fullmatch(row.get("registry_id", ""))}
-    for item_id in locked:
-        item_rows.setdefault(item_id, {"registry_id": item_id, "tags": [], "categories": []})
-    for item_id in INITIAL_EXACT_ASSIGNMENTS:
-        item_rows.setdefault(item_id, {"registry_id": item_id, "tags": [], "categories": []})
+def load_export(path: Path) -> tuple[list[dict], set[str], str]:
+    data = read_json(path)
+    rows = data.get("items")
+    if data.get("schema_version") != 1 or not isinstance(rows, list):
+        raise ValueError("Runtime item export has an unsupported schema")
+    item_ids = [row.get("registry_id") for row in rows]
+    if any(not isinstance(item_id, str) or not ID_PATTERN.fullmatch(item_id) for item_id in item_ids):
+        raise ValueError("Runtime item export contains an invalid registry ID")
+    if item_ids != sorted(item_ids) or len(item_ids) != len(set(item_ids)):
+        raise ValueError("Runtime item export must contain sorted unique registry IDs")
+    if data.get("item_count") != len(rows):
+        raise ValueError("Runtime item export item_count does not match its rows")
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    return rows, set(item_ids), digest
+
+
+def generated_manifest(rows: list[dict], registered_ids: set[str]) -> dict:
+    hints = migration_hints(registered_ids)
     grouped: dict[str, list[str]] = defaultdict(list)
-    placeables = view_ids("placeables")
-    armor = view_ids("armor")
-    tools = view_ids("tools")
-    for item_id, row in sorted(item_rows.items()):
-        assignment = locked.get(item_id)
-        if assignment is None:
-            assignment = INITIAL_EXACT_ASSIGNMENTS.get(item_id)
-        if assignment is None:
-            assignment = category(row, placeables, armor, tools, locked)
-        grouped[assignment].append(item_id)
-    assignments = {name: grouped[name] for name in LEAVES}
+    for row in rows:
+        item_id = row["registry_id"]
+        grouped[classify(row, hints.get(item_id))].append(item_id)
+    assignments = {leaf: sorted(grouped[leaf]) for leaf in LEAVES}
     data = {
         "schema_version": SCHEMA_VERSION,
-        "source": "JEM Registry Atlas exact item IDs with preserved reviewed assignments",
-        "item_count": sum(map(len, assignments.values())),
+        "source": "Exact logical-server Forge item registry export, classified offline by the 2026-11-22 JEM contract",
+        "item_count": len(rows),
         "assignments": assignments,
     }
-    validate(data)
+    validate(data, registered_ids)
     return data
+
+
+def updated_manifest(registered_ids: set[str]) -> dict:
+    data = read_json(MANIFEST)
+    validate(data)
+    existing = {
+        item_id: leaf
+        for leaf, item_ids in data["assignments"].items()
+        for item_id in item_ids
+    }
+    removed = set(existing) - registered_ids
+    if removed:
+        raise ValueError(f"Existing manifest contains removed ID {sorted(removed)[0]}")
+    grouped: dict[str, list[str]] = defaultdict(list)
+    for item_id in sorted(registered_ids):
+        grouped[existing.get(item_id, "OTHER")].append(item_id)
+    result = {
+        "schema_version": SCHEMA_VERSION,
+        "source": "Exact logical-server Forge item registry export with preserved reviewed assignments",
+        "item_count": len(registered_ids),
+        "assignments": {leaf: grouped[leaf] for leaf in LEAVES},
+    }
+    validate(result, registered_ids)
+    return result
+
+
+def write_report(data: dict, rows: list[dict], export_path: Path, digest: str) -> None:
+    namespace_by_id = {row["registry_id"]: row["namespace"] for row in rows}
+    lines = [
+        "# JEI Catalog Review",
+        "",
+        f"- Runtime export: {export_path.as_posix()}",
+        f"- Export SHA-256: {digest}",
+        f"- Registered items: {data['item_count']}",
+        "- Runtime classification: direct immutable item-ID lookup only",
+        "",
+        "## Leaf and namespace counts",
+        "",
+    ]
+    for leaf in LEAVES:
+        item_ids = data["assignments"][leaf]
+        lines.extend((f"### {leaf}", "", f"Total: {len(item_ids)}", ""))
+        counts = Counter(namespace_by_id[item_id] for item_id in item_ids)
+        lines.extend(f"- {namespace}: {count}" for namespace, count in sorted(counts.items()))
+        lines.append("")
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
+    REPORT.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=("generate", "validate"))
+    parser.add_argument("mode", choices=("generate", "update", "validate"))
+    parser.add_argument("export", type=Path)
     args = parser.parse_args()
+    export_path = args.export.resolve()
+    rows, registered_ids, digest = load_export(export_path)
     if args.mode == "generate":
-        data = generate()
+        data = generated_manifest(rows, registered_ids)
         MANIFEST.parent.mkdir(parents=True, exist_ok=True)
         MANIFEST.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        write_report(data, rows, export_path, digest)
+    elif args.mode == "update":
+        data = updated_manifest(registered_ids)
+        MANIFEST.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        write_report(data, rows, export_path, digest)
     else:
         data = read_json(MANIFEST)
-        validate(data)
-    counts = {name: len(ids) for name, ids in data["assignments"].items()}
-    print(json.dumps({"item_count": data["item_count"], "categories": counts}, indent=2))
+        validate(data, registered_ids)
+    counts = {leaf: len(item_ids) for leaf, item_ids in data["assignments"].items()}
+    print(json.dumps({"item_count": data["item_count"], "export_sha256": digest, "categories": counts}, indent=2))
     return 0
 
 

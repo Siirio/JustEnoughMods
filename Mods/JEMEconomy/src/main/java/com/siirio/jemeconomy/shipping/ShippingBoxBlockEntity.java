@@ -334,7 +334,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
             // At most seven exact probes per native stack; no registry traversal in preview.
             while (low < high) {
                 int candidate = low+(high-low+1)/2;
-                RationalPrice total = price.add(policy.salePrice(candidate, multiplier));
+                RationalPrice total = price.add(ItemPolicyRegistry.salePrice(stack, candidate, multiplier));
                 var payment = ledger.quoteSale(seller(), total.numerator(), total.denominator());
                 long discPayout = Math.addExact(discs, policy.disc() ? Math.multiplyExact(10_000L, candidate) : 0L);
                 if (payment.fundingRequired() <= reserve && (market.testQuotaBypass(level.getServer()) || payment.payout()-discPayout <= ordinaryBudget)) low = candidate;
@@ -343,7 +343,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
             if (low == 0) { reason = familyAvailable <= local ? "item_account_cap" : reserve == 0L ? "market_budget_exhausted" : "budget_too_small"; continue; }
             lines.add(new Line(slot, policy.item(), low, stack.copyWithCount(low)));
             localUnits.merge(policy.quotaFamily(), Math.multiplyExact((long) low, policy.quotaUnits()), Math::addExact);
-            price = price.add(policy.salePrice(low, multiplier));
+            price = price.add(ItemPolicyRegistry.salePrice(stack, low, multiplier));
             if (policy.disc()) discs = Math.addExact(discs, Math.multiplyExact(10_000L, low));
             reason = "ok";
         }

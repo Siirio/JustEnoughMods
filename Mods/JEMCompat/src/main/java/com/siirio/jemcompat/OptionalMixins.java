@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class OptionalMixins implements IMixinConfigPlugin {
+    private static boolean modefiteWarningWritten;
     private static final Map<String, List<String>> DEPENDENCIES = Map.ofEntries(
             Map.entry("com.siirio.jemcompat.mixin.grave.LegacyGraveCreationMixin", List.of("jacksgravestones", "gravestone")),
             Map.entry("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin", List.of("fabric_object_builder_api_v1")),
@@ -29,11 +30,26 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.siirio.jemcompat.mixin.client.barnyard.BarnyardClydesdaleSprintKeyMixin", List.of("barnyardbuddies")),
             Map.entry("com.siirio.jemcompat.mixin.client.IngredientListOverlayAccessor", List.of("jei")),
             Map.entry("com.siirio.jemcompat.mixin.client.StorageTerminalFocusMixin", List.of("toms_storage")),
+            Map.entry("com.siirio.jemcompat.mixin.client.modefite.ModefiteMathUtilsMixin", List.of("modefite")),
             Map.entry("com.siirio.jemcompat.mixin.kaleidoscope.VoidWalkerEnchantmentToggleMixin", List.of("kaleidoscope_end"))
     );
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.client.modefite.ModefiteMathUtilsMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("modefite");
+            boolean supported = FMLLoader.getDist().isClient() && file != null && file.getMods().stream()
+                    .anyMatch(mod -> mod.getModId().equals("modefite")
+                            && mod.getVersion().toString().equals("1.0.3+1.20.1"));
+            boolean targetPresent = supported
+                    && Files.isRegularFile(file.getFile().findResource(targetClassName.replace('.', '/') + ".class"));
+            if (file != null && !targetPresent && !modefiteWarningWritten) {
+                modefiteWarningWritten = true;
+                com.mojang.logging.LogUtils.getLogger().warn(
+                        "JEMCompat did not apply the bounded Modefite GlobalPos adapter to the installed artifact");
+            }
+            return targetPresent;
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.combat.EpicFightRollRestoreMixin")) {
             var epicFight = FMLLoader.getLoadingModList().getModFileById("epicfight");
             return epicFight != null && epicFight.getMods().stream().anyMatch(mod -> mod.getModId().equals("epicfight")
@@ -91,11 +107,6 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             var file = FMLLoader.getLoadingModList().getModFileById("audioyt_1_20_1");
             return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("audioyt_1_20_1")
                     && mod.getVersion().toString().equals("1.0.1"));
-        }
-        if (mixinClassName.equals("com.siirio.jemcompat.mixin.spawner.SpawnerSpiritOrbLootMixin")) {
-            var file = FMLLoader.getLoadingModList().getModFileById("paraglider");
-            return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("paraglider")
-                    && mod.getVersion().toString().equals("20.1.3"));
         }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("fabric_object_builder_api_v1");

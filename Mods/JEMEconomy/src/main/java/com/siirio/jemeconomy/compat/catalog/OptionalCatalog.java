@@ -8,8 +8,7 @@ import net.minecraftforge.fml.ModList;
 public final class OptionalCatalog {
     private static final class NativeMethods {
         static final Method BUILDING = method("isMarketBuilding", ItemStack.class);
-        static final Method CLASSIFY = method("classify", ItemStack.class,
-                net.minecraft.world.entity.LivingEntity.class, java.util.function.Predicate.class);
+        static final Method CLASSIFY = method("classify", ItemStack.class);
         private static Method method(String name, Class<?>... arguments) {
             try { return Class.forName("com.siirio.jemcompat.catalog.JemCatalogCategories").getMethod(name, arguments); }
             catch (ReflectiveOperationException failure) { throw new IllegalStateException("Installed JEMCompat catalog contract unavailable", failure); }
@@ -24,9 +23,8 @@ public final class OptionalCatalog {
     public static boolean isNature(ItemStack stack) {
         if (!ModList.get().isLoaded("jemcompat")) return false;
         try {
-            Object kind = NativeMethods.CLASSIFY.invoke(null, stack, null,
-                    (java.util.function.Predicate<ItemStack>) ignored -> false);
-            return ((Enum<?>) kind).name().equals("NATURE");
+            Object kind = NativeMethods.CLASSIFY.invoke(null, stack);
+            return ((Enum<?>) kind).name().equals("BUILDING_NATURE");
         } catch (ReflectiveOperationException failure) { throw new IllegalStateException("JEM nature classifier failed", failure); }
     }
 }

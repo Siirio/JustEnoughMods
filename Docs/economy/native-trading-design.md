@@ -362,3 +362,9 @@ Production compilation is recorded in the release receipt. No automated tests or
 ## Native villager minimum payout, 2026-10-26
 
 The latest user correction retains small positively priced villager sales and sets a minimum of one Copper for a complete native trade. NativeTradePricing.salePrice applies that minimum to a positive exact amount below one Copper. Both the server quote and EconomyApi MerchantContainer settlement use this same amount before the existing fractional-claim and funded NPC_MARKET journal. The native list therefore receives a real nonzero payment, not a cosmetic zero-price replacement or error text. Larger prices, unknown/prohibited admission, native stock/NBT and restocking remain intact. Market and Shipping Box retain their original rational prices and existing fractional claims are preserved. Shader settings are outside this change
+
+## Tide fish and Shipping Box bulk deposit - 2026-11-22
+
+All 101 exact fish items in installed Tide 2.1.1 use one checked economy manifest. The approved split is 39 Ordinary at 10 Copper, 25 Rare at 100 Copper, 20 Mythic at 500 Copper, and 17 Legendary at 10000 Copper. Each exact `FishLength` adds a linear bonus from zero at the native average to at most one percent of the tier base at the native record. The server floors the result to whole Copper and clamps the input between those native bounds. Missing or invalid length uses the native average for price only. Quote and consumption use the same exact ItemStack identity and NBT
+
+Shipping Box menu button 4 is "Deposit All". The server accepts it only for the active owner on sale tab 0 while inventory and payout state permit transfer. It scans player inventory slots once and inserts only policy-accepted stacks into sale slots 0 through 53. Rejected stacks, partial leftovers, NBT, and capabilities remain in the player inventory. This action does not start a sale and does not collect payout

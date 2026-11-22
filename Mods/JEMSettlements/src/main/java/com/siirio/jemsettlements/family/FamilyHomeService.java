@@ -22,26 +22,18 @@ public final class FamilyHomeService {
     private FamilyHomeService() { }
 
     public static Status inspect(ServerLevel level, LivingEntity entity, FamilyRecord record, VillagerFamilySavedData data) {
-        boolean child = entity.isBaby(); BlockPos bed = resolveBed(level, entity, record); if (bed != null) for(FamilyRecord other:data.people()) if(other!=record&&!other.dead()&&other.bed()!=null&&other.bed().dimension().equals(level.dimension())&&other.bed().pos().equals(bed)){bed=null;break;} if (bed == null) { record.bed(null); record.chest(null); record.workstation(null); record.happiness(55); return new Status(false, false, child, false, child, 55, "home"); }
-        record.bed(GlobalPos.of(level.dimension(), bed)); Set<BlockPos> usedChests = new HashSet<>(), usedWork = new HashSet<>();
-        for (FamilyRecord other : data.people()) if (other != record && !other.dead()) { if (other.chest() != null && other.chest().dimension().equals(level.dimension())) usedChests.add(other.chest().pos()); if (other.workstation() != null && other.workstation().dimension().equals(level.dimension())) usedWork.add(other.workstation().pos()); }
-        BlockPos chest = validInZone(level, bed, record.chest(), true) && !usedChests.contains(record.chest().pos()) ? record.chest().pos() : find(level, bed, usedChests, true);
-        BlockPos work = child ? null : validInZone(level, bed, record.workstation(), false) && !usedWork.contains(record.workstation().pos()) ? record.workstation().pos() : find(level, bed, usedWork, false);
+        boolean child = entity.isBaby();
+        BlockPos bed = FamilyHomeIndex.bed(level, entity, record.bed());
+        if (bed == null) { record.bed(null); record.chest(null); record.workstation(null); record.happiness(55); return new Status(false, false, child, false, child, 55, "home"); }
+        record.bed(GlobalPos.of(level.dimension(), bed));
+        BlockPos chest = FamilyHomeIndex.storage(level, entity.getUUID(), bed, record.chest());
+        BlockPos work = child ? null : FamilyHomeIndex.workstation(level, entity, record.workstation());
         record.chest(chest == null ? null : GlobalPos.of(level.dimension(), chest)); record.workstation(work == null ? null : GlobalPos.of(level.dimension(), work));
         boolean light = false; for (BlockPos pos : zone(bed)) if (level.hasChunkAt(pos) && level.getBrightness(LightLayer.BLOCK, pos) > 0) { light = true; break; }
         int missing = (chest == null ? 1 : 0) + (!child && work == null ? 1 : 0) + (!light ? 1 : 0); int happiness = 100 - missing * 15; record.happiness(happiness);
         String complaint = chest == null ? "chest" : !light ? "light" : !child && work == null ? "workstation" : "";
         return new Status(true, chest != null, child || work != null, light, child, happiness, complaint);
     }
-    private static BlockPos resolveBed(ServerLevel level, LivingEntity entity, FamilyRecord record) {
-        GlobalPos current = entity instanceof Villager villager ? villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(record.bed()) : entity.getSleepingPos().map(pos -> GlobalPos.of(entity.level().dimension(), pos)).orElse(record.bed());
-        if (current == null || !current.dimension().equals(level.dimension()) || !level.hasChunkAt(current.pos())) return null; BlockState state = level.getBlockState(current.pos());
-        if (!(state.getBlock() instanceof BedBlock)) return null; return state.getValue(BedBlock.PART) == BedPart.HEAD ? current.pos().immutable() : current.pos().relative(state.getValue(BedBlock.FACING));
-    }
-    private static boolean validInZone(ServerLevel level, BlockPos bed, GlobalPos assigned, boolean chest) { if (assigned == null || !assigned.dimension().equals(level.dimension()) || !inside(bed, assigned.pos()) || !level.hasChunkAt(assigned.pos())) return false; return chest ? level.getBlockState(assigned.pos()).getBlock() instanceof ChestBlock : workstation(level.getBlockState(assigned.pos())); }
-    private static BlockPos find(ServerLevel level, BlockPos bed, Set<BlockPos> used, boolean chest) { for (BlockPos pos : zone(bed)) if (!used.contains(pos) && level.hasChunkAt(pos) && (chest ? level.getBlockState(pos).getBlock() instanceof ChestBlock : workstation(level.getBlockState(pos)))) return pos.immutable(); return null; }
-    private static boolean workstation(BlockState state) { return net.minecraft.world.entity.ai.village.poi.PoiTypes.forState(state).filter(type -> !type.is(net.minecraft.world.entity.ai.village.poi.PoiTypes.HOME) && !type.is(net.minecraft.world.entity.ai.village.poi.PoiTypes.MEETING)).isPresent(); }
-    private static boolean inside(BlockPos bed, BlockPos pos) { return Math.abs(pos.getX()-bed.getX()) <= 1 && Math.abs(pos.getZ()-bed.getZ()) <= 1 && pos.getY() >= bed.getY() && pos.getY() <= bed.getY()+2; }
     private static Iterable<BlockPos> zone(BlockPos bed) { return BlockPos.betweenClosed(bed.offset(-1,0,-1), bed.offset(1,2,1)); }
 
     public static CompoundTag snapshot(ServerLevel level, FamilyRecord record, Status status) {

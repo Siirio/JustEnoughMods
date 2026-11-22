@@ -11,19 +11,21 @@ The old JEI catalog recomputed every assignment from the live `ItemStack` regist
 The leaf categories are:
 
 - `WEAPON_TOTEMS`
+- `WEAPON_TRAINING`
 - `WEAPON_RANGED`
 - `WEAPON_MELEE`
-- `WEARABLE`
-- `FOOD`
+- `WEARABLES`
+- `FOOD_EDIBLES`
+- `FOOD_COOKING_EQUIPMENT`
 - `ORES`
 - `CREATE_REDSTONE`
-- `FURNITURE`
-- `NATURE`
-- `CONTAINERS`
-- `HOLIDAY`
+- `BUILDING_FURNITURE`
+- `BUILDING_NATURE`
+- `BUILDING_CONTAINERS`
+- `BUILDING_HOLIDAY`
 - `BUILDING_BLOCKS`
-- `GLASS`
-- `LIGHT`
+- `BUILDING_GLASS`
+- `BUILDING_LIGHT`
 - `FISHING`
 - `BOOKS`
 - `POTIONS`
@@ -31,7 +33,7 @@ The leaf categories are:
 - `SPAWN_EGGS`
 - `OTHER`
 
-`WEAPONS` and `BUILDING` are navigation parents. They never own item assignments. A parent displays the union of its child leaf lists.
+`WEAPONS`, `FOOD`, and `BUILDING` are navigation parents. They never own item assignments. A parent displays the union of its child leaf lists.
 
 ## Assignment contract
 
@@ -46,7 +48,7 @@ The leaf categories are:
 
 ## Maintenance
 
-`tools/generate_jei_catalog.py` creates the initial manifest from the Registry Atlas and the accepted legacy rules. After the initial conversion, the checked-in manifest is authoritative. The tool preserves all existing assignments and assigns only previously unknown IDs. It can also validate the manifest without changing it.
+`tools/generate_jei_catalog.py` creates the initial manifest from an exact logical-server registry export and the approved offline priority rules. The 2026-11-22 export contains 13,869 item IDs and has SHA-256 `958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39`. After the initial conversion, the checked-in manifest is authoritative. Update mode preserves all existing assignments and assigns only previously unknown IDs to `OTHER`. Validate mode rejects missing, unknown, duplicate, or invalid assignments without changing the manifest.
 
 This policy prevents a generator update from rewriting accepted categories. A future category correction changes the exact item IDs in the manifest and records the decision in `CHANGELOG.md` and the Registry Atlas change history.
 

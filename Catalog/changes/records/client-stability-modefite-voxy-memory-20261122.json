@@ -1,0 +1,96 @@
+{
+  "schema_version": 2,
+  "change_id": "client.stability-modefite-voxy-memory-20261122",
+  "status": "active",
+  "selectors": [
+    {"type": "registry", "registry": "*", "value": "*"}
+  ],
+  "conditions": [
+    {"side": "client", "installed_versions": ["modefite 1.0.3", "Neo Voxy 0.4.0beta", "VSS 0.3.5", "Embeddium 0.3.31"]}
+  ],
+  "precedence": {"layer": "client_stability", "priority": 1710, "overrides": []},
+  "change": {
+    "summary": "Stop the Modefite GlobalPos reflection storm and keep optional distant-render services within the 16 GB Test workstation memory boundary.",
+    "modifiers": [
+      {
+        "property": "client.modefite.global_pos_access",
+        "operation": "replace",
+        "before": "Every JEI item render can repeat failed reflective GlobalPos field lookup and print a stack trace.",
+        "after": "An exact optional Mixin returns GlobalPos record accessors directly, while the curated toggle no longer renders an ItemStack."
+      },
+      {
+        "property": "client.voxy_vss.disabled_state",
+        "operation": "replace",
+        "before": "Voxy rendering disabled while Voxy ingestion and VSS LOD receipt remain active.",
+        "after": "Disabled rendering also disables ingestion and LOD receipt. Enabled rendering uses 32 chunks, two Voxy service threads, no prediction, and no Xaero bridge."
+      },
+      {
+        "property": "client.native_buffer_diagnostics",
+        "operation": "add",
+        "before": null,
+        "after": "Sample once per 10 seconds in-world and log only transitions across 512 MiB, 1 GiB, and 2 GiB."
+      },
+      {
+        "property": "local_server.jvm_memory",
+        "operation": "replace",
+        "before": "-Xms4G -Xmx12G -Xss2M",
+        "after": "-Xms2G -Xmx5G -Xss1M for the local 16 GB Test workstation only"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat client compatibility and local Test runtime configuration",
+    "kind": "evidence_backed_client_stability_repair",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/modefite/ModefiteMathUtilsMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/VoxyMemoryGuard.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Client/ManagedPack/config/vss-client-config.json",
+      "Server/user_jvm_args.txt",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent the confirmed log storm and native-memory exhaustion without removing required resource-pack support or inventing a second renderer lifecycle.",
+    "decision_source": "Approved 2026-11-22 catalog, fishing, boss, weather, and stability one-shot plan",
+    "user_requested": "Repair the confirmed crash causes while preserving all prior client and server work.",
+    "codex_choices": "Reuse Modefite's public method boundary and the installed Voxy/Embeddium native teardown paths. Add bounded threshold diagnostics instead of per-sample logging."
+  },
+  "introduced": {
+    "date": "2026-11-22",
+    "commit": "SELF",
+    "action": "repair_client_stability",
+    "summary": "Implement the approved one-shot stability phase."
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "repair_client_stability",
+      "summary": "Replace repeated Modefite reflection, align optional distant-render settings, bound diagnostics, and lower the local Test server heap.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/modefite/ModefiteMathUtilsMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/VoxyMemoryGuard.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+        "Client/ManagedPack/config/vss-client-config.json",
+        "Server/user_jvm_args.txt"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["client_startup", "JEI", "Modefite", "Neo Voxy", "VSS", "Embeddium", "local dedicated server"],
+    "relations": [
+      "JEI overlay render -> Modefite item definition render -> GlobalPos access",
+      "Voxy render state -> Voxy ingestion and VSS receipt",
+      "local server heap plus client heap -> native allocation headroom"
+    ],
+    "notes": [
+      "Modefite remains installed because current resource packs use its item-definition support.",
+      "Native Voxy world-change and resource-reload teardown remains the lifecycle owner."
+    ],
+    "unresolved": ["Runtime log and native allocation acceptance requires a later explicitly authorized Test client launch."]
+  }
+}

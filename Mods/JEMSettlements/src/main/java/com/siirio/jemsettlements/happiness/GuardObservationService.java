@@ -7,67 +7,103 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraftforge.event.entity.EntityEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-/** Native living callbacks retain golem identity without territory-wide entity scans. */
+/** Guard records change on lifecycle, section changes, and damage. */
 public final class GuardObservationService {
+    private static final String TOWN = "JemGuardObservationTown";
     private GuardObservationService() { }
-    @SubscribeEvent public static void joined(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
-        if (!(event.getLevel() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer()) || event.loadedFromDisk()) return;
-        if (!(event.getEntity() instanceof Mob mob) || !guardType(mob)) return;
-        for (var town : SettlementSavedData.get(level.getServer()).towns())
-            if (town.dimension().equals(level.dimension().location()) && town.contains(mob.blockPosition())) {
-                mob.getPersistentData().putUUID("JemGuardSpawnTown", town.id()); break;
-            }
-    }
+
     private static boolean guardType(Mob mob) {
-        return mob instanceof IronGolem || net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).getNamespace().equals("recruits");
+        return mob instanceof IronGolem
+                || net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).getNamespace().equals("recruits");
     }
-    @SubscribeEvent public static void observe(net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent event) {
-        if (!(event.getEntity() instanceof Mob mob) || !guardType(mob) || !(mob.level() instanceof ServerLevel level)
-                || !SettlementAuthority.active(level.getServer()) || Math.floorMod(mob.tickCount, 100) != 0) return;
-        var data=SettlementSavedData.get(level.getServer());String key=mob.getUUID().toString();
-        for(var town:data.towns()) {
-            var metrics=town.metrics();var rows=metrics.getCompound("GolemObservations").copy();
-            boolean inside=town.dimension().equals(level.dimension().location())&&town.contains(mob.blockPosition())&&mob.isAlive();
-            boolean belongs=mob instanceof IronGolem||data.workforceEntity(mob.getUUID()).filter(record->record.settlementActive()&&record.townId().equals(town.id())).isPresent();
-            if(inside&&belongs&&mob.getPersistentData().hasUUID("JemGuardSpawnTown")&&town.id().equals(mob.getPersistentData().getUUID("JemGuardSpawnTown"))
-                    &&!mob.getPersistentData().getBoolean("JemGuardNamed")) {
-                if(!mob.hasCustomName()) {
-                    int next=metrics.getInt("NextGuardNumber")+1;metrics.putInt("NextGuardNumber",next);
-                    mob.setCustomName(net.minecraft.network.chat.Component.translatable("jem.settlements.guard_name",town.name(),next));
-                }
-                mob.getPersistentData().putBoolean("JemGuardNamed",true);
-            }
-            if(mob instanceof IronGolem) {
-                if(!inside){rows.remove(key);} else if(rows.size()<512||rows.contains(key)) {
-                    var row=new CompoundTag();row.putUUID("Id",mob.getUUID());row.putLong("Position",mob.blockPosition().asLong());
-                    row.putBoolean("Qualified",!mob.isNoAi());row.putFloat("Health",mob.getHealth());row.putFloat("MaxHealth",mob.getMaxHealth());
-                    row.putString("NameComponent",net.minecraft.network.chat.Component.Serializer.toJson(mob.getName()));rows.put(key,row);
-                }
-                metrics.put("GolemObservations",rows);
-            }
+
+    @SubscribeEvent
+    public static void joined(EntityJoinLevelEvent event) {
+        if (event.getEntity() instanceof Mob mob && event.getLevel() instanceof ServerLevel level && guardType(mob))
+            observe(level, mob);
+    }
+
+    @SubscribeEvent
+    public static void moved(EntityEvent.EnteringSection event) {
+        if (!event.didChunkChange() || !(event.getEntity() instanceof Mob mob)
+                || !(mob.level() instanceof ServerLevel level) || !guardType(mob)) return;
+        observe(level, mob);
+    }
+
+    @SubscribeEvent
+    public static void damaged(LivingDamageEvent event) {
+        if (event.getEntity() instanceof Mob mob && mob.level() instanceof ServerLevel level && guardType(mob))
+            observe(level, mob);
+    }
+
+    @SubscribeEvent
+    public static void removed(EntityLeaveLevelEvent event) {
+        if (event.getEntity() instanceof Mob mob && event.getLevel() instanceof ServerLevel level && guardType(mob))
+            remove(level, mob);
+    }
+
+    private static void observe(ServerLevel level, Mob mob) {
+        if (!SettlementAuthority.active(level.getServer())) return;
+        SettlementSavedData data = SettlementSavedData.get(level.getServer());
+        removePrior(data, mob);
+        TownRecord town = data.townAt(level.dimension().location(), mob.blockPosition()).orElse(null);
+        if (town == null || !mob.isAlive()) {
+            data.changed();
+            return;
+        }
+        if (!mob.getPersistentData().getBoolean("JemGuardNamed") && !mob.hasCustomName()) {
+            CompoundTag metrics = town.metrics();
+            int next = metrics.getInt("NextGuardNumber") + 1;
+            metrics.putInt("NextGuardNumber", next);
+            town.metrics(metrics);
+            mob.setCustomName(net.minecraft.network.chat.Component.translatable("jem.settlements.guard_name", town.name(), next));
+            mob.getPersistentData().putBoolean("JemGuardNamed", true);
+        }
+        if (mob instanceof IronGolem) {
+            CompoundTag metrics = town.metrics();
+            CompoundTag rows = metrics.getCompound("GolemObservations").copy();
+            CompoundTag row = new CompoundTag();
+            row.putUUID("Id", mob.getUUID());
+            row.putLong("Position", mob.blockPosition().asLong());
+            row.putBoolean("Qualified", !mob.isNoAi());
+            row.putFloat("Health", mob.getHealth());
+            row.putFloat("MaxHealth", mob.getMaxHealth());
+            row.putString("NameComponent", net.minecraft.network.chat.Component.Serializer.toJson(mob.getName()));
+            rows.put(mob.getUUID().toString(), row);
+            metrics.put("GolemObservations", rows);
             town.metrics(metrics);
         }
+        mob.getPersistentData().putUUID(TOWN, town.id());
         data.changed();
     }
-    public static int count(TownRecord town,ServerLevel level,CompoundTag metrics) {
-        var rows=metrics.getCompound("GolemObservations").copy();int count=0;
-        for(String key:java.util.Set.copyOf(rows.getAllKeys())) {
-            var row=rows.getCompound(key);var entity=level.getEntity(java.util.UUID.fromString(key));
-            if(entity!=null&&(!(entity instanceof IronGolem)||!entity.isAlive()||!town.contains(entity.blockPosition()))) {rows.remove(key);continue;}
-            boolean elsewhere=false;
-            if(entity==null)for(var other:level.getServer().getAllLevels())if(other!=level&&other.getEntity(java.util.UUID.fromString(key))!=null)elsewhere=true;
-            if(elsewhere){rows.remove(key);continue;}
-            // Entity-leave destruction removes confirmed deaths; absent UUIDs may still be loading.
-            if(row.getBoolean("Qualified"))count++;
-        }
-        metrics.put("GolemObservations",rows);return count;
+
+    private static void remove(ServerLevel level, Mob mob) {
+        if (!SettlementAuthority.active(level.getServer())) return;
+        SettlementSavedData data = SettlementSavedData.get(level.getServer());
+        removePrior(data, mob);
+        data.changed();
     }
-    @SubscribeEvent public static void removed(net.minecraftforge.event.entity.EntityLeaveLevelEvent event) {
-        if(!(event.getEntity() instanceof IronGolem)||!(event.getLevel() instanceof ServerLevel level)||!SettlementAuthority.active(level.getServer()))return;
-        var reason=event.getEntity().getRemovalReason();if(reason==null||!reason.shouldDestroy())return;
-        var data=SettlementSavedData.get(level.getServer());
-        for(var town:data.towns()){var metrics=town.metrics();metrics.getCompound("GolemObservations").remove(event.getEntity().getUUID().toString());town.metrics(metrics);}data.changed();
+
+    private static void removePrior(SettlementSavedData data, Mob mob) {
+        if (!mob.getPersistentData().hasUUID(TOWN)) return;
+        data.town(mob.getPersistentData().getUUID(TOWN)).ifPresent(town -> {
+            CompoundTag metrics = town.metrics();
+            metrics.getCompound("GolemObservations").remove(mob.getUUID().toString());
+            town.metrics(metrics);
+        });
+        mob.getPersistentData().remove(TOWN);
+    }
+
+    public static int count(TownRecord town, ServerLevel level, CompoundTag metrics) {
+        CompoundTag rows = metrics.getCompound("GolemObservations");
+        int count = 0;
+        for (String key : rows.getAllKeys()) if (rows.getCompound(key).getBoolean("Qualified")) count++;
+        return count;
     }
 }

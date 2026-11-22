@@ -7,14 +7,35 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 /** Registered only when Recruits exists; native signatures never enter the common subscriber. */
 public final class RecruitRuntime {
+    private static final java.util.Map<java.util.UUID, com.talhanation.recruits.entities.AbstractRecruitEntity> LOADED =
+            new java.util.LinkedHashMap<>();
     @SubscribeEvent public static void joined(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
-        if (!event.getLevel().isClientSide() && event.getEntity() instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit)
+        if (!event.getLevel().isClientSide() && event.getEntity() instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit) {
+            LOADED.put(recruit.getUUID(), recruit);
             RecruitEquipmentPolicy.enforce(recruit);
+            if (SettlementAuthority.active(recruit.getServer()))
+                RecruitHiringService.adoptExisting(recruit.getServer(), recruit);
+        }
     }
-    @SubscribeEvent public static void equipment(net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent event) {
+    @SubscribeEvent public static void left(net.minecraftforge.event.entity.EntityLeaveLevelEvent event) {
+        LOADED.remove(event.getEntity().getUUID());
+    }
+    @SubscribeEvent public static void died(net.minecraftforge.event.entity.living.LivingDeathEvent event) {
+        LOADED.remove(event.getEntity().getUUID());
+    }
+    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) {
+        LOADED.clear();
+    }
+    @SubscribeEvent public static void equipment(net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent event) {
         if (event.getEntity() instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit
                 && !recruit.level().isClientSide())
             RecruitEquipmentPolicy.enforce(recruit);
+    }
+    @SubscribeEvent public static void closed(net.minecraftforge.event.entity.player.PlayerContainerEvent.Close event) {
+        if (event.getContainer() instanceof com.talhanation.recruits.inventory.RecruitInventoryMenu menu)
+            RecruitEquipmentPolicy.enforce(menu.getRecruit());
+        else if (event.getContainer() instanceof com.talhanation.recruits.inventory.RecruitHireMenu menu)
+            RecruitEquipmentPolicy.enforce(menu.getRecruitEntity());
     }
     @SubscribeEvent public static void dismissed(com.talhanation.recruits.RecruitEvent.Dismissed event) {
         if (!(event.getRecruit().level() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;
@@ -50,8 +71,8 @@ public final class RecruitRuntime {
     }
     @SubscribeEvent public static void damage(net.minecraftforge.event.entity.living.LivingDamageEvent event) { RecruitRebellionService.interceptDefeat(event); }
     public static void adopt(net.minecraft.server.MinecraftServer server) {
-        for (var level : server.getAllLevels()) for (var entity : level.getAllEntities())
-            if (entity instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit && recruit.isAlive()) RecruitHiringService.adoptExisting(server, recruit);
+        LOADED.values().removeIf(recruit -> recruit.isRemoved() || !recruit.isAlive());
+        for (var recruit : LOADED.values()) RecruitHiringService.adoptExisting(server, recruit);
     }
     public static void penalize(net.minecraft.world.entity.Entity entity) {
         if (entity instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit && recruit.isAlive()) RecruitReadinessAdapter.applyPayrollPenalty(recruit, 10.0F);

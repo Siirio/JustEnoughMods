@@ -84,7 +84,31 @@ public final class ShippingBoxMenu extends AbstractContainerMenu implements com.
         if (!(player instanceof ServerPlayer serverPlayer) || player.containerMenu != this || !stillValid(player)) return false;
         if (id == 2 || id == 3) { tab = id - 2; resetQuickCraft(); broadcastChanges(); return true; }
         if (id == 1 && tab == 0) { box.sellAndCollect(serverPlayer); return true; }
+        if (id == 4 && tab == 0 && inventoryUnlocked() && !hasPayment()) {
+            depositAll(serverPlayer);
+            return true;
+        }
         return false;
+    }
+
+    private void depositAll(ServerPlayer player) {
+        boolean moved = false;
+        for (int index = ShippingBoxBlockEntity.TOTAL_SLOTS; index < slots.size(); index++) {
+            Slot playerSlot = slots.get(index);
+            ItemStack stack = playerSlot.getItem();
+            if (stack.isEmpty() || !ItemPolicyRegistry.acceptsShipping(stack)) continue;
+            int before = stack.getCount();
+            moveItemStackTo(stack, 0, ShippingBoxBlockEntity.INPUT_SLOTS, false);
+            if (stack.getCount() != before) {
+                playerSlot.setChanged();
+                moved = true;
+            }
+        }
+        if (moved) {
+            player.getInventory().setChanged();
+            box.setChanged();
+            broadcastChanges();
+        }
     }
 
     @Override public ItemStack quickMoveStack(Player player, int index) {

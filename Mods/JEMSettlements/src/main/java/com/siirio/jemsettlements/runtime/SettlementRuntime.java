@@ -183,7 +183,6 @@ public final class SettlementRuntime {
         if (event.phase != TickEvent.Phase.END || !SettlementAuthority.active(event.getServer())) return;
         tickFoundingWaves(event.getServer());
         SharedStorageService.tick(event.getServer());
-        AmenityScanService.tick(event.getServer());
         com.siirio.jemsettlements.happiness.TownMetricsService.tickPaths(event.getServer());
         com.siirio.jemsettlements.happiness.CityComfortService.tick(event.getServer());
         com.siirio.jemsettlements.happiness.ResidentConditions.tick(event.getServer());

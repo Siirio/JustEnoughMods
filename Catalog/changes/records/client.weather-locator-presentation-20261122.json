@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "change_id": "client.weather-locator-presentation-20261122",
+  "status": "active",
+  "selectors": [{"type": "registry", "registry": "biomes"}],
+  "conditions": [{"side": "client", "installed_versions": ["Particle Rain 4.0.3", "Locator Bar installed pack"]}],
+  "precedence": {"layer": "client_presentation", "priority": 1715, "overrides": []},
+  "change": {"summary": "Use bounded native rain and snow particles with biome-correct sandstorms while retaining the existing Classic Locator Bar.", "modifiers": [{"property": "particle_rain.max_particles", "operation": "replace", "before": "Installed defaults", "after": "600 particles, storm density 1.0, distance 64, surface range 64"}, {"property": "particle_rain.biomes", "operation": "replace", "before": "Broad or implicit particle mapping", "after": "Rain and snow follow precipitation. Sand and red-sand particles use exact approved biome lists."}, {"property": "locator_bar.mode", "operation": "retain", "before": "CLASSIC", "after": "CLASSIC"}]},
+  "cause": {"owner": "Managed client weather and locator configuration", "kind": "approved_client_configuration", "source_files": ["Client/ManagedPack/config/particlerain/config.json", "Client/ManagedPack/kubejs/assets/particlerain/particles.json", "Client/ManagedPack/config/locatorbar.json"]},
+  "rationale": {"purpose": "Keep weather readable and bounded without changing the approved locator presentation.", "decision_source": "Approved 2026-11-22 one-shot plan", "user_requested": "Apply the weather and locator settings while preserving past client work.", "codex_choices": "Use the installed Particle Rain schema and keep no-precipitation biomes free of rain particles."},
+  "introduced": {"date": "2026-11-22", "commit": "SELF", "action": "configure_weather_locator", "summary": "Apply bounded biome-correct client weather settings."},
+  "history": [{"date": "2026-11-22", "commit": "SELF", "action": "configure_weather_locator", "summary": "Set native particle bounds and exact sandstorm biome mappings."}],
+  "impacts": {"systems": ["Particle Rain", "KubeJS client data", "Locator Bar"], "relations": ["biome precipitation and exact biome IDs -> weather particle selection"], "notes": ["Locator Bar was already CLASSIC and remains unchanged."], "unresolved": ["Visual acceptance requires a later explicitly authorized client launch."]}
+}

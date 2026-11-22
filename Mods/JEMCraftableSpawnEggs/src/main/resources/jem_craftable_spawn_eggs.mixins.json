@@ -1,0 +1,14 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemcraftablespawneggs.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_craftable_spawn_eggs.refmap.json",
+  "mixins": [
+    "BaseSpawnerCooldownMixin",
+    "SpawnerSpiritOrbLootMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

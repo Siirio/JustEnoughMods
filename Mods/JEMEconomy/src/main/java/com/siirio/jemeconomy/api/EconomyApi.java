@@ -214,7 +214,7 @@ public final class EconomyApi {
         if (com.siirio.jemeconomy.policy.TradeRestrictions.saleProhibited(stack) || policy.isEmpty() || !policy.get().sellable()) return new ItemQuote(QuoteStatus.NONE, 0L, 0L, 100, 0L);
         MarketSavedData market = MarketSavedData.get(authenticatedActor.getServer());
         int multiplier = market.multiplier(authenticatedActor.getServer(), policy.get().demandGroup());
-        var raw = policy.get().salePrice(quantity,multiplier);
+        var raw = ItemPolicyRegistry.salePrice(stack,quantity,multiplier);
         long sell = EconomySavedData.get(authenticatedActor.getServer()).quoteSale(principal.get().accountId(),raw.numerator(),raw.denominator()).payout();
         long buy = policy.get().purchaseTotal(quantity);
         return new ItemQuote(QuoteStatus.BUY_AND_SELL, sell, buy, multiplier,
@@ -243,7 +243,7 @@ public final class EconomyApi {
                     if(policy.buyable()&&market.purchaseRemaining(player.getServer(),principal.get().accountId(),policy)>=orderQuantity)return true;
                     if(!policy.sellable()||reserve<=0||market.accountItemRemaining(player.getServer(),principal.get().accountId(),policy)<orderQuantity
                             ||market.globalItemRemaining(player.getServer(),policy)<orderQuantity)return false;
-                    var price=policy.salePrice(orderQuantity,market.multiplier(player.getServer(),policy.demandGroup()));
+                    var price=ItemPolicyRegistry.salePrice(row.stack(),orderQuantity,market.multiplier(player.getServer(),policy.demandGroup()));
                     var quote=ledger.quoteSale(principal.get().accountId(),price.numerator(),price.denominator());
                     return quote.payout()>0&&quote.fundingRequired()<=reserve;
                 }).toList();
@@ -258,7 +258,7 @@ public final class EconomyApi {
             int multiplier = market.multiplier(player.getServer(), policy.demandGroup());
             var allowance = policy.sellable() ? market.allowanceRational(player.getServer(),principal.get().accountId(),policy,orderQuantity)
                     : new MarketSavedData.QuoteAllowance(0,0,"blocked");
-            var raw = policy.salePrice(orderQuantity,multiplier);
+            var raw = ItemPolicyRegistry.salePrice(stack,orderQuantity,multiplier);
             var quote = EconomySavedData.get(player.getServer()).quoteSale(principal.get().accountId(),raw.numerator(),raw.denominator());
             long sell = policy.sellable() ? quote.payout() : 0L;
             int accountRemaining = policy.sellable() ? market.accountItemRemaining(player.getServer(), principal.get().accountId(), policy) : 0;
@@ -358,7 +358,7 @@ public final class EconomyApi {
         var allowed = market.allowanceRational(seller.getServer(), principal.get().accountId(), policy, quantity);
         if (allowed.units() <= 0) return new NpcSaleResult(NpcSaleStatus.LIMIT_REACHED, 0L, 0);
         String key = "npcSale:" + principal.get().accountId() + ":" + requestId;
-        var raw = policy.salePrice(allowed.units(),market.multiplier(seller.getServer(),policy.demandGroup()));
+        var raw = ItemPolicyRegistry.salePrice(offered,allowed.units(),market.multiplier(seller.getServer(),policy.demandGroup()));
         var ledger = EconomySavedData.get(seller.getServer());
         var reservation = ledger.reserveSale(principal.get().accountId(),key,raw.numerator(),raw.denominator());
         if (reservation.status() == EconomySavedData.SaleStatus.REPLAYED) return new NpcSaleResult(NpcSaleStatus.REPLAYED,0,0);

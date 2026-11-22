@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.tide-fish-shipping-deposit-all-20261122",
+  "status": "active",
+  "selectors": [
+    {"type": "namespace", "registry": "items", "value": "tide"},
+    {"type": "id", "registry": "blocks", "value": "jem_economy:shipping_box"}
+  ],
+  "conditions": [
+    {"side": "both", "installed_versions": ["Tide 2.1.1 hotfix", "JEM Economy current source"]}
+  ],
+  "precedence": {"layer": "economy_policy", "priority": 1720, "overrides": []},
+  "change": {
+    "summary": "Give all 101 native Tide fish one exact tier and price, preserve exact catch NBT through sale, and add a server-owned Shipping Box bulk transfer.",
+    "modifiers": [
+      {
+        "property": "economy.tide_fish_value",
+        "operation": "replace",
+        "before": "Generated per-item values and caps did not represent the approved 101-fish tier contract.",
+        "after": "Exactly 39 Ordinary fish sell for 10 Copper, 25 Rare for 100, 20 Mythic for 500, and 17 Legendary for 10000 before the bounded native-length bonus."
+      },
+      {
+        "property": "economy.tide_fish_length_bonus",
+        "operation": "add",
+        "before": null,
+        "after": "Each exact FishLength receives zero to one percent of its tier base, floored to whole Copper and clamped between the native average and record."
+      },
+      {
+        "property": "shipping_box.deposit_all",
+        "operation": "add",
+        "before": null,
+        "after": "Menu button 4 transfers only accepted player stacks that fit into slots 0 through 53. It does not sell or collect."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Economy item policy and Shipping Box menu",
+    "kind": "approved_economy_rework",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/tide_fish_values.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/compat/catalog/OptionalCatalog.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make fish progression predictable and make large Shipping Box deposits safe without weakening exact item identity.",
+    "decision_source": "Approved 2026-11-22 one-shot plan and its exact fish appendix",
+    "user_requested": "Rework Tide prices, add the native length bonus, and add Deposit All while preserving prior economy work.",
+    "codex_choices": "Load one checked manifest during the existing reload and keep all transfer and sale mutations server-owned."
+  },
+  "introduced": {
+    "date": "2026-11-22",
+    "commit": "SELF",
+    "action": "rework_tide_shipping",
+    "summary": "Apply the exact Tide tier and Shipping Box transfer contract."
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "rework_tide_shipping",
+      "summary": "Add exact native fish sizes, checked whole-Copper pricing, exact NBT consumption, and Deposit All."
+    }
+  ],
+  "impacts": {
+    "systems": ["Tide fishing", "JEM Economy", "Shipping Box", "Market"],
+    "relations": [
+      "Tide native size data -> exact fish manifest -> sale quote",
+      "quoted ItemStack NBT -> transaction fingerprint -> consumed ItemStack NBT",
+      "player inventory -> Shipping Box policy admission -> input slots"
+    ],
+    "notes": [
+      "Missing or invalid FishLength uses the native average for price only. Canonical invalid NBT still fails admission.",
+      "Deposit All preserves rejected stacks, NBT, capabilities, partial transfers, and leftovers."
+    ],
+    "unresolved": ["Player acceptance requires a later explicitly authorized gameplay launch."]
+  }
+}

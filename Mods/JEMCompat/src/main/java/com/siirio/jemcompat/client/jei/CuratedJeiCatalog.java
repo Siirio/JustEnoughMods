@@ -10,15 +10,17 @@ import java.util.EnumMap;
 import java.util.List;
 
 public final class CuratedJeiCatalog {
-    private static final List<CatalogCategory> TOP_LEVEL = List.of(CatalogCategory.WEAPONS, CatalogCategory.WEARABLE, CatalogCategory.FOOD,
+    private static final List<CatalogCategory> TOP_LEVEL = List.of(CatalogCategory.WEAPONS, CatalogCategory.WEARABLES, CatalogCategory.FOOD,
             CatalogCategory.ORES,
             CatalogCategory.CREATE_REDSTONE, CatalogCategory.BUILDING, CatalogCategory.FISHING, CatalogCategory.BOOKS,
             CatalogCategory.POTIONS, CatalogCategory.TRANSPORT, CatalogCategory.SPAWN_EGGS, CatalogCategory.OTHER);
-    private static final List<CatalogCategory> BUILDING = List.of(CatalogCategory.BUILDING_BLOCKS, CatalogCategory.GLASS,
-            CatalogCategory.LIGHT, CatalogCategory.FURNITURE, CatalogCategory.CONTAINERS, CatalogCategory.NATURE,
-            CatalogCategory.HOLIDAY);
+    private static final List<CatalogCategory> BUILDING = List.of(CatalogCategory.BUILDING_BLOCKS, CatalogCategory.BUILDING_GLASS,
+            CatalogCategory.BUILDING_LIGHT, CatalogCategory.BUILDING_FURNITURE, CatalogCategory.BUILDING_CONTAINERS,
+            CatalogCategory.BUILDING_NATURE, CatalogCategory.BUILDING_HOLIDAY);
     private static final List<CatalogCategory> WEAPONS = List.of(CatalogCategory.WEAPON_TOTEMS,
-            CatalogCategory.WEAPON_RANGED, CatalogCategory.WEAPON_MELEE);
+            CatalogCategory.WEAPON_RANGED, CatalogCategory.WEAPON_MELEE, CatalogCategory.WEAPON_TRAINING);
+    private static final List<CatalogCategory> FOOD = List.of(CatalogCategory.FOOD_EDIBLES,
+            CatalogCategory.FOOD_COOKING_EQUIPMENT);
     private static final EnumMap<CatalogCategory, List<ItemStack>> STACKS = new EnumMap<>(CatalogCategory.class);
 
     private CuratedJeiCatalog() {
@@ -57,12 +59,19 @@ public final class CuratedJeiCatalog {
         return WEAPONS;
     }
 
+    public static List<CatalogCategory> food() {
+        return FOOD;
+    }
+
     public static List<ItemStack> stacks(CatalogCategory category) {
         if (category == CatalogCategory.BUILDING) {
             return aggregate(BUILDING);
         }
         if (category == CatalogCategory.WEAPONS) {
             return aggregate(WEAPONS);
+        }
+        if (category == CatalogCategory.FOOD) {
+            return aggregate(FOOD);
         }
         return STACKS.getOrDefault(category, List.of());
     }

@@ -237,6 +237,7 @@ public final class SettlementApi {
         if (payment.status() != com.siirio.jemsettlements.currency.TransferResult.Status.COMMITTED
                 && payment.status() != com.siirio.jemsettlements.currency.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
         town.get().territoryBounds(minX, minZ, maxX, maxZ);
+        data.reindexTowns();
         town.get().recordExpansion(requestId);
         data.changed();
         if (payment.status() == com.siirio.jemsettlements.currency.TransferResult.Status.COMMITTED) {

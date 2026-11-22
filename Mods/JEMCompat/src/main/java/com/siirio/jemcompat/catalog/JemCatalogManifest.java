@@ -25,7 +25,8 @@ final class JemCatalogManifest {
     private static final int SCHEMA_VERSION = 1;
     private static final int UNKNOWN_LOG_LIMIT = 25;
     private static final Set<JemCatalogCategories.Kind> PARENTS = Set.of(
-            JemCatalogCategories.Kind.WEAPONS, JemCatalogCategories.Kind.BUILDING);
+            JemCatalogCategories.Kind.WEAPONS, JemCatalogCategories.Kind.FOOD,
+            JemCatalogCategories.Kind.BUILDING);
     private static final Map<ResourceLocation, JemCatalogCategories.Kind> ASSIGNMENTS = load();
     private static final Set<ResourceLocation> REPORTED_UNKNOWN = new HashSet<>();
 

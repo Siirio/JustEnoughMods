@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.jei-full-registry-catalog-20261122",
+  "status": "active",
+  "selectors": [{"type": "registry", "registry": "items"}],
+  "conditions": [{"side": "client", "installed_versions": ["JEI installed pack", "JEMCompat current source"]}],
+  "precedence": {"layer": "compat_ui", "priority": 1730, "overrides": ["compat.jei-exact-catalog-manifest-20261121"]},
+  "change": {"summary": "Classify the exact 13,869-item logical-server registry export once and use direct immutable lookup at runtime.", "modifiers": [{"property": "jei.catalog_manifest", "operation": "replace", "before": "Partial accepted registry set and older category tree", "after": "Every exported item ID has exactly one of 22 leaf assignments under Weapons, Food, Building, or root navigation"}, {"property": "jei.original_mode", "operation": "replace", "before": "Curated controls could remain active", "after": "Original JEI mode leaves the curated overlay invisible, inactive, and unfocused"}]},
+  "cause": {"owner": "JEMCompat curated JEI catalog", "kind": "approved_catalog_rebuild", "source_files": ["Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json", "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/**", "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/**", "tools/generate_jei_catalog.py", "Docs/catalog/JEI_CATALOG_REVIEW.md"]},
+  "rationale": {"purpose": "Make category membership complete, stable, reviewable, and independent of runtime inference.", "decision_source": "Approved 2026-11-22 one-shot plan Appendix B", "user_requested": "Rebuild the complete catalog without losing accepted assignments.", "codex_choices": "Use one exact server export, preserve existing assignments as migration hints, and put later unknown IDs in Other."},
+  "introduced": {"date": "2026-11-22", "commit": "SELF", "action": "rebuild_jei_catalog", "summary": "Install the complete exact registry manifest."},
+  "history": [{"date": "2026-11-22", "commit": "SELF", "action": "rebuild_jei_catalog", "summary": "Generate and validate 13,869 unique item assignments."}],
+  "impacts": {"systems": ["JEI", "JEMCompat", "JEM Economy optional catalog"], "relations": ["logical server item registry -> checked manifest -> direct client lookup"], "notes": ["The export SHA-256 is 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39."], "unresolved": ["Visual acceptance requires a later explicitly authorized client launch."]}
+}

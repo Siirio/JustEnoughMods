@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "change_id": "gameplay.native-structural-boss-combat-20261122",
+  "status": "active",
+  "selectors": [{"type": "registry", "registry": "entities"}],
+  "conditions": [{"side": "server", "installed_versions": ["JEM World Boss Tiers current source", "JEM Server current source"]}],
+  "precedence": {"layer": "boss_lifecycle", "priority": 1740, "overrides": ["encounter.structural-arena-barrier-restoration-20261024"]},
+  "change": {
+    "summary": "Retire hosted ordinary boss combat and keep exact structure identity plus native Raid participation records.",
+    "modifiers": [
+      {"property": "boss.ordinary_combat", "operation": "replace", "before": "Hosted group, lobby, Start, participant gate, and structure barrier", "after": "Immediate native aggression and combat without JEM admission or containment"},
+      {"property": "boss.revival_identity", "operation": "retain", "before": "Canonical registered arena and live boss UUID", "after": "Only the exact registered arena boss UUID is eligible for repair"},
+      {"property": "boss_raid.participation", "operation": "replace", "before": "Frozen hosted group at Start", "after": "Server records player UUIDs from attributed damage and commits them on legitimate native boss death"}
+    ]
+  },
+  "cause": {"owner": "WorldBossTiers structure identity and JEMServer Raid records", "kind": "approved_gameplay_rework", "source_files": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java", "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/OrdinaryHostedMigration.java", "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java", "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java", "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java", "Docs/events/BOSS_FIGHT.md", "Docs/events/BOSS_RAID.md"]},
+  "rationale": {"purpose": "Let installed boss mods own combat while JEM keeps only durable structure and Raid record responsibilities.", "decision_source": "Approved 2026-11-22 one-shot plan", "user_requested": "Remove hosted boss groups and ordinary boss barriers without losing past structure work.", "codex_choices": "Collect Raid participants from actual attributed damage and migrate old hosted entity fields on load."},
+  "introduced": {"date": "2026-11-22", "commit": "SELF", "action": "retire_hosted_boss_combat", "summary": "Use native structural boss combat and record-only Raid participation."},
+  "history": [{"date": "2026-11-22", "commit": "SELF", "action": "retire_hosted_boss_combat", "summary": "Remove ordinary admission, holds, boundaries, teleport gates, and combat isolation."}],
+  "impacts": {"systems": ["Boss Fight", "Campaign", "Boss Raid", "WorldBossTiers", "JEMServer"], "relations": ["registered arena -> exact canonical boss UUID -> repair", "attributed Raid damage -> participant record -> completion record"], "notes": ["Blood Moon and Resource Rush remain separate and unchanged."], "unresolved": ["Player acceptance requires a later explicitly authorized runtime session."]}
+}

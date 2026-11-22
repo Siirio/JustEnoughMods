@@ -321,18 +321,10 @@ public final class BossRespawnScheduler {
     private static LivingEntity livingBoss(ServerLevel level,ArenaRecord arena,BossProfile profile) {
         WorldTierData data=WorldTierData.get(level.getServer());
         java.util.UUID recorded=data.liveBoss(arena.id()).orElse(arena.activeEncounterId());
-        if (recorded != null) {
-            Entity active = level.getEntity(recorded);
-            if (active instanceof LivingEntity living && matches(level,arena,profile,living)) {
-                return living;
-            }
-            return null;
-        }
-        AABB bounds=arena.structureArena()
-                ?new AABB(arena.minX(),level.getMinBuildHeight(),arena.minZ(),arena.maxX()+1,level.getMaxBuildHeight(),arena.maxZ()+1)
-                :AABB.of(arena.bounds());
-        return level.getEntitiesOfClass(LivingEntity.class,bounds,entity->matches(level,arena,profile,entity))
-                .stream().min(Comparator.comparing(LivingEntity::getStringUUID)).orElse(null);
+        if (recorded == null) return null;
+        Entity active = level.getEntity(recorded);
+        return active instanceof LivingEntity living && living.getUUID().equals(recorded)
+                && matches(level,arena,profile,living) ? living : null;
     }
 
     private static boolean matches(ServerLevel level,ArenaRecord arena,BossProfile profile,LivingEntity boss) {

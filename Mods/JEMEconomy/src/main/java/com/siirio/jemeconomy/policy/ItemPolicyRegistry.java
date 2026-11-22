@@ -20,8 +20,35 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public final class ItemPolicyRegistry {
     private static final ResourceLocation RESOURCE = new ResourceLocation(JemCurrencyCore.LEGACY_NAMESPACE, "economy/item_policies.json");
-    private static volatile Map<ResourceLocation, ItemPolicy> policies = loadBuiltIn();
+    private static final ResourceLocation TIDE_RESOURCE = new ResourceLocation(JemCurrencyCore.LEGACY_NAMESPACE, "economy/tide_fish_values.json");
+    private static final ResourceLocation TIDE_TAG_RESOURCE = new ResourceLocation("jem_economy", "tags/items/tide_sale_fish.json");
+    private static final net.minecraft.tags.TagKey<net.minecraft.world.item.Item> TIDE_FISH = net.minecraft.tags.TagKey.create(
+            net.minecraft.core.registries.Registries.ITEM, new ResourceLocation("jem_economy","tide_sale_fish"));
+    private static final RegistryData BUILT_IN = loadBuiltIn();
+    private static volatile Map<ResourceLocation, ItemPolicy> policies = BUILT_IN.policies();
+    private static volatile Map<ResourceLocation, TideFishValue> tideFishValues = BUILT_IN.tideFishValues();
     private ItemPolicyRegistry() { }
+
+    private enum TideTier {
+        ORDINARY(10L), RARE(100L), MYTHIC(500L), LEGENDARY(10_000L);
+        private final long baseCopper;
+        TideTier(long baseCopper) { this.baseCopper = baseCopper; }
+    }
+    private record TideFishValue(ResourceLocation item, TideTier tier, long baseCopper,
+                                 double typicalLowCm, double typicalHighCm, double recordHighCm) {
+        private long unitValue(ItemStack stack) {
+            double average = (typicalLowCm + typicalHighCm) / 2.0D;
+            CompoundTag tag = stack.getTag();
+            double length = tag != null && tag.contains("FishLength", net.minecraft.nbt.Tag.TAG_DOUBLE)
+                    && Double.isFinite(tag.getDouble("FishLength")) && tag.getDouble("FishLength") > 0.0D
+                    ? tag.getDouble("FishLength") : average;
+            double progress = Math.max(0.0D, Math.min(1.0D, (length - average) / (recordHighCm - average)));
+            long maxBonus = Math.max(1L, Math.floorDiv(baseCopper, 100L));
+            return Math.addExact(baseCopper, (long) Math.floor(maxBonus * progress));
+        }
+    }
+    private record RegistryData(Map<ResourceLocation, ItemPolicy> policies,
+                                Map<ResourceLocation, TideFishValue> tideFishValues) { }
 
     public static Optional<ItemPolicy> policy(ItemStack stack) {
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
@@ -60,36 +87,126 @@ public final class ItemPolicyRegistry {
     }
 
     public static boolean nativeTideFish(ItemStack stack) {
-        return stack.is(net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM,
-                new ResourceLocation("jem_economy","tide_sale_fish")));
+        return stack.is(TIDE_FISH);
     }
 
-    /** Native catch size is preserved in storage but never increases the species price. */
     public static boolean matchesSaleGoods(ItemStack expected,ItemStack actual) {
-        return ItemStack.isSameItemSameTags(expected,actual) || expected.getItem()==actual.getItem()
-                && (!expected.hasTag() || expected.getTag().isEmpty()) && nativeTideFish(actual) && canonical(actual);
+        return ItemStack.isSameItemSameTags(expected,actual);
+    }
+
+    public static RationalPrice salePrice(ItemStack stack, int quantity, int multiplier) {
+        ItemPolicy policy = policy(stack).filter(ItemPolicy::sellable).orElseThrow(
+                () -> new ArithmeticException("Unpriced sale stack"));
+        if (quantity < 0 || multiplier <= 0) throw new ArithmeticException("Invalid sale quantity or multiplier");
+        TideFishValue fish = tideFishValues.get(ForgeRegistries.ITEMS.getKey(stack.getItem()));
+        if (fish == null) return policy.salePrice(quantity, multiplier);
+        return new RationalPrice(fish.unitValue(stack), 1).multiply(quantity)
+                .multiply(policy.fixedPrice() ? 100L : multiplier).divide(100L);
     }
 
     @SubscribeEvent
     public static void addReloadListener(AddReloadListenerEvent event) {
-        event.addListener(new net.minecraft.server.packs.resources.SimplePreparableReloadListener<Map<ResourceLocation, ItemPolicy>>() {
-            @Override protected Map<ResourceLocation, ItemPolicy> prepare(net.minecraft.server.packs.resources.ResourceManager manager,
+        event.addListener(new net.minecraft.server.packs.resources.SimplePreparableReloadListener<RegistryData>() {
+            @Override protected RegistryData prepare(net.minecraft.server.packs.resources.ResourceManager manager,
                     net.minecraft.util.profiling.ProfilerFiller profiler) {
-                return manager.getResource(RESOURCE).map(resource -> {
-                    try (var reader = resource.openAsReader()) { return parse(com.google.gson.JsonParser.parseReader(reader).getAsJsonArray()); }
-                    catch (Exception failure) { throw new IllegalStateException("Invalid economy policy resource " + RESOURCE, failure); }
-                }).orElseGet(ItemPolicyRegistry::loadBuiltIn);
+                try {
+                    JsonArray policyRows = manager.getResource(RESOURCE).map(resource -> {
+                        try (var reader = resource.openAsReader()) {
+                            return com.google.gson.JsonParser.parseReader(reader).getAsJsonArray();
+                        } catch (Exception failure) {
+                            throw new IllegalStateException("Invalid economy policy resource " + RESOURCE, failure);
+                        }
+                    }).orElseThrow(() -> new IllegalStateException("Missing economy policy resource " + RESOURCE));
+                    JsonObject fishRows = manager.getResource(TIDE_RESOURCE).map(resource -> {
+                        try (var reader = resource.openAsReader()) {
+                            return com.google.gson.JsonParser.parseReader(reader).getAsJsonObject();
+                        } catch (Exception failure) {
+                            throw new IllegalStateException("Invalid Tide fish resource " + TIDE_RESOURCE, failure);
+                        }
+                    }).orElseThrow(() -> new IllegalStateException("Missing Tide fish resource " + TIDE_RESOURCE));
+                    JsonObject fishTag = manager.getResource(TIDE_TAG_RESOURCE).map(resource -> {
+                        try (var reader = resource.openAsReader()) {
+                            return com.google.gson.JsonParser.parseReader(reader).getAsJsonObject();
+                        } catch (Exception failure) {
+                            throw new IllegalStateException("Invalid Tide fish tag resource " + TIDE_TAG_RESOURCE, failure);
+                        }
+                    }).orElseThrow(() -> new IllegalStateException("Missing Tide fish tag resource " + TIDE_TAG_RESOURCE));
+                    return new RegistryData(parse(policyRows), parseTide(fishRows, fishTag, true));
+                } catch (RuntimeException failure) {
+                    throw failure;
+                }
             }
-            @Override protected void apply(Map<ResourceLocation, ItemPolicy> next, net.minecraft.server.packs.resources.ResourceManager manager,
-                    net.minecraft.util.profiling.ProfilerFiller profiler) { policies = Map.copyOf(next); MarketSupply.invalidate(); }
+            @Override protected void apply(RegistryData next, net.minecraft.server.packs.resources.ResourceManager manager,
+                    net.minecraft.util.profiling.ProfilerFiller profiler) {
+                policies = Map.copyOf(next.policies());
+                tideFishValues = Map.copyOf(next.tideFishValues());
+                MarketSupply.invalidate();
+            }
         });
     }
 
-    private static Map<ResourceLocation, ItemPolicy> loadBuiltIn() {
-        try (var stream = ItemPolicyRegistry.class.getResourceAsStream("/data/jem_economy/economy/item_policies.json")) {
-            if (stream == null) throw new IllegalStateException("Missing built-in economy policy resource");
-            return parse(com.google.gson.JsonParser.parseReader(new InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonArray());
+    private static RegistryData loadBuiltIn() {
+        try (var policyStream = ItemPolicyRegistry.class.getResourceAsStream("/data/jem_economy/economy/item_policies.json");
+             var fishStream = ItemPolicyRegistry.class.getResourceAsStream("/data/jem_economy/economy/tide_fish_values.json");
+             var fishTagStream = ItemPolicyRegistry.class.getResourceAsStream("/data/jem_economy/tags/items/tide_sale_fish.json")) {
+            if (policyStream == null || fishStream == null || fishTagStream == null)
+                throw new IllegalStateException("Missing built-in economy resources");
+            return new RegistryData(
+                    parse(com.google.gson.JsonParser.parseReader(new InputStreamReader(policyStream, StandardCharsets.UTF_8)).getAsJsonArray()),
+                    parseTide(
+                            com.google.gson.JsonParser.parseReader(new InputStreamReader(fishStream, StandardCharsets.UTF_8)).getAsJsonObject(),
+                            com.google.gson.JsonParser.parseReader(new InputStreamReader(fishTagStream, StandardCharsets.UTF_8)).getAsJsonObject(),
+                            false));
         } catch (Exception failure) { throw new IllegalStateException("Cannot load built-in economy policies", failure); }
+    }
+
+    private static Map<ResourceLocation, TideFishValue> parseTide(JsonObject root, JsonObject tagRoot, boolean validateRegistry) {
+        if (!root.has("schema") || root.get("schema").getAsInt() != 1 || !root.has("fish") || !root.get("fish").isJsonArray())
+            throw new IllegalArgumentException("Invalid Tide fish manifest root");
+        Map<ResourceLocation, TideFishValue> result = new LinkedHashMap<>();
+        java.util.EnumMap<TideTier, Integer> counts = new java.util.EnumMap<>(TideTier.class);
+        for (JsonElement element : root.getAsJsonArray("fish")) {
+            JsonObject row = element.getAsJsonObject();
+            ResourceLocation id = ResourceLocation.tryParse(row.get("item").getAsString());
+            if (id == null || !id.getNamespace().equals("tide") || result.containsKey(id))
+                throw new IllegalArgumentException("Invalid or duplicate Tide fish ID: " + row);
+            TideTier tier;
+            try { tier = TideTier.valueOf(row.get("tier").getAsString()); }
+            catch (RuntimeException invalid) { throw new IllegalArgumentException("Invalid Tide tier for " + id, invalid); }
+            long base = row.get("base_copper").getAsLong();
+            double low = row.get("typical_low_cm").getAsDouble();
+            double high = row.get("typical_high_cm").getAsDouble();
+            double record = row.get("record_high_cm").getAsDouble();
+            double average = (low + high) / 2.0D;
+            if (base != tier.baseCopper || !Double.isFinite(low) || !Double.isFinite(high) || !Double.isFinite(record)
+                    || low <= 0.0D || high < low || record <= average)
+                throw new IllegalArgumentException("Invalid Tide fish values for " + id);
+            if (validateRegistry && !ForgeRegistries.ITEMS.containsKey(id))
+                throw new IllegalArgumentException("Unregistered Tide fish item " + id);
+            result.put(id, new TideFishValue(id, tier, base, low, high, record));
+            counts.merge(tier, 1, Integer::sum);
+        }
+        if (result.size() != 101 || counts.getOrDefault(TideTier.ORDINARY, 0) != 39
+                || counts.getOrDefault(TideTier.RARE, 0) != 25 || counts.getOrDefault(TideTier.MYTHIC, 0) != 20
+                || counts.getOrDefault(TideTier.LEGENDARY, 0) != 17)
+            throw new IllegalArgumentException("Tide fish manifest must contain the exact 101 tier assignment");
+        java.util.Set<ResourceLocation> tagged = parseTideTag(tagRoot);
+        if (!tagged.equals(result.keySet())) throw new IllegalArgumentException("Tide sale tag and value manifest differ");
+        return Map.copyOf(result);
+    }
+
+    private static java.util.Set<ResourceLocation> parseTideTag(JsonObject root) {
+        if (!root.has("values") || !root.get("values").isJsonArray())
+            throw new IllegalArgumentException("Invalid Tide fish tag root");
+        java.util.Set<ResourceLocation> result = new java.util.LinkedHashSet<>();
+        for (JsonElement element : root.getAsJsonArray("values")) {
+            if (!element.isJsonPrimitive() || !element.getAsJsonPrimitive().isString())
+                throw new IllegalArgumentException("Invalid Tide fish tag entry " + element);
+            ResourceLocation id = ResourceLocation.tryParse(element.getAsString());
+            if (id == null || !id.getNamespace().equals("tide") || !result.add(id))
+                throw new IllegalArgumentException("Invalid or duplicate Tide fish tag entry " + element);
+        }
+        return java.util.Set.copyOf(result);
     }
 
     private static Map<ResourceLocation, ItemPolicy> parse(JsonArray array) {

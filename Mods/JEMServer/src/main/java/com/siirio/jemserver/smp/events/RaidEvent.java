@@ -103,11 +103,13 @@ public final class RaidEvent {
         }
         if(boss==null) return !row.hasTargetBoss();
         if(!BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).toString().equals(row.bossType())
-                ||!HostedEncounterApi.prepareRaid(boss)) return false;
+                || WorldTierApi.profile(boss).isEmpty()) return false;
         boss.getPersistentData().putUUID(EVENT_ID,row.id());
         boolean changed=!row.hasTargetBoss()||!row.targetBoss().equals(boss.getUUID())
                 ||row.position()!=boss.blockPosition().asLong();
         row.targetBoss(boss.getUUID());
+        row.bossEntity(boss.getUUID());
+        if (!row.hasAttemptId()) row.attemptId(UUID.randomUUID());
         row.position(boss.blockPosition().asLong());
         
         return true;
@@ -242,6 +244,52 @@ public final class RaidEvent {
             if(!event.state().equals("ACTIVE")||!event.activity().equals("BOSS_RAID")) continue;
             if(!event.combatStarted()) {prepare(tick.getServer(),event);continue;}
         }
+    }
+
+    @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.LOWEST)
+    public static void recordParticipant(net.minecraftforge.event.entity.living.LivingDamageEvent damage) {
+        if (!(damage.getEntity().level() instanceof ServerLevel level) || damage.getAmount() <= 0
+                || !damage.getEntity().getPersistentData().hasUUID(EVENT_ID)) return;
+        var owner = HostedEncounterApi.damageOwner(damage.getSource());
+        if (!(owner instanceof ServerPlayer player)) return;
+        var store = SmpData.get(level.getServer());
+        store.edit(() -> {
+            var event = store.events().current(damage.getEntity().getPersistentData().getUUID(EVENT_ID));
+            if (event == null || !event.state().equals("ACTIVE") || !event.activity().equals("BOSS_RAID")) return;
+            var participants = new java.util.ArrayList<>(event.encounterParticipants());
+            if (!participants.contains(player.getUUID())) {
+                participants.add(player.getUUID());
+                event.encounterParticipants(participants);
+            }
+            var member = event.memberOrEmpty(player.getUUID());
+            member.accepted(true);
+            member.contributed(true);
+            member.name(player.getGameProfile().getName());
+            event.addMember(player.getUUID(), member);
+        });
+    }
+
+    @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.LOWEST)
+    public static void nativeBossDefeated(net.minecraftforge.event.entity.living.LivingDeathEvent death) {
+        if (!(death.getEntity().level() instanceof ServerLevel level)
+                || !death.getEntity().getPersistentData().hasUUID(EVENT_ID)) return;
+        var store = SmpData.get(level.getServer());
+        store.edit(() -> {
+            var event = store.events().current(death.getEntity().getPersistentData().getUUID(EVENT_ID));
+            if (event == null || !event.state().equals("ACTIVE") || !event.activity().equals("BOSS_RAID")
+                    || !event.hasTargetBoss() || !event.targetBoss().equals(death.getEntity().getUUID())) return;
+            var participants = event.encounterParticipants();
+            if (event.hasRaidArenaId() && event.hasAttemptId() && !participants.isEmpty()) {
+                var world = com.siirio.jemworldbosstiers.progression.WorldTierData.get(level.getServer());
+                world.recordRaidParticipation(event.raidArenaId(), participants, event.attemptId());
+                SmpRecords.require(world.flush(level.getServer()), "storage_unavailable");
+            }
+            for (UUID id : participants) {
+                Profiles.count(level.getServer(), id, ProfileCounter.RAIDS_COMPLETED);
+                Profiles.countEvent(level.getServer(), id, "BOSS_RAID");
+            }
+            EventScheduler.finish(level.getServer(), event, "COMPLETED");
+        });
     }
 
     private static void applyRaidScale(LivingEntity boss, BoundingBox bounds) {
