@@ -12,6 +12,19 @@
 - Implementation choice: keep the native plan, object hashes, conflict review, generation state, and transaction checks unchanged. Full-pack integrity repair remains separate from the normal small-update path
 - No gameplay client launch, MineRENT deployment, stable-profile mutation, or release-baseline promotion was performed. Player acceptance remains `in testing`
 
+## 2026-11-22 - Correct building materials and add component and smithing leaves
+
+- The user required a full semantic cleanup of items that remained in Building > Building Materials after the first catalog migration
+- The user moved trophies, pots, tableware, Dusty Decorations, Shutterup decorations, cameras, shark jaws, coin piles, candelabras and remains to Furniture and Decorations
+- The user moved dishes and food to Edibles, cooking blocks to Cooking Equipment, Create and train blocks to Create and Redstone, natural growth and wooden construction families to Nature, resin clumps to Ores, heads to Armor and Dragon's Breath to Potions
+- The user added the top-level Components category for reviewed creature drops and crafting parts from Alex's Caves, Alex's Mobs, Barnyard Buddies, Primal, Legendary Monsters, Luminous Beasts and Luminous Nether
+- The user added the Weapons > Smithing Templates leaf for all 48 installed vanilla and modded smithing templates, armor trims and smithing augments
+- Bug / Client / the first exact catalog migration preserved broad Building Materials and Other assignments because that migration reviewed selected category families but did not audit every remaining construction block, creature drop or smithing template / in testing with an Atlas-backed exact-ID reclassification and strict manifest validation
+- The corrected manifest keeps all 13,869 registered item IDs and now assigns 1,194 items to Furniture and Decorations, 1,076 to Nature, 1,066 to Edibles, 61 to Cooking Equipment, 2,428 to Create and Redstone, 103 to Components and 48 to Smithing Templates
+- Implementation choice: preserve semantic weapons, armor, food, fishing supplies and ores from Create while moving Create machinery, train equipment and residual Create items into Create and Redstone
+- Java 17 production `jar/reobfJar` completed for JEMCompat 3.11.3. Its SHA-256 is `4C7EC07DE37B60A71FF9B16363A9DD9EEE81E8056526DA8915C498FC698F42BC`
+- Preparation is source-only while the local server and client remain open. No runtime JAR replacement, server restart, Pack Sync publication, client application, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed
+
 ## 2026-11-22 - Reclassify the complete JEI catalog
 
 - The user requested a semantic correction of the current 13,869-item catalog without removing any earlier client or server work

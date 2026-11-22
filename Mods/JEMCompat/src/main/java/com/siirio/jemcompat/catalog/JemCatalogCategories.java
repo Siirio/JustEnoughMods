@@ -13,6 +13,7 @@ public final class JemCatalogCategories {
         WEAPON_RANGED,
         WEAPON_MELEE,
         WEAPON_SHIELDS,
+        WEAPON_SMITHING_TEMPLATES,
         WEAPON_TRAINING,
         WEARABLES,
         WEARABLE_ARMOR,
@@ -22,6 +23,7 @@ public final class JemCatalogCategories {
         FOOD_EDIBLES,
         FOOD_COOKING_EQUIPMENT,
         ORES,
+        COMPONENTS,
         CREATE_REDSTONE,
         BUILDING,
         BUILDING_FURNITURE,
@@ -59,7 +61,8 @@ public final class JemCatalogCategories {
                                 Predicate<ItemStack> cookingCatalyst) {
         Kind category = classify(stack);
         return switch (category) {
-            case WEAPON_TOTEMS, WEAPON_RANGED, WEAPON_MELEE, WEAPON_SHIELDS, WEAPON_TRAINING -> Kind.WEAPONS;
+            case WEAPON_TOTEMS, WEAPON_RANGED, WEAPON_MELEE, WEAPON_SHIELDS,
+                    WEAPON_SMITHING_TEMPLATES, WEAPON_TRAINING -> Kind.WEAPONS;
             case WEARABLE_ARMOR, WEARABLE_MOB_ARMOR, WEARABLE_DOLLS -> Kind.WEARABLES;
             case FOOD_EDIBLES, FOOD_COOKING_EQUIPMENT -> Kind.FOOD;
             case BUILDING_FURNITURE, BUILDING_NATURE, BUILDING_CONTAINERS, BUILDING_HOLIDAY,

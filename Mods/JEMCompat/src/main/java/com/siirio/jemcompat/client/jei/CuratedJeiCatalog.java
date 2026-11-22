@@ -11,7 +11,7 @@ import java.util.List;
 
 public final class CuratedJeiCatalog {
     private static final List<CatalogCategory> TOP_LEVEL = List.of(CatalogCategory.WEAPONS, CatalogCategory.WEARABLES, CatalogCategory.FOOD,
-            CatalogCategory.ORES,
+            CatalogCategory.ORES, CatalogCategory.COMPONENTS,
             CatalogCategory.CREATE_REDSTONE, CatalogCategory.BUILDING, CatalogCategory.FISHING, CatalogCategory.BOOKS,
             CatalogCategory.POTIONS, CatalogCategory.TRANSPORT, CatalogCategory.COMPANIONS,
             CatalogCategory.SPAWN_EGGS, CatalogCategory.OTHER);
@@ -20,7 +20,7 @@ public final class CuratedJeiCatalog {
             CatalogCategory.BUILDING_NATURE, CatalogCategory.BUILDING_HOLIDAY, CatalogCategory.BUILDING_TOOLS);
     private static final List<CatalogCategory> WEAPONS = List.of(CatalogCategory.WEAPON_TOTEMS,
             CatalogCategory.WEAPON_RANGED, CatalogCategory.WEAPON_MELEE, CatalogCategory.WEAPON_SHIELDS,
-            CatalogCategory.WEAPON_TRAINING);
+            CatalogCategory.WEAPON_SMITHING_TEMPLATES, CatalogCategory.WEAPON_TRAINING);
     private static final List<CatalogCategory> WEARABLES = List.of(CatalogCategory.WEARABLE_ARMOR,
             CatalogCategory.WEARABLE_MOB_ARMOR, CatalogCategory.WEARABLE_DOLLS);
     private static final List<CatalogCategory> FOOD = List.of(CatalogCategory.FOOD_EDIBLES,

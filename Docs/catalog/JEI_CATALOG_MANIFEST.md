@@ -15,12 +15,14 @@ The leaf categories are:
 - `WEAPON_RANGED`
 - `WEAPON_MELEE`
 - `WEAPON_SHIELDS`
+- `WEAPON_SMITHING_TEMPLATES`
 - `WEARABLE_ARMOR`
 - `WEARABLE_MOB_ARMOR`
 - `WEARABLE_DOLLS`
 - `FOOD_EDIBLES`
 - `FOOD_COOKING_EQUIPMENT`
 - `ORES`
+- `COMPONENTS`
 - `CREATE_REDSTONE`
 - `BUILDING_FURNITURE`
 - `BUILDING_NATURE`
@@ -52,11 +54,15 @@ The Russian name of `WEARABLE_DOLLS` is `Куклы`. This leaf contains the exa
 - User-approved assignments from `CHANGELOG.md` take precedence in the initial manifest
 - Weapon subcategories split only the items that the earlier catalog classified as weapons
 - Companion and transport spawn eggs keep `SPAWN_EGGS` as their primary assignment and also appear in their exact companion or transport view
+- Vanilla and modded smithing templates, armor trims and smithing augments use `WEAPON_SMITHING_TEMPLATES`
+- Reviewed creature drops and crafting parts use the top-level `COMPONENTS` leaf
+- Create machinery, train equipment and residual Create-family items use `CREATE_REDSTONE`. Semantic weapons, armor, food, fishing supplies and ores keep their matching leaves
+- Wooden construction families and natural growths that were in Building Materials use `BUILDING_NATURE`
 - JEM Economy reads the same manifest through the existing optional JEMCompat contract
 
 ## Maintenance
 
-`tools/generate_jei_catalog.py` creates the initial manifest from an exact logical-server registry export and the approved offline priority rules. The 2026-11-22 export contains 13,869 item IDs and has SHA-256 `958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39`. After the initial conversion, the checked-in manifest is authoritative. Update mode preserves all existing assignments and assigns only previously unknown IDs to `OTHER`. Validate mode rejects missing, unknown, duplicate, or invalid assignments without changing the manifest. Review mode regenerates the namespace-count report from the checked-in manifest.
+`tools/generate_jei_catalog.py` creates the initial manifest from an exact logical-server registry export and the approved offline priority rules. The 2026-11-22 export contains 13,869 item IDs and has SHA-256 `958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39`. After the initial conversion, the checked-in manifest is authoritative. Update mode preserves all existing assignments and assigns only previously unknown IDs to `OTHER`. Reclassify mode applies the reviewed 2026-11-22 corrections with Registry Atlas records, checks all required exact moves and rejects any smithing template or non-semantic Create item left outside its approved leaf. Validate mode rejects missing, unknown, duplicate or invalid assignments without changing the manifest. Review mode regenerates the namespace-count report from the checked-in manifest.
 
 This policy prevents a generator update from rewriting accepted categories. A future category correction changes the exact item IDs in the manifest and records the decision in `CHANGELOG.md` and the Registry Atlas change history.
 

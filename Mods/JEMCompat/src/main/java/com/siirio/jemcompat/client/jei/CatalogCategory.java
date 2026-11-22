@@ -11,6 +11,7 @@ enum CatalogCategory {
     WEAPON_RANGED("gui.jemcompat.jei.weapon_ranged", "minecraft:bow"),
     WEAPON_MELEE("gui.jemcompat.jei.weapon_melee", "minecraft:iron_sword"),
     WEAPON_SHIELDS("gui.jemcompat.jei.weapon_shields", "minecraft:shield"),
+    WEAPON_SMITHING_TEMPLATES("gui.jemcompat.jei.weapon_smithing_templates", "minecraft:netherite_upgrade_smithing_template"),
     WEAPON_TRAINING("gui.jemcompat.jei.weapon_training", "recruits:recruit_block"),
     WEARABLES("gui.jemcompat.jei.wearables", "minecraft:netherite_chestplate"),
     WEARABLE_ARMOR("gui.jemcompat.jei.wearable_armor", "minecraft:diamond_chestplate"),
@@ -20,6 +21,7 @@ enum CatalogCategory {
     FOOD_EDIBLES("gui.jemcompat.jei.food_edibles", "minecraft:bread"),
     FOOD_COOKING_EQUIPMENT("gui.jemcompat.jei.food_cooking_equipment", "farm_and_charm:cooking_pot"),
     ORES("gui.jemcompat.jei.ores", "minecraft:raw_iron"),
+    COMPONENTS("gui.jemcompat.jei.components", "alexsmobs:bear_fur"),
     CREATE_REDSTONE("gui.jemcompat.jei.create_redstone", "create:cogwheel"),
     BUILDING("gui.jemcompat.jei.building", "jem_building:builder_hammer"),
     BUILDING_FURNITURE("gui.jemcompat.jei.furniture", "minecraft:painting"),
@@ -63,6 +65,7 @@ enum CatalogCategory {
             case FOOD, FOOD_EDIBLES -> net.minecraft.world.item.Items.BAKED_POTATO;
             case FOOD_COOKING_EQUIPMENT -> net.minecraft.world.item.Items.FURNACE;
             case ORES -> net.minecraft.world.item.Items.RAW_IRON;
+            case COMPONENTS -> net.minecraft.world.item.Items.PRISMARINE_SHARD;
             case CREATE_REDSTONE -> net.minecraft.world.item.Items.REDSTONE;
             case BUILDING, BUILDING_FURNITURE -> net.minecraft.world.item.Items.PAINTING;
             case BUILDING_NATURE -> net.minecraft.world.item.Items.MOSS_BLOCK;
@@ -84,6 +87,7 @@ enum CatalogCategory {
             case WEAPON_RANGED -> net.minecraft.world.item.Items.BOW;
             case WEAPON_MELEE -> net.minecraft.world.item.Items.IRON_SWORD;
             case WEAPON_SHIELDS -> net.minecraft.world.item.Items.SHIELD;
+            case WEAPON_SMITHING_TEMPLATES -> net.minecraft.world.item.Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE;
             case WEAPON_TRAINING -> net.minecraft.world.item.Items.ARMOR_STAND;
             case WEARABLES -> net.minecraft.world.item.Items.NETHERITE_CHESTPLATE;
             case WEARABLE_ARMOR -> net.minecraft.world.item.Items.DIAMOND_CHESTPLATE;

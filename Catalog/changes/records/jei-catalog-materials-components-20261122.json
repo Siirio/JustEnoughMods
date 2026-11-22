@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "change_id": "jei.catalog-materials-components",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "JEMCompat 3.11.3 or newer loads the schema-2 exact JEI catalog manifest"
+    }
+  ],
+  "precedence": {
+    "layer": "presentation",
+    "priority": 130,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Correct residual Building Materials assignments and add exact Components and Smithing Templates leaves",
+    "modifiers": [
+      {
+        "property": "jem.jei_catalog.primary_assignment",
+        "operation": "replace",
+        "before": {
+          "value": "Reviewed weapon, wearable, companion and selected construction families with residual broad Building Materials and Other assignments"
+        },
+        "after": {
+          "value": "One exact reviewed leaf for every installed item, including Components and Weapons > Smithing Templates"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat exact JEI catalog manifest",
+    "kind": "catalog_classification",
+    "source_files": [
+      "Mods/JEMCompat/gradle.properties",
+      "tools/generate_jei_catalog.py",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the curated catalog match item purpose and remove natural, decorative, cooking, Create, component and smithing items from residual broad leaves",
+    "decision_source": "Direct user classification request on 2026-11-22 and installed Registry Atlas item evidence"
+  },
+  "introduced": {
+    "date": "2026-11-22",
+    "commit": "SELF",
+    "action": "reclassify_catalog",
+    "summary": "Add Components and Smithing Templates and correct residual Building Materials and Other assignments",
+    "source_files": [
+      "Mods/JEMCompat/gradle.properties",
+      "tools/generate_jei_catalog.py",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+      "Docs/catalog/JEI_CATALOG_MANIFEST.md",
+      "Docs/catalog/JEI_CATALOG_REVIEW.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "reclassify_catalog",
+      "summary": "Reviewed exact category moves against the installed Registry Atlas and preserved one primary leaf per registry ID",
+      "source_files": [
+        "tools/generate_jei_catalog.py",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "jei_catalog",
+      "client_presentation",
+      "economy_catalog_adapter"
+    ],
+    "relations": [
+      "Registry Atlas item evidence -> reviewed migration -> exact manifest -> client catalog and shared category adapter"
+    ],
+    "notes": [
+      "The runtime does not infer categories from names, tags or classes",
+      "All 13869 installed item IDs keep exactly one primary assignment",
+      "The local client and server runtime remain unchanged until the prepared artifact is applied"
+    ],
+    "unresolved": [
+      "Player acceptance remains pending because the client was not restarted or launched"
+    ]
+  }
+}
