@@ -5,6 +5,7 @@ Current contract, 2026-11-22: every registered structural boss uses its native c
 ## Native combat
 
 - A structural boss can target players and receive damage as soon as its native mod permits
+- Registered bosses treat non-spectator Creative players as valid native combat targets. The native selector, range, line of sight, team, attack-type, sleep, phase, and AI rules remain active
 - JEM does not create a party, group, lobby, invitation, ready check, confirmation, retry, or first-hit admission flow
 - JEM does not hold AI, invulnerability, boss bars, music, attacks, summons, or movement for an explicit Start action
 - JEM does not add a visible wall, physical collision, portal, teleport restriction, safe-exit route, containment rule, or participant-only combat gate
@@ -20,4 +21,4 @@ Blood Moon and Resource Rush keep their separate territory, spectator, targeting
 
 ## Verification status
 
-The source compiles and the local production artifacts can be installed by this task. A later explicitly authorized player session must verify native aggression, death, revival, and overlapping structures
+The Creative-targeting source has not received an authorized gameplay run. A later explicitly authorized player session must verify native aggression in Creative, death, revival, and overlapping structures

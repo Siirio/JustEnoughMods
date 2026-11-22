@@ -106,7 +106,7 @@ class ApplyPublishedJemPack {{
  static String sha(Path path)throws Exception {{ try(var input=Files.newInputStream(path)){{var digest=java.security.MessageDigest.getInstance("SHA-1");byte[] buffer=new byte[1048576];for(int count;(count=input.read(buffer))!=-1;)digest.update(buffer,0,count);return java.util.HexFormat.of().formatHex(digest.digest());}} }}
  static void require(boolean condition,String message) {{ if(!condition)throw new IllegalStateException(message); }}
  static void run()throws Exception {{
-  Constants.LOADER="forge";Constants.MC_VERSION="1.20.1";Constants.LOADER_VERSION="47.4.10";Constants.preload=false;
+  Constants.LOADER="forge";Constants.MC_VERSION="1.20.1";Constants.LOADER_VERSION="47.4.10";Constants.preload=true;
   Constants.THIS_MOD_JAR=Path.of({java_string(bootstrap)});
   Constants.MODPACK_LOADER=new pl.skidam.automodpack_loader_core_forge.mods.ModpackLoader();
   var storage=ClientStorage.open(Path.of(System.getProperty("user.dir")));
@@ -116,9 +116,11 @@ class ApplyPublishedJemPack {{
    var pending=UpdateTransaction.read(storage.transactionFile());
    require(pending.purpose==UpdateTransaction.Purpose.MODPACK_UPDATE,"Pending transaction is not a modpack update");
    require(pending.plan!=null&&pending.packTarget().contentToken().equals({json.dumps(expected_token)}),"Pending transaction targets a different publication");
-   System.out.println("DEFERRED_TRANSACTION="+pending.transactionId);
-   DetachedUpdateHelper.launch();
-   System.out.println("DETACHED_HELPER_STARTED");
+   var recovered=UpdateTransactionSupport.executor().recoverLatest();
+   require(recovered.success(),"Native pending transaction recovery failed: "+recovered.message());
+   require(!Files.exists(storage.transactionFile()),"Native transaction remains pending after inline recovery");
+   var installed=storage.readActiveState();require(installed!=null&&installed.contentToken.equals({json.dumps(expected_token)}),"Recovered generation differs");
+   System.out.println("INSTALLED_TOKEN="+installed.contentToken);
    return;
   }}
   var active=storage.readActiveState();require(active!=null,"No installed AutoModpack generation to update");
@@ -136,8 +138,11 @@ class ApplyPublishedJemPack {{
   new HeadMirror(storage).replaceFrom(fetchedHead);
   var mirror=new JournalMirror(storage);mirror.replaceFrom(active.modpackId,fetchedJournal);
   var entries=mirror.entries(active.modpackId);require(!entries.isEmpty(),"Published journal is empty");var latest=entries.get(entries.size()-1);
+  int activeIndex=-1;for(int index=0;index<entries.size();index++)if(entries.get(index).contentToken().equals(active.contentToken))activeIndex=index;
+  require(activeIndex>=0,"Installed generation is absent from the published journal");
   var hashes=new HashSet<String>();
-  for(var entry:entries){{hashes.add(entry.policySha1());for(var change:entry.changes())if(change.toSha1()!=null&&!change.toSha1().isBlank())hashes.add(change.toSha1());}}
+  for(int index=activeIndex+1;index<entries.size();index++){{var entry=entries.get(index);hashes.add(entry.policySha1());for(var change:entry.changes())if(change.toSha1()!=null&&!change.toSha1().isBlank())hashes.add(change.toSha1());}}
+  System.out.println("TAIL_ENTRIES="+(entries.size()-activeIndex-1));System.out.println("TAIL_OBJECTS="+hashes.size());
   for(String hash:hashes){{Path object=serverRoot.resolve("data/objects").resolve(hash.substring(0,2)).resolve(hash.substring(2));if(Files.isRegularFile(object))ClientObjectStore.storeObject(storage,hash,Files.readAllBytes(object));}}
   var document=new ClientGenerationStore(storage).document(active.modpackId,latest);
   require(document.contentToken().equals({json.dumps(expected_token)}),"Published document token differs");
@@ -247,17 +252,22 @@ try {{ ApplyPublishedJemPack.run(); }} catch(Throwable failure) {{ failure.print
     require(active_state["contentToken"] == expected_token, "External active state differs from the published head")
     require(not (state_root / "update-transaction.json").exists(), "External native transaction remains pending")
 
-    checked_jars = 0
-    for source in sorted((CANONICAL / "mods").glob("*.jar")):
-        installed = profile / "mods" / source.name
-        require(installed.is_file(), f"Managed JAR is missing from the standard mods directory: {source.name}")
-        require(sha1(installed) == sha1(source), f"Managed JAR differs from canonical source: {source.name}")
-        checked_jars += 1
+    changed_jars = sorted({
+        line.split(" ", 3)[-1]
+        for line in output.splitlines()
+        if line.startswith("OP INSTALL_OBJECT ") and line.split(" ", 3)[-1].startswith("mods/") and line.endswith(".jar")
+    })
+    for relative in changed_jars:
+        source = CANONICAL / relative
+        installed = profile / relative
+        require(source.is_file(), f"Changed managed JAR is absent from the canonical pack: {relative}")
+        require(installed.is_file(), f"Changed managed JAR is missing from the standard mods directory: {relative}")
+        require(sha1(installed) == sha1(source), f"Changed managed JAR differs from canonical source: {relative}")
     print(json.dumps({
         "profile": str(profile),
         "stateRoot": str(state_root),
         "contentToken": expected_token,
-        "verifiedManagedJars": checked_jars,
+        "verifiedChangedManagedJars": changed_jars,
         "legacyAutomodpackFolderRemoved": not game_dir_pack.exists(),
     }, ensure_ascii=False, indent=2))
 

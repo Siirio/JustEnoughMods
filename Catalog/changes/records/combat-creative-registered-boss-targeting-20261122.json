@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "change_id": "combat.creative-registered-boss-targeting-20261122",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities",
+      "value": "*"
+    }
+  ],
+  "conditions": [
+    {
+      "expression": "WorldTierApi.profile(attacker).isPresent() and target is a living non-spectator Creative player",
+      "confidence": "runtime"
+    }
+  ],
+  "precedence": {
+    "layer": "server_registered_boss_targeting",
+    "priority": 370,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Canonical registered bosses can acquire and retain Creative players through their native combat target goals.",
+    "modifiers": [
+      {
+        "property": "combat.registered_boss.creative_player_target_eligibility",
+        "operation": "allow",
+        "before": "Player.canBeSeenAsEnemy rejects Creative players before native boss target selection can complete.",
+        "after": "TargetingConditions keeps the native selector, range, line of sight, team, attack-type and AI checks, but treats a non-spectator Creative player as attackable when the attacker has a canonical WorldTierApi profile."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM World Boss Tiers registered-boss targeting adapter",
+    "kind": "vanilla_creative_target_filter",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CreativeBossTargetingMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Let the user remain in Creative while testing the real native aggression of every registered boss that normally targets players.",
+    "decision_source": "User on 2026-11-22 requested that bosses aggro the player even while the player remains in Creative.",
+    "user_requested": "Make registered bosses aggro the player in Creative.",
+    "codex_choices": "Redirect only the vanilla canAttack check inside TargetingConditions for canonical registered bosses. Preserve all later native targeting checks and do not alter ordinary mobs, spectators, damage immunity, sleeping state, phases or NoAI."
+  },
+  "introduced": {
+    "date": "2026-11-22",
+    "commit": "SELF",
+    "action": "allow_registered_boss_creative_targeting",
+    "summary": "Allow canonical registered bosses to pass the Creative-player attackability check while preserving native target conditions.",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CreativeBossTargetingMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "allow_registered_boss_creative_targeting",
+      "summary": "Allow canonical registered bosses to pass the Creative-player attackability check while preserving native target conditions.",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CreativeBossTargetingMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "boss_targeting",
+      "combat",
+      "creative_mode",
+      "server_authority",
+      "WorldBossTiers"
+    ],
+    "relations": [
+      "Native target goal -> TargetingConditions.test -> registered-boss Creative attackability exception -> unchanged native selector and sensing checks",
+      "WorldTierApi.profile remains the only boss eligibility owner"
+    ],
+    "notes": [
+      "Creative damage immunity is unchanged. Bosses can select and pursue the player but ordinary attacks still do not reduce Creative player health.",
+      "The rule does not wake sleeping bosses, enable NoAI entities or bypass native phases and invulnerable states."
+    ],
+    "unresolved": [
+      "A player gameplay run has not yet verified each installed boss mod's native Creative pursuit behavior."
+    ]
+  }
+}

@@ -1,3 +1,17 @@
+## 2026-11-22 - Let registered bosses target Creative players
+
+- The user requested that nearby registered bosses aggro the player while the player remains in Creative
+- Bug / Both Sided / vanilla `TargetingConditions` called `LivingEntity.canAttack`, which rejected Creative players through `Player.canBeSeenAsEnemy` before native boss target selection could complete / in testing with a canonical registered-boss exception at that exact check
+- Registered bosses keep their native target selector, range, line of sight, team, attack-type, sleep, phase, and AI rules
+- Ordinary mobs and spectators remain unchanged. Creative damage immunity remains unchanged
+- Implementation choice: use `WorldTierApi.profile` as the only boss selector and do not create an entity allowlist, fake golem, duplicated encounter state, or forced per-tick target
+- Java 17 production `jar/reobfJar` completed for JEM World Boss Tiers 2.5.0-dev. The synchronized artifact SHA-256 is `1C25B54177BE0E4C2485774809BDB7A58DB5B216569CA2CF87B92DC45DB3D1B5`
+- The ordinary local server loaded the new JAR. Native Pack Sync journal 196 published token `048357a514c4852328ba483b60f82a34a15ab69b` with matching staged and published manifest SHA-1 `ad4dfc825646a9eeb89c328ca5c2585c050bcce8`
+- The closed `Test JustEnoughMods` profile applied that token through the native updater. The installed JEM World Boss Tiers JAR matches the approved artifact, and no native transaction remains pending
+- Bug / Tooling / the maintenance apply helper re-hashed every object from the complete publication history, routed a confirmed closed profile through a detached helper that waited for its own parent process, and re-hashed all installed managed JARs after the commit / resolved by loading only the journal tail, committing inline after the closed-profile guard, and verifying only changed managed JARs
+- Implementation choice: keep the native plan, object hashes, conflict review, generation state, and transaction checks unchanged. Full-pack integrity repair remains separate from the normal small-update path
+- No gameplay client launch, MineRENT deployment, stable-profile mutation, or release-baseline promotion was performed. Player acceptance remains `in testing`
+
 ## 2026-11-22 - Reclassify the complete JEI catalog
 
 - The user requested a semantic correction of the current 13,869-item catalog without removing any earlier client or server work

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "b92a45a5699adb77f129123abe2087991a13b0815401bfe63251a8f0e96b79f8",
+  "change_records_sha256": "5013ae31095094a5c6b6aacd6f159560515f81c3821b1d856245e973c6b5d62a",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -654,6 +654,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 267
+    },
+    {
+      "change_id": "combat.creative-registered-boss-targeting-20261122",
+      "status": "conditional",
+      "summary": "Canonical registered bosses can acquire and retain Creative players through their native combat target goals.",
+      "record": "Catalog/changes/records/combat-creative-registered-boss-targeting-20261122.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities",
+          "value": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1575
     },
     {
       "change_id": "combat.provenance-and-balance-20261022",
@@ -5185,7 +5200,7 @@
   ],
   "source_fingerprints": {
     "AGENTS.md": "7e07534f47ada87643582e8ab064c34127b4c10376371ce7fb9879e812ea9c7b",
-    "CHANGELOG.md": "9eebcb4c4bbcbf832018fca1181dde24476b36028fe02a7f69e687c8752649fc",
+    "CHANGELOG.md": "dacaeb7d3223fb4a4c60290b9a2b67cf29c370d77ca609a487488a431e3b0780",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -5295,7 +5310,7 @@
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/config/vss-client-config.json": "21465c42e915b82881f7a0271761fffb58d51c214a8ca9e65dbf4055454cc158",
     "Client/ManagedPack/defaultconfigs/mapsyncer-server.toml": "8d18876d6a65cdfdc098f6c105ed7cbea35a3ef911445427104f821a0a0c8fec",
-    "Client/ManagedPack/jem-pack/manifest.json": "243a62debf7dbe5e210598fb308f896204e90ec5d80245c5047a65da9cd5588a",
+    "Client/ManagedPack/jem-pack/manifest.json": "327403d91c895bddad76c0ced10fe676a1ea59ae79c2f416085760cc06a61e15",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -5491,7 +5506,7 @@
     "Client/ManagedPack/mods/jem-rewards-1.1.0.jar": "140d4dd504204a9c0950f37d6583cf704de4c524c9d1a03b79581fb90f5fe0b2",
     "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "a64147a7889248c9e471d8ff71dfc9f921accb4da1f618509af339c1ca20bfb0",
     "Client/ManagedPack/mods/jem-settlements-2.2.2.jar": "1c887c1299436cae7cd0b63029a6fa5af03dd6501cf305716bf7758af462dccc",
-    "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar": "f7dbf45a06836588138a55fb8a57438800a4d1b4f81a8ad50685e141f8540c73",
+    "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar": "1c25b54177be0e4c2485774809bdb7a58db5b216569ca2cf87b92dc45db3d1b5",
     "Client/ManagedPack/mods/jem_adaptive_culling-1.5.0.jar": "81c8115c9594b5f83ee3649d3cae4d0a095d4f1984af901dcf4e753bf8240e9f",
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "d7b523b6cc7657340390fa961c9b8db351db4c505eea590a95c1536b923982e7",
     "Client/ManagedPack/mods/jem_security-1.0.8.jar": "f04e2ba18e7901fc07504ebeb5ff16d8148c6a0069e7355b2ca1b86f4f81c9eb",
@@ -5547,7 +5562,7 @@
     "Docs/economy/shipping-conversion-audit.json": "f3599372a5eb48ee4171e1cbac599981cea3bf14088276f136a973a951f379e9",
     "Docs/economy/shipping-recipe-flow.json": "c709a42d808289c3d6c72fc9488fa9cab8fe5fea523f880cc00e960a4ae65537",
     "Docs/events/BLOOD_MOON.md": "0dba7c047425885dec277b0547bc29a82293adf3eb2ca2c25de6f9f11bba7411",
-    "Docs/events/BOSS_FIGHT.md": "fbd2c24d05ddd74825e69a788f3c63347a58c49922b5ce85fc420a35fe8e0ff6",
+    "Docs/events/BOSS_FIGHT.md": "ae95f55cba69218c006744827c1541ddccf3be58f46e248e50a7caece943be57",
     "Docs/events/BOSS_RAID.md": "e216072f1348a1d72799f8cc903065f3190a455d63cef3e982d05096bdea3c00",
     "Docs/food/COVERAGE.md": "4bff2662cb081d6bdc70ab895e711c6b6c4ee874f59291b1f51f85dfce167f13",
     "Docs/food/README.md": "ab9771b48cf4f2500cd43d77738f1e59ce634cbdac299ecacb480b55a47e23a0",
@@ -9207,7 +9222,7 @@
     "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller": "fab867bc12d5b9f8e465d95535f44e6ff79d7f13f8c6d65118d67a3f534bcd36",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json": "b7f873e16d712981258cb9d14a358feb2e8d188157880ad293f95794b80fdc7b",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_resource_packs.json": "f15125b5f7acb048e15b99ce76a400bd81f3a2b304a9f9eefb4b1d8eef0c510b",
-    "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json": "63dc92c61c75cab85873fb8b5892d286f5e4e8404063f5f6665b58e239de6182",
+    "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json": "02b8877df0e2a001e6fa4f8bb48c23fc6ca4210dfa45d53e5d20075df671e12f",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json": "3cfab2f135df5cae7f92972c94ea562f601b17b95a6a28f89a7140ae7c0c8a9d",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json": "86dd07f43bfd56a5b2a8ae3649644a9066b01969a4286469b0a771018cb5fe3a",
     "Mods/JEMCompat/src/main/resources/data/bbb/tags/items/hammers.json": "5f61a69be86dbbcb26e943aa457046c9f0895d86527428b5910a1f5e812f8666",
@@ -10598,6 +10613,7 @@
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmPlayerDamageScopeMixin.java": "5b910d5e5490195f1887d0c5392d270d982eea70ff4af378e691711110bd655a",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmShredderMixin.java": "3958ca8ca9934f8df74df482c78a28b9a0d91fd2fb0a7d5103526b5fb902014c",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CombatProbeMixin.java": "0977571b2945513f20c4ff0d34aa2e29b6821c4db11727346bf269c40c073948",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CreativeBossTargetingMixin.java": "96b60da113de7193de1084a464ae4c10eb9f2a68df1140fe78edd0238742ce4f",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/EntityStorageAccessor.java": "0adf2b81a2c9585f63c1cc363785e03efec2fac787649dba60de88f8127aa844",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ExperienceOrbBaselineMixin.java": "b2a44aae41de76edbf8007d4816fd63466b30dc918b012780b06ebfba4a323bc",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java": "fe10012bcdf1e6fda69824ceb9fca935ab42352aa95c468e1a3380b66a6ebe5a",
@@ -10633,7 +10649,7 @@
     "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/items/progression_excluded.json": "53ee4e83daa76d29cba7a8ad8a45da63965eede3d89f6f75d9a99f5e35aa2f8d",
     "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/items/raid_forbidden.json": "e8e7c5b8a621fcc2b334a6aaa0c2ffe7a3f8ae16e7cf067ceb4b55c3721df8b1",
     "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/items/raid_resources.json": "236c76b10585237b34258b5fcbc70378928ebd9c18f41ef16a2bbb64146f6ed8",
-    "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json": "d7de750f53af073fc2803328526a6363641f1c6ef94fa689c8bb6805c9b7ecec",
+    "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json": "dc8bf2c936235a93000285f769675e4e1d40dbe3a73b4318cd193461cdcde806",
     "Mods/MobHome/build.gradle": "6b77ab69c9c6ce3f540c092fd3f4aafcba94dd7279f0d00614c07e3298285af5",
     "Mods/MobHome/gradle.properties": "8e4e042346c6f72e2cff20a76cbbd009d7011eee8503d4c266a0affab7369266",
     "Mods/MobHome/settings.gradle": "60e7715229b8214b46b0fdf9b57d330090f94e313ef810058f462c3a0755be4e",
@@ -10694,9 +10710,9 @@
     "Server/automodpack/server.conf": "9f6f18c2187c4610c93b85e03b8c208265865a2a2258b504899d86ee09180d6a",
     "Server/config/item_obliterator.json5": "ec6c7c3e3592ee6a3c37bec0c4ea56fcf8627623d5c9ef23441652a3af686d66",
     "Server/config/lithium.properties": "61ad9a06ef4f62ac3b4b19e814264e61a2ef50dfa9d0a2252c38824015555ff7",
-    "Server/config/structblend-common.toml": "36794f67c71dcb0e29f03b1d5ebfc3523f091dd7e003186c69c2b35e22658829",
+    "Server/config/structblend-common.toml": "80e269e718fe93205f17821a2537c5a8adadeb77789119a509e656678a6cc8ff",
     "Server/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Server/config/vss-server-config.json": "ef8483289bd981eb587228a9ba1f5f402f4ce633c4fe27ab138de623de59ed30",
+    "Server/config/vss-server-config.json": "11d339e4ec99af438a3df720bee3f25d95a542a08977f6e97af045d8f18c5483",
     "Server/defaultconfigs/mapsyncer-server.toml": "8d18876d6a65cdfdc098f6c105ed7cbea35a3ef911445427104f821a0a0c8fec",
     "Server/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json": "0c2f19322b3f385388a186f899d7443007fabb476766e857f0d0cd99aba3b419",
     "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json": "3e305a680de6018ce89ac8ff3bdbcd8049478fa86bdb22b022741b8e4dcbd238",
@@ -10705,7 +10721,7 @@
     "Server/mods": null,
     "Server/mods/Chunky-1.3.146.jar": "996a3c9b53e6c0e0850fb9e78d3546d2c37a1b789ddaf529b17e4fe62ab23141",
     "Server/mods/jem-advancements-5.3.11.jar": "8d5c3522a5f93f5e260a7671921e858d1a947ea1e680f7504ab8a6b9a66d30cf",
-    "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar": "f7dbf45a06836588138a55fb8a57438800a4d1b4f81a8ad50685e141f8540c73",
+    "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar": "1c25b54177be0e4c2485774809bdb7a58db5b216569ca2cf87b92dc45db3d1b5",
     "Server/mods/structblend-1.0.3.jar": "d2f33254b1e4821f2c4207a9f3d123b4087a7f60ee9d22836d60f2739aefeec3",
     "Server/mods/vss-0.3.5-forge-1.20.1.jar": "5f8f40bfc83a4bb6a049921668ee0f889730572f191c7a349526d75c97c0f730",
     "Server/run.bat": "4d42c275b005814be58b8819283f79a108876923e51cf63557b27caba4352f2a",
@@ -10723,7 +10739,7 @@
     "tools/generate_profession_skills.py": "fe2d83ae34264b907321a70b21dc52ad880f72b3817ce2e0a7d3d9e96da5dda5",
     "tools/jem.py": "4da575e377a81449413b15643f4e26fc89bf93b80314b01bc1004e37ce85512a",
     "tools/module-inventory.json": "8e505c2ad352f617370599a471ed6d2323571310eebeed9d5c2f4cc9f546c914",
-    "tools/state/packSyncHost-sync.json": "bacbef2a870d4be610ecc30f5f708261f57f6a66637fc6a3901a8c6c27c9c855",
+    "tools/state/packSyncHost-sync.json": "9ae5d501fa19723b19c2ada32140c991f1171c66d375e484eda18276dbb5bd8c",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }
 }
