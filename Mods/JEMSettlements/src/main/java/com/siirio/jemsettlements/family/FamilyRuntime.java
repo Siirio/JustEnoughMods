@@ -15,28 +15,21 @@ import java.util.UUID;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerType;
 import net.minecraft.world.entity.monster.ZombieVillager;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
@@ -46,20 +39,13 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
-import net.minecraftforge.fml.ModList;
 
 /** Universal modpack family authority. Town membership is only an optional mood adapter. */
 public final class FamilyRuntime {
     private static final long DAY = 24_000L;
     private static final int IDENTITIES_PER_TICK = 4, ACTORS_PER_CYCLE = 8;
-    private static final TagKey<Structure> VILLAGE_STRUCTURES = TagKey.create(Registries.STRUCTURE, new ResourceLocation("minecraft", "village"));
     private record PendingIdentity(ResourceKey<Level> dimension, UUID entityId) { }
-    private static final class PendingRecruitSpawn {
-        final ResourceKey<Level> dimension; final BlockPos bell; final int target; int next;
-        PendingRecruitSpawn(ResourceKey<Level> dimension,BlockPos bell,int next,int target){this.dimension=dimension;this.bell=bell.immutable();this.next=next;this.target=target;}
-    }
     private static final ArrayDeque<PendingIdentity> PENDING_IDENTITIES = new ArrayDeque<>();
-    private static final ArrayDeque<PendingRecruitSpawn> PENDING_RECRUITS = new ArrayDeque<>();
     private static final Set<UUID> PENDING_IDENTITY_IDS = new HashSet<>();
     private static final Map<ResourceKey<Level>, Integer> CYCLE_CURSORS = new HashMap<>();
     private static final Map<ResourceKey<Level>, LinkedHashMap<UUID, LivingEntity>> LOADED_ACTORS = new HashMap<>();
@@ -67,16 +53,13 @@ public final class FamilyRuntime {
     private static final Map<UUID, ComplaintState> COMPLAINTS = new HashMap<>();
     private FamilyRuntime() { }
 
-    public static boolean supported(Entity entity) { return entity instanceof Villager || entity instanceof ZombieVillager || entity instanceof LivingEntity living && ModList.get().isLoaded("recruits") && RecruitsFamilySupport.isRecruit(living); }
-    private static boolean familyActor(Entity entity) { return entity instanceof Villager || entity instanceof LivingEntity living && ModList.get().isLoaded("recruits") && RecruitsFamilySupport.isRecruit(living); }
+    public static boolean supported(Entity entity) { return entity instanceof Villager || entity instanceof ZombieVillager; }
+    private static boolean familyActor(Entity entity) { return entity instanceof Villager; }
 
     @SubscribeEvent public static void joined(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getEntity() instanceof LivingEntity living) || !supported(living)) return;
         if (familyActor(living)) LOADED_ACTORS.computeIfAbsent(level.dimension(), ignored -> new LinkedHashMap<>())
                 .put(living.getUUID(), living);
-        if (ModList.get().isLoaded("recruits") && RecruitsFamilySupport.isRecruit(living)) {
-            if(!living.getPersistentData().contains("JemRecruitProvenance")){boolean table=RecruitsFamilySupport.inferTableOrigin(living);living.getPersistentData().putString("JemRecruitProvenance",table?"table":"independent");}
-        }
         if (PENDING_IDENTITY_IDS.add(living.getUUID())) PENDING_IDENTITIES.addLast(new PendingIdentity(level.dimension(), living.getUUID()));
     }
     @SubscribeEvent public static void left(EntityLeaveLevelEvent event) {
@@ -98,7 +81,7 @@ public final class FamilyRuntime {
     }
     @SubscribeEvent public static void stopped(ServerStoppedEvent event) {
         LOADED_ACTORS.clear(); COMPLAINTS.clear(); CYCLE_CURSORS.clear();
-        PENDING_IDENTITIES.clear(); PENDING_IDENTITY_IDS.clear(); PENDING_RECRUITS.clear();
+        PENDING_IDENTITIES.clear(); PENDING_IDENTITY_IDS.clear();
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void interact(PlayerInteractEvent.EntityInteract event) { interaction(event.getEntity(), event.getTarget(), event); }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void interactSpecific(PlayerInteractEvent.EntityInteractSpecific event) { interaction(event.getEntity(), event.getTarget(), event); }
@@ -119,7 +102,6 @@ public final class FamilyRuntime {
     @SubscribeEvent public static void serverTick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         processIdentities(event.getServer());
-        processRecruitSpawns(event.getServer());
         if (event.getServer().getTickCount()%100 != 0) return;
         for (ServerLevel level : event.getServer().getAllLevels()) cycle(level);
     }
@@ -134,18 +116,7 @@ public final class FamilyRuntime {
     private static FamilyRecord initializeIdentity(LivingEntity living) {
         VillagerFamilySavedData data = VillagerFamilySavedData.get(living.getServer()); FamilyRecord record = data.ensure(living);
         if (living instanceof Villager villager && villager.getVillagerData().getProfession() == VillagerProfession.NITWIT) record.eternalSingle(true);
-        if (ModList.get().isLoaded("recruits") && RecruitsFamilySupport.isRecruit(living)) {
-            boolean table=living.getPersistentData().getString("JemRecruitProvenance").equals("table");record.tableOrigin(table);record.eternalSingle(!table);
-        }
         data.changed(); return record;
-    }
-    private static void processRecruitSpawns(MinecraftServer server) {
-        PendingRecruitSpawn pending=PENDING_RECRUITS.pollFirst(); if(pending==null)return;
-        ServerLevel level=server.getLevel(pending.dimension); if(level==null||!level.hasChunkAt(pending.bell)){PENDING_RECRUITS.addLast(pending);return;}
-        ResourceLocation[] types={new ResourceLocation("recruits","recruit"),new ResourceLocation("recruits","bowman"),new ResourceLocation("recruits","recruit_shieldman")};
-        EntityType<?> type=BuiltInRegistries.ENTITY_TYPE.get(types[pending.next%types.length]);Entity made=type.create(level);
-        if(made instanceof LivingEntity living){BlockPos at=level.getHeightmapPos(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,pending.bell.offset((pending.next%3)-1,0,(pending.next/3)-1));living.moveTo(at.getX()+.5,at.getY(),at.getZ()+.5,0,0);RecruitsFamilySupport.initializeSpawn(living);living.getPersistentData().putString("JemRecruitProvenance","village");level.addFreshEntity(living);}
-        pending.next++;if(pending.next<pending.target)PENDING_RECRUITS.addLast(pending);
     }
     private static void cycle(ServerLevel level) {
         VillagerFamilySavedData data = VillagerFamilySavedData.get(level.getServer());
@@ -200,7 +171,7 @@ public final class FamilyRuntime {
         FamilyRecord born=data.ensure(child);born.addParent(a.personId());born.addParent(b.personId());a.nextBirth(level.getGameTime()+6000);b.nextBirth(level.getGameTime()+6000);if(first instanceof Villager villager)villager.eatAndDigestFood();if(second instanceof Villager villager)villager.eatAndDigestFood();
         if(first instanceof Villager firstVillager&&second instanceof Villager secondVillager)com.siirio.jemsettlements.runtime.SettlementRuntime.registerBornChild(level,firstVillager,secondVillager,child);level.sendParticles(ParticleTypes.HEART,child.getX(),child.getY()+.6,child.getZ(),9,.5,.3,.5,.03);return true;
     }
-    private static boolean ready(LivingEntity entity){return entity instanceof Villager villager?villager.canBreed():ModList.get().isLoaded("recruits")&&RecruitsFamilySupport.ready(entity);}
+    private static boolean ready(LivingEntity entity){return entity instanceof Villager villager && villager.canBreed();}
     private static VillagerType parentType(LivingEntity first,LivingEntity second){if(first instanceof Villager v)return v.getVillagerData().getType();if(second instanceof Villager v)return v.getVillagerData().getType();return VillagerType.PLAINS;}
     private static long remarriageCooldown(UUID id,long now){return DAY*(1L+Math.floorMod(id.hashCode()^Long.hashCode(now),10));}
 
@@ -208,8 +179,4 @@ public final class FamilyRuntime {
 
     public static boolean spouseBedExemption(LivingEntity entity,BlockPos bed){if(!(entity.level() instanceof ServerLevel level))return false;VillagerFamilySavedData data=VillagerFamilySavedData.get(level.getServer());FamilyRecord record=data.byEntity(entity.getUUID()).orElse(null);if(record==null||record.spouse()==null)return false;FamilyRecord spouse=data.byPerson(record.spouse()).orElse(null);if(spouse==null||spouse.bed()==null||!spouse.bed().dimension().equals(level.dimension()))return false;BlockPos spouseBed=spouse.bed().pos();int radius=com.siirio.jemsettlements.happiness.HousingConditionConfig.BED_RADIUS.get();boolean foundSpouse=false;for(BlockPos pos:BlockPos.betweenClosed(bed.offset(-radius,0,-radius),bed.offset(radius,0,radius))){if(!level.hasChunkAt(pos)||!(level.getBlockState(pos).getBlock() instanceof net.minecraft.world.level.block.BedBlock))continue;if(pos.distSqr(spouseBed)<=1)foundSpouse=true;else if(pos.distSqr(bed)>1)return false;}return foundSpouse;}
 
-    @SubscribeEvent public static void playerTick(TickEvent.PlayerTickEvent event) { if(event.phase!=TickEvent.Phase.END||event.player.level().isClientSide||event.player.tickCount%200!=0||!ModList.get().isLoaded("recruits")||!(event.player instanceof ServerPlayer player))return;seedVillage(player.serverLevel(),player.blockPosition()); }
-    private static void seedVillage(ServerLevel level,BlockPos player){var bell=level.getPoiManager().findClosest(holder->holder.is(PoiTypes.MEETING),player,64,PoiManager.Occupancy.ANY);if(bell.isEmpty())return;if(!level.structureManager().getStructureWithPieceAt(bell.get(),VILLAGE_STRUCTURES).isValid())return;String key=level.dimension().location()+":"+bell.get().asLong();VillagerFamilySavedData data=VillagerFamilySavedData.get(level.getServer());if(!data.seedVillage(key))return;
-        AABB area=new AABB(bell.get()).inflate(48,16,48);int existing=(int)level.getEntitiesOfClass(LivingEntity.class,area,entity->ModList.get().isLoaded("recruits")&&RecruitsFamilySupport.isRecruit(entity)).stream().count();int target=4+Math.floorMod(key.hashCode(),2);
-        if(existing<target)PENDING_RECRUITS.addLast(new PendingRecruitSpawn(level.dimension(),bell.get(),existing,target));}
 }

@@ -13,7 +13,6 @@ import com.siirio.jemsettlements.resident.ResidentMood;
 import com.siirio.jemsettlements.simulation.SettlementSimulationService;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import com.siirio.jemsettlements.town.TownRecord;
-import com.siirio.jemsettlements.workforce.WorkforceType;
 import java.util.Comparator;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.BlockPos;
@@ -86,16 +85,13 @@ public final class SettlementRuntime {
         if (hand != net.minecraft.world.InteractionHand.MAIN_HAND || !player.isShiftKeyDown()
                 || !player.getMainHandItem().is(Items.BELL)) return false;
         boolean villager = target instanceof Villager;
-        boolean recruit = BuiltInRegistries.ENTITY_TYPE.getKey(target.getType()).getNamespace().equals("recruits");
-        if (!villager && !recruit) return false;
-        SettlementApi.Result result = villager ? SettlementApi.registerResident(player, (Villager) target)
-                : SettlementApi.registerNativeWorker(player, target, WorkforceType.RECRUIT, false);
+        if (!villager) return false;
+        SettlementApi.Result result = SettlementApi.registerResident(player, (Villager) target);
         String key = result == SettlementApi.Result.ACCEPTED
-                ? villager ? "jem.settlements.resident_added" : "jem.settlements.workforce_added"
+                ? "jem.settlements.resident_added"
                 : "jem.settlements.enrollment." + result.name().toLowerCase(java.util.Locale.ROOT);
         player.sendSystemMessage(Component.translatable(key), true);
         if (result == SettlementApi.Result.ACCEPTED) SettlementNetwork.sendOwned(player, false);
-        // Claim the intent even on rejection: native Recruits uses Shift to open its menu.
         return true;
     }
 
@@ -188,7 +184,6 @@ public final class SettlementRuntime {
         com.siirio.jemsettlements.happiness.ResidentConditions.tick(event.getServer());
         if (event.getServer().getTickCount() % 10 == 0) {
             SettlementSavedData data = SettlementSavedData.get(event.getServer());
-            if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) com.siirio.jemsettlements.compat.recruits.RecruitRebellionService.tick(event.getServer());
             tickHostileResidents(event.getServer(), data);
         }
         if (event.getServer().getTickCount() % 20 == 0) feedLoadedResidents(event.getServer().overworld().getGameTime(), SettlementSavedData.get(event.getServer()));

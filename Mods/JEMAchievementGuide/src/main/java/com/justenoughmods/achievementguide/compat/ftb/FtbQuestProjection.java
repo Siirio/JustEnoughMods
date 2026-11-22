@@ -39,7 +39,7 @@ public final class FtbQuestProjection {
     private static final Set<String> SETTLEMENTS = Set.of(
             "1100000000000027", "1100000000000037", "1100000000000097", "1100000000000107",
             "1100000000000117", "1100000000000127", "1100000000000137");
-    private record Features(boolean economy, boolean settlements, boolean recruits, boolean races,
+    private record Features(boolean economy, boolean settlements, boolean races,
                             boolean campaign, boolean events, boolean create, boolean planning) {}
     private record Projection(Features features, Set<Long> active, Map<Long, Long> dormantTasks) {}
     private static final Map<MinecraftServer, Projection> CURRENT = new HashMap<>();
@@ -48,7 +48,7 @@ public final class FtbQuestProjection {
 
     private static Features features(MinecraftServer server) {
         return new Features(QuestSignals.economy(server), QuestSignals.loaded("jem_settlements"),
-                QuestSignals.loaded("recruits"), QuestSignals.loaded("jem_roles"), QuestSignals.campaign(server),
+                QuestSignals.loaded("jem_roles"), QuestSignals.campaign(server),
                 QuestSignals.events(server), QuestSignals.loaded("create"),
                 QuestSignals.loaded("jem_server") && QuestSignals.loaded("xaeroworldmap"));
     }
@@ -199,7 +199,7 @@ public final class FtbQuestProjection {
         if (ECONOMY.contains(id)) return features.economy;
         if (id.equals("1100000000000024")) return features.planning;
         if (SETTLEMENTS.contains(id)) {
-            return features.settlements && (!id.equals("1100000000000117") || features.recruits);
+            return features.settlements;
         }
         return true;
     }

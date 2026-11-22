@@ -8,7 +8,7 @@ public final class SettlementMetricsConfig {
     public static final ForgeConfigSpec.IntValue GUARD_AREA, RESIDENT_AREA, ANIMAL_TYPES, SCAN_BUDGET, REPEAT_CAP, CATEGORY_CAP, SOCIAL_BASE_CAP, ANIMAL_BONUS, COMFORT_BONUS;
     static {
         var b = new ForgeConfigSpec.Builder();
-        GUARD_AREA = b.comment("Square blocks protected by one living owned recruit holding position in town. Initial 97x97 town requires 5 guards.").defineInRange("guardCoverageArea", 2048, 64, 262144);
+        GUARD_AREA = b.comment("Square blocks protected by one living AI-enabled iron golem inside town. Initial 97x97 town requires 5 iron golems.").defineInRange("guardCoverageArea", 2048, 64, 262144);
         RESIDENT_AREA = b.comment("Square blocks per social resident; at least two residents are required. Initial town requires 10.").defineInRange("residentCoverageArea", 1024, 64, 262144);
         ANIMAL_TYPES = b.comment("Distinct peaceful Animal entity types for full animal score; hostile/targeting animals do not count.").defineInRange("animalDiversityTarget", 4, 1, 32);
         SCAN_BUDGET = b.comment("Maximum actual block observations per server tick across all towns; no forced chunks.").defineInRange("comfortScanBudget", 1024, 64, 8192);

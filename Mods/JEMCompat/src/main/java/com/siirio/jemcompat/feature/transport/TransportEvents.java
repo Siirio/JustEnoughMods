@@ -57,11 +57,7 @@ public final class TransportEvents {
             speed("whaleborne:hullback", 7.0),
             speed("siegeweapons:small_horse_cart", 8.0),
             speed("siegeweapons:transport_cart", 6.5),
-            speed("immersive_aircraft:biplane", 26.0),
-            speed("smallships:cog", 8.0),
-            speed("smallships:galley", 10.0),
-            speed("smallships:brigg", 9.0),
-            speed("smallships:drakkar", 11.0)
+            speed("immersive_aircraft:biplane", 26.0)
     );
 
     private TransportEvents() {

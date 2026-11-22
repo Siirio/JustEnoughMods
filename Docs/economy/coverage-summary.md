@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-22T15:21:02.784498+00:00` for `05ef91cd0f94bb456e3e0f8c006c6897fd8e656e`.
+Generated from Atlas schema 1 at `2026-11-22T18:53:03.082294+00:00` for `227f8107e4cc0c6daf986c389ad8797e851fb329`.
 
-Static evidence observed 17,128 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,144 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -36,6 +36,7 @@ Static evidence observed 17,128 canonical item IDs. This is not a Forge runtime 
 | dragonlib | 1 | 0 | 1 | 0 | 1 |
 | dummmmmmy | 1 | 0 | 1 | 0 | 1 |
 | dustydecorations | 503 | 7 | 496 | 0 | 496 |
+| ec_ad | 96 | 0 | 96 | 0 | 96 |
 | efn | 65 | 0 | 65 | 0 | 65 |
 | endermanoverhaul | 36 | 0 | 36 | 0 | 36 |
 | endrem | 36 | 0 | 36 | 0 | 36 |
@@ -93,7 +94,6 @@ Static evidence observed 17,128 canonical item IDs. This is not a Forge runtime 
 | patchouli | 13 | 0 | 13 | 0 | 13 |
 | primal | 104 | 13 | 91 | 3 | 91 |
 | railways | 1928 | 288 | 1640 | 0 | 1640 |
-| recruits | 14 | 0 | 14 | 0 | 14 |
 | ribbits | 21 | 3 | 18 | 0 | 18 |
 | rottencreatures | 30 | 2 | 28 | 0 | 28 |
 | royalvariations | 42 | 0 | 42 | 0 | 42 |
@@ -104,7 +104,6 @@ Static evidence observed 17,128 canonical item IDs. This is not a Forge runtime 
 | sift_backport | 6 | 0 | 6 | 0 | 6 |
 | simplybows | 115 | 0 | 115 | 0 | 115 |
 | skarrier_mobs | 294 | 6 | 288 | 0 | 288 |
-| smallships | 66 | 0 | 66 | 0 | 66 |
 | snowyspirit | 73 | 6 | 67 | 2 | 67 |
 | somemoreblocks | 663 | 281 | 382 | 0 | 382 |
 | sootychimneys | 14 | 0 | 14 | 0 | 14 |

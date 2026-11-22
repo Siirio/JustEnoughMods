@@ -560,6 +560,19 @@ def is_nature_block(path: str, row: dict) -> bool:
     )
 
 
+def is_glass_or_window(path: str, row: dict) -> bool:
+    return has_tag(row, "forge:glass", "c:glass") or has_phrase(
+        path,
+        "glass",
+        "glass_pane",
+        "stained_glass",
+        "framed_glass",
+        "seaglass",
+        "window",
+        "window_pane",
+    )
+
+
 def reclassification_target(item_id: str, current_leaf: str, row: dict) -> str:
     namespace, path = item_id.split(":", 1)
     exact = EXACT_RECLASSIFICATIONS.get(item_id)
@@ -567,6 +580,8 @@ def reclassification_target(item_id: str, current_leaf: str, row: dict) -> str:
         return exact
     if is_smithing_template(item_id, row):
         return "WEAPON_SMITHING_TEMPLATES"
+    if namespace in CREATE_NAMESPACES and is_glass_or_window(path, row):
+        return "BUILDING_GLASS"
     if namespace in CREATE_NAMESPACES:
         return "CREATE_REDSTONE"
     if item_id in COMPONENT_ITEMS:
@@ -627,16 +642,6 @@ def classify(row: dict, hint: str | None) -> str:
         namespace == "moretotems" and "totem" in token_set
     ):
         return "WEAPON_TOTEMS"
-
-    if namespace == "recruits" and path in {
-        "recruit_block",
-        "recruit_shield_block",
-        "bowman_block",
-        "crossbowman_block",
-        "horseman_block",
-        "nomad_block",
-    }:
-        return "WEAPON_TRAINING"
 
     if class_has(row, "ShieldItem") or "shield" in token_set or {"buckler", "targe"} & token_set:
         return "WEAPON_SHIELDS"
@@ -813,7 +818,6 @@ def classify(row: dict, hint: str | None) -> str:
 
     if class_has(row, "BoatItem", "MinecartItem", "SledItem", "Aircraft") or namespace in {
         "immersive_aircraft",
-        "smallships",
         "trotting_wagons",
     } or has_phrase(
         path,
@@ -1029,9 +1033,7 @@ def classify(row: dict, hint: str | None) -> str:
     ):
         return "BUILDING_NATURE"
 
-    if has_tag(row, "forge:glass", "c:glass") or has_phrase(
-        path, "glass", "glass_pane", "stained_glass", "framed_glass", "seaglass", "window", "window_pane"
-    ):
+    if is_glass_or_window(path, row):
         return "BUILDING_GLASS"
 
     if has_phrase(
@@ -1203,6 +1205,10 @@ def reclassified_manifest() -> dict:
         if leaf != "CREATE_REDSTONE"
         for item_id in item_ids
         if item_id.split(":", 1)[0] in CREATE_NAMESPACES
+        and not (
+            leaf == "BUILDING_GLASS"
+            and is_glass_or_window(item_id.split(":", 1)[1], atlas.get(item_id, {}))
+        )
         and EXACT_RECLASSIFICATIONS.get(item_id) != leaf
     ]
     if remaining_create:

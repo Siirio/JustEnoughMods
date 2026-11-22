@@ -1,6 +1,5 @@
 package com.siirio.jemsettlements.town;
 
-import com.siirio.jemsettlements.workforce.WorkforceRecord;
 import com.siirio.jemsettlements.resident.ResidentMood;
 import java.util.LinkedHashMap;
 import java.util.Collection;
@@ -14,8 +13,6 @@ import net.minecraft.world.level.saveddata.SavedData;
 public final class SettlementSavedData extends SavedData {
     private static final String NAME = "jem_settlements";
     private final Map<UUID, TownRecord> towns = new LinkedHashMap<>();
-    private final Map<UUID, WorkforceRecord> workforce = new LinkedHashMap<>();
-    private final Map<UUID, com.siirio.jemsettlements.payroll.EmployerPayroll> employers = new LinkedHashMap<>();
     private final Map<UUID, ResidentMood> residents = new LinkedHashMap<>();
     private record TownChunk(net.minecraft.resources.ResourceLocation dimension, long chunk) { }
     private final Map<TownChunk, java.util.List<TownRecord>> townsByChunk = new LinkedHashMap<>();
@@ -36,9 +33,6 @@ public final class SettlementSavedData extends SavedData {
         return data;
     }
 
-    public Collection<WorkforceRecord> workforce() { return java.util.List.copyOf(workforce.values()); }
-    public com.siirio.jemsettlements.payroll.EmployerPayroll employer(UUID owner) { return employers.computeIfAbsent(owner, id -> new com.siirio.jemsettlements.payroll.EmployerPayroll()); }
-    public java.util.Set<UUID> employers() { return java.util.Set.copyOf(employers.keySet()); }
     public Optional<TownRecord> ownedBy(UUID owner) { return towns.values().stream().filter(town -> town.owner().equals(owner)).findFirst(); }
     public java.util.List<TownRecord> ownedTowns(UUID owner) { return towns.values().stream().filter(town -> town.owner().equals(owner)).toList(); }
     public Optional<TownRecord> town(UUID id) { return Optional.ofNullable(towns.get(id)); }
@@ -61,8 +55,6 @@ public final class SettlementSavedData extends SavedData {
         }
         townIndexDirty = false;
     }
-    public Collection<WorkforceRecord> workforce(UUID town) { return workforce.values().stream().filter(record -> record.townId().equals(town)).toList(); }
-    public Optional<WorkforceRecord> workforceEntity(UUID entity) { return Optional.ofNullable(workforce.get(entity)); }
     public Collection<ResidentMood> residents(UUID town) {
         var ids = residentsByTown.get(town);
         if (ids == null) return java.util.List.of();
@@ -74,11 +66,8 @@ public final class SettlementSavedData extends SavedData {
         long squared = (long) distance * distance;
         return towns.values().stream().anyMatch(town -> town.dimension().equals(dimension) && town.center().distSqr(center) < squared);
     }
-    public long workforceCount(UUID town) { return workforce.values().stream().filter(record -> record.townId().equals(town)).count(); }
-    public boolean entityAssigned(UUID entity) { return workforce.containsKey(entity); }
     public boolean residentAssigned(UUID entity) { return residents.containsKey(entity); }
     public void add(TownRecord town) { towns.put(town.id(), town); townIndexDirty = true; setDirty(); }
-    public void add(WorkforceRecord record) { workforce.put(record.entityId(), record); setDirty(); }
     public void add(ResidentMood resident) {
         indexResident(resident);
         setDirty();
@@ -113,11 +102,8 @@ public final class SettlementSavedData extends SavedData {
         return true;
     }
     public boolean removeResident(UUID town, UUID entity) { ResidentMood value = residents.get(entity); if (value == null || !value.townId().equals(town)) return false; removeResidentRecord(entity); setDirty(); return true; }
-    public boolean removeWorkforce(UUID town, UUID entity) { WorkforceRecord value = workforce.get(entity); if (value == null || !value.townId().equals(town)) return false; if (value.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT) return false; workforce.remove(entity); setDirty(); return true; }
     public boolean removeEntity(UUID entity) {
         boolean removed = removeResidentRecord(entity);
-        WorkforceRecord worker = workforce.get(entity);
-        if (worker != null) { if (worker.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT) worker.markDead(); else workforce.remove(entity); removed = true; }
         if (removed) setDirty();
         return removed;
     }
@@ -126,10 +112,6 @@ public final class SettlementSavedData extends SavedData {
         townIndexDirty = true;
         var residentIds = residentsByTown.remove(town);
         if (residentIds != null) residentIds.forEach(residents::remove);
-        workforce.values().removeIf(value -> value.townId().equals(town) && value.type() != com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT);
-        for (WorkforceRecord value : workforce.values()) if (value.townId().equals(town)) {
-            value.assignTown(value.ownerId()); employer(value.ownerId());
-        }
         setDirty();
         return true;
     }
@@ -143,7 +125,6 @@ public final class SettlementSavedData extends SavedData {
                 changed = true;
             }
         }
-        changed |= workforce.values().removeIf(value -> !value.living() && value.type() != com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT);
         if (changed) setDirty();
     }
     public void changed() { setDirty(); }
@@ -156,11 +137,7 @@ public final class SettlementSavedData extends SavedData {
         tag.put("Quarantine", quarantine.copy());
         CompoundTag townRows = new CompoundTag();
         towns.forEach((id, town) -> townRows.put(id.toString(), town.save()));
-        CompoundTag workerRows = new CompoundTag();
-        workforce.forEach((id, worker) -> workerRows.put(id.toString(), worker.save()));
-        CompoundTag employerRows = new CompoundTag(); employers.forEach((id, book) -> employerRows.put(id.toString(), book.save())); tag.put("Employers", employerRows);
         tag.put("Towns", townRows);
-        tag.put("Workforce", workerRows);
         CompoundTag residentRows = new CompoundTag();
         residents.forEach((id, resident) -> residentRows.put(id.toString(), resident.save()));
         tag.put("Residents", residentRows);
@@ -205,9 +182,6 @@ public final class SettlementSavedData extends SavedData {
             data.quarantine("Root", "Quarantine", tag.get("Quarantine"), "Invalid quarantine container");
         }
         data.loadRows(tag, "Towns", TownRecord::load, TownRecord::id, data.towns::put);
-        data.loadRows(tag, "Workforce", WorkforceRecord::load, WorkforceRecord::entityId, data.workforce::put);
-        data.loadRows(tag, "Employers", com.siirio.jemsettlements.payroll.EmployerPayroll::load,
-                null, data.employers::put);
         data.loadRows(tag, "Residents", ResidentMood::load, ResidentMood::villagerId,
                 (id, resident) -> data.indexResident(resident));
         return data;

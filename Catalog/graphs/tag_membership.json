@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "05ef91cd0f94bb456e3e0f8c006c6897fd8e656e",
+  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
   "tags": {
     "abridged:instrument/bridge_goat_horns": [
       "minecraft:dream_goat_horn",
@@ -555,7 +555,14 @@
       "cataclysm:maledictus",
       "cataclysm:netherite_monstrosity",
       "cataclysm:the_harbinger",
-      "cataclysm:the_leviathan"
+      "cataclysm:the_leviathan",
+      "ec_ad:archie",
+      "ec_ad:chorusoatl",
+      "ec_ad:coralosaur",
+      "ec_ad:lushsaur",
+      "ec_ad:obsidiceratops",
+      "ec_ad:sculksaur",
+      "ec_ad:therimoss"
     ],
     "alexscaves:entity_types/seafloor_denizens": [
       "alexscaves:deep_one",
@@ -10996,6 +11003,238 @@
     "easymagic:items/reroll_catalysts": [
       "minecraft:amethyst_shard"
     ],
+    "ec_ad:blocks/chorusoatl_egg_chorus": [
+      "minecraft:chorus_flower",
+      "minecraft:chorus_plant"
+    ],
+    "ec_ad:blocks/chorusoatl_egg_hatchable": [
+      "minecraft:end_stone"
+    ],
+    "ec_ad:blocks/chorusoatl_valid_spawn": [
+      "minecraft:end_stone"
+    ],
+    "ec_ad:blocks/lushsaur_break_immune_blocks": [
+      "#minecraft:wither_immune",
+      "minecraft:crying_obsidian",
+      "minecraft:obsidian"
+    ],
+    "ec_ad:blocks/lushsaur_break_vegetation_blocks": [
+      "#minecraft:leaves",
+      "minecraft:azalea",
+      "minecraft:bamboo",
+      "minecraft:big_dripleaf",
+      "minecraft:cave_vines",
+      "minecraft:flowering_azalea",
+      "minecraft:lily_pad",
+      "minecraft:moss_block",
+      "minecraft:moss_carpet"
+    ],
+    "ec_ad:blocks/lushsaur_edible": [
+      "minecraft:cave_vines_plant",
+      "minecraft:flowering_azalea",
+      "minecraft:moss_carpet"
+    ],
+    "ec_ad:blocks/lushsaur_egg_hatchable": [
+      "minecraft:grass_block",
+      "minecraft:moss_block"
+    ],
+    "ec_ad:blocks/lushsaur_valid_spawn": [
+      "minecraft:clay",
+      "minecraft:moss_block",
+      "minecraft:moss_carpet"
+    ],
+    "ec_ad:blocks/obsidiceratops_egg_hatchable": [
+      "minecraft:crimson_nylium",
+      "minecraft:magma_block",
+      "minecraft:netherrack"
+    ],
+    "ec_ad:blocks/obsidiceratops_valid_spawn": [
+      "minecraft:crimson_nylium",
+      "minecraft:netherrack"
+    ],
+    "ec_ad:blocks/sculkraptor_valid_spawn": [
+      "minecraft:sculk"
+    ],
+    "ec_ad:blocks/therimoss_edible_blocks": [
+      "minecraft:bamboo_block",
+      "minecraft:brown_mushroom_block",
+      "minecraft:cake",
+      "minecraft:flowering_azalea_leaves",
+      "minecraft:melon",
+      "minecraft:mushroom_stem",
+      "minecraft:pumpkin",
+      "minecraft:red_mushroom_block"
+    ],
+    "ec_ad:blocks/therimoss_egg_hatchable": [
+      "minecraft:grass_block"
+    ],
+    "ec_ad:blocks/therimoss_protected": [
+      "#minecraft:logs",
+      "minecraft:bamboo"
+    ],
+    "ec_ad:blocks/therimoss_valid_spawn": [
+      "minecraft:grass_block",
+      "minecraft:podzol"
+    ],
+    "ec_ad:blocks/totems": [
+      "ec_ad:burning_totem",
+      "ec_ad:echo_totem",
+      "ec_ad:fearful_totem",
+      "ec_ad:lush_totem",
+      "ec_ad:soaring_totem",
+      "ec_ad:tidal_totem",
+      "ec_ad:tropic_totem"
+    ],
+    "ec_ad:blocks/wild_obsidiceratops_breaks": [
+      "#minecraft:leaves",
+      "minecraft:nether_wart_block",
+      "minecraft:warped_wart_block"
+    ],
+    "ec_ad:damage_type/hurts_combat_sculksaur_extra": [
+      "ec_ad:pus_arrow"
+    ],
+    "ec_ad:dimension_type/chorusoatl_egg_preferred": [
+      "minecraft:the_end"
+    ],
+    "ec_ad:entity_types/coralosaur_turn": [
+      "minecraft:cod",
+      "minecraft:glow_squid",
+      "minecraft:guardian",
+      "minecraft:pufferfish",
+      "minecraft:salmon",
+      "minecraft:squid",
+      "minecraft:tropical_fish"
+    ],
+    "ec_ad:entity_types/dino_resists_damage_from": [
+      "minecraft:iron_golem",
+      "minecraft:warden"
+    ],
+    "ec_ad:entity_types/dinosaur": [
+      "ec_ad:chorusoatl",
+      "ec_ad:coralosaur",
+      "ec_ad:lushsaur",
+      "ec_ad:obsidiceratops",
+      "ec_ad:sculkraptor",
+      "ec_ad:sculksaur",
+      "ec_ad:therimoss"
+    ],
+    "ec_ad:entity_types/sculk": [
+      "ec_ad:sculkraptor",
+      "ec_ad:sculksaur",
+      "minecraft:warden"
+    ],
+    "ec_ad:game_events/sculkraptor_ignore_cooldwon": [
+      "ec_ad:pus_arrow_aggro",
+      "ec_ad:sculkraptor_nest_aggro"
+    ],
+    "ec_ad:game_events/sculkraptor_tamed_can_listen": [
+      "ec_ad:pus_arrow_aggro"
+    ],
+    "ec_ad:game_events/sculkraptor_wild_can_listen": [
+      "#minecraft:warden_can_listen",
+      "ec_ad:sculkraptor_nest_aggro"
+    ],
+    "ec_ad:game_events/sculksaur_can_listen": [
+      "#minecraft:warden_can_listen"
+    ],
+    "ec_ad:items/burning_totem_fuel": [
+      "ec_ad:obsidian_horn"
+    ],
+    "ec_ad:items/chorusoatl_edible": [
+      "minecraft:chorus_fruit"
+    ],
+    "ec_ad:items/claw": [
+      "ec_ad:theri_claw_copper",
+      "ec_ad:theri_claw_diamond",
+      "ec_ad:theri_claw_gold",
+      "ec_ad:theri_claw_iron",
+      "ec_ad:theri_claw_netherite"
+    ],
+    "ec_ad:items/coralosaur_edible": [
+      "ec_ad:coral_stew"
+    ],
+    "ec_ad:items/echo_totem_fuel": [
+      "ec_ad:raptor_talon"
+    ],
+    "ec_ad:items/fearful_totem_fuel": [
+      "ec_ad:sculk_toxin"
+    ],
+    "ec_ad:items/lush_totem_fuel": [
+      "ec_ad:lush_core"
+    ],
+    "ec_ad:items/lushsaur_edible": [
+      "minecraft:glow_berries"
+    ],
+    "ec_ad:items/obsidiceratops_edible": [
+      "minecraft:magma_block"
+    ],
+    "ec_ad:items/soaring_totem_fuel": [
+      "ec_ad:chorus_fossil"
+    ],
+    "ec_ad:items/therimoss_edible": [
+      "minecraft:apple",
+      "minecraft:bamboo",
+      "minecraft:bamboo_block",
+      "minecraft:brown_mushroom",
+      "minecraft:brown_mushroom_block",
+      "minecraft:cake",
+      "minecraft:flowering_azalea_leaves",
+      "minecraft:melon",
+      "minecraft:melon_slice",
+      "minecraft:mushroom_stem",
+      "minecraft:pumpkin",
+      "minecraft:red_mushroom",
+      "minecraft:red_mushroom_block",
+      "minecraft:sweet_berries"
+    ],
+    "ec_ad:items/tidal_totem_fuel": [
+      "ec_ad:coral_rib"
+    ],
+    "ec_ad:items/tropic_totem_fuel": [
+      "ec_ad:mossy_claw"
+    ],
+    "ec_ad:items/two_handed": [
+      "#ec_ad:claw",
+      "ec_ad:chorus_scythe",
+      "ec_ad:lush_mace"
+    ],
+    "ec_ad:worldgen/biome/amber_fossil_valid": [
+      "#minecraft:has_structure/ruined_portal_desert",
+      "#minecraft:is_badlands"
+    ],
+    "ec_ad:worldgen/biome/crater_valid": [
+      "#minecraft:is_overworld"
+    ],
+    "ec_ad:worldgen/biome/spawns_archie": [
+      "#ec_ad:spawns_chorusoatls",
+      "#ec_ad:spawns_coralosaurs",
+      "#ec_ad:spawns_lushsaurs",
+      "#ec_ad:spawns_obsidiceratopses",
+      "#ec_ad:spawns_sculkraptors",
+      "#ec_ad:spawns_therimoss"
+    ],
+    "ec_ad:worldgen/biome/spawns_chorusoatls": [
+      "minecraft:end_barrens",
+      "minecraft:end_highlands",
+      "minecraft:end_midlands",
+      "minecraft:small_end_islands"
+    ],
+    "ec_ad:worldgen/biome/spawns_coralosaurs": [
+      "minecraft:warm_ocean"
+    ],
+    "ec_ad:worldgen/biome/spawns_lushsaurs": [
+      "minecraft:lush_caves"
+    ],
+    "ec_ad:worldgen/biome/spawns_obsidiceratopses": [
+      "minecraft:crimson_forest",
+      "minecraft:soul_sand_valley"
+    ],
+    "ec_ad:worldgen/biome/spawns_sculkraptors": [
+      "minecraft:deep_dark"
+    ],
+    "ec_ad:worldgen/biome/spawns_therimoss": [
+      "#minecraft:is_jungle"
+    ],
     "eclipticseasons:blocks/crops/average_moist": [
       "kaleidoscope_cookery:chili_crop",
       "kaleidoscope_cookery:lettuce_crop",
@@ -12786,6 +13025,7 @@
       "#forge:ores/uranium",
       "create:deepslate_zinc_ore",
       "create:zinc_ore",
+      "ec_ad:amber_ore",
       "netherexp:fossil_ore",
       "skarrier_mobs:wrong_deepslate_ore_diamond",
       "skarrier_mobs:wrong_deepslate_ore_emerald",
@@ -12898,7 +13138,8 @@
       "create:cardboard_block",
       "create:experience_block",
       "create:raw_zinc_block",
-      "create:zinc_block"
+      "create:zinc_block",
+      "ec_ad:raw_amber_block"
     ],
     "forge:blocks/storage_blocks/andesite_alloy": [
       "create:andesite_alloy_block"
@@ -12983,6 +13224,7 @@
       "cataclysm:the_harbinger",
       "cataclysm:the_leviathan",
       "companions:sacred_pontiff",
+      "ec_ad:sculksaur",
       "legendary_monsters:cloud_golem",
       "legendary_monsters:posessed_paladin",
       "legendary_monsters:the_obliterator"
@@ -13126,6 +13368,12 @@
       "create:cardboard_boots",
       "create:copper_diving_boots",
       "create:netherite_diving_boots",
+      "ec_ad:chorusoatl_boots",
+      "ec_ad:coralosaur_boots",
+      "ec_ad:lushsaur_boots",
+      "ec_ad:obsidiceratops_boots",
+      "ec_ad:sculksaur_boots",
+      "ec_ad:therimoss_boots",
       "royalvariations:royal_knight_boots"
     ],
     "forge:items/armors/chestplates": [
@@ -13137,6 +13385,12 @@
       "create:cardboard_chestplate",
       "create:copper_backtank",
       "create:netherite_backtank",
+      "ec_ad:chorusoatl_chestplate",
+      "ec_ad:coralosaur_chestplate",
+      "ec_ad:lushsaur_chestplate",
+      "ec_ad:obsidiceratops_chestplate",
+      "ec_ad:sculksaur_chestplate",
+      "ec_ad:therimoss_chestplate",
       "royalvariations:royal_knight_cuirass"
     ],
     "forge:items/armors/helmets": [
@@ -13151,6 +13405,12 @@
       "create:cardboard_helmet",
       "create:copper_diving_helmet",
       "create:netherite_diving_helmet",
+      "ec_ad:chorusoatl_helmet",
+      "ec_ad:coralosaur_helmet",
+      "ec_ad:lushsaur_helmet",
+      "ec_ad:obsidiceratops_helmet",
+      "ec_ad:sculksaur_helmet",
+      "ec_ad:therimoss_helmet",
       "royalvariations:royal_knight_helmet"
     ],
     "forge:items/armors/horse": [
@@ -13163,6 +13423,12 @@
       "block_factorys_bosses:dragon_bones_leggings",
       "block_factorys_bosses:knight_leggings",
       "create:cardboard_leggings",
+      "ec_ad:chorusoatl_leggings",
+      "ec_ad:coralosaur_leggings",
+      "ec_ad:lushsaur_leggings",
+      "ec_ad:obsidiceratops_leggings",
+      "ec_ad:sculksaur_leggings",
+      "ec_ad:therimoss_leggings",
       "royalvariations:royal_knight_leggings"
     ],
     "forge:items/armors/nautilus": [
@@ -13714,6 +13980,9 @@
     "forge:items/fruits/warped_fruit": [
       "kaleidoscope_nether:warped_fruit"
     ],
+    "forge:items/gems": [
+      "ec_ad:amber"
+    ],
     "forge:items/glass/colorless": [
       "create:framed_glass",
       "create:horizontal_framed_glass",
@@ -13897,6 +14166,7 @@
     "forge:items/ores": [
       "create:deepslate_zinc_ore",
       "create:zinc_ore",
+      "ec_ad:amber_ore",
       "netherexp:fossil_ore"
     ],
     "forge:items/ores/coal": [
@@ -14132,7 +14402,8 @@
       "create:cardboard_block",
       "create:experience_block",
       "create:raw_zinc_block",
-      "create:zinc_block"
+      "create:zinc_block",
+      "ec_ad:raw_amber_block"
     ],
     "forge:items/storage_blocks/andesite_alloy": [
       "create:andesite_alloy_block"
@@ -22202,6 +22473,7 @@
       "create:brass_block",
       "create:experience_block",
       "create:zinc_block",
+      "ec_ad:raw_amber_block",
       "minecraft:diamond_block",
       "minecraft:emerald_block",
       "minecraft:gold_block",
@@ -26805,6 +27077,27 @@
       "dustydecorations:warm_seaglass_ceramic_tile_slab",
       "dustydecorations:warm_seaglass_ceramic_tile_stairs",
       "dustydecorations:wolf_skull",
+      "ec_ad:amber_brick_slab",
+      "ec_ad:amber_brick_stairs",
+      "ec_ad:amber_brick_wall",
+      "ec_ad:amber_bricks",
+      "ec_ad:amber_chain",
+      "ec_ad:amber_lamp",
+      "ec_ad:amber_ore",
+      "ec_ad:burning_totem",
+      "ec_ad:carved_amber",
+      "ec_ad:cracked_amber_bricks",
+      "ec_ad:echo_totem",
+      "ec_ad:fearful_totem",
+      "ec_ad:lush_totem",
+      "ec_ad:polished_amber",
+      "ec_ad:polished_amber_slab",
+      "ec_ad:polished_amber_stairs",
+      "ec_ad:polished_amber_wall",
+      "ec_ad:raw_amber_block",
+      "ec_ad:soaring_totem",
+      "ec_ad:tidal_totem",
+      "ec_ad:tropic_totem",
       "farm_and_charm:chicken_coop",
       "farm_and_charm:cooking_pot",
       "farm_and_charm:mincer",
@@ -30221,6 +30514,8 @@
       "dustydecorations:rusty_corrugated_metal_stairs",
       "dustydecorations:rusty_corrugated_metal_trapdoor",
       "dustydecorations:rusty_corrugated_pressure_plate",
+      "ec_ad:amber_ore",
+      "ec_ad:raw_amber_block",
       "ftbquests:loot_crate_opener",
       "immersive_weathering:cut_iron",
       "immersive_weathering:cut_iron_slab",
@@ -31271,6 +31566,8 @@
       "dustydecorations:white_cushion_slab",
       "dustydecorations:wicker_slab",
       "dustydecorations:yellow_cushion_slab",
+      "ec_ad:amber_brick_slab",
+      "ec_ad:polished_amber_slab",
       "immersive_weathering:charred_slab",
       "immersive_weathering:cracked_brick_slab",
       "immersive_weathering:cracked_deepslate_brick_slab",
@@ -31889,6 +32186,8 @@
       "dustydecorations:white_cushion_stairs",
       "dustydecorations:wicker_stairs",
       "dustydecorations:yellow_cushion_stairs",
+      "ec_ad:amber_brick_stairs",
+      "ec_ad:polished_amber_stairs",
       "immersive_weathering:charred_stairs",
       "immersive_weathering:cracked_brick_stairs",
       "immersive_weathering:cracked_deepslate_brick_stairs",
@@ -32698,6 +32997,8 @@
       "dustydecorations:smooth_stone_brick_wall",
       "dustydecorations:snowy_cobblestone_wall",
       "dustydecorations:snowy_stone_bricks_wall",
+      "ec_ad:amber_brick_wall",
+      "ec_ad:polished_amber_wall",
       "immersive_weathering:cracked_brick_wall",
       "immersive_weathering:cracked_deepslate_brick_wall",
       "immersive_weathering:cracked_deepslate_tile_wall",
@@ -33644,6 +33945,7 @@
       "cataclysm:maledictio_sagitta",
       "cataclysm:player_ceraunus",
       "cataclysm:storm_bringer",
+      "ec_ad:pus_arrow",
       "minecraft:arrow",
       "minecraft:fireball",
       "minecraft:mob_projectile",
@@ -33759,6 +34061,7 @@
     ],
     "minecraft:entity_types/arrows": [
       "blastfromthepast:tar_arrow",
+      "ec_ad:pus_tipped_arrow",
       "minecraft:arrow",
       "minecraft:spectral_arrow",
       "netherexp:phasmo_arrow",
@@ -34118,6 +34421,9 @@
       "minecraft:sculk_sensor_tendrils_clicking"
     ],
     "minecraft:game_events/vibrations": [
+      "ec_ad:pus_arrow_aggro",
+      "ec_ad:sculksaur_armor_distraction",
+      "ec_ad:tracker_aggro",
       "minecraft:block_activate",
       "minecraft:block_attach",
       "minecraft:block_change",
@@ -34176,6 +34482,9 @@
     ],
     "minecraft:game_events/warden_can_listen": [
       "#minecraft:shrieker_can_listen",
+      "ec_ad:pus_arrow_aggro",
+      "ec_ad:sculksaur_armor_distraction",
+      "ec_ad:tracker_aggro",
       "minecraft:block_activate",
       "minecraft:block_attach",
       "minecraft:block_change",
@@ -35697,6 +36006,7 @@
       "#xtraarrows:golden_arrows",
       "create:crushed_raw_gold",
       "create:golden_sheet",
+      "ec_ad:theri_claw_gold",
       "immersive_weathering:enchanted_golden_moss_clump",
       "immersive_weathering:golden_moss_clump",
       "minecraft:bell",
@@ -36010,6 +36320,8 @@
       "create:small_scoria_brick_slab",
       "create:small_tuff_brick_slab",
       "create:small_veridium_brick_slab",
+      "ec_ad:amber_brick_slab",
+      "ec_ad:polished_amber_slab",
       "minecraft:andesite_slab",
       "minecraft:bamboo_mosaic_slab",
       "minecraft:blackstone_slab",
@@ -36344,6 +36656,8 @@
       "create:small_scoria_brick_stairs",
       "create:small_tuff_brick_stairs",
       "create:small_veridium_brick_stairs",
+      "ec_ad:amber_brick_stairs",
+      "ec_ad:polished_amber_stairs",
       "minecraft:andesite_stairs",
       "minecraft:bamboo_mosaic_stairs",
       "minecraft:blackstone_stairs",
@@ -37113,6 +37427,8 @@
       "create:small_scoria_brick_wall",
       "create:small_tuff_brick_wall",
       "create:small_veridium_brick_wall",
+      "ec_ad:amber_brick_wall",
+      "ec_ad:polished_amber_wall",
       "minecraft:andesite_wall",
       "minecraft:blackstone_wall",
       "minecraft:brick_wall",
@@ -37716,12 +38032,6 @@
       "minecraft:shepherd",
       "minecraft:toolsmith",
       "minecraft:weaponsmith",
-      "recruits:bowman",
-      "recruits:crossbowman",
-      "recruits:horseman",
-      "recruits:nomad",
-      "recruits:recruit",
-      "recruits:shieldman",
       "vinery:winemaker_poi"
     ],
     "minecraft:point_of_interest_type/bee_home": [
@@ -47503,56 +47813,6 @@
     ],
     "skarrier_mobs:worldgen/biome/alcaves_toxiccaves": [
       "alexscaves:toxic_caves"
-    ],
-    "smallships:items/briggs": [
-      "smallships:acacia_brigg",
-      "smallships:bamboo_brigg",
-      "smallships:birch_brigg",
-      "smallships:cherry_brigg",
-      "smallships:dark_oak_brigg",
-      "smallships:jungle_brigg",
-      "smallships:mangrove_brigg",
-      "smallships:oak_brigg",
-      "smallships:spruce_brigg"
-    ],
-    "smallships:items/cogs": [
-      "smallships:acacia_cog",
-      "smallships:bamboo_cog",
-      "smallships:birch_cog",
-      "smallships:cherry_cog",
-      "smallships:dark_oak_cog",
-      "smallships:jungle_cog",
-      "smallships:mangrove_cog",
-      "smallships:oak_cog",
-      "smallships:spruce_cog"
-    ],
-    "smallships:items/drakkars": [
-      "smallships:acacia_drakkar",
-      "smallships:bamboo_drakkar",
-      "smallships:birch_drakkar",
-      "smallships:cherry_drakkar",
-      "smallships:dark_oak_drakkar",
-      "smallships:jungle_drakkar",
-      "smallships:mangrove_drakkar",
-      "smallships:oak_drakkar",
-      "smallships:spruce_drakkar"
-    ],
-    "smallships:items/galleys": [
-      "smallships:acacia_galley",
-      "smallships:bamboo_galley",
-      "smallships:birch_galley",
-      "smallships:cherry_galley",
-      "smallships:dark_oak_galley",
-      "smallships:jungle_galley",
-      "smallships:mangrove_galley",
-      "smallships:oak_galley",
-      "smallships:spruce_galley"
-    ],
-    "smallships:items/ships": [
-      "#smallships:briggs",
-      "#smallships:cogs",
-      "#smallships:drakkars",
-      "#smallships:galleys"
     ],
     "snowrealmagic:blocks/cannot_accumulate_on": [
       "#minecraft:slabs",

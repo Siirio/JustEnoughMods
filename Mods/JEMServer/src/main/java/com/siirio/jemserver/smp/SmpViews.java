@@ -22,7 +22,6 @@ public final class SmpViews {
         result.putInt("page", query.page());
         result.putUUID("viewer", player.getUUID());
         if (query.tab().equals("settlements")) return com.siirio.jemserver.smp.settlements.SettlementProjection.view(player, query.selected());
-        if (query.tab().equals("recruits")) return com.siirio.jemserver.smp.recruits.RecruitProjection.view(player);
         if (query.selected() == null) {
         Collection<? extends SmpRecord> candidates = switch (SmpTable.fromKey(query.tab())) {
             case PARTIES -> data.parties().snapshots();

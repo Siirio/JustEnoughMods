@@ -4,9 +4,6 @@ import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import com.siirio.jemsettlements.town.StorageLink;
 import com.siirio.jemsettlements.town.TownRecord;
-import com.siirio.jemsettlements.workforce.WorkforceRecord;
-import com.siirio.jemsettlements.workforce.WorkforceType;
-import com.siirio.jemsettlements.compat.recruits.RecruitsAdapter;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
@@ -108,45 +105,6 @@ public final class SettlementApi {
         if (town.get().storage().stream().anyMatch(value -> value.contains(link.position()) || link.second()!=null && value.contains(link.second()))) return Result.CONFLICT;
         if (!town.get().addStorage(link)) return Result.CONFLICT;
         data.changed();
-        return Result.ACCEPTED;
-    }
-
-    public static Result registerNativeWorker(ServerPlayer player, Entity entity, WorkforceType type, boolean coinWageEnabled) {
-        if (!SettlementAuthority.active(player)) return Result.UNAVAILABLE;
-        var town = ownedTownNear(player, entity == null ? player.blockPosition() : entity.blockPosition());
-        return town.isEmpty() ? Result.INVALID : registerNativeWorker(player, town.get().id(), entity, type, coinWageEnabled);
-    }
-    public static Result registerNativeWorker(ServerPlayer player, UUID townId, Entity entity, WorkforceType type, boolean coinWageEnabled) {
-        if (!SettlementAuthority.active(player)) return Result.UNAVAILABLE;
-        var principal = SettlementAuthority.principal(player);
-        var town = ownedTown(player, townId);
-        if (principal.isEmpty() || town.isEmpty() || entity == null) return Result.UNAUTHENTICATED;
-        if (entity.level() != player.level() || !town.get().dimension().equals(player.serverLevel().dimension().location())
-                || player.distanceToSqr(entity) > 256.0D || !town.get().contains(entity.blockPosition())) return Result.INVALID;
-        String namespace = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getNamespace().toLowerCase(Locale.ROOT);
-        if (!namespace.equals("recruits")) return Result.INVALID;
-        if (namespace.equals("recruits")) {
-            if (!net.minecraftforge.fml.ModList.get().isLoaded("recruits") || !RecruitsAdapter.ownedBy(entity, principal.get())) return Result.INVALID;
-            type = WorkforceType.RECRUIT;
-            coinWageEnabled = true;
-        }
-        SettlementSavedData data = SettlementSavedData.get(player.getServer());
-        if (data.entityAssigned(entity.getUUID())) {
-            var existing = data.workforceEntity(entity.getUUID()).orElseThrow();
-            if (existing.type() != WorkforceType.RECRUIT || !existing.ownerId().equals(principal.get())
-                    || !existing.settlementActive()) return Result.CONFLICT;
-            if (existing.townId().equals(townId)) {
-                existing.enrollNeeds(); existing.observeName(entity); data.changed(); return Result.ACCEPTED;
-            }
-            if (data.town(existing.townId()).isPresent()) return Result.CONFLICT;
-            if (data.employer(existing.ownerId()).payroll().stream().anyMatch(period -> !period.paid()
-                    && period.roster().stream().anyMatch(wage -> wage.soldierId().equals(existing.entityId())))) return Result.CONFLICT;
-            existing.assignTown(town.get().id()); existing.enrollNeeds(); existing.observeName(entity); data.changed(); return Result.ACCEPTED;
-        }
-        var nativeType = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
-        WorkforceRecord registered = new WorkforceRecord(entity.getUUID(), town.get().id(), principal.get(), type, namespace, nativeType, coinWageEnabled, player.serverLevel().getGameTime());
-        registered.enrollNeeds(); registered.observeName(entity); data.add(registered);
-        if (type == WorkforceType.RECRUIT) town.get().initializePayroll(player.serverLevel().getGameTime());
         return Result.ACCEPTED;
     }
 
@@ -290,28 +248,7 @@ public final class SettlementApi {
         if (ownedTown(player, townId).isEmpty()) return Result.UNAUTHENTICATED;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         if (data.resident(entityId).filter(resident -> resident.townId().equals(townId) && resident.living() && resident.mood() < 10).isPresent()) return Result.CONFLICT;
-        return data.removeResident(townId, entityId) || data.removeWorkforce(townId, entityId) ? Result.ACCEPTED : Result.INVALID;
-    }
-
-    public static Result openRecruitBuyback(ServerPlayer player, UUID townId, UUID entityId) {
-        var employer = SettlementAuthority.principal(player);
-        if (employer.isEmpty() || (ownedTown(player, townId).isEmpty() && !employer.get().equals(townId))) return Result.UNAUTHENTICATED;
-        var record = SettlementSavedData.get(player.getServer()).workforceEntity(entityId);
-        if (record.isEmpty() || !record.get().townId().equals(townId) || !record.get().ownerId().equals(SettlementAuthority.principal(player).orElse(null))) return Result.INVALID;
-        return net.minecraftforge.fml.ModList.get().isLoaded("recruits") && com.siirio.jemsettlements.compat.recruits.RecruitRebellionService.openBuyback(player, entityId) ? Result.ACCEPTED : Result.UNAVAILABLE;
-    }
-
-    public static Result openNativeManagement(ServerPlayer player, UUID townId, UUID entityId) {
-        if (!SettlementAuthority.active(player) || ownedTown(player, townId).isEmpty()) return Result.UNAUTHENTICATED;
-        var data = SettlementSavedData.get(player.getServer());
-        var record = data.workforceEntity(entityId);
-        if (record.isEmpty() || !record.get().townId().equals(townId) || !record.get().settlementActive()) return Result.INVALID;
-        var entity = player.serverLevel().getEntity(entityId);
-        if (entity == null || !entity.isAlive() || player.distanceToSqr(entity) > 256.0D) return Result.UNAVAILABLE;
-        UUID owner = SettlementAuthority.principal(player).orElseThrow();
-        if (record.get().nativeModId().equals("recruits") && net.minecraftforge.fml.ModList.get().isLoaded("recruits"))
-            return com.siirio.jemsettlements.compat.recruits.RecruitRuntime.openManagement(player, entity, owner) ? Result.ACCEPTED : Result.INVALID;
-        return Result.UNAVAILABLE;
+        return data.removeResident(townId, entityId) ? Result.ACCEPTED : Result.INVALID;
     }
 
     public static long treasuryBalance(ServerPlayer player, TownRecord town) {

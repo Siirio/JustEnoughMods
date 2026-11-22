@@ -7,8 +7,6 @@ public final class HostedAllies {
     private HostedAllies() {}
 
     public static Entity owner(Entity entity) {
-        Entity recruit = invoke(entity, "com.talhanation.recruits.entities.AbstractRecruitEntity", "getOwner");
-        if (recruit != null) return recruit;
         try {
             Class<?> api = Class.forName("com.siirio.jemvisualsandbox.workbench.SandboxUtilities", false, HostedAllies.class.getClassLoader());
             Object owner = api.getMethod("guardianOwner", Entity.class).invoke(null, entity);

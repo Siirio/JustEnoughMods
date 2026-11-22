@@ -37,7 +37,6 @@ public final class SettlementJadePlugin implements IWailaPlugin {
                 var families=com.siirio.jemsettlements.family.VillagerFamilySavedData.get(living.getServer());
                 tag.merge(com.siirio.jemsettlements.family.FamilyRuntime.familyTag(families,families.ensure(living)));
             }
-            if (net.minecraftforge.fml.ModList.get().isLoaded("recruits") && RecruitJadeData.append(tag, accessor.getEntity())) return;
             if (!(accessor.getEntity() instanceof Villager villager)) return;
             var resident = com.siirio.jemsettlements.town.SettlementSavedData.get(villager.getServer()).resident(villager.getUUID());
             if (resident.isEmpty()) return;

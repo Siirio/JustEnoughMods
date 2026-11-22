@@ -15,7 +15,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
-/** Resident needs, or serving metadata bridged to a native recruit needs owner. */
+/** Resident needs and serving metadata. */
 public final class ResidentMood {
     private final UUID villagerId;
     private final UUID townId;
@@ -122,7 +122,7 @@ public final class ResidentMood {
     }
     public int satiety() { return satiety; }
     public int hunger() { return 100 - satiety; }
-    /** Native Recruits owns these values; this snapshot only drives shared serving rules. */
+    /** This snapshot drives the shared serving rules. */
     public void nativeNeeds(float morale, float hunger) {
         nativeNeeds = true; mood = clamp(Math.round(morale)); satiety = clamp((int) Math.floor(hunger));
         if (satiety >= 100 && craving) { craving = false; cravingCycle++; cravingThreshold = nextCravingThreshold(); requestedDish = null; }
@@ -244,7 +244,7 @@ public final class ResidentMood {
         resident.clock = tag.getLong("MoodClock"); resident.patUntil = tag.getLong("PatUntil");
         resident.harmfulUntil = tag.getLong("HarmfulUntil"); resident.mealQuality = Math.max(0, Math.min(5, tag.getInt("MealQuality")));
         resident.injuryPenalty = Math.max(0, Math.min(10, tag.getInt("InjuryPenalty"))); resident.injuryRecoveryAt = tag.getLong("InjuryRecoveryAt");
-        // Legacy Mood/EnvironmentBonus are retained only as native recruit metadata, not ordinary happiness.
+        // Legacy Mood/EnvironmentBonus remain migration metadata, not ordinary happiness.
         resident.needObservation = tag.getCompound("NeedObservation").copy();
         if(tag.getInt("HappinessModel")!=2){resident.needObservation.remove("Housing");resident.needObservation.remove("Food");}
         resident.crowdedHome = loadPos(tag, "CrowdedHome");

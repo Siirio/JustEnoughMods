@@ -116,9 +116,7 @@ public final class TownMetricsService {
             housing+=observation.getDouble("Housing");food+=.75*resident.satiety()+5*resident.mealQuality(now);
             if(observation.getBoolean("Adult")){adults++;if(observation.getBoolean("Employed"))employed++;}
         }
-        int guards=0;
-        if(net.minecraftforge.fml.ModList.get().isLoaded("recruits"))guards=com.siirio.jemsettlements.compat.recruits.RecruitDefenseEvidence.count(data,town,level,metrics);
-        guards+=GuardObservationService.count(town,level,metrics);
+        int guards=GuardObservationService.count(town,level,metrics);
         int required=required(town.territoryArea(),SettlementMetricsConfig.GUARD_AREA.get(),1);
         int socialRequired=required(town.territoryArea(),SettlementMetricsConfig.RESIDENT_AREA.get(),2);
         double safety=metrics.getBoolean("GuardsUnknown")?metrics.getDouble("SafetyExact"):Math.min(100,guards*100.0/required);

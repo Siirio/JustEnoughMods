@@ -1,11 +1,8 @@
 package com.siirio.jemsettlements.happiness;
 
-import com.siirio.jemsettlements.compat.recruits.RecruitsAdapter;
 import com.siirio.jemsettlements.resident.ResidentMood;
 import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.town.SettlementSavedData;
-import com.siirio.jemsettlements.workforce.WorkforceRecord;
-import com.siirio.jemsettlements.workforce.WorkforceType;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,12 +28,11 @@ import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 
 /** Derived observations only; canonical registration and native base needs retain their owners. */
 public final class ResidentConditions {
     private static final int ACTORS_PER_TICK = 8, OCCUPANCY_PER_TICK = 256, THREATS_PER_SCAN = 64;
-    private record Actor(ResidentMood mood, WorkforceRecord recruit) { }
+    private record Actor(ResidentMood mood) { }
     private static final class Observation {
         GlobalPos home;
         long nextHome, nextLight, nextFear;
@@ -86,7 +82,6 @@ public final class ResidentConditions {
             Actor actor = roster.get(cursor++); LivingEntity entity = loaded(server, actor);
             if (entity == null) continue;
             Observation state = OBSERVATIONS.computeIfAbsent(actor.mood().villagerId(), ignored -> new Observation());
-            if (actor.recruit() != null) RecruitsAdapter.syncNeeds(entity, actor.mood());
             actor.mood().advanceTime(now);
             BedPersonalSpace.refresh(entity, actor.mood());
             var previousBed = actor.mood().observedBed();
@@ -106,9 +101,7 @@ public final class ResidentConditions {
     private static void refreshRoster(SettlementSavedData data) {
         var next = new ArrayList<Actor>(); var ids = new HashSet<UUID>();
         for (var town : data.towns()) for (var resident : data.residents(town.id()))
-            if (resident.living() && ids.add(resident.villagerId())) next.add(new Actor(resident, null));
-        if (ModList.get().isLoaded("recruits")) for (var recruit : data.workforce())
-            if (eligible(recruit) && ids.add(recruit.entityId())) next.add(new Actor(recruit.foodHistory(), recruit));
+            if (resident.living() && ids.add(resident.villagerId())) next.add(new Actor(resident));
         OBSERVATIONS.keySet().retainAll(ids);
         if (!roster.equals(next)) {
             roster = List.copyOf(next);
@@ -116,16 +109,11 @@ public final class ResidentConditions {
             OCCUPANCY.clear(); OBSERVATIONS.values().forEach(state -> { state.pending = null; state.nextHome = 0; });
         }
     }
-    private static boolean eligible(WorkforceRecord row) {
-        return row.type() == WorkforceType.RECRUIT && row.needsEnrolled() && row.settlementActive();
-    }
     private static LivingEntity loaded(MinecraftServer server, Actor actor) {
         for (ServerLevel level : server.getAllLevels()) {
             Entity entity = level.getEntity(actor.mood().villagerId());
             if (!(entity instanceof LivingEntity living) || !living.isAlive()) continue;
-            if (actor.recruit() == null) return living instanceof Villager ? living : null;
-            return ModList.get().isLoaded("recruits") && eligible(actor.recruit())
-                    && RecruitsAdapter.ownedBy(living, actor.recruit().ownerId()) ? living : null;
+            return living instanceof Villager ? living : null;
         }
         return null;
     }
@@ -186,7 +174,7 @@ public final class ResidentConditions {
             }
             while (budget > 0 && job.cursor < job.roster.size()) {
                 Actor neighbour = job.roster.get(job.cursor++); budget--;
-                if (!neighbour.mood().living() || neighbour.recruit() != null && !eligible(neighbour.recruit())) continue;
+                if (!neighbour.mood().living()) continue;
                 Observation observation = OBSERVATIONS.get(neighbour.mood().villagerId());
                 GlobalPos bed = observation == null ? neighbour.mood().home().orElseGet(() -> neighbour.mood().observedBed()
                         .orElseGet(() -> neighbour.mood().crowdedHome().orElse(null))) : observation.home;
@@ -271,8 +259,6 @@ public final class ResidentConditions {
                 || !SettlementAuthority.active(level.getServer())) return;
         var data = SettlementSavedData.get(level.getServer()); LivingEntity victim = event.getEntity();
         ResidentMood mood = victim instanceof Villager ? data.resident(victim.getUUID()).filter(ResidentMood::living).orElse(null) : null;
-        if (mood == null && ModList.get().isLoaded("recruits")) mood = data.workforceEntity(victim.getUUID())
-                .filter(ResidentConditions::eligible).filter(row -> RecruitsAdapter.ownedBy(victim, row.ownerId())).map(WorkforceRecord::foodHistory).orElse(null);
         if (mood == null) return;
         mood.fearPenalty(HousingConditionConfig.FEAR_MAX.get());
         var state = OBSERVATIONS.computeIfAbsent(victim.getUUID(), ignored -> new Observation());

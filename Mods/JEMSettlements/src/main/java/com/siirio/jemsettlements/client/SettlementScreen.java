@@ -583,17 +583,16 @@ public class SettlementScreen extends Screen {
     }
     private void foodPage(int offset) {CompoundTag payload=new CompoundTag();payload.putInt("FoodOffset",Math.max(0,offset));request("refresh",payload);}
     private void workforceRows() {
-        boolean recruit=section.equals("guards"),available=envelope.getBoolean(recruit?"RecruitsAvailable":"WorkersAvailable");
-        if(!available) {drawWrapped(tr(recruit?"recruits_absent":"workers_absent"),cx,cy+20,cw,MUTED);return;}
+        boolean guards=section.equals("guards"),available=envelope.getBoolean(guards?"GuardsAvailable":"WorkersAvailable");
+        if(!available) {drawWrapped(tr("workers_absent"),cx,cy+20,cw,MUTED);return;}
         search(cy);listTop=cy+24;listBottom=bottom-48;
-        for(CompoundTag row:tags(town,recruit?"Defense":"WorkforceRows")) {
-            if(!recruit&&row.getString("Type").equals("RECRUIT"))continue;if(!matches(row.getString("Name")))continue;
-            Component role=recruit?tr("recruit_state",Component.translatable("jem.settlements.gui.loyalty."+row.getString("Loyalty").toLowerCase(Locale.ROOT)),row.getInt("MissedPayrolls")):Component.translatable("jem.settlements.worker."+row.getString("Type").toLowerCase(Locale.ROOT));
-            rows.add(new Row(Component.literal(row.getString("Name")),role,new ItemStack(recruit?Items.SHIELD:Items.IRON_PICKAXE),row,()->{residentScroll=scroll;detailScroll=0;detail=row;scroll=0;rebuild();}));
+        for(CompoundTag row:tags(town,guards?"Defense":"WorkforceRows")) {
+            if(!matches(row.getString("Name")))continue;
+            Component role=guards?Component.translatable("entity.minecraft.iron_golem"):Component.translatable("jem.settlements.worker."+row.getString("Type").toLowerCase(Locale.ROOT));
+            rows.add(new Row(Component.literal(row.getString("Name")),role,new ItemStack(guards?Items.IRON_INGOT:Items.IRON_PICKAXE),row,()->{residentScroll=scroll;detailScroll=0;detail=row;scroll=0;rebuild();}));
         }
         listWidgets();
-        if(recruit) button(tr("pay_due"),cx,bottom-44,cw,()->ask(tr("payroll_confirm"),()->request("payroll",new CompoundTag())),true).active=town.getLong("UnpaidPayroll")>0&&!SettlementClientState.pending();
-        else drawWrapped(tr("native_work"),cx,bottom-42,cw,MUTED);
+        drawWrapped(tr(guards?"metrics.security_iron_golems":"native_work"),cx,bottom-42,cw,MUTED);
     }
     private void transfer(String action) {
         try {

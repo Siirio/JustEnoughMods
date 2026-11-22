@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "blocks",
-  "snapshot_sha": "05ef91cd0f94bb456e3e0f8c006c6897fd8e656e",
+  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
   "generation": {
-    "generated_utc": "2026-11-22T15:21:02.784498+00:00",
+    "generated_utc": "2026-11-22T18:53:03.082294+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1262,6 +1262,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/lushsaur_break_vegetation_blocks",
         "immersive_weathering:blocks/flowerable",
         "minecraft:blocks/leaves",
         "minecraft:blocks/mineable/axe",
@@ -1394,6 +1395,8 @@
       "tags": [
         "alexsmobs:blocks/gorilla_breakables",
         "alexsmobs:blocks/void_worm_breakables",
+        "ec_ad:blocks/lushsaur_break_vegetation_blocks",
+        "ec_ad:blocks/therimoss_protected",
         "immersive_weathering:blocks/soil_clay_crops",
         "minecraft:blocks/bamboo_plantable_on",
         "minecraft:blocks/mineable/axe",
@@ -1438,6 +1441,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/therimoss_edible_blocks",
         "minecraft:blocks/bamboo_blocks"
       ],
       "is_registered": null,
@@ -35157,6 +35161,7 @@
       "implementation_class": null,
       "tags": [
         "create:blocks/brittle",
+        "ec_ad:blocks/lushsaur_break_vegetation_blocks",
         "forge:blocks/canblockbeastpit",
         "luminous_nether:blocks/ectoplasmblacklist",
         "minecraft:blocks/frog_prefer_jump_to",
@@ -37875,6 +37880,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/therimoss_edible_blocks",
         "forge:blocks/mushroom_caps",
         "minecraft:blocks/mineable/axe",
         "trek:blocks/tree/mushroom"
@@ -38375,6 +38381,7 @@
       "implementation_class": null,
       "tags": [
         "create:blocks/brittle",
+        "ec_ad:blocks/therimoss_edible_blocks",
         "offgrid:blocks/can_overlay"
       ],
       "is_registered": null,
@@ -38839,6 +38846,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/lushsaur_break_vegetation_blocks",
         "forge:blocks/canblockbeastpit",
         "luminous_nether:blocks/ectoplasmblacklist",
         "minecraft:blocks/bee_growables",
@@ -38887,6 +38895,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/lushsaur_edible",
         "forge:blocks/canblockbeastpit",
         "luminous_nether:blocks/ectoplasmblacklist",
         "minecraft:blocks/bee_growables",
@@ -40120,6 +40129,7 @@
       "implementation_class": null,
       "tags": [
         "alexsmobs:blocks/void_worm_breakables",
+        "ec_ad:blocks/chorusoatl_egg_chorus",
         "luminous_nether:blocks/ectoplasmblacklist",
         "minecraft:blocks/mineable/axe",
         "minecraft:blocks/sword_efficient"
@@ -40163,6 +40173,7 @@
       "tags": [
         "alexsmobs:blocks/platypus_digables",
         "alexsmobs:blocks/seal_digables",
+        "ec_ad:blocks/lushsaur_valid_spawn",
         "minecraft:blocks/animals_spawnable_on",
         "minecraft:blocks/axolotls_spawnable_on",
         "minecraft:blocks/azalea_root_replaceable",
@@ -41724,6 +41735,8 @@
       "implementation_class": null,
       "tags": [
         "alexsmobs:blocks/mungus_replace_nether",
+        "ec_ad:blocks/obsidiceratops_egg_hatchable",
+        "ec_ad:blocks/obsidiceratops_valid_spawn",
         "minecraft:blocks/enderman_holdable",
         "minecraft:blocks/mineable/pickaxe",
         "minecraft:blocks/mushroom_grow_block",
@@ -42172,6 +42185,7 @@
         "cataclysm:blocks/ender_guardian_can_destroy",
         "cataclysm:blocks/endermaptera_can_not_spawn",
         "cataclysm:blocks/netherite_monstrosity_immune",
+        "ec_ad:blocks/lushsaur_break_immune_blocks",
         "enhancedai:blocks/miner_blacklist",
         "minecraft:blocks/dragon_immune",
         "minecraft:blocks/mineable/pickaxe",
@@ -46511,6 +46525,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/chorusoatl_egg_hatchable",
+        "ec_ad:blocks/chorusoatl_valid_spawn",
         "jem_server:blocks/rush_block_drops",
         "jem_server:blocks/rush_resources",
         "kaleidoscope_end:blocks/end_stone_growable",
@@ -47342,6 +47358,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/lushsaur_break_vegetation_blocks",
+        "ec_ad:blocks/lushsaur_edible",
         "immersive_weathering:blocks/flowery",
         "minecraft:blocks/flowers",
         "minecraft:blocks/leaves",
@@ -47388,6 +47406,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/therimoss_edible_blocks",
         "immersive_weathering:blocks/flowery",
         "immersive_weathering:blocks/vanilla_leaves",
         "minecraft:blocks/flowers",
@@ -48085,6 +48104,9 @@
         "alexsmobs:blocks/seal_digables",
         "alexsmobs:blocks/snow_leopard_spawns",
         "aquamirae:blocks/eel_diggable_on",
+        "ec_ad:blocks/lushsaur_egg_hatchable",
+        "ec_ad:blocks/therimoss_egg_hatchable",
+        "ec_ad:blocks/therimoss_valid_spawn",
         "icys-better-horses:blocks/ploughable",
         "immersive_weathering:blocks/dirt_base_blocks",
         "immersive_weathering:blocks/dune_grass_patch_replaceable",
@@ -52594,6 +52616,7 @@
       "tags": [
         "alexsmobs:blocks/laviathan_breakables",
         "alexsmobs:blocks/orca_breakables",
+        "ec_ad:blocks/lushsaur_break_vegetation_blocks",
         "luminous_nether:blocks/ectoplasmblacklist",
         "minecraft:blocks/frog_prefer_jump_to",
         "minecraft:blocks/inside_step_sound_blocks",
@@ -53625,6 +53648,7 @@
         "alexsmobs:blocks/froststalker_fears",
         "bakery:blocks/allows_cooking",
         "create:blocks/passive_boiler_heaters",
+        "ec_ad:blocks/obsidiceratops_egg_hatchable",
         "farm_and_charm:blocks/allows_cooking",
         "immersive_weathering:blocks/magma_source",
         "kaleidoscope_cookery:blocks/heat_source_blocks_without_lit",
@@ -54451,6 +54475,7 @@
       "implementation_class": null,
       "tags": [
         "alexsmobs:blocks/elephant_foodblocks",
+        "ec_ad:blocks/therimoss_edible_blocks",
         "icys-better-horses:blocks/horse_breakable",
         "minecraft:blocks/enderman_holdable",
         "minecraft:blocks/mineable/axe",
@@ -54539,6 +54564,9 @@
       "tags": [
         "alexsmobs:blocks/flutter_spawns",
         "alexsmobs:blocks/pupfish_eatables",
+        "ec_ad:blocks/lushsaur_break_vegetation_blocks",
+        "ec_ad:blocks/lushsaur_egg_hatchable",
+        "ec_ad:blocks/lushsaur_valid_spawn",
         "immersive_weathering:blocks/moss_source",
         "minecraft:blocks/dirt",
         "minecraft:blocks/frogs_spawnable_on",
@@ -54595,6 +54623,9 @@
         "alexsmobs:blocks/pupfish_eatables",
         "create:blocks/brittle",
         "create:blocks/tree_attachments",
+        "ec_ad:blocks/lushsaur_break_vegetation_blocks",
+        "ec_ad:blocks/lushsaur_edible",
+        "ec_ad:blocks/lushsaur_valid_spawn",
         "immersive_weathering:blocks/moss_source",
         "minecraft:blocks/combination_step_sound_blocks",
         "minecraft:blocks/mangrove_logs_can_grow_through",
@@ -55295,6 +55326,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/therimoss_edible_blocks",
         "forge:blocks/mushroom_stems",
         "minecraft:blocks/mineable/axe",
         "somemoreblocks:blocks/mushroom_colony_placeable",
@@ -55853,6 +55885,8 @@
       "tags": [
         "alexsmobs:blocks/mungus_replace_nether",
         "cataclysm:blocks/netherite_monstrosity_break",
+        "ec_ad:blocks/obsidiceratops_egg_hatchable",
+        "ec_ad:blocks/obsidiceratops_valid_spawn",
         "forge:block/top_soil_tag",
         "forge:block/under_soil_tag",
         "forge:blocks/top_soil_tag",
@@ -56674,6 +56708,7 @@
         "alexscaves:blocks/magnetic_caves_base_blocks",
         "cataclysm:blocks/endermaptera_can_not_spawn",
         "cataclysm:blocks/netherite_monstrosity_immune",
+        "ec_ad:blocks/lushsaur_break_immune_blocks",
         "jem_server:blocks/rush_block_drops",
         "jem_server:blocks/rush_resources",
         "minecraft:blocks/dragon_immune",
@@ -58635,6 +58670,7 @@
       "tags": [
         "alexsmobs:blocks/mungus_replace_mushroom",
         "aquamirae:blocks/eel_diggable_on",
+        "ec_ad:blocks/therimoss_valid_spawn",
         "icys-better-horses:blocks/ploughable",
         "immersive_weathering:blocks/dirt_base_blocks",
         "minecraft:blocks/animals_spawnable_on",
@@ -61520,6 +61556,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/therimoss_edible_blocks",
         "icys-better-horses:blocks/horse_breakable",
         "minecraft:blocks/enderman_holdable",
         "minecraft:blocks/mineable/axe",
@@ -62924,6 +62961,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/therimoss_edible_blocks",
         "forge:blocks/mushroom_caps",
         "minecraft:blocks/mineable/axe",
         "trek:blocks/tree/mushroom"
@@ -64371,6 +64409,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "ec_ad:blocks/sculkraptor_valid_spawn",
         "minecraft:blocks/mineable/hoe",
         "trek:blocks/deep_dark_tree_grows_on",
         "trek:blocks/deep_dark_tree_root_replaceable"

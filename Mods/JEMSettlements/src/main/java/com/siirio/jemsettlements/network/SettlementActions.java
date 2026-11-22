@@ -132,14 +132,6 @@ public final class SettlementActions {
             case "foodstorage" -> SettlementApi.setFoodStorage(player, id, BlockPos.of(data.getLong("Position")), data.getBoolean("Enabled"));
             case "linkstorage" -> SettlementApi.linkPhysicalStorage(player, id, BlockPos.of(data.getLong("Position")));
             case "feedall" -> data.contains("Position") ? com.siirio.jemsettlements.runtime.TownMealService.request(player, town.get(), BlockPos.of(data.getLong("Position"))) : SettlementApi.Result.INVALID;
-            case "manage" -> data.hasUUID("Entity") ? SettlementApi.openNativeManagement(player, id, data.getUUID("Entity")) : SettlementApi.Result.INVALID;
-            case "buyback" -> data.hasUUID("Entity") && net.minecraftforge.fml.ModList.get().isLoaded("recruits")
-                    ? SettlementApi.openRecruitBuyback(player, id, data.getUUID("Entity")) : SettlementApi.Result.UNAVAILABLE;
-            case "payroll" -> {
-                if (!net.minecraftforge.fml.ModList.get().isLoaded("recruits")) yield SettlementApi.Result.UNAVAILABLE;
-                com.siirio.jemsettlements.payroll.PayrollService.tick(player.getServer());
-                yield town.get().payroll().stream().allMatch(p -> !p.currentCurrency() || p.paid()) ? SettlementApi.Result.ACCEPTED : SettlementApi.Result.INSUFFICIENT_FUNDS;
-            }
             default -> SettlementApi.Result.INVALID;
         };
     }
@@ -210,7 +202,7 @@ public final class SettlementActions {
         for (TownRecord town : towns.stream().skip(offset).limit(64).toList()) {
             CompoundTag row = new CompoundTag(); row.putUUID("Id", town.id()); row.putString("Name", town.name()); row.putString("Dimension", town.dimension().toString());
             row.putInt("Happiness", town.happiness()); row.putInt("Residents", (int) SettlementSavedData.get(player.getServer()).residents(town.id()).stream().filter(r -> r.living()).count());
-            row.putBoolean("Warning", town.happiness() < 35 || town.payroll().stream().anyMatch(p -> p.currentCurrency() && !p.paid())); directory.add(row);
+            row.putBoolean("Warning", town.happiness() < 35); directory.add(row);
         }
         view.putUUID("Session", sub.session); view.put("Directory", directory); view.putInt("DirectoryOffset", offset); view.putInt("DirectoryTotal", towns.size());
         if (sub.town != null) SettlementApi.ownedTown(player, sub.town).ifPresentOrElse(t -> {
@@ -221,7 +213,7 @@ public final class SettlementActions {
         view.putLong("GameTime", player.getServer().overworld().getGameTime());
         com.siirio.jemsettlements.runtime.SettlementAuthority.principal(player).ifPresent(actor -> view.putInt("UncertainActions", SettlementRequests.get(player.getServer()).uncertain(actor)));
         view.putBoolean("WorkersAvailable", false);
-        view.putBoolean("RecruitsAvailable", net.minecraftforge.fml.ModList.get().isLoaded("recruits"));
+        view.putBoolean("GuardsAvailable", true);
         view.putBoolean("CoinCurrency", com.siirio.jemsettlements.currency.SettlementCurrency.coins());
         view.putLong("FoundingCost", com.siirio.jemsettlements.payroll.SettlementEconomyConfig.founding());
         view.putString("FoundingDimension", player.serverLevel().dimension().location().toString());

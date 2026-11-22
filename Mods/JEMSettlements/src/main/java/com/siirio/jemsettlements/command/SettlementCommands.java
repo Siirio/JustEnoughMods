@@ -1,7 +1,6 @@
 package com.siirio.jemsettlements.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
-import net.minecraft.commands.arguments.EntityArgument;
 import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.api.SettlementApi;
 import com.siirio.jemsettlements.town.SettlementSavedData;
@@ -30,9 +29,6 @@ public final class SettlementCommands {
                         .then(Commands.literal("feedstorage")
                                 .then(Commands.literal("on").executes(context -> feedStorage(context.getSource().getPlayerOrException(), true)))
                                 .then(Commands.literal("off").executes(context -> feedStorage(context.getSource().getPlayerOrException(), false))))
-                        .then(Commands.literal("workforce")
-                                .then(Commands.argument("entity", EntityArgument.entity())
-                                        .executes(context -> workforce(context.getSource().getPlayerOrException(), EntityArgument.getEntity(context, "entity")))))
                         .then(Commands.literal("mounts").executes(context -> mounts(context.getSource().getPlayerOrException())))));
         event.getDispatcher().register(Commands.literal("settlements")
                 .executes(context -> { SettlementNetwork.sendOwned(context.getSource().getPlayerOrException(), true); return 1; })
@@ -59,14 +55,6 @@ public final class SettlementCommands {
         var hit = player.pick(6.0D, 0.0F, false);
         if (!(hit instanceof net.minecraft.world.phys.BlockHitResult blockHit)) return 0;
         return SettlementApi.linkPhysicalStorage(player, blockHit.getBlockPos()) == SettlementApi.Result.ACCEPTED ? 1 : 0;
-    }
-
-    private static int workforce(ServerPlayer player, net.minecraft.world.entity.Entity entity) {
-        SettlementApi.Result result = SettlementApi.registerNativeWorker(player, entity,
-                com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT, false);
-        player.sendSystemMessage(Component.translatable(result == SettlementApi.Result.ACCEPTED
-                ? "jem.settlements.workforce_added" : "jem.settlements.workforce_rejected"));
-        return result == SettlementApi.Result.ACCEPTED ? 1 : 0;
     }
 
     private static int feedStorage(ServerPlayer player, boolean enabled) {

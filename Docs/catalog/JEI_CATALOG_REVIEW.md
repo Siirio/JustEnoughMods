@@ -2,7 +2,7 @@
 
 - Registry source: reviewed logical-server export removed after initial validation
 - Source export SHA-256: 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39
-- Registered items: 13869
+- Registered items: 13913
 - Manifest schema: 2
 - Runtime classification: direct immutable item-ID lookup only
 
@@ -19,9 +19,8 @@ Total: 14
 
 ### WEAPON_TRAINING
 
-Total: 6
+Total: 0
 
-- recruits: 6
 
 ### WEAPON_MELEE
 
@@ -61,7 +60,7 @@ Total: 268
 
 ### WEAPON_RANGED
 
-Total: 185
+Total: 183
 
 - alexscaves: 11
 - alexsmobs: 2
@@ -80,14 +79,13 @@ Total: 185
 - royalvariations: 2
 - simplybows: 36
 - skarrier_mobs: 1
-- smallships: 2
 - tide: 1
 - whaleborne: 1
 - xtraarrows: 97
 
 ### WEAPON_SHIELDS
 
-Total: 18
+Total: 17
 
 - alexscaves: 1
 - alexsmobs: 1
@@ -97,7 +95,6 @@ Total: 18
 - endermanoverhaul: 1
 - legendary_monsters: 5
 - minecraft: 2
-- recruits: 1
 - unearthed_journey: 1
 
 ### WEAPON_SMITHING_TEMPLATES
@@ -257,7 +254,7 @@ Total: 258
 
 ### TRANSPORT
 
-Total: 216
+Total: 179
 
 - alexscaves: 4
 - alexsmobs: 2
@@ -272,7 +269,6 @@ Total: 216
 - minecraft: 49
 - natures_spirit: 34
 - paraglider: 1
-- smallships: 37
 - snowyspirit: 39
 - spawn: 4
 - trotting_wagons: 5
@@ -386,14 +382,14 @@ Total: 103
 
 ### CREATE_REDSTONE
 
-Total: 2428
+Total: 2256
 
 - alexscaves: 4
 - beachparty: 2
-- bellsandwhistles: 36
+- bellsandwhistles: 35
 - blastfromthepast: 2
-- create: 641
-- create_train_parts: 16
+- create: 603
+- create_train_parts: 11
 - createrailwaysnavigator: 9
 - deep_dark_regrowth: 2
 - dustydecorations: 4
@@ -402,7 +398,7 @@ Total: 2428
 - minecraft: 52
 - natures_spirit: 34
 - netherexp: 4
-- railways: 1362
+- railways: 1234
 - somemoreblocks: 10
 - spawn: 4
 - trials: 1
@@ -487,10 +483,13 @@ Total: 1076
 
 ### BUILDING_GLASS
 
-Total: 160
+Total: 332
 
 - alexscaves: 2
 - alexsmobs: 1
+- bellsandwhistles: 1
+- create: 38
+- create_train_parts: 5
 - deep_dark_regrowth: 1
 - dustydecorations: 73
 - farm_and_charm: 1
@@ -498,6 +497,7 @@ Total: 160
 - incision: 2
 - minecraft: 36
 - netherexp: 2
+- railways: 128
 - somemoreblocks: 35
 - unearthed_journey: 2
 - vinery: 2
@@ -601,7 +601,7 @@ Total: 2959
 
 ### SPAWN_EGGS
 
-Total: 837
+Total: 831
 
 - alexscaves: 43
 - alexsmobs: 89
@@ -627,7 +627,6 @@ Total: 837
 - netherexp: 7
 - oceanicrealms: 13
 - primal: 9
-- recruits: 6
 - ribbits: 5
 - rottencreatures: 13
 - royalvariations: 4
@@ -644,7 +643,7 @@ Total: 837
 
 ### OTHER
 
-Total: 723
+Total: 819
 
 - alexscaves: 41
 - alexsmobs: 29
@@ -661,6 +660,7 @@ Total: 723
 - companions: 5
 - deep_dark_regrowth: 32
 - dustydecorations: 1
+- ec_ad: 96
 - efn: 2
 - endermanoverhaul: 9
 - endrem: 18

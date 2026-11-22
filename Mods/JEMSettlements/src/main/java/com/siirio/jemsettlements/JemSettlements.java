@@ -26,6 +26,5 @@ public final class JemSettlements {
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.happiness.GuardObservationService.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.happiness.ResidentConditions.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.compat.NativeBedCompatibility.ServerLifecycle.class);
-        if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.compat.recruits.RecruitRuntime.class);
     }
 }

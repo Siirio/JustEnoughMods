@@ -17,7 +17,7 @@ public final class HappinessService {
     public static int calculate(int housing, int food, int safety, int jobs, int community, int comfort, int taxPercent) {
         return (int)Math.round(bound(core(housing, food, safety, jobs, community, comfort) - taxPenalty(taxPercent)));
     }
-    /** Retained for native recruit adapters; ordinary residents use the shared core directly. */
+    /** Ordinary residents use the shared happiness core directly. */
     public static int residentMood(int personal, int environmentBonus, int socialCap) { return (int)bound(personal); }
     public static int socialCap(int social) { return 100; }
     public static int environmentBonus(int comfort, int animals) { return 0; }

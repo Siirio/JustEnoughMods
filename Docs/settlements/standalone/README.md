@@ -1,5 +1,13 @@
 # Settlements standalone design
 
+## Current Recruits retirement and security owner - 2026-11-22
+
+Recruits and all active JEM Recruits integrations are removed from the managed client, local server, Settlements, quests, market indexes, HUD projections, combat adapters and shelter adapters. The historical sections below remain design history only. They do not describe current production behavior.
+
+JEM Settlements now supports ordinary Villagers and Zombie Villagers for family and resident behavior. Settlement security counts only living AI-enabled iron golems. The existing coverage formula remains `ceil(area / 2048)`, so the initial 97 x 97 territory requires five iron golems for full security. Payroll and recruit loyalty do not contribute to security.
+
+The complete pre-removal restore archive is outside runtime paths at `C:/MyProjects/Minecraft/JustEnoughMods Backups/JEM-Recruits-complete-2026-11-22.zip`. Its SHA-256 is `B75B7BE018E3A07E91C0493ECD1DD6BFAC24E510260539B5112B531366418751`. It contains 258 entries, including both JARs, configs, localization and matched JEM integration source and documentation. Restoration requires an explicit later decision and a full compatibility review.
+
 ## Universal villager families and individual homes — 2026-11-19
 
 JEM Settlements owns one modpack-level family system for ordinary villagers, zombie villagers and supported Recruits on integrated and dedicated logical servers. Town membership is separate. Persistent identity contains a Jade-only generated name, immutable sex and orientation, spouse, parents, assignments, death and remarriage state. Same-sex orientation has a deterministic 5% chance. Nitwits and village-origin or independent Recruits are eternal-single. Table-origin Recruits stay family-capable through native promotion.

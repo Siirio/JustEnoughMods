@@ -838,7 +838,7 @@ public final class SmpScreen extends Screen {
         for (CompoundTag person : people) {
             ResourceLocation request = person.getBoolean("Resident") ? ResourceLocation.tryParse(person.getString("RequestedDish")) : null;
             int height = person.getBoolean("Resident") ? request == null ? 62 : 80 : person.getString("Loyalty").equals("DEFEATED") ? 86 : 68;
-            frame(g, bodyX, y, bodyWidth, height, ROW); SmpIcons.draw(g, person.getBoolean("Resident") ? "residents" : "recruits", bodyX + 6, y + 8, 24);
+            frame(g, bodyX, y, bodyWidth, height, ROW); SmpIcons.draw(g, person.getBoolean("Resident") ? "residents" : "settlements", bodyX + 6, y + 8, 24);
             text(g, Component.literal(person.getString("Name")), bodyX + 36, y + 6, person.getBoolean("Living") ? CREAM : MUTED, bodyWidth - 126);
             if (person.getBoolean("Resident")) {
                 String profession = person.getString("Profession"); if (profession.contains(":")) profession = profession.substring(profession.indexOf(':') + 1);
@@ -934,16 +934,6 @@ public final class SmpScreen extends Screen {
         text(g, tab.equals("events") ? Component.translatable("jem.smp." + title) : Component.literal(title), bodyX + 48, y + 10, CREAM, bodyWidth - 56);
         text(g, Component.translatable("jem.smp." + row.getString("state")), bodyX + 48, y + 28, stateColor(row.getString("state")), bodyWidth - 56);
         y += 56;
-        if (tab.equals("recruits")) {
-            if (row.contains("HireCost")) {
-                text(g, Component.translatable("jem.smp.buyback"), bodyX + 4, y, MUTED, bodyWidth / 3);
-                ServerCurrencyPresentation.draw(g, font, row.getLong("HireCost"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, CREAM, row.getBoolean("CoinCurrency")); y += 22;
-            }
-            if (row.contains("Wage")) {
-                text(g, Component.translatable("jem.smp.settlement.payroll_label"), bodyX + 4, y, MUTED, bodyWidth / 3);
-                ServerCurrencyPresentation.draw(g, font, row.getLong("Wage"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, CREAM, row.getBoolean("CoinCurrency")); y += 22;
-            }
-        }
         for (String key :
                 List.of("activity", "description", "name", "language")) {
             String value = row.getString(key);
@@ -1001,7 +991,7 @@ public final class SmpScreen extends Screen {
 
     private void invoke(String action) {
         if (action.equals("navigate")) { openLocation(model.getCompound("detail")); return; }
-        if (action.equals("settlements") || action.equals("recruits")) { selectTab(action); return; }
+        if (action.equals("settlements")) { selectTab(action); return; }
         if (action.equals("roles") || action.equals("professions")) { SmpSidebar.openExternal(action); return; }
         if (action.equals("invite") && tab.equals("parties")) { openForm("invite"); return; }
         if (action.equals("dissolve")) { openForm("dissolve_confirm"); return; }

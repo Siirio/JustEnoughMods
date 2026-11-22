@@ -3,7 +3,7 @@ package com.siirio.jemsettlements.client;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
-/** Authored dashboard materials. Native recruit screens retain their own material owner. */
+/** Authored dashboard materials. */
 public final class SettlementDashboardArt {
     private static final ResourceLocation STONE_FRAME = texture("stone_frame");
     private static final ResourceLocation PAPER_FRAME = texture("paper_frame");

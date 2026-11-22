@@ -3,7 +3,7 @@ package com.siirio.jemsettlements.client;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
-/** Native pixel materials shared by settlement controls and the native recruit menu. */
+/** Native pixel materials shared by settlement controls. */
 public final class SettlementMaterials {
     private static final ResourceLocation WOOD = new ResourceLocation("minecraft", "textures/block/spruce_planks.png");
     private static final ResourceLocation VINE = new ResourceLocation("minecraft", "textures/block/vine.png");

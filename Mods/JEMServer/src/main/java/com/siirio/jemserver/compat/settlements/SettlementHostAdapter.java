@@ -22,16 +22,12 @@ public final class SettlementHostAdapter {
             row.putString("settlement", town.name()); row.putBoolean("settlementOwner", town.owner().equals(id));
             row.putString("settlementTier", town.tier().name());
         });
-        long recruits = data.towns().stream().flatMap(town -> data.workforce(town.id()).stream())
-                .filter(record -> record.ownerId().equals(id) && record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT).count();
-        row.putLong("recruitCount", recruits);
     }
     public static String action(ServerPlayer player, com.siirio.jemserver.smp.SettlementUiAction action) {
         var result = switch (action.action()) {
             case "rename" -> SettlementApi.rename(player, action.town(), action.text());
             case "remove" -> action.target() == null ? SettlementApi.Result.INVALID : SettlementApi.removeRegistration(player, action.town(), action.target());
             case "delete" -> SettlementApi.delete(player, action.town(), action.request());
-            case "buyback" -> action.target() == null ? SettlementApi.Result.INVALID : SettlementApi.openRecruitBuyback(player, action.town(), action.target());
             case "deposit" -> SettlementApi.treasury(player, action.town(), true, action.amount(), action.request());
             case "withdraw" -> SettlementApi.treasury(player, action.town(), false, action.amount(), action.request());
             default -> SettlementApi.Result.INVALID;
@@ -50,8 +46,7 @@ public final class SettlementHostAdapter {
     }
     public static boolean permits(ServerPlayer player, Entity entity) {
         var data = SettlementSavedData.get(player.server);
-        var town = data.resident(entity.getUUID()).map(com.siirio.jemsettlements.resident.ResidentMood::townId)
-                .or(() -> data.workforceEntity(entity.getUUID()).map(com.siirio.jemsettlements.workforce.WorkforceRecord::townId));
+        var town = data.resident(entity.getUUID()).map(com.siirio.jemsettlements.resident.ResidentMood::townId);
         if (town.isEmpty()) return true;
         var principal = com.siirio.jemidentity.api.IdentityPolicy.resolve(player);
         return principal.isPresent() && data.town(town.get()).filter(value -> value.owner().equals(principal.get().accountId())).isPresent();

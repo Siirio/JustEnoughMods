@@ -458,7 +458,7 @@ public final class EconomyApi {
                 "payroll:" + townId + ":" + period);
     }
 
-    /** Same ledger and finite-money sink for recruits hired by an employer without a town. */
+    /** Same ledger and finite-money sink for employer payroll without a town. */
     public static TransferResult settleEmployerPayroll(MinecraftServer server, UUID employerAccount, long amount, long period) {
         if (!CurrencyAuthority.active(server) || employerAccount == null || amount <= 0L || period < 0L)
             return new TransferResult(TransferResult.Status.INVALID, null, 0L, 0L);

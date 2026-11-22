@@ -43,7 +43,6 @@ final class SmpIcons {
             case "happiness" -> Items.SUNFLOWER;
             case "treasury" -> Items.GOLD_INGOT;
             case "development" -> Items.OAK_SAPLING;
-            case "recruits" -> Items.IRON_HELMET;
             case "parties", "partiesHosted", "partiesJoined" -> Items.TOTEM_OF_UNDYING;
             case "back", "previous", "next" -> Items.ARROW;
             case "create", "submit", "publish", "join", "accept" -> Items.WRITABLE_BOOK;

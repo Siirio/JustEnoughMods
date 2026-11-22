@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class VillagerBirthMixin {
     @Inject(method = "isBreedingPossible", at = @At("RETURN"), cancellable = true)
     private void jem$requireCompleteHomes(Villager villager, CallbackInfoReturnable<Boolean> cir) {
-        // JEM owns one bounded family engine for villagers and Recruits. Keeping the vanilla
+        // JEM owns one bounded family engine for villagers. Keeping the vanilla
         // behavior active would create a second courtship loop and retain its spare-bed rule.
         cir.setReturnValue(false);
     }

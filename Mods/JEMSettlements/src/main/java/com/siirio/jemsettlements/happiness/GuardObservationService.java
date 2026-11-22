@@ -19,8 +19,7 @@ public final class GuardObservationService {
     private GuardObservationService() { }
 
     private static boolean guardType(Mob mob) {
-        return mob instanceof IronGolem
-                || net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).getNamespace().equals("recruits");
+        return mob instanceof IronGolem;
     }
 
     @SubscribeEvent
@@ -65,20 +64,18 @@ public final class GuardObservationService {
             mob.setCustomName(net.minecraft.network.chat.Component.translatable("jem.settlements.guard_name", town.name(), next));
             mob.getPersistentData().putBoolean("JemGuardNamed", true);
         }
-        if (mob instanceof IronGolem) {
-            CompoundTag metrics = town.metrics();
-            CompoundTag rows = metrics.getCompound("GolemObservations").copy();
-            CompoundTag row = new CompoundTag();
-            row.putUUID("Id", mob.getUUID());
-            row.putLong("Position", mob.blockPosition().asLong());
-            row.putBoolean("Qualified", !mob.isNoAi());
-            row.putFloat("Health", mob.getHealth());
-            row.putFloat("MaxHealth", mob.getMaxHealth());
-            row.putString("NameComponent", net.minecraft.network.chat.Component.Serializer.toJson(mob.getName()));
-            rows.put(mob.getUUID().toString(), row);
-            metrics.put("GolemObservations", rows);
-            town.metrics(metrics);
-        }
+        CompoundTag metrics = town.metrics();
+        CompoundTag rows = metrics.getCompound("GolemObservations").copy();
+        CompoundTag row = new CompoundTag();
+        row.putUUID("Id", mob.getUUID());
+        row.putLong("Position", mob.blockPosition().asLong());
+        row.putBoolean("Qualified", !mob.isNoAi());
+        row.putFloat("Health", mob.getHealth());
+        row.putFloat("MaxHealth", mob.getMaxHealth());
+        row.putString("NameComponent", net.minecraft.network.chat.Component.Serializer.toJson(mob.getName()));
+        rows.put(mob.getUUID().toString(), row);
+        metrics.put("GolemObservations", rows);
+        town.metrics(metrics);
         mob.getPersistentData().putUUID(TOWN, town.id());
         data.changed();
     }

@@ -19,7 +19,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
-/** One food selection and extraction policy for residents and native recruit needs. */
+/** One food selection and extraction policy for residents. */
 public final class ResidentFoodService {
     private ResidentFoodService() { }
     public record Food(ItemStack stack, Supplier<ItemStack> extract, BlockPos storage, int priority, double distance,
@@ -67,7 +67,7 @@ public final class ResidentFoodService {
             var capability = SharedStorageService.handler(level, link); if (capability.isEmpty()) continue;
             double distance = mob.distanceToSqr(link.position().getX() + .5, link.position().getY() + .5, link.position().getZ() + .5);
             if (!allowTravel && distance > 6.25) continue;
-            // Recruits returns a pending AsyncPath: canReach() is false until its worker finishes.
+            // An asynchronous path can remain pending before its worker finishes.
             // Retain that exact path and let native navigation complete it; extraction still requires physical reach.
             var path = distance > 6.25 ? mob.getNavigation().createPath(link.position(), 2) : null;
             if (distance > 6.25 && (path == null || mob instanceof Villager && !path.canReach())) continue;

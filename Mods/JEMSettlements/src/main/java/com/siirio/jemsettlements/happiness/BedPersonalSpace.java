@@ -54,11 +54,7 @@ public final class BedPersonalSpace {
         CACHE.put(key, new Observation(now, result)); return result;
     }
     private static ResidentMood history(LivingEntity entity, SettlementSavedData data) {
-        if (entity instanceof Villager) return data.resident(entity.getUUID()).filter(ResidentMood::living).orElse(null);
-        return data.workforceEntity(entity.getUUID()).filter(row -> row.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT
-                && row.needsEnrolled() && row.settlementActive() && net.minecraftforge.fml.ModList.get().isLoaded("recruits")
-                && com.siirio.jemsettlements.compat.recruits.RecruitsAdapter.ownedBy(entity, row.ownerId()))
-                .map(row -> row.foodHistory()).orElse(null);
+        return entity instanceof Villager ? data.resident(entity.getUUID()).filter(ResidentMood::living).orElse(null) : null;
     }
     public static void refresh(LivingEntity entity, ResidentMood resident) {
         if (!(entity.level() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;

@@ -22,7 +22,6 @@ public final class DomainFeatures {
         result.putBoolean("roles", loaded("jem_roles"));
         result.putBoolean("professions", loaded("jem_professions"));
         result.putBoolean("settlements", loaded("jem_settlements"));
-        result.putBoolean("recruits", loaded("jem_settlements") && loaded("recruits"));
         // The Events route remains visible and supplies its native empty state when scheduling is disabled.
         result.putBoolean("events", com.siirio.jemserver.smp.SmpEnvironment.active(server));
         return result;

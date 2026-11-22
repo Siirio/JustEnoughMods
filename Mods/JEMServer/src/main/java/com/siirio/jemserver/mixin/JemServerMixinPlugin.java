@@ -34,6 +34,7 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
         if (mixinClassName.contains(".revive.")) return loaded("playerrevive");
         if (targetClassName.startsWith("com.github.L_Ender.cataclysm.")) return loaded("cataclysm");
         if (targetClassName.startsWith("net.unusual.block_factorys_bosses.")) return loaded("block_factorys_bosses");
+        if (targetClassName.startsWith("com.eternal_creations.archies_dino_mod.")) return loaded("ec_ad");
         if (targetClassName.startsWith("top.theillusivec4.curios.")) return loaded("curios");
         if (targetClassName.startsWith("de.maxhenkel.gravestone.")) return loaded("gravestone");
         if (targetClassName.startsWith("com.jack.gravestones.")) return loaded("jacksgravestones");

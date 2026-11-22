@@ -1754,528 +1754,6 @@
           "mechanic_sections": []
         },
         {
-          "id": "v2_biomes_h10_01",
-          "number": "20.01",
-          "title": "Отдать швартовы",
-          "branch": "sea",
-          "condition": "Сядь на когг, бриг, драккар или галеру.",
-          "purpose": "Отправься в море на настоящем корабле.",
-          "tip": "Построй корабль по рецепту, спусти на достаточно глубокую воду и сядь. Эти корпуса — варианты на выбор; достаточно одного.",
-          "after": [
-            "v2_biomes_field_01"
-          ],
-          "kinds": [
-            "mount"
-          ],
-          "collection": false,
-          "conditions": [
-            {
-              "action": "Board any Cog, Brigg, Drakkar or Galley.",
-              "quantity": "1 шт. / раз",
-              "fields": {
-                "Цель": "Cog (Small Ships); Brigg (Small Ships); Drakkar (Small Ships); Galley (Small Ships)",
-                "Фильтр": "По указанному типу; дополнительных условий нет.",
-                "Проверка": "EntityMountEvent",
-                "Храним": "Флаг или set/bitset типов транспорта/маунтов. Учитывается тип реально оседланной сущности, а не только видимый корпус транспорта."
-              },
-              "kind": "mount",
-              "resolved": [
-                {
-                  "source": "Cog (Small Ships)",
-                  "ids": [
-                    "smallships:cog"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:cog"
-                    ]
-                  }
-                },
-                {
-                  "source": "Brigg (Small Ships)",
-                  "ids": [
-                    "smallships:brigg"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:brigg"
-                    ]
-                  }
-                },
-                {
-                  "source": "Drakkar (Small Ships)",
-                  "ids": [
-                    "smallships:drakkar"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:drakkar"
-                    ]
-                  }
-                },
-                {
-                  "source": "Galley (Small Ships)",
-                  "ids": [
-                    "smallships:galley"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:galley"
-                    ]
-                  }
-                }
-              ]
-            }
-          ],
-          "technical": "Exact completion is defined by bindings. No optional advice is a hidden task. ",
-          "sources": [
-            "https://modrinth.com/mod/small-ships/version/2.0.0-b1.4"
-          ],
-          "reward": {
-            "number": "20.01",
-            "title": "Отдать швартовы",
-            "chapter": "tab-16",
-            "tier": "field",
-            "items": [
-              {
-                "id": "smallships:sail",
-                "count": 1,
-                "name": "Парус"
-              },
-              {
-                "id": "spawn:tuna_sandwich",
-                "count": 6,
-                "name": "Бутерброд с тунцом"
-              }
-            ],
-            "choice": [],
-            "xp": 50,
-            "claim": "once",
-            "choice_mode": null,
-            "reason": "The remaining rewards support this quest's native activity.",
-            "tier_label": "Вылазка"
-          },
-          "ftb_id": "20189AD31EEBE0F2",
-          "position": [
-            8,
-            -2.8
-          ],
-          "bindings": [
-            {
-              "kind": "mount",
-              "targets": [
-                {
-                  "ids": [
-                    "smallships:cog"
-                  ]
-                },
-                {
-                  "ids": [
-                    "smallships:brigg"
-                  ]
-                },
-                {
-                  "ids": [
-                    "smallships:drakkar"
-                  ]
-                },
-                {
-                  "ids": [
-                    "smallships:galley"
-                  ]
-                }
-              ],
-              "count": 1,
-              "distinct": 0
-            }
-          ],
-          "required_mods": [],
-          "icon": "smallships:sail",
-          "origin_chapter": "tab-20",
-          "localization": {
-            "en_us": {
-              "title": "All Aboard",
-              "condition": "Board any Cog, Brigg, Drakkar or Galley.",
-              "purpose": "Open sea travel with a real ship.",
-              "tip": "Build a ship using its recipe, launch it in sufficient water and board it. The hull types are alternatives; one is enough.",
-              "reward": "1 × Sail; 6 × Tuna Sandwich; 50 XP."
-            },
-            "ru_ru": {
-              "title": "Отдать швартовы",
-              "condition": "Сядь на когг, бриг, драккар или галеру.",
-              "purpose": "Отправься в море на настоящем корабле.",
-              "tip": "Построй корабль по рецепту, спусти на достаточно глубокую воду и сядь. Эти корпуса — варианты на выбор; достаточно одного.",
-              "reward": "1 × Парус; 6 × Бутерброд с тунцом; 50 опыта."
-            }
-          },
-          "layout_group": "sea",
-          "layout_source_chapter": "tab-20",
-          "status": "active",
-          "design_metadata": {
-            "stage": "early",
-            "lesson": "Open sea travel with a real ship.",
-            "reward_purpose": "A spare sail and voyage food support the next sailing trip.",
-            "old_sources": [
-              "H10.01"
-            ],
-            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
-            "detection_evidence": "Existing BookRules/BookEvents binding mount; source H10.01",
-            "visual_route": "sea",
-            "hard_dependencies": [],
-            "recommended_after": [
-              "field_01"
-            ]
-          },
-          "design": {
-            "exact_predecessor": "H10.01",
-            "migration_equivalence": "EXACT",
-            "coverage_keys": [],
-            "visual_group": "watercraft"
-          },
-          "native_options": {
-            "size": 1.4
-          },
-          "mechanic_sections": []
-        },
-        {
-          "id": "v2_biomes_h10_02",
-          "number": "20.02",
-          "title": "Место в трюме",
-          "branch": "sea",
-          "condition": "Крадучись нажми ПКМ по кораблю пустой основной рукой.",
-          "purpose": "Разберись с доступом к грузу перед дальним рейсом.",
-          "tip": "Подойдёт прежний корабль. Проверяется взаимодействие пустой рукой, а не содержимое трюма и не доставка груза.",
-          "after": [
-            "v2_biomes_h10_01"
-          ],
-          "kinds": [
-            "interact_entity"
-          ],
-          "collection": false,
-          "conditions": [
-            {
-              "action": "Sneak-right-click a ship with an empty main hand.",
-              "quantity": "1 шт. / раз",
-              "fields": {
-                "Цель": "Cog (Small Ships); Brigg (Small Ships); Drakkar (Small Ships); Galley (Small Ships)",
-                "Фильтр": "empty_main_hand: True; sneaking: True; Рука: main_hand",
-                "Проверка": "PlayerInteractEvent.EntityInteract / EntityInteractSpecific",
-                "Храним": "Флаг или коллекция типов. Никаких наблюдений за дальнейшим поведением, таймеров доверия и поиска стаи."
-              },
-              "kind": "interact_entity",
-              "resolved": [
-                {
-                  "source": "Cog (Small Ships)",
-                  "ids": [
-                    "smallships:cog"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:cog"
-                    ]
-                  }
-                },
-                {
-                  "source": "Brigg (Small Ships)",
-                  "ids": [
-                    "smallships:brigg"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:brigg"
-                    ]
-                  }
-                },
-                {
-                  "source": "Drakkar (Small Ships)",
-                  "ids": [
-                    "smallships:drakkar"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:drakkar"
-                    ]
-                  }
-                },
-                {
-                  "source": "Galley (Small Ships)",
-                  "ids": [
-                    "smallships:galley"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:galley"
-                    ]
-                  }
-                }
-              ]
-            }
-          ],
-          "technical": "Exact completion is defined by bindings. No optional advice is a hidden task. Raw right-click attempts are not success proof.",
-          "sources": [
-            "https://modrinth.com/mod/small-ships/version/2.0.0-b1.4"
-          ],
-          "reward": {
-            "number": "20.02",
-            "title": "Место в трюме",
-            "chapter": "tab-16",
-            "tier": "field",
-            "items": [
-              {
-                "id": "primal:straw_basket",
-                "count": 2,
-                "name": "Straw Basket"
-              },
-              {
-                "id": "minecraft:lead",
-                "count": 2,
-                "name": "Lead"
-              }
-            ],
-            "choice": [],
-            "xp": 28,
-            "claim": "once",
-            "choice_mode": null,
-            "reason": "The remaining rewards support this quest's native activity.",
-            "tier_label": "Вылазка"
-          },
-          "ftb_id": "2B7D492B392E2890",
-          "position": [
-            10.3,
-            -2.8
-          ],
-          "bindings": [
-            {
-              "kind": "interact_entity",
-              "targets": [
-                {
-                  "ids": [
-                    "smallships:cog"
-                  ]
-                },
-                {
-                  "ids": [
-                    "smallships:brigg"
-                  ]
-                },
-                {
-                  "ids": [
-                    "smallships:drakkar"
-                  ]
-                },
-                {
-                  "ids": [
-                    "smallships:galley"
-                  ]
-                }
-              ],
-              "count": 1,
-              "distinct": 0,
-              "emptyHand": true,
-              "sneaking": true
-            }
-          ],
-          "required_mods": [],
-          "icon": "handcrafted:oak_cupboard",
-          "origin_chapter": "tab-20",
-          "localization": {
-            "en_us": {
-              "title": "Room in the Hold",
-              "condition": "Sneak-right-click a ship with an empty main hand.",
-              "purpose": "Learn the cargo interaction before a long voyage.",
-              "tip": "Use the same ship as before. This goal checks the empty-hand interaction, not the contents of the hold or a completed delivery.",
-              "reward": "2 × Straw Basket; 2 × Lead; 28 XP."
-            },
-            "ru_ru": {
-              "title": "Место в трюме",
-              "condition": "Крадучись нажми ПКМ по кораблю пустой основной рукой.",
-              "purpose": "Разберись с доступом к грузу перед дальним рейсом.",
-              "tip": "Подойдёт прежний корабль. Проверяется взаимодействие пустой рукой, а не содержимое трюма и не доставка груза.",
-              "reward": "2 × Straw Basket; 2 × Lead; 28 опыта."
-            }
-          },
-          "layout_group": "sea",
-          "layout_source_chapter": "tab-20",
-          "status": "active",
-          "design_metadata": {
-            "stage": "early",
-            "lesson": "Learn the cargo interaction before a long voyage.",
-            "reward_purpose": "Baskets organize cargo; leads support native passenger-handling interactions.",
-            "old_sources": [
-              "H10.02"
-            ],
-            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
-            "detection_evidence": "Existing BookRules/BookEvents binding interact_entity; source H10.02",
-            "visual_route": "sea",
-            "hard_dependencies": [],
-            "recommended_after": [
-              "H10.01"
-            ]
-          },
-          "design": {
-            "exact_predecessor": "H10.02",
-            "migration_equivalence": "EXACT",
-            "coverage_keys": [],
-            "visual_group": "watercraft"
-          },
-          "native_options": {
-            "size": 1.4
-          },
-          "mechanic_sections": []
-        },
-        {
-          "id": "v2_biomes_h10_05",
-          "number": "20.05",
-          "title": "Небольшой бортовой залп",
-          "branch": "sea",
-          "condition": "Получи корабельную пушку и одно пушечное ядро.",
-          "purpose": "Подготовь корабль к опасным плаваниям.",
-          "tip": "Используй рецепты пушки и боеприпасов, затем изучи установку на корабль. Выстрел и попадание здесь не проверяются.",
-          "after": [
-            "v2_biomes_h10_02"
-          ],
-          "kinds": [
-            "inventory"
-          ],
-          "collection": true,
-          "conditions": [
-            {
-              "action": "Obtain one ship cannon and one cannonball.",
-              "quantity": "2 разных типов",
-              "fields": {
-                "Цель": "Cannon (Small Ships); Cannonball (Small Ships)",
-                "Фильтр": "consume: False",
-                "Проверка": "FTB Quests · Item task",
-                "Храним": "Штатный прогресс FTB. Для фиксированного набора — по Item task на каждый тип, в одном квесте. Один Item task с общим фильтром и count не различает типы: для «N разных из списка» нужен маленький set/bitset либо явный фиксированный набор."
-              },
-              "kind": "inventory",
-              "resolved": [
-                {
-                  "source": "Cannon (Small Ships)",
-                  "ids": [
-                    "smallships:cannon"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:cannon"
-                    ]
-                  }
-                },
-                {
-                  "source": "Cannonball (Small Ships)",
-                  "ids": [
-                    "block_factorys_bosses:cannonball"
-                  ],
-                  "match": {
-                    "ids": [
-                      "smallships:cannon_ball"
-                    ]
-                  }
-                }
-              ]
-            }
-          ],
-          "technical": "Exact completion is defined by bindings. No optional advice is a hidden task. ",
-          "sources": [
-            "https://modrinth.com/mod/small-ships/version/2.0.0-b1.4"
-          ],
-          "reward": {
-            "number": "20.05",
-            "title": "Небольшой бортовой залп",
-            "chapter": "tab-16",
-            "tier": "expert",
-            "items": [
-              {
-                "id": "smallships:cannon_ball",
-                "count": 24,
-                "name": "Пушечное ядро"
-              },
-              {
-                "id": "smallships:sail",
-                "count": 1,
-                "name": "Парус"
-              }
-            ],
-            "choice": [],
-            "xp": 70,
-            "claim": "once",
-            "choice_mode": null,
-            "reason": "The remaining rewards support this quest's native activity.",
-            "tier_label": "Вылазка"
-          },
-          "ftb_id": "2D935106076B7931",
-          "position": [
-            12.6,
-            -2.8
-          ],
-          "bindings": [
-            {
-              "kind": "inventory",
-              "targets": [
-                {
-                  "ids": [
-                    "smallships:cannon"
-                  ]
-                },
-                {
-                  "ids": [
-                    "smallships:cannon_ball"
-                  ]
-                }
-              ],
-              "count": 2,
-              "distinct": 2
-            }
-          ],
-          "required_mods": [],
-          "icon": "smallships:cannon",
-          "origin_chapter": "tab-20",
-          "localization": {
-            "en_us": {
-              "title": "A Little Broadside",
-              "condition": "Obtain one ship cannon and one cannonball.",
-              "purpose": "Prepare a ship for more dangerous voyages.",
-              "tip": "Use the native cannon and ammunition recipes, then inspect how the cannon mounts on your ship. Firing and hitting a target are not checked here.",
-              "reward": "24 × Cannon Ball; 1 × Sail; 70 XP."
-            },
-            "ru_ru": {
-              "title": "Небольшой бортовой залп",
-              "condition": "Получи корабельную пушку и одно пушечное ядро.",
-              "purpose": "Подготовь корабль к опасным плаваниям.",
-              "tip": "Используй рецепты пушки и боеприпасов, затем изучи установку на корабль. Выстрел и попадание здесь не проверяются.",
-              "reward": "24 × Пушечное ядро; 1 × Парус; 70 опыта."
-            }
-          },
-          "layout_group": "sea",
-          "layout_source_chapter": "tab-20",
-          "status": "active",
-          "design_metadata": {
-            "stage": "mid",
-            "lesson": "Prepare a ship for more dangerous voyages.",
-            "reward_purpose": "A useful ammunition reserve makes the cannon you acquired worth trying.",
-            "old_sources": [
-              "H10.05"
-            ],
-            "migration_action": "retain_compatible_objective_preserve_receipts_no_topup",
-            "detection_evidence": "Existing BookRules/BookEvents binding inventory; source H10.05",
-            "visual_route": "sea",
-            "hard_dependencies": [],
-            "recommended_after": [
-              "H10.02"
-            ]
-          },
-          "design": {
-            "exact_predecessor": "H10.05",
-            "migration_equivalence": "EXACT",
-            "coverage_keys": [],
-            "visual_group": "watercraft"
-          },
-          "native_options": {
-            "size": 1.4
-          },
-          "mechanic_sections": []
-        },
-        {
           "id": "v2_biomes_wo26",
           "number": "20.33",
           "title": "Цвета по ветру",
@@ -2283,9 +1761,7 @@
           "condition": "Нажми ПКМ по Hullback с белым знаменем в основной руке.",
           "purpose": "Открой корабельное взаимодействие помимо крафта.",
           "tip": "Ищи судно среди морского содержимого мира. Проверяется взаимодействие знаменем; успешная смена облика следует обычным правилам судна.",
-          "after": [
-            "v2_biomes_h10_05"
-          ],
+          "after": [],
           "kinds": [
             "interact_entity"
           ],
@@ -5744,13 +5220,13 @@
           "number": "21.15",
           "title": "Туда, тогда и обратно",
           "branch": "finale",
-          "condition": "Посети палеоген, неоген и плейстоцен, затем прокатись на корабле и субмарине.",
-          "purpose": "Объедини путешествия во времени и морскую разведку в одну экспедицию.",
-          "tip": "Выполняй условия в любом порядке. Это итог разных экспедиций, а не требование пройти все ветки.",
+          "condition": "Посети палеоген, неоген и плейстоцен, затем прокатись на Hullback и субмарине.",
+          "purpose": "Объедини путешествия во времени и два разных способа морской разведки в одну экспедицию.",
+          "tip": "Выполняй условия в любом порядке. Hullback отвечает за живое надводное путешествие, а субмарина — за управляемое исследование глубин.",
           "after": [
             "v2_biomes_uj13",
             "v3_cave_submarine_restore",
-            "v2_biomes_h10_01"
+            "v2_biomes_wo26"
           ],
           "kinds": [
             "dimension",
@@ -5791,22 +5267,22 @@
                 "targets": [
                   {
                     "ids": [
-                      "smallships:cog"
+                      "whaleborne:hullback"
                     ]
                   },
                   {
                     "ids": [
-                      "smallships:brigg"
+                      "whaleborne:hullback"
                     ]
                   },
                   {
                     "ids": [
-                      "smallships:drakkar"
+                      "whaleborne:hullback"
                     ]
                   },
                   {
                     "ids": [
-                      "smallships:galley"
+                      "whaleborne:hullback"
                     ]
                   }
                 ],
@@ -5889,22 +5365,22 @@
               "targets": [
                 {
                   "ids": [
-                    "smallships:cog"
+                    "whaleborne:hullback"
                   ]
                 },
                 {
                   "ids": [
-                    "smallships:brigg"
+                    "whaleborne:hullback"
                   ]
                 },
                 {
                   "ids": [
-                    "smallships:drakkar"
+                    "whaleborne:hullback"
                   ]
                 },
                 {
                   "ids": [
-                    "smallships:galley"
+                    "whaleborne:hullback"
                   ]
                 }
               ],
@@ -5930,14 +5406,14 @@
           "localization": {
             "en_us": {
               "title": "There, Then, and Back Again",
-              "condition": "Visit Paleogene, Neogene and Pleistocene, then board a ship and a submarine.",
+              "condition": "Visit Paleogene, Neogene and Pleistocene, then ride a Hullback and a submarine.",
               "purpose": "Bring time travel and sea travel into one expedition career.",
               "tip": "Complete these in any order. This is a representative expedition finale, not a demand to finish every branch.",
               "reward": "1 × Extendo Grip; 12 × Ender Mint Tea; 400 XP."
             },
             "ru_ru": {
               "title": "Туда, тогда и обратно",
-              "condition": "Посети палеоген, неоген и плейстоцен, затем прокатись на корабле и субмарине.",
+              "condition": "Посети палеоген, неоген и плейстоцен, затем прокатись на Hullback и субмарине.",
               "purpose": "Объедини путешествия во времени и морскую разведку в одну экспедицию.",
               "tip": "Выполняй условия в любом порядке. Это итог разных экспедиций, а не требование пройти все ветки.",
               "reward": "1 × Длиннохват; 12 × Ender Mint Tea; 400 опыта."
@@ -9069,396 +8545,6 @@
           "sources": []
         },
         {
-          "id": "v3_world_ship_sailing",
-          "number": "v3_world_ship_sailing",
-          "chapter_id": "tab-16",
-          "title": "Попутного ветра",
-          "condition": "Пройди под поднятыми парусами не менее 64 блоков по воде на корабле.",
-          "purpose": "Запасной парус, поводки и провиант помогают готовить следующий грузовой рейс.",
-          "tip": "Спусти корабль на просторную воду, займи место рулевого и подними паруса назначенной клавишей. Груз влияет на ход; изнутри можно подсаживать совместимых существ, снаружи крадучись открывают багаж. Краситель меняет парус, бирка — имя.",
-          "branch": "tab-16",
-          "after": [
-            "v2_biomes_h10_01"
-          ],
-          "kinds": [
-            "advancement"
-          ],
-          "collection": false,
-          "conditions": [
-            {
-              "kind": "advancement",
-              "action": "Sail at least 64 blocks across water with raised sails.",
-              "quantity": 1
-            }
-          ],
-          "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
-          "bindings": [
-            {
-              "kind": "advancement",
-              "targets": [],
-              "count": 1,
-              "distinct": 0,
-              "argument": "jem_advancements:quest_v3/v3_world_ship_sailing"
-            }
-          ],
-          "ftb_id": "3DDD492223057A13",
-          "position": [
-            8,
-            -0.5
-          ],
-          "required_mods": [
-            "smallships"
-          ],
-          "icon": "smallships:oak_cog",
-          "status": "active",
-          "reward": {
-            "tier": "field",
-            "items": [
-              {
-                "id": "smallships:sail",
-                "count": 1,
-                "name": "Sail"
-              },
-              {
-                "id": "minecraft:lead",
-                "count": 4,
-                "name": "Lead"
-              },
-              {
-                "id": "spawn:tuna_sandwich",
-                "count": 6,
-                "name": "Tuna Sandwich"
-              }
-            ],
-            "choice": [],
-            "xp": 40,
-            "claim": "once",
-            "reason": "The remaining rewards support this quest's native activity.",
-            "choice_mode": null
-          },
-          "localization": {
-            "ru_ru": {
-              "title": "Попутного ветра",
-              "condition": "Пройди под поднятыми парусами не менее 64 блоков по воде на корабле.",
-              "purpose": "Запасной парус, поводки и провиант помогают готовить следующий грузовой рейс.",
-              "tip": "Спусти корабль на просторную воду, займи место рулевого и подними паруса назначенной клавишей. Груз влияет на ход; изнутри можно подсаживать совместимых существ, снаружи крадучись открывают багаж. Краситель меняет парус, бирка — имя.",
-              "reward": "1 × Парус; 4 × Lead; 6 × Бутерброд с тунцом; 40 опыта."
-            },
-            "en_us": {
-              "title": "Fair Winds",
-              "condition": "Sail at least 64 blocks across water with raised sails.",
-              "purpose": "A spare sail, leads and provisions support the next transport voyage.",
-              "tip": "Launch into open water, take the controller seat and raise sails with the configured key. Cargo affects handling. Compatible creatures can board; sneak-use from outside opens storage. Dye changes sails and Name Tags change the name.",
-              "reward": "1 × Sail; 4 × Lead; 6 × Tuna Sandwich; 40 XP."
-            }
-          },
-          "design": {
-            "stage": "field",
-            "lesson": "Пройди под поднятыми парусами не менее 64 блоков по воде на корабле.",
-            "old_sources": [],
-            "migration_equivalence": "NEW",
-            "exact_predecessor": null,
-            "reward_purpose": "A spare sail, leads and provisions support the next transport voyage.",
-            "visual_route": "vehicles",
-            "coverage_keys": [
-              "smallships:customize",
-              "smallships:sail",
-              "smallships:ship_passengers",
-              "streamsreflowing:downstream_navigation",
-              "streamsreflowing:river_current"
-            ],
-            "requires_hook": true,
-            "hook_contract": {
-              "advancement": "jem_advancements:quest_v3/v3_world_ship_sailing",
-              "action": "v3_world_ship_sailing",
-              "success_condition": "Use native ship controller and sail state, accepted movement over water for same ship and actor; >=64 net horizontal blocks since native sail-raise, no creative/teleport. River-current support is optional context and not assumed enabled.",
-              "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
-            },
-            "visual_group": "watercraft"
-          },
-          "mechanic_sections": [
-            {
-              "keys": [
-                "smallships:sail"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Спусти корабль на просторную воду, займи место рулевого и подними паруса назначенной клавишей. Груз влияет на ход; изнутри можно подсаживать совместимых существ, снаружи крадучись открывают багаж. Краситель меняет парус, бирка — имя.",
-              "text_en": "Launch into open water, take the controller seat and raise sails with the configured key. Cargo affects handling. Compatible creatures can board; sneak-use from outside opens storage. Dye changes sails and Name Tags change the name."
-            },
-            {
-              "keys": [
-                "smallships:customize"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Спусти корабль на просторную воду, займи место рулевого и подними паруса назначенной клавишей. Груз влияет на ход; изнутри можно подсаживать совместимых существ, снаружи крадучись открывают багаж. Краситель меняет парус, бирка — имя.",
-              "text_en": "Launch into open water, take the controller seat and raise sails with the configured key. Cargo affects handling. Compatible creatures can board; sneak-use from outside opens storage. Dye changes sails and Name Tags change the name."
-            },
-            {
-              "keys": [
-                "smallships:ship_passengers"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Спусти корабль на просторную воду, займи место рулевого и подними паруса назначенной клавишей. Груз влияет на ход; изнутри можно подсаживать совместимых существ, снаружи крадучись открывают багаж. Краситель меняет парус, бирка — имя.",
-              "text_en": "Launch into open water, take the controller seat and raise sails with the configured key. Cargo affects handling. Compatible creatures can board; sneak-use from outside opens storage. Dye changes sails and Name Tags change the name."
-            },
-            {
-              "keys": [
-                "streamsreflowing:downstream_navigation"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Ручьи следуют рельефу через озёра разной высоты к большим рекам и морю. Проследуй вниз по водосбору, чтобы найти удобный маршрут; на мелком ручье большой корабль может не поместиться.",
-              "text_en": "Streams follow the terrain through lakes at different elevations toward larger rivers and the sea. Follow the downstream basin to plan a route; a large ship may not fit a shallow stream."
-            },
-            {
-              "keys": [
-                "streamsreflowing:river_current"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Если сервер включил направленное течение, оно несёт лодки и брошенные предметы вниз по реке. Проверь направление на безопасном участке перед грузовым рейсом. Направленное течение и передача импульса воды могут отключаться отдельно, поэтому наличие русла ещё не гарантирует движение без гребли.",
-              "text_en": "When enabled by the server, directional river currents carry boats and loose items downstream. Check the direction in a safe stretch before a cargo trip. Directional flow and water momentum can be disabled separately, so a generated river does not guarantee passive travel."
-            }
-          ],
-          "native_options": {
-            "size": 1.4
-          },
-          "sources": []
-        },
-        {
-          "id": "v3_world_ship_repair",
-          "number": "v3_world_ship_repair",
-          "chapter_id": "tab-16",
-          "title": "Ещё держится",
-          "condition": "Восстанови хотя бы одну единицу здоровья повреждённого корабля штатным ремонтом.",
-          "purpose": "Ядра открывают практику бортовой стрельбы после освоения обслуживания корабля.",
-          "tip": "Для ремонта нужны железные самородки и деревянные доски; действуй по кораблю снаружи. Не требуется специально повреждать его ради задания.",
-          "branch": "tab-16",
-          "after": [
-            "v3_world_ship_sailing"
-          ],
-          "kinds": [
-            "advancement"
-          ],
-          "collection": false,
-          "conditions": [
-            {
-              "kind": "advancement",
-              "action": "Restore positive health to a damaged ship through native repair.",
-              "quantity": 1
-            }
-          ],
-          "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
-          "bindings": [
-            {
-              "kind": "advancement",
-              "targets": [],
-              "count": 1,
-              "distinct": 0,
-              "argument": "jem_advancements:quest_v3/v3_world_ship_repair"
-            }
-          ],
-          "ftb_id": "3BEC1C6384142B53",
-          "position": [
-            10.3,
-            -0.5
-          ],
-          "required_mods": [
-            "smallships"
-          ],
-          "icon": "minecraft:iron_nugget",
-          "status": "active",
-          "reward": {
-            "tier": "field",
-            "items": [
-              {
-                "id": "smallships:cannon_ball",
-                "count": 16,
-                "name": "Cannon Ball"
-              },
-              {
-                "id": "minecraft:iron_nugget",
-                "count": 24,
-                "name": "Iron Nugget"
-              }
-            ],
-            "choice": [],
-            "xp": 40,
-            "claim": "once",
-            "reason": "The remaining rewards support this quest's native activity.",
-            "choice_mode": null
-          },
-          "localization": {
-            "ru_ru": {
-              "title": "Ещё держится",
-              "condition": "Восстанови хотя бы одну единицу здоровья повреждённого корабля штатным ремонтом.",
-              "purpose": "Ядра открывают практику бортовой стрельбы после освоения обслуживания корабля.",
-              "tip": "Для ремонта нужны железные самородки и деревянные доски; действуй по кораблю снаружи. Не требуется специально повреждать его ради задания.",
-              "reward": "16 × Пушечное ядро; 24 × Iron Nugget; 40 опыта."
-            },
-            "en_us": {
-              "title": "Still Afloat",
-              "condition": "Restore positive health to a damaged ship through native repair.",
-              "purpose": "Cannonballs open a gunnery lesson after learning ship maintenance.",
-              "tip": "Repair uses Iron Nuggets with Wooden Planks available; interact from outside. You do not need to damage a ship deliberately for this quest.",
-              "reward": "16 × Cannon Ball; 24 × Iron Nugget; 40 XP."
-            }
-          },
-          "design": {
-            "stage": "field",
-            "lesson": "Восстанови хотя бы одну единицу здоровья повреждённого корабля штатным ремонтом.",
-            "old_sources": [],
-            "migration_equivalence": "NEW",
-            "exact_predecessor": null,
-            "reward_purpose": "Cannonballs open a gunnery lesson after learning ship maintenance.",
-            "visual_route": "vehicles",
-            "coverage_keys": [
-              "smallships:repair"
-            ],
-            "requires_hook": true,
-            "hook_contract": {
-              "advancement": "jem_advancements:quest_v3/v3_world_ship_repair",
-              "action": "v3_world_ship_repair",
-              "success_condition": "Native repair succeeds with positive health delta and actual required resource debit for actor; no award on full-health vessel or canceled interaction.",
-              "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
-            },
-            "visual_group": "watercraft"
-          },
-          "mechanic_sections": [
-            {
-              "keys": [
-                "smallships:repair"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Для ремонта нужны железные самородки и деревянные доски; действуй по кораблю снаружи. Не требуется специально повреждать его ради задания.",
-              "text_en": "Repair uses Iron Nuggets with Wooden Planks available; interact from outside. You do not need to damage a ship deliberately for this quest."
-            }
-          ],
-          "native_options": {
-            "size": 1.4
-          },
-          "sources": []
-        },
-        {
-          "id": "v3_world_ship_cannon",
-          "number": "v3_world_ship_cannon",
-          "chapter_id": "tab-16",
-          "title": "Борт к бою",
-          "condition": "Нанеси корабельным пушечным ядром положительный урон враждебному существу.",
-          "purpose": "Боезапас и защитные эликсиры поддерживают следующую опасную высадку.",
-          "tip": "Установи пушку на совместимый корабль и положи ядра в его инвентарь. Стреляй через штатное управление бортом; обычный бросок предмета не считается.",
-          "branch": "tab-16",
-          "after": [
-            "v3_world_ship_repair"
-          ],
-          "kinds": [
-            "advancement"
-          ],
-          "collection": false,
-          "conditions": [
-            {
-              "kind": "advancement",
-              "action": "Deal positive damage to a hostile creature with a ship cannonball.",
-              "quantity": 1
-            }
-          ],
-          "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
-          "bindings": [
-            {
-              "kind": "advancement",
-              "targets": [],
-              "count": 1,
-              "distinct": 0,
-              "argument": "jem_advancements:quest_v3/v3_world_ship_cannon"
-            }
-          ],
-          "ftb_id": "3736676D88CC0E1E",
-          "position": [
-            12.6,
-            -0.5
-          ],
-          "required_mods": [
-            "smallships"
-          ],
-          "icon": "smallships:cannon",
-          "status": "active",
-          "reward": {
-            "tier": "field",
-            "items": [
-              {
-                "id": "smallships:cannon_ball",
-                "count": 32,
-                "name": "Cannon Ball"
-              },
-              {
-                "id": "minecraft:iron_ingot",
-                "count": 3,
-                "name": "Iron Ingot"
-              }
-            ],
-            "choice": [],
-            "xp": 40,
-            "claim": "once",
-            "reason": "The remaining rewards support this quest's native activity.",
-            "choice_mode": null
-          },
-          "localization": {
-            "ru_ru": {
-              "title": "Борт к бою",
-              "condition": "Нанеси корабельным пушечным ядром положительный урон враждебному существу.",
-              "purpose": "Боезапас и защитные эликсиры поддерживают следующую опасную высадку.",
-              "tip": "Установи пушку на совместимый корабль и положи ядра в его инвентарь. Стреляй через штатное управление бортом; обычный бросок предмета не считается.",
-              "reward": "Награда: 32× Cannon Ball, 3× Iron Ingot; 40 XP."
-            },
-            "en_us": {
-              "title": "Broadside!",
-              "condition": "Deal positive damage to a hostile creature with a ship cannonball.",
-              "purpose": "Ammunition and defensive elixirs support the next dangerous landing.",
-              "tip": "Install a cannon on a compatible ship and put cannonballs in its inventory. Use native broadside controls; dropping the item does not count.",
-              "reward": "Reward: 32× Cannon Ball, 3× Iron Ingot; 40 XP."
-            }
-          },
-          "design": {
-            "stage": "field",
-            "lesson": "Нанеси корабельным пушечным ядром положительный урон враждебному существу.",
-            "old_sources": [],
-            "migration_equivalence": "NEW",
-            "exact_predecessor": null,
-            "reward_purpose": "Ammunition and defensive elixirs support the next dangerous landing.",
-            "visual_route": "vehicles",
-            "coverage_keys": [
-              "smallships:cannon"
-            ],
-            "requires_hook": true,
-            "hook_contract": {
-              "advancement": "jem_advancements:quest_v3/v3_world_ship_cannon",
-              "action": "v3_world_ship_cannon",
-              "success_condition": "Native cannon projectile must identify its ship and actual firing actor; award on positive finite damage to Enemy, not player, not inventory acquisition or dry fire.",
-              "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
-            },
-            "visual_group": "watercraft"
-          },
-          "mechanic_sections": [
-            {
-              "keys": [
-                "smallships:cannon"
-              ],
-              "title_ru": "Возможности рядом",
-              "title_en": "Related possibilities",
-              "text_ru": "Установи пушку на совместимый корабль и положи ядра в его инвентарь. Стреляй через штатное управление бортом; обычный бросок предмета не считается.",
-              "text_en": "Install a cannon on a compatible ship and put cannonballs in its inventory. Use native broadside controls; dropping the item does not count."
-            }
-          ],
-          "native_options": {
-            "size": 1.4
-          },
-          "sources": []
-        },
-        {
           "id": "v3_world_ruins",
           "number": "v3_world_ruins",
           "chapter_id": "tab-16",
@@ -9772,7 +8858,7 @@
           "tip": "Надводные обломки и редкие глубокие постройки — разные маршруты. Подготовь воздух и путь наверх; редкий город не обязателен.",
           "branch": "tab-16",
           "after": [
-            "v3_world_ship_sailing"
+            "v2_biomes_wo26"
           ],
           "kinds": [
             "advancement"
@@ -11343,7 +10429,7 @@
           "v2_biomes_field_01",
           "v2_bio_scenic_detour"
         ],
-        "layout_policy": "Чёткая карта экспедиций: вводный маршрут и природные материалы сверху, отдельный пещерный ромб по центру; прошлые эпохи слева, корабли и биплан справа; нижняя полоса делится на Нижний мир, океанские экспедиции и ясно отделённый финал. Внутри районов короткие линии без пересечений; между районами оставлены широкие проходы.",
+        "layout_policy": "Чёткая карта экспедиций: вводный маршрут и природные материалы сверху, отдельный пещерный ромб по центру; прошлые эпохи слева, Hullback и биплан справа; нижняя полоса делится на Нижний мир, океанские экспедиции и ясно отделённый финал. Внутри районов короткие линии без пересечений; между районами оставлены широкие проходы.",
         "contracts": "integration/success-contracts.json and integration/advancements.json are the single generated detector/resource ledger; per-card hook_contract fixes authored new success semantics.",
         "visual_entry_ids": [
           "v2_biomes_field_01",
@@ -11463,13 +10549,8 @@
           "title_ru": "Под парусом",
           "title_en": "Under sail",
           "quest_ids": [
-            "v2_biomes_h10_01",
-            "v2_biomes_h10_02",
-            "v2_biomes_h10_05",
-            "v3_world_ship_sailing",
-            "v3_world_ship_repair",
-            "v3_world_ship_cannon",
-            "v2_biomes_wo26"
+            "v2_biomes_wo26",
+            "v3_world_ocean_ruins"
           ],
           "bounds": [
             6.75,
@@ -11716,33 +10797,8 @@
           "kind": "route"
         },
         {
-          "from": "v2_biomes_h10_01",
-          "to": "v2_biomes_h10_02",
-          "kind": "branch"
-        },
-        {
-          "from": "v2_biomes_h10_02",
-          "to": "v2_biomes_h10_05",
-          "kind": "branch"
-        },
-        {
-          "from": "v2_biomes_h10_01",
-          "to": "v3_world_ship_sailing",
-          "kind": "route"
-        },
-        {
-          "from": "v3_world_ship_sailing",
-          "to": "v3_world_ship_repair",
-          "kind": "branch"
-        },
-        {
-          "from": "v3_world_ship_repair",
-          "to": "v3_world_ship_cannon",
-          "kind": "branch"
-        },
-        {
-          "from": "v3_world_ship_sailing",
-          "to": "v2_biomes_wo26",
+          "from": "v2_biomes_wo26",
+          "to": "v3_world_ocean_ruins",
           "kind": "route"
         },
         {
@@ -81756,8 +80812,8 @@
             11
           ],
           "required_mods": [],
-          "icon": "recruits:recruit_shield_block",
-          "status": "active",
+          "icon": "minecraft:shield",
+          "status": "retired",
           "reward": {
             "tier": "field",
             "items": [
@@ -81899,8 +80955,8 @@
             11
           ],
           "required_mods": [],
-          "icon": "recruits:held_banner_item",
-          "status": "active",
+          "icon": "minecraft:white_banner",
+          "status": "retired",
           "reward": {
             "tier": "field",
             "items": [
@@ -93084,7 +92140,7 @@
             "guardvillagers"
           ],
           "icon": "xtraarrows:iron_arrow",
-          "status": "active",
+          "status": "retired",
           "reward": {
             "tier": "field",
             "items": [
@@ -93956,10 +93012,7 @@
           "title_ru": "Поддержка и отряд",
           "title_en": "Support and company",
           "quest_ids": [
-            "v2_fight_guard_support",
-            "v3_pet_first_recruit",
-            "v3_pet_clear_orders",
-            "v3_combat_guard_team"
+            "v2_fight_guard_support"
           ],
           "layout_shape": "short_line",
           "bounds": [
@@ -94412,11 +93465,6 @@
           "from": "v3_combat_beast_witch_doctors",
           "to": "v3_combat_bogged_stalker",
           "kind": "parallel_hunt_options"
-        },
-        {
-          "from": "v3_pet_first_recruit",
-          "to": "v3_pet_clear_orders",
-          "kind": "recommendation_only"
         },
         {
           "from": "v3_combat_trial_clear",

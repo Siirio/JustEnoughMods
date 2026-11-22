@@ -21,7 +21,7 @@ public final class SmpSidebar {
     }
     private boolean available(String tab) {
         String feature = tab.equals("market") ? "economy" : tab;
-        return !java.util.Set.of("economy", "roles", "professions", "settlements", "recruits", "events", "prizes").contains(feature)
+        return !java.util.Set.of("economy", "roles", "professions", "settlements", "events", "prizes").contains(feature)
                 || features.getBoolean(feature);
     }
     public void layout(int x, int y, int width, int availableHeight) {

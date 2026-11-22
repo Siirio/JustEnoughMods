@@ -12,7 +12,7 @@ enum CatalogCategory {
     WEAPON_MELEE("gui.jemcompat.jei.weapon_melee", "minecraft:iron_sword"),
     WEAPON_SHIELDS("gui.jemcompat.jei.weapon_shields", "minecraft:shield"),
     WEAPON_SMITHING_TEMPLATES("gui.jemcompat.jei.weapon_smithing_templates", "minecraft:netherite_upgrade_smithing_template"),
-    WEAPON_TRAINING("gui.jemcompat.jei.weapon_training", "recruits:recruit_block"),
+    WEAPON_TRAINING("gui.jemcompat.jei.weapon_training", "minecraft:target"),
     WEARABLES("gui.jemcompat.jei.wearables", "minecraft:netherite_chestplate"),
     WEARABLE_ARMOR("gui.jemcompat.jei.wearable_armor", "minecraft:diamond_chestplate"),
     WEARABLE_MOB_ARMOR("gui.jemcompat.jei.wearable_mob_armor", "minecraft:diamond_horse_armor"),

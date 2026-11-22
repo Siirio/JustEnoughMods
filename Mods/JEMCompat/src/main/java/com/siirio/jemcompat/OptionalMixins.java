@@ -88,11 +88,6 @@ public final class OptionalMixins implements IMixinConfigPlugin {
                     && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("legendary_monsters")
                     && mod.getVersion().toString().equals("1.20.1"));
         }
-        if (mixinClassName.equals("com.siirio.jemcompat.mixin.client.recruits.RecruitDebugScreenPoseMixin")) {
-            var file = FMLLoader.getLoadingModList().getModFileById("recruits");
-            return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("recruits")
-                    && mod.getVersion().toString().equals("1.15.2"));
-        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.client.barnyard.BarnyardClydesdaleSprintKeyMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("barnyardbuddies");
             return FMLLoader.getDist().isClient() && file != null && file.getMods().stream()

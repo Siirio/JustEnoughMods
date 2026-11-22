@@ -42,8 +42,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class SandboxCivicRuntime extends SavedData {
     private final Map<UUID, CompoundTag> towns = new LinkedHashMap<>();
     private final Map<UUID, CompoundTag> milestones = new LinkedHashMap<>();
-    private final Map<UUID, CompoundTag> guardRestorations = new LinkedHashMap<>();
-    private static int restorationCursor;
     private static boolean registered;
     private static java.util.function.BiPredicate<ServerPlayer,String> permission=(player,node)->false;
     private static int cursor;
@@ -53,7 +51,6 @@ public final class SandboxCivicRuntime extends SavedData {
     }
     public static void permission(java.util.function.BiPredicate<ServerPlayer,String> permission) {
         SandboxCivicRuntime.permission=permission;
-        if (ModList.get().isLoaded("recruits")) SandboxRecruitOrders.permission = permission;
     }
     public static boolean active(MinecraftServer server) { return ModList.get().isLoaded("jem_economy") && CivicCommerceAdapter.active(server) && ModList.get().isLoaded("jem_settlements"); }
     public static SandboxCivicRuntime get(MinecraftServer server) {
@@ -68,39 +65,11 @@ public final class SandboxCivicRuntime extends SavedData {
     public static boolean beforeDelete(ServerPlayer player,UUID townId){
         if(!active(player.getServer()))return true;var town=SettlementApi.ownedTown(player,townId).orElse(null);if(town==null)return false;
         CivicCommerceAdapter.releaseFunds(player,townId);if(CivicCommerceAdapter.purposeFundsOutstanding(player.getServer(),townId))return false;
-        var data=get(player.getServer());if(ModList.get().isLoaded("recruits"))SandboxRecruitOrders.cancel(player,town,data.metadata(townId));
+        var data=get(player.getServer());
         data.persist(player.getServer());return true;
     }
     public static void afterDelete(ServerPlayer player){
         if(!active(player.getServer()))return;CivicCommerceAdapter.flushOwner(player.getServer());get(player.getServer()).persist(player.getServer());
-    }
-    boolean guardPending(UUID entity){var row=guardRestorations.get(entity);return row!=null&&!row.getBoolean("Reconciled");}
-    void queueGuard(UUID entity,CompoundTag row){
-        if(guardPending(entity))return;guardRestorations.put(entity,row);setDirty();
-    }
-    void restoreGuards(MinecraftServer server){
-        if(!ModList.get().isLoaded("recruits"))return;
-        var pending=new ArrayList<>(guardRestorations.entrySet());boolean changed=false;
-        for(int inspected=0;inspected<Math.min(32,pending.size());inspected++){
-            var entry=pending.get(Math.floorMod(restorationCursor++,pending.size()));CompoundTag row=entry.getValue();
-            if(row.getBoolean("Reconciled"))continue;
-            var record=SettlementSavedData.get(server).workforceEntity(entry.getKey()).orElse(null);
-            if(record!=null&&!record.living()){row.putBoolean("Reconciled",true);changed=true;continue;}
-            var key=net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,new net.minecraft.resources.ResourceLocation(row.getString("Dimension")));
-            var level=server.getLevel(key);if(level==null)continue;var entity=level.getEntity(entry.getKey());if(entity==null)continue;
-            if(SandboxRecruitOrders.restore(server,entity,row)){row.putBoolean("Reconciled",true);changed=true;}
-        }
-        if(changed)persist(server);
-    }
-    @SubscribeEvent public static void loaded(net.minecraftforge.event.entity.EntityJoinLevelEvent event){
-        if(!(event.getLevel() instanceof net.minecraft.server.level.ServerLevel level)||!active(level.getServer())||!ModList.get().isLoaded("recruits"))return;
-        var data=get(level.getServer());CompoundTag row=data.guardRestorations.get(event.getEntity().getUUID());if(row==null)return;
-        level.getServer().execute(()->{
-            if(SandboxRecruitOrders.restore(level.getServer(),event.getEntity(),row)){
-                // Keep the small tombstone: if entity NBT rolls back across a crash, its exact old token is restored again.
-                if(!row.getBoolean("Reconciled")){row.putBoolean("Reconciled",true);data.persist(level.getServer());}
-            }
-        });
     }
     public static boolean action(ServerPlayer player, String node, CompoundTag input) {
         if (!active(player.getServer()) || player.isSpectator() || player.isCreative()) return false;
@@ -116,10 +85,6 @@ public final class SandboxCivicRuntime extends SavedData {
             case "taxes" -> mode.equals("tax") && data.tax(player, town, input.getInt("Value"));
             case "treasury_audit" -> mode.equals("audit");
             case "civic_fund" -> data.fund(player, town, input);
-            case "rally", "patrol_route", "captain_order" -> {
-                boolean result=ModList.get().isLoaded("recruits")&&SandboxRecruitOrders.action(player,town,node,input,data.metadata(town.id()));
-                if(result)data.persist(player.getServer());yield result;
-            }
             default -> false;
         };
     }
@@ -255,7 +220,7 @@ public final class SandboxCivicRuntime extends SavedData {
     }
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event) {
         var server = event.getServer(); if (event.phase != TickEvent.Phase.END || !active(server)) return;
-        var data=get(server);if(server.getTickCount()%20==0)data.restoreGuards(server);if(server.getTickCount()%100!=0)return;
+        var data=get(server);if(server.getTickCount()%100!=0)return;
         var settlements = SettlementSavedData.get(server); var towns = new ArrayList<>(settlements.towns()); if (towns.isEmpty()) return;
         for (int i = 0; i < Math.min(4,towns.size()); i++) {
             var town = towns.get(Math.floorMod(cursor++,towns.size()));
@@ -264,11 +229,8 @@ public final class SandboxCivicRuntime extends SavedData {
             CompoundTag before=data.metadata(town.id()).copy();int previousTax=town.taxPercent();
             if(!permission.test(player,"taxes")&&town.taxPercent()!=0){town.taxPercent(0);settlements.changed();}
             if(!permission.test(player,"civic_fund"))CivicCommerceAdapter.releaseFunds(player,town.id());
-            String guardOrder=data.metadata(town.id()).getString("Order");
-            if(ModList.get().isLoaded("recruits")&&!guardOrder.isEmpty()&&!permission.test(player,guardOrder))SandboxRecruitOrders.cancel(player,town,data.metadata(town.id()));
             if(town.dimension().equals(player.serverLevel().dimension().location())){
                 if(permission.test(player,"supply_notice"))data.warn(player,town);
-                if (ModList.get().isLoaded("recruits")) SandboxRecruitOrders.tick(player,town,data.metadata(town.id()));
                 data.improvements(player,town);
             }
             if(previousTax!=town.taxPercent()||!before.equals(data.metadata(town.id())))data.persist(server);
@@ -325,7 +287,6 @@ public final class SandboxCivicRuntime extends SavedData {
                 var entity = player.serverLevel().getEntity(resident.villagerId()); if (entity == null) continue;
                 CompoundTag row = row(resident.villagerId(),entity.getName().getString(),"Настроение "+resident.mood()+" · Сытость "+resident.satiety()); row.putString("Town",town.id().toString()); rows.add(row);
             }
-            if (java.util.Set.of("rally","patrol_route","captain_order").contains(node) && ModList.get().isLoaded("recruits")) SandboxRecruitOrders.rows(player,town,rows);
         }
         if(node.equals("civic_fund")) {
             ListTag offers=CivicCommerceAdapter.snapshot(player,"trading_post").getList("Rows",Tag.TAG_COMPOUND);
@@ -345,12 +306,12 @@ public final class SandboxCivicRuntime extends SavedData {
     }
     @Override public CompoundTag save(CompoundTag root) {
         CompoundTag townRows = new CompoundTag(), receiptRows = new CompoundTag(); towns.forEach((id,t) -> townRows.put(id.toString(),t)); milestones.forEach((id,t) -> receiptRows.put(id.toString(),t));
-        root.put("Towns",townRows); root.put("Milestones",receiptRows);CompoundTag restorations=new CompoundTag();guardRestorations.forEach((id,t)->restorations.put(id.toString(),t));root.put("GuardRestorations",restorations); return root;
+        root.put("Towns",townRows); root.put("Milestones",receiptRows); return root;
     }
     private static SandboxCivicRuntime load(CompoundTag root) {
         var data = new SandboxCivicRuntime(); var townRows = root.getCompound("Towns"); var receiptRows = root.getCompound("Milestones");
         for (String id : townRows.getAllKeys()) data.towns.put(UUID.fromString(id),townRows.getCompound(id));
         for (String id : receiptRows.getAllKeys()) data.milestones.put(UUID.fromString(id),receiptRows.getCompound(id));
-        var restorations=root.getCompound("GuardRestorations");for(String id:restorations.getAllKeys())data.guardRestorations.put(UUID.fromString(id),restorations.getCompound(id));return data;
+        return data;
     }
 }

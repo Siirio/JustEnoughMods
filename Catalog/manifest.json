@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "bdb2911f59bd5aeb32bf97fc828df72d0e3d117f",
-  "generated_utc": "2026-11-22T15:54:10.031225+00:00",
+  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
+  "generated_utc": "2026-11-22T18:53:03.082294+00:00",
   "minecraft": "1.20.1",
-  "forge": "47.4.10",
+  "forge": "47.4.28",
   "java": "17",
   "pack_sources": [
     "Client/ManagedPack",
@@ -401,6 +401,142 @@
       ],
       "source_path": "Server\\mods\\architectury-9.2.14-forge.jar",
       "nested_dependencies": []
+    },
+    {
+      "filename": "astemirlib_re-1.20.1-forge-1.2.987-SNAPSHOT.jar",
+      "sha256": "1a8008a8fb90d2fde9efac3ebe28f2f71553622e35040ad6e385b6f18603e4f0",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "astemirlib_re",
+          "name": "Astemir Re-Lib",
+          "version": "1.2.987-SNAPSHOT",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "astemirlib_re"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\astemirlib_re-1.20.1-forge-1.2.987-SNAPSHOT.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
+          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "astemirlib_re-1.20.1-forge-1.2.987-SNAPSHOT.jar",
+      "sha256": "1a8008a8fb90d2fde9efac3ebe28f2f71553622e35040ad6e385b6f18603e4f0",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "astemirlib_re",
+          "name": "Astemir Re-Lib",
+          "version": "1.2.987-SNAPSHOT",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "astemirlib_re"
+      ],
+      "source_path": "Server\\mods\\astemirlib_re-1.20.1-forge-1.2.987-SNAPSHOT.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
+          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
     },
     {
       "filename": "ATi Structures Vanilla V1.4.7.jar",
@@ -4847,6 +4983,148 @@
       ],
       "source_path": "Server\\mods\\EasyMagic-v8.0.1-1.20.1-Forge.jar",
       "nested_dependencies": []
+    },
+    {
+      "filename": "ec_ad-forge-1.20.1-1.0.7.jar",
+      "sha256": "0f21510c703273817a16e08166052b83b9fbbf99bf38dd0bf223d978cf7452e6",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "ec_ad",
+          "name": "Archies Dinosaurs",
+          "version": "1.0.7",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "alexscaves",
+        "ec_ad",
+        "forge",
+        "minecraft"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\ec_ad-forge-1.20.1-1.0.7.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
+          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "ec_ad-forge-1.20.1-1.0.7.jar",
+      "sha256": "0f21510c703273817a16e08166052b83b9fbbf99bf38dd0bf223d978cf7452e6",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "ec_ad",
+          "name": "Archies Dinosaurs",
+          "version": "1.0.7",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "alexscaves",
+        "ec_ad",
+        "forge",
+        "minecraft"
+      ],
+      "source_path": "Server\\mods\\ec_ad-forge-1.20.1-1.0.7.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.4.1.jar",
+          "sha256": "9d48cb0a40299d283248fdad8b02c6d175c45b27f9bec48ef63d7ee8a4ee3066",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.4.1,)",
+            "artifactVersion": "0.4.1"
+          },
+          "mods": [
+            {
+              "id": "mixinextras",
+              "name": "MixinExtras",
+              "version": "0.4.1",
+              "display_test": "IGNORE_SERVER_VERSION"
+            }
+          ],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.4.1.jar",
+              "sha256": "d13c480d4e84128e76e8f509346f8137ceaa195091b3cfeaf4ebba584ca68374",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.4.1,)",
+                "artifactVersion": "0.4.1"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
     },
     {
       "filename": "ElysiumAPI-1.20.1-1.1.3.jar",
@@ -9838,7 +10116,7 @@
     },
     {
       "filename": "jem-advancements-5.3.11.jar",
-      "sha256": "8d5c3522a5f93f5e260a7671921e858d1a947ea1e680f7504ab8a6b9a66d30cf",
+      "sha256": "7ce8f1999bb756dc087b52bc320a2779c13db1d0467cd4a4b8bfb4f8b0c26a26",
       "sides": [
         "client"
       ],
@@ -9873,7 +10151,7 @@
     },
     {
       "filename": "jem-advancements-5.3.11.jar",
-      "sha256": "8d5c3522a5f93f5e260a7671921e858d1a947ea1e680f7504ab8a6b9a66d30cf",
+      "sha256": "7ce8f1999bb756dc087b52bc320a2779c13db1d0467cd4a4b8bfb4f8b0c26a26",
       "sides": [
         "server"
       ],
@@ -9950,7 +10228,7 @@
     },
     {
       "filename": "jem-economy-1.3.5.jar",
-      "sha256": "0f6afb822c1f6b167054c72b6b7b8393e4511810f67d0742c945546c8057a7d7",
+      "sha256": "208f041456e57e464d04f864f33dcb80a6c319c8107dc098728649a56f920c54",
       "sides": [
         "client"
       ],
@@ -9972,7 +10250,7 @@
     },
     {
       "filename": "jem-economy-1.3.5.jar",
-      "sha256": "0f6afb822c1f6b167054c72b6b7b8393e4511810f67d0742c945546c8057a7d7",
+      "sha256": "208f041456e57e464d04f864f33dcb80a6c319c8107dc098728649a56f920c54",
       "sides": [
         "server"
       ],
@@ -10124,7 +10402,7 @@
     },
     {
       "filename": "jem-server-2.0.0-dev.jar",
-      "sha256": "a64147a7889248c9e471d8ff71dfc9f921accb4da1f618509af339c1ca20bfb0",
+      "sha256": "a34d11e5c3dd491ba13da76fa3e84ebc86c796f0a25802cbbff5097f51b2c2c2",
       "sides": [
         "client"
       ],
@@ -10148,7 +10426,7 @@
     },
     {
       "filename": "jem-server-2.0.0-dev.jar",
-      "sha256": "a64147a7889248c9e471d8ff71dfc9f921accb4da1f618509af339c1ca20bfb0",
+      "sha256": "a34d11e5c3dd491ba13da76fa3e84ebc86c796f0a25802cbbff5097f51b2c2c2",
       "sides": [
         "server"
       ],
@@ -10172,7 +10450,7 @@
     },
     {
       "filename": "jem-settlements-2.2.2.jar",
-      "sha256": "1c887c1299436cae7cd0b63029a6fa5af03dd6501cf305716bf7758af462dccc",
+      "sha256": "d50078fef2b40043f7ce9455857dde63654f1a57d9c0aabee9bc6fd7c1d971e1",
       "sides": [
         "client"
       ],
@@ -10186,15 +10464,14 @@
         }
       ],
       "namespaces": [
-        "jem_settlements",
-        "recruits"
+        "jem_settlements"
       ],
       "source_path": "Client\\ManagedPack\\mods\\jem-settlements-2.2.2.jar",
       "nested_dependencies": []
     },
     {
       "filename": "jem-settlements-2.2.2.jar",
-      "sha256": "1c887c1299436cae7cd0b63029a6fa5af03dd6501cf305716bf7758af462dccc",
+      "sha256": "d50078fef2b40043f7ce9455857dde63654f1a57d9c0aabee9bc6fd7c1d971e1",
       "sides": [
         "server"
       ],
@@ -10208,15 +10485,14 @@
         }
       ],
       "namespaces": [
-        "jem_settlements",
-        "recruits"
+        "jem_settlements"
       ],
       "source_path": "Server\\mods\\jem-settlements-2.2.2.jar",
       "nested_dependencies": []
     },
     {
       "filename": "jem-world-boss-tiers-2.5.0-dev.jar",
-      "sha256": "1c25b54177be0e4c2485774809bdb7a58db5b216569ca2cf87b92dc45db3d1b5",
+      "sha256": "2421592a8d5beebf7d04035a7ad94e65319e246643a130366b836665f3c05a7f",
       "sides": [
         "client"
       ],
@@ -10239,7 +10515,7 @@
     },
     {
       "filename": "jem-world-boss-tiers-2.5.0-dev.jar",
-      "sha256": "1c25b54177be0e4c2485774809bdb7a58db5b216569ca2cf87b92dc45db3d1b5",
+      "sha256": "2421592a8d5beebf7d04035a7ad94e65319e246643a130366b836665f3c05a7f",
       "sides": [
         "server"
       ],
@@ -10655,7 +10931,7 @@
     },
     {
       "filename": "jemcompat-3.11.3.jar",
-      "sha256": "c91383b46b61a685947649528123ac8713ba68071c9d66538ffe42ef93ab3174",
+      "sha256": "b022a49f748b47af2a8b45056c8da61ddb64f31c5d85cd17b41a22699e26e87f",
       "sides": [
         "client"
       ],
@@ -10683,7 +10959,7 @@
     },
     {
       "filename": "jemcompat-3.11.3.jar",
-      "sha256": "c91383b46b61a685947649528123ac8713ba68071c9d66538ffe42ef93ab3174",
+      "sha256": "b022a49f748b47af2a8b45056c8da61ddb64f31c5d85cd17b41a22699e26e87f",
       "sides": [
         "server"
       ],
@@ -13069,7 +13345,7 @@
     },
     {
       "filename": "mobhome-1.0.1.jar",
-      "sha256": "b739ef11356e514de3701d9ede949761fa4b8add90139d31f78c020d6a4b46e6",
+      "sha256": "1312723c89b0597ed595572554edc4ce7a22ce8208607fe617b11e011be118ab",
       "sides": [
         "client"
       ],
@@ -13090,7 +13366,7 @@
     },
     {
       "filename": "mobhome-1.0.1.jar",
-      "sha256": "b739ef11356e514de3701d9ede949761fa4b8add90139d31f78c020d6a4b46e6",
+      "sha256": "1312723c89b0597ed595572554edc4ce7a22ce8208607fe617b11e011be118ab",
       "sides": [
         "server"
       ],
@@ -16536,50 +16812,6 @@
       ]
     },
     {
-      "filename": "recruits-1.20.1-1.15.2.jar",
-      "sha256": "4b53c1b752e886ba10985aad2df30d668971810230eb77867e07428a21d1af7f",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "recruits",
-          "name": "Villager Recruits Mod",
-          "version": "1.15.2",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "minecraft",
-        "recruits"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\recruits-1.20.1-1.15.2.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "recruits-1.20.1-1.15.2.jar",
-      "sha256": "4b53c1b752e886ba10985aad2df30d668971810230eb77867e07428a21d1af7f",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "recruits",
-          "name": "Villager Recruits Mod",
-          "version": "1.15.2",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "minecraft",
-        "recruits"
-      ],
-      "source_path": "Server\\mods\\recruits-1.20.1-1.15.2.jar",
-      "nested_dependencies": []
-    },
-    {
       "filename": "resourcefulconfig-forge-1.20.1-2.1.3.jar",
       "sha256": "c404b9e5cf8595427a72d4ca6ee5730289168762b463f169be3ae5dfe3727ded",
       "sides": [
@@ -17632,48 +17864,6 @@
         "skarrier_mobs"
       ],
       "source_path": "Server\\mods\\skarrier_mobs-1.1.1-forge-1.20.1.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "smallships-forge-1.20.1-2.0.0-b1.4.jar",
-      "sha256": "f79a4dcab3e1c8e4d14467cbfa655f4a16e0f0d0901e8f9bde9e3f5e36735eff",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "smallships",
-          "name": "Small Ships",
-          "version": "2.0.0-b1.4",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "smallships"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\smallships-forge-1.20.1-2.0.0-b1.4.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "smallships-forge-1.20.1-2.0.0-b1.4.jar",
-      "sha256": "f79a4dcab3e1c8e4d14467cbfa655f4a16e0f0d0901e8f9bde9e3f5e36735eff",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "smallships",
-          "name": "Small Ships",
-          "version": "2.0.0-b1.4",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "smallships"
-      ],
-      "source_path": "Server\\mods\\smallships-forge-1.20.1-2.0.0-b1.4.jar",
       "nested_dependencies": []
     },
     {

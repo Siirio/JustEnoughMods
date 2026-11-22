@@ -16,7 +16,7 @@ public final class FamilyScreenTabs {
     private FamilyScreenTabs() { }
     @SubscribeEvent public static void init(ScreenEvent.Init.Post event) {
         if (!FamilyClientState.active()) return; String name = event.getScreen().getClass().getName();
-        if (!(event.getScreen() instanceof MerchantScreen) && !name.startsWith("com.talhanation.recruits.client.gui.")) return;
+        if (!(event.getScreen() instanceof MerchantScreen)) return;
         int width = 66, x = event.getScreen().width/2 - 88;
         int y = Math.max(4, event.getScreen().height/2 - 92);
         if (event.getScreen() instanceof MerchantScreen merchant) {

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "recipes",
-  "snapshot_sha": "05ef91cd0f94bb456e3e0f8c006c6897fd8e656e",
+  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
   "generation": {
-    "generated_utc": "2026-11-22T15:21:02.784498+00:00",
+    "generated_utc": "2026-11-22T18:53:03.082294+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -386,6 +386,75 @@
       "conditional_requirements": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/activator_rail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:amber_brick_slab_from_amber_bricks_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "ec_ad:amber_bricks",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ec_ad:amber_brick_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/recipes/amber_brick_slab_from_amber_bricks_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:amber_brick_stairs_from_amber_bricks_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "ec_ad:amber_bricks",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ec_ad:amber_brick_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/recipes/amber_brick_stairs_from_amber_bricks_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:amber_brick_wall_from_amber_bricks_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "ec_ad:amber_bricks",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ec_ad:amber_brick_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/recipes/amber_brick_wall_from_amber_bricks_stonecutting.json"
       ]
     },
     {
@@ -4202,6 +4271,78 @@
       "conditional_requirements": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/advancements/recipes/building_blocks/acacia_wood.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:building_blocks/amber_brick_slab_from_amber_bricks_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "ec_ad:amber_bricks",
+        "minecraft:amber_brick_slab_from_amber_bricks_stonecutting",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/advancements/recipes/building_blocks/amber_brick_slab_from_amber_bricks_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:building_blocks/amber_brick_stairs_from_amber_bricks_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "ec_ad:amber_bricks",
+        "minecraft:amber_brick_stairs_from_amber_bricks_stonecutting",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/advancements/recipes/building_blocks/amber_brick_stairs_from_amber_bricks_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:building_blocks/amber_brick_wall_from_amber_bricks_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "ec_ad:amber_bricks",
+        "minecraft:amber_brick_wall_from_amber_bricks_stonecutting",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/advancements/recipes/building_blocks/amber_brick_wall_from_amber_bricks_stonecutting.json"
       ]
     },
     {
@@ -15376,6 +15517,102 @@
       "conditional_requirements": null,
       "source_provenance": [
         "VanillaBackport-forge-1.20.1-1.2.2.jar:data/minecraft/advancements/recipes/building_blocks/pink_wool_stairs.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:building_blocks/polished_amber_from_raw_amber_block_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "ec_ad:raw_amber_block",
+        "minecraft:inventory_changed",
+        "minecraft:polished_amber_from_raw_amber_block_stonecutting",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/advancements/recipes/building_blocks/polished_amber_from_raw_amber_block_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:building_blocks/polished_amber_slab_from_polished_amber_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "ec_ad:polished_amber",
+        "minecraft:inventory_changed",
+        "minecraft:polished_amber_slab_from_polished_amber_stonecutting",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/advancements/recipes/building_blocks/polished_amber_slab_from_polished_amber_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:building_blocks/polished_amber_stairs_from_polished_amber_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "ec_ad:polished_amber",
+        "minecraft:inventory_changed",
+        "minecraft:polished_amber_stairs_from_polished_amber_stonecutting",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/advancements/recipes/building_blocks/polished_amber_stairs_from_polished_amber_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:building_blocks/polished_amber_wall_from_polished_amber_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "ec_ad:polished_amber",
+        "minecraft:inventory_changed",
+        "minecraft:polished_amber_wall_from_polished_amber_stonecutting",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/advancements/recipes/building_blocks/polished_amber_wall_from_polished_amber_stonecutting.json"
       ]
     },
     {
@@ -59796,6 +60033,98 @@
       "conditional_requirements": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/piston.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:polished_amber_from_raw_amber_block_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "ec_ad:raw_amber_block",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ec_ad:polished_amber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/recipes/polished_amber_from_raw_amber_block_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:polished_amber_slab_from_polished_amber_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "ec_ad:polished_amber",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ec_ad:polished_amber_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/recipes/polished_amber_slab_from_polished_amber_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:polished_amber_stairs_from_polished_amber_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "ec_ad:polished_amber",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ec_ad:polished_amber_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/recipes/polished_amber_stairs_from_polished_amber_stonecutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "minecraft:polished_amber_wall_from_polished_amber_stonecutting",
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "ec_ad:polished_amber",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ec_ad:polished_amber_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ec_ad-forge-1.20.1-1.0.7.jar:data/minecraft/recipes/polished_amber_wall_from_polished_amber_stonecutting.json"
       ]
     },
     {

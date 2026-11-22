@@ -1,0 +1,231 @@
+{
+  "schema_version": 2,
+  "change_id": "ocean-weather-archies-20261122",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "ec_ad"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "recruits"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "smallships"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "whaleborne"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "immersive_weathering:frosty_glass"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "immersive_weathering:frosty_glass_pane"
+    },
+    {
+      "type": "id",
+      "registry": "biomes",
+      "value": "minecraft:desert"
+    },
+    {
+      "type": "id",
+      "registry": "biomes",
+      "value": "minecraft:badlands"
+    },
+    {
+      "type": "id",
+      "registry": "biomes",
+      "value": "minecraft:eroded_badlands"
+    },
+    {
+      "type": "id",
+      "registry": "biomes",
+      "value": "minecraft:wooded_badlands"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime_scope": "Test JEM and the ordinary local dedicated server"
+    },
+    {
+      "weather_scope": "Particle Rain client particles and Weather Glass client rendering"
+    }
+  ],
+  "precedence": {
+    "layer": "managed_pack_integration",
+    "priority": 124
+  },
+  "change": {
+    "summary": "Replace Small Ships with Archie's Dinosaurs, remove Recruits, preserve Whaleborne and the submarine, and repair weather, glass, HUD, settlement security and catalog ownership",
+    "modifiers": [
+      {
+        "property": "distribution.mods",
+        "operation": "replace",
+        "before": [
+          "smallships:2.0.0-b1.4"
+        ],
+        "after": [
+          "ec_ad:1.0.7",
+          "astemirlib_re:1.2.987-SNAPSHOT"
+        ]
+      },
+      {
+        "property": "distribution.forge",
+        "operation": "replace",
+        "before": "1.20.1-47.4.10",
+        "after": "1.20.1-47.4.28"
+      },
+      {
+        "property": "blood_moon.warden.archies_interaction",
+        "operation": "deny",
+        "before": "Sculksaur summon and instant-kill logic applies to every Warden",
+        "after": "Blood Moon Wardens cannot summon a Sculksaur and ignore Sculksaur damage"
+      },
+      {
+        "property": "weather.dry_biome_particles",
+        "operation": "replace",
+        "before": "default water rain because the custom resource path was not loaded",
+        "after": "sandstorms in configured deserts, red sandstorms in configured badlands and water rain only in rain biomes"
+      },
+      {
+        "property": "glass.weather_owner",
+        "operation": "replace",
+        "before": "Weather Glass plus Fusion glass models plus permanent Immersive Weathering frosty glass",
+        "after": "Weather Glass owns weather effects for vanilla and admitted modded glass while permanent frosty glass and Fusion glass models are removed"
+      },
+      {
+        "property": "hud.locator_bar",
+        "operation": "set",
+        "before": "REWORKED top-screen style",
+        "after": "CLASSIC XP-bar style"
+      },
+      {
+        "property": "jei.catalog.create_glass",
+        "operation": "set",
+        "before": "Create and Redstone",
+        "after": "Building > Glass"
+      },
+      {
+        "property": "quest.expedition_transport",
+        "operation": "replace",
+        "before": "Small Ships and submarine",
+        "after": "Whaleborne Hullback and submarine"
+      },
+      {
+        "property": "distribution.recruits",
+        "operation": "replace",
+        "before": "Recruits mod plus JEM family, needs, payroll, quest, market, HUD and combat adapters",
+        "after": "removed from active client, server and JEM integrations; complete restore backup retained outside runtime paths"
+      },
+      {
+        "property": "settlement.security",
+        "operation": "derive",
+        "before": "qualified hired Recruits",
+        "after": "living AI-enabled iron golem count under the existing area coverage formula"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Managed pack, JEM Server, JEM Compat and JEM Achievement Guide",
+    "kind": "user_requested_mod_and_presentation_reconciliation",
+    "source_files": [
+      "Client/ManagedPack/config/item_obliterator.json5",
+      "Client/ManagedPack/config/particlerain/particles.json",
+      "Client/ManagedPack/config/weatherglass.properties",
+      "Client/ManagedPack/mods/**",
+      "Client/ManagedPack/options.txt",
+      "Mods/JEMAchievementGuide/**",
+      "Mods/JEMCompat/**",
+      "Mods/JEMEconomy/**",
+      "Mods/JEMServer/**",
+      "Mods/JEMSettlements/**",
+      "Mods/JEMWorldBossTiers/**",
+      "Mods/MobHome/**",
+      "Server/config/item_obliterator.json5",
+      "Server/config/locatorbar-server.json",
+      "Server/mods/**",
+      "Server/run.bat",
+      "tools/generate_jei_catalog.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep one clear owner for each transport, weather, glass, settlement security and catalog responsibility while adding the requested dinosaur content",
+    "decision_source": "The user requested Archie's Dinosaurs, removal of Small Ships and Recruits, preservation of Whaleborne and the submarine, biome-correct storms, Weather Glass ownership, an XP-bar Locator Bar, glass-category repair and iron-golem settlement security",
+    "implementation_choices": "Use Archie's native content, isolate only its proven Blood Moon Warden conflict, keep Hullback as the living surface vessel, keep the submarine as the depth vehicle, load Particle Rain rules from its actual config path, remove model owners that prevent Weather Glass from affecting vanilla glass and preserve Recruits only as a complete external restore archive"
+  },
+  "introduced": {
+    "date": "2026-11-22",
+    "commit": "SELF",
+    "action": "reconcile_ocean_weather_and_archies",
+    "summary": "Apply the requested mod and ownership changes"
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "reconcile_ocean_weather_and_archies",
+      "summary": "Replace Small Ships, add Archie's Dinosaurs and repair the related integrations"
+    },
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "retire_recruits",
+      "summary": "Remove Recruits and its active JEM integrations, retain a complete external restore backup and derive settlement security from iron golems",
+      "source_files": [
+        "Client/ManagedPack/config/smallships-client.toml",
+        "Client/ManagedPack/config/smallships-common.toml",
+        "Client/ManagedPack/defaultconfigs/recruits-server.toml",
+        "Client/ManagedPack/kubejs/assets/particlerain/particles.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Archie's Dinosaurs",
+      "AutoModpack",
+      "Blood Moon",
+      "FTB Quests",
+      "Forge",
+      "Immersive Weathering",
+      "Item Obliterator",
+      "JEI",
+      "JEM Economy",
+      "JEM Settlements",
+      "Locator Bar",
+      "MobHome",
+      "Particle Rain",
+      "Recruits",
+      "Weather Glass",
+      "Whaleborne"
+    ],
+    "relations": [
+      "Whaleborne remains the living surface vessel owner",
+      "Alex's Caves submarine remains the underwater vehicle owner",
+      "Coralosaur is a tameable underwater creature and does not replace either vehicle",
+      "Weather Glass is the only active weather-on-glass presentation owner",
+      "Archie's native Sculksaur behavior remains unchanged outside Blood Moon-owned Wardens",
+      "Settlement security counts only living AI-enabled iron golems and keeps the existing area coverage formula",
+      "Recruits can be restored only from C:/MyProjects/Minecraft/JustEnoughMods Backups/JEM-Recruits-complete-2026-11-22.zip with SHA-256 B75B7BE018E3A07E91C0493ECD1DD6BFAC24E510260539B5112B531366418751"
+    ],
+    "notes": [
+      "Small Ships quests, hooks, speed caps, keys, configs and JARs are retired",
+      "The three time-dimension expedition now uses Hullback and submarine travel",
+      "Dry-biome storm rules include installed vanilla and reviewed modded biome IDs",
+      "The Recruits restore archive contains 258 entries, including both JARs, configs, localization and all matched JEM integration source and documentation from before removal"
+    ],
+    "unresolved": [
+      "Final gameplay and visual acceptance requires the user's Test JEM session"
+    ]
+  }
+}

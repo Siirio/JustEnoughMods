@@ -18,7 +18,9 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Animal Feeding Trough | `1.1.0+1.20.1-forge` | Client + server |  |
 | AppleSkin | `2.5.1+mc1.20.1` | Client |  |
 | Aquamirae | `7.1.13` | Client + server |  |
+| Archie's Dinosaurs | `1.0.7` | Client + server | Requested prehistoric ecosystem and Coralosaur owner |
 | Architectury | `9.2.14` | Client + server |  |
+| AstemirLib RE | `1.2.987-SNAPSHOT` | Client + server | Archie's Dinosaurs dependency |
 | AutoModpack | `5.0.0-rc.1` | Client + server | Tweaked |
 | ATi Structures - Vanilla Edition | `1.4.5` | Client + server | Major Update 4 file V1.4.7 |
 | Sophisticated Backpacks | `3.26.14.2226` | Client + server | Native backpack replacement |
@@ -280,7 +282,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Simply Tooltips | `0.1.5-1.20.1` | Client + server |  |
 | sittingplus | `2.0.5` | Client + server |  |
 | Skarrier Mobs | `1.0.6` | Client + server |  |
-| Small Ships | `2.0.0-b1.4` | Client + server |  |
 | Snow Under Trees | `1.4.12` | Client + server |  |
 | Snow! Real Magic! | `10.7.0` | Client + server |  |
 | Snowy Spirit | `1.20-3.0.10` | Client + server |  |
@@ -325,7 +326,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Unified Xaero Worldmap | `2.0.1` | Client + server |  |
 | Underlay | `1.0.5` | Client + server | Major Update 4 |
 | VanillaBackport | `1.1.7.10` | Client + server |  |
-| Villager Recruits Mod | `1.15.2` | Client + server |  |
 | Visuality: Reforged | `2.2.0` | Client |  |
 | Neo Voxy | `0.4.0beta` | Client, manual local install | All Rights Reserved JAR is not redistributed through AutoModpack |
 | Voxy Server Side | `0.3.5-forge-1.20.1` | Client + server | Neo Voxy renderer requires a separate manual client install |

@@ -99,27 +99,6 @@
         "size": 1.4,
         "shape": "circle"
       },
-      "20189AD31EEBE0F2": {
-        "source_id": "v2_biomes_h10_01",
-        "x": 8,
-        "y": -2.8,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "2B7D492B392E2890": {
-        "source_id": "v2_biomes_h10_02",
-        "x": 10.3,
-        "y": -2.8,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "2D935106076B7931": {
-        "source_id": "v2_biomes_h10_05",
-        "x": 12.6,
-        "y": -2.8,
-        "size": 1.4,
-        "shape": "hexagon"
-      },
       "25823E192FDCA0C8": {
         "source_id": "v2_biomes_wo26",
         "x": 8,
@@ -428,27 +407,6 @@
         "size": 1.4,
         "shape": "circle"
       },
-      "3DDD492223057A13": {
-        "source_id": "v3_world_ship_sailing",
-        "x": 8,
-        "y": -0.5,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "3BEC1C6384142B53": {
-        "source_id": "v3_world_ship_repair",
-        "x": 10.3,
-        "y": -0.5,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "3736676D88CC0E1E": {
-        "source_id": "v3_world_ship_cannon",
-        "x": 12.6,
-        "y": -0.5,
-        "size": 1.4,
-        "shape": "circle"
-      },
       "3B251388B03A4565": {
         "source_id": "v3_world_ruins",
         "x": -14.4,
@@ -628,13 +586,8 @@
         "title_ru": "Под парусом",
         "title_en": "Under sail",
         "quest_ids": [
-          "v2_biomes_h10_01",
-          "v2_biomes_h10_02",
-          "v2_biomes_h10_05",
-          "v3_world_ship_sailing",
-          "v3_world_ship_repair",
-          "v3_world_ship_cannon",
-          "v2_biomes_wo26"
+          "v2_biomes_wo26",
+          "v3_world_ocean_ruins"
         ],
         "bounds": [
           6.75,
@@ -1749,195 +1702,30 @@
         "semantics": "visual_relationship_only"
       },
       {
-        "from": "20189AD31EEBE0F2",
-        "to": "2B7D492B392E2890",
-        "from_source": "v2_biomes_h10_01",
-        "to_source": "v2_biomes_h10_02",
+        "from": "25823E192FDCA0C8",
+        "to": "329895203B06D7E3",
+        "from_source": "v2_biomes_wo26",
+        "to_source": "v3_world_ocean_ruins",
         "start": [
-          8,
-          -2.8
-        ],
-        "end": [
-          10.3,
-          -2.8
-        ],
-        "points": [
-          [
-            8,
-            -2.8
-          ],
-          [
-            10.3,
-            -2.8
-          ]
-        ],
-        "kind": "branch",
-        "color": "#cf929e",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "2B7D492B392E2890",
-        "to": "2D935106076B7931",
-        "from_source": "v2_biomes_h10_02",
-        "to_source": "v2_biomes_h10_05",
-        "start": [
-          10.3,
-          -2.8
-        ],
-        "end": [
-          12.6,
-          -2.8
-        ],
-        "points": [
-          [
-            10.3,
-            -2.8
-          ],
-          [
-            12.6,
-            -2.8
-          ]
-        ],
-        "kind": "branch",
-        "color": "#cf929e",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "20189AD31EEBE0F2",
-        "to": "3DDD492223057A13",
-        "from_source": "v2_biomes_h10_01",
-        "to_source": "v3_world_ship_sailing",
-        "start": [
-          8,
-          -2.8
-        ],
-        "end": [
-          8,
-          -0.5
-        ],
-        "points": [
-          [
-            8,
-            -2.8
-          ],
-          [
-            8,
-            -0.5
-          ]
-        ],
-        "kind": "route",
-        "color": "#cf929e",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "3DDD492223057A13",
-        "to": "3BEC1C6384142B53",
-        "from_source": "v3_world_ship_sailing",
-        "to_source": "v3_world_ship_repair",
-        "start": [
-          8,
-          -0.5
-        ],
-        "end": [
-          10.3,
-          -0.5
-        ],
-        "points": [
-          [
-            8,
-            -0.5
-          ],
-          [
-            10.3,
-            -0.5
-          ]
-        ],
-        "kind": "branch",
-        "color": "#cf929e",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "3BEC1C6384142B53",
-        "to": "3736676D88CC0E1E",
-        "from_source": "v3_world_ship_repair",
-        "to_source": "v3_world_ship_cannon",
-        "start": [
-          10.3,
-          -0.5
-        ],
-        "end": [
-          12.6,
-          -0.5
-        ],
-        "points": [
-          [
-            10.3,
-            -0.5
-          ],
-          [
-            12.6,
-            -0.5
-          ]
-        ],
-        "kind": "branch",
-        "color": "#cf929e",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "3DDD492223057A13",
-        "to": "25823E192FDCA0C8",
-        "from_source": "v3_world_ship_sailing",
-        "to_source": "v2_biomes_wo26",
-        "start": [
-          8,
-          -0.5
-        ],
-        "end": [
           8,
           1.8
         ],
+        "end": [
+          14.6,
+          7
+        ],
         "points": [
           [
             8,
-            -0.5
+            1.8
           ],
           [
-            8,
-            1.8
+            14.6,
+            7
           ]
         ],
         "kind": "route",
-        "color": "#cf929e",
+        "color": "#83bfc2",
         "opacity": 0.45,
         "width_gui": 1.0,
         "dash_gui": [
@@ -17048,20 +16836,6 @@
         "size": 1.4,
         "shape": "circle"
       },
-      "304F805903980469": {
-        "source_id": "v3_pet_first_recruit",
-        "x": -8.2,
-        "y": 11,
-        "size": 1.4,
-        "shape": "circle"
-      },
-      "3139732DB485DC47": {
-        "source_id": "v3_pet_clear_orders",
-        "x": -5.9,
-        "y": 11,
-        "size": 1.4,
-        "shape": "circle"
-      },
       "398C0621CDDFABA8": {
         "source_id": "v3_pet_blood_and_halo",
         "x": -15.4,
@@ -17629,13 +17403,6 @@
         "size": 1.4,
         "shape": "circle"
       },
-      "3937A546CA1BDA3D": {
-        "source_id": "v3_combat_guard_team",
-        "x": -3.6,
-        "y": 11,
-        "size": 1.4,
-        "shape": "circle"
-      },
       "33CEA9A281D6A768": {
         "source_id": "v3_combat_haunted_duo",
         "x": 14.3,
@@ -18007,10 +17774,7 @@
         "title_ru": "Поддержка и отряд",
         "title_en": "Support and company",
         "quest_ids": [
-          "v2_fight_guard_support",
-          "v3_pet_first_recruit",
-          "v3_pet_clear_orders",
-          "v3_combat_guard_team"
+          "v2_fight_guard_support"
         ],
         "layout_shape": "short_line",
         "bounds": [
@@ -20836,39 +20600,6 @@
         ],
         "kind": "parallel_hunt_options",
         "color": "#b1bb7b",
-        "opacity": 0.45,
-        "width_gui": 1.0,
-        "dash_gui": [
-          4,
-          5
-        ],
-        "semantics": "visual_relationship_only"
-      },
-      {
-        "from": "304F805903980469",
-        "to": "3139732DB485DC47",
-        "from_source": "v3_pet_first_recruit",
-        "to_source": "v3_pet_clear_orders",
-        "start": [
-          -8.2,
-          11
-        ],
-        "end": [
-          -5.9,
-          11
-        ],
-        "points": [
-          [
-            -8.2,
-            11
-          ],
-          [
-            -5.9,
-            11
-          ]
-        ],
-        "kind": "recommendation_only",
-        "color": "#83bfc2",
         "opacity": 0.45,
         "width_gui": 1.0,
         "dash_gui": [

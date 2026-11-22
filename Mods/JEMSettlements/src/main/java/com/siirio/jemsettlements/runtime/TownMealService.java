@@ -4,7 +4,6 @@ import com.siirio.jemsettlements.api.SettlementApi;
 import com.siirio.jemsettlements.resident.ResidentMood;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import com.siirio.jemsettlements.town.TownRecord;
-import com.siirio.jemsettlements.workforce.WorkforceType;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -29,8 +28,6 @@ public final class TownMealService {
         var data = SettlementSavedData.get(player.getServer());
         var ids = new java.util.HashSet<UUID>();
         for (var resident : data.residents(town.id())) if (resident.living()) ids.add(resident.villagerId());
-        for (var recruit : data.workforce(town.id())) if (recruit.type() == WorkforceType.RECRUIT && recruit.settlementActive()
-                && recruit.needsEnrolled() && recruit.ownerId().equals(town.owner())) ids.add(recruit.entityId());
         long now = player.getServer().overworld().getGameTime();
         ORDERS.entrySet().removeIf(entry -> entry.getValue().until() < now);
         if ((long) ORDERS.size() + ids.stream().filter(id -> !ORDERS.containsKey(id)).count() > 16384L) return SettlementApi.Result.UNAVAILABLE;
@@ -44,9 +41,7 @@ public final class TownMealService {
         var data = SettlementSavedData.get(level.getServer());
         boolean registered = town != null && order.town().equals(town.id()) && order.owner().equals(town.owner())
                 && town.dimension().equals(level.dimension().location())
-                && (data.resident(mob.getUUID()).filter(value -> value.living() && value.townId().equals(town.id())).isPresent()
-                || data.workforceEntity(mob.getUUID()).filter(value -> value.type() == WorkforceType.RECRUIT && value.settlementActive()
-                        && value.needsEnrolled() && value.ownerId().equals(town.owner()) && value.townId().equals(town.id())).isPresent());
+                && data.resident(mob.getUUID()).filter(value -> value.living() && value.townId().equals(town.id())).isPresent();
         if (now > order.until() || !registered || town.storage().stream().noneMatch(value -> value.contains(order.chest()))) {
             ORDERS.remove(mob.getUUID()); return null;
         }

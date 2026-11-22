@@ -4388,3 +4388,19 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - The immutable production baseline was promoted at `2026-11-17T00:25:03.285828+05:00` from the same published inventory and cumulative point update
 - No automated tests, gameplay launch or player acceptance run was performed
 
+## 2026-11-22 - Add Archie's Dinosaurs and reconcile weather, transport, glass, HUD and settlements
+
+- User request: add Archie's Dinosaurs and its AstemirLib dependency, keep Whaleborne and the Alex's Caves submarine, remove Small Ships, remove Recruits and retain a complete restore backup
+- User request: restore desert sandstorms, red badlands sandstorms and suitable dry-biome storms instead of uniform water rain
+- User request: make Weather Glass the only weather-on-glass owner, remove Immersive Weathering frosty glass and pane, move Locator Bar to the experience HUD, and move Create-family glass from Create and Redstone to Building > Glass
+- User request: JEM Settlements security now uses living AI-enabled iron golem count instead of Recruits. The existing `ceil(area / 2048)` coverage formula remains, so the initial 97 x 97 territory requires five golems
+- Recruits JARs, configs, localization, quests, market entries, projections, family, food, payroll, combat, shelter and workforce persistence adapters are removed from the managed client, local server and active JEM owners. The complete pre-removal archive is `C:/MyProjects/Minecraft/JustEnoughMods Backups/JEM-Recruits-complete-2026-11-22.zip`, SHA-256 `B75B7BE018E3A07E91C0493ECD1DD6BFAC24E510260539B5112B531366418751`, with 258 entries
+- Bug / Client Sided / Particle Rain rules were stored under an unloaded KubeJS asset path, so dry biomes fell back to water rain / in testing with the rules in Particle Rain's actual config path and exact desert, badlands and reviewed modded-biome sets
+- Bug / Client Sided / Fusion glass models and Immersive Weathering frosty blocks competed with Weather Glass, so vanilla glass did not receive the selected weather presentation / in testing with Fusion glass models removed, Weather Glass configured as the sole owner and frosty glass removed through Item Obliterator
+- Bug / Both Sided / Locator Bar used its reworked top-screen style instead of the vanilla experience-bar layout / in testing with the server-owned CLASSIC layout and world directions disabled
+- Bug / Client Sided / the JEI classifier routed all Create-family items through Create and Redstone before it tested glass semantics / in testing with glass and window semantics taking precedence. The rebuilt manifest moves 172 Create-family items to Building > Glass
+- Bug / Server Sided / Archie's Sculksaur handler could summon from or instant-kill Blood Moon Wardens and conflict with Blood Moon encounter ownership / in testing with a narrow Blood Moon Warden exclusion. Native Archie behavior remains unchanged outside Blood Moon Wardens
+- Codex implementation: retain Whaleborne Hullback as the living surface vessel, retain the submarine for depth travel, classify Coralosaur as an underwater creature instead of a vehicle duplicate, and retire Small Ships quests, hooks, speed caps, keys and configs
+- Forge is updated from 47.4.10 to 47.4.28 for the exact Archie dependency set. The canonical managed client is synchronized before the ordinary local server
+- Java 17 production artifact builds completed for the affected JEM modules. Registry Atlas full regeneration, delta rebuild, impact scan and validation passed. No automated tests or gameplay client launch were run. Player acceptance remains `in testing`
+
