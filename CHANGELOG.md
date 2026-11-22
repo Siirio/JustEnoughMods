@@ -4404,3 +4404,10 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - Forge is updated from 47.4.10 to 47.4.28 for the exact Archie dependency set. The canonical managed client is synchronized before the ordinary local server
 - Java 17 production artifact builds completed for the affected JEM modules. Registry Atlas full regeneration, delta rebuild, impact scan and validation passed. No automated tests or gameplay client launch were run. Player acceptance remains `in testing`
 
+## 2026-11-23 - Add specialist workflow agents
+
+- User request: create reusable localization, FTB quest, Registry Atlas and JEI overhaul agents for future JEM workflows
+- Added four native Codex agent definitions with narrow ownership, evidence requirements, project-rule inheritance and explicit handoff boundaries
+- Project routing now assigns missing supported text to the localization curator, quests and balanced rewards to the FTB quest designer, registry preparation and validation to the Atlas keeper, and exact installed-item categorization to the JEI catalog curator
+- Existing canonical gameplay, quest, Atlas, localization and JEI owners remain unchanged. The primary task owner keeps integration and final review responsibility
+
