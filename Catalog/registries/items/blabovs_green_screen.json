@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "c09d5723d1121be63e817fcdacd4cd4aae975bee",
+  "generation": {
+    "generated_utc": "2026-11-22T13:42:34.508521+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "blabovs_green_screen",
+    "name": "Blabov's Green Screen",
+    "version": "1.0.0"
+  },
+  "records": [
+    {
+      "registry_id": "blabovs_green_screen:green_screen",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "blabovs_green_screen",
+      "mod_name": "Blabov's Green Screen",
+      "mod_version": "1.0.0",
+      "source_jar": "blabovs_green_screen-1.0.0-forge-1.20.1.jar",
+      "source_sha256": "9ea8352fcb44b99476fe59735a1fe81fda9212d1021ccb499efa74f7a3667b85",
+      "side_availability": [
+        "server"
+      ],
+      "observed_in": [
+        "assets/blabovs_green_screen/models/item/green_screen.json",
+        "data/blabovs_green_screen/recipes/green_screen_recipe.json"
+      ],
+      "display_name_en_us": "Green Screen",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "blabovs_green_screen-1.0.0-forge-1.20.1.jar:assets/blabovs_green_screen/models/item/green_screen.json",
+        "blabovs_green_screen-1.0.0-forge-1.20.1.jar:data/blabovs_green_screen/recipes/green_screen_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "blabovs_green_screen:green_screen",
+      "acquisition_routes": [
+        "blabovs_green_screen:green_screen_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:blabovs_green_screen:green_screen"
+    },
+    {
+      "registry_id": "blabovs_green_screen:green_screen_with_markers",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "blabovs_green_screen",
+      "mod_name": "Blabov's Green Screen",
+      "mod_version": "1.0.0",
+      "source_jar": "blabovs_green_screen-1.0.0-forge-1.20.1.jar",
+      "source_sha256": "9ea8352fcb44b99476fe59735a1fe81fda9212d1021ccb499efa74f7a3667b85",
+      "side_availability": [
+        "server"
+      ],
+      "observed_in": [
+        "assets/blabovs_green_screen/models/item/green_screen_with_markers.json",
+        "data/blabovs_green_screen/recipes/green_screen_with_markers_recipe.json"
+      ],
+      "display_name_en_us": "Green Screen With Markers",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "blabovs_green_screen-1.0.0-forge-1.20.1.jar:assets/blabovs_green_screen/models/item/green_screen_with_markers.json",
+        "blabovs_green_screen-1.0.0-forge-1.20.1.jar:data/blabovs_green_screen/recipes/green_screen_with_markers_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "blabovs_green_screen:green_screen_with_markers",
+      "acquisition_routes": [
+        "blabovs_green_screen:green_screen_with_markers_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:blabovs_green_screen:green_screen_with_markers"
+    }
+  ]
+}

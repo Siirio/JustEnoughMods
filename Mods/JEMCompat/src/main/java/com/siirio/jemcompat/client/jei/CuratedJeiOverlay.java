@@ -26,11 +26,13 @@ public final class CuratedJeiOverlay {
     private static final int NAVIGATION_HEIGHT = 24;
     private static CatalogCategory selected = CatalogCategory.WEAPONS;
     private static CatalogCategory weapon = CatalogCategory.WEAPON_TOTEMS;
+    private static CatalogCategory wearable = CatalogCategory.WEARABLE_ARMOR;
     private static CatalogCategory food = CatalogCategory.FOOD_EDIBLES;
     private static CatalogCategory building = CatalogCategory.BUILDING_BLOCKS;
     private static int page;
     private static int categoryRailOffset;
     private static int weaponRailOffset;
+    private static int wearableRailOffset;
     private static int foodRailOffset;
     private static int buildingRailOffset;
     private static Screen owner;
@@ -123,26 +125,12 @@ public final class CuratedJeiOverlay {
                 return;
             }
         }
-        if (selected == CatalogCategory.BUILDING) {
-            List<CatalogCategory> children = CuratedJeiCatalog.building();
+        List<CatalogCategory> children = selectedChildren();
+        if (!children.isEmpty()) {
             int childStart = railStart(children, layout, true);
             for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
                 if (inside(mouseX, mouseY, layout.subRailX(), layout.top() + (index - childStart) * BUTTON, BUTTON, BUTTON)) {
-                    building = children.get(index);
-                    categorySearch.setValue("");
-                    page = 0;
-                    event.setCanceled(true);
-                    return;
-                }
-            }
-        } else if (selected == CatalogCategory.WEAPONS || selected == CatalogCategory.FOOD) {
-            List<CatalogCategory> children = selected == CatalogCategory.WEAPONS
-                    ? CuratedJeiCatalog.weapons() : CuratedJeiCatalog.food();
-            int childStart = railStart(children, layout, true);
-            for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
-                if (inside(mouseX, mouseY, layout.subRailX(), layout.top() + (index - childStart) * BUTTON, BUTTON, BUTTON)) {
-                    if (selected == CatalogCategory.WEAPONS) weapon = children.get(index);
-                    else food = children.get(index);
+                    selectChild(children.get(index));
                     categorySearch.setValue("");
                     page = 0;
                     event.setCanceled(true);
@@ -239,20 +227,11 @@ public final class CuratedJeiOverlay {
             }
             return;
         }
-        if ((selected == CatalogCategory.BUILDING || selected == CatalogCategory.WEAPONS
-                || selected == CatalogCategory.FOOD)
-                && inside(mouseX, mouseY, layout.subRailX(), layout.top(), BUTTON, railHeight)) {
+        List<CatalogCategory> children = selectedChildren();
+        if (!children.isEmpty() && inside(mouseX, mouseY, layout.subRailX(), layout.top(), BUTTON, railHeight)) {
             if (event.getScrollDelta() != 0) {
-                if (selected == CatalogCategory.BUILDING) {
-                    buildingRailOffset = scrollRail(buildingRailOffset, CuratedJeiCatalog.building().size(), layout,
-                            event.getScrollDelta() < 0 ? 1 : -1);
-                } else if (selected == CatalogCategory.WEAPONS) {
-                    weaponRailOffset = scrollRail(weaponRailOffset, CuratedJeiCatalog.weapons().size(), layout,
-                            event.getScrollDelta() < 0 ? 1 : -1);
-                } else {
-                    foodRailOffset = scrollRail(foodRailOffset, CuratedJeiCatalog.food().size(), layout,
-                            event.getScrollDelta() < 0 ? 1 : -1);
-                }
+                setChildRailOffset(scrollRail(childRailOffset(), children.size(), layout,
+                        event.getScrollDelta() < 0 ? 1 : -1));
                 event.setCanceled(true);
             }
             return;
@@ -314,36 +293,22 @@ public final class CuratedJeiOverlay {
             renderButton(graphics, category.icon(), layout.railX(), y, category == selected);
             renderLabel(graphics, category.translationKey(), layout.railX(), y, mouseX, mouseY);
         }
-        if (selected == CatalogCategory.BUILDING) {
-            List<CatalogCategory> children = CuratedJeiCatalog.building();
+        List<CatalogCategory> children = selectedChildren();
+        if (!children.isEmpty()) {
             int childStart = railStart(children, layout, true);
             for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
                 CatalogCategory category = children.get(index);
                 int y = layout.top() + (index - childStart) * BUTTON;
-                renderButton(graphics, category.icon(), layout.subRailX(), y, category == building);
-                renderLabel(graphics, category.translationKey(), layout.subRailX(), y, mouseX, mouseY);
-            }
-        } else if (selected == CatalogCategory.WEAPONS || selected == CatalogCategory.FOOD) {
-            List<CatalogCategory> children = selected == CatalogCategory.WEAPONS
-                    ? CuratedJeiCatalog.weapons() : CuratedJeiCatalog.food();
-            int childStart = railStart(children, layout, true);
-            for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
-                CatalogCategory category = children.get(index);
-                int y = layout.top() + (index - childStart) * BUTTON;
-                renderButton(graphics, category.icon(), layout.subRailX(), y,
-                        category == (selected == CatalogCategory.WEAPONS ? weapon : food));
+                renderButton(graphics, category.icon(), layout.subRailX(), y, category == activeChild());
                 renderLabel(graphics, category.translationKey(), layout.subRailX(), y, mouseX, mouseY);
             }
         }
     }
 
     private static int railStart(List<CatalogCategory> categories, CatalogLayout layout, boolean children) {
-        int offset = children ? selected == CatalogCategory.WEAPONS ? weaponRailOffset
-                : selected == CatalogCategory.FOOD ? foodRailOffset : buildingRailOffset : categoryRailOffset;
+        int offset = children ? childRailOffset() : categoryRailOffset;
         int clamped = Math.min(offset, Math.max(0, categories.size() - layout.railSlots()));
-        if (children && selected == CatalogCategory.WEAPONS) weaponRailOffset = clamped;
-        else if (children && selected == CatalogCategory.FOOD) foodRailOffset = clamped;
-        else if (children) buildingRailOffset = clamped;
+        if (children) setChildRailOffset(clamped);
         else categoryRailOffset = clamped;
         return clamped;
     }
@@ -455,9 +420,59 @@ public final class CuratedJeiOverlay {
     }
 
     private static List<ItemStack> activeStacks() {
-        return CuratedJeiCatalog.stacks(selected == CatalogCategory.BUILDING ? building
-                : selected == CatalogCategory.WEAPONS ? weapon
-                : selected == CatalogCategory.FOOD ? food : selected);
+        CatalogCategory child = activeChild();
+        return CuratedJeiCatalog.stacks(child == null ? selected : child);
+    }
+
+    private static List<CatalogCategory> selectedChildren() {
+        return switch (selected) {
+            case WEAPONS -> CuratedJeiCatalog.weapons();
+            case WEARABLES -> CuratedJeiCatalog.wearables();
+            case FOOD -> CuratedJeiCatalog.food();
+            case BUILDING -> CuratedJeiCatalog.building();
+            default -> List.of();
+        };
+    }
+
+    private static CatalogCategory activeChild() {
+        return switch (selected) {
+            case WEAPONS -> weapon;
+            case WEARABLES -> wearable;
+            case FOOD -> food;
+            case BUILDING -> building;
+            default -> null;
+        };
+    }
+
+    private static void selectChild(CatalogCategory category) {
+        switch (selected) {
+            case WEAPONS -> weapon = category;
+            case WEARABLES -> wearable = category;
+            case FOOD -> food = category;
+            case BUILDING -> building = category;
+            default -> throw new IllegalStateException("Category has no children: " + selected);
+        }
+    }
+
+    private static int childRailOffset() {
+        return switch (selected) {
+            case WEAPONS -> weaponRailOffset;
+            case WEARABLES -> wearableRailOffset;
+            case FOOD -> foodRailOffset;
+            case BUILDING -> buildingRailOffset;
+            default -> 0;
+        };
+    }
+
+    private static void setChildRailOffset(int offset) {
+        switch (selected) {
+            case WEAPONS -> weaponRailOffset = offset;
+            case WEARABLES -> wearableRailOffset = offset;
+            case FOOD -> foodRailOffset = offset;
+            case BUILDING -> buildingRailOffset = offset;
+            default -> {
+            }
+        }
     }
 
     private static void select(CatalogCategory category) {
@@ -472,9 +487,7 @@ public final class CuratedJeiOverlay {
         int railX = screen.width - BUTTON - MARGIN;
         int subRailX = railX - BUTTON - 4;
         int top = MARGIN;
-        int right = selected == CatalogCategory.BUILDING || selected == CatalogCategory.WEAPONS
-                || selected == CatalogCategory.FOOD
-                ? subRailX - MARGIN : railX - MARGIN;
+        int right = selectedChildren().isEmpty() ? railX - MARGIN : subRailX - MARGIN;
         int rightGridX = screen.getGuiLeft() + screen.getXSize() + MARGIN;
         int leftAvailable = screen.getGuiLeft() - MARGIN * 2;
         int rightAvailable = right - rightGridX;

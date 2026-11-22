@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-19T19:41:40.733531+00:00` for `0371001fde63e96ac9cee370d0480fefcf8fac0a`.
+Generated from Atlas schema 1 at `2026-11-22T13:42:34.508521+00:00` for `c09d5723d1121be63e817fcdacd4cd4aae975bee`.
 
-Static evidence observed 17,160 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,128 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -16,6 +16,7 @@ Static evidence observed 17,160 canonical item IDs. This is not a Forge runtime 
 | bbb | 263 | 3 | 260 | 0 | 260 |
 | beachparty | 86 | 23 | 63 | 4 | 63 |
 | bellsandwhistles | 38 | 0 | 38 | 0 | 38 |
+| blabovs_green_screen | 2 | 0 | 2 | 0 | 2 |
 | blastfromthepast | 133 | 14 | 119 | 0 | 119 |
 | block_factorys_bosses | 137 | 1 | 136 | 0 | 136 |
 | blueprint | 1 | 0 | 1 | 0 | 1 |
@@ -59,10 +60,10 @@ Static evidence observed 17,160 canonical item IDs. This is not a Forge runtime 
 | infinitybuttons | 372 | 0 | 372 | 0 | 372 |
 | invincible | 3 | 0 | 3 | 0 | 3 |
 | item_magnet | 2 | 0 | 2 | 0 | 2 |
-| jem_building | 11 | 0 | 11 | 0 | 11 |
+| jem_building | 1 | 0 | 1 | 0 | 1 |
 | jem_economy | 6 | 0 | 6 | 0 | 6 |
 | jem_twelve_eyes | 32 | 0 | 32 | 0 | 32 |
-| jemcompat | 69 | 0 | 69 | 0 | 69 |
+| jemcompat | 45 | 0 | 45 | 0 | 45 |
 | kaleidoscope_compat | 229 | 0 | 229 | 0 | 229 |
 | kaleidoscope_cookery | 213 | 99 | 114 | 5 | 115 |
 | kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |

@@ -1,3 +1,19 @@
+## 2026-11-22 - Reclassify the complete JEI catalog
+
+- The user requested a semantic correction of the current 13,869-item catalog without removing any earlier client or server work
+- The user required Cataclysm, Legendary Monsters, Nightfall, shotgun, shield, and other actual weapons to use weapon leaves instead of Other
+- The user added Shields, Companions, Building Tools, Armor, Mob Armor, and Dolls. The user named the Russian dolls leaf `Куклы` and required the leaf itself to use that name
+- The user required plants and natural growths in Construction > Nature, storage furniture and backpacks in Construction > Containers, actual cooking and brewing tools in Cooking Equipment, and Create tools in Create and Redstone
+- The user required tameable non-mount creatures and unique companion items in Companions. Rideable creatures remain in Transport. Reviewed spawn eggs can appear in both Spawn Eggs and the matching companion or transport view, while generic taming food is not duplicated
+- Bug / Client / the initial offline classifier used incomplete weapon rules and broad namespace, tag, and name rules, then the exact manifest preserved those wrong assignments / in testing with schema-2 exact primary assignments and reviewed additional views
+- The corrected manifest has 268 melee weapons, 186 ranged weapons, 18 shields, 292 player armor items, 15 mob armor items, 723 dolls, 637 nature items, 393 containers, 47 cooking tools, 29 primary companion items, and 952 residual Other items
+- The Dolls leaf contains only exact doll item IDs. Doll crafting stations and gift boxes are construction furniture. The doll adjustment tool is Other
+- Implementation choice: keep one primary leaf per registry ID, add exact secondary views only for reviewed companion and transport spawn eggs, and keep runtime lookup free of semantic inference
+- Java 17 production `jar/reobfJar` completed for JEMCompat 3.11.2. Its SHA-256 is `5044F3A784BDF8C74C4C47C7D7E390CA1BDA10D347A00B42722AD7B777FBFFA0`
+- The ordinary local server loaded JEMCompat 3.11.2 and the corrected 13,869-item manifest. Native Pack Sync journal 195 published token `c9c5d00c860facbff93a2779cb871e94612cd36d` with manifest SHA-1 `482c106bb928ec850af5692e517527657ff1b6b2`. The follow-up preview was `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied that publication through the native planner and detached helper. All 326 managed JARs verify, JEMCompat 3.11.2 matches the approved artifact, and no update transaction remains pending
+- Player visual acceptance remains `in testing`. No gameplay client launch, MineRENT deployment, stable-profile mutation, or release-baseline promotion was performed
+
 ## 2026-11-22 - Correct the ordinary feature branch lifecycle
 
 - The user corrected the project workflow: ordinary new features start from fresh `develop` without a repeated branch question

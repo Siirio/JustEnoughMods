@@ -14,7 +14,10 @@ The leaf categories are:
 - `WEAPON_TRAINING`
 - `WEAPON_RANGED`
 - `WEAPON_MELEE`
-- `WEARABLES`
+- `WEAPON_SHIELDS`
+- `WEARABLE_ARMOR`
+- `WEARABLE_MOB_ARMOR`
+- `WEARABLE_DOLLS`
 - `FOOD_EDIBLES`
 - `FOOD_COOKING_EQUIPMENT`
 - `ORES`
@@ -30,25 +33,30 @@ The leaf categories are:
 - `BOOKS`
 - `POTIONS`
 - `TRANSPORT`
+- `COMPANIONS`
+- `BUILDING_TOOLS`
 - `SPAWN_EGGS`
 - `OTHER`
 
-`WEAPONS`, `FOOD`, and `BUILDING` are navigation parents. They never own item assignments. A parent displays the union of its child leaf lists.
+`WEAPONS`, `WEARABLES`, `FOOD`, and `BUILDING` are navigation parents. They never own item assignments. A parent displays the union of its child leaf lists.
+
+The Russian name of `WEARABLE_DOLLS` is `Куклы`. This leaf contains the exact doll item IDs. Doll crafting stations and gift boxes are construction furniture. The doll adjustment tool is `OTHER`.
 
 ## Assignment contract
 
 - One item registry ID has one leaf assignment
+- An item can also appear in an exact additional view without changing its primary assignment
 - Adding or removing a category does not reassign an existing ID
 - A new item that is not in the manifest appears in `OTHER` and is reported once in the log
 - Invalid categories and duplicate IDs make manifest loading fail with an explicit error
 - User-approved assignments from `CHANGELOG.md` take precedence in the initial manifest
 - Weapon subcategories split only the items that the earlier catalog classified as weapons
-- Protective death-prevention totems remain wearable unless an explicit approved assignment places them in a weapon leaf
+- Companion and transport spawn eggs keep `SPAWN_EGGS` as their primary assignment and also appear in their exact companion or transport view
 - JEM Economy reads the same manifest through the existing optional JEMCompat contract
 
 ## Maintenance
 
-`tools/generate_jei_catalog.py` creates the initial manifest from an exact logical-server registry export and the approved offline priority rules. The 2026-11-22 export contains 13,869 item IDs and has SHA-256 `958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39`. After the initial conversion, the checked-in manifest is authoritative. Update mode preserves all existing assignments and assigns only previously unknown IDs to `OTHER`. Validate mode rejects missing, unknown, duplicate, or invalid assignments without changing the manifest.
+`tools/generate_jei_catalog.py` creates the initial manifest from an exact logical-server registry export and the approved offline priority rules. The 2026-11-22 export contains 13,869 item IDs and has SHA-256 `958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39`. After the initial conversion, the checked-in manifest is authoritative. Update mode preserves all existing assignments and assigns only previously unknown IDs to `OTHER`. Validate mode rejects missing, unknown, duplicate, or invalid assignments without changing the manifest. Review mode regenerates the namespace-count report from the checked-in manifest.
 
 This policy prevents a generator update from rewriting accepted categories. A future category correction changes the exact item IDs in the manifest and records the decision in `CHANGELOG.md` and the Registry Atlas change history.
 
@@ -57,3 +65,5 @@ This policy prevents a generator update from rewriting accepted categories. A fu
 JEI still enumerates its live item stacks because it owns the actual visible variants. JEMCompat normalizes each preview stack and performs one constant-time manifest lookup by item registry ID. It no longer scans recipe categories or executes the semantic classifier for every stack.
 
 NBT variants of one registry ID share one category. A future variant-specific requirement needs a separately approved manifest schema revision.
+
+Schema 2 adds `additional_views`. These lists are exact. Runtime code does not infer tameability, rideability, or companion behavior from item names. Generic taming foods are not duplicated. Only reviewed unique companion items and reviewed spawn eggs appear in `COMPANIONS`. Rideable creature eggs appear in `TRANSPORT`.

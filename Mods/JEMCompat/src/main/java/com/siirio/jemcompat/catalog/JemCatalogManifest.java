@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.EnumMap;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -22,12 +23,14 @@ import java.util.Set;
 final class JemCatalogManifest {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final String RESOURCE = "/assets/jemcompat/jei_catalog.json";
-    private static final int SCHEMA_VERSION = 1;
+    private static final int SCHEMA_VERSION = 2;
     private static final int UNKNOWN_LOG_LIMIT = 25;
     private static final Set<JemCatalogCategories.Kind> PARENTS = Set.of(
             JemCatalogCategories.Kind.WEAPONS, JemCatalogCategories.Kind.FOOD,
-            JemCatalogCategories.Kind.BUILDING);
-    private static final Map<ResourceLocation, JemCatalogCategories.Kind> ASSIGNMENTS = load();
+            JemCatalogCategories.Kind.WEARABLES, JemCatalogCategories.Kind.BUILDING);
+    private static final LoadedManifest MANIFEST = load();
+    private static final Map<ResourceLocation, JemCatalogCategories.Kind> ASSIGNMENTS = MANIFEST.assignments();
+    private static final Map<ResourceLocation, Set<JemCatalogCategories.Kind>> ADDITIONAL_VIEWS = MANIFEST.additionalViews();
     private static final Set<ResourceLocation> REPORTED_UNKNOWN = new HashSet<>();
 
     private JemCatalogManifest() {
@@ -50,7 +53,12 @@ final class JemCatalogManifest {
         return JemCatalogCategories.Kind.OTHER;
     }
 
-    private static Map<ResourceLocation, JemCatalogCategories.Kind> load() {
+    static Set<JemCatalogCategories.Kind> additionalCategories(ItemStack stack) {
+        ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
+        return id == null ? Set.of() : ADDITIONAL_VIEWS.getOrDefault(id, Set.of());
+    }
+
+    private static LoadedManifest load() {
         InputStream stream = JemCatalogManifest.class.getResourceAsStream(RESOURCE);
         if (stream == null) {
             throw new IllegalStateException("Missing JEI catalog manifest " + RESOURCE);
@@ -88,12 +96,44 @@ final class JemCatalogManifest {
             if (root.get("item_count").getAsInt() != result.size()) {
                 throw new IllegalStateException("JEI catalog item_count does not match its assignments");
             }
-            LOGGER.info("Loaded {} reviewed JEI catalog assignments", result.size());
-            return Map.copyOf(result);
+            Map<ResourceLocation, EnumSet<JemCatalogCategories.Kind>> additional = new HashMap<>();
+            JsonObject additionalViews = root.getAsJsonObject("additional_views");
+            if (additionalViews == null) {
+                throw new IllegalStateException("Missing JEI additional_views");
+            }
+            for (Map.Entry<String, JsonElement> entry : additionalViews.entrySet()) {
+                JemCatalogCategories.Kind view = JemCatalogCategories.Kind.valueOf(entry.getKey());
+                if (PARENTS.contains(view)) {
+                    throw new IllegalStateException("JEI parent category cannot be an additional view: " + view);
+                }
+                Set<ResourceLocation> seen = new HashSet<>();
+                for (JsonElement value : entry.getValue().getAsJsonArray()) {
+                    ResourceLocation id = ResourceLocation.tryParse(value.getAsString());
+                    if (id == null || !result.containsKey(id)) {
+                        throw new IllegalStateException("Invalid JEI additional-view item " + value);
+                    }
+                    if (!seen.add(id)) {
+                        throw new IllegalStateException("Duplicate JEI additional-view item " + id + " in " + view);
+                    }
+                    if (result.get(id) == view) {
+                        throw new IllegalStateException("Redundant JEI additional-view item " + id + " in " + view);
+                    }
+                    additional.computeIfAbsent(id, ignored -> EnumSet.noneOf(JemCatalogCategories.Kind.class)).add(view);
+                }
+            }
+            Map<ResourceLocation, Set<JemCatalogCategories.Kind>> immutableAdditional = new HashMap<>();
+            additional.forEach((id, views) -> immutableAdditional.put(id, Set.copyOf(views)));
+            LOGGER.info("Loaded {} reviewed JEI catalog assignments and {} additional-view entries",
+                    result.size(), immutableAdditional.size());
+            return new LoadedManifest(Map.copyOf(result), Map.copyOf(immutableAdditional));
         } catch (RuntimeException exception) {
             throw new IllegalStateException("Cannot load JEI catalog manifest", exception);
         } catch (Exception exception) {
             throw new IllegalStateException("Cannot read JEI catalog manifest", exception);
         }
+    }
+
+    private record LoadedManifest(Map<ResourceLocation, JemCatalogCategories.Kind> assignments,
+                                  Map<ResourceLocation, Set<JemCatalogCategories.Kind>> additionalViews) {
     }
 }

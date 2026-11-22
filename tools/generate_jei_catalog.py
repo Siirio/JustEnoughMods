@@ -14,17 +14,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "Mods" / "JEMCompat" / "src" / "main" / "resources" / "assets" / "jemcompat" / "jei_catalog.json"
 REPORT = ROOT / "Docs" / "catalog" / "JEI_CATALOG_REVIEW.md"
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
+SOURCE_EXPORT_SHA256 = "958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39"
 LEAVES = (
     "WEAPON_TOTEMS",
     "WEAPON_TRAINING",
     "WEAPON_MELEE",
     "WEAPON_RANGED",
-    "WEARABLES",
+    "WEAPON_SHIELDS",
+    "WEARABLE_ARMOR",
+    "WEARABLE_MOB_ARMOR",
+    "WEARABLE_DOLLS",
     "FOOD_EDIBLES",
     "FOOD_COOKING_EQUIPMENT",
     "FISHING",
     "TRANSPORT",
+    "COMPANIONS",
     "BUILDING_CONTAINERS",
     "POTIONS",
     "BOOKS",
@@ -34,12 +39,13 @@ LEAVES = (
     "BUILDING_NATURE",
     "BUILDING_GLASS",
     "BUILDING_LIGHT",
+    "BUILDING_TOOLS",
     "BUILDING_HOLIDAY",
     "BUILDING_BLOCKS",
     "SPAWN_EGGS",
     "OTHER",
 )
-PARENTS = {"WEAPONS", "FOOD", "BUILDING"}
+PARENTS = {"WEAPONS", "WEARABLES", "FOOD", "BUILDING"}
 ID_PATTERN = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
 SKARRIER_TOTEMS = {
     "skarrier_mobs:totem_of_extinction",
@@ -49,7 +55,12 @@ SKARRIER_TOTEMS = {
     "skarrier_mobs:totem_of_seething",
 }
 EXACT = {
-    "companions:book_ice_shard": "WEARABLES",
+    "alexscaves:ortholance_inventory": "WEAPON_MELEE",
+    "alexscaves:sea_staff": "WEAPON_RANGED",
+    "alexscaves:sea_staff_inventory": "WEAPON_RANGED",
+    "alexscaves:sugar_staff": "WEAPON_RANGED",
+    "alexscaves:sugar_staff_inventory": "WEAPON_RANGED",
+    "companions:book_ice_shard": "BOOKS",
     "legendary_monsters:totem_of_moss": "OTHER",
     "legendary_monsters:eye_of_moss": "OTHER",
     "spawn:ant_crystal": "OTHER",
@@ -61,7 +72,12 @@ OLD_LEAF_MAP = {
     "WEAPON_TOTEMS": "WEAPON_TOTEMS",
     "WEAPON_RANGED": "WEAPON_RANGED",
     "WEAPON_MELEE": "WEAPON_MELEE",
-    "WEARABLE": "WEARABLES",
+    "WEAPON_SHIELDS": "WEAPON_SHIELDS",
+    "WEARABLE": "WEARABLE_ARMOR",
+    "WEARABLES": "WEARABLE_ARMOR",
+    "WEARABLE_ARMOR": "WEARABLE_ARMOR",
+    "WEARABLE_MOB_ARMOR": "WEARABLE_MOB_ARMOR",
+    "WEARABLE_DOLLS": "WEARABLE_DOLLS",
     "FOOD": "FOOD_COOKING_EQUIPMENT",
     "ORES": "ORES",
     "CREATE_REDSTONE": "CREATE_REDSTONE",
@@ -76,8 +92,50 @@ OLD_LEAF_MAP = {
     "BOOKS": "BOOKS",
     "POTIONS": "POTIONS",
     "TRANSPORT": "TRANSPORT",
+    "COMPANIONS": "COMPANIONS",
+    "BUILDING_TOOLS": "BUILDING_TOOLS",
     "SPAWN_EGGS": "SPAWN_EGGS",
     "OTHER": "OTHER",
+}
+
+COMPANION_EGGS = {
+    "minecraft:allay_spawn_egg",
+    "minecraft:cat_spawn_egg",
+    "minecraft:parrot_spawn_egg",
+    "minecraft:wolf_spawn_egg",
+    *{
+        f"alexsmobs:spawn_egg_{path}"
+        for path in (
+            "bald_eagle", "caiman", "capuchin_monkey", "cosmaw", "crow", "flutter",
+            "kangaroo", "mantis_shrimp", "mimic_octopus", "mudskipper", "raccoon",
+            "sugar_glider", "tarantula_hawk", "warped_toad",
+        )
+    },
+    *{
+        f"companions:{path}_spawn_egg"
+        for path in (
+            "broken_dinamo", "cornelius", "golden_allay", "hostile_imp",
+            "hostile_puppet_glove", "illager_golem", "living_candle", "sacred_pontiff",
+            "teddy", "wild_antlion",
+        )
+    },
+}
+TRANSPORT_EGGS = {
+    *{
+        f"minecraft:{path}_spawn_egg"
+        for path in (
+            "camel", "donkey", "happy_ghast", "horse", "mule", "skeleton_horse",
+            "strider", "zombie_horse",
+        )
+    },
+    *{
+        f"alexsmobs:spawn_egg_{path}"
+        for path in ("elephant", "grizzly_bear", "komodo_dragon", "laviathan", "straddler", "tusklin")
+    },
+    *{
+        f"alexscaves:spawn_egg_{path}"
+        for path in ("atlatitan", "subterranodon", "tremorsaurus")
+    },
 }
 
 
@@ -151,9 +209,12 @@ def classify(row: dict, hint: str | None) -> str:
     }:
         return "WEAPON_TRAINING"
 
+    if class_has(row, "ShieldItem") or "shield" in token_set or {"buckler", "targe"} & token_set:
+        return "WEAPON_SHIELDS"
+
     if "spear" in token_set and not ({"javelin", "trident"} & token_set):
         return "WEAPON_MELEE"
-    if class_has(row, "SwordItem", "DiggerItem", "ShieldItem") or has_tag(
+    if class_has(row, "SwordItem", "DiggerItem") or has_tag(
         row, "minecraft:swords", "forge:tools/swords", "forge:weapons"
     ) or has_phrase(
         path,
@@ -199,6 +260,20 @@ def classify(row: dict, hint: str | None) -> str:
     ):
         return "WEAPON_RANGED"
 
+    if any(marker in path for marker in ("_horse_armor", "_nautilus_armor", "wolf_armor")):
+        return "WEARABLE_MOB_ARMOR"
+    if (
+        namespace == "kaleidoscope_doll"
+        and (
+            path == "custom_doll"
+            or path in {"doll_entity_item", "doll_icon"}
+            or re.fullmatch(r"doll_\d+", path)
+        )
+    ) or (
+        namespace == "kaleidoscope_nether"
+        and re.fullmatch(r"(?:entity_)?doll_\d+", path)
+    ):
+        return "WEARABLE_DOLLS"
     if row.get("armor_slot") or class_has(
         row, "ArmorItem", "DollItem", "Curio", "BackpackItem", "Quiver"
     ) or has_tag(row, "curios:", "forge:armors", "minecraft:head_armor", "minecraft:chest_armor") or has_phrase(
@@ -219,7 +294,20 @@ def classify(row: dict, hint: str | None) -> str:
         "wearable",
         "white_doll",
     ):
-        return "WEARABLES"
+        return "WEARABLE_ARMOR"
+
+    if item_id in {
+        "deep_dark_regrowth:apatine_plant",
+        "deep_dark_regrowth:apatine_stage_1",
+        "deep_dark_regrowth:exxo_plant",
+        "deep_dark_regrowth:infected_mushroom",
+        "deep_dark_regrowth:large_infected_mushroom",
+        "deep_dark_regrowth:short_infected_mushroom",
+        "deep_dark_regrowth:vilethorn",
+        "immersive_weathering:icicle",
+        "unearthed_journey:platypodium_elegans_sapling_plant",
+    }:
+        return "BUILDING_NATURE"
 
     if row.get("has_food_properties") or has_tag(
         row, "foods", "crops", "fruits", "vegetables", "drinks", "beverages", "meat"
@@ -445,6 +533,9 @@ def classify(row: dict, hint: str | None) -> str:
     ):
         return "CREATE_REDSTONE"
 
+    if item_id in {"jem_building:builder_hammer", "bbb:hammer", "handcrafted:hammer"}:
+        return "BUILDING_TOOLS"
+
     if namespace in {"beachparty", "casualswing", "chimes", "secretdoors", "shutterup"} or has_phrase(
         path,
         "chair",
@@ -534,7 +625,7 @@ def classify(row: dict, hint: str | None) -> str:
 
 def validate(data: dict, registered_ids: set[str] | None = None) -> None:
     if data.get("schema_version") != SCHEMA_VERSION:
-        raise ValueError("Expected schema_version 1")
+        raise ValueError("Expected schema_version 2")
     assignments = data.get("assignments")
     if not isinstance(assignments, dict) or set(assignments) != set(LEAVES):
         raise ValueError("Manifest must contain every leaf and no parent assignment")
@@ -552,6 +643,19 @@ def validate(data: dict, registered_ids: set[str] | None = None) -> None:
                 raise ValueError(f"Duplicate assignment {item_id}: {previous} and {leaf}")
     if data.get("item_count") != len(seen):
         raise ValueError("item_count does not match assignments")
+    additional = data.get("additional_views")
+    if not isinstance(additional, dict):
+        raise ValueError("Manifest must contain additional_views")
+    for view, item_ids in additional.items():
+        if view not in LEAVES or view in PARENTS or not isinstance(item_ids, list):
+            raise ValueError(f"Invalid additional view {view}")
+        if item_ids != sorted(item_ids) or len(item_ids) != len(set(item_ids)):
+            raise ValueError(f"Additional view {view} must contain sorted unique IDs")
+        for item_id in item_ids:
+            if item_id not in seen:
+                raise ValueError(f"Additional view {view} contains unknown ID {item_id}")
+            if seen[item_id] == view:
+                raise ValueError(f"Additional view {view} redundantly contains its primary ID {item_id}")
     if registered_ids is not None:
         unknown = set(seen) - registered_ids
         missing = registered_ids - set(seen)
@@ -589,6 +693,7 @@ def generated_manifest(rows: list[dict], registered_ids: set[str]) -> dict:
         "source": "Exact logical-server Forge item registry export, classified offline by the 2026-11-22 JEM contract",
         "item_count": len(rows),
         "assignments": assignments,
+        "additional_views": additional_views(registered_ids),
     }
     validate(data, registered_ids)
     return data
@@ -613,9 +718,17 @@ def updated_manifest(registered_ids: set[str]) -> dict:
         "source": "Exact logical-server Forge item registry export with preserved reviewed assignments",
         "item_count": len(registered_ids),
         "assignments": {leaf: grouped[leaf] for leaf in LEAVES},
+        "additional_views": additional_views(registered_ids),
     }
     validate(result, registered_ids)
     return result
+
+
+def additional_views(registered_ids: set[str]) -> dict[str, list[str]]:
+    return {
+        "COMPANIONS": sorted(COMPANION_EGGS & registered_ids),
+        "TRANSPORT": sorted(TRANSPORT_EGGS & registered_ids),
+    }
 
 
 def write_report(data: dict, rows: list[dict], export_path: Path, digest: str) -> None:
@@ -637,15 +750,60 @@ def write_report(data: dict, rows: list[dict], export_path: Path, digest: str) -
         counts = Counter(namespace_by_id[item_id] for item_id in item_ids)
         lines.extend(f"- {namespace}: {count}" for namespace, count in sorted(counts.items()))
         lines.append("")
+    lines.extend(("## Additional exact views", ""))
+    for view, item_ids in data["additional_views"].items():
+        lines.extend((f"### {view}", "", f"Total: {len(item_ids)}", ""))
+        counts = Counter(item_id.split(":", 1)[0] for item_id in item_ids)
+        lines.extend(f"- {namespace}: {count}" for namespace, count in sorted(counts.items()))
+        lines.append("")
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
+    REPORT.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
+def write_manifest_review(data: dict) -> None:
+    lines = [
+        "# JEI Catalog Review",
+        "",
+        "- Registry source: reviewed logical-server export removed after initial validation",
+        f"- Source export SHA-256: {SOURCE_EXPORT_SHA256}",
+        f"- Registered items: {data['item_count']}",
+        f"- Manifest schema: {data['schema_version']}",
+        "- Runtime classification: direct immutable item-ID lookup only",
+        "",
+        "## Leaf and namespace counts",
+        "",
+    ]
+    for leaf in LEAVES:
+        item_ids = data["assignments"][leaf]
+        lines.extend((f"### {leaf}", "", f"Total: {len(item_ids)}", ""))
+        counts = Counter(item_id.split(":", 1)[0] for item_id in item_ids)
+        lines.extend(f"- {namespace}: {count}" for namespace, count in sorted(counts.items()))
+        lines.append("")
+    lines.extend(("## Additional exact views", ""))
+    for view, item_ids in data["additional_views"].items():
+        lines.extend((f"### {view}", "", f"Total: {len(item_ids)}", ""))
+        counts = Counter(item_id.split(":", 1)[0] for item_id in item_ids)
+        lines.extend(f"- {namespace}: {count}" for namespace, count in sorted(counts.items()))
+        lines.append("")
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=("generate", "update", "validate"))
-    parser.add_argument("export", type=Path)
+    parser.add_argument("mode", choices=("generate", "update", "validate", "review"))
+    parser.add_argument("export", type=Path, nargs="?")
     args = parser.parse_args()
+    if args.export is None:
+        if args.mode not in {"validate", "review"}:
+            parser.error("generate and update require a runtime export")
+        data = read_json(MANIFEST)
+        validate(data)
+        if args.mode == "review":
+            write_manifest_review(data)
+        counts = {leaf: len(item_ids) for leaf, item_ids in data["assignments"].items()}
+        print(json.dumps({"item_count": data["item_count"], "categories": counts}, indent=2))
+        return 0
     export_path = args.export.resolve()
     rows, registered_ids, digest = load_export(export_path)
     if args.mode == "generate":

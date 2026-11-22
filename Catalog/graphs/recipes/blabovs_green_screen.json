@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "c09d5723d1121be63e817fcdacd4cd4aae975bee",
+  "generation": {
+    "generated_utc": "2026-11-22T13:42:34.508521+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "blabovs_green_screen",
+    "name": "Blabov's Green Screen",
+    "version": "1.0.0"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "blabovs_green_screen:green_screen_recipe",
+      "mod_id": "blabovs_green_screen",
+      "mod_name": "Blabov's Green Screen",
+      "mod_version": "1.0.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:glow_ink_sac",
+        "minecraft:lime_concrete"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "blabovs_green_screen:green_screen"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "blabovs_green_screen-1.0.0-forge-1.20.1.jar:data/blabovs_green_screen/recipes/green_screen_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "blabovs_green_screen:green_screen_with_markers_recipe",
+      "mod_id": "blabovs_green_screen",
+      "mod_name": "Blabov's Green Screen",
+      "mod_version": "1.0.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "blabovs_green_screen:green_screen",
+        "minecraft:black_dye",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "blabovs_green_screen:green_screen_with_markers"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "blabovs_green_screen-1.0.0-forge-1.20.1.jar:data/blabovs_green_screen/recipes/green_screen_with_markers_recipe.json"
+      ]
+    }
+  ]
+}

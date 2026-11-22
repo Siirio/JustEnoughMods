@@ -13,12 +13,16 @@ public final class CuratedJeiCatalog {
     private static final List<CatalogCategory> TOP_LEVEL = List.of(CatalogCategory.WEAPONS, CatalogCategory.WEARABLES, CatalogCategory.FOOD,
             CatalogCategory.ORES,
             CatalogCategory.CREATE_REDSTONE, CatalogCategory.BUILDING, CatalogCategory.FISHING, CatalogCategory.BOOKS,
-            CatalogCategory.POTIONS, CatalogCategory.TRANSPORT, CatalogCategory.SPAWN_EGGS, CatalogCategory.OTHER);
+            CatalogCategory.POTIONS, CatalogCategory.TRANSPORT, CatalogCategory.COMPANIONS,
+            CatalogCategory.SPAWN_EGGS, CatalogCategory.OTHER);
     private static final List<CatalogCategory> BUILDING = List.of(CatalogCategory.BUILDING_BLOCKS, CatalogCategory.BUILDING_GLASS,
             CatalogCategory.BUILDING_LIGHT, CatalogCategory.BUILDING_FURNITURE, CatalogCategory.BUILDING_CONTAINERS,
-            CatalogCategory.BUILDING_NATURE, CatalogCategory.BUILDING_HOLIDAY);
+            CatalogCategory.BUILDING_NATURE, CatalogCategory.BUILDING_HOLIDAY, CatalogCategory.BUILDING_TOOLS);
     private static final List<CatalogCategory> WEAPONS = List.of(CatalogCategory.WEAPON_TOTEMS,
-            CatalogCategory.WEAPON_RANGED, CatalogCategory.WEAPON_MELEE, CatalogCategory.WEAPON_TRAINING);
+            CatalogCategory.WEAPON_RANGED, CatalogCategory.WEAPON_MELEE, CatalogCategory.WEAPON_SHIELDS,
+            CatalogCategory.WEAPON_TRAINING);
+    private static final List<CatalogCategory> WEARABLES = List.of(CatalogCategory.WEARABLE_ARMOR,
+            CatalogCategory.WEARABLE_MOB_ARMOR, CatalogCategory.WEARABLE_DOLLS);
     private static final List<CatalogCategory> FOOD = List.of(CatalogCategory.FOOD_EDIBLES,
             CatalogCategory.FOOD_COOKING_EQUIPMENT);
     private static final EnumMap<CatalogCategory, List<ItemStack>> STACKS = new EnumMap<>(CatalogCategory.class);
@@ -36,6 +40,9 @@ public final class CuratedJeiCatalog {
             CatalogCategory leaf = CatalogCategory.valueOf(
                     com.siirio.jemcompat.catalog.JemCatalogCategories.classify(preview).name());
             STACKS.computeIfAbsent(leaf, ignored -> new ArrayList<>()).add(preview);
+            com.siirio.jemcompat.catalog.JemCatalogCategories.additionalCategories(preview).forEach(view ->
+                    STACKS.computeIfAbsent(CatalogCategory.valueOf(view.name()), ignored -> new ArrayList<>())
+                            .add(preview));
         });
         STACKS.replaceAll((category, stacks) -> Collections.unmodifiableList(stacks));
     }
@@ -59,6 +66,10 @@ public final class CuratedJeiCatalog {
         return WEAPONS;
     }
 
+    public static List<CatalogCategory> wearables() {
+        return WEARABLES;
+    }
+
     public static List<CatalogCategory> food() {
         return FOOD;
     }
@@ -69,6 +80,9 @@ public final class CuratedJeiCatalog {
         }
         if (category == CatalogCategory.WEAPONS) {
             return aggregate(WEAPONS);
+        }
+        if (category == CatalogCategory.WEARABLES) {
+            return aggregate(WEARABLES);
         }
         if (category == CatalogCategory.FOOD) {
             return aggregate(FOOD);

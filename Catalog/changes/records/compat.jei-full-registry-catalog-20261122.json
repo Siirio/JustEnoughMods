@@ -2,13 +2,119 @@
   "schema_version": 2,
   "change_id": "compat.jei-full-registry-catalog-20261122",
   "status": "active",
-  "selectors": [{"type": "registry", "registry": "items"}],
-  "conditions": [{"side": "client", "installed_versions": ["JEI installed pack", "JEMCompat current source"]}],
-  "precedence": {"layer": "compat_ui", "priority": 1730, "overrides": ["compat.jei-exact-catalog-manifest-20261121"]},
-  "change": {"summary": "Classify the exact 13,869-item logical-server registry export once and use direct immutable lookup at runtime.", "modifiers": [{"property": "jei.catalog_manifest", "operation": "replace", "before": "Partial accepted registry set and older category tree", "after": "Every exported item ID has exactly one of 22 leaf assignments under Weapons, Food, Building, or root navigation"}, {"property": "jei.original_mode", "operation": "replace", "before": "Curated controls could remain active", "after": "Original JEI mode leaves the curated overlay invisible, inactive, and unfocused"}]},
-  "cause": {"owner": "JEMCompat curated JEI catalog", "kind": "approved_catalog_rebuild", "source_files": ["Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json", "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/**", "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/**", "tools/generate_jei_catalog.py", "Docs/catalog/JEI_CATALOG_REVIEW.md"]},
-  "rationale": {"purpose": "Make category membership complete, stable, reviewable, and independent of runtime inference.", "decision_source": "Approved 2026-11-22 one-shot plan Appendix B", "user_requested": "Rebuild the complete catalog without losing accepted assignments.", "codex_choices": "Use one exact server export, preserve existing assignments as migration hints, and put later unknown IDs in Other."},
-  "introduced": {"date": "2026-11-22", "commit": "SELF", "action": "rebuild_jei_catalog", "summary": "Install the complete exact registry manifest."},
-  "history": [{"date": "2026-11-22", "commit": "SELF", "action": "rebuild_jei_catalog", "summary": "Generate and validate 13,869 unique item assignments."}],
-  "impacts": {"systems": ["JEI", "JEMCompat", "JEM Economy optional catalog"], "relations": ["logical server item registry -> checked manifest -> direct client lookup"], "notes": ["The export SHA-256 is 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39."], "unresolved": ["Visual acceptance requires a later explicitly authorized client launch."]}
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "conditions": [
+    {
+      "side": "client",
+      "installed_versions": [
+        "JEI installed pack",
+        "JEMCompat 3.11.2"
+      ]
+    }
+  ],
+  "precedence": {
+    "layer": "compat_ui",
+    "priority": 1730,
+    "overrides": [
+      "compat.jei-exact-catalog-manifest-20261121"
+    ]
+  },
+  "change": {
+    "summary": "Use one reviewed schema-2 manifest for all 13,869 item IDs, corrected catalog leaves, and exact companion and transport additional views.",
+    "modifiers": [
+      {
+        "property": "jei.catalog_manifest",
+        "operation": "replace",
+        "before": "The initial exact manifest retained broad classifier mistakes and had no exact secondary views.",
+        "after": "Every exported item ID has one reviewed primary leaf under the corrected weapon, wearable, food, building, or root tree. Reviewed spawn eggs can also appear in Companions or Transport."
+      },
+      {
+        "property": "jei.wearable_navigation",
+        "operation": "replace",
+        "before": "Armor, mob armor, dolls, tools, sensors, books, and storage items shared one broad leaf.",
+        "after": "Wearables has Armor, Mob Armor, and Dolls leaves. The Dolls leaf contains exact doll item IDs only."
+      },
+      {
+        "property": "jei.semantic_categories",
+        "operation": "replace",
+        "before": "Many weapons, shields, plants, containers, cooking tools, Create tools, and companion items appeared in Other or an unrelated leaf.",
+        "after": "Reviewed item families use their exact weapon, shield, nature, container, cooking, Create, building-tool, companion, or transport leaf."
+      },
+      {
+        "property": "jei.original_mode",
+        "operation": "replace",
+        "before": "Curated controls could remain active.",
+        "after": "Original JEI mode leaves the curated overlay invisible, inactive, and unfocused."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat curated JEI catalog",
+    "kind": "approved_catalog_reclassification",
+    "source_files": [
+      "Mods/JEMCompat/gradle.properties",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+      "Client/ManagedPack/mods/jemcompat-3.11.2.jar",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/**",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/**",
+      "tools/generate_jei_catalog.py",
+      "Docs/catalog/JEI_CATALOG_MANIFEST.md",
+      "Docs/catalog/JEI_CATALOG_REVIEW.md",
+      "Docs/DEVELOPMENT.md",
+      "Mods/JEMCompat/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make category membership complete, stable, reviewable, and aligned with actual item purpose.",
+    "decision_source": "User catalog review on 2026-11-22",
+    "user_requested": "Correct weapons and shields, add companions and building tools, split armor, move nature, containers, cooking and Create items, and name the dolls leaf Dolls.",
+    "codex_choices": "Keep one primary leaf per ID, use exact additional views only for reviewed spawn eggs, and keep doll stations outside the Dolls leaf."
+  },
+  "introduced": {
+    "date": "2026-11-22",
+    "commit": "SELF",
+    "action": "rebuild_jei_catalog",
+    "summary": "Install the complete exact registry manifest."
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "rebuild_jei_catalog",
+      "summary": "Generate and validate 13,869 unique item assignments."
+    },
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "reclassify_catalog",
+      "summary": "Correct semantic leaves, add Shields, Companions, Building Tools, Armor, Mob Armor, and Dolls, and add exact companion and transport secondary views."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "JEI",
+      "JEMCompat",
+      "JEM Economy optional catalog"
+    ],
+    "relations": [
+      "logical server item registry -> checked manifest -> direct client lookup",
+      "spawn egg primary leaf -> exact companion or transport additional view",
+      "leaf category -> optional JEM Economy admission"
+    ],
+    "notes": [
+      "The export SHA-256 is 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39.",
+      "The JEMCompat 3.11.2 SHA-256 is 5044F3A784BDF8C74C4C47C7D7E390CA1BDA10D347A00B42722AD7B777FBFFA0.",
+      "The Dolls leaf contains 723 exact doll items."
+    ],
+    "unresolved": [
+      "Player visual acceptance requires an explicitly authorized client launch."
+    ]
+  }
 }

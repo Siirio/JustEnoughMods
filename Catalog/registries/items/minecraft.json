@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "0371001fde63e96ac9cee370d0480fefcf8fac0a",
+  "snapshot_sha": "c09d5723d1121be63e817fcdacd4cd4aae975bee",
   "generation": {
-    "generated_utc": "2026-11-19T19:41:40.733531+00:00",
+    "generated_utc": "2026-11-22T13:42:34.508521+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1959,11 +1959,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_axolotl.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Axolotl Spawn Egg",
       "display_name_ru_ru": null,
@@ -1971,10 +1971,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_axolotl.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -1996,9 +1995,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_axolotl"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:axolotl_spawn_egg"
@@ -3206,27 +3203,27 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
-        "jemcompat-3.11.1.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+        "jemcompat-3.11.2.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3284,11 +3281,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_bat.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Bat Spawn Egg",
       "display_name_ru_ru": null,
@@ -3296,10 +3293,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -3321,9 +3317,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_bat"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:bat_spawn_egg"
@@ -3391,11 +3385,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_bee.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Bee Spawn Egg",
       "display_name_ru_ru": null,
@@ -3403,10 +3397,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_bee.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -3428,9 +3421,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_bee"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:bee_spawn_egg"
@@ -5666,11 +5657,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_blaze.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Blaze Spawn Egg",
       "display_name_ru_ru": null,
@@ -5678,10 +5669,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_blaze.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -5703,9 +5693,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_blaze"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:blaze_spawn_egg"
@@ -8838,11 +8826,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_camel.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Camel Spawn Egg",
       "display_name_ru_ru": null,
@@ -8852,10 +8840,9 @@
         "jemcompat:items/transport"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_camel.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -8877,9 +8864,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_camel"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:camel_spawn_egg"
@@ -9196,11 +9181,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_cat.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Cat Spawn Egg",
       "display_name_ru_ru": null,
@@ -9208,10 +9193,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -9233,9 +9217,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_cat"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:cat_spawn_egg"
@@ -9309,11 +9291,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_cave_spider.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Cave Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -9321,10 +9303,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cave_spider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -9346,9 +9327,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_cave_spider"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:cave_spider_spawn_egg"
@@ -10730,11 +10709,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_chicken.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Chicken Spawn Egg",
       "display_name_ru_ru": null,
@@ -10742,10 +10721,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_chicken.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -10767,9 +10745,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_chicken"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:chicken_spawn_egg"
@@ -13642,11 +13618,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_cow.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Cow Spawn Egg",
       "display_name_ru_ru": null,
@@ -13654,10 +13630,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_cow.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -13679,9 +13654,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_cow"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:cow_spawn_egg"
@@ -14141,11 +14114,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_creeper.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Creeper Spawn Egg",
       "display_name_ru_ru": null,
@@ -14155,10 +14128,9 @@
         "true_ending:items/night_mobs"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_creeper.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -14180,9 +14152,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_creeper"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:creeper_spawn_egg"
@@ -19250,11 +19220,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_dolphin.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Dolphin Spawn Egg",
       "display_name_ru_ru": null,
@@ -19262,10 +19232,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_dolphin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -19287,9 +19256,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_dolphin"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:dolphin_spawn_egg"
@@ -19304,11 +19271,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_donkey.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Donkey Spawn Egg",
       "display_name_ru_ru": null,
@@ -19318,10 +19285,9 @@
         "jemcompat:items/transport"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_donkey.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -19343,9 +19309,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_donkey"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:donkey_spawn_egg"
@@ -19739,11 +19703,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_drowned.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Drowned Spawn Egg",
       "display_name_ru_ru": null,
@@ -19751,10 +19715,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_drowned.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -19776,9 +19739,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_drowned"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:drowned_spawn_egg"
@@ -20972,11 +20933,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_enderman.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Enderman Spawn Egg",
       "display_name_ru_ru": null,
@@ -20984,10 +20945,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_enderman.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21009,9 +20969,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_enderman"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:enderman_spawn_egg"
@@ -21026,11 +20984,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_endermite.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Endermite Spawn Egg",
       "display_name_ru_ru": null,
@@ -21038,10 +20996,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_endermite.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21063,9 +21020,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_endermite"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:endermite_spawn_egg"
@@ -21080,11 +21035,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_evoker.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Evoker Spawn Egg",
       "display_name_ru_ru": null,
@@ -21092,10 +21047,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_evoker.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -21117,9 +21071,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_evoker"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:evoker_spawn_egg"
@@ -23800,11 +23752,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_fox.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Fox Spawn Egg",
       "display_name_ru_ru": null,
@@ -23812,10 +23764,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_fox.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -23837,9 +23788,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_fox"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:fox_spawn_egg"
@@ -23958,11 +23907,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_frog.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Frog Spawn Egg",
       "display_name_ru_ru": null,
@@ -23970,10 +23919,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_frog.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -23995,9 +23943,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_frog"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:frog_spawn_egg"
@@ -24137,11 +24083,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_ghast.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Ghast Spawn Egg",
       "display_name_ru_ru": null,
@@ -24149,10 +24095,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ghast.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -24174,9 +24119,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_ghast"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:ghast_spawn_egg"
@@ -24810,11 +24753,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_glow_squid.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Glow Squid Spawn Egg",
       "display_name_ru_ru": null,
@@ -24822,10 +24765,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_glow_squid.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -24847,9 +24789,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_glow_squid"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:glow_squid_spawn_egg"
@@ -25034,11 +24974,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_goat.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Goat Spawn Egg",
       "display_name_ru_ru": null,
@@ -25046,10 +24986,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_goat.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -25071,9 +25010,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_goat"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:goat_spawn_egg"
@@ -27553,11 +27490,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_guardian.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Guardian Spawn Egg",
       "display_name_ru_ru": null,
@@ -27565,10 +27502,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_guardian.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -27590,9 +27526,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_guardian"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:guardian_spawn_egg"
@@ -28048,11 +27982,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_hoglin.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Hoglin Spawn Egg",
       "display_name_ru_ru": null,
@@ -28060,10 +27994,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_hoglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -28085,9 +28018,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_hoglin"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:hoglin_spawn_egg"
@@ -28501,11 +28432,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_horse.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Horse Spawn Egg",
       "display_name_ru_ru": null,
@@ -28515,10 +28446,9 @@
         "jemcompat:items/transport"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_horse.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -28540,9 +28470,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_horse"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:horse_spawn_egg"
@@ -28716,11 +28644,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_husk.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Husk Spawn Egg",
       "display_name_ru_ru": null,
@@ -28730,10 +28658,9 @@
         "true_ending:items/night_mobs"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_husk.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -28755,9 +28682,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_husk"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:husk_spawn_egg"
@@ -37698,11 +37623,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_llama.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Llama Spawn Egg",
       "display_name_ru_ru": null,
@@ -37710,10 +37635,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_llama.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -37735,9 +37659,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_llama"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:llama_spawn_egg"
@@ -38632,11 +38554,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_magma_cube.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Magma Cube Spawn Egg",
       "display_name_ru_ru": null,
@@ -38644,10 +38566,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_magma_cube.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -38669,9 +38590,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_magma_cube"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:magma_cube_spawn_egg"
@@ -40051,11 +39970,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_mooshroom.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Mooshroom Spawn Egg",
       "display_name_ru_ru": null,
@@ -40063,10 +39982,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mooshroom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -40088,9 +40006,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_mooshroom"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:mooshroom_spawn_egg"
@@ -41085,11 +41001,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_mule.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Mule Spawn Egg",
       "display_name_ru_ru": null,
@@ -41099,10 +41015,9 @@
         "jemcompat:items/transport"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_mule.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -41124,9 +41039,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_mule"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:mule_spawn_egg"
@@ -45609,11 +45522,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_ocelot.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Ocelot Spawn Egg",
       "display_name_ru_ru": null,
@@ -45621,10 +45534,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ocelot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -45646,9 +45558,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_ocelot"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:ocelot_spawn_egg"
@@ -46622,11 +46532,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_panda.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Panda Spawn Egg",
       "display_name_ru_ru": null,
@@ -46634,10 +46544,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_panda.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -46659,9 +46568,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_panda"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:panda_spawn_egg"
@@ -46736,11 +46643,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_parrot.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Parrot Spawn Egg",
       "display_name_ru_ru": null,
@@ -46748,10 +46655,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_parrot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -46773,9 +46679,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_parrot"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:parrot_spawn_egg"
@@ -46845,11 +46749,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_phantom.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Phantom Spawn Egg",
       "display_name_ru_ru": null,
@@ -46859,10 +46763,9 @@
         "true_ending:items/night_mobs"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_phantom.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -46884,9 +46787,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_phantom"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:phantom_spawn_egg"
@@ -46901,11 +46802,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_pig.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Pig Spawn Egg",
       "display_name_ru_ru": null,
@@ -46915,10 +46816,9 @@
         "jemcompat:items/transport"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pig.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -46940,9 +46840,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_pig"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:pig_spawn_egg"
@@ -47059,11 +46957,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_piglin_brute.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Piglin Brute Spawn Egg",
       "display_name_ru_ru": null,
@@ -47071,10 +46969,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_piglin_brute.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -47096,9 +46993,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_piglin_brute"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:piglin_brute_spawn_egg"
@@ -47164,11 +47059,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_pillager.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Pillager Spawn Egg",
       "display_name_ru_ru": null,
@@ -47176,10 +47071,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_pillager.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -47201,9 +47095,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_pillager"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:pillager_spawn_egg"
@@ -48209,11 +48101,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_polar_bear.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Polar Bear Spawn Egg",
       "display_name_ru_ru": null,
@@ -48221,10 +48113,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_polar_bear.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -48246,9 +48137,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_polar_bear"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:polar_bear_spawn_egg"
@@ -54199,7 +54088,7 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/minecraft/recipes/powered_rail.json",
+        "jemcompat-3.11.2.jar:data/minecraft/recipes/powered_rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/powered_rail.json"
       ],
       "confidence": "inferred",
@@ -56540,11 +56429,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_rabbit.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Rabbit Spawn Egg",
       "display_name_ru_ru": null,
@@ -56552,10 +56441,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_rabbit.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -56577,9 +56465,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_rabbit"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:rabbit_spawn_egg"
@@ -56676,7 +56562,7 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/minecraft/recipes/rail.json",
+        "jemcompat-3.11.2.jar:data/minecraft/recipes/rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/rail.json"
       ],
       "confidence": "inferred",
@@ -56770,11 +56656,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_ravager.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Ravager Spawn Egg",
       "display_name_ru_ru": null,
@@ -56782,10 +56668,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_ravager.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -56807,9 +56692,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_ravager"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:ravager_spawn_egg"
@@ -59934,11 +59817,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_sheep.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Sheep Spawn Egg",
       "display_name_ru_ru": null,
@@ -59946,10 +59829,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_sheep.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -59971,9 +59853,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_sheep"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:sheep_spawn_egg"
@@ -61135,11 +61015,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_shulker.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Shulker Spawn Egg",
       "display_name_ru_ru": null,
@@ -61147,10 +61027,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_shulker.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -61172,9 +61051,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_shulker"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:shulker_spawn_egg"
@@ -61295,11 +61172,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_silverfish.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Silverfish Spawn Egg",
       "display_name_ru_ru": null,
@@ -61307,10 +61184,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_silverfish.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -61332,9 +61208,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_silverfish"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:silverfish_spawn_egg"
@@ -61400,11 +61274,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_skeleton.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Skeleton Spawn Egg",
       "display_name_ru_ru": null,
@@ -61414,10 +61288,9 @@
         "true_ending:items/night_mobs"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_skeleton.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -61439,9 +61312,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_skeleton"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:skeleton_spawn_egg"
@@ -61793,11 +61664,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_slime.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Slime Spawn Egg",
       "display_name_ru_ru": null,
@@ -61805,10 +61676,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_slime.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -61830,9 +61700,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_slime"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:slime_spawn_egg"
@@ -64056,11 +63924,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_spider.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Spider Spawn Egg",
       "display_name_ru_ru": null,
@@ -64070,10 +63938,9 @@
         "true_ending:items/night_mobs"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_spider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -64095,9 +63962,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_spider"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:spider_spawn_egg"
@@ -68987,11 +68852,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_squid.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Squid Spawn Egg",
       "display_name_ru_ru": null,
@@ -68999,10 +68864,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_squid.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -69024,9 +68888,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_squid"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:squid_spawn_egg"
@@ -70131,11 +69993,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_stray.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Stray Spawn Egg",
       "display_name_ru_ru": null,
@@ -70145,10 +70007,9 @@
         "true_ending:items/night_mobs"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_stray.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70170,9 +70031,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_stray"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:stray_spawn_egg"
@@ -70187,11 +70046,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_strider.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Strider Spawn Egg",
       "display_name_ru_ru": null,
@@ -70201,10 +70060,9 @@
         "jemcompat:items/transport"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_strider.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -70226,9 +70084,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_strider"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:strider_spawn_egg"
@@ -71733,11 +71589,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_tadpole.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Tadpole Spawn Egg",
       "display_name_ru_ru": null,
@@ -71745,10 +71601,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_tadpole.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -71770,9 +71625,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_tadpole"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:tadpole_spawn_egg"
@@ -76560,11 +76413,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_turtle.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Turtle Spawn Egg",
       "display_name_ru_ru": null,
@@ -76572,10 +76425,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_turtle.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -76597,9 +76449,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_turtle"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:turtle_spawn_egg"
@@ -76771,11 +76621,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_vindicator.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Vindicator Spawn Egg",
       "display_name_ru_ru": null,
@@ -76783,10 +76633,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_vindicator.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -76808,9 +76657,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_vindicator"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:vindicator_spawn_egg"
@@ -79923,11 +79770,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_witch.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Witch Spawn Egg",
       "display_name_ru_ru": null,
@@ -79937,10 +79784,9 @@
         "true_ending:items/night_mobs"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_witch.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -79962,9 +79808,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_witch"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:witch_spawn_egg"
@@ -80035,11 +79879,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_wither_skeleton.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Wither Skeleton Spawn Egg",
       "display_name_ru_ru": null,
@@ -80047,10 +79891,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wither_skeleton.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -80072,9 +79915,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_wither_skeleton"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:wither_skeleton_spawn_egg"
@@ -80140,11 +79981,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_wolf.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Wolf Spawn Egg",
       "display_name_ru_ru": null,
@@ -80152,10 +79993,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_wolf.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -80177,9 +80017,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_wolf"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:wolf_spawn_egg"
@@ -81212,11 +81050,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_zoglin.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Zoglin Spawn Egg",
       "display_name_ru_ru": null,
@@ -81224,10 +81062,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zoglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -81249,9 +81086,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_zoglin"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:zoglin_spawn_egg"
@@ -81317,11 +81152,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_zombie.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Zombie Spawn Egg",
       "display_name_ru_ru": null,
@@ -81331,10 +81166,9 @@
         "true_ending:items/night_mobs"
       ],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombie.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -81356,9 +81190,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_zombie"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:zombie_spawn_egg"
@@ -81426,11 +81258,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/jemcompat/recipes/spawn_eggs/minecraft_zombified_piglin.json"
+        "assets/minecraft/lang/en_us.json"
       ],
       "display_name_en_us": "Zombified Piglin Spawn Egg",
       "display_name_ru_ru": null,
@@ -81438,10 +81270,9 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
-        "jemcompat-3.11.1.jar:data/jemcompat/recipes/spawn_eggs/minecraft_zombified_piglin.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
@@ -81463,9 +81294,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [
-        "jemcompat:spawn_eggs/minecraft_zombified_piglin"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:zombified_piglin_spawn_egg"
