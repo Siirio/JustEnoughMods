@@ -11,6 +11,35 @@ This file is the canonical backlog for ideas that are not selected for the curre
 - When the user selects an idea for an update, move the active specification to its owning design document and mark the backlog entry as promoted
 - Keep a short link to the new owner after promotion
 
+## Multiplayer boss scaling without hosted groups
+
+Status: concept only
+
+### User direction
+
+Ordinary bosses can become harder when several players attack them, but this update must not implement that scaling. Bosses must use native aggression without a hosted group, lobby, barrier, or combat-admission flow
+
+### Design intent
+
+Future scaling can answer the real number and strength of active attackers without restoring the removed arena architecture
+
+### Guardrails for later design
+
+- Derive active attackers from recent damage and current native boss targets
+- Do not require a party, group, lobby, ready state, barrier, portal, or first-hit confirmation
+- Apply scaling once from a stable encounter epoch and prevent retry or reload stacking
+- Preserve single-player native boss values when only one player is active
+- Remove scaling when the encounter ends or the boss is restored
+- Keep Boss Raid participant and reward records separate from combat-stat ownership
+
+### Open design work
+
+- Select the attacker observation window
+- Select health, damage, armor, and reinforcement curves
+- Define join-late and leave-early behavior
+- Define persistence and reload behavior
+- Measure the result against every registered structural boss before promotion
+
 ## Regional biome identity
 
 Status: concept only

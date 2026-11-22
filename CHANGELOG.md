@@ -1,3 +1,22 @@
+## 2026-11-22 - Define the one-shot fishing, catalog, boss, weather, and stability update
+
+- The user selected `develop` and requested one exact implementation plan that preserves the complete current Test JustEnoughMods state
+- The user fixed the Tide distribution at 39 Ordinary, 25 Rare, 20 Mythic, and 17 Legendary fish. The plan assigns all 101 exact Tide fish IDs and keeps each higher tier smaller than the previous tier
+- The user selected base sale values of 1 Silver, 1 Gold, 5 Gold, and 1 Arcane. The length bonus is linear above Tide's native average and reaches at most 1% of base value at native record length
+- JEM Currency stores whole Copper units. The plan uses `max(1 Copper, floor(base * 1%))` for the maximum length bonus, so a fractional Copper value cannot occur
+- The user requested a Shipping Box "Deposit All" button. The plan makes it a server-authoritative one-pass transfer of accepted player inventory stacks into sale slots without selling or collecting payout
+- The user removed ordinary boss group, lobby, barrier, portal, teleport restriction, and hosted combat-admission behavior. Bosses use native aggression. Boss Raid retains only participant and reward records. Blood Moon and Resource Rush remain unchanged
+- The user requested craftable spawn eggs as a separate source project that is excluded from both packs, plus removal of the third-party mineable-spawner JAR from both packs
+- The user required a complete JEI assignment contract in the plan. The plan adds exact category priority, explicit item-family decisions, a complete residual classification contract, and a runtime registry export that excludes model, translation, recipe, and render-variant IDs
+- Food becomes a navigation parent with Edibles and Cooking Equipment. Weapons gains a Training leaf for Villager Recruits training blocks
+- Bug / Client / Modefite 1.0.3 repeatedly reflected absent `GlobalPos` fields during item rendering and printed a full failure stack on every attempt, producing a 1.54 GB client log / diagnosed with a direct `GlobalPos.pos()` and `GlobalPos.dimension()` compatibility adapter planned
+- Bug / Client / the 16 GB workstation ran a local server with a 12 GB maximum heap beside a 6 GB client, leaving 14 MB physical memory and 34 MB page-file capacity before Embeddium native chunk allocations failed / diagnosed with a local-only 5 GB server maximum and coherent disabled Voxy ingestion planned
+- Bug / Client / Neo Voxy rendering was disabled while VSS receipt and Voxy ingestion remained active / diagnosed with coupled enabled state, bounded native-buffer telemetry, and lifecycle cleanup planned
+- Bug / Server / settlement family, home, amenity, room, threat, recruit, animal, guard, and complaint services repeat world, entity, town, region, path, or presentation calculations / diagnosed with an event-maintained POI, block-entity, actor, and ownership index planned as the final implementation workstream
+- The user rejected per-tick settlement budgets. The plan removes recurring calculations and finishes direct indexed lookups from exact lifecycle and block-change events
+- The client fatal stop is not attributed to villagers. Settlement load remains a separate performance defect
+- Planning only. No gameplay source, runtime pack, local server, Test profile, MineRENT state, or release baseline changed in this entry
+
 ## 2026-11-21 - Replace JEI category inference with an exact manifest
 
 - The user selected `develop` and requested a normal categorized JEI overhaul based on the category decisions already recorded in this changelog

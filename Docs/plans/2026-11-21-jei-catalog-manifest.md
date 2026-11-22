@@ -1,5 +1,7 @@
 # JEI Catalog Manifest Implementation Plan
 
+> Status: Superseded by `Docs/plans/2026-11-22-catalog-fishing-boss-stability-one-shot.md`
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Replace unstable JEI runtime category inference with one generated and checked-in exact item-to-leaf-category manifest
