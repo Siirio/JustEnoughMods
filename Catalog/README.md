@@ -51,10 +51,29 @@ this order:
 python Catalog/generator/query_atlas.py behavior cataclysm:the_incinerator
 python Catalog/generator/maintain_atlas.py scan
 python Catalog/generator/maintain_atlas.py rebuild
-python Catalog/generator/maintain_atlas.py audit
 python Catalog/generator/maintain_atlas.py scan
 python Catalog/generator/validate_atlas.py
 ```
+
+The ordinary `rebuild` validates every change record and updates source
+fingerprints, but recalculates target counts only for added or changed rules. It
+reuses unchanged entries only when the canonical registry digest is unchanged.
+Use `rebuild --full` after the full generator changes the canonical registry
+snapshot. Run `audit` only when `changes/source-watch.json` or the tracked source
+population changes, or when a change record changes its `cause.source_files` list.
+
+For a replacement JAR whose registry evidence is expected to remain unchanged,
+install the exact replacement in both runtime targets and run:
+
+```powershell
+python Catalog/generator/maintain_atlas.py artifact-delta --previous <old.jar> --replacement <new.jar>
+```
+
+This command compares mod IDs, resource namespaces, nested dependencies and only
+the models, blockstates, registry localization, recipes, loot, tags and worldgen
+JSON consumed by the Atlas generator. It rejects changed evidence and requires the
+full generator. A successful comparison updates only the artifact manifest and
+generated provenance rows that name the replaced JAR.
 
 The scan reads `changes/source-watch.json`. A relevant changed Java, Mixin, KubeJS,
 datapack, recipe, loot, config, JAR or dependency path is covered only when a change
@@ -69,7 +88,8 @@ just to satisfy coverage.
 Canonical client JARs may be Git-ignored, so the scan also hashes
 `Client/ManagedPack/mods/*.jar` against `manifest.json`. Added, removed or changed
 artifacts make the scan fail with `full_regeneration_required`; run the existing full
-generator, then review/update affected change records and effective behavior.
+generator, then review/update affected change records and effective behavior. The
+full generator seeds the effective-index cache with a forced complete calculation.
 
 `effective/baseline-coverage.json` inventories every currently tracked canonical
 source matched by that watch policy. Historical files without a reviewed semantic

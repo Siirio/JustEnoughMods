@@ -202,6 +202,65 @@ def records_digest(records: list[tuple[Path, dict[str, Any]]]) -> str:
     return digest.hexdigest()
 
 
+def baseline_coverage_digest(records: list[tuple[Path, dict[str, Any]]] | None = None,
+                             tracked: Iterable[str] | None = None) -> str:
+    digest = hashlib.sha256()
+    digest.update((CATALOG / "changes" / "source-watch.json").read_bytes())
+    if records is None:
+        records = change_records()
+    for _, rule in records:
+        digest.update(rule.get("change_id", "").encode())
+        digest.update(json.dumps(rule.get("cause", {}).get("source_files", []),
+                                 ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode())
+    if tracked is None:
+        tracked = subprocess.run(
+            ["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=False,
+        ).stdout.splitlines()
+    for path in sorted(set(tracked)):
+        digest.update(path.replace("\\", "/").encode())
+    return digest.hexdigest()
+
+
+def canonical_records_digest() -> str:
+    digest = hashlib.sha256()
+    for path in sorted((CATALOG / "registries").glob("*/*.json")):
+        digest.update(relative(path).encode())
+        digest.update(hashlib.sha256(path.read_bytes()).digest())
+    return digest.hexdigest()
+
+
+def canonical_match_digest(canonical: dict[str, dict[str, dict[str, Any]]] | None = None) -> str:
+    if canonical is None:
+        canonical = canonical_records()
+    digest = hashlib.sha256()
+    for registry, rows in sorted(canonical.items()):
+        for registry_id, row in sorted(rows.items()):
+            matched_fields = {
+                "registry": registry,
+                "registry_id": registry_id,
+                "tags": row.get("tags", []),
+                "categories": row.get("categories", []),
+                "roles": row.get("roles", []),
+            }
+            digest.update(json.dumps(matched_fields, ensure_ascii=False, sort_keys=True,
+                                     separators=(",", ":")).encode())
+    return digest.hexdigest()
+
+
+def effective_record_digest(path: Path, rule: dict[str, Any]) -> str:
+    digest = hashlib.sha256()
+    digest.update(relative(path).encode())
+    digest.update(json.dumps(rule, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode())
+    selectors = rule.get("selectors", []) + rule.get("exceptions", [])
+    for selector in selectors:
+        if selector.get("type") != "source_set":
+            continue
+        member_path = ROOT / selector.get("members_path", "")
+        digest.update(relative(member_path).encode())
+        digest.update(hashlib.sha256(member_path.read_bytes()).digest())
+    return digest.hexdigest()
+
+
 def source_digest(source: str) -> str | None:
     path = ROOT / source
     if not path.is_file():
@@ -359,15 +418,38 @@ def effective_for(registry: str, registry_id: str, base: dict[str, Any]) -> dict
     return result
 
 
-def build_effective_index() -> dict[str, Any]:
+def build_effective_index(force_full: bool = False) -> tuple[dict[str, Any], dict[str, Any]]:
     records = change_records()
     canonical = canonical_records()
+    canonical_digest = canonical_records_digest()
+    match_digest = canonical_match_digest(canonical)
+    previous: dict[str, Any] = {}
+    if not force_full and EFFECTIVE_INDEX.is_file():
+        candidate = read_json(EFFECTIVE_INDEX)
+        if (candidate.get("canonical_match_sha256") == match_digest
+                or (not candidate.get("canonical_match_sha256")
+                    and candidate.get("canonical_records_sha256") == canonical_digest)):
+            previous = candidate
+    previous_changes = {
+        row.get("change_id"): row
+        for row in previous.get("changes", [])
+        if row.get("change_id") and row.get("record_sha256")
+    }
     summaries = []
     source_fingerprints: dict[str, str | None] = {}
+    recomputed = 0
+    reused = 0
     for path, rule in records:
-        potential = 0
-        for registry, rows in canonical.items():
-            potential += sum(rule_match(rule, registry, registry_id, row)[0] for registry_id, row in rows.items())
+        record_digest = effective_record_digest(path, rule)
+        previous_change = previous_changes.get(rule["change_id"])
+        if previous_change and previous_change.get("record_sha256") == record_digest:
+            potential = previous_change["potential_static_target_count"]
+            reused += 1
+        else:
+            potential = 0
+            for registry, rows in canonical.items():
+                potential += sum(rule_match(rule, registry, registry_id, row)[0] for registry_id, row in rows.items())
+            recomputed += 1
         for source in rule.get("cause", {}).get("source_files", []):
             if not any(ch in source for ch in "*?["):
                 source_fingerprints[source] = source_digest(source)
@@ -375,11 +457,14 @@ def build_effective_index() -> dict[str, Any]:
             "change_id": rule["change_id"], "status": rule["status"], "summary": rule["change"]["summary"],
             "record": relative(path), "selectors": rule["selectors"], "exceptions": rule.get("exceptions", []),
             "potential_static_target_count": potential,
+            "record_sha256": record_digest,
         })
     payload = {
         "schema_version": 2,
         "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
         "change_records_sha256": records_digest(records),
+        "canonical_records_sha256": canonical_digest,
+        "canonical_match_sha256": match_digest,
         "precedence": {
             "order": "priority ascending, selector specificity ascending, change_id ascending",
             "specificity": SPECIFICITY,
@@ -389,7 +474,13 @@ def build_effective_index() -> dict[str, Any]:
         "source_fingerprints": dict(sorted(source_fingerprints.items())),
     }
     write_json(EFFECTIVE_INDEX, payload)
-    return payload
+    return payload, {
+        "mode": "full" if not previous else "delta",
+        "records_total": len(records),
+        "records_recomputed": recomputed,
+        "records_reused": reused,
+        "output": relative(EFFECTIVE_INDEX),
+    }
 
 
 def path_matches(path: str, pattern: str) -> bool:
@@ -499,6 +590,7 @@ def build_baseline_coverage() -> dict[str, Any]:
         "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
         "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
         "change_records_sha256": records_digest(change_records()),
+        "coverage_inputs_sha256": baseline_coverage_digest(change_records(), tracked),
         "totals": totals,
         "groups": dict(sorted(groups.items())),
     }

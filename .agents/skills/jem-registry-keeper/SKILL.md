@@ -25,16 +25,20 @@ semantics are unchanged. This path overrides repeated full-Atlas work below.
 2. Record the new artifact hash and packaging cause in the owning change record
 3. Use the smallest project Atlas refresh that records the new artifact evidence,
    then run one final `scan` and `validate`
-4. If the current project tools require a full Atlas rebuild for the new JAR hash,
-   run the full `rebuild`, `audit`, `scan`, `validate` sequence once only
-5. Do not repeat Atlas generation or validation unless a task-owned input changed
+4. When a replacement JAR has unchanged Atlas-observed evidence, use
+   `maintain_atlas.py artifact-delta --previous <old.jar> --replacement <new.jar>`
+   after installing both runtime copies. The command must reject changed evidence
+5. Run `rebuild --full` only when the canonical registry snapshot changed. Run
+   `audit` only when source coverage declarations, the source-watch policy or the
+   tracked source population changed
+6. Do not repeat Atlas generation or validation unless a task-owned input changed
    after the successful result
-6. Never invoke the shared Atlas publisher, an independent reproducibility store or
+7. Never invoke the shared Atlas publisher, an independent reproducibility store or
    `jem-atlas-engine` for an ordinary JEM repair unless the user explicitly requests
    it or the owning project documentation requires it
-7. Do not scan every repository archive to diagnose an optional external Atlas tool
+8. Do not scan every repository archive to diagnose an optional external Atlas tool
    after the canonical project Atlas has passed
-8. Run one pack preview, one publication and application, and one consolidated final
+9. Run one pack preview, one publication and application, and one consolidated final
    state check
 
 After the root cause is confirmed, stop optional diagnostics. If a mandatory command
@@ -62,15 +66,19 @@ required owner workflow. Do not add broader audits to use the waiting time.
 
    ```powershell
    python Catalog/generator/maintain_atlas.py rebuild
-   python Catalog/generator/maintain_atlas.py audit
    python Catalog/generator/maintain_atlas.py scan
    python Catalog/generator/validate_atlas.py
    ```
 
+   The ordinary `rebuild` validates all records but recalculates only changed
+   effective entries. Use `rebuild --full` after the full generator changes the
+   canonical registry snapshot. Run `audit` only when cause source lists, the
+   source-watch policy or the tracked source population changed.
 8. Query representative exact IDs again and inspect conflicts and recipe impact.
-   Regenerate the full Atlas only when installed registrations/JARs changed or the
-   original registry snapshot is otherwise stale. Apply the bounded packaging-only
-   path when the JAR change is proven not to change registrations or gameplay.
+   Run the full Atlas generator only when installed registrations/JARs changed or
+   the original registry snapshot is otherwise stale. Apply the bounded
+   packaging-only path when the JAR change is proven not to change registrations
+   or gameplay.
 
 Follow `references/workflow.md` for selector, precedence, history and impact review
 details. Project prohibitions on builds, tests, profiles and deployment still apply.

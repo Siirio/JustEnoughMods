@@ -1,7 +1,9 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "5013ae31095094a5c6b6aacd6f159560515f81c3821b1d856245e973c6b5d62a",
+  "change_records_sha256": "c7efb9a695ded76163081434372bcb9243d7492fd4126ee7ce04d4ddd9c3c312",
+  "canonical_records_sha256": "e7aefc77c435d40a8af6781cb6284943a4d4583b77b8f130b75d805c29df01ed",
+  "canonical_match_sha256": "9d703be5157830dd629c335acb95b3736ca34a2e767bf86f1cffef74223c530d",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -28,7 +30,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "f3c0680dc09f7954c4310e59f212b7ede42085b9265b6c9ce20c8ef010235e17"
     },
     {
       "change_id": "guide.adventure-atlas-redesign-20261025",
@@ -42,7 +45,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "878cceef78d54c9882275e0ae3ff020e775965b76217ef7b02a94aedd1b8f8e7"
     },
     {
       "change_id": "aircraft-resourcepack-native-autoload-20261020",
@@ -57,7 +61,24 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 48
+      "potential_static_target_count": 48,
+      "record_sha256": "d118c83d89c4a4dbc47df285f36bae1b99b63329a437e45623770a40367ea9de"
+    },
+    {
+      "change_id": "atlas.delta-maintenance",
+      "status": "active",
+      "summary": "Refresh the Registry Atlas effective index by changed rule delta",
+      "record": "Catalog/changes/records/atlas-delta-maintenance-20261122.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*",
+          "value": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 32586,
+      "record_sha256": "74ad4a1dd05cd9cbe145a6b8a16d05502883a668496500c2b7ef1acb8037a3e8"
     },
     {
       "change_id": "atlas.source-registration-receivers-20261024",
@@ -72,7 +93,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "b808984e30cf72b53ea2cb108ae1702abc94d889e13a6d54cf1f794d525aa4e7"
     },
     {
       "change_id": "atlas.static-snapshot-provenance",
@@ -87,7 +109,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "b9c49770e9b74273a103a3f9fb9f9b960768a4e9cc8018e8f73a4c7e7ed6d929"
     },
     {
       "change_id": "backpack.augment-bay-and-workbench",
@@ -112,7 +135,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "40ce8a45d99eef6334d6a2ddaf852764cb9ee73bc417eb84bb00595579fb3e27"
     },
     {
       "change_id": "backpack.saved-content-cutover-20261024",
@@ -137,7 +161,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "43e0c0b783242bba4559048c7b8a3e31c737248dfd0ba8e553af3af6ea5dd73c"
     },
     {
       "change_id": "backpack.sophisticated-native-replacement-20261024",
@@ -172,7 +197,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 466
+      "potential_static_target_count": 466,
+      "record_sha256": "001c8805784ba90cd1ee654c004844a4bff6ea39008c82ab7576e13781bc10f4"
     },
     {
       "change_id": "blood-moon.materialized-loot-only",
@@ -190,7 +216,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13771
+      "potential_static_target_count": 13771,
+      "record_sha256": "9e547a550338956af67c10ae18093787a1fd45ce2549bcdd6cb803d1f25bff42"
     },
     {
       "change_id": "building.standalone-construction-20261101",
@@ -205,7 +232,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "f55a33d8ac1c1c82e7eb294c71ac21fea97095cb68c6dd2d31518e5e202f115b"
     },
     {
       "change_id": "campaign.twelve-eyes-exclusive-awards-20261024",
@@ -222,7 +250,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12
+      "potential_static_target_count": 12,
+      "record_sha256": "3b7a0fb8db7ec7badc90ccb845bd4d7e27fb48ad4d700547286673c363a96fcf"
     },
     {
       "change_id": "chat-public-villager-minimum-copper-20261026",
@@ -237,7 +266,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "f45c0ebec7b5b170ac3bdce8c3727c81f7dbe76c853ee1de30ce5e327c893c75"
     },
     {
       "change_id": "smp.claims-flan-removal",
@@ -252,7 +282,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "b5d0a309a3072d6642f1cf48f2aee76c7357aaa8be352d1228e5a5d2527ce0ef"
     },
     {
       "change_id": "client.curated-key-preset",
@@ -267,7 +298,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "ef5178fd91a81bb405f5ddc9b38ddc16e7788af61b234eb54597d6d991665cbf"
     },
     {
       "change_id": "compat.narrator-and-shared-categories",
@@ -281,7 +313,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "8d2ff7b626b5e1164c5f100df0767e941e5db661054ebc2ad6bc13823cc6db20"
     },
     {
       "change_id": "client.preferences-and-carryon-removal",
@@ -301,7 +334,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "b9a83be001a0fac040b54427e3e6906fd315fb4d9a182f4b8c704286bf0f04eb"
     },
     {
       "change_id": "client.quickskin-auth-and-sculk-scale-sync-20261026",
@@ -316,7 +350,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "e5e1c3d33421108b05d263096ee6baf643ce9aad7388438e4cbb16f08b552ff0"
     },
     {
       "change_id": "client.quickskin-clean-defaults",
@@ -331,7 +366,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "c4c22f122b57ccec6bacf05d651d3f8d73464408b6c87eebf7a525b8262f4336"
     },
     {
       "change_id": "client.rendering-optimization-phase2-20261030",
@@ -346,7 +382,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "f5fb9d41f59eeb9eb9b2b7a32b08d1fbdc6e348f573293ae1f26b4d4bc78b235"
     },
     {
       "change_id": "client.stability-modefite-voxy-memory-20261122",
@@ -361,7 +398,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "81aafb9bc67289f0545650481bd4a1f796ba5271e649ab15bc26e59576822377"
     },
     {
       "change_id": "client.barnyard-clydesdale-key-connection-20261029",
@@ -376,7 +414,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "4c16f56d4c299b1b56b7799fd805faf39b29cbe4fa71246a6a8899259486a9b2"
     },
     {
       "change_id": "client.cosmetic-armor-reworked-20261028",
@@ -391,7 +430,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "39bb326303dee9358e068f5186637f4ab39bd9d4e9fe9e2b2704b36761d0d47a"
     },
     {
       "change_id": "client.free-camera-collision-20261026",
@@ -406,7 +446,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "fc98664799b5287f7777df1b10ebfc661d776d12888b5c81af0a1f97c1002d46"
     },
     {
       "change_id": "client.gui-armor-and-closed-channel-diagnostics-20261021",
@@ -421,7 +462,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "5d0b9d90b945124ba4a8bafb5f1b684cde2603aa4478a5a06a20f00201c556ad"
     },
     {
       "change_id": "client.jalloween-atmosphere-20261030",
@@ -436,7 +478,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "b227ff5097a0cc979c4df8fcf264e1f47452ca30f644fe11bf8d4137c5971b8a"
     },
     {
       "change_id": "client.jalloween-resource-ownership-20261030",
@@ -491,7 +534,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 9
+      "potential_static_target_count": 9,
+      "record_sha256": "be395c5a6c1fdd900bf58dff860d5b71ef37ee09de0017246af270c9868e1c08"
     },
     {
       "change_id": "client.jem-holidays-20261030",
@@ -506,7 +550,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "8605f3654f9f0f460e9cdd20e55947fe6088a13354489734e4b9e76c5f4141cc"
     },
     {
       "change_id": "client.jem-races-connection-snapshot-20261031",
@@ -521,7 +566,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "2972851947b262722997f1244adb716fad668fa378a656f007b79e976a11836f"
     },
     {
       "change_id": "client.locatorbar-hide-directions-20261113",
@@ -536,7 +582,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "210dfbce5d83777ac849daf0f68a6c0e1b18532cc09285993d8a406db9b21a93"
     },
     {
       "change_id": "client.luxium-alpha-warning-suppression-20261030",
@@ -551,7 +598,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "5d5e1703039eee68fc592e42a85b62a99b30fa29cdb1fd52dec4b262635f9252"
     },
     {
       "change_id": "client.luxium-sandbox-only-20261114",
@@ -566,7 +614,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "f299a909f1c5803c327ada292d7c4a7864cf160d5be8a0f74ff6ac9ec1b8fc91"
     },
     {
       "change_id": "client.quickskin-main-menu-presentation-20261028",
@@ -581,7 +630,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "4a371c83688c3b58c3b2f37e8efaa5fec36c4c7cf734a03c7c9d1341b3a331d7"
     },
     {
       "change_id": "client.race-preview-render-identity-20261113",
@@ -596,7 +646,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "6a2738285c294d1b44e44e4b7c406815a262d4c05a64758e07879a2278a51a8c"
     },
     {
       "change_id": "client.sandbox-lighting-scene-20261114",
@@ -610,7 +661,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "a3f5d6b580c5315814a90a2b5a7dc10325026a8dc464f5bd114970576dcdb874"
     },
     {
       "change_id": "client.sandbox-terrain-lighting-20261114",
@@ -624,7 +676,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "69a99e9a1d5dd678ac40d7380fa1a78ccf1a936145f9acab37ece24ec75ca69f"
     },
     {
       "change_id": "client.smp-preview-native-appearance-20261026",
@@ -639,7 +692,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "bb129523922f857321705720bbba85d98c53e93d627aff6a51068d1f49f30b12"
     },
     {
       "change_id": "client.weather-locator-presentation-20261122",
@@ -653,7 +707,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 267
+      "potential_static_target_count": 267,
+      "record_sha256": "6639ac426a625754357f9ae18fe92ab0f32fda05ffbe983bf641ac2754a8e932"
     },
     {
       "change_id": "combat.creative-registered-boss-targeting-20261122",
@@ -668,7 +723,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "21eee5772b930c13b148234d5447aa5033c1f5be75d0cfc6c0450316243d3637"
     },
     {
       "change_id": "combat.provenance-and-balance-20261022",
@@ -691,7 +747,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 18704
+      "potential_static_target_count": 18704,
+      "record_sha256": "a20dcfde53346b3d0e228ae5f4f3f30d1162b041274878623cf168e73deb1aaf"
     },
     {
       "change_id": "compat.ffapi-forge-native-villager-trades",
@@ -706,7 +763,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "0b4474a2996174f6b3ff4e7f8aff1c045b7991ae2c1940e766fadb1a172004ce"
     },
     {
       "change_id": "compat.removed-backtobed-build-dependency",
@@ -721,7 +779,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "88546c9fb3332eb078728a420ecc522c0f895d0de17e347605544c9684deea44"
     },
     {
       "change_id": "compat.seasonal-crop-coverage-20261022",
@@ -819,7 +878,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 141
+      "potential_static_target_count": 141,
+      "record_sha256": "5fc355e9701633ee41d02cf8a4bff2a29fa082809d167b7517a3bea8e76f5cb5"
     },
     {
       "change_id": "compat.spawn-sunflower-seasons-20261022",
@@ -834,7 +894,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "648a42aace15d1226b11867ffc9f53160d5a7d46a9fc7f45af3d49863b177dee"
     },
     {
       "change_id": "compat.audioyt-event-driven-jukebox-discovery-20261031",
@@ -849,7 +910,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "1f040a3df8307e77d0534412c65baac38669dd776aa5b72618fb1d1d19fc43fe"
     },
     {
       "change_id": "compat.distant-horizons-chunky-client-separation-20261119",
@@ -864,7 +926,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "2e78eeba2d7cea719d30397fb185ea8ae713c570259d1c0208a185f50b860b14"
     },
     {
       "change_id": "compat.grindstone-paid-enchantment-extraction-20261026",
@@ -883,7 +946,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 222
+      "potential_static_target_count": 222,
+      "record_sha256": "5d2a8dea8d48859bf2235c783d09cffa2a346574746f2b0be0ddb8b112a08842"
     },
     {
       "change_id": "compat.inventory-delete-shortcuts-20261026",
@@ -897,7 +961,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "47cd45c001e3e6830daf73c9ec83839b77261a5ec5ca9dc7d59a68af6395b564"
     },
     {
       "change_id": "compat.jei-category-search-and-reclassification-20261026",
@@ -911,7 +976,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "1c760b52fbe9c1e16627cc0fb577976b471199327cacc7dbfd3eedbb1317bf74"
     },
     {
       "change_id": "compat.jei-exact-catalog-manifest-20261121",
@@ -925,7 +991,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "e1726e7ea1fa172905a01ed5c76a1c4c4119a0e999a694a30f1625429511ff08"
     },
     {
       "change_id": "compat.jei-full-registry-catalog-20261122",
@@ -939,7 +1006,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "a9e296274deffb5f5571fcd5e929b26d8c7d5ef3360e4b15cc56a66bb73457f3"
     },
     {
       "change_id": "compat.spawner-spirit-orb-provenance-20261031",
@@ -959,7 +1027,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "fdcee51c766d761da5bf488e4165366d72ea7bb9ee270ea48e34f0e261859718"
     },
     {
       "change_id": "compat.tooltip-title-preservation-20261031",
@@ -974,7 +1043,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "0f16e3149e17c71e55b07141134ca219e1e3690d92f89e08f66d3edf3b86411e"
     },
     {
       "change_id": "compat.unified-building-hammer-20261027",
@@ -999,7 +1069,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 3
+      "potential_static_target_count": 3,
+      "record_sha256": "6adf59ff44fb09177cea10fe8397d2ef1e4346c9650d56b1cb86a4a34646c876"
     },
     {
       "change_id": "copperage.sophisticated-native-load-order-20261024",
@@ -1024,7 +1095,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "998251dec077dc30affc1dc19deb940f3118f0d6c6fece63831258f4eb4c53b7"
     },
     {
       "change_id": "worldgen.deep-dark-ancient-fossil-bounds",
@@ -1039,7 +1111,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 609
+      "potential_static_target_count": 609,
+      "record_sha256": "6bfeee995de9671cb4522b176cbbf65c36e77c4ed69fc4691af48a902823a366"
     },
     {
       "change_id": "economy.building-supply-prohibitions",
@@ -1057,7 +1130,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 29324
+      "potential_static_target_count": 29324,
+      "record_sha256": "0ffbb23479bda9e325da36273fd09c85e238cd4d6f40d86b079669642fc8fe5f"
     },
     {
       "change_id": "economy.reviewed-item-policies",
@@ -1073,7 +1147,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2227
+      "potential_static_target_count": 2227,
+      "record_sha256": "33975fb542ca65a4190fe2b4c2a90e947ee54c6f4fac234a5bbd484c79d897ef"
     },
     {
       "change_id": "economy.ledger-market-replay-safety",
@@ -1088,7 +1163,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 6
+      "potential_static_target_count": 6,
+      "record_sha256": "b1041ceffffbb8f3d9bf0728ee0273606ba130c8104b9e9f5b0cdefbccb51d67"
     },
     {
       "change_id": "economy.mincer-stone-duplication-guard",
@@ -1108,7 +1184,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "4faa34ef2768495af56d77fbd9fd8d68d2eda769ab654e666db09399169cfc44"
     },
     {
       "change_id": "economy.native-merchandise-prices",
@@ -1124,7 +1201,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 279
+      "potential_static_target_count": 279,
+      "record_sha256": "c885100a3853653d471998652d87ea7acd8e6f5e798d056379813f5fc69ab1d1"
     },
     {
       "change_id": "economy.native-merchant-stock-owner",
@@ -1144,7 +1222,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "25421b6bc0c8343c172b5a251ff0bb789383cb19a59f8056cd2c3b02fff5a790"
     },
     {
       "change_id": "economy.native-money-cell-coordinates",
@@ -1164,7 +1243,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "048f5c20aeec5151f62a951927cf1a886c9d68d8ed0359b90546fe0f32f7f2e8"
     },
     {
       "change_id": "economy.native-trading-presentation",
@@ -1184,7 +1264,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "c03f3b6d479761f04fc5d2cae7241356da023700e4297ea6844040e4ab88436a"
     },
     {
       "change_id": "economy.profession-specialist-pools",
@@ -1200,7 +1281,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 142
+      "potential_static_target_count": 142,
+      "record_sha256": "8365ad7aacb0be200c494f1f238b9e10f766674e756a4b66bf66a16c9996e87f"
     },
     {
       "change_id": "economy.shipping-box-native-jei-discovery-20261020",
@@ -1215,7 +1297,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "c5a0471bc8b2c451fa3596d159cbfbb2c0689018ab5c9adaf6e02b08be2ce1a1"
     },
     {
       "change_id": "economy.shipping-instant-exchange-r2-20261020",
@@ -1235,7 +1318,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "35ec98f25a89fc25a69ca05da7de2a1aaba43c541998c6b1e6c567287843efbc"
     },
     {
       "change_id": "economy.shipping-rational-policy-bulk-20261020",
@@ -1251,7 +1335,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2227
+      "potential_static_target_count": 2227,
+      "record_sha256": "cfd004b694e465f01a6176f69a790abb48e4e44c8a9375d4c94604dd43eb6d7b"
     },
     {
       "change_id": "economy.tide-fish-shipping-deposit-all-20261122",
@@ -1271,7 +1356,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 447
+      "potential_static_target_count": 447,
+      "record_sha256": "9461671f28dae50853fdd574a2b6d0f8f0242ba4cbda7ca22f35ee249b9b8f6e"
     },
     {
       "change_id": "economy.flesh-half-copper-leather-three-20261021",
@@ -1291,7 +1377,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "882a424ed660749f84b1345e37309c4d45fff670c1b2e589570d4dfa5c1f7d72"
     },
     {
       "change_id": "economy.local-development-wallet",
@@ -1306,7 +1393,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "0bde7a12ef43ca2c29896219f75e2b6e8676daa8c2dc8169169ddd3d531f36df"
     },
     {
       "change_id": "economy.market-jei-discs-tide-rarity-20261021",
@@ -1331,7 +1419,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 120
+      "potential_static_target_count": 120,
+      "record_sha256": "468a8c9f43062a6fdbe37d37913a62ff159bc29fdfa4faf107a6a4ab477b9b1f"
     },
     {
       "change_id": "economy.market-no-mineral-purchases-20261101",
@@ -1431,7 +1520,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 39
+      "potential_static_target_count": 39,
+      "record_sha256": "8c8b53322df5b058d7d694f45d9ee87ac52e9af939a2b6caa73b656315302b2a"
     },
     {
       "change_id": "economy.native-trade-client-result-projection-20261026",
@@ -1451,7 +1541,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "2edb5c8e950510ac4a9df5465f4c21e1de19ba5bfa08ce74ff7d8f8eb04ba6cd"
     },
     {
       "change_id": "economy.pooled-coins-public-shipping-20261021",
@@ -1465,7 +1556,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "1d7289d9b609964ea8891a89452c1892cd3e080abb847532f57d88267d68d895"
     },
     {
       "change_id": "economy.shipping-exact-coin-actions-20261026",
@@ -1500,7 +1592,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 5
+      "potential_static_target_count": 5,
+      "record_sha256": "877557c6b037a7945d989aac5eca86d5fd24f3db5c281d9c82f4dd7544be692a"
     },
     {
       "change_id": "jem.engineering-v2-20261022",
@@ -1535,7 +1628,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 9
+      "potential_static_target_count": 9,
+      "record_sha256": "39c54a5a8f843d3260126c1a6b1b47e0e8413a5a9170fec000f691c582aef148"
     },
     {
       "change_id": "excavation-native-batch-wear-20261020",
@@ -1550,7 +1644,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "ebbd2d19b0d19778ea85df3d54621be20de8e31c1eedcca0cca7d32654fd6e44"
     },
     {
       "change_id": "experience.bottle-native-roll-triple-20261024",
@@ -1565,7 +1660,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "d559b06faaefd132bb3c9915db5ff806e15343f6c0d1131f32a0bbe18cd585f0"
     },
     {
       "change_id": "final-races-settlements-server-migration",
@@ -1590,7 +1686,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "3f0b6783273457b9cf3dcefed8f5fb833848c91d1ef0e9bb552904070d46ac66"
     },
     {
       "change_id": "food.blessing-icon-20261025",
@@ -1605,7 +1702,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "12ed74c4609fc9de6d9d9267f5d79261adddb5ae6f3e2c4f6963291472b97a4c"
     },
     {
       "change_id": "compat.food-quality-and-dietary-variety-20261023",
@@ -1629,7 +1727,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1056
+      "potential_static_target_count": 1056,
+      "record_sha256": "b15517dbdd6cf86c6528c561d2d554d826eaa45db169b4a594d4bbb7ec6a8443"
     },
     {
       "change_id": "ftb-authored-adventure-book-20261022",
@@ -1649,7 +1748,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 510
+      "potential_static_target_count": 510,
+      "record_sha256": "7d2e193e8fbbaa928af888736159135858c61e02149701b8a5d4117593512bd1"
     },
     {
       "change_id": "gameplay.native-structural-boss-combat-20261122",
@@ -1663,7 +1763,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "15537c6a6900aec8066d88ea3ca7d36c023a66309bd160bcf5fc03fb9b1fa1f2"
     },
     {
       "change_id": "gameplay.spawn-egg-source-extraction-20261122",
@@ -1677,7 +1778,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "e55af7061b1586eb7f3af7c21cffa8f79a126d63682a8b797aaad5c363107757"
     },
     {
       "change_id": "gui.crafted-settlements-smp-20261020",
@@ -1702,7 +1804,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12
+      "potential_static_target_count": 12,
+      "record_sha256": "4759493ca98bbbb6ac5a3719ec902ff2fbe2910018bc5b241a37edf942b2b2ed"
     },
     {
       "change_id": "gui-sandbox.presentation-only-20261022",
@@ -1717,7 +1820,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "0c5c3634c7e8170a121cf7bf4aedd21e87e67438b4f83276f7ae4e24448351bb"
     },
     {
       "change_id": "gui.settlements-existing-layout-corrections-20261020",
@@ -1737,7 +1841,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12
+      "potential_static_target_count": 12,
+      "record_sha256": "a4b65377351f3b114cd46cd517feb4210f7d0277a60982708c64123b5e2b1247"
     },
     {
       "change_id": "gui.vanilla-player-fixed-race-scale",
@@ -1752,7 +1857,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "622200cb251b0bde51a1804c0cf5fae341e80444a14d621797f4344d8a4ebaa4"
     },
     {
       "change_id": "guide.natures-compass-native-id",
@@ -1767,7 +1873,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "ac5bae866a26dc0616497a426ad79f259111e2fdf071f403bd73ff9504dcc667"
     },
     {
       "change_id": "handbook.boss-item-projections",
@@ -1793,7 +1900,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 105
+      "potential_static_target_count": 105,
+      "record_sha256": "671c24414f0ad20af64a2653ce437e4b7ea0f29033f984b3b32c2c5d0b0948a6"
     },
     {
       "change_id": "handbook.drill-help",
@@ -1813,7 +1921,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "c0d5a6f25c8015af5749028cbe058273999d3f55d81c8d8065e4e1a680266356"
     },
     {
       "change_id": "handbook.enchantment-help",
@@ -1831,7 +1940,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 85
+      "potential_static_target_count": 85,
+      "record_sha256": "e38ed80e2c84b9e0611880f40b8b23a33ee9ab1786918c644432de2b62c80b24"
     },
     {
       "change_id": "handbook.item-links-and-boss-models",
@@ -1857,7 +1967,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 278
+      "potential_static_target_count": 278,
+      "record_sha256": "0146ff4473ab09c856cb8c0ca88515f2020b45c51626a3feda57b8f1bb5f080f"
     },
     {
       "change_id": "handbook.native-navigation",
@@ -1872,7 +1983,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "458b9b50a7ef59d699a9626683eab2cb357ac72faf3d1f0d85db2e3758e40a14"
     },
     {
       "change_id": "handbook.reference-only-book-20261024",
@@ -1887,7 +1999,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "5f8fd4e5356001a6a01c945e272f7a48451625fd7fc3fa4df20cfc016c0a0cdd"
     },
     {
       "change_id": "handbook.world-dimensions-and-boss-roles-20261025",
@@ -1905,7 +2018,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 56
+      "potential_static_target_count": 56,
+      "record_sha256": "6460790f98f87280bd99386208d124df9aa545d30586e88309c87537008ef511"
     },
     {
       "change_id": "hosted.arena-presence-and-lobby-isolation",
@@ -1919,7 +2033,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "ab56b38c43353e504c6f0755d08145ce1b7f4f9530dcdff76360909039ddb9a8"
     },
     {
       "change_id": "hosted-fight-chat-links",
@@ -1933,7 +2048,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "9b9e645b6b898e2aad4775e8729dc804537190bb4b18daae61e9e1cf20ed23dd"
     },
     {
       "change_id": "hosted.structural-arena-volume",
@@ -1947,7 +2063,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "dc6612cadc9977c0119327c681af3f92ae71fb37199487182cbb7fb0663dcb46"
     },
     {
       "change_id": "hosted.active-party-forfeit-control-20261021",
@@ -1962,7 +2079,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "02bc17276b7b4002f946f851618c73bf7b09704273a2a5c74a569b9e458cd726"
     },
     {
       "change_id": "hosted.barrier-free-attack-admission-official-travel-20261021",
@@ -1980,7 +2098,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2296
+      "potential_static_target_count": 2296,
+      "record_sha256": "27b643c5b63fcecc75c2ac801ee369ea83d9f34d924a7fc30e3ad45b31b3d4ae"
     },
     {
       "change_id": "hosted.canonical-live-boss-loading-and-quarantine-20261021",
@@ -1994,7 +2113,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "64d1e7c328b6738310e513b40dddef2d9a953f03dceb3d98d8fd39ab09a41d99"
     },
     {
       "change_id": "hosted.encounter-integrity-20261025",
@@ -2012,7 +2132,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2296
+      "potential_static_target_count": 2296,
+      "record_sha256": "4347a8acb74c958c0e4da12a1915d4b10a1694c9c252176cc6340cb638b76341"
     },
     {
       "change_id": "hosted.native-support-public-chat-smp-render-20261021",
@@ -2026,7 +2147,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "bd7269981c52aaaf4149690b427174022650fef0c7f5341a9dd1285700e3b6ad"
     },
     {
       "change_id": "hosted.structural-barrier-restoration-20261024",
@@ -2044,7 +2166,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2296
+      "potential_static_target_count": 2296,
+      "record_sha256": "0bbabd42219a290aa7952ad01df9ee12665b0423efc736e475ce15c3a39a3e26"
     },
     {
       "change_id": "compat.inventory-tabs-curios-screen-lifecycle-20261119",
@@ -2059,7 +2182,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "417da4f47a1ad36f81421582fefdbf35515f132c6c9e0cb5f12a85412846c93a"
     },
     {
       "change_id": "compat.inventory-tabs-loaded-chunks-20261113",
@@ -2074,7 +2198,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "1a98c9fef52e194e80db110784533ad0f6d9076a4195715e1f7484bfc31bec96"
     },
     {
       "change_id": "jei.catalog-materials-components",
@@ -2089,7 +2214,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "149aec4e4becb83ca0047d0bfaa49f555bcfe53e64c4e6883c902353bddc7973"
     },
     {
       "change_id": "jem-compat.epic-fight-roll-clearance",
@@ -2104,7 +2230,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "cd87ce8ad3c9cd898f10bebebbdc8b78131cc69e231ffcc95ccacc569e78a9d9"
     },
     {
       "change_id": "jem-server.deferred-player-teleport",
@@ -2119,7 +2246,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "4f2a67cfe96b6439f3cfc78158d547ae0e83daf0e9b90092a8bef8f1a70acd6c"
     },
     {
       "change_id": "jemcompat.void-walker-toggle",
@@ -2134,7 +2262,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "35f96aaa55710b0c62cd23fa9568dd5c835a429b19d7334876dc1ad26697d12c"
     },
     {
       "change_id": "distribution.food-and-ready-local-backlog-20261024",
@@ -2149,7 +2278,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "25a39d83856aafa6031aeb4ef76700eb7d8b93d7382ec739457292bd31582af5"
     },
     {
       "change_id": "login.connectivity-terminal-socket",
@@ -2164,7 +2294,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "da14a4b2033145ea56167ec7bdcf0e2b71844e1dba49ab245ec89bb6c433158c"
     },
     {
       "change_id": "login.native-respawn-before-authentication",
@@ -2179,7 +2310,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "43da8c16fa4f24476b482af4643ee243a28a6b57b6035405a827942e1a227c92"
     },
     {
       "change_id": "luxium.embeddium-settings-route",
@@ -2194,7 +2326,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "e31577b5e5891d4e36d8f917ffc83126a8c0eb29fdea908fe227e2b0a2be7bf7"
     },
     {
       "change_id": "major-update-4-20261031",
@@ -2220,7 +2353,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 462
+      "potential_static_target_count": 462,
+      "record_sha256": "ae71af0b394144bce163cd24b38f13bd70aaff6b9d6c4f69fb126514dbec7100"
     },
     {
       "change_id": "distribution.major-update-4-camera-royal-mineshaft-stack-20261112",
@@ -2260,7 +2394,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 33
+      "potential_static_target_count": 33,
+      "record_sha256": "4767a029442b3c42be081dfe7297444a1c202d4c0159676527b5139df556ee50"
     },
     {
       "change_id": "distribution.major-update-4-colorize-immersive-paintings-20261103",
@@ -2285,7 +2420,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "f41330aed816abdbbbefc6e9dc484a4db5902f9df61fc7cb0088cf8b08dbf29f"
     },
     {
       "change_id": "distribution.major-update-4-exposure-polaroid-20261112",
@@ -2305,7 +2441,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "5e5322f2abf901ba52fca6dc83a68fd0f28efe817a4889b699b6b952360169c9"
     },
     {
       "change_id": "major-update-4-jei-item-provenance-20261109",
@@ -2340,7 +2477,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 5
+      "potential_static_target_count": 5,
+      "record_sha256": "1f1fd74dddbe86c8475e0e23a137f5614a6bc4d7dede2bae1bfc6e7e0cc9ef16"
     },
     {
       "change_id": "distribution.major-update-4-offgrid-building-additions-20261112",
@@ -2375,7 +2513,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "965009c4b3de82ed98b7560ffa54f9d475fb3c98d2d9e6e431f9a2b971e8c7b9"
     },
     {
       "change_id": "major-update-4.particle-rain",
@@ -2390,7 +2529,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "6edbb6c708ca4138b8c379052446352a381df6dedd40e40863999e5b5541eaa1"
     },
     {
       "change_id": "major-update-4.radium-removal",
@@ -2405,7 +2545,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "08b8342f4c500617b623e3e81fda69eabe813b0f6bca73747a57b9b3619cb612"
     },
     {
       "change_id": "major-update-4.remove-irons-spells-20261106",
@@ -2440,7 +2581,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "f8777a38476ebe8e7316892c067a47d17f2671dbbf5082f9331a5b4ec4791dd6"
     },
     {
       "change_id": "major-update-4-retire-weather-luxium-and-expand-roads-20261115",
@@ -2480,7 +2622,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "b2c4d983e72d15c679b392c17f3b8e702b19e3e919288928fcd4638fd30b2cd6"
     },
     {
       "change_id": "major-update-4-road-locator-cleanup-20261113",
@@ -2505,7 +2648,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "e6efafa958fc1a3b6c067878771ef8f2e17fd6d768623564b17b58210ca23961"
     },
     {
       "change_id": "major-update-4-stabilization-implementation-20261116",
@@ -2550,7 +2694,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 81
+      "potential_static_target_count": 81,
+      "record_sha256": "0ec236557ab056c24492abd68adcdfed83fa680774260b7e4946b329e3e6c10f"
     },
     {
       "change_id": "major-update-4-structure-catalog-expansion-20261110",
@@ -2640,7 +2785,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 152
+      "potential_static_target_count": 152,
+      "record_sha256": "bdc9f1f450cc9531e71f202a102ac5602f42b238d65bce6dd72bfaa02fa8cb60"
     },
     {
       "change_id": "major-update-4-towns-towers-dungeons-taverns-20261110",
@@ -2660,7 +2806,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 59
+      "potential_static_target_count": 59,
+      "record_sha256": "ed71e766a2817e4729e497a3c6650b98566a8e7459e30186419e10384a53b4b5"
     },
     {
       "change_id": "major-update-4-video-community-content-20261109",
@@ -2695,7 +2842,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 16
+      "potential_static_target_count": 16,
+      "record_sha256": "b68e11fa3594202727784f2daee2c4c2ef037b0afa8087ad545a33b9c94ed435"
     },
     {
       "change_id": "major-update-4.worldgen-bottle-cutover",
@@ -2725,7 +2873,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 4
+      "potential_static_target_count": 4,
+      "record_sha256": "77ed43ddaaee3a9ada8a47c5df94ccfbbdc252875c80b99b32cb412c856a7db9"
     },
     {
       "change_id": "distribution.major-update-4-xaero-cave-20261107",
@@ -2740,7 +2889,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "3e619f036bf292987fe582aa23685803c8aedd7c6f8102d941481a6a5cb78b59"
     },
     {
       "change_id": "smp.market-reference-storefront",
@@ -2755,7 +2905,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "291447eadfa0c386199b3a8a0e49ca1165557f2635c40f0e5d246da3cd259eaf"
     },
     {
       "change_id": "menu-support.full-distribution-refmap",
@@ -2775,7 +2926,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "300af3f39a4741a2da5d17fc42b2e48dfc553f9c8c1a391d4046dde3b14dda27"
     },
     {
       "change_id": "client.native-previews-and-recruit-intent",
@@ -2800,7 +2952,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13
+      "potential_static_target_count": 13,
+      "record_sha256": "5df3e30309bb9cc25e3295e1713e3369a7f706490fa40cd6fd26fc390551d247"
     },
     {
       "change_id": "worldgen.oceanic-template-write-bounds",
@@ -2815,7 +2968,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 76
+      "potential_static_target_count": 76,
+      "record_sha256": "8bb2c30aef088c3d5997342ef4b5400240896e0c753032c7404b270984775c45"
     },
     {
       "change_id": "pack-sync.installed-generation-witness",
@@ -2830,7 +2984,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "fdb2f0d67624325b3a23caf813a0f9c44aa6186d1661d6c7ea8168828bb6be63"
     },
     {
       "change_id": "pack-sync.login-only-standard-layout",
@@ -2845,7 +3000,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "b521968711c6548a8c29aabd6793e1b65ad0f1ddb6bd3076d4125ead7a885a1b"
     },
     {
       "change_id": "companions.shelter-bound-native-recovery",
@@ -2882,7 +3038,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 115
+      "potential_static_target_count": 115,
+      "record_sha256": "2fd8300c42ec9e07d6c54aee670d5818135ff9ecfb6512fa6529b4b45f9dbec1"
     },
     {
       "change_id": "power.bloom-registered-boss-targeting",
@@ -2897,7 +3054,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "8eacdd3e1d664154a7efe37cb80e56390c6ee0c98631db77b0b257a0f31e632f"
     },
     {
       "change_id": "power.opt-in-combat-capture",
@@ -2911,7 +3069,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "aac5c570d007847077f09c82c490943a1e8b6464e24b92f0985493ae4393de7a"
     },
     {
       "change_id": "power.frostbitten-difficulty-and-composition",
@@ -2926,7 +3085,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "e50d4e16dce0963d51b5f7b1f2d34313108872b5f9453842fa5e03335633fe94"
     },
     {
       "change_id": "power.progression-guard-accepted-heavy-hit",
@@ -2940,7 +3100,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "a10cdf723d0c93bacc6067613f9c622d3c5fcda35d18e5ea002501324c4e574f"
     },
     {
       "change_id": "power.race-cinematic-reentry",
@@ -2955,7 +3116,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "3d35d1c277edd6e22b4cea211970a9be2fd6b61752fde42441c0e47d9b0c11a9"
     },
     {
       "change_id": "atlas.power-system-analysis",
@@ -2970,7 +3132,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "42db43515e68d684348a874858b828824bb36717364ff25d9302cb125b560fdb"
     },
     {
       "change_id": "power-system-hosted-actual-death-elimination",
@@ -2984,7 +3147,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "fa466e41b9a2cafa36bb3228815f976d4989b346df38ea6dda602ac07cfbe83f"
     },
     {
       "change_id": "power-system-native-cataclysm-capabilities",
@@ -3019,7 +3183,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 5
+      "potential_static_target_count": 5,
+      "record_sha256": "887a0c9243bcdd78403aad1492c366e148e599313e5a57e4588b4a2de53ee1f3"
     },
     {
       "change_id": "power-system-siphoning-accepted-lifesteal",
@@ -3038,7 +3203,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "eb3152ad875b637c775c97eb218ac01e267ec85eee9cf200f0975fd4a8644ece"
     },
     {
       "change_id": "presentation.hammer-coin-tooltip-trade-gaps-20261021",
@@ -3063,7 +3229,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 8
+      "potential_static_target_count": 8,
+      "record_sha256": "0e8b181c2f189bec087f00cde55a2e500d76df0eb6919f5a3d4fca01706c616f"
     },
     {
       "change_id": "professions.native-skills-and-spell-combat",
@@ -3078,7 +3245,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "6bca75dd4e32be52f7ac28ac925cd8e4334cc1968a4b81d622f025fca4afb4f8"
     },
     {
       "change_id": "professions.local-distribution-removed-20261020",
@@ -3093,7 +3261,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "a987031cd9661b8dc5005eeb3e758842532e563240f77d646cc7d613f1689abb"
     },
     {
       "change_id": "professions.sandbox-native-tree",
@@ -3108,7 +3277,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "40c7a358a97f08f6c54d49d599b2ff7388a890a1284779dc29f116db801f4c27"
     },
     {
       "change_id": "progression.paladin-guardian-edge-20261021",
@@ -3133,7 +3303,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 3
+      "potential_static_target_count": 3,
+      "record_sha256": "5fa3c63ca0d77fcccab95a2f9c3a34a379b79da2568e8f0949c0ea3eb25ad6b8"
     },
     {
       "change_id": "public-mods.standalone-owner-extraction",
@@ -3148,7 +3319,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "8f8ba6a7495a1b935910b8cfdc84704915fd1aae171d601dfb09e8c15e7d6c80"
     },
     {
       "change_id": "quality-of-life.building-exposure-guide-time-20261101",
@@ -3168,7 +3340,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17349
+      "potential_static_target_count": 17349,
+      "record_sha256": "727c3c9c9668cd170c0aa45ed3487f1f54b5ef871e065a7410f3d84b8d622451"
     },
     {
       "change_id": "quest.handbook-entry-and-background-cover-20261028",
@@ -3188,7 +3361,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 26
+      "potential_static_target_count": 26,
+      "record_sha256": "a92e1ed87e936fdf1d06e86f5f10ab5954bfcd5630f79ad140988a3fd69959b8"
     },
     {
       "change_id": "quest.in-chat-ftb-20261027",
@@ -3202,7 +3376,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "9f160f3e89c7074a6d59142cd5921e2c5c9e3d117c33b6923eb9c5b5df9c8a92"
     },
     {
       "change_id": "quest.native-team-unlock-20261101",
@@ -3216,7 +3391,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "97ba565e2afa9dee2b1f1b56d79b42dd876ccd4ce8f9307c2d8081a81ba470f3"
     },
     {
       "change_id": "quest.standalone-visual-v4-20261027",
@@ -3230,7 +3406,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "e6da5be8853cea747961ceabb3c38e7632e27747f9e3bd69156b9206f728a22d"
     },
     {
       "change_id": "race.daily-reselection-first-login-20261020",
@@ -3245,7 +3422,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "a166a584e14feb7c46246ac60f74628f0d9e772f62efd07af48289d75b61d513"
     },
     {
       "change_id": "races.black-panels-and-contextual-upgrade-progress",
@@ -3260,7 +3438,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "f42edd45faba6352137f4c29d89d4694221c218aec86e0a999fde553fc61a203"
     },
     {
       "change_id": "races.breakable-descending-living-path",
@@ -3275,7 +3454,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "cf2b89275036d4e421a835be88a4909e22fa9c41703d5162e478f8783a8fe9d5"
     },
     {
       "change_id": "races.five-lineages",
@@ -3350,7 +3530,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13
+      "potential_static_target_count": 13,
+      "record_sha256": "1cb84854af80ebc7b7d465a4d42ee8372c02c276388fb2ffb51e805701c57d0c"
     },
     {
       "change_id": "races.four-stages-sculk-domain",
@@ -3375,7 +3556,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "1e7127dfdfacb79ee63ead3dd49fcc068ddfe890fea01c22c4ad1406235e3e18"
     },
     {
       "change_id": "races-quiet-heart-adjustments-20261026",
@@ -3390,7 +3572,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "93943810729e4d700275213a5e90514771f3f6f871b9056d59bc9abab86d65f3"
     },
     {
       "change_id": "races-sandbox-complete",
@@ -3405,7 +3588,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "0e682b7d88cb6e5784f02760c3ecdd5b44be9b1d442e97e7813fac13ad5ef094"
     },
     {
       "change_id": "races.sandbox-preview-profiles",
@@ -3420,7 +3604,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "acbdfdb77a1a4dc424953cda499e85b14021754de58506c0f2ee0a38e9a4fb03"
     },
     {
       "change_id": "races.sandbox-short-leaf-decay",
@@ -3435,7 +3620,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 66
+      "potential_static_target_count": 66,
+      "record_sha256": "340df3592725844ba316e559e33f502c42e73144294f8e09f8319e537d4e3aa2"
     },
     {
       "change_id": "races.innate-guardian-jade-20261021",
@@ -3455,7 +3641,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "9e139e3e1a92566dd7ae766c618365f9d6e68ccd9f873d82a199d69f1acb74d8"
     },
     {
       "change_id": "races.irons-icons-action-localization",
@@ -3470,7 +3657,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "5af1e55a3d0af0e44f35ac1d023e0d4daba64df7957ce45476f0049eec92adba"
     },
     {
       "change_id": "recipe.rotten-flesh-leather-restoration-20261101",
@@ -3490,7 +3678,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "f1fad60bce273d903dfccbbb1560a4d5412d570a073d0978a9aabd5f83e5a1ee"
     },
     {
       "change_id": "client.recruits-debug-labels-pose-ownership",
@@ -3505,7 +3694,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 11
+      "potential_static_target_count": 11,
+      "record_sha256": "69c0177e90d928bee5444eca45d51151dfdee50a92c9e4a2ad8aeef7197392c2"
     },
     {
       "change_id": "rewards.resource-metadata-20261023",
@@ -3520,7 +3710,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "f140fcc8e5a518a79bff6b450b763a280d9187e3a10ba08dc4d85fbad687e16f"
     },
     {
       "change_id": "runtime.singleplayer-tick-stall-hotfix-20261031",
@@ -3535,7 +3726,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "033452f4a5e04a3f947d686d861fa9da17429a84a28057c45ad0bea92db4dcf8"
     },
     {
       "change_id": "sandbox-ancients-pearl-vfx",
@@ -3550,7 +3742,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "16eba8cfbcc672729b19d32297331436649c93d2d9b137852f2589d7cee6b3e5"
     },
     {
       "change_id": "sandbox-blockbench-main-skills",
@@ -3565,7 +3758,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "9499dccf70d8c814e8c34ced22031cb0653dfa1c29b5106a92910e14edaf4a80"
     },
     {
       "change_id": "sandbox-bloom-r3-preview",
@@ -3580,7 +3774,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "c0badb55095175e9e4dced2edf5310bd3dbf2760928ebd0b7c7cf6e9db3c60e8"
     },
     {
       "change_id": "sandbox-elemental-main-skills",
@@ -3595,7 +3790,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "35a85796aa0b8e8ed4c3782ccd79cced52537948f51d2d0027cd23141794930a"
     },
     {
       "change_id": "sandbox-fiery-slash",
@@ -3610,7 +3806,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "51cc22f31a1d8efbe27bd7a4181a7cb970f02ffba63fd46cfbdbfb1407feff08"
     },
     {
       "change_id": "season-hud",
@@ -3625,7 +3822,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 23
+      "potential_static_target_count": 23,
+      "record_sha256": "1b664688c0e0823c7aac3c24058537c7ff087f9faa9a218aeb291b32b33ca301"
     },
     {
       "change_id": "seasonal.jalloween-night-and-audio-coexistence-20261030",
@@ -3640,7 +3838,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "0b44856c3ff524267086bba2e7c12fb45ce656cbaffbf2dc07db2b709abf80de"
     },
     {
       "change_id": "security.audit-antixray-20261029",
@@ -3655,7 +3854,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "ba5e93e79074838d464f46dc895dc91ffb553703f1da06b91c895ad9401f67f7"
     },
     {
       "change_id": "security.antixray-chunk-packet-20261113",
@@ -3675,7 +3875,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "245f53eb0e6ca84015d2e26c0413d2cbd1f844182a5e69e5be1ad78ac36af167"
     },
     {
       "change_id": "security.block-use-visible-hit-20261113",
@@ -3690,7 +3891,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12196
+      "potential_static_target_count": 12196,
+      "record_sha256": "f1ddd915c644214df2be51bd1afeddc641bf30f87f918301cc2b98951ea4c7f2"
     },
     {
       "change_id": "server.bound-test-profile-20261020",
@@ -3705,7 +3907,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "3dc85861ed80b14439563779bb8b771e0be518a80a2012bbb9c7f7139b808392"
     },
     {
       "change_id": "server-only.immersive-aircraft-sail-recipe",
@@ -3720,7 +3923,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "c7eb3b24825d03129110c334b179ff21dccf2464eb85c1eb1f6d36f045b4f26f"
     },
     {
       "change_id": "server.tide-informational-scan-20261026",
@@ -3735,7 +3939,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "65ffe9ae6952ee185871de2c831646c0c461485f70492535466d70127fae993c"
     },
     {
       "change_id": "settlements.city-disclosure-and-category-market",
@@ -3753,7 +3958,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 29324
+      "potential_static_target_count": 29324,
+      "record_sha256": "861b529427253e3f4783f5759b32d098b165766123e8b7bbff800c1381d0c509"
     },
     {
       "change_id": "settlements.city-sidebar-tab",
@@ -3768,7 +3974,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "0d59e84f4d988e3f917af52585e771b7aebeec89ce90b8df00a61067ccb05b08"
     },
     {
       "change_id": "settlements.configured-territory-and-pointer-lifecycle",
@@ -3788,7 +3995,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 7
+      "potential_static_target_count": 7,
+      "record_sha256": "d510443ec47dd71afd6aabe8b8bc4ad244f5aef344cebb0f635e1551c5ceebf5"
     },
     {
       "change_id": "settlements.economy-hiring-weekly-payroll",
@@ -3813,7 +4021,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 18
+      "potential_static_target_count": 18,
+      "record_sha256": "5f33a353f8c09adb9bf3f6810b0bc40ee98c32192d5b59ef78e8e0ead32b8fc5"
     },
     {
       "change_id": "settlements.emerald-recruits-xaero-race-controls",
@@ -3853,7 +4062,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 40
+      "potential_static_target_count": 40,
+      "record_sha256": "e748a29a16c36e384d5dae2e2a798a6c79d8984b1f30bb2d0f11004dad1b7d72"
     },
     {
       "change_id": "settlements.evidence-derived-needs-overhaul",
@@ -3892,7 +4102,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13771
+      "potential_static_target_count": 13771,
+      "record_sha256": "ca4787e18d76014bc3841a9bd6d9d2a1d1028b2e6a82551c7347eb4ba7471e62"
     },
     {
       "change_id": "settlements.fed-recovery-readable-native-ui",
@@ -3912,7 +4123,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12
+      "potential_static_target_count": 12,
+      "record_sha256": "6b61d7782d3da67dbf114a9e75c907181734150d2d5f455b39d6fd5fae81153d"
     },
     {
       "change_id": "settlements.handcrafted-native-home-repair",
@@ -3937,7 +4149,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12
+      "potential_static_target_count": 12,
+      "record_sha256": "2520d0de1459662650ab5752eab867294157ee7f74506bd3135234b9b95ad03a"
     },
     {
       "change_id": "settlements.happiness-comfort-daily-tax",
@@ -3966,7 +4179,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12209
+      "potential_static_target_count": 12209,
+      "record_sha256": "46c02e9e10a2a9e1bbaae3f267e14d352fce977dbf57605401c23bcda6f79620"
     },
     {
       "change_id": "settlements.isometry-local-host-masking",
@@ -3980,7 +4194,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12196
+      "potential_static_target_count": 12196,
+      "record_sha256": "98ebb8ceecc049d567eaecfb1d083997034c0bec304ed4b1ac7ce18d43844711"
     },
     {
       "change_id": "settlements.migration-completeness",
@@ -4005,7 +4220,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 212
+      "potential_static_target_count": 212,
+      "record_sha256": "25319d7c6f7f948652669af03e57f8fb2355b21292bcfd559a375de7567d808e"
     },
     {
       "change_id": "settlements.native-guidance-build-import",
@@ -4020,7 +4236,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "27e8668b1dc12d0a8d4f5db3df289bca5818e38733e50fce78ab6847b64ba35b"
     },
     {
       "change_id": "settlements.native-page-art-integration",
@@ -4045,7 +4262,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13
+      "potential_static_target_count": 13,
+      "record_sha256": "0c781874a3988da7bfe4183bb3836e1744ca0d73ad7e4e0ced563e9a6d1d16df"
     },
     {
       "change_id": "settlements.personal-bed-space",
@@ -4069,7 +4287,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12208
+      "potential_static_target_count": 12208,
+      "record_sha256": "364632b03e877edeeda13a334d240c893ee1ab742f976ee25ca7d27a6158f1a1"
     },
     {
       "change_id": "settlements.recruit-needs-camera-cutaway-hire-gui",
@@ -4119,7 +4338,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 38
+      "potential_static_target_count": 38,
+      "record_sha256": "cd106331b218949878be1d3795e18376acae105cf6239196920cbf8240d09052"
     },
     {
       "change_id": "settlements.reference-dashboard-layout",
@@ -4144,7 +4364,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13
+      "potential_static_target_count": 13,
+      "record_sha256": "54ab8803aa8e4557b571fd64fbf696d3d462d3650cc77222f6a73db5cb34658a"
     },
     {
       "change_id": "settlements.resident-search-only-presentation",
@@ -4169,7 +4390,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13
+      "potential_static_target_count": 13,
+      "record_sha256": "68821495ac498477e861ff50d58728a5ab3afc74cf211b7bcaa74543b9e23f55"
     },
     {
       "change_id": "settlements.safe-food-mood",
@@ -4193,7 +4415,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17140
+      "potential_static_target_count": 17140,
+      "record_sha256": "3bbddb0bf78fe766778a97b3cb4a2047538b570a24cf248ef0428738ad5fbe9e"
     },
     {
       "change_id": "settlements.sandbox-build-boundary",
@@ -4218,7 +4441,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 212
+      "potential_static_target_count": 212,
+      "record_sha256": "ee1e2d570a2841e917a1b9ea81b21bdbcb43c0c1fdb87b54d3958555e73095b6"
     },
     {
       "change_id": "settlements.sandbox-explicit-needs-chest-meals",
@@ -4238,7 +4462,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12
+      "potential_static_target_count": 12,
+      "record_sha256": "fd5f396a6e53f07c15691ee97122ecb5d000d6a454def8347b8eb131ee4a13ed"
     },
     {
       "change_id": "settlements.shared-chests-food-housing-inspector",
@@ -4278,7 +4503,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 5
+      "potential_static_target_count": 5,
+      "record_sha256": "86b0a325d48a26425031b088e2af519e1583766e286267583485eaa854496142"
     },
     {
       "change_id": "settlements.standalone",
@@ -4318,7 +4544,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1913
+      "potential_static_target_count": 1913,
+      "record_sha256": "86998a733aa23f1b17769dc98dbe6af2678091bdcd1f612bddd54a118a5dd37f"
     },
     {
       "change_id": "settlements.unbounded-territory",
@@ -4333,7 +4560,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "bbfbdf544d691964a4c92ec3a7b6faceb85437a4c56395f7577647088cb8bae4"
     },
     {
       "change_id": "settlements.update-1",
@@ -4413,7 +4641,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 14
+      "potential_static_target_count": 14,
+      "record_sha256": "be05b832a669367c5cfe59c953004534453e777f11dc64a70c2da633a14fa944"
     },
     {
       "change_id": "settlements.windows-tax-durability",
@@ -4433,7 +4662,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12
+      "potential_static_target_count": 12,
+      "record_sha256": "7ee474591d3c1a82780e336de15ce839c36761d575c6598c27711a7f7eab2f08"
     },
     {
       "change_id": "settlements.event-driven-runtime-20261122",
@@ -4448,7 +4678,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "a9f6390b5c05595c4354164bd62744129954ba2f221658226e858175af59ba17"
     },
     {
       "change_id": "settlements.happiness-income-membership-expansion-20261021",
@@ -4468,7 +4699,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "30cbdd10b04530cbf1f373a1c0dd53d1b4a942229fff418d3d383ec9fcc68d51"
     },
     {
       "change_id": "shipping.payment-session-and-native-menu-20261021",
@@ -4488,7 +4720,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "205c247086954d3613dc9d10fe4d1144cfca3939ee701590874bcd9de23f18da"
     },
     {
       "change_id": "skarrier-mobs-111-hotfix-local-upgrade-20261020",
@@ -4503,7 +4736,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 450
+      "potential_static_target_count": 450,
+      "record_sha256": "b58c47785e4834a911d3525c728491add58bac445bb0ed70a8c086c39231940c"
     },
     {
       "change_id": "smp.market-profile-consolidation",
@@ -4518,7 +4752,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "c66625bc7effe73a354375cd4438448f1a39ccf89af73ab024b5eaee27cf7335"
     },
     {
       "change_id": "smp-rewards-xp.dedicated-hosting-20261022",
@@ -4532,7 +4767,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "078a9f345e2a1b611b278dc8615d835c270737b65c89fbd1579e2f7b4a7d0fe4"
     },
     {
       "change_id": "smp-rewards-xp.domain-ui-20261022",
@@ -4552,7 +4788,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 7
+      "potential_static_target_count": 7,
+      "record_sha256": "06b54bc014fde461d70aeff4e0a0a168d5a33b87f5d69b63620de64ac08e30a3"
     },
     {
       "change_id": "smp-rewards-xp.inventory-rewards-20261022",
@@ -4566,7 +4803,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17128
+      "potential_static_target_count": 17128,
+      "record_sha256": "2f02372e58c2b9bfbee2dee4d54e96a343e034159551f2465addf5c9d47da137"
     },
     {
       "change_id": "smp-rewards-xp.minecraft-xp-20261022",
@@ -4586,7 +4824,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2
+      "potential_static_target_count": 2,
+      "record_sha256": "e53210e9bccadb411767651b11fdce4f5bceada89819898e27c4ef8450e0d439"
     },
     {
       "change_id": "smp.spudaciousshops-retirement-20261026",
@@ -4606,7 +4845,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "7cc46130c06f8a73d0838f125f98dd21092f34b60efe02fbd619db40be498586"
     },
     {
       "change_id": "smp.starter-kit-and-prechoice-protection-20261021",
@@ -4671,7 +4911,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 11
+      "potential_static_target_count": 11,
+      "record_sha256": "8c659cea381b4816409b9f601fa6e3f207a7ccdce6ec590153a6012b31925439"
     },
     {
       "change_id": "test-jem-pack-refresh-20261119",
@@ -4751,7 +4992,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 234
+      "potential_static_target_count": 234,
+      "record_sha256": "8f287f626d8aeeee20c6f554fd068509df30e26df7d1741f977f143ee1f1f22e"
     },
     {
       "change_id": "distribution.test-jem-voxy-replacement-20261120",
@@ -4776,7 +5018,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "5ac72905b7af2954506d360826a8cdf856ce1d257466a5bb7f9ebb1b1ef1a335"
     },
     {
       "change_id": "transport.aircraft-onboard-fuel-feed",
@@ -4796,7 +5039,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 8
+      "potential_static_target_count": 8,
+      "record_sha256": "cd417802b4a7da28b6ad9910313d3d9efa552d530a6bb08a59e317d2cb1404be"
     },
     {
       "change_id": "transport.carriage-rebalance-20261119",
@@ -4857,7 +5101,8 @@
           "value": "sophisticatedstorage"
         }
       ],
-      "potential_static_target_count": 352
+      "potential_static_target_count": 352,
+      "record_sha256": "10b4f64e014f536695abe58e06fd52fbd722f21fcf14d417d9255523da2fabcb"
     },
     {
       "change_id": "universal-standalone.bootstrap-native-acquisition-20261021",
@@ -4872,7 +5117,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "538d874942eaa09481498f1dfd94b271b5db60dd79a49c34b8bbf5cd991edcc1"
     },
     {
       "change_id": "universal-standalone.economy-world-policy-20261021",
@@ -4897,7 +5143,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 8
+      "potential_static_target_count": 8,
+      "record_sha256": "948f8567b6f57983fcd068e37c0963fe59f402f2da4c5ebb91e96073ed5ae1a0"
     },
     {
       "change_id": "universal-standalone.progression-content-20261021",
@@ -4930,7 +5177,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2376
+      "potential_static_target_count": 2376,
+      "record_sha256": "2c66ba5aa9e8ea3797ed8815679852f5e8b3208523d5979dca0cff334e622ac6"
     },
     {
       "change_id": "universal-standalone.quest-projection-20261021",
@@ -4945,7 +5193,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "fbb8dd904d1b64a63cdb594083b886c02bb6bd881ed812db04ba451643e07d55"
     },
     {
       "change_id": "universal-standalone.races-20261021",
@@ -5030,7 +5279,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13
+      "potential_static_target_count": 13,
+      "record_sha256": "528e21c64fba951aa9e3da25d3fa5f67d531b3266766803c5ff566b103e1d01e"
     },
     {
       "change_id": "universal-standalone.server-feature-activation-20261021",
@@ -5045,7 +5295,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "2f04043355e694dcf482b4b24ec719a3ddfbc50400afd9b72936108c680e7ff6"
     },
     {
       "change_id": "universal-standalone.settlements-provider-20261021",
@@ -5070,7 +5321,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13
+      "potential_static_target_count": 13,
+      "record_sha256": "8823f73b30d2dae7ea6d0d50a314ce1c3a550287e2f36719e832025845fabd36"
     },
     {
       "change_id": "universal-standalone.source-ownership-20261021",
@@ -5085,7 +5337,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "7e9ce55326dba0c7d7a6691718995d1706635fe8952250dbc82da57ee025004e"
     },
     {
       "change_id": "vinery.native-merchant-registered-ids",
@@ -5110,7 +5363,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 3
+      "potential_static_target_count": 3,
+      "record_sha256": "5205cbecd93d9d98074572c7c2cc5537f75f4fb0319c567e42da91588be3f003"
     },
     {
       "change_id": "distribution.voxy-server-support-production-20261115",
@@ -5125,7 +5379,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "f35231755edc074a0b552b534fff2fafb1043ee36ab25a733b8ba410ebca0a15"
     },
     {
       "change_id": "windy.dedicated-registry-crash-removal-20261112",
@@ -5140,7 +5395,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 0,
+      "record_sha256": "805cf9b3935cb49553f1afeb872f0b6057ef404119e68bd89eae6b503ac8732b"
     },
     {
       "change_id": "world-tier.nonexclusive-arena-ownership-20261025",
@@ -5154,7 +5410,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "71876bc92f13426472aea8fd2ec8cbe1be0c2c3fd70d948d9fee7690fc438a32"
     },
     {
       "change_id": "world-tier.ordinary-hostile-scaling",
@@ -5180,7 +5437,8 @@
           "value": "c:bosses"
         }
       ],
-      "potential_static_target_count": 1575
+      "potential_static_target_count": 1575,
+      "record_sha256": "dbd26d45a9d6c29c8545f0943cfe00a21331d5c8d775b3d44e0a7acb560c3a40"
     },
     {
       "change_id": "xaero.native-optional-overlays",
@@ -5195,7 +5453,8 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 1,
+      "record_sha256": "138425a3a8be89102bdf2b903fdcb03486b609ab68435d02fd4b0f8b5902a2af"
     },
     {
       "change_id": "xaero.shared-terrain-mapsyncer",
@@ -5210,12 +5469,15 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32586
+      "potential_static_target_count": 32586,
+      "record_sha256": "39d3d08b02524f63e25cdbbc89bd0f4a50ea4ef5d55012dac7cdea5a3760e6ad"
     }
   ],
   "source_fingerprints": {
-    "AGENTS.md": "7e07534f47ada87643582e8ab064c34127b4c10376371ce7fb9879e812ea9c7b",
-    "CHANGELOG.md": "dacaeb7d3223fb4a4c60290b9a2b67cf29c370d77ca609a487488a431e3b0780",
+    ".agents/skills/jem-registry-keeper/SKILL.md": "39e0bdad6bb0a98e4d7575ac3744320862da69f79b18e4b9b99820c7bf4f1d5c",
+    "AGENTS.md": "7ab2c830034945bce83fbf0fc9192eac614562543c77dd4dafa64f11e6c35fcb",
+    "CHANGELOG.md": "0b622da96f2f4d5b4bf87065334933de9597177a6d8c6300c17ecef6eee3408d",
+    "Catalog/README.md": "81def72e5b7bc75a957e3d16c65fc3334fc6b56f3a42dec8d606c7522cbe1c7f",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
     "Catalog/changes/major_update_4_boss_exclusions.json": "9609441eee8c0aa1656da465db0bfcf70a92cc4376e475903ea33bf6a3db9bcd",
@@ -5224,13 +5486,16 @@
     "Catalog/changes/records/major-update-4-remove-irons-spells-20261106.json": "c11207e4e73f59e4e3dd0671c973038ba7714e3b36d8909f7311593922aff85f",
     "Catalog/changes/sets/ftb-questbook-reward-subjects.json": "2bcc982d2e131192997e96c7a386b4c8b5e07853cafa391df3e1dc635ebce087",
     "Catalog/changes/sets/settlements-decor-coverage.json": "8d6348bda5a0f4577dba81665988a683f436667d2d648ae873074e77d4b922f2",
-    "Catalog/generator/build_atlas.py": "46738ce703c7ba09d7eb049b8545513525759a20217fc6da565bb3333e0fc66a",
+    "Catalog/generator/artifact_delta.py": "0f90d3b465dfb4e6dfd285564717779a15f376fd3d1a8e0b3151dfe19624a919",
+    "Catalog/generator/build_atlas.py": "7b1477d9362be48580b3cc8c30cb86f9993472e9ea3c5a211e9ca4b83f53f86c",
     "Catalog/generator/build_power_views.py": "73c76286a27c124ebfa19bb7bc3764f1c0817f26b277d2765616a02a70d7f2ee",
     "Catalog/generator/export_food_quality_report.py": "d457c6ca947016dcb091a2520a59af0c5b2e1042975f323e6a8571c42b373366",
     "Catalog/generator/extract_defense_mechanics.py": "7b40b6095e74b7f55d364889f2598c0b70e0516ed16a8f71bf6029262d5d9c22",
     "Catalog/generator/extract_power_mechanics.py": "e86152d5914f2d1dd1dddb56bc57bd52826f0eceb678790940bddb7d9e88e477",
-    "Catalog/generator/impact_model.py": "edeb1ced95af77cacb2804ac476c65fa7cb24afd27dabf9a447b0b019c45d4df",
+    "Catalog/generator/impact_model.py": "8e962fab6ed5c8152c12b4dabcdf5e00b4ec8782dccb4fe73c3112ac7946665a",
+    "Catalog/generator/maintain_atlas.py": "0b150b71f32302c66d3f215ddd2b92fbc83b7b53279e4291bf46a04069fc206f",
     "Catalog/generator/query_atlas.py": "eed7fd5c92a0059513277115b01fefaf74874867f6ab377554f7aec08b1dbbd0",
+    "Catalog/generator/validate_atlas.py": "07eee6aa54fb03e59a8d9932fed45f615e2ea2fe2eaae3aa99b2f08859b61077",
     "Catalog/power-sources/boss-combat-stage35b.json": "4d39145bb6f7cb3dbbf814d1cc8068b062407a25afcba72774f7c89f5332c570",
     "Catalog/power-sources/boss-reward-weapons-stage35.json": "fd2b8a0cc49c533171888f195341c3b01397b01c7f25e381725a25beb5fd13f2",
     "Catalog/power-sources/defense-mechanics-stage35c.json": "554fbf1489a2de2f524b3f516e13776eb4e32bb6887a1d6697d9a9131def13f1",
@@ -5325,7 +5590,7 @@
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/config/vss-client-config.json": "21465c42e915b82881f7a0271761fffb58d51c214a8ca9e65dbf4055454cc158",
     "Client/ManagedPack/defaultconfigs/mapsyncer-server.toml": "8d18876d6a65cdfdc098f6c105ed7cbea35a3ef911445427104f821a0a0c8fec",
-    "Client/ManagedPack/jem-pack/manifest.json": "327403d91c895bddad76c0ced10fe676a1ea59ae79c2f416085760cc06a61e15",
+    "Client/ManagedPack/jem-pack/manifest.json": "d8544af9d7af9d9eb14b1c765d14bedace4a21d605f25ddbf31a5e14bcd64086",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -5526,7 +5791,7 @@
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "d7b523b6cc7657340390fa961c9b8db351db4c505eea590a95c1536b923982e7",
     "Client/ManagedPack/mods/jem_security-1.0.8.jar": "f04e2ba18e7901fc07504ebeb5ff16d8148c6a0069e7355b2ca1b86f4f81c9eb",
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "467db4e13c9ebb84c095d3b8e1dbfaf6a84ab559a1c37458c36f9e6042bcdbfa",
-    "Client/ManagedPack/mods/jemcompat-3.11.2.jar": "5044f3a784bdf8c74c4c47c7d7e390ca1bda10d347a00b42722ad7b777fbffa0",
+    "Client/ManagedPack/mods/jemcompat-3.11.3.jar": "c91383b46b61a685947649528123ac8713ba68071c9d66538ffe42ef93ab3174",
     "Client/ManagedPack/mods/jemfood-1.0.0.jar": "89194b305e9c0674a12c840842fe769f439ce40998f389c0af71b0054ed257ea",
     "Client/ManagedPack/mods/lukis-grand-capitals-1.1.3.jar": "58182dc8d306afd944e708e0480d939a9adc3fcdab75c0bebd122a32c63d3851",
     "Client/ManagedPack/mods/lukis-woodland-mansions-v.1.0.jar": "45a678beaa5789ee94fdcde9f9043d7e3049f7c1e7e92f4d65baaa8052c0af0a",
@@ -5544,7 +5809,7 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.2.1.zip.txt": "800d797debdd3dfb42df6b3f1f7f2cde625f111937847620e88c8053cdfe2b78",
-    "Docs/DEVELOPMENT.md": "38a51acd777de338c2e7d3545001fc6c5c58e3c1208e39ac8852417b75f0cfc0",
+    "Docs/DEVELOPMENT.md": "652ab78b0ddd345d8a680f5df325f384870692c86e6ca99d713af09f8e31ec4e",
     "Docs/MODS.md": "ef9e9202765dc1aaecc9bb4e02cdc43f88a205272cff5f5ffdf0e14774d70769",
     "Docs/SERVER_COMMANDS.md": "1a5c59b71e979d4b50548274b8456ce7cf1821c318a073f383c00bc31adf23b9",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -10628,7 +10893,7 @@
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmPlayerDamageScopeMixin.java": "5b910d5e5490195f1887d0c5392d270d982eea70ff4af378e691711110bd655a",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmShredderMixin.java": "3958ca8ca9934f8df74df482c78a28b9a0d91fd2fb0a7d5103526b5fb902014c",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CombatProbeMixin.java": "0977571b2945513f20c4ff0d34aa2e29b6821c4db11727346bf269c40c073948",
-    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CreativeBossTargetingMixin.java": "96b60da113de7193de1084a464ae4c10eb9f2a68df1140fe78edd0238742ce4f",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CreativeBossTargetingMixin.java": "df12d6fd0495fd8260858673491f5ae04fef69b93e48a0193c10c49caffe8de7",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/EntityStorageAccessor.java": "0adf2b81a2c9585f63c1cc363785e03efec2fac787649dba60de88f8127aa844",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ExperienceOrbBaselineMixin.java": "b2a44aae41de76edbf8007d4816fd63466b30dc918b012780b06ebfba4a323bc",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java": "fe10012bcdf1e6fda69824ceb9fca935ab42352aa95c468e1a3380b66a6ebe5a",
@@ -10754,7 +11019,7 @@
     "tools/generate_profession_skills.py": "fe2d83ae34264b907321a70b21dc52ad880f72b3817ce2e0a7d3d9e96da5dda5",
     "tools/jem.py": "4da575e377a81449413b15643f4e26fc89bf93b80314b01bc1004e37ce85512a",
     "tools/module-inventory.json": "8e505c2ad352f617370599a471ed6d2323571310eebeed9d5c2f4cc9f546c914",
-    "tools/state/packSyncHost-sync.json": "9ae5d501fa19723b19c2ada32140c991f1171c66d375e484eda18276dbb5bd8c",
+    "tools/state/packSyncHost-sync.json": "65896ad4da8899bfc66e812e7881811ed11da01a0bf725053b1177be5bdbfded",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }
 }

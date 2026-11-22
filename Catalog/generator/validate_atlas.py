@@ -4,7 +4,17 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from impact_model import BASELINE_COVERAGE, EFFECTIVE_INDEX, change_records, read_json, records_digest, validate_change_records
+from impact_model import (
+    BASELINE_COVERAGE,
+    EFFECTIVE_INDEX,
+    baseline_coverage_digest,
+    canonical_records_digest,
+    change_records,
+    effective_record_digest,
+    read_json,
+    records_digest,
+    validate_change_records,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -39,11 +49,20 @@ def main() -> int:
                     errors.append(f"view entity missing canonical record: {entity_id} ({path.relative_to(ROOT)})")
     if not EFFECTIVE_INDEX.is_file():
         errors.append("missing generated effective index: Catalog/effective/index.json")
-    elif read_json(EFFECTIVE_INDEX).get("change_records_sha256") != records_digest(change_records()):
-        errors.append("stale effective index: run python Catalog/generator/maintain_atlas.py rebuild")
+    else:
+        effective = read_json(EFFECTIVE_INDEX)
+        records = change_records()
+        if effective.get("change_records_sha256") != records_digest(records):
+            errors.append("stale effective index: run python Catalog/generator/maintain_atlas.py rebuild")
+        if effective.get("canonical_records_sha256") != canonical_records_digest():
+            errors.append("stale effective registry snapshot: run python Catalog/generator/maintain_atlas.py rebuild --full")
+        effective_digests = {row.get("change_id"): row.get("record_sha256") for row in effective.get("changes", [])}
+        for path, rule in records:
+            if effective_digests.get(rule.get("change_id")) != effective_record_digest(path, rule):
+                errors.append(f"stale effective change entry: {rule.get('change_id')}")
     if not BASELINE_COVERAGE.is_file():
         errors.append("missing baseline source coverage: run python Catalog/generator/maintain_atlas.py audit")
-    elif read_json(BASELINE_COVERAGE).get("change_records_sha256") != records_digest(change_records()):
+    elif read_json(BASELINE_COVERAGE).get("coverage_inputs_sha256") != baseline_coverage_digest():
         errors.append("stale baseline source coverage: run python Catalog/generator/maintain_atlas.py audit")
     if errors:
         print("\n".join(errors[:200]))

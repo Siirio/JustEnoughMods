@@ -1,3 +1,23 @@
+## 2026-11-22 - Update the local client before the server
+
+- The user required every combined local client-and-server update to update the client source before the local server
+- The project workflow now synchronizes the exact fresh artifact into `Client/ManagedPack` first and the ordinary local `Server` second
+- Native application to `Test JustEnoughMods` still follows server preview and publication because AutoModpack installs the published server generation
+- A proven server-only update remains server-only and does not create an unnecessary client mutation
+
+## 2026-11-22 - Update Atlas by delta
+
+- The user required ordinary Registry Atlas maintenance to update only the changed delta instead of recalculating the complete pack
+- Bug / Tooling / ordinary Atlas maintenance matched all change records against all canonical objects and required a complete installed-pack scan for a replacement JAR whose observed registry evidence had not changed / resolved by digest-verified rule reuse and a fail-closed artifact delta
+- Ordinary `rebuild` still validates all records and refreshes source fingerprints. It recalculates added or changed records only when the canonical registry digest is unchanged
+- `rebuild --full` remains the explicit complete calculation for changed canonical registries. The full installed-pack generator always uses this mode
+- Atlas validation now rejects stale canonical-registry digests, stale per-record digests, and changed source-set dependencies
+- Implementation choice: remove the large effective-index JSON echo from ordinary maintenance and print a compact delta report with recomputed and reused counts
+- The Registry Keeper workflow now runs `audit` only when the source-watch policy or tracked source population changes
+- The initialized ordinary rebuild completed in 4.166 seconds and reused all 243 unchanged records. A follow-up one-record delta recalculates only that changed record
+- Baseline coverage now uses a separate digest of cause source lists, watch policy, and tracked paths. Editing rule history or impact notes no longer causes an unrelated full coverage audit
+- Artifact delta compares exactly the JAR resources consumed by Atlas. JEMCompat 3.11.2 and 3.11.3 produced the same evidence SHA-256 `2E712B4BBC27C8111DCF3DC93220A39696BCECF5925FE76F915F203FFBFC202B`, so only the manifest and six affected provenance partitions were refreshed
+
 ## 2026-11-22 - Let registered bosses target Creative players
 
 - The user requested that nearby registered bosses aggro the player while the player remains in Creative
@@ -22,8 +42,11 @@
 - Bug / Client / the first exact catalog migration preserved broad Building Materials and Other assignments because that migration reviewed selected category families but did not audit every remaining construction block, creature drop or smithing template / in testing with an Atlas-backed exact-ID reclassification and strict manifest validation
 - The corrected manifest keeps all 13,869 registered item IDs and now assigns 1,194 items to Furniture and Decorations, 1,076 to Nature, 1,066 to Edibles, 61 to Cooking Equipment, 2,428 to Create and Redstone, 103 to Components and 48 to Smithing Templates
 - Implementation choice: preserve semantic weapons, armor, food, fishing supplies and ores from Create while moving Create machinery, train equipment and residual Create items into Create and Redstone
-- Java 17 production `jar/reobfJar` completed for JEMCompat 3.11.3. Its SHA-256 is `4C7EC07DE37B60A71FF9B16363A9DD9EEE81E8056526DA8915C498FC698F42BC`
-- Preparation is source-only while the local server and client remain open. No runtime JAR replacement, server restart, Pack Sync publication, client application, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed
+- Java 17 production `jar/reobfJar` completed for JEMCompat 3.11.3. Its SHA-256 is `C91383B46B61A685947649528123AC8713BA68071C9D66538FFE42EF93AB3174`
+- The ordinary local server loaded JEMCompat 3.11.3 and all 13,869 reviewed assignments. Native Pack Sync journal 197 published token `370d15aa402e4d77d18d7f84ed97b491da2dfa27` as the exact `+1 ~1 -1` delta with matching staged and published manifest SHA-1 `79eb7f2384bbf9b44d4d9dbeb43aa21d123d188b`
+- The closed `Test JustEnoughMods` profile applied that token through native AutoModpack. The installed JEMCompat 3.11.3 JAR matches the approved artifact, and no native transaction remains pending
+- Bug / Server / the first clean restart inherited an orphaned `run.bat` process that automatically started the old server again and retained the world lock / resolved by sending the exact console process a graceful stop signal, confirming world save and port release, and terminating only its post-save zombie process tree
+- The ordinary local server remains running. No gameplay client launch, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed. Player acceptance remains `in testing`
 
 ## 2026-11-22 - Reclassify the complete JEI catalog
 

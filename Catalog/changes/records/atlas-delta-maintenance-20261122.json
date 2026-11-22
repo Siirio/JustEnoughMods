@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "change_id": "atlas.delta-maintenance",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Unchanged entries are reusable only while the canonical registry digest and each rule dependency digest match"
+    }
+  ],
+  "precedence": {
+    "layer": "tooling",
+    "priority": 5,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Refresh the Registry Atlas effective index by changed rule delta",
+    "modifiers": [
+      {
+        "property": "atlas.maintenance.effective_refresh",
+        "operation": "replace",
+        "before": {
+          "value": "Recalculate every rule against every canonical object on each rebuild"
+        },
+        "after": {
+          "value": "Recalculate added or changed rules and reuse digest-verified unchanged entries"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Registry Atlas maintenance tooling",
+    "kind": "tooling_performance",
+    "source_files": [
+      "Catalog/generator/impact_model.py",
+      "Catalog/generator/artifact_delta.py",
+      "Catalog/generator/maintain_atlas.py",
+      "Catalog/generator/build_atlas.py",
+      "Catalog/generator/validate_atlas.py",
+      "Catalog/README.md",
+      ".agents/skills/jem-registry-keeper/SKILL.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Reduce ordinary Atlas maintenance time without accepting stale effective entries",
+    "decision_source": "Direct user request on 2026-11-22"
+  },
+  "introduced": {
+    "date": "2026-11-22",
+    "commit": "SELF",
+    "action": "make_effective_rebuild_incremental",
+    "summary": "Add digest-verified delta maintenance and an explicit full mode",
+    "source_files": [
+      "Catalog/generator/impact_model.py",
+      "Catalog/generator/artifact_delta.py",
+      "Catalog/generator/maintain_atlas.py",
+      "Catalog/generator/validate_atlas.py"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "make_effective_rebuild_incremental",
+      "summary": "Preserve complete validation while limiting expensive registry matching to changed rules",
+      "source_files": [
+        "Catalog/generator/impact_model.py",
+        "Catalog/generator/maintain_atlas.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "registry_atlas",
+      "effective_behavior_index",
+      "development_workflow"
+    ],
+    "relations": [
+      "Rule digest and canonical registry digest -> safe cache reuse -> compact effective index"
+    ],
+    "notes": [
+      "All change records are validated before a delta rebuild",
+      "Source-set file bytes are part of the owning rule digest",
+      "The full installed-pack generator always forces complete effective-index calculation",
+      "The initialized no-change rebuild completed in 4.166 seconds and reused all 243 records",
+      "Baseline coverage invalidation depends only on source coverage declarations, watch policy, and tracked paths",
+      "Artifact delta rejects changed Atlas-observed JAR evidence and updates only manifest and provenance rows after an unchanged comparison"
+    ],
+    "unresolved": []
+  }
+}
