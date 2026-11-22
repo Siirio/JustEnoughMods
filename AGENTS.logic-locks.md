@@ -39,14 +39,15 @@
 - Unlock condition: Explicit user request to replace this exact production-source policy.
 - Created: 2026-10-31
 - Amended: 2026-10-31 after the user explicitly removed manual SHA approval and required production work to continue automatically once clean pushed develop passes preflight.
-## LOCKED: Production releases originate only from explicitly approved develop
-- Scope: tools/jem.py production actions, MineRENT deployment workflow, stable JustEnoughMods synchronization, release packaging, release-baseline promotion and main promotion
-- Approved signal: Сделай так, чтобы никогда больше вот эти вот обновления не брались из feature веток, только с develop, который я одобрил.
-- Protected behavior: No production or MineRENT release may originate from feature, sandbox, main, detached HEAD or another checkout. The source must be local develop exactly equal to fetched origin/develop and to the full commit SHA explicitly approved by the user. A production preflight records the actual release and AutoModpack inventory identities, and every guarded production action refuses changed branch, commit, controlled source or inventory. Local stage-pack-sync, test jem publication and recovery remain development operations and never grant production approval.
-- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
-- Allowed changes: Strengthen the fail-closed preflight, approval receipt, inventory binding or diagnostics while preserving ordinary local feature/sandbox testing and requiring a fresh explicit approval after any source or inventory change.
-- Unlock condition: Explicit user request to replace this exact production-source policy.
-- Created: 2026-10-31
+
+## LOCKED: Ordinary feature branches return to develop
+- Scope: ordinary implementation branches, local `Server` updates, native AutoModpack publication, `Test JustEnoughMods` delivery, and project Git handoff
+- Approved signal: The user explicitly corrected the workflow on 2026-11-22: ordinary new features start from fresh `develop`, then rebase onto the latest `develop`, merge into `develop`, and delete the feature branch after local client or server delivery
+- Protected behavior: Ordinary new implementation uses a short-lived `feature/<short-purpose>` branch from freshly fetched and updated `develop` without asking for a branch choice. Before handoff, fetch and update `develop`, rebase the feature branch, merge it into `develop`, push and verify `origin/develop`, then delete the completed feature branch locally and remotely. A local `Server` or `Test JustEnoughMods` update must never remain only on a feature branch. `main` remains available only through an explicit production request
+- Reuse pattern: Preserve the feature-to-`develop` lifecycle unless the unlock condition is met
+- Allowed changes: Strengthen divergence checks, conflict diagnostics, exact-path preservation, or branch cleanup while preserving all local and remote commits and never force-pushing `develop` or `main`
+- Unlock condition: Explicit user request to replace this exact ordinary-development branch lifecycle
+- Created: 2026-11-22
 
 ## LOCKED: One active event and SMP GUI specification
 - Scope: `Docs/events/*.md`, `Docs/SERVER_COMMANDS.md`, and `Docs/smp-gui/README.md`

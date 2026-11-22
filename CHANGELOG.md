@@ -1,3 +1,12 @@
+## 2026-11-22 - Correct the ordinary feature branch lifecycle
+
+- The user corrected the project workflow: ordinary new features start from fresh `develop` without a repeated branch question
+- Before handoff, the feature branch must be rebased onto the latest `develop`, merged into `develop`, pushed, verified, and deleted locally and remotely
+- Any local `Server` or `Test JustEnoughMods` update is incomplete while its source remains only on a feature branch
+- The completed catalog, fishing, boss, weather, and stability branch was rebased against current `develop`, fast-forwarded into `develop`, pushed, and deleted locally and remotely
+- Implementation choice: preserve unrelated local `Server/config` changes in an exact-path stash during branch promotion and never force-push `develop` or `main`
+- The project rules, protected logic, engineering owner, and `jem-update-continuation` skill now use one branch lifecycle. No runtime file, stable profile, MineRENT state, or release baseline changed for this workflow correction
+
 ## 2026-11-22 - Implement the catalog, fishing, boss, weather, and stability one-shot
 
 - The user requested the approved one-shot plan on a new branch from `develop` and required every prior client and server change to remain in place
