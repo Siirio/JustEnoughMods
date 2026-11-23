@@ -90,7 +90,7 @@
       "Docs/handbook/links-delivery.json",
       "Docs/handbook/README.md",
       "Client/ManagedPack/mods/jem-advancements-*.jar",
-      "Server/mods/jem-advancements-5.3.11.jar"
+      "Server/mods/jem-advancements-5.3.13.jar"
     ]
   },
   "rationale": {
@@ -109,6 +109,15 @@
       "commit": "SELF",
       "action": "add",
       "summary": "Implement user requested sections, links, boss spreads and client quest group defaults"
+    },
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "synchronize_handbook_artifact_5_3_13",
+      "summary": "Update the local Server artifact evidence to the matching JEM Advancements 5.3.13 build without changing handbook behavior",
+      "source_files": [
+        "Server/mods/jem-advancements-5.3.13.jar"
+      ]
     }
   ],
   "impacts": {

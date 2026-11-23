@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased - 2026-11-24
+
+- Render the curated overlay at the native container tooltip boundary so the screen's own tooltip always renders after catalog items, controls and search fields
+- Render a curated-grid tooltip once after all catalog elements and immediately before the native screen tooltip
+- Search the curated catalog, native JEI and creative tabs through current names, item IDs, every installed language value and translated tooltip categories such as Food Blessing traits
+- Restrict an existing Warden's vibration reactions to the same player attribution used by vanilla sculk shriekers, including player-owned projectiles such as snowballs, while ignoring ordinary mobs and mob projectiles
+
 ## Unreleased - 2026-11-23
 
 - Replace the retired Components group with top-level Trees and Music Discs groups

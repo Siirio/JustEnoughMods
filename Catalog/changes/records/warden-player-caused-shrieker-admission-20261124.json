@@ -1,0 +1,193 @@
+{
+  "schema_version": 2,
+  "change_id": "warden-player-caused-shrieker-admission-20261124",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:warden"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:snowball"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "alexsmobs:skreecher"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "ec_ad:pus_tipped_arrow"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:sculk_shrieker"
+    },
+    {
+      "type": "tag",
+      "registry": "entities",
+      "value": "ec_ad:entity_types/dinosaur"
+    }
+  ],
+  "conditions": [
+    {
+      "spawn_scope": "Ordinary deep-dark and Ancient City Warden spawning outside event-specific Warden spawn rules"
+    },
+    {
+      "reaction_scope": "Every existing Warden vibration reaction. Event-specific participant and spectator filters remain additional constraints."
+    },
+    {
+      "admitted_source": "A ServerPlayer resolved directly or through vanilla SculkShriekerBlockEntity.tryGetPlayer, including a player-owned Projectile such as minecraft:snowball"
+    }
+  ],
+  "precedence": {
+    "layer": "warden_spawn_admission",
+    "priority": 130
+  },
+  "change": {
+    "summary": "Disable the Alex's Mobs Skreecher direct-Warden bypass and require vanilla player attribution for both Sculk Shrieker spawning and existing-Warden vibration reactions",
+    "modifiers": [
+      {
+        "property": "warden.spawn.admission",
+        "operation": "replace",
+        "before": {
+          "vanilla": "Sculk Shrieker resolves a ServerPlayer source, advances WardenSpawnTracker warnings and summons only after the native warning threshold",
+          "alexsmobs": "A Skreecher can construct and add a Warden directly after its clap routine without using the Sculk Shrieker or WardenSpawnTracker chain"
+        },
+        "after": {
+          "ordinary_spawn_owner": "Vanilla Sculk Shrieker and WardenSpawnTracker",
+          "admitted_causes": "Direct players and vanilla-resolved player-owned projectiles or item entities",
+          "rejected_causes": "Skreecher direct creation and ordinary mob or dinosaur vibrations"
+        }
+      },
+      {
+        "property": "alexsmobs.skreecher.warden_summoning",
+        "operation": "deny",
+        "before": true,
+        "after": false,
+        "notes": "Only skreechersSummonWarden changes. Skreecher spawn weight 10 and spawn rolls 1 remain unchanged."
+      },
+      {
+        "property": "sculk_shrieker.vibration_source_resolution",
+        "operation": "document",
+        "before": "Vanilla tryGetPlayer admits a direct ServerPlayer, a controlling-passenger ServerPlayer, a Projectile owned by a ServerPlayer, or an ItemEntity owned by a ServerPlayer",
+        "after": "The same native resolution remains unchanged and is the sole ordinary warning-driven Warden admission path",
+        "notes": "A player-owned minecraft:snowball is admitted through Projectile.getOwner. Ordinary mobs and Archie's Dinosaurs entities do not resolve to a ServerPlayer."
+      },
+      {
+        "property": "warden.warning_and_cooldown_lifecycle",
+        "operation": "document",
+        "before": "Vanilla Sculk Shrieker uses WardenSpawnTracker.tryWarn and summons after the native warning threshold",
+        "after": "Vanilla warning level, cooldown, darkness, shriek timing and spawn-threshold behavior remain unchanged"
+      },
+      {
+        "property": "warden.vibration_reaction.admission",
+        "operation": "replace",
+        "before": "An existing Warden can accept native vibration events from non-player entities and projectiles after its own event-tag, position and cooldown checks.",
+        "after": "JEMCompat first requires SculkShriekerBlockEntity.tryGetPlayer to resolve a ServerPlayer, then leaves every native Warden event-tag, position, cooldown, anger and investigation check unchanged.",
+        "notes": "Direct players, player-controlled passengers, player-owned projectiles such as snowballs and player-owned item entities remain admitted. Ordinary mobs, dinosaurs, mob projectiles and null-source events are rejected."
+      },
+      {
+        "property": "warden.existing_entities",
+        "operation": "document",
+        "before": "Wardens already present in loaded or saved world state continue to exist",
+        "after": "The configuration prevents new Skreecher direct summons but does not delete existing Wardens"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Alex's Mobs configuration and JEMCompat player-attribution adapter with vanilla Sculk Shrieker admission",
+    "kind": "user_requested_warden_spawn_owner_repair",
+    "source_files": [
+      "Client/ManagedPack/config/alexsmobs.toml",
+      "Client/ManagedPack/mods/alexsmobs-1.22.9.jar",
+      "Client/ManagedPack/mods/jemcompat-3.11.5.jar",
+      "Mods/JEMCompat/CHANGELOG.md",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/warden/SculkShriekerPlayerAttributionAccessor.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/warden/WardenPlayerVibrationMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent mass Warden creation that bypasses vanilla warnings and stop Wardens from reacting to non-player vibrations while keeping the user's required player and player-owned snowball triggers",
+    "decision_source": "The user reported about 50 Wardens in an Ancient City and required both Warden reactions and spawning to stay player-originated while preserving vanilla warning, cooldown and spawn logic",
+    "implementation_choices": "Use the native Alex's Mobs configuration seam for its independent direct-Warden path and one narrow JEMCompat admission Mixin for existing Warden reactions. Both paths reuse vanilla SculkShriekerBlockEntity.tryGetPlayer instead of reconstructing player attribution."
+  },
+  "introduced": {
+    "date": "2026-11-24",
+    "commit": "SELF",
+    "action": "disable_skreecher_direct_warden_spawn",
+    "summary": "Disable Skreecher direct Warden creation and retain native player-caused Sculk Shrieker admission"
+  },
+  "history": [
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "disable_skreecher_direct_warden_spawn",
+      "summary": "Set skreechersSummonWarden to false in the managed owner configuration without changing Skreecher spawning or vanilla shrieker behavior",
+      "source_files": [
+        "Client/ManagedPack/config/alexsmobs.toml"
+      ]
+    },
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "restrict_warden_vibration_reactions_to_players",
+      "summary": "Reject existing-Warden vibration reactions unless vanilla Sculk Shrieker attribution resolves the event to a player.",
+      "source_files": [
+        "Mods/JEMCompat/CHANGELOG.md",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/warden/SculkShriekerPlayerAttributionAccessor.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/warden/WardenPlayerVibrationMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Client/ManagedPack/mods/jemcompat-3.11.5.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Alex's Mobs",
+      "Ancient City",
+      "Archie's Dinosaurs",
+      "Deep Dark",
+      "Sculk Shrieker",
+      "vibration admission",
+      "vanilla Warden warning and cooldown",
+      "Warden anger and investigation",
+      "Warden spawning"
+    ],
+    "relations": [
+      "alexsmobs:skreecher -> direct Warden construction after clap routine -> disabled by alexsmobs.toml",
+      "GameEvent.Context source entity -> SculkShriekerBlockEntity.tryGetPlayer -> WardenSpawnTracker.tryWarn -> native Warden threshold spawn",
+      "minecraft:snowball -> Projectile.getOwner -> ServerPlayer -> admitted",
+      "ec_ad:entity_types/dinosaur -> no ServerPlayer resolution -> rejected by native Sculk Shrieker admission",
+      "ec_ad:pus_tipped_arrow block hit -> pus_arrow_aggro with null source entity -> rejected by fail-closed player attribution",
+      "minecraft:sculk_sensor -> native vibration and redstone behavior remains unchanged",
+      "ocean-weather-archies-20261122 Blood Moon Warden rule -> separate event-specific scope -> unchanged"
+    ],
+    "notes": [
+      "Exact Alex's Mobs 1.22.9 bytecode proves that EntitySkreecher directly creates and adds a Warden when skreechersSummonWarden is true, bypassing Sculk ShriekerBlockEntity and WardenSpawnTracker",
+      "Exact Archie's Dinosaurs 1.0.7 mixins do not broaden native Sculk Shrieker player-source admission",
+      "The Warden vibration adapter invokes the same vanilla SculkShriekerBlockEntity.tryGetPlayer method used by shriekers and returns false only when that method cannot attribute the event to a player",
+      "The final JEMCompat 3.11.5 SHA-256 is 3E6BC7D557E57480D514DB846A21BDA914BC6A46AC8B6078A06F4BB1518C82F3 and is byte-identical in build/libs, ManagedPack and Server",
+      "The 2026-11-23 debug log correlates repeated Sculkraptor attacks from 20:53 through 21:18 with the incident window and records mass Warden clears of 202 at 21:05:43 and 291 at 22:08:56",
+      "The runtime log proves the incident timing and scale but does not attribute each cleared Warden to a specific Skreecher",
+      "Skreecher spawn weight 10 and spawn rolls 1 remain unchanged",
+      "Sculk Sensor redstone output and non-shrieker vibration behavior remain unchanged"
+    ],
+    "unresolved": [
+      "Runtime player acceptance has not been observed",
+      "Existing Wardens require a separate explicit cleanup operation if they remain in saved chunks",
+      "The available log does not contain per-entity provenance for each Warden"
+    ]
+  }
+}

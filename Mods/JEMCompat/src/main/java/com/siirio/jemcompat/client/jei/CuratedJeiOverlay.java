@@ -11,12 +11,10 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public final class CuratedJeiOverlay {
     private static final int CELL = 20;
@@ -75,22 +73,22 @@ public final class CuratedJeiOverlay {
         }
     }
 
-    @SubscribeEvent
-    public static void render(ScreenEvent.Render.Post event) {
-        if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen) || JEMJeiPlugin.runtime() == null) return;
+    public static void renderInsideContainer(AbstractContainerScreen<?> screen, GuiGraphics graphics,
+                                             int mouseX, int mouseY, float partialTick) {
+        if (JEMJeiPlugin.runtime() == null) return;
         ensureSearch(screen);
         CatalogLayout layout = layout(screen);
-        lastMouseX = event.getMouseX();
-        lastMouseY = event.getMouseY();
-        GuiGraphics graphics = event.getGuiGraphics();
-        renderNativeToggle(graphics, layout, event.getMouseX(), event.getMouseY());
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
+        renderNativeToggle(graphics, layout);
         boolean nativeOverlayVisible = JEMJeiPlugin.isNativeOverlayVisible();
         setSearchAvailable(screen, !nativeOverlayVisible);
         if (nativeOverlayVisible) return;
-        renderCategories(graphics, layout, event.getMouseX(), event.getMouseY());
+        renderCategories(graphics, layout);
         positionSearch(layout);
-        categorySearch.render(graphics, event.getMouseX(), event.getMouseY(), event.getPartialTick());
-        renderGrid(graphics, layout, event.getMouseX(), event.getMouseY());
+        categorySearch.render(graphics, mouseX, mouseY, partialTick);
+        renderGrid(graphics, layout, mouseX, mouseY);
+        renderHoveredTooltip(graphics, layout, mouseX, mouseY);
     }
 
     @SubscribeEvent
@@ -273,7 +271,7 @@ public final class CuratedJeiOverlay {
         if (screen.getFocused() == categorySearch) screen.setFocused(null);
     }
 
-    private static void renderNativeToggle(GuiGraphics graphics, CatalogLayout layout, int mouseX, int mouseY) {
+    private static void renderNativeToggle(GuiGraphics graphics, CatalogLayout layout) {
         int x = layout.toggleX();
         int y = layout.top();
         boolean nativeOverlayVisible = JEMJeiPlugin.isNativeOverlayVisible();
@@ -281,17 +279,15 @@ public final class CuratedJeiOverlay {
         graphics.fill(x + 1, y + 1, x + BUTTON - 1, y + BUTTON - 1,
                 nativeOverlayVisible ? 0xE0B06A32 : 0xC0383838);
         graphics.drawCenteredString(Minecraft.getInstance().font, "J", x + BUTTON / 2, y + 7, 0xFFFFFF);
-        renderLabel(graphics, "gui.jemcompat.jei.vanilla", layout.toggleX(), layout.top(), mouseX, mouseY);
     }
 
-    private static void renderCategories(GuiGraphics graphics, CatalogLayout layout, int mouseX, int mouseY) {
+    private static void renderCategories(GuiGraphics graphics, CatalogLayout layout) {
         List<CatalogCategory> categories = categories();
         int categoryStart = railStart(categories, layout, false);
         for (int index = categoryStart; index < Math.min(categories.size(), categoryStart + layout.railSlots()); index++) {
             CatalogCategory category = categories.get(index);
             int y = layout.top() + (index - categoryStart) * BUTTON;
             renderButton(graphics, category.icon(), layout.railX(), y, category == selected);
-            renderLabel(graphics, category.translationKey(), layout.railX(), y, mouseX, mouseY);
         }
         List<CatalogCategory> children = selectedChildren();
         if (!children.isEmpty()) {
@@ -300,7 +296,6 @@ public final class CuratedJeiOverlay {
                 CatalogCategory category = children.get(index);
                 int y = layout.top() + (index - childStart) * BUTTON;
                 renderButton(graphics, category.icon(), layout.subRailX(), y, category == activeChild());
-                renderLabel(graphics, category.translationKey(), layout.subRailX(), y, mouseX, mouseY);
             }
         }
     }
@@ -333,7 +328,6 @@ public final class CuratedJeiOverlay {
             ItemStack stack = stacks.get(index);
             if (inside(mouseX, mouseY, x, y, CELL, CELL)) graphics.fill(x, y, x + CELL, y + CELL, 0x80FFFFFF);
             graphics.renderItem(stack, x + 2, y + 2);
-            if (inside(mouseX, mouseY, x, y, CELL, CELL)) graphics.renderTooltip(Minecraft.getInstance().font, stack, mouseX, mouseY);
         }
         renderNavigation(graphics, layout, mouseX, mouseY, stacks.size());
     }
@@ -351,10 +345,6 @@ public final class CuratedJeiOverlay {
                 graphics.drawString(Minecraft.getInstance().font, "<", layout.gridX() + 2, y + 7, 0xFFFFFF);
                 graphics.drawString(Minecraft.getInstance().font, ">", layout.gridX() + width - 7, y + 7, 0xFFFFFF);
             }
-            if (inside(mouseX, mouseY, layout.gridX(), y, width, BUTTON)) {
-                graphics.renderTooltip(Minecraft.getInstance().font,
-                        Component.translatable("gui.jemcompat.jei.page", page + 1, pages), mouseX, mouseY);
-            }
             return;
         }
         graphics.drawCenteredString(Minecraft.getInstance().font,
@@ -365,10 +355,52 @@ public final class CuratedJeiOverlay {
         renderButton(graphics, new ItemStack(Items.ARROW), nextX, y, true);
         graphics.drawCenteredString(Minecraft.getInstance().font, "<", layout.gridX() + BUTTON / 2, y + 7, 0xFFFFFF);
         graphics.drawCenteredString(Minecraft.getInstance().font, ">", nextX + BUTTON / 2, y + 7, 0xFFFFFF);
-        if (inside(mouseX, mouseY, layout.gridX(), y, BUTTON, BUTTON))
-            graphics.renderTooltip(Minecraft.getInstance().font, Component.translatable("gui.jemcompat.jei.previous_page"), mouseX, mouseY);
-        if (inside(mouseX, mouseY, nextX, y, BUTTON, BUTTON))
-            graphics.renderTooltip(Minecraft.getInstance().font, Component.translatable("gui.jemcompat.jei.next_page"), mouseX, mouseY);
+    }
+
+    private static void renderHoveredTooltip(GuiGraphics graphics, CatalogLayout layout, int mouseX, int mouseY) {
+        ItemStack hovered = hoveredStack(layout, mouseX, mouseY);
+        if (!hovered.isEmpty()) {
+            graphics.renderTooltip(Minecraft.getInstance().font, hovered, mouseX, mouseY);
+            return;
+        }
+        int navigationWidth = layout.columns() * CELL;
+        if (inside(mouseX, mouseY, layout.gridX(), layout.navigationY(), navigationWidth, BUTTON)) {
+            int pages = Math.max(1, (visibleStacks().size() + layout.capacity() - 1) / layout.capacity());
+            Component label = navigationWidth < 80
+                    ? Component.translatable("gui.jemcompat.jei.page", page + 1, pages)
+                    : inside(mouseX, mouseY, layout.gridX(), layout.navigationY(), BUTTON, BUTTON)
+                    ? Component.translatable("gui.jemcompat.jei.previous_page")
+                    : inside(mouseX, mouseY, layout.gridX() + navigationWidth - BUTTON,
+                    layout.navigationY(), BUTTON, BUTTON)
+                    ? Component.translatable("gui.jemcompat.jei.next_page") : null;
+            if (label != null) {
+                graphics.renderTooltip(Minecraft.getInstance().font, label, mouseX, mouseY);
+                return;
+            }
+        }
+        Component category = hoveredCategoryLabel(layout, mouseX, mouseY);
+        if (category != null) graphics.renderTooltip(Minecraft.getInstance().font, category, mouseX, mouseY);
+    }
+
+    private static Component hoveredCategoryLabel(CatalogLayout layout, int mouseX, int mouseY) {
+        if (inside(mouseX, mouseY, layout.toggleX(), layout.top(), BUTTON, BUTTON)) {
+            return Component.translatable("gui.jemcompat.jei.vanilla");
+        }
+        List<CatalogCategory> categories = categories();
+        int start = railStart(categories, layout, false);
+        for (int index = start; index < Math.min(categories.size(), start + layout.railSlots()); index++) {
+            if (inside(mouseX, mouseY, layout.railX(), layout.top() + (index - start) * BUTTON, BUTTON, BUTTON)) {
+                return Component.translatable(categories.get(index).translationKey());
+            }
+        }
+        List<CatalogCategory> children = selectedChildren();
+        int childStart = railStart(children, layout, true);
+        for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
+            if (inside(mouseX, mouseY, layout.subRailX(), layout.top() + (index - childStart) * BUTTON, BUTTON, BUTTON)) {
+                return Component.translatable(children.get(index).translationKey());
+            }
+        }
+        return null;
     }
 
     private static int lastPage(CatalogLayout layout) {
@@ -392,9 +424,7 @@ public final class CuratedJeiOverlay {
     }
 
     private static boolean matches(ItemStack stack, String needle) {
-        ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
-        return stack.getHoverName().getString().toLowerCase(Locale.ROOT).contains(needle)
-                || id != null && id.toString().toLowerCase(Locale.ROOT).contains(needle);
+        return CuratedJeiCatalog.matches(stack, needle);
     }
 
     private static ItemStack hoveredStack(CatalogLayout layout, int mouseX, int mouseY) {
@@ -408,10 +438,6 @@ public final class CuratedJeiOverlay {
         graphics.fill(x, y, x + BUTTON, y + BUTTON, selectedButton ? 0xE07A4C24 : 0xC0181818);
         graphics.fill(x + 1, y + 1, x + BUTTON - 1, y + BUTTON - 1, selectedButton ? 0xE0B06A32 : 0xC0383838);
         graphics.renderItem(icon, x + 3, y + 3);
-    }
-
-    private static void renderLabel(GuiGraphics graphics, String key, int x, int y, int mouseX, int mouseY) {
-        if (inside(mouseX, mouseY, x, y, BUTTON, BUTTON)) graphics.renderTooltip(Minecraft.getInstance().font, Component.translatable(key), mouseX, mouseY);
     }
 
     private static List<CatalogCategory> categories() {

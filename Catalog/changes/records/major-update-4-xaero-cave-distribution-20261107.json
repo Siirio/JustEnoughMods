@@ -53,6 +53,19 @@
         "operation": "document",
         "before": "Native personal map data remains outside the shared-terrain adapter",
         "after": "Waypoints, homes, death points, labels, colors, groups and settings remain private to their creator"
+      },
+      {
+        "property": "xaero.cave_mode.server_profile",
+        "operation": "replace",
+        "before": {
+          "world_map": "cave_mode_allowed=false; auto_cave_mode=0",
+          "minimap": "minimap_cave_mode_allowed=false; minimap_auto_cave_mode=0"
+        },
+        "after": {
+          "world_map": "cave_mode_allowed=true; auto_cave_mode=2",
+          "minimap": "minimap_cave_mode_allowed=true; minimap_auto_cave_mode=2"
+        },
+        "notes": "The managed server profiles no longer override the already enabled client profiles. Xaero remains the cave-map renderer and settings owner."
       }
     ]
   },
@@ -64,6 +77,8 @@
       "Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar",
       "Client/ManagedPack/mods/xaerominimap-forge-1.20.1-26.4.2.jar",
       "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+      "Client/ManagedPack/config/xaero/world-map/server_profiles/default.cfg",
+      "Client/ManagedPack/config/xaero/minimap/server_profiles/default.cfg",
       "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
       "Docs/DEVELOPMENT.md"
     ]
@@ -86,6 +101,16 @@
       "commit": "SELF",
       "action": "document_major_update_4_xaero_cave_distribution",
       "summary": "Verified canonical, server and active AutoModpack artifacts and preserved native waypoint privacy"
+    },
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "enable_xaero_cave_profiles",
+      "summary": "Enable automatic cave mode in the managed World Map and Minimap server profiles instead of overriding the enabled client profiles",
+      "source_files": [
+        "Client/ManagedPack/config/xaero/world-map/server_profiles/default.cfg",
+        "Client/ManagedPack/config/xaero/minimap/server_profiles/default.cfg"
+      ]
     }
   ],
   "impacts": {
@@ -94,13 +119,16 @@
       "runtime distribution",
       "xaero",
       "map privacy",
-      "client_server_contract"
+      "client_server_contract",
+      "client_configuration"
     ],
     "relations": [
-      "Xaero explored terrain -> Unified Xaero Worldmap -> JEM full-cave acceptance -> matching Major Update 4 clients"
+      "Xaero explored terrain -> Unified Xaero Worldmap -> JEM full-cave acceptance -> matching Major Update 4 clients",
+      "Managed Xaero server profiles -> cave mode allowed and automatic -> native World Map and Minimap cave presentation"
     ],
     "notes": [
       "The active test jem generation contains byte-identical copies of the canonical Xaero and JEM Server artifacts",
+      "The prior server profiles disabled cave mode even though both managed client profiles already allowed it and selected automatic mode 2",
       "No native Xaero GUI, camera, controls, renderer, map store or personal waypoint behavior is replaced",
       "MineRENT, stable JustEnoughMods and the immutable release baseline are unchanged"
     ],

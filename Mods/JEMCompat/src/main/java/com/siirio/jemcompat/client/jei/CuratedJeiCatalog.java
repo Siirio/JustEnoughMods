@@ -7,7 +7,9 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
+import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class CuratedJeiCatalog {
     private static final List<CatalogCategory> TOP_LEVEL = List.of(CatalogCategory.WEAPONS, CatalogCategory.WEARABLES, CatalogCategory.FOOD,
@@ -26,6 +28,7 @@ public final class CuratedJeiCatalog {
     private static final List<CatalogCategory> FOOD = List.of(CatalogCategory.FOOD_EDIBLES,
             CatalogCategory.FOOD_COOKING_EQUIPMENT);
     private static final EnumMap<CatalogCategory, List<ItemStack>> STACKS = new EnumMap<>(CatalogCategory.class);
+    private static final Map<ItemStack, String> SEARCH_TEXT = new IdentityHashMap<>();
 
     private CuratedJeiCatalog() {
     }
@@ -37,6 +40,7 @@ public final class CuratedJeiCatalog {
             if (preview.isDamageableItem()) {
                 preview.setDamageValue(0);
             }
+            SEARCH_TEXT.put(preview, MultilingualSearch.searchText(preview));
             CatalogCategory leaf = CatalogCategory.valueOf(
                     com.siirio.jemcompat.catalog.JemCatalogCategories.classify(preview).name());
             STACKS.computeIfAbsent(leaf, ignored -> new ArrayList<>()).add(preview);
@@ -49,6 +53,7 @@ public final class CuratedJeiCatalog {
 
     public static void clear() {
         STACKS.clear();
+        SEARCH_TEXT.clear();
     }
 
     public static List<CatalogCategory> topLevel(boolean creative) {
@@ -88,6 +93,11 @@ public final class CuratedJeiCatalog {
             return aggregate(FOOD);
         }
         return STACKS.getOrDefault(category, List.of());
+    }
+
+    public static boolean matches(ItemStack stack, String normalizedNeedle) {
+        String text = SEARCH_TEXT.get(stack);
+        return (text == null ? MultilingualSearch.searchText(stack) : text).contains(normalizedNeedle);
     }
 
     private static List<ItemStack> aggregate(List<CatalogCategory> children) {

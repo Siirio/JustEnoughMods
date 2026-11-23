@@ -125,12 +125,14 @@ public final class JEMJeiPlugin implements IModPlugin {
 
     @Override
     public void registerIngredientAliases(IIngredientAliasRegistration registration) {
+        MultilingualSearch.reload();
         Map<String, String> aliases = readAliases();
         ForgeRegistries.ITEMS.getValues().forEach(item -> {
+            var stack = new net.minecraft.world.item.ItemStack(item);
+            java.util.LinkedHashSet<String> itemAliases = new java.util.LinkedHashSet<>(MultilingualSearch.aliases(stack));
             String alias = aliases.get(item.getDescriptionId());
-            if (alias != null && !alias.isBlank()) {
-                registration.addAlias(item, alias);
-            }
+            if (alias != null && !alias.isBlank()) itemAliases.add(alias);
+            if (!itemAliases.isEmpty()) registration.addAliases(item, itemAliases);
         });
     }
 

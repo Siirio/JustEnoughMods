@@ -3,7 +3,6 @@
   "change_id": "major-update-4-structure-catalog-expansion-20261110",
   "status": "active",
   "selectors": [
-    {"type": "namespace", "registry": "*", "value": "hobbit_hill_village"},
     {"type": "namespace", "registry": "*", "value": "mr_ati_structuresvanillaedition"},
     {"type": "namespace", "registry": "*", "value": "netherman"},
     {"type": "namespace", "registry": "*", "value": "abridged"},
@@ -78,6 +77,21 @@
         "operation": "replace",
         "before": "Luki's Woodland Mansions uses the unsupported value field for a Forge 1.20.1 loot-table reference",
         "after": "A narrow Paxi override uses the required name field and retains the native minecraft:chests/woodland_mansion target"
+      },
+      {
+        "property": "worldgen.lios_outlandish_villages.hobbit_village",
+        "operation": "replace",
+        "before": {
+          "artifact": "hobbit_hill_village-0.0.5.jar",
+          "structure": "lios_outlandish_villages:hobbit_village",
+          "placement": "Dense, coniferous and forest biomes; absolute start height -25; rigid jigsaw size 7; maximum distance 112; terrain adaptation none"
+        },
+        "after": {
+          "artifact": null,
+          "structure": null,
+          "scope": "No new Hobbit Hill Village generation after the artifact is removed from both logical sides"
+        },
+        "notes": "The user identified the native underground village as unwanted and associated it with severe new-chunk cutouts. Existing generated chunk blocks are not rewritten."
       }
     ]
   },
@@ -186,6 +200,16 @@
       "source_files": [
         "Client/ManagedPack/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar"
       ]
+    },
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "remove_hobbit_hill_village",
+      "summary": "Remove Hobbit Hill Village 0.0.5 from the managed client and local server so its large rigid underground jigsaw no longer generates in new chunks",
+      "source_files": [
+        "Client/ManagedPack/mods/hobbit_hill_village-0.0.5.jar",
+        "Server/mods/hobbit_hill_village-0.0.5.jar"
+      ]
     }
   ],
   "impacts": {
@@ -200,7 +224,8 @@
       "structure_layout_performance",
       "structure_terrain_blending",
       "settlement_roads",
-      "structure_overlap"
+      "structure_overlap",
+      "hobbit_hill_village"
     ],
     "relations": [
       "Luki's Grand Capitals -> vanilla village definitions",
@@ -211,18 +236,22 @@
       "RoadWeaver -> asynchronous roads for villages and the priority pillager outpost",
       "canonical campaign structures -> unskippable overlap policy",
       "JEM boss lifecycle -> boss revival without whole-structure rewriting",
-      "recorded road terrain -> one-direction slope profile -> bounded ordinary road fill"
+      "recorded road terrain -> one-direction slope profile -> bounded ordinary road fill",
+      "hobbit_hill_village-0.0.5.jar -> lios_outlandish_villages:hobbit_village -> rigid underground forest-village generation -> artifact removal"
     ],
     "notes": [
       "Ember's Ancient Remnants remains installed once",
       "Better Villages and its generated config are removed",
       "StructureOverlapless, Respawning Structures and Dimensional Structure Restrict are not installed",
       "Oh The Trees You'll Grow and both Dungeons and Taverns artifacts are removed",
+      "Hobbit Hill Village declares no required dependencies, and no active JEM quest, config or source references its mod ID or structure namespace",
+      "Historical Major Update 4 receipts retain their original record that the artifact was present at that earlier boundary",
       "MineRENT, main, stable JustEnoughMods and the immutable release baseline remain unchanged",
       "Already generated terrain walls are preserved until a separate world-repair request identifies their exact chunks"
     ],
     "unresolved": [
-      "Fresh-chunk generation and player acceptance were not performed"
+      "Fresh-chunk generation and player acceptance were not performed",
+      "Existing chunks that already contain Hobbit Hill Village blocks or structure metadata are not repaired by artifact removal"
     ]
   }
 }

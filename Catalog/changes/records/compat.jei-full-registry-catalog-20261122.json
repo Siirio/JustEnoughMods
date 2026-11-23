@@ -13,7 +13,7 @@
       "side": "client",
       "installed_versions": [
         "JEI installed pack",
-        "JEMCompat 3.11.2"
+        "JEMCompat 3.11.5"
       ]
     }
   ],
@@ -68,6 +68,24 @@
         "operation": "replace",
         "before": "Curated controls could remain active.",
         "after": "Original JEI mode leaves the curated overlay invisible, inactive, and unfocused."
+      },
+      {
+        "property": "jei.tooltip_render_order",
+        "operation": "replace",
+        "before": "The curated overlay rendered in ScreenEvent.Render.Post, so its grid and search controls could redraw after native item and search-box tooltips and cause frame-to-frame overlap.",
+        "after": "The curated overlay renders at AbstractContainerScreen.renderTooltip HEAD and renders its own hovered tooltip last inside that pass, so the subsequent native tooltip pass remains above the catalog and search controls."
+      },
+      {
+        "property": "jei.multilingual_search",
+        "operation": "replace",
+        "before": "Search depended mainly on the active-language item name, registry ID and a limited static alias map.",
+        "after": "Native JEI aliases, the curated catalog and creative-tab search share one projection of every installed language value for each item, plus reviewed translated tooltip terms and registry IDs."
+      },
+      {
+        "property": "jei.food_blessing_search",
+        "operation": "allow",
+        "before": "Food blessing names shown in translated tooltips were not reliable search terms.",
+        "after": "Translated JEM Food tooltip, trait and effect components are indexed, so food can be found by its displayed blessing category in any installed language."
       }
     ]
   },
@@ -79,9 +97,18 @@
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
-      "Client/ManagedPack/mods/jemcompat-3.11.4.jar",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_english_aliases.json",
+      "Client/ManagedPack/mods/jemcompat-3.11.5.jar",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/**",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/**",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/MultilingualSearch.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/AbstractContainerScreenJeiOverlayMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/CreativeModeSearchMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "tools/generate_jei_catalog.py",
       "Docs/catalog/JEI_CATALOG_MANIFEST.md",
       "Docs/catalog/JEI_CATALOG_REVIEW.md",
@@ -131,13 +158,33 @@
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json"
       ]
+    },
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "repair_catalog_render_order_and_multilingual_search",
+      "summary": "Render the curated catalog before the native tooltip pass and share all-language item and blessing search terms with JEI and creative tabs.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/MultilingualSearch.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/AbstractContainerScreenJeiOverlayMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/CreativeModeSearchMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
     }
   ],
   "impacts": {
     "systems": [
       "JEI",
       "JEMCompat",
-      "JEM Economy optional catalog"
+      "JEM Economy optional catalog",
+      "creative inventory",
+      "food blessing search",
+      "multilingual search",
+      "tooltip rendering"
     ],
     "relations": [
       "logical server item registry -> checked manifest -> direct client lookup",
@@ -145,11 +192,15 @@
       "Archie's registered egg behavior -> Spawn Eggs or Transport primary leaf",
       "top-level leaf -> localized curated navigation",
       "Trees leaf -> optional JEM Economy building admission",
-      "leaf category -> optional JEM Economy admission"
+      "leaf category -> optional JEM Economy admission",
+      "installed language resources -> MultilingualSearch -> native JEI aliases, curated search and creative-tab search",
+      "JEM Food tooltip translation keys -> blessing terms -> searchable item aliases",
+      "AbstractContainerScreen tooltip pass -> curated overlay -> native tooltip remains topmost"
     ],
     "notes": [
       "The export SHA-256 is 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39.",
       "The JEMCompat 3.11.2 SHA-256 is 5044F3A784BDF8C74C4C47C7D7E390CA1BDA10D347A00B42722AD7B777FBFFA0.",
+      "The final JEMCompat 3.11.5 SHA-256 is 3E6BC7D557E57480D514DB846A21BDA914BC6A46AC8B6078A06F4BB1518C82F3 and is byte-identical in build/libs, ManagedPack and Server.",
       "The current manifest contains 14,064 exact primary assignments. Cosmetics contains 765 IDs, Music Discs contains 87 IDs and Trees contains 1,143 IDs."
     ],
     "unresolved": [
