@@ -2,7 +2,7 @@
 
 - Registry source: reviewed logical-server export removed after initial validation
 - Source export SHA-256: 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39
-- Registered items: 13913
+- Registered items: 14064
 - Manifest schema: 2
 - Runtime classification: direct immutable item-ID lookup only
 
@@ -24,7 +24,7 @@ Total: 0
 
 ### WEAPON_MELEE
 
-Total: 268
+Total: 273
 
 - alexscaves: 14
 - alexsmobs: 4
@@ -53,6 +53,7 @@ Total: 268
 - rottencreatures: 1
 - royalvariations: 1
 - skarrier_mobs: 26
+- the_sift: 5
 - tide: 3
 - trials: 1
 - unearthed_journey: 1
@@ -60,7 +61,7 @@ Total: 268
 
 ### WEAPON_RANGED
 
-Total: 183
+Total: 185
 
 - alexscaves: 11
 - alexsmobs: 2
@@ -79,6 +80,7 @@ Total: 183
 - royalvariations: 2
 - simplybows: 36
 - skarrier_mobs: 1
+- the_sift: 2
 - tide: 1
 - whaleborne: 1
 - xtraarrows: 97
@@ -99,7 +101,7 @@ Total: 17
 
 ### WEAPON_SMITHING_TEMPLATES
 
-Total: 48
+Total: 50
 
 - alexscaves: 1
 - aquamirae: 2
@@ -111,11 +113,12 @@ Total: 48
 - minecraft: 17
 - netherexp: 4
 - royalvariations: 1
+- the_sift: 2
 - trials: 2
 
 ### WEARABLE_ARMOR
 
-Total: 326
+Total: 331
 
 - alexscaves: 19
 - alexsmobs: 16
@@ -149,6 +152,7 @@ Total: 326
 - royalvariations: 6
 - skarrier_mobs: 19
 - spawn: 1
+- the_sift: 5
 - tide: 3
 - toms_storage: 1
 - unearthed_journey: 4
@@ -171,7 +175,7 @@ Total: 723
 
 ### FOOD_EDIBLES
 
-Total: 1066
+Total: 1073
 
 - alexscaves: 128
 - alexsmobs: 26
@@ -211,6 +215,7 @@ Total: 1066
 - somemoreblocks: 1
 - spawn: 34
 - spider_overhaul: 2
+- the_sift: 7
 - tide: 107
 - unearthed_journey: 24
 - vinery: 59
@@ -235,7 +240,7 @@ Total: 61
 
 ### FISHING
 
-Total: 258
+Total: 259
 
 - alexscaves: 13
 - alexsmobs: 16
@@ -250,11 +255,12 @@ Total: 258
 - somemoreblocks: 5
 - sophisticatedcore: 1
 - spawn: 12
+- the_sift: 1
 - tide: 176
 
 ### TRANSPORT
 
-Total: 179
+Total: 184
 
 - alexscaves: 4
 - alexsmobs: 2
@@ -271,6 +277,7 @@ Total: 179
 - paraglider: 1
 - snowyspirit: 39
 - spawn: 4
+- the_sift: 5
 - trotting_wagons: 5
 - unearthed_journey: 1
 - vinery: 2
@@ -314,9 +321,10 @@ Total: 392
 
 ### POTIONS
 
-Total: 4
+Total: 5
 
 - minecraft: 4
+- the_sift: 1
 
 ### BOOKS
 
@@ -342,7 +350,7 @@ Total: 35
 
 ### ORES
 
-Total: 275
+Total: 290
 
 - alexscaves: 20
 - alexsmobs: 12
@@ -365,12 +373,13 @@ Total: 275
 - skarrier_mobs: 20
 - spawn: 2
 - spider_overhaul: 1
+- the_sift: 15
 - trials: 1
 - unearthed_journey: 35
 
 ### COMPONENTS
 
-Total: 103
+Total: 106
 
 - alexscaves: 16
 - alexsmobs: 42
@@ -379,6 +388,7 @@ Total: 103
 - luminous_beasts: 11
 - luminous_nether: 7
 - primal: 1
+- the_sift: 3
 
 ### CREATE_REDSTONE
 
@@ -407,7 +417,7 @@ Total: 2256
 
 ### BUILDING_FURNITURE
 
-Total: 1194
+Total: 1195
 
 - alexscaves: 33
 - alexsmobs: 7
@@ -443,13 +453,14 @@ Total: 1194
 - siegeweapons: 1
 - skarrier_mobs: 1
 - spawn: 6
+- the_sift: 1
 - trials: 2
 - unearthed_journey: 11
 - vinery: 7
 
 ### BUILDING_NATURE
 
-Total: 1076
+Total: 1137
 
 - alexscaves: 29
 - alexsmobs: 3
@@ -474,16 +485,16 @@ Total: 1076
 - oceanicrealms: 1
 - primal: 11
 - ribbits: 12
-- sift: 4
 - somemoreblocks: 72
 - spawn: 59
 - spider_overhaul: 1
+- the_sift: 65
 - unearthed_journey: 64
 - vinery: 33
 
 ### BUILDING_GLASS
 
-Total: 332
+Total: 334
 
 - alexscaves: 2
 - alexsmobs: 1
@@ -499,6 +510,7 @@ Total: 332
 - netherexp: 2
 - railways: 128
 - somemoreblocks: 35
+- the_sift: 2
 - unearthed_journey: 2
 - vinery: 2
 
@@ -545,7 +557,7 @@ Total: 214
 
 ### BUILDING_BLOCKS
 
-Total: 2959
+Total: 2986
 
 - alexscaves: 149
 - alexsmobs: 18
@@ -554,7 +566,6 @@ Total: 2959
 - bakery: 1
 - barnyardbuddies: 28
 - bbb: 164
-- blabovs_green_screen: 2
 - blastfromthepast: 41
 - block_factorys_bosses: 12
 - brewery: 1
@@ -588,12 +599,12 @@ Total: 2959
 - paraglider: 5
 - primal: 35
 - sereneseasons: 1
-- sift: 1
 - skarrier_mobs: 31
 - somemoreblocks: 508
 - sootychimneys: 14
 - spawn: 73
 - spider_overhaul: 2
+- the_sift: 30
 - trials: 58
 - unearthed_journey: 130
 - vinery: 7
@@ -601,7 +612,7 @@ Total: 2959
 
 ### SPAWN_EGGS
 
-Total: 831
+Total: 842
 
 - alexscaves: 43
 - alexsmobs: 89
@@ -630,11 +641,11 @@ Total: 831
 - ribbits: 5
 - rottencreatures: 13
 - royalvariations: 4
-- sift: 1
 - skarrier_mobs: 49
 - snowyspirit: 1
 - spawn: 27
 - spider_overhaul: 11
+- the_sift: 12
 - tide: 101
 - trials: 2
 - unearthed_journey: 74
@@ -643,7 +654,7 @@ Total: 831
 
 ### OTHER
 
-Total: 819
+Total: 822
 
 - alexscaves: 41
 - alexsmobs: 29
@@ -709,6 +720,7 @@ Total: 819
 - sophisticatedcore: 1
 - spawn: 20
 - spider_overhaul: 3
+- the_sift: 3
 - tinyinv: 1
 - trials: 9
 - unearthed_journey: 39

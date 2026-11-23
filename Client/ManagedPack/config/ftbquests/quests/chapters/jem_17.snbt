@@ -7701,6 +7701,214 @@
       ],
       "jem_economy": false,
       "jem_dedicated_event": false
+    },
+    {
+      "id": "22DD24B18EBCFB9B",
+      "title": "{\"translate\":\"jem.atlas.card.v3_archie_field_guide.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_archie_field_guide.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_archie_field_guide.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_field_guide.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_field_guide.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_field_guide.reward\"}"
+      ],
+      "icon": "ec_ad:guidebook",
+      "x": -10.2,
+      "y": 5.2,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2464C1A94F59FBC5",
+          "type": "item",
+          "item": "ec_ad:guidebook",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28B2CCFE75ABB3B0",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:compass",
+          "count": 1,
+          "claim_key": "v3_archie_field_guide/item/0",
+          "claim_reward_id": "28B2CCFE75ABB3B0",
+          "team_reward": false
+        },
+        {
+          "id": "2AE28864A4006648",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 16,
+          "claim_key": "v3_archie_field_guide/item/1",
+          "claim_reward_id": "2AE28864A4006648",
+          "team_reward": false
+        },
+        {
+          "id": "29625BF9FAB8F4D7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 30,
+          "team_reward": false
+        },
+        {
+          "id": "2366751FE64654BF",
+          "type": "jem_advancements:quest_coin",
+          "amount": 1,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_archie_field_guide",
+      "jem_required_mods": [
+        "ec_ad"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B3D449630A0FC59",
+      "title": "{\"translate\":\"jem.atlas.card.v3_archie_three_habitats.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_archie_three_habitats.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_archie_three_habitats.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_three_habitats.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_three_habitats.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_three_habitats.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:spyglass",
+      "x": -7.9,
+      "y": 5.2,
+      "shape": "hexagon",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2D949715D1E24B2A",
+          "type": "advancement",
+          "advancement": "ec_ad:spot_lushsaur"
+        },
+        {
+          "id": "2CE6A7EC995CAB54",
+          "type": "advancement",
+          "advancement": "ec_ad:spot_coralosaur"
+        },
+        {
+          "id": "2B1CDB7FAE4DE186",
+          "type": "advancement",
+          "advancement": "ec_ad:spot_obsidiceratops"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20F4BB92C8FB81D7",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:spyglass",
+          "count": 1,
+          "claim_key": "v3_archie_three_habitats/item/0",
+          "claim_reward_id": "20F4BB92C8FB81D7",
+          "team_reward": false
+        },
+        {
+          "id": "20F2ECBD6DF0495F",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:cooked_beef",
+          "count": 12,
+          "claim_key": "v3_archie_three_habitats/item/1",
+          "claim_reward_id": "20F2ECBD6DF0495F",
+          "team_reward": false
+        },
+        {
+          "id": "2FC3AF0E2C868B85",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        },
+        {
+          "id": "2C25C75A065ADC61",
+          "type": "jem_advancements:quest_coin",
+          "amount": 3,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_archie_three_habitats",
+      "jem_required_mods": [
+        "ec_ad"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2015151D5DEAEDBC",
+      "title": "{\"translate\":\"jem.atlas.card.v3_archie_lushsaur_bond.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_archie_lushsaur_bond.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_archie_lushsaur_bond.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_lushsaur_bond.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_lushsaur_bond.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_archie_lushsaur_bond.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "ec_ad:lushsaur_egg",
+      "x": -5.6,
+      "y": 5.2,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2752CB2D115B5F1A",
+          "type": "advancement",
+          "advancement": "ec_ad:tame_lushsaur"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29802C3E0C8CF769",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:name_tag",
+          "count": 2,
+          "claim_key": "v3_archie_lushsaur_bond/item/0",
+          "claim_reward_id": "29802C3E0C8CF769",
+          "team_reward": false
+        },
+        {
+          "id": "2CF7892F981B5001",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:lead",
+          "count": 2,
+          "claim_key": "v3_archie_lushsaur_bond/item/1",
+          "claim_reward_id": "2CF7892F981B5001",
+          "team_reward": false
+        },
+        {
+          "id": "23F4046DE3202C3F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 150,
+          "team_reward": false
+        },
+        {
+          "id": "2C1969B69E852F7D",
+          "type": "jem_advancements:quest_coin",
+          "amount": 3,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_archie_lushsaur_bond",
+      "jem_required_mods": [
+        "ec_ad"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
     }
   ],
   "images": [

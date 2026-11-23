@@ -1,0 +1,158 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.full-sift-clean-filming-tools-20261123",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "the_sift"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "sift"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "blabovs_green_screen"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "mocap"
+    }
+  ],
+  "conditions": [
+    {
+      "distribution": "Current develop, managed Test JustEnoughMods client, and ordinary local dedicated server only"
+    }
+  ],
+  "precedence": {
+    "layer": "local_distribution",
+    "priority": 109,
+    "overrides": [
+      "major-update-4-structure-catalog-expansion-20261110"
+    ]
+  },
+  "change": {
+    "summary": "Replace the partial Sift Backport with Mielon's The Sift 2.0.6 and remove the temporary local filming-tool batch",
+    "modifiers": [
+      {
+        "property": "distribution.sift_implementation",
+        "operation": "replace",
+        "before": {
+          "mod_id": "sift_backport",
+          "version": "1.0.5.1",
+          "registry_namespace": "sift"
+        },
+        "after": {
+          "mod_id": "the_sift",
+          "version": "2.0.6",
+          "registry_namespace": "the_sift",
+          "artifact": "mielons-the-sift-2.0.6-mc1.20.1-forge.jar"
+        },
+        "notes": "The replacement is a different mod and namespace. No automatic registry-ID or saved-world migration is asserted."
+      },
+      {
+        "property": "distribution.local_filming_tools",
+        "operation": "deny",
+        "before": {
+          "test_profile_and_local_server": [
+            "mocap",
+            "blabovs_green_screen"
+          ]
+        },
+        "after": [],
+        "notes": "Remove the exact temporary filming batch identified in the 2026-11-20 changelog entry. Source projects and historical records remain available."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Client/ManagedPack and ordinary local Server mod distribution",
+    "kind": "user_requested_mod_replacement_and_client_tool_removal",
+    "source_files": [
+      "Client/ManagedPack/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
+      "Client/ManagedPack/mods/jem-advancements-5.3.11.jar",
+      "Client/ManagedPack/mods/jemcompat-3.11.3.jar",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_16.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_17.snbt",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/quest_v3/v3_archie_field_guide.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/quest_v3/v3_archie_lushsaur_bond.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/quest_v3/v3_archie_three_habitats.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/quest_v3/v3_sift_brave_unknown.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/quest_v3/v3_sift_regicide.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/quest_v3/v3_sift_siftite_armor.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_archie_field_guide.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_archie_lushsaur_bond.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_archie_three_habitats.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_sift_brave_unknown.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_sift_regicide.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_sift_siftite_armor.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/questbook/layout.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/layout.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Install the user's selected full Sift implementation and remove temporary filming-only client tools from the active pack",
+    "decision_source": "Direct user request on 2026-11-23",
+    "user_requested": "Replace the current Sift mod with the supplied Downloads artifact and remove Green Screen and Motion Capture from the recorded local filming batch while retaining JEM Freecam",
+    "codex_choices": "Reuse the already installed Forge GeckoLib 4.8.4 dependency instead of the obsolete NeoForge dependency bundled beside the supplied mod"
+  },
+  "introduced": {
+    "date": "2026-11-23",
+    "commit": "SELF",
+    "action": "replace_sift_and_remove_filming_tools",
+    "summary": "Install Mielon's The Sift 2.0.6 on both logical sides and remove Sift Backport, Motion Capture, and Blabov's Green Screen from their active distribution scopes while retaining JEM Freecam"
+  },
+  "history": [
+    {
+      "date": "2026-11-23",
+      "commit": "SELF",
+      "action": "replace_sift_and_remove_filming_tools",
+      "summary": "Replace the one-mob backport with the supplied full Sift artifact and retire the temporary filming batch",
+      "source_files": [
+        "Client/ManagedPack/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
+        "Server/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
+        "Server/mods/Mocap-FORGE-1.20.1-1.3.8.jar",
+        "Server/mods/blabovs_green_screen-1.0.0-forge-1.20.1.jar",
+        "Client/ManagedPack/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
+        "Server/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "runtime_distribution",
+      "registry_atlas",
+      "world_generation",
+      "recipes",
+      "loot",
+      "entities",
+      "localization",
+      "ftb_quests",
+      "jei_catalog",
+      "saved_world_compatibility"
+    ],
+    "relations": [
+      "Mielon's The Sift 2.0.6 -> existing Forge GeckoLib 4.8.4 -> managed client and local server",
+      "Installed artifact change -> full static Atlas regeneration -> localization, quest, and JEI follow-up work",
+      "Removed Motion Capture and Green Screen tools -> no current Test profile or ordinary local server runtime owner",
+      "JEM Freecam -> retained managed client-only camera owner"
+    ],
+    "notes": [
+      "The supplied archive also contains GeckoLib for NeoForge 4.4.9. It is not installed because this pack uses Forge and already contains compatible GeckoLib for Forge 4.8.4.",
+      "The replacement JAR SHA-256 is 12d3f8ca3ee57be8fea14f1da6538cbd5fe8b9ab5ef93f5db558387705c88bd6.",
+      "JEM Freecam 1.0.1 remains installed in the managed client with SHA-256 0042ba60aaed5563c5ef69644a1adfce7dd8f70c59db1ae7ff385f416addb451.",
+      "The quest and JEI consequences use JEM Advancements 5.3.11 SHA-256 6ba41300d76faafe22b0fd5b6d9fa3196d1f66128bd6ff3ed509447ca4d515da and JEMCompat 3.11.3 SHA-256 52c747a139c483f129304b1060bcd50f76b3be388699dc7acc08ee96e6da096c.",
+      "No gameplay launch or runtime registry bootstrap is part of this task."
+    ],
+    "unresolved": [
+      "Existing saved chunks, inventories, and dimensions that reference the removed sift namespace have no proven automatic migration to the_sift.",
+      "Dynamic Java-only registrations and entity behavior remain unproved until an explicitly authorized runtime capture or gameplay review.",
+      "External mechanics research has no current the_sift record, so downstream gameplay claims must use exact installed JAR evidence or remain unknown."
+    ]
+  }
+}

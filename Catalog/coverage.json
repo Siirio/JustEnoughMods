@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
-  "generated_utc": "2026-11-22T18:53:03.082294+00:00",
+  "snapshot_sha": "3fb7900a3461785d14dc83a68392bd9d3301ff71",
+  "generated_utc": "2026-11-23T02:32:00.112049+00:00",
   "claim": "100% of statically observed canonical IDs; runtime boundary unresolved",
   "id_coverage": {
     "items": {
       "expected_id_count": null,
-      "enumerated_id_count": 17144,
+      "enumerated_id_count": 17367,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -22,7 +22,6 @@
         "bbb": 263,
         "beachparty": 86,
         "bellsandwhistles": 38,
-        "blabovs_green_screen": 2,
         "blastfromthepast": 133,
         "block_factorys_bosses": 137,
         "blueprint": 1,
@@ -107,7 +106,6 @@
         "sereneseasons": 22,
         "shutterup": 20,
         "siegeweapons": 8,
-        "sift_backport": 6,
         "simplybows": 115,
         "skarrier_mobs": 294,
         "snowyspirit": 73,
@@ -118,6 +116,7 @@
         "sophisticatedstorage": 225,
         "spawn": 311,
         "spider_overhaul": 20,
+        "the_sift": 231,
         "tide": 446,
         "tiny_takeover_backport": 1,
         "tinyinv": 2,
@@ -133,7 +132,7 @@
     },
     "blocks": {
       "expected_id_count": null,
-      "enumerated_id_count": 12216,
+      "enumerated_id_count": 12330,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -149,7 +148,6 @@
         "bbb": 290,
         "beachparty": 65,
         "bellsandwhistles": 38,
-        "blabovs_green_screen": 2,
         "blastfromthepast": 89,
         "block_factorys_bosses": 55,
         "brewery": 59,
@@ -213,7 +211,6 @@
         "sereneseasons": 1,
         "shutterup": 20,
         "siegeweapons": 1,
-        "sift_backport": 5,
         "skarrier_mobs": 40,
         "snowrealmagic": 7,
         "snowyspirit": 46,
@@ -224,6 +221,7 @@
         "spawn": 166,
         "spider_overhaul": 3,
         "streamsreflowing": 1,
+        "the_sift": 121,
         "tide": 9,
         "tiny_takeover_backport": 2,
         "toms_storage": 14,
@@ -238,7 +236,7 @@
     },
     "entities": {
       "expected_id_count": null,
-      "enumerated_id_count": 1569,
+      "enumerated_id_count": 1592,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -292,12 +290,12 @@
         "rottencreatures": 15,
         "royalvariations": 10,
         "siegeweapons": 7,
-        "sift_backport": 1,
         "skarrier_mobs": 60,
         "snowrealmagic": 1,
         "snowyspirit": 3,
         "spawn": 89,
         "spider_overhaul": 14,
+        "the_sift": 24,
         "tide": 105,
         "trials": 3,
         "trotting_wagons": 3,
@@ -369,7 +367,7 @@
     },
     "enchantments": {
       "expected_id_count": null,
-      "enumerated_id_count": 221,
+      "enumerated_id_count": 222,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -389,12 +387,13 @@
         "luminous_nether": 2,
         "minecraft": 51,
         "netherexp": 12,
+        "the_sift": 1,
         "trials": 6
       }
     },
     "biomes": {
       "expected_id_count": null,
-      "enumerated_id_count": 267,
+      "enumerated_id_count": 276,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -412,17 +411,17 @@
         "netherexp": 7,
         "nullscape": 3,
         "oceanicrealms": 1,
-        "sift_backport": 2,
         "spawn": 10,
         "streamsreflowing": 1,
         "terrablender": 1,
         "terralith": 99,
+        "the_sift": 11,
         "unearthed_journey": 5
       }
     },
     "structures": {
       "expected_id_count": null,
-      "enumerated_id_count": 728,
+      "enumerated_id_count": 749,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -468,6 +467,7 @@
         "spiral_tower_village": 2,
         "t_and_t": 59,
         "terralith": 28,
+        "the_sift": 21,
         "trials": 1,
         "unearthed_journey": 1
       }
@@ -530,17 +530,17 @@
     }
   },
   "classification_coverage": {
-    "armor": 249,
+    "armor": 253,
     "foods": 4,
-    "mobs": 1569,
-    "placeables": 9710,
-    "tools": 95,
-    "trade_policies": 17144,
-    "weapons": 389
+    "mobs": 1592,
+    "placeables": 9813,
+    "tools": 99,
+    "trade_policies": 17367,
+    "weapons": 390
   },
   "semantic_field_coverage": {
     "runtime_verified": 0,
-    "static_inferred": 32627,
+    "static_inferred": 33018,
     "note": "Null is intentional where static sources do not prove semantics."
   },
   "unresolved_counts": {

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
+  "snapshot_sha": "3fb7900a3461785d14dc83a68392bd9d3301ff71",
   "tags": {
     "abridged:instrument/bridge_goat_horns": [
       "minecraft:dream_goat_horn",
@@ -22339,8 +22339,9 @@
       "minecraft:smooth_basalt",
       "minecraft:snow",
       "minecraft:snow_block",
-      "sift:light_sculk_grass_block",
-      "sift:sculk_grass_block"
+      "the_sift:bright_coral_growth",
+      "the_sift:coral_growth",
+      "the_sift:coral_soil"
     ],
     "minecraft:blocks/anvil": [
       "minecraft:anvil",
@@ -22493,7 +22494,8 @@
       "somemoreblocks:iron_bricks",
       "somemoreblocks:iron_pillar",
       "somemoreblocks:netherite_bricks",
-      "somemoreblocks:netherite_pillar"
+      "somemoreblocks:netherite_pillar",
+      "the_sift:siftite_block"
     ],
     "minecraft:blocks/beds": [
       "handcrafted:acacia_fancy_bed",
@@ -22579,6 +22581,12 @@
       "minecraft:campfire",
       "minecraft:soul_campfire",
       "netherexp:ancient_campfire"
+    ],
+    "minecraft:blocks/can_glide_through": [
+      "the_sift:ash_willow_vines",
+      "the_sift:ash_willow_vines_plant",
+      "the_sift:overgrown_willow_vines",
+      "the_sift:overgrown_willow_vines_plant"
     ],
     "minecraft:blocks/candle_cakes": [
       "minecraft:black_candle_cake",
@@ -22677,7 +22685,9 @@
       "netherexp:claret_hanging_sign",
       "netherexp:smokestalk_hanging_sign",
       "spawn:date_hanging_sign",
-      "spawn:rotten_hanging_sign"
+      "spawn:rotten_hanging_sign",
+      "the_sift:ash_willow_hanging_sign",
+      "the_sift:overgrown_willow_hanging_sign"
     ],
     "minecraft:blocks/chains": [
       "minecraft:chain",
@@ -22817,6 +22827,10 @@
       "railways:white_locometal_rung_ladder",
       "railways:yellow_locometal_end_ladder",
       "railways:yellow_locometal_rung_ladder",
+      "the_sift:ash_willow_vines",
+      "the_sift:ash_willow_vines_plant",
+      "the_sift:overgrown_willow_vines",
+      "the_sift:overgrown_willow_vines_plant",
       "vinery:jungle_grape_bush_red",
       "vinery:jungle_grape_bush_white"
     ],
@@ -23094,6 +23108,9 @@
       "natures_spirit:red_moss_block",
       "natures_spirit:sandy_soil",
       "spawn:ant_mound",
+      "the_sift:bright_coral_growth",
+      "the_sift:coral_growth",
+      "the_sift:coral_soil",
       "unearthed_journey:laterite",
       "unearthed_journey:peat_block",
       "unearthed_journey:silt"
@@ -23435,7 +23452,9 @@
       "ribbits:mossy_oak_planks_fence_gate",
       "snowrealmagic:fence_gate",
       "spawn:date_fence_gate",
-      "spawn:rotten_fence_gate"
+      "spawn:rotten_fence_gate",
+      "the_sift:ash_willow_fence_gate",
+      "the_sift:overgrown_willow_fence_gate"
     ],
     "minecraft:blocks/fences": [
       "#bbb:metal_fences",
@@ -23931,7 +23950,13 @@
       "somemoreblocks:tiled_glass",
       "somemoreblocks:tiled_tinted_glass",
       "somemoreblocks:white_stained_tiled_glass",
-      "somemoreblocks:yellow_stained_tiled_glass"
+      "somemoreblocks:yellow_stained_tiled_glass",
+      "the_sift:ichor_glass",
+      "the_sift:ichor_glass_pane"
+    ],
+    "minecraft:blocks/incorrect_for_diamond_tool": [
+      "the_sift:siftslate_siftite_ore",
+      "the_sift:soulshale_siftite_ore"
     ],
     "minecraft:blocks/infiniburn_end": [
       "#minecraft:infiniburn_overworld",
@@ -24128,6 +24153,8 @@
       "primal:thorny_acacia_leaves",
       "spawn:dangling_date_leaves",
       "spawn:date_leaves",
+      "the_sift:ash_willow_foliage",
+      "the_sift:overgrown_willow_foliage",
       "unearthed_journey:betula_leaves",
       "unearthed_journey:ceroxylon_quindiuense_leaves",
       "unearthed_journey:cocos_nucifera_leaves",
@@ -24227,6 +24254,8 @@
       "#natures_spirit:wisteria_logs",
       "#spawn:date_logs",
       "#spawn:rotten_logs",
+      "#the_sift:ash_willow_logs",
+      "#the_sift:overgrown_willow_logs",
       "#treechop:chopped_logs",
       "alexscaves:pewen_log",
       "alexscaves:pewen_wood",
@@ -25296,6 +25325,40 @@
       "spawn:tall_windswept_grass",
       "spider_overhaul:birch_nest",
       "spider_overhaul:giant_bamboo_block",
+      "the_sift:ash_willow_button",
+      "the_sift:ash_willow_door",
+      "the_sift:ash_willow_fence",
+      "the_sift:ash_willow_fence_gate",
+      "the_sift:ash_willow_hanging_sign",
+      "the_sift:ash_willow_log",
+      "the_sift:ash_willow_planks",
+      "the_sift:ash_willow_pressure_plate",
+      "the_sift:ash_willow_sign",
+      "the_sift:ash_willow_slab",
+      "the_sift:ash_willow_stairs",
+      "the_sift:ash_willow_trapdoor",
+      "the_sift:ash_willow_wall_hanging_sign",
+      "the_sift:ash_willow_wall_sign",
+      "the_sift:ash_willow_wood",
+      "the_sift:overgrown_willow_button",
+      "the_sift:overgrown_willow_door",
+      "the_sift:overgrown_willow_fence",
+      "the_sift:overgrown_willow_fence_gate",
+      "the_sift:overgrown_willow_hanging_sign",
+      "the_sift:overgrown_willow_log",
+      "the_sift:overgrown_willow_planks",
+      "the_sift:overgrown_willow_pressure_plate",
+      "the_sift:overgrown_willow_sign",
+      "the_sift:overgrown_willow_slab",
+      "the_sift:overgrown_willow_stairs",
+      "the_sift:overgrown_willow_trapdoor",
+      "the_sift:overgrown_willow_wall_hanging_sign",
+      "the_sift:overgrown_willow_wall_sign",
+      "the_sift:overgrown_willow_wood",
+      "the_sift:stripped_ash_willow_log",
+      "the_sift:stripped_ash_willow_wood",
+      "the_sift:stripped_overgrown_willow_log",
+      "the_sift:stripped_overgrown_willow_wood",
       "tide:angling_table",
       "tide:fish_display",
       "tide:wooden_crate",
@@ -25770,6 +25833,21 @@
       "spawn:sea_star",
       "spawn:sea_urchin",
       "spawn:tropical_wildflowers",
+      "the_sift:ash_willow_foliage",
+      "the_sift:ash_willow_vines",
+      "the_sift:ash_willow_vines_plant",
+      "the_sift:bright_coral_growth",
+      "the_sift:coral_growth",
+      "the_sift:dry_healthy_sculk",
+      "the_sift:dry_healthy_sculk_growth",
+      "the_sift:healthy_sculk",
+      "the_sift:healthy_sculk_cartilage",
+      "the_sift:healthy_sculk_pores",
+      "the_sift:overgrown_willow_foliage",
+      "the_sift:overgrown_willow_vines",
+      "the_sift:overgrown_willow_vines_plant",
+      "the_sift:royal_sculk",
+      "the_sift:soul_block",
       "unearthed_journey:thatch",
       "unearthed_journey:thatch_slab",
       "unearthed_journey:thatch_stairs",
@@ -26035,8 +26113,6 @@
       "bellsandwhistles:polished_tuff_pilot",
       "bellsandwhistles:polished_veridium_pilot",
       "bellsandwhistles:station_platform",
-      "blabovs_green_screen:green_screen",
-      "blabovs_green_screen:green_screen_with_markers",
       "blastfromthepast:chiseled_permafrost_bricks",
       "blastfromthepast:cobbled_permafrost",
       "blastfromthepast:cobbled_permafrost_slab",
@@ -29315,9 +29391,6 @@
       "shutterup:waxed_oxidized_copper_shutter",
       "shutterup:waxed_weathered_copper_shutter",
       "shutterup:weathered_copper_shutter",
-      "sift:chiseled_soulshale",
-      "sift:light_sculk_grass_block",
-      "sift:sculk_grass_block",
       "skarrier_mobs:stone_golem_unfinished_1",
       "skarrier_mobs:stone_golem_unfinished_2",
       "skarrier_mobs:stone_golem_unfinished_3",
@@ -29855,6 +29928,44 @@
       "spawn:thorn_coral_block",
       "spawn:unstable_heliostone",
       "spawn:wax_coral_block",
+      "the_sift:charoite_block",
+      "the_sift:chiseled_siftslate",
+      "the_sift:chiseled_soulshale",
+      "the_sift:cobbled_siftslate",
+      "the_sift:cobbled_siftslate_slab",
+      "the_sift:cobbled_siftslate_stairs",
+      "the_sift:cobbled_siftslate_wall",
+      "the_sift:polished_soulshale",
+      "the_sift:polished_soulshale_slab",
+      "the_sift:polished_soulshale_stairs",
+      "the_sift:polished_soulshale_wall",
+      "the_sift:siftite_block",
+      "the_sift:siftslate",
+      "the_sift:siftslate_brick_slab",
+      "the_sift:siftslate_brick_stairs",
+      "the_sift:siftslate_brick_wall",
+      "the_sift:siftslate_bricks",
+      "the_sift:siftslate_charoite_ore",
+      "the_sift:siftslate_coal_ore",
+      "the_sift:siftslate_diamond_ore",
+      "the_sift:siftslate_emerald_ore",
+      "the_sift:siftslate_growth",
+      "the_sift:siftslate_siftite_ore",
+      "the_sift:soulshale",
+      "the_sift:soulshale_brick_slab",
+      "the_sift:soulshale_brick_stairs",
+      "the_sift:soulshale_brick_wall",
+      "the_sift:soulshale_bricks",
+      "the_sift:soulshale_charoite_ore",
+      "the_sift:soulshale_coal_ore",
+      "the_sift:soulshale_diamond_ore",
+      "the_sift:soulshale_emerald_ore",
+      "the_sift:soulshale_growth",
+      "the_sift:soulshale_siftite_ore",
+      "the_sift:soulshale_slab",
+      "the_sift:soulshale_stairs",
+      "the_sift:soulshale_totem",
+      "the_sift:soulshale_wall",
       "tide:obsidian_crate",
       "tide:purpur_crate",
       "tide:weather_radio",
@@ -30148,6 +30259,10 @@
       "spawn:ant_mound",
       "spawn:anthill",
       "spawn:blasted_sand",
+      "the_sift:coral_soil",
+      "the_sift:ichor_snow",
+      "the_sift:ichor_snow_block",
+      "the_sift:sift_rubble",
       "unearthed_journey:dried_peat_pie",
       "unearthed_journey:lungfish_burrow",
       "unearthed_journey:peat_block",
@@ -30236,6 +30351,9 @@
       "somemoreblocks:cut_netherite",
       "somemoreblocks:netherite_bricks",
       "somemoreblocks:netherite_pillar",
+      "the_sift:siftite_block",
+      "the_sift:siftslate_siftite_ore",
+      "the_sift:soulshale_siftite_ore",
       "tide:obsidian_crate",
       "unearthed_journey:archstone",
       "unearthed_journey:archstone_brick_slab",
@@ -30330,6 +30448,10 @@
       "somemoreblocks:emerald_pillar",
       "somemoreblocks:gold_bricks",
       "somemoreblocks:gold_pillar",
+      "the_sift:siftslate_diamond_ore",
+      "the_sift:siftslate_emerald_ore",
+      "the_sift:soulshale_diamond_ore",
+      "the_sift:soulshale_emerald_ore",
       "unearthed_journey:blast_door",
       "unearthed_journey:blast_trapdoor",
       "unearthed_journey:blastproof_glass",
@@ -30742,6 +30864,9 @@
       "somemoreblocks:weathered_copper_pillar",
       "somemoreblocks:weathered_cracked_copper_bricks",
       "somemoreblocks:weathered_cracked_cut_copper",
+      "the_sift:charoite_block",
+      "the_sift:siftslate_charoite_ore",
+      "the_sift:soulshale_charoite_ore",
       "trials:chiseled_copper",
       "trials:chiseled_copper_exposed",
       "trials:chiseled_copper_oxidized",
@@ -31083,6 +31208,8 @@
       "spawn:cracked_rotten_planks",
       "spawn:date_planks",
       "spawn:rotten_planks",
+      "the_sift:ash_willow_planks",
+      "the_sift:overgrown_willow_planks",
       "vinery:dark_cherry_planks"
     ],
     "minecraft:blocks/polar_bears_spawnable_on_alternate": [
@@ -31345,6 +31472,8 @@
       "natures_spirit:yellow_maple_sapling",
       "primal:thorny_acacia_sapling",
       "spawn:date_sapling",
+      "the_sift:ash_willow_sapling",
+      "the_sift:overgrown_willow_sapling",
       "vinery:apple_tree_sapling",
       "vinery:dark_cherry_sapling"
     ],
@@ -31370,7 +31499,16 @@
       "minecraft:sulfur",
       "spawn:algal_sand",
       "spawn:blasted_sand",
-      "spawn:blasted_sandstone"
+      "spawn:blasted_sandstone",
+      "the_sift:dry_healthy_sculk",
+      "the_sift:dry_healthy_sculk_growth",
+      "the_sift:healthy_sculk",
+      "the_sift:healthy_sculk_cartilage",
+      "the_sift:healthy_sculk_pores",
+      "the_sift:siftslate",
+      "the_sift:siftslate_growth",
+      "the_sift:soulshale",
+      "the_sift:soulshale_growth"
     ],
     "minecraft:blocks/sculk_replaceable_world_gen": [
       "#minecraft:sculk_replaceable",
@@ -31802,6 +31940,13 @@
       "spawn:reefstone_tile_slab",
       "spawn:smooth_blasted_sandstone_slab",
       "spawn:snail_shell_tile_slab",
+      "the_sift:ash_willow_slab",
+      "the_sift:cobbled_siftslate_slab",
+      "the_sift:overgrown_willow_slab",
+      "the_sift:polished_soulshale_slab",
+      "the_sift:siftslate_brick_slab",
+      "the_sift:soulshale_brick_slab",
+      "the_sift:soulshale_slab",
       "unearthed_journey:archstone_brick_slab",
       "unearthed_journey:betula_slab",
       "unearthed_journey:chert_brick_slab",
@@ -31905,7 +32050,18 @@
       "minecraft:muddy_mangrove_roots",
       "minecraft:pale_moss_block",
       "minecraft:podzol",
-      "minecraft:rooted_dirt"
+      "minecraft:rooted_dirt",
+      "minecraft:sculk",
+      "the_sift:bright_coral_growth",
+      "the_sift:coral_growth",
+      "the_sift:coral_soil",
+      "the_sift:dry_healthy_sculk",
+      "the_sift:dry_healthy_sculk_growth",
+      "the_sift:healthy_sculk",
+      "the_sift:healthy_sculk_cartilage",
+      "the_sift:healthy_sculk_pores",
+      "the_sift:siftslate_growth",
+      "the_sift:soulshale_growth"
     ],
     "minecraft:blocks/sniffer_egg_hatch_boost": [
       "minecraft:moss_block"
@@ -31921,7 +32077,9 @@
       "somemoreblocks:polished_snow",
       "somemoreblocks:snow_bricks",
       "somemoreblocks:snow_pillar",
-      "somemoreblocks:snow_tiles"
+      "somemoreblocks:snow_tiles",
+      "the_sift:ichor_snow",
+      "the_sift:ichor_snow_block"
     ],
     "minecraft:blocks/snow_layer_can_survive_on": [
       "#minecraft:leaves",
@@ -32419,6 +32577,11 @@
       "spawn:reefstone_tile_stairs",
       "spawn:smooth_blasted_sandstone_stairs",
       "spawn:snail_shell_tile_stairs",
+      "the_sift:cobbled_siftslate_stairs",
+      "the_sift:polished_soulshale_stairs",
+      "the_sift:siftslate_brick_stairs",
+      "the_sift:soulshale_brick_stairs",
+      "the_sift:soulshale_stairs",
       "trials:polished_tuff_stairs",
       "trials:tuff_brick_stairs",
       "trials:tuff_stairs",
@@ -32477,7 +32640,9 @@
       "netherexp:claret_sign",
       "netherexp:smokestalk_sign",
       "spawn:date_sign",
-      "spawn:rotten_sign"
+      "spawn:rotten_sign",
+      "the_sift:ash_willow_sign",
+      "the_sift:overgrown_willow_sign"
     ],
     "minecraft:blocks/stone_bricks": [
       "infinitybuttons:chiseled_stone_brick_secret_button",
@@ -32636,8 +32801,6 @@
       "netherexp:sorrowsquash",
       "netherexp:sorrowsquash_stem",
       "netherexp:sorrowsquash_stem_plant",
-      "sift:sculk_grass",
-      "sift:tall_sculk_grass",
       "spawn:broad_grass",
       "spawn:date_sapling",
       "spawn:magmatic_splatter",
@@ -32828,6 +32991,8 @@
       "netherexp:smokestalk_wall_hanging_sign",
       "spawn:date_wall_hanging_sign",
       "spawn:rotten_wall_hanging_sign",
+      "the_sift:ash_willow_wall_hanging_sign",
+      "the_sift:overgrown_willow_wall_hanging_sign",
       "vinery:dark_cherry_hanging_sign"
     ],
     "minecraft:blocks/wall_post_override": [
@@ -32886,6 +33051,8 @@
       "netherexp:smokestalk_wall_sign",
       "spawn:date_wall_sign",
       "spawn:rotten_wall_sign",
+      "the_sift:ash_willow_wall_sign",
+      "the_sift:overgrown_willow_wall_sign",
       "vinery:dark_cherry_sign"
     ],
     "minecraft:blocks/walls": [
@@ -33151,6 +33318,11 @@
       "spawn:heliostone_wall",
       "spawn:reefstone_tile_wall",
       "spawn:reefstone_wall",
+      "the_sift:cobbled_siftslate_wall",
+      "the_sift:polished_soulshale_wall",
+      "the_sift:siftslate_brick_wall",
+      "the_sift:soulshale_brick_wall",
+      "the_sift:soulshale_wall",
       "trials:polished_tuff_wall",
       "trials:tuff_brick_wall",
       "trials:tuff_wall",
@@ -33258,6 +33430,8 @@
       "netherexp:claret_button",
       "netherexp:smokestalk_button",
       "spawn:date_button",
+      "the_sift:ash_willow_button",
+      "the_sift:overgrown_willow_button",
       "vinery:dark_cherry_button"
     ],
     "minecraft:blocks/wooden_doors": [
@@ -33407,6 +33581,8 @@
       "ribbits:mossy_oak_door",
       "spawn:date_door",
       "spawn:rotten_door",
+      "the_sift:ash_willow_door",
+      "the_sift:overgrown_willow_door",
       "vinery:dark_cherry_door"
     ],
     "minecraft:blocks/wooden_fences": [
@@ -33456,6 +33632,8 @@
       "snowrealmagic:fence",
       "spawn:date_fence",
       "spawn:rotten_fence",
+      "the_sift:ash_willow_fence",
+      "the_sift:overgrown_willow_fence",
       "vinery:dark_cherry_fence"
     ],
     "minecraft:blocks/wooden_pressure_plates": [
@@ -33496,6 +33674,8 @@
       "netherexp:claret_pressure_plate",
       "netherexp:smokestalk_pressure_plate",
       "spawn:date_pressure_plate",
+      "the_sift:ash_willow_pressure_plate",
+      "the_sift:overgrown_willow_pressure_plate",
       "vinery:dark_cherry_pressure_plate"
     ],
     "minecraft:blocks/wooden_shelves": [
@@ -33564,6 +33744,8 @@
       "somemoreblocks:warped_mosaic_slab",
       "spawn:date_slab",
       "spawn:rotten_slab",
+      "the_sift:ash_willow_slab",
+      "the_sift:overgrown_willow_slab",
       "vinery:dark_cherry_slab"
     ],
     "minecraft:blocks/wooden_stairs": [
@@ -33617,6 +33799,8 @@
       "somemoreblocks:warped_mosaic_stairs",
       "spawn:date_stairs",
       "spawn:rotten_stairs",
+      "the_sift:ash_willow_stairs",
+      "the_sift:overgrown_willow_stairs",
       "vinery:dark_cherry_stairs"
     ],
     "minecraft:blocks/wooden_trapdoors": [
@@ -33664,6 +33848,8 @@
       "netherexp:smokestalk_trapdoor",
       "spawn:date_trapdoor",
       "spawn:rotten_trapdoor",
+      "the_sift:ash_willow_trapdoor",
+      "the_sift:overgrown_willow_trapdoor",
       "vinery:dark_cherry_trapdoor"
     ],
     "minecraft:blocks/wool": [
@@ -33824,7 +34010,8 @@
       "skarrier_mobs:contagion_damage",
       "skarrier_mobs:dragger_web",
       "skarrier_mobs:hemorrhaged",
-      "skarrier_mobs:tunnel_gore_bite"
+      "skarrier_mobs:tunnel_gore_bite",
+      "the_sift:ichor_soul_drain"
     ],
     "minecraft:damage_type/bypasses_cooldown": [
       "alexscaves:dark_arrow",
@@ -33838,6 +34025,8 @@
       "cataclysm:sword_dance",
       "netherexp:jackhammer",
       "netherexp:shotgun_pellet",
+      "the_sift:ichor_soul_drain",
+      "the_sift:stalker_followup",
       "true_ending:mob_attack_pierce_shield_cooldown"
     ],
     "minecraft:damage_type/bypasses_effects": [
@@ -33860,7 +34049,8 @@
       "skarrier_mobs:burning_mind",
       "skarrier_mobs:contagion_damage",
       "skarrier_mobs:hemorrhaged",
-      "skarrier_mobs:tunnel_gore_bite"
+      "skarrier_mobs:tunnel_gore_bite",
+      "the_sift:ichor_soul_drain"
     ],
     "minecraft:damage_type/bypasses_invulnerability": [
       "minecraft:generic_kill",
@@ -33888,6 +34078,7 @@
       "skarrier_mobs:contagion_damage",
       "skarrier_mobs:hemorrhaged",
       "skarrier_mobs:tunnel_gore_bite",
+      "the_sift:ichor_soul_drain",
       "true_ending:mob_attack_pierce_shield"
     ],
     "minecraft:damage_type/damages_helmet": [
@@ -33997,7 +34188,8 @@
       "minecraft:wither",
       "netherexp:grave_cloud_suffocation",
       "netherexp:shotgun_explosion",
-      "netherexp:shotgun_pellet"
+      "netherexp:shotgun_pellet",
+      "the_sift:ichor_soul_drain"
     ],
     "minecraft:damage_type/no_knockback_shield": [
       "netherexp:grave_cloud_suffocation",
@@ -34085,6 +34277,12 @@
     ],
     "minecraft:entity_types/beehive_inhabitors": [
       "minecraft:bee"
+    ],
+    "minecraft:entity_types/boat": [
+      "the_sift:ash_willow_boat",
+      "the_sift:ash_willow_chest_boat",
+      "the_sift:overgrown_willow_boat",
+      "the_sift:overgrown_willow_chest_boat"
     ],
     "minecraft:entity_types/can_float_while_ridden": [
       "minecraft:camel",
@@ -34398,7 +34596,9 @@
     ],
     "minecraft:fluids/water": [
       "minecraft:flowing_water",
-      "minecraft:water"
+      "minecraft:water",
+      "the_sift:flowing_ichor",
+      "the_sift:ichor"
     ],
     "minecraft:functions/load": [
       "true_ending:load"
@@ -34763,7 +34963,8 @@
       "skarrier_mobs:deep_alloy_axe",
       "skarrier_mobs:invulnerite_axe",
       "skarrier_mobs:resisteel_axe",
-      "skarrier_mobs:serraxe"
+      "skarrier_mobs:serraxe",
+      "the_sift:siftite_axe"
     ],
     "minecraft:items/axolotl_tempt_items": [
       "minecraft:tropical_fish_bucket"
@@ -34808,7 +35009,8 @@
       "minecraft:emerald",
       "minecraft:gold_ingot",
       "minecraft:iron_ingot",
-      "minecraft:netherite_ingot"
+      "minecraft:netherite_ingot",
+      "the_sift:siftite_ingot"
     ],
     "minecraft:items/beds": [
       "handcrafted:acacia_fancy_bed",
@@ -34881,6 +35083,8 @@
       "natures_spirit:wisteria_boat",
       "spawn:date_raft",
       "spawn:rotten_boat",
+      "the_sift:ash_willow_boat",
+      "the_sift:overgrown_willow_boat",
       "vinery:dark_cherry_boat"
     ],
     "minecraft:items/bookshelf_books": [
@@ -34979,7 +35183,8 @@
     "minecraft:items/chest_armor": [
       "legendary_monsters:annihilator_chestplate",
       "legendary_monsters:mossy_chestplate",
-      "legendary_monsters:withered_ribcage"
+      "legendary_monsters:withered_ribcage",
+      "the_sift:siftite_chestplate"
     ],
     "minecraft:items/chest_boats": [
       "alexscaves:pewen_chest_boat",
@@ -35014,6 +35219,8 @@
       "natures_spirit:wisteria_chest_boat",
       "spawn:date_chest_raft",
       "spawn:rotten_chest_boat",
+      "the_sift:ash_willow_chest_boat",
+      "the_sift:overgrown_willow_chest_boat",
       "vinery:dark_cherry_chest_boat"
     ],
     "minecraft:items/cluster_max_harvestables": [
@@ -35431,7 +35638,9 @@
       "natures_spirit:sugi_fence_gate",
       "natures_spirit:willow_fence_gate",
       "natures_spirit:wisteria_fence_gate",
-      "ribbits:mossy_oak_planks_fence_gate"
+      "ribbits:mossy_oak_planks_fence_gate",
+      "the_sift:ash_willow_fence_gate",
+      "the_sift:overgrown_willow_fence_gate"
     ],
     "minecraft:items/fences": [
       "#minecraft:wooden_fences",
@@ -35490,7 +35699,8 @@
     "minecraft:items/foot_armor": [
       "legendary_monsters:annihilator_boots",
       "legendary_monsters:atmospheric_boots",
-      "legendary_monsters:fiery_boots"
+      "legendary_monsters:fiery_boots",
+      "the_sift:siftite_boots"
     ],
     "minecraft:items/fox_food": [
       "minecraft:glow_berries",
@@ -35545,6 +35755,8 @@
       "natures_spirit:wisteria_hanging_sign",
       "spawn:date_hanging_sign",
       "spawn:rotten_hanging_sign",
+      "the_sift:ash_willow_hanging_sign",
+      "the_sift:overgrown_willow_hanging_sign",
       "vinery:dark_cherry_hanging_sign"
     ],
     "minecraft:items/happy_ghast_food": [
@@ -35577,7 +35789,9 @@
       "legendary_monsters:annihilator_helmet",
       "legendary_monsters:blastproof_helmet",
       "legendary_monsters:chorus_mask",
-      "luminous_nether:executioner_hood_helmet"
+      "luminous_nether:executioner_hood_helmet",
+      "the_sift:sifter_cap",
+      "the_sift:siftite_helmet"
     ],
     "minecraft:items/hoes": [
       "minecraft:copper_hoe",
@@ -35590,7 +35804,8 @@
       "skarrier_mobs:decayerite_hoe",
       "skarrier_mobs:deep_alloy_hoe",
       "skarrier_mobs:invulnerite_hoe",
-      "skarrier_mobs:resisteel_hoe"
+      "skarrier_mobs:resisteel_hoe",
+      "the_sift:siftite_hoe"
     ],
     "minecraft:items/ignored_by_piglin_babies": [
       "minecraft:leather"
@@ -35677,6 +35892,8 @@
       "natures_spirit:yellow_maple_leaves",
       "primal:thorny_acacia_leaves",
       "spawn:date_leaves",
+      "the_sift:ash_willow_foliage",
+      "the_sift:overgrown_willow_foliage",
       "vinery:apple_leaves",
       "vinery:dark_cherry_leaves",
       "vinery:grapevine_leaves"
@@ -35689,6 +35906,9 @@
       "minecraft:written_book",
       "patchouli:guide_book",
       "tide:fishing_journal"
+    ],
+    "minecraft:items/leg_armor": [
+      "the_sift:siftite_leggings"
     ],
     "minecraft:items/lightning_rods": [
       "minecraft:exposed_lightning_rod",
@@ -35764,6 +35984,8 @@
       "#natures_spirit:wisteria_logs",
       "#spawn:date_logs",
       "#spawn:rotten_logs",
+      "#the_sift:ash_willow_logs",
+      "#the_sift:overgrown_willow_logs",
       "alexscaves:pewen_log",
       "alexscaves:pewen_wood",
       "alexscaves:stripped_pewen_log",
@@ -35818,7 +36040,11 @@
       "minecraft:porkchop",
       "minecraft:rabbit",
       "netherexp:cooked_hogham",
-      "netherexp:hogham"
+      "netherexp:hogham",
+      "the_sift:cooked_nuzzle_meat",
+      "the_sift:cooked_sifter_meat",
+      "the_sift:raw_nuzzle_meat",
+      "the_sift:raw_sifter_meat"
     ],
     "minecraft:items/mushrooms": [
       "minecraft:brown_mushroom",
@@ -35895,6 +36121,8 @@
       "spawn:music_disc_rain",
       "spawn:music_disc_rot",
       "spawn:music_disc_water_horse",
+      "the_sift:music_disc_rift",
+      "the_sift:music_disc_wellspring",
       "trials:music_disc_creator",
       "trials:music_disc_creator_box",
       "trials:music_disc_precipice",
@@ -35993,6 +36221,7 @@
       "skarrier_mobs:deep_alloy_pickaxe",
       "skarrier_mobs:invulnerite_pickaxe",
       "skarrier_mobs:resisteel_pickaxe",
+      "the_sift:siftite_pickaxe",
       "unearthed_journey:rock_pick"
     ],
     "minecraft:items/piglin_food": [
@@ -36097,6 +36326,8 @@
       "spawn:cracked_rotten_planks",
       "spawn:date_planks",
       "spawn:rotten_planks",
+      "the_sift:ash_willow_planks",
+      "the_sift:overgrown_willow_planks",
       "unearthed_journey:betula_planks",
       "unearthed_journey:dead_planks",
       "unearthed_journey:leguminocarpon_planks",
@@ -36173,6 +36404,8 @@
       "natures_spirit:yellow_maple_sapling",
       "primal:thorny_acacia_sapling",
       "spawn:date_seed",
+      "the_sift:ash_willow_sapling",
+      "the_sift:overgrown_willow_sapling",
       "vinery:apple_tree_sapling",
       "vinery:dark_cherry_sapling"
     ],
@@ -36198,7 +36431,8 @@
       "skarrier_mobs:decayerite_shovel",
       "skarrier_mobs:deep_alloy_shovel",
       "skarrier_mobs:invulnerite_shovel",
-      "skarrier_mobs:resisteel_shovel"
+      "skarrier_mobs:resisteel_shovel",
+      "the_sift:siftite_shovel"
     ],
     "minecraft:items/signs": [
       "alexscaves:pewen_sign",
@@ -36236,6 +36470,8 @@
       "natures_spirit:wisteria_sign",
       "spawn:date_sign",
       "spawn:rotten_sign",
+      "the_sift:ash_willow_sign",
+      "the_sift:overgrown_willow_sign",
       "vinery:dark_cherry_sign"
     ],
     "minecraft:items/slab": [
@@ -36481,6 +36717,10 @@
       "spawn:reefstone_tile_slab",
       "spawn:smooth_blasted_sandstone_slab",
       "spawn:snail_shell_tile_slab",
+      "the_sift:ash_willow_slab",
+      "the_sift:overgrown_willow_slab",
+      "the_sift:polished_soulshale_slab",
+      "the_sift:soulshale_brick_slab",
       "unearthed_journey:betula_slab",
       "unearthed_journey:dead_slab",
       "unearthed_journey:leguminocarpon_slab",
@@ -36816,6 +37056,8 @@
       "spawn:reefstone_tile_stairs",
       "spawn:smooth_blasted_sandstone_stairs",
       "spawn:snail_shell_tile_stairs",
+      "the_sift:polished_soulshale_stairs",
+      "the_sift:soulshale_brick_stairs",
       "trials:polished_tuff_stairs",
       "trials:tuff_brick_stairs",
       "trials:tuff_stairs",
@@ -36855,7 +37097,9 @@
       "minecraft:granite",
       "minecraft:tuff",
       "natures_spirit:chert",
-      "natures_spirit:cobbled_travertine"
+      "natures_spirit:cobbled_travertine",
+      "the_sift:cobbled_siftslate",
+      "the_sift:soulshale"
     ],
     "minecraft:items/stone_tool_materials": [
       "blastfromthepast:cobbled_permafrost",
@@ -36870,7 +37114,9 @@
       "minecraft:granite",
       "minecraft:tuff",
       "natures_spirit:chert",
-      "natures_spirit:cobbled_travertine"
+      "natures_spirit:cobbled_travertine",
+      "the_sift:cobbled_siftslate",
+      "the_sift:soulshale"
     ],
     "minecraft:items/sulfur_cube_archetype/bouncy": [
       "#minecraft:bamboo_blocks",
@@ -37140,6 +37386,7 @@
       "skarrier_mobs:resisteel_sword",
       "skarrier_mobs:voracious_blade",
       "skarrier_mobs:wretched_claymore",
+      "the_sift:siftite_sword",
       "tide:blazing_swordfish",
       "tide:sailfish",
       "tide:swordfish",
@@ -37347,7 +37594,12 @@
       "skarrier_mobs:resisteel_boots",
       "skarrier_mobs:resisteel_chestplate",
       "skarrier_mobs:resisteel_helmet",
-      "skarrier_mobs:resisteel_leggings"
+      "skarrier_mobs:resisteel_leggings",
+      "the_sift:sifter_cap",
+      "the_sift:siftite_boots",
+      "the_sift:siftite_chestplate",
+      "the_sift:siftite_helmet",
+      "the_sift:siftite_leggings"
     ],
     "minecraft:items/villager_plantable_seeds": [
       "farm_and_charm:barley_seeds",
@@ -37524,7 +37776,9 @@
       "spawn:blasted_sandstone_wall",
       "spawn:heliostone_wall",
       "spawn:reefstone_tile_wall",
-      "spawn:reefstone_wall"
+      "spawn:reefstone_wall",
+      "the_sift:polished_soulshale_wall",
+      "the_sift:soulshale_brick_wall"
     ],
     "minecraft:items/warped_stems": [
       "minecraft:stripped_warped_hyphae",
@@ -37583,6 +37837,8 @@
       "natures_spirit:wisteria_button",
       "spawn:date_button",
       "spawn:rotten_button",
+      "the_sift:ash_willow_button",
+      "the_sift:overgrown_willow_button",
       "vinery:dark_cherry_button"
     ],
     "minecraft:items/wooden_doors": [
@@ -37626,6 +37882,8 @@
       "ribbits:mossy_oak_door",
       "spawn:date_door",
       "spawn:rotten_door",
+      "the_sift:ash_willow_door",
+      "the_sift:overgrown_willow_door",
       "vinery:dark_cherry_door"
     ],
     "minecraft:items/wooden_fences": [
@@ -37666,6 +37924,8 @@
       "ribbits:mossy_oak_planks_fence",
       "spawn:date_fence",
       "spawn:rotten_fence",
+      "the_sift:ash_willow_fence",
+      "the_sift:overgrown_willow_fence",
       "vinery:dark_cherry_fence"
     ],
     "minecraft:items/wooden_pressure_plates": [
@@ -37704,6 +37964,8 @@
       "natures_spirit:wisteria_pressure_plate",
       "spawn:date_pressure_plate",
       "spawn:rotten_pressure_plate",
+      "the_sift:ash_willow_pressure_plate",
+      "the_sift:overgrown_willow_pressure_plate",
       "vinery:dark_cherry_pressure_plate"
     ],
     "minecraft:items/wooden_shelves": [
@@ -37769,6 +38031,8 @@
       "somemoreblocks:warped_mosaic_slab",
       "spawn:date_slab",
       "spawn:rotten_slab",
+      "the_sift:ash_willow_slab",
+      "the_sift:overgrown_willow_slab",
       "vinery:dark_cherry_slab"
     ],
     "minecraft:items/wooden_stairs": [
@@ -37819,6 +38083,8 @@
       "somemoreblocks:warped_mosaic_stairs",
       "spawn:date_stairs",
       "spawn:rotten_stairs",
+      "the_sift:ash_willow_stairs",
+      "the_sift:overgrown_willow_stairs",
       "vinery:dark_cherry_stairs"
     ],
     "minecraft:items/wooden_trapdoors": [
@@ -37861,6 +38127,8 @@
       "natures_spirit:wisteria_trapdoor",
       "spawn:date_trapdoor",
       "spawn:rotten_trapdoor",
+      "the_sift:ash_willow_trapdoor",
+      "the_sift:overgrown_willow_trapdoor",
       "vinery:dark_cherry_trapdoor"
     ],
     "minecraft:items/wool": [
@@ -37994,6 +38262,7 @@
       "spawn:clown",
       "spawn:its_still_life",
       "spawn:the_reptile",
+      "the_sift:monarch",
       "trials:backyard",
       "trials:baroque",
       "trials:bouquet",
@@ -49755,6 +50024,203 @@
       "terralith:underground/oak_cabin",
       "terralith:underground/old_refinery",
       "terralith:underground/sunken_tower"
+    ],
+    "the_sift:blocks/ash_willow_logs": [
+      "the_sift:ash_willow_log",
+      "the_sift:ash_willow_wood",
+      "the_sift:stripped_ash_willow_log",
+      "the_sift:stripped_ash_willow_wood"
+    ],
+    "the_sift:blocks/hanging_roots_ceiling_blocks": [
+      "the_sift:dry_healthy_sculk",
+      "the_sift:healthy_sculk",
+      "the_sift:healthy_sculk_cartilage",
+      "the_sift:healthy_sculk_pores",
+      "the_sift:siftslate",
+      "the_sift:siftslate_growth",
+      "the_sift:soulshale_growth"
+    ],
+    "the_sift:blocks/nuzzle_grazing": [
+      "minecraft:sculk",
+      "the_sift:bright_coral_growth",
+      "the_sift:coral_growth",
+      "the_sift:dry_healthy_sculk_growth",
+      "the_sift:healthy_sculk",
+      "the_sift:healthy_sculk_cartilage",
+      "the_sift:healthy_sculk_pores",
+      "the_sift:siftslate_growth",
+      "the_sift:soulshale_growth"
+    ],
+    "the_sift:blocks/overgrown_willow_logs": [
+      "the_sift:overgrown_willow_log",
+      "the_sift:overgrown_willow_wood",
+      "the_sift:stripped_overgrown_willow_log",
+      "the_sift:stripped_overgrown_willow_wood"
+    ],
+    "the_sift:blocks/sift_carver_replaceables": [
+      "the_sift:healthy_sculk",
+      "the_sift:healthy_sculk_cartilage",
+      "the_sift:healthy_sculk_pores",
+      "the_sift:siftslate",
+      "the_sift:siftslate_growth",
+      "the_sift:soulshale_growth"
+    ],
+    "the_sift:blocks/sift_plant_support": [
+      "the_sift:dry_healthy_sculk",
+      "the_sift:healthy_sculk",
+      "the_sift:healthy_sculk_cartilage",
+      "the_sift:healthy_sculk_pores",
+      "the_sift:siftslate",
+      "the_sift:siftslate_growth",
+      "the_sift:soulshale_growth"
+    ],
+    "the_sift:blocks/sift_surface_blob_replaceables": [
+      "the_sift:dry_healthy_sculk",
+      "the_sift:healthy_sculk",
+      "the_sift:healthy_sculk_cartilage",
+      "the_sift:healthy_sculk_pores",
+      "the_sift:siftslate",
+      "the_sift:siftslate_growth",
+      "the_sift:soulshale_growth"
+    ],
+    "the_sift:blocks/siftslate_ore_replaceables": [
+      "the_sift:siftslate"
+    ],
+    "the_sift:blocks/siftslate_ores": [
+      "the_sift:siftslate_charoite_ore",
+      "the_sift:siftslate_coal_ore",
+      "the_sift:siftslate_diamond_ore",
+      "the_sift:siftslate_emerald_ore",
+      "the_sift:siftslate_siftite_ore",
+      "the_sift:soulshale_charoite_ore",
+      "the_sift:soulshale_coal_ore",
+      "the_sift:soulshale_diamond_ore",
+      "the_sift:soulshale_emerald_ore",
+      "the_sift:soulshale_siftite_ore"
+    ],
+    "the_sift:blocks/soulshale_ore_replaceables": [
+      "the_sift:soulshale",
+      "the_sift:soulshale_growth"
+    ],
+    "the_sift:entity_types/ichor_immune": [
+      "minecraft:allay",
+      "minecraft:sniffer",
+      "minecraft:warden",
+      "the_sift:blub",
+      "the_sift:dark_sniffer",
+      "the_sift:echo_golem",
+      "the_sift:monarch",
+      "the_sift:monarch_echo",
+      "the_sift:nester",
+      "the_sift:nuzzle",
+      "the_sift:pollinator",
+      "the_sift:scavenger",
+      "the_sift:seedling",
+      "the_sift:singer",
+      "the_sift:slabber",
+      "the_sift:stalker"
+    ],
+    "the_sift:entity_types/sculkers": [
+      "minecraft:warden",
+      "the_sift:dark_sniffer",
+      "the_sift:monarch",
+      "the_sift:monarch_echo",
+      "the_sift:scavenger",
+      "the_sift:stalker"
+    ],
+    "the_sift:fluids/ichor": [
+      "the_sift:flowing_ichor",
+      "the_sift:ichor"
+    ],
+    "the_sift:items/ash_willow_logs": [
+      "the_sift:ash_willow_log",
+      "the_sift:ash_willow_wood",
+      "the_sift:stripped_ash_willow_log",
+      "the_sift:stripped_ash_willow_wood"
+    ],
+    "the_sift:items/nuzzle_food": [
+      "#the_sift:slabber_food",
+      "the_sift:bright_coral_bush",
+      "the_sift:coral_bush"
+    ],
+    "the_sift:items/overgrown_willow_logs": [
+      "the_sift:overgrown_willow_log",
+      "the_sift:overgrown_willow_wood",
+      "the_sift:stripped_overgrown_willow_log",
+      "the_sift:stripped_overgrown_willow_wood"
+    ],
+    "the_sift:items/siftite_items": [
+      "the_sift:siftite_axe",
+      "the_sift:siftite_block",
+      "the_sift:siftite_boots",
+      "the_sift:siftite_chestplate",
+      "the_sift:siftite_helmet",
+      "the_sift:siftite_hoe",
+      "the_sift:siftite_ingot",
+      "the_sift:siftite_leggings",
+      "the_sift:siftite_nugget",
+      "the_sift:siftite_pickaxe",
+      "the_sift:siftite_shovel",
+      "the_sift:siftite_sword",
+      "the_sift:siftite_upgrade_smithing_template",
+      "the_sift:siftslate_siftite_ore",
+      "the_sift:soulshale_siftite_ore"
+    ],
+    "the_sift:items/siftite_repair_materials": [
+      "the_sift:siftite_ingot"
+    ],
+    "the_sift:items/slabber_food": [
+      "the_sift:overgrown_chard",
+      "the_sift:overgrown_fronds",
+      "the_sift:overgrown_stalks",
+      "the_sift:siftslate_stalks"
+    ],
+    "the_sift:worldgen/biome/has_structure/abandoned_camp_coral": [
+      "the_sift:coral_forest",
+      "the_sift:coral_meadow"
+    ],
+    "the_sift:worldgen/biome/has_structure/abandoned_camp_overgrown": [
+      "the_sift:overgrown_clearing",
+      "the_sift:overgrown_forest"
+    ],
+    "the_sift:worldgen/biome/has_structure/abandoned_camp_wastes": [
+      "the_sift:sift_wastes"
+    ],
+    "the_sift:worldgen/biome/has_structure/ichor_dome_coral": [
+      "the_sift:coral_forest",
+      "the_sift:coral_meadow"
+    ],
+    "the_sift:worldgen/biome/has_structure/ichor_dome_organic_desert": [
+      "the_sift:organic_desert"
+    ],
+    "the_sift:worldgen/biome/has_structure/ichor_dome_overgrown": [
+      "the_sift:overgrown_clearing",
+      "the_sift:overgrown_forest"
+    ],
+    "the_sift:worldgen/biome/has_structure/sculkers_lair": [
+      "the_sift:corrupted_sift"
+    ],
+    "the_sift:worldgen/structure/abandoned_camps": [
+      "the_sift:abandoned_camp_coral",
+      "the_sift:abandoned_camp_overgrown",
+      "the_sift:abandoned_camp_wastes"
+    ],
+    "the_sift:worldgen/structure/ichor_domes": [
+      "the_sift:ichor_dome_coral",
+      "the_sift:ichor_dome_organic_desert",
+      "the_sift:ichor_dome_overgrown"
+    ],
+    "the_sift:worldgen/structure/on_abandoned_camp_coral_maps": [
+      "the_sift:abandoned_camp_coral"
+    ],
+    "the_sift:worldgen/structure/on_abandoned_camp_overgrown_maps": [
+      "the_sift:abandoned_camp_overgrown"
+    ],
+    "the_sift:worldgen/structure/on_abandoned_camp_wastes_maps": [
+      "the_sift:abandoned_camp_wastes"
+    ],
+    "the_sift:worldgen/structure/on_sculkers_lair_maps": [
+      "the_sift:sculkers_lair"
     ],
     "tide:blocks/chasm_eel_can_eat": [
       "minecraft:bedrock"

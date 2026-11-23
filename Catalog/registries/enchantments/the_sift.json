@@ -1,35 +1,36 @@
 {
   "schema_version": 1,
-  "registry_type": "entities",
-  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
+  "registry_type": "enchantments",
+  "snapshot_sha": "3fb7900a3461785d14dc83a68392bd9d3301ff71",
   "generation": {
-    "generated_utc": "2026-11-22T18:53:03.082294+00:00",
+    "generated_utc": "2026-11-23T02:32:00.112049+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
-    "id": "sift_backport",
-    "name": "Sift Backport",
-    "version": "1.0.5.1"
+    "id": "the_sift",
+    "name": "Mielon's The Sift",
+    "version": "2.0.6"
   },
   "records": [
     {
-      "registry_id": "sift:blub",
-      "registry_type": "entity_type",
+      "registry_id": "the_sift:soul_absorption",
+      "registry_type": "enchantment",
       "schema_version": 1,
-      "mod_id": "sift_backport",
-      "mod_name": "Sift Backport",
-      "mod_version": "1.0.5.1",
-      "source_jar": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
-      "source_sha256": "413e4999c09a2488ad3faf63c02b185f705c20fc6f4248ad50fff8c36b9bdc6e",
+      "mod_id": "the_sift",
+      "mod_name": "Mielon's The Sift",
+      "mod_version": "2.0.6",
+      "source_jar": "mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
+      "source_sha256": "12d3f8ca3ee57be8fea14f1da6538cbd5fe8b9ab5ef93f5db558387705c88bd6",
       "side_availability": [
         "client"
       ],
       "observed_in": [
-        "assets/sift/lang/en_us.json"
+        "assets/the_sift/lang/en_us.json",
+        "assets/the_sift/lang/ru_ru.json"
       ],
-      "display_name_en_us": "Blub",
-      "display_name_ru_ru": null,
+      "display_name_en_us": "Soul Absorption",
+      "display_name_ru_ru": "Поглощение душ",
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [],
@@ -38,7 +39,8 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar:assets/sift/lang/en_us.json"
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:assets/the_sift/lang/en_us.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:assets/the_sift/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

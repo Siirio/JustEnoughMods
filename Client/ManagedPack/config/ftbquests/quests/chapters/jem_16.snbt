@@ -4373,6 +4373,202 @@
       ],
       "jem_economy": false,
       "jem_dedicated_event": false
+    },
+    {
+      "id": "227E6E79BBC2414E",
+      "title": "{\"translate\":\"jem.atlas.card.v3_sift_brave_unknown.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_sift_brave_unknown.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_sift_brave_unknown.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_brave_unknown.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_brave_unknown.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_brave_unknown.reward\"}"
+      ],
+      "icon": "the_sift:siftslate_growth",
+      "x": 3.4,
+      "y": 4.7,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2A5C6BE3B723A5E2",
+          "type": "advancement",
+          "advancement": "the_sift:story/brave_the_unknown"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "285975CC0A7A1AFC",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 24,
+          "claim_key": "v3_sift_brave_unknown/item/0",
+          "claim_reward_id": "285975CC0A7A1AFC",
+          "team_reward": false
+        },
+        {
+          "id": "276FC5AC07C7B5E6",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:cooked_beef",
+          "count": 8,
+          "claim_key": "v3_sift_brave_unknown/item/1",
+          "claim_reward_id": "276FC5AC07C7B5E6",
+          "team_reward": false
+        },
+        {
+          "id": "2D90B61CFE5A1556",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        },
+        {
+          "id": "2EC1C2E6822F6B03",
+          "type": "jem_advancements:quest_coin",
+          "amount": 2,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_sift_brave_unknown",
+      "jem_required_mods": [
+        "the_sift"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2966A5CB6D2DC376",
+      "title": "{\"translate\":\"jem.atlas.card.v3_sift_siftite_armor.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_sift_siftite_armor.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_sift_siftite_armor.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_siftite_armor.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_siftite_armor.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_siftite_armor.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "the_sift:siftite_chestplate",
+      "x": 5.7,
+      "y": 4.7,
+      "shape": "hexagon",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2CC556F41CA436C9",
+          "type": "advancement",
+          "advancement": "the_sift:the_sift/cover_me_in_siftite"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25FF3585099CC639",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:experience_bottle",
+          "count": 16,
+          "claim_key": "v3_sift_siftite_armor/item/0",
+          "claim_reward_id": "25FF3585099CC639",
+          "team_reward": false
+        },
+        {
+          "id": "23165BBCF35FDB36",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:golden_carrot",
+          "count": 8,
+          "claim_key": "v3_sift_siftite_armor/item/1",
+          "claim_reward_id": "23165BBCF35FDB36",
+          "team_reward": false
+        },
+        {
+          "id": "2AB33E383031DFD9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        },
+        {
+          "id": "2008F1FF534C9C83",
+          "type": "jem_advancements:quest_coin",
+          "amount": 3,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_sift_siftite_armor",
+      "jem_required_mods": [
+        "the_sift"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2692FEC56BC783BC",
+      "title": "{\"translate\":\"jem.atlas.card.v3_sift_regicide.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_sift_regicide.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_sift_regicide.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_regicide.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_regicide.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_sift_regicide.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "the_sift:monarch_membrane",
+      "x": 8.0,
+      "y": 4.7,
+      "shape": "diamond",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "23DB04F3AEBE53EE",
+          "type": "advancement",
+          "advancement": "the_sift:the_sift/regicide"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25466139A612C683",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:golden_apple",
+          "count": 2,
+          "claim_key": "v3_sift_regicide/item/0",
+          "claim_reward_id": "25466139A612C683",
+          "team_reward": false
+        },
+        {
+          "id": "228AE5772B377393",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:experience_bottle",
+          "count": 24,
+          "claim_key": "v3_sift_regicide/item/1",
+          "claim_reward_id": "228AE5772B377393",
+          "team_reward": false
+        },
+        {
+          "id": "278485CB38C1D800",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        },
+        {
+          "id": "2A6AF3DC62964640",
+          "type": "jem_advancements:quest_coin",
+          "amount": 10,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_sift_regicide",
+      "jem_required_mods": [
+        "the_sift"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
     }
   ],
   "images": [

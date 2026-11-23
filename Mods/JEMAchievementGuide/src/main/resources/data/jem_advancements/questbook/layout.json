@@ -490,6 +490,27 @@
         "y": -7.4,
         "size": 1.4,
         "shape": "circle"
+      },
+      "227E6E79BBC2414E": {
+        "source_id": "v3_sift_brave_unknown",
+        "x": 3.4,
+        "y": 4.7,
+        "size": 1.4,
+        "shape": "circle"
+      },
+      "2966A5CB6D2DC376": {
+        "source_id": "v3_sift_siftite_armor",
+        "x": 5.7,
+        "y": 4.7,
+        "size": 1.4,
+        "shape": "hexagon"
+      },
+      "2692FEC56BC783BC": {
+        "source_id": "v3_sift_regicide",
+        "x": 8.0,
+        "y": 4.7,
+        "size": 1.4,
+        "shape": "diamond"
       }
     },
     "groups": [
@@ -675,9 +696,91 @@
           3.55,
           13.25
         ]
+      },
+      {
+        "id": "sift_route",
+        "title_ru": "Экспедиция в Сифт",
+        "title_en": "The Sift expedition",
+        "quest_ids": [
+          "v3_sift_brave_unknown",
+          "v3_sift_siftite_armor",
+          "v3_sift_regicide"
+        ],
+        "bounds": [
+          2.15,
+          3.45,
+          9.25,
+          5.95
+        ]
       }
     ],
     "connections": [
+      {
+        "from": "227E6E79BBC2414E",
+        "to": "2966A5CB6D2DC376",
+        "from_source": "v3_sift_brave_unknown",
+        "to_source": "v3_sift_siftite_armor",
+        "start": [
+          3.4,
+          4.7
+        ],
+        "end": [
+          5.7,
+          4.7
+        ],
+        "points": [
+          [
+            3.4,
+            4.7
+          ],
+          [
+            5.7,
+            4.7
+          ]
+        ],
+        "kind": "route",
+        "color": "#79bca6",
+        "opacity": 0.45,
+        "width_gui": 1.0,
+        "dash_gui": [
+          4,
+          5
+        ],
+        "semantics": "visual_relationship_only"
+      },
+      {
+        "from": "2966A5CB6D2DC376",
+        "to": "2692FEC56BC783BC",
+        "from_source": "v3_sift_siftite_armor",
+        "to_source": "v3_sift_regicide",
+        "start": [
+          5.7,
+          4.7
+        ],
+        "end": [
+          8.0,
+          4.7
+        ],
+        "points": [
+          [
+            5.7,
+            4.7
+          ],
+          [
+            8.0,
+            4.7
+          ]
+        ],
+        "kind": "route",
+        "color": "#79bca6",
+        "opacity": 0.45,
+        "width_gui": 1.0,
+        "dash_gui": [
+          4,
+          5
+        ],
+        "semantics": "visual_relationship_only"
+      },
       {
         "from": "2E0AC416C9AD8107",
         "to": "23BCD0E13C627879",
@@ -3444,6 +3547,27 @@
         "y": 8.6,
         "size": 1.2,
         "shape": "circle"
+      },
+      "22DD24B18EBCFB9B": {
+        "source_id": "v3_archie_field_guide",
+        "x": -10.2,
+        "y": 5.2,
+        "size": 1.4,
+        "shape": "circle"
+      },
+      "2B3D449630A0FC59": {
+        "source_id": "v3_archie_three_habitats",
+        "x": -7.9,
+        "y": 5.2,
+        "size": 1.4,
+        "shape": "hexagon"
+      },
+      "2015151D5DEAEDBC": {
+        "source_id": "v3_archie_lushsaur_bond",
+        "x": -5.6,
+        "y": 5.2,
+        "size": 1.4,
+        "shape": "circle"
       }
     },
     "groups": [
@@ -3682,9 +3806,91 @@
           3.55,
           13.35
         ]
+      },
+      {
+        "id": "archie_fieldwork",
+        "title_ru": "Полевые заметки Арчи",
+        "title_en": "Archie's fieldwork",
+        "quest_ids": [
+          "v3_archie_field_guide",
+          "v3_archie_three_habitats",
+          "v3_archie_lushsaur_bond"
+        ],
+        "bounds": [
+          -11.45,
+          3.95,
+          -4.35,
+          6.45
+        ]
       }
     ],
     "connections": [
+      {
+        "from": "22DD24B18EBCFB9B",
+        "to": "2B3D449630A0FC59",
+        "from_source": "v3_archie_field_guide",
+        "to_source": "v3_archie_three_habitats",
+        "start": [
+          -10.2,
+          5.2
+        ],
+        "end": [
+          -7.9,
+          5.2
+        ],
+        "points": [
+          [
+            -10.2,
+            5.2
+          ],
+          [
+            -7.9,
+            5.2
+          ]
+        ],
+        "kind": "route",
+        "color": "#deb27c",
+        "opacity": 0.45,
+        "width_gui": 1.0,
+        "dash_gui": [
+          4,
+          5
+        ],
+        "semantics": "visual_relationship_only"
+      },
+      {
+        "from": "2B3D449630A0FC59",
+        "to": "2015151D5DEAEDBC",
+        "from_source": "v3_archie_three_habitats",
+        "to_source": "v3_archie_lushsaur_bond",
+        "start": [
+          -7.9,
+          5.2
+        ],
+        "end": [
+          -5.6,
+          5.2
+        ],
+        "points": [
+          [
+            -7.9,
+            5.2
+          ],
+          [
+            -5.6,
+            5.2
+          ]
+        ],
+        "kind": "route",
+        "color": "#deb27c",
+        "opacity": 0.45,
+        "width_gui": 1.0,
+        "dash_gui": [
+          4,
+          5
+        ],
+        "semantics": "visual_relationship_only"
+      },
       {
         "from": "2C6C21C273E629FB",
         "to": "390F7B5EADE0F2E0",

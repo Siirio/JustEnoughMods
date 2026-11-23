@@ -13,7 +13,6 @@
     {"type": "namespace", "registry": "*", "value": "mr_lukis_woodlandmansions"},
     {"type": "namespace", "registry": "*", "value": "roadweaver"},
     {"type": "namespace", "registry": "*", "value": "structurify"},
-    {"type": "namespace", "registry": "*", "value": "sift"},
     {"type": "namespace", "registry": "structures", "value": "minecraft"},
     {"type": "namespace", "registry": "structures", "value": "cataclysm"},
     {"type": "namespace", "registry": "structures", "value": "legendary_monsters"},
@@ -36,7 +35,7 @@
         "property": "distribution.major_update_4.structure_catalog",
         "operation": "add",
         "before": "Requested structure artifacts were absent except Ember's Ancient Remnants",
-        "after": "The reduced compatible structure catalog, Structurify, Sift Backport and Improved Pillager Outpost are synchronized through the managed generation"
+        "after": "The reduced compatible structure catalog, Structurify and Improved Pillager Outpost are synchronized through the managed generation"
       },
       {
         "property": "worldgen.minecraft.villages",
@@ -79,23 +78,16 @@
         "operation": "replace",
         "before": "Luki's Woodland Mansions uses the unsupported value field for a Forge 1.20.1 loot-table reference",
         "after": "A narrow Paxi override uses the required name field and retains the native minecraft:chests/woodland_mansion target"
-      },
-      {
-        "property": "distribution.sift_backport",
-        "operation": "add",
-        "before": "Official Forge 1.20.1 artifacts required Java 21 and could not load in the Java 17 pack runtime",
-        "after": "Version 1.0.5.1 is rebuilt and production-reobfuscated from pinned MIT upstream commit 82a7428b31e29bcebaa127c3118214c9f17421fa with class version 61 and unchanged gameplay source"
       }
     ]
   },
   "cause": {
-    "owner": "Native structure mods, Paxi compatibility data, Structure Layout Optimizer, Structurify, RoadWeaver and Sift Backport",
+    "owner": "Native structure mods, Paxi compatibility data, Structure Layout Optimizer, Structurify and RoadWeaver",
     "kind": "user_requested_major_update_structure_expansion",
     "source_files": [
       "Client/ManagedPack/mods/lukis-grand-capitals-1.1.3.jar",
       "Client/ManagedPack/mods/lukis-woodland-mansions-v.1.0.jar",
       "Client/ManagedPack/mods/structurify-forge-2.0.43+mc1.20.1.jar",
-      "Client/ManagedPack/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
       "Client/ManagedPack/mods/structure_layout_optimizer-forge-1.0.11.jar",
       "Client/ManagedPack/config/abridged.json",
       "Client/ManagedPack/config/netherman-common.toml",
@@ -184,6 +176,15 @@
       "source_files": [
         "Client/ManagedPack/mods/structblend-1.0.3.jar",
         "Client/ManagedPack/config/structblend-common.toml"
+      ]
+    },
+    {
+      "date": "2026-11-23",
+      "commit": "SELF",
+      "action": "retire_sift_backport",
+      "summary": "Remove the partial Sift Backport from the active Major Update 4 structure catalog after the user selected Mielon's separate full Sift implementation.",
+      "source_files": [
+        "Client/ManagedPack/mods/Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar"
       ]
     }
   ],

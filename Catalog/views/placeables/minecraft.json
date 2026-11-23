@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
+  "snapshot_sha": "3fb7900a3461785d14dc83a68392bd9d3301ff71",
   "generation": {
-    "generated_utc": "2026-11-22T18:53:03.082294+00:00",
+    "generated_utc": "2026-11-23T02:32:00.112049+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -8601,17 +8601,20 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/dispenser.json",
-        "data/terralith/recipes/dispenser_alt.json"
+        "data/terralith/recipes/dispenser_alt.json",
+        "data/the_sift/recipes/dispenser_from_cobbled_siftslate.json",
+        "data/the_sift/recipes/dispenser_from_soulshale.json"
       ],
       "display_name_en_us": "Dispenser",
       "display_name_ru_ru": null,
       "source_provenance": [
         "Terralith_1.20.x_v2.5.4.jar:data/terralith/recipes/dispenser_alt.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/dispenser_from_cobbled_siftslate.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/dispenser_from_soulshale.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dispenser.json"
       ],
       "confidence": "inferred",
@@ -8630,7 +8633,9 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:dispenser",
-        "terralith:dispenser_alt"
+        "terralith:dispenser_alt",
+        "the_sift:dispenser_from_cobbled_siftslate",
+        "the_sift:dispenser_from_soulshale"
       ]
     },
     {
@@ -8762,17 +8767,20 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/dropper.json",
-        "data/terralith/recipes/dropper_alt.json"
+        "data/terralith/recipes/dropper_alt.json",
+        "data/the_sift/recipes/dropper_from_cobbled_siftslate.json",
+        "data/the_sift/recipes/dropper_from_soulshale.json"
       ],
       "display_name_en_us": "Dropper",
       "display_name_ru_ru": null,
       "source_provenance": [
         "Terralith_1.20.x_v2.5.4.jar:data/terralith/recipes/dropper_alt.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/dropper_from_cobbled_siftslate.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/dropper_from_soulshale.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dropper.json"
       ],
       "confidence": "inferred",
@@ -8791,7 +8799,9 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:dropper",
-        "terralith:dropper_alt"
+        "terralith:dropper_alt",
+        "the_sift:dropper_from_cobbled_siftslate",
+        "the_sift:dropper_from_soulshale"
       ]
     },
     {
@@ -11857,17 +11867,20 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/lever.json",
-        "data/terralith/recipes/lever_alt.json"
+        "data/terralith/recipes/lever_alt.json",
+        "data/the_sift/recipes/lever_from_cobbled_siftslate.json",
+        "data/the_sift/recipes/lever_from_soulshale.json"
       ],
       "display_name_en_us": "Lever",
       "display_name_ru_ru": null,
       "source_provenance": [
         "Terralith_1.20.x_v2.5.4.jar:data/terralith/recipes/lever_alt.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/lever_from_cobbled_siftslate.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/lever_from_soulshale.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/lever.json"
       ],
       "confidence": "inferred",
@@ -11886,7 +11899,9 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:lever",
-        "terralith:lever_alt"
+        "terralith:lever_alt",
+        "the_sift:lever_from_cobbled_siftslate",
+        "the_sift:lever_from_soulshale"
       ]
     },
     {
@@ -15611,17 +15626,20 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/observer.json",
-        "data/terralith/recipes/observer_alt.json"
+        "data/terralith/recipes/observer_alt.json",
+        "data/the_sift/recipes/observer_from_cobbled_siftslate.json",
+        "data/the_sift/recipes/observer_from_soulshale.json"
       ],
       "display_name_en_us": "Observer",
       "display_name_ru_ru": null,
       "source_provenance": [
         "Terralith_1.20.x_v2.5.4.jar:data/terralith/recipes/observer_alt.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/observer_from_cobbled_siftslate.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/observer_from_soulshale.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/observer.json"
       ],
       "confidence": "inferred",
@@ -15640,7 +15658,9 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:observer",
-        "terralith:observer_alt"
+        "terralith:observer_alt",
+        "the_sift:observer_from_cobbled_siftslate",
+        "the_sift:observer_from_soulshale"
       ]
     },
     {
@@ -16626,17 +16646,20 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client",
-        "server"
+        "client"
       ],
       "observed_in": [
         "data/minecraft/recipes/piston.json",
-        "data/terralith/recipes/piston_alt.json"
+        "data/terralith/recipes/piston_alt.json",
+        "data/the_sift/recipes/piston_from_cobbled_siftslate.json",
+        "data/the_sift/recipes/piston_from_soulshale.json"
       ],
       "display_name_en_us": "Piston",
       "display_name_ru_ru": null,
       "source_provenance": [
         "Terralith_1.20.x_v2.5.4.jar:data/terralith/recipes/piston_alt.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/piston_from_cobbled_siftslate.json",
+        "mielons-the-sift-2.0.6-mc1.20.1-forge.jar:data/the_sift/recipes/piston_from_soulshale.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/piston.json"
       ],
       "confidence": "inferred",
@@ -16655,7 +16678,9 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "minecraft:piston",
-        "terralith:piston_alt"
+        "terralith:piston_alt",
+        "the_sift:piston_from_cobbled_siftslate",
+        "the_sift:piston_from_soulshale"
       ]
     },
     {

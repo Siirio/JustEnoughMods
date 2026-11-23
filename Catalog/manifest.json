@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "227f8107e4cc0c6daf986c389ad8797e851fb329",
-  "generated_utc": "2026-11-22T18:53:03.082294+00:00",
+  "snapshot_sha": "3fb7900a3461785d14dc83a68392bd9d3301ff71",
+  "generated_utc": "2026-11-23T02:32:00.112049+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.28",
   "java": "17",
@@ -1563,28 +1563,6 @@
           ]
         }
       ]
-    },
-    {
-      "filename": "blabovs_green_screen-1.0.0-forge-1.20.1.jar",
-      "sha256": "9ea8352fcb44b99476fe59735a1fe81fda9212d1021ccb499efa74f7a3667b85",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "blabovs_green_screen",
-          "name": "Blabov's Green Screen",
-          "version": "1.0.0",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "blabovs_green_screen",
-        "minecraft"
-      ],
-      "source_path": "Server\\mods\\blabovs_green_screen-1.0.0-forge-1.20.1.jar",
-      "nested_dependencies": []
     },
     {
       "filename": "blastfromthepast-1.0.3+1.20.1.jar",
@@ -10116,7 +10094,7 @@
     },
     {
       "filename": "jem-advancements-5.3.11.jar",
-      "sha256": "7ce8f1999bb756dc087b52bc320a2779c13db1d0467cd4a4b8bfb4f8b0c26a26",
+      "sha256": "6ba41300d76faafe22b0fd5b6d9fa3196d1f66128bd6ff3ed509447ca4d515da",
       "sides": [
         "client"
       ],
@@ -10151,7 +10129,7 @@
     },
     {
       "filename": "jem-advancements-5.3.11.jar",
-      "sha256": "7ce8f1999bb756dc087b52bc320a2779c13db1d0467cd4a4b8bfb4f8b0c26a26",
+      "sha256": "6ba41300d76faafe22b0fd5b6d9fa3196d1f66128bd6ff3ed509447ca4d515da",
       "sides": [
         "server"
       ],
@@ -10931,7 +10909,7 @@
     },
     {
       "filename": "jemcompat-3.11.3.jar",
-      "sha256": "b022a49f748b47af2a8b45056c8da61ddb64f31c5d85cd17b41a22699e26e87f",
+      "sha256": "52c747a139c483f129304b1060bcd50f76b3be388699dc7acc08ee96e6da096c",
       "sides": [
         "client"
       ],
@@ -10959,7 +10937,7 @@
     },
     {
       "filename": "jemcompat-3.11.3.jar",
-      "sha256": "b022a49f748b47af2a8b45056c8da61ddb64f31c5d85cd17b41a22699e26e87f",
+      "sha256": "52c747a139c483f129304b1060bcd50f76b3be388699dc7acc08ee96e6da096c",
       "sides": [
         "server"
       ],
@@ -13262,6 +13240,132 @@
       "nested_dependencies": []
     },
     {
+      "filename": "mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
+      "sha256": "12d3f8ca3ee57be8fea14f1da6538cbd5fe8b9ab5ef93f5db558387705c88bd6",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "the_sift",
+          "name": "Mielon's The Sift",
+          "version": "2.0.6",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "minecraft",
+        "the_sift",
+        "the_siftt"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.5.5.jar",
+          "sha256": "42564e02756fbdf78e1f1fd2115fe2d01fb42497ba3be2a3c261da2058122533",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.5.5,)",
+            "artifactVersion": "0.5.5"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.5.5.jar",
+              "sha256": "a3590ce69cec77141990eb439de790b9c162504fab2ba29fec77850136120b0b",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.5.5,)",
+                "artifactVersion": "0.5.5"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
+      "sha256": "12d3f8ca3ee57be8fea14f1da6538cbd5fe8b9ab5ef93f5db558387705c88bd6",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "the_sift",
+          "name": "Mielon's The Sift",
+          "version": "2.0.6",
+          "display_test": "unknown"
+        }
+      ],
+      "namespaces": [
+        "minecraft",
+        "the_sift",
+        "the_siftt"
+      ],
+      "source_path": "Server\\mods\\mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/mixinextras-forge-0.5.5.jar",
+          "sha256": "42564e02756fbdf78e1f1fd2115fe2d01fb42497ba3be2a3c261da2058122533",
+          "identifier": {
+            "group": "io.github.llamalad7",
+            "artifact": "mixinextras-forge"
+          },
+          "version": {
+            "range": "[0.5.5,)",
+            "artifactVersion": "0.5.5"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": [
+            {
+              "path": "META-INF/jars/MixinExtras-0.5.5.jar",
+              "sha256": "a3590ce69cec77141990eb439de790b9c162504fab2ba29fec77850136120b0b",
+              "identifier": {
+                "group": "com.github.LlamaLad7",
+                "artifact": "MixinExtras"
+              },
+              "version": {
+                "range": "[0.5.5,)",
+                "artifactVersion": "0.5.5"
+              },
+              "mods": [],
+              "namespaces": [],
+              "sides": [
+                "client",
+                "server"
+              ],
+              "nested_dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "filename": "minecraft-cursor-forge-3.11.3%2B1.20.1.jar",
       "sha256": "d2f42629e1cd2e36fded00ff4fdf65566b4b79cca03a9a9cd072677b515c448c",
       "sides": [
@@ -13383,27 +13487,6 @@
         "mobhome"
       ],
       "source_path": "Server\\mods\\mobhome-1.0.1.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "Mocap-FORGE-1.20.1-1.3.8.jar",
-      "sha256": "4c350dfbeb311129bab763b2e1113f3f3a8f4282687e297c79a319ac9aa58ebd",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "mocap",
-          "name": "Motion Capture",
-          "version": "1.3.8",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "mocap"
-      ],
-      "source_path": "Server\\mods\\Mocap-FORGE-1.20.1-1.3.8.jar",
       "nested_dependencies": []
     },
     {
@@ -17647,52 +17730,6 @@
       "nested_dependencies": []
     },
     {
-      "filename": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
-      "sha256": "413e4999c09a2488ad3faf63c02b185f705c20fc6f4248ad50fff8c36b9bdc6e",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "sift_backport",
-          "name": "Sift Backport",
-          "version": "1.0.5.1",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "minecraft",
-        "sift",
-        "sift_backport"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
-      "nested_dependencies": []
-    },
-    {
-      "filename": "Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
-      "sha256": "413e4999c09a2488ad3faf63c02b185f705c20fc6f4248ad50fff8c36b9bdc6e",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "sift_backport",
-          "name": "Sift Backport",
-          "version": "1.0.5.1",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "minecraft",
-        "sift",
-        "sift_backport"
-      ],
-      "source_path": "Server\\mods\\Sift-Backport-1.0.5.1-1.20.1-forge-java17.jar",
-      "nested_dependencies": []
-    },
-    {
       "filename": "simplybows-forge-neoforge-0.1.4.jar",
       "sha256": "70c77f7e2207393f2bbc8f58da06309378897252041e5102d249d33d64753a91",
       "sides": [
@@ -20113,7 +20150,8 @@
           "mods": [],
           "namespaces": [],
           "sides": [
-            "client"
+            "client",
+            "server"
           ],
           "nested_dependencies": [
             {
@@ -20130,7 +20168,8 @@
               "mods": [],
               "namespaces": [],
               "sides": [
-                "client"
+                "client",
+                "server"
               ],
               "nested_dependencies": []
             }

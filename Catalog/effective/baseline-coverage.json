@@ -2,18 +2,18 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "104945034829bf2570678fac6f0a3495f50567ed1a5d7e38f909d87d840155b2",
-  "coverage_inputs_sha256": "938391e80be3868418fd6b24d8042da6c9e1c9746ebcc7e2978ec24310b8b790",
+  "change_records_sha256": "ba5a58586053a7b2155f4948fd2b65bcd51dbf579fe0676665ba0866f8d00064",
+  "coverage_inputs_sha256": "884f2de2ff45bfa64a3d500d60a252ddb82ec8b15fefe06d57cc0614091b3be8",
   "totals": {
-    "watched": 7221,
-    "covered": 5762,
-    "unresolved": 1459
+    "watched": 7140,
+    "covered": 5685,
+    "unresolved": 1455
   },
   "groups": {
     "Client/ManagedPack/config": {
       "watched": 1395,
-      "covered": 89,
-      "unresolved": 1306,
+      "covered": 91,
+      "unresolved": 1304,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -1211,8 +1211,6 @@
         "Client/ManagedPack/config/simplehats/common.toml",
         "Client/ManagedPack/config/simplybows/config.toml",
         "Client/ManagedPack/config/simplytooltips/config.toml",
-        "Client/ManagedPack/config/smallships-client.toml",
-        "Client/ManagedPack/config/smallships-common.toml",
         "Client/ManagedPack/config/snowrealmagic-client.yaml",
         "Client/ManagedPack/config/snowrealmagic-common.yaml",
         "Client/ManagedPack/config/snowundertrees-common.toml",
@@ -1324,29 +1322,27 @@
       ]
     },
     "Client/ManagedPack/defaultconfigs": {
-      "watched": 8,
+      "watched": 7,
       "covered": 1,
-      "unresolved": 7,
+      "unresolved": 6,
       "unresolved_paths": [
         "Client/ManagedPack/defaultconfigs/TPA/config/configuration.toml",
         "Client/ManagedPack/defaultconfigs/ftblibrary/ftblibrary-client.snbt",
         "Client/ManagedPack/defaultconfigs/ftbquests/client-config.snbt",
         "Client/ManagedPack/defaultconfigs/gravestone-server.toml",
-        "Client/ManagedPack/defaultconfigs/recruits-server.toml",
         "Client/ManagedPack/defaultconfigs/tinyinv-server.toml",
         "Client/ManagedPack/defaultconfigs/trotting_wagons-server.toml"
       ]
     },
     "Client/ManagedPack/kubejs": {
-      "watched": 21,
+      "watched": 20,
       "covered": 8,
-      "unresolved": 13,
+      "unresolved": 12,
       "unresolved_paths": [
         "Client/ManagedPack/kubejs/README.txt",
         "Client/ManagedPack/kubejs/assets/ftbquests/ftb_quests_theme.txt",
         "Client/ManagedPack/kubejs/assets/kubejs/textures/block/example_block.png",
         "Client/ManagedPack/kubejs/assets/kubejs/textures/item/example_item.png",
-        "Client/ManagedPack/kubejs/assets/particlerain/particles.json",
         "Client/ManagedPack/kubejs/client_scripts/example.js",
         "Client/ManagedPack/kubejs/config/client.properties",
         "Client/ManagedPack/kubejs/config/common.properties",
@@ -1364,8 +1360,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 3791,
-      "covered": 3791,
+      "watched": 3757,
+      "covered": 3757,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1433,8 +1429,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMCompat": {
-      "watched": 202,
-      "covered": 202,
+      "watched": 201,
+      "covered": 201,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1584,14 +1580,14 @@
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 494,
-      "covered": 494,
+      "watched": 493,
+      "covered": 493,
       "unresolved": 0,
       "unresolved_paths": []
     },
     "Mods/JEMSettlements": {
-      "watched": 228,
-      "covered": 228,
+      "watched": 185,
+      "covered": 185,
       "unresolved": 0,
       "unresolved_paths": []
     },

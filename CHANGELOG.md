@@ -1,3 +1,23 @@
+## 2026-11-23 - Replace the partial Sift backport and retire local filming tools
+
+- The user replaced Sift Backport 1.0.5.1 with the supplied Mielon's The Sift 2.0.6 Forge artifact because the partial backport contained only one mob
+- The user retired Motion Capture 1.3.8 and Blabov's Green Screen 1.0.0 from the local filming batch recorded on 2026-11-20
+- The user then explicitly kept JEM Freecam 1.0.1. It remains in the managed client and stays absent from the dedicated server
+- Installed the exact supplied `mielons-the-sift-2.0.6-mc1.20.1-forge.jar` on the managed client and ordinary local server with SHA-256 `12D3F8CA3EE57BE8FEA14F1DA6538CBD5FE8B9AB5EF93F5DB558387705C88BD6`
+- Implementation choice: kept the existing Forge GeckoLib 4.8.4 dependency and excluded the NeoForge GeckoLib JAR bundled in the download archive
+- Preserved the removed JARs and old Sift configuration under `C:/MyProjects/Minecraft/JustEnoughMods-updates/sift-and-filming-tools-backup-20261123`
+- The old `sift` namespace and the new `the_sift` namespace are separate. Existing old-dimension save data remains untouched but is not active content after removal of Sift Backport
+- The localization audit found 496 English and 489 Russian native keys. Added a seven-key Russian overlay for the exact missing set and preserved the mod's existing terminology and format placeholders
+- Added a three-card Sift quest route for entering the dimension, completing Siftite armor and defeating the Monarch. Added a three-card Archie's Dinosaurs route for obtaining the guidebook, spotting Lushsaur, Coralosaur and Obsidiceratops, and taming a Lushsaur
+- Quest rewards support exploration, equipment maintenance, observation and companion care. They do not grant spawn eggs, rare drops, armor sets, boss drops or progression keys. The Sift Slayer advancement is not used because it requires killing passive creatures
+- The quest production compiler activated 7 chapters with 576 mapped cards and 153 indexed predicates. English and Russian quest text, active SNBT, handbook entries, layouts, mappings, manifest and activation receipt are synchronized. Native Russian `Сифт` terminology replaces the literal `Просев` wording in the new route
+- Reclassified all 159 exact registered `the_sift` items in the curated JEI catalog, removed 6 retired `sift` assignments and 2 Green Screen assignments, and preserved JEM Freecam. The reviewed catalog now contains 14,064 items
+- Built and reobfuscated JEMCompat 3.11.3 with SHA-256 `52C747A139C483F129304B1060BCD50F76B3BE388699DC7ACC08EE96E6DA096C` and JEM Advancements 5.3.11 with SHA-256 `6BA41300D76FAAFE22B0FD5B6D9FA3196D1F66128BD6FF3ED509447CA4D515DA`. Copied each exact artifact to `Client/ManagedPack` first and the ordinary local `Server` second
+- The ordinary local server loaded The Sift 2.0.6, the updated quest resources and the updated JEI catalog. The existing world opened, initialized `the_sift:the_sift`, and saved all dimensions during a clean stop
+- Native Pack Sync journal 198 published content token `b70444c942f2cbce2a3952e8c205b5bb1303fc62` as the reviewed `+2 ~7 -1` delta. The follow-up preview was `+0 ~0 -0`
+- The closed `Test JustEnoughMods` profile applied that token through the native updater. The new Sift, JEM Advancements and JEMCompat JARs match the approved artifacts, the old Sift Backport JAR is absent, JEM Freecam remains installed, and no native transaction remains pending
+- No gameplay client launch, gameplay QA, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed. Player acceptance remains `in testing`
+
 ## 2026-11-22 - Update the local client before the server
 
 - The user required every combined local client-and-server update to update the client source before the local server
