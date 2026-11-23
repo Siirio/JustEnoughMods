@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased - 2026-11-23
+
+- Replace the retired Components group with top-level Trees and Music Discs groups
+- Rename Dolls to Cosmetics and classify verified decorative heads with dolls
+- Reclassify the exact Archie's Dinosaurs, Royal Variations, building-tool, weapon, potion, light and wearable corrections from the reviewed manifest
+- Preserve native Handcrafted hammer behavior when no JEM construction selection exists
+- Yield the next ordinary right-click to a server-confirmed JEM construction selection
+
 ## 3.9.3 - 2026-11-01
 
 - Promote `jem_building:builder_hammer` to the single player-facing hammer when JEM Building, Handcrafted and Building But Better are installed

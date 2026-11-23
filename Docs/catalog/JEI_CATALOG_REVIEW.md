@@ -10,12 +10,13 @@
 
 ### WEAPON_TOTEMS
 
-Total: 14
+Total: 22
 
 - alexscaves: 1
+- ec_ad: 7
 - minecraft: 1
 - moretotems: 7
-- skarrier_mobs: 5
+- skarrier_mobs: 6
 
 ### WEAPON_TRAINING
 
@@ -24,23 +25,24 @@ Total: 0
 
 ### WEAPON_MELEE
 
-Total: 273
+Total: 285
 
 - alexscaves: 14
-- alexsmobs: 4
+- alexsmobs: 6
 - aquamirae: 9
 - bakery: 2
 - barnyardbuddies: 1
-- blastfromthepast: 1
+- blastfromthepast: 2
 - block_factorys_bosses: 7
 - cataclysm: 26
 - cnc: 1
 - companions: 9
 - create: 1
 - deep_dark_regrowth: 4
+- ec_ad: 7
 - efn: 39
 - endermanoverhaul: 1
-- epicfight: 31
+- epicfight: 33
 - epicfightx: 2
 - incision: 1
 - invincible: 3
@@ -61,9 +63,9 @@ Total: 273
 
 ### WEAPON_RANGED
 
-Total: 185
+Total: 191
 
-- alexscaves: 11
+- alexscaves: 12
 - alexsmobs: 2
 - aquamirae: 1
 - blastfromthepast: 1
@@ -71,17 +73,19 @@ Total: 185
 - cataclysm: 6
 - companions: 1
 - create: 1
+- ec_ad: 3
 - immersive_aircraft: 2
 - kaleidoscope_nether: 1
 - legendary_monsters: 8
 - minecraft: 6
 - natures_spirit: 1
 - netherexp: 2
-- royalvariations: 2
+- royalvariations: 3
 - simplybows: 36
 - skarrier_mobs: 1
 - the_sift: 2
 - tide: 1
+- unearthed_journey: 1
 - whaleborne: 1
 - xtraarrows: 97
 
@@ -118,9 +122,9 @@ Total: 50
 
 ### WEARABLE_ARMOR
 
-Total: 331
+Total: 313
 
-- alexscaves: 19
+- alexscaves: 18
 - alexsmobs: 16
 - aquamirae: 13
 - barnyardbuddies: 1
@@ -129,14 +133,14 @@ Total: 331
 - block_factorys_bosses: 7
 - brewery: 8
 - cataclysm: 22
-- cnc: 25
+- cnc: 4
 - companions: 10
 - create: 11
 - deep_dark_regrowth: 27
+- ec_ad: 24
 - efn: 8
 - endermanoverhaul: 3
 - epicfight: 3
-- fairylights: 1
 - farm_and_charm: 1
 - herbalbrews: 2
 - immersive_weathering: 1
@@ -144,17 +148,15 @@ Total: 331
 - kaleidoscope_nether: 1
 - legendary_monsters: 11
 - luminous_beasts: 4
-- luminous_nether: 3
-- minecraft: 33
-- netherexp: 13
+- luminous_nether: 1
+- minecraft: 29
+- netherexp: 10
 - railways: 16
-- rottencreatures: 9
 - royalvariations: 6
 - skarrier_mobs: 19
 - spawn: 1
 - the_sift: 5
 - tide: 3
-- toms_storage: 1
 - unearthed_journey: 4
 - vinery: 4
 
@@ -168,14 +170,20 @@ Total: 16
 
 ### WEARABLE_DOLLS
 
-Total: 723
+Total: 765
 
+- cnc: 21
+- dustydecorations: 3
+- endermanoverhaul: 1
 - kaleidoscope_doll: 697
 - kaleidoscope_nether: 26
+- minecraft: 7
+- rottencreatures: 9
+- skarrier_mobs: 1
 
 ### FOOD_EDIBLES
 
-Total: 1073
+Total: 1074
 
 - alexscaves: 128
 - alexsmobs: 26
@@ -192,6 +200,7 @@ Total: 1073
 - create: 5
 - deep_dark_regrowth: 3
 - dustydecorations: 4
+- ec_ad: 1
 - farm_and_charm: 75
 - handcrafted: 1
 - herbalbrews: 27
@@ -260,7 +269,7 @@ Total: 259
 
 ### TRANSPORT
 
-Total: 184
+Total: 191
 
 - alexscaves: 4
 - alexsmobs: 2
@@ -268,6 +277,7 @@ Total: 184
 - beachparty: 4
 - blastfromthepast: 2
 - block_factorys_bosses: 2
+- ec_ad: 4
 - farm_and_charm: 1
 - icys-better-horses: 2
 - immersive_aircraft: 25
@@ -275,6 +285,7 @@ Total: 184
 - minecraft: 49
 - natures_spirit: 34
 - paraglider: 1
+- royalvariations: 3
 - snowyspirit: 39
 - spawn: 4
 - the_sift: 5
@@ -284,16 +295,17 @@ Total: 184
 
 ### COMPANIONS
 
-Total: 28
+Total: 29
 
 - alexsmobs: 9
 - companions: 10
+- ec_ad: 1
 - farm_and_charm: 5
 - legendary_monsters: 4
 
 ### BUILDING_CONTAINERS
 
-Total: 392
+Total: 368
 
 - alexscaves: 4
 - aquamirae: 1
@@ -303,7 +315,6 @@ Total: 392
 - brewery: 3
 - dustydecorations: 27
 - ftbquests: 1
-- handcrafted: 22
 - jem_economy: 1
 - luminous_beasts: 1
 - luminous_nether: 2
@@ -316,19 +327,21 @@ Total: 392
 - sophisticatedbackpacks: 71
 - sophisticatedstorage: 139
 - toms_storage: 19
-- trials: 1
-- vinery: 37
+- vinery: 36
 
 ### POTIONS
 
-Total: 5
+Total: 9
 
+- alexscaves: 2
+- alexsmobs: 1
+- luminous_nether: 1
 - minecraft: 4
 - the_sift: 1
 
 ### BOOKS
 
-Total: 35
+Total: 36
 
 - alexscaves: 2
 - alexsmobs: 1
@@ -338,6 +351,7 @@ Total: 35
 - cnc: 1
 - companions: 9
 - dustydecorations: 6
+- ec_ad: 1
 - epicfight: 1
 - ftbquests: 1
 - handcrafted: 1
@@ -350,7 +364,7 @@ Total: 35
 
 ### ORES
 
-Total: 290
+Total: 294
 
 - alexscaves: 20
 - alexsmobs: 12
@@ -360,6 +374,7 @@ Total: 290
 - companions: 1
 - create: 37
 - deep_dark_regrowth: 10
+- ec_ad: 4
 - handcrafted: 16
 - immersive_weathering: 4
 - kaleidoscope_cookery: 3
@@ -377,56 +392,92 @@ Total: 290
 - trials: 1
 - unearthed_journey: 35
 
-### COMPONENTS
+### MUSIC_DISCS
 
-Total: 106
+Total: 87
 
-- alexscaves: 16
-- alexsmobs: 42
-- barnyardbuddies: 1
-- legendary_monsters: 25
-- luminous_beasts: 11
-- luminous_nether: 7
+- alexscaves: 2
+- alexsmobs: 2
+- aquamirae: 3
+- beachparty: 6
+- blastfromthepast: 1
+- cataclysm: 9
+- cnc: 3
+- companions: 1
+- deep_dark_regrowth: 4
+- legendary_monsters: 3
+- luminous_beasts: 14
+- luminous_nether: 3
+- minecraft: 19
+- netherexp: 2
 - primal: 1
-- the_sift: 3
+- snowyspirit: 1
+- spawn: 6
+- the_sift: 2
+- trials: 3
+- unearthed_journey: 1
+- whaleborne: 1
+
+### TREES
+
+Total: 1143
+
+- alexscaves: 28
+- bakery: 1
+- bbb: 133
+- beachparty: 14
+- blastfromthepast: 16
+- block_factorys_bosses: 10
+- cataclysm: 4
+- dustydecorations: 11
+- farm_and_charm: 1
+- handcrafted: 169
+- immersive_weathering: 2
+- infinitybuttons: 21
+- luminous_nether: 15
+- minecraft: 196
+- natures_spirit: 268
+- netherexp: 6
+- primal: 9
+- ribbits: 6
+- secretdoors: 48
+- somemoreblocks: 46
+- spawn: 28
+- the_sift: 30
+- unearthed_journey: 46
+- vinery: 35
 
 ### CREATE_REDSTONE
 
-Total: 2256
+Total: 2157
 
-- alexscaves: 4
-- beachparty: 2
 - bellsandwhistles: 35
-- blastfromthepast: 2
 - create: 603
 - create_train_parts: 11
 - createrailwaysnavigator: 9
 - deep_dark_regrowth: 2
 - dustydecorations: 4
-- infinitybuttons: 223
-- luminous_nether: 4
-- minecraft: 52
-- natures_spirit: 34
+- infinitybuttons: 202
+- luminous_nether: 2
+- minecraft: 26
 - netherexp: 4
 - railways: 1234
 - somemoreblocks: 10
-- spawn: 4
 - trials: 1
-- unearthed_journey: 16
-- vinery: 2
+- unearthed_journey: 14
 
 ### BUILDING_FURNITURE
 
-Total: 1195
+Total: 896
 
-- alexscaves: 33
+- alexscaves: 29
 - alexsmobs: 7
 - aquamirae: 4
-- bakery: 9
-- barnyardbuddies: 4
+- bakery: 8
+- barnyardbuddies: 6
 - bbb: 7
-- beachparty: 49
-- blastfromthepast: 21
+- beachparty: 30
+- blastfromthepast: 19
 - block_factorys_bosses: 17
 - brewery: 7
 - casualswing: 32
@@ -434,67 +485,62 @@ Total: 1195
 - chimes: 6
 - companions: 2
 - deep_dark_regrowth: 2
-- dustydecorations: 329
-- endermanoverhaul: 1
+- dustydecorations: 317
 - fairylights: 6
-- handcrafted: 191
+- handcrafted: 70
 - herbalbrews: 1
 - incision: 1
 - kaleidoscope_cookery: 33
 - kaleidoscope_doll: 5
 - luminous_beasts: 29
 - luminous_nether: 12
-- minecraft: 124
-- natures_spirit: 40
-- netherexp: 5
+- minecraft: 82
+- natures_spirit: 4
+- netherexp: 1
 - primal: 6
-- secretdoors: 158
+- secretdoors: 110
 - shutterup: 20
 - siegeweapons: 1
-- skarrier_mobs: 1
-- spawn: 6
+- spawn: 2
 - the_sift: 1
 - trials: 2
 - unearthed_journey: 11
-- vinery: 7
+- vinery: 1
 
 ### BUILDING_NATURE
 
-Total: 1137
+Total: 509
 
-- alexscaves: 29
+- alexscaves: 9
 - alexsmobs: 3
-- bbb: 56
+- bbb: 1
 - beachparty: 2
-- blastfromthepast: 15
-- block_factorys_bosses: 11
-- cataclysm: 7
+- blastfromthepast: 3
+- block_factorys_bosses: 1
+- cataclysm: 3
 - creeperoverhaul: 1
 - deep_dark_regrowth: 25
 - dustydecorations: 6
-- fairylights: 1
-- farm_and_charm: 1
-- handcrafted: 4
 - herbalbrews: 2
-- immersive_weathering: 73
+- immersive_weathering: 71
 - incision: 1
-- luminous_nether: 35
-- minecraft: 247
-- natures_spirit: 289
-- netherexp: 11
+- luminous_nether: 22
+- minecraft: 116
+- natures_spirit: 91
+- netherexp: 9
 - oceanicrealms: 1
-- primal: 11
-- ribbits: 12
-- somemoreblocks: 72
-- spawn: 59
+- primal: 2
+- ribbits: 6
+- somemoreblocks: 26
+- spawn: 39
 - spider_overhaul: 1
-- the_sift: 65
-- unearthed_journey: 64
-- vinery: 33
+- the_sift: 35
+- unearthed_journey: 26
+- vinery: 7
 
 ### BUILDING_GLASS
 
-Total: 334
+Total: 324
 
 - alexscaves: 2
 - alexsmobs: 1
@@ -502,7 +548,7 @@ Total: 334
 - create: 38
 - create_train_parts: 5
 - deep_dark_regrowth: 1
-- dustydecorations: 73
+- dustydecorations: 63
 - farm_and_charm: 1
 - immersive_weathering: 3
 - incision: 2
@@ -516,56 +562,56 @@ Total: 334
 
 ### BUILDING_LIGHT
 
-Total: 233
+Total: 196
 
 - alexscaves: 19
 - aquamirae: 1
-- barnyardbuddies: 2
 - bbb: 13
+- beachparty: 1
 - block_factorys_bosses: 3
 - cataclysm: 1
 - companions: 1
 - deep_dark_regrowth: 28
-- dustydecorations: 20
-- fairylights: 18
+- dustydecorations: 28
+- ec_ad: 1
+- fairylights: 20
 - golemoverhaul: 1
 - legendary_monsters: 2
-- luminous_nether: 11
-- minecraft: 53
-- natures_spirit: 35
-- netherexp: 6
+- luminous_nether: 13
+- minecraft: 33
+- natures_spirit: 17
+- netherexp: 9
 - ribbits: 1
 - snowyspirit: 4
-- somemoreblocks: 14
 
 ### BUILDING_TOOLS
 
-Total: 3
+Total: 4
 
-- bbb: 1
+- bbb: 2
 - handcrafted: 1
 - jem_building: 1
 
 ### BUILDING_HOLIDAY
 
-Total: 214
+Total: 213
 
 - dustydecorations: 21
 - fairylights: 2
 - moa_decor_holidays: 151
-- snowyspirit: 40
+- snowyspirit: 39
 
 ### BUILDING_BLOCKS
 
-Total: 2986
+Total: 2940
 
-- alexscaves: 149
+- alexscaves: 150
 - alexsmobs: 18
 - animal_feeding_trough: 1
 - aquamirae: 6
 - bakery: 1
 - barnyardbuddies: 28
-- bbb: 164
+- bbb: 86
 - blastfromthepast: 41
 - block_factorys_bosses: 12
 - brewery: 1
@@ -574,13 +620,14 @@ Total: 2986
 - companions: 10
 - deep_dark_regrowth: 183
 - dragonlib: 1
+- ec_ad: 10
 - endrem: 1
 - farm_and_charm: 8
 - fdlib: 1
 - ftbquests: 7
 - golemoverhaul: 1
 - gravestone: 1
-- handcrafted: 48
+- handcrafted: 26
 - immersive_weathering: 164
 - incision: 63
 - kaleidoscope_cookery: 3
@@ -590,29 +637,29 @@ Total: 2986
 - libraryferret: 10
 - luminous_beasts: 9
 - luminous_nether: 66
-- minecraft: 531
+- minecraft: 549
 - mobhome: 2
 - moonlight: 1
-- natures_spirit: 227
+- natures_spirit: 245
 - netherexp: 148
 - oceanicrealms: 11
 - paraglider: 5
 - primal: 35
 - sereneseasons: 1
 - skarrier_mobs: 31
-- somemoreblocks: 508
+- somemoreblocks: 522
 - sootychimneys: 14
 - spawn: 73
 - spider_overhaul: 2
 - the_sift: 30
 - trials: 58
-- unearthed_journey: 130
+- unearthed_journey: 124
 - vinery: 7
-- whaleborne: 3
+- whaleborne: 2
 
 ### SPAWN_EGGS
 
-Total: 842
+Total: 850
 
 - alexscaves: 43
 - alexsmobs: 89
@@ -627,6 +674,7 @@ Total: 842
 - creeperoverhaul: 15
 - deep_dark_regrowth: 17
 - dustydecorations: 1
+- ec_ad: 8
 - endermanoverhaul: 20
 - golemoverhaul: 9
 - icys-better-horses: 15
@@ -654,29 +702,29 @@ Total: 842
 
 ### OTHER
 
-Total: 822
+Total: 765
 
-- alexscaves: 41
-- alexsmobs: 29
-- aquamirae: 12
-- barnyardbuddies: 1
-- bbb: 2
-- blastfromthepast: 14
+- alexscaves: 52
+- alexsmobs: 66
+- aquamirae: 9
+- barnyardbuddies: 2
+- bbb: 1
+- blastfromthepast: 12
 - block_factorys_bosses: 13
 - brewery: 3
 - camerapture: 3
-- cataclysm: 35
+- cataclysm: 26
 - citadel: 4
-- cnc: 14
-- companions: 5
-- deep_dark_regrowth: 32
+- cnc: 11
+- companions: 4
+- deep_dark_regrowth: 28
 - dustydecorations: 1
-- ec_ad: 96
+- ec_ad: 25
 - efn: 2
 - endermanoverhaul: 9
 - endrem: 18
 - epic_fight_avalon: 1
-- epicfight: 3
+- epicfight: 1
 - epicfightx: 5
 - fairylights: 1
 - farm_and_charm: 6
@@ -697,33 +745,34 @@ Total: 822
 - kaleidoscope_end: 4
 - kaleidoscope_nether: 7
 - knightlib: 5
-- legendary_monsters: 8
+- legendary_monsters: 30
 - libraryferret: 5
 - litematicatool: 1
-- luminous_beasts: 18
-- luminous_nether: 4
+- luminous_beasts: 15
+- luminous_nether: 7
 - luminoustag: 1
-- minecraft: 102
+- minecraft: 85
 - natures_spirit: 1
 - naturescompass: 1
-- netherexp: 30
+- netherexp: 28
 - oceanicrealms: 1
 - paraglider: 6
 - primal: 7
 - ribbits: 1
 - rottencreatures: 1
-- royalvariations: 14
+- royalvariations: 10
 - sereneseasons: 2
 - siegeweapons: 6
 - simplybows: 4
-- skarrier_mobs: 28
+- skarrier_mobs: 27
 - sophisticatedcore: 1
-- spawn: 20
+- spawn: 14
 - spider_overhaul: 3
-- the_sift: 3
+- the_sift: 4
 - tinyinv: 1
-- trials: 9
-- unearthed_journey: 39
+- toms_storage: 1
+- trials: 7
+- unearthed_journey: 37
 - vinery: 6
 - whaleborne: 4
 

@@ -25,25 +25,43 @@
     ]
   },
   "change": {
-    "summary": "Use one reviewed schema-2 manifest for all 13,869 item IDs, corrected catalog leaves, and exact companion and transport additional views.",
+    "summary": "Use one reviewed schema-2 manifest for all 14,064 item IDs, corrected catalog leaves, and exact companion and transport additional views.",
     "modifiers": [
       {
         "property": "jei.catalog_manifest",
         "operation": "replace",
         "before": "The initial exact manifest retained broad classifier mistakes and had no exact secondary views.",
-        "after": "Every exported item ID has one reviewed primary leaf under the corrected weapon, wearable, food, building, or root tree. Reviewed spawn eggs can also appear in Companions or Transport."
+        "after": "All 14,064 registered item IDs have one reviewed primary leaf under the corrected weapon, wearable, food, building, or root tree. Reviewed spawn eggs can also appear in Companions or Transport."
       },
       {
         "property": "jei.wearable_navigation",
         "operation": "replace",
         "before": "Armor, mob armor, dolls, tools, sensors, books, and storage items shared one broad leaf.",
-        "after": "Wearables has Armor, Mob Armor, and Dolls leaves. The Dolls leaf contains exact doll item IDs only."
+        "after": "Wearables has Armor, Mob Armor, and Cosmetics leaves. The internal WEARABLE_DOLLS leaf presents 765 exact dolls and reviewed effectless decorative heads as Cosmetics."
       },
       {
         "property": "jei.semantic_categories",
         "operation": "replace",
         "before": "Many weapons, shields, plants, containers, cooking tools, Create tools, and companion items appeared in Other or an unrelated leaf.",
-        "after": "Reviewed item families use their exact weapon, shield, nature, container, cooking, Create, building-tool, companion, or transport leaf."
+        "after": "Reviewed item families use their exact weapon, shield, nature, container, cooking, Create, building-tool, companion, transport, potion, book, ore, light, block, spawn-egg, music-disc or tree leaf. Archie's Dinosaurs has 7 totems, 7 melee weapons, 3 ranged weapons, 24 armor pieces, 1 food, 1 companion item, 1 book, 4 ore-family items, 1 light and 10 building blocks in semantic leaves."
+      },
+      {
+        "property": "jei.catalog_groups",
+        "operation": "replace",
+        "before": "Components was a top-level group, music discs shared broader leaves, and wood products were split between Building Materials, Nature, Furniture and Other.",
+        "after": "Components is retired and unspecialized crafting parts use Other. Music Discs is a top-level leaf with 87 items. Trees is a top-level leaf with 1,143 logs, planks, wooden architecture, signs, doors, trapdoors, shelves, trims and reviewed wooden furniture. Leaves, soil, saplings and living plants remain in Building > Nature, while Casual Swing remains in Building > Furniture and Decorations."
+      },
+      {
+        "property": "jei.archies_semantic_eggs",
+        "operation": "set",
+        "before": "Archie's egg-shaped items had no reviewed semantic distinction.",
+        "after": "All seven ec_ad:*_spawn_egg registry items use Spawn Eggs. ec_ad:sculkraptor_egg also uses Spawn Eggs because it hatches a non-mount creature. The placed hatch eggs ec_ad:chorusoatl_egg, ec_ad:lushsaur_egg, ec_ad:obsidiceratops_egg and ec_ad:therimoss_egg use Transport because the installed behavior produces rideable mounts."
+      },
+      {
+        "property": "jei.market_building_admission",
+        "operation": "set",
+        "before": "The optional building-market admission had no Trees leaf.",
+        "after": "JemCatalogCategories admits TREES to the optional JEM Economy building market with the existing Create and building leaves. Music Discs, Cosmetics and Other remain outside building admission."
       },
       {
         "property": "jei.original_mode",
@@ -61,7 +79,7 @@
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
-      "Client/ManagedPack/mods/jemcompat-3.11.3.jar",
+      "Client/ManagedPack/mods/jemcompat-3.11.4.jar",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/**",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/**",
       "tools/generate_jei_catalog.py",
@@ -95,6 +113,24 @@
       "commit": "SELF",
       "action": "reclassify_catalog",
       "summary": "Correct semantic leaves, add Shields, Companions, Building Tools, Armor, Mob Armor, and Dolls, and add exact companion and transport secondary views."
+    },
+    {
+      "date": "2026-11-23",
+      "commit": "SELF",
+      "action": "review_archies_and_restructure_catalog",
+      "summary": "Review all 14,064 assignments, classify Archie's content and semantic egg families, retire Components, add top-level Music Discs and Trees, present Dolls as Cosmetics with effectless heads, and correct the requested weapon, wearable, tool, light, potion and building examples.",
+      "source_files": [
+        "tools/generate_jei_catalog.py",
+        "Docs/catalog/JEI_CATALOG_MANIFEST.md",
+        "Docs/catalog/JEI_CATALOG_REVIEW.md",
+        "Mods/JEMCompat/README.md",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json"
+      ]
     }
   ],
   "impacts": {
@@ -106,12 +142,15 @@
     "relations": [
       "logical server item registry -> checked manifest -> direct client lookup",
       "spawn egg primary leaf -> exact companion or transport additional view",
+      "Archie's registered egg behavior -> Spawn Eggs or Transport primary leaf",
+      "top-level leaf -> localized curated navigation",
+      "Trees leaf -> optional JEM Economy building admission",
       "leaf category -> optional JEM Economy admission"
     ],
     "notes": [
       "The export SHA-256 is 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39.",
       "The JEMCompat 3.11.2 SHA-256 is 5044F3A784BDF8C74C4C47C7D7E390CA1BDA10D347A00B42722AD7B777FBFFA0.",
-      "The Dolls leaf contains 723 exact doll items."
+      "The current manifest contains 14,064 exact primary assignments. Cosmetics contains 765 IDs, Music Discs contains 87 IDs and Trees contains 1,143 IDs."
     ],
     "unresolved": [
       "Player visual acceptance requires an explicitly authorized client launch."

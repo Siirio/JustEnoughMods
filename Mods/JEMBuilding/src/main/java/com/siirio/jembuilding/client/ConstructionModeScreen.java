@@ -31,7 +31,6 @@ public final class ConstructionModeScreen extends Screen {
 
     private final BlockPos clicked;
     private final Direction face;
-    private final BlockPos anchor;
     private final InteractionHand hand;
     private final Vec3 look;
 
@@ -39,7 +38,6 @@ public final class ConstructionModeScreen extends Screen {
         super(Component.translatable("screen.jem_building.mode.title"));
         this.clicked = clicked.immutable();
         this.face = face;
-        this.anchor = clicked.relative(face).immutable();
         this.hand = hand;
         this.look = look;
     }
@@ -98,7 +96,7 @@ public final class ConstructionModeScreen extends Screen {
             onClose();
             return;
         }
-        BuilderHammerItem.setStart(hammer, anchor, shape, plane);
+        BuilderHammerItem.clear(hammer);
         BuildingNetwork.selectMode(hand, clicked, face, shape, plane);
         minecraft.setScreen(null);
     }

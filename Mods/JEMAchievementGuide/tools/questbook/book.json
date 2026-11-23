@@ -45081,12 +45081,12 @@
             },
             {
               "keys": [
-                "jem_settlements:canonical_native_recruits"
+                "jem_settlements:canonical_iron_golem_security"
               ],
               "title_ru": "Управление поселением",
               "title_en": "Town management",
-              "text_ru": "Если установлены рекруты, найми своего через его нативное окно и зарегистрируй в своей территории; принадлежность и зарплата проверяются сервером. Страж учитывается в безопасности, только пока реально защищает поселение. Управление и спорные требования выплат остаются у нативного владельца.",
-              "text_en": "With Recruits installed, hire your own through its native screen and enroll it in your territory; server checks ownership/payroll. A guard contributes only while actually defending the town. Native owner keeps management and outstanding payroll obligations."
+              "text_ru": "Безопасность поселения обеспечивают живые железные големы с включённым ИИ. Существующая формула площади определяет необходимое число големов. Значок щита и баланс казны не создают безопасность.",
+              "text_en": "Settlement security uses living AI-enabled iron golems. The existing area coverage formula determines how many golems the territory needs. A shield icon or treasury balance does not create security."
             }
           ],
           "native_options": {
@@ -76460,6 +76460,7 @@
           ],
           "reward": {
             "tier": "capstone",
+            "coin_amount": 10000,
             "items": [
               {
                 "id": "alexsmobs:roadrunner_boots",

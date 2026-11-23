@@ -6,7 +6,7 @@ Standalone Minecraft Forge 1.20.1 survival construction mod
 
 1. Craft the single JEM Builder Hammer
 2. Left-click an existing block to open the circular wall, floor, column, sphere and cylinder menu
-3. Choose a mode, aim at a block or through air, and right-click to confirm the live preview
+3. Choose a mode, wait for the server-confirmed live preview, then aim at a block or through air and right-click to confirm it
 4. Hold a placeable block and right-click any hollow placeholder to replace that clicked cell immediately, then fill the remaining available cells from that point through bounded server work
 5. Sneak-right-click a placeholder with the hammer to remove only unfinished placeholders
 
@@ -14,4 +14,4 @@ Every shape is limited to an inclusive 256-block span on X, Y, and Z. Walls foll
 
 The 3D hammer geometry and native-size texture are independent copies of the established BBB hammer assets in `Docs/art/bbb-hammer-2026-10-21`
 
-When JEM Compat, Handcrafted and Building But Better are also installed, JEM Compat promotes this hammer to the only player-facing hammer. Handcrafted keeps its native `Hammerable.onHammer` action, BBB keeps its native `bbb:hammers` behavior, and JEM Building handles construction only when neither external interaction consumes the click. The two registered legacy items remain loadable for old data but are removed from new acquisition through the managed Item Obliterator policy
+When JEM Compat, Handcrafted and Building But Better are also installed, JEM Compat promotes this hammer to the only player-facing hammer. A server-confirmed active construction selection owns the next ordinary right-click. Without an active selection, Handcrafted keeps its native `Hammerable.onHammer` action and BBB keeps its native `bbb:hammers` behavior. The two registered legacy items remain loadable for old data but are removed from new acquisition through the managed Item Obliterator policy

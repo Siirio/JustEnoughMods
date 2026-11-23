@@ -43,7 +43,7 @@
         "property": "handbook.native_manuals",
         "operation": "document",
         "before": "Native books existed separately.",
-        "after": "Eight general native families plus acquired Aquamirae NBT logbooks, preserving native knowledge. Fixed three-route server request protocol1 is read-only and requires the exact handbook."
+        "after": "The handbook opens Archie's Dinosaurs through ec_ad:guidebook and its native GuidebookScreen. CamRapture entries open an actual carried hotbar camerapture:album, preserving its picture NBT and native editor, and show a non-opening acquisition hint when no album is carried. Existing general native routes and acquired Aquamirae NBT logbooks keep their native knowledge and ownership."
       },
       {
         "property": "handbook.resource_reload",
@@ -72,6 +72,7 @@
       "Mods/JEMAchievementGuide/README.md",
       "Mods/JEMAchievementGuide/build.gradle",
       "Mods/JEMAchievementGuide/tools/*.py",
+      "Mods/JEMAchievementGuide/tools/questbook/book.json",
       "Mods/JEMAchievementGuide/src/main/handbook/navigation.json",
       "Mods/JEMAchievementGuide/src/main/handbook/manuals.json",
       "Mods/JEMAchievementGuide/src/main/handbook/translations.json",
@@ -91,6 +92,7 @@
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/manuals/*.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/mechanics/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_town_comfort.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/patchouli_books/just_enough_guide/book.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/recipes/handbook.json",
       "Mods/JEMDrillLifecycle/README.md",
@@ -221,6 +223,27 @@
         "Mods/JEMAchievementGuide/README.md",
         "Docs/handbook/README.md"
       ]
+    },
+    {
+      "date": "2026-11-23",
+      "commit": "SELF",
+      "action": "add_archies_and_camerapture_native_manuals",
+      "summary": "Add a direct Archie's Guidebook route, preserve carried CamRapture album NBT through the native item interaction, and synchronize the handbook generator source with the established iron-golem settlement-security rule.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/handbook/manuals.json",
+        "Mods/JEMAchievementGuide/src/main/handbook/translations.json",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/manuals/NativeManuals.java",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/manuals/ec_ad.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/manuals/ec_ad.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/manuals/camerapture.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/manuals/camerapture.json",
+        "Mods/JEMAchievementGuide/tools/questbook/book.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_town_comfort.json",
+        "Docs/handbook/README.md",
+        "Docs/handbook/manuals.md"
+      ]
     }
   ],
   "impacts": {
@@ -236,6 +259,9 @@
     "relations": [
       "native/domain state -> presentation adapter -> handbook or tooltip",
       "canonical authored resources -> localized Patchouli pages and JEI information",
+      "JEM handbook manual entry -> ec_ad:guidebook -> Archie's native GuidebookScreen",
+      "JEM handbook manual entry -> carried camerapture:album with original NBT -> CamRapture native album editor",
+      "canonical questbook source -> generated localized Patchouli settlement page",
       "first real login after delivery -> exact native handbook -> persisted one-time entitlement"
     ],
     "notes": [

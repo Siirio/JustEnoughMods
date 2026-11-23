@@ -2,6 +2,8 @@ package com.siirio.jembuilding.construction;
 
 import com.siirio.jembuilding.JEMBuilding;
 import com.siirio.jembuilding.item.BuilderHammerItem;
+import com.siirio.jembuilding.network.BuildingNetwork;
+import com.siirio.jembuilding.network.BuildingNetwork.SelectionFailure;
 import com.siirio.jembuilding.registry.BuildingContent;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -55,36 +57,70 @@ public final class ConstructionRuntime {
     public static void selectMode(ServerPlayer player, InteractionHand hand, BlockPos clicked, Direction face,
                                   ConstructionShape shape, ConstructionPlane requestedPlane) {
         ItemStack hammer = player.getItemInHand(hand);
-        if (!(hammer.getItem() instanceof BuilderHammerItem) || !player.serverLevel().hasChunkAt(clicked)
-                || player.distanceToSqr(Vec3.atCenterOf(clicked)) > 64D || player.serverLevel().getBlockState(clicked).isAir()) return;
+        if (!(hammer.getItem() instanceof BuilderHammerItem)) {
+            BuildingNetwork.rejectSelection(player, hand, SelectionFailure.INVALID_HAMMER);
+            return;
+        }
+        BuilderHammerItem.clear(hammer);
+        if (!player.serverLevel().hasChunkAt(clicked)) {
+            rejectSelection(player, hand, SelectionFailure.TARGET_UNLOADED);
+            return;
+        }
+        if (player.distanceToSqr(Vec3.atCenterOf(clicked)) > 64D) {
+            rejectSelection(player, hand, SelectionFailure.TARGET_TOO_FAR);
+            return;
+        }
+        if (player.serverLevel().getBlockState(clicked).isAir()) {
+            rejectSelection(player, hand, SelectionFailure.AIR_TARGET);
+            return;
+        }
         BlockPos start = clicked.relative(face);
-        if (!within(player.serverLevel(), start)) return;
+        if (!within(player.serverLevel(), start)) {
+            rejectSelection(player, hand, SelectionFailure.OUTSIDE_WORLD);
+            return;
+        }
         ConstructionPlane plane = switch (shape) {
             case WALL -> ConstructionPlane.wallFromLook(player.getLookAngle());
             case FLOOR -> ConstructionPlane.XZ;
             case COLUMN, SPHERE -> ConstructionPlane.XY;
             case CYLINDER -> ConstructionPlane.XZ;
         };
-        BuilderHammerItem.setStart(hammer, start, shape, plane);
+        long revision = UUID.randomUUID().getMostSignificantBits();
+        BuilderHammerItem.setStart(hammer, start, shape, plane, revision);
         player.getInventory().setChanged();
+        BuildingNetwork.acceptSelection(player, hand, start, shape, plane, revision);
         player.displayClientMessage(Component.translatable("message.jem_building.first_position",
                 Component.translatable("screen.jem_building.mode." + shape.name().toLowerCase()), start.getX(), start.getY(), start.getZ()), true);
     }
 
-    public static void confirm(ServerPlayer player, InteractionHand hand, BlockPos requestedEnd) {
+    public static void confirm(ServerPlayer player, InteractionHand hand, BlockPos requestedEnd, long requestedRevision) {
         ItemStack hammer = player.getItemInHand(hand);
-        if (!(hammer.getItem() instanceof BuilderHammerItem)) return;
+        if (!(hammer.getItem() instanceof BuilderHammerItem)) {
+            rejectConfirmation(player, SelectionFailure.INVALID_HAMMER);
+            return;
+        }
         Optional<BlockPos> selected = BuilderHammerItem.start(hammer);
         Optional<ConstructionShape> selectedShape = BuilderHammerItem.shape(hammer);
         Optional<ConstructionPlane> selectedPlaneValue = BuilderHammerItem.plane(hammer);
-        if (selected.isEmpty() || selectedShape.isEmpty() || selectedPlaneValue.isEmpty()) return;
+        java.util.OptionalLong selectedRevision = BuilderHammerItem.revision(hammer);
+        if (selected.isEmpty() || selectedShape.isEmpty() || selectedPlaneValue.isEmpty() || selectedRevision.isEmpty()) {
+            rejectConfirmation(player, SelectionFailure.NO_SELECTION);
+            return;
+        }
+        if (selectedRevision.getAsLong() != requestedRevision) {
+            rejectConfirmation(player, SelectionFailure.STALE_SELECTION);
+            return;
+        }
         BlockPos start = selected.get();
         ConstructionShape shape = selectedShape.get();
         ConstructionPlane selectedPlane = selectedPlaneValue.get();
         BlockPos end = ConstructionGeometry.constrain(shape, selectedPlane, start, requestedEnd);
         ServerLevel level = player.serverLevel();
         if (!ConstructionGeometry.validSpan(start, end) || !within(level, start) || !within(level, end)
-                || ((shape == ConstructionShape.WALL || shape == ConstructionShape.FLOOR) && !selectedPlane.contains(start, end))) return;
+                || ((shape == ConstructionShape.WALL || shape == ConstructionShape.FLOOR) && !selectedPlane.contains(start, end))) {
+            rejectConfirmation(player, SelectionFailure.INVALID_GEOMETRY);
+            return;
+        }
         if (shape == ConstructionShape.SPHERE) {
             int radius = ConstructionGeometry.sphereRadius(start, end);
             if (!within(level, start.offset(-radius, -radius, -radius)) || !within(level, start.offset(radius, radius, radius))) {
@@ -225,6 +261,15 @@ public final class ConstructionRuntime {
 
     private static boolean within(ServerLevel level, BlockPos pos) {
         return !level.isOutsideBuildHeight(pos) && level.getWorldBorder().isWithinBounds(pos);
+    }
+
+    private static void rejectSelection(ServerPlayer player, InteractionHand hand, SelectionFailure failure) {
+        player.getInventory().setChanged();
+        BuildingNetwork.rejectSelection(player, hand, failure);
+    }
+
+    private static void rejectConfirmation(ServerPlayer player, SelectionFailure failure) {
+        player.displayClientMessage(Component.translatable(failure.translationKey()), true);
     }
 
     private static boolean permitted(ServerPlayer player, BlockPos pos, ItemStack stack) {

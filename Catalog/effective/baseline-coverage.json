@@ -2,12 +2,12 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "ba5a58586053a7b2155f4948fd2b65bcd51dbf579fe0676665ba0866f8d00064",
-  "coverage_inputs_sha256": "884f2de2ff45bfa64a3d500d60a252ddb82ec8b15fefe06d57cc0614091b3be8",
+  "change_records_sha256": "32e12f1c6c660acee9f673c3b31bea11dbc9e89bdb04defa6831f36f6e4ff8f0",
+  "coverage_inputs_sha256": "84cf7256264f9a04d17f91e5c61789c6e378e3aed8043e8837034c40761c9248",
   "totals": {
-    "watched": 7140,
-    "covered": 5685,
-    "unresolved": 1455
+    "watched": 7153,
+    "covered": 5719,
+    "unresolved": 1434
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1360,8 +1360,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 3757,
-      "covered": 3757,
+      "watched": 3769,
+      "covered": 3769,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1395,30 +1395,9 @@
     },
     "Mods/JEMBuilding": {
       "watched": 24,
-      "covered": 2,
-      "unresolved": 22,
+      "covered": 23,
+      "unresolved": 1,
       "unresolved_paths": [
-        "Mods/JEMBuilding/gradle.properties",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/JEMBuilding.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionExpiryClient.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionInput.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionModeScreen.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionPreview.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/compat/jade/ConstructionExpiryJadePlugin.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/compat/jade/ConstructionExpiryProvider.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionData.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionGeometry.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionPlaceholderBlock.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionPlane.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionRuntime.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionShape.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/item/BuilderHammerItem.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/network/BuildingNetwork.java",
-        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/registry/BuildingContent.java",
-        "Mods/JEMBuilding/src/main/resources/assets/jem_building/blockstates/construction_placeholder.json",
-        "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/block/construction_placeholder.json",
-        "Mods/JEMBuilding/src/main/resources/assets/jem_building/models/item/builder_hammer.json",
-        "Mods/JEMBuilding/src/main/resources/assets/jem_building/textures/item/builder_hammer.png",
         "Mods/JEMBuilding/src/main/resources/pack.mcmeta"
       ]
     },
@@ -1660,8 +1639,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMWorldBossTiers": {
-      "watched": 141,
-      "covered": 141,
+      "watched": 142,
+      "covered": 142,
       "unresolved": 0,
       "unresolved_paths": []
     },

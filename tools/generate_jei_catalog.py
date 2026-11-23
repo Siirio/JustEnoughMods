@@ -36,7 +36,8 @@ LEAVES = (
     "POTIONS",
     "BOOKS",
     "ORES",
-    "COMPONENTS",
+    "MUSIC_DISCS",
+    "TREES",
     "CREATE_REDSTONE",
     "BUILDING_FURNITURE",
     "BUILDING_NATURE",
@@ -51,6 +52,7 @@ LEAVES = (
 PARENTS = {"WEAPONS", "WEARABLES", "FOOD", "BUILDING"}
 ID_PATTERN = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
 SKARRIER_TOTEMS = {
+    "skarrier_mobs:blank_totem",
     "skarrier_mobs:totem_of_extinction",
     "skarrier_mobs:totem_of_freezing",
     "skarrier_mobs:totem_of_melding",
@@ -84,10 +86,11 @@ OLD_LEAF_MAP = {
     "WEARABLE_DOLLS": "WEARABLE_DOLLS",
     "FOOD": "FOOD_COOKING_EQUIPMENT",
     "ORES": "ORES",
-    "COMPONENTS": "COMPONENTS",
+    "COMPONENTS": "OTHER",
     "CREATE_REDSTONE": "CREATE_REDSTONE",
     "FURNITURE": "BUILDING_FURNITURE",
     "NATURE": "BUILDING_NATURE",
+    "TREES": "TREES",
     "CONTAINERS": "BUILDING_CONTAINERS",
     "HOLIDAY": "BUILDING_HOLIDAY",
     "BUILDING_BLOCKS": "BUILDING_BLOCKS",
@@ -96,6 +99,7 @@ OLD_LEAF_MAP = {
     "FISHING": "FISHING",
     "BOOKS": "BOOKS",
     "POTIONS": "POTIONS",
+    "MUSIC_DISCS": "MUSIC_DISCS",
     "TRANSPORT": "TRANSPORT",
     "COMPANIONS": "COMPANIONS",
     "BUILDING_TOOLS": "BUILDING_TOOLS",
@@ -160,6 +164,84 @@ EXACT_RECLASSIFICATIONS = {
     "minecraft:resin_clump": "ORES",
     "minecraft:crafter": "CREATE_REDSTONE",
     "trials:crafter": "CREATE_REDSTONE",
+    # User-reviewed weapon and tool corrections
+    "alexscaves:shot_gum": "WEAPON_RANGED",
+    "alexsmobs:dimensional_carver": "WEAPON_MELEE",
+    "alexsmobs:shattered_dimensional_carver": "WEAPON_MELEE",
+    "blastfromthepast:bear_glove": "WEAPON_MELEE",
+    "epicfight:glove": "WEAPON_MELEE",
+    "epicfight:uchigatana": "WEAPON_MELEE",
+    "royalvariations:royal_bomb": "WEAPON_RANGED",
+    "skarrier_mobs:blank_totem": "WEAPON_TOTEMS",
+    "unearthed_journey:toxic_gas_bomb": "WEAPON_RANGED",
+    "bbb:chisel": "BUILDING_TOOLS",
+    # Non-wearable blocks and utilities
+    "alexscaves:hazmat_skull_block": "BUILDING_BLOCKS",
+    "fairylights:skull_light": "BUILDING_LIGHT",
+    "toms_storage:ts.adv_wireless_terminal": "OTHER",
+    # Components was retired. These liquid or magical mixtures belong with potions.
+    "alexscaves:licowitch_radiant_essence": "POTIONS",
+    "alexscaves:radiant_essence": "POTIONS",
+    "alexsmobs:warped_mixture": "POTIONS",
+    "luminous_nether:crimson_contaminant": "POTIONS",
+    # Archie's Dinosaurs 1.0.7 exact behavior families
+    **{
+        f"ec_ad:{path}": "WEAPON_TOTEMS"
+        for path in (
+            "burning_totem", "echo_totem", "fearful_totem", "lush_totem",
+            "soaring_totem", "tidal_totem", "tropic_totem",
+        )
+    },
+    **{
+        f"ec_ad:{path}": "WEAPON_MELEE"
+        for path in (
+            "chorus_scythe", "lush_mace", "theri_claw_copper", "theri_claw_diamond",
+            "theri_claw_gold", "theri_claw_iron", "theri_claw_netherite",
+        )
+    },
+    **{
+        f"ec_ad:{path}": "WEAPON_RANGED"
+        for path in ("ooze_tipped_arrow", "rib_bow", "sculk_bow")
+    },
+    **{
+        f"ec_ad:{part}": "WEARABLE_ARMOR"
+        for family in ("chorusoatl", "coralosaur", "lushsaur", "obsidiceratops", "sculksaur", "therimoss")
+        for part in (f"{family}_helmet", f"{family}_chestplate", f"{family}_leggings", f"{family}_boots")
+    },
+    **{
+        f"ec_ad:{path}": "SPAWN_EGGS"
+        for path in (
+            "chorusoatl_spawn_egg", "coralosaur_spawn_egg", "lushsaur_spawn_egg",
+            "obsidiceratops_spawn_egg", "sculkraptor_spawn_egg", "sculksaur_spawn_egg",
+            "therimoss_spawn_egg",
+        )
+    },
+    "ec_ad:guidebook": "BOOKS",
+    "ec_ad:coral_stew": "FOOD_EDIBLES",
+    "ec_ad:scorching_horn": "COMPANIONS",
+    # Placed hatch eggs. Four hatch rideable mounts. The Sculkraptor egg hatches a non-mount creature.
+    "ec_ad:chorusoatl_egg": "TRANSPORT",
+    "ec_ad:lushsaur_egg": "TRANSPORT",
+    "ec_ad:obsidiceratops_egg": "TRANSPORT",
+    "ec_ad:therimoss_egg": "TRANSPORT",
+    "ec_ad:sculkraptor_egg": "SPAWN_EGGS",
+    "ec_ad:amber": "ORES",
+    "ec_ad:amber_ore": "ORES",
+    "ec_ad:carved_amber": "ORES",
+    "ec_ad:raw_amber_block": "ORES",
+    "ec_ad:amber_lamp": "BUILDING_LIGHT",
+    **{
+        f"ec_ad:{path}": "BUILDING_BLOCKS"
+        for path in (
+            "amber_brick_slab", "amber_brick_stairs", "amber_brick_wall", "amber_bricks",
+            "amber_chain", "cracked_amber_bricks", "polished_amber", "polished_amber_slab",
+            "polished_amber_stairs", "polished_amber_wall",
+        )
+    },
+    # Royal Variations travel items
+    "royalvariations:empty_royal_telelocator": "TRANSPORT",
+    "royalvariations:royal_ender_pearl": "TRANSPORT",
+    "royalvariations:royal_telelocator": "TRANSPORT",
     # Semantic categories take precedence over the source mod family
     "create:cardboard_sword": "WEAPON_MELEE",
     "create:potato_cannon": "WEAPON_RANGED",
@@ -210,117 +292,6 @@ EXACT_RECLASSIFICATIONS = {
     },
 }
 
-COMPONENT_ITEMS = {
-    # Alex's Caves materials and creature drops
-    "alexscaves:charred_remnant",
-    "alexscaves:corrodent_teeth",
-    "alexscaves:dark_tatters",
-    "alexscaves:ferrouslime_ball",
-    "alexscaves:fissile_core",
-    "alexscaves:guano",
-    "alexscaves:heavy_bone",
-    "alexscaves:immortal_embryo",
-    "alexscaves:licowitch_radiant_essence",
-    "alexscaves:ominous_catalyst",
-    "alexscaves:pewen_sap",
-    "alexscaves:pure_darkness",
-    "alexscaves:radiant_essence",
-    "alexscaves:shadow_silk",
-    "alexscaves:tough_hide",
-    "alexscaves:toxic_paste",
-    # Alex's Mobs materials and creature drops
-    "alexsmobs:ambergris",
-    "alexsmobs:banana_slug_slime",
-    "alexsmobs:bear_fur",
-    "alexsmobs:bison_fur",
-    "alexsmobs:blood_sac",
-    "alexsmobs:bone_serpent_tooth",
-    "alexsmobs:cachalot_whale_tooth",
-    "alexsmobs:centipede_leg",
-    "alexsmobs:cockroach_ootheca",
-    "alexsmobs:cockroach_wing",
-    "alexsmobs:cockroach_wing_fragment",
-    "alexsmobs:crocodile_scute",
-    "alexsmobs:dropbear_claw",
-    "alexsmobs:elastic_tendon",
-    "alexsmobs:emu_feather",
-    "alexsmobs:farseer_arm",
-    "alexsmobs:fish_bones",
-    "alexsmobs:froststalker_horn",
-    "alexsmobs:gazelle_horn",
-    "alexsmobs:guster_eye",
-    "alexsmobs:hemolymph_sac",
-    "alexsmobs:kangaroo_hide",
-    "alexsmobs:komodo_spit",
-    "alexsmobs:lost_tentacle",
-    "alexsmobs:moose_antler",
-    "alexsmobs:mosquito_proboscis",
-    "alexsmobs:mungal_spores",
-    "alexsmobs:raccoon_tail",
-    "alexsmobs:rattlesnake_rattle",
-    "alexsmobs:roadrunner_feather",
-    "alexsmobs:rocky_shell",
-    "alexsmobs:serrated_shark_tooth",
-    "alexsmobs:shark_tooth",
-    "alexsmobs:shed_snake_skin",
-    "alexsmobs:skreecher_soul",
-    "alexsmobs:spiked_scute",
-    "alexsmobs:tarantula_hawk_wing",
-    "alexsmobs:tarantula_hawk_wing_fragment",
-    "alexsmobs:void_worm_eye",
-    "alexsmobs:void_worm_mandible",
-    "alexsmobs:warped_mixture",
-    "alexsmobs:warped_muscle",
-    # Barnyard Buddies and Primal creature drops
-    "barnyardbuddies:silkie_feather",
-    "primal:crocodile_scute",
-    # Legendary Monsters boss materials
-    "legendary_monsters:air_rune",
-    "legendary_monsters:anchor_handle",
-    "legendary_monsters:ancient_spike",
-    "legendary_monsters:corrupted_soul",
-    "legendary_monsters:dinosaur_bone",
-    "legendary_monsters:eye_of_air",
-    "legendary_monsters:eye_of_annihilation",
-    "legendary_monsters:eye_of_bones",
-    "legendary_monsters:eye_of_chorus",
-    "legendary_monsters:eye_of_frost",
-    "legendary_monsters:eye_of_ghost",
-    "legendary_monsters:eye_of_magma",
-    "legendary_monsters:eye_of_many_ribs",
-    "legendary_monsters:eye_of_moss",
-    "legendary_monsters:eye_of_sandstorm",
-    "legendary_monsters:eye_of_shulker",
-    "legendary_monsters:eye_of_soul",
-    "legendary_monsters:frozen_rune",
-    "legendary_monsters:large_shulker_shell",
-    "legendary_monsters:lava_eaters_skin",
-    "legendary_monsters:long_stick_half",
-    "legendary_monsters:metal_debris",
-    "legendary_monsters:warped_mushroom_cap_part",
-    "legendary_monsters:withered_bone",
-    "legendary_monsters:withered_horn",
-    # Luminous Beasts and Luminous Nether creature drops
-    "luminous_beasts:bone_rattle",
-    "luminous_beasts:gator_tooth",
-    "luminous_beasts:jungle_pendant",
-    "luminous_beasts:legendary_scrap",
-    "luminous_beasts:luminous_antennae",
-    "luminous_beasts:magic_root",
-    "luminous_beasts:molten_coal",
-    "luminous_beasts:phoenix_feather",
-    "luminous_beasts:viper_tooth",
-    "luminous_beasts:wind_item",
-    "luminous_beasts:yeti_horn",
-    "luminous_nether:ashes",
-    "luminous_nether:crimson_contaminant",
-    "luminous_nether:ectoplasm_ball",
-    "luminous_nether:ghostly_essence",
-    "luminous_nether:molten_coal",
-    "luminous_nether:soul_bone",
-    "luminous_nether:torn_rag",
-}
-
 HOLIDAY_ITEMS = {
     "dustydecorations:gourd",
     "dustydecorations:gourd_3",
@@ -328,6 +299,28 @@ HOLIDAY_ITEMS = {
     "dustydecorations:hanging_gourds",
     "dustydecorations:pumpkin_scarecrow",
     "dustydecorations:winter_reef",
+}
+
+WOOD_SPECIES = (
+    "acacia", "ash_willow", "aspen", "bamboo", "birch", "cedar", "cherry", "coconut",
+    "crimson", "cypress", "dark_cherry", "dark_oak", "fir", "ghaf", "joshua", "jungle",
+    "leguminocarpon", "mangrove", "maple", "oak", "olive", "overgrown_willow", "palo_verde",
+    "redwood", "spruce", "sugi", "warped", "willow", "wisteria", "withered",
+)
+
+COSMETIC_HEADS = {
+    "dustydecorations:cow_skull",
+    "dustydecorations:equine_skull",
+    "dustydecorations:wolf_skull",
+    "endermanoverhaul:tiny_skull",
+    "minecraft:creeper_head",
+    "minecraft:dragon_head",
+    "minecraft:piglin_head",
+    "minecraft:player_head",
+    "minecraft:skeleton_skull",
+    "minecraft:wither_skeleton_skull",
+    "minecraft:zombie_head",
+    "skarrier_mobs:breacher_skull",
 }
 
 
@@ -573,19 +566,97 @@ def is_glass_or_window(path: str, row: dict) -> bool:
     )
 
 
+def is_music_disc(row: dict) -> bool:
+    return has_tag(row, "minecraft:items/music_discs", "forge:items/music_discs", "c:items/music_discs")
+
+
+def is_cosmetic_head(item_id: str, path: str, row: dict) -> bool:
+    namespace = item_id.split(":", 1)[0]
+    return (
+        item_id in COSMETIC_HEADS
+        or has_tag(row, "items/mob_heads")
+        or namespace == "cnc" and path.endswith("_head")
+        or namespace == "rottencreatures" and path.endswith("_head")
+    )
+
+
+def is_tree_product(namespace: str, path: str, row: dict) -> bool:
+    if namespace == "casualswing":
+        return False
+    if has_tag(row, "minecraft:items/leaves", "minecraft:items/saplings", "minecraft:items/flowers", "minecraft:items/corals"):
+        return False
+    if has_phrase(
+        path,
+        "leaves", "foliage", "sapling", "flower", "mushroom", "bush", "plant", "roots",
+        "sprout", "vine", "grass", "coral", "cactus", "fern", "moss", "lichen",
+    ):
+        return False
+    if has_tag(
+        row,
+        "minecraft:items/planks", "minecraft:items/logs", "minecraft:items/wooden_",
+        "minecraft:items/signs", "minecraft:items/hanging_signs",
+    ):
+        return True
+    if path.endswith(("_sign", "_hanging_sign")) and is_block(row):
+        return True
+    if has_phrase(path, "log", "wood", "planks", "stripped_log", "stripped_wood"):
+        return True
+    if not any(path.startswith(species + "_") for species in WOOD_SPECIES):
+        return False
+    return is_block(row) and path.endswith((
+        "_balustrade", "_beam", "_bench", "_button", "_chair", "_corner_trim", "_couch",
+        "_counter", "_cupboard", "_desk", "_dining_bench", "_door", "_drawer", "_fancy_bed",
+        "_fence", "_fence_gate", "_floorboard", "_frame", "_ladder", "_lattice", "_layer",
+        "_nightstand", "_pallet", "_pillar_trim", "_pressure_plate", "_shelf", "_side_table",
+        "_slab", "_stairs", "_stool", "_support", "_table", "_trap_door", "_trapdoor", "_trim",
+        "_wall",
+    ))
+
+
+def is_false_light_color(path: str) -> bool:
+    return path.startswith(("light_blue_", "light_gray_"))
+
+
+def is_light_source(namespace: str, path: str) -> bool:
+    return has_phrase(path, "torch", "lantern", "candle", "lamp", "chandelier", "sconce", "brazier") or (
+        namespace == "fairylights" and has_phrase(path, "light", "lights")
+    )
+
+
 def reclassification_target(item_id: str, current_leaf: str, row: dict) -> str:
     namespace, path = item_id.split(":", 1)
     exact = EXACT_RECLASSIFICATIONS.get(item_id)
     if exact is not None:
         return exact
+    if is_music_disc(row):
+        return "MUSIC_DISCS"
+    if is_cosmetic_head(item_id, path, row):
+        return "WEARABLE_DOLLS"
+    if current_leaf == "COMPONENTS":
+        return "OTHER"
     if is_smithing_template(item_id, row):
         return "WEAPON_SMITHING_TEMPLATES"
     if namespace in CREATE_NAMESPACES and is_glass_or_window(path, row):
         return "BUILDING_GLASS"
     if namespace in CREATE_NAMESPACES:
         return "CREATE_REDSTONE"
-    if item_id in COMPONENT_ITEMS:
-        return "COMPONENTS"
+    if namespace == "casualswing":
+        return "BUILDING_FURNITURE"
+    if current_leaf == "CREATE_REDSTONE":
+        return "TREES" if is_tree_product(namespace, path, row) else current_leaf
+    if current_leaf in {
+        "BUILDING_BLOCKS", "BUILDING_FURNITURE", "BUILDING_GLASS", "BUILDING_LIGHT",
+        "BUILDING_NATURE", "WEARABLE_ARMOR",
+    } and is_block(row) and is_light_source(namespace, path):
+        return "BUILDING_LIGHT"
+    if current_leaf == "BUILDING_LIGHT" and is_false_light_color(path):
+        if path.endswith(("_awning", "_fabric")):
+            return "BUILDING_FURNITURE"
+        if namespace == "snowyspirit":
+            return "BUILDING_HOLIDAY"
+        return "BUILDING_BLOCKS" if is_block(row) else "OTHER"
+    if is_tree_product(namespace, path, row):
+        return "TREES"
     if item_id in HOLIDAY_ITEMS or (
         current_leaf == "BUILDING_BLOCKS"
         and has_phrase(path, "wreath", "garland", "gourd", "pumpkin_scarecrow")
@@ -632,6 +703,10 @@ def classify(row: dict, hint: str | None) -> str:
 
     if item_id in EXACT:
         return EXACT[item_id]
+    if is_music_disc(row):
+        return "MUSIC_DISCS"
+    if is_cosmetic_head(item_id, path, row):
+        return "WEARABLE_DOLLS"
     if "hourglass" in token_set or {"sand", "clock"} <= token_set:
         return "OTHER"
 
@@ -969,6 +1044,9 @@ def classify(row: dict, hint: str | None) -> str:
     if item_id in {"jem_building:builder_hammer", "bbb:hammer", "handcrafted:hammer"}:
         return "BUILDING_TOOLS"
 
+    if is_tree_product(namespace, path, row):
+        return "TREES"
+
     if namespace in {"beachparty", "casualswing", "chimes", "secretdoors", "shutterup"} or has_phrase(
         path,
         "chair",
@@ -1036,9 +1114,7 @@ def classify(row: dict, hint: str | None) -> str:
     if is_glass_or_window(path, row):
         return "BUILDING_GLASS"
 
-    if has_phrase(
-        path, "torch", "lantern", "candle", "light", "lamp", "chandelier", "sconce", "brazier"
-    ):
+    if is_block(row) and is_light_source(namespace, path):
         return "BUILDING_LIGHT"
 
     if namespace in {"moa_decor_holidays", "snowyspirit", "giftypresent"} or has_phrase(
@@ -1157,6 +1233,9 @@ def updated_manifest(registered_ids: set[str]) -> dict:
 
 def reclassified_manifest() -> dict:
     data = read_json(MANIFEST)
+    retired_components = data.setdefault("assignments", {}).pop("COMPONENTS", [])
+    data["assignments"].setdefault("OTHER", []).extend(retired_components)
+    data["assignments"]["OTHER"] = sorted(set(data["assignments"]["OTHER"]))
     for leaf in LEAVES:
         data.setdefault("assignments", {}).setdefault(leaf, [])
     validate(data)
@@ -1171,7 +1250,7 @@ def reclassified_manifest() -> dict:
                 moves[(current_leaf, target)] += 1
     result = {
         "schema_version": SCHEMA_VERSION,
-        "source": "Exact logical-server Forge item registry export with reviewed 2026-11-22 semantic corrections",
+        "source": "Exact logical-server Forge item registry export with reviewed 2026-11-23 semantic corrections",
         "item_count": data["item_count"],
         "assignments": {leaf: sorted(grouped[leaf]) for leaf in LEAVES},
         "additional_views": data["additional_views"],
@@ -1186,10 +1265,6 @@ def reclassified_manifest() -> dict:
         if item_id in assigned_ids:
             if item_id not in result["assignments"][target]:
                 raise ValueError(f"Required correction failed for {item_id}: expected {target}")
-    for item_id in COMPONENT_ITEMS:
-        if item_id in assigned_ids:
-            if item_id not in result["assignments"]["COMPONENTS"]:
-                raise ValueError(f"Required component correction failed for {item_id}")
     remaining_templates = [
         item_id
         for leaf, item_ids in result["assignments"].items()

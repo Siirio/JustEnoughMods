@@ -30,6 +30,7 @@ No currency textures or parallel balance system were introduced.
   registered item models/counts. Numeric amount input still accepts copper units,
   as the transaction protocol does; it is not a rounded display conversion.
 - Shipping-box payout preview and account/global budgets use Coin groups.
+- FTB Coin rewards render the registered item model for their highest present denomination and name the exact complete decomposition. For example, 25 Copper units show as 2 Silver Coins + 5 Copper Coins. The visual projection does not change the funded Wallet amount, reward identity or replay protection.
 - Native merchant list currency cells use authoritative `NativeTradeQuote`
   projections for emerald cost A, cost B and payout legs; native goods/NBT,
   buttons, stock arrows, scroll and geometry remain. A selected exact amount

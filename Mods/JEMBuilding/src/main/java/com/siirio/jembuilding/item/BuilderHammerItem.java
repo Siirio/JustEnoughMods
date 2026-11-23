@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.nbt.Tag;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalLong;
 
 public final class BuilderHammerItem extends Item {
     private static final String SELECTION = "JemBuildingSelection";
@@ -44,7 +45,7 @@ public final class BuilderHammerItem extends Item {
             clear(stack);
             return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
         }
-        if (start(stack).isEmpty()) return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
+        if (!hasConfirmedSelection(stack)) return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
         if (context.getLevel().isClientSide) BuildingNetwork.confirmClientSelection(context.getHand(),
                 context.getClickedPos().relative(context.getClickedFace()));
         return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
@@ -58,7 +59,7 @@ public final class BuilderHammerItem extends Item {
             if (level.isClientSide) BuildingNetwork.cancelSelection();
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }
-        if (level.isClientSide && start(stack).isPresent()) BuildingNetwork.confirmClientSelection(hand, null);
+        if (level.isClientSide && hasConfirmedSelection(stack)) BuildingNetwork.confirmClientSelection(hand, null);
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
@@ -92,13 +93,28 @@ public final class BuilderHammerItem extends Item {
         catch (IllegalArgumentException ignored) { return Optional.empty(); }
     }
 
-    public static void setStart(ItemStack stack, BlockPos start, ConstructionShape shape, ConstructionPlane plane) {
+    public static OptionalLong revision(ItemStack stack) {
+        CompoundTag root = stack.getTag();
+        if (root == null || !root.contains(SELECTION, Tag.TAG_COMPOUND)) return OptionalLong.empty();
+        CompoundTag selection = root.getCompound(SELECTION);
+        return selection.contains("Revision", Tag.TAG_LONG)
+                ? OptionalLong.of(selection.getLong("Revision")) : OptionalLong.empty();
+    }
+
+    public static boolean hasConfirmedSelection(ItemStack stack) {
+        return start(stack).isPresent() && plane(stack).isPresent() && shape(stack).isPresent()
+                && revision(stack).isPresent();
+    }
+
+    public static void setStart(ItemStack stack, BlockPos start, ConstructionShape shape, ConstructionPlane plane,
+                                long revision) {
         CompoundTag selection = new CompoundTag();
         selection.putInt("X", start.getX());
         selection.putInt("Y", start.getY());
         selection.putInt("Z", start.getZ());
         selection.putString("Plane", plane.name());
         selection.putString("Shape", shape.name());
+        selection.putLong("Revision", revision);
         stack.getOrCreateTag().put(SELECTION, selection);
     }
 

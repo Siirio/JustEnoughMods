@@ -13,6 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class UnifiedHammer {
     private static final ResourceLocation JEM_HAMMER = new ResourceLocation("jem_building", "builder_hammer");
     private static final ResourceLocation LEGACY_HAMMER = new ResourceLocation("bbb", "hammer");
+    private static final String JEM_CONFIRMED_SELECTION = "JemBuildingSelection";
 
     private UnifiedHammer() {
     }
@@ -22,11 +23,19 @@ public final class UnifiedHammer {
         ResourceLocation held = ForgeRegistries.ITEMS.getKey(event.getItemStack().getItem());
         ResourceLocation unified = ModList.get().isLoaded("jem_building") ? JEM_HAMMER : LEGACY_HAMMER;
         if (event.isCanceled() || !unified.equals(held)
+                || hasConfirmedConstructionSelection(event.getItemStack())
                 || !(event.getLevel().getBlockState(event.getPos()).getBlock() instanceof Hammerable hammerable)
                 || !event.getEntity().mayUseItemAt(event.getPos(), event.getFace(), event.getItemStack())) return;
         hammerable.onHammer(event.getLevel(), event.getPos(), event.getLevel().getBlockState(event.getPos()),
                 event.getFace(), event.getEntity(), event.getHitVec().getLocation());
         event.setCancellationResult(InteractionResult.SUCCESS);
         event.setCanceled(true);
+    }
+
+    private static boolean hasConfirmedConstructionSelection(net.minecraft.world.item.ItemStack stack) {
+        net.minecraft.nbt.CompoundTag root = stack.getTag();
+        if (root == null || !root.contains(JEM_CONFIRMED_SELECTION, net.minecraft.nbt.Tag.TAG_COMPOUND)) return false;
+        net.minecraft.nbt.CompoundTag selection = root.getCompound(JEM_CONFIRMED_SELECTION);
+        return selection.contains("Revision", net.minecraft.nbt.Tag.TAG_LONG);
     }
 }

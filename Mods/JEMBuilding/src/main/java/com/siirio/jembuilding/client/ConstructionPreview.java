@@ -13,6 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -35,12 +36,18 @@ public final class ConstructionPreview {
 
     public static Optional<Selection> current() {
         Minecraft client = Minecraft.getInstance();
-        if (client.player == null || client.level == null || !(client.player.getMainHandItem().getItem() instanceof BuilderHammerItem)) return Optional.empty();
-        Optional<BlockPos> selected = BuilderHammerItem.start(client.player.getMainHandItem());
-        if (selected.isEmpty()) return Optional.empty();
+        if (client.player == null || client.level == null) return Optional.empty();
+        ItemStack hammer = client.player.getMainHandItem();
+        if (!(hammer.getItem() instanceof BuilderHammerItem) || !BuilderHammerItem.hasConfirmedSelection(hammer)) {
+            return Optional.empty();
+        }
+        Optional<BlockPos> selected = BuilderHammerItem.start(hammer);
+        Optional<ConstructionShape> selectedShape = BuilderHammerItem.shape(hammer);
+        Optional<ConstructionPlane> selectedPlane = BuilderHammerItem.plane(hammer);
+        if (selected.isEmpty() || selectedShape.isEmpty() || selectedPlane.isEmpty()) return Optional.empty();
         BlockPos start = selected.get();
-        ConstructionShape shape = BuilderHammerItem.shape(client.player.getMainHandItem()).orElse(ConstructionShape.WALL);
-        ConstructionPlane plane = BuilderHammerItem.plane(client.player.getMainHandItem()).orElse(ConstructionPlane.XY);
+        ConstructionShape shape = selectedShape.get();
+        ConstructionPlane plane = selectedPlane.get();
         BlockPos requested = target(start, shape, plane, client.player.getEyePosition(), client.player.getLookAngle());
         return Optional.of(new Selection(start, ConstructionGeometry.constrain(shape, plane, start, requested), shape, plane));
     }

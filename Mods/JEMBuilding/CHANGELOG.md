@@ -1,3 +1,9 @@
+## 1.0.2 - 2026-11-23
+
+- Wait for a server acceptance response before activating the construction preview
+- Bind confirmation to the accepted selection revision and report rejected or stale requests
+- Give a confirmed construction selection priority for the next ordinary right-click while preserving native Handcrafted and Building But Better actions without a selection
+
 ## 1.0.0 - 2026-11-01
 
 - Added conditional JEM Compat ownership that promotes this item to the only player-facing hammer for Handcrafted and Building But Better while preserving both native interaction contracts

@@ -29,6 +29,12 @@
         "operation": "set",
         "before": "Temporary construction placeholders persisted until manual cancellation or replacement.",
         "after": "Each temporary construction region stores one seven-Minecraft-day expiry. A coarse server queue expires due regions without per-block polling, incrementally removes only remaining placeholders in loaded chunks, and leaves every real replacement block intact. Optional Jade presentation shows only one current unit: whole Minecraft days with a trailing plus for a positive remainder, then minutes during the final day, then seconds during the final minute."
+      },
+      {
+        "property": "jem_building.selection_authority",
+        "operation": "replace",
+        "before": "The client stored and previewed a selection before server acceptance, selection and confirmation rejection paths were silent, and JEM Compat could route the same right-click to Handcrafted or Building But Better before construction confirmation.",
+        "after": "Construction protocol 4 makes the server the selection authority. The server returns an explicit accepted or rejected SelectionResponse, accepted hammer NBT carries a revision token, the client renders only a confirmed revision-bearing selection, and Confirm must echo the current revision before geometry is accepted. Localized rejection reasons expose invalid hammer, unloaded, distant, air, outside-world, missing, stale and invalid-geometry failures. A confirmed JEM construction selection owns the ordinary right-click before UnifiedHammer. Without a confirmed selection, Handcrafted Hammerable and Building But Better tag behavior remain native."
       }
     ]
   },
@@ -36,9 +42,11 @@
     "owner": "Mods/JEMBuilding",
     "kind": "Forge standalone gameplay module",
     "source_files": [
-      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding",
+      "Mods/JEMBuilding/gradle.properties",
+      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/**",
       "Mods/JEMBuilding/src/main/resources/data/jem_building/recipes/builder_hammer.json",
-      "Mods/JEMBuilding/src/main/resources/assets/jem_building"
+      "Mods/JEMBuilding/src/main/resources/assets/jem_building/**",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/handcrafted/UnifiedHammer.java"
     ]
   },
   "rationale": {
@@ -99,6 +107,26 @@
       "commit": "SELF",
       "action": "add_standalone_jem_building",
       "summary": "Add one hammer, three axis-aligned planes, hollow saved placeholders, cancellation and survival material filling."
+    },
+    {
+      "date": "2026-11-23",
+      "commit": "SELF",
+      "action": "repair_server_authoritative_hammer_confirmation",
+      "summary": "Require a protocol-4 server acknowledgement and revision before preview or confirmation, expose rejection reasons, and give a confirmed construction selection precedence over the optional Handcrafted and Building But Better hammer adapter.",
+      "source_files": [
+        "Mods/JEMBuilding/README.md",
+        "Mods/JEMBuilding/gradle.properties",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionInput.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionModeScreen.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/client/ConstructionPreview.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/construction/ConstructionRuntime.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/item/BuilderHammerItem.java",
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/network/BuildingNetwork.java",
+        "Mods/JEMBuilding/src/main/resources/assets/jem_building/lang/en_us.json",
+        "Mods/JEMBuilding/src/main/resources/assets/jem_building/lang/ru_ru.json",
+        "Mods/JEMCompat/README.md",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/handcrafted/UnifiedHammer.java"
+      ]
     }
   ],
   "impacts": {
@@ -106,10 +134,14 @@
     "relations": [
       "jem_building:builder_hammer -> jem_building:construction_placeholder",
       "held BlockItem -> native placement and inventory consumption",
+      "left-click mode request -> server validation -> SelectionResponse -> revision-bearing hammer NBT -> client preview",
+      "right-click -> current revision confirmation -> server geometry validation -> persistent placeholders",
+      "confirmed JEM construction selection -> construction confirmation before UnifiedHammer",
+      "no confirmed construction selection -> native Handcrafted Hammerable or Building But Better behavior",
       "jem_building:builder_hammer -> Handcrafted Hammerable.onHammer through JEM Compat",
       "jem_building:builder_hammer -> #bbb:hammers through JEM Compat"
     ],
-    "notes": "JEM Building remains independently loadable. When JEM Compat, Handcrafted and BBB are present, JEM Compat adapts this item into their native interfaces without changing their registered block behavior.",
+    "notes": "JEM Building remains independently loadable. Protocol 4 changes the network handshake for selection and confirmation, so the exact matching JEM Building artifact is required on client and server. When JEM Compat, Handcrafted and BBB are present, JEM Compat defers only while the hammer has a server-confirmed construction revision and otherwise preserves their registered block behavior.",
     "unresolved": ["Runtime player acceptance and third-party claim-mod behavior were not exercised because the user prohibited all tests and validation runs."]
   }
 }

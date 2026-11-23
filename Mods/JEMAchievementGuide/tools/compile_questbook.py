@@ -174,23 +174,35 @@ def item_reward(card, index, reward, choice=False):
 
 
 COIN_REWARDS = {
-    "starter": 1,
-    "field": 2,
-    "flavor": 2,
-    "expedition": 3,
-    "advanced": 3,
-    "specialist": 4,
-    "expert": 5,
-    "capstone": 10,
+    "starter": 5,
+    "field": 5,
+    "flavor": 5,
+    "expedition": 10,
+    "advanced": 25,
+    "specialist": 25,
+    "expert": 50,
+    "capstone": 100,
 }
+
+MIN_COIN_REWARD = 5
+MAX_COIN_REWARD = 20_000
+TWELVE_EYES_FINALE = "v2_bosses_eyes_15"
+TWELVE_EYES_FINALE_REWARD = 10_000
 
 
 def coin_reward(card):
     tier = card["reward"]["tier"]
     if tier not in COIN_REWARDS:
         raise ValueError(f"Missing Coin reward policy for tier: {tier}")
+    amount = card["reward"].get("coin_amount", COIN_REWARDS[tier])
+    if not isinstance(amount, int) or isinstance(amount, bool):
+        raise ValueError(f"Invalid Coin reward amount: {card['id']}")
+    if amount < MIN_COIN_REWARD or amount > MAX_COIN_REWARD:
+        raise ValueError(f"Coin reward outside approved bounds: {card['id']} -> {amount}")
+    if card["id"] == TWELVE_EYES_FINALE and amount != TWELVE_EYES_FINALE_REWARD:
+        raise ValueError("The twelve-eyes finale must award exactly one Arcane Coin")
     return {"id": identity("coins", card["id"]), "type": "jem_advancements:quest_coin",
-            "amount": COIN_REWARDS[tier], "team_reward": False}
+            "amount": amount, "team_reward": False}
 
 
 class Localization:

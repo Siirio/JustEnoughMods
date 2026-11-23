@@ -21,7 +21,8 @@ enum CatalogCategory {
     FOOD_EDIBLES("gui.jemcompat.jei.food_edibles", "minecraft:bread"),
     FOOD_COOKING_EQUIPMENT("gui.jemcompat.jei.food_cooking_equipment", "farm_and_charm:cooking_pot"),
     ORES("gui.jemcompat.jei.ores", "minecraft:raw_iron"),
-    COMPONENTS("gui.jemcompat.jei.components", "alexsmobs:bear_fur"),
+    MUSIC_DISCS("gui.jemcompat.jei.music_discs", "minecraft:music_disc_cat"),
+    TREES("gui.jemcompat.jei.trees", "minecraft:oak_log"),
     CREATE_REDSTONE("gui.jemcompat.jei.create_redstone", "create:cogwheel"),
     BUILDING("gui.jemcompat.jei.building", "jem_building:builder_hammer"),
     BUILDING_FURNITURE("gui.jemcompat.jei.furniture", "minecraft:painting"),
@@ -65,7 +66,8 @@ enum CatalogCategory {
             case FOOD, FOOD_EDIBLES -> net.minecraft.world.item.Items.BAKED_POTATO;
             case FOOD_COOKING_EQUIPMENT -> net.minecraft.world.item.Items.FURNACE;
             case ORES -> net.minecraft.world.item.Items.RAW_IRON;
-            case COMPONENTS -> net.minecraft.world.item.Items.PRISMARINE_SHARD;
+            case MUSIC_DISCS -> net.minecraft.world.item.Items.MUSIC_DISC_CAT;
+            case TREES -> net.minecraft.world.item.Items.OAK_LOG;
             case CREATE_REDSTONE -> net.minecraft.world.item.Items.REDSTONE;
             case BUILDING, BUILDING_FURNITURE -> net.minecraft.world.item.Items.PAINTING;
             case BUILDING_NATURE -> net.minecraft.world.item.Items.MOSS_BLOCK;

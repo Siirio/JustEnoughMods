@@ -18,11 +18,12 @@ The leaf categories are:
 - `WEAPON_SMITHING_TEMPLATES`
 - `WEARABLE_ARMOR`
 - `WEARABLE_MOB_ARMOR`
-- `WEARABLE_DOLLS`
+- `WEARABLE_DOLLS` (`Cosmetics` / `Косметика` in the interface)
 - `FOOD_EDIBLES`
 - `FOOD_COOKING_EQUIPMENT`
 - `ORES`
-- `COMPONENTS`
+- `MUSIC_DISCS`
+- `TREES`
 - `CREATE_REDSTONE`
 - `BUILDING_FURNITURE`
 - `BUILDING_NATURE`
@@ -42,7 +43,7 @@ The leaf categories are:
 
 `WEAPONS`, `WEARABLES`, `FOOD`, and `BUILDING` are navigation parents. They never own item assignments. A parent displays the union of its child leaf lists.
 
-The Russian name of `WEARABLE_DOLLS` is `Куклы`. This leaf contains the exact doll item IDs. Doll crafting stations and gift boxes are construction furniture. The doll adjustment tool is `OTHER`.
+The interface name of `WEARABLE_DOLLS` is `Cosmetics` / `Косметика`. This leaf contains exact doll IDs and reviewed decorative mob heads that have no separate gameplay effect. Doll crafting stations and gift boxes remain construction furniture. The doll adjustment tool remains `OTHER`.
 
 ## Assignment contract
 
@@ -55,16 +56,18 @@ The Russian name of `WEARABLE_DOLLS` is `Куклы`. This leaf contains the exa
 - Weapon subcategories split only the items that the earlier catalog classified as weapons
 - Companion and transport spawn eggs keep `SPAWN_EGGS` as their primary assignment and also appear in their exact companion or transport view
 - Vanilla and modded smithing templates, armor trims and smithing augments use `WEAPON_SMITHING_TEMPLATES`
-- Reviewed creature drops and crafting parts use the top-level `COMPONENTS` leaf
+- Creature drops and crafting parts without a more specific role use `OTHER`. The retired Components group has no runtime category
+- Every installed item tagged as a playable music disc uses the top-level `MUSIC_DISCS` leaf
+- Logs, planks, wooden architectural families, signs, doors, trapdoors, shelves, trims and reviewed wooden furniture use the top-level `TREES` leaf. Leaves, soil, saplings and living plants remain in Building > Nature. Casual Swing remains together in Building > Furniture and Decorations
 - Create machinery, train equipment and residual Create-family items use `CREATE_REDSTONE`. Semantic weapons, armor, food, fishing supplies and ores keep their matching leaves
-- Wooden construction families and natural growths that were in Building Materials use `BUILDING_NATURE`
+- `BUILDING_LIGHT` contains light sources. Color prefixes such as `light_blue` and `light_gray` do not make ordinary wool, concrete, terracotta, chalk or kaolin a light source
 - JEM Economy reads the same manifest through the existing optional JEMCompat contract
 
 ## Maintenance
 
 `tools/generate_jei_catalog.py` creates the initial manifest from an exact logical-server registry export and the approved offline priority rules. The 2026-11-22 export contains 13,869 item IDs and has SHA-256 `958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39`. After the initial conversion, the checked-in manifest is authoritative. Update mode preserves all existing assignments and assigns only previously unknown IDs to `OTHER`. Reclassify mode applies the reviewed 2026-11-22 corrections with Registry Atlas records, checks all required exact moves and rejects any smithing template or non-semantic Create item left outside its approved leaf. Validate mode rejects missing, unknown, duplicate or invalid assignments without changing the manifest. Review mode regenerates the namespace-count report from the checked-in manifest.
 
-This policy prevents a generator update from rewriting accepted categories. A future category correction changes the exact item IDs in the manifest and records the decision in `CHANGELOG.md` and the Registry Atlas change history.
+This policy prevents a generator update from rewriting accepted categories. A future category correction changes the exact item IDs in the manifest and records the decision in `CHANGELOG.md` and the Registry Atlas change history. The 2026-11-23 review added exact Archie's Dinosaurs and Royal Variations assignments, moved verified weapon and utility examples, retired Components, and added Cosmetics, Music Discs and Trees presentation.
 
 ## Runtime behavior
 

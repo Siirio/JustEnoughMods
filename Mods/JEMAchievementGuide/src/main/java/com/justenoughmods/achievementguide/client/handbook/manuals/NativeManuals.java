@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -33,6 +34,9 @@ public final class NativeManuals {
         add(result, "blastfromthepast", "blastfromthepast:glacial_guidebook", "item.blastfromthepast.glacial_guidebook",
                 "blast past glacial guidebook ледник ледниковый справочник", "team.recrafted.blastfromthepast.client.screen.GlacialGuidebookScreen",
                 () -> callStatic("team.recrafted.blastfromthepast.util.ClientUtils", "openGlacialGuidebookScreen"), "read");
+        add(result, "ec_ad", "ec_ad:guidebook", "item.ec_ad.guidebook",
+                "archie archies dinosaurs guidebook динозавры арчи путеводитель справочник", "com.eternal_creations.archies_dino_mod.client.screen.guidebook.GuidebookScreen",
+                () -> openScreen("com.eternal_creations.archies_dino_mod.client.screen.guidebook.GuidebookScreen"), "read");
         add(result, "cnc", "cnc:field_guide", "item.cnc.field_guide",
                 "critters crawlers field guide полевой справочник животные", "net.imasillylittleguy.cnc.client.gui.FieldGuide",
                 () -> CommonManuals.open(CommonManuals.Route.CNC), "discoveries");
@@ -42,6 +46,7 @@ public final class NativeManuals {
         add(result, "unearthed_journey", "unearthed_journey:journey_guide", "item.unearthed_journey.journey_guide",
                 "unearthed journey guide путешествие путеводитель", "net.mcreator.unearthedjourney.client.gui.",
                 () -> CommonManuals.open(CommonManuals.Route.UNEARTHED), "read");
+        addCameraptureAlbums(result);
         // Aquamirae stores the actual topic and content on each acquired logbook.
         // A blank stack would invent access to a document the player has not found.
         if (ModList.get().isLoaded("aquamirae") && ForgeRegistries.ITEMS.containsKey(new ResourceLocation("aquamirae:logbook"))) {
@@ -81,6 +86,8 @@ public final class NativeManuals {
                 || name.equals("com.github.alexmodguy.alexscaves.client.gui.book.CaveBookScreen")
                 || name.startsWith("com.github.alexthe666.alexsmobs.client.gui.GUIAnimalDictionary")
                 || name.equals("team.recrafted.blastfromthepast.client.screen.GlacialGuidebookScreen")
+                || name.equals("com.eternal_creations.archies_dino_mod.client.screen.guidebook.GuidebookScreen")
+                || name.equals("me.chrr.camerapture.gui.AlbumScreen")
                 || name.startsWith("net.imasillylittleguy.cnc.client.gui.FieldGuide")
                 || name.startsWith("net.mcreator.luminousbeasts.client.gui.BeastBook")
                 || isUnearthedGuideScreen(name)
@@ -113,6 +120,36 @@ public final class NativeManuals {
                     && result.stream().noneMatch(existing -> ItemStack.isSameItemSameTags(existing, value))) result.add(value.copy());
         }
         return result;
+    }
+
+    private static void addCameraptureAlbums(List<Manual> result) {
+        ResourceLocation albumId = new ResourceLocation("camerapture:album");
+        if (!ModList.get().isLoaded("camerapture") || !ForgeRegistries.ITEMS.containsKey(albumId)) return;
+        var player = Minecraft.getInstance().player;
+        if (player == null) return;
+        int found = 0;
+        for (int slot = 0; slot < 9; slot++) {
+            ItemStack album = player.getInventory().getItem(slot);
+            if (!albumId.equals(ForgeRegistries.ITEMS.getKey(album.getItem()))) continue;
+            int albumSlot = slot;
+            int index = found++;
+            String id = index == 0 ? "camerapture" : "camerapture_" + index;
+            result.add(new Manual(id, album.getHoverName(), album.copy(),
+                    "camerapture album photo picture альбом фото снимки", "me.chrr.camerapture.gui.AlbumScreen",
+                    () -> openHotbarItem(albumSlot), Component.translatable("jem.handbook.manual.status.album"), true));
+        }
+        if (found == 0) {
+            result.add(new Manual("camerapture", Component.translatable("item.camerapture.album"), stack("camerapture:album"),
+                    "camerapture album photo picture альбом фото снимки", "me.chrr.camerapture.gui.AlbumScreen",
+                    () -> {}, Component.translatable("jem.handbook.manual.status.album_missing"), false));
+        }
+    }
+
+    private static void openHotbarItem(int slot) {
+        var minecraft = Minecraft.getInstance();
+        if (minecraft.player == null || minecraft.gameMode == null) return;
+        minecraft.player.getInventory().selected = slot;
+        minecraft.gameMode.useItem(minecraft.player, InteractionHand.MAIN_HAND);
     }
 
     private static Component logbookTopic(ItemStack stack) {
