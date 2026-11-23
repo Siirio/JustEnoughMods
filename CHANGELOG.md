@@ -14,7 +14,7 @@
 - Reclassified all 159 exact registered `the_sift` items in the curated JEI catalog, removed 6 retired `sift` assignments and 2 Green Screen assignments, and preserved JEM Freecam. The reviewed catalog now contains 14,064 items
 - Built and reobfuscated JEMCompat 3.11.3 with SHA-256 `52C747A139C483F129304B1060BCD50F76B3BE388699DC7ACC08EE96E6DA096C` and JEM Advancements 5.3.11 with SHA-256 `6BA41300D76FAAFE22B0FD5B6D9FA3196D1F66128BD6FF3ED509447CA4D515DA`. Copied each exact artifact to `Client/ManagedPack` first and the ordinary local `Server` second
 - The ordinary local server loaded The Sift 2.0.6, the updated quest resources and the updated JEI catalog. The existing world opened, initialized `the_sift:the_sift`, and saved all dimensions during a clean stop
-- Native Pack Sync journal 198 published content token `b70444c942f2cbce2a3952e8c205b5bb1303fc62` as the reviewed `+2 ~7 -1` delta. The follow-up preview was `+0 ~0 -0`
+- Native Pack Sync journal 199 published content token `b70444c942f2cbce2a3952e8c205b5bb1303fc62` as the reviewed `+2 ~7 -1` delta with matching staged and published manifest SHA-1 `d913940f69505032c82b765effa7ce7c630f3a3a`. The follow-up preview was `+0 ~0 -0`
 - The closed `Test JustEnoughMods` profile applied that token through the native updater. The new Sift, JEM Advancements and JEMCompat JARs match the approved artifacts, the old Sift Backport JAR is absent, JEM Freecam remains installed, and no native transaction remains pending
 - No gameplay client launch, gameplay QA, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed. Player acceptance remains `in testing`
 
