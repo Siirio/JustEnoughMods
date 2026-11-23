@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "change_id": "server.scylla-loaded-lightning-20261123",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "cataclysm:scylla"
+    }
+  ],
+  "conditions": [
+    {
+      "installed_cataclysm_version": "3.31",
+      "side": "logical_server",
+      "scope": "Scylla spawnLightning terrain-floor search"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 66
+  },
+  "change": {
+    "summary": "Create Scylla lightning only when its native terrain-floor search starts in an already loaded chunk.",
+    "modifiers": [
+      {
+        "property": "cataclysm.scylla.lightning.chunk_access",
+        "operation": "replace",
+        "before": {
+          "loaded_chunk": "Scylla searches down from the lightning position and creates the native lightning storm on the terrain floor.",
+          "missing_chunk": "The first Level.getBlockState call can synchronously request an absent chunk from the server tick."
+        },
+        "after": {
+          "loaded_chunk": "Run the complete native terrain-floor search and create the unchanged native lightning storm.",
+          "missing_chunk": "Skip this lightning strike without requesting or generating the absent chunk."
+        },
+        "notes": "The guard changes only Cataclysm 3.31 Scylla spawnLightning calls. It does not change Scylla registration, AI timing, damage, loaded-terrain strikes, loot or encounter ownership."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM World Boss Tiers Cataclysm adapter",
+    "kind": "version_gated_server_mixin",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmScyllaLightningMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent Scylla lightning from parking the server tick in a missing-chunk wait while preserving the native attack in loaded terrain.",
+    "decision_source": "The user reported inability to connect on 2026-11-23. The local watchdog crash stopped in Cataclysm 3.31 Scylla_Entity.spawnLightning at its first Level.getBlockState call while Streams Reflowing's land-wait Mixin had parked the server thread and its urgent worker queue was idle. Exact installed bytecode confirms that the method starts a downward terrain-floor search with a direct block-state read and has no loaded-chunk guard."
+  },
+  "introduced": {
+    "date": "2026-11-23",
+    "commit": "SELF",
+    "action": "guard_scylla_lightning_chunk_access",
+    "summary": "Keep Cataclysm 3.31 Scylla lightning terrain searches inside loaded chunks.",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmScyllaLightningMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-23",
+      "commit": "SELF",
+      "action": "guard_scylla_lightning_chunk_access",
+      "summary": "Skip only Scylla lightning strikes whose native floor search would begin in an absent chunk after that query caused a local watchdog crash.",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmScyllaLightningMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Cataclysm Scylla",
+      "server_tick",
+      "loaded_chunk_reads",
+      "world_generation",
+      "Streams Reflowing",
+      "player_connection_availability"
+    ],
+    "relations": [
+      "cataclysm:scylla -> native lightning terrain-floor search",
+      "Loaded lightning positions keep native Cataclysm behavior",
+      "Missing chunks remain on Minecraft's normal loading path and do not enter through a boss attack"
+    ],
+    "notes": [
+      "The adapter is enabled only for the inspected Cataclysm 3.31 artifact.",
+      "No watchdog threshold, Streams Reflowing worker rule or Scylla combat value is changed."
+    ],
+    "unresolved": [
+      "Player rejoin, a repeated Scylla lightning attack at the same terrain boundary and sustained server uptime remain in testing until runtime acceptance."
+    ]
+  }
+}

@@ -18,7 +18,8 @@ public final class PowerMixins implements IMixinConfigPlugin {
                 || mixin.endsWith(".CataclysmDeathLaserDamageMixin")
                 || mixin.endsWith(".CataclysmCursedBowMixin") || mixin.endsWith(".CataclysmShredderMixin")
                 || mixin.endsWith(".CataclysmIncineratorMixin")
-                || mixin.endsWith(".CataclysmFlameStrikeMixin")) {
+                || mixin.endsWith(".CataclysmFlameStrikeMixin")
+                || mixin.endsWith(".CataclysmScyllaLightningMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("cataclysm");
             return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("cataclysm")
                     && mod.getVersion().toString().equals("3.31"));

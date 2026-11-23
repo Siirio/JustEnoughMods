@@ -1,3 +1,16 @@
+## 2026-11-23 - Keep Scylla lightning inside loaded terrain
+
+- The user reported that the ordinary local server could not be reached after the Sift and Archie's Dinosaurs update
+- Bug / Server / Cataclysm 3.31 Scylla started a lightning terrain-floor search with a direct block-state read in an absent chunk, Streams Reflowing parked the server thread for that land wait while its urgent worker queue remained idle, and the 60-second watchdog stopped the server / in testing with a version-gated loaded-chunk guard at the exact Scylla attack boundary
+- Evidence: AutoModpack completed installation, the player logged in and joined, then the watchdog crash stopped in `Scylla_Entity.spawnLightning` through `ServerChunkCache.getChunk`. Later connection attempts failed because no server process or listener remained
+- Implementation choice: skip only an individual Scylla lightning strike whose starting column is not loaded. Loaded-terrain strikes keep Cataclysm's complete floor search, timing, native lightning entity, damage and presentation
+- The fix does not disable the watchdog, change Streams Reflowing settings, remove Scylla, move the player or edit world data
+- Built and reobfuscated JEM World Boss Tiers 2.5.0-dev with SHA-256 `36705F0020196C1E897279287B96FDEB34F45894355BD6D45D2E595368722859`. Copied the exact artifact to `Client/ManagedPack` first and the ordinary local `Server` second
+- The ordinary local server loaded the updated JEM World Boss Tiers module and reached `Done (6.120s)` at `127.0.0.1:31604`
+- Native Pack Sync published generation 200 with content token `7a38e53a249230d6d5694eef8753ebc1f1298d73` as the reviewed `+0 ~3 -0` delta. The delta contains the manifest, the previously staged final Sift Russian overlay and the repaired JEM World Boss Tiers JAR
+- The closed `Test JustEnoughMods` profile applied that token through the native updater. The installed JEM World Boss Tiers JAR matches the managed source, and no native transaction remains pending
+- MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
 ## 2026-11-23 - Replace the partial Sift backport and retire local filming tools
 
 - The user replaced Sift Backport 1.0.5.1 with the supplied Mielon's The Sift 2.0.6 Forge artifact because the partial backport contained only one mob
