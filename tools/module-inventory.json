@@ -10,7 +10,8 @@
     {"name": "JEM Seasons HUD", "module": "JEMSeasonsHud", "modId": "jem_seasons_hud", "side": "client-only"},
     {"name": "JEM Inventory Shortcuts", "module": "JEMInventoryShortcuts", "modId": "jem_inventory_shortcuts", "side": "client-and-server-required"},
     {"name": "In Chat FTB", "module": "JEMInChatFTB", "modId": "in_chat_ftb", "side": "client-only"},
-    {"name": "JEM Adaptive Culling", "module": "JEMAdaptiveCulling", "modId": "jem_adaptive_culling", "side": "client-only"}
+    {"name": "JEM Adaptive Culling", "module": "JEMAdaptiveCulling", "modId": "jem_adaptive_culling", "side": "client-only"},
+    {"name": "JEM Atmosphere", "module": "JEMAtmosphere", "modId": "jem_atmosphere", "side": "client-only"}
   ],
   "modules": [
     {
@@ -200,6 +201,15 @@
       "side": "client-only",
       "modIds": [
         "jem_lighting_sandbox"
+      ]
+    },
+    {
+      "name": "JEMAtmosphere",
+      "status": "production",
+      "java": true,
+      "side": "client-only",
+      "modIds": [
+        "jem_atmosphere"
       ]
     },
     {

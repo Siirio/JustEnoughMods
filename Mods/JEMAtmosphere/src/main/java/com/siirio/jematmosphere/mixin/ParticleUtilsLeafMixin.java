@@ -1,6 +1,6 @@
-package com.siirio.jemlightingsandbox.mixin;
+package com.siirio.jematmosphere.mixin;
 
-import com.siirio.jemlightingsandbox.CanopyLeaves;
+import com.siirio.jematmosphere.CanopyLeaves;
 import java.util.Set;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ParticleUtils.class)
 public abstract class ParticleUtilsLeafMixin {
     @Unique
-    private static final Set<ResourceLocation> JEM_LIGHTING_BACKPORT_LEAVES = Set.of(
+    private static final Set<ResourceLocation> JEM_ATMOSPHERE_BACKPORT_LEAVES = Set.of(
             new ResourceLocation("minecraft", "pale_oak_leaves"),
             new ResourceLocation("minecraft", "tinted_leaves"),
             new ResourceLocation("minecraft", "tinted_needles"));
@@ -27,15 +27,14 @@ public abstract class ParticleUtilsLeafMixin {
     @Inject(method = "spawnParticleBelow(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;"
             + "Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/particles/ParticleOptions;)V",
             at = @At("HEAD"), cancellable = true)
-    private static void jemLightingSandbox$skipReplacedLeaf(Level level, BlockPos position, RandomSource random,
-                                                           ParticleOptions particle, CallbackInfo callback) {
+    private static void jemAtmosphere$skipReplacedLeaf(Level level, BlockPos position, RandomSource random,
+            ParticleOptions particle, CallbackInfo callback) {
         if (!level.isClientSide()) {
             return;
         }
-
         var type = particle.getType();
         var id = BuiltInRegistries.PARTICLE_TYPE.getKey(type);
-        if ((type == ParticleTypes.CHERRY_LEAVES || id != null && JEM_LIGHTING_BACKPORT_LEAVES.contains(id))
+        if ((type == ParticleTypes.CHERRY_LEAVES || id != null && JEM_ATMOSPHERE_BACKPORT_LEAVES.contains(id))
                 && CanopyLeaves.replacesFallingLeaf(level, position, level.getBlockState(position))) {
             callback.cancel();
         }

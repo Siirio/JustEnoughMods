@@ -1,6 +1,5 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
-import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -29,7 +28,8 @@ final class BiomeFog {
         frame = null;
         var level = Minecraft.getInstance().level;
         var camera = event.getCamera();
-        if (level == null || !AtmosphereRenderer.canCompositeFog() || !LightingSettings.atmosphereEnabled() || TerrainLighting.isShaderPackActive()
+        if (level == null || !AtmosphereRenderer.canCompositeFog() || !AtmosphereSettings.fogEnabled()
+                || AtmosphereEnvironment.isShaderPackActive()
                 || camera.getFluidInCamera() != FogType.NONE || hasRestrictedVision(camera)) {
             return;
         }

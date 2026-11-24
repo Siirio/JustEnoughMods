@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+
+group = 'com.siirio.jematmosphere'
+version = '1.0.0'
+base { archivesName = 'jem-atmosphere' }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: 'official', version: '1.20.1' }
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://api.modrinth.com/maven' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly fg.deobf('maven.modrinth:embeddium:0.3.31+mc1.20.1')
+    compileOnly fg.deobf('maven.modrinth:GchcoXML:iQ1SwGc3')
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin {
+    add sourceSets.main, 'jem_atmosphere.refmap.json'
+    config 'jem_atmosphere.mixins.json'
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(Test).configureEach { enabled = false }
+jar {
+    manifest { attributes('MixinConfigs': 'jem_atmosphere.mixins.json') }
+    finalizedBy 'reobfJar'
+}

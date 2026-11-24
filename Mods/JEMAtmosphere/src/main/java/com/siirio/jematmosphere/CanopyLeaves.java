@@ -1,4 +1,4 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
@@ -59,7 +59,7 @@ public final class CanopyLeaves {
             return;
         }
         nextSearch = time + QUIET_INTERVAL;
-        Vec3 wind = SandboxWeather.wind(level);
+        Vec3 wind = AtmosphereWeather.wind(level);
         Direction edge = downwindEdge(wind);
         var position = camera.getBlockPosition();
         if (!level.hasChunkAt(position)) {
@@ -156,7 +156,7 @@ public final class CanopyLeaves {
     }
 
     private static boolean enabled(ClientLevel level) {
-        if (level == null || !LightingSettings.canopyLeavesEnabled() || !SandboxWeather.hasOutdoorWeather(level)) {
+        if (level == null || !AtmosphereSettings.canopyLeavesEnabled() || !AtmosphereWeather.hasOutdoorWeather(level)) {
             return false;
         }
         var client = Minecraft.getInstance();

@@ -44,16 +44,11 @@ public final class LightingOptions {
                 .setControl(TickBoxControl::new)
                 .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                 .build();
-        var atmosphere = toggle(storage, "atmosphere", (settings, value) -> settings.atmosphere = value,
-                settings -> settings.atmosphere, master::getValue);
         var followDistance = toggle(storage, "follow_render_distance",
                 (settings, value) -> settings.followRenderDistance = value, settings -> settings.followRenderDistance,
                 master::getValue);
-        BooleanSupplier effects = () -> master.getValue() && atmosphere.getValue();
-        var wind = toggle(storage, "wind", (settings, value) -> settings.wind = value,
-                settings -> settings.wind, effects);
 
-        var general = group("general").add(master).add(atmosphere).build();
+        var general = group("general").add(master).build();
         var lighting = group("lighting")
                 .add(option(LightingSettings.Mode.class, storage, "mode", (settings, value) -> settings.mode = value,
                         settings -> settings.mode)
@@ -73,37 +68,8 @@ public final class LightingOptions {
                         settings -> settings.shadowIndex, master::getValue, 0, LightingSettings.SHADOW_RESOLUTIONS.size() - 1,
                         index -> label("pixels", LightingSettings.SHADOW_RESOLUTIONS.get(index))))
                 .build();
-        var weather = group("weather")
-                .add(slider(storage, "rain_density", (settings, value) -> settings.rainDensity = value,
-                        settings -> settings.rainDensity, effects, LightingSettings.MIN_WEATHER_DENSITY,
-                        LightingSettings.MAX_WEATHER_DENSITY, ControlValueFormatter.percentage()))
-                .add(slider(storage, "storm_density", (settings, value) -> settings.stormDensity = value,
-                        settings -> settings.stormDensity, effects, LightingSettings.MIN_WEATHER_DENSITY,
-                        LightingSettings.MAX_WEATHER_DENSITY, ControlValueFormatter.percentage()))
-                .add(toggle(storage, "dark_campfire_smoke", (settings, value) -> settings.darkSmoke = value,
-                        settings -> settings.darkSmoke, effects))
-                .build();
-        var visuals = group("effects")
-                .add(wind)
-                .add(toggle(storage, "river_mist", (settings, value) -> settings.riverMist = value,
-                        settings -> settings.riverMist, effects))
-                .add(toggle(storage, "snow_gust", (settings, value) -> settings.snowGust = value,
-                        settings -> settings.snowGust, effects))
-                .add(toggle(storage, "cave_air", (settings, value) -> settings.caveAir = value,
-                        settings -> settings.caveAir, effects))
-                .add(toggle(storage, "canopy_leaves", (settings, value) -> settings.canopyLeaves = value,
-                        settings -> settings.canopyLeaves, effects))
-                .add(option(String.class, storage, "wind_colors", (settings, value) -> settings.windColors = value,
-                        settings -> settings.windColors)
-                        .setEnabledPredicate(() -> effects.getAsBoolean() && wind.getValue())
-                        .setControl(option -> new WindColorsControl(option, () -> storage.getData().windColors))
-                        .build())
-                .build();
-        return List.of(
-                new OptionPage(OptionIdentifier.create(MOD_ID, "lighting"), label("page"),
-                        ImmutableList.of(general, lighting)),
-                new OptionPage(OptionIdentifier.create(MOD_ID, "effects"), label("effects_page"),
-                        ImmutableList.of(visuals, weather)));
+        return List.of(new OptionPage(OptionIdentifier.create(MOD_ID, "lighting"), label("page"),
+                ImmutableList.of(general, lighting)));
     }
 
     private static OptionGroup.Builder group(String name) {

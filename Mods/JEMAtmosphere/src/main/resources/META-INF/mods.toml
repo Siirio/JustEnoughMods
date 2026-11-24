@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved, except Windy artwork under LGPL-3.0-only"
+
+[[mods]]
+modId="jem_atmosphere"
+version="1.0.0"
+displayName="JEM Atmosphere"
+displayTest="IGNORE_ALL_VERSION"
+description='''Client-side wind, fog, mist, sky color and atmospheric effects without terrain lighting or shadows.'''
+
+[[dependencies.jem_atmosphere]]
+modId="forge"
+mandatory=true
+versionRange="[47.4,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jem_atmosphere]]
+modId="embeddium"
+mandatory=true
+versionRange="[0.3.31,0.3.32)"
+ordering="AFTER"
+side="CLIENT"
+
+[[dependencies.jem_atmosphere]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="CLIENT"
+
+["badoptimizations:incompatibilities"]
+options = ["enable_sky_color_caching"]

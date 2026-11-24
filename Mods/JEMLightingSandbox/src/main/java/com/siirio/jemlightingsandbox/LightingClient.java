@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
 import com.siirio.jemlightingsandbox.terrain.EntityShadowMap;
 import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
-import com.siirio.jemlightingsandbox.terrain.WaterSurface;
 import java.io.IOException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ShaderInstance;
@@ -15,11 +14,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
-import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.level.ChunkEvent;
 import net.minecraftforge.event.level.LevelEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
@@ -28,7 +26,6 @@ import org.slf4j.Logger;
 public final class LightingClient {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static ShaderInstance sceneShader;
-    private static boolean effectsActive;
 
     private LightingClient() {
     }
@@ -54,19 +51,8 @@ public final class LightingClient {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void prepareBiomeFog(ViewportEvent.ComputeFogColor event) {
-        BiomeFog.prepare(event);
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
-    public static void keepTerrainFogAtEdge(ViewportEvent.RenderFog event) {
-        BiomeFog.keepTerrainEdge(event);
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void renderAtmosphere(RenderLevelStageEvent event) {
+    public static void renderEntityShadows(RenderLevelStageEvent event) {
         EntityShadowMap.render(event);
-        AtmosphereRenderer.render(event);
     }
 
     private static int reportTerrainStatus() {
@@ -79,18 +65,6 @@ public final class LightingClient {
         if (event.phase == TickEvent.Phase.END) {
             Minecraft client = Minecraft.getInstance();
             TerrainLighting.tick(client);
-            if (!LightingSettings.atmosphereEnabled()) {
-                if (effectsActive) {
-                    clearAtmosphere();
-                    effectsActive = false;
-                }
-                return;
-            }
-            effectsActive = true;
-            SandboxWeather.tick(client);
-            PrecipitationRenderer.tick(client);
-            WindGusts.tick(client);
-            CanopyLeaves.tick(client);
         }
     }
 
@@ -129,27 +103,12 @@ public final class LightingClient {
         if (event.getLevel() == client.level) {
             client.execute(() -> {
                 TerrainLighting.clearWorld();
-                clearAtmosphere();
-                effectsActive = false;
             });
         }
     }
 
-    private static void clearAtmosphere() {
-        PrecipitationRenderer.clear();
-        WindGusts.clear();
-        CanopyLeaves.clear();
-        BiomeFog.clear();
-        AtmospherePalette.clear();
-        AtmosphereRenderer.clearWorldEffects();
-        AtmosphereRenderer.releaseTargets();
-        WaterSurface.release();
-    }
-
     @Mod.EventBusSubscriber(modid = JemLightingSandbox.ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static final class ShaderEvents {
-        private static ShaderInstance atmosphere;
-        private static ShaderInstance atmosphereComposite;
         private ShaderEvents() {
         }
 
@@ -157,31 +116,12 @@ public final class LightingClient {
         public static void registerShaders(RegisterShadersEvent event) {
             TerrainLighting.reloadModels();
             sceneShader = null;
-            atmosphere = null;
-            atmosphereComposite = null;
-            AtmosphereRenderer.shaders(null, null);
             try {
                 var shader = new ShaderInstance(event.getResourceProvider(),
                         new ResourceLocation(JemLightingSandbox.ID, "shadow_preview"), DefaultVertexFormat.POSITION_TEX);
                 event.registerShader(shader, loaded -> sceneShader = loaded);
             } catch (IOException exception) {
                 LOGGER.error("Could not load the JEM lighting preview shader", exception);
-            }
-            try {
-                var scattering = new ShaderInstance(event.getResourceProvider(),
-                        new ResourceLocation(JemLightingSandbox.ID, "atmosphere"), DefaultVertexFormat.POSITION_TEX);
-                event.registerShader(scattering, loaded -> {
-                    atmosphere = loaded;
-                    AtmosphereRenderer.shaders(atmosphere, atmosphereComposite);
-                });
-                var compositing = new ShaderInstance(event.getResourceProvider(),
-                        new ResourceLocation(JemLightingSandbox.ID, "atmosphere_composite"), DefaultVertexFormat.POSITION_TEX);
-                event.registerShader(compositing, loaded -> {
-                    atmosphereComposite = loaded;
-                    AtmosphereRenderer.shaders(atmosphere, atmosphereComposite);
-                });
-            } catch (IOException exception) {
-                LOGGER.error("Could not load the JEM atmosphere shaders", exception);
             }
         }
     }

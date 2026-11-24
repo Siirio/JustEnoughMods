@@ -1,4 +1,4 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Camera;
@@ -93,7 +93,7 @@ final class CanopyLeafParticle extends TextureSheetParticle {
 
     @Override
     public void tick() {
-        if (!LightingSettings.canopyLeavesEnabled()) {
+        if (!AtmosphereSettings.canopyLeavesEnabled()) {
             remove();
             return;
         }
@@ -101,7 +101,7 @@ final class CanopyLeafParticle extends TextureSheetParticle {
         if (settledAge < 0) {
             float wake = 1F - Mth.clamp(age / (gust ? 108F : 90F), 0F, 1F);
             float sway = Mth.sin(age * 0.14F + phase);
-            var wind = SandboxWeather.wind(level);
+            var wind = AtmosphereWeather.wind(level);
             double gain = gust ? 0.098 : 0.036;
             xd = Mth.lerp(0.14, xd, wind.x * (0.6 + 0.4 * wake) * gain + sway * 0.009);
             zd = Mth.lerp(0.14, zd, wind.z * (0.6 + 0.4 * wake) * gain - sway * 0.009);
@@ -124,7 +124,7 @@ final class CanopyLeafParticle extends TextureSheetParticle {
 
     @Override
     public void render(VertexConsumer buffer, Camera camera, float partialTick) {
-        if (!LightingSettings.canopyLeavesEnabled()) {
+        if (!AtmosphereSettings.canopyLeavesEnabled()) {
             return;
         }
         float time = Math.max(0F, age - 1F + partialTick);

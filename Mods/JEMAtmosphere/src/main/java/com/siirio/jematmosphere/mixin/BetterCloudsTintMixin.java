@@ -1,7 +1,7 @@
-package com.siirio.jemlightingsandbox.mixin;
+package com.siirio.jematmosphere.mixin;
 
-import com.siirio.jemlightingsandbox.LightingSettings;
-import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
+import com.siirio.jematmosphere.AtmosphereEnvironment;
+import com.siirio.jematmosphere.AtmosphereSettings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.effect.MobEffects;
@@ -22,8 +22,8 @@ public abstract class BetterCloudsTintMixin {
             at = @At(value = "INVOKE", target = "Lcom/qendolin/betterclouds/clouds/EffectTintProvider;"
                     + "compositeColor(Lorg/joml/Vector3f;Lorg/joml/Vector4f;)V"),
             index = 0, remap = false)
-    private static Vector3f jemLightingSandbox$neutralCloudFog(Vector3f fog) {
-        if (!LightingSettings.atmosphereEnabled() || TerrainLighting.isShaderPackActive()) {
+    private static Vector3f jemAtmosphere$neutralCloudFog(Vector3f fog) {
+        if (!AtmosphereSettings.skyColorsEnabled() || AtmosphereEnvironment.isShaderPackActive()) {
             return fog;
         }
 

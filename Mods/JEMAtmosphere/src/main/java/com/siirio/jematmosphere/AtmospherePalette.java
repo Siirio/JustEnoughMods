@@ -1,4 +1,4 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import net.minecraft.core.Holder;
 import java.util.Map;
@@ -85,8 +85,8 @@ public final class AtmospherePalette {
             return caveProfile(biome);
         }
         if (biome.is(Biomes.CHERRY_GROVE)) return CHERRY;
-        if (PrecipitationRenderer.hasRedSand(biome)) return RED_DESERT;
-        if (PrecipitationRenderer.sandColor(biome) != 0) return DESERT;
+        if (AtmosphereWeather.hasRedSand(biome)) return RED_DESERT;
+        if (AtmosphereWeather.sandColor(biome) != 0) return DESERT;
         if (biome.is(Tags.Biomes.IS_SNOWY) || biome.value().getBaseTemperature() < 0.15F) return SNOW;
         if (biome.is(Tags.Biomes.IS_SWAMP)) return SWAMP;
         if (biome.is(BiomeTags.IS_JUNGLE)) return JUNGLE;

@@ -1,11 +1,10 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.VertexSorting;
-import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
 import java.util.ArrayList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
@@ -35,7 +34,7 @@ public final class WindGusts {
             7, 11, 14, 16, 19, 23, 28, 34, 37, 39, 45, 48, 51, 54, 57, 59, 61, 62, 61
     };
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.tryParse(JemLightingSandbox.ID + ":textures/weather/wind_gusts.png");
+            ResourceLocation.tryParse(JemAtmosphere.ID + ":textures/weather/wind_gusts.png");
     private static final RandomSource RANDOM = RandomSource.create();
     private static final ArrayList<Gust> GUSTS = new ArrayList<>(LIMIT);
     private static ClientLevel currentLevel;
@@ -45,7 +44,7 @@ public final class WindGusts {
     }
 
     static int defaultTint(Holder<Biome> biome) {
-        int sand = PrecipitationRenderer.sandColor(biome);
+        int sand = AtmosphereWeather.sandColor(biome);
         if (sand == 0) {
             return 0xFFFFFF;
         }
@@ -56,8 +55,8 @@ public final class WindGusts {
         var camera = client.gameRenderer.getMainCamera();
         ClientLevel level = client.level;
         ParticleStatus quality = client.options.particles().get();
-        if (level == null || !LightingSettings.windEnabled() || !SandboxWeather.hasOutdoorWeather(level)
-                || TerrainLighting.isShaderPackActive() || quality == ParticleStatus.MINIMAL
+        if (level == null || !AtmosphereSettings.windEnabled() || !AtmosphereWeather.hasOutdoorWeather(level)
+                || AtmosphereEnvironment.isShaderPackActive() || quality == ParticleStatus.MINIMAL
                 || !camera.isInitialized() || camera.getFluidInCamera() != FogType.NONE) {
             clear();
             return;
@@ -74,7 +73,7 @@ public final class WindGusts {
         long time = level.getGameTime();
         GUSTS.removeIf(gust -> time - gust.start >= gust.type.lifetime
                 || gust.position(time - gust.start).distanceToSqr(eye) > RANGE * RANGE);
-        Vec3 wind = SandboxWeather.wind(level);
+        Vec3 wind = AtmosphereWeather.wind(level);
         boolean storm = level.getThunderLevel(1F) >= 0.4F;
         boolean strong = storm || wind.lengthSqr() >= 0.30;
         int interval = strong ? 5 : 22;
@@ -124,7 +123,7 @@ public final class WindGusts {
 
     public static void draw(Minecraft client, Vec3 camera, float partialTick) {
         ClientLevel level = client.level;
-        if (!LightingSettings.windEnabled() || level == null || level != currentLevel || GUSTS.isEmpty()
+        if (!AtmosphereSettings.windEnabled() || level == null || level != currentLevel || GUSTS.isEmpty()
                 || client.gameRenderer.getMainCamera().getFluidInCamera() != FogType.NONE) {
             return;
         }
@@ -138,12 +137,12 @@ public final class WindGusts {
         buffer.setQuadSorting(VertexSorting.DISTANCE_TO_ORIGIN);
         var vertices = buffer.endOrDiscardIfEmpty();
         if (vertices != null) {
-            PrecipitationRenderer.drawBatch(vertices, GameRenderer.getPositionTexColorShader(), TEXTURE);
+            AtmosphereBatchRenderer.draw(vertices, GameRenderer.getPositionTexColorShader(), TEXTURE);
         }
     }
 
     private static boolean isOpen(ClientLevel level, BlockPos position) {
-        return SandboxWeather.outdoors(level, position) && level.isEmptyBlock(position);
+        return AtmosphereWeather.outdoors(level, position) && level.isEmptyBlock(position);
     }
 
     private enum Type {
@@ -178,7 +177,7 @@ public final class WindGusts {
             if (type != Type.CALM) {
                 Holder<Biome> biome = level.getBiome(cursor);
                 var biomeId = biome.unwrapKey().map(key -> key.location()).orElse(null);
-                int override = LightingSettings.windColor(biomeId);
+                int override = AtmosphereSettings.windColor(biomeId);
                 tint = override >= 0 ? override : defaultTint(biome);
             }
             float alpha = type.opacity * (float) (Mth.clamp(progress * 8, 0, 1) * Mth.clamp((1 - progress) * 5, 0, 1)

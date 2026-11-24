@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jematmosphere.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_atmosphere.refmap.json",
+  "client": [
+    "BetterCloudsTintMixin",
+    "CampfireSmokeParticleMixin",
+    "ClientLevelMixin",
+    "LevelRendererWindMixin",
+    "ParticleUtilsLeafMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

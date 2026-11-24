@@ -283,7 +283,7 @@ public final class TerrainLighting {
 
     private static void setCloudShadow(Uniforms uniforms, Minecraft client, ClientLevel level, Vec3 camera) {
         float height = level.effects().getCloudHeight();
-        if (!LightingSettings.atmosphereEnabled() || client.options.getCloudsType() == CloudStatus.OFF
+        if (!LightingSettings.enabled() || client.options.getCloudsType() == CloudStatus.OFF
                 || ModList.get().isLoaded("betterclouds") || Float.isNaN(height)) {
             GL20.glUniform4f(uniforms.cloud, 0F, 0F, 0F, 0F);
             return;

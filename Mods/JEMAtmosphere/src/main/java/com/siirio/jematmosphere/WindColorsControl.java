@@ -1,4 +1,4 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import java.util.function.Supplier;
 import me.jellysquid.mods.sodium.client.gui.options.Option;
@@ -59,7 +59,7 @@ final class WindColorsControl implements Control<String> {
         }
 
         private void edit(String value) {
-            invalid = LightingSettings.parseWindColors(value) == null;
+            invalid = AtmosphereSettings.parseWindColors(value) == null;
             visibleOptionValue = invalid ? savedValue.get() : value;
             option.setValue(visibleOptionValue);
             editor.setTextColor(invalid ? 0xFF7777 : EditBox.DEFAULT_TEXT_COLOR);

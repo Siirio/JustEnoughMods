@@ -1,4 +1,4 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -81,9 +81,9 @@ final class GroundAtmosphere {
             return Frame.EMPTY;
         }
 
-        boolean mistEnabled = LightingSettings.riverMistEnabled();
-        boolean powderEnabled = LightingSettings.snowGustEnabled();
-        boolean caveEnabled = LightingSettings.caveAirEnabled();
+        boolean mistEnabled = AtmosphereSettings.riverMistEnabled();
+        boolean powderEnabled = AtmosphereSettings.snowGustEnabled();
+        boolean caveEnabled = AtmosphereSettings.caveAirEnabled();
         boolean newlyEnabled = (mistEnabled && !wasMistEnabled) || (powderEnabled && !wasPowderEnabled)
                 || (caveEnabled && !wasCaveEnabled);
         wasMistEnabled = mistEnabled;
@@ -94,7 +94,7 @@ final class GroundAtmosphere {
             return Frame.EMPTY;
         }
 
-        Vec3 wind = SandboxWeather.wind(current);
+        Vec3 wind = AtmosphereWeather.wind(current);
         float dawn = dawn(current, partialTick);
         boolean riverVisible = mistEnabled && dawn > 0.001F && weather < 0.92F;
         boolean seekingSurface = (riverVisible || powderEnabled) && current.getBrightness(LightLayer.SKY, block) >= 8;

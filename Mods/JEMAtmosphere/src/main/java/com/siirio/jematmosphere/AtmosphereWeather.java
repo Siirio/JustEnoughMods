@@ -1,23 +1,32 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.Tags;
 import org.joml.Vector3f;
 
-public final class SandboxWeather {
+public final class AtmosphereWeather {
+    private static final int SAND_COLOR = 0xD7AA68;
+    private static final int RED_SAND_COLOR = 0xBD744E;
+    private static final net.minecraft.resources.ResourceLocation RED_OASIS =
+            new net.minecraft.resources.ResourceLocation("terralith", "red_oasis");
+    private static final net.minecraft.resources.ResourceLocation STRATIFIED_DESERT =
+            new net.minecraft.resources.ResourceLocation("natures_spirit", "stratified_desert");
     private static final RandomSource RANDOM = RandomSource.create();
     private static final DustParticleOptions CAVE_DUST = dust(0.56F, 0.53F, 0.47F, 0.42F);
     private static ClientLevel heatLevel;
@@ -26,13 +35,24 @@ public final class SandboxWeather {
     private static float targetHeat;
     private static Vec3 heatOrigin;
 
-    private SandboxWeather() {
+    private AtmosphereWeather() {
+    }
+
+    static int sandColor(Holder<Biome> biome) {
+        if (hasRedSand(biome)) {
+            return RED_SAND_COLOR;
+        }
+        return biome.is(Tags.Biomes.IS_DESERT) || biome.is(STRATIFIED_DESERT) ? SAND_COLOR : 0;
+    }
+
+    static boolean hasRedSand(Holder<Biome> biome) {
+        return biome.is(BiomeTags.IS_BADLANDS) || biome.is(RED_OASIS);
     }
 
     public static void tick(Minecraft client) {
         ClientLevel level = client.level;
         var camera = client.gameRenderer.getMainCamera();
-        if (!LightingSettings.atmosphereEnabled() || level == null || !camera.isInitialized()
+        if (!AtmosphereSettings.atmosphereEnabled() || level == null || !camera.isInitialized()
                 || camera.getFluidInCamera() != FogType.NONE) {
             heatLevel = null;
             return;
@@ -47,10 +67,16 @@ public final class SandboxWeather {
             heatLevel = null;
             return;
         }
-        updateHeat(level, center, position);
+        if (AtmosphereSettings.heatShimmerEnabled()) {
+            updateHeat(level, center, position);
+        } else {
+            heatLevel = null;
+            heat = 0F;
+            heatOrigin = null;
+        }
 
         ParticleStatus status = client.options.particles().get();
-        if (status == ParticleStatus.MINIMAL || !hasOutdoorWeather(level)) {
+        if (!AtmosphereSettings.caveAirEnabled() || status == ParticleStatus.MINIMAL || !hasOutdoorWeather(level)) {
             return;
         }
         long time = level.getGameTime();
@@ -60,7 +86,7 @@ public final class SandboxWeather {
     }
 
     public static float heat(Minecraft client) {
-        return LightingSettings.atmosphereEnabled() && client.level != null && client.level == heatLevel ? heat : 0F;
+        return AtmosphereSettings.heatShimmerEnabled() && client.level != null && client.level == heatLevel ? heat : 0F;
     }
 
     /** Null means the warm biome supplies heat across the terrain. */
@@ -81,7 +107,7 @@ public final class SandboxWeather {
             int centerX = cursor.getX();
             int centerY = cursor.getY();
             int centerZ = cursor.getZ();
-            boolean desert = PrecipitationRenderer.sandColor(level.getBiome(cursor)) != 0;
+            boolean desert = sandColor(level.getBiome(cursor)) != 0;
             targetHeat = desert && outdoors(level, cursor) ? 0.30F * (1F - level.getRainLevel(1F)) : 0F;
             float localHeat = 0F;
             Vec3 nearbyHeatOrigin = null;
@@ -122,7 +148,7 @@ public final class SandboxWeather {
     }
 
     public static Vec3 campfireWind(ClientLevel level, Vec3 center) {
-        if (!LightingSettings.atmosphereEnabled() || !hasOutdoorWeather(level)
+        if (!AtmosphereSettings.campfireSmokeEnabled() || !hasOutdoorWeather(level)
                 || !outdoors(level, BlockPos.containing(center))) {
             return Vec3.ZERO;
         }

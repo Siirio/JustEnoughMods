@@ -1,4 +1,4 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.pipeline.TextureTarget;
@@ -9,7 +9,6 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.logging.LogUtils;
-import com.siirio.jemlightingsandbox.terrain.TerrainLighting;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
@@ -68,7 +67,8 @@ final class AtmosphereRenderer {
             return;
         }
         var biomeFog = BiomeFog.takeFrame();
-        if (!canCompositeFog() || !LightingSettings.atmosphereEnabled() || TerrainLighting.isShaderPackActive()) {
+        if (!canCompositeFog() || !AtmosphereSettings.atmosphereEnabled()
+                || AtmosphereEnvironment.isShaderPackActive()) {
             return;
         }
 
@@ -82,12 +82,15 @@ final class AtmosphereRenderer {
         }
         boolean openDimension = level.dimensionType().hasSkyLight() && !level.dimensionType().hasCeiling();
         boolean underwater = medium == FogType.WATER;
+        if (underwater && !AtmosphereSettings.underwaterHazeEnabled()) {
+            return;
+        }
         if ((!openDimension && biomeFog == null) || (underwater && !openDimension)) {
             return;
         }
         RenderTarget main = client.getMainRenderTarget();
-        var sun = TerrainLighting.sun(level, event.getPartialTick());
-        var celestial = TerrainLighting.celestial(level, event.getPartialTick());
+        var sun = AtmosphereEnvironment.sun(level, event.getPartialTick());
+        var celestial = AtmosphereEnvironment.celestial(level, event.getPartialTick());
         boolean moon = sun.y() < 0F;
         float weather = openDimension ? level.getRainLevel(event.getPartialTick()) : 0F;
         var block = camera.getBlockPosition();
@@ -101,19 +104,21 @@ final class AtmosphereRenderer {
             lastRain = gameTime;
         }
         float openSky = openDimension ? Mth.clamp((level.getBrightness(LightLayer.SKY, block) - 8F) / 7F, 0F, 1F) : 0F;
-        float aurora = openDimension && biome.coldEnoughToSnow(block)
+        float aurora = AtmosphereSettings.auroraEnabled() && openDimension && biome.coldEnoughToSnow(block)
                 ? Mth.clamp(-sun.y() * 3F, 0F, 1F) * (1F - weather) : 0F;
-        float rainbow = !openDimension || lastRain == Long.MIN_VALUE ? 0F : (1F - weather)
+        float rainbow = !AtmosphereSettings.rainbowEnabled() || !openDimension || lastRain == Long.MIN_VALUE ? 0F : (1F - weather)
                 * Mth.clamp(1F - (gameTime - lastRain) / 900F, 0F, 1F) * sun.strength();
         float flash = 0F;
-        if (openDimension && !client.options.hideLightningFlash().get()) {
+        if (AtmosphereSettings.distantLightningEnabled() && openDimension
+                && !client.options.hideLightningFlash().get()) {
             float thunder = level.getThunderLevel(event.getPartialTick());
             float timeSinceFlash = (gameTime % 227L + event.getPartialTick());
             float distant = thunder * 0.35F * Math.max(0F, 1F - timeSinceFlash / 7F);
             flash = Math.max(distant, Mth.clamp(level.getSkyFlashTime() / 3F, 0F, 1F));
         }
         float clock = ((gameTime % 81920L) + event.getPartialTick()) / 20F;
-        float heat = underwater || !openDimension ? 0F : SandboxWeather.heat(client);
+        float heat = !AtmosphereSettings.heatShimmerEnabled() || underwater || !openDimension
+                ? 0F : AtmosphereWeather.heat(client);
         var position = camera.getPosition();
         var groundAir = GROUND_AIR.sample(client, level, position, block, event.getPartialTick(), weather,
                 openDimension, underwater);
@@ -179,7 +184,7 @@ final class AtmosphereRenderer {
                 composite.safeGetUniform("BiomeFogColor").set((float) color.x, (float) color.y, (float) color.z);
             }
             composite.safeGetUniform("Heat").set(heat);
-            var heatOrigin = SandboxWeather.heatOrigin(client);
+            var heatOrigin = AtmosphereWeather.heatOrigin(client);
             if (heatOrigin == null) {
                 composite.safeGetUniform("HeatOrigin").set(0F, 0F, 0F, 0F);
             } else {

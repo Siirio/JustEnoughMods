@@ -1,8 +1,8 @@
-package com.siirio.jemlightingsandbox.mixin;
+package com.siirio.jematmosphere.mixin;
 
-import com.siirio.jemlightingsandbox.CampfirePlumes;
-import com.siirio.jemlightingsandbox.LightingSettings;
-import com.siirio.jemlightingsandbox.SandboxWeather;
+import com.siirio.jematmosphere.CampfirePlumes;
+import com.siirio.jematmosphere.AtmosphereSettings;
+import com.siirio.jematmosphere.AtmosphereWeather;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.CampfireSmokeParticle;
 import net.minecraft.client.particle.TextureSheetParticle;
@@ -33,7 +33,7 @@ abstract class CampfireSmokeParticleMixin extends TextureSheetParticle {
     @Inject(method = "<init>(Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDDZ)V", at = @At("RETURN"))
     private void jem$configurePlume(ClientLevel level, double x, double y, double z,
             double velocityX, double velocityY, double velocityZ, boolean signal, CallbackInfo ci) {
-        if (!LightingSettings.atmosphereEnabled()) {
+        if (!AtmosphereSettings.campfireSmokeEnabled()) {
             return;
         }
         BlockPos source = CampfirePlumes.source(level, x, y, z);
@@ -52,7 +52,7 @@ abstract class CampfireSmokeParticleMixin extends TextureSheetParticle {
         }
 
         float density = neighbors / 7f;
-        if (LightingSettings.darkCampfireSmoke()) {
+        if (AtmosphereSettings.darkCampfireSmoke()) {
             float shade = 0.70f - 0.32f * density;
             setColor(rCol * shade, gCol * shade, bCol * shade);
         }
@@ -72,7 +72,11 @@ abstract class CampfireSmokeParticleMixin extends TextureSheetParticle {
     @Redirect(method = "tick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/client/particle/CampfireSmokeParticle;move(DDD)V"))
     private void jem$driftSmoke(CampfireSmokeParticle smoke, double x, double y, double z) {
-        var wind = SandboxWeather.campfireWind(level, getBoundingBox().getCenter());
+        if (!AtmosphereSettings.campfireSmokeEnabled()) {
+            smoke.move(x, y, z);
+            return;
+        }
+        var wind = AtmosphereWeather.campfireWind(level, getBoundingBox().getCenter());
         if (!jem$plume) {
             smoke.move(x + wind.x, y, z + wind.z);
             return;

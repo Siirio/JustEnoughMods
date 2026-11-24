@@ -1,0 +1,125 @@
+{
+  "schema_version": 2,
+  "change_id": "client.atmosphere-production-20261124",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*"
+    }
+  ],
+  "conditions": [
+    {
+      "side": "physical client",
+      "renderer": "Embeddium 0.3.31",
+      "stock_shaders": true
+    }
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 82
+  },
+  "change": {
+    "summary": "Promote the approved non-lighting atmosphere layer into one production client-only owner.",
+    "modifiers": [
+      {"property": "client.atmosphere.owner", "operation": "set", "before": "JEMLightingSandbox development module", "after": "JEMAtmosphere production client-only module"},
+      {"property": "client.atmosphere.client_only", "operation": "set", "before": false, "after": true},
+      {"property": "client.atmosphere.master", "operation": "set", "before": "shared with Sandbox terrain lighting", "after": "independent persisted atmosphere master"},
+      {"property": "client.atmosphere.embeddium_page", "operation": "set", "before": false, "after": "one JEM Atmosphere page with master and per-effect controls"},
+      {"property": "client.atmosphere.wind", "operation": "set", "before": "Sandbox-only", "after": "production biome-tinted calm and storm trails"},
+      {"property": "client.atmosphere.biome_distance_fog_haze", "operation": "set", "before": "Sandbox-only", "after": "scene-depth-aware biome and cave haze"},
+      {"property": "client.atmosphere.sky_colors", "operation": "set", "before": "Sandbox-only", "after": "biome and native-weather sky colors with compatible cloud tint"},
+      {"property": "client.atmosphere.river_mist", "operation": "set", "before": "Sandbox-only", "after": "production low water-bank mist"},
+      {"property": "client.atmosphere.cave_air", "operation": "set", "before": "Sandbox-only", "after": "production cave-air banks and suspended dust"},
+      {"property": "client.atmosphere.snow_gusts", "operation": "set", "before": "Sandbox-only", "after": "production ground-level drifting snow"},
+      {"property": "client.atmosphere.canopy_leaves", "operation": "set", "before": "Sandbox-only", "after": "production model-sprite and biome-tinted falling leaves"},
+      {"property": "client.atmosphere.campfire_plumes", "operation": "set", "before": "Sandbox-only", "after": "production wind-driven campfire plumes with optional dark smoke"},
+      {"property": "client.atmosphere.aurora", "operation": "set", "before": "Sandbox-only", "after": "production cold-biome night aurora"},
+      {"property": "client.atmosphere.rainbow", "operation": "set", "before": "Sandbox-only", "after": "production fading post-rain rainbow"},
+      {"property": "client.atmosphere.underwater_haze_refraction", "operation": "set", "before": "Sandbox-only", "after": "production biome-colored underwater haze and subtle scene refraction"},
+      {"property": "client.atmosphere.heat_shimmer", "operation": "set", "before": "Sandbox-only", "after": "production hot-biome and local heat-source shimmer"},
+      {"property": "client.atmosphere.distant_lightning_flashes", "operation": "set", "before": "Sandbox-only", "after": "production distant storm-cloud flashes"},
+      {"property": "client.atmosphere.shader_pack_gate", "operation": "set", "before": "shared terrain-lighting guard", "after": "atmosphere-owned Oculus shader-pack guard"},
+      {"property": "client.atmosphere.precipitation_owner", "operation": "set", "before": "Sandbox custom replacement renderer", "after": "Particle Rain or native weather renderer remains authoritative; JEM Atmosphere never replaces precipitation"},
+      {"property": "client.atmosphere.lighting_exclusions", "operation": "set", "before": "bundled with terrain, block, entity and shadow systems", "after": "no terrain lighting, block lighting, entity lighting, water-surface lighting or shadow renderer"}
+    ]
+  },
+  "cause": {
+    "owner": "JEMAtmosphere",
+    "kind": "client_presentation",
+    "source_files": [
+      "Mods/JEMAtmosphere/build.gradle",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/JemAtmosphere.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereClient.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereBatchRenderer.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereEnvironment.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereSettings.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereOptions.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereRenderer.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmospherePalette.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereWeather.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/BiomeFog.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/GroundAtmosphere.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/WindGusts.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/CanopyLeaves.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/CanopyLeafParticle.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/CampfirePlumes.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/WindColorsControl.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/BetterCloudsTintMixin.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/CampfireSmokeParticleMixin.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/ClientLevelMixin.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/LevelRendererWindMixin.java",
+      "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/ParticleUtilsLeafMixin.java",
+      "Mods/JEMAtmosphere/src/main/resources/jem_atmosphere.mixins.json",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere.json",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere.fsh",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere.vsh",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere_composite.json",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere_composite.fsh",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere_composite.vsh",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/textures/weather/wind_gusts.png",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/lang/en_us.json",
+      "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/lang/ru_ru.json",
+      "Mods/JEMAtmosphere/src/main/resources/licenses/windy/GPL-3.0.txt",
+      "Mods/JEMAtmosphere/src/main/resources/licenses/windy/LGPL-3.0.txt",
+      "Mods/JEMAtmosphere/src/main/resources/licenses/windy/NOTICE.txt",
+      "Mods/JEMAtmosphere/src/main/resources/pack.mcmeta"
+    ]
+  },
+  "rationale": {
+    "purpose": "Ship the approved atmosphere without the rejected Sandbox lighting, shadows or precipitation replacement.",
+    "decision_source": "The user selected all listed atmosphere effects, per-effect Embeddium controls, the existing weather renderer, and complete exclusion of lighting and shadows. The separate production module and ownership split are implementation choices."
+  },
+  "introduced": {
+    "date": "2026-11-24",
+    "commit": "SELF",
+    "action": "promote_atmosphere_without_lighting",
+    "summary": "Extract the approved atmosphere into one production client-only owner."
+  },
+  "history": [
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "promote_atmosphere_without_lighting",
+      "summary": "Move wind, fog, mist, sky and post-process atmosphere into JEMAtmosphere while preserving Particle Rain and native precipitation authority."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client renderer",
+      "Embeddium options and client config",
+      "scene-depth atmosphere shaders",
+      "local atmosphere particles"
+    ],
+    "relations": [],
+    "notes": [
+      "Native biome, weather and fluid state are presentation inputs only.",
+      "Particle Rain, Weather Glass and native precipitation state remain authoritative.",
+      "Better Clouds tint, BadOptimizations sky caching and Oculus shader-pack state are compatibility boundaries.",
+      "There is no JEI, quest, economy, progression, networking or server-authority consequence."
+    ],
+    "unresolved": [
+      "In-game visual and frame-time acceptance remains pending."
+    ]
+  }
+}

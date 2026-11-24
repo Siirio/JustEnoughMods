@@ -1,4 +1,4 @@
-package com.siirio.jemlightingsandbox;
+package com.siirio.jematmosphere;
 
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import java.util.Map;

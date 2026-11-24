@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "562d124ca6f966d179207ebf078440ff98de2376bc087ef68caca1344e1baddd",
-  "canonical_records_sha256": "5382c4c05b1099b4bbc066ceaa2d9f54747853b9e694044d086e5e8fdbdc779e",
+  "change_records_sha256": "d1762ac756d408e1dc25a2783a16769604a6eb33f79d58b38a69cf6c3b8c7e54",
+  "canonical_records_sha256": "34f2de1199b27743c208c5d448c34826b7477547e060392f399efc792b404b3f",
   "canonical_match_sha256": "003f201c2f28c64bac62d1a0d662802dc24111862faa87d184eacec5f6c910cf",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
@@ -267,7 +267,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 33017,
-      "record_sha256": "e45680d9958763168359d50342c5d2d853a38cfd9d04d1fcfe924fd0dc493be4"
+      "record_sha256": "68094e7a801ba662b6d8bbac93a73d93592822423280d8aeb7e53a9849e6a774"
     },
     {
       "change_id": "smp.claims-flan-removal",
@@ -299,7 +299,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 33017,
-      "record_sha256": "ae5d03e5d3eaae2ac8c95fefd0d92c09fd9560bf487b1ec540863d4b13f413da"
+      "record_sha256": "077acc9b662b385ea3ad8675a97158d1060aae16a30f870801f19c1b2ca185a7"
     },
     {
       "change_id": "compat.narrator-and-shared-categories",
@@ -314,7 +314,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 17367,
-      "record_sha256": "7108ae1941ee653da14834ce15d1e45b9579f0511baa8d03758e8460da95f08a"
+      "record_sha256": "df89297de8d130f836399c2cdc7a48209f0d1aeefc71a6cdf1befc191d92a352"
     },
     {
       "change_id": "client.preferences-and-carryon-removal",
@@ -402,6 +402,21 @@
       "record_sha256": "81aafb9bc67289f0545650481bd4a1f796ba5271e649ab15bc26e59576822377"
     },
     {
+      "change_id": "client.atmosphere-production-20261124",
+      "status": "active",
+      "summary": "Promote the approved non-lighting atmosphere layer into one production client-only owner.",
+      "record": "Catalog/changes/records/client.atmosphere-production-20261124.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 33017,
+      "record_sha256": "bbd48caf571988a62d5980f57e07a77780f36130f458dc26db712f44e35ed397"
+    },
+    {
       "change_id": "client.barnyard-clydesdale-key-connection-20261029",
       "status": "conditional",
       "summary": "Prevent Barnyard Buddies from sending the Clydesdale sprint packet before a client connection exists while retaining its native in-world key behavior",
@@ -463,7 +478,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1,
-      "record_sha256": "b06517393ea9896d14cdde1110cddc191de829423487874ba9cc801c60b5c5ab"
+      "record_sha256": "13da40499ad4290738828bb91d5d754203c60e39a08cf95eb7c7bf26101eb464"
     },
     {
       "change_id": "client.jalloween-atmosphere-20261030",
@@ -667,7 +682,7 @@
     {
       "change_id": "client.sandbox-terrain-lighting-20261114",
       "status": "conditional",
-      "summary": "Apply independent real-time terrain shadows and configurable biome atmosphere in Sandbox.",
+      "summary": "Apply independent real-time terrain lighting and shadows in Sandbox after atmosphere promotion.",
       "record": "Catalog/changes/records/client.sandbox-terrain-lighting-20261114.json",
       "selectors": [
         {
@@ -677,7 +692,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 33017,
-      "record_sha256": "69a99e9a1d5dd678ac40d7380fa1a78ccf1a936145f9acab37ece24ec75ca69f"
+      "record_sha256": "d7b19f595e81894a2382731cc21212005763bfbf6ee1805e9de09f93f8e43cdc"
     },
     {
       "change_id": "client.smp-preview-native-appearance-20261026",
@@ -764,7 +779,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1,
-      "record_sha256": "ae979f5fc46bdbb10e3013d4370f8601b467e3f77a32634a904c29297b24af20"
+      "record_sha256": "fc54d503051cd24cf573660b7d882a9ed3152ac19fde291ee4c8a9bac24399cc"
     },
     {
       "change_id": "compat.removed-backtobed-build-dependency",
@@ -947,7 +962,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 223,
-      "record_sha256": "395a2a6a5f73deb65b702cfa9fbcdfa541e6ffe7b8d2934664cd9102c38dc768"
+      "record_sha256": "aff7d8bb2c144c1538e0f5765992e778cbb2fa6ba2935ecd1b5f6ff2da188d53"
     },
     {
       "change_id": "compat.inventory-delete-shortcuts-20261026",
@@ -993,7 +1008,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 17367,
-      "record_sha256": "29fecddb965417b094fe36486d7a8e2fbb849342f080c894a98ab962470f83af"
+      "record_sha256": "fb676debc37421e2d431a1e1fbf291714f1774e48a656f5f4d111f3b3c3787d8"
     },
     {
       "change_id": "compat.jei-exact-catalog-manifest-20261121",
@@ -1023,7 +1038,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 17367,
-      "record_sha256": "8be48606acf0f8387b50066bae46320380e110e4d77d7d85d589499bdca0c837"
+      "record_sha256": "6eaf609f82a5a762027b99c0a49617474b7761e61fb8646ac9b2d41b280381e7"
     },
     {
       "change_id": "compat.spawner-spirit-orb-provenance-20261031",
@@ -1159,7 +1174,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 409,
-      "record_sha256": "9f68fd0347f261d4724c1956e0f1ec235bdcaf28d72f8da05dad34b7cf1638fa"
+      "record_sha256": "daeba406e0041da957903a2d05a417fed54d45626477a6912ab96678b322605d"
     },
     {
       "change_id": "economy.building-supply-prohibitions",
@@ -1708,7 +1723,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1,
-      "record_sha256": "965509463dec9e02e9bf2482a293487912a136af1c8b49b4125f44df51d83c55"
+      "record_sha256": "f90594f3da02b253dd65e8f558d59bbee1c5ceb4ee8c69ad625d1efef4b06413"
     },
     {
       "change_id": "final-races-settlements-server-migration",
@@ -1775,7 +1790,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1056,
-      "record_sha256": "4597e7813ae69ea6f5709686edbd515540949cf199858fd6ed8dc372ae5c9a17"
+      "record_sha256": "6b39a47cad1ff3045d816a0be014443878fac727ad6ffcaffa9d7fda173926d7"
     },
     {
       "change_id": "ftb-authored-adventure-book-20261022",
@@ -1948,7 +1963,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 105,
-      "record_sha256": "b2ff90597e7c9730fc2f3f1792ce980805f989019706655322059758e8d8a953"
+      "record_sha256": "4e7ff8cd12ac344683afd073969696d5d71d7873a106b443c2cdb2779bdcbec2"
     },
     {
       "change_id": "handbook.drill-help",
@@ -2326,7 +2341,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 33017,
-      "record_sha256": "06def281bc8105de26bd06996dd4b6cc02a828db95b43574d0b1932cb279e462"
+      "record_sha256": "30814a4552d191ae8c0671f0322212fb855381d0e7711360564912855596cd04"
     },
     {
       "change_id": "login.connectivity-terminal-socket",
@@ -5468,7 +5483,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 33017,
-      "record_sha256": "b308d0c25cebf0745f87bfe4b055f903d71419210b1067c18b8948f85edc1e04"
+      "record_sha256": "8a67638e0dd0f8aa9fb82de884cff3b7c52c21ef553729eaa406050971099692"
     },
     {
       "change_id": "vinery.native-merchant-registered-ids",
@@ -5556,7 +5571,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 13,
-      "record_sha256": "9c54738329aa7ccc4c513569f696126101d2148b9774756d68d06f5b29650cea"
+      "record_sha256": "8bd9a97b18a3563ea7543a5d333995cd868fa16257d07d06055f6bae05cd7e13"
     },
     {
       "change_id": "windy.dedicated-registry-crash-removal-20261112",
@@ -5788,7 +5803,7 @@
   "source_fingerprints": {
     ".agents/skills/jem-registry-keeper/SKILL.md": "39e0bdad6bb0a98e4d7575ac3744320862da69f79b18e4b9b99820c7bf4f1d5c",
     "AGENTS.md": "16cafdee3ae568ef8d7c3df4ee87ec7381f308c5240c7cf37a49fe9aeb893caa",
-    "CHANGELOG.md": "df562717d0ab121103c11b489b9be7db0bc26ae6dce8e742c53c7d24b113f681",
+    "CHANGELOG.md": "96e880a6af3537a813a9cefa87e2a96440a6bdb8e065e6afb4991b6a5a1e8fba",
     "Catalog/README.md": "55341014df0dd25fbc9d6231ae717d85842e36fa2d7399e6e43dbf9e23d1e856",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "41caacb17bcc826f0c356a66deede274da1419b69a58c5e6558b11d8a77cd296",
@@ -5932,7 +5947,7 @@
     "Client/ManagedPack/config/xaero/minimap/server_profiles/default.cfg": "bc240a427bf11465f97e25159901e738494841f181d4c3d4f093793d892b0e86",
     "Client/ManagedPack/config/xaero/world-map/server_profiles/default.cfg": "e021d4a227fc02f100778e4dae90f0a4fe8de200e854ccda7118a4722dca3e8e",
     "Client/ManagedPack/defaultconfigs/mapsyncer-server.toml": "8d18876d6a65cdfdc098f6c105ed7cbea35a3ef911445427104f821a0a0c8fec",
-    "Client/ManagedPack/jem-pack/manifest.json": "78e6ad746afd360c7f0cc0b2e0bf0cb277b4d42907b8a6754d8d682d6fb3adc2",
+    "Client/ManagedPack/jem-pack/manifest.json": "29d032a6e33bb3b47a19ff8277144d4ab03a0effdaaa361d1fbfd5edb91a649f",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -6131,8 +6146,8 @@
     "Client/ManagedPack/mods/jem_adaptive_culling-1.5.0.jar": "81c8115c9594b5f83ee3649d3cae4d0a095d4f1984af901dcf4e753bf8240e9f",
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "d7b523b6cc7657340390fa961c9b8db351db4c505eea590a95c1536b923982e7",
     "Client/ManagedPack/mods/jem_security-1.0.8.jar": "f04e2ba18e7901fc07504ebeb5ff16d8148c6a0069e7355b2ca1b86f4f81c9eb",
-    "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "467db4e13c9ebb84c095d3b8e1dbfaf6a84ab559a1c37458c36f9e6042bcdbfa",
-    "Client/ManagedPack/mods/jemcompat-3.11.5.jar": "3e6bc7d557e57480d514db846a21bda914bc6a46ac8b6078a06f4bb1518c82f3",
+    "Client/ManagedPack/mods/jem_twelve_eyes-1.7.1.jar": "a2b055f3d70031335d5ec6401ca5e7690f0d4de903666971c30e406f9d39e813",
+    "Client/ManagedPack/mods/jemcompat-3.11.6.jar": "1696f40909569e83d611a501e88a007b9bae1b300361d66e525c3d53ff14bb2d",
     "Client/ManagedPack/mods/jemfood-1.0.0.jar": "89194b305e9c0674a12c840842fe769f439ce40998f389c0af71b0054ed257ea",
     "Client/ManagedPack/mods/lukis-grand-capitals-1.1.3.jar": "58182dc8d306afd944e708e0480d939a9adc3fcdab75c0bebd122a32c63d3851",
     "Client/ManagedPack/mods/lukis-woodland-mansions-v.1.0.jar": "45a678beaa5789ee94fdcde9f9043d7e3049f7c1e7e92f4d65baaa8052c0af0a",
@@ -6152,7 +6167,7 @@
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.2.1.zip.txt": "800d797debdd3dfb42df6b3f1f7f2cde625f111937847620e88c8053cdfe2b78",
-    "Docs/DEVELOPMENT.md": "bab7a557f8b38aafaa71ee190c2edd48307b8c690de7790e9a19bcee412f3739",
+    "Docs/DEVELOPMENT.md": "304125fa35cc70121e5d43617e3bbba7a3cc2b4c025eaa9d2fa8c9481e36f2eb",
     "Docs/MODS.md": "a07c4e8df51c6a1129646a5f129baa7402b5307cca95661458d49a0d92c3b9e7",
     "Docs/SERVER_COMMANDS.md": "1a5c59b71e979d4b50548274b8456ce7cf1821c318a073f383c00bc31adf23b9",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -9716,6 +9731,42 @@
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/config/JEMConfig.java": "87864ec9b9786b78fef6a97a5307bbf8603e65b7fd07cd91ec0d1981ee352375",
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/ClientLevelMixin.java": "b45f61877a06f7cc9ac6abfca4bc1f7a463479966e07f0be3e0557c25ce333c8",
     "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/EntityRenderDispatcherMixin.java": "d7eafdaaf3247ed0e275d942dd1ff007cb763a65c64f2d9010901971213fba06",
+    "Mods/JEMAtmosphere/build.gradle": "3ef3ae26968394b173e9839cfe72f667fc2ebe3a262f4af522a8c89c7a71e1ec",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereBatchRenderer.java": "3a109a8378003b2a62e4d84b1987567d67eb96d6bb281796e78c2405c90bc79e",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereClient.java": "1c45aec2c211122591b490418c9cdb3f5a0eac378db8f2547ee8e3dcc3176c12",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereEnvironment.java": "af3a04605d34f987f794ea23fd6403e7be5b2859206d41cfbdc9a29d9e62c4ee",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereOptions.java": "ba28a6eb197d789b1b1bba9a4aad2fc60a5503702d057420a2767f4368ca484e",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmospherePalette.java": "8d6ffef1500e3526f1d9ee36eb168272a568f5c652972d16226fe4cc357492f6",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereRenderer.java": "259c7e218fa0dfc8dbce769a9d427d1bbfd6fc37c48b1cc7761a6168aae815ed",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereSettings.java": "f0c7218f4ea807caf12184636b2151e1727899da192d48bbfd9be8ca0e7e9507",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/AtmosphereWeather.java": "08d20479beb52fe9c4e41fb04c5d91d4b2597c8c79831b10f6331af4cab5e428",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/BiomeFog.java": "0bd0c57e32e23581ec0addd028477763c0e089b061127e3c01551d38d9b0a4f5",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/CampfirePlumes.java": "94941f98fe3851ae40e25463c8c1c1400f2b79520c749e0b6d95fb8600151299",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/CanopyLeafParticle.java": "f713e734c3436758f9e3781b389dd0912d4c82fa716b066b4cd6d888e0e1c37e",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/CanopyLeaves.java": "f7fbbe4dcee101cfc8958b486adc5f2be7373557278faf2cb74d651ebea9e5e8",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/GroundAtmosphere.java": "4a6442c72be5c0820f688b909800f3b607538c3f0b8b78827ed4ee8552251159",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/JemAtmosphere.java": "c345c6ca7f990f071ea1463fb2c042bb986ee453468ad9b8f3a6e1d1fd19d909",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/WindColorsControl.java": "19ee235b63bd87ad90812ee0195145c4502f530879cb26fcfd82e2e430c116da",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/WindGusts.java": "fcee8e02e4711814af59e0ced807313c8f05f51402922c880c3d06431cb52093",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/BetterCloudsTintMixin.java": "bae95bd80935a75e972a2a3eeb8fe3e9bc05b26c5f5bbef747856f47b2b2ec5d",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/CampfireSmokeParticleMixin.java": "53899c0fc3748d4ca910f216aa623a6932e8748d7ad0d96c4570058001da9d49",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/ClientLevelMixin.java": "14df3e0f25d72ef7bac94f1939d1fd6e5b001805ca068c22c35ec048d3f11491",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/LevelRendererWindMixin.java": "d6245ce3e104afb89ddf5b9a4a48db8eefb444128e8031bb38175a9031b49183",
+    "Mods/JEMAtmosphere/src/main/java/com/siirio/jematmosphere/mixin/ParticleUtilsLeafMixin.java": "8cd0ddf715ef66d032f2bf622448b8fdb25782c00ac9794d673f3bb2b7feb161",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/lang/en_us.json": "70f2f184b4213ac2c23fddb9310fbab3f5224569778c9dbeef972941fbd3d8f5",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/lang/ru_ru.json": "d581a920c9938d7acb49f6f55c9344760fd6e28c20d9a4136ce1c6531e335465",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere.fsh": "23158a38ac7d2b21f5921c9d9e74897f6d6dd30672266fba38ef6d6765a6d624",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere.json": "fe60d38fe46fe6a3f604ad920366f08b84c31a81fe0937c1e0aaef65eb8fe23d",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere.vsh": "99b77772d46d279a60134ab474178ec80d01c647de91ca2102c01623e0b707fd",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere_composite.fsh": "0e96ee44eb4fc33a660fd3a7086eebe65b028054f4e4d9bbf4b9eb31d5611916",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere_composite.json": "f49916fcd29ace448bbb2b9ab921cd51165938cb4151b047534f260526cc9f5e",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/shaders/core/atmosphere_composite.vsh": "99b77772d46d279a60134ab474178ec80d01c647de91ca2102c01623e0b707fd",
+    "Mods/JEMAtmosphere/src/main/resources/assets/jem_atmosphere/textures/weather/wind_gusts.png": "c6c7e42f095a96ba56cad407801a3ed2a0c930e4af04d36d195d9017bac83997",
+    "Mods/JEMAtmosphere/src/main/resources/jem_atmosphere.mixins.json": "4663e8298c7764d2ce651723eb450febb1f111623a35bab4c3af1d655027969f",
+    "Mods/JEMAtmosphere/src/main/resources/licenses/windy/GPL-3.0.txt": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+    "Mods/JEMAtmosphere/src/main/resources/licenses/windy/LGPL-3.0.txt": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
+    "Mods/JEMAtmosphere/src/main/resources/licenses/windy/NOTICE.txt": "b16e8a4fc6a07a6feba48677efcdafbfa575b792add0220d89236e9333ee3d4f",
+    "Mods/JEMAtmosphere/src/main/resources/pack.mcmeta": "6024444c70d96ab272fc240339891ce2624007dae9eba6e20bf9464f2a0b7563",
     "Mods/JEMBootstrap/patches/external-client-state.patch": "61f076574559183e372a38b3f02d4c3e9d848356f4c707d78fad7f4d2c62c1fd",
     "Mods/JEMBootstrap/patches/login-sync-standard-layout.patch": "c19e0ca3c13c56a156a9c0290419111d1b74dc7777c02a610e1ae17d23ac2b73",
     "Mods/JEMBootstrap/patches/reliable-updates.patch": "158b10ed970201215355a4090dfb6a117cd3a313df77d9655f17ef3d4950afc9",
@@ -9724,7 +9775,7 @@
     "Mods/JEMBuilding/gradle.properties": "fb5baa3aa8f392861f87d42da0003d0bc9ec764b32172a147d509e84f72a4b21",
     "Mods/JEMBuilding/src/main/resources/data/jem_building/recipes/builder_hammer.json": "ac6e02fe47c580c00f707a8a26c408607e6ab4f2654597aab1fb13edbeede37d",
     "Mods/JEMCompat/AGENTS.md": "8531e0654673df9d36ec27bffd3e1090dbe25b363169c8e1fd4dacffa0b404f6",
-    "Mods/JEMCompat/CHANGELOG.md": "686ef9fd76e4a0b8a4e63c550f3b5ef01df674665f05cf69afc0ce62a59cec9f",
+    "Mods/JEMCompat/CHANGELOG.md": "553e0d7e4a404452016b32bd321136d75c893fd77b3d14dff339822345d7ce42",
     "Mods/JEMCompat/README.md": "94df38a075c1bc1a6270a050896cad88490c9673ae56fcbc05080cffd4ad2c46",
     "Mods/JEMCompat/SEASONS.md": "2a722937421ab4ff9c9be2cdb2a168c4e45a6c3b1c03206ffee420878ade5ab3",
     "Mods/JEMCompat/build.gradle": "038b0e28dae640a627389741f1225221f2245bc130334fac1193565a075414d6",
@@ -10144,64 +10195,37 @@
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/client/InventoryDeleteKeys.java": "a742d2e56fa4c7ffb474265086ae11d432fce939ccf2565c43c11024b245206c",
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/feature/inventory/InventoryDeleteNetwork.java": "b24883c2a0a7b058c440305b2cde73ae3c32680888bb94f288359e018feb84d0",
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/feature/inventory/SophisticatedStorageDelete.java": "15b0de2c1f8cc81156aa02f84017b4840916e04a8f1e1f1391d57261d68e64d9",
-    "Mods/JEMLightingSandbox/art/wind/assemble-wind-atlas.lua": "5798055981c5675d0e6d1963b27525226286810a65becd64a3c86161433964bf",
-    "Mods/JEMLightingSandbox/art/wind/wind_gusts.aseprite": "0400d28eb33b5df6f611aef0f7dd289cce49bef46fd6f782ab0f67501f267488",
     "Mods/JEMLightingSandbox/build.gradle": "db38e5ecc0d6839e44c9fbadb1227fc4e8f38662baf2aa4ef419faf38eb81b3b",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/AtmospherePalette.java": "cafa8072aead5e1a5a6fb94692d00a6060299bb030d064acbe6a522f6cf4ea53",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/AtmosphereRenderer.java": "74dc041b5f00a2ac5de3155df84a037e83044980892edba604b5ea2e50ca3839",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/BiomeFog.java": "0509f84e07dea10b1471923b8d821267b095c2064a3348c2f5f440d5a6a17845",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/CampfirePlumes.java": "ec88d4f67d886d9c54e912c9a0666ab5c7dc97ebf09b456c9cc29c4f49d72d3b",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/CanopyLeafParticle.java": "1279b93fd376f95268d6a50194cea1c43c7a080bd1aaa947525eade48d05a898",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/CanopyLeaves.java": "a3e4ea6068a73b9d46a65f2fe154555b6012947fd13b36cf17bee7feea014607",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/GroundAtmosphere.java": "6705b7eccb7907bafe9c840bb06a613dc682a87ca2afc507d30c6f7f43832d23",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/JemLightingSandbox.java": "6f61acef44d3479e70eb76144663d8b24b638b1abd594890d0a28e5f76c387f0",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingClient.java": "136fe4c04693597704b0d5b4b6ad7877c80297ab81d67993218ad429659d6719",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingOptions.java": "63a6dee13ec020803e7b2560a4bba57167f7fadf2ecbddf8277031d79e7e6539",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingClient.java": "794b083084ab4ff2c838d924fe8a9efbd65b59c7e2cf65810e51730bae253129",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingOptions.java": "d862b8153b0909bc12c1841fdeed2ef749fabc5bb4b55be9f7e2dc5b23e5e1ef",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingScreen.java": "7b94500e127ee788ce62cb99f24e7a4c77e4ee7117d058dc8159bf0b2ceecec7",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingSettings.java": "a6aed14f435da1b367b09e8d6c38bd43f40ba5e470e07847184cb2b06f4650cf",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/PrecipitationRenderer.java": "8df322b3dd513844cefc290470565a6b973bddc7e7e36e6c18210ac0a2579167",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/SandboxWeather.java": "ce536d7f2ec5ebc5123eea5826a2797599ea5060eaaade7b3ca831ea4e68759a",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WindColorsControl.java": "e29717979857d7204fbf7b083e9e9b6f3715a245fa361cef1e3257e828ed4495",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/WindGusts.java": "70dade53bf5449c655058e5737e7d6aeeffe038bb0afa352204a7d53e711d94d",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/BetterCloudsTintMixin.java": "1c1d87f03b6e6ed562176b11ab7fc29cb73794d6a179e4e8577ecff70f1c544a",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/CampfireSmokeParticleMixin.java": "9a17968aae411e38af2e761cfecf5b5172f52572f73db8406ddd928746c841d5",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/ClientLevelMixin.java": "edbe539eb6b08898bb1a1e7dce7f01731d53c47e4efbbb42375fcc7fcf460d80",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/LightingSettings.java": "39e8a44d2362f7660aa0d33b2e86fd7472fdd5a72adc172fe7655df8ef106398",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/ClientLevelMixin.java": "4b2f764b33de3871b340c354db1849e72e69dd724f2016e7fcb171fa4fa635fe",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EmbeddiumChunkRendererMixin.java": "0f5c5977e1f9302edffedb639aaf20a5e9aa93c738f096667edd7b25ebf65bc3",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EmbeddiumShaderLoaderMixin.java": "b1f5bb85053710093fbd7bd8dc55c24f91e44f411f0424225b919fafe03d4861",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EmbeddiumWaterMaterialMixin.java": "a6fe887ba7aa955033e93d50119bbd06a8cecb8f6d2318e7f0d5459cc607a8a0",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/EntityShadowBlobMixin.java": "ad08e419eb4a4855922d1a161196d43ee5a599304bca4265372634daef8a1920",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/LevelRendererWeatherMixin.java": "9ff65dbe343f5d31d66507be627a25fafe344c7d0d435c11c83790c9a0fefcf9",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/mixin/ParticleUtilsLeafMixin.java": "87b4badd9e2c8f26ac329578fcdde01b45361315fbf402339262f735c9796c3e",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/BlockLight.java": "0aae5b91fa7869d52bd4c64f770fa8d3c484156d14a1021a91c2d3f9e7f63131",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/BlockShadowShapes.java": "5b27d769804951bebae919899826b38e2a2a5d6de0414d5d31dec71fc9ccbc2b",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/ChunkLightIndex.java": "554a37896c04224ab6dfd5303afa6a6d11130e5950bd4ef29c935079422b1e02",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/ChunkLightTexture.java": "bae331ff688e66a6682a937e56b70b34e973bfc65ece48ab8c2486eb61543dcf",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/EmbeddiumTerrainShaders.java": "2271bada40e3199b6f319cfa0799258f955267d05bbca446e82f8d651eaf53d0",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/EntityShadowMap.java": "dcd386e76acccd842f7f2256dcef4e12989fd7a82364e39f336094fe66a76f91",
-    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/TerrainLighting.java": "1457012d8ee0c6bde05fa8490f6ac57ce8164014ef20fd14b4311cb28fbe3034",
+    "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/TerrainLighting.java": "b473c513f4c53c4ff876902961af8dbb1a3e19b6ea3fc4aee3ec886e210ec53f",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/WaterMaterial.java": "4a1bde7bf454b5c2ac057f17d28d860dd3a6b7c49733c4c6e8d75deaf00e457e",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/WaterSurface.java": "53cca09112868c5e06ec10d44303a094ddb791da2ed6a0b4721b4c4b144e9b91",
     "Mods/JEMLightingSandbox/src/main/java/com/siirio/jemlightingsandbox/terrain/WorldShadowSections.java": "7a90079325ac97fb64349987452dd9e3e4f82c1e6db389dcb7562d25827e9e8f",
-    "Mods/JEMLightingSandbox/src/main/resources/META-INF/mods.toml": "9103bee524aac8b3a48f74a3b5e10087d7eb86eade35adcc6dec549902bc892f",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/lang/en_us.json": "36740d054567538e63d185325baca75e42fa8f077ddcf73d93e70e0eaf7ca046",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/lang/ru_ru.json": "fa08012b63c3ff968045b4f50152366b6b36a933b123005a02a1aa437580a991",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere.fsh": "23158a38ac7d2b21f5921c9d9e74897f6d6dd30672266fba38ef6d6765a6d624",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere.json": "24d3de90df32217dd073ce525255182ae939451cd25121f8b979c39aea3f33ea",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere.vsh": "99b77772d46d279a60134ab474178ec80d01c647de91ca2102c01623e0b707fd",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere_composite.fsh": "0e96ee44eb4fc33a660fd3a7086eebe65b028054f4e4d9bbf4b9eb31d5611916",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere_composite.json": "2d2540d8221fce2fc43db444666d8bccb27d6bd1f6f2e1703e0b8a2946348252",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/atmosphere_composite.vsh": "99b77772d46d279a60134ab474178ec80d01c647de91ca2102c01623e0b707fd",
+    "Mods/JEMLightingSandbox/src/main/resources/META-INF/mods.toml": "90c6c429c1557ace4d7bf5950df703014fb8d4c989b0a68d8d957abd6783c545",
+    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/lang/en_us.json": "73b778496deda6f75305eff795f1fc2d8a030e20c00b87a2151b4fc00450654f",
+    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/lang/ru_ru.json": "1df65a3c59d1a3988203ac0a43ddaa4f755c0f16ad9877fdfd128e1434962be1",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.fsh": "1ad11ecb5e3b9aa96ebe164e4741a13eddb16245db3db55ece61d0df496e7b8d",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.json": "1377ffc2973db210aae40013ce54e0d3d8af8adc11c95106f063904591d41320",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/core/shadow_preview.vsh": "8e61076117f7721d92be3c6bf290707ce9288a348fbb90c8f6e68fce2b36c5d9",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/include/cutout_shadow.glsl": "864d6543ef4018396654d130f60cf649427ecd171cc4f29f80cdf44abfaff5f7",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/include/world_shadow.glsl": "a8440193e2759b3c0651de9699c0d56bc57b07c3b489a78ba0fecbf7d5c95e1b",
     "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/shaders/terrain/lighting.glsl": "c2bbedda2e2763c4a66a2cc1470f84b1ac02c39594d4bb0c6f75d747aa7c9e76",
-    "Mods/JEMLightingSandbox/src/main/resources/assets/jem_lighting_sandbox/textures/weather/wind_gusts.png": "c6c7e42f095a96ba56cad407801a3ed2a0c930e4af04d36d195d9017bac83997",
-    "Mods/JEMLightingSandbox/src/main/resources/jem_lighting_sandbox.mixins.json": "f97c776720b5f8a1e2fe884f011f8e4dfe7e445958e94bf688f1c9acdda2c658",
-    "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/GPL-3.0.txt": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
-    "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/LGPL-3.0.txt": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
-    "Mods/JEMLightingSandbox/src/main/resources/licenses/windy/NOTICE.txt": "b16e8a4fc6a07a6feba48677efcdafbfa575b792add0220d89236e9333ee3d4f",
+    "Mods/JEMLightingSandbox/src/main/resources/jem_lighting_sandbox.mixins.json": "dbfba3497bdc928b17bf51f9bded3018864adf7b1d450214eacb5b564ee421a1",
     "Mods/JEMLightingSandbox/src/main/resources/pack.mcmeta": "ca2c8580ba20fbdfca21bdd29c5960d0fe1b21bd73435ec65750d2ef7ab56c45",
     "Mods/JEMProfessions/build.gradle": "7d0d86a770a3d33b79d32866f2016490bd74a3568979af16a8efd061ca646e91",
     "Mods/JEMProfessions/prepare-sandbox-data.py": "53329ec0252d0bea01093ccc9c1c51067297209dc8ab3e2c56cb44a5fcc62778",
@@ -11312,8 +11336,8 @@
     "tools/generate_jei_catalog.py": "40ae52818cdcba57188aa530c484bde8445250bb17edebf4e0818ed800c40320",
     "tools/generate_profession_skills.py": "fe2d83ae34264b907321a70b21dc52ad880f72b3817ce2e0a7d3d9e96da5dda5",
     "tools/jem.py": "4da575e377a81449413b15643f4e26fc89bf93b80314b01bc1004e37ce85512a",
-    "tools/module-inventory.json": "8e505c2ad352f617370599a471ed6d2323571310eebeed9d5c2f4cc9f546c914",
-    "tools/state/packSyncHost-sync.json": "1b6174deb8fbaf50f6d6eb83f57b323b45cc060d37e30245013c8e5a0bde8cf9",
+    "tools/module-inventory.json": "4b391708b8530de8db5af74c98ceb1eae529dc21a6aa63bccb43e10a51337cd7",
+    "tools/state/packSyncHost-sync.json": "75c7e68e133232938b36b32e028d91bb034f083d7dad57709c6d5bd0e6ab89bb",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }
 }

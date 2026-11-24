@@ -1,3 +1,20 @@
+## 2026-11-24 - Promote the approved atmosphere layer
+
+- The user approved moving all non-lighting atmosphere work from JEM Lighting Sandbox into the same pending End-screen and JEI update
+- The requested scope includes wind, biome fog and distance haze, sky colors, water mist, cave air, snow gusts, falling leaves, campfire plumes, aurora, rainbow, underwater haze and refraction, heat shimmer, and distant lightning flashes
+- The user approved one Embeddium "JEM Atmosphere" page with a master control and separate controls for each effect
+- Implementation choice: `JEMAtmosphere` is a production client-only module. It owns its shaders, wind art, English and Russian localization, config, options, compatibility guards and local particle behavior
+- The existing Particle Rain and native biome weather state retain rain, snow, sandstorm and red-sandstorm rendering authority. JEM Atmosphere does not include or register the Sandbox custom precipitation replacement
+- Terrain lighting, block lighting, entity lighting, light-source reach, water-surface lighting and all shadow systems remain excluded. JEM Lighting Sandbox now retains only its lighting and shadow experiments
+- Bug / Client / the atmosphere implementation previously lived only inside a development Sandbox JAR whose master, config, mixins and assets also owned lighting, shadows and replacement precipitation, so it could not be shipped without the rejected systems / in testing with a separate production `jem_atmosphere` owner and a narrowed Sandbox owner
+- Built and reobfuscated JEM Atmosphere 1.0.0 with SHA-256 `02EEA86B2B85A8376B4808C09247425BA7CB8CF12DEE638FC59AFB4D4FFF1E68`
+- The client and server were initially kept running at the user's request. The user then closed the client and authorized Codex to stop the local server and update both local runtime targets
+- Copied the exact JEM Atmosphere 1.0.0, JEM Twelve Eyes 1.7.1 and JEMCompat 3.11.6 artifacts into `Client/ManagedPack` first. The ordinary local server then received the matching server-side artifacts and structure data. The client-only Atmosphere JAR remains absent from the dedicated server
+- Native Pack Sync journal 203 published content token `5364a980a81f4d5fb0c130ba1bec0afd6e991c4f` as the reviewed `+28 ~2 -2` delta. The staged and published manifest SHA-1 values both equal `4804d4462966fcc8460ac270917573634b7ea0f8`
+- The closed `Test JustEnoughMods` profile applied the published token through the native updater. The installed Atmosphere, Twelve Eyes and JEMCompat JARs match `Client/ManagedPack`, and no native transaction remains pending
+- The ordinary local server reached `Done` with the updated server artifacts and remains running at `127.0.0.1:31604`. The client was not launched, so visual and gameplay acceptance remain `in testing`
+- MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline remain unchanged
+
 ## 2026-11-24 - Retain the post-End reveal and densify boss structures
 
 - The user requested a layered violet post-End glitch closer to the supplied digital-interference reference, with text instead of the warning symbol. The first preview was rejected as too straight and non-artistic
