@@ -2,7 +2,7 @@
 
 - Registry source: reviewed logical-server export removed after initial validation
 - Source export SHA-256: 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39
-- Registered items: 14064
+- Registered items: 14134
 - Manifest schema: 2
 - Runtime classification: direct immutable item-ID lookup only
 
@@ -170,12 +170,12 @@ Total: 16
 
 ### WEARABLE_DOLLS
 
-Total: 765
+Total: 794
 
 - cnc: 21
 - dustydecorations: 3
 - endermanoverhaul: 1
-- kaleidoscope_doll: 697
+- kaleidoscope_doll: 726
 - kaleidoscope_nether: 26
 - minecraft: 7
 - rottencreatures: 9
@@ -183,7 +183,7 @@ Total: 765
 
 ### FOOD_EDIBLES
 
-Total: 1016
+Total: 1039
 
 - alexscaves: 128
 - alexsmobs: 26
@@ -206,7 +206,7 @@ Total: 1016
 - herbalbrews: 25
 - immersive_weathering: 2
 - incision: 2
-- kaleidoscope_cookery: 119
+- kaleidoscope_cookery: 142
 - kaleidoscope_end: 44
 - kaleidoscope_nether: 83
 - legendary_monsters: 1
@@ -229,7 +229,7 @@ Total: 1016
 
 ### FOOD_COOKING_EQUIPMENT
 
-Total: 61
+Total: 63
 
 - alexscaves: 1
 - bakery: 6
@@ -239,7 +239,7 @@ Total: 61
 - farm_and_charm: 11
 - handcrafted: 1
 - herbalbrews: 5
-- kaleidoscope_cookery: 21
+- kaleidoscope_cookery: 23
 - kaleidoscope_end: 1
 - kaleidoscope_nether: 1
 - minecraft: 2
@@ -303,7 +303,7 @@ Total: 29
 
 ### BUILDING_CONTAINERS
 
-Total: 368
+Total: 374
 
 - alexscaves: 4
 - aquamirae: 1
@@ -323,7 +323,7 @@ Total: 368
 - rottencreatures: 2
 - skarrier_mobs: 1
 - sophisticatedbackpacks: 71
-- sophisticatedstorage: 139
+- sophisticatedstorage: 145
 - toms_storage: 19
 - vinery: 36
 
@@ -417,7 +417,7 @@ Total: 87
 
 ### TREES
 
-Total: 1191
+Total: 1193
 
 - alexscaves: 28
 - bakery: 1
@@ -431,7 +431,7 @@ Total: 1191
 - handcrafted: 169
 - immersive_weathering: 2
 - infinitybuttons: 11
-- kaleidoscope_cookery: 33
+- kaleidoscope_cookery: 35
 - luminous_nether: 15
 - minecraft: 196
 - natures_spirit: 268
@@ -447,11 +447,11 @@ Total: 1191
 
 ### CREATE_REDSTONE
 
-Total: 1760
+Total: 1765
 
 - bellsandwhistles: 35
 - create: 296
-- create_train_parts: 11
+- create_train_parts: 16
 - createrailwaysnavigator: 9
 - deep_dark_regrowth: 2
 - dustydecorations: 4
@@ -466,7 +466,7 @@ Total: 1760
 
 ### BUILDING_FURNITURE
 
-Total: 879
+Total: 880
 
 - alexscaves: 29
 - alexsmobs: 7
@@ -488,6 +488,7 @@ Total: 879
 - handcrafted: 86
 - herbalbrews: 1
 - incision: 1
+- kaleidoscope_cookery: 1
 - kaleidoscope_doll: 5
 - luminous_beasts: 29
 - luminous_nether: 12
@@ -559,7 +560,7 @@ Total: 324
 
 ### BUILDING_LIGHT
 
-Total: 196
+Total: 204
 
 - alexscaves: 19
 - aquamirae: 1
@@ -573,8 +574,9 @@ Total: 196
 - ec_ad: 1
 - fairylights: 20
 - golemoverhaul: 1
+- kaleidoscope_cookery: 1
 - legendary_monsters: 2
-- luminous_nether: 13
+- luminous_nether: 20
 - minecraft: 33
 - natures_spirit: 17
 - netherexp: 9
@@ -600,7 +602,7 @@ Total: 213
 
 ### BUILDING_BLOCKS
 
-Total: 3304
+Total: 3298
 
 - alexscaves: 148
 - alexsmobs: 18
@@ -635,7 +637,7 @@ Total: 3304
 - legendary_monsters: 43
 - libraryferret: 10
 - luminous_beasts: 9
-- luminous_nether: 66
+- luminous_nether: 59
 - minecraft: 549
 - mobhome: 2
 - moonlight: 1
@@ -650,7 +652,7 @@ Total: 3304
 - somemoreblocks: 522
 - sootychimneys: 14
 - spawn: 73
-- spider_overhaul: 2
+- spider_overhaul: 3
 - the_sift: 30
 - trials: 58
 - unearthed_journey: 91

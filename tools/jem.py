@@ -755,7 +755,7 @@ def package_universal(config):
     guide = (ROOT / "Docs" / "universal" / "INSTALL.md").read_text(encoding="utf-8")
     manifest = {
         "format": 1, "createdAt": datetime.now().astimezone().isoformat(),
-        "minecraft": "1.20.1", "forge": "47.4.10", "java": 17,
+        "minecraft": "1.20.1", "forge": "47.4.29", "java": 17,
         "platforms": ["windows", "linux", "macos"],
         "files": files,
     }

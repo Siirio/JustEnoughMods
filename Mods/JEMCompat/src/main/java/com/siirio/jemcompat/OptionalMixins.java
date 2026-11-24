@@ -32,6 +32,8 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.siirio.jemcompat.mixin.client.AbstractContainerScreenJeiOverlayMixin", List.of("jei")),
             Map.entry("com.siirio.jemcompat.mixin.client.StorageTerminalFocusMixin", List.of("toms_storage")),
             Map.entry("com.siirio.jemcompat.mixin.client.modefite.ModefiteMathUtilsMixin", List.of("modefite")),
+            Map.entry("com.siirio.jemcompat.mixin.kaleidoscope.ImmersiveEatingFinishUseMixin", List.of("food")),
+            Map.entry("com.siirio.jemcompat.mixin.kaleidoscope.ImmersiveEatingCustomUseMixin", List.of("food")),
             Map.entry("com.siirio.jemcompat.mixin.kaleidoscope.VoidWalkerEnchantmentToggleMixin", List.of("kaleidoscope_end"))
     );
 
@@ -81,7 +83,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             var file = FMLLoader.getLoadingModList().getModFileById("connectivity");
             return FMLLoader.getDist().isDedicatedServer() && file != null
                     && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("connectivity")
-                    && mod.getVersion().toString().equals("1.20.1-7.6"));
+                    && mod.getVersion().toString().equals("1.20.1-7.7"));
         }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.worldtier.FrostbittenDifficultyMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("legendary_monsters");

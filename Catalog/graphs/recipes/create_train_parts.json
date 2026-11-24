@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "registry_type": "recipes",
-  "snapshot_sha": "ebd8b38fad8939a2d461507abaef3847aa69d5e1",
+  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
   "generation": {
-    "generated_utc": "2026-11-24T12:57:41.001615+00:00",
+    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "create_train_parts",
     "name": "Create Train Parts",
-    "version": "0.5.1"
+    "version": "0.6.1"
   },
   "records": [
     {
@@ -18,7 +18,7 @@
       "recipe_id": "create_train_parts:crafting/materials/andesite_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shapeless",
       "machine_id": "minecraft:crafting_shapeless",
       "ingredient_groups": [
@@ -34,7 +34,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/andesite_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/andesite_sliding_window.json"
       ]
     },
     {
@@ -42,7 +42,7 @@
       "recipe_id": "create_train_parts:crafting/materials/arm_extender",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
@@ -57,7 +57,122 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/arm_extender.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/arm_extender.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:crafting/materials/bellow_1x2",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "create:belt_connector",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "create_train_parts:bellow_1x2"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_1x2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:crafting/materials/bellow_2x2",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "create:belt_connector",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "create_train_parts:bellow_2x2"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_2x2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:crafting/materials/bellow_2x3",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "create:belt_connector",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "create_train_parts:bellow_2x3"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_2x3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:crafting/materials/bellow_3x2",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "create:belt_connector",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "create_train_parts:bellow_3x2"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_3x2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:crafting/materials/bellow_3x3",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "create:belt_connector",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "create_train_parts:bellow_3x3"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_3x3.json"
       ]
     },
     {
@@ -65,7 +180,7 @@
       "recipe_id": "create_train_parts:crafting/materials/brass_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shapeless",
       "machine_id": "minecraft:crafting_shapeless",
       "ingredient_groups": [
@@ -81,7 +196,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/brass_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/brass_sliding_window.json"
       ]
     },
     {
@@ -89,7 +204,7 @@
       "recipe_id": "create_train_parts:crafting/materials/copper_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shapeless",
       "machine_id": "minecraft:crafting_shapeless",
       "ingredient_groups": [
@@ -105,7 +220,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/copper_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/copper_sliding_window.json"
       ]
     },
     {
@@ -113,7 +228,7 @@
       "recipe_id": "create_train_parts:crafting/materials/crossing",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
@@ -131,7 +246,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/crossing.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/crossing.json"
       ]
     },
     {
@@ -139,7 +254,7 @@
       "recipe_id": "create_train_parts:crafting/materials/glass_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shapeless",
       "machine_id": "minecraft:crafting_shapeless",
       "ingredient_groups": [
@@ -155,7 +270,31 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/glass_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/glass_sliding_window.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:crafting/materials/pole",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "create:andesite_casing",
+        "create:shaft",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "create_train_parts:pole"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/pole.json"
       ]
     },
     {
@@ -163,7 +302,7 @@
       "recipe_id": "create_train_parts:crafting/materials/train_slide_andesite",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
@@ -179,7 +318,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_andesite.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_andesite.json"
       ]
     },
     {
@@ -187,7 +326,7 @@
       "recipe_id": "create_train_parts:crafting/materials/train_slide_brass",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
@@ -203,7 +342,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_brass.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_brass.json"
       ]
     },
     {
@@ -211,7 +350,7 @@
       "recipe_id": "create_train_parts:crafting/materials/train_slide_copper",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
@@ -227,7 +366,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_copper.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_copper.json"
       ]
     },
     {
@@ -235,7 +374,7 @@
       "recipe_id": "create_train_parts:crafting/materials/train_slide_train",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
@@ -251,7 +390,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_train.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_train.json"
       ]
     },
     {
@@ -259,7 +398,7 @@
       "recipe_id": "create_train_parts:crafting/materials/train_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shapeless",
       "machine_id": "minecraft:crafting_shapeless",
       "ingredient_groups": [
@@ -275,7 +414,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_sliding_window.json"
       ]
     },
     {
@@ -283,13 +422,14 @@
       "recipe_id": "create_train_parts:crafting/materials/train_step_andesite",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
         "create:andesite_casing",
         "minecraft:crafting_shaped",
-        "minecraft:stairs"
+        "minecraft:stairs",
+        "minecraft:wooden_stairs"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -299,7 +439,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_andesite.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_andesite.json"
       ]
     },
     {
@@ -307,13 +447,14 @@
       "recipe_id": "create_train_parts:crafting/materials/train_step_brass",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
         "create:brass_casing",
         "minecraft:crafting_shaped",
-        "minecraft:stairs"
+        "minecraft:stairs",
+        "minecraft:wooden_stairs"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -323,7 +464,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_brass.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_brass.json"
       ]
     },
     {
@@ -331,13 +472,14 @@
       "recipe_id": "create_train_parts:crafting/materials/train_step_copper",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
         "create:copper_casing",
         "minecraft:crafting_shaped",
-        "minecraft:stairs"
+        "minecraft:stairs",
+        "minecraft:wooden_stairs"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -347,7 +489,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_copper.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_copper.json"
       ]
     },
     {
@@ -355,13 +497,14 @@
       "recipe_id": "create_train_parts:crafting/materials/train_step_train",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
         "create:railway_casing",
         "minecraft:crafting_shaped",
-        "minecraft:stairs"
+        "minecraft:stairs",
+        "minecraft:wooden_stairs"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -371,7 +514,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_train.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_train.json"
       ]
     },
     {
@@ -379,7 +522,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/andesite_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -395,7 +538,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/andesite_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/andesite_sliding_window.json"
       ]
     },
     {
@@ -403,7 +546,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/arm_extender",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -419,7 +562,127 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/arm_extender.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/arm_extender.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:misc/crafting/materials/bellow_1x2",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "create:belt_connector",
+        "create_train_parts:crafting/materials/bellow_1x2",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/bellow_1x2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:misc/crafting/materials/bellow_2x2",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "create:belt_connector",
+        "create_train_parts:crafting/materials/bellow_2x2",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/bellow_2x2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:misc/crafting/materials/bellow_2x3",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "create:belt_connector",
+        "create_train_parts:crafting/materials/bellow_2x3",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/bellow_2x3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:misc/crafting/materials/bellow_3x2",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "create:belt_connector",
+        "create_train_parts:crafting/materials/bellow_3x2",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/bellow_3x2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:misc/crafting/materials/bellow_3x3",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "create:belt_connector",
+        "create_train_parts:crafting/materials/bellow_3x3",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/bellow_3x3.json"
       ]
     },
     {
@@ -427,7 +690,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/brass_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -443,7 +706,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/brass_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/brass_sliding_window.json"
       ]
     },
     {
@@ -451,7 +714,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/copper_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -467,7 +730,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/copper_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/copper_sliding_window.json"
       ]
     },
     {
@@ -475,7 +738,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/crossing",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -491,7 +754,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/crossing.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/crossing.json"
       ]
     },
     {
@@ -499,7 +762,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/glass_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -515,7 +778,31 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/glass_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/glass_sliding_window.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "create_train_parts:misc/crafting/materials/pole",
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "create:andesite_casing",
+        "create_train_parts:crafting/materials/pole",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/pole.json"
       ]
     },
     {
@@ -523,7 +810,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_slide_andesite",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -539,7 +826,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_slide_andesite.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_slide_andesite.json"
       ]
     },
     {
@@ -547,7 +834,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_slide_brass",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -563,7 +850,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_slide_brass.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_slide_brass.json"
       ]
     },
     {
@@ -571,7 +858,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_slide_copper",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -587,7 +874,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_slide_copper.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_slide_copper.json"
       ]
     },
     {
@@ -595,7 +882,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_slide_train",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -611,7 +898,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_slide_train.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_slide_train.json"
       ]
     },
     {
@@ -619,7 +906,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_sliding_window",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -635,7 +922,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_sliding_window.json"
       ]
     },
     {
@@ -643,7 +930,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_step_andesite",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -659,7 +946,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_step_andesite.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_step_andesite.json"
       ]
     },
     {
@@ -667,7 +954,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_step_brass",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -683,7 +970,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_step_brass.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_step_brass.json"
       ]
     },
     {
@@ -691,7 +978,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_step_copper",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -707,7 +994,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_step_copper.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_step_copper.json"
       ]
     },
     {
@@ -715,7 +1002,7 @@
       "recipe_id": "create_train_parts:misc/crafting/materials/train_step_train",
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
+      "mod_version": "0.6.1",
       "recipe_type": null,
       "machine_id": null,
       "ingredient_groups": [
@@ -731,7 +1018,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_step_train.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/advancements/recipes/misc/crafting/materials/train_step_train.json"
       ]
     }
   ]

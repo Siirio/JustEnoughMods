@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "ebd8b38fad8939a2d461507abaef3847aa69d5e1",
+  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
   "generation": {
-    "generated_utc": "2026-11-24T12:57:41.001615+00:00",
+    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "create_train_parts",
     "name": "Create Train Parts",
-    "version": "0.5.1"
+    "version": "0.6.1"
   },
   "records": [
     {
@@ -19,9 +19,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -40,8 +40,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/andesite_sliding_window.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/andesite_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/andesite_sliding_window.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/andesite_sliding_window.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -75,9 +75,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -94,8 +94,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/arm_extender.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/arm_extender.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/arm_extender.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/arm_extender.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -124,14 +124,284 @@
       "trade_policy_ref": "trade:create_train_parts:arm_extender"
     },
     {
+      "registry_id": "create_train_parts:bellow_1x2",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create_train_parts/models/item/bellow_1x2.json",
+        "data/create_train_parts/recipes/crafting/materials/bellow_1x2.json"
+      ],
+      "display_name_en_us": "Bellow 1x2",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/bellow_1x2.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_1x2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "create_train_parts:bellow_1x2",
+      "acquisition_routes": [
+        "create_train_parts:crafting/materials/bellow_1x2"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:create_train_parts:bellow_1x2"
+    },
+    {
+      "registry_id": "create_train_parts:bellow_2x2",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create_train_parts/models/item/bellow_2x2.json",
+        "data/create_train_parts/recipes/crafting/materials/bellow_2x2.json"
+      ],
+      "display_name_en_us": "Bellow 2x2",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/bellow_2x2.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_2x2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "create_train_parts:bellow_2x2",
+      "acquisition_routes": [
+        "create_train_parts:crafting/materials/bellow_2x2"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:create_train_parts:bellow_2x2"
+    },
+    {
+      "registry_id": "create_train_parts:bellow_2x3",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create_train_parts/models/item/bellow_2x3.json",
+        "data/create_train_parts/recipes/crafting/materials/bellow_2x3.json"
+      ],
+      "display_name_en_us": "Bellow 2x3",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/bellow_2x3.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_2x3.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "create_train_parts:bellow_2x3",
+      "acquisition_routes": [
+        "create_train_parts:crafting/materials/bellow_2x3"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:create_train_parts:bellow_2x3"
+    },
+    {
+      "registry_id": "create_train_parts:bellow_3x2",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create_train_parts/models/item/bellow_3x2.json",
+        "data/create_train_parts/recipes/crafting/materials/bellow_3x2.json"
+      ],
+      "display_name_en_us": "Bellow 3x2",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/bellow_3x2.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_3x2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "create_train_parts:bellow_3x2",
+      "acquisition_routes": [
+        "create_train_parts:crafting/materials/bellow_3x2"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:create_train_parts:bellow_3x2"
+    },
+    {
+      "registry_id": "create_train_parts:bellow_3x3",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "create_train_parts",
+      "mod_name": "Create Train Parts",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create_train_parts/models/item/bellow_3x3.json",
+        "data/create_train_parts/recipes/crafting/materials/bellow_3x3.json"
+      ],
+      "display_name_en_us": "Bellow 3x3",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/bellow_3x3.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/bellow_3x3.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "create_train_parts:bellow_3x3",
+      "acquisition_routes": [
+        "create_train_parts:crafting/materials/bellow_3x3"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:create_train_parts:bellow_3x3"
+    },
+    {
       "registry_id": "create_train_parts:brass_sliding_window",
       "registry_type": "item",
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -150,8 +420,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/brass_sliding_window.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/brass_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/brass_sliding_window.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/brass_sliding_window.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -185,9 +455,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -206,8 +476,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/copper_sliding_window.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/copper_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/copper_sliding_window.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/copper_sliding_window.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -241,9 +511,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -260,8 +530,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/crossing.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/crossing.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/crossing.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/crossing.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -295,9 +565,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -316,8 +586,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/glass_sliding_window.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/glass_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/glass_sliding_window.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/glass_sliding_window.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -351,14 +621,15 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
       "observed_in": [
-        "assets/create_train_parts/models/item/pole.json"
+        "assets/create_train_parts/models/item/pole.json",
+        "data/create_train_parts/recipes/crafting/materials/pole.json"
       ],
       "display_name_en_us": "Pole",
       "display_name_ru_ru": null,
@@ -366,10 +637,11 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/pole.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/pole.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/pole.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -390,7 +662,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": "create_train_parts:pole",
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "create_train_parts:crafting/materials/pole"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:create_train_parts:pole"
@@ -401,9 +675,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -422,8 +696,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_slide_andesite.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_andesite.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_slide_andesite.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_andesite.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -457,9 +731,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -478,8 +752,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_slide_brass.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_brass.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_slide_brass.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_brass.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -513,9 +787,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -534,8 +808,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_slide_copper.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_copper.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_slide_copper.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_copper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -569,9 +843,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -590,8 +864,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_slide_train.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_train.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_slide_train.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_slide_train.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -625,9 +899,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -646,8 +920,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_sliding_window.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_sliding_window.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_sliding_window.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_sliding_window.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -681,9 +955,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -702,8 +976,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_step_andesite.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_andesite.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_step_andesite.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_andesite.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -737,9 +1011,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -758,8 +1032,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_step_brass.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_brass.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_step_brass.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_brass.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -793,9 +1067,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -814,8 +1088,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_step_copper.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_copper.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_step_copper.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_copper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -849,9 +1123,9 @@
       "schema_version": 1,
       "mod_id": "create_train_parts",
       "mod_name": "Create Train Parts",
-      "mod_version": "0.5.1",
-      "source_jar": "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar",
-      "source_sha256": "5f27bf2a7019782e4a6f0b142e0349bb91fa5f5447965e9422543b2d5471b93b",
+      "mod_version": "0.6.1",
+      "source_jar": "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+      "source_sha256": "5c701139640d72d576ec4193d08e5effb9c76ebc9af3df79c1263098b2e4e349",
       "side_availability": [
         "client"
       ],
@@ -870,8 +1144,8 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_step_train.json",
-        "create_train_parts-0.5.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_train.json"
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:assets/create_train_parts/models/item/train_step_train.json",
+        "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar:data/create_train_parts/recipes/crafting/materials/train_step_train.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

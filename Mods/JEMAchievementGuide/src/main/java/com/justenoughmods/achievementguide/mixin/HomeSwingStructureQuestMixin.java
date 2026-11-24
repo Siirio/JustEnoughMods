@@ -1,11 +1,8 @@
 package com.justenoughmods.achievementguide.mixin;
 
 import com.justenoughmods.achievementguide.integration.home.HomeSwingLineage;
-import com.justenoughmods.achievementguide.integration.home.HomeSwingProof;
 import euphy.upo.casualswing.content.rope.BaseSwingRopeBlockEntity;
-import java.util.List;
 import java.util.UUID;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -18,10 +15,6 @@ public abstract class HomeSwingStructureQuestMixin implements HomeSwingLineage {
     @Unique private UUID jem$homeBuilder;
     @Override public UUID jem$homeBuilder() { return jem$homeBuilder; }
     @Override public void jem$homeBuilder(UUID builder) { jem$homeBuilder = builder; }
-    @Inject(method = "finalizeStructure", at = @At("RETURN"))
-    private void jem$formed(BaseSwingRopeBlockEntity master, List<BlockPos> parts, BlockPos pos, CallbackInfo callback) {
-        HomeSwingProof.assembled(master, parts);
-    }
     @Inject(method = "disbandStructure", at = @At("RETURN"))
     private void jem$disbanded(CallbackInfo callback) { jem$homeBuilder = null; }
     @Inject(method = "m_183515_", at = @At("RETURN"))

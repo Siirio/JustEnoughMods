@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "registry_type": "recipes",
-  "snapshot_sha": "ebd8b38fad8939a2d461507abaef3847aa69d5e1",
+  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
   "generation": {
-    "generated_utc": "2026-11-24T12:57:41.001615+00:00",
+    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "streamsreflowing",
     "name": "StreamsReflowing",
-    "version": "2.17.1"
+    "version": "2.17.5"
   },
   "records": [
     {
@@ -18,13 +18,14 @@
       "recipe_id": "streamsreflowing:carve_wand",
       "mod_id": "streamsreflowing",
       "mod_name": "StreamsReflowing",
-      "mod_version": "2.17.1",
+      "mod_version": "2.17.5",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
         "minecraft:crafting_shaped",
         "minecraft:heart_of_the_sea",
-        "minecraft:stick"
+        "minecraft:stick",
+        "streamsreflowing:wands"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -34,7 +35,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "StreamsReflowing-1.20.1-forge-2.17.1.jar:data/streamsreflowing/recipes/carve_wand.json"
+        "StreamsReflowing-1.20.1-forge-2.17.5.jar:data/streamsreflowing/recipes/carve_wand.json"
       ]
     },
     {
@@ -42,13 +43,14 @@
       "recipe_id": "streamsreflowing:flow_wand",
       "mod_id": "streamsreflowing",
       "mod_name": "StreamsReflowing",
-      "mod_version": "2.17.1",
+      "mod_version": "2.17.5",
       "recipe_type": "minecraft:crafting_shaped",
       "machine_id": "minecraft:crafting_shaped",
       "ingredient_groups": [
         "minecraft:crafting_shaped",
         "minecraft:nautilus_shell",
-        "minecraft:stick"
+        "minecraft:stick",
+        "streamsreflowing:wands"
       ],
       "tag_inputs": [],
       "expanded_ingredient_ids": [],
@@ -58,7 +60,7 @@
       "byproducts": [],
       "conditional_requirements": null,
       "source_provenance": [
-        "StreamsReflowing-1.20.1-forge-2.17.1.jar:data/streamsreflowing/recipes/flow_wand.json"
+        "StreamsReflowing-1.20.1-forge-2.17.5.jar:data/streamsreflowing/recipes/flow_wand.json"
       ]
     }
   ]

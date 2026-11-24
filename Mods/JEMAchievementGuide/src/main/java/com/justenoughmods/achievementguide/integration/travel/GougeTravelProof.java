@@ -1,6 +1,8 @@
 package com.justenoughmods.achievementguide.integration.travel;
 
 import com.justenoughmods.achievementguide.JemAdvancementGuide;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -13,9 +15,11 @@ import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-/** One native catch episode per online actor, discarded with the native lifecycle. */
+/** One native falling catch episode per online actor, discarded with the native lifecycle. */
 @Mod.EventBusSubscriber(modid = JemAdvancementGuide.MOD_ID)
 public final class GougeTravelProof {
+    private record Support(ServerPlayer actor, Level level, boolean falling) {}
+    private static final ThreadLocal<Deque<Support>> SUPPORTS = ThreadLocal.withInitial(ArrayDeque::new);
     private static final Map<UUID, Catch> catches = new HashMap<>();
     private static final class Catch {
         final ServerPlayer actor;
@@ -26,12 +30,11 @@ public final class GougeTravelProof {
     }
     private GougeTravelProof() {}
 
-    public static void impact(ServerPlayer actor, boolean toolSurvived, double downwardSpeed) {
-        reset(actor.getUUID());
-        if (TravelProof.eligible(actor) && toolSurvived && Double.isFinite(downwardSpeed) && downwardSpeed > 0
-                && actor.getDeltaMovement().y < 0 && actor.fallDistance > 0 && !actor.onGround()) {
-            catches.put(actor.getUUID(), new Catch(actor));
-        }
+    public static void beforeSupport(ServerPlayer actor) {
+        Deque<Support> stack = SUPPORTS.get();
+        if (stack.size() >= 16) stack.clear();
+        stack.push(new Support(actor, actor.level(), TravelProof.eligible(actor) && actor.getDeltaMovement().y < 0
+                && actor.fallDistance > 0 && !actor.onGround()));
     }
 
     private static Catch current(ServerPlayer actor) {
@@ -45,9 +48,21 @@ public final class GougeTravelProof {
     }
 
     public static void supported(ServerPlayer actor, boolean nativeSuccess, boolean nativeActive) {
+        Support before = SUPPORTS.get().poll();
+        if (before == null || before.actor != actor || before.level != actor.level()
+                || !nativeSuccess || !nativeActive) {
+            reset(actor.getUUID());
+            return;
+        }
         Catch receipt = current(actor);
-        if (!nativeSuccess || !nativeActive) reset(actor.getUUID());
-        else if (receipt != null) receipt.supported = true;
+        if (receipt != null) {
+            receipt.supported = true;
+            return;
+        }
+        if (!before.falling) return;
+        receipt = new Catch(actor);
+        catches.put(actor.getUUID(), receipt);
+        receipt.supported = true;
     }
 
     public static void kicked(ServerPlayer actor, boolean nativeSuccess) {
@@ -62,5 +77,5 @@ public final class GougeTravelProof {
     @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) { reset(event.getEntity()); }
     @SubscribeEvent public static void clone(PlayerEvent.Clone event) { reset(event.getOriginal()); reset(event.getEntity()); }
     @SubscribeEvent public static void died(LivingDeathEvent event) { reset(event.getEntity()); }
-    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { catches.clear(); }
+    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { catches.clear(); SUPPORTS.remove(); }
 }

@@ -1,10 +1,10 @@
 # JustEnoughMods universal
 
-Minecraft Java Edition 1.20.1, Forge 47.4.10, Java 17. The same JEM gameplay JARs support Windows, Linux and macOS, integrated singleplayer and a matching JEM dedicated server. This archive contains the complete client pack, including Bootstrap. Native game and graphics support still depends on the installed Java, launcher, drivers and third-party mods; Linux/macOS runtime acceptance has not been performed on the Windows development host.
+Minecraft Java Edition 1.20.1, Forge 47.4.29, Java 17. The same JEM gameplay JARs support Windows, Linux and macOS, integrated singleplayer and a matching JEM dedicated server. This archive contains the complete client pack, including Bootstrap. Native game and graphics support still depends on the installed Java, launcher, drivers and third-party mods; Linux/macOS runtime acceptance has not been performed on the Windows development host.
 
 ## Fresh installation
 
-1. Create a new, separate Minecraft 1.20.1 instance in a Forge-compatible launcher. Install Forge 47.4.10 and select Java 17 for that instance.
+1. Create a new, separate Minecraft 1.20.1 instance in a Forge-compatible launcher. Install Forge 47.4.29 and select Java 17 for that instance.
 2. Close Minecraft. Extract the contents of `JustEnoughMods/` into that new instance's game directory. The `mods`, `config`, `defaultconfigs`, `kubejs`, `resourcepacks` and other pack folders belong directly in the game directory.
 3. Start the instance through your launcher. Create a singleplayer world or join a server running the matching JEM modules. Select resource packs and compatible shaders using their ordinary native controls. Shaders are disabled by default; included shaderpacks do not all support macOS GPUs.
 

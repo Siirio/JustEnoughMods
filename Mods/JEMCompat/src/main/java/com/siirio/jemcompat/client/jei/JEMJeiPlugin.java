@@ -34,18 +34,21 @@ public final class JEMJeiPlugin implements IModPlugin {
         }
         if (net.minecraftforge.fml.ModList.get().isLoaded("handcrafted")
                 && net.minecraftforge.fml.ModList.get().isLoaded("bbb")) {
-            hideHammer(availableRuntime, new ResourceLocation("handcrafted", "hammer"));
+            hideItem(availableRuntime, new ResourceLocation("handcrafted", "hammer"));
             if (net.minecraftforge.fml.ModList.get().isLoaded("jem_building")) {
-                hideHammer(availableRuntime, new ResourceLocation("bbb", "hammer"));
+                hideItem(availableRuntime, new ResourceLocation("bbb", "hammer"));
             }
         }
         com.siirio.jemcompat.feature.transport.BackpackPolicy.retiredItems()
-                .forEach(id -> hideHammer(availableRuntime, id));
+                .forEach(id -> hideItem(availableRuntime, id));
+        if (net.minecraftforge.fml.ModList.get().isLoaded("food")) {
+            hideItem(availableRuntime, new ResourceLocation("food", "empty"));
+        }
         CuratedJeiCatalog.rebuild(availableRuntime);
         setNativeOverlayVisible(false);
     }
 
-    private static void hideHammer(IJeiRuntime runtime, ResourceLocation id) {
+    private static void hideItem(IJeiRuntime runtime, ResourceLocation id) {
         var item = ForgeRegistries.ITEMS.getValue(id);
         if (item == null || item == net.minecraft.world.item.Items.AIR) return;
         runtime.getIngredientManager().removeIngredientsAtRuntime(

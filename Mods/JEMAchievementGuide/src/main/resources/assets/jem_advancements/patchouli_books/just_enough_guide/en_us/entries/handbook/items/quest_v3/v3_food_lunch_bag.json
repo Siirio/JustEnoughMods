@@ -1,42 +1,42 @@
 {
-  "name": "Lunch, with Extras",
+  "name": "Lunch by the Bag",
   "icon": "kaleidoscope_cookery:transmutation_lunch_bag",
   "category": "jem_advancements:handbook/items",
   "sortnum": 3066,
   "jem_aliases": [
     "v3_food_lunch_bag",
     "kaleidoscope_cookery:transmutation_lunch_bag",
-    "Lunch, with Extras",
+    "Lunch by the Bag",
     "Farm 'n Food",
-    "Обед с продолжением",
+    "Обед из сумки",
     "С грядки на стол"
   ],
-  "jem_summary": "Eat from a loaded Transmutation Lunch Bag and receive at least one additional stored effect.",
+  "jem_summary": "Consume at least two stored food portions in one use of a Transmutation Lunch Bag.",
   "pages": [
     {
       "type": "patchouli:text",
-      "title": "Lunch, with Extras",
-      "text": "Eat from a loaded Transmutation Lunch Bag and receive at least one additional stored effect."
+      "title": "Lunch by the Bag",
+      "text": "Consume at least two stored food portions in one use of a Transmutation Lunch Bag."
     },
     {
       "type": "patchouli:text",
-      "title": "Lunch, with Extras",
-      "text": "Apply extra effects from a portable food supply."
+      "title": "Lunch by the Bag",
+      "text": "Use the bag as a portable supply that fills the hunger bar with several foods in sequence."
     },
     {
       "type": "patchouli:text",
       "title": "Getting started",
-      "text": "This version has 16 slots. It consumes the first food or potion and can add effects sampled from up to three others; an extra effect can consume one additional item."
+      "text": "Version 1.7.0 stores 24 stacks. One use consumes food in sequence until the hunger bar is full. Arrive hungry enough and load at least two portions. Potions are consumed separately and do not count for this quest."
     },
     {
       "type": "patchouli:text",
       "title": "Store kitchen supplies",
-      "text": "The Enamel Basin stores oil and oils a Kitchen Shovel. A Fruit Basket carries produce; the Lunch Bag consumes its own supplies and follows separate effect rules."
+      "text": "The Enamel Basin stores oil and oils a Kitchen Shovel. A Fruit Basket carries produce; the Lunch Bag consumes its own food in sequence until the hunger bar is full."
     },
     {
       "type": "patchouli:text",
-      "title": "Combine stored meal effects",
-      "text": "Version 1.4.1 has 16 slots: it consumes the first available food or potion, then samples effects from up to three other supplies. An extra effect can consume one additional item; later-version rules do not apply."
+      "title": "Eat stored foods in sequence",
+      "text": "Version 1.7.0 has 24 slots. One use consumes stored foods in sequence until the hunger bar is full. Potions are handled separately; the former sampled bonus-effect behavior is no longer present."
     }
   ]
 }

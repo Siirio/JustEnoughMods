@@ -94,7 +94,7 @@ def stage(destination):
     duplicates = {name: owners for name, owners in classes.items() if len(owners) > 1}
     if duplicates:
         raise ValueError(f"Duplicate implementation classes: {duplicates}")
-    result = {"minecraft": "1.20.1", "forge": "47.4.10", "java": 17, "artifacts": artifacts,
+    result = {"minecraft": "1.20.1", "forge": "47.4.29", "java": 17, "artifacts": artifacts,
               "installation": {"notes": "Production domain artifacts only. Bootstrap is a separate upstream patch target. Staging does not install or publish.",
                                "modules": [entry["module"] for entry in artifacts]},
               "classDuplicates": duplicates,

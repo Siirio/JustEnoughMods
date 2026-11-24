@@ -48,6 +48,7 @@ The interface name of `WEARABLE_DOLLS` is `Cosmetics` / `Косметика`. Th
 ## Assignment contract
 
 - One item registry ID has one leaf assignment
+- Exact implementation-only registry IDs can be excluded from both the manifest and JEI's runtime ingredient list. `food:empty` is the current exclusion because Immersive Eating uses it only as a GeckoLib animation controller
 - An item can also appear in an exact additional view without changing its primary assignment
 - Adding or removing a category does not reassign an existing ID
 - A new item that is not in the manifest appears in `OTHER` and is reported once in the log

@@ -1,0 +1,278 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.stable-mod-forge-updates-20261124",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "food"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "kaleidoscope_cookery"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "kaleidoscope_cookery:transmutation_lunch_bag"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime_scope": "Test JustEnoughMods and the ordinary local dedicated server only"
+    },
+    {
+      "release_filter": "Only official Minecraft 1.20.1 Forge artifacts marked as full releases were selected as new update artifacts"
+    },
+    {
+      "native_ownership": "Updated mods retain their native registries, recipes, world generation, networking and saved data unless a separately recorded JEM adapter states otherwise"
+    }
+  ],
+  "precedence": {
+    "layer": "local_distribution",
+    "priority": 1800,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Update Forge and the installed third-party mod set with stable Minecraft 1.20.1 releases, add Kaleidoscope Immersive Eating, and preserve Forge food-completion and server-authority contracts",
+    "modifiers": [
+      {
+        "property": "distribution.forge_version",
+        "operation": "replace",
+        "before": "47.4.28",
+        "after": "47.4.29",
+        "notes": "The managed Test profile, ordinary local server launcher, native update tooling and universal-install documentation use the same Forge build."
+      },
+      {
+        "property": "distribution.stable_third_party_artifacts",
+        "operation": "replace",
+        "before": {
+          "replacement_candidates": 66,
+          "immersive_eating": "absent"
+        },
+        "after": {
+          "replacement_count": 64,
+          "addition_count": 1,
+          "artifacts": [
+            "almanac-forge-1.20.1-1.26.11.1.jar",
+            "baguettelib-1.20.1-Forge-2.0.7.jar",
+            "balm-forge-1.20.1-7.3.44.jar",
+            "blastfromthepast-1.0.4-1.20.1.jar",
+            "CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar",
+            "casualswing-1.0.2-fix-1.20.1-Forge.jar",
+            "chatanimation-forge-1.3.5+mc1.20.1.jar",
+            "colorize-1.20.4-forge-1.9.0.jar",
+            "companions-forge-1.20.1-1.3.9.jar",
+            "connectivity-1.20.1-7.7.jar",
+            "create_train_parts-0.6.1-1.20.1-6.0.8-291.jar",
+            "CreativeCore_FORGE_v2.12.42_mc1.20.1.jar",
+            "cupboard-1.20.1-4.2.jar",
+            "enhancedai-3.3.7.5.jar",
+            "entity_model_features-3.3.12-1.20.1-forge.jar",
+            "entity_texture_features-7.2.7-1.20.1-forge.jar",
+            "fancymenu_forge_3.11.0_MC_1.20.1.jar",
+            "fasterladderclimbing-forge-1.20.1-1.2.0.jar",
+            "fusion-1.3.16-forge-mc1.20.1.jar",
+            "fwa+1.20.1-forge-1.3.10.jar",
+            "fzzy_config-0.7.7+1.20.1+forge.jar",
+            "geckolib-forge-1.20.1-4.8.5.jar",
+            "gouge-1.8.4-mc1.20.1-forge.jar",
+            "immersive_melodies-0.8.4+1.20.1-forge.jar",
+            "incontrol-1.20-9.5.1.jar",
+            "kaleidoscope_compat-2.6.5-forge mc1.20.1-Patch.2.jar",
+            "kaleidoscope_immersiveEating-forge1.20.1-1.5.3.jar",
+            "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+            "kaleidoscopedoll-1.4.2-forge+mc1.20.1.jar",
+            "knightlib-forge-1.20.1-2.1.0.jar",
+            "Ksyxis-1.4.6.jar",
+            "legendarymonsters-2.2.4 MC 1.20.1.jar",
+            "libraryferret-forge-1.20.1-4.0.0.jar",
+            "LitematicaTool-forge-1.20-2.1.0.jar",
+            "lithostitched-forge-1.20.1-1.4.12.jar",
+            "LocatorBar-forge-1.3.0+1.20.1.jar",
+            "Luminous Beasts V1.2.8 - Forge 1.20.1.jar",
+            "Luminous Nether V1.3.4 - Forge 1.20.1.jar",
+            "modernfix-forge-5.28.8+mc1.20.1.jar",
+            "MoogsNetherStructures-universal-1.20-3.1.0.jar",
+            "MoogsStructureLib-forge-1.20-3.4.2.jar",
+            "MoogsVoyagerStructures-universal-1.20-5.1.3.jar",
+            "moonlight-1.20-2.16.39-forge.jar",
+            "obscure_tooltips-forge-1.20.1-3.10.1.jar",
+            "offgrid-forge-1.0.7+1.20.1.jar",
+            "particlerain-4.0.4+1.20.1-forge.jar",
+            "particular-1.20.1-Forge-1.6.1.jar",
+            "punchy-3.2b-forge-1.20.1.jar",
+            "PuzzlesLib-v8.1.36-1.20.1-Forge.jar",
+            "Quick Skin - Forge - 1.20.1-5.0.1.jar",
+            "rightclickharvest-forge-4.7.2-1.20.1.jar",
+            "shutterup-forge-1.20.1-1.2.1.jar",
+            "snowyspirit-1.20-3.0.12.jar",
+            "sophisticatedbackpacks-1.20.1-3.26.22.2264.jar",
+            "sophisticatedcore-1.20.1-1.5.40.2493.jar",
+            "sophisticatedstorage-1.20.1-1.5.19.2243.jar",
+            "spawn-4.0.8-1.20.1.jar",
+            "SpiderOverhaul-0.1.0-Forge-v1.20.jar",
+            "StreamsReflowing-1.20.1-forge-2.17.5.jar",
+            "structure_layout_optimizer-forge-1.0.12.jar",
+            "Terralith_ReStoned_v1.3.1.jar",
+            "tiny_takeover_backport-forge-1.20.1-1.8.3.jar",
+            "whaleborne-1.20.1-1.2.5.jar",
+            "xaerominimap-forge-1.20.1-26.6.0.jar",
+            "xaeroworldmap-forge-1.20.1-1.47.0.jar"
+          ]
+        },
+        "notes": "The exact JARs are canonical only after final client-first and server-second synchronization. The Atlas must be fully regenerated after the final JEM artifacts are present."
+      },
+      {
+        "property": "distribution.stable_release_filter",
+        "operation": "replace",
+        "before": "Installed versions were checked independently and could include existing upstream prerelease dependencies",
+        "after": {
+          "new_artifact_rule": "Accept only official full-release files for Minecraft 1.20.1 and Forge",
+          "retained_existing_nonrelease_dependencies": [
+            "astemirlib_re 1.2.987-SNAPSHOT",
+            "Better Clouds 1.3.37 beta",
+            "Create Railways Navigator 0.9.1 beta",
+            "DragonLib 3.0.28 beta",
+            "Player Animator 1.0.2 rc1",
+            "BBB 2.0 pre4"
+          ],
+          "protected_project_artifacts": [
+            "JEM Bootstrap retains its pinned AutoModpack 5.0.0-rc.1 protocol owner",
+            "JEM project-owned dev-labelled artifacts retain their current source-owned identities"
+          ]
+        },
+        "notes": "The retained entries were not replaced with another prerelease. No compatible full-release replacement was selected in this update."
+      },
+      {
+        "property": "compat.immersive_eating.server_packet_authority",
+        "operation": "replace",
+        "before": "Immersive Eating handled client-selected custom child food without a JEM validation bridge to the active server animation state",
+        "after": "JEMCompat accepts a custom child-food request only when sender, hand, requested item and count are valid, the server animation state uses the same hand and held stack, and the requested item is the native UniqueItem mapping for the held item. Invalid requests are canceled before consumption.",
+        "conditions": [
+          {
+            "installed_mod": "food 1.5.3"
+          }
+        ],
+        "notes": "The adapter validates the upstream native map. It does not create a second plate or food registry."
+      },
+      {
+        "property": "compat.immersive_eating.forge_finish_event",
+        "operation": "replace",
+        "before": "Immersive Eating called ItemStack.finishUsingItem directly from normal and custom completion packets without ForgeEventFactory.onItemUseFinish",
+        "after": "Both Immersive Eating completion paths preserve the native ItemStack result and invoke ForgeEventFactory.onItemUseFinish with a copy of the consumed stack",
+        "notes": "This restores the normal Forge completion signal used by JEMFood, JEM Advancements and other event consumers without duplicating native consumption."
+      },
+      {
+        "property": "quest.v3_food_lunch_bag.native_detection",
+        "operation": "replace",
+        "before": "The 1.4.1 adapter observed the former lunch-bag food completion flow",
+        "after": "The 1.7.0 adapter brackets the native TransmutationLunchBagItem use transaction and emits v3_food_lunch_bag only for an eligible real server player when the same bag returns, at least two stored edible items were consumed, and hunger increased",
+        "notes": "Kaleidoscope Cookery remains the food and lunch-bag owner. The adapter records quest proof only and excludes client worlds, fake players, spectators and Creative players."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Managed pack, Forge launcher, JEM Compat and JEM Advancements",
+    "kind": "user_requested_stable_dependency_refresh",
+    "source_files": [
+      "Client/ManagedPack/mods/**",
+      "Server/mods/**",
+      "Server/run.bat",
+      "Server/run.sh",
+      "tools/apply-published-client.py",
+      "tools/architecture_artifacts.py",
+      "tools/client-recovery/JemClientRecovery.java",
+      "tools/generate_jei_catalog.py",
+      "tools/jem.py",
+      "Mods/JEMAchievementGuide/**",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/**",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/ImmersiveEatingCustomUseMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/ImmersiveEatingFinishUseMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+      "Mods/MobHome/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMAchievementGuide/build.gradle",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/LunchBagFoodProof.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryLunchBagQuestMixin.java",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMUnofficialOffgrid/build.gradle"
+    ]
+  },
+  "rationale": {
+    "purpose": "Install the user's requested stable dependency refresh and eating animations without weakening server authority or losing Forge food-completion consequences",
+    "decision_source": "Direct user request on 2026-11-24 to add the Kaleidoscope eating animations mod and update all mods and Forge using full releases only",
+    "user_requested": "Add Kaleidoscope Immersive Eating and update compatible Minecraft 1.20.1 Forge dependencies to newer full releases, including Forge",
+    "implementation_choices": "Use official release-channel metadata, keep incompatible or prerelease-only dependencies unchanged, validate custom food packets against upstream server state, restore Forge completion events, and adapt the existing lunch-bag quest proof to Cookery 1.7.0"
+  },
+  "introduced": {
+    "date": "2026-11-24",
+    "commit": "SELF",
+    "action": "refresh_stable_mods_and_forge",
+    "summary": "Prepare the stable Forge and third-party dependency refresh with Immersive Eating compatibility"
+  },
+  "history": [
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "refresh_stable_mods_and_forge",
+      "summary": "Replace 64 compatible installed artifacts, add Kaleidoscope Immersive Eating 1.5.3, update Forge to 47.4.29 and preserve exact food-event, packet-authority and quest-proof contracts",
+      "source_files": [
+        "Client/ManagedPack/mods/**",
+        "Server/mods/**",
+        "Server/run.bat",
+        "Server/run.sh",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/ImmersiveEatingCustomUseMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/ImmersiveEatingFinishUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/LunchBagFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryLunchBagQuestMixin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Forge",
+      "AutoModpack",
+      "registry_atlas",
+      "network_compatibility",
+      "world_generation",
+      "recipes",
+      "loot",
+      "entities",
+      "food",
+      "Forge item-use events",
+      "JEMFood",
+      "FTB Quests",
+      "JEM Advancements",
+      "JEI catalog",
+      "localization",
+      "saved_world_compatibility"
+    ],
+    "relations": [
+      "Official stable release metadata -> exact Minecraft 1.20.1 Forge artifacts -> managed client and matching dedicated server",
+      "Kaleidoscope Immersive Eating packet -> server animation and held-stack validation -> native food completion",
+      "Native Immersive Eating completion -> ForgeEventFactory.onItemUseFinish -> JEMFood and quest event consumers",
+      "Kaleidoscope Cookery 1.7.0 lunch-bag transaction -> read-only JEM Advancements proof -> native FTB quest completion",
+      "Final artifact set -> full Registry Atlas regeneration -> JEI, localization, quest and gameplay consequence review"
+    ],
+    "notes": [
+      "The stable-only rule applies to newly selected update artifacts. Existing prerelease dependencies remain explicit exceptions, not newly installed updates.",
+      "Fragmentum 5.4.0 is not selected because the newest full Aquamirae release still links its removed DeferredItem class. Loot Journal 6.2.2 requires Fragmentum 5.0.0 or newer, so compatible Fragmentum 1.5.2 and Loot Journal 6.2.1 remain installed.",
+      "Client-only artifacts remain absent from the dedicated server. Common artifacts require exact client/server parity when they expose registries or network channels.",
+      "No MineRENT deployment, stable-profile update or release-baseline promotion is part of this local continuation update."
+    ],
+    "unresolved": [
+      "Runtime Mixin application, packet behavior, saved-world migration and player acceptance are not established by static Atlas maintenance."
+    ]
+  }
+}

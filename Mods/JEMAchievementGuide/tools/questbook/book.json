@@ -57094,8 +57094,8 @@
                     "scope": "installed_static",
                     "reviewed_on": "2026-10-22",
                     "artifact_evidence": {
-                      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-                      "sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+                      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+                      "sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
                       "resource": "assets/kaleidoscope_cookery/lang/en_us.json"
                     }
                   }
@@ -57126,10 +57126,10 @@
           "id": "v3_food_lunch_bag",
           "number": "v3_food_lunch_bag",
           "chapter_id": "tab-03",
-          "title": "Обед с продолжением",
-          "condition": "Поешь из наполненной трансмутационной сумки и получи хотя бы один её дополнительный эффект.",
-          "purpose": "Применяй дополнительные эффекты из переносного запаса еды.",
-          "tip": "В этой версии сумка имеет 16 ячеек. Она съедает первый продукт или зелье и может добавить эффекты до трёх других запасов; дополнительный эффект иногда расходует ещё один предмет.",
+          "title": "Обед из сумки",
+          "condition": "За одно использование трансмутационной сумки съешь из неё не меньше двух порций еды.",
+          "purpose": "Освой сумку как переносной запас, который последовательно заполняет шкалу голода несколькими продуктами.",
+          "tip": "Версия 1.7.0 хранит 24 стопки. При использовании сумка последовательно расходует еду, пока шкала голода не заполнится. Подойди достаточно голодным и положи внутрь как минимум две порции. Зелья расходуются отдельно и не считаются для этого задания.",
           "branch": "tab-03",
           "after": [
             "v2_food_good_meal"
@@ -57141,7 +57141,7 @@
           "conditions": [
             {
               "kind": "advancement",
-              "action": "Eat from a loaded Transmutation Lunch Bag and receive at least one additional stored effect.",
+              "action": "Consume at least two stored food portions in one use of a Transmutation Lunch Bag.",
               "quantity": 1
             }
           ],
@@ -57187,27 +57187,27 @@
           },
           "localization": {
             "ru_ru": {
-              "title": "Обед с продолжением",
-              "condition": "Поешь из наполненной трансмутационной сумки и получи хотя бы один её дополнительный эффект.",
-              "purpose": "Применяй дополнительные эффекты из переносного запаса еды.",
-              "tip": "В этой версии сумка имеет 16 ячеек. Она съедает первый продукт или зелье и может добавить эффекты до трёх других запасов; дополнительный эффект иногда расходует ещё один предмет.",
+              "title": "Обед из сумки",
+              "condition": "За одно использование трансмутационной сумки съешь из неё не меньше двух порций еды.",
+              "purpose": "Освой сумку как переносной запас, который последовательно заполняет шкалу голода несколькими продуктами.",
+              "tip": "Версия 1.7.0 хранит 24 стопки. При использовании сумка последовательно расходует еду, пока шкала голода не заполнится. Подойди достаточно голодным и положи внутрь как минимум две порции. Зелья расходуются отдельно и не считаются для этого задания.",
               "reward": "1 × Корзина для фруктов; 2 × Поднос; 112 опыта."
             },
             "en_us": {
-              "title": "Lunch, with Extras",
-              "condition": "Eat from a loaded Transmutation Lunch Bag and receive at least one additional stored effect.",
-              "purpose": "Apply extra effects from a portable food supply.",
-              "tip": "This version has 16 slots. It consumes the first food or potion and can add effects sampled from up to three others; an extra effect can consume one additional item.",
+              "title": "Lunch by the Bag",
+              "condition": "Consume at least two stored food portions in one use of a Transmutation Lunch Bag.",
+              "purpose": "Use the bag as a portable supply that fills the hunger bar with several foods in sequence.",
+              "tip": "Version 1.7.0 stores 24 stacks. One use consumes food in sequence until the hunger bar is full. Arrive hungry enough and load at least two portions. Potions are consumed separately and do not count for this quest.",
               "reward": "1 × Fruit Basket; 2 × Tray; 112 XP."
             }
           },
           "design": {
             "stage": "field",
-            "lesson": "Применяй дополнительные эффекты из переносного запаса еды.",
+            "lesson": "Используй последовательное питание из переносного запаса еды.",
             "old_sources": [],
             "migration_equivalence": "NEW",
             "exact_predecessor": null,
-            "reward_purpose": "A basket and trays organize ingredients for further combinations without providing a ready-made buff bundle.",
+            "reward_purpose": "A basket and trays organize food for later portable meals without supplying the completed meal.",
             "visual_route": "portable_meals",
             "coverage_keys": [
               "kaleidoscope_cookery:food_storage",
@@ -57217,7 +57217,7 @@
             "hook_contract": {
               "advancement": "jem_advancements:quest_v3/v3_food_lunch_bag",
               "action": "v3_food_lunch_bag",
-              "success_condition": "Exact installed1.4.1 Lunch Bag finishUsingItem: first real food/potion consumed, and at least one extra sampled effect successfully applied via native path. Observe native result; no new effect-combination engine. Reject empty use or merely obtaining bag; retain container-in-container rules.",
+              "success_condition": "Exact installed 1.7.0 Lunch Bag finishUsingItem: the same real player consumes at least two stored food portions during one native sequential-use transaction and the native hunger level increases. Compare the bag's own 24-slot inventory before and after native completion. Potions, empty use, merely obtaining the bag, Creative and fake players do not satisfy the objective.",
               "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
             },
             "native_research_evidence": [
@@ -57232,8 +57232,8 @@
                     "scope": "installed_static",
                     "reviewed_on": "2026-10-22",
                     "artifact_evidence": {
-                      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-                      "sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+                      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+                      "sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
                       "resource": "assets/kaleidoscope_cookery/lang/en_us.json"
                     }
                   }
@@ -57250,42 +57250,35 @@
                     "scope": "installed_static",
                     "reviewed_on": "2026-10-22",
                     "artifact_evidence": {
-                      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-                      "sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+                      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+                      "sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
                       "resource": "assets/kaleidoscope_cookery/lang/en_us.json"
                     }
                   },
                   {
-                    "id": "lunch_bag_141",
-                    "url": "https://raw.githubusercontent.com/KaleidoscopeMods/KaleidoscopeCookery/ac19559dc1ae81ea32dfd3655af249f2ec1a0414/src/main/java/com/github/ysbbbbbb/kaleidoscopecookery/item/TransmutationLunchBagItem.java",
-                    "publisher": "KaleidoscopeMods author wiki",
+                    "id": "lunch_bag_sequential_170",
+                    "url": "https://raw.githubusercontent.com/KaleidoscopeMods/KaleidoscopeCookery/a93f953/src/main/java/com/github/ysbbbbbb/kaleidoscopecookery/item/TransmutationLunchBagItem.java",
+                    "publisher": "KaleidoscopeMods upstream source",
                     "scope": "source_code",
-                    "reviewed_on": "2026-10-22"
-                  },
-                  {
-                    "id": "version_141",
-                    "url": "https://raw.githubusercontent.com/KaleidoscopeMods/KaleidoscopeCookery/ac19559dc1ae81ea32dfd3655af249f2ec1a0414/gradle.properties",
-                    "publisher": "KaleidoscopeMods author wiki",
-                    "scope": "source_code",
-                    "reviewed_on": "2026-10-22"
+                    "reviewed_on": "2026-11-24"
                   },
                   {
                     "id": "native_lunch_bag_class",
-                    "url": "https://raw.githubusercontent.com/KaleidoscopeMods/KaleidoscopeCookery/ac19559dc1ae81ea32dfd3655af249f2ec1a0414/src/main/java/com/github/ysbbbbbb/kaleidoscopecookery/item/TransmutationLunchBagItem.java",
-                    "publisher": "KaleidoscopeMods author wiki",
+                    "url": "https://raw.githubusercontent.com/KaleidoscopeMods/KaleidoscopeCookery/a93f953/src/main/java/com/github/ysbbbbbb/kaleidoscopecookery/item/TransmutationLunchBagItem.java",
+                    "publisher": "KaleidoscopeMods upstream source",
                     "scope": "installed_static",
-                    "reviewed_on": "2026-10-22",
+                    "reviewed_on": "2026-11-24",
                     "artifact_evidence": {
-                      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-                      "sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+                      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+                      "sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
                       "resource": "com/github/ysbbbbbb/kaleidoscopecookery/item/TransmutationLunchBagItem.class"
                     }
                   }
                 ]
               }
             ],
-            "implementation_note": "New exact native advancement criterion. Confirm installed producer/config and event seam before wiring; this is an authored success contract, not a claim of runtime verification. Do not substitute a different gameplay lesson.",
-            "reward_purpose_ru": "Корзина и подносы помогают разложить продукты для следующих сочетаний без готового набора усилений.",
+            "implementation_note": "The exact installed 1.7.0 class removed sampled bonus effects and replaced them with sequential consumption. The hook observes the native inventory and hunger delta after the method returns; it does not consume food or apply effects itself.",
+            "reward_purpose_ru": "Корзина и подносы помогают разложить продукты для следующих переносных обедов.",
             "visual_group": "food_blessings"
           },
           "mechanic_sections": [
@@ -57295,17 +57288,17 @@
               ],
               "title_ru": "Эмалированная ёмкость хранит масло и помогает смазать лопатку",
               "title_en": "Store kitchen supplies",
-              "text_ru": "Эмалированная ёмкость хранит масло и помогает смазать лопатку. Корзина переносит продукты; трансмутационная сумка ест из собственного запаса и имеет отдельные правила эффектов.",
-              "text_en": "The Enamel Basin stores oil and oils a Kitchen Shovel. A Fruit Basket carries produce; the Lunch Bag consumes its own supplies and follows separate effect rules."
+              "text_ru": "Эмалированная ёмкость хранит масло и помогает смазать лопатку. Корзина переносит продукты; трансмутационная сумка последовательно ест из собственного запаса до заполнения шкалы голода.",
+              "text_en": "The Enamel Basin stores oil and oils a Kitchen Shovel. A Fruit Basket carries produce; the Lunch Bag consumes its own food in sequence until the hunger bar is full."
             },
             {
               "keys": [
                 "kaleidoscope_cookery:lunch_bag_transmutation"
               ],
-              "title_ru": "Версия 1",
-              "title_en": "Combine stored meal effects",
-              "text_ru": "Версия 1.4.1 имеет 16 ячеек: съедается первый доступный продукт или зелье, затем выбираются эффекты до трёх других запасов. Дополнительный эффект может расходовать ещё один предмет; правила новых версий не подставляются.",
-              "text_en": "Version 1.4.1 has 16 slots: it consumes the first available food or potion, then samples effects from up to three other supplies. An extra effect can consume one additional item; later-version rules do not apply."
+              "title_ru": "Версия 1.7.0",
+              "title_en": "Eat stored foods in sequence",
+              "text_ru": "Версия 1.7.0 имеет 24 ячейки. Одно использование последовательно расходует еду до заполнения шкалы голода. Зелья обрабатываются отдельно; прежнего выбора дополнительных эффектов больше нет.",
+              "text_en": "Version 1.7.0 has 24 slots. One use consumes stored foods in sequence until the hunger bar is full. Potions are handled separately; the former sampled bonus-effect behavior is no longer present."
             }
           ],
           "native_options": {

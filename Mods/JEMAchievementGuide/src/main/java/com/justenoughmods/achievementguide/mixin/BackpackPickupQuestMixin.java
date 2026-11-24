@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Pseudo
 @Mixin(targets = "net.p3pp3rf1y.sophisticatedbackpacks.common.CommonEventHandler", remap = false)
 public abstract class BackpackPickupQuestMixin {
-    @Redirect(method = "lambda$onItemPickup$7", at = @At(value = "INVOKE", target =
+    @Redirect(method = "lambda$onItemPickup$12", at = @At(value = "INVOKE", target =
             "Lnet/p3pp3rf1y/sophisticatedcore/util/InventoryHelper;runPickupOnPickupResponseUpgrades(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/p3pp3rf1y/sophisticatedcore/upgrades/UpgradeHandler;Lnet/minecraft/world/item/ItemStack;Z)Lnet/minecraft/world/item/ItemStack;"))
     private static ItemStack jem$committedPickup(Level level, Player player, UpgradeHandler upgrades,
                                                 ItemStack input, boolean simulate) {

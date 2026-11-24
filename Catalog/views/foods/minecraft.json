@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "foods",
-  "snapshot_sha": "ebd8b38fad8939a2d461507abaef3847aa69d5e1",
+  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
   "generation": {
-    "generated_utc": "2026-11-24T12:57:41.001615+00:00",
+    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -123,6 +123,7 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
+        "data/kaleidoscope_cookery/recipes/bamboo_tray/wetting/leather_to_rotten_flesh.json",
         "data/rottencreatures/recipes/rotten_flesh_from_campfire_cooking.json",
         "data/rottencreatures/recipes/rotten_flesh_from_smoking.json",
         "data/spawn/recipes/rotten_flesh_from_zombified_flower.json"
@@ -130,10 +131,11 @@
       "display_name_en_us": "Rotten Flesh",
       "display_name_ru_ru": null,
       "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/bamboo_tray/wetting/leather_to_rotten_flesh.json",
         "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/recipes/rotten_flesh_from_campfire_cooking.json",
         "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/recipes/rotten_flesh_from_smoking.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "spawn-4.0.7-1.20.1.jar:data/spawn/recipes/rotten_flesh_from_zombified_flower.json"
+        "spawn-4.0.8-1.20.1.jar:data/spawn/recipes/rotten_flesh_from_zombified_flower.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

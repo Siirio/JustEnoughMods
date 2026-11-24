@@ -1,6 +1,6 @@
 # Universal JustEnoughMods
 
-Current source contract: 2026-10-22. One Forge 1.20.1 / Forge 47.4.10 / Java 17 production pack supports integrated singleplayer and matching dedicated JEM hosts. Windows, Linux and macOS use the same gameplay JARs. This describes implemented source boundaries and packaging, not completed gameplay, optional-mod or OS acceptance.
+Current source contract: 2026-10-22. One Forge 1.20.1 / Forge 47.4.29 / Java 17 production pack supports integrated singleplayer and matching dedicated JEM hosts. Windows, Linux and macOS use the same gameplay JARs. This describes implemented source boundaries and packaging, not completed gameplay, optional-mod or OS acceptance.
 
 [Install the universal archive](INSTALL.md). Engineering/distribution ownership remains in [DEVELOPMENT](../DEVELOPMENT.md); financial policies remain in [economy documentation](../economy/overhaul-implementation.md), and encounter rules remain in [Boss Fight](../events/BOSS_FIGHT.md) and [Boss Raid](../events/BOSS_RAID.md).
 

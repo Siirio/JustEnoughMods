@@ -28,7 +28,7 @@
         },
         "after": {
           "source": "Server/run.bat Forge1.20.1 win_args.txt path",
-          "current_observed_value": "47.4.10",
+          "current_observed_value": "47.4.29",
           "missing_match": null
         },
         "notes": "Actual launcher is provenance evidence, not an invented runtime-version claim."
@@ -73,7 +73,7 @@
   },
   "rationale": {
     "purpose": "Keep static snapshot version/evidence boundary truthful after explicitly authorized economy runtime research.",
-    "decision_source": "User complete economy overhaul2026-10-16 explicitly authorizes local runtime; actual Server/run.bat uses Forge47.4.10.",
+    "decision_source": "User complete economy overhaul2026-10-16 explicitly authorizes local runtime; the 2026-11-24 stable dependency refresh moves the ordinary local server launcher to Forge47.4.29.",
     "user_requested": "Use actual installed source/server evidence and distinguish static from runtime verification.",
     "codex_choices": "Derive manifest Forge version from launcher rather than a hardcoded value; reword source-description runtime boundary without importing unreviewed runtime facts or changing gameplay."
   },
@@ -108,6 +108,20 @@
       "commit": "SELF",
       "action": "fix_nullable_evidence_order",
       "summary": "Full artifact refresh exposed Python comparison of source-only null artifact against installed artifact strings. Sort null owners explicitly and source paths deterministically; unresolved evidence remains null, no invented JAR."
+    },
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "refresh_forge_snapshot_provenance",
+      "summary": "Derive Forge47.4.29 from the updated ordinary local server launcher before the final full static Atlas regeneration.",
+      "source_files": [
+        "Server/run.bat",
+        "Server/run.sh",
+        "tools/apply-published-client.py",
+        "tools/architecture_artifacts.py",
+        "tools/client-recovery/JemClientRecovery.java",
+        "tools/jem.py"
+      ]
     }
   ],
   "impacts": {

@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "ebd8b38fad8939a2d461507abaef3847aa69d5e1",
+  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
   "generation": {
-    "generated_utc": "2026-11-24T12:57:41.001615+00:00",
+    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "kaleidoscope_cookery",
     "name": "Kaleidoscope Cookery",
-    "version": "1.4.1-forge+mc1.20.1"
+    "version": "1.7.0-forge+mc1.20.1"
   },
   "records": [
     {
@@ -19,9 +19,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -32,8 +32,8 @@
       "display_name_en_us": "Apple Platter",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/apple_platter.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/apple_platter.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/apple_platter.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/apple_platter.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -54,14 +54,54 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:bamboo_tray",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/bamboo_tray.json",
+        "data/kaleidoscope_cookery/recipes/bamboo_tray.json"
+      ],
+      "display_name_en_us": "Bamboo Tray",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/bamboo_tray.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/bamboo_tray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:bamboo_tray",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:bamboo_tray"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "kaleidoscope_cookery:bamboo_tray"
+      ]
+    },
+    {
       "item_id": "kaleidoscope_cookery:bamboo_tube_rice",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -72,8 +112,8 @@
       "display_name_en_us": "Bamboo Tube Rice",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/bamboo_tube_rice.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/steamer/bamboo_tube_rice.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/bamboo_tube_rice.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/steamer/bamboo_tube_rice.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -99,9 +139,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -112,8 +152,8 @@
       "display_name_en_us": "Plate of Baozi",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/baozi_plate.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/baozi_plate.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/baozi_plate.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/baozi_plate.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -139,9 +179,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -149,11 +189,11 @@
         "assets/kaleidoscope_cookery/models/item/barley_tea.json",
         "data/kaleidoscope_cookery/recipes/teapot/barley_tea.json"
       ],
-      "display_name_en_us": "Barley Tea",
+      "display_name_en_us": "Wheat Aroma Oolong Tea",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/barley_tea.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/barley_tea.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/barley_tea.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/barley_tea.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -179,9 +219,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -192,8 +232,8 @@
       "display_name_en_us": "Berry Platter",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/berry_platter.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/berry_platter.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/berry_platter.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/berry_platter.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -219,9 +259,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -232,8 +272,8 @@
       "display_name_en_us": "Biluochun",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/biluochun.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/biluochun.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/biluochun.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/biluochun.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -259,9 +299,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -273,9 +313,9 @@
       "display_name_en_us": "Blaze Lamb Chop",
       "display_name_ru_ru": "Баранья отбивная из пламени",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/blaze_lamb_chop.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/blaze_lamb_chop.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/blaze_lamb_chop.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/blaze_lamb_chop.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/blaze_lamb_chop.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/blaze_lamb_chop.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -302,9 +342,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -316,9 +356,9 @@
       "display_name_en_us": "Braised Pork Ribs",
       "display_name_ru_ru": "Тушёные свиные рёбрышки",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/braised_pork_ribs.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/braised_pork_ribs.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/braised_pork_ribs.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/braised_pork_ribs.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/braised_pork_ribs.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/braised_pork_ribs.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -345,9 +385,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -359,9 +399,9 @@
       "display_name_en_us": "Brown Mushroom Pot Soup",
       "display_name_ru_ru": "Грибной суп из коричневых грибов",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/brown_mushroom_pot_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/brown_mushroom_pot_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/brown_mushroom_pot_soup.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/brown_mushroom_pot_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/brown_mushroom_pot_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/brown_mushroom_pot_soup.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -388,9 +428,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -402,9 +442,9 @@
       "display_name_en_us": "Buddha Jumps Over the Wall",
       "display_name_ru_ru": "Будда прыгает через стену",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/buddha_jumps_over_the_wall.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/buddha_jumps_over_the_wall.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/buddha_jumps_over_the_wall.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/buddha_jumps_over_the_wall.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/buddha_jumps_over_the_wall.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/buddha_jumps_over_the_wall.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -426,14 +466,54 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:butter_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/butter_tea.json",
+        "data/kaleidoscope_cookery/recipes/teapot/butter_tea.json"
+      ],
+      "display_name_en_us": "Butter Tea",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/butter_tea.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/butter_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:butter_tea",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:butter_tea"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "kaleidoscope_cookery:teapot/butter_tea"
+      ]
+    },
+    {
       "item_id": "kaleidoscope_cookery:candied_potato",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -445,9 +525,9 @@
       "display_name_en_us": "Candied Potatoes",
       "display_name_ru_ru": "Засахаренный картофель",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/candied_potato.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/candied_potato.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/candied_potato.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/candied_potato.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/candied_potato.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/candied_potato.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -474,9 +554,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -487,8 +567,8 @@
       "display_name_en_us": "Acacia Chair",
       "display_name_ru_ru": "Акациевый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_acacia.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_acacia.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_acacia.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_acacia.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -514,9 +594,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -527,8 +607,8 @@
       "display_name_en_us": "Bamboo Chair",
       "display_name_ru_ru": "Бамбуковый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_bamboo.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_bamboo.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_bamboo.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_bamboo.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -554,9 +634,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -567,8 +647,8 @@
       "display_name_en_us": "Birch Chair",
       "display_name_ru_ru": "Берёзовый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_birch.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_birch.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_birch.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_birch.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -594,9 +674,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -607,8 +687,8 @@
       "display_name_en_us": "Cherry Chair",
       "display_name_ru_ru": "Вишнёвый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_cherry.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_cherry.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_cherry.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_cherry.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -634,9 +714,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -647,8 +727,8 @@
       "display_name_en_us": "Crimson Chair",
       "display_name_ru_ru": "Багровый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_crimson.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_crimson.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_crimson.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_crimson.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -674,9 +754,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -687,8 +767,8 @@
       "display_name_en_us": "Dark Oak Chair",
       "display_name_ru_ru": "Стул из тёмного дуба",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_dark_oak.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_dark_oak.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_dark_oak.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_dark_oak.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -714,9 +794,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -727,8 +807,8 @@
       "display_name_en_us": "Jungle Chair",
       "display_name_ru_ru": "Тропический стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_jungle.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_jungle.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_jungle.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_jungle.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -754,9 +834,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -767,8 +847,8 @@
       "display_name_en_us": "Mangrove Chair",
       "display_name_ru_ru": "Мангровый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_mangrove.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_mangrove.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_mangrove.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_mangrove.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -794,9 +874,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -807,8 +887,8 @@
       "display_name_en_us": "Oak Chair",
       "display_name_ru_ru": "Дубовый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_oak.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_oak.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_oak.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_oak.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -834,9 +914,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -847,8 +927,8 @@
       "display_name_en_us": "Spruce Chair",
       "display_name_ru_ru": "Еловый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_spruce.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_spruce.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_spruce.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_spruce.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -874,9 +954,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -887,8 +967,8 @@
       "display_name_en_us": "Warped Chair",
       "display_name_ru_ru": "Искажённый стул",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_warped.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_warped.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chair_warped.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chair_warped.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -914,9 +994,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -927,8 +1007,8 @@
       "display_name_en_us": "Chili Ristra",
       "display_name_ru_ru": "Связка чили",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chili_ristra.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chili_ristra.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chili_ristra.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chili_ristra.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -954,9 +1034,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -967,8 +1047,8 @@
       "display_name_en_us": "Chopping Board",
       "display_name_ru_ru": "Разделочная доска",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chopping_board.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chopping_board.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chopping_board.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chopping_board.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -994,9 +1074,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1008,9 +1088,9 @@
       "display_name_en_us": "Chorus Fried Egg",
       "display_name_ru_ru": "Глазунья из хоруса",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chorus_fried_egg.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/chorus_fried_egg.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/chorus_fried_egg.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chorus_fried_egg.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/chorus_fried_egg.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/chorus_fried_egg.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1037,9 +1117,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1050,8 +1130,8 @@
       "display_name_en_us": "Chorus Fruit Platter",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chorus_fruit_platter.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chorus_fruit_platter.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/chorus_fruit_platter.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/chorus_fruit_platter.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1072,14 +1152,78 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:clay_pot_milk_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/clay_pot_milk_tea.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_1.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_2.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_3.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_4.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_5.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_6.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_7.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_8.json",
+        "data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_9.json"
+      ],
+      "display_name_en_us": "Clay Pot Milk Tea",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/clay_pot_milk_tea.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_1.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_2.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_3.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_4.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_5.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_6.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_7.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_8.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/clay_pot_milk_tea_count_9.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:clay_pot_milk_tea",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:clay_pot_milk_tea"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_1",
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_2",
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_3",
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_4",
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_5",
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_6",
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_7",
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_8",
+        "kaleidoscope_cookery:stockpot/clay_pot_milk_tea_count_9"
+      ]
+    },
+    {
       "item_id": "kaleidoscope_cookery:cold_cut_ham_slices",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1090,8 +1234,8 @@
       "display_name_en_us": "Cold Cut Ham Slices",
       "display_name_ru_ru": "Нарезка ветчины",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cold_cut_ham_slices.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cold_cut_ham_slices.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cold_cut_ham_slices.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cold_cut_ham_slices.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1117,9 +1261,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1130,8 +1274,8 @@
       "display_name_en_us": "Cold Roasted Meat",
       "display_name_ru_ru": "Холодная мясная нарезка",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cold_roasted_meat.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cold_roasted_meat.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cold_roasted_meat.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cold_roasted_meat.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1157,9 +1301,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1170,8 +1314,8 @@
       "display_name_en_us": "Frost Style Sashimi",
       "display_name_ru_ru": "Морозное сашими",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cold_style_sashimi.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cold_style_sashimi.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cold_style_sashimi.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cold_style_sashimi.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1197,9 +1341,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1210,8 +1354,8 @@
       "display_name_en_us": "Acacia Cook's Stool",
       "display_name_ru_ru": "Акациевый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_acacia.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_acacia.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_acacia.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_acacia.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1237,9 +1381,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1250,8 +1394,8 @@
       "display_name_en_us": "Bamboo Cook's Stool",
       "display_name_ru_ru": "Бамбуковый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_bamboo.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_bamboo.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_bamboo.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_bamboo.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1277,9 +1421,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1290,8 +1434,8 @@
       "display_name_en_us": "Birch Cook's Stool",
       "display_name_ru_ru": "Берёзовый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_birch.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_birch.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_birch.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_birch.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1317,9 +1461,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1330,8 +1474,8 @@
       "display_name_en_us": "Cherry Cook's Stool",
       "display_name_ru_ru": "Вишнёвый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_cherry.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_cherry.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_cherry.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_cherry.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1357,9 +1501,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1370,8 +1514,8 @@
       "display_name_en_us": "Crimson Cook's Stool",
       "display_name_ru_ru": "Багровый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_crimson.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_crimson.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_crimson.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_crimson.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1397,9 +1541,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1410,8 +1554,8 @@
       "display_name_en_us": "Dark Oak Cook's Stool",
       "display_name_ru_ru": "Табурет повара из тёмного дуба",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_dark_oak.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_dark_oak.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_dark_oak.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_dark_oak.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1437,9 +1581,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1450,8 +1594,8 @@
       "display_name_en_us": "Jungle Cook's Stool",
       "display_name_ru_ru": "Тропический табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_jungle.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_jungle.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_jungle.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_jungle.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1477,9 +1621,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1490,8 +1634,8 @@
       "display_name_en_us": "Mangrove Cook's Stool",
       "display_name_ru_ru": "Мангровый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_mangrove.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_mangrove.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_mangrove.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_mangrove.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1517,9 +1661,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1530,8 +1674,8 @@
       "display_name_en_us": "Oak Cook's Stool",
       "display_name_ru_ru": "Дубовый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_oak.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_oak.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_oak.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_oak.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1557,9 +1701,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1570,8 +1714,8 @@
       "display_name_en_us": "Spruce Cook's Stool",
       "display_name_ru_ru": "Еловый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_spruce.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_spruce.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_spruce.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_spruce.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1597,9 +1741,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1610,8 +1754,8 @@
       "display_name_en_us": "Warped Cook's Stool",
       "display_name_ru_ru": "Искажённый табурет повара",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_warped.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_warped.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/cook_stool_warped.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/cook_stool_warped.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1637,9 +1781,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1651,9 +1795,9 @@
       "display_name_en_us": "Crimson Fungus Pot Soup",
       "display_name_ru_ru": "Грибной суп из багровых грибов",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/crimson_fungus_pot_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/crimson_fungus_pot_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/crimson_fungus_pot_soup.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/crimson_fungus_pot_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/crimson_fungus_pot_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/crimson_fungus_pot_soup.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1680,9 +1824,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1694,9 +1838,9 @@
       "display_name_en_us": "Crystal Lamb Chop",
       "display_name_ru_ru": "Хрустальная баранья отбивная",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/crystal_lamb_chop.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/crystal_lamb_chop.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/crystal_lamb_chop.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/crystal_lamb_chop.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/crystal_lamb_chop.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/crystal_lamb_chop.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1723,9 +1867,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1735,7 +1879,7 @@
       "display_name_en_us": "Dark Cuisine",
       "display_name_ru_ru": "Тёмная кулинария",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/dark_cuisine.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/dark_cuisine.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1759,9 +1903,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1772,8 +1916,8 @@
       "display_name_en_us": "Desert Style Sashimi",
       "display_name_ru_ru": "Сашими по-пустынному",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/desert_style_sashimi.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/desert_style_sashimi.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/desert_style_sashimi.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/desert_style_sashimi.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1799,9 +1943,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1813,9 +1957,9 @@
       "display_name_en_us": "Dongpo Pork",
       "display_name_ru_ru": "Свинина по-дунпо",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/dongpo_pork.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/dongpo_pork.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/dongpo_pork.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/dongpo_pork.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/dongpo_pork.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/dongpo_pork.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1842,9 +1986,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1856,9 +2000,9 @@
       "display_name_en_us": "Dough Drop Soup",
       "display_name_ru_ru": "Суп с клёцками",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/dough_drop_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/dough_drop_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/dough_drop_soup.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/dough_drop_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/dough_drop_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/dough_drop_soup.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1880,14 +2024,54 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:eight_immortals_table",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/eight_immortals_table.json",
+        "data/kaleidoscope_cookery/recipes/eight_immortals_table.json"
+      ],
+      "display_name_en_us": "Eight Immortals Table",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/eight_immortals_table.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/eight_immortals_table.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:eight_immortals_table",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:eight_immortals_table"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "kaleidoscope_cookery:eight_immortals_table"
+      ]
+    },
+    {
       "item_id": "kaleidoscope_cookery:empty_cup",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1898,8 +2082,8 @@
       "display_name_en_us": "Empty Teacup",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/empty_cup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/empty_cup.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/empty_cup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/empty_cup.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1925,9 +2109,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1938,8 +2122,8 @@
       "display_name_en_us": "Grease Crock",
       "display_name_ru_ru": "Горшок для жира",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/enamel_basin.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/enamel_basin.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/enamel_basin.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/enamel_basin.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1965,9 +2149,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -1978,8 +2162,8 @@
       "display_name_en_us": "End Style Sashimi",
       "display_name_ru_ru": "Сашими по-эндерски",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/end_style_sashimi.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/end_style_sashimi.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/end_style_sashimi.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/end_style_sashimi.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2005,9 +2189,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2018,8 +2202,8 @@
       "display_name_en_us": "Flower Tea",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/flower_tea.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/flower_tea.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/flower_tea.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/flower_tea.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2045,9 +2229,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2059,9 +2243,9 @@
       "display_name_en_us": "Fondant Pie",
       "display_name_ru_ru": "Пирог фондан",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fondant_pie.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/fondant_pie.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/fondant_pie.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fondant_pie.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/fondant_pie.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/fondant_pie.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2088,9 +2272,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2102,9 +2286,9 @@
       "display_name_en_us": "Fondant Spider Eye",
       "display_name_ru_ru": "Глаз паука фондан",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fondant_spider_eye.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/fondant_spider_eye.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/fondant_spider_eye.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fondant_spider_eye.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/fondant_spider_eye.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/fondant_spider_eye.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2131,9 +2315,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2145,9 +2329,9 @@
       "display_name_en_us": "Four Joy Meatball Soup",
       "display_name_ru_ru": "Суп с четырьмя радостями",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/four_joy_meatball_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/four_joy_meatball_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/four_joy_meatball_soup.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/four_joy_meatball_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/four_joy_meatball_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/four_joy_meatball_soup.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2174,9 +2358,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2188,9 +2372,9 @@
       "display_name_en_us": "Fried Caterpillar",
       "display_name_ru_ru": "Жареная гусеница",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fried_caterpillar.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/fried_caterpillar.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/fried_caterpillar.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fried_caterpillar.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/fried_caterpillar.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/fried_caterpillar.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2217,9 +2401,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2231,9 +2415,9 @@
       "display_name_en_us": "Fried Spring Roll",
       "display_name_ru_ru": "Жареный весенний рулет",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fried_spring_roll.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/fried_spring_roll.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/fried_spring_roll.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fried_spring_roll.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/fried_spring_roll.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/fried_spring_roll.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2260,9 +2444,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2274,9 +2458,9 @@
       "display_name_en_us": "Frost Lamb Chop",
       "display_name_ru_ru": "Ледяная баранья отбивная",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/frost_lamb_chop.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/frost_lamb_chop.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/frost_lamb_chop.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/frost_lamb_chop.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/frost_lamb_chop.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/frost_lamb_chop.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2303,9 +2487,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2316,8 +2500,8 @@
       "display_name_en_us": "Fruit Basket",
       "display_name_ru_ru": "Корзина для фруктов",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fruit_basket.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/fruit_basket.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/fruit_basket.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/fruit_basket.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2343,9 +2527,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2356,8 +2540,8 @@
       "display_name_en_us": "Golden Salad",
       "display_name_ru_ru": "Золотой салат",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/golden_salad.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/golden_salad.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/golden_salad.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/golden_salad.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2378,14 +2562,54 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:kitchen_shelf",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/kitchen_shelf.json",
+        "data/kaleidoscope_cookery/recipes/kitchen_shelf.json"
+      ],
+      "display_name_en_us": "Kitchen Shelf",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchen_shelf.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/kitchen_shelf.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:kitchen_shelf",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:kitchen_shelf"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "kaleidoscope_cookery:kitchen_shelf"
+      ]
+    },
+    {
       "item_id": "kaleidoscope_cookery:kitchenware_racks",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2396,8 +2620,8 @@
       "display_name_en_us": "Kitchenware Racks",
       "display_name_ru_ru": "Стойка для кухонной утвари",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchenware_racks.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/kitchenware_racks.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchenware_racks.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/kitchenware_racks.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2418,14 +2642,54 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:long_bench",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/long_bench.json",
+        "data/kaleidoscope_cookery/recipes/long_bench.json"
+      ],
+      "display_name_en_us": "Long Bench",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/long_bench.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/long_bench.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:long_bench",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:long_bench"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "kaleidoscope_cookery:long_bench"
+      ]
+    },
+    {
       "item_id": "kaleidoscope_cookery:millstone",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2436,8 +2700,8 @@
       "display_name_en_us": "Millstone",
       "display_name_ru_ru": "Жёрнов",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/millstone.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/millstone.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/millstone.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2458,14 +2722,50 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:mystery_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/mystery_tea.json"
+      ],
+      "display_name_en_us": "Mystery Tea",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/mystery_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:mystery_tea",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:mystery_tea"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    },
+    {
       "item_id": "kaleidoscope_cookery:nether_style_sashimi",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2476,8 +2776,8 @@
       "display_name_en_us": "Nether Style Sashimi",
       "display_name_ru_ru": "Сашими по-незерски",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/nether_style_sashimi.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/nether_style_sashimi.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/nether_style_sashimi.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/nether_style_sashimi.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2503,9 +2803,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2517,9 +2817,9 @@
       "display_name_en_us": "Numbing Spicy Chicken",
       "display_name_ru_ru": "Острая курица с перцем",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/numbing_spicy_chicken.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/numbing_spicy_chicken.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/numbing_spicy_chicken.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/numbing_spicy_chicken.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/numbing_spicy_chicken.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/numbing_spicy_chicken.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2546,9 +2846,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2559,8 +2859,8 @@
       "display_name_en_us": "Oil Block",
       "display_name_ru_ru": "Блок масла",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/oil_block.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/oil_block.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/oil_block.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/oil_block.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2586,9 +2886,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2599,8 +2899,8 @@
       "display_name_en_us": "Oil Can",
       "display_name_ru_ru": "Маслёнка",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/oil_pot.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/oil_pot.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/oil_pot.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/oil_pot.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2626,9 +2926,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2640,9 +2940,9 @@
       "display_name_en_us": "Oil-Splashed Fish",
       "display_name_ru_ru": "Рыба под раскалённым маслом",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/oil_splashed_fish.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/oil_splashed_fish.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/oil_splashed_fish.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/oil_splashed_fish.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/oil_splashed_fish.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/oil_splashed_fish.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2669,9 +2969,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2679,11 +2979,11 @@
         "assets/kaleidoscope_cookery/models/item/oolong.json",
         "data/kaleidoscope_cookery/recipes/teapot/oolong.json"
       ],
-      "display_name_en_us": "Oolong",
+      "display_name_en_us": "Dong Ding Oolong Tea",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/oolong.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/oolong.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/oolong.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/oolong.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2709,9 +3009,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2723,9 +3023,9 @@
       "display_name_en_us": "Pan-Seared Knight Steak",
       "display_name_ru_ru": "Рыцарский стейк на сковороде",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/pan_seared_knight_steak.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/pan_seared_knight_steak.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/pan_seared_knight_steak.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/pan_seared_knight_steak.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/pan_seared_knight_steak.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/pan_seared_knight_steak.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2752,9 +3052,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2765,8 +3065,8 @@
       "display_name_en_us": "Wok",
       "display_name_ru_ru": "Вок",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/pot.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/pot.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2792,9 +3092,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2805,8 +3105,8 @@
       "display_name_en_us": "Plate of Qingtuan",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/qingtuan_plate.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/qingtuan_plate.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/qingtuan_plate.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/qingtuan_plate.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2827,14 +3127,54 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:red_lantern",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/red_lantern.json",
+        "data/kaleidoscope_cookery/recipes/red_lantern.json"
+      ],
+      "display_name_en_us": "Red Lantern",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/red_lantern.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/red_lantern.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:red_lantern",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:red_lantern"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "kaleidoscope_cookery:red_lantern"
+      ]
+    },
+    {
       "item_id": "kaleidoscope_cookery:red_mushroom_pot_soup",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2846,9 +3186,9 @@
       "display_name_en_us": "Red Mushroom Pot Soup",
       "display_name_ru_ru": "Грибной суп из красных грибов",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/red_mushroom_pot_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/red_mushroom_pot_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/red_mushroom_pot_soup.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/red_mushroom_pot_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/red_mushroom_pot_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/red_mushroom_pot_soup.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2875,9 +3215,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2888,8 +3228,8 @@
       "display_name_en_us": "Sakura Fubuki",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/sakura_fubuki.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/sakura_fubuki.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/sakura_fubuki.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/sakura_fubuki.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2915,9 +3255,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2928,8 +3268,8 @@
       "display_name_en_us": "Shawarma Spit",
       "display_name_ru_ru": "Вертел для шаурмы",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/shawarma_spit.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/shawarma_spit.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/shawarma_spit.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/shawarma_spit.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2955,9 +3295,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -2968,8 +3308,8 @@
       "display_name_en_us": "Plate of Shengjian Mantou",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/shengjian_mantou_plate.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/shengjian_mantou_plate.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/shengjian_mantou_plate.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/shengjian_mantou_plate.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2995,9 +3335,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3009,9 +3349,9 @@
       "display_name_en_us": "Slime Ball Meal",
       "display_name_ru_ru": "Слизневый обед",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/slime_ball_meal.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/slime_ball_meal.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/slime_ball_meal.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/slime_ball_meal.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/slime_ball_meal.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/slime_ball_meal.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3038,9 +3378,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3052,9 +3392,9 @@
       "display_name_en_us": "Spicy Blood Stew",
       "display_name_ru_ru": "Острое рагу с кровью",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/spicy_blood_stew.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/spicy_blood_stew.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/spicy_blood_stew.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/spicy_blood_stew.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/spicy_blood_stew.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/spicy_blood_stew.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3081,9 +3421,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3095,9 +3435,9 @@
       "display_name_en_us": "Spicy Chicken",
       "display_name_ru_ru": "Острая курица",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/spicy_chicken.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/spicy_chicken.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/spicy_chicken.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/spicy_chicken.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/spicy_chicken.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/spicy_chicken.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3124,9 +3464,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3138,9 +3478,9 @@
       "display_name_en_us": "Spicy Rabbit Head",
       "display_name_ru_ru": "Острая кроличья голова",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/spicy_rabbit_head.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/spicy_rabbit_head.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/spicy_rabbit_head.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/spicy_rabbit_head.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/spicy_rabbit_head.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/spicy_rabbit_head.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3167,9 +3507,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3181,9 +3521,9 @@
       "display_name_en_us": "Stargazy Pie",
       "display_name_ru_ru": "Звездочётский пирог",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stargazy_pie.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/stargazy_pie.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/stargazy_pie.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stargazy_pie.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/stargazy_pie.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/stargazy_pie.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3210,9 +3550,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3225,10 +3565,10 @@
       "display_name_en_us": "Steamer",
       "display_name_ru_ru": "Пароварка",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/steamer.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/raw_dough_steamer.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/steamer.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stuffed_dough_food_steamer.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/steamer.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/raw_dough_steamer.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/steamer.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stuffed_dough_food_steamer.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3256,9 +3596,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3269,8 +3609,8 @@
       "display_name_en_us": "Plate of Sticky Candy",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/sticky_candy_plate.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/sticky_candy_plate.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/sticky_candy_plate.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/sticky_candy_plate.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3296,9 +3636,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3309,8 +3649,8 @@
       "display_name_en_us": "Plate of Sticky Rice Cakes",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/sticky_rice_cake_plate.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/sticky_rice_cake_plate.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/sticky_rice_cake_plate.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/sticky_rice_cake_plate.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3336,9 +3676,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3349,8 +3689,8 @@
       "display_name_en_us": "Stockpot",
       "display_name_ru_ru": "Кастрюля",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stockpot.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stockpot.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3376,9 +3716,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3390,9 +3730,9 @@
       "display_name_en_us": "Stove",
       "display_name_ru_ru": "Плита",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stove.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stove_campfire.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stove_soul_campfire.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stove.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stove_campfire.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stove_soul_campfire.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3419,9 +3759,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3432,8 +3772,8 @@
       "display_name_en_us": "Straw Bale",
       "display_name_ru_ru": "Тюк соломы",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/straw_block.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/straw_block.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/straw_block.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/straw_block.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3459,9 +3799,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3472,8 +3812,8 @@
       "display_name_en_us": "Strung Mushrooms",
       "display_name_ru_ru": "Связка грибов",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/strung_mushrooms.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/strung_mushrooms.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/strung_mushrooms.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/strung_mushrooms.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3499,9 +3839,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3513,9 +3853,9 @@
       "display_name_en_us": "Stuffed Tiger Skin Pepper",
       "display_name_ru_ru": "Фаршированный тигровый перец",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stuffed_tiger_skin_pepper.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/stuffed_tiger_skin_pepper.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/stuffed_tiger_skin_pepper.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stuffed_tiger_skin_pepper.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/stuffed_tiger_skin_pepper.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/stuffed_tiger_skin_pepper.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3542,9 +3882,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3554,7 +3894,7 @@
       "display_name_en_us": "Suspicious Stir-Fry",
       "display_name_ru_ru": "Подозрительное жаркое",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/suspicious_stir_fry.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/suspicious_stir_fry.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3578,9 +3918,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3592,9 +3932,9 @@
       "display_name_en_us": "Sweet and Sour Ender Pearls",
       "display_name_ru_ru": "Кисло-сладкий эндер-жемчуг",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/sweet_and_sour_ender_pearls.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/sweet_and_sour_ender_pearls.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/sweet_and_sour_ender_pearls.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/sweet_and_sour_ender_pearls.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_pot/sweet_and_sour_ender_pearls.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/pot/sweet_and_sour_ender_pearls.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3621,9 +3961,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3634,8 +3974,8 @@
       "display_name_en_us": "Acacia Table",
       "display_name_ru_ru": "Акациевый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_acacia.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_acacia.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_acacia.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_acacia.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3661,9 +4001,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3674,8 +4014,8 @@
       "display_name_en_us": "Bamboo Table",
       "display_name_ru_ru": "Бамбуковый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_bamboo.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_bamboo.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_bamboo.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_bamboo.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3701,9 +4041,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3714,8 +4054,8 @@
       "display_name_en_us": "Birch Table",
       "display_name_ru_ru": "Берёзовый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_birch.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_birch.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_birch.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_birch.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3741,9 +4081,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3754,8 +4094,8 @@
       "display_name_en_us": "Cherry Table",
       "display_name_ru_ru": "Вишнёвый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_cherry.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_cherry.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_cherry.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_cherry.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3781,9 +4121,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3794,8 +4134,8 @@
       "display_name_en_us": "Crimson Table",
       "display_name_ru_ru": "Багровый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_crimson.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_crimson.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_crimson.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_crimson.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3821,9 +4161,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3834,8 +4174,8 @@
       "display_name_en_us": "Dark Oak Table",
       "display_name_ru_ru": "Стол из тёмного дуба",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_dark_oak.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_dark_oak.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_dark_oak.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_dark_oak.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3861,9 +4201,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3874,8 +4214,8 @@
       "display_name_en_us": "Jungle Table",
       "display_name_ru_ru": "Тропический стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_jungle.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_jungle.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_jungle.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_jungle.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3901,9 +4241,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3914,8 +4254,8 @@
       "display_name_en_us": "Mangrove Table",
       "display_name_ru_ru": "Мангровый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_mangrove.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_mangrove.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_mangrove.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_mangrove.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3941,9 +4281,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3954,8 +4294,8 @@
       "display_name_en_us": "Oak Table",
       "display_name_ru_ru": "Дубовый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_oak.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_oak.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_oak.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_oak.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3981,9 +4321,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -3994,8 +4334,8 @@
       "display_name_en_us": "Spruce Table",
       "display_name_ru_ru": "Еловый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_spruce.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_spruce.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_spruce.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_spruce.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4021,9 +4361,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4034,8 +4374,8 @@
       "display_name_en_us": "Warped Table",
       "display_name_ru_ru": "Искажённый стол",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_warped.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_warped.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/table_warped.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/table_warped.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4056,14 +4396,54 @@
       ]
     },
     {
+      "item_id": "kaleidoscope_cookery:tea_banner",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/tea_banner.json",
+        "data/kaleidoscope_cookery/recipes/tea_banner.json"
+      ],
+      "display_name_en_us": "Tea Banner",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/tea_banner.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/tea_banner.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "kaleidoscope_cookery:tea_banner",
+      "placed_registry_ids": [
+        "kaleidoscope_cookery:tea_banner"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "kaleidoscope_cookery:tea_banner"
+      ]
+    },
+    {
       "item_id": "kaleidoscope_cookery:teapot",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4074,8 +4454,8 @@
       "display_name_en_us": "Teapot",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/teapot.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/teapot.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4101,9 +4481,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4114,8 +4494,8 @@
       "display_name_en_us": "Tieguanyin",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/tieguanyin.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/tieguanyin.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/tieguanyin.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/teapot/tieguanyin.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4141,9 +4521,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4154,8 +4534,8 @@
       "display_name_en_us": "Tomato Platter",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/tomato_platter.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/tomato_platter.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/tomato_platter.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/tomato_platter.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4181,9 +4561,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4194,8 +4574,8 @@
       "display_name_en_us": "Trash Can",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/trash_can.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/trash_can.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/trash_can.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/trash_can.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4221,9 +4601,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4234,8 +4614,8 @@
       "display_name_en_us": "Tundra Style Sashimi",
       "display_name_ru_ru": "Сашими по-тундровому",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/tundra_style_sashimi.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/tundra_style_sashimi.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/tundra_style_sashimi.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/tundra_style_sashimi.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4261,9 +4641,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4275,9 +4655,9 @@
       "display_name_en_us": "Warped Fungus Pot Soup",
       "display_name_ru_ru": "Грибной суп из искажённых грибов",
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/warped_fungus_pot_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/warped_fungus_pot_soup.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/warped_fungus_pot_soup.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/warped_fungus_pot_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/flex_stockpot/warped_fungus_pot_soup.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/stockpot/warped_fungus_pot_soup.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4304,9 +4684,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4317,8 +4697,8 @@
       "display_name_en_us": "Watermelon Platter",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/watermelon_platter.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/watermelon_platter.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/watermelon_platter.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/watermelon_platter.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -4344,9 +4724,9 @@
       "schema_version": 1,
       "mod_id": "kaleidoscope_cookery",
       "mod_name": "Kaleidoscope Cookery",
-      "mod_version": "1.4.1-forge+mc1.20.1",
-      "source_jar": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
-      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "mod_version": "1.7.0-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar",
+      "source_sha256": "18748b04e951ba42b6850716c16e315d4cc8b33a6f7b76e3d9f1c27b74fdd8c9",
       "side_availability": [
         "client"
       ],
@@ -4357,8 +4737,8 @@
       "display_name_en_us": "Plate of Zongzi",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/zongzi_plate.json",
-        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/zongzi_plate.json"
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:assets/kaleidoscope_cookery/models/item/zongzi_plate.json",
+        "kaleidoscopecookery-1.7.0-forge+mc1.20.1.jar:data/kaleidoscope_cookery/recipes/zongzi_plate.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

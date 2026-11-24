@@ -1,8 +1,8 @@
 package com.justenoughmods.achievementguide.integration.home;
 
-import euphy.upo.casualswing.content.entity.EntitySeat;
+import euphy.upo.casualswing.content.entity.SwingSeatEntity;
 import euphy.upo.casualswing.content.rope.BaseSwingRopeBlockEntity;
-import euphy.upo.casualswing.content.seat.BaseSwingSeatBlockEntity;
+import euphy.upo.casualswing.content.seat.SwingSeatBlockEntity;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedHashMap;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 public final class HomeSwingProof {
-    private record Ride(EntitySeat seat, ServerPlayer player, BaseSwingRopeBlockEntity master, float amplitude) {}
+    private record Ride(SwingSeatEntity seat, ServerPlayer player, BaseSwingRopeBlockEntity master, float amplitude) {}
     private static final ThreadLocal<Deque<Ride>> RIDES = ThreadLocal.withInitial(ArrayDeque::new);
 
     public static void assembled(BaseSwingRopeBlockEntity master, List<BlockPos> nativeParts) {
@@ -32,13 +32,13 @@ public final class HomeSwingProof {
                 () -> lineage.jem$homeBuilder(actor.getUUID()));
     }
 
-    public static void before(EntitySeat seat, BlockPos origin) {
+    public static void before(SwingSeatEntity seat, BlockPos origin) {
         if (RIDES.get().size() >= 16) RIDES.get().clear();
         ServerPlayer player = seat.getFirstPassenger() instanceof ServerPlayer actor ? HomeInteractionProof.actor(actor) : null;
         BaseSwingRopeBlockEntity master = master(seat, origin);
         RIDES.get().push(new Ride(seat, player, master, master == null ? 0 : master.targetAmplitude));
     }
-    public static void after(EntitySeat seat, BlockPos origin, boolean isSwing) {
+    public static void after(SwingSeatEntity seat, BlockPos origin, boolean isSwing) {
         Ride before = RIDES.get().poll();
         if (before == null || before.seat != seat || before.player == null || !isSwing
                 || before.player.getVehicle() != seat || seat.getFirstPassenger() != before.player
@@ -48,9 +48,9 @@ public final class HomeSwingProof {
                 || !before.player.getUUID().equals(((HomeSwingLineage)before.master).jem$homeBuilder())) return;
         HomeInteractionProof.emit(before.player, "v3_home_swing");
     }
-    private static BaseSwingRopeBlockEntity master(EntitySeat seat, BlockPos origin) {
+    private static BaseSwingRopeBlockEntity master(SwingSeatEntity seat, BlockPos origin) {
         Level level = seat.level();
-        if (origin == null || !level.hasChunkAt(origin) || !(level.getBlockEntity(origin) instanceof BaseSwingSeatBlockEntity nativeSeat)) return null;
+        if (origin == null || !level.hasChunkAt(origin) || !(level.getBlockEntity(origin) instanceof SwingSeatBlockEntity nativeSeat)) return null;
         BlockPos pos = nativeSeat.getMasterPos();
         return pos != null && level.hasChunkAt(pos) && level.getBlockEntity(pos) instanceof BaseSwingRopeBlockEntity master ? master : null;
     }

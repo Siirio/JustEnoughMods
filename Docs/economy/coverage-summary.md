@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-24T12:57:41.001615+00:00` for `ebd8b38fad8939a2d461507abaef3847aa69d5e1`.
+Generated from Atlas schema 1 at `2026-11-24T16:17:49.231100+00:00` for `ce08a5c9745b25c9dcde0203a80e42e7d8a9335a`.
 
-Static evidence observed 17,367 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -28,7 +28,7 @@ Static evidence observed 17,367 canonical item IDs. This is not a Forge runtime 
 | cnc | 103 | 15 | 88 | 2 | 88 |
 | companions | 81 | 5 | 76 | 0 | 76 |
 | create | 903 | 87 | 816 | 6 | 816 |
-| create_train_parts | 16 | 0 | 16 | 0 | 16 |
+| create_train_parts | 21 | 0 | 21 | 0 | 21 |
 | createrailwaysnavigator | 10 | 0 | 10 | 0 | 10 |
 | creeperoverhaul | 17 | 0 | 17 | 0 | 17 |
 | deep_dark_regrowth | 396 | 7 | 389 | 0 | 389 |
@@ -65,8 +65,8 @@ Static evidence observed 17,367 canonical item IDs. This is not a Forge runtime 
 | jem_twelve_eyes | 32 | 0 | 32 | 0 | 32 |
 | jemcompat | 45 | 0 | 45 | 0 | 45 |
 | kaleidoscope_compat | 229 | 0 | 229 | 0 | 229 |
-| kaleidoscope_cookery | 213 | 99 | 114 | 5 | 115 |
-| kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |
+| kaleidoscope_cookery | 242 | 99 | 143 | 5 | 144 |
+| kaleidoscope_doll | 734 | 0 | 734 | 0 | 734 |
 | kaleidoscope_end | 81 | 39 | 42 | 0 | 42 |
 | kaleidoscope_nether | 166 | 83 | 83 | 0 | 83 |
 | kiwi | 7 | 0 | 7 | 0 | 7 |
@@ -75,10 +75,10 @@ Static evidence observed 17,367 canonical item IDs. This is not a Forge runtime 
 | legendary_monsters | 379 | 4 | 375 | 0 | 375 |
 | libraryferret | 15 | 0 | 15 | 0 | 15 |
 | litematicatool | 4 | 0 | 4 | 0 | 4 |
-| luminous_beasts | 183 | 14 | 169 | 0 | 169 |
-| luminous_nether | 205 | 8 | 197 | 0 | 197 |
+| luminous_beasts | 183 | 0 | 183 | 0 | 183 |
+| luminous_nether | 205 | 6 | 199 | 0 | 199 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1436 | 305 | 1131 | 58 | 1134 |
+| minecraft | 1440 | 306 | 1134 | 59 | 1137 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | mobhome | 2 | 0 | 2 | 0 | 2 |
 | modefite | 2 | 0 | 2 | 0 | 2 |
@@ -106,10 +106,10 @@ Static evidence observed 17,367 canonical item IDs. This is not a Forge runtime 
 | somemoreblocks | 663 | 281 | 382 | 0 | 382 |
 | sootychimneys | 14 | 0 | 14 | 0 | 14 |
 | sophisticatedbackpacks | 146 | 0 | 146 | 0 | 146 |
-| sophisticatedcore | 20 | 0 | 20 | 0 | 20 |
-| sophisticatedstorage | 225 | 0 | 225 | 0 | 225 |
+| sophisticatedcore | 23 | 0 | 23 | 0 | 23 |
+| sophisticatedstorage | 236 | 0 | 236 | 0 | 236 |
 | spawn | 311 | 42 | 269 | 2 | 269 |
-| spider_overhaul | 20 | 2 | 18 | 0 | 18 |
+| spider_overhaul | 21 | 2 | 19 | 0 | 19 |
 | the_sift | 231 | 0 | 231 | 0 | 231 |
 | tide | 446 | 110 | 336 | 0 | 336 |
 | tiny_takeover_backport | 1 | 0 | 1 | 0 | 1 |

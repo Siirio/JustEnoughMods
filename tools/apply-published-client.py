@@ -106,7 +106,7 @@ class ApplyPublishedJemPack {{
  static String sha(Path path)throws Exception {{ try(var input=Files.newInputStream(path)){{var digest=java.security.MessageDigest.getInstance("SHA-1");byte[] buffer=new byte[1048576];for(int count;(count=input.read(buffer))!=-1;)digest.update(buffer,0,count);return java.util.HexFormat.of().formatHex(digest.digest());}} }}
  static void require(boolean condition,String message) {{ if(!condition)throw new IllegalStateException(message); }}
  static void run()throws Exception {{
-  Constants.LOADER="forge";Constants.MC_VERSION="1.20.1";Constants.LOADER_VERSION="47.4.10";Constants.preload=true;
+  Constants.LOADER="forge";Constants.MC_VERSION="1.20.1";Constants.LOADER_VERSION="47.4.29";Constants.preload=true;
   Constants.THIS_MOD_JAR=Path.of({java_string(bootstrap)});
   Constants.MODPACK_LOADER=new pl.skidam.automodpack_loader_core_forge.mods.ModpackLoader();
   var storage=ClientStorage.open(Path.of(System.getProperty("user.dir")));

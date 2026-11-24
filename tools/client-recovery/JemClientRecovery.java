@@ -68,7 +68,7 @@ public final class JemClientRecovery {
         requireGameClosed();
         Constants.LOADER = "forge";
         Constants.MC_VERSION = "1.20.1";
-        Constants.LOADER_VERSION = "47.4.10";
+        Constants.LOADER_VERSION = "47.4.29";
         Constants.preload = false;
         Constants.MODPACK_LOADER = new pl.skidam.automodpack_loader_core_forge.mods.ModpackLoader();
         var storage = ClientStorage.open(profile);

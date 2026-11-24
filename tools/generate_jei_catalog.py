@@ -51,6 +51,9 @@ LEAVES = (
 )
 PARENTS = {"WEAPONS", "WEARABLES", "FOOD", "BUILDING"}
 ID_PATTERN = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
+INTERNAL_ITEM_EXCLUSIONS = {
+    "food:empty",
+}
 SKARRIER_TOTEMS = {
     "skarrier_mobs:blank_totem",
     "skarrier_mobs:totem_of_extinction",
@@ -223,6 +226,86 @@ EXACT_RECLASSIFICATIONS = {
             "mangrove", "oak", "spruce", "warped",
         )
     },
+    **{
+        f"create_train_parts:bellow_{size}": "CREATE_REDSTONE"
+        for size in ("1x2", "2x2", "2x3", "3x2", "3x3")
+    },
+    **{
+        f"kaleidoscope_doll:doll_{number}": "WEARABLE_DOLLS"
+        for number in range(694, 723)
+    },
+    **{
+        f"kaleidoscope_cookery:{path}": "FOOD_EDIBLES"
+        for path in (
+            "apple_skewer", "barley_tea_bag", "biluochun_tea_bag", "butter_tea",
+            "butter_tea_bag", "candied_apple_skewer", "candied_caterpillar_skewer",
+            "candied_chorus_fruit_skewer", "candied_glow_berry_skewer",
+            "candied_sweet_berry_skewer", "caterpillar_skewer", "chorus_fruit_skewer",
+            "clay_pot_milk_tea", "dried_tea_leaves", "fresh_tea_leaves",
+            "glow_berry_skewer", "mystery_tea", "oolong_tea_bag",
+            "sakura_fubuki_tea_bag", "sweet_berry_skewer", "tea_egg", "tea_seed",
+            "tieguanyin_tea_bag",
+        )
+    },
+    "kaleidoscope_cookery:bamboo_tray": "FOOD_COOKING_EQUIPMENT",
+    "kaleidoscope_cookery:kitchen_shelf": "FOOD_COOKING_EQUIPMENT",
+    "kaleidoscope_cookery:eight_immortals_table": "TREES",
+    "kaleidoscope_cookery:long_bench": "TREES",
+    "kaleidoscope_cookery:red_lantern": "BUILDING_LIGHT",
+    "kaleidoscope_cookery:tea_banner": "BUILDING_FURNITURE",
+    **{
+        f"luminous_beasts:{path}": "MUSIC_DISCS"
+        for path in (
+            "music_disc_a_day_in_the_nether", "music_disc_aerie", "music_disc_amethyst",
+            "music_disc_blizzard", "music_disc_creaking_woods", "music_disc_firebugs",
+            "music_disc_fizz", "music_disc_left_to_bloom", "music_disc_medieval_sands",
+            "music_disc_os_piano", "music_disc_ritual", "music_disc_submerged",
+            "music_disc_sunrise", "music_disc_sunset_at_glengorm",
+        )
+    },
+    **{
+        f"luminous_beasts:{path}": "BUILDING_FURNITURE"
+        for path in (
+            "arid_yeti_trophy", "basalt_executioner_trophy", "bogged_bone_stalker_trophy",
+            "cherry_tree_ent_trophy", "coral_sea_viper_trophy",
+            "crimson_mushlin_king_trophy", "frigid_gator_trophy",
+            "golden_hermit_king_trophy", "red_mummy_trophy", "sea_viper_trophy",
+            "warped_mushlin_king_trophy", "wind_phoenix_trophy",
+            "woodland_witch_doctor_trophy",
+        )
+    },
+    "luminous_beasts:sea_viper_fang": "OTHER",
+    "luminous_beasts:tree_ent_root": "OTHER",
+    **{
+        f"luminous_nether:{path}": "BUILDING_LIGHT"
+        for path in (
+            "blue_fungirack_lamp", "fungirack_lamp", "green_fungirack_lamp",
+            "orange_fungirack_lamp", "pink_fungirack_lamp", "purple_fungirack_lamp",
+            "red_fungirack_lamp", "white_fungirack_lamp",
+        )
+    },
+    **{
+        f"luminous_nether:{path}": "BUILDING_BLOCKS"
+        for path in (
+            "chiseled_fungirack_bricks", "decorative_fungirack_bricks", "fungirack",
+            "fungirack_brick_dart_trap", "fungirack_bricks", "fungirack_slab",
+            "fungirack_stairs", "fungirack_wall", "heavy_ash_block",
+            "heavy_fungirack_bricks",
+        )
+    },
+    "luminous_nether:full_golden_mushroom_block": "BUILDING_NATURE",
+    "luminous_nether:golden_mushroom_block": "BUILDING_NATURE",
+    "luminous_nether:mushroom_stipe": "TREES",
+    "luminous_nether:shredded_mushroom_stipe": "TREES",
+    "luminous_nether:mushlin_king_trophy": "BUILDING_FURNITURE",
+    "luminous_nether:warped_mushlin_king_trophy": "BUILDING_FURNITURE",
+    "luminous_nether:music_disc_a_day_in_the_nether": "MUSIC_DISCS",
+    "luminous_nether:music_disc_sunset_at_glengorm": "MUSIC_DISCS",
+    **{
+        f"sophisticatedstorage:{tier}tank": "BUILDING_CONTAINERS"
+        for tier in ("", "copper_", "diamond_", "gold_", "iron_", "netherite_")
+    },
+    "spider_overhaul:sculk_string": "BUILDING_BLOCKS",
     # Unearthed Journey wood architecture. Leaves, saplings and branches remain Nature.
     **{
         f"unearthed_journey:{path}": "TREES"
@@ -830,6 +913,8 @@ def classify(row: dict, hint: str | None) -> str:
     namespace, path = item_id.split(":", 1)
     token_set = words(path)
 
+    if item_id in EXACT_RECLASSIFICATIONS:
+        return EXACT_RECLASSIFICATIONS[item_id]
     if item_id in EXACT:
         return EXACT[item_id]
     if is_music_disc(row):
@@ -1313,6 +1398,8 @@ def load_export(path: Path) -> tuple[list[dict], set[str], str]:
         raise ValueError("Runtime item export must contain sorted unique registry IDs")
     if data.get("item_count") != len(rows):
         raise ValueError("Runtime item export item_count does not match its rows")
+    rows = [row for row in rows if row["registry_id"] not in INTERNAL_ITEM_EXCLUSIONS]
+    item_ids = [row["registry_id"] for row in rows]
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
     return rows, set(item_ids), digest
 
