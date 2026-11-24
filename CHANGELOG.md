@@ -1,9 +1,38 @@
+## 2026-11-24 - Retain the post-End reveal and densify boss structures
+
+- The user requested a layered violet post-End glitch closer to the supplied digital-interference reference, with text instead of the warning symbol. The first preview was rejected as too straight and non-artistic
+- Bug / Client / the prior renderer drew only 24 broad white, red and cyan rectangles on black, which produced the sparse straight-line frames in the supplied screenshots / in testing with clustered short fragments, translucent violet haze, scan noise, sliced chromatic text and large composite tears whose purple bodies have separate off-sided red or magenta and cyan copies of different lengths around the preserved `IT IS` then `NOT THE END` timing
+- The replacement MP4 is an offline motion and color preview generated from the same nine-second direction. It is not claimed as captured gameplay because the user did not authorize a client launch
+- Bug / Both Sided / the old End hook changed only the vanilla credits flag, so `ServerPlayer.changeDimension` still removed the player from the End and closing credits requested Overworld respawn / in testing with cancellation of the one-time End-to-Overworld transition before removal, safe End footing and an explicit client completion packet
+- Bug / Both Sided / pending clue delivery existed only in a static process set and was cleared on logout or server stop, so a disconnect during the 21-second sequence could consume the once-only unlock without giving `???` / in testing with a saved pending phase in `jemcompat_main_campaign` and idempotent completion recovery
+- The `jemcompat:mystery_locator` registry identity and locator behavior remain unchanged. Its model now uses vanilla paper, its visible name remains `???`, and completion puts it in the selected hand
+- A displaced selected stack moves to another inventory slot when it fits. If it does not fit completely, the full stack is durably issued to JEM Rewards and read back before the clue replaces it
+- The user requested boss structures approximately one and a half times closer without duplicate overlap logic. Exact installed structure-set inspection found that distance is controlled by native random-spread spacing and separation, not a JEM radial distance
+- The exact Paxi compatibility datapack now overrides spacing and separation for 25 registered Campaign, prerequisite, hosted-arena and post-End structure sets at approximately two thirds of upstream values. Native types, salts, frequencies, spread types, biome rules and exclusion fields remain unchanged
+- Bug / Both Sided / Structurify overlap prevention was enabled, but 23 canonical boss structures were explicitly excluded, so denser placement had no shared physical-overlap owner / in testing with those exclusions removed and Structurify retaining zero padding and one placement attempt
+- World generation changes affect only new candidates in ungenerated chunks. They do not move existing structures and biome eligibility still prevents a fixed maximum distance from spawn
+- Built and reobfuscated JEM Twelve Eyes 1.7.1 with SHA-256 `A2B055F3D70031335D5EC6401CA5E7690F0D4DE903666971C30E406F9D39E813`
+- The user instructed Codex to keep the server and client running. No local runtime JAR, active client file, published AutoModpack generation or Server configuration has been replaced yet
+
+## 2026-11-24 - Correct JEI building, wood and nature families
+
+- The user moved Trees from the top level into Building beside Containers, Nature and Holiday Decorations
+- The user moved complete reviewed families of Create decorative stone, copper tiles and shingles, secret buttons, Locometal color blocks, industrial iron, bound cardboard and rose quartz into Building Blocks
+- The user moved the black birch, swamp pine and Quindio wax palm architecture plus Kaleidoscope Cookery wooden chairs, stools and tables into Building > Trees. Leaves, saplings and branches remain in Nature
+- The user moved Unearthed Journey flora, hanging Nether wart growth, Pewen branches and needles, and pure flower blocks from Food into Nature. Farm and Charm wild harvest plants remain Food because they supply cooking crops
+- The user moved all 16 Handcrafted sheet colors from Ores into Furniture and Decorations
+- The user removed Bat Skin, Vex Wing and the Blade Pottery Sherd from Weapons. They now use Other as non-weapon crafting or decorative parts
+- Implementation choice: expand only source-backed installed families, keep one primary leaf per registry ID and preserve Casual Swing, Create machinery, train equipment and crop-yielding wild plants in their existing semantic leaves
+- The exact manifest keeps all 14,064 registered item IDs and moves 554 IDs. Runtime category lookup remains exact and does not add a second inference owner
+- Player visual acceptance remains `in testing`. The combined JEMCompat source was built after this catalog change, but no Minecraft launch, gameplay QA or deployment was performed
+
 ## 2026-11-24 - Keep JEI tooltips above overlays and retire Hobbit Hill Village
 
 - The user reported one-frame flicker where the curated JEI item grid and its search field draw over item tooltips, requested searchable food-blessing categories and cross-language item search, removed the mountain-embedded Hobbit village, and enabled Xaero cave maps at modpack level
 - Bug / Client / the curated JEI overlay renders from `ScreenEvent.Render.Post`, after the container screen has already drawn its tooltip, and it draws each hovered tooltip before later grid cells and the search field. The later overlay content can therefore cover native and curated tooltips for alternating frames / in testing with one ordered overlay render before the final tooltip layer
-- Bug / Client / the English JEI alias snapshot omits nearly all vanilla item and block translations, including `item.minecraft.bee_spawn_egg`, while curated search checks only the current-language hover name and registry ID and vanilla Creative search has no JEM alias input / in testing with one shared multilingual search index for JEI, curated categories and Creative search without changing visible item names
-- Food Blessing labels, trait names and descriptions already have matching English and Russian localization. Search will consume the canonical tooltip and category terms instead of duplicating blessing mechanics
+- Bug / Client / the shared multilingual index loaded every installed language and generated tooltip terms for the full item registry, while a Creative Mixin scanned the selected tab again after each typed character, causing severe input freezes / in testing with the custom index, English alias injection and Creative search Mixin removed
+- Native JEI and Creative search now use only the language selected in the active client profile. The curated category field compares the current localized hover name and registry ID only. Food Blessing text remains localized, but JEM no longer injects blessing or cross-language search aliases
+- Built and reobfuscated JEMCompat 3.11.6 with SHA-256 `1696F40909569E83D611A501E88A007B9BAE1B300361D66E525C3D53FF14BB2D`
 - Bug / Both Sided / `hobbit_hill_village-0.0.5.jar` registers `lios_outlandish_villages:hobbit_village` at absolute Y=-25 with jigsaw size 7 and a 112-block maximum span, which can carve a large underground village through generated terrain / in testing by removing that exact dependency-free JAR from the managed client and ordinary local server
 - The removed Hobbit Hill Village JAR is retained in the prepared update backup with SHA-256 `0BC1B0229E627CEB85ACB5E00BED337ECA9914F528F448B00D2F13058B20D79F`. Existing generated chunks and structures are not rewritten
 - Bug / Both Sided / Xaero client profiles allowed automatic cave maps, but the distributed minimap and world-map server profiles explicitly overrode cave mode off / in testing with cave mode allowed and automatic mode 2 in both modpack server profiles. Native Xaero controls and private waypoints remain unchanged

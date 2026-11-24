@@ -11,7 +11,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class CampaignNetwork {
-    private static final String PROTOCOL_VERSION = "4";
+    private static final String PROTOCOL_VERSION = "5";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
             .named(new ResourceLocation(JEMTwelveEyes.MOD_ID, "main"))
             .networkProtocolVersion(() -> PROTOCOL_VERSION)
@@ -38,6 +38,11 @@ public final class CampaignNetwork {
                 .decoder(StartSecretEndingPacket::decode)
                 .consumerMainThread(StartSecretEndingPacket::handle)
                 .add();
+        CHANNEL.messageBuilder(CompleteSecretEndingPacket.class, 3, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(CompleteSecretEndingPacket::encode)
+                .decoder(CompleteSecretEndingPacket::decode)
+                .consumerMainThread(CompleteSecretEndingPacket::handle)
+                .add();
     }
 
     public static void openBossMap(ServerPlayer player, BlockPos position, ResourceLocation dimension, String markerNameKey, boolean shared) {
@@ -52,5 +57,9 @@ public final class CampaignNetwork {
 
     public static void startSecretEnding(ServerPlayer player) {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new StartSecretEndingPacket());
+    }
+
+    public static void completeSecretEnding() {
+        CHANNEL.sendToServer(new CompleteSecretEndingPacket());
     }
 }

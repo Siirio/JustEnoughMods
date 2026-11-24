@@ -28,6 +28,7 @@ public final class CampaignSavedData extends SavedData {
     private final Map<ResourceLocation, UUID> campaignSiteEntities = new LinkedHashMap<>();
     private final Map<String, BlockPos> locatedStructures = new LinkedHashMap<>();
     private final Set<UUID> secretEndingPlayers = new LinkedHashSet<>();
+    private final Set<UUID> pendingSecretEndingPlayers = new LinkedHashSet<>();
     private final Set<ResourceLocation> postEndDefeats = new LinkedHashSet<>();
     private boolean postEndRevealed;
     private long gateRevision;
@@ -115,8 +116,17 @@ public final class CampaignSavedData extends SavedData {
 
     public boolean startSecretEnding(UUID player) {
         boolean added = secretEndingPlayers.add(player);
-        if (added) setDirty();
+        if (added) {
+            pendingSecretEndingPlayers.add(player);
+            setDirty();
+        }
         return added;
+    }
+
+    public boolean secretEndingPending(UUID player) { return pendingSecretEndingPlayers.contains(player); }
+
+    public void completeSecretEnding(UUID player) {
+        if (pendingSecretEndingPlayers.remove(player)) setDirty();
     }
 
     public boolean revealPostEnd() {
@@ -199,6 +209,9 @@ public final class CampaignSavedData extends SavedData {
         ListTag endings = new ListTag();
         secretEndingPlayers.forEach(id -> endings.add(StringTag.valueOf(id.toString())));
         tag.put("SecretEndingPlayers", endings);
+        ListTag pendingEndings = new ListTag();
+        pendingSecretEndingPlayers.forEach(id -> pendingEndings.add(StringTag.valueOf(id.toString())));
+        tag.put("PendingSecretEndingPlayers", pendingEndings);
         ListTag postEnd = new ListTag();
         postEndDefeats.forEach(id -> postEnd.add(StringTag.valueOf(id.toString())));
         tag.put("PostEndDefeats", postEnd);
@@ -252,6 +265,9 @@ public final class CampaignSavedData extends SavedData {
         }
         for (Tag value : tag.getList("SecretEndingPlayers", Tag.TAG_STRING)) {
             try { data.secretEndingPlayers.add(UUID.fromString(value.getAsString())); } catch (IllegalArgumentException ignored) { }
+        }
+        for (Tag value : tag.getList("PendingSecretEndingPlayers", Tag.TAG_STRING)) {
+            try { data.pendingSecretEndingPlayers.add(UUID.fromString(value.getAsString())); } catch (IllegalArgumentException ignored) { }
         }
         for (Tag value : tag.getList("PostEndDefeats", Tag.TAG_STRING)) {
             ResourceLocation id = ResourceLocation.tryParse(value.getAsString());

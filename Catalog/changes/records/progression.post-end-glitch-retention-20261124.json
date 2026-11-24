@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "change_id": "progression.post-end-glitch-retention-20261124",
+  "status": "active",
+  "selectors": [
+    {"type": "id", "registry": "items", "value": "jemcompat:mystery_locator"}
+  ],
+  "exceptions": [],
+  "conditions": [
+    {"runtime": "The complete post-End target chain is registered and the player's one-time secret ending is pending"}
+  ],
+  "precedence": {
+    "layer": "progression",
+    "priority": 1840,
+    "overrides": ["universal-standalone.progression-content-20261021", "universal-standalone.source-ownership-20261021"]
+  },
+  "change": {
+    "summary": "Keep the player in the End after the authored glitch sequence and deliver the ??? paper clue without losing the selected item",
+    "modifiers": [
+      {"property": "post_end.secret_ending.portal_exit", "operation": "replace", "before": "Vanilla credits close requested Overworld respawn", "after": "The End-to-Overworld portal transition is canceled for the one-time sequence and the player is moved to safe End footing"},
+      {"property": "post_end.secret_ending.presentation", "operation": "replace", "before": "Black field with 24 broad white, red, and cyan bars", "after": "Nine-second layered violet signal field with fragmented magenta and cyan interference and the existing IT IS / NOT THE END text timing"},
+      {"property": "post_end.secret_ending.reward", "operation": "replace", "before": "The mystery locator was added after vanilla End respawn or dropped when inventory insertion failed", "after": "The paper-presented ??? locator enters the selected hotbar slot after client completion; the displaced stack moves to inventory or is durably enqueued in JEM Rewards before replacement"},
+      {"property": "post_end.secret_ending.persistence", "operation": "replace", "before": "Pending delivery existed only in process memory", "after": "Pending delivery is saved in jemcompat_main_campaign and completion is idempotent across disconnect or restart"}
+    ]
+  },
+  "cause": {
+    "owner": "JEMTwelveEyes",
+    "kind": "post_end_progression_correction",
+    "source_files": [
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/gate/CampaignSavedData.java",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/mixin/ending/SecretEndingPortalMixin.java",
+      "Mods/JEMTwelveEyes/build.gradle",
+      "Mods/JEMTwelveEyes/gradle.properties",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/api/CampaignApi.java",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/SecretEndingClient.java",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/network/CampaignNetwork.java",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/network/CompleteSecretEndingPacket.java",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/postend/PostEndEvents.java",
+      "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/models/item/mystery_locator.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Preserve the post-End reveal in its dimension and guarantee the requested handoff even with a full inventory",
+    "decision_source": "Direct user request on 2026-11-24 plus Five Whys of the vanilla credits-close and volatile pending-reward owners"
+  },
+  "introduced": {"date": "2026-11-24", "commit": "SELF", "action": "retain_end_and_deliver_clue", "summary": "Replace vanilla respawn completion with a server-validated post-End completion packet", "source_files": ["Mods/JEMTwelveEyes"]},
+  "history": [
+    {"date": "2026-11-24", "commit": "SELF", "action": "replace_secret_ending_completion", "summary": "Preserve the End position, persist pending delivery and route full-inventory displacement through JEM Rewards", "source_files": ["Mods/JEMTwelveEyes"]}
+  ],
+  "impacts": {
+    "systems": ["post_end_progression", "client_presentation", "network_protocol", "inventory", "jem_rewards", "registry_atlas"],
+    "relations": ["End exit portal -> saved pending sequence -> client presentation -> server completion -> selected hand or JEM Rewards"],
+    "notes": ["The registry ID jemcompat:mystery_locator and the per-player once-only unlock remain unchanged", "The channel protocol advances because completion is now client-to-server validated"],
+    "unresolved": ["In-game visual and gameplay acceptance remain pending because the client was not launched"]
+  }
+}

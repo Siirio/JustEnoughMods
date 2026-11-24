@@ -11,10 +11,12 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public final class CuratedJeiOverlay {
     private static final int CELL = 20;
@@ -424,7 +426,9 @@ public final class CuratedJeiOverlay {
     }
 
     private static boolean matches(ItemStack stack, String needle) {
-        return CuratedJeiCatalog.matches(stack, needle);
+        ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
+        return stack.getHoverName().getString().toLowerCase(Locale.ROOT).contains(needle)
+                || id != null && id.toString().toLowerCase(Locale.ROOT).contains(needle);
     }
 
     private static ItemStack hoveredStack(CatalogLayout layout, int mouseX, int mouseY) {

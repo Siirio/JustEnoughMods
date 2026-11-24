@@ -79,6 +79,14 @@ public final class CampaignApi {
         return CampaignSavedData.get(server).startSecretEnding(player);
     }
 
+    public static boolean secretEndingPending(MinecraftServer server, UUID player) {
+        return CampaignSavedData.get(server).secretEndingPending(player);
+    }
+
+    public static void completeSecretEnding(MinecraftServer server, UUID player) {
+        CampaignSavedData.get(server).completeSecretEnding(player);
+    }
+
     public static boolean revealPostEnd(MinecraftServer server) {
         return CampaignSavedData.get(server).revealPostEnd();
     }

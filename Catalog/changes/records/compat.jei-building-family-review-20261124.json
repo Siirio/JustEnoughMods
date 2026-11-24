@@ -1,0 +1,108 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.jei-building-family-review-20261124",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "JEMCompat loads the schema-2 exact JEI catalog manifest"
+    }
+  ],
+  "precedence": {
+    "layer": "presentation",
+    "priority": 1820,
+    "overrides": [
+      "compat.jei-category-search-and-reclassification-20261026",
+      "compat.jei-exact-catalog-manifest-20261121",
+      "compat.jei-full-registry-catalog-20261122",
+      "jei.catalog-materials-components"
+    ]
+  },
+  "change": {
+    "summary": "Place reviewed building, wood, plant, flower, textile and component families in their exact semantic JEI leaves",
+    "modifiers": [
+      {
+        "property": "jem.jei_catalog.navigation.trees",
+        "operation": "replace",
+        "before": "TREES is a top-level catalog category",
+        "after": "TREES is a direct child of BUILDING beside containers, nature, holiday decorations and the other building leaves"
+      },
+      {
+        "property": "jem.jei_catalog.primary_assignment",
+        "operation": "replace",
+        "before": "Reviewed decorative and natural families remained split across Create and Redstone, Building Blocks, Food, Ores, Furniture, Trees and Weapons",
+        "after": "The checked-in exact manifest assigns 554 reviewed IDs to Building Blocks, Trees, Nature, Furniture and Decorations, or Other according to installed block, tag, recipe and item-role evidence"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat exact JEI catalog manifest",
+    "kind": "catalog_classification",
+    "source_files": [
+      "tools/generate_jei_catalog.py",
+      "Mods/JEMCompat/gradle.properties",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+      "Docs/catalog/JEI_CATALOG_MANIFEST.md",
+      "Docs/catalog/JEI_CATALOG_REVIEW.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep complete installed item families together by actual use and remove the reported catalog misclassifications",
+    "decision_source": "Direct user classification request on 2026-11-24 plus installed Registry Atlas item and block records"
+  },
+  "introduced": {
+    "date": "2026-11-24",
+    "commit": "SELF",
+    "action": "review_building_families",
+    "summary": "Move Trees under Building and correct the complete reviewed family assignments",
+    "source_files": [
+      "tools/generate_jei_catalog.py",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "review_building_families",
+      "summary": "Review exact installed registrations, apply family-complete moves and preserve one primary leaf per item",
+      "source_files": [
+        "Catalog/registries/items",
+        "Catalog/registries/blocks",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "jei_catalog",
+      "client_presentation",
+      "economy_catalog_adapter",
+      "registry_atlas"
+    ],
+    "relations": [
+      "Installed Registry Atlas evidence -> reviewed family policy -> exact manifest -> JEI and shared category adapter",
+      "BUILDING navigation -> TREES child -> exact wood assignments"
+    ],
+    "notes": [
+      "The runtime still performs direct exact-ID lookup and does not infer categories",
+      "Farm and Charm wild harvest plants remain Food because harvesting them supplies cooking crops",
+      "Casual Swing remains in Furniture and Decorations",
+      "Create machinery and train equipment remain in Create and Redstone"
+    ],
+    "unresolved": [
+      "Player visual acceptance remains pending because no gameplay client launch was requested"
+    ]
+  }
+}

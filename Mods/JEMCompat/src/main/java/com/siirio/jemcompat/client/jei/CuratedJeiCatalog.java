@@ -7,18 +7,16 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
-import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class CuratedJeiCatalog {
     private static final List<CatalogCategory> TOP_LEVEL = List.of(CatalogCategory.WEAPONS, CatalogCategory.WEARABLES, CatalogCategory.FOOD,
-            CatalogCategory.ORES, CatalogCategory.MUSIC_DISCS, CatalogCategory.TREES,
-            CatalogCategory.CREATE_REDSTONE, CatalogCategory.BUILDING, CatalogCategory.FISHING, CatalogCategory.BOOKS,
+            CatalogCategory.ORES, CatalogCategory.MUSIC_DISCS, CatalogCategory.CREATE_REDSTONE,
+            CatalogCategory.BUILDING, CatalogCategory.FISHING, CatalogCategory.BOOKS,
             CatalogCategory.POTIONS, CatalogCategory.TRANSPORT, CatalogCategory.COMPANIONS,
             CatalogCategory.SPAWN_EGGS, CatalogCategory.OTHER);
     private static final List<CatalogCategory> BUILDING = List.of(CatalogCategory.BUILDING_BLOCKS, CatalogCategory.BUILDING_GLASS,
-            CatalogCategory.BUILDING_LIGHT, CatalogCategory.BUILDING_FURNITURE, CatalogCategory.BUILDING_CONTAINERS,
+            CatalogCategory.BUILDING_LIGHT, CatalogCategory.TREES, CatalogCategory.BUILDING_FURNITURE, CatalogCategory.BUILDING_CONTAINERS,
             CatalogCategory.BUILDING_NATURE, CatalogCategory.BUILDING_HOLIDAY, CatalogCategory.BUILDING_TOOLS);
     private static final List<CatalogCategory> WEAPONS = List.of(CatalogCategory.WEAPON_TOTEMS,
             CatalogCategory.WEAPON_RANGED, CatalogCategory.WEAPON_MELEE, CatalogCategory.WEAPON_SHIELDS,
@@ -28,7 +26,6 @@ public final class CuratedJeiCatalog {
     private static final List<CatalogCategory> FOOD = List.of(CatalogCategory.FOOD_EDIBLES,
             CatalogCategory.FOOD_COOKING_EQUIPMENT);
     private static final EnumMap<CatalogCategory, List<ItemStack>> STACKS = new EnumMap<>(CatalogCategory.class);
-    private static final Map<ItemStack, String> SEARCH_TEXT = new IdentityHashMap<>();
 
     private CuratedJeiCatalog() {
     }
@@ -40,7 +37,6 @@ public final class CuratedJeiCatalog {
             if (preview.isDamageableItem()) {
                 preview.setDamageValue(0);
             }
-            SEARCH_TEXT.put(preview, MultilingualSearch.searchText(preview));
             CatalogCategory leaf = CatalogCategory.valueOf(
                     com.siirio.jemcompat.catalog.JemCatalogCategories.classify(preview).name());
             STACKS.computeIfAbsent(leaf, ignored -> new ArrayList<>()).add(preview);
@@ -53,7 +49,6 @@ public final class CuratedJeiCatalog {
 
     public static void clear() {
         STACKS.clear();
-        SEARCH_TEXT.clear();
     }
 
     public static List<CatalogCategory> topLevel(boolean creative) {
@@ -93,11 +88,6 @@ public final class CuratedJeiCatalog {
             return aggregate(FOOD);
         }
         return STACKS.getOrDefault(category, List.of());
-    }
-
-    public static boolean matches(ItemStack stack, String normalizedNeedle) {
-        String text = SEARCH_TEXT.get(stack);
-        return (text == null ? MultilingualSearch.searchText(stack) : text).contains(normalizedNeedle);
     }
 
     private static List<ItemStack> aggregate(List<CatalogCategory> children) {

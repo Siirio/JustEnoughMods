@@ -1,10 +1,7 @@
 package com.siirio.jemcompat.client.jei;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.registration.IIngredientAliasRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
 import mezz.jei.common.config.IClientToggleState;
 import net.minecraft.resources.ResourceLocation;
@@ -12,15 +9,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.common.MinecraftForge;
 import com.siirio.jemcompat.mixin.client.IngredientListOverlayAccessor;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-
 @JeiPlugin
 public final class JEMJeiPlugin implements IModPlugin {
     private static final ResourceLocation PLUGIN_ID = new ResourceLocation("jemcompat", "jei");
-    private static final String ENGLISH_ALIASES = "/assets/jemcompat/jei_english_aliases.json";
     private static IJeiRuntime runtime;
 
     public JEMJeiPlugin() {
@@ -121,30 +112,5 @@ public final class JEMJeiPlugin implements IModPlugin {
             });
         }
         registration.addRecipes(mezz.jei.api.constants.RecipeTypes.INFORMATION, recipes);
-    }
-
-    @Override
-    public void registerIngredientAliases(IIngredientAliasRegistration registration) {
-        MultilingualSearch.reload();
-        Map<String, String> aliases = readAliases();
-        ForgeRegistries.ITEMS.getValues().forEach(item -> {
-            var stack = new net.minecraft.world.item.ItemStack(item);
-            java.util.LinkedHashSet<String> itemAliases = new java.util.LinkedHashSet<>(MultilingualSearch.aliases(stack));
-            String alias = aliases.get(item.getDescriptionId());
-            if (alias != null && !alias.isBlank()) itemAliases.add(alias);
-            if (!itemAliases.isEmpty()) registration.addAliases(item, itemAliases);
-        });
-    }
-
-    private static Map<String, String> readAliases() {
-        InputStream stream = JEMJeiPlugin.class.getResourceAsStream(ENGLISH_ALIASES);
-        if (stream == null) {
-            throw new IllegalStateException("Missing English JEI aliases");
-        }
-        try (InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
-            return new Gson().fromJson(reader, TypeToken.getParameterized(Map.class, String.class, String.class).getType());
-        } catch (Exception exception) {
-            throw new IllegalStateException("Cannot load English JEI aliases", exception);
-        }
     }
 }

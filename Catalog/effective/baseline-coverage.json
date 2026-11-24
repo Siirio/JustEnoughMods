@@ -2,12 +2,12 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "4291d5c045355462e338b5aa5e3d42d343f7964a89a868bd0dc270c1164b5c43",
-  "coverage_inputs_sha256": "a2d62ae62dc993c52d13aa855fdf09476bc5b1cbf2ff1e895f1521a5d7df8f20",
+  "change_records_sha256": "562d124ca6f966d179207ebf078440ff98de2376bc087ef68caca1344e1baddd",
+  "coverage_inputs_sha256": "bb9aaa07b2fef03c26c61245e4065b498a4c5e504d7db9699a8924fab1ea6f9f",
   "totals": {
-    "watched": 7158,
-    "covered": 5727,
-    "unresolved": 1431
+    "watched": 7163,
+    "covered": 5734,
+    "unresolved": 1429
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1405,8 +1405,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMCompat": {
-      "watched": 201,
-      "covered": 201,
+      "watched": 206,
+      "covered": 206,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -1569,10 +1569,9 @@
     },
     "Mods/JEMTwelveEyes": {
       "watched": 161,
-      "covered": 133,
-      "unresolved": 28,
+      "covered": 135,
+      "unresolved": 26,
       "unresolved_paths": [
-        "Mods/JEMTwelveEyes/gradle.properties",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignItems.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignMapService.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignMapTrade.java",
@@ -1595,7 +1594,6 @@
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/GateWarningLayout.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/GateWarningOverlay.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/integration/WorldTierParticipants.java",
-        "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/network/CampaignNetwork.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/network/GateWarningPacket.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/network/OpenBossMapPacket.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/network/StartSecretEndingPacket.java",

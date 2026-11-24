@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "change_id": "worldgen.boss-structure-density-20261124",
+  "status": "active",
+  "selectors": [
+    {"type": "id", "registry": "structures", "value": "alexscaves:volcano"},
+    {"type": "id", "registry": "structures", "value": "block_factorys_bosses:dragon_tower"},
+    {"type": "id", "registry": "structures", "value": "block_factorys_bosses:kraken_ship"},
+    {"type": "id", "registry": "structures", "value": "block_factorys_bosses:sandworm_nest"},
+    {"type": "id", "registry": "structures", "value": "block_factorys_bosses:underworld_arena"},
+    {"type": "id", "registry": "structures", "value": "block_factorys_bosses:yeti_hideout"},
+    {"type": "id", "registry": "structures", "value": "cataclysm:acropolis"},
+    {"type": "id", "registry": "structures", "value": "cataclysm:ancient_factory"},
+    {"type": "id", "registry": "structures", "value": "cataclysm:burning_arena"},
+    {"type": "id", "registry": "structures", "value": "cataclysm:cursed_pyramid"},
+    {"type": "id", "registry": "structures", "value": "cataclysm:frosted_prison"},
+    {"type": "id", "registry": "structures", "value": "cataclysm:ruined_citadel"},
+    {"type": "id", "registry": "structures", "value": "cataclysm:soul_black_smith"},
+    {"type": "id", "registry": "structures", "value": "cataclysm:sunken_city"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:ancient_tower_remains"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:cloudy_temple"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:collapsed_kingdom"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:frostbitten_temple"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:lava_eater_spawn"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:mossy_temple"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:ruined_pyramid"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:shulker_tower"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:skeletosaurus_nest"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:soul_fortress_remains"},
+    {"type": "id", "registry": "structures", "value": "legendary_monsters:space_station"}
+  ],
+  "exceptions": [],
+  "conditions": [{"runtime": "New structure candidates are generated in previously ungenerated chunks"}],
+  "precedence": {"layer": "worldgen", "priority": 1830, "overrides": ["universal-standalone.progression-content-20261021"]},
+  "change": {
+    "summary": "Generate registered boss structures at roughly one and a half times the native candidate density while retaining native placement identity",
+    "modifiers": [
+      {"property": "worldgen.structure_set.spacing_and_separation", "operation": "multiply", "before": "Exact installed upstream spacing and separation", "after": "Each reviewed spacing and separation is rounded to approximately two thirds of upstream; spacing remains greater than separation"},
+      {"property": "worldgen.structure_set.native_contract", "operation": "preserve", "before": "Native type, salt, frequency, spread type, biome and exclusion fields", "after": "Native type, salt, frequency, spread type, biome and exclusion fields remain unchanged"},
+      {"property": "worldgen.physical_overlap", "operation": "replace", "before": "The 23 canonical boss structures were explicitly excluded from Structurify overlap prevention", "after": "Boss exclusions are removed so the installed Structurify owner can reject physical intersections with padding zero"}
+    ]
+  },
+  "cause": {"owner": "Paxi structure compatibility datapack and Structurify configuration", "kind": "structure_density_policy", "source_files": [
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/alexscaves/worldgen/structure_set/volcano.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/block_factorys_bosses/worldgen/structure_set/dragon_tower.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/block_factorys_bosses/worldgen/structure_set/kraken_ship.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/block_factorys_bosses/worldgen/structure_set/sandworm_nest.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/block_factorys_bosses/worldgen/structure_set/underworld_arena.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/block_factorys_bosses/worldgen/structure_set/yeti_hideout.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/cataclysm/worldgen/structure_set/acropolis.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/cataclysm/worldgen/structure_set/ancient_factory.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/cataclysm/worldgen/structure_set/burning_arena.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/cataclysm/worldgen/structure_set/cursed_pyramid.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/cataclysm/worldgen/structure_set/frosted_prison.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/cataclysm/worldgen/structure_set/ruined_citadel.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/cataclysm/worldgen/structure_set/soul_black_smith.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/cataclysm/worldgen/structure_set/sunken_city.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/ancient_tower_remains.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/cloudy_temple.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/collapsed_kingdom.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/frostbitten_temple.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/lava_eater_spawn.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/mossy_temple.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/ruined_pyramid.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/shulker_tower.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/skeletosaurus_nest.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/soul_fortress_remains.json",
+    "Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat/data/legendary_monsters/worldgen/structure_set/space_station.json",
+    "Client/ManagedPack/config/structurify.json",
+    "Docs/DEVELOPMENT.md"
+  ]},
+  "rationale": {"purpose": "Reduce typical exploration distance without adding a second placement algorithm", "decision_source": "Direct user request on 2026-11-24 plus exact installed structure-set inspection"},
+  "introduced": {"date": "2026-11-24", "commit": "SELF", "action": "densify_boss_structures", "summary": "Override only reviewed structure-set spacing and separation and restore Structurify overlap admission", "source_files": ["Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat", "Client/ManagedPack/config/structurify.json"]},
+  "history": [
+    {"date": "2026-11-24", "commit": "SELF", "action": "override_reviewed_structure_sets", "summary": "Reduce reviewed native spacing and separation while restoring shared physical-overlap prevention", "source_files": ["Client/ManagedPack/config/paxi/datapacks/jem-major-update-4-final-structure-compat", "Client/ManagedPack/config/structurify.json"]}
+  ],
+  "impacts": {
+    "systems": ["worldgen", "campaign", "post_end", "boss_encounters", "structurify", "registry_atlas"],
+    "relations": ["Installed structure set -> Paxi registry-data override -> denser native candidates -> Structurify intersection check -> JEM encounter discovery"],
+    "notes": ["This changes prospective generation only and does not move existing starts", "Biome and terrain eligibility still prevent a fixed maximum distance from spawn", "No radial placement or duplicate overlap algorithm is added"],
+    "unresolved": ["Player acceptance in newly generated terrain remains pending"]
+  }
+}

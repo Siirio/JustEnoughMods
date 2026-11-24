@@ -6,6 +6,8 @@ import com.siirio.jemtwelveeyes.BossLocationDiscoveredEvent;
 import net.minecraft.server.MinecraftServer;
 import com.siirio.jemtwelveeyes.AdvancementAwards;
 import com.siirio.jemtwelveeyes.network.CampaignNetwork;
+import com.siirio.jemrewards.PendingRewardContainer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -16,27 +18,21 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.event.server.ServerStoppedEvent;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 public final class PostEndEvents {
-    private static final Set<UUID> PENDING_REWARDS = new LinkedHashSet<>();
     private static final ResourceLocation FINAL_ADVANCEMENT = new ResourceLocation("jemcompat", "post_end/the_end");
 
     private PostEndEvents() { }
@@ -70,22 +66,95 @@ public final class PostEndEvents {
         if (!dragonDefeated(player) || !PostEndTarget.chainAvailable(player.server)) return false;
         MinecraftServer server = player.server;
         if (!CampaignApi.startSecretEnding(server, player.getUUID())) return false;
-        PENDING_REWARDS.add(player.getUUID());
         CampaignNetwork.startSecretEnding(player);
         return true;
+    }
+
+    public static void holdAtEndPortal(ServerPlayer player) {
+        player.setPortalCooldown();
+        ServerLevel level = player.serverLevel();
+        BlockPos origin = player.blockPosition();
+        for (int radius = 0; radius <= 5; radius++) {
+            for (int y = 0; y <= 4; y++) {
+                for (int x = -radius; x <= radius; x++) {
+                    for (int z = -radius; z <= radius; z++) {
+                        if (radius > 0 && Math.abs(x) != radius && Math.abs(z) != radius) continue;
+                        BlockPos feet = origin.offset(x, y, z);
+                        BlockState floor = level.getBlockState(feet.below());
+                        if (!floor.isFaceSturdy(level, feet.below(), net.minecraft.core.Direction.UP)
+                                || !level.getBlockState(feet).getCollisionShape(level, feet).isEmpty()
+                                || !level.getBlockState(feet.above()).getCollisionShape(level, feet.above()).isEmpty()) continue;
+                        player.teleportTo(feet.getX() + 0.5D, feet.getY(), feet.getZ() + 0.5D);
+                        return;
+                    }
+                }
+            }
+        }
+        player.teleportTo(player.getX(), player.getY() + 2.0D, player.getZ());
+    }
+
+    public static void finishSecretEnding(ServerPlayer player) {
+        if (!CampaignApi.secretEndingPending(player.server, player.getUUID())
+                || player.level().dimension() != net.minecraft.world.level.Level.END
+                || !PostEndTarget.chainAvailable(player.server)) return;
+        if (player.getInventory().contains(new ItemStack(PostEndItems.MYSTERY_LOCATOR.get()))) {
+            CampaignApi.completeSecretEnding(player.server, player.getUUID());
+            return;
+        }
+        ItemStack clue = new ItemStack(PostEndItems.MYSTERY_LOCATOR.get());
+        int selected = player.getInventory().selected;
+        ItemStack displaced = player.getInventory().getItem(selected).copy();
+        boolean storeInInventory = displaced.isEmpty() || canStoreOutsideSelected(player.getInventory(), displaced, selected);
+        if (!storeInInventory) {
+            String source = "jem_twelve_eyes:post_end_displaced";
+            if (!PendingRewardContainer.hasIssued(player.server, player.getUUID(), source)) {
+                PendingRewardContainer.enqueue(player.server, player.getUUID(), source,
+                        "jem_twelve_eyes.reward.post_end_displaced", List.of(displaced.copy()));
+            }
+            if (!PendingRewardContainer.hasIssued(player.server, player.getUUID(), source)) return;
+        }
+        player.getInventory().setItem(selected, clue);
+        if (storeInInventory && !displaced.isEmpty()) storeOutsideSelected(player.getInventory(), displaced, selected);
+        player.getInventory().setChanged();
+        player.containerMenu.broadcastChanges();
+        CampaignApi.completeSecretEnding(player.server, player.getUUID());
+    }
+
+    private static boolean canStoreOutsideSelected(Inventory inventory, ItemStack stack, int selected) {
+        int remaining = stack.getCount();
+        for (int slot = 0; slot < inventory.items.size() && remaining > 0; slot++) {
+            if (slot == selected) continue;
+            ItemStack stored = inventory.items.get(slot);
+            if (stored.isEmpty()) remaining -= stack.getMaxStackSize();
+            else if (ItemStack.isSameItemSameTags(stored, stack)) remaining -= Math.max(0, stored.getMaxStackSize() - stored.getCount());
+        }
+        return remaining <= 0;
+    }
+
+    private static void storeOutsideSelected(Inventory inventory, ItemStack stack, int selected) {
+        for (int slot = 0; slot < inventory.items.size() && !stack.isEmpty(); slot++) {
+            if (slot == selected) continue;
+            ItemStack stored = inventory.items.get(slot);
+            if (stored.isEmpty() || !ItemStack.isSameItemSameTags(stored, stack)) continue;
+            int moved = Math.min(stack.getCount(), stored.getMaxStackSize() - stored.getCount());
+            if (moved > 0) {
+                stored.grow(moved);
+                stack.shrink(moved);
+            }
+        }
+        for (int slot = 0; slot < inventory.items.size() && !stack.isEmpty(); slot++) {
+            if (slot == selected || !inventory.items.get(slot).isEmpty()) continue;
+            int moved = Math.min(stack.getCount(), stack.getMaxStackSize());
+            ItemStack placed = stack.copy();
+            placed.setCount(moved);
+            inventory.items.set(slot, placed);
+            stack.shrink(moved);
+        }
     }
 
     private static boolean dragonDefeated(ServerPlayer player) {
         ServerLevel end = player.server.getLevel(net.minecraft.world.level.Level.END);
         return end != null && end.getDragonFight() != null && end.getDragonFight().hasPreviouslyKilledDragon();
-    }
-
-    @SubscribeEvent
-    public static void respawned(PlayerEvent.PlayerRespawnEvent event) {
-        if (event.isEndConquered() && event.getEntity() instanceof ServerPlayer player
-                && PENDING_REWARDS.remove(player.getUUID()) && PostEndTarget.chainAvailable(player.server)) {
-            give(player, new ItemStack(PostEndItems.MYSTERY_LOCATOR.get()));
-        }
     }
 
     @SubscribeEvent
@@ -101,13 +170,9 @@ public final class PostEndEvents {
     }
 
     @SubscribeEvent
-    public static void loggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
-        PENDING_REWARDS.remove(event.getEntity().getUUID());
-    }
-
-    @SubscribeEvent
-    public static void stopped(ServerStoppedEvent event) {
-        PENDING_REWARDS.clear();
+    public static void loggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player
+                && CampaignApi.secretEndingPending(player.server, player.getUUID())) finishSecretEnding(player);
     }
 
     @SubscribeEvent
@@ -152,7 +217,4 @@ public final class PostEndEvents {
                 && CampaignApi.postEndDefeated(server, PostEndTarget.SHULKER_MIMIC.entity());
     }
 
-    private static void give(ServerPlayer player, ItemStack stack) {
-        if (!player.getInventory().add(stack)) player.drop(stack, false);
-    }
 }

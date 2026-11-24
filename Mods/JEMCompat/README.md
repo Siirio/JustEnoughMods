@@ -2,7 +2,7 @@
 
 `jemcompat` owns isolated native compatibility adapters and their related pack policies. Required metadata: Forge `[47.4.10,)`, Minecraft `[1.20.1,1.21)`, Sophisticated Backpacks `3.26.14.2226`, Curios `5.14.1+1.20.1`, and JEM Rewards `[1.1.0,)`. Builds target 1.20.1. WorldTier, Identity, Jade, JEI, Enhanced AI, and native boss content are optional. Other compile-only installed APIs are not additional runtime requirements. [Inventory](../../Docs/universal/README.md).
 
-The curated JEI catalog and standard JEI overlay are mutually exclusive presentation modes. Switching to standard JEI hides and deactivates the curated category search widget and clears its focus. Switching back restores that widget without changing its query or native JEI search state.
+The curated JEI catalog and standard JEI overlay are mutually exclusive presentation modes. Switching to standard JEI hides and deactivates the curated category search widget and clears its focus. Switching back restores that widget without changing its query or native JEI search state. Native JEI and Creative search use the active client language without a JEM cross-language index. The curated field matches the current localized item name and registry ID.
 
 The curated catalog uses one schema-2 exact-ID manifest. Weapons include separate shield, smithing-template and training leaves. Wearables include Armor, Mob Armor, and Cosmetics. Cosmetics contains exact dolls and reviewed effectless decorative heads. Trees and Music Discs are top-level leaves. Components is retired, so ordinary crafting parts use Other unless a more specific role applies. Companions and Transport can show reviewed spawn eggs as exact additional views while Spawn Eggs remains the primary assignment.
 

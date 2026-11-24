@@ -78,14 +78,14 @@
       {
         "property": "jei.multilingual_search",
         "operation": "replace",
-        "before": "Search depended mainly on the active-language item name, registry ID and a limited static alias map.",
-        "after": "Native JEI aliases, the curated catalog and creative-tab search share one projection of every installed language value for each item, plus reviewed translated tooltip terms and registry IDs."
+        "before": "A JEM index loaded every installed language and tooltip terms, registered aliases in JEI, and rescanned the selected Creative tab after each query change.",
+        "after": "Native JEI and Creative search use their standard active-language behavior without JEM aliases or query interception. The curated category field matches only the current localized hover name and registry ID."
       },
       {
         "property": "jei.food_blessing_search",
-        "operation": "allow",
-        "before": "Food blessing names shown in translated tooltips were not reliable search terms.",
-        "after": "Translated JEM Food tooltip, trait and effect components are indexed, so food can be found by its displayed blessing category in any installed language."
+        "operation": "replace",
+        "before": "JEM indexed translated Food Blessing tooltip, trait and effect components as item aliases across all installed languages.",
+        "after": "Food Blessing text remains localized, but JEM does not add blessing search aliases. Native JEI search behavior owns any tooltip search available for the active language."
       }
     ]
   },
@@ -97,7 +97,6 @@
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
-      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_english_aliases.json",
       "Client/ManagedPack/mods/jemcompat-3.11.5.jar",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/**",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/**",
@@ -105,9 +104,7 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/MultilingualSearch.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/AbstractContainerScreenJeiOverlayMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/CreativeModeSearchMixin.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "tools/generate_jei_catalog.py",
       "Docs/catalog/JEI_CATALOG_MANIFEST.md",
@@ -163,15 +160,28 @@
       "date": "2026-11-24",
       "commit": "SELF",
       "action": "repair_catalog_render_order_and_multilingual_search",
-      "summary": "Render the curated catalog before the native tooltip pass and share all-language item and blessing search terms with JEI and creative tabs.",
+      "summary": "Render the curated catalog before the native tooltip pass. The all-language search extension added in this step was superseded later the same day.",
       "source_files": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/MultilingualSearch.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/AbstractContainerScreenJeiOverlayMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-11-24",
+      "commit": "SELF",
+      "action": "restore_active_language_native_search",
+      "summary": "Remove the expensive all-language index, static English aliases and Creative query interception. Native JEI and Creative search again follow the active client language, while the curated field uses the current localized name and registry ID.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/MultilingualSearch.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/CreativeModeSearchMixin.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_english_aliases.json",
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
       ]
     }
@@ -182,8 +192,7 @@
       "JEMCompat",
       "JEM Economy optional catalog",
       "creative inventory",
-      "food blessing search",
-      "multilingual search",
+      "active-language search",
       "tooltip rendering"
     ],
     "relations": [
@@ -193,8 +202,8 @@
       "top-level leaf -> localized curated navigation",
       "Trees leaf -> optional JEM Economy building admission",
       "leaf category -> optional JEM Economy admission",
-      "installed language resources -> MultilingualSearch -> native JEI aliases, curated search and creative-tab search",
-      "JEM Food tooltip translation keys -> blessing terms -> searchable item aliases",
+      "active client language -> native JEI and Creative search",
+      "current localized hover name and registry ID -> curated category search",
       "AbstractContainerScreen tooltip pass -> curated overlay -> native tooltip remains topmost"
     ],
     "notes": [

@@ -155,6 +155,25 @@ CREATE_NAMESPACES = {
     "createrailwaysnavigator",
 }
 
+CREATE_PALETTE_MATERIALS = (
+    "andesite", "asurine", "calcite", "crimsite", "deepslate", "diorite", "dripstone",
+    "granite", "limestone", "ochrum", "scorchia", "scoria", "tuff", "veridium",
+)
+CREATE_NATURAL_PALETTE_MATERIALS = (
+    "asurine", "crimsite", "limestone", "ochrum", "scorchia", "scoria", "veridium",
+)
+CREATE_COPPER_DECORATION_STAGES = (
+    "", "exposed_", "weathered_", "oxidized_", "waxed_", "waxed_exposed_",
+    "waxed_weathered_", "waxed_oxidized_",
+)
+LOCOMETAL_COLORS = (
+    "black", "blue", "brown", "chartreuse", "cyan", "diorite", "dripstone", "granite",
+    "gray", "green", "light_blue", "light_gray", "lime", "limestone", "magenta",
+    "maroon", "ochrum", "olive_green", "orange", "pine_green", "pink", "purple", "red",
+    "royal_blue", "scorchia", "sea_green", "tuff", "turquoise", "vermilion", "white",
+    "yellow",
+)
+
 EXACT_RECLASSIFICATIONS = {
     "alexsmobs:animal_dictionary": "BOOKS",
     "barnyardbuddies:pyrenees_protective_vest": "WEARABLE_MOB_ARMOR",
@@ -175,6 +194,10 @@ EXACT_RECLASSIFICATIONS = {
     "skarrier_mobs:blank_totem": "WEAPON_TOTEMS",
     "unearthed_journey:toxic_gas_bomb": "WEAPON_RANGED",
     "bbb:chisel": "BUILDING_TOOLS",
+    # User-reviewed crafting parts that are not weapons.
+    "minecraft:blade_pottery_sherd": "OTHER",
+    "xtraarrows:bat_skin": "OTHER",
+    "xtraarrows:vex_wing": "OTHER",
     # Non-wearable blocks and utilities
     "alexscaves:hazmat_skull_block": "BUILDING_BLOCKS",
     "fairylights:skull_light": "BUILDING_LIGHT",
@@ -184,6 +207,99 @@ EXACT_RECLASSIFICATIONS = {
     "alexscaves:radiant_essence": "POTIONS",
     "alexsmobs:warped_mixture": "POTIONS",
     "luminous_nether:crimson_contaminant": "POTIONS",
+    # Reviewed textile decorations and complete wooden furniture sets.
+    **{
+        f"handcrafted:{color}_sheet": "BUILDING_FURNITURE"
+        for color in (
+            "black", "blue", "brown", "cyan", "gray", "green", "light_blue", "light_gray",
+            "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow",
+        )
+    },
+    **{
+        f"kaleidoscope_cookery:{kind}_{wood}": "TREES"
+        for kind in ("chair", "cook_stool", "table")
+        for wood in (
+            "acacia", "bamboo", "birch", "cherry", "crimson", "dark_oak", "jungle",
+            "mangrove", "oak", "spruce", "warped",
+        )
+    },
+    # Unearthed Journey wood architecture. Leaves, saplings and branches remain Nature.
+    **{
+        f"unearthed_journey:{path}": "TREES"
+        for path in (
+            "betula_button", "betula_door", "betula_fence", "betula_fence_gate", "betula_log",
+            "betula_planks", "betula_pressure_plate", "betula_slab", "betula_stairs",
+            "betula_trapdoor", "betula_wood", "stripped_betula_log", "stripped_betula_wood",
+            "picea_critchfieldii_door", "picea_critchfieldii_trapdoor", "pine_button",
+            "pine_fence", "pine_fence_gate", "pine_log", "pine_planks", "pine_pressure_plate",
+            "pine_slab", "pine_stairs", "pine_wood", "stripped_pine_log", "stripped_pine_wood",
+            "ceroxylon_quindiuense", "ceroxylon_quindiuense_stripped_log",
+            "mossy_ceroxylon_quindiuense_log", "palm_button", "palm_door", "palm_fence",
+            "palm_fence_gate", "palm_planks", "palm_pressure_plate", "palm_slab",
+            "palm_stairs", "palm_trapdoor", "palm_wood", "stripped_palm_log",
+            "stripped_palm_wood",
+        )
+    },
+    # Reviewed non-food plant blocks.
+    **{
+        f"unearthed_journey:{path}": "BUILDING_NATURE"
+        for path in (
+            "araciphyllites", "asplenium", "calopogon", "carola", "comptonia_columbiana",
+            "cyclanthus_messelensis", "ganoderma", "lepidocaryum", "montrichardia", "nuphaea",
+            "psilocybe_azurescens", "sarracenia", "sea_lettuce", "zingiberales",
+        )
+    },
+    **{
+        f"minecraft:{path}": "BUILDING_NATURE"
+        for path in (
+            "allium", "azure_bluet", "blue_orchid", "cornflower", "dandelion", "lilac",
+            "mangrove_propagule", "orange_tulip", "oxeye_daisy", "peony", "pink_tulip",
+            "poppy", "red_tulip", "sunflower", "torchflower", "white_tulip", "wither_rose",
+        )
+    },
+    "alexscaves:pewen_branch": "BUILDING_NATURE",
+    "alexscaves:pewen_pines": "BUILDING_NATURE",
+    "netherexp:nether_wart_beard": "BUILDING_NATURE",
+    "netherexp:warped_wart_beard": "BUILDING_NATURE",
+    # Reviewed Create decorative palettes. Machinery and train equipment remain Create and Redstone.
+    **{
+        f"create:{path}": "BUILDING_BLOCKS"
+        for material in CREATE_PALETTE_MATERIALS
+        for path in (
+            f"cut_{material}", f"cut_{material}_slab", f"cut_{material}_stairs",
+            f"cut_{material}_wall", f"cut_{material}_bricks", f"cut_{material}_brick_slab",
+            f"cut_{material}_brick_stairs", f"cut_{material}_brick_wall",
+            f"polished_cut_{material}", f"polished_cut_{material}_slab",
+            f"polished_cut_{material}_stairs", f"polished_cut_{material}_wall",
+            f"small_{material}_bricks", f"small_{material}_brick_slab",
+            f"small_{material}_brick_stairs", f"small_{material}_brick_wall",
+            f"layered_{material}",
+        )
+    },
+    **{
+        f"create:{path}": "BUILDING_BLOCKS"
+        for material in CREATE_NATURAL_PALETTE_MATERIALS
+        for path in (material, f"{material}_pillar")
+    },
+    **{
+        f"create:{stage}copper_{shape}": "BUILDING_BLOCKS"
+        for stage in CREATE_COPPER_DECORATION_STAGES
+        for shape in (
+            "tiles", "tile_slab", "tile_stairs", "shingles", "shingle_slab", "shingle_stairs",
+        )
+    },
+    **{
+        f"railways:{color}_slashed_locometal": "BUILDING_BLOCKS"
+        for color in LOCOMETAL_COLORS
+    },
+    "railways:slashed_locometal": "BUILDING_BLOCKS",
+    "create:bound_cardboard_block": "BUILDING_BLOCKS",
+    "create:industrial_iron_block": "BUILDING_BLOCKS",
+    "create:weathered_iron_block": "BUILDING_BLOCKS",
+    "create:rose_quartz": "BUILDING_BLOCKS",
+    "create:rose_quartz_block": "BUILDING_BLOCKS",
+    "create:rose_quartz_tiles": "BUILDING_BLOCKS",
+    "create:small_rose_quartz_tiles": "BUILDING_BLOCKS",
     # Archie's Dinosaurs 1.0.7 exact behavior families
     **{
         f"ec_ad:{path}": "WEAPON_TOTEMS"
@@ -628,6 +744,19 @@ def reclassification_target(item_id: str, current_leaf: str, row: dict) -> str:
     exact = EXACT_RECLASSIFICATIONS.get(item_id)
     if exact is not None:
         return exact
+    if namespace == "infinitybuttons" and path.endswith("_secret_button") and is_block(row):
+        return "BUILDING_BLOCKS"
+    if "shingle" in path and is_block(row):
+        return "BUILDING_BLOCKS"
+    if namespace == "farm_and_charm" and path.startswith("wild_"):
+        return "FOOD_EDIBLES"
+    if current_leaf == "FOOD_EDIBLES" and is_block(row) and has_tag(
+        row,
+        "minecraft:items/flowers",
+        "minecraft:items/small_flowers",
+        "minecraft:items/tall_flowers",
+    ):
+        return "BUILDING_NATURE"
     if is_music_disc(row):
         return "MUSIC_DISCS"
     if is_cosmetic_head(item_id, path, row):
@@ -1250,7 +1379,7 @@ def reclassified_manifest() -> dict:
                 moves[(current_leaf, target)] += 1
     result = {
         "schema_version": SCHEMA_VERSION,
-        "source": "Exact logical-server Forge item registry export with reviewed 2026-11-23 semantic corrections",
+        "source": "Exact logical-server Forge item registry export with reviewed 2026-11-24 semantic corrections",
         "item_count": data["item_count"],
         "assignments": {leaf: sorted(grouped[leaf]) for leaf in LEAVES},
         "additional_views": data["additional_views"],
