@@ -1,3 +1,17 @@
+## 2026-11-25 - Scope JEM Security to requesting servers and repair local login
+
+- The user requested removal of the extra main-menu configuration button and required JEM Security to stay inactive in singleplayer and on servers that do not request it
+- The Almanac metadata identifies it as a server-side mod and permits clients without it. No other installed client mod declares Almanac or Dungeon Config as a dependency. The managed client therefore removes Almanac while the ordinary local server keeps it and its dungeon configuration
+- JEM Security now accepts a server with no JEM Security channel, stays passive until the current server sends its challenge, and clears that state on disconnect. A dedicated server that installs JEM Security still requires the exact protocol and remains authoritative for attestation
+- The client resource-pack guard now blocks and reports packs only after a server challenge. It does not inspect or restrict the singleplayer pack screen or connections to unrelated servers
+- Bug / Client / Vanilla Backport 1.2.2 registers `minecraft:waypoint_receive_range` and `minecraft:waypoint_transmit_range`, but its player attribute injection did not add them to the runtime player attribute supplier, so adding the local player threw `Can't find attribute minecraft:waypoint_receive_range` and Minecraft reported the generic "Invalid player data" disconnect / in testing with a narrow JEMCompat attribute-event repair that adds only the two missing registered attributes and keeps upstream values when they already exist
+- Bug / Server / the ordinary local server needed more than seven minutes for the first startup after the large mod refresh, while `max-tick-time=60000` let the watchdog terminate it before it became available / in testing with the watchdog disabled only in the ordinary local development server configuration so slow initialization can finish
+- Production builds completed for JEM Security 1.0.9 with SHA-256 `1F1C68B7145A5402540F5CCEE26DC6487BB4B708C1590F0A5928979FA1498003` and JEMCompat 3.11.7 with SHA-256 `E72107EE867BF1DC0AE2A5CDDB2B6C1231F2DC07C6F48F4B4683403F3FB65795`. The exact JARs match in `Client/ManagedPack` and the ordinary local Server
+- The ordinary local server reached `Done (7.437s)` after its 373.594-second full initialization and remains available on `127.0.0.1:31604`. Existing unrelated mod and datapack warnings remain outside this repair
+- Native Pack Sync journal 206 published the reviewed `+3 ~2 -4` delta with content token `43209b39fc000c80531d2379208c706304bf45e5`. The staged and published manifest SHA-1 values both equal `1c7307b07f0744b217f19a21abdf54628da41022`
+- The closed `Test JustEnoughMods` profile applied that token through the native updater. Almanac and the replaced JEM JARs were removed, all six changed managed JARs match `Client/ManagedPack`, and no native transaction remains pending
+- The native client application helper now accepts `PRESERVE_LOCAL` only for an identified mod JAR whose installed and canonical size and hash are identical. This covers encoded filename differences such as Fragmentum `%2B` versus `+` without accepting different artifact bytes
+
 ## 2026-11-24 - Update stable mods and Forge
 
 - The user requested Kaleidoscope Immersive Eating and the newest full release of every installed mod and Forge for Minecraft 1.20.1. Alpha, beta, release-candidate, prerelease and snapshot update candidates are excluded

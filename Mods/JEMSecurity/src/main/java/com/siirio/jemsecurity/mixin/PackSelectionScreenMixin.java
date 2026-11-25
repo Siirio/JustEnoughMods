@@ -35,6 +35,11 @@ public abstract class PackSelectionScreenMixin extends Screen {
 
     @Inject(method = "populateLists", at = @At("TAIL"))
     private void jemSecurity$validateSelection(CallbackInfo callback) {
+        if (!SecurityClient.serverRequiresSecurity()) {
+            jemSecurity$blockedPack = null;
+            jemSecurity$reportedPack = null;
+            return;
+        }
         jemSecurity$blockedPack = ResourcePackGuard.findForbidden(model.getSelected());
         doneButton.active = jemSecurity$blockedPack == null;
         if (jemSecurity$blockedPack == null) {
@@ -47,6 +52,7 @@ public abstract class PackSelectionScreenMixin extends Screen {
 
     @Inject(method = "onClose", at = @At("HEAD"), cancellable = true)
     private void jemSecurity$preventForbiddenCommit(CallbackInfo callback) {
+        if (!SecurityClient.serverRequiresSecurity()) return;
         jemSecurity$blockedPack = ResourcePackGuard.findForbidden(model.getSelected());
         if (jemSecurity$blockedPack != null) callback.cancel();
     }

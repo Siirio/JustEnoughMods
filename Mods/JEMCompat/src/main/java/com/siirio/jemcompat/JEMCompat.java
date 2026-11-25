@@ -19,7 +19,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod(JEMCompat.MOD_ID)
@@ -33,6 +36,7 @@ public final class JEMCompat {
         com.siirio.jemcompat.feature.spawning.CreatureSpawnProbability.SERIALIZERS.register(modBus);
         TransportContent.register(modBus);
         modBus.addListener(JEMCompat::creativeTabs);
+        modBus.addListener(JEMCompat::restoreVanillaBackportPlayerAttributes);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JEMClientConfig.SPEC);
         MinecraftForge.EVENT_BUS.register(this);
         if (ModList.get().isLoaded("enhancedai") && ModList.get().isLoaded("jem_world_boss_tiers")) {
@@ -70,6 +74,18 @@ public final class JEMCompat {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS || event.getTabKey() == CreativeModeTabs.SEARCH) {
             com.siirio.jemcompat.feature.transport.BackpackPolicy.retiredItems().forEach(id -> removeFromTab(event, id));
         }
+    }
+
+    private static void restoreVanillaBackportPlayerAttributes(EntityAttributeModificationEvent event) {
+        if (!ModList.get().isLoaded("vanillabackport")) return;
+        addMissingPlayerAttribute(event, "waypoint_transmit_range", 60_000_000.0D);
+        addMissingPlayerAttribute(event, "waypoint_receive_range", 60_000_000.0D);
+    }
+
+    private static void addMissingPlayerAttribute(EntityAttributeModificationEvent event, String path, double defaultValue) {
+        Attribute attribute = ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("minecraft", path));
+        if (attribute != null && !event.has(EntityType.PLAYER, attribute))
+            event.add(EntityType.PLAYER, attribute, defaultValue);
     }
 
     private static void removeFromTab(BuildCreativeModeTabContentsEvent event, ResourceLocation id) {

@@ -157,10 +157,19 @@ class ApplyPublishedJemPack {{
    Path gameDir=Path.of(System.getProperty("user.dir")).toAbsolutePath().normalize();
    for(var conflict:plan.conflicts()){{
     System.out.println("CONFLICT "+conflict);
-    require(conflict.action()==UpdatePlan.ConflictAction.REMOVE_OWNED,"Native plan contains an unapproved local conflict");
     Path existing=gameDir.resolve(conflict.sourcePath()).normalize();Path replacement=canonical.resolve(conflict.targetPath()).normalize();
     require(existing.startsWith(gameDir)&&Files.isRegularFile(existing),"Owned conflict source is absent or escaped the profile");
     require(replacement.startsWith(canonical)&&Files.isRegularFile(replacement),"Owned conflict target is absent or escaped the canonical pack");
+    if(conflict.action()==UpdatePlan.ConflictAction.PRESERVE_LOCAL){{
+     require(conflict.sourcePath().startsWith("mods/")&&conflict.targetPath().startsWith("mods/"),"Preserved local conflict escaped the mods directory");
+     require(conflict.sourcePath().endsWith(".jar")&&conflict.targetPath().endsWith(".jar"),"Preserved local conflict is not a JAR transition");
+     require(!conflict.modIds().isEmpty(),"Preserved local conflict has no mod identity");
+     require(conflict.sourceSize()==conflict.targetSize()&&conflict.sourceHash().equals(conflict.targetHash()),"Preserved local conflict changes artifact bytes");
+     require(Files.size(existing)==conflict.sourceSize()&&sha(existing).equals(conflict.sourceHash()),"Preserved local source differs from the reviewed native plan");
+     require(Files.size(replacement)==conflict.targetSize()&&sha(replacement).equals(conflict.targetHash()),"Preserved local target differs from the canonical pack");
+     continue;
+    }}
+    require(conflict.action()==UpdatePlan.ConflictAction.REMOVE_OWNED,"Native plan contains an unapproved local conflict");
     if(!conflict.sourcePath().equals(conflict.targetPath())){{
      require(conflict.sourcePath().startsWith("mods/")&&conflict.targetPath().startsWith("mods/"),"Owned replacement rename escaped the mods directory");
      require(conflict.sourcePath().endsWith(".jar")&&conflict.targetPath().endsWith(".jar"),"Owned replacement rename is not a JAR transition");

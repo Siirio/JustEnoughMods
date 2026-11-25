@@ -37,7 +37,7 @@ public final class SecurityNetwork {
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
             .named(new ResourceLocation("jem_security", "main"))
             .networkProtocolVersion(() -> PROTOCOL)
-            .clientAcceptedVersions(PROTOCOL::equals)
+            .clientAcceptedVersions(version -> NetworkRegistry.ABSENT.equals(version) || PROTOCOL.equals(version))
             .serverAcceptedVersions(PROTOCOL::equals)
             .simpleChannel();
     private static final Map<UUID, Long> EXPECTED = new HashMap<>();
@@ -99,7 +99,7 @@ public final class SecurityNetwork {
                 .consumerNetworkThread((packet, context) -> {
                     var networkContext = context.get();
                     DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-                        Attestation response = SecurityClient.attestationForServerChallenge();
+                        Attestation response = SecurityClient.activateForServerChallenge();
                         CHANNEL.reply(response, networkContext);
                         LOGGER.info("JEM Security replied to the server challenge with {} mods and {} resource packs",
                                 response.mods().size(), response.packs().size());

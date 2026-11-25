@@ -39,15 +39,18 @@ public final class SecurityClient {
     private static final Pattern IPV4 = Pattern.compile("(?<![0-9])(?:[0-9]{1,3}\\.){3}[0-9]{1,3}(?::[0-9]{1,5})?");
     private static final Map<UUID, Long> LOG_REQUESTS = new HashMap<>();
     private static volatile SecurityNetwork.Attestation cachedAttestation;
+    private static volatile boolean serverRequiresSecurity;
 
     private SecurityClient() { }
 
     @SubscribeEvent
     public static void login(ClientPlayerNetworkEvent.LoggingIn event) {
-        cachedAttestation = snapshot();
+        serverRequiresSecurity = false;
+        cachedAttestation = null;
     }
 
-    public static SecurityNetwork.Attestation attestationForServerChallenge() {
+    public static SecurityNetwork.Attestation activateForServerChallenge() {
+        serverRequiresSecurity = true;
         SecurityNetwork.Attestation attestation = cachedAttestation;
         if (attestation == null) {
             attestation = snapshot();
@@ -56,13 +59,22 @@ public final class SecurityClient {
         return attestation;
     }
 
+    public static boolean serverRequiresSecurity() {
+        return serverRequiresSecurity;
+    }
+
     public static void resourcePacksChanged() {
+        if (!serverRequiresSecurity) {
+            cachedAttestation = null;
+            return;
+        }
         cachedAttestation = snapshot();
         Connection connection = activeConnection();
         if (connection != null) send(connection, cachedAttestation, "resource_pack_change");
     }
 
     public static void reportBlockedPackAttempt(String packId) {
+        if (!serverRequiresSecurity) return;
         Connection connection = activeConnection();
         if (connection != null && packId != null && !packId.isBlank())
             SecurityNetwork.sendPackAttempt(connection, packId);
@@ -93,6 +105,7 @@ public final class SecurityClient {
     @SubscribeEvent
     public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
         LOG_REQUESTS.clear();
+        serverRequiresSecurity = false;
         cachedAttestation = null;
     }
 
