@@ -11,6 +11,21 @@ This file is the canonical backlog for ideas that are not selected for the curre
 - When the user selects an idea for an update, move the active specification to its owning design document and mark the backlog entry as promoted
 - Keep a short link to the new owner after promotion
 
+## Future creature, raid, and fishing mods
+
+Status: concept only
+
+### User direction
+
+Consider Mebahel's Creatures and Raids:Enhanced for a future feature update. Consider Starcatcher instead of Tide. This request is for feature plans only and does not select a mod for the current pack
+
+### Selection work
+
+- Identify which Mebahel's Creatures installment the user wants, then inspect its Forge 1.20.1 release, dependencies, mobs, structures, loot, and overlap with installed content
+- Review Raids:Enhanced against native village raids and JEM Boss Raid ownership before choosing integration rules
+- Compare Starcatcher with Tide's fishing content and the pack's Tide-owned recipes, economy tags, quests, advancements, and saved data before choosing a replacement path
+- Review the selected files and their client, integrated-world, LAN, and dedicated-server behavior before any installation
+
 ## Multiplayer boss scaling without hosted groups
 
 Status: concept only

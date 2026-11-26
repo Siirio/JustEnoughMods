@@ -1,3 +1,8 @@
+## 2026-11-26 - Record future creature, raid, and fishing candidates
+
+- The user asked to plan Mebahel's Creatures and Raids:Enhanced, and to consider Starcatcher instead of Tide for a future feature update. The request is for planning only
+- The plan leaves the exact Mebahel installment open and calls for a raid-ownership review and a Tide migration review before any selection. No mod, configuration, client, or Server runtime file changed
+
 ## 2026-11-26 - Add Wildscapes and narrow client controls
 
 - The user supplied Wildscapes 1.0.3 for the local client and Server, requested first-person-only Freecam with F5 disabled while active, and selected removal of only the two frosty glass entries from Item Obliterator's blacklist
