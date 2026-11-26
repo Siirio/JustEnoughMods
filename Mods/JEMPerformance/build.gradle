@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+
+version = mod_version
+group = mod_group_id
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft { mappings channel: mapping_channel, version: mapping_version }
+
+def instancePath = providers.environmentVariable('JEM_INSTANCE').getOrElse(file('../../Client/ManagedPack').absolutePath)
+def mapSyncer = file("${instancePath}/mods/mapsyncer-1.0.4beta2-forge-1.20.jar")
+
+repositories { mavenCentral() }
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    compileOnly files(mapSyncer)
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin {
+    add sourceSets.main, 'jem_performance.refmap.json'
+    config 'jem_performance.mixins.json'
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    def properties = [
+            minecraft_version_range: minecraft_version_range,
+            forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_license: mod_license,
+            mod_version: mod_version,
+            mod_authors: mod_authors,
+            mod_description: mod_description
+    ]
+    inputs.properties properties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) { expand properties }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest { attributes 'MixinConfigs': 'jem_performance.mixins.json' }
+    from('LICENSE')
+    finalizedBy 'reobfJar'
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(Test).configureEach { enabled = false }

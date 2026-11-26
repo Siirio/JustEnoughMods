@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemperformance.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_performance.refmap.json",
+  "mixins": [
+    "MapSyncerTickMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

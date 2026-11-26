@@ -40,6 +40,21 @@ Future scaling can answer the real number and strength of active attackers witho
 - Define persistence and reload behavior
 - Measure the result against every registered structural boss before promotion
 
+## Performance systems to measure after the map update
+
+Status: investigation candidates only
+
+### User direction
+
+Mark MapSyncer, JEM Settlements, JEM Security, JEM Achievements, Neo Voxy, Voxy Server Side, JEM Inventory Shortcuts, and JEM Seasons HUD for performance review. The user reported repeated short freezes in recent singleplayer sessions, including one opened to LAN
+
+### Evidence needed
+
+- Compare client frame time and integrated-server tick time with and without LAN sharing under the same world conditions
+- Attribute short freezes with a timeline and call stacks before changing any owner
+- Check MapSyncer saved-region scans and transfer after the forced-save timer removal
+- Measure Settlements simulation, Security client activation, Achievements criteria, Voxy rendering and server transfer, Inventory Shortcuts input handling, and Seasons HUD rendering only where each is active
+
 ## Regional biome identity
 
 Status: concept only

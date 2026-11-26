@@ -2,6 +2,8 @@
 
 JEM Freecam is a client-only Forge 1.20.1 camera mode bound to F4. It moves a local camera entity through loaded collision space while the real player remains server-owned and stationary
 
+While Freecam is active, the detached view stays in first person and F5 cannot cycle it. The player's previous view returns when Freecam closes
+
 Attack, use, pick, held mining and body movement are suppressed while the camera is active. Server teleports close the view. Epic Fight integration is optional and enabled only for the reviewed `20.14.17` contract
 
 ## Build

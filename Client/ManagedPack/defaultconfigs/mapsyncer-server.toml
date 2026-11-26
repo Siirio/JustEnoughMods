@@ -1,6 +1,6 @@
 [general]
-	# Let MapSyncer choose a bounded worker count from the available processors
-	maxConcurrentRegions = 0
+	# Keep map conversion below gameplay thread and disk pressure
+	maxConcurrentRegions = 1
 	maxSyncPacketSize = 262144
 	# Share every generated region. Unchanged regions are skipped by timestamp and hash
 	syncRadiusRegions = 0
@@ -8,9 +8,9 @@
 	enableDebugLogging = false
 
 [incremental_update]
-	# Re-scan periodically so newly generated or changed MCA regions become available to every client
+	# Keep MapSyncer's client auto-sync policy. JEM Performance replaces the forced-save timer
 	incrementalUpdateMode = "TICK"
-	# Five minutes. MapSyncer compares region timestamps and hashes instead of retransmitting unchanged data
-	incrementalUpdateIntervalTicks = 6000
+	# Two minutes. Only regions already saved by Minecraft can appear in the map
+	incrementalUpdateIntervalTicks = 2400
 	scheduledUpdateHour = 4
 	scheduledUpdateMinute = 0

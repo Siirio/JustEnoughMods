@@ -1,3 +1,34 @@
+## 2026-11-26 - Add Wildscapes and narrow client controls
+
+- The user supplied Wildscapes 1.0.3 for the local client and Server, requested first-person-only Freecam with F5 disabled while active, and selected removal of only the two frosty glass entries from Item Obliterator's blacklist
+- Wildscapes requires Icy's Lib 1.1.0 on both sides. Codex selected the exact official Forge 1.20.1 library file ID 9567089. The supplied Wildscapes JAR has SHA-256 `ED416BF7C969EED82FA1DE124674735B9194157EDF4CCD45413312EFFA7859C3`, and Icy's Lib has SHA-256 `3AF014954948F169E3012E645CDFFAB17360B6E11241AC1A34EA64F725958DDE`
+- Bug / Client / JEM Freecam 1.0.1 forced third-person view on activation and allowed F5 to cycle the detached camera / in testing with JEM Freecam 1.0.2 forcing first person only while active, consuming F5 without a delayed perspective switch, and restoring the previous player view on close
+- Bug / Both Sided / Item Obliterator still blacklisted `immersive_weathering:frosty_glass` and `immersive_weathering:frosty_glass_pane` / in testing with only those two entries removed from the managed client and local Server configuration
+- The user marked MapSyncer, JEM Settlements, JEM Security, JEM Achievements, Neo Voxy, Voxy Server Side, JEM Inventory Shortcuts and JEM Seasons HUD for later measured performance review. Codex recorded them as investigation candidates without disabling their current behavior
+- The current village structure set selects one structure at each placement. Luki's vanilla village structures use only `revampedvillages` pools, and the separate Better Villages routes use vanilla pools with Better's replacement templates. The user asked to preserve whole-village selection. Packaging several JEM mods into one JAR was reviewed as a possible minor startup change, with no automatic tick or frame-time gain
+- The ordinary local server loaded Wildscapes and Icy's Lib, and native Pack Sync preview showed exactly `+4 ~2 -2`: Wildscapes, Icy's Lib, Freecam 1.0.2 and Twelve Eyes 1.7.2 were added, the old Freecam and Twelve Eyes versions were removed, and Item Obliterator config plus the pack manifest changed
+- Native Pack Sync journal 208 published that preview with content token `f3805c8ee82a5877bbc05141fb3245a536ee195e`. Staged and published manifest SHA-1 values both equal `a3b9ee9a7f626b18206da406702b7edeff20eed2`
+- The closed `Test JustEnoughMods` profile applied journal 208 through native AutoModpack. Its active token matches the published head, all four changed managed JARs match `Client/ManagedPack`, and no update transaction remains pending. No client gameplay launch or cutscene review was run
+
+## 2026-11-26 - Use the supplied first-End glitch clip
+
+- The user supplied `Timeline Glitch 1.mov` and requested that its glitch effect replace the current effect after the first End portal cutscenes. The user explicitly requested no visual audit, only the local Server and client update
+- Codex chose lossless extraction of the clip's 75 native 2048 by 1080 frames at 24 fps and a bounded decoder with one reusable GPU texture. The first-portal trigger, 12-second vanilla cutscene phase and server-owned completion remain unchanged. The glitch phase now follows the source clip's 3.14-second duration
+- The supplied movie's audio track is silent. The existing registered sound resource remains unchanged
+
+## 2026-11-26 - Replace duplicate map publication and review Radium
+
+- The user requested a separate standalone performance mod, removal of Unified Xaero Worldmap, and MapSyncer as the only shared-terrain publisher. The user also requested the linked Radium Re-Reforged release and later canceled a redundant copy after the installed version was confirmed
+- Bug / Both Sided / MapSyncer 1.0.3 performed a full `saveEverything(false, true, true)` and MCA conversion on its periodic server tick, which caused measured long stalls, while Unified Xaero Worldmap duplicated terrain publication / in testing with official MapSyncer 1.0.4 beta2, removal of Unified, and JEMPerformance 1.0.0 running MapSyncer's public incremental scan on a background worker without an extra full save
+- Codex chose a two-minute MapSyncer `TICK` interval because the installed beta's Forge config requires at least 2400 ticks. The adapter cancels the forced-save server timer but retains the native client auto-sync policy. Only MCA regions already saved by Minecraft can appear after the next scan and client sync
+- The new production JAR has SHA-256 `21C677D16BC941B0BDDCC60C21E6B517A32C952A653016B8C0987A5146102774`. The official MapSyncer beta2 JAR has SHA-256 `3300D5F1A48E50D92FACD1A877CB25A0E29FE37510C355315A271419C9035C41`. Their matching artifacts were copied to `Client/ManagedPack` first and the ordinary local Server second
+- Forge rejected the first adapter metadata because Maven version ranges cannot have identical bounds. Codex corrected the MapSyncer dependency to `[1.0.4-forge-1.20,)`, rebuilt the production JAR, and restaged the matching artifacts before publication
+- The linked official Radium Re-Reforged 0.15.0 file ID 9434151 has SHA-256 `8E9388101A7323EFE3D4E43F985C9DA2609EDC28590193B20A2C416E9191E5B8`. The installed client and server JARs already have the same name and exact hash. No Radium runtime replacement was needed. An attempted cleanup of a redundant external development copy was blocked by automatic approval review
+- Native Pack Sync journal 207 published the reviewed `+2 ~2 -2` delta with content token `4e1669f0d42eba3ff8bacea9fbc7dc51904bd673`. The staged and published manifest SHA-1 values both equal `b5f0d18e34ce662f19f7a4b8b92907018b0976a1`
+- The closed `Test JustEnoughMods` profile applied that generation through native AutoModpack. Both changed managed JARs match the canonical client source, the active token matches the published head and no native transaction remains pending
+- The existing local world had MapSyncer mode `DISABLED` and four conversion workers. After a clean server stop, Codex set its world-specific config to `TICK`, 2400 ticks and one worker. The ordinary local server restarted and reported the active two-minute handler. This runtime world config is not a tracked source file
+- The separate two-to-ten-second hitches remain unassigned. This change addresses the confirmed MapSyncer full-save stalls and does not establish general performance acceptance without gameplay evidence
+
 ## 2026-11-25 - Scope JEM Security to requesting servers and repair local login
 
 - The user requested removal of the extra main-menu configuration button and required JEM Security to stay inactive in singleplayer and on servers that do not request it

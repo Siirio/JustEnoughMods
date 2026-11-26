@@ -139,6 +139,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | HT's TreeChop | `0.19.0` | Client + server |  |
 | Lio's Hobbit Hill Village | `0.0.5` | Client + server | Major Update 4 structure expansion |
 | Icy's Better Horses | `2.1.8` | Client + server | Native horse ownership, recruit mounting and MobHome support |
+| Icy's Lib | `1.1.0` | Client + server | Required by Wildscapes 1.0.3 |
 | ImmediatelyFast | `1.5.5+1.20.4` | Client |  |
 | Immersive Aircraft | `1.5.0+1.20.1` | Client + server |  |
 | Immersive Lanterns | `1.0.6` | Client + server |  |
@@ -150,7 +151,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Infinity Buttons | `1.20.1-4.0.7` | Client + server |  |
 | InsaneLib | `1.23.4.6` | Client + server |  |
 | Inventory Tabs | `0.10.1-jem.1` | Client | Major Update 4, loaded-chunk patch |
-| Item Obliterator | `2.3.0` | Client + server |  |
+| Item Obliterator | `2.3.1` | Client + server | Frosty glass and pane are no longer blacklisted |
 | Item Magnet | `1.0.0` | Client + server |  |
 | Jack's Gravestones | `1.0.5` | Client + server |  |
 | Jade | `11.13.3+forge` | Client + server |  |
@@ -158,13 +159,15 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | JamLib | `1.3.6+1.20.1-patch.1` | Server |  |
 | JamLib | `1.3.6+1.20.1-patch.1` | Client |  |
 | JEM Advancements | `5.3.2` | Client + server |  |
+| JEM Freecam | `1.0.2` | Client | First-person detached camera with F5 blocked while active |
 | JEM Drill Lifecycle | `1.0.0` | Client + server |  |
 | JEM Pack Core | `2.0.0-dev` | Client + server |  |
 | JEM Server | `2.0.0-dev` | Client + server |  |
-| JEM Twelve Eyes Campaign | `1.7.0-dev` | Client + server |  |
+| JEM Twelve Eyes Campaign | `1.7.2` | Client + server | Uses the user-supplied first-End glitch clip |
 | JEM World Boss Tiers | `2.5.0-dev` | Client + server |  |
 | Just Enough Items | `15.49.0.194` | Client + server |  |
 | JustEnoughMods Adaptive Culling | `1.4.1` | Client |  |
+| JustEnoughMods Performance | `1.0.0` | Client + server | Scans saved terrain regions without an extra full world save |
 | JustEnoughMods Compatibility | `3.10.3` | Client + server |  |
 | Kaleidoscope Compat | `2.6.5-forge+mc1.20.1` | Server |  |
 | Kaleidoscope Compat | `2.6.5-forge+mc1.20.1` | Client |  |
@@ -322,8 +325,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Tumbleweed | `0.5.5` | Client + server |  |
 | TxniLib | `1.0.24` | Client + server |  |
 | Unearthed Journey | `2.2.3` | Client + server |  |
-| MapSyncer for Xaero World Map | `1.0.4 beta2` | Client + server | Requires Xaero's World Map; server-generated regions are shared incrementally every five minutes and unchanged regions are skipped |
-| Unified Xaero Worldmap | `2.0.1` | Client + server |  |
+| MapSyncer for Xaero World Map | `1.0.4-forge-1.20` | Client + server | Requires Xaero's World Map. Saved regions are shared through JEM Performance's two-minute scan without an extra full world save |
 | Underlay | `1.0.5` | Client + server | Major Update 4 |
 | VanillaBackport | `1.1.7.10` | Client + server |  |
 | Visuality: Reforged | `2.2.0` | Client |  |
@@ -332,9 +334,10 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Wakes | `1.4.1` | Client + server |  |
 | Whaleborne | `1.20.1-1.2.4b` | Client + server |  |
 | What Are They Up To | `1.20.1-1.2.3` | Client + server |  |
+| Wildscapes | `1.0.3` | Client + server | Wetland content with Icy's Lib 1.1.0 dependency |
 | World Play Time | `1.2.3` | Client |  |
-| Xaero's Minimap | `26.4.2` | Client |  |
-| Xaero's World Map | `1.46.0` | Client + server |  |
+| Xaero's Minimap | `26.6.0` | Client |  |
+| Xaero's World Map | `1.47.0` | Client + server |  |
 | XL Packets | `1.18.2-2.1` | Client + server |  |
 | Xtra Arrows 3 | `3.0.12` | Client + server |  |
 | YetAnotherConfigLib | `3.6.6+1.20.1-forge` | Client + server |  |
