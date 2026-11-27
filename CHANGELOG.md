@@ -1,3 +1,11 @@
+## 2026-11-27 - Refresh utility and performance JARs
+
+- The user requested Snappy Blocks and Snappy Leaf Decay, restored Guard Villagers, searchable enchantment details in JEI, and removal of Fast Leaf Decay, ServerCore, BadOptimizations, Craftable Spawn Eggs and Mineable Spawner
+- Codex added Snappy Blocks, Snappy Leaf Decay and JEI Enchants to the managed client, added Guard Villagers to both managed client and local Server, removed BadOptimizations from the client and removed ServerCore from the Server
+- Snappy Leaf Decay declares dedicated-server support but loads a client GUI class during server startup, so Codex kept it client-only to prevent a server startup failure
+- Fast Leaf Decay, Craftable Spawn Eggs and Mineable Spawner were already absent from both active JAR inventories, so no replacement or duplicate JAR was added
+- The user explicitly limited this change to client and server JAR inventories and requested no Registry Atlas work or broad checks
+
 ## 2026-11-27 - Retire Create and Immersive Aircraft
 
 - The user requested complete removal of Create, all Create add-ons, Immersive Aircraft, all aircraft add-ons, KubeJS Create and JEM Drill Lifecycle from both the managed client and the ordinary local Server
