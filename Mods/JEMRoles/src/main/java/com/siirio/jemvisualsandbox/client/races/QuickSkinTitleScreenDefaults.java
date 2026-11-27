@@ -50,7 +50,8 @@ public final class QuickSkinTitleScreenDefaults {
         boolean managedLayoutSelected = minecraft.options.resourcePacks.stream()
                 .anyMatch(pack -> pack.contains("JEM Release")
                         || pack.contains("JEM Legacy")
-                        || pack.contains("JEM Jalloween"));
+                        || pack.contains("JEM Jalloween")
+                        || pack.contains("JEM Christmas"));
         if (!managedLayoutSelected) {
             return;
         }

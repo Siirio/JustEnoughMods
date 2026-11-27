@@ -25,7 +25,7 @@
         "property": "client.quickskin.title_screen_preview",
         "operation": "replace",
         "before": "Quick Skin derives its title-screen preview from the native button cluster.",
-        "after": "Quick Skin retains native skin, model, cape and interaction ownership. JEMRoles applies the approved 25 percent size, X offset -432 and Y offset 104 in memory whenever JEM Release, JEM Legacy or JEM Jalloween is selected, so AutoModpack's preservation of the player's mutable Quick Skin config cannot leave stale menu coordinates. JEM Legacy derives an independent reference point so Release adjustments cannot compound into its placement. JEMRoles initializes the optional native widget at -20 degrees yaw so the default pose faces into the composition. FancyMenu places Change Skin as transparent text directly below the model and suppresses Quick Skin's icon controls. Personal skin hashes and appearance choices remain user-owned."
+        "after": "Quick Skin retains native skin, model, cape and interaction ownership. JEMRoles applies the approved 25 percent size, X offset -432 and Y offset 104 in memory whenever JEM Release, JEM Legacy, JEM Jalloween or JEM Christmas is selected, so AutoModpack's preservation of the player's mutable Quick Skin config cannot leave stale menu coordinates. JEM Legacy derives an independent reference point so Release adjustments cannot compound into its placement. JEMRoles initializes the optional native widget at -20 degrees yaw so the default pose faces into the composition. FancyMenu places Change Skin as transparent text directly below the model and suppresses Quick Skin's icon controls. Personal skin hashes and appearance choices remain user-owned."
       },
       {
         "property": "client.main_menu.navigation_presentation",
@@ -50,7 +50,7 @@
       "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_hover.png",
       "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_inactive.png",
       "Client/ManagedPack/config/quickskin-client.json",
-      "Client/ManagedPack/mods/jem-races-2.0.7.jar",
+      "Client/ManagedPack/mods/jem-races-2.0.8.jar",
       "Mods/JEMRoles/build.gradle",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinTitleScreenDefaults.java",
       "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/QuickSkinTitleScreenDefaults.java",
@@ -93,6 +93,12 @@
       "commit": "SELF",
       "action": "include_jalloween_runtime_layout",
       "summary": "Recognize JEM Jalloween in the same approved Quick Skin runtime path as JEM Release and JEM Legacy, keeping the seasonal layout robust while JEM Holidays enforces the complete Release-below-Jalloween pack stack."
+    },
+    {
+      "date": "2026-11-28",
+      "commit": "SELF",
+      "action": "include_christmas_runtime_layout",
+      "summary": "Recognize JEM Christmas in the existing managed Quick Skin title-screen path without changing personal appearance state or the approved preview coordinates."
     }
   ],
   "impacts": {
@@ -105,7 +111,7 @@
     ],
     "relations": [
       "Quick Skin 2.6.2.4 remains the only owner of selected skin, model, cape and local appearance assets",
-      "Quick Skin owns native model rendering and personal appearance state, JEMRoles supplies the managed title-screen size, position and optional default yaw for JEM Release, JEM Legacy and JEM Jalloween, and FancyMenu owns art, transparent text-only navigation and control visibility",
+      "Quick Skin owns native model rendering and personal appearance state, JEMRoles supplies the managed title-screen size, position and optional default yaw for JEM Release, JEM Legacy, JEM Jalloween and JEM Christmas, and FancyMenu owns art, transparent text-only navigation and control visibility",
       "The JEM resource pack cannot reintroduce title-screen button backgrounds through these FancyMenu overrides"
     ],
     "notes": [

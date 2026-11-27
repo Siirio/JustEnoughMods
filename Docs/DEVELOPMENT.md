@@ -81,7 +81,7 @@ The approved public Forge 1.20.1 extraction scope is frozen in the [public relea
 | --- | --- |
 | `JEMAdaptiveCulling` | Client rendering performance и только culling; dedicated server не нужен |
 | `JEMPerformance` | Shared logical-server map publication from saved MCA regions without MapSyncer's forced-save timer |
-| `JEMHolidays` | Client-local annual resource-pack, FancyMenu and exact AudioYT 1.0.1 presentation control, plus logical-server Halloween midnight authority from October 30 through November 2; AudioYT remains its own both-side jukebox/channel owner |
+| `JEMHolidays` | Client-local annual resource-pack and FancyMenu control for Halloween and Christmas, exact AudioYT 1.0.1 Halloween presentation, and logical-server Halloween midnight authority from October 30 through November 2. Christmas runs from November 28 through January 28 and does not change server time. AudioYT remains its own both-side jukebox/channel owner |
 | `JEMCinematicInteractions` | Development-only `Sandbox JustEnoughMods` adapter that removes Cinematic Interactions side panels, exposes ordinary JEI bookmarks/ingredients around its scene and owns the Shift plus left-button bidirectional native quick-transfer sweep |
 | `JEMAchievementGuide` | Advancement criteria/providers, curated native placements, RU/EN guide resources и optional Better Advancements/Patchouli; content-aware FTB book projection наблюдает domain APIs, не владеет progression |
 | `JEMWorldBossTiers` | Global World Tier и сохранённый roster/threshold profile, boss profiles, hosted encounters, ordinary solo Raid, canonical native structure identity/anchor, revival и pending rewards |

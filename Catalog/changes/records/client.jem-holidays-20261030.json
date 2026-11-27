@@ -10,7 +10,7 @@
     "priority": 71
   },
   "change": {
-    "summary": "Make the JEM Halloween atmosphere an automatic annual client-local season owned by JEM Holidays.",
+    "summary": "Make the JEM Halloween and Christmas atmospheres automatic annual client-local seasons owned by JEM Holidays.",
     "modifiers": [
       {
         "property": "client.holiday_calendar",
@@ -35,6 +35,12 @@
         "operation": "replace",
         "before": "JEM Holidays rendered full-bright jack-o-lanterns above selected humanoid mobs during the Halloween window.",
         "after": "JEM Holidays adds no mob head decoration. Seasonal menu, resource-pack, calendar and music behavior remain independent from entity rendering."
+      },
+      {
+        "property": "client.christmas_calendar_and_presentation",
+        "operation": "add",
+        "before": "The managed client has no automatic JEM Christmas presentation.",
+        "after": "From November 28 through January 28 inclusive, JEM Holidays selects JEM Release as the base and JEM Christmas above it. JEM Christmas combines the supplied winter, Christmas, Santa-hat, GUI, hotbar and background-music assets. FancyMenu uses the supplied winter landscape, transparent MINECRAFT JEM EDITION title, snowfall and Christmas string lights. January 29 restores only the managed seasonal selection."
       }
     ]
   },
@@ -48,12 +54,19 @@
       "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonCalendar.java",
       "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonalController.java",
       "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip",
+      "Client/ManagedPack/resourcepacks/JEM Christmas.zip",
+      "Client/ManagedPack/config/fancymenu/customization/christmas_title_screen.txt",
+      "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt",
+      "Client/ManagedPack/config/fancymenu/customization/legacy_jem_title_screen.txt",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/christmas/main_menu_background.jpg",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/christmas/main_menu_title.png",
+      "tools/build_jem_christmas_resource_pack.py",
       "Client/ManagedPack/kubejs/client_scripts/jem/jalloween_emf_ownership.js"
     ]
   },
   "rationale": {
-    "purpose": "Apply the same reversible annual Halloween presentation in the main menu, singleplayer and multiplayer without server authority or world-data mutation.",
-    "decision_source": "User schedule and JEM Holidays architecture request on 2026-10-30"
+    "purpose": "Apply reversible annual Halloween and Christmas presentation in the main menu, singleplayer and multiplayer while limiting server time authority to Halloween.",
+    "decision_source": "User schedule and JEM Holidays architecture requests on 2026-10-30 and 2026-11-28"
   },
   "introduced": {
     "date": "2026-10-30",
@@ -67,6 +80,22 @@
     ]
   },
   "history": [
+    {
+      "date": "2026-11-28",
+      "commit": "SELF",
+      "action": "add_christmas_season",
+      "summary": "Enable JEM Christmas from November 28 through January 28, compose the supplied redistributable seasonal packs above JEM Release and add the supplied FancyMenu background and transparent title.",
+      "source_files": [
+        "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonCalendar.java",
+        "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonalController.java",
+        "Client/ManagedPack/mods/jem_holidays-1.1.0.jar",
+        "Client/ManagedPack/resourcepacks/JEM Christmas.zip",
+        "Client/ManagedPack/config/fancymenu/customization/christmas_title_screen.txt",
+        "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt",
+        "Client/ManagedPack/config/fancymenu/customization/legacy_jem_title_screen.txt",
+        "tools/build_jem_christmas_resource_pack.py"
+      ]
+    },
     {
       "date": "2026-11-15",
       "commit": "SELF",
@@ -136,12 +165,16 @@
       "Minecraft resource-pack repository",
       "FancyMenu",
       "AudioYT",
+      "CIT Resewn",
       "native AutoModpack client distribution"
     ],
     "relations": [],
     "notes": [
       "The seasonal controller is client-only and uses the operating-system local date and timezone.",
       "During Halloween the selected-pack order keeps JEM Release below JEM Jalloween, matching the user-approved test jem stack.",
+      "During Christmas the selected-pack order keeps JEM Release below JEM Christmas from November 28 through January 28 inclusive.",
+      "Christmas uses the bundled resource-pack music and does not activate the Halloween AudioYT playlist or server midnight authority.",
+      "ChristmasChestAllYear remains excluded because its bundled license prohibits redistribution without creator permission.",
       "No biome, world, server or gameplay state is modified.",
       "The YouTube recordings are not bundled or downloaded by JEM Holidays.",
       "JEM Holidays no longer registers an entity renderer or adds pumpkin decorations to mobs."

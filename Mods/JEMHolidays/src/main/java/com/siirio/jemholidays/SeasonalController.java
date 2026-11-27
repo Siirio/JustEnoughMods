@@ -40,7 +40,11 @@ public final class SeasonalController {
     private static final String JEM_RELEASE_PACK = "file/JEM Release v0.3.zip";
     private static final String JALLOWEEN_PACK = "file/JEM Jalloween v0.1.zip";
     private static final String HALLOWEEN_GUI_PACK = "file/Halloween%20GUI%201.20.zip";
-    private static final List<String> SEASONAL_PACKS = List.of(JALLOWEEN_PACK, HALLOWEEN_GUI_PACK);
+    private static final String CHRISTMAS_PACK = "file/JEM Christmas.zip";
+    private static final List<String> HALLOWEEN_PACKS = List.of(JALLOWEEN_PACK, HALLOWEEN_GUI_PACK);
+    private static final List<String> CHRISTMAS_PACKS = List.of(CHRISTMAS_PACK);
+    private static final List<String> MANAGED_SEASONAL_PACKS = List.of(
+            JALLOWEEN_PACK, HALLOWEEN_GUI_PACK, CHRISTMAS_PACK);
     private static final String MENU_TRACK = "https://youtu.be/2PNX8arJLoU";
     private static final String[] WORLD_TRACKS = {
             "https://youtu.be/neUXoluDW1k",
@@ -52,6 +56,7 @@ public final class SeasonalController {
 
     private static LocalDate observedDate;
     private static boolean halloweenActive;
+    private static boolean christmasActive;
     private static long nextDateBoundaryMillis;
     private static long nextZoneCheckNanos;
     private static boolean packReconcileRequested = true;
@@ -111,12 +116,14 @@ public final class SeasonalController {
     private static void observeCalendar(long nowMillis, long nowNanos) {
         ZoneId currentZone = ZoneId.systemDefault();
         LocalDate currentDate = Instant.ofEpochMilli(nowMillis).atZone(currentZone).toLocalDate();
-        boolean active = SeasonCalendar.isHalloween(currentDate);
-        if (observedDate == null || active != halloweenActive) {
-            halloweenActive = active;
+        boolean halloween = SeasonCalendar.isHalloween(currentDate);
+        boolean christmas = SeasonCalendar.isChristmas(currentDate);
+        if (observedDate == null || halloween != halloweenActive || christmas != christmasActive) {
+            halloweenActive = halloween;
+            christmasActive = christmas;
             packReconcileRequested = true;
-            LOGGER.info("JEM Holidays calendar state: date={}, zone={}, halloween={}",
-                    currentDate, currentZone, active);
+            LOGGER.info("JEM Holidays calendar state: date={}, zone={}, halloween={}, christmas={}",
+                    currentDate, currentZone, halloween, christmas);
         }
         observedDate = currentDate;
         nextDateBoundaryMillis = currentDate.plusDays(1).atStartOfDay(currentZone)
@@ -128,19 +135,25 @@ public final class SeasonalController {
         PackRepository repository = minecraft.getResourcePackRepository();
         repository.reload();
         List<String> current = new ArrayList<>(repository.getSelectedIds());
-        List<String> target = halloweenActive
-                ? enableSeasonalStack(repository, current)
-                : restoreNormalStack(current);
+        List<String> target;
+        if (halloweenActive) {
+            target = enableSeasonalStack(repository, current, HALLOWEEN_PACKS);
+        } else if (christmasActive) {
+            target = enableSeasonalStack(repository, current, CHRISTMAS_PACKS);
+        } else {
+            target = restoreNormalStack(current);
+        }
 
         if (!target.equals(current)) {
             repository.setSelected(target);
             minecraft.options.updateResourcePacks(repository);
             LOGGER.info("JEM Holidays {} the reversible seasonal resource-pack stack",
-                    halloweenActive ? "enabled" : "disabled");
+                    halloweenActive ? "enabled Halloween" : christmasActive ? "enabled Christmas" : "disabled");
         }
     }
 
-    private static List<String> enableSeasonalStack(PackRepository repository, List<String> current) {
+    private static List<String> enableSeasonalStack(
+            PackRepository repository, List<String> current, List<String> activePacks) {
         SavedSelection saved = readSavedSelection();
         if (saved == null) {
             saved = new SavedSelection(new ArrayList<>(current));
@@ -152,10 +165,10 @@ public final class SeasonalController {
                 && !target.contains(JEM_RELEASE_PACK)) {
             target.add(JEM_RELEASE_PACK);
         }
-        for (String packId : SEASONAL_PACKS) {
+        for (String packId : activePacks) {
             if (repository.getAvailableIds().contains(packId)) {
                 target.add(packId);
-            } else if (packId.equals(JALLOWEEN_PACK)) {
+            } else if (packId.equals(JALLOWEEN_PACK) || packId.equals(CHRISTMAS_PACK)) {
                 LOGGER.error("JEM Holidays cannot enable missing required resource pack {}", packId);
             }
         }
@@ -169,7 +182,7 @@ public final class SeasonalController {
         }
 
         List<String> target = withoutSeasonalPacks(current);
-        for (String packId : SEASONAL_PACKS) {
+        for (String packId : MANAGED_SEASONAL_PACKS) {
             if (saved.selected.contains(packId)) {
                 restoreNearSavedNeighbors(target, saved.selected, packId);
             }
@@ -180,7 +193,7 @@ public final class SeasonalController {
 
     private static List<String> withoutSeasonalPacks(List<String> selected) {
         List<String> result = new ArrayList<>(selected);
-        result.removeIf(SEASONAL_PACKS::contains);
+        result.removeIf(MANAGED_SEASONAL_PACKS::contains);
         return result;
     }
 

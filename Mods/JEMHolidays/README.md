@@ -10,11 +10,22 @@ JEM Holidays is the standalone owner for annual JEM presentation and bounded sea
 - The system timezone is checked every 15 minutes so an operating-system timezone change cannot leave a stale date indefinitely
 - A state transition runs only when the calendar crosses the seasonal boundary, preventing repeated toggles around midnight
 
+## Christmas calendar
+
+- The client local calendar enables Christmas from November 28 through January 28 inclusive
+- JEM Holidays keeps `JEM Release v0.3` selected as the base and places `JEM Christmas` above it
+- `JEM Christmas` combines the supplied winter, Christmas, Santa hat, GUI, hotbar and background-music packs in one ordered overlay
+- The supplied winter landscape and transparent `MINECRAFT JEM EDITION` title own the Christmas FancyMenu layout
+- The layout enables restrained snowfall and Christmas string lights while preserving the existing controls and Quick Skin placement
+- January 29 restores the player's pre-season seasonal-pack selection without reverting unrelated resource-pack changes
+- Christmas does not force world time, suppress native music or start the Halloween AudioYT playlist
+- `ChristmasChestAllYear` is excluded because its bundled license forbids redistribution without the creator's permission
+
 ## Resource ownership
 
 - The controller places `file/JEM Jalloween v0.1.zip` at seasonal top priority during Halloween
 - When the separately installed `Halloween GUI 1.20` pack is available, it is placed above JEM Jalloween so its GUI textures override the release fallback
-- Before the first seasonal transition, the controller records the selected positions of only the seasonal packs
+- Before the first seasonal transition, the controller records the selected positions of only the managed Halloween and Christmas packs
 - On November 3 it removes every seasonal addition, including the GUI pack when no restoration file exists, and restores any previously selected seasonal pack near its saved neighbors
 - Unrelated pack additions, removals and relative priority remain untouched
 - Closing the resource-pack screen schedules one delayed reconciliation so it does not overlap the screen's own resource reload
@@ -43,4 +54,4 @@ JEM Holidays is the standalone owner for annual JEM presentation and bounded sea
 - On November 3 it stops writing day time and the existing daylight rule continues ordinary time from the current night
 - AudioYT 1.0.1 is installed on the dedicated server as well as clients because the upstream mod declares both-side behavior and a mandatory Forge channel for its jukebox functionality
 
-JEM Holidays does not add head decorations to mobs. Halloween resource packs, menu presentation, music and calendar behavior remain independent from entity rendering
+JEM Holidays does not render head decorations itself. The Christmas Santa-hat pack continues to use CIT Resewn as its native item-model owner

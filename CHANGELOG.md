@@ -1,3 +1,16 @@
+## 2026-11-28 - Add the JEM Christmas season
+
+- The user requested an automatic JEM Christmas season from November 28 through January 28 and supplied winter, Christmas, Santa-hat, GUI, hotbar, background-music, chest, FancyMenu background and title artwork
+- JEM Holidays 1.1.0 keeps JEM Release as the base and selects the new `JEM Christmas` overlay during that inclusive local-calendar window. January 29 restores only the managed seasonal pack selection
+- The new private `JEM Christmas` pack applies Christmas Background Music, WinterPack, ChristmasPack, Christmas Hat, Christmas GUI and the Christmas hotbar in a deterministic low-to-high order. Source metadata and available credits remain inside the archive
+- `ChristmasChestAllYear v.15.1` is not redistributed because its bundled license explicitly prohibits redistribution or modified redistribution without creator permission
+- FancyMenu uses the supplied winter landscape as the full-screen Christmas background and the supplied `MINECRAFT JEM EDITION` artwork as the title. Codex removed only the title image's black canvas, retained its original lettering and decoration, and enabled restrained snowfall plus Christmas string lights
+- JEM Roles 2.0.8 extends the existing Quick Skin title-screen placement to `JEM Christmas` without changing personal skins, capes, models, controls or saved preferences
+- Christmas does not activate Halloween AudioYT playback, suppress native background music, or force server time. Halloween behavior remains October 30 through November 2 without changes
+- Codex built and synchronized the required JEM Holidays and JEM Roles production JARs. Automated tests, Minecraft launches and gameplay QA were not run
+- Native AutoModpack published journal sequence 211 with reviewed diff `+6 ~3 -2`, content token `29e82ee05b8c6130fedf35f00048242e9194a845`, and matching staged and published manifest SHA-1 `61ac2c5c3754e182d202a323869df01e6b577771`
+- The closed `Test JustEnoughMods` profile applied that publication. Its active token matches the published head, the installed JEM Roles, JEM Holidays and JEM Christmas archive hashes match `Client/ManagedPack`, and no native transaction remains pending
+
 ## 2026-11-27 - Refresh utility and performance JARs
 
 - The user requested Snappy Blocks and Snappy Leaf Decay, restored Guard Villagers, searchable enchantment details in JEI, and removal of Fast Leaf Decay, ServerCore, BadOptimizations, Craftable Spawn Eggs and Mineable Spawner

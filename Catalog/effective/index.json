@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "2c773134986fc2951ce23b9d748d7ffa4903e0992f0e863016edb8580850bfba",
-  "canonical_records_sha256": "05d4564f1170b697dd1ee5d3db43627f86b71d8851d4caa5d4451f0f916f7c60",
+  "change_records_sha256": "45148363b15db01eaf8080c47bcca8fa5cade45e80361bc458ab9fec9cbe3eee",
+  "canonical_records_sha256": "7838e53a3a641a70b608ab3f3e8a9c2e4821cb3204d8c734f1a66e8c9c036d79",
   "canonical_match_sha256": "0bd2ee1bd165e162fcab671d4389b5a0ab33173b2b4386dbdd2730ca072722be",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
@@ -31,7 +31,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 28372,
-      "record_sha256": "96e2861e4430e360c5d728bca2aec216e9bc7235ec7b4caa77bd78afffc57203"
+      "record_sha256": "b70bf314492b51f69032611e2869e0c4ae8c46f37c5aba4233de912793367b76"
     },
     {
       "change_id": "guide.adventure-atlas-redesign-20261025",
@@ -555,7 +555,7 @@
     {
       "change_id": "client.jem-holidays-20261030",
       "status": "active",
-      "summary": "Make the JEM Halloween atmosphere an automatic annual client-local season owned by JEM Holidays.",
+      "summary": "Make the JEM Halloween and Christmas atmospheres automatic annual client-local seasons owned by JEM Holidays.",
       "record": "Catalog/changes/records/client.jem-holidays-20261030.json",
       "selectors": [
         {
@@ -566,7 +566,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 28372,
-      "record_sha256": "8605f3654f9f0f460e9cdd20e55947fe6088a13354489734e4b9e76c5f4141cc"
+      "record_sha256": "9e2db6276863374a5c3fbc2b74aeec54c8e14e262a60d752637a941db3bb69ec"
     },
     {
       "change_id": "client.jem-races-connection-snapshot-20261031",
@@ -646,7 +646,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1,
-      "record_sha256": "4a371c83688c3b58c3b2f37e8efaa5fec36c4c7cf734a03c7c9d1341b3a331d7"
+      "record_sha256": "7ff64a8090ea75410c84785e42c342d5a2aea5252172253924dc5c1a42c30835"
     },
     {
       "change_id": "client.race-preview-render-identity-20261113",
@@ -662,7 +662,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0,
-      "record_sha256": "6a2738285c294d1b44e44e4b7c406815a262d4c05a64758e07879a2278a51a8c"
+      "record_sha256": "e121ef3e1f9169739a9d04555bfda20b7a0f671d0b489837533a7ecb91e482d6"
     },
     {
       "change_id": "client.sandbox-lighting-scene-20261114",
@@ -2398,7 +2398,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 28372,
-      "record_sha256": "fa67cb94e02b3f4c40639079c8757be7578857c6feafcec9932063a88bdf0782"
+      "record_sha256": "fb90846d36b384f2ae1451e1ad4ff84032bee11e430863945109451f60275313"
     },
     {
       "change_id": "login.connectivity-terminal-socket",
@@ -3717,7 +3717,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 13,
-      "record_sha256": "1cb84854af80ebc7b7d465a4d42ee8372c02c276388fb2ffb51e805701c57d0c"
+      "record_sha256": "f4c63dc0560cbaf9bb09ee8a842b66fde81cb37db0ef763f346118965e0549ec"
     },
     {
       "change_id": "races.four-stages-sculk-domain",
@@ -5540,7 +5540,7 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 28372,
-      "record_sha256": "67a4c4acd1f602c0c80c9e15d81fae3bdafe465c3a33a432c1c9a5d7d81a7dd4"
+      "record_sha256": "364fd6c36e71194183450c1f565511cdd7904b971e3002d45a971dc676b584a4"
     },
     {
       "change_id": "vinery.native-merchant-registered-ids",
@@ -5860,7 +5860,7 @@
   "source_fingerprints": {
     ".agents/skills/jem-registry-keeper/SKILL.md": "39e0bdad6bb0a98e4d7575ac3744320862da69f79b18e4b9b99820c7bf4f1d5c",
     "AGENTS.md": "16cafdee3ae568ef8d7c3df4ee87ec7381f308c5240c7cf37a49fe9aeb893caa",
-    "CHANGELOG.md": "350467e7d6f25b917b2744bdd80ac6a2f4705457eaebc4499cec99fc4f5719d4",
+    "CHANGELOG.md": "79f7e1da2cd899413bdd2a063ffddb27116937cbde1fbf2f7a29797c66995d75",
     "Catalog/README.md": "55341014df0dd25fbc9d6231ae717d85842e36fa2d7399e6e43dbf9e23d1e856",
     "Catalog/changes/companion-recovery-species.json": "b9eb4358dd67ee7c9257806b544e8dc2288e0b181e06ad5b071c0f150ca87405",
     "Catalog/changes/food-quality-assignments.json": "6f3ada980f37d8e79e0a07d1d963c2d889704bb3ceb82899877f76d13cb75129",
@@ -5900,12 +5900,16 @@
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_hover.png": "1502648829c215599a50d5607c4b5958c0a8f4ca02e13ab1327f2307c5bc28ba",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_inactive.png": "a9080d0741f8c70e9e53b012f5eceae94959bdaa47fc242e30bfb78727935550",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_normal.png": "56cb74a6c1279dad26744cdd45db7d78bc11801f137318d5de256bf6a57f2fa1",
+    "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/christmas/main_menu_background.jpg": "d538eb7fd4e820b1cf51134baacee5b0b7d3bd0ead9ab749c71ca7a52d1986ba",
+    "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/christmas/main_menu_title.png": "56ffd4f87f378a8b3f191ca56306909e2a1fdb17d18f2a78e6bd472686f8a93c",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/main_menu_background.png": "b10d38328574268613c638e43826dbfd4483e84094a1b1b7e32af324dd56183f",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/main_menu_title.png": "b68541bcbf329e29a0349a7d4808bb4a54d0b239c55764486cedcd9b418445c2",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_background.png": "e22f02d8e2c13005af1be4b2f8eede26188ca8c2270ab477babd17bf06df0184",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_title.png": "30a2d47abb2ba7ffdf9e0ebf2347a907191ce6a064b65e0c69f4354a9c0a47f6",
+    "Client/ManagedPack/config/fancymenu/customization/christmas_title_screen.txt": "ed60715290a29685061aee431a2840ad47861971db15c38955585c515c77db1b",
     "Client/ManagedPack/config/fancymenu/customization/jalloween_title_screen.txt": "6971b17ffda8b03da8c98294d42f64b5300de0f70115557419586445fd13fe18",
-    "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt": "912f058557a49052b5fdb6d7309496a336ac0ce7249c830445e8fff8f4c4ccb5",
+    "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt": "9db0aa6cb846940d8cbd6bb45774290b915f0cc4c764bb1a7d4cab3f5f9d5aeb",
+    "Client/ManagedPack/config/fancymenu/customization/legacy_jem_title_screen.txt": "89d3b2cc41c5a548aae8bf333df90b57a5b3767515b5b3a36a58a1851845bc71",
     "Client/ManagedPack/config/ftbquests/quests/chapter_groups.snbt": "dcefa23f7441409db799365bac250dc2418800a7b7468b15984c2c866f0cb4cd",
     "Client/ManagedPack/config/ftbquests/quests/chapters/jem_03.snbt": "b26825f7d4cceb75ed7b5178571930206df6c8b22d985438e0ac025bb238270d",
     "Client/ManagedPack/config/ftbquests/quests/chapters/jem_07.snbt": "5f13a6ffa265f028d86c6f640978029d83bbf07f25ec50f99fe152556fc1bde5",
@@ -6002,7 +6006,7 @@
     "Client/ManagedPack/config/xaero/minimap/server_profiles/default.cfg": "bc240a427bf11465f97e25159901e738494841f181d4c3d4f093793d892b0e86",
     "Client/ManagedPack/config/xaero/world-map/server_profiles/default.cfg": "e021d4a227fc02f100778e4dae90f0a4fe8de200e854ccda7118a4722dca3e8e",
     "Client/ManagedPack/defaultconfigs/mapsyncer-server.toml": "c46ec6e2c9c57c7b50be979e724ddae115515f0b75fca2d1cf0935818053bcea",
-    "Client/ManagedPack/jem-pack/manifest.json": "5983930ed985e3cf882ebd43a53bf3b0471873eba9fd791397684a8f94c92581",
+    "Client/ManagedPack/jem-pack/manifest.json": "f7185d9888931a99009d83acf3772dbdaffe6a6d65ebaf3838308a63e64af205",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -6185,7 +6189,7 @@
     "Client/ManagedPack/mods/jem-bootstrap.jar": "11747e6443898bd55efa6da77d4ead922b760b8b260e31a90b05e74ade4e048b",
     "Client/ManagedPack/mods/jem-economy-1.3.5.jar": "686fcba56faeea6a6efdd5a654222b405fbaf51954b19eabbcd6d80da0bd84a2",
     "Client/ManagedPack/mods/jem-identity-1.0.0.jar": "c84a1cc030dd5a91b7bae287b24ced375387c18f171b382e7aa128763eba010d",
-    "Client/ManagedPack/mods/jem-races-2.0.7.jar": "f670dfd9d4748760999f6675191fcfb23d8190063314c4de75a835fc9dd9350b",
+    "Client/ManagedPack/mods/jem-races-2.0.8.jar": "3c641150a22811e1ee241bed7917aedb231fa43880457284e2cfbcc7f9f18a9f",
     "Client/ManagedPack/mods/jem-rewards-1.1.0.jar": "140d4dd504204a9c0950f37d6583cf704de4c524c9d1a03b79581fb90f5fe0b2",
     "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "a34d11e5c3dd491ba13da76fa3e84ebc86c796f0a25802cbbff5097f51b2c2c2",
     "Client/ManagedPack/mods/jem-settlements-2.2.2.jar": "d50078fef2b40043f7ce9455857dde63654f1a57d9c0aabee9bc6fd7c1d971e1",
@@ -6206,10 +6210,11 @@
     "Client/ManagedPack/mods/xaerominimap-forge-1.20.1-26.6.0.jar": "9b39cd06094d7631c8614d172d0ba8399c71c981530af417f12a7909fcb855bd",
     "Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.47.0.jar": "88c6d844163c95a94d92bc6d87d9011cc840bd6207c3099a81b113d4450a3f6b",
     "Client/ManagedPack/options.txt": "afa5185dc8b8789649a4cb3954ce1d4923b03097a4567982457a92a548bac88d",
+    "Client/ManagedPack/resourcepacks/JEM Christmas.zip": "cde4ed67761ce43383c8b2eb3905a0b1c6db2165334cc50ac4ced7de89419034",
     "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip": "9dea2becf1e98431475bb6711f5ff9677ab415c2236c1dd19c8f14c018d2595f",
     "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip": "8992a57df1dbe4d3a7e09e72f96688e50df8004431b2f6d01e37530c14bda727",
     "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.2.1.zip.txt": "800d797debdd3dfb42df6b3f1f7f2cde625f111937847620e88c8053cdfe2b78",
-    "Docs/DEVELOPMENT.md": "f407dfb48e7aef309541fb2ece5be2ec8e0a1b37921e8cfd1e1983b3ec28fab8",
+    "Docs/DEVELOPMENT.md": "a1f44975cd1d0a013cb064bc70f59d694a95f8148f9e4a5ec3c4972760505220",
     "Docs/MODS.md": "2c6e463f43a03f369528ef2bab1409c4152f8c8142580e53ae223ccdd262e8b9",
     "Docs/SERVER_COMMANDS.md": "1a5c59b71e979d4b50548274b8456ce7cf1821c318a073f383c00bc31adf23b9",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -6343,7 +6348,7 @@
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookCollections.java": "af91297003e428110a6c0689ee9ab6803f220a433856b215115d9b8ffe875c90",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookControllerActions.java": "4cc3fb9f9156894f5bb373c5bca884147a52a4689d411543a4fd2c41d320bcf4",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookCurioActions.java": "4d1527c819ff89689b8f36ea8b1aa1282fcebeec17c1f526317799c754231564",
-    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookDomainActions.java": "71a587f4cf071f7e2fc6fc68785a759731a2d2eead793cb1ebbe83d505641c07",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookDomainActions.java": "63602a3a53bd54a9e4990a03370e3e414e968306c46e0ec513bfae5cbd305771",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookEconomyEvents.java": "aad7c127dfcd9fe1f99119533260235653447930754c9d41e7eebb90a1eb965c",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookEvents.java": "08791bf6555e158baf202ff812648def864a7e418d1d4cd9caa887daf40e7428",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookFoodActions.java": "3ff1169359cf6aa80e7b6cda829a02dccc9f58ce16020a594c1522104c9426a6",
@@ -9307,9 +9312,9 @@
     "Mods/JEMAchievementGuide/tools/questbook/legacy/living_world.snbt": "5ef5f012c3ef0cce835697b06d984219a922db96935d4a8ec8574fae49ba8f2a",
     "Mods/JEMAchievementGuide/tools/questbook/legacy/races.snbt": "66c1aafb3e6055e156456d51bb9e56ffa97a54a260e06d757f1fb6d5d480942c",
     "Mods/JEMAchievementGuide/tools/questbook/rescue_v3.py": "60386cb92e3da3195bdea5e029e2490cec595a9c20807784108f8c5f0b12d78f",
-    "Mods/JEMAchievementGuide/tools/rebuild_curated_manifest.py": "b4f197ba6872307d4f07e9c55a515dcc658ccf941be1cf8661a5fb702d2ab777",
+    "Mods/JEMAchievementGuide/tools/rebuild_curated_manifest.py": "fa04cdd836b1c5ea6a8403f1c6c3df4bdabcfd44b5a604d41efb91185456c715",
     "Mods/JEMAchievementGuide/tools/sync_paxi_advancements.py": "9fde83cdbe4896e5aaffcc00ba31f5c550aab370c20c12ad4e28fba1e26ba51d",
-    "Mods/JEMAchievementGuide/tools/validate_release.py": "55bf44296a283110629c0e60bfc071accacadf0aa8e39936200cbe194668206c",
+    "Mods/JEMAchievementGuide/tools/validate_release.py": "cf4c531224f3afcff3adbdf5c28ecdf6438c8e025d2cd15941c7b3e1dfeff519",
     "Mods/JEMAdaptiveCulling/build.gradle": "b23b173d13df2e2a974b961679e5a1f80c4077fff04701a7892ac4cd0996dfc7",
     "Mods/JEMAdaptiveCulling/gradle.properties": "2d2819019014e70cbbd32cd8bab8815580088a4ed924d474edb4691037941d3b",
     "Mods/JEMAdaptiveCulling/settings.gradle": "d43500d561436043f7ba805d11ba334d6815f7f6d2c457eb7b65aeccf7fe3f41",
@@ -9749,13 +9754,13 @@
     "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/GalleryScreen.java": "64c90b31f75255d5ab7821143d847107e6af78e610a1a2025d0c7d05b3358223",
     "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/QuickSkinTitleScreenDefaults.java": "e38181c9e414e3a2f9d56c776cb5afdb4cbac795817b3da60ebeaa6a28cedc4a",
     "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/mirror/jemvisualsandbox/workbench/RaceExperience.java": "db47de3f052bb980db7a3c0fe8434cc4058613973c99bd0e5b6b1417cc8ce716",
-    "Mods/JEMHolidays/README.md": "051934f44aa5471e30aa5fa7abb3bf26d4d914718a7f5b4adf3cc4081f73ebaa",
+    "Mods/JEMHolidays/README.md": "05c9648e294a300170f82b3e7d637b574563d93b0b547c6fff9b733006c0b0f2",
     "Mods/JEMHolidays/build.gradle": "1434be0497964f6d66b11ca5b6ed7d66b866225d3ba8f831e4a1935ff246270e",
-    "Mods/JEMHolidays/gradle.properties": "6afbdcf3af38593ad7a3b0905baca20b1fa696e27c509645d52daf7200eba022",
+    "Mods/JEMHolidays/gradle.properties": "c00e0d4b4e673ad66626c9d18bd948b788816e61669a2c276ff9707ccb9e04a9",
     "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/AudioYtBridge.java": "85b13d7a1114fee71926bb1a30489dde973e8081c5f963863757d7cf59d6b1cc",
     "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/JEMHolidays.java": "1061a59cf0d3b1bf0547d26c5ea387b350aa86a0aa8f7d3d12788f8e208acb95",
-    "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonCalendar.java": "618e0ad926a4e59d6608d878e3e2cf09e5325ed5bd9485cb89a0ebf84ac74f94",
-    "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonalController.java": "6255906e556143ca3443bf46d7c430de89e763e94642669860abea3c47182391",
+    "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonCalendar.java": "c59757f68259441389264dc371e1c94f29a9adcb89627247b8fff48e0bda9bf6",
+    "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonalController.java": "99688167b9bb1c538b23d4755ec114d94115f7cbb6acd958f91db784822a89df",
     "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/ServerSeasonalController.java": "72b2e269013a5145d7522bbf00fc9bcc62b93767f6d38b2ae22e49c3995c99de",
     "Mods/JEMHolidays/src/main/resources/META-INF/mods.toml": "841796a9de0ed19eb4caae35f0a92974c991e2110fd1f6389d390eb67572d9fc",
     "Mods/JEMIdentity/build.gradle": "55eeae3546a73ba8a9cc2627f842bcb85c1fbdda13653602a301adef0206cc47",
@@ -9822,7 +9827,7 @@
     "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionMaterials.java": "58ebf864357a97de434ca1b7d038707a1d7792f181f338c9250be60dd2b089bd",
     "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionPresentation.java": "2355d44650a04454444680ef4c32bb5dd4cbd524bf7f05a2053e2624ebe5eac5",
     "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java": "d45118a8dcc02914c4e66319d3f1deec32ac109cb0b6d773ea8f0c266daf9640",
-    "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxActionScreen.java": "41904ccb21b248a775b5021629754f17ee0c1230b0a376e9d393d7433d86a697",
+    "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxActionScreen.java": "3b2df575b4ab7fc999760fec7fe04732d5e9f0de79e4f9d17c6a9f4810a4a859",
     "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxClientState.java": "a546881522bd3f6330435e97e79eb295a9d0c0ebef855fabe2e8907bbd44ea9c",
     "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionKeys.java": "5fcd784d0d8eb8733f4b6e8a4d740a1225517407e8807612092de01bbcf6b8ae",
     "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionPresentation.java": "15f09319a207a3f45d87de8b22b6dfb5ce124cf1396ae338bcb28d80ddd9f288",
@@ -9886,7 +9891,7 @@
     "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/en_us.json": "1b395e5726ab76d9bc12a91501c6212eb8bbf41098e5d59e6d504a18c5259e18",
     "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/ru_ru.json": "9fa752567580e8fd48c9809e577c8fc6c2f350b4f9268b40bec1e8b1f985db6f",
     "Mods/JEMRewards/src/main/resources/pack.mcmeta": "82cf63aceb32d293f6649066ab9d0f8833909c5c3d84f12c8fcf663f55750710",
-    "Mods/JEMRoles/build.gradle": "bceed3f87e5feb581345d62b14b280d9b42f77b2ba59db3c9d6e8c7ed2e82448",
+    "Mods/JEMRoles/build.gradle": "ec4df2694bcfad7374571ca90fcd17424e3064d88bdaae1256a42c96030d8cbf",
     "Mods/JEMRoles/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
     "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java": "dd9f358675e1c6b61c59f084a60745b5c9fc7506be16305cf5b4201a2817b792",
     "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java": "99804d27e1744848c07e89236071f2de839f37e791520564eb000d6a8c2b0bb1",
@@ -9915,7 +9920,7 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/NeutralPlayerRenderer.java": "17674e5d52879299d7c47f2e1761554dddc63e83bf95ede332b9e81c0d722b75",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/PreviewRenderState.java": "e4d6bf648098c0754c04d3810844255963ad3a544418302a1ce1bd9658262fe4",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinSessionResume.java": "090adb3fa0abc8e10406f35af0476ef7b57988aa4698633e16fefe9b1ecdd977",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinTitleScreenDefaults.java": "a9f3fd900fedc0e91ff3ac024535d077b3f276a504c520ff9652de4a641f3ffa",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinTitleScreenDefaults.java": "133985567a9853e6cc5b46ddb5824e05457de4e6ff966322aa73e39364eb7851",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java": "f7d454a109229a0d174be9efd49aaee3c8566a5aee77d6389e3d0d49d920f68a",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceDamagePresentation.java": "2e73936d9c11f7468b26936a1b9819d9bdc6b49e0297ab951d26de630511d007",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java": "7edbe04844e5cc0e3921da218f992613ee83dc07b5b2b1187315f39fc9c69a0c",
@@ -9967,7 +9972,7 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/VisualRenderContext.java": "9af2a8efd2534aa274acabe96bb41bb035604b362e10aefa9df4686de5f403cf",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java": "07c06a58d1584d7d9c4d74eb8f2d6b14e6c1fa7794de4f6d37c02a2d04514cd5",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/WorkbenchMesh.java": "6e2d0365e97ab6ac385a067eda942e350550126c73b9b11283803a577520864f",
-    "Mods/JEMRoles/src/main/resources/META-INF/mods.toml": "5cf2e7650ed295e67cd6eacc41a6243ae141d9c101258f5f7329e2ef28415e56",
+    "Mods/JEMRoles/src/main/resources/META-INF/mods.toml": "28bab26559a6816227c810ab2b1043398ec96ecd422455b094356cf071cd234d",
     "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json": "2ec9d9667d86e3a29bbffd48de94db2670a8851d142a46e4d49e22462a634ca1",
     "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json": "cc2b7d239c66cd2f3c8a436e4d7076819ef608e7fac06fe7940c4a694179d15e",
     "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/pearl_afterfire.png": "b5a37532a733b8fcee0f2c2f1cdec3bc76f3fa8bb39792fb3e49de897b42f7d3",
@@ -10908,13 +10913,14 @@
     "tools/apply-published-client.py": "87d3a38604742acd0de43459bac5b59c7a5fd525644b3b6a5a49c23100f6c353",
     "tools/architecture_artifacts.py": "cb9ee849e0d722e4708c8d8f376ad596870811e85a4f5aefec1bc91e0ffdf70a",
     "tools/architecture_metrics.py": "4006c7376bb006881c5ebaa1424ab3a703d4014b9e1ea1dff6dcdf8713742a3f",
+    "tools/build_jem_christmas_resource_pack.py": "04101e3c27cc82f977e1fcc9fd44ac1a67977a7917e92454b68a5c3e1dea5f8d",
     "tools/build_jem_release_resource_pack.py": "b411a5c7ca0890958b434248716f2ce2f54b7a8b8ae64ba4e927763f1c436c74",
     "tools/client-recovery/JemClientRecovery.java": "b99b62bbb7157f1e84a5fd2cd01c06e150c08e2deb1887056c17c2b2fe2d2b85",
     "tools/generate_jei_catalog.py": "8c398949dfc0beeeadc0141402defdec742ad39f883a9b41c925e0d35427827e",
     "tools/generate_profession_skills.py": "588d6eeca26bba3cdb66e9c408ee64c54438ac221ac2937db09d2e85d13756a5",
     "tools/jem.py": "abd1796790947ee38a538fb80ef47a22916676f2fb86fd9f289dbb7909267f7b",
-    "tools/module-inventory.json": "f14139ee3837638e3174ea7959738a6e01ce2242c22e7d2b4f61c33e39b1985e",
-    "tools/state/packSyncHost-sync.json": "90a56231271fcb945c9aea2e87bc553700575f9047fe77f24be93241efcf9530",
+    "tools/module-inventory.json": "26d9f970ef2ee0f3cd4227aaf906eba3cc5892acd58aae0e0473f0fede59896d",
+    "tools/state/packSyncHost-sync.json": "60daa67417f04ddadb3d77e127f5741448702ec544deb8b4ae0895e8315fa28e",
     "tools/workspace.json": "63c86e09e4edc6005daabf0f2de0b9d850b0863a67d2eac3c4da4bed8909d51e"
   }
 }
