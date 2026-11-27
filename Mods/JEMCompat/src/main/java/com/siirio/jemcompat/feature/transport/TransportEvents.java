@@ -56,8 +56,7 @@ public final class TransportEvents {
             speed("legendary_monsters:skeloraptor", 13.0),
             speed("whaleborne:hullback", 7.0),
             speed("siegeweapons:small_horse_cart", 8.0),
-            speed("siegeweapons:transport_cart", 6.5),
-            speed("immersive_aircraft:biplane", 26.0)
+            speed("siegeweapons:transport_cart", 6.5)
     );
 
     private TransportEvents() {

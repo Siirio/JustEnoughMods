@@ -54,11 +54,7 @@
     "kind": "native_handbook_extension",
     "source_files": [
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/*.json",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/*.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
-      "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/*.json",
       "Docs/handbook/enchantments.md",
       "Docs/handbook/enchantments-coverage.json",
       "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
@@ -116,6 +112,18 @@
       "source_files": [
         "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/templates/*.json",
         "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/*.json"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/*.json",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/*.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/*.json"
       ]
     }
   ],

@@ -38,7 +38,7 @@ LEAVES = (
     "ORES",
     "MUSIC_DISCS",
     "TREES",
-    "CREATE_REDSTONE",
+    "REDSTONE",
     "BUILDING_FURNITURE",
     "BUILDING_NATURE",
     "BUILDING_GLASS",
@@ -90,7 +90,6 @@ OLD_LEAF_MAP = {
     "FOOD": "FOOD_COOKING_EQUIPMENT",
     "ORES": "ORES",
     "COMPONENTS": "OTHER",
-    "CREATE_REDSTONE": "CREATE_REDSTONE",
     "FURNITURE": "BUILDING_FURNITURE",
     "NATURE": "BUILDING_NATURE",
     "TREES": "TREES",
@@ -150,33 +149,6 @@ TRANSPORT_EGGS = {
     },
 }
 
-CREATE_NAMESPACES = {
-    "create",
-    "railways",
-    "bellsandwhistles",
-    "create_train_parts",
-    "createrailwaysnavigator",
-}
-
-CREATE_PALETTE_MATERIALS = (
-    "andesite", "asurine", "calcite", "crimsite", "deepslate", "diorite", "dripstone",
-    "granite", "limestone", "ochrum", "scorchia", "scoria", "tuff", "veridium",
-)
-CREATE_NATURAL_PALETTE_MATERIALS = (
-    "asurine", "crimsite", "limestone", "ochrum", "scorchia", "scoria", "veridium",
-)
-CREATE_COPPER_DECORATION_STAGES = (
-    "", "exposed_", "weathered_", "oxidized_", "waxed_", "waxed_exposed_",
-    "waxed_weathered_", "waxed_oxidized_",
-)
-LOCOMETAL_COLORS = (
-    "black", "blue", "brown", "chartreuse", "cyan", "diorite", "dripstone", "granite",
-    "gray", "green", "light_blue", "light_gray", "lime", "limestone", "magenta",
-    "maroon", "ochrum", "olive_green", "orange", "pine_green", "pink", "purple", "red",
-    "royal_blue", "scorchia", "sea_green", "tuff", "turquoise", "vermilion", "white",
-    "yellow",
-)
-
 EXACT_RECLASSIFICATIONS = {
     "alexsmobs:animal_dictionary": "BOOKS",
     "barnyardbuddies:pyrenees_protective_vest": "WEARABLE_MOB_ARMOR",
@@ -184,8 +156,8 @@ EXACT_RECLASSIFICATIONS = {
     "luminous_beasts:ultimate_bestiary": "BOOKS",
     "minecraft:dragon_breath": "POTIONS",
     "minecraft:resin_clump": "ORES",
-    "minecraft:crafter": "CREATE_REDSTONE",
-    "trials:crafter": "CREATE_REDSTONE",
+    "minecraft:crafter": "REDSTONE",
+    "trials:crafter": "REDSTONE",
     # User-reviewed weapon and tool corrections
     "alexscaves:shot_gum": "WEAPON_RANGED",
     "alexsmobs:dimensional_carver": "WEAPON_MELEE",
@@ -225,10 +197,6 @@ EXACT_RECLASSIFICATIONS = {
             "acacia", "bamboo", "birch", "cherry", "crimson", "dark_oak", "jungle",
             "mangrove", "oak", "spruce", "warped",
         )
-    },
-    **{
-        f"create_train_parts:bellow_{size}": "CREATE_REDSTONE"
-        for size in ("1x2", "2x2", "2x3", "3x2", "3x3")
     },
     **{
         f"kaleidoscope_doll:doll_{number}": "WEARABLE_DOLLS"
@@ -344,45 +312,6 @@ EXACT_RECLASSIFICATIONS = {
     "alexscaves:pewen_pines": "BUILDING_NATURE",
     "netherexp:nether_wart_beard": "BUILDING_NATURE",
     "netherexp:warped_wart_beard": "BUILDING_NATURE",
-    # Reviewed Create decorative palettes. Machinery and train equipment remain Create and Redstone.
-    **{
-        f"create:{path}": "BUILDING_BLOCKS"
-        for material in CREATE_PALETTE_MATERIALS
-        for path in (
-            f"cut_{material}", f"cut_{material}_slab", f"cut_{material}_stairs",
-            f"cut_{material}_wall", f"cut_{material}_bricks", f"cut_{material}_brick_slab",
-            f"cut_{material}_brick_stairs", f"cut_{material}_brick_wall",
-            f"polished_cut_{material}", f"polished_cut_{material}_slab",
-            f"polished_cut_{material}_stairs", f"polished_cut_{material}_wall",
-            f"small_{material}_bricks", f"small_{material}_brick_slab",
-            f"small_{material}_brick_stairs", f"small_{material}_brick_wall",
-            f"layered_{material}",
-        )
-    },
-    **{
-        f"create:{path}": "BUILDING_BLOCKS"
-        for material in CREATE_NATURAL_PALETTE_MATERIALS
-        for path in (material, f"{material}_pillar")
-    },
-    **{
-        f"create:{stage}copper_{shape}": "BUILDING_BLOCKS"
-        for stage in CREATE_COPPER_DECORATION_STAGES
-        for shape in (
-            "tiles", "tile_slab", "tile_stairs", "shingles", "shingle_slab", "shingle_stairs",
-        )
-    },
-    **{
-        f"railways:{color}_slashed_locometal": "BUILDING_BLOCKS"
-        for color in LOCOMETAL_COLORS
-    },
-    "railways:slashed_locometal": "BUILDING_BLOCKS",
-    "create:bound_cardboard_block": "BUILDING_BLOCKS",
-    "create:industrial_iron_block": "BUILDING_BLOCKS",
-    "create:weathered_iron_block": "BUILDING_BLOCKS",
-    "create:rose_quartz": "BUILDING_BLOCKS",
-    "create:rose_quartz_block": "BUILDING_BLOCKS",
-    "create:rose_quartz_tiles": "BUILDING_BLOCKS",
-    "create:small_rose_quartz_tiles": "BUILDING_BLOCKS",
     # Archie's Dinosaurs 1.0.7 exact behavior families
     **{
         f"ec_ad:{path}": "WEAPON_TOTEMS"
@@ -441,54 +370,6 @@ EXACT_RECLASSIFICATIONS = {
     "royalvariations:empty_royal_telelocator": "TRANSPORT",
     "royalvariations:royal_ender_pearl": "TRANSPORT",
     "royalvariations:royal_telelocator": "TRANSPORT",
-    # Semantic categories take precedence over the source mod family
-    "create:cardboard_sword": "WEAPON_MELEE",
-    "create:potato_cannon": "WEAPON_RANGED",
-    "create:bar_of_chocolate": "FOOD_EDIBLES",
-    "create:builders_tea": "FOOD_EDIBLES",
-    "create:chocolate_glazed_berries": "FOOD_EDIBLES",
-    "create:honeyed_apple": "FOOD_EDIBLES",
-    "create:sweet_roll": "FOOD_EDIBLES",
-    "create:millstone": "FOOD_COOKING_EQUIPMENT",
-    "create:chocolate_bucket": "FISHING",
-    "create:honey_bucket": "FISHING",
-    **{
-        f"create:{path}": "WEARABLE_ARMOR"
-        for path in (
-            "cardboard_boots",
-            "cardboard_chestplate",
-            "cardboard_helmet",
-            "cardboard_leggings",
-            "copper_backtank",
-            "copper_diving_boots",
-            "copper_diving_helmet",
-            "goggles",
-            "netherite_backtank",
-            "netherite_diving_boots",
-            "netherite_diving_helmet",
-        )
-    },
-    **{
-        f"railways:{color}_conductor_cap": "WEARABLE_ARMOR"
-        for color in (
-            "black", "blue", "brown", "cyan", "gray", "green", "light_blue", "light_gray",
-            "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow",
-        )
-    },
-    **{
-        f"create:{path}": "ORES"
-        for path in (
-            "andesite_alloy", "andesite_alloy_block", "brass_block", "brass_ingot", "brass_nugget",
-            "brass_sheet", "cardboard", "cardboard_block", "copper_nugget", "copper_sheet",
-            "crushed_raw_aluminum", "crushed_raw_copper", "crushed_raw_gold", "crushed_raw_iron",
-            "crushed_raw_lead", "crushed_raw_nickel", "crushed_raw_osmium", "crushed_raw_platinum",
-            "crushed_raw_quicksilver", "crushed_raw_silver", "crushed_raw_tin", "crushed_raw_uranium",
-            "crushed_raw_zinc", "deepslate_zinc_ore", "experience_block", "experience_nugget",
-            "golden_sheet", "iron_sheet", "powdered_obsidian", "raw_zinc", "raw_zinc_block",
-            "sturdy_sheet", "unprocessed_obsidian_sheet", "zinc_block", "zinc_ingot", "zinc_nugget",
-            "zinc_ore",
-        )
-    },
 }
 
 HOLIDAY_ITEMS = {
@@ -848,13 +729,9 @@ def reclassification_target(item_id: str, current_leaf: str, row: dict) -> str:
         return "OTHER"
     if is_smithing_template(item_id, row):
         return "WEAPON_SMITHING_TEMPLATES"
-    if namespace in CREATE_NAMESPACES and is_glass_or_window(path, row):
-        return "BUILDING_GLASS"
-    if namespace in CREATE_NAMESPACES:
-        return "CREATE_REDSTONE"
     if namespace == "casualswing":
         return "BUILDING_FURNITURE"
-    if current_leaf == "CREATE_REDSTONE":
+    if current_leaf == "REDSTONE":
         return "TREES" if is_tree_product(namespace, path, row) else current_leaf
     if current_leaf in {
         "BUILDING_BLOCKS", "BUILDING_FURNITURE", "BUILDING_GLASS", "BUILDING_LIGHT",
@@ -1105,10 +982,7 @@ def classify(row: dict, hint: str | None) -> str:
     ) or path == "bucket" or path.endswith("_bucket"):
         return "FISHING"
 
-    if class_has(row, "BoatItem", "MinecartItem", "SledItem", "Aircraft") or namespace in {
-        "immersive_aircraft",
-        "trotting_wagons",
-    } or has_phrase(
+    if class_has(row, "BoatItem", "MinecartItem", "SledItem") or namespace == "trotting_wagons" or has_phrase(
         path,
         "sled",
         "ship",
@@ -1198,15 +1072,8 @@ def classify(row: dict, hint: str | None) -> str:
     )):
         return "ORES"
 
-    create_family = namespace in {
-        "create",
-        "railways",
-        "bellsandwhistles",
-        "create_train_parts",
-        "createrailwaysnavigator",
-    }
     if namespace == "infinitybuttons" or item_id == "minecraft:tnt" or has_tag(
-        row, "jemcompat:jei/create_redstone"
+        row, "jemcompat:jei/redstone"
     ) or has_phrase(
         path,
         "redstone",
@@ -1225,35 +1092,8 @@ def classify(row: dict, hint: str | None) -> str:
         "target",
         "command_block",
         "button",
-    ) or (
-        create_family
-        and has_phrase(
-            path,
-            "cogwheel",
-            "shaft",
-            "gearbox",
-            "press",
-            "deployer",
-            "mixer",
-            "basin",
-            "motor",
-            "fan",
-            "pump",
-            "pipe",
-            "boiler",
-            "flywheel",
-            "drill",
-            "saw",
-            "belt",
-            "conveyor",
-            "millstone",
-            "crushing_wheel",
-            "steam_engine",
-            "mechanical",
-            "circuit",
-        )
     ):
-        return "CREATE_REDSTONE"
+        return "REDSTONE"
 
     if item_id in {"jem_building:builder_hammer", "bbb:hammer", "handcrafted:hammer"}:
         return "BUILDING_TOOLS"
@@ -1490,20 +1330,6 @@ def reclassified_manifest() -> dict:
     ]
     if remaining_templates:
         raise ValueError(f"Smithing template remained outside its leaf: {remaining_templates[0]}")
-    remaining_create = [
-        item_id
-        for leaf, item_ids in result["assignments"].items()
-        if leaf != "CREATE_REDSTONE"
-        for item_id in item_ids
-        if item_id.split(":", 1)[0] in CREATE_NAMESPACES
-        and not (
-            leaf == "BUILDING_GLASS"
-            and is_glass_or_window(item_id.split(":", 1)[1], atlas.get(item_id, {}))
-        )
-        and EXACT_RECLASSIFICATIONS.get(item_id) != leaf
-    ]
-    if remaining_create:
-        raise ValueError(f"Create-family item remained outside Create and Redstone: {remaining_create[0]}")
     print(json.dumps({
         "moves": {
             f"{source} -> {target}": count

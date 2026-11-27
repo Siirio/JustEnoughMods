@@ -34,7 +34,7 @@ def write_csv(name, fields, rows):
 
 def author_prices(runtime):
     if any(row.get('schema',1)>=2 for row in read(DATA / "item_policies.json")):
-        raise SystemExit("Rational schema2 pricing is owned by JEMEconomy/tools/author_shipping_economy.py; legacy integer authoring cannot overwrite it")
+        raise SystemExit("Rational schema2 pricing requires explicit source review; legacy integer authoring cannot overwrite it")
     existing = {row["item"]: row for row in read(DATA / "item_policies.json") if row.get("outcome") == "BUY_AND_SELL"}
     native = {row["item"]: row for name in ("native_item_prices.json", "profession_pools.json") for row in read(DATA / name)}
     items = {row["id"]: row for row in runtime["items"]}
@@ -210,7 +210,7 @@ def export_catalog_overrides(runtime):
             row["reason"] = "Canonical trade_restrictions.json forbids every NPC result, including old offers and item barter."
         elif market_prohibited(item):
             row["classification"] = "MARKET_PROHIBITED_NATIVE_PROFESSIONS_ALLOWED"
-            row["reason"] = "Main Create namespace is excluded only from the public market; appropriate native offers remain eligible."
+            row["reason"] = "The item is excluded from public market purchase, while appropriate native offers remain eligible."
         else:
             row["classification"] = "CONDITIONAL_BUILDING_PURCHASE_NO_NEW_BUYBACK"
             row["reason"] = "Purchase is admitted only if the current shared JEMCompat category/explicit material selector matches. This file does not classify live JEI membership. Existing native eligibility is unchanged."

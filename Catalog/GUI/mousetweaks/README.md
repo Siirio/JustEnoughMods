@@ -10,14 +10,14 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `yalter/mousetweaks/ConfigScreen$1` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/ConfigScreen$1.class`
-- `yalter/mousetweaks/ConfigScreen` extends `net/minecraft/client/gui/screens/Screen`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/ConfigScreen.class`
-- `yalter/mousetweaks/IGuiScreenHandler` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/IGuiScreenHandler.class`
-- `yalter/mousetweaks/Main` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/Main.class`
-- `yalter/mousetweaks/api/IMTModGuiContainer3Ex` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/api/IMTModGuiContainer3Ex.class`
-- `yalter/mousetweaks/forge/ClientHelper` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/forge/ClientHelper.class`
-- `yalter/mousetweaks/forge/MouseTweaksForge` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/forge/MouseTweaksForge.class`
-- `yalter/mousetweaks/handlers/GuiContainerCreativeHandler` extends `yalter/mousetweaks/handlers/GuiContainerHandler`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/handlers/GuiContainerCreativeHandler.class`
-- `yalter/mousetweaks/handlers/GuiContainerHandler` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/handlers/GuiContainerHandler.class`
-- `yalter/mousetweaks/handlers/IMTModGuiContainer3ExHandler` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/handlers/IMTModGuiContainer3ExHandler.class`
-- `yalter/mousetweaks/mixin/AbstractContainerScreenAccessor` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/mixin/AbstractContainerScreenAccessor.class`
+- `yalter/mousetweaks/ConfigScreen$1` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/ConfigScreen$1.class`
+- `yalter/mousetweaks/ConfigScreen` extends `net/minecraft/client/gui/screens/Screen`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/ConfigScreen.class`
+- `yalter/mousetweaks/IGuiScreenHandler` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/IGuiScreenHandler.class`
+- `yalter/mousetweaks/Main` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/Main.class`
+- `yalter/mousetweaks/api/IMTModGuiContainer3Ex` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/api/IMTModGuiContainer3Ex.class`
+- `yalter/mousetweaks/forge/ClientHelper` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/forge/ClientHelper.class`
+- `yalter/mousetweaks/forge/MouseTweaksForge` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/forge/MouseTweaksForge.class`
+- `yalter/mousetweaks/handlers/GuiContainerCreativeHandler` extends `yalter/mousetweaks/handlers/GuiContainerHandler`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/handlers/GuiContainerCreativeHandler.class`
+- `yalter/mousetweaks/handlers/GuiContainerHandler` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/handlers/GuiContainerHandler.class`
+- `yalter/mousetweaks/handlers/IMTModGuiContainer3ExHandler` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/handlers/IMTModGuiContainer3ExHandler.class`
+- `yalter/mousetweaks/mixin/AbstractContainerScreenAccessor` extends `java/lang/Object`; `$PROFILE/mods/MouseTweaks-forge-mc1.20.1-2.25.1.jar!/yalter/mousetweaks/mixin/AbstractContainerScreenAccessor.class`

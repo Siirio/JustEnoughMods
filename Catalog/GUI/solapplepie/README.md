@@ -6,31 +6,31 @@ Original reference assets. Control sheets retain their source dimensions and alp
 
 ## solapplepie:textures/gui/food_book.png
 
-[PNG](png/source-27c6dd8ebcaf/assets/solapplepie/textures/gui/food_book.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-c372d8a90fc0/assets/solapplepie/textures/gui/food_book.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/Nekos Enhanced Tools and Armour Plus V1.1.zip!/assets/solapplepie/textures/gui/food_book.png`
+Source: `$PROFILE/resourcepacks/Nekos Enhanced Tools and Armour Plus V1.1.zip!/assets/solapplepie/textures/gui/food_book.png`
 
 Override target: `assets/solapplepie/textures/gui/food_book.png`
 
-![solapplepie:textures/gui/food_book.png](png/source-27c6dd8ebcaf/assets/solapplepie/textures/gui/food_book.png)
+![solapplepie:textures/gui/food_book.png](png/source-c372d8a90fc0/assets/solapplepie/textures/gui/food_book.png)
 
 ## solapplepie:textures/gui/inventory.png
 
-[PNG](png/source-27c6dd8ebcaf/assets/solapplepie/textures/gui/inventory.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-c372d8a90fc0/assets/solapplepie/textures/gui/inventory.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/Nekos Enhanced Tools and Armour Plus V1.1.zip!/assets/solapplepie/textures/gui/inventory.png`
+Source: `$PROFILE/resourcepacks/Nekos Enhanced Tools and Armour Plus V1.1.zip!/assets/solapplepie/textures/gui/inventory.png`
 
 Override target: `assets/solapplepie/textures/gui/inventory.png`
 
-![solapplepie:textures/gui/inventory.png](png/source-27c6dd8ebcaf/assets/solapplepie/textures/gui/inventory.png)
+![solapplepie:textures/gui/inventory.png](png/source-c372d8a90fc0/assets/solapplepie/textures/gui/inventory.png)
 
 ## solapplepie:textures/gui/slot.png
 
-[PNG](png/source-27c6dd8ebcaf/assets/solapplepie/textures/gui/slot.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-c372d8a90fc0/assets/solapplepie/textures/gui/slot.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/Nekos Enhanced Tools and Armour Plus V1.1.zip!/assets/solapplepie/textures/gui/slot.png`
+Source: `$PROFILE/resourcepacks/Nekos Enhanced Tools and Armour Plus V1.1.zip!/assets/solapplepie/textures/gui/slot.png`
 
 Override target: `assets/solapplepie/textures/gui/slot.png`
 
-![solapplepie:textures/gui/slot.png](png/source-27c6dd8ebcaf/assets/solapplepie/textures/gui/slot.png)
+![solapplepie:textures/gui/slot.png](png/source-c372d8a90fc0/assets/solapplepie/textures/gui/slot.png)
 

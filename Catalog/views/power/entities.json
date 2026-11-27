@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "hostile_and_damage_capable_candidates",
-  "snapshot_sha": "a20a47aa2f8fc8948cd5d8f86ab72da20ded20e1",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -12678,6 +12678,47 @@
       ]
     },
     {
+      "id": "camerapture:picture_frame",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Picture Frame",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/camerapture.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "cataclysm:abyss_blast",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Abyss Blast",
@@ -17721,375 +17762,6 @@
       ]
     },
     {
-      "id": "create:carriage_contraption",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Carriage Contraption",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "create:contraption",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Contraption",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "create:crafting_blueprint",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Crafting Blueprint",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "create:gantry_contraption",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Gantry Contraption",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "create:package",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Package",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "create:potato_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Potato Projectile",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "create:seat",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Seat",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "create:stationary_contraption",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Stationary Contraption",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "create:super_glue",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Super Glue",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
       "id": "creeperoverhaul:badlands_creeper",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Badlands Creeper",
@@ -19812,6 +19484,457 @@
       ]
     },
     {
+      "id": "ec_ad:archie",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Archie",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:chorusoatl",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Chorusoatl",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:chorusoatl_spit",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Chorusoatl Spit",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:coralosaur",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Coralosaur",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:lushsaur",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Lushsaur",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:obsidiceratops",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Obsidiceratops",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:pus_tipped_arrow",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Sculk Tipped Arrow",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:sculkraptor",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Sculkraptor",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:sculkraptor_spit",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Sculkraptor Projectile",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:therimoss",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Therimoss",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "ec_ad:therimoss_projectile",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Therimoss Projectile",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/ec_ad.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "enderdragon:dragon_breath",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Dragon breathing",
@@ -21329,211 +21452,6 @@
       ]
     },
     {
-      "id": "exposure:camera_stand",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Camera Stand",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/exposure.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "exposure:glass_photograph_frame",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Glass Photograph Frame",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/exposure.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "exposure:glow_photograph_frame",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Glow Photograph Frame",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/exposure.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "exposure:photograph",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Photograph",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/exposure.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "exposure:photograph_frame",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Photograph Frame",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/exposure.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
       "id": "fairylights:fastener",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Connection Fastener",
@@ -22190,47 +22108,6 @@
       ]
     },
     {
-      "id": "guardvillagers:guard",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Guard",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/guardvillagers.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
       "id": "handcrafted:fancy_painting",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Fancy Painting",
@@ -22559,293 +22436,6 @@
       ]
     },
     {
-      "id": "immersive_aircraft:airship",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Airship",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/immersive_aircraft.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "immersive_aircraft:bamboo_hopper",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Bamboo Hopper",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/immersive_aircraft.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "immersive_aircraft:biplane",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Biplane",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/immersive_aircraft.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "immersive_aircraft:cargo_airship",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Cargo Airship",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/immersive_aircraft.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "immersive_aircraft:gyrodyne",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Gyrodyne",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/immersive_aircraft.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "immersive_aircraft:quadrocopter",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Quadrocopter",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/immersive_aircraft.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "immersive_aircraft:warship",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Warship",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/immersive_aircraft.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
       "id": "incision:purger",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Purger",
@@ -22955,2753 +22545,6 @@
         {
           "type": "atlas_static",
           "source": "Catalog/views/mobs/incision.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:acid_orb",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Acid Orb",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:apothecarist",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Apothecarist",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:archevoker",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Archevoker",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:ball_lightning",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Шаровая молния",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:black_hole",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Black Hole",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:blood_needle",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Blood Needle",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:blood_slash_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Blood Slash",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:chain_lightning",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Chain Lightning",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:citadel_keeper",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Ancient Knight",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:cone_of_cold_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Cone of Cold",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:creeper_head_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Creeper Head",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:cryomancer",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Cryomancer",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:cultist",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Cultist",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:cursed_armor_stand",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Cursed Armor Stand",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:dead_king_corpse",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Skeleton",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:debug_wizard",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Debug Wizard",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:devour_jaw",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Devour Jaw",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:dragon_breath_pool",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Dragon Breath",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:dragon_breath_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Dragon Breath",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:earthquake_aoe",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Earthquake",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:echoing_strike",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Echoing Strike",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:eldritch_blast",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Потусторонний выстрел",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:electrocute_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Electrocute",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:fiery_dagger",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Fiery Dagger",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:fire_arrow",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Fire Arrow",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:fire_breath_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Fire Breath",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:fire_field",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Fiery Field",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:firebolt_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Firebolt",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:firefly_swarm",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Firefly Swarm",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:flame_strike",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Flame Strike",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:frozen_humanoid",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Frozen",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:guiding_bolt",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Guiding Bolt",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:gust",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Gust",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:healing_aoe",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Healing Aoe",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:ice_block_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Iceologer Block",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:ice_spider",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Ice Spider",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:ice_spike",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Ice Spike",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:icicle_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Icicle",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:large_fireball",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Large Fireball",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:lightning_lance_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Lightning Lance",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:lightning_strike",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Lightning Strike",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:magic_arrow_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Magic Arrow",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:magic_missile_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Magic Missile",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:magma_ball",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Magma Bomb",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:necromancer",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Necromancer",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:poison_arrow",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Poison Arrow",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:poison_breath",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Poison Breath",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:poison_cloud",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Poison Cloud",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:poison_splash",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Poison Splash",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:portal",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Portal",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:priest",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Priest",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:pyromancer",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Pyromancer",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:ray_of_frost",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Ray of Frost",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:sculk_tentacle",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Sculk Tentacle",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:shield",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Shield",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:small_fireball",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Small Fireball",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:small_magic_arrow",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Magic Arrow",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:spectral_hammer",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Spectral Hammer",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:spectral_steed",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Spectral Steed",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:stomp_aoe",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Stomp",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:sunbeam",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Sunbeam",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:target_area",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Target Area",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:thrown_item",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Thrown Item",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:void_tentacle",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Void Tentacles",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:wall_of_fire",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Wall of Fire",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:wisp",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Wisp",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "irons_spellbooks:wither_skull_projectile",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Wither Skull",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/irons_spellbooks.json",
           "confidence": "inferred"
         }
       ],
@@ -28668,6 +25511,47 @@
       ]
     },
     {
+      "id": "minecraft:camel_husk",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Camel Husk",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/minecraft.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "minecraft:cat",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Cat",
@@ -29040,6 +25924,88 @@
       "id": "minecraft:creeper",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Creeper",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/minecraft.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "minecraft:cushion",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Cushion",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/minecraft.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "minecraft:custom_boat",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Boat",
       "original": {
         "status": "unresolved",
         "expression": null,
@@ -31087,6 +28053,47 @@
       ]
     },
     {
+      "id": "minecraft:nautilus",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Nautilus",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/minecraft.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "minecraft:ocelot",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Ocelot",
@@ -31212,7 +28219,7 @@
     {
       "id": "minecraft:pale_oak_chest_boat",
       "kind": "damage_capable_entity_candidate",
-      "display_name": "Pale Oak Boat with Chest",
+      "display_name": "Boat with Chest",
       "original": {
         "status": "unresolved",
         "expression": null,
@@ -31254,6 +28261,47 @@
       "id": "minecraft:panda",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Panda",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/minecraft.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "minecraft:parched",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Parched",
       "original": {
         "status": "unresolved",
         "expression": null,
@@ -35638,6 +32686,47 @@
       ]
     },
     {
+      "id": "minecraft:zombie_nautilus",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Zombie Nautilus",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/minecraft.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "minecraft:zombie_villager",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Zombie Villager",
@@ -39697,129 +36786,6 @@
       ]
     },
     {
-      "id": "railways:benchcart",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Minecart with Workbench",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/railways.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "railways:conductor",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Conductor",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/railways.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "railways:jukeboxcart",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Minecart with Jukebox",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/railways.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
       "id": "ribbits:ribbit",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Ribbit",
@@ -40462,6 +37428,416 @@
         {
           "type": "atlas_static",
           "source": "Catalog/views/mobs/rottencreatures.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:net",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Net",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:royal_arrow",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Royal Arrow",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:royal_bomb",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Royal Bomb",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:royal_bomb_projectile",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Royal Bomb Projectile",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:royal_creeper",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Royal Creeper",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:royal_ender_pearl",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Royal Ender Pearl",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:royal_enderman",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Royal Enderman",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:royal_skeleton",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Royal Skeleton",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:royal_zombie",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Royal Zombie",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "royalvariations:spectral_anvil",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Spectral Anvil",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/royalvariations.json",
           "confidence": "inferred"
         }
       ],
@@ -43004,293 +40380,6 @@
         {
           "type": "atlas_static",
           "source": "Catalog/views/mobs/skarrier_mobs.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "smallships:brigg",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Brigg",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/smallships.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "smallships:cog",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Cog",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/smallships.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "smallships:dhow",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Dhow",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/smallships.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "smallships:drakkar",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Drakkar",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/smallships.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "smallships:galley",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Galley",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/smallships.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "smallships:rowboat",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "Rowing Boat",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/smallships.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "health",
-        "armor",
-        "attack channels",
-        "speed/range",
-        "AI uptime",
-        "owner scaling",
-        "cost/upkeep"
-      ]
-    },
-    {
-      "id": "smallships:war_galley",
-      "kind": "damage_capable_entity_candidate",
-      "display_name": "War Galley",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/views/mobs/smallships.json",
           "confidence": "inferred"
         }
       ],
@@ -47555,6 +44644,908 @@
         {
           "type": "atlas_static",
           "source": "Catalog/views/mobs/spider_overhaul.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:ash_willow_boat",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Ash Willow Boat",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:ash_willow_chest_boat",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Ash Willow Boat with Chest",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:blub",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Blub",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:dark_sniffer",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Dark Sniffer",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:mini_rift",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Mini Rift",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:monarch",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Monarch",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:monarch_echo",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Monarch Echo",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:monarch_explosion_projectile",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Monarch Explosive Projectile",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:nester",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Nester",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:nuzzle",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Nuzzle",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:overgrown_willow_boat",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Overgrown Willow Boat",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:overgrown_willow_chest_boat",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Overgrown Willow Boat with Chest",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:pollinator",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Pollinator",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:pollinator_projectile",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Pollinator Drool",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:rift",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Sift Rift",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:scavenger",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Scavenger",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:scavenger_projectile",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Scavenger Soul",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:seedling",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Seedling",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:siftite_return",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Returning Siftite",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:singer",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Singer",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:slabber",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Slabber",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "the_sift:stalker",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Stalker",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/the_sift.json",
           "confidence": "inferred"
         }
       ],
@@ -56083,6 +54074,293 @@
         {
           "type": "atlas_static",
           "source": "Catalog/views/mobs/whaleborne.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "wildscapes:abomination",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Abomination of the Witches",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "wildscapes:bogged",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Bogged",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "wildscapes:cypress_boat",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Cypress Boat",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "wildscapes:cypress_chest_boat",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Cypress Boat with Chest",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "wildscapes:incendiary_bottle",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Incendiary Bottle",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "wildscapes:mirelash_hook",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Mirelash Hook",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "wildscapes:residue_cloud",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Witch Residue",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/wildscapes.json",
           "confidence": "inferred"
         }
       ],

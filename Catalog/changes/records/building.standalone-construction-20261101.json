@@ -3,12 +3,21 @@
   "change_id": "building.standalone-construction-20261101",
   "status": "conditional",
   "selectors": [
-    { "type": "namespace", "registry": "*", "value": "jem_building" }
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_building"
+    }
   ],
   "conditions": [
-    { "runtime": "The standalone JEM Building mod is installed on both the logical server and participating clients." }
+    {
+      "runtime": "The standalone JEM Building mod is installed on both the logical server and participating clients."
+    }
   ],
-  "precedence": { "layer": "standalone_mod", "priority": 100 },
+  "precedence": {
+    "layer": "standalone_mod",
+    "priority": 100
+  },
   "change": {
     "summary": "Add the standalone survival construction hammer and persistent hollow construction placeholders.",
     "modifiers": [
@@ -43,9 +52,7 @@
     "kind": "Forge standalone gameplay module",
     "source_files": [
       "Mods/JEMBuilding/gradle.properties",
-      "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/**",
       "Mods/JEMBuilding/src/main/resources/data/jem_building/recipes/builder_hammer.json",
-      "Mods/JEMBuilding/src/main/resources/assets/jem_building/**",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/handcrafted/UnifiedHammer.java"
     ]
   },
@@ -127,10 +134,37 @@
         "Mods/JEMCompat/README.md",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/handcrafted/UnifiedHammer.java"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMBuilding/src/main/java/com/siirio/jembuilding/**",
+        "Mods/JEMBuilding/src/main/resources/assets/jem_building/**"
+      ]
     }
   ],
   "impacts": {
-    "systems": ["items", "blocks", "recipes", "world_saved_data", "server_lifecycle", "networking", "inventory", "block_placement_permissions", "client_input", "client_gui", "jade_tooltip", "world_preview", "JEM Compat", "Handcrafted", "Building But Better", "item_obliterator"],
+    "systems": [
+      "items",
+      "blocks",
+      "recipes",
+      "world_saved_data",
+      "server_lifecycle",
+      "networking",
+      "inventory",
+      "block_placement_permissions",
+      "client_input",
+      "client_gui",
+      "jade_tooltip",
+      "world_preview",
+      "JEM Compat",
+      "Handcrafted",
+      "Building But Better",
+      "item_obliterator"
+    ],
     "relations": [
       "jem_building:builder_hammer -> jem_building:construction_placeholder",
       "held BlockItem -> native placement and inventory consumption",
@@ -142,6 +176,8 @@
       "jem_building:builder_hammer -> #bbb:hammers through JEM Compat"
     ],
     "notes": "JEM Building remains independently loadable. Protocol 4 changes the network handshake for selection and confirmation, so the exact matching JEM Building artifact is required on client and server. When JEM Compat, Handcrafted and BBB are present, JEM Compat defers only while the hammer has a server-confirmed construction revision and otherwise preserves their registered block behavior.",
-    "unresolved": ["Runtime player acceptance and third-party claim-mod behavior were not exercised because the user prohibited all tests and validation runs."]
+    "unresolved": [
+      "Runtime player acceptance and third-party claim-mod behavior were not exercised because the user prohibited all tests and validation runs."
+    ]
   }
 }

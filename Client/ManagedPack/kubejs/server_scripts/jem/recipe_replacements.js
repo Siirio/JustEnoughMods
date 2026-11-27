@@ -3,38 +3,6 @@ ServerEvents.recipes(event => {
     event.remove({ output: 'handcrafted:hammer' })
     if (Platform.isLoaded('jem_building')) event.remove({ output: 'bbb:hammer' })
   }
-  const removedTransportItems = [
-    'immersive_aircraft:airship',
-    'immersive_aircraft:bamboo_hopper',
-    'immersive_aircraft:bomb_bay',
-    'immersive_aircraft:cargo_airship',
-    'immersive_aircraft:eco_engine',
-    'immersive_aircraft:enhanced_propeller',
-    'immersive_aircraft:gyrodyne',
-    'immersive_aircraft:gyroscope',
-    'immersive_aircraft:gyroscope_dials',
-    'immersive_aircraft:gyroscope_hud',
-    'immersive_aircraft:heavy_crossbow',
-    'immersive_aircraft:hull_reinforcement',
-    'immersive_aircraft:improved_landing_gear',
-    'immersive_aircraft:industrial_gears',
-    'immersive_aircraft:nether_engine',
-    'immersive_aircraft:quadrocopter',
-    'immersive_aircraft:rotary_cannon',
-    'immersive_aircraft:sail',
-    'immersive_aircraft:steel_boiler',
-    'immersive_aircraft:sturdy_pipes',
-    'immersive_aircraft:telescope',
-    'immersive_aircraft:warship'
-  ]
-  if (Platform.isLoaded('immersive_aircraft') && Platform.isLoaded('jemcompat')) {
-    removedTransportItems.forEach(item => event.remove({ output: item }))
-    event.shapeless('4x jemcompat:aircraft_fuel', [
-    'minecraft:coal_block',
-    'minecraft:blaze_powder',
-    'minecraft:honey_bottle'
-  ]).id('jemcompat:aircraft_fuel')
-  }
   event.smelting('minecraft:leather', 'minecraft:rotten_flesh').id('jem:leather_from_rotten_flesh')
   if (Platform.isLoaded('farm_and_charm')) event.remove({ id: 'farm_and_charm:feeding_trough' })
   if (Platform.isLoaded('tide')) {

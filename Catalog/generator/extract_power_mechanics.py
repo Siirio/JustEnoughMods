@@ -520,6 +520,13 @@ def channel_records(text: str, patterns: dict[str, tuple[str, ...]], owner_reaso
 
 def spell_evidence(config_values: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     jar = MODS / "irons_spellbooks-1.20.1-3.15.6.jar"
+    if not jar.is_file():
+        return [], {
+            "file": jar.name,
+            "status": "absent",
+            "sha256": None,
+            "class_count": 0,
+        }
     wanted = {
         row["id"].partition(":")[2]: row
         for row in load(CATALOG / "views" / "power" / "spells.json")["records"]

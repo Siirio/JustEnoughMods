@@ -10,9 +10,9 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `dev/ftb/mods/ftbxmodcompat/ftbquests/jei/LootCrateCategory$1` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/jei/LootCrateCategory$1.class`
-- `dev/ftb/mods/ftbxmodcompat/ftbquests/jei/LootCrateCategory` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/jei/LootCrateCategory.class`
-- `dev/ftb/mods/ftbxmodcompat/ftbquests/jei/QuestCategory` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/jei/QuestCategory.class`
-- `dev/ftb/mods/ftbxmodcompat/ftbquests/recipemod_common/LootCrateTextRenderer` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/recipemod_common/LootCrateTextRenderer.class`
-- `dev/ftb/mods/ftbxmodcompat/ftbquests/rei/LootCrateDisplayCategory` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/rei/LootCrateDisplayCategory.class`
-- `dev/ftb/mods/ftbxmodcompat/ftbquests/rei/QuestDisplayCategory` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/rei/QuestDisplayCategory.class`
+- `dev/ftb/mods/ftbxmodcompat/ftbquests/jei/LootCrateCategory$1` extends `java/lang/Object`; `$PROFILE/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/jei/LootCrateCategory$1.class`
+- `dev/ftb/mods/ftbxmodcompat/ftbquests/jei/LootCrateCategory` extends `java/lang/Object`; `$PROFILE/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/jei/LootCrateCategory.class`
+- `dev/ftb/mods/ftbxmodcompat/ftbquests/jei/QuestCategory` extends `java/lang/Object`; `$PROFILE/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/jei/QuestCategory.class`
+- `dev/ftb/mods/ftbxmodcompat/ftbquests/recipemod_common/LootCrateTextRenderer` extends `java/lang/Object`; `$PROFILE/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/recipemod_common/LootCrateTextRenderer.class`
+- `dev/ftb/mods/ftbxmodcompat/ftbquests/rei/LootCrateDisplayCategory` extends `java/lang/Object`; `$PROFILE/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/rei/LootCrateDisplayCategory.class`
+- `dev/ftb/mods/ftbxmodcompat/ftbquests/rei/QuestDisplayCategory` extends `java/lang/Object`; `$PROFILE/mods/ftb-xmod-compat-forge-2.1.3.jar!/dev/ftb/mods/ftbxmodcompat/ftbquests/rei/QuestDisplayCategory.class`

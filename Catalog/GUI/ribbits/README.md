@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/yungnickyoung/minecraft/ribbits/mixin/mixins/client/supporters/SkinCustomizationScreenMixin` extends `net/minecraft/client/gui/screens/OptionsSubScreen`; `$PROFILE/automodpack/client/active/mods/Ribbits-1.20.1-Forge-3.0.5.jar!/com/yungnickyoung/minecraft/ribbits/mixin/mixins/client/supporters/SkinCustomizationScreenMixin.class`
+- `com/yungnickyoung/minecraft/ribbits/mixin/mixins/client/supporters/SkinCustomizationScreenMixin` extends `net/minecraft/client/gui/screens/OptionsSubScreen`; `$PROFILE/mods/Ribbits-1.20.1-Forge-3.0.5.jar!/com/yungnickyoung/minecraft/ribbits/mixin/mixins/client/supporters/SkinCustomizationScreenMixin.class`

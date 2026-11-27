@@ -2285,80 +2285,6 @@
       "icon": "minecraft:campfire"
     },
     {
-      "advancement_id": "jem:engineering/root",
-      "number": "0",
-      "tab": "engineering",
-      "parent": null,
-      "title_ru": "engineering",
-      "title_en": "Engineering",
-      "short_ru": "Корень вкладки.",
-      "short_en": "Tab root.",
-      "exact_ru": "Начни с Create, а затем узнай, что тяжёлая работа делает с буром.",
-      "exact_en": "Begin with Create, then learn what hard work does to a drill.",
-      "flags": [
-        "ROOT"
-      ],
-      "mechanics": "Tab root",
-      "implementation": "minecraft:tick",
-      "technical_metadata": "",
-      "resource_ids": [],
-      "strategy": "VANILLA_EXACT",
-      "authoritative_source": "Minecraft",
-      "hook": "minecraft:tick",
-      "stateful": false,
-      "test": "Static criterion inspection",
-      "source_file": "native-first-rebuild",
-      "criteria": {
-        "completion": {
-          "trigger": "minecraft:tick"
-        }
-      },
-      "requirements": [
-        [
-          "completion"
-        ]
-      ],
-      "provider": "minecraft:tick",
-      "icon": "create:wrench"
-    },
-    {
-      "advancement_id": "jem:engineering/drill_work",
-      "number": "J04",
-      "tab": "engineering",
-      "parent": "jem:engineering/root",
-      "title_ru": "Камень сам не уйдёт",
-      "title_en": "The Rock Won't Move Itself",
-      "short_ru": "Пусть подвижная буровая сама пройдёт через породу.",
-      "short_en": "Let a moving drilling machine cut through rock on its own.",
-      "exact_ru": "Собери подвижную конструкцию с механическим буром и пробури ею обычный блок естественной породы. Бур должен ломать блок именно как часть движущейся конструкции.",
-      "exact_en": "Build a moving contraption with a Mechanical Drill and use it to bore through a normal natural rock block. The drill must break the block as part of the moving contraption.",
-      "flags": [
-        "CUSTOM"
-      ],
-      "mechanics": "Create Mechanical Drill contraption + JEM wear",
-      "implementation": "Begins JEM persistent per-drill wear tracking. Mechanical Harvester remains completely upstream/untouched.",
-      "technical_metadata": "Implementation / QA: Begins JEM persistent per-drill wear tracking. Mechanical Harvester remains completely upstream/untouched.",
-      "resource_ids": [],
-      "strategy": "JEM_GAMEPLAY_EVENT",
-      "authoritative_source": "JEM gameplay mechanic",
-      "hook": "Begins JEM persistent per-drill wear tracking. Mechanical Harvester remains completely upstream/untouched.",
-      "stateful": true,
-      "test": "Validate jem:engineering/drill_work positive action and nearest negative proxy",
-      "source_file": "JEM_Engineering_Railways_Achievement_Tree_v3_technical_pruned.md",
-      "criteria": {
-        "completion": {
-          "trigger": "jem_advancements:node/jem/engineering/drill_work"
-        }
-      },
-      "requirements": [
-        [
-          "completion"
-        ]
-      ],
-      "provider": "BlockBreakingMovementBehaviourMixin#onBlockBroken",
-      "icon": "create:mechanical_drill"
-    },
-    {
       "advancement_id": "jem:engineering/drill_service",
       "number": "J07",
       "tab": "engineering",
@@ -2396,43 +2322,6 @@
       ],
       "provider": "AbstractContraptionEntityMixin#serviceDrills",
       "icon": "minecraft:iron_ingot"
-    },
-    {
-      "advancement_id": "jem:engineering/drill_replaced",
-      "number": "J10",
-      "tab": "engineering",
-      "parent": "jem:engineering/drill_service",
-      "title_ru": "Новый бур, та же работа",
-      "title_en": "New Drill, Same Job",
-      "short_ru": "Замени полностью выработанный бур и продолжи той же машиной.",
-      "short_en": "Replace an exhausted drill and keep the same machine working.",
-      "exact_ru": "Доработай механический бур без оставшихся ремонтов до полного износа, замени его новым механическим буром и снова продолжи бурение этой же установкой.",
-      "exact_en": "Wear out a Mechanical Drill with no repairs remaining, replace it with a fresh Mechanical Drill, and resume drilling with the same machine.",
-      "flags": [
-        "CUSTOM"
-      ],
-      "mechanics": "JEM exhausted drill replacement",
-      "implementation": "Wear/repair history must survive pickup, placement, assembly and disassembly so replacement cannot be bypassed by re-placing.",
-      "technical_metadata": "Implementation / QA: Wear/repair history must survive pickup, placement, assembly and disassembly so replacement cannot be bypassed by re-placing.",
-      "resource_ids": [],
-      "strategy": "JEM_GAMEPLAY_EVENT",
-      "authoritative_source": "JEM gameplay mechanic",
-      "hook": "Wear/repair history must survive pickup, placement, assembly and disassembly so replacement cannot be bypassed by re-placing.",
-      "stateful": true,
-      "test": "Validate jem:engineering/drill_replaced positive action and nearest negative proxy",
-      "source_file": "JEM_Engineering_Railways_Achievement_Tree_v3_technical_pruned.md",
-      "criteria": {
-        "completion": {
-          "trigger": "jem_advancements:node/jem/engineering/drill_replaced"
-        }
-      },
-      "requirements": [
-        [
-          "completion"
-        ]
-      ],
-      "provider": "BlockBreakingMovementBehaviourMixin#onBlockBroken",
-      "icon": "create:andesite_alloy"
     },
     {
       "advancement_id": "jem_guide:cool_stuff/root",

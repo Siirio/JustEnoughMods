@@ -1,3 +1,18 @@
+## 2026-11-27 - Retire Create and Immersive Aircraft
+
+- The user requested complete removal of Create, all Create add-ons, Immersive Aircraft, all aircraft add-ons, KubeJS Create and JEM Drill Lifecycle from both the managed client and the ordinary local Server
+- The user also requested removal of obsolete Flywheel, Ponder and Registrate dependencies where no retained mod requires them, plus all active consequences in JEM code, quests, Paxi, Item Obliterator, JEI, Economy, localization, Gradle, configuration, Registry Atlas and resources
+- Codex kept optional Create support in retained third-party mods only where their exact metadata marks Create as optional. No standalone Flywheel, Ponder or Registrate artifact remains in the active inventories
+- JEMCompat retires aircraft fuel, inventory, lift and engine policies and their Mixins. JEM Achievements retires Create, rail, conductor, aircraft and drill implementations and generated guide content
+- FTB Quests removes the complete "Cogs & Trains" chapter and the aircraft quests. The travel progression now uses existing horse quests in early game, a focused Subterranodon flight achievement and quest in mid game, and a new Elytra inventory quest in late game
+- Existing worlds require a pre-removal backup and dismantling pass under the old pack. The reduced pack cannot convert Create blocks, contraptions, trains or aircraft. Removed registry objects are deleted when affected chunks load
+- Codex removed the missed Paxi aircraft datapack after the first local server load exposed its remaining aircraft recipes. A second ordinary server load completed without aircraft recipe parsing warnings
+- Bug / Both Sided / the power-index generator required a fixed Iron's Spells JAR that was already absent and retained stale removed-mod evidence / in testing with absent-artifact handling and rebuilt derived power indexes
+- The refreshed Registry Atlas contains 29,744 server subjects with 58,817 facts and 29,918 client subjects with 59,166 facts, with no canonical conflicts at the completed validation boundary
+- Codex built and synchronized fresh JEM Achievements, JEMCompat and JEM Economy production artifacts. Automated tests and gameplay QA were not run
+- Native AutoModpack published content token `ec9ea396b568ed974202b54636876f6181b28de1`. The `Test JustEnoughMods` profile applied that token, verified the three fresh JEM JARs and has no pending native transaction
+- The stable `JustEnoughMods` profile, MineRENT and the immutable release baseline remain unchanged
+
 ## 2026-11-26 - Record future creature, raid, and fishing candidates
 
 - The user asked to plan Mebahel's Creatures and Raids:Enhanced, and to consider Starcatcher instead of Tide for a future feature update. The request is for planning only

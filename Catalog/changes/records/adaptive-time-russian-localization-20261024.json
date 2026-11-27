@@ -70,9 +70,6 @@
       "Client/ManagedPack/kubejs/assets/companions/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/connectiblechains/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/coolrain/lang/ru_ru.json",
-      "Client/ManagedPack/kubejs/assets/create/lang/ru_ru.json",
-      "Client/ManagedPack/kubejs/assets/create_train_parts/lang/ru_ru.json",
-      "Client/ManagedPack/kubejs/assets/createrailwaysnavigator/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/creativecore/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/creeperoverhaul/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/curios/lang/ru_ru.json",
@@ -99,7 +96,6 @@
       "Client/ManagedPack/kubejs/assets/fastquit/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/fdlib/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/flashlightmod/lang/ru_ru.json",
-      "Client/ManagedPack/kubejs/assets/flywheel/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/fpsreducer/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/fragmentum/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/framework/lang/ru_ru.json",
@@ -113,8 +109,6 @@
       "Client/ManagedPack/kubejs/assets/golemoverhaul/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/handcrafted/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/herbalbrews/lang/ru_ru.json",
-      "Client/ManagedPack/kubejs/assets/horseman/lang/*.json",
-      "Client/ManagedPack/kubejs/assets/immersive_aircraft/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/immersivelanterns/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/incision/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/infinitybuttons/lang/ru_ru.json",
@@ -164,12 +158,10 @@
       "Client/ManagedPack/kubejs/assets/particular/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/pehkui/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/playerrevive/lang/ru_ru.json",
-      "Client/ManagedPack/kubejs/assets/ponder/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/primal/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/proplacer/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/punchy/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/quickskin/lang/ru_ru.json",
-      "Client/ManagedPack/kubejs/assets/railways/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/ribbits/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/rightclickharvest/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/screenshot_viewer/lang/ru_ru.json",
@@ -483,6 +475,30 @@
       "summary": "Remove TrashSlot's current Russian overlay when the user retires the installed mod; retain its 2026-10-24 source path in historical evidence.",
       "source_files": [
         "Client/ManagedPack/kubejs/assets/trashslot/lang/ru_ru.json"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/kubejs/assets/create/lang/ru_ru.json",
+        "Client/ManagedPack/kubejs/assets/create_train_parts/lang/ru_ru.json",
+        "Client/ManagedPack/kubejs/assets/createrailwaysnavigator/lang/ru_ru.json",
+        "Client/ManagedPack/kubejs/assets/flywheel/lang/ru_ru.json",
+        "Client/ManagedPack/kubejs/assets/immersive_aircraft/lang/ru_ru.json",
+        "Client/ManagedPack/kubejs/assets/ponder/lang/ru_ru.json",
+        "Client/ManagedPack/kubejs/assets/railways/lang/ru_ru.json"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/kubejs/assets/horseman/lang/*.json"
       ]
     }
   ],

@@ -10,5 +10,5 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/evandev/zipline/client/ClientConfigSetup` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/zipline-forge-1.20.1-1.3.0.jar!/com/evandev/zipline/client/ClientConfigSetup.class`
-- `com/evandev/zipline/config/ClothConfigIntegration` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/zipline-forge-1.20.1-1.3.0.jar!/com/evandev/zipline/config/ClothConfigIntegration.class`
+- `com/evandev/zipline/client/ClientConfigSetup` extends `java/lang/Object`; `$PROFILE/mods/zipline-forge-1.20.1-1.3.0.jar!/com/evandev/zipline/client/ClientConfigSetup.class`
+- `com/evandev/zipline/config/ClothConfigIntegration` extends `java/lang/Object`; `$PROFILE/mods/zipline-forge-1.20.1-1.3.0.jar!/com/evandev/zipline/config/ClothConfigIntegration.class`

@@ -22,8 +22,8 @@ public final class ProfessionCatalog {
                 n("target_fishing","targeting",1,"",5,"minecraft:tropical_fish"), n("rare_bait","targeting",2,"target_fishing",25,"minecraft:nautilus_shell"), n("trophy_catch","targeting",3,"rare_bait",50,"minecraft:heart_of_the_sea"),
                 n("double_catch","yield",1,"",10,"minecraft:cod"), n("steady_line","yield",2,"double_catch",30,"minecraft:string"), n("net_master","yield",3,"steady_line",50,"minecraft:pufferfish")));
         NODES.put(ProfessionId.ENGINEER, List.of(
-                n("gear_swap","machines",1,"",5,"create:wrench"), n("shaft_builder","machines",2,"gear_swap",15,"create:shaft"), n("factory_copy","machines",3,"shaft_builder",30,"create:schematic"),
-                n("track_run","railways",1,"",10,"create:track"), n("schedule_templates","railways",2,"track_run",25,"create:schedule"), n("cargo_contract","railways",3,"schedule_templates",40,"minecraft:minecart")));
+                n("gear_swap","machines",1,"",5,"minecraft:redstone"), n("shaft_builder","machines",2,"gear_swap",15,"minecraft:piston"), n("factory_copy","machines",3,"shaft_builder",30,"minecraft:observer"),
+                n("track_run","railways",1,"",10,"minecraft:rail"), n("schedule_templates","railways",2,"track_run",25,"minecraft:clock"), n("cargo_contract","railways",3,"schedule_templates",40,"minecraft:minecart")));
         NODES.put(ProfessionId.MERCHANT, List.of(
                 n("buy_orders","contracts",1,"",5,"minecraft:paper"), n("auction","contracts",2,"buy_orders",15,"minecraft:clock"), n("commission_escrow","contracts",3,"auction",20,"minecraft:written_book"),
                 n("stall_sign","markets",1,"",10,"minecraft:oak_sign"), n("trading_post","markets",2,"stall_sign",30,"minecraft:emerald"), n("market_network","markets",3,"trading_post",40,"minecraft:ender_chest")));

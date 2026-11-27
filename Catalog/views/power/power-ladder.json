@@ -1,62 +1,13 @@
 {
   "schema_version": 4,
   "view": "phase_3_weapon_power_ladder",
-  "snapshot_sha": "a20a47aa2f8fc8948cd5d8f86ab72da20ded20e1",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
     "deterministic": true
   },
   "records": [
-    {
-      "id": "skarrier_mobs:ban_sword",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 1500.0,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "cataclysm:ceraunus",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 16.0,
-      "exact_epic_fight_armor_negation": [
-        10.0
-      ],
-      "special_attack_methods_traced": 3,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "active_java_moveset_phase_numeric_unresolved",
-          "provider": "p1nero_ec:ceraunus",
-          "moveset": [
-            "p1nero_ec:arc_auto1",
-            "p1nero_ec:arc_auto2",
-            "p1nero_ec:arc_auto3"
-          ]
-        },
-        "special_ability_count": 2,
-        "verified_balance_issue": false
-      }
-    },
     {
       "id": "efn:ruinsgreatsword",
       "kind": "weapon_power_ladder_entry",
@@ -77,134 +28,11 @@
       }
     },
     {
-      "id": "cataclysm:soul_render",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 15.0,
-      "exact_epic_fight_armor_negation": [
-        2.8,
-        20.0
-      ],
-      "special_attack_methods_traced": 2,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "resource_collision_and_phase_numeric_unresolved",
-          "provider_candidates": [
-            "epicfight:spear",
-            "p1nero_ec:soul_render"
-          ],
-          "java_moveset": [
-            "efn:lance_auto1",
-            "efn:lance_auto2",
-            "efn:lance_auto3",
-            "efn:lance_auto4"
-          ]
-        },
-        "special_ability_count": 2,
-        "verified_balance_issue": false
-      }
-    },
-    {
       "id": "block_factorys_bosses:knight_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 14.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 2,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "no_active_capability_observed",
-          "provider": null
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
-      }
-    },
-    {
-      "id": "cataclysm:the_incinerator",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 14.0,
-      "exact_epic_fight_armor_negation": [
-        6.0,
-        20.0
-      ],
-      "special_attack_methods_traced": 3,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "resource_collision_and_phase_numeric_unresolved",
-          "provider_candidates": [
-            "epicfight:greatsword",
-            "p1nero_ec:the_incinerator"
-          ],
-          "java_moveset": [
-            "efn:greatsword_auto1",
-            "efn:greatsword_auto2",
-            "efn:greatsword_auto3"
-          ]
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
-      }
-    },
-    {
-      "id": "legendary_monsters:shattered_greatsword",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 14.0,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "no_active_capability_observed",
-          "provider": null
-        },
-        "special_ability_count": 0,
-        "verified_balance_issue": false
-      }
-    },
-    {
-      "id": "legendary_monsters:the_tesseract",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 15.0,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 1,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -242,90 +70,6 @@
       }
     },
     {
-      "id": "cataclysm:gauntlet_of_bulwark",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 11.0,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 1,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "no_active_capability_observed",
-          "provider": null
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
-      }
-    },
-    {
-      "id": "cataclysm:gauntlet_of_guard",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 11.0,
-      "exact_epic_fight_armor_negation": [
-        10.0
-      ],
-      "special_attack_methods_traced": 0,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "active_java_moveset_phase_numeric_unresolved",
-          "provider": "p1nero_ec:gauntlet_of_guard",
-          "moveset": [
-            "p1nero_ec:bedivere_auto1",
-            "p1nero_ec:bedivere_auto2",
-            "p1nero_ec:bedivere_auto3",
-            "p1nero_ec:bedivere_auto4",
-            "p1nero_ec:bedivere_auto5"
-          ]
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
-      }
-    },
-    {
-      "id": "cataclysm:gauntlet_of_maelstrom",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 11.0,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "no_active_capability_observed",
-          "provider": null
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
-      }
-    },
-    {
       "id": "efn:meen_spear",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 11.0,
@@ -342,38 +86,6 @@
         "status": "unresolved",
         "tier": null,
         "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "cataclysm:astrape",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 10.5,
-      "exact_epic_fight_armor_negation": [
-        30.0
-      ],
-      "special_attack_methods_traced": 4,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "active_java_moveset_phase_numeric_unresolved",
-          "provider": "p1nero_ec:astrape",
-          "moveset": [
-            "epicfight:spear_twohand_auto1",
-            "epicfight:spear_twohand_auto2",
-            "p1nero_ec:astrape_auto3"
-          ]
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
       }
     },
     {
@@ -430,31 +142,6 @@
       }
     },
     {
-      "id": "legendary_monsters:enderitium_axe",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 9.5,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "no_active_capability_observed",
-          "provider": null
-        },
-        "special_ability_count": 0,
-        "verified_balance_issue": false
-      }
-    },
-    {
       "id": "blastfromthepast:ice_spear",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 9.0,
@@ -469,127 +156,6 @@
         "status": "unresolved",
         "tier": null,
         "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "cataclysm:meat_shredder",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 8.5,
-      "exact_epic_fight_armor_negation": [
-        2.5
-      ],
-      "special_attack_methods_traced": 1,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "active_standard_type_phase_numeric_unresolved",
-          "provider": "epicfight:sword"
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
-      }
-    },
-    {
-      "id": "cataclysm:the_annihilator",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 8.5,
-      "exact_epic_fight_armor_negation": [
-        3.5,
-        10.0
-      ],
-      "special_attack_methods_traced": 1,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "resource_collision_and_phase_numeric_unresolved",
-          "provider_candidates": [
-            "epicfight:spear",
-            "p1nero_ec:dual_annihilator"
-          ],
-          "java_moveset": [
-            "p1nero_ec:annihilator_auto1",
-            "p1nero_ec:annihilator_auto2",
-            "p1nero_ec:annihilator_auto3",
-            "p1nero_ec:annihilator_auto4"
-          ]
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
-      }
-    },
-    {
-      "id": "cataclysm:tidal_claws",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 8.0,
-      "exact_epic_fight_armor_negation": [
-        10.0
-      ],
-      "special_attack_methods_traced": 1,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "active_java_moveset_external_phase_numeric_unresolved",
-          "provider": "p1nero_ec:tidal_claw",
-          "moveset": [
-            "efn:claw_auto1",
-            "efn:claw_auto2",
-            "efn:claw_auto3"
-          ]
-        },
-        "special_ability_count": 1,
-        "verified_balance_issue": false
-      }
-    },
-    {
-      "id": "legendary_monsters:enderitium_sword",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 7.5,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": true,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "source_intent_only",
-        "tier": "boss_reward",
-        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
-      },
-      "stage_3_5a": {
-        "combo": {
-          "status": "no_active_capability_observed",
-          "provider": null
-        },
-        "special_ability_count": 0,
-        "verified_balance_issue": false
       }
     },
     {
@@ -673,42 +239,6 @@
       "exact_epic_fight_armor_negation": [
         20.0
       ],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "cataclysm:coral_spear",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 6.5,
-      "exact_epic_fight_armor_negation": [
-        2.2
-      ],
-      "special_attack_methods_traced": 1,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "cataclysm:black_steel_sword",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 6.0,
-      "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 0,
       "boss_reward": false,
       "actual_current_power_ranking": {
@@ -984,6 +514,55 @@
       }
     },
     {
+      "id": "cataclysm:astrape",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 10.5,
+      "exact_epic_fight_armor_negation": [
+        30.0
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_phase_numeric_unresolved",
+          "provider": "p1nero_ec:astrape",
+          "moveset": [
+            "epicfight:spear_twohand_auto1",
+            "epicfight:spear_twohand_auto2",
+            "p1nero_ec:astrape_auto3"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
+      }
+    },
+    {
+      "id": "cataclysm:black_steel_sword",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
       "id": "cataclysm:bulwark_of_the_flame",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
@@ -1000,6 +579,38 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      }
+    },
+    {
+      "id": "cataclysm:ceraunus",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 16.0,
+      "exact_epic_fight_armor_negation": [
+        10.0
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_phase_numeric_unresolved",
+          "provider": "p1nero_ec:ceraunus",
+          "moveset": [
+            "p1nero_ec:arc_auto1",
+            "p1nero_ec:arc_auto2",
+            "p1nero_ec:arc_auto3"
+          ]
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": false
       }
     },
     {
@@ -1022,13 +633,32 @@
       }
     },
     {
+      "id": "cataclysm:coral_spear",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [
+        2.2
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
       "id": "cataclysm:cursed_bow",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 1.0,
       "exact_epic_fight_armor_negation": [
         1.0
       ],
-      "special_attack_methods_traced": 1,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -1052,13 +682,97 @@
       }
     },
     {
+      "id": "cataclysm:gauntlet_of_bulwark",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 11.0,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
+      }
+    },
+    {
+      "id": "cataclysm:gauntlet_of_guard",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 11.0,
+      "exact_epic_fight_armor_negation": [
+        10.0
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_phase_numeric_unresolved",
+          "provider": "p1nero_ec:gauntlet_of_guard",
+          "moveset": [
+            "p1nero_ec:bedivere_auto1",
+            "p1nero_ec:bedivere_auto2",
+            "p1nero_ec:bedivere_auto3",
+            "p1nero_ec:bedivere_auto4",
+            "p1nero_ec:bedivere_auto5"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
+      }
+    },
+    {
+      "id": "cataclysm:gauntlet_of_maelstrom",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 11.0,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
+      }
+    },
+    {
       "id": "cataclysm:infernal_forge",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 13.0,
       "exact_epic_fight_armor_negation": [
         10.0
       ],
-      "special_attack_methods_traced": 1,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -1090,7 +804,7 @@
       "exact_epic_fight_armor_negation": [
         2.0
       ],
-      "special_attack_methods_traced": 3,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -1111,11 +825,38 @@
       }
     },
     {
+      "id": "cataclysm:meat_shredder",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 8.5,
+      "exact_epic_fight_armor_negation": [
+        2.5
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_standard_type_phase_numeric_unresolved",
+          "provider": "epicfight:sword"
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
+      }
+    },
+    {
       "id": "cataclysm:sandstorm_in_a_bottle",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 1.0,
       "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 1,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -1130,6 +871,82 @@
         "combo": {
           "status": "no_active_capability_observed",
           "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
+      }
+    },
+    {
+      "id": "cataclysm:soul_render",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 15.0,
+      "exact_epic_fight_armor_negation": [
+        2.8,
+        20.0,
+        20.0
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "resource_collision_and_phase_numeric_unresolved",
+          "provider_candidates": [
+            "epicfight:spear",
+            "p1nero_ec:soul_render"
+          ],
+          "java_moveset": [
+            "efn:lance_auto1",
+            "efn:lance_auto2",
+            "efn:lance_auto3",
+            "efn:lance_auto4"
+          ]
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": false
+      }
+    },
+    {
+      "id": "cataclysm:the_annihilator",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 8.5,
+      "exact_epic_fight_armor_negation": [
+        3.5,
+        10.0,
+        10.0
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "resource_collision_and_phase_numeric_unresolved",
+          "provider_candidates": [
+            "epicfight:spear",
+            "p1nero_ec:dual_annihilator"
+          ],
+          "java_moveset": [
+            "p1nero_ec:annihilator_auto1",
+            "p1nero_ec:annihilator_auto2",
+            "p1nero_ec:annihilator_auto3",
+            "p1nero_ec:annihilator_auto4"
+          ]
         },
         "special_ability_count": 1,
         "verified_balance_issue": false
@@ -1152,6 +969,75 @@
         "status": "unresolved",
         "tier": null,
         "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "cataclysm:the_incinerator",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 14.0,
+      "exact_epic_fight_armor_negation": [
+        6.0,
+        20.0,
+        20.0
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "resource_collision_and_phase_numeric_unresolved",
+          "provider_candidates": [
+            "epicfight:greatsword",
+            "p1nero_ec:the_incinerator"
+          ],
+          "java_moveset": [
+            "efn:greatsword_auto1",
+            "efn:greatsword_auto2",
+            "efn:greatsword_auto3"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
+      }
+    },
+    {
+      "id": "cataclysm:tidal_claws",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 8.0,
+      "exact_epic_fight_armor_negation": [
+        10.0
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_external_phase_numeric_unresolved",
+          "provider": "p1nero_ec:tidal_claw",
+          "moveset": [
+            "efn:claw_auto1",
+            "efn:claw_auto2",
+            "efn:claw_auto3"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
       }
     },
     {
@@ -1199,7 +1085,7 @@
       "exact_epic_fight_armor_negation": [
         1.5
       ],
-      "special_attack_methods_traced": 3,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -1291,11 +1177,28 @@
       }
     },
     {
-      "id": "create:cardboard_sword",
+      "id": "ec_ad:rib_bow",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
       "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 1,
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "ec_ad:sculk_bow",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
       "boss_reward": false,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -2192,6 +2095,25 @@
       }
     },
     {
+      "id": "epicfightx:eternal_night_scythe",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [
+        30.0
+      ],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
       "id": "handcrafted:hammer",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
@@ -2209,164 +2131,11 @@
       }
     },
     {
-      "id": "immersive_aircraft:heavy_crossbow",
+      "id": "jem_building:builder_hammer",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:autoloader_crossbow",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:blood_staff",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:dev_staff",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:fiery_dagger",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:graybeard_staff",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:ice_staff",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:improved_blood_staff",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:pyrium_staff",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 0,
-      "boss_reward": false,
-      "actual_current_power_ranking": {
-        "status": "unresolved_full_ranking",
-        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
-      },
-      "recommended_progression_ranking": {
-        "status": "unresolved",
-        "tier": null,
-        "reason": "No approved intended tier is encoded for this item."
-      }
-    },
-    {
-      "id": "irons_spellbooks:staff_of_the_nines",
-      "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
-      "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 1,
       "boss_reward": false,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -2408,7 +2177,7 @@
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 13.0,
       "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 1,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -2471,6 +2240,56 @@
       }
     },
     {
+      "id": "legendary_monsters:enderitium_axe",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 9.5,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 0,
+        "verified_balance_issue": false
+      }
+    },
+    {
+      "id": "legendary_monsters:enderitium_sword",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 7.5,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 0,
+        "verified_balance_issue": false
+      }
+    },
+    {
       "id": "legendary_monsters:knights_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 6.0,
@@ -2500,7 +2319,7 @@
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 14.0,
       "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 2,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -2525,7 +2344,7 @@
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 9.0,
       "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 1,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -2546,11 +2365,36 @@
       }
     },
     {
+      "id": "legendary_monsters:shattered_greatsword",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 14.0,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 0,
+        "verified_balance_issue": false
+      }
+    },
+    {
       "id": "legendary_monsters:soul_great_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 13.0,
       "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 2,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -2613,6 +2457,31 @@
       }
     },
     {
+      "id": "legendary_monsters:the_tesseract",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": 15.0,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": true,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "source_intent_only",
+        "tier": "boss_reward",
+        "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
+      }
+    },
+    {
       "id": "legendary_monsters:void_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 10.0,
@@ -2667,7 +2536,7 @@
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": 10.0,
       "exact_epic_fight_armor_negation": [],
-      "special_attack_methods_traced": 1,
+      "special_attack_methods_traced": 0,
       "boss_reward": true,
       "actual_current_power_ranking": {
         "status": "unresolved_full_ranking",
@@ -2689,6 +2558,23 @@
     },
     {
       "id": "minecraft:bow",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "minecraft:copper_spear",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
       "exact_epic_fight_armor_negation": [],
@@ -2828,6 +2714,23 @@
       }
     },
     {
+      "id": "minecraft:diamond_spear",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
       "id": "minecraft:diamond_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
@@ -2899,6 +2802,23 @@
     },
     {
       "id": "minecraft:golden_shovel",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "minecraft:golden_spear",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
       "exact_epic_fight_armor_negation": [],
@@ -2988,6 +2908,23 @@
     },
     {
       "id": "minecraft:iron_shovel",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "minecraft:iron_spear",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
       "exact_epic_fight_armor_negation": [],
@@ -3097,6 +3034,23 @@
       }
     },
     {
+      "id": "minecraft:netherite_spear",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
       "id": "minecraft:netherite_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
@@ -3172,6 +3126,23 @@
     },
     {
       "id": "minecraft:stone_shovel",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "minecraft:stone_spear",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
       "exact_epic_fight_armor_negation": [],
@@ -3290,6 +3261,23 @@
       }
     },
     {
+      "id": "minecraft:wooden_spear",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
       "id": "minecraft:wooden_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
@@ -3308,6 +3296,40 @@
     },
     {
       "id": "rottencreatures:spear",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "royalvariations:royal_bow",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "royalvariations:royal_staff",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
       "exact_epic_fight_armor_negation": [],
@@ -3443,6 +3465,23 @@
       }
     },
     {
+      "id": "skarrier_mobs:ban_sword",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
       "id": "skarrier_mobs:decayerite_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
@@ -3495,6 +3534,23 @@
     },
     {
       "id": "skarrier_mobs:resisteel_sword",
+      "kind": "weapon_power_ladder_entry",
+      "exact_basic_melee_damage": null,
+      "exact_epic_fight_armor_negation": [],
+      "special_attack_methods_traced": 0,
+      "boss_reward": false,
+      "actual_current_power_ranking": {
+        "status": "unresolved_full_ranking",
+        "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input."
+      },
+      "recommended_progression_ranking": {
+        "status": "unresolved",
+        "tier": null,
+        "reason": "No approved intended tier is encoded for this item."
+      }
+    },
+    {
+      "id": "the_sift:siftite_sword",
       "kind": "weapon_power_ladder_entry",
       "exact_basic_melee_damage": null,
       "exact_epic_fight_armor_negation": [],

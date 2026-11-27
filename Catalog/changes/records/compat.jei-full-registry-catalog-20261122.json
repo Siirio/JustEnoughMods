@@ -97,9 +97,6 @@
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/**",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/**",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
@@ -183,6 +180,25 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/CreativeModeSearchMixin.java",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_english_aliases.json",
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/**",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/**"
       ]
     }
   ],

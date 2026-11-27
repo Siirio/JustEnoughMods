@@ -130,7 +130,6 @@
       "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
       "Mods/JEMAchievementGuide/tools/generate_handbook.py",
       "Mods/JEMAchievementGuide/tools/generate_resources.py",
-      "Client/ManagedPack/mods/jem-advancements-*.jar",
       "Docs/handbook/README.md"
     ]
   },
@@ -682,6 +681,15 @@
         "Mods/JEMAchievementGuide/tools/generate_handbook.py",
         "Mods/JEMAchievementGuide/tools/generate_resources.py",
         "Mods/JEMAchievementGuide/tools/validate_campaign_guide.py"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-advancements-*.jar"
       ]
     }
   ],

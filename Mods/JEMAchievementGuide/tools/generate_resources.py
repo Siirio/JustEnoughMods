@@ -20,7 +20,6 @@ TAB_ICONS = {
     "fishing": "minecraft:fishing_rod",
     "bosses": "minecraft:nether_star",
     "building": "minecraft:bricks",
-    "engineering": "create:mechanical_drill",
     "cool_stuff": "minecraft:firework_rocket",
 }
 EXACT_UPSTREAM_ADVANCEMENTS = {
@@ -549,9 +548,7 @@ NATIVE_ICON_OVERRIDES = {
     "legendary_monsters:defeat_ambusher": "minecraft:iron_sword",
 }
 
-NATIVE_BACKGROUND_OVERRIDES = {
-    "create:root": "minecraft:textures/gui/advancements/backgrounds/stone.png",
-}
+NATIVE_BACKGROUND_OVERRIDES = {}
 
 
 def native_advancement_translations(native_nodes: list[dict], resources: Path, en: dict[str, str], ru: dict[str, str]) -> None:

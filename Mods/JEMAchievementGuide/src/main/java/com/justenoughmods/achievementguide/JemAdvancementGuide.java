@@ -24,9 +24,6 @@ public final class JemAdvancementGuide {
         if (net.minecraftforge.fml.ModList.get().isLoaded("immersive_weathering")) {
             MinecraftForge.EVENT_BUS.register(com.justenoughmods.achievementguide.integration.ModCompatibilityEvents.class);
         }
-        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_drill_lifecycle")) {
-            MinecraftForge.EVENT_BUS.register(com.justenoughmods.achievementguide.integration.DrillAdvancements.class);
-        }
         if (net.minecraftforge.fml.ModList.get().isLoaded("treechop")) {
             com.justenoughmods.achievementguide.integration.treechop.TreeChopIntegration.register();
         }

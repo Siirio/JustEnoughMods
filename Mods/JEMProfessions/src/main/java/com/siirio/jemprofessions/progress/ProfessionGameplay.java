@@ -69,7 +69,8 @@ public final class ProfessionGameplay {
                 saved.changed();
                 credit(player, ProfessionId.ARCHITECT, SourceKind.BLOCK_PLACED, block, 5);
             }
-            if ("create".equals(block.getNamespace()) && record.claimDiscovery("engineer:component:" + block)) {
+            if ((event.getPlacedBlock().isSignalSource() || event.getPlacedBlock().is(net.minecraft.tags.BlockTags.RAILS))
+                    && record.claimDiscovery("engineer:component:" + block)) {
                 saved.changed();
                 credit(player, ProfessionId.ENGINEER, SourceKind.BLOCK_PLACED, block, 10);
             }

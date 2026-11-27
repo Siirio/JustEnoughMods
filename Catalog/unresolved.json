@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "entries": [
     {
       "type": "artifact_metadata",
@@ -58,38 +58,6 @@
       "artifacts": [
         "mixinextras-forge-0.4.1.jar",
         "mixinextras-forge-0.3.5.jar"
-      ]
-    },
-    {
-      "type": "duplicate_mod_id",
-      "mod_id": "flywheel",
-      "artifacts": [
-        "flywheel-forge-1.20.1-1.0.6-285.jar",
-        "flywheel-forge-1.20.1-1.0.5.jar"
-      ]
-    },
-    {
-      "type": "duplicate_mod_id",
-      "mod_id": "ponder",
-      "artifacts": [
-        "Ponder-Forge-1.20.1-1.0.92.jar",
-        "Ponder-Forge-1.20.1-1.0.91.jar"
-      ]
-    },
-    {
-      "type": "duplicate_mod_id",
-      "mod_id": "create",
-      "artifacts": [
-        "create-1.20.1-6.0.8.jar",
-        "create-1.20.1-6.0.8-291-slim.jar"
-      ]
-    },
-    {
-      "type": "duplicate_mod_id",
-      "mod_id": "flywheel",
-      "artifacts": [
-        "flywheel-forge-1.20.1-1.0.6-285.jar",
-        "flywheel-forge-1.20.1-1.0.6-beta-266.jar"
       ]
     },
     {
@@ -194,6 +162,14 @@
       "artifacts": [
         "mixinextras-forge-0.4.1.jar",
         "mixinextras-forge-0.3.2.jar"
+      ]
+    },
+    {
+      "type": "duplicate_mod_id",
+      "mod_id": "kotlinforforge",
+      "artifacts": [
+        "kffmod-4.11.0.jar",
+        "kffmod-4.12.0.jar"
       ]
     },
     {
@@ -347,7 +323,7 @@
       "type": "dynamic_source_registration",
       "registry": "items",
       "namespace": "jemcompat",
-      "artifact": "jem_twelve_eyes-1.7.1.jar",
+      "artifact": "jem_twelve_eyes-1.7.2.jar",
       "source": "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignItems.java",
       "expressions": [
         "\"boss_locator_\" + target.key()"
@@ -364,42 +340,6 @@
         "denomination.id()"
       ],
       "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"
-    },
-    {
-      "type": "parameterized_item_model",
-      "artifact": "Steam_Rails-1.7.3%2Bforge-mc1.20.1.jar",
-      "model": "assets/railways/models/item/conductor_cap.json",
-      "unbound_texture_parameters": [
-        "cap"
-      ],
-      "reason": "Parent template alone cannot prove an item registration"
-    },
-    {
-      "type": "parameterized_item_model",
-      "artifact": "Steam_Rails-1.7.3%2Bforge-mc1.20.1.jar",
-      "model": "assets/railways/models/item/incomplete_conductor_cap.json",
-      "unbound_texture_parameters": [
-        "cap"
-      ],
-      "reason": "Parent template alone cannot prove an item registration"
-    },
-    {
-      "type": "parameterized_item_model",
-      "artifact": "Steam_Rails-1.7.3%2Bforge-mc1.20.1.jar",
-      "model": "assets/railways/models/item/conductor_cap.json",
-      "unbound_texture_parameters": [
-        "cap"
-      ],
-      "reason": "Parent template alone cannot prove an item registration"
-    },
-    {
-      "type": "parameterized_item_model",
-      "artifact": "Steam_Rails-1.7.3%2Bforge-mc1.20.1.jar",
-      "model": "assets/railways/models/item/incomplete_conductor_cap.json",
-      "unbound_texture_parameters": [
-        "cap"
-      ],
-      "reason": "Parent template alone cannot prove an item registration"
     },
     {
       "type": "parameterized_item_model",

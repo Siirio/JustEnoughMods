@@ -40,7 +40,7 @@ public final class FtbQuestProjection {
             "1100000000000027", "1100000000000037", "1100000000000097", "1100000000000107",
             "1100000000000117", "1100000000000127", "1100000000000137");
     private record Features(boolean economy, boolean settlements, boolean races,
-                            boolean campaign, boolean events, boolean create, boolean planning) {}
+                            boolean campaign, boolean events, boolean planning) {}
     private record Projection(Features features, Set<Long> active, Map<Long, Long> dormantTasks) {}
     private static final Map<MinecraftServer, Projection> CURRENT = new HashMap<>();
 
@@ -49,7 +49,7 @@ public final class FtbQuestProjection {
     private static Features features(MinecraftServer server) {
         return new Features(QuestSignals.economy(server), QuestSignals.loaded("jem_settlements"),
                 QuestSignals.loaded("jem_roles"), QuestSignals.campaign(server),
-                QuestSignals.events(server), QuestSignals.loaded("create"),
+                QuestSignals.events(server),
                 QuestSignals.loaded("jem_server") && QuestSignals.loaded("xaeroworldmap"));
     }
 
@@ -186,8 +186,6 @@ public final class FtbQuestProjection {
 
     private static boolean chapterEnabled(String chapter, Features features) {
         return switch (chapter) {
-            case "create" -> features.create && itemAvailable("create:cogwheel") && itemAvailable("create:wrench")
-                    && itemAvailable("create:water_wheel") && itemAvailable("create:mechanical_press");
             case "races" -> features.races;
             case "bosses_12_eyes" -> features.campaign;
             case "events" -> features.events;

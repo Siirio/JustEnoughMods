@@ -86,13 +86,11 @@
       "Client/ManagedPack/config/ftbquests/quests/chapter_groups.snbt",
       "Client/ManagedPack/config/ftbquests/quests/chapters/jem_03.snbt",
       "Client/ManagedPack/config/ftbquests/quests/chapters/jem_07.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_12.snbt",
       "Client/ManagedPack/config/ftbquests/quests/chapters/jem_16.snbt",
       "Client/ManagedPack/config/ftbquests/quests/chapters/jem_17.snbt",
       "Client/ManagedPack/config/ftbquests/quests/chapters/jem_25.snbt",
       "Client/ManagedPack/config/ftbquests/quests/chapters/jem_26.snbt",
       "Client/ManagedPack/config/ftbquests/quests/data.snbt",
-      "Client/ManagedPack/mods/jem-advancements-*.jar",
       "Client/ManagedPack/mods/jem-economy-1.3.5.jar",
       "Client/ManagedPack/mods/jem-settlements-2.2.2.jar",
       "Mods/JEMAchievementGuide/build.gradle",
@@ -123,7 +121,6 @@
       "Mods/JEMAchievementGuide/tools/questbook/book.json",
       "Mods/JEMAchievementGuide/tools/questbook/compiled-files.json",
       "Mods/JEMAchievementGuide/tools/questbook/legacy/bosses_12_eyes.snbt",
-      "Mods/JEMAchievementGuide/tools/questbook/legacy/create.snbt",
       "Mods/JEMAchievementGuide/tools/questbook/legacy/events.snbt",
       "Mods/JEMAchievementGuide/tools/questbook/legacy/exploration.snbt",
       "Mods/JEMAchievementGuide/tools/questbook/legacy/getting_started.snbt",
@@ -305,6 +302,25 @@
         "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws28.snbt",
         "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws34.snbt",
         "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws37.snbt"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_12.snbt",
+        "Mods/JEMAchievementGuide/tools/questbook/legacy/create.snbt"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-advancements-*.jar"
       ]
     }
   ],

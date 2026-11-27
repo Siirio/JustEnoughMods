@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `insane96mcp/insanelib/util/ClientUtils` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/insanelib-1.23.4.6.jar!/insane96mcp/insanelib/util/ClientUtils.class`
+- `insane96mcp/insanelib/util/ClientUtils` extends `java/lang/Object`; `$PROFILE/mods/insanelib-1.23.4.6.jar!/insane96mcp/insanelib/util/ClientUtils.class`

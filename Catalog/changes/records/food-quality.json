@@ -88,7 +88,6 @@
     "source_files": [
       "Catalog/changes/food-quality-assignments.json",
       "Catalog/generator/export_food_quality_report.py",
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
       "Client/ManagedPack/mods/jemfood-1.0.0.jar",
       "Docs/food/COVERAGE.md",
       "Docs/food/README.md",
@@ -249,6 +248,15 @@
         "Mods/JEMFood/src/main/resources/assets/jemfood/lang/ru_ru.json",
         "Mods/JEMFood/src/main/resources/assets/jemfood/lang/en_us.json"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
     }
   ],
   "impacts": {
@@ -286,4 +294,3 @@
     ]
   }
 }
-

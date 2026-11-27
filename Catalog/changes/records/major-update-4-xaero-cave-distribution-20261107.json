@@ -73,7 +73,6 @@
     "owner": "Unified Xaero Worldmap and JEMServer xaero.shared adapter",
     "kind": "user_requested_distribution_contract",
     "source_files": [
-      "Client/ManagedPack/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar",
       "Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.47.0.jar",
       "Client/ManagedPack/mods/xaerominimap-forge-1.20.1-26.6.0.jar",
       "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
@@ -110,6 +109,15 @@
       "source_files": [
         "Client/ManagedPack/config/xaero/world-map/server_profiles/default.cfg",
         "Client/ManagedPack/config/xaero/minimap/server_profiles/default.cfg"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar"
       ]
     }
   ],

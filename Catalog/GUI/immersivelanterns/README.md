@@ -10,5 +10,5 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `toni/immersivelanterns/AccessoriesLanternRenderer` extends `toni/immersivelanterns/BaseLanternRenderer`; `$PROFILE/automodpack/client/active/mods/immersivelanterns-forge-1.0.6-1.20.1.jar!/toni/immersivelanterns/AccessoriesLanternRenderer.class`
-- `toni/immersivelanterns/LanternCurioRenderer` extends `toni/immersivelanterns/BaseLanternRenderer`; `$PROFILE/automodpack/client/active/mods/immersivelanterns-forge-1.0.6-1.20.1.jar!/toni/immersivelanterns/LanternCurioRenderer.class`
+- `toni/immersivelanterns/AccessoriesLanternRenderer` extends `toni/immersivelanterns/BaseLanternRenderer`; `$PROFILE/mods/immersivelanterns-forge-1.0.6-1.20.1.jar!/toni/immersivelanterns/AccessoriesLanternRenderer.class`
+- `toni/immersivelanterns/LanternCurioRenderer` extends `toni/immersivelanterns/BaseLanternRenderer`; `$PROFILE/mods/immersivelanterns-forge-1.0.6-1.20.1.jar!/toni/immersivelanterns/LanternCurioRenderer.class`

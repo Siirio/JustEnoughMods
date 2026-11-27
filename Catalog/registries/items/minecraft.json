@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "generation": {
-    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
+    "generated_utc": "2026-11-27T08:04:12.066008+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1102,10 +1102,10 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
         "data/minecraft/recipes/andesite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_andesite.json"
       ],
@@ -1116,7 +1116,6 @@
       "tags": [
         "balm:items/stones",
         "c:items/stones",
-        "create:items/stone_types/andesite",
         "handcrafted:items/counter_materials",
         "handcrafted:items/trim_materials",
         "minecraft:items/stone_crafting_materials",
@@ -1127,8 +1126,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/andesite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_andesite.json"
       ],
@@ -1152,7 +1149,6 @@
       "repair_ingredients": [],
       "block_item_id": "minecraft:andesite",
       "acquisition_routes": [
-        "create:andesite_from_stone_types_andesite_stonecutting",
         "minecraft:andesite",
         "unearthed_journey:stone_cut_breccia_andesite"
       ],
@@ -1182,7 +1178,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/sleepers",
         "minecraft:items/slabs"
       ],
       "is_registered": null,
@@ -2113,7 +2108,6 @@
       "tags": [
         "alexsmobs:items/elephant_foodstuffs",
         "alexsmobs:items/gorilla_foodstuffs",
-        "create:items/pulpifiable",
         "ec_ad:items/therimoss_edible",
         "sereneseasons:items/spring_crops",
         "sereneseasons:items/summer_crops"
@@ -3206,27 +3200,27 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3698,8 +3692,7 @@
       "tags": [
         "c:items/foods",
         "c:items/foods/soup",
-        "c:items/foods/soups",
-        "create:items/upright_on_belt"
+        "c:items/foods/soups"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -6669,11 +6662,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/appliances/book.json",
         "data/minecraft/recipes/book.json",
         "data/unearthed_journey/recipes/hide_book.json"
       ],
@@ -6688,8 +6681,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/book.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/book.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/book.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hide_book.json"
@@ -6714,7 +6705,6 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "create:crafting/appliances/book",
         "minecraft:book",
         "unearthed_journey:hide_book"
       ],
@@ -6863,7 +6853,6 @@
       "tags": [
         "bakery:items/container",
         "c:items/container",
-        "create:items/upright_on_belt",
         "forge:items/container",
         "kaleidoscope_cookery:items/ingredient_blocklist",
         "kaleidoscope_cookery:items/ingredient_container",
@@ -6973,9 +6962,6 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/campfire_cooking/bread.json",
-        "data/create/recipes/smelting/bread.json",
-        "data/create/recipes/smoking/bread.json",
         "data/farm_and_charm/recipes/stove/improved_bread.json",
         "data/minecraft/recipes/bread.json"
       ],
@@ -6996,12 +6982,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/campfire_cooking/bread.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/bread.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smoking/bread.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/campfire_cooking/bread.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/bread.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smoking/bread.json",
         "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/improved_bread.json",
         "letsdo-bakery-forge-2.0.6.jar:data/minecraft/recipes/bread.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
@@ -7027,9 +7007,6 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "create:campfire_cooking/bread",
-        "create:smelting/bread",
-        "create:smoking/bread",
         "farm_and_charm:stove/improved_bread",
         "minecraft:bread"
       ],
@@ -8648,7 +8625,6 @@
       ],
       "observed_in": [
         "data/alexscaves/recipes/cake_from_cake_layer.json",
-        "data/create/recipes/crafting/curiosities/cake.json",
         "data/minecraft/recipes/cake.json"
       ],
       "display_name_en_us": "Cake",
@@ -8658,7 +8634,6 @@
       "tags": [
         "alexscaves:items/gingerbread_man_steals",
         "c:items/foods/edible_when_placed",
-        "create:items/upright_on_belt",
         "ec_ad:items/therimoss_edible"
       ],
       "is_registered": null,
@@ -8667,8 +8642,6 @@
       "source_provenance": [
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/cake_from_cake_layer.json",
         "blueprint-1.20.1-7.1.5.jar:data/minecraft/recipes/cake.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/curiosities/cake.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/curiosities/cake.json",
         "letsdo-bakery-forge-2.0.6.jar:data/minecraft/recipes/cake.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cake.json"
       ],
@@ -8693,7 +8666,6 @@
       "block_item_id": "minecraft:cake",
       "acquisition_routes": [
         "alexscaves:cake_from_cake_layer",
-        "create:crafting/curiosities/cake",
         "minecraft:cake"
       ],
       "uses": [],
@@ -8713,7 +8685,6 @@
         "client"
       ],
       "observed_in": [
-        "data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
         "data/natures_spirit/recipes/calcite_block.json"
       ],
       "display_name_en_us": "Calcite",
@@ -8721,7 +8692,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/stone_types/calcite",
         "handcrafted:items/counter_materials",
         "handcrafted:items/trim_materials",
         "minecraft:items/sulfur_cube_archetype/slow_bouncy"
@@ -8730,8 +8700,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
         "natures_spirit-2.2.5-1.20.1.jar:data/natures_spirit/recipes/calcite_block.json"
       ],
       "confidence": "inferred",
@@ -8754,7 +8722,6 @@
       "repair_ingredients": [],
       "block_item_id": "minecraft:calcite",
       "acquisition_routes": [
-        "create:calcite_from_stone_types_calcite_stonecutting",
         "natures_spirit:calcite_block"
       ],
       "uses": [],
@@ -8888,7 +8855,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/contraption_controlled",
         "jemcompat:items/igniting_impact_items",
         "jemcompat:items/jei/cooking_catalysts"
       ],
@@ -9340,10 +9306,10 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/crafting/appliances/chain_from_zinc.json",
         "data/minecraft/recipes/chain.json"
       ],
       "display_name_en_us": "Chain",
@@ -9359,8 +9325,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/chain_from_zinc.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/chain_from_zinc.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chain.json"
       ],
       "confidence": "inferred",
@@ -9383,7 +9347,6 @@
       "repair_ingredients": [],
       "block_item_id": "minecraft:chain",
       "acquisition_routes": [
-        "create:crafting/appliances/chain_from_zinc",
         "minecraft:chain"
       ],
       "uses": [],
@@ -11370,8 +11333,7 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:items/sea_pig_digests",
-        "kaleidoscope_doll:items/block_dolls_to_entity_item",
-        "railways:items/binding_agents"
+        "kaleidoscope_doll:items/block_dolls_to_entity_item"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -13538,13 +13500,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/blasting/copper_ingot_from_crushed.json",
-        "data/create/recipes/crafting/materials/copper_ingot.json",
-        "data/create/recipes/smelting/copper_ingot_from_crushed.json",
         "data/minecraft/recipes/copper_ingot.json",
         "data/minecraft/recipes/copper_ingot_from_blasting_copper_ore.json",
         "data/minecraft/recipes/copper_ingot_from_blasting_deepslate_copper_ore.json",
@@ -13569,12 +13529,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/blasting/copper_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/materials/copper_ingot.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/copper_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/blasting/copper_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/materials/copper_ingot.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/copper_ingot_from_crushed.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/copper_ingot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/copper_ingot_from_blasting_copper_ore.json",
@@ -13605,9 +13559,6 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "create:blasting/copper_ingot_from_crushed",
-        "create:crafting/materials/copper_ingot",
-        "create:smelting/copper_ingot_from_crushed",
         "minecraft:copper_ingot",
         "minecraft:copper_ingot_from_blasting_copper_ore",
         "minecraft:copper_ingot_from_blasting_deepslate_copper_ore",
@@ -13975,9 +13926,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "c:items/player_workstations/crafting_tables",
-        "c:items/workbench",
-        "forge:items/workbench"
+        "c:items/player_workstations/crafting_tables"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -17434,10 +17383,10 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate.json"
       ],
       "display_name_en_us": "Deepslate",
@@ -17447,7 +17396,6 @@
       "tags": [
         "balm:items/stones",
         "c:items/stones",
-        "create:items/stone_types/deepslate",
         "handcrafted:items/counter_materials",
         "handcrafted:items/trim_materials",
         "minecraft:items/sulfur_cube_archetype/slow_bouncy"
@@ -17456,8 +17404,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate.json"
       ],
       "confidence": "inferred",
@@ -17480,7 +17426,6 @@
       "repair_ingredients": [],
       "block_item_id": "minecraft:deepslate",
       "acquisition_routes": [
-        "create:deepslate_from_stone_types_deepslate_stonecutting",
         "minecraft:deepslate"
       ],
       "uses": [],
@@ -18843,10 +18788,10 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
         "data/minecraft/recipes/diorite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_diorite.json"
       ],
@@ -18857,7 +18802,6 @@
       "tags": [
         "balm:items/stones",
         "c:items/stones",
-        "create:items/stone_types/diorite",
         "handcrafted:items/counter_materials",
         "handcrafted:items/trim_materials",
         "minecraft:items/stone_crafting_materials",
@@ -18868,8 +18812,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diorite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_diorite.json"
       ],
@@ -18893,7 +18835,6 @@
       "repair_ingredients": [],
       "block_item_id": "minecraft:diorite",
       "acquisition_routes": [
-        "create:diorite_from_stone_types_diorite_stonecutting",
         "minecraft:diorite",
         "unearthed_journey:stone_cut_breccia_diorite"
       ],
@@ -19199,9 +19140,7 @@
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "create:items/contraption_controlled"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -19617,10 +19556,10 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
         "data/minecraft/recipes/dripstone_block.json"
       ],
       "display_name_en_us": "Dripstone Block",
@@ -19628,7 +19567,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/stone_types/dripstone",
         "handcrafted:items/counter_materials",
         "handcrafted:items/trim_materials",
         "minecraft:items/sulfur_cube_archetype/slow_bouncy"
@@ -19637,8 +19575,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dripstone_block.json"
       ],
       "confidence": "inferred",
@@ -19661,7 +19597,6 @@
       "repair_ingredients": [],
       "block_item_id": "minecraft:dripstone_block",
       "acquisition_routes": [
-        "create:dripstone_block_from_stone_types_dripstone_stonecutting",
         "minecraft:dripstone_block"
       ],
       "uses": [],
@@ -19690,9 +19625,7 @@
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "create:items/contraption_controlled"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -20214,62 +20147,6 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:emerald_block"
-    },
-    {
-      "registry_id": "minecraft:enchanted_book",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/efn/recipes/yamato_heavy_rain_book.json"
-      ],
-      "display_name_en_us": "Enchanted Book",
-      "display_name_ru_ru": null,
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [
-        "minecraft:items/bookshelf_books"
-      ],
-      "is_registered": null,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
-      "source_provenance": [
-        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/yamato_heavy_rain_book.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [
-        "efn:yamato_heavy_rain_book"
-      ],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:minecraft:enchanted_book"
     },
     {
       "registry_id": "minecraft:enchanted_golden_apple",
@@ -21542,7 +21419,6 @@
       "tags": [
         "forge:item/feathers",
         "forge:items/feathers",
-        "railways:items/paint_brush_repair_items",
         "spawn:items/custom_urchin_head_position",
         "tumbleweed:items/drop_common"
       ],
@@ -21636,57 +21512,6 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:fermented_spider_eye"
-    },
-    {
-      "registry_id": "minecraft:filled_map",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json"
-      ],
-      "display_name_en_us": "Map",
-      "display_name_ru_ru": null,
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [],
-      "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:minecraft:filled_map"
     },
     {
       "registry_id": "minecraft:fire_charge",
@@ -24074,11 +23899,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/kinetics/furnace_minecart_from_contraption_cart.json",
         "data/minecraft/recipes/furnace_minecart.json"
       ],
       "display_name_en_us": "Minecart with Furnace",
@@ -24092,8 +23917,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/kinetics/furnace_minecart_from_contraption_cart.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/kinetics/furnace_minecart_from_contraption_cart.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/furnace_minecart.json"
       ],
@@ -24117,7 +23940,6 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "create:crafting/kinetics/furnace_minecart_from_contraption_cart",
         "minecraft:furnace_minecart"
       ],
       "uses": [],
@@ -24243,10 +24065,6 @@
       ],
       "observed_in": [
         "data/alexscaves/recipes/glass_from_sea_glass_shards.json",
-        "data/create/recipes/smelting/glass_from_framed_glass.json",
-        "data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
         "data/immersive_weathering/recipes/glass_from_vitrified_sand_smelting.json",
         "data/minecraft/recipes/glass.json",
         "data/unearthed_journey/recipes/quartz_sand_blast_recipe.json",
@@ -24268,14 +24086,6 @@
       "acquisition_class": "normal_survival",
       "source_provenance": [
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/glass_from_sea_glass_shards.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_framed_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/glass_from_vitrified_sand_smelting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/glass.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/quartz_sand_blast_recipe.json",
@@ -24304,10 +24114,6 @@
       "block_item_id": "minecraft:glass",
       "acquisition_routes": [
         "alexscaves:glass_from_sea_glass_shards",
-        "create:smelting/glass_from_framed_glass",
-        "create:smelting/glass_from_horizontal_framed_glass",
-        "create:smelting/glass_from_tiled_glass",
-        "create:smelting/glass_from_vertical_framed_glass",
         "immersive_weathering:glass_from_vitrified_sand_smelting",
         "minecraft:glass",
         "unearthed_journey:quartz_sand_blast_recipe",
@@ -24342,7 +24148,6 @@
       "implementation_class": null,
       "tags": [
         "c:items/container",
-        "create:items/upright_on_belt",
         "forge:items/container",
         "herbalbrews:items/container_items",
         "kaleidoscope_cookery:items/ingredient_blocklist",
@@ -24394,13 +24199,10 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
         "data/minecraft/recipes/glass_pane.json"
       ],
       "display_name_en_us": "Glass Pane",
@@ -24415,14 +24217,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/glass_pane.json"
       ],
       "confidence": "inferred",
@@ -24445,10 +24239,6 @@
       "repair_ingredients": [],
       "block_item_id": "minecraft:glass_pane",
       "acquisition_routes": [
-        "create:smelting/glass_pane_from_framed_glass_pane",
-        "create:smelting/glass_pane_from_horizontal_framed_glass_pane",
-        "create:smelting/glass_pane_from_tiled_glass_pane",
-        "create:smelting/glass_pane_from_vertical_framed_glass_pane",
         "minecraft:glass_pane"
       ],
       "uses": [],
@@ -25141,8 +24931,6 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/blasting/gold_ingot_from_crushed.json",
-        "data/create/recipes/smelting/gold_ingot_from_crushed.json",
         "data/dustydecorations/recipes/gold_coin_smelt.json",
         "data/libraryferret/recipes/blasting/gold_coins_jtl.json",
         "data/libraryferret/recipes/smelting/gold_coins_jtl.json",
@@ -25179,10 +24967,6 @@
       "acquisition_class": "normal_survival",
       "source_provenance": [
         "DustyDecorations_1.20.1Forge_V1.13.jar:data/dustydecorations/recipes/gold_coin_smelt.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/blasting/gold_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/gold_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/blasting/gold_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/gold_ingot_from_crushed.json",
         "libraryferret-forge-1.20.1-4.0.0.jar:data/libraryferret/recipes/blasting/gold_coins_jtl.json",
         "libraryferret-forge-1.20.1-4.0.0.jar:data/libraryferret/recipes/smelting/gold_coins_jtl.json",
         "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/gold_ingot_from_blasting_royal_bone.json",
@@ -25219,8 +25003,6 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "create:blasting/gold_ingot_from_crushed",
-        "create:smelting/gold_ingot_from_crushed",
         "dustydecorations:gold_coin_smelt",
         "libraryferret:blasting/gold_coins_jtl",
         "libraryferret:smelting/gold_coins_jtl",
@@ -26051,10 +25833,10 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
         "data/minecraft/recipes/granite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_granite.json"
       ],
@@ -26065,7 +25847,6 @@
       "tags": [
         "balm:items/stones",
         "c:items/stones",
-        "create:items/stone_types/granite",
         "handcrafted:items/counter_materials",
         "handcrafted:items/trim_materials",
         "minecraft:items/stone_crafting_materials",
@@ -26076,8 +25857,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/granite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_granite.json"
       ],
@@ -26101,7 +25880,6 @@
       "repair_ingredients": [],
       "block_item_id": "minecraft:granite",
       "acquisition_routes": [
-        "create:granite_from_stone_types_granite_stonecutting",
         "minecraft:granite",
         "unearthed_journey:stone_cut_breccia_granite"
       ],
@@ -28160,7 +27938,6 @@
       "tags": [
         "alexsmobs:items/grizzly_honey",
         "c:items/foods",
-        "create:items/upright_on_belt",
         "jem_settlements:items/cooking/world_ingredients",
         "kaleidoscope_cookery:items/glass_bottle_container",
         "spawn:items/ant_feeds",
@@ -29445,8 +29222,6 @@
         "assets/minecraft/lang/en_us.json",
         "data/alexscaves/recipes/furnace/iron_from_galena_ore_blasting.json",
         "data/alexscaves/recipes/furnace/iron_from_galena_ore_smelting.json",
-        "data/create/recipes/blasting/iron_ingot_from_crushed.json",
-        "data/create/recipes/smelting/iron_ingot_from_crushed.json",
         "data/immersive_weathering/recipes/iron_ingot_from_clean_block.json",
         "data/immersive_weathering/recipes/iron_ingot_from_clean_block_blasting.json",
         "data/immersive_weathering/recipes/iron_ingot_from_exposed_block.json",
@@ -29487,10 +29262,6 @@
       "source_provenance": [
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/furnace/iron_from_galena_ore_blasting.json",
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/furnace/iron_from_galena_ore_smelting.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/blasting/iron_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/iron_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/blasting/iron_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/iron_ingot_from_crushed.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/iron_ingot_from_clean_block.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/iron_ingot_from_clean_block_blasting.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/iron_ingot_from_exposed_block.json",
@@ -29534,8 +29305,6 @@
       "acquisition_routes": [
         "alexscaves:furnace/iron_from_galena_ore_blasting",
         "alexscaves:furnace/iron_from_galena_ore_smelting",
-        "create:blasting/iron_ingot_from_crushed",
-        "create:smelting/iron_ingot_from_crushed",
         "immersive_weathering:iron_ingot_from_clean_block",
         "immersive_weathering:iron_ingot_from_clean_block_blasting",
         "immersive_weathering:iron_ingot_from_exposed_block",
@@ -29984,11 +29753,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/appliances/item_frame.json",
         "data/minecraft/recipes/item_frame.json",
         "data/unearthed_journey/recipes/hide_item_frame.json"
       ],
@@ -30001,8 +29770,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/item_frame.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/item_frame.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/item_frame.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hide_item_frame.json"
@@ -30027,7 +29794,6 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "create:crafting/appliances/item_frame",
         "minecraft:item_frame",
         "unearthed_journey:hide_item_frame"
       ],
@@ -33912,7 +33678,6 @@
       "implementation_class": null,
       "tags": [
         "c:items/potions",
-        "create:items/upright_on_belt",
         "herbalbrews:items/small_water_fill"
       ],
       "is_registered": null,
@@ -34565,6 +34330,58 @@
       "trade_policy_ref": "trade:minecraft:lingering_potion.effect.glowing"
     },
     {
+      "registry_id": "minecraft:lingering_potion.effect.gnashing",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Gnashing",
+      "display_name_ru_ru": "Туманное зелье лязга",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:lingering_potion.effect.gnashing"
+    },
+    {
       "registry_id": "minecraft:lingering_potion.effect.harming",
       "registry_type": "item",
       "schema_version": 1,
@@ -34817,6 +34634,58 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:lingering_potion.effect.icy"
+    },
+    {
+      "registry_id": "minecraft:lingering_potion.effect.incendiary",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Incendiary Lingering Potion",
+      "display_name_ru_ru": "Туманное зелье воспламенения",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:lingering_potion.effect.incendiary"
     },
     {
       "registry_id": "minecraft:lingering_potion.effect.infested",
@@ -36005,6 +35874,58 @@
       "trade_policy_ref": "trade:minecraft:lingering_potion.effect.magnetizing"
     },
     {
+      "registry_id": "minecraft:lingering_potion.effect.mirage",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Mirage",
+      "display_name_ru_ru": "Туманное зелье миража",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:lingering_potion.effect.mirage"
+    },
+    {
       "registry_id": "minecraft:lingering_potion.effect.mundane",
       "registry_type": "item",
       "schema_version": 1,
@@ -36661,6 +36582,58 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:lingering_potion.effect.regeneration"
+    },
+    {
+      "registry_id": "minecraft:lingering_potion.effect.resistance",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Resistance",
+      "display_name_ru_ru": "Туманное зелье сопротивления",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:lingering_potion.effect.resistance"
     },
     {
       "registry_id": "minecraft:lingering_potion.effect.slow_falling",
@@ -39782,7 +39755,6 @@
         "c:items/buckets/milk",
         "c:items/milk",
         "c:items/milk_buckets",
-        "create:items/deployable_drink",
         "forge:items/buckets/milk",
         "forge:items/milk",
         "forge:items/milk/milk",
@@ -39830,11 +39802,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/kinetics/minecart_from_contraption_cart.json",
         "data/minecraft/recipes/minecart.json"
       ],
       "display_name_en_us": "Minecart",
@@ -39849,8 +39821,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/kinetics/minecart_from_contraption_cart.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/kinetics/minecart_from_contraption_cart.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/minecart.json"
       ],
@@ -39874,7 +39844,6 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "create:crafting/kinetics/minecart_from_contraption_cart",
         "minecraft:minecart"
       ],
       "uses": [],
@@ -40907,7 +40876,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:items/slabs"
+        "minecraft:items/slabs",
+        "wildscapes:items/mud_brick_slabs"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -40968,7 +40938,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:items/stairs"
+        "minecraft:items/stairs",
+        "wildscapes:items/mud_brick_stairs"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -41029,7 +41000,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:items/walls"
+        "minecraft:items/walls",
+        "wildscapes:items/mud_brick_walls"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -41089,7 +41061,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:items/sulfur_cube_archetype/slow_bouncy"
+        "minecraft:items/sulfur_cube_archetype/slow_bouncy",
+        "wildscapes:items/mud_bricks"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -41259,7 +41232,6 @@
         "c:items/foods",
         "c:items/foods/soup",
         "c:items/foods/soups",
-        "create:items/upright_on_belt",
         "spawn:items/ant_feeds",
         "spawn:items/snail_feeds"
       ],
@@ -43208,11 +43180,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/appliances/name_tag.json",
         "data/minecraft/recipes/name_tag.json",
         "data/unearthed_journey/recipes/nametag_r.json"
       ],
@@ -43227,8 +43199,6 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/name_tag.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/name_tag.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "tiny_takeover_backport-forge-1.20.1-1.8.3.jar:data/minecraft/recipes/name_tag.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/nametag_r.json"
@@ -43253,7 +43223,6 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "create:crafting/appliances/name_tag",
         "minecraft:name_tag",
         "unearthed_journey:nametag_r"
       ],
@@ -50120,8 +50089,6 @@
       "implementation_class": null,
       "tags": [
         "c:items/potions",
-        "create:items/deployable_drink",
-        "create:items/upright_on_belt",
         "herbalbrews:items/small_water_fill"
       ],
       "is_registered": null,
@@ -50774,6 +50741,58 @@
       "trade_policy_ref": "trade:minecraft:potion.effect.glowing"
     },
     {
+      "registry_id": "minecraft:potion.effect.gnashing",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potion of Gnashing",
+      "display_name_ru_ru": "Зелье лязга",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:potion.effect.gnashing"
+    },
+    {
       "registry_id": "minecraft:potion.effect.harming",
       "registry_type": "item",
       "schema_version": 1,
@@ -51026,6 +51045,58 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:potion.effect.icy"
+    },
+    {
+      "registry_id": "minecraft:potion.effect.incendiary",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Incendiary Potion",
+      "display_name_ru_ru": "Зелье воспламенения",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:potion.effect.incendiary"
     },
     {
       "registry_id": "minecraft:potion.effect.infested",
@@ -52214,6 +52285,58 @@
       "trade_policy_ref": "trade:minecraft:potion.effect.magnetizing"
     },
     {
+      "registry_id": "minecraft:potion.effect.mirage",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potion of Mirage",
+      "display_name_ru_ru": "Зелье миража",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:potion.effect.mirage"
+    },
+    {
       "registry_id": "minecraft:potion.effect.mundane",
       "registry_type": "item",
       "schema_version": 1,
@@ -52870,6 +52993,58 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:potion.effect.regeneration"
+    },
+    {
+      "registry_id": "minecraft:potion.effect.resistance",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potion of Resistance",
+      "display_name_ru_ru": "Зелье сопротивления",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:potion.effect.resistance"
     },
     {
       "registry_id": "minecraft:potion.effect.slow_falling",
@@ -54344,7 +54519,7 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/minecraft/recipes/powered_rail.json",
+        "jemcompat-3.12.0.jar:data/minecraft/recipes/powered_rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/powered_rail.json"
       ],
       "confidence": "inferred",
@@ -56752,7 +56927,6 @@
         "c:items/foods",
         "c:items/foods/soup",
         "c:items/foods/soups",
-        "create:items/upright_on_belt",
         "primal:items/eagle_breed_food"
       ],
       "is_registered": null,
@@ -56818,7 +56992,7 @@
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/minecraft/recipes/rail.json",
+        "jemcompat-3.12.0.jar:data/minecraft/recipes/rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/rail.json"
       ],
       "confidence": "inferred",
@@ -58672,7 +58846,7 @@
         "alexsmobs:items/platypus_chargeables",
         "alexsmobs:items/platypus_super_chargeables",
         "c:items/storage_blocks/redstone",
-        "jemcompat:items/jei/create_redstone"
+        "jemcompat:items/jei/redstone"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -61801,7 +61975,6 @@
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
         "data/alexsmobs/recipes/komodo_spit_to_slime.json",
-        "data/create/recipes/crafting/appliances/slime_ball.json",
         "data/minecraft/recipes/slime_ball.json",
         "data/spawn/recipes/slime_ball_from_smelting_mucus.json"
       ],
@@ -61822,8 +61995,6 @@
       "acquisition_class": "normal_survival",
       "source_provenance": [
         "alexsmobs-1.22.9.jar:data/alexsmobs/recipes/komodo_spit_to_slime.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/slime_ball.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/slime_ball.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/slime_ball.json",
         "spawn-4.0.8-1.20.1.jar:data/spawn/recipes/slime_ball_from_smelting_mucus.json"
@@ -61849,7 +62020,6 @@
       "block_item_id": null,
       "acquisition_routes": [
         "alexsmobs:komodo_spit_to_slime",
-        "create:crafting/appliances/slime_ball",
         "minecraft:slime_ball",
         "spawn:slime_ball_from_smelting_mucus"
       ],
@@ -63359,7 +63529,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/sleepers",
         "minecraft:items/slabs"
       ],
       "is_registered": null,
@@ -63843,7 +64012,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/contraption_controlled",
         "jemcompat:items/igniting_impact_items",
         "jemcompat:items/jei/cooking_catalysts",
         "minecraft:items/piglin_repellents"
@@ -64303,7 +64471,6 @@
       "implementation_class": null,
       "tags": [
         "c:items/potions",
-        "create:items/upright_on_belt",
         "herbalbrews:items/small_water_fill"
       ],
       "is_registered": null,
@@ -64956,6 +65123,58 @@
       "trade_policy_ref": "trade:minecraft:splash_potion.effect.glowing"
     },
     {
+      "registry_id": "minecraft:splash_potion.effect.gnashing",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Splash Potion of Gnashing",
+      "display_name_ru_ru": "Взрывное зелье лязга",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:splash_potion.effect.gnashing"
+    },
+    {
       "registry_id": "minecraft:splash_potion.effect.harming",
       "registry_type": "item",
       "schema_version": 1,
@@ -65208,6 +65427,58 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:splash_potion.effect.icy"
+    },
+    {
+      "registry_id": "minecraft:splash_potion.effect.incendiary",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Incendiary Splash Potion",
+      "display_name_ru_ru": "Взрывное зелье воспламенения",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:splash_potion.effect.incendiary"
     },
     {
       "registry_id": "minecraft:splash_potion.effect.infested",
@@ -66396,6 +66667,58 @@
       "trade_policy_ref": "trade:minecraft:splash_potion.effect.magnetizing"
     },
     {
+      "registry_id": "minecraft:splash_potion.effect.mirage",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Splash Potion of Mirage",
+      "display_name_ru_ru": "Взрывное зелье миража",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:splash_potion.effect.mirage"
+    },
+    {
       "registry_id": "minecraft:splash_potion.effect.mundane",
       "registry_type": "item",
       "schema_version": 1,
@@ -67052,6 +67375,58 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:splash_potion.effect.regeneration"
+    },
+    {
+      "registry_id": "minecraft:splash_potion.effect.resistance",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Splash Potion of Resistance",
+      "display_name_ru_ru": "Взрывное зелье сопротивления",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:splash_potion.effect.resistance"
     },
     {
       "registry_id": "minecraft:splash_potion.effect.slow_falling",
@@ -70010,7 +70385,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/sleepers",
         "minecraft:items/slabs"
       ],
       "is_registered": null,
@@ -70387,9 +70761,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "c:items/string",
         "c:items/strings",
-        "forge:items/string",
         "tumbleweed:items/drop_common"
       ],
       "is_registered": null,
@@ -70477,7 +70849,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/acacia_logs"
       ],
       "is_registered": null,
@@ -70533,7 +70904,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/acacia_logs"
       ],
       "is_registered": null,
@@ -70590,7 +70960,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/birch_logs"
       ],
       "is_registered": null,
@@ -70646,7 +71015,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/birch_logs"
       ],
       "is_registered": null,
@@ -70703,7 +71071,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/cherry_logs"
       ],
       "is_registered": null,
@@ -70759,7 +71126,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/cherry_logs"
       ],
       "is_registered": null,
@@ -70817,7 +71183,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/crimson_stems",
         "minecraft:items/non_flammable_wood"
       ],
@@ -70875,7 +71240,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/crimson_stems",
         "minecraft:items/non_flammable_wood"
       ],
@@ -70931,7 +71295,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/dark_oak_logs"
       ],
       "is_registered": null,
@@ -70987,7 +71350,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/dark_oak_logs"
       ],
       "is_registered": null,
@@ -71044,7 +71406,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/jungle_logs"
       ],
       "is_registered": null,
@@ -71100,7 +71461,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/jungle_logs"
       ],
       "is_registered": null,
@@ -71157,7 +71517,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/mangrove_logs"
       ],
       "is_registered": null,
@@ -71213,7 +71572,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/mangrove_logs"
       ],
       "is_registered": null,
@@ -71270,7 +71628,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/oak_logs"
       ],
       "is_registered": null,
@@ -71326,7 +71683,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/oak_logs"
       ],
       "is_registered": null,
@@ -71383,7 +71739,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/spruce_logs"
       ],
       "is_registered": null,
@@ -71439,7 +71794,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/spruce_logs"
       ],
       "is_registered": null,
@@ -71497,7 +71851,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_wood",
         "minecraft:items/non_flammable_wood",
         "minecraft:items/warped_stems"
       ],
@@ -71555,7 +71908,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "create:items/vanilla_stripped_logs",
         "minecraft:items/non_flammable_wood",
         "minecraft:items/warped_stems"
       ],
@@ -71683,8 +72035,7 @@
       "tags": [
         "c:items/foods",
         "c:items/foods/soup",
-        "c:items/foods/soups",
-        "create:items/upright_on_belt"
+        "c:items/foods/soups"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -72733,6 +73084,58 @@
       "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.glowing"
     },
     {
+      "registry_id": "minecraft:tipped_arrow.effect.gnashing",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Arrow of Gnashing",
+      "display_name_ru_ru": "Стрела лязга",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.gnashing"
+    },
+    {
       "registry_id": "minecraft:tipped_arrow.effect.harming",
       "registry_type": "item",
       "schema_version": 1,
@@ -72985,6 +73388,58 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.icy"
+    },
+    {
+      "registry_id": "minecraft:tipped_arrow.effect.incendiary",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Incendiary Arrow",
+      "display_name_ru_ru": "Зажигательная стрела",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.incendiary"
     },
     {
       "registry_id": "minecraft:tipped_arrow.effect.infested",
@@ -74173,6 +74628,58 @@
       "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.magnetizing"
     },
     {
+      "registry_id": "minecraft:tipped_arrow.effect.mirage",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Arrow of Mirage",
+      "display_name_ru_ru": "Стрела миража",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.mirage"
+    },
+    {
       "registry_id": "minecraft:tipped_arrow.effect.mundane",
       "registry_type": "item",
       "schema_version": 1,
@@ -74829,6 +75336,58 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.regeneration"
+    },
+    {
+      "registry_id": "minecraft:tipped_arrow.effect.resistance",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Arrow of Resistance",
+      "display_name_ru_ru": "Стрела сопротивления",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.resistance"
     },
     {
       "registry_id": "minecraft:tipped_arrow.effect.slow_falling",
@@ -80075,59 +80634,6 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:wild_armor_trim_smithing_template"
-    },
-    {
-      "registry_id": "minecraft:witch_spawn_egg",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json"
-      ],
-      "display_name_en_us": "Witch Spawn Egg",
-      "display_name_ru_ru": null,
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [
-        "true_ending:items/night_mobs"
-      ],
-      "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:minecraft:witch_spawn_egg"
     },
     {
       "registry_id": "minecraft:wither_skeleton_skull",

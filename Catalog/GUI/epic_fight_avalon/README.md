@@ -10,6 +10,6 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/merlin204/avalon/entity/condition/AtkPredictCondition` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/epic_fight_avalon-20.12.6.4.jar!/com/merlin204/avalon/entity/condition/AtkPredictCondition.class`
-- `com/merlin204/avalon/entity/condition/HurtPredictCondition` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/epic_fight_avalon-20.12.6.4.jar!/com/merlin204/avalon/entity/condition/HurtPredictCondition.class`
-- `com/merlin204/avalon/entity/condition/TargetInGirdCondition` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/epic_fight_avalon-20.12.6.4.jar!/com/merlin204/avalon/entity/condition/TargetInGirdCondition.class`
+- `com/merlin204/avalon/entity/condition/AtkPredictCondition` extends `java/lang/Object`; `$PROFILE/mods/epic_fight_avalon-20.12.6.4.jar!/com/merlin204/avalon/entity/condition/AtkPredictCondition.class`
+- `com/merlin204/avalon/entity/condition/HurtPredictCondition` extends `java/lang/Object`; `$PROFILE/mods/epic_fight_avalon-20.12.6.4.jar!/com/merlin204/avalon/entity/condition/HurtPredictCondition.class`
+- `com/merlin204/avalon/entity/condition/TargetInGirdCondition` extends `java/lang/Object`; `$PROFILE/mods/epic_fight_avalon-20.12.6.4.jar!/com/merlin204/avalon/entity/condition/TargetInGirdCondition.class`

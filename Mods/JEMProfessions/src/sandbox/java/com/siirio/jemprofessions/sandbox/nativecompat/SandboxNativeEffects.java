@@ -18,7 +18,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import java.util.ArrayDeque;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -30,17 +29,16 @@ public final class SandboxNativeEffects {
     private static final Map<ServerPlayer, ArrayDeque<Placement>> PLACEMENTS = new WeakHashMap<>();
     private SandboxNativeEffects() {}
 
-    public static void registerPackets(SimpleChannel channel) { SandboxSchematicProjection.register(channel); }
+    public static void registerPackets(SimpleChannel channel) {}
 
     public static void register() {
         MinecraftForge.EVENT_BUS.register(SandboxNativeEffects.class);
-        if (ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.register();
-        if (ModList.get().isLoaded("playerrevive")) SandboxReviveEffects.register();
+        if (net.minecraftforge.fml.ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.register();
+        if (net.minecraftforge.fml.ModList.get().isLoaded("playerrevive")) SandboxReviveEffects.register();
     }
 
     public static boolean activate(ServerPlayer player, String node, CompoundTag input) {
         if (!SandboxProfessionSupport.allowed(player)) return false;
-        if (ModList.get().isLoaded("create") && SandboxEngineerEffects.activate(player, node, input)) return true;
         return false;
     }
 
@@ -63,7 +61,9 @@ public final class SandboxNativeEffects {
     }
 
     static void engineerPlacement(ServerPlayer player, BlockPos pos, ResourceLocation block) {
-        if (!eligible(player) || !"create".equals(block.getNamespace())) return;
+        if (!eligible(player)) return;
+        var state = player.serverLevel().getBlockState(pos);
+        if (!state.isSignalSource() && !state.is(net.minecraft.tags.BlockTags.RAILS)) return;
         String location = player.level().dimension().location() + ":" + pos.asLong();
         if (!discovered(player, "engineer:position:" + location)) return;
         if (discovered(player, "engineer:component:" + block)) {
@@ -78,7 +78,7 @@ public final class SandboxNativeEffects {
     public static void placed(BlockEvent.EntityPlaceEvent event) {
         if (event.isCanceled() || !(event.getEntity() instanceof ServerPlayer player) || !eligible(player)) return;
         ResourceLocation block = BuiltInRegistries.BLOCK.getKey(event.getPlacedBlock().getBlock());
-        if (!"create".equals(block.getNamespace())) return;
+        if (!event.getPlacedBlock().isSignalSource() && !event.getPlacedBlock().is(net.minecraft.tags.BlockTags.RAILS)) return;
         ArrayDeque<Placement> pending = PLACEMENTS.computeIfAbsent(player, p -> new ArrayDeque<>());
         if (pending.size() < 512) pending.addLast(new Placement(player.level().dimension().location(), event.getPos().immutable(), block));
     }
@@ -87,8 +87,8 @@ public final class SandboxNativeEffects {
     public static void crafted(PlayerEvent.ItemCraftedEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !eligible(player) || event.getCrafting().isEmpty()) return;
         ResourceLocation item = BuiltInRegistries.ITEM.getKey(event.getCrafting().getItem());
-        if (!"create".equals(item.getNamespace())) return;
-        // ItemCraftedEvent is raised by the native result-slot take, never by Create machine outputs.
+        ItemStackProbe probe = new ItemStackProbe(event.getCrafting());
+        if (!probe.isRedstoneOrRail()) return;
         SandboxProfessionSupport.credit(player, ProfessionId.ENGINEER, SourceKind.ITEM_CRAFTED, item, 2,
                 "engineer:work", 400, "engineer:craft:" + UUID.randomUUID());
     }
@@ -112,19 +112,30 @@ public final class SandboxNativeEffects {
                     && BuiltInRegistries.BLOCK.getKey(player.serverLevel().getBlockState(placement.pos).getBlock()).equals(placement.block))
                 engineerPlacement(player, placement.pos, placement.block);
         }
-        if (ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.tick(player);
-        SandboxSchematicProjection.tick(player);
+        if (net.minecraftforge.fml.ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.tick(player);
     }
 
     @SubscribeEvent
     public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         PLACEMENTS.remove(player);
-        SandboxSchematicProjection.logout(player);
-        if (ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.logout(player);
-        if (ModList.get().isLoaded("playerrevive")) SandboxReviveEffects.logout(player);
-        if (ModList.get().isLoaded("create")) SandboxEngineerEffects.logout(player);
+        if (net.minecraftforge.fml.ModList.get().isLoaded("epicfight")) SandboxWarriorEffects.logout(player);
+        if (net.minecraftforge.fml.ModList.get().isLoaded("playerrevive")) SandboxReviveEffects.logout(player);
     }
 
     private record Placement(ResourceLocation dimension, BlockPos pos, ResourceLocation block) {}
+    private record ItemStackProbe(net.minecraft.world.item.ItemStack stack) {
+        boolean isRedstoneOrRail() {
+            return stack.is(net.minecraft.world.item.Items.RAIL)
+                    || stack.is(net.minecraft.world.item.Items.POWERED_RAIL)
+                    || stack.is(net.minecraft.world.item.Items.DETECTOR_RAIL)
+                    || stack.is(net.minecraft.world.item.Items.ACTIVATOR_RAIL)
+                    || stack.is(net.minecraft.world.item.Items.REDSTONE)
+                    || stack.is(net.minecraft.world.item.Items.REPEATER)
+                    || stack.is(net.minecraft.world.item.Items.COMPARATOR)
+                    || stack.is(net.minecraft.world.item.Items.OBSERVER)
+                    || stack.is(net.minecraft.world.item.Items.PISTON)
+                    || stack.is(net.minecraft.world.item.Items.STICKY_PISTON);
+        }
+    }
 }

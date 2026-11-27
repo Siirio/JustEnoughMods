@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `elocindev/necronomicon/mixin/common/client/DebugScreenMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/Necronomicon-Forge-1.6.0+1.20.1.jar!/elocindev/necronomicon/mixin/common/client/DebugScreenMixin.class`
+- `elocindev/necronomicon/mixin/common/client/DebugScreenMixin` extends `java/lang/Object`; `$PROFILE/mods/Necronomicon-Forge-1.6.0+1.20.1.jar!/elocindev/necronomicon/mixin/common/client/DebugScreenMixin.class`

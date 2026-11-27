@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `net/mehvahdjukaar/dummmmmmy/client/DamageNumberParticle` extends `net/minecraft/client/particle/Particle`; `$PROFILE/automodpack/client/active/mods/dummmmmmy-1.20-2.0.12-forge.jar!/net/mehvahdjukaar/dummmmmmy/client/DamageNumberParticle.class`
+- `net/mehvahdjukaar/dummmmmmy/client/DamageNumberParticle` extends `net/minecraft/client/particle/Particle`; `$PROFILE/mods/dummmmmmy-1.20-2.0.12-forge.jar!/net/mehvahdjukaar/dummmmmmy/client/DamageNumberParticle.class`

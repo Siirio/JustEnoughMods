@@ -10,7 +10,7 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/leclowndu93150/statuseffectbars/mixin/GuiMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/statuseffectbars-1.20.1-Forge-1.0.3.jar!/com/leclowndu93150/statuseffectbars/mixin/GuiMixin.class`
-- `com/leclowndu93150/statuseffectbars/mixin/StatusEffectsDisplayMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/statuseffectbars-1.20.1-Forge-1.0.3.jar!/com/leclowndu93150/statuseffectbars/mixin/StatusEffectsDisplayMixin.class`
-- `com/leclowndu93150/statuseffectbars/mixin/compat/StylishEffectsCompatMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/statuseffectbars-1.20.1-Forge-1.0.3.jar!/com/leclowndu93150/statuseffectbars/mixin/compat/StylishEffectsCompatMixin.class`
-- `com/leclowndu93150/statuseffectbars/render/StatusEffectBarRenderer` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/statuseffectbars-1.20.1-Forge-1.0.3.jar!/com/leclowndu93150/statuseffectbars/render/StatusEffectBarRenderer.class`
+- `com/leclowndu93150/statuseffectbars/mixin/GuiMixin` extends `java/lang/Object`; `$PROFILE/mods/statuseffectbars-1.20.1-Forge-1.0.3.jar!/com/leclowndu93150/statuseffectbars/mixin/GuiMixin.class`
+- `com/leclowndu93150/statuseffectbars/mixin/StatusEffectsDisplayMixin` extends `java/lang/Object`; `$PROFILE/mods/statuseffectbars-1.20.1-Forge-1.0.3.jar!/com/leclowndu93150/statuseffectbars/mixin/StatusEffectsDisplayMixin.class`
+- `com/leclowndu93150/statuseffectbars/mixin/compat/StylishEffectsCompatMixin` extends `java/lang/Object`; `$PROFILE/mods/statuseffectbars-1.20.1-Forge-1.0.3.jar!/com/leclowndu93150/statuseffectbars/mixin/compat/StylishEffectsCompatMixin.class`
+- `com/leclowndu93150/statuseffectbars/render/StatusEffectBarRenderer` extends `java/lang/Object`; `$PROFILE/mods/statuseffectbars-1.20.1-Forge-1.0.3.jar!/com/leclowndu93150/statuseffectbars/render/StatusEffectBarRenderer.class`

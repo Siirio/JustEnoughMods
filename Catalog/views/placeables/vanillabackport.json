@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "generation": {
-    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
+    "generated_utc": "2026-11-27T08:04:12.066008+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -8931,15 +8931,12 @@
       ],
       "observed_in": [
         "assets/minecraft/models/item/tuff.json",
-        "data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_tuff.json"
       ],
       "display_name_en_us": "Tuff",
       "display_name_ru_ru": null,
       "source_provenance": [
         "VanillaBackport-forge-1.20.1-1.2.2.jar:assets/minecraft/models/item/tuff.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/tuff_from_stone_types_tuff_stonecutting.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_tuff.json"
       ],
       "confidence": "inferred",
@@ -8957,7 +8954,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:tuff_from_stone_types_tuff_stonecutting",
         "unearthed_journey:stone_cut_breccia_tuff"
       ]
     },

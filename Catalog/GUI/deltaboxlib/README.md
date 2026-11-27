@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/dannbrown/deltaboxlib/mixin/tooltip/ItemMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/deltaboxlib-forge-2.2.0+1.20.1.jar!/com/dannbrown/deltaboxlib/mixin/tooltip/ItemMixin.class`
+- `com/dannbrown/deltaboxlib/mixin/tooltip/ItemMixin` extends `java/lang/Object`; `$PROFILE/mods/deltaboxlib-forge-2.2.0+1.20.1.jar!/com/dannbrown/deltaboxlib/mixin/tooltip/ItemMixin.class`

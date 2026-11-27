@@ -211,8 +211,6 @@
       "Mods/JEMEconomy/src/main/resources/data/jem_economy/tags/items/tide_sale_fish.json",
       "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json",
       "Mods/JEMEconomy/tools/author_building_supply.py",
-      "Mods/JEMEconomy/tools/author_shipping_economy.py",
-      "Mods/JEMEconomy/tools/derive_conversion_economy.py",
       "Mods/JEMEconomy/tools/monetary_potential.py",
       "Mods/JEMEconomy/tools/reconcile_economy.py"
     ]
@@ -364,6 +362,16 @@
         "Mods/JEMEconomy/tools/derive_conversion_economy.py",
         "Mods/JEMEconomy/tools/monetary_potential.py",
         "Mods/JEMEconomy/tools/reconcile_economy.py"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMEconomy/tools/author_shipping_economy.py",
+        "Mods/JEMEconomy/tools/derive_conversion_economy.py"
       ]
     }
   ],

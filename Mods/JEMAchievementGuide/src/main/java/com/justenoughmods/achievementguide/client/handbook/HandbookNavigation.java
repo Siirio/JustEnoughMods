@@ -51,9 +51,6 @@ public final class HandbookNavigation {
         PatchouliAPI.get().registerFunction("jemmanual", (id, style) -> NativeManuals.available().stream()
                 .filter(manual -> manual.id().equals(id)).findFirst().map(manual -> manual.status().getString())
                 .orElseGet(() -> Component.translatable("jem_advancements.handbook.manual_unavailable").getString()));
-        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_drill_lifecycle")) {
-            PatchouliAPI.get().registerFunction("jemdrill", (name, style) -> HandbookText.drillPolicy(name));
-        }
         PatchouliAPI.get().registerFunction("jemkey", (name, style) -> {
             for (KeyMapping key : Minecraft.getInstance().options.keyMappings) {
                 if (key.getName().equals(name)) return key.getTranslatedKeyMessage().getString();

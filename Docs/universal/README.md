@@ -6,7 +6,7 @@ Current source contract: 2026-10-22. One Forge 1.20.1 / Forge 47.4.29 / Java 17 
 
 ## What standalone means
 
-A standalone domain installs on a fresh compatible Forge instance with its explicitly required foundations and those foundations' own dependencies. It does not require the complete JEM modpack, a launcher-specific profile, a network backend or an unrelated JEM gameplay domain. It does not mean every JEM JAR has zero dependencies. Economy, Races and Settlements each retain their own JAR and require Identity; Races also requires the preserved Lodestone particle renderer. Create is genuinely required by the drill addon. Server is a combined host module with the hard dependencies listed below.
+A standalone domain installs on a fresh compatible Forge instance with its explicitly required foundations and those foundations' own dependencies. It does not require the complete JEM modpack, a launcher-specific profile, a network backend or an unrelated JEM gameplay domain. It does not mean every JEM JAR has zero dependencies. Economy, Races and Settlements each retain their own JAR and require Identity; Races also requires the preserved Lodestone particle renderer. Server is a combined host module with the hard dependencies listed below.
 
 After the files and required libraries are installed, integrated gameplay is local and offline. Multiplayer requires its host and matching gameplay modules. Client presentation cannot provide absent server authority or override world settings. Adaptive Culling is client-only. Arbitrary non-JEM-server compatibility is not established for the remaining shared modules.
 
@@ -24,7 +24,6 @@ In the dependency column, `F` means declared Forge `[47.4.10,)`; `M` means decla
 | [JEMCompat](../../Mods/JEMCompat/README.md) / `jemcompat` | Native compatibility, equipment/catalog helpers, Excavation, biome/season/bounty policies and optional backpack/vehicle adapters | `F`, `M`; no other direct mandatory mod | Shared logical-server mechanics and client presentation; relevant optional adapters require their native owner |
 | [JEMFood](../../Mods/JEMFood) / `jemfood` | Standalone food quality, one Food Blessing, thirty talents and dietary variety | `F`, `M`, no other mandatory dependency | Matching protocol 2 on both sides, optional food assignments and effects remain optional |
 | [MobHome](../../Mods/MobHome) / `mobhome` | Standalone native companion homes, binding and recovery | `F`, `M`, no other mandatory dependency | Matching artifact on both sides, native companion integrations are optional, Recruits remain excluded |
-| [JEMDrillLifecycle](../../Mods/JEMDrillLifecycle) / `jem_drill_lifecycle` | Real Create drill wear, servicing and replacement | `F`, `M`, `create [6.0.8,)` | Shared client/server addon; integrated supported; no Create means this addon cannot load |
 | [JEMEconomy](../../Mods/JEMEconomy) / `jem_economy` | Coins, Wallet, ledger/receipts, funded native merchant payment, Market and Shipping Box | `F`, `M`, `jem_identity [1.0.0,)` | Same authoritative integrated/dedicated implementation; matching clients render synchronized currency/UI |
 | [JEMRewards](../../Mods/JEMRewards) / `jem_rewards` | Independent personal item entitlement storage, universal starter kit, migration and native inventory E panel | `F`, `M`; no SMP/Economy dependency | Matching protocol1 on both sides; integrated and dedicated starter issuance, full personal copies, durable partial claims |
 | [JEMIdentity](../../Mods/JEMIdentity) / `jem_identity` | Stable verified principal for account mutations | `F`, `M`; no other direct mandatory mod | Integrated session authority, authenticated online dedicated sessions or unlocked optional Server Login; locked/unverifiable dedicated identity fails closed |
@@ -38,7 +37,7 @@ In the dependency column, `F` means declared Forge `[47.4.10,)`; `M` means decla
 
 Source metadata is authoritative when it changes. The universal archive supplies the selected full pack; the table also makes the genuine requirements visible when choosing individual domains. A required dependency cannot be made optional by deleting its JAR or renaming an artifact.
 
-Native dependency chains also apply: installed Tide 2.1.1 requires `cloth_config [11,)`, so an independent Server installation needs Cloth Config as well. Create 6.0.8 declares `ponder [0.8,)` on both sides and `flywheel [1.0.0,2.0)` on the client; use the complete official Create distribution with its bundled dependencies. Installed Lodestone 1.6.4.1 declares no additional mandatory content mod beyond Forge/Minecraft. These are exact installed metadata observations, not an optional-mod runtime matrix.
+Native dependency chains also apply: installed Tide 2.1.1 requires `cloth_config [11,)`, so an independent Server installation needs Cloth Config as well. Installed Lodestone 1.6.4.1 declares no additional mandatory content mod beyond Forge/Minecraft. These are exact installed metadata observations, not an optional-mod runtime matrix.
 
 ## Preserved domain boundaries
 

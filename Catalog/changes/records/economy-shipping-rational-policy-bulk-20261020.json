@@ -70,13 +70,11 @@
       "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_limits.json",
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
-      "Mods/JEMEconomy/tools/author_shipping_economy.py",
       "Mods/JEMEconomy/tools/author_building_supply.py",
       "Mods/JEMEconomy/tools/reconcile_economy.py",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
-      "Mods/JEMEconomy/tools/derive_conversion_economy.py",
       "Mods/JEMEconomy/tools/monetary_potential.py",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
       "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json",
@@ -374,6 +372,16 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMEconomy/tools/author_shipping_economy.py",
+        "Mods/JEMEconomy/tools/derive_conversion_economy.py"
       ]
     }
   ],

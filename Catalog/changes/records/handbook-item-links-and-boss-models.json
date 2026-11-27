@@ -78,19 +78,12 @@
       "Mods/JEMAchievementGuide/src/main/handbook/translations.json",
       "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
       "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/handbook/controls.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/boss_description.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/enchantment_links.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/*.json",
       "Mods/JEMAchievementGuide/tools/generate_handbook.py",
       "Docs/handbook/boss-drop-links.json",
       "Docs/handbook/links-delivery.json",
-      "Docs/handbook/README.md",
-      "Client/ManagedPack/mods/jem-advancements-*.jar",
-      "Server/mods/jem-advancements-5.3.13.jar"
+      "Docs/handbook/README.md"
     ]
   },
   "rationale": {
@@ -116,6 +109,21 @@
       "action": "synchronize_handbook_artifact_5_3_13",
       "summary": "Update the local Server artifact evidence to the matching JEM Advancements 5.3.13 build without changing handbook behavior",
       "source_files": [
+        "Server/mods/jem-advancements-5.3.13.jar"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/handbook/controls.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/*.json",
+        "Client/ManagedPack/mods/jem-advancements-*.jar",
         "Server/mods/jem-advancements-5.3.13.jar"
       ]
     }

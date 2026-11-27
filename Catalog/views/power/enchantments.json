@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "enchantments",
-  "snapshot_sha": "a20a47aa2f8fc8948cd5d8f86ab72da20ded20e1",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -4377,162 +4377,6 @@
       ]
     },
     {
-      "id": "create:capacity",
-      "kind": "enchantment",
-      "display_name": "Capacity",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/registries/enchantments/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "damage",
-        "mitigation",
-        "utility",
-        "resource cost",
-        "compatibility"
-      ]
-    },
-    {
-      "id": "create:capacity.desc",
-      "kind": "enchantment",
-      "display_name": "Increases Backtank air capacity.",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/registries/enchantments/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "damage",
-        "mitigation",
-        "utility",
-        "resource cost",
-        "compatibility"
-      ]
-    },
-    {
-      "id": "create:potato_recovery",
-      "kind": "enchantment",
-      "display_name": "Potato Recovery",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/registries/enchantments/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "damage",
-        "mitigation",
-        "utility",
-        "resource cost",
-        "compatibility"
-      ]
-    },
-    {
-      "id": "create:potato_recovery.desc",
-      "kind": "enchantment",
-      "display_name": "Potato Cannon projectiles have a chance to be reused.",
-      "original": {
-        "status": "unresolved",
-        "expression": null,
-        "known_dimensions": {},
-        "unknown_is_zero": false
-      },
-      "modifiers": [],
-      "jem_tweaks": [],
-      "effective": {
-        "status": "unresolved",
-        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
-      },
-      "acquisition": {
-        "status": "unresolved",
-        "routes": []
-      },
-      "assessment": {
-        "status": "unverified",
-        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
-      },
-      "evidence": [
-        {
-          "type": "atlas_static",
-          "source": "Catalog/registries/enchantments/create.json",
-          "confidence": "inferred"
-        }
-      ],
-      "power_dimensions": [
-        "damage",
-        "mitigation",
-        "utility",
-        "resource cost",
-        "compatibility"
-      ]
-    },
-    {
       "id": "efn:broad_blade_enhance",
       "kind": "enchantment",
       "display_name": "BroadBlade - Revolution",
@@ -5313,6 +5157,162 @@
       ]
     },
     {
+      "id": "gouge:shimmy",
+      "kind": "enchantment",
+      "display_name": "Shimmy",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/gouge.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "gouge:shimmy.desc",
+      "kind": "enchantment",
+      "display_name": "Lets you shimmy sideways along walls faster.",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/gouge.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "gouge:spring",
+      "kind": "enchantment",
+      "display_name": "Spring",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/gouge.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "gouge:spring.desc",
+      "kind": "enchantment",
+      "display_name": "Boosts the launch over soft caps and wall kicks.",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/gouge.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
       "id": "jem_pack_core:excavation",
       "kind": "enchantment",
       "display_name": "Digger",
@@ -5339,7 +5339,7 @@
       "evidence": [
         {
           "type": "atlas_static",
-          "source": "Catalog/registries/enchantments/jemcompat.json",
+          "source": "Catalog/registries/enchantments/jem_excavation.json",
           "confidence": "inferred"
         }
       ],
@@ -5423,6 +5423,84 @@
         {
           "type": "atlas_static",
           "source": "Catalog/registries/enchantments/jem_world_boss_tiers.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "kaleidoscope_cookery:quick_knife",
+      "kind": "enchantment",
+      "display_name": "Quick Knife",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/kaleidoscope_cookery.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "kaleidoscope_cookery:sweep",
+      "kind": "enchantment",
+      "display_name": "Sweep",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/kaleidoscope_cookery.json",
           "confidence": "inferred"
         }
       ],
@@ -6332,6 +6410,45 @@
       ]
     },
     {
+      "id": "luminous_nether:soul_cleave.description",
+      "kind": "enchantment",
+      "display_name": "Позволяет получать Призрачную эссенцию с любого убитого моба! ",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/luminous_nether.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
       "id": "minecraft:aqua_affinity",
       "kind": "enchantment",
       "display_name": "Aqua Affinity",
@@ -7037,6 +7154,84 @@
       "id": "minecraft:luck_of_the_sea",
       "kind": "enchantment",
       "display_name": "Luck of the Sea",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/minecraft.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "minecraft:lunge",
+      "kind": "enchantment",
+      "display_name": "Lunge",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/minecraft.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "minecraft:lunge.desc",
+      "kind": "enchantment",
+      "display_name": "The user lunges forward when using the spear",
       "original": {
         "status": "unresolved",
         "expression": null,
@@ -8321,6 +8516,45 @@
       ]
     },
     {
+      "id": "the_sift:soul_absorption",
+      "kind": "enchantment",
+      "display_name": "Soul Absorption",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/the_sift.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
       "id": "trials:breach",
       "kind": "enchantment",
       "display_name": "Breach",
@@ -8543,6 +8777,162 @@
         {
           "type": "atlas_static",
           "source": "Catalog/registries/enchantments/trials.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "wildscapes:elasticity",
+      "kind": "enchantment",
+      "display_name": "Elasticity",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "wildscapes:empowered_jump",
+      "kind": "enchantment",
+      "display_name": "Empowered Jump",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "wildscapes:multi_jump",
+      "kind": "enchantment",
+      "display_name": "Multi Jump",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/wildscapes.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "wildscapes:slime_snare",
+      "kind": "enchantment",
+      "display_name": "Slime Snare",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/wildscapes.json",
           "confidence": "inferred"
         }
       ],

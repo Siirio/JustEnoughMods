@@ -117,9 +117,9 @@ public final class SandboxActionScreen extends Screen {
     }
     private Component help(){
         return switch(skill.id()){
-            case "gear_swap"->t("Смотри на шестерню Create. Держи замену во второй руке.","Aim at a Create cog; hold its replacement in your offhand.");
-            case "factory_copy"->t("Первая точка → посмотри на второй угол → Сохранить. Записать: держи пустой чертёж Create.","First corner, aim at the opposite corner, Save. Write requires a real empty Create schematic.");
-            case "schedule_templates"->t("Держи настоящее расписание Create: Сохранить или Записать.","Hold a real Create schedule to Save or Write.");
+            case "gear_swap"->t("Устанавливай новые компоненты редстоуна.","Place new redstone components.");
+            case "factory_copy"->t("Строй компактные схемы из редстоуна и наблюдателей.","Build compact redstone and observer circuits.");
+            case "schedule_templates"->t("Планируй обычные рельсовые маршруты.","Plan vanilla rail routes.");
             case "resident_move"->t("Выбери жителя и смотри на подходящую кровать.","Select a resident and aim at a suitable bed.");
             case "civic_fund"->t("Держи предмет цели в руке. Для покупки выбери предложение нужного товара.","Hold the goal item. Select the matching shop offer to spend the reserved funds.");
             case "stall_sign"->t("Выбери свою лавку и смотри на настоящую вывеску.","Select your shop and aim at a real sign.");

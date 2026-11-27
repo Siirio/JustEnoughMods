@@ -6,7 +6,6 @@ import com.siirio.jemcompat.feature.leash.UniversalLeashEvents;
 import com.siirio.jemcompat.feature.elements.ElementalImpactEvents;
 import com.siirio.jemcompat.feature.kaleidoscope.VoidWalkerEvents;
 import com.siirio.jemcompat.feature.kaleidoscope.VoidWalkerNetwork;
-import com.siirio.jemcompat.feature.transport.TransportContent;
 import com.siirio.jemcompat.feature.transport.TransportEvents;
 import com.siirio.jemcompat.feature.transport.TransportNetwork;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,7 +33,6 @@ public final class JEMCompat {
         VoidWalkerNetwork.register(modBus);
         TransportNetwork.register(modBus);
         com.siirio.jemcompat.feature.spawning.CreatureSpawnProbability.SERIALIZERS.register(modBus);
-        TransportContent.register(modBus);
         modBus.addListener(JEMCompat::creativeTabs);
         modBus.addListener(JEMCompat::restoreVanillaBackportPlayerAttributes);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JEMClientConfig.SPEC);
@@ -62,9 +60,6 @@ public final class JEMCompat {
         if (ModList.get().isLoaded("handcrafted") && ModList.get().isLoaded("bbb")) {
             removeFromTab(event, new ResourceLocation("handcrafted", "hammer"));
             if (completeUnifiedHammer) removeFromTab(event, new ResourceLocation("bbb", "hammer"));
-        }
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS || event.getTabKey() == CreativeModeTabs.SEARCH) {
-            event.accept(TransportContent.AIRCRAFT_FUEL);
         }
         if (event.getTabKey() == CreativeModeTabs.SEARCH) ForgeRegistries.ITEMS.getValues().stream()
                 .filter(SpawnEggItem.class::isInstance).forEach(item -> {

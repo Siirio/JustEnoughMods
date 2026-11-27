@@ -207,7 +207,7 @@ public final class ProfessionRadialScreen extends Screen {
     private static Item item(String id) { return BuiltInRegistries.ITEM.getOptional(new ResourceLocation(id)).orElse(Items.BOOK); }
     private static Item icon(ProfessionId id) { return switch (id) {
         case ARCHITECT -> Items.BRICKS; case FARMER -> Items.WHEAT; case FISHER -> Items.FISHING_ROD; case MINER -> Items.IRON_PICKAXE;
-        case EXPLORER -> Items.COMPASS; case ENGINEER -> item("create:wrench"); case WARRIOR -> Items.IRON_SWORD; case MERCHANT -> Items.EMERALD;
+        case EXPLORER -> Items.COMPASS; case ENGINEER -> Items.REDSTONE; case WARRIOR -> Items.IRON_SWORD; case MERCHANT -> Items.EMERALD;
         case MAYOR -> Items.BELL;
     }; }
     private static String name(ProfessionId id) { return "jem.professions.name." + id.name().toLowerCase(java.util.Locale.ROOT); }

@@ -40,7 +40,7 @@ public final class TradeRestrictions {
                 .anyMatch(tag -> block.getBlock().defaultBlockState().is(TagKey.create(Registries.BLOCK, new ResourceLocation(tag))));
     }
 
-    /** Explicit reviewed sell policies relax only former broad ore/Create exclusions. */
+    /** Explicit reviewed sell policies relax only the former broad mineral exclusions. */
     public static boolean saleProhibited(ItemStack stack) {
         if (stack.isEmpty()) return true;
         if (stack.getItem() instanceof SpawnEggItem) return true;

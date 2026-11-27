@@ -203,9 +203,6 @@ public final class HandbookItemHelp extends SimplePreparableReloadListener<Map<S
             if (macro.equals("br")) replacement = "\n";
             else if (macro.equals("br2")) replacement = "\n\n";
             else if (macro.matches("li[0-9]*")) replacement = "\n- ";
-            else if (macro.startsWith("jemdrill:") && net.minecraftforge.fml.ModList.get().isLoaded("jem_drill_lifecycle")) {
-                replacement = HandbookText.drillPolicy(macro.substring("jemdrill:".length()));
-            }
             else if (macro.startsWith("k:") || macro.startsWith("jemkey:")) {
                 String keyName = macro.substring(macro.indexOf(':') + 1);
                 replacement = Component.translatable("key.keyboard.unknown").getString();

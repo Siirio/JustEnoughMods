@@ -6,11 +6,11 @@ Original reference assets. Control sheets retain their source dimensions and alp
 
 ## sodium:textures/gui/arrows.png
 
-[PNG](png/source-123cefa3769f/assets/sodium/textures/gui/arrows.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-ae84b8dd0f48/assets/sodium/textures/gui/arrows.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/mods/embeddium-0.3.31+mc1.20.1.jar!/assets/sodium/textures/gui/arrows.png`
+Source: `$PROFILE/mods/embeddium-0.3.31+mc1.20.1.jar!/assets/sodium/textures/gui/arrows.png`
 
 Override target: `assets/sodium/textures/gui/arrows.png`
 
-![sodium:textures/gui/arrows.png](png/source-123cefa3769f/assets/sodium/textures/gui/arrows.png)
+![sodium:textures/gui/arrows.png](png/source-ae84b8dd0f48/assets/sodium/textures/gui/arrows.png)
 

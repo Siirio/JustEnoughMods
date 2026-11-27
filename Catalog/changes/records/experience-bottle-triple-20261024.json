@@ -49,7 +49,6 @@
     "owner": "Canonical source modules and KubeJS language resources",
     "kind": "user_requested_player_feedback",
     "source_files": [
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/experience/ExperienceBottleExperienceMixin.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
     ]
@@ -76,6 +75,15 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/experience/ExperienceBottleExperienceMixin.java",
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
     }
   ],
   "impacts": {
@@ -96,4 +104,3 @@
     ]
   }
 }
-

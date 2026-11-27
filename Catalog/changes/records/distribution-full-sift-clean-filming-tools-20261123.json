@@ -74,8 +74,6 @@
     "kind": "user_requested_mod_replacement_and_client_tool_removal",
     "source_files": [
       "Client/ManagedPack/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
-      "Client/ManagedPack/mods/jem-advancements-5.3.13.jar",
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
       "Client/ManagedPack/config/ftbquests/quests/chapters/jem_16.snbt",
       "Client/ManagedPack/config/ftbquests/quests/chapters/jem_17.snbt",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/quest_v3/v3_archie_field_guide.json",
@@ -120,6 +118,24 @@
         "Server/mods/blabovs_green_screen-1.0.0-forge-1.20.1.jar",
         "Client/ManagedPack/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar",
         "Server/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-advancements-5.3.13.jar"
       ]
     }
   ],

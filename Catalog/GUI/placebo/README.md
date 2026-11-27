@@ -10,8 +10,8 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `dev/shadowsoffire/placebo/config/ConfigGuiType` extends `java/lang/Enum`; `$PROFILE/automodpack/client/active/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/config/ConfigGuiType.class`
-- `dev/shadowsoffire/placebo/mixin/client/ChatComponentMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/mixin/client/ChatComponentMixin.class`
-- `dev/shadowsoffire/placebo/screen/PlaceboContainerScreen` extends `net/minecraft/client/gui/screens/inventory/AbstractContainerScreen`; `$PROFILE/automodpack/client/active/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/screen/PlaceboContainerScreen.class`
-- `dev/shadowsoffire/placebo/screen/ScreenUtil` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/screen/ScreenUtil.class`
-- `dev/shadowsoffire/placebo/screen/TickableText` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/screen/TickableText.class`
+- `dev/shadowsoffire/placebo/config/ConfigGuiType` extends `java/lang/Enum`; `$PROFILE/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/config/ConfigGuiType.class`
+- `dev/shadowsoffire/placebo/mixin/client/ChatComponentMixin` extends `java/lang/Object`; `$PROFILE/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/mixin/client/ChatComponentMixin.class`
+- `dev/shadowsoffire/placebo/screen/PlaceboContainerScreen` extends `net/minecraft/client/gui/screens/inventory/AbstractContainerScreen`; `$PROFILE/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/screen/PlaceboContainerScreen.class`
+- `dev/shadowsoffire/placebo/screen/ScreenUtil` extends `java/lang/Object`; `$PROFILE/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/screen/ScreenUtil.class`
+- `dev/shadowsoffire/placebo/screen/TickableText` extends `java/lang/Object`; `$PROFILE/mods/Placebo-1.20.1-8.6.3.jar!/dev/shadowsoffire/placebo/screen/TickableText.class`

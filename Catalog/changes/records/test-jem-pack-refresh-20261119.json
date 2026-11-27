@@ -246,7 +246,11 @@
         "operation": "replace",
         "before": "native VillagerMakeLove plus one additional parent HOME cube admission",
         "after": {
-          "actors": ["minecraft:villager", "minecraft:zombie_villager", "supported recruits entities"],
+          "actors": [
+            "minecraft:villager",
+            "minecraft:zombie_villager",
+            "supported recruits entities"
+          ],
           "identity": "persistent Jade-only international name, immutable sex, 5 percent same-sex orientation, spouse and parent relations",
           "home": "one bed-head anchored 3x3x3 zone from bed Y through Y+2 per person, with unique bed/chest/workstation and at least one light-emitting block; children do not require a workstation",
           "family": "permanent spouse after courtship, remarriage 1-10 Minecraft days after spouse death, close-kin exclusion and ordinary villager children from every fertile pair",
@@ -268,18 +272,9 @@
     "owner": "Managed pack, JEM Advancements, JEM Compat, JEM Economy, JEM Settlements and JEM World Boss Tiers",
     "kind": "user_requested_test_pack_refresh",
     "source_files": [
-      "Client/ManagedPack/mods/**",
-      "Client/ManagedPack/config/ftbquests/quests/**",
       "Client/ManagedPack/config/inventorytabs-client.toml",
       "Client/ManagedPack/config/oculus.properties",
-      "Client/ManagedPack/shaderpacks/**",
-      "Docs/major-update-4/structure-conflict-audit-2026-11-19.md",
-      "Mods/JEMAchievementGuide/**",
-      "Mods/JEMCompat/**",
-      "Mods/JEMEconomy/**",
-      "Mods/JEMSettlements/**",
-      "Mods/JEMWorldBossTiers/**",
-      "Server/mods/**"
+      "Docs/major-update-4/structure-conflict-audit-2026-11-19.md"
     ]
   },
   "rationale": {
@@ -422,6 +417,23 @@
         "Client/ManagedPack/config/ftbquests/quests/chapters/jem_26.snbt",
         "Client/ManagedPack/mods/jem-advancements-5.3.13.jar"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/mods/**",
+        "Client/ManagedPack/config/ftbquests/quests/**",
+        "Client/ManagedPack/shaderpacks/**",
+        "Mods/JEMAchievementGuide/**",
+        "Mods/JEMCompat/**",
+        "Mods/JEMEconomy/**",
+        "Mods/JEMSettlements/**",
+        "Mods/JEMWorldBossTiers/**",
+        "Server/mods/**"
+      ]
     }
   ],
   "impacts": {
@@ -449,15 +461,15 @@
       "The recruit cap is not written to Client/ManagedPack/defaultconfigs",
       "VanillaBackport owns the overlapping Copper Age and spear backports while Trials remains installed",
       "Platform 1.4.2 satisfies VanillaBackport 1.2.2 and remains inside Rotten Creatures' open dependency range",
-      "Tiny Takeover uses vanilla entity types and swaps only its baby model during render, so Fresh Animations has no unsupported Tiny Takeover entity IDs"
-      ,"JEM Settlements is the single family authority. Settlement membership consumes its home penalties but does not define different family rules"
-      ,"Recruits workstation conversion and promotion replace entity bodies while retaining one persistent family person ID and provenance"
-      ,"Xaero receives only a temporary native camera destination and no waypoint mutation"
-      ,"authored FTB Coin amount -> jem_advancements:quest_coin -> funded OPERATIONS ledger transfer"
-      ,"Coin base-unit amount -> highest exact Coin denomination -> registered ItemIcon and localized one/few/many title"
-      ,"573 stable reward IDs -> 17,920 Copper one-player total -> finite 20,000 Copper Operations reserve"
-      ,"One JEM Advancements Entity.move mixin dispatches pull, rune-control and battle-armor movement proofs without changing their owning proof classes"
-      ,"The shulker quick-move mixin reaches the protected inherited container transfer method through the target's real AbstractContainerMenu superclass instead of a shadow on ShulkerBoxMenu"
+      "Tiny Takeover uses vanilla entity types and swaps only its baby model during render, so Fresh Animations has no unsupported Tiny Takeover entity IDs",
+      "JEM Settlements is the single family authority. Settlement membership consumes its home penalties but does not define different family rules",
+      "Recruits workstation conversion and promotion replace entity bodies while retaining one persistent family person ID and provenance",
+      "Xaero receives only a temporary native camera destination and no waypoint mutation",
+      "authored FTB Coin amount -> jem_advancements:quest_coin -> funded OPERATIONS ledger transfer",
+      "Coin base-unit amount -> highest exact Coin denomination -> registered ItemIcon and localized one/few/many title",
+      "573 stable reward IDs -> 17,920 Copper one-player total -> finite 20,000 Copper Operations reserve",
+      "One JEM Advancements Entity.move mixin dispatches pull, rune-control and battle-armor movement proofs without changing their owning proof classes",
+      "The shulker quick-move mixin reaches the protected inherited container transfer method through the target's real AbstractContainerMenu superclass instead of a shadow on ShulkerBoxMenu"
     ],
     "notes": [
       "Sirok gains 15 blocks on each X and Z side for 30 blocks more total width per horizontal axis",

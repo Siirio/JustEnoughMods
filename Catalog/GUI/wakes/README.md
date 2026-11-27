@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/leclowndu93150/wakes/mixin/DebugHudMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/wakes-1.20.1-Forge-1.4.1.jar!/com/leclowndu93150/wakes/mixin/DebugHudMixin.class`
+- `com/leclowndu93150/wakes/mixin/DebugHudMixin` extends `java/lang/Object`; `$PROFILE/mods/wakes-1.20.1-Forge-1.4.1.jar!/com/leclowndu93150/wakes/mixin/DebugHudMixin.class`

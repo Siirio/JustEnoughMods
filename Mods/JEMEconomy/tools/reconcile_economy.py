@@ -30,7 +30,7 @@ def proposals(runtime, original):
     for id,row in sorted(items.items()):
         ns,path=id.split(':'); ts=tags(row)
         if ns in forest and 'minecraft:logs' in ts and not path.startswith('stripped_') and not any(x in path for x in ['crimson','warped','rotten','pale_oak']):
-            add(id,24,2,'forestry',32,'Ordinary timber; six-plank Create sawing and stick yield priced in; renewable tree farms capped', 'loaded minecraft:logs tag and installed sawmill recipes')
+            add(id,24,2,'forestry',32,'Ordinary timber and stick yield priced in; renewable tree farms capped', 'loaded minecraft:logs tag and installed recipes')
         if ns in forest and 'minecraft:saplings' in ts and row.get('rarity')=='COMMON' and not any(x in path for x in ['pale_oak','huge','large']):
             add(id,16,1,'forestry',16,'Overworld planting stock; tree growth requires land/time; low surplus payout prevents sapling-farm dominance', 'loaded minecraft:saplings tag')
     explicit={
@@ -61,9 +61,6 @@ def proposals(runtime, original):
       'minecraft:charcoal':(8,1,'mining',32,'Timber smelting fuel; no fuel-cost subsidy in loop audit'),
       'minecraft:iron_nugget':(3,1,'mining',32,'Nine per iron ingot; integer payout kept below ingot acquisition cost'),
       'minecraft:gold_nugget':(4,1,'mining',32,'Nine per gold ingot; integer payout kept below ingot acquisition cost'),
-      'create:zinc_ingot':(16,4,'mining',16,'Ordinary Create mining/processing material; ore multiplier audited'),
-      'create:brass_ingot':(24,6,'mining',16,'Copper/zinc alloy requires heated mixing; inputs and output count audited'),
-      'create:wheat_flour':(6,1,'crops',32,'Milling/crushing wheat; probability/byproducts audited conservatively'),
       'farm_and_charm:flour':(6,1,'crops',32,'Grain processing, not a prepared meal; recipe output audited'),
     }
     # Individual crop identities inspected against loaded tags/food properties and source recipes.
@@ -185,11 +182,6 @@ def conversions(runtime):
         if outputs:
             groups=list(recipe['ingredients']); quantities=[Fraction(1)]*len(groups)
             if recipe['type'] in {'minecraft:smelting','minecraft:blasting','minecraft:smoking'}:
-                # Installed Create 6.0.8 fan types apply native cooking recipes against
-                # reusable heat catalysts; their operation consumes no per-item fuel.
-                if any(row['id'].startswith('create:') for row in runtime['items']):
-                    result.append({'id':recipe['id']+'#create_fan','type':'create:fan_processing',
-                                   'inputs':list(groups),'quantities':list(quantities),'outputs':list(outputs)})
                 default_time = 200 if recipe['type'] == 'minecraft:smelting' else 100
                 cooking_time = definition.get('cookingtime', default_time)
                 burn_time = 1600 if recipe['type'] == 'minecraft:smelting' else 800
@@ -277,7 +269,7 @@ def audit(runtime, recipe_overrides=None):
         if liquidation>total: multi.append({'recipe':recipe['id'],'payout':float(liquidation),'cost':float(total),'outputs':[(id,str(q)) for id,q in recipe['outputs']]})
     gaps=[{key:row.get(key) for key in ['profession','level','pool_index','provider','sample_status']}
           for row in runtime.get('nativeTrades',[]) if 'result' not in row]
-    report={'method':'Actual global Market full buy; captured native merchandise/reverse and authored specialty batch discount floors only. Native-only sale endpoints require actual provider/pool batches. Loaded ingredient alternatives and exact static output probabilities; fuel-consuming furnaces plus installed Create zero-consumable fan variants; machine power/fluid cost zero. Expected-value analysis, not a promise every lucky craft loses money.',
+    report={'method':'Actual global Market full buy; captured native merchandise/reverse and authored specialty batch discount floors only. Native-only sale endpoints require actual provider/pool batches. Loaded ingredient alternatives and exact static output probabilities include fuel-consuming furnaces. Expected-value analysis does not promise that every lucky craft loses money.',
             'modeledRecipes':len(recipes),'loadedRecipes':len(runtime['recipes']),'costPasses':iteration+1,'converged':not changed,
             'marketPurchaseRoots':len(market),'nativePurchaseRoots':len(batches),
             'nativeProviderRows':len(runtime.get('nativeTrades',[])), 'nativeProviderGapCount':len(gaps),
@@ -538,7 +530,7 @@ def main():
                         help='Explicit audit-only recipe yield simulation, marked pending runtime capture')
     args=parser.parse_args()
     if any(row.get('schema',1)>=2 for row in read(DATA/'item_policies.json')):
-        raise SystemExit('Rational schema2 policies require JEMEconomy/tools/author_shipping_economy.py and derive_conversion_economy.py; legacy integer export cannot overwrite the current audit')
+        raise SystemExit('Rational schema2 policies require explicit source review; legacy integer export cannot overwrite the current audit')
     runtime=read(args.runtime)
     originalPath=RESEARCH/'approved-policies.json'
     if not originalPath.exists(): write(originalPath,read(DATA/'item_policies.json'))

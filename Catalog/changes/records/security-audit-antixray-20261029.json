@@ -87,8 +87,7 @@
       "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
       "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java",
       "Mods/JEMSecurity/src/main/resources/jem_security.mixins.json",
-      "Mods/JEMSecurity/src/main/resources/pack.mcmeta",
-      "Client/ManagedPack/mods/jem_security-1.0.8.jar"
+      "Mods/JEMSecurity/src/main/resources/pack.mcmeta"
     ]
   },
   "rationale": {
@@ -138,87 +137,96 @@
         "Client/ManagedPack/mods/jem_security-1.0.0.jar",
         "Docs/releases/2026-10-29-jem-security-local/apply_native.py"
       ]
-      },
-      {
-        "date": "2026-10-29",
-        "commit": "SELF",
-        "action": "repair_attestation_admission",
-        "summary": "Replace reliance on the unobserved client LoggingIn report with a server-initiated PLAY-channel challenge and client response while preserving the fail-closed deadline",
-        "source_files": [
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
-        ]
-      },
-      {
-        "date": "2026-10-29",
-        "commit": "SELF",
-        "action": "unblock_attestation_during_world_load",
-        "summary": "Answer the server challenge from Forge's network consumer using the bounded client-login snapshot so JEI render-thread initialization cannot consume the fail-closed deadline",
-        "source_files": [
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
-        ]
-      },
-      {
-        "date": "2026-10-29",
-        "commit": "SELF",
-        "action": "allow_attestation_through_server_login",
-        "summary": "Permit only jem_security:main through the ServerLogin pre-auth payload gate so the required attestation reaches its server-owned validator",
-        "source_files": [
-          "Server/config/serverlogin-common.toml"
-        ]
-      },
-      {
-        "date": "2026-10-29",
-        "commit": "SELF",
-        "action": "verify_local_attestation_acceptance",
-        "summary": "Connect test jem to the ordinary local dedicated server, enter the world and observe client_attested before and beyond the fail-closed deadline",
-        "source_files": [
-          "Server/config/serverlogin-common.toml"
-        ]
-      },
-      {
-        "date": "2026-10-29",
-        "commit": "SELF",
-        "action": "block_content_based_xray_resource_packs",
-        "summary": "Inspect selected file resource packs for Xray model-tree and selective-geometry signatures, disable resource-pack confirmation while detected, and report the same content verdict during client attestation",
-        "source_files": [
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/client/ResourcePackGuard.java",
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/PackSelectionScreenMixin.java",
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
-        ]
-      },
-      {
-        "date": "2026-10-29",
-        "commit": "SELF",
-        "action": "publish_content_based_xray_guard",
-        "summary": "Load the final JEM Security 1.0.3 artifact on the ordinary local server, publish native generation 110 and apply the exact reviewed delta to the closed test jem profile",
-        "source_files": [
-          "Client/ManagedPack/mods/jem_security-1.0.3.jar",
-          "Docs/releases/2026-10-29-jem-security-local/apply_native.py",
-          "Docs/releases/2026-10-29-jem-security-local/receipt.json"
-        ]
-      },
-      {
-        "date": "2026-10-29",
-        "commit": "SELF",
-        "action": "report_xray_selection_attempts",
-        "summary": "Report a blocked content-matched resource-pack selection immediately to the dedicated server audit and console with bounded client/server transport and server-side rate limiting",
-        "source_files": [
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/PackSelectionScreenMixin.java",
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
-        ]
-      },
-      {
-        "date": "2026-10-31",
-        "commit": "SELF",
-        "action": "remove_pre_connection_attestation_send",
-        "summary": "Cache the client attestation during Forge LoggingIn without sending through a possibly absent ClientPacketListener, then answer only the existing server challenge on the established PLAY channel",
-        "source_files": [
-          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java"
-        ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "repair_attestation_admission",
+      "summary": "Replace reliance on the unobserved client LoggingIn report with a server-initiated PLAY-channel challenge and client response while preserving the fail-closed deadline",
+      "source_files": [
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "unblock_attestation_during_world_load",
+      "summary": "Answer the server challenge from Forge's network consumer using the bounded client-login snapshot so JEI render-thread initialization cannot consume the fail-closed deadline",
+      "source_files": [
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "allow_attestation_through_server_login",
+      "summary": "Permit only jem_security:main through the ServerLogin pre-auth payload gate so the required attestation reaches its server-owned validator",
+      "source_files": [
+        "Server/config/serverlogin-common.toml"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "verify_local_attestation_acceptance",
+      "summary": "Connect test jem to the ordinary local dedicated server, enter the world and observe client_attested before and beyond the fail-closed deadline",
+      "source_files": [
+        "Server/config/serverlogin-common.toml"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "block_content_based_xray_resource_packs",
+      "summary": "Inspect selected file resource packs for Xray model-tree and selective-geometry signatures, disable resource-pack confirmation while detected, and report the same content verdict during client attestation",
+      "source_files": [
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/client/ResourcePackGuard.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/PackSelectionScreenMixin.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "publish_content_based_xray_guard",
+      "summary": "Load the final JEM Security 1.0.3 artifact on the ordinary local server, publish native generation 110 and apply the exact reviewed delta to the closed test jem profile",
+      "source_files": [
+        "Client/ManagedPack/mods/jem_security-1.0.3.jar",
+        "Docs/releases/2026-10-29-jem-security-local/apply_native.py",
+        "Docs/releases/2026-10-29-jem-security-local/receipt.json"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "report_xray_selection_attempts",
+      "summary": "Report a blocked content-matched resource-pack selection immediately to the dedicated server audit and console with bounded client/server transport and server-side rate limiting",
+      "source_files": [
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/PackSelectionScreenMixin.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "remove_pre_connection_attestation_send",
+      "summary": "Cache the client attestation during Forge LoggingIn without sending through a possibly absent ClientPacketListener, then answer only the existing server challenge on the established PLAY channel",
+      "source_files": [
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jem_security-1.0.8.jar"
+      ]
     }
   ],
   "impacts": {

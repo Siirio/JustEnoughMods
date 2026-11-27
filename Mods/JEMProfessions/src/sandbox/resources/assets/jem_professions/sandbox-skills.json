@@ -510,60 +510,52 @@
   },
   "gear_swap": {
     "profession": "engineer",
-    "name_ru": "Замена передач",
-    "effect_ru": "Выбери установленную шестерню и замену в сумке: обменяй детали без потери старой.",
-    "effect_en": "Aim at a Create cog and hold its replacement in your offhand; swap without losing the old part.",
-    "xp_ru": "Собирай детали Create, строй механизмы и железную дорогу.",
-    "xp_en": "Craft Create parts and build machines and railways.",
-    "passive": false,
-    "required_mods": [
-      "create"
-    ],
-    "name_en": "Gear Swap",
+    "name_ru": "Обслуживание схем",
+    "effect_ru": "Развивай инженерное дело через компоненты редстоуна.",
+    "effect_en": "Develop engineering through redstone components.",
+    "xp_ru": "Устанавливай новые компоненты редстоуна и рельсы.",
+    "xp_en": "Place new redstone components and rails.",
+    "passive": true,
+    "required_mods": [],
+    "name_en": "Circuit Service",
     "use_ru": "Нажми «Действие / настройки» или назначь навык на клавишу.",
     "use_en": "Open Action / settings, or assign this skill to the profession action key."
   },
   "shaft_builder": {
     "profession": "engineer",
-    "name_ru": "Монтаж валов",
-    "effect_ru": "Уложи прямую линию до 16 валов Create из сумки.",
-    "effect_en": "Place a straight line of up to 16 Create shafts from your inventory.",
-    "xp_ru": "Собирай детали Create, строй механизмы и железную дорогу.",
-    "xp_en": "Craft Create parts and build machines and railways.",
-    "passive": false,
-    "required_mods": [
-      "create"
-    ],
-    "name_en": "Shaft Builder",
+    "name_ru": "Линия поршней",
+    "effect_ru": "Развивай последовательные схемы из поршней и редстоуна.",
+    "effect_en": "Develop sequential piston and redstone circuits.",
+    "xp_ru": "Устанавливай новые компоненты редстоуна и рельсы.",
+    "xp_en": "Place new redstone components and rails.",
+    "passive": true,
+    "required_mods": [],
+    "name_en": "Piston Line",
     "use_ru": "Нажми «Действие / настройки» или назначь навык на клавишу.",
     "use_en": "Open Action / settings, or assign this skill to the profession action key."
   },
   "factory_copy": {
     "profession": "engineer",
-    "name_ru": "Копия фабрики",
-    "effect_ru": "Сохраняй до 3 чертежей размером 7×7×7; строй через обычный принтер Create со своими материалами.",
-    "effect_en": "Keep 3 schematics up to 7x7x7; build with Create's printer and real materials.",
-    "xp_ru": "Собирай детали Create, строй механизмы и железную дорогу.",
-    "xp_en": "Craft Create parts and build machines and railways.",
-    "passive": false,
-    "required_mods": [
-      "create"
-    ],
-    "name_en": "Factory Copy",
+    "name_ru": "Чертёж схемы",
+    "effect_ru": "Развивай компактные схемы из редстоуна и наблюдателей.",
+    "effect_en": "Develop compact redstone and observer circuits.",
+    "xp_ru": "Устанавливай новые компоненты редстоуна и рельсы.",
+    "xp_en": "Place new redstone components and rails.",
+    "passive": true,
+    "required_mods": [],
+    "name_en": "Circuit Blueprint",
     "use_ru": "Нажми «Действие / настройки» или назначь навык на клавишу.",
     "use_en": "Open Action / settings, or assign this skill to the profession action key."
   },
   "track_run": {
     "profession": "engineer",
     "name_ru": "Укладка пути",
-    "effect_ru": "Уложи до 12 подходящих участков пути из сумки, по обычным правилам Create.",
-    "effect_en": "Place up to 12 valid native Create track sections using your inventory.",
-    "xp_ru": "Собирай детали Create, строй механизмы и железную дорогу.",
-    "xp_en": "Craft Create parts and build machines and railways.",
-    "passive": false,
-    "required_mods": [
-      "create"
-    ],
+    "effect_ru": "Развивай обычные рельсовые линии и грузовые маршруты.",
+    "effect_en": "Develop vanilla rail lines and cargo routes.",
+    "xp_ru": "Устанавливай новые компоненты редстоуна и рельсы.",
+    "xp_en": "Place new redstone components and rails.",
+    "passive": true,
+    "required_mods": [],
     "name_en": "Track Run",
     "use_ru": "Нажми «Действие / настройки» или назначь навык на клавишу.",
     "use_en": "Open Action / settings, or assign this skill to the profession action key."
@@ -571,15 +563,13 @@
   "schedule_templates": {
     "profession": "engineer",
     "name_ru": "Шаблоны расписаний",
-    "effect_ru": "Сохраняй до 3 расписаний; записывай выбранное в настоящий предмет расписания.",
-    "effect_en": "Keep 3 train schedules and write them onto actual schedule items.",
-    "xp_ru": "Собирай детали Create, строй механизмы и железную дорогу.",
-    "xp_en": "Craft Create parts and build machines and railways.",
-    "passive": false,
-    "required_mods": [
-      "create"
-    ],
-    "name_en": "Schedule Templates",
+    "effect_ru": "Планируй до 3 обычных рельсовых маршрутов.",
+    "effect_en": "Plan up to 3 vanilla rail routes.",
+    "xp_ru": "Устанавливай новые компоненты редстоуна и рельсы.",
+    "xp_en": "Place new redstone components and rails.",
+    "passive": true,
+    "required_mods": [],
+    "name_en": "Rail Timetable",
     "use_ru": "Нажми «Действие / настройки» или назначь навык на клавишу.",
     "use_en": "Open Action / settings, or assign this skill to the profession action key."
   },
@@ -588,8 +578,8 @@
     "name_ru": "Грузовой контракт",
     "effect_ru": "Создай оплаченный заказ доставки: курьер получит награду после сдачи нужного груза.",
     "effect_en": "Post a funded delivery job; the courier gets paid after handing in the cargo.",
-    "xp_ru": "Собирай детали Create, строй механизмы и железную дорогу.",
-    "xp_en": "Craft Create parts and build machines and railways.",
+    "xp_ru": "Устанавливай новые компоненты редстоуна и рельсы.",
+    "xp_en": "Place new redstone components and rails.",
     "passive": false,
     "required_mods": [
       "jem_economy"

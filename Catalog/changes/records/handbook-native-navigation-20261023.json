@@ -71,7 +71,6 @@
     "source_files": [
       "Mods/JEMAchievementGuide/README.md",
       "Mods/JEMAchievementGuide/build.gradle",
-      "Mods/JEMAchievementGuide/tools/*.py",
       "Mods/JEMAchievementGuide/tools/questbook/book.json",
       "Mods/JEMAchievementGuide/src/main/handbook/navigation.json",
       "Mods/JEMAchievementGuide/src/main/handbook/manuals.json",
@@ -80,26 +79,12 @@
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/HandbookStarter.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/ClientBootstrap.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/Handbook*.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/manuals/*.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/manuals/*.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PatchouliHandbook*.java",
       "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/**/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/start/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/manuals/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/mechanics/*.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/quest_v3/v3_town_comfort.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/patchouli_books/just_enough_guide/book.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/recipes/handbook.json",
-      "Mods/JEMDrillLifecycle/README.md",
       "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
       "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
-      "Client/ManagedPack/mods/jem-advancements-*.jar",
-      "Server/mods/jem-advancements-5.3.13.jar",
       "Docs/handbook/README.md",
       "Docs/handbook/manuals.md",
       "Docs/handbook/delivery.json",
@@ -251,6 +236,37 @@
       "action": "synchronize_handbook_artifact_5_3_13",
       "summary": "Update the local Server artifact evidence to the matching JEM Advancements 5.3.13 build without changing native handbook navigation",
       "source_files": [
+        "Server/mods/jem-advancements-5.3.13.jar"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Mods/JEMDrillLifecycle/README.md"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMAchievementGuide/tools/*.py",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/Handbook*.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/manuals/*.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/manuals/*.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PatchouliHandbook*.java",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/**/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/start/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/manuals/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/mechanics/*.json",
+        "Client/ManagedPack/mods/jem-advancements-*.jar",
         "Server/mods/jem-advancements-5.3.13.jar"
       ]
     }

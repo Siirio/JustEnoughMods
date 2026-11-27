@@ -3,13 +3,25 @@
   "change_id": "client.rendering-optimization-phase2-20261030",
   "status": "conditional",
   "selectors": [
-    {"type": "registry", "registry": "*", "value": "*"}
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
   ],
   "conditions": [
-    {"scope": "Client rendering, settlement presentation and LeadItem Mixin compatibility only"},
-    {"acceptance": "Performance and shader correctness remain in testing until identical runtime scenes are compared"}
+    {
+      "scope": "Client rendering, settlement presentation and LeadItem Mixin compatibility only"
+    },
+    {
+      "acceptance": "Performance and shader correctness remain in testing until identical runtime scenes are compared"
+    }
   ],
-  "precedence": {"layer": "client_runtime_compatibility", "priority": 70, "overrides": []},
+  "precedence": {
+    "layer": "client_runtime_compatibility",
+    "priority": 70,
+    "overrides": []
+  },
   "change": {
     "summary": "Bound expensive client preparation, localize culling invalidation and preserve installed LeadItem Mixin ordering",
     "modifiers": [
@@ -47,7 +59,6 @@
     "owner": "JEM client rendering and compatibility adapters",
     "kind": "bounded_client_work_and_mixin_ordering",
     "source_files": [
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuest*Mixin.java",
       "Mods/JEMAdaptiveCulling/gradle.properties",
       "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/ClientLifecycle.java",
       "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/CompatibilityPolicy.java",
@@ -92,10 +103,27 @@
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/StorageLabels.java"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuest*Mixin.java"
+      ]
     }
   ],
   "impacts": {
-    "systems": ["client_rendering", "event_telegraphs", "adaptive_culling", "settlement_gui", "storage_labels", "quest_signals", "mixin_compatibility"],
+    "systems": [
+      "client_rendering",
+      "event_telegraphs",
+      "adaptive_culling",
+      "settlement_gui",
+      "storage_labels",
+      "quest_signals",
+      "mixin_compatibility"
+    ],
     "relations": [
       "EventTelegraph or EventAttackVfx -> bounded EventSurfaceSampler -> partial visible surface mesh",
       "ClientLevel changes -> localized geometry invalidation -> fail-open visibility certificate refresh",

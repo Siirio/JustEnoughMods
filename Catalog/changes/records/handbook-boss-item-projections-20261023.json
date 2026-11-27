@@ -51,21 +51,15 @@
     "source_files": [
       "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
       "Mods/JEMAchievementGuide/src/main/handbook/items.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/items/**/*.json",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BossHelp*.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/CataclysmBossHelp.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/JemJadePlugin.java",
-      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/*.json",
       "Mods/JEMCompat/build.gradle",
       "Docs/handbook/bosses-coverage.json",
       "Docs/handbook/items-coverage.json",
       "Docs/handbook/items-reference-evidence.json",
-      "Docs/handbook/items-findings.md",
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
-      "Client/ManagedPack/mods/jemcompat-*.jar"
+      "Docs/handbook/items-findings.md"
     ]
   },
   "rationale": {
@@ -124,6 +118,28 @@
         "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
         "Server/mods/jemcompat-3.7.0.jar"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/items/**/*.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BossHelp*.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/*.json",
+        "Client/ManagedPack/mods/jemcompat-*.jar"
+      ]
     }
   ],
   "impacts": {
@@ -151,4 +167,3 @@
     ]
   }
 }
-

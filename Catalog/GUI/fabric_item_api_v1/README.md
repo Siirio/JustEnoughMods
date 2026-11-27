@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `net/fabricmc/fabric/api/client/item/v1/ItemTooltipCallback` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/txnilib-forge-1.0.24-1.20.1.jar!/META-INF/jars/fabric-api-0.92.2+1.11.12+1.20.1.jar!/META-INF/jarjar/fabric-item-api-v1-2.1.28+4d0bbcfa77.jar!/net/fabricmc/fabric/api/client/item/v1/ItemTooltipCallback.class`
+- `net/fabricmc/fabric/api/client/item/v1/ItemTooltipCallback` extends `java/lang/Object`; `$PROFILE/mods/txnilib-forge-1.0.24-1.20.1.jar!/META-INF/jars/fabric-api-0.92.2+1.11.12+1.20.1.jar!/META-INF/jarjar/fabric-item-api-v1-2.1.28+4d0bbcfa77.jar!/net/fabricmc/fabric/api/client/item/v1/ItemTooltipCallback.class`

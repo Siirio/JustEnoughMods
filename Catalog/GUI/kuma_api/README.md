@@ -10,7 +10,7 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `net/blay09/mods/kuma/api/Kuma` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/balm-forge-1.20.1-7.3.42.jar!/META-INF/jarjar/kuma-api-forge-20.1.12+1.20.1.jar!/net/blay09/mods/kuma/api/Kuma.class`
-- `net/blay09/mods/kuma/api/ScreenInputEvent` extends `java/lang/Record`; `$PROFILE/automodpack/client/active/mods/balm-forge-1.20.1-7.3.42.jar!/META-INF/jarjar/kuma-api-forge-20.1.12+1.20.1.jar!/net/blay09/mods/kuma/api/ScreenInputEvent.class`
-- `net/blay09/mods/kuma/api/ScreenInputEventHandler` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/balm-forge-1.20.1-7.3.42.jar!/META-INF/jarjar/kuma-api-forge-20.1.12+1.20.1.jar!/net/blay09/mods/kuma/api/ScreenInputEventHandler.class`
-- `net/blay09/mods/kuma/forge/ForgeKumaAPIClient` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/balm-forge-1.20.1-7.3.42.jar!/META-INF/jarjar/kuma-api-forge-20.1.12+1.20.1.jar!/net/blay09/mods/kuma/forge/ForgeKumaAPIClient.class`
+- `net/blay09/mods/kuma/api/Kuma` extends `java/lang/Object`; `$PROFILE/mods/balm-forge-1.20.1-7.3.44.jar!/META-INF/jarjar/kuma-api-forge-20.1.12+1.20.1.jar!/net/blay09/mods/kuma/api/Kuma.class`
+- `net/blay09/mods/kuma/api/ScreenInputEvent` extends `java/lang/Record`; `$PROFILE/mods/balm-forge-1.20.1-7.3.44.jar!/META-INF/jarjar/kuma-api-forge-20.1.12+1.20.1.jar!/net/blay09/mods/kuma/api/ScreenInputEvent.class`
+- `net/blay09/mods/kuma/api/ScreenInputEventHandler` extends `java/lang/Object`; `$PROFILE/mods/balm-forge-1.20.1-7.3.44.jar!/META-INF/jarjar/kuma-api-forge-20.1.12+1.20.1.jar!/net/blay09/mods/kuma/api/ScreenInputEventHandler.class`
+- `net/blay09/mods/kuma/forge/ForgeKumaAPIClient` extends `java/lang/Object`; `$PROFILE/mods/balm-forge-1.20.1-7.3.44.jar!/META-INF/jarjar/kuma-api-forge-20.1.12+1.20.1.jar!/net/blay09/mods/kuma/forge/ForgeKumaAPIClient.class`

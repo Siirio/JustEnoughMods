@@ -10,5 +10,5 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/cupboard/compat/ClientConfigCompat` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/cupboard-1.20.1-4.1.jar!/com/cupboard/compat/ClientConfigCompat.class`
-- `com/cupboard/event/ClientEventHandler` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/cupboard-1.20.1-4.1.jar!/com/cupboard/event/ClientEventHandler.class`
+- `com/cupboard/compat/ClientConfigCompat` extends `java/lang/Object`; `$PROFILE/mods/cupboard-1.20.1-4.2.jar!/com/cupboard/compat/ClientConfigCompat.class`
+- `com/cupboard/event/ClientEventHandler` extends `java/lang/Object`; `$PROFILE/mods/cupboard-1.20.1-4.2.jar!/com/cupboard/event/ClientEventHandler.class`

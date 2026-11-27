@@ -69,8 +69,6 @@
       "Mods/JEMAdaptiveCulling/settings.gradle",
       "Mods/JEMCompat/build.gradle",
       "Mods/JEMCompat/settings.gradle",
-      "Mods/JEMDrillLifecycle/build.gradle",
-      "Mods/JEMDrillLifecycle/settings.gradle",
       "Mods/JEMEconomy/build.gradle",
       "Mods/JEMEconomy/settings.gradle",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/SettlementEconomyApi.java",
@@ -676,6 +674,16 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopRecords.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopState.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopIndex.java"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Mods/JEMDrillLifecycle/build.gradle",
+        "Mods/JEMDrillLifecycle/settings.gradle"
       ]
     }
   ],

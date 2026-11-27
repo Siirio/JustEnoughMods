@@ -10,7 +10,7 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `mirsario/cameraoverhaul/ScreenShakes$Slot` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/CameraOverhaul-v2.1.1-forge%2Bmc%5B1.20-1.20.5%5D.jar!/mirsario/cameraoverhaul/ScreenShakes$Slot.class`
-- `mirsario/cameraoverhaul/ScreenShakes` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/CameraOverhaul-v2.1.1-forge%2Bmc%5B1.20-1.20.5%5D.jar!/mirsario/cameraoverhaul/ScreenShakes.class`
-- `mirsario/cameraoverhaul/configuration/ConfigScreen` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/CameraOverhaul-v2.1.1-forge%2Bmc%5B1.20-1.20.5%5D.jar!/mirsario/cameraoverhaul/configuration/ConfigScreen.class`
-- `mirsario/cameraoverhaul/entrypoints/ForgeInitializer` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/CameraOverhaul-v2.1.1-forge%2Bmc%5B1.20-1.20.5%5D.jar!/mirsario/cameraoverhaul/entrypoints/ForgeInitializer.class`
+- `mirsario/cameraoverhaul/ScreenShakes$Slot` extends `java/lang/Object`; `$PROFILE/mods/CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar!/mirsario/cameraoverhaul/ScreenShakes$Slot.class`
+- `mirsario/cameraoverhaul/ScreenShakes` extends `java/lang/Object`; `$PROFILE/mods/CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar!/mirsario/cameraoverhaul/ScreenShakes.class`
+- `mirsario/cameraoverhaul/configuration/ConfigScreen` extends `java/lang/Object`; `$PROFILE/mods/CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar!/mirsario/cameraoverhaul/configuration/ConfigScreen.class`
+- `mirsario/cameraoverhaul/entrypoints/ForgeInitializer` extends `java/lang/Object`; `$PROFILE/mods/CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar!/mirsario/cameraoverhaul/entrypoints/ForgeInitializer.class`

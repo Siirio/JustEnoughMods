@@ -40,7 +40,6 @@
     "owner": "JEMCompat",
     "kind": "user_requested_curated_jei_taxonomy",
     "source_files": [
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogLayout.java",
@@ -93,6 +92,15 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
     }
   ],
   "impacts": {
@@ -113,4 +121,3 @@
     ]
   }
 }
-

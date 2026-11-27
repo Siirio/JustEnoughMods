@@ -4,7 +4,7 @@
 
 - Move Trees below Building and map its shared category kind to Building
 - Move 554 exact reviewed Create, Infinity Buttons, Railways, Unearthed Journey, Kaleidoscope Cookery, Handcrafted, flower and component IDs to their semantic catalog leaves
-- Keep crop-yielding wild plants in Food, Casual Swing in Furniture and Decorations, and Create machinery in Create and Redstone
+- Keep crop-yielding wild plants in Food and Casual Swing in Furniture and Decorations
 - Render the curated overlay at the native container tooltip boundary so the screen's own tooltip always renders after catalog items, controls and search fields
 - Render a curated-grid tooltip once after all catalog elements and immediately before the native screen tooltip
 - Remove the custom all-language item and tooltip index, English alias injection and Creative search Mixin after they caused severe freezes while typing

@@ -150,18 +150,9 @@
       "Client/ManagedPack/config/particlerain/particles.json",
       "Client/ManagedPack/config/weatherglass.properties",
       "Client/ManagedPack/kubejs/server_scripts/jem/weather_precipitation_tags.js",
-      "Client/ManagedPack/mods/**",
       "Client/ManagedPack/options.txt",
-      "Mods/JEMAchievementGuide/**",
-      "Mods/JEMCompat/**",
-      "Mods/JEMEconomy/**",
-      "Mods/JEMServer/**",
-      "Mods/JEMSettlements/**",
-      "Mods/JEMWorldBossTiers/**",
-      "Mods/MobHome/**",
       "Server/config/item_obliterator.json5",
       "Server/config/locatorbar-server.json",
-      "Server/mods/**",
       "Server/run.bat",
       "tools/generate_jei_catalog.py"
     ]
@@ -204,6 +195,23 @@
       "source_files": [
         "Client/ManagedPack/kubejs/server_scripts/jem/weather_precipitation_tags.js",
         "Client/ManagedPack/config/particlerain/particles.json"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/mods/**",
+        "Mods/JEMAchievementGuide/**",
+        "Mods/JEMCompat/**",
+        "Mods/JEMEconomy/**",
+        "Mods/JEMServer/**",
+        "Mods/JEMSettlements/**",
+        "Mods/JEMWorldBossTiers/**",
+        "Mods/MobHome/**",
+        "Server/mods/**"
       ]
     }
   ],

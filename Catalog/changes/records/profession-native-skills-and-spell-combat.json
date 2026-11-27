@@ -77,14 +77,10 @@
     "owner": "Pufferfish's Skills, JEMProfessions, EFIS Compat and EFS ISS",
     "kind": "native_mod_integration",
     "source_files": [
-      "Mods/JEMProfessions/**",
-      "Mods/JEMRoles/**",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/**",
       "Mods/JEMServer/build.gradle",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventCommands.java",
-      "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**",
       "tools/generate_profession_skills.py",
       "Catalog/changes/records/major-update-4-remove-irons-spells-20261106.json"
     ]
@@ -133,6 +129,18 @@
         "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/tree/ProfessionCatalog.java",
         "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**",
         "tools/generate_profession_skills.py"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMProfessions/**",
+        "Mods/JEMRoles/**",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/**",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**"
       ]
     }
   ],

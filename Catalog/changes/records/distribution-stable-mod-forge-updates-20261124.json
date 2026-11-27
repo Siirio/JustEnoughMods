@@ -183,8 +183,6 @@
     "owner": "Managed pack, Forge launcher, JEM Compat and JEM Advancements",
     "kind": "user_requested_stable_dependency_refresh",
     "source_files": [
-      "Client/ManagedPack/mods/**",
-      "Server/mods/**",
       "Server/run.bat",
       "Server/run.sh",
       "tools/apply-published-client.py",
@@ -192,9 +190,7 @@
       "tools/client-recovery/JemClientRecovery.java",
       "tools/generate_jei_catalog.py",
       "tools/jem.py",
-      "Mods/JEMAchievementGuide/**",
       "Mods/JEMCompat/build.gradle",
-      "Mods/JEMCompat/**",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/ImmersiveEatingCustomUseMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/ImmersiveEatingFinishUseMixin.java",
@@ -236,6 +232,18 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/ImmersiveEatingFinishUseMixin.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/LunchBagFoodProof.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryLunchBagQuestMixin.java"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/mods/**",
+        "Server/mods/**",
+        "Mods/JEMAchievementGuide/**",
+        "Mods/JEMCompat/**"
       ]
     }
   ],

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "generation": {
-    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
+    "generated_utc": "2026-11-27T08:04:12.066008+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -376,7 +376,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -394,7 +394,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -572,7 +572,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/acacia_planks_to_acacia_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -590,7 +590,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/acacia_planks_to_acacia_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -619,7 +619,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/acacia_planks_to_acacia_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -637,7 +637,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/acacia_planks_to_acacia_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -716,7 +716,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -736,7 +736,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -940,18 +940,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
         "data/minecraft/recipes/andesite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_andesite.json"
       ],
       "display_name_en_us": "Andesite",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/andesite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_andesite.json"
       ],
@@ -959,11 +957,10 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:andesite_from_stone_types_andesite_stonecutting output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 100. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:andesite_from_stone_types_andesite_stonecutting",
         "minecraft:andesite",
         "unearthed_journey:stone_cut_breccia_andesite"
       ],
@@ -979,7 +976,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:andesite_from_stone_types_andesite_stonecutting output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 100. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -2187,7 +2184,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:cutting/bamboo_planks output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -2205,7 +2202,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:cutting/bamboo_planks output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -2523,7 +2520,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/bamboo_planks_to_bamboo_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -2541,7 +2538,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/bamboo_planks_to_bamboo_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -2570,7 +2567,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/bamboo_planks_to_bamboo_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -2588,7 +2585,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/bamboo_planks_to_bamboo_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -2724,27 +2721,27 @@
       "display_name_en_us": "Barrier",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3528,7 +3525,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -3546,7 +3543,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3724,7 +3721,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/birch_planks_to_birch_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -3742,7 +3739,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/birch_planks_to_birch_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3771,7 +3768,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/birch_planks_to_birch_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -3789,7 +3786,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/birch_planks_to_birch_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -3868,7 +3865,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -3888,7 +3885,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -5403,7 +5400,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Renewable mob drop; capped Installed Kaleidoscope mill yields five bone meal and Create yields two white dye plus gray coproduct per meal; four-Copper full purchase prevents native dye-batch resale profit.",
+      "reason": "Renewable mob drop; capped Installed Kaleidoscope mill yields five bone meal per input; four-Copper full purchase prevents native dye-batch resale profit.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -5424,7 +5421,7 @@
       "daily_player_units": 16,
       "daily_global_units": 128,
       "demand_group": "animal_products",
-      "price_basis": "Renewable mob drop; capped Installed Kaleidoscope mill yields five bone meal and Create yields two white dye plus gray coproduct per meal; four-Copper full purchase prevents native dye-batch resale profit.",
+      "price_basis": "Renewable mob drop; capped Installed Kaleidoscope mill yields five bone meal per input; four-Copper full purchase prevents native dye-batch resale profit.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -5650,19 +5647,17 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/appliances/book.json",
         "data/minecraft/recipes/book.json",
         "data/unearthed_journey/recipes/hide_book.json"
       ],
       "display_name_en_us": "Book",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/book.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/book.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/book.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hide_book.json"
@@ -5675,7 +5670,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:crafting/appliances/book",
         "minecraft:book",
         "unearthed_journey:hide_book"
       ],
@@ -5902,21 +5896,12 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/campfire_cooking/bread.json",
-        "data/create/recipes/smelting/bread.json",
-        "data/create/recipes/smoking/bread.json",
         "data/farm_and_charm/recipes/stove/improved_bread.json",
         "data/minecraft/recipes/bread.json"
       ],
       "display_name_en_us": "Bread",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/campfire_cooking/bread.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/bread.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smoking/bread.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/campfire_cooking/bread.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/bread.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smoking/bread.json",
         "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/improved_bread.json",
         "letsdo-bakery-forge-2.0.6.jar:data/minecraft/recipes/bread.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
@@ -5930,9 +5915,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:campfire_cooking/bread",
-        "create:smelting/bread",
-        "create:smoking/bread",
         "farm_and_charm:stove/improved_bread",
         "minecraft:bread"
       ],
@@ -7319,7 +7301,6 @@
       ],
       "observed_in": [
         "data/alexscaves/recipes/cake_from_cake_layer.json",
-        "data/create/recipes/crafting/curiosities/cake.json",
         "data/minecraft/recipes/cake.json"
       ],
       "display_name_en_us": "Cake",
@@ -7327,8 +7308,6 @@
       "source_provenance": [
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/cake_from_cake_layer.json",
         "blueprint-1.20.1-7.1.5.jar:data/minecraft/recipes/cake.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/curiosities/cake.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/curiosities/cake.json",
         "letsdo-bakery-forge-2.0.6.jar:data/minecraft/recipes/cake.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cake.json"
       ],
@@ -7341,7 +7320,6 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "alexscaves:cake_from_cake_layer",
-        "create:crafting/curiosities/cake",
         "minecraft:cake"
       ],
       "recipe_dependency_evidence": [],
@@ -7373,25 +7351,21 @@
         "client"
       ],
       "observed_in": [
-        "data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
         "data/natures_spirit/recipes/calcite_block.json"
       ],
       "display_name_en_us": "Calcite",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
         "natures_spirit-2.2.5-1.20.1.jar:data/natures_spirit/recipes/calcite_block.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:calcite_from_stone_types_calcite_stonecutting output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 100. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:calcite_from_stone_types_calcite_stonecutting",
         "natures_spirit:calcite_block"
       ],
       "recipe_dependency_evidence": [],
@@ -7406,7 +7380,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:calcite_from_stone_types_calcite_stonecutting output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 100. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -7894,17 +7868,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/crafting/appliances/chain_from_zinc.json",
         "data/minecraft/recipes/chain.json"
       ],
       "display_name_en_us": "Chain",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/chain_from_zinc.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/chain_from_zinc.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chain.json"
       ],
       "confidence": "inferred",
@@ -7915,7 +7887,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:crafting/appliances/chain_from_zinc",
         "minecraft:chain"
       ],
       "recipe_dependency_evidence": [],
@@ -8527,7 +8498,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -8545,7 +8516,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -8720,7 +8691,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/cherry_planks_to_cherry_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -8738,7 +8709,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/cherry_planks_to_cherry_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -8767,7 +8738,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/cherry_planks_to_cherry_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -8785,7 +8756,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/cherry_planks_to_cherry_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -8861,7 +8832,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -8879,7 +8850,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -11406,13 +11377,11 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/blasting/copper_ingot_from_crushed.json",
-        "data/create/recipes/crafting/materials/copper_ingot.json",
-        "data/create/recipes/smelting/copper_ingot_from_crushed.json",
         "data/minecraft/recipes/copper_ingot.json",
         "data/minecraft/recipes/copper_ingot_from_blasting_copper_ore.json",
         "data/minecraft/recipes/copper_ingot_from_blasting_deepslate_copper_ore.json",
@@ -11425,12 +11394,6 @@
       "display_name_en_us": "Copper Ingot",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/blasting/copper_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/materials/copper_ingot.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/copper_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/blasting/copper_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/materials/copper_ingot.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/copper_ingot_from_crushed.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/copper_ingot.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/copper_ingot_from_blasting_copper_ore.json",
@@ -11449,9 +11412,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:blasting/copper_ingot_from_crushed",
-        "create:crafting/materials/copper_ingot",
-        "create:smelting/copper_ingot_from_crushed",
         "minecraft:copper_ingot",
         "minecraft:copper_ingot_from_blasting_copper_ore",
         "minecraft:copper_ingot_from_blasting_deepslate_copper_ore",
@@ -12413,7 +12373,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/crimson_planks_to_crimson_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -12431,7 +12391,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/crimson_planks_to_crimson_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -12460,7 +12420,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/crimson_planks_to_crimson_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -12478,7 +12438,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/crimson_planks_to_crimson_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -13927,7 +13887,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -13945,7 +13905,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -14123,7 +14083,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/dark_oak_planks_to_dark_oak_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -14141,7 +14101,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/dark_oak_planks_to_dark_oak_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -14170,7 +14130,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/dark_oak_planks_to_dark_oak_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -14188,7 +14148,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/dark_oak_planks_to_dark_oak_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -14267,7 +14227,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -14287,7 +14247,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -14722,17 +14682,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate.json"
       ],
       "display_name_en_us": "Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate.json"
       ],
       "confidence": "inferred",
@@ -14743,7 +14701,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:deepslate_from_stone_types_deepslate_stonecutting",
         "minecraft:deepslate"
       ],
       "recipe_dependency_evidence": [],
@@ -15921,18 +15878,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
         "data/minecraft/recipes/diorite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_diorite.json"
       ],
       "display_name_en_us": "Diorite",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diorite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_diorite.json"
       ],
@@ -15940,11 +15895,10 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:compacting/diorite_from_flint output 1; family material tier 400. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 400. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:diorite_from_stone_types_diorite_stonecutting",
         "minecraft:diorite",
         "unearthed_journey:stone_cut_breccia_diorite"
       ],
@@ -15960,7 +15914,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:compacting/diorite_from_flint output 1; family material tier 400. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 400. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -16584,17 +16538,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
         "data/minecraft/recipes/dripstone_block.json"
       ],
       "display_name_en_us": "Dripstone Block",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dripstone_block.json"
       ],
       "confidence": "inferred",
@@ -16605,7 +16557,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:dripstone_block_from_stone_types_dripstone_stonecutting",
         "minecraft:dripstone_block"
       ],
       "recipe_dependency_evidence": [],
@@ -17075,54 +17026,6 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "minecraft:emerald_block"
-      ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "minecraft:enchanted_book",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "data/efn/recipes/yamato_heavy_rain_book.json"
-      ],
-      "display_name_en_us": "Enchanted Book",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/yamato_heavy_rain_book.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [
-        "efn:yamato_heavy_rain_book"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -18301,51 +18204,6 @@
         "minecraft:fermented_spider_eye",
         "skarrier_mobs:fermented_spider_eye_alt_recipe"
       ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "minecraft:filled_map",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json"
-      ],
-      "display_name_en_us": "Map",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -20439,18 +20297,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/kinetics/furnace_minecart_from_contraption_cart.json",
         "data/minecraft/recipes/furnace_minecart.json"
       ],
       "display_name_en_us": "Minecart with Furnace",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/kinetics/furnace_minecart_from_contraption_cart.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/kinetics/furnace_minecart_from_contraption_cart.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/furnace_minecart.json"
       ],
@@ -20462,7 +20318,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:crafting/kinetics/furnace_minecart_from_contraption_cart",
         "minecraft:furnace_minecart"
       ],
       "recipe_dependency_evidence": [],
@@ -20585,10 +20440,6 @@
       ],
       "observed_in": [
         "data/alexscaves/recipes/glass_from_sea_glass_shards.json",
-        "data/create/recipes/smelting/glass_from_framed_glass.json",
-        "data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
         "data/immersive_weathering/recipes/glass_from_vitrified_sand_smelting.json",
         "data/minecraft/recipes/glass.json",
         "data/unearthed_journey/recipes/quartz_sand_blast_recipe.json",
@@ -20600,14 +20451,6 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/glass_from_sea_glass_shards.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_framed_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/glass_from_vitrified_sand_smelting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/glass.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/quartz_sand_blast_recipe.json",
@@ -20624,10 +20467,6 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "alexscaves:glass_from_sea_glass_shards",
-        "create:smelting/glass_from_framed_glass",
-        "create:smelting/glass_from_horizontal_framed_glass",
-        "create:smelting/glass_from_tiled_glass",
-        "create:smelting/glass_from_vertical_framed_glass",
         "immersive_weathering:glass_from_vitrified_sand_smelting",
         "minecraft:glass",
         "unearthed_journey:quartz_sand_blast_recipe",
@@ -20712,26 +20551,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
         "data/minecraft/recipes/glass_pane.json"
       ],
       "display_name_en_us": "Glass Pane",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/glass_pane.json"
       ],
       "confidence": "inferred",
@@ -20742,10 +20570,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:smelting/glass_pane_from_framed_glass_pane",
-        "create:smelting/glass_pane_from_horizontal_framed_glass_pane",
-        "create:smelting/glass_pane_from_tiled_glass_pane",
-        "create:smelting/glass_pane_from_vertical_framed_glass_pane",
         "minecraft:glass_pane"
       ],
       "recipe_dependency_evidence": [],
@@ -21341,8 +21165,6 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/blasting/gold_ingot_from_crushed.json",
-        "data/create/recipes/smelting/gold_ingot_from_crushed.json",
         "data/dustydecorations/recipes/gold_coin_smelt.json",
         "data/libraryferret/recipes/blasting/gold_coins_jtl.json",
         "data/libraryferret/recipes/smelting/gold_coins_jtl.json",
@@ -21363,10 +21185,6 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "DustyDecorations_1.20.1Forge_V1.13.jar:data/dustydecorations/recipes/gold_coin_smelt.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/blasting/gold_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/gold_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/blasting/gold_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/gold_ingot_from_crushed.json",
         "libraryferret-forge-1.20.1-4.0.0.jar:data/libraryferret/recipes/blasting/gold_coins_jtl.json",
         "libraryferret-forge-1.20.1-4.0.0.jar:data/libraryferret/recipes/smelting/gold_coins_jtl.json",
         "royal-variations-[Forge]_1.20.1_2.0.5.jar:data/royalvariations/recipes/gold_ingot_from_blasting_royal_bone.json",
@@ -21391,8 +21209,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:blasting/gold_ingot_from_crushed",
-        "create:smelting/gold_ingot_from_crushed",
         "dustydecorations:gold_coin_smelt",
         "libraryferret:blasting/gold_coins_jtl",
         "libraryferret:smelting/gold_coins_jtl",
@@ -22091,18 +21907,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
         "data/minecraft/recipes/granite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_granite.json"
       ],
       "display_name_en_us": "Granite",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/granite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_granite.json"
       ],
@@ -22110,11 +21924,10 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:granite_from_stone_types_granite_stonecutting output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 100. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:granite_from_stone_types_granite_stonecutting",
         "minecraft:granite",
         "unearthed_journey:stone_cut_breccia_granite"
       ],
@@ -22130,7 +21943,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:granite_from_stone_types_granite_stonecutting output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 100. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -24941,8 +24754,6 @@
         "assets/minecraft/lang/en_us.json",
         "data/alexscaves/recipes/furnace/iron_from_galena_ore_blasting.json",
         "data/alexscaves/recipes/furnace/iron_from_galena_ore_smelting.json",
-        "data/create/recipes/blasting/iron_ingot_from_crushed.json",
-        "data/create/recipes/smelting/iron_ingot_from_crushed.json",
         "data/immersive_weathering/recipes/iron_ingot_from_clean_block.json",
         "data/immersive_weathering/recipes/iron_ingot_from_clean_block_blasting.json",
         "data/immersive_weathering/recipes/iron_ingot_from_exposed_block.json",
@@ -24968,10 +24779,6 @@
       "source_provenance": [
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/furnace/iron_from_galena_ore_blasting.json",
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/furnace/iron_from_galena_ore_smelting.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/blasting/iron_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/iron_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/blasting/iron_ingot_from_crushed.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/iron_ingot_from_crushed.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/iron_ingot_from_clean_block.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/iron_ingot_from_clean_block_blasting.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/iron_ingot_from_exposed_block.json",
@@ -25003,8 +24810,6 @@
       "independent_ordinary_routes": [
         "alexscaves:furnace/iron_from_galena_ore_blasting",
         "alexscaves:furnace/iron_from_galena_ore_smelting",
-        "create:blasting/iron_ingot_from_crushed",
-        "create:smelting/iron_ingot_from_crushed",
         "immersive_weathering:iron_ingot_from_clean_block",
         "immersive_weathering:iron_ingot_from_clean_block_blasting",
         "immersive_weathering:iron_ingot_from_exposed_block",
@@ -25390,19 +25195,17 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/appliances/item_frame.json",
         "data/minecraft/recipes/item_frame.json",
         "data/unearthed_journey/recipes/hide_item_frame.json"
       ],
       "display_name_en_us": "Item Frame",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/item_frame.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/item_frame.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/item_frame.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hide_item_frame.json"
@@ -25415,7 +25218,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:crafting/appliances/item_frame",
         "minecraft:item_frame",
         "unearthed_journey:hide_item_frame"
       ],
@@ -25892,7 +25694,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -25910,7 +25712,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -26088,7 +25890,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/jungle_planks_to_jungle_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -26106,7 +25908,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/jungle_planks_to_jungle_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -26135,7 +25937,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/jungle_planks_to_jungle_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -26153,7 +25955,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/jungle_planks_to_jungle_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -26232,7 +26034,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -26252,7 +26054,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -29277,6 +29079,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:lingering_potion.effect.gnashing",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Gnashing",
+      "display_name_ru_ru": "Туманное зелье лязга",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:lingering_potion.effect.harming",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -29475,6 +29323,52 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "SpiderOverhaul-0.1.0-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:lingering_potion.effect.incendiary",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Incendiary Lingering Potion",
+      "display_name_ru_ru": "Туманное зелье воспламенения",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -30549,6 +30443,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:lingering_potion.effect.mirage",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Mirage",
+      "display_name_ru_ru": "Туманное зелье миража",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:lingering_potion.effect.mundane",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -31103,6 +31043,52 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:lingering_potion.effect.resistance",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Resistance",
+      "display_name_ru_ru": "Туманное зелье сопротивления",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -33419,7 +33405,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/mangrove_planks_to_mangrove_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -33437,7 +33423,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/mangrove_planks_to_mangrove_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -33466,7 +33452,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/mangrove_planks_to_mangrove_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -33484,7 +33470,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/mangrove_planks_to_mangrove_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -33560,7 +33546,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -33578,7 +33564,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -33830,18 +33816,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/kinetics/minecart_from_contraption_cart.json",
         "data/minecraft/recipes/minecart.json"
       ],
       "display_name_en_us": "Minecart",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/kinetics/minecart_from_contraption_cart.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/kinetics/minecart_from_contraption_cart.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/minecart.json"
       ],
@@ -33853,7 +33837,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:crafting/kinetics/minecart_from_contraption_cart",
         "minecraft:minecart"
       ],
       "recipe_dependency_evidence": [],
@@ -36722,19 +36705,17 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/create/recipes/crafting/appliances/name_tag.json",
         "data/minecraft/recipes/name_tag.json",
         "data/unearthed_journey/recipes/nametag_r.json"
       ],
       "display_name_en_us": "Name Tag",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/name_tag.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/name_tag.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "tiny_takeover_backport-forge-1.20.1-1.8.3.jar:data/minecraft/recipes/name_tag.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/nametag_r.json"
@@ -36747,7 +36728,6 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "create:crafting/appliances/name_tag",
         "minecraft:name_tag",
         "unearthed_journey:nametag_r"
       ],
@@ -38567,7 +38547,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/oak_planks_to_oak_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -38585,7 +38565,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/oak_planks_to_oak_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -38614,7 +38594,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/oak_planks_to_oak_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -38632,7 +38612,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/oak_planks_to_oak_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -38711,7 +38691,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -38731,7 +38711,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -43186,6 +43166,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:potion.effect.gnashing",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potion of Gnashing",
+      "display_name_ru_ru": "Зелье лязга",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:potion.effect.harming",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -43384,6 +43410,52 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "SpiderOverhaul-0.1.0-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:potion.effect.incendiary",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Incendiary Potion",
+      "display_name_ru_ru": "Зелье воспламенения",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -44458,6 +44530,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:potion.effect.mirage",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potion of Mirage",
+      "display_name_ru_ru": "Зелье миража",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:potion.effect.mundane",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -45012,6 +45130,52 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:potion.effect.resistance",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potion of Resistance",
+      "display_name_ru_ru": "Зелье сопротивления",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -46328,7 +46492,7 @@
       "display_name_en_us": "Powered Rail",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/minecraft/recipes/powered_rail.json",
+        "jemcompat-3.12.0.jar:data/minecraft/recipes/powered_rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/powered_rail.json"
       ],
       "confidence": "inferred",
@@ -48400,7 +48564,7 @@
       "display_name_en_us": "Rail",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/minecraft/recipes/rail.json",
+        "jemcompat-3.12.0.jar:data/minecraft/recipes/rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/rail.json"
       ],
       "confidence": "inferred",
@@ -52655,7 +52819,6 @@
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
         "data/alexsmobs/recipes/komodo_spit_to_slime.json",
-        "data/create/recipes/crafting/appliances/slime_ball.json",
         "data/minecraft/recipes/slime_ball.json",
         "data/spawn/recipes/slime_ball_from_smelting_mucus.json"
       ],
@@ -52663,8 +52826,6 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "alexsmobs-1.22.9.jar:data/alexsmobs/recipes/komodo_spit_to_slime.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/slime_ball.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/slime_ball.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/slime_ball.json",
         "spawn-4.0.8-1.20.1.jar:data/spawn/recipes/slime_ball_from_smelting_mucus.json"
@@ -52678,7 +52839,6 @@
       "protection_source_ids": [],
       "independent_ordinary_routes": [
         "alexsmobs:komodo_spit_to_slime",
-        "create:crafting/appliances/slime_ball",
         "minecraft:slime_ball",
         "spawn:slime_ball_from_smelting_mucus"
       ],
@@ -54505,7 +54665,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:haunting/soul_soil output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 100. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -54523,7 +54683,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe create:haunting/soul_soil output 1; family material tier 100. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; retired recipe evidence removed; family material tier 100. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -55357,6 +55517,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:splash_potion.effect.gnashing",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Splash Potion of Gnashing",
+      "display_name_ru_ru": "Взрывное зелье лязга",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:splash_potion.effect.harming",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -55555,6 +55761,52 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "SpiderOverhaul-0.1.0-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:splash_potion.effect.incendiary",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Incendiary Splash Potion",
+      "display_name_ru_ru": "Взрывное зелье воспламенения",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -56629,6 +56881,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:splash_potion.effect.mirage",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Splash Potion of Mirage",
+      "display_name_ru_ru": "Взрывное зелье миража",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:splash_potion.effect.mundane",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -57183,6 +57481,52 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:splash_potion.effect.resistance",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Splash Potion of Resistance",
+      "display_name_ru_ru": "Взрывное зелье сопротивления",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -58573,7 +58917,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -58591,7 +58935,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -58769,7 +59113,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/spruce_planks_to_spruce_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -58787,7 +59131,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/spruce_planks_to_spruce_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -58816,7 +59160,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/spruce_planks_to_spruce_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -58834,7 +59178,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/spruce_planks_to_spruce_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -58913,7 +59257,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_AND_SELL",
-      "reason": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "reason": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -58933,7 +59277,7 @@
       "daily_player_units": 32,
       "daily_global_units": 512,
       "demand_group": "forestry",
-      "price_basis": "Ordinary timber; six-plank Create sawing and actual native bulk stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
+      "price_basis": "Ordinary timber; native plank and stick yield priced in; renewable tree farms capped Evidence: loaded minecraft:logs tag and installed sawmill recipes",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -62059,6 +62403,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:tipped_arrow.effect.gnashing",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Arrow of Gnashing",
+      "display_name_ru_ru": "Стрела лязга",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:tipped_arrow.effect.harming",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -62257,6 +62647,52 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "SpiderOverhaul-0.1.0-Forge-v1.20.jar:assets/spider_overhaul/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:tipped_arrow.effect.incendiary",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Incendiary Arrow",
+      "display_name_ru_ru": "Зажигательная стрела",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -63331,6 +63767,52 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:tipped_arrow.effect.mirage",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Arrow of Mirage",
+      "display_name_ru_ru": "Стрела миража",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:tipped_arrow.effect.mundane",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -63885,6 +64367,52 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:tipped_arrow.effect.resistance",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/wildscapes/lang/en_us.json",
+        "assets/wildscapes/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Arrow of Resistance",
+      "display_name_ru_ru": "Стрела сопротивления",
+      "source_provenance": [
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/en_us.json",
+        "wildscapes-forge-1.20.1-1.0.3.jar:assets/wildscapes/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -66362,7 +66890,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/warped_planks_to_warped_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -66380,7 +66908,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/warped_planks_to_warped_slab output 2; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.SlabBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -66409,7 +66937,7 @@
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
       "trade_outcome": "BUY_ONLY",
-      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/warped_planks_to_warped_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "reason": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -66427,7 +66955,7 @@
       "daily_player_units": 65536,
       "daily_global_units": 262144,
       "demand_group": "building_supply",
-      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe create:cutting/runtime_generated/compat/minecraft/warped_planks_to_warped_stairs output 1; family material tier 140. No BE/redstone/capability/progression inference from names.",
+      "price_basis": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; retired recipe evidence removed; family material tier 140. No BE/redstone/capability/progression inference from names.",
       "arbitrage_risk": "reviewed",
       "review_status": "reviewed"
     },
@@ -68365,51 +68893,6 @@
       "independent_ordinary_routes": [
         "minecraft:wild_armor_trim_smithing_template"
       ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "minecraft:witch_spawn_egg",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client",
-        "server"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json"
-      ],
-      "display_name_en_us": "Witch Spawn Egg",
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

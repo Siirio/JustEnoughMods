@@ -87,7 +87,6 @@ The approved public Forge 1.20.1 extraction scope is frozen in the [public relea
 | `JEMWorldBossTiers` | Global World Tier и сохранённый roster/threshold profile, boss profiles, hosted encounters, ordinary solo Raid, canonical native structure identity/anchor, revival и pending rewards |
 | `JEMTwelveEyes` | Строгие двенадцать original MAIN, prerequisites, Eyes, locators/sites, post-End и ending; сохраняет `jemcompat` namespace и `jemcompat_main_campaign` SavedData |
 | `JEMCompat` | Изолированные native compatibility adapters, Excavation I 3×3 и II 7×7 и biome codec с сохранёнными `jem_pack_core:*` IDs; native time/season presentation (`client.time`), food belongs to standalone JEMFood and homes to standalone MobHome; drill lifecycle остаётся отдельным addon |
-| `JEMDrillLifecycle` | Moving/stationary Create drill wear, replacement, servicing и optional Jade; Create остаётся обязательной native dependency |
 | `JEMFood` | Standalone food quality, one Food Blessing, thirty talents, dietary variety, native consumption receipts and food presentation |
 | `MobHome` | Standalone native companion homes, binding GUI, recovery journal and optional native adapters |
 | `JEMIdentity` | Verified principal для integrated sessions, online dedicated session или unlocked Server Login; offline username не заменяет authentication |
@@ -181,10 +180,24 @@ The authored FTB adventure book belongs to Guide, with canonical authoring, comp
 - Advancement summary, Patchouli completion hint и contextual reference выполняют разные роли и не повторяют один текст.
 - Patchouli left page содержит точный completion hint, right page — biome/item/context reference; biome link открывает нужный biome в Nature's Compass и не возвращает игрока в screen loop.
 - Authored advancement icons уникальны внутри ветки и семантически узнаваемы.
-- JEMCompat использует JEI как единственный индекс рецептов, но по умолчанию показывает собственный правый каталог с видимой циклической постраничной навигацией `текущая/всего`: после последней страницы открывается первая, перед первой — последняя. Разделы: `Оружие`, `Броня и носимое`, `Еда и готовка`, `Руды`, `Компоненты`, `Create и редстоун`, `Строительство`, `Рыбалка`, `Книги`, `Зелья`, `Транспорт`, `Компаньоны`, Creative-only `Spawn eggs`, `Остальное`. Отдельного `Фермерства` нет, его содержимое принадлежит `Еде и готовке`. `Оружие` делится на `Тотемы`, `Дальнобойное`, `Ближний бой`, `Щиты`, `Кузнечные шаблоны` и `Тренировочное`. `Броня и носимое` делится на `Броня`, `Броня мобов` и `Куклы`. Лист `Куклы` содержит только куклы. `Строительство` делится на `Мебель и декорации`, `Природа`, `Контейнеры`, `Праздничные украшения`, `Строительные материалы`, `Стекло`, `Свет` и `Строительные инструменты`. Категории читает checked-in exact registry-ID manifest. Каждый ID имеет ровно один leaf-раздел, а родители только объединяют листья. Schema 2 разрешает exact additional views для проверенных яиц компаньонов и транспорта без смены их primary leaf `Spawn eggs`. Новый неизвестный ID идёт в `Остальное` и получает bounded log warning. Обычный JEI включается отдельной кнопкой. В режиме обычного JEI поле поиска каталога JEM скрыто, неактивно и не удерживает фокус.
+- JEMCompat использует JEI как единственный индекс рецептов, но по умолчанию показывает собственный правый каталог с видимой циклической постраничной навигацией `текущая/всего`: после последней страницы открывается первая, перед первой — последняя. Разделы: `Оружие`, `Броня и носимое`, `Еда и готовка`, `Руды`, `Компоненты`, `Редстоун`, `Строительство`, `Рыбалка`, `Книги`, `Зелья`, `Транспорт`, `Компаньоны`, Creative-only `Spawn eggs`, `Остальное`. Отдельного `Фермерства` нет, его содержимое принадлежит `Еде и готовке`. `Оружие` делится на `Тотемы`, `Дальнобойное`, `Ближний бой`, `Щиты`, `Кузнечные шаблоны` и `Тренировочное`. `Броня и носимое` делится на `Броня`, `Броня мобов` и `Куклы`. Лист `Куклы` содержит только куклы. `Строительство` делится на `Мебель и декорации`, `Природа`, `Контейнеры`, `Праздничные украшения`, `Строительные материалы`, `Стекло`, `Свет` и `Строительные инструменты`. Категории читает checked-in exact registry-ID manifest. Каждый ID имеет ровно один leaf-раздел, а родители только объединяют листья. Schema 2 разрешает exact additional views для проверенных яиц компаньонов и транспорта без смены их primary leaf `Spawn eggs`. Новый неизвестный ID идёт в `Остальное` и получает bounded log warning. Обычный JEI включается отдельной кнопкой. В режиме обычного JEI поле поиска каталога JEM скрыто, неактивно и не удерживает фокус.
 - `JemCatalogCategories` in JEMCompat is the common, server-safe manifest adapter used by the recipe browser and Economy purchase admission. Runtime class, tag, recipe-catalyst, wearer and block-state inference no longer assigns categories during JEI startup. The offline generator proposes only previously unknown IDs from the Registry Atlas and preserves all checked-in assignments. Public market admission is further restricted by Economy's exact prices and permanent prohibitions, never by a second name-based category implementation.
-- Category corrections retain that single manifest owner. Fairy Lights pennants route to furniture, Fairy Lights garland and tinsel route to holiday decorations, Handcrafted cushions, sheets, desks and counters route to furniture, the data-driven `irons_spellbooks:scroll` routes to weapons, and reviewed shields, weapons, armor, dolls, cooking tools, containers, nature, Create tools, companion items, and transport items use exact IDs. Adding a category or changing generator rules never moves an existing reviewed ID
+- Category corrections retain that single manifest owner. Fairy Lights pennants route to furniture, Fairy Lights garland and tinsel route to holiday decorations, Handcrafted cushions, sheets, desks and counters route to furniture, the data-driven `irons_spellbooks:scroll` routes to weapons, and reviewed shields, weapons, armor, dolls, cooking tools, containers, nature, redstone tools, companion items, and transport items use exact IDs. Adding a category or changing generator rules never moves an existing reviewed ID
 - Exposure, Exposure Polaroid and the standalone Simpler Exposure companion are retired from the active pack. JEMAchievementGuide does not publish their quests, rewards, handbook entries, Mixins or Create film proof hooks. Historical migration data remains inert history only
+- Create, its add-ons, Immersive Aircraft, KubeJS Create and JEM Drill Lifecycle are retired from the active pack. Flywheel, Ponder and Registrate remain absent unless another installed mod declares them as a required dependency. JEMAchievementGuide, JEMCompat, FTB Quests, Paxi, Item Obliterator, JEI and Economy must not publish active references to the retired content
+
+### Existing-world migration after Create removal
+
+Create blocks, contraptions, trains and aircraft have no safe automatic replacement. Complete these actions before the first startup with the reduced pack:
+
+1. Make a full backup of the world and server configuration while the old mod set is still available
+2. Start the old pack and dismantle all Create factories, moving contraptions, trains and aircraft
+3. Move stored items and fluids into containers owned by retained mods or vanilla Minecraft
+4. Stop the old server cleanly and keep its complete backup as the rollback and export source
+5. Install the matching reduced client and server inventories together, then start the world only from a copy of the backup
+6. Review the missing-registry report before normal play. Removed blocks and entities are deleted when affected chunks load and cannot be reconstructed from the reduced world
+
+Do not save the only copy of a production world after a partial update. A rollback requires the old mod inventory and the pre-removal backup
 - The narrator keyboard shortcut is disabled only inside `KeyboardHandler.keyPress`; B remains available to racial utility and narration can still be selected through accessibility settings. This input adaptation remains client-only; the separate universal non-event gameplay runs on the logical server.
 
 ## Campaign и World Tier
@@ -336,17 +349,17 @@ Registered Campaign, prerequisite, hosted-arena and post-End boss structures use
 
 Events остаётся внутри JEMServer: его event records находятся в общем `jem_smp_v2`, а ordinary hosted arenas и party workflow используют существующих владельцев. Отдельный JAR потребовал бы переноса общего persistence и новых обязательных связей. `EventNetwork` сериализует feature packets и передаёт entry intent в SMP adapter; `EventAttempts` подготавливает detached state до изменения сохранённого event. Общие boss arena, revival и reward primitives остаются в World Boss Tiers.
 
-Drill addon публикует фактический `DrillLifecycleEvent` для work/replacement/service. Achievement Guide слушает этот event только при наличии addon и владеет сохранёнными pack advancement IDs. Moving-only batch/final-service условия сохранены. Compat больше не регистрирует drill Mixins и не содержит копию drill lifecycle. JEI выбирает свой overlay при discovery плагина, а optional Curios policy находится за изолированным adapter.
+The retired Drill Lifecycle addon has no active module, event, Mixin, advancement or JEI integration. The optional Curios policy remains behind its isolated adapter.
 
 Native menu primitives принадлежат private source своих потребителей; MenuSupport больше не является runtime/build dependency. Claims остаётся development-only и вместе с Flan отсутствует в intended shareable pack; старые world SavedData сохраняются. Settlement territories не являются приватами и никогда не дают land protection.
 
 ### Persistence и установка
 
-Сохраняются `jem_smp_v2`, `jemcompat_main_campaign`, `jem_claim_zones`, `jem_world_boss_tiers`, `jem_hosted_boss_rewards`, прежние NBT keys и registry IDs. Drill NBT `JemDrillWear`, `JemDrillRepairs`, `JemDrillReplacementPos` и legacy `jemcompat` resource namespace не меняются. Перенос Java не создаёт новый world schema и не повторяет исторические victories/rewards.
+Сохраняются `jem_smp_v2`, `jemcompat_main_campaign`, `jem_claim_zones`, `jem_world_boss_tiers`, `jem_hosted_boss_rewards`, прежние NBT keys и registry IDs. Retired drill NBT remains inert in existing saves and is not read or rewritten. Перенос Java не создаёт новый world schema и не повторяет исторические victories/rewards.
 
 SMP channel `jem_server:smp_v2` использует protocol `5`: typed action kinds/inputs заменяют action JSON, Update включает session/base/current revision, Query поддерживает bounded resync и owner-only home preview. Требуется одновременная установка matching Server JAR на клиент и сервер. Старый Compat необходимо заменить новым вместе с добавлением `jem_drill_lifecycle-1.0.0.jar`; две версии Compat/addon одновременно недопустимы. Claims/Flan не распространяются, Adaptive Culling — client-only, Villager Talking — development-only.
 
-Production compile order follows actual source API edges: Identity → Economy; WorldBossTiers and DrillLifecycle precede TwelveEyes/Guide; Economy/Identity precede Races/Settlements; Guide/Identity/WorldBossTiers precede Compat; Server consumes the completed domain outputs. Module `build/libs` contains production outputs. No CurrencyCore, PackCore, MenuSupport or separate VisualSandbox artifact is built for this graph. Runtime/Client synchronization and native publication have their own explicit delivery evidence; stable profiles, MineRENT and baseline retain the authorized release boundary.
+Production compile order follows actual source API edges: Identity → Economy; WorldBossTiers precedes TwelveEyes/Guide; Economy/Identity precede Races/Settlements; Guide/Identity/WorldBossTiers precede Compat; Server consumes the completed domain outputs. Module `build/libs` contains production outputs. No CurrencyCore, PackCore, MenuSupport, DrillLifecycle or separate VisualSandbox artifact is built for this graph. Runtime/Client synchronization and native publication have their own explicit delivery evidence; stable profiles, MineRENT and baseline retain the authorized release boundary.
 
 ### Resource ownership
 
@@ -356,7 +369,7 @@ Blood Moon fallback defaults принадлежат native builtin `jem_server:e
 
 | Совпадающий путь | Разрешённая семантика |
 | --- | --- |
-| `assets/jemcompat/lang/en_us.json` | Native language stack объединяет сохранённые ключи Compat, Drill Lifecycle и TwelveEyes |
+| `assets/jemcompat/lang/en_us.json` | Native language stack combines the current Compat and TwelveEyes keys |
 | `assets/jemcompat/lang/ru_ru.json` | То же объединение с сохранением localization keys |
 | `data/forge/loot_modifiers/global_loot_modifiers.json` | Native additive modifier registrations Server и World Boss Tiers |
 | `data/jem_world_boss_tiers/tags/items/progression_excluded.json` | Standalone empty base и additive pack values, без replacement |

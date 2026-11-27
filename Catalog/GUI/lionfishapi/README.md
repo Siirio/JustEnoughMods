@@ -10,5 +10,5 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/github/L_Ender/lionfishapi/client/event/ClientSetUp` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/lionfishapi-3.0.jar!/com/github/L_Ender/lionfishapi/client/event/ClientSetUp.class`
-- `com/github/L_Ender/lionfishapi/client/screen/OptifineWarningScreen` extends `net/minecraft/client/gui/screens/Screen`; `$PROFILE/automodpack/client/active/mods/lionfishapi-3.0.jar!/com/github/L_Ender/lionfishapi/client/screen/OptifineWarningScreen.class`
+- `com/github/L_Ender/lionfishapi/client/event/ClientSetUp` extends `java/lang/Object`; `$PROFILE/mods/lionfishapi-3.0.jar!/com/github/L_Ender/lionfishapi/client/event/ClientSetUp.class`
+- `com/github/L_Ender/lionfishapi/client/screen/OptifineWarningScreen` extends `net/minecraft/client/gui/screens/Screen`; `$PROFILE/mods/lionfishapi-3.0.jar!/com/github/L_Ender/lionfishapi/client/screen/OptifineWarningScreen.class`

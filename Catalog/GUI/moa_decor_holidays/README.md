@@ -6,19 +6,19 @@ Original reference assets. Control sheets retain their source dimensions and alp
 
 ## moa_decor_holidays:textures/screens/almacen_chico.png
 
-[PNG](png/source-f83171029eb4/assets/moa_decor_holidays/textures/screens/almacen_chico.png) - 176 x 166 - `selected_stack_candidate`
+[PNG](png/source-2fa543ca6f76/assets/moa_decor_holidays/textures/screens/almacen_chico.png) - 176 x 166 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/assets/moa_decor_holidays/textures/screens/almacen_chico.png`
+Source: `$PROFILE/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/assets/moa_decor_holidays/textures/screens/almacen_chico.png`
 
 Override target: `assets/moa_decor_holidays/textures/screens/almacen_chico.png`
 
-![moa_decor_holidays:textures/screens/almacen_chico.png](png/source-f83171029eb4/assets/moa_decor_holidays/textures/screens/almacen_chico.png)
+![moa_decor_holidays:textures/screens/almacen_chico.png](png/source-2fa543ca6f76/assets/moa_decor_holidays/textures/screens/almacen_chico.png)
 
 ## UI class candidates
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `net/mcreator/moadecorholidays/block/MariachiguitarraBlock$1` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/net/mcreator/moadecorholidays/block/MariachiguitarraBlock$1.class`
-- `net/mcreator/moadecorholidays/block/MariachiguitarraBlock` extends `net/minecraft/world/level/block/Block`; `$PROFILE/automodpack/client/active/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/net/mcreator/moadecorholidays/block/MariachiguitarraBlock.class`
-- `net/mcreator/moadecorholidays/client/gui/AlmacenChicoScreen` extends `net/minecraft/client/gui/screens/inventory/AbstractContainerScreen`; `$PROFILE/automodpack/client/active/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/net/mcreator/moadecorholidays/client/gui/AlmacenChicoScreen.class`
-- `net/mcreator/moadecorholidays/init/MoaDecorHolidaysModScreens` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/net/mcreator/moadecorholidays/init/MoaDecorHolidaysModScreens.class`
+- `net/mcreator/moadecorholidays/block/MariachiguitarraBlock$1` extends `java/lang/Object`; `$PROFILE/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/net/mcreator/moadecorholidays/block/MariachiguitarraBlock$1.class`
+- `net/mcreator/moadecorholidays/block/MariachiguitarraBlock` extends `net/minecraft/world/level/block/Block`; `$PROFILE/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/net/mcreator/moadecorholidays/block/MariachiguitarraBlock.class`
+- `net/mcreator/moadecorholidays/client/gui/AlmacenChicoScreen` extends `net/minecraft/client/gui/screens/inventory/AbstractContainerScreen`; `$PROFILE/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/net/mcreator/moadecorholidays/client/gui/AlmacenChicoScreen.class`
+- `net/mcreator/moadecorholidays/init/MoaDecorHolidaysModScreens` extends `java/lang/Object`; `$PROFILE/mods/MOAdecor+HOLIDAYS+1.20.1.jar!/net/mcreator/moadecorholidays/init/MoaDecorHolidaysModScreens.class`

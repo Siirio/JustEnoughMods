@@ -832,8 +832,9 @@ def scenarios() -> list[dict[str, Any]]:
 
 
 def warnings(evidence: dict[str, Any]) -> list[dict[str, Any]]:
-    return [
-        {
+    result = []
+    if evidence.get("beam_candidates"):
+        result.append({
             "id": "beam.reported-item-unidentified",
             "exact_ids": [row["spell_id"] for row in evidence["beam_candidates"]],
             "context": "Reported easy-to-obtain unenchanted book/scroll removes about half of Nightfall-armored player health.",
@@ -845,8 +846,8 @@ def warnings(evidence: dict[str, Any]) -> list[dict[str, Any]]:
             "confidence": "candidate_set_source_verified_identity_unresolved",
             "suggested_owner": "Iron's Spells native spell config/code first; narrow JEM adapter only if the exact native seam cannot express the approved correction",
             "action": "No speculative nerf applied. Capture exact localized spell name or scroll ItemStack spell ID/level."
-        },
-        {
+        })
+    result.append({
             "id": "boss.attack-channel-coverage",
             "exact_ids": ["registered boss profiles"],
             "context": "Bosses may damage through projectiles, explosions, beams, summons or custom sources.",
@@ -857,8 +858,8 @@ def warnings(evidence: dict[str, Any]) -> list[dict[str, Any]]:
             "evidence": ["canonical JEM Pack Core boss profiles", "native boss tags", "JemWorldBossTiers.java"],
             "confidence": "high",
             "suggested_owner": "owning boss mod per attack; JEMWorldBossTiers only for shared wrapper rules"
-        }
-    ]
+        })
+    return result
 
 
 def audit_findings() -> list[dict[str, Any]]:
@@ -1726,22 +1727,26 @@ def reference_mitigation_table() -> dict[str, Any]:
 
 def main() -> int:
     snapshot = git_head()
-    evidence = load(CATALOG / "power-sources" / "irons-spellbooks-3.15.6.json")
     native = load(CATALOG / "power-sources" / "native-mechanics-phase3.json")
     stage35a_evidence = boss_reward_weapon_evidence()
     stage35b_evidence = load(CATALOG / "power-sources" / "boss-combat-stage35b.json")
     stage35c_evidence = load(CATALOG / "power-sources" / "defense-mechanics-stage35c.json")
-    evidence_jar = ROOT / evidence["artifact"]["canonical_path"]
-    actual_sha256 = hashlib.sha256(evidence_jar.read_bytes()).hexdigest()
-    if actual_sha256 != evidence["artifact"]["sha256"]:
-        raise SystemExit(f"stale Iron's Spells power evidence: expected {evidence['artifact']['sha256']}, found {actual_sha256}")
+    irons_artifact = native.get("artifacts", {}).get("irons_spellbooks", {})
+    if irons_artifact.get("status") == "absent":
+        evidence = {"beam_candidates": []}
+    else:
+        evidence = load(CATALOG / "power-sources" / "irons-spellbooks-3.15.6.json")
+        evidence_jar = ROOT / evidence["artifact"]["canonical_path"]
+        actual_sha256 = hashlib.sha256(evidence_jar.read_bytes()).hexdigest()
+        if actual_sha256 != evidence["artifact"]["sha256"]:
+            raise SystemExit(f"stale Iron's Spells power evidence: expected {evidence['artifact']['sha256']}, found {actual_sha256}")
     weapons = item_records("weapon_candidate", "views/weapons/*.json", ["damage", "attack speed", "reach/range", "area", "cooldown", "resource cost"], native, "progression enchantment conditional tier multiplier and critical")
     attach_boss_reward_weapon_evidence(weapons, stage35a_evidence)
     armor = item_records("armor_candidate", "views/armor/*.json", ["armor", "toughness", "knockback resistance", "damage-type mitigation", "durability"], native, "progression enchantment conditional slot bonuses")
     accessories = accessory_records(native)
     attach_defense_stage35c(armor, accessories, stage35c_evidence)
     enchantments = enchantment_records()
-    spells = spell_records(evidence, native)
+    spells = [] if irons_artifact.get("status") == "absent" else spell_records(evidence, native)
     bosses = boss_records(native)
     attach_boss_stage35b(bosses, stage35b_evidence)
     hostiles, allies = entity_records({row["id"] for row in bosses}, native)

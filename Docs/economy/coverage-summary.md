@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-24T16:17:49.231100+00:00` for `ce08a5c9745b25c9dcde0203a80e42e7d8a9335a`.
+Generated from Atlas schema 1 at `2026-11-27T08:04:12.066008+00:00` for `4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7`.
 
-Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 14,740 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -15,7 +15,6 @@ Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime 
 | barnyardbuddies | 59 | 1 | 58 | 0 | 58 |
 | bbb | 263 | 3 | 260 | 0 | 260 |
 | beachparty | 86 | 23 | 63 | 4 | 63 |
-| bellsandwhistles | 38 | 0 | 38 | 0 | 38 |
 | blastfromthepast | 133 | 14 | 119 | 0 | 119 |
 | block_factorys_bosses | 137 | 1 | 136 | 0 | 136 |
 | blueprint | 1 | 0 | 1 | 0 | 1 |
@@ -27,9 +26,6 @@ Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime 
 | citadel | 5 | 0 | 5 | 0 | 5 |
 | cnc | 103 | 15 | 88 | 2 | 88 |
 | companions | 81 | 5 | 76 | 0 | 76 |
-| create | 903 | 87 | 816 | 6 | 816 |
-| create_train_parts | 21 | 0 | 21 | 0 | 21 |
-| createrailwaysnavigator | 10 | 0 | 10 | 0 | 10 |
 | creeperoverhaul | 17 | 0 | 17 | 0 | 17 |
 | deep_dark_regrowth | 396 | 7 | 389 | 0 | 389 |
 | dragonlib | 1 | 0 | 1 | 0 | 1 |
@@ -53,7 +49,6 @@ Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime 
 | handcrafted | 285 | 63 | 222 | 0 | 222 |
 | herbalbrews | 48 | 19 | 29 | 3 | 29 |
 | icys_better_horses | 30 | 0 | 30 | 0 | 30 |
-| immersive_aircraft | 40 | 0 | 40 | 0 | 40 |
 | immersive_melodies | 22 | 0 | 22 | 0 | 22 |
 | immersive_weathering | 237 | 7 | 230 | 0 | 230 |
 | incision | 81 | 2 | 79 | 0 | 79 |
@@ -63,7 +58,7 @@ Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime 
 | jem_building | 1 | 0 | 1 | 0 | 1 |
 | jem_economy | 6 | 0 | 6 | 0 | 6 |
 | jem_twelve_eyes | 32 | 0 | 32 | 0 | 32 |
-| jemcompat | 45 | 0 | 45 | 0 | 45 |
+| jemcompat | 44 | 0 | 44 | 0 | 44 |
 | kaleidoscope_compat | 229 | 0 | 229 | 0 | 229 |
 | kaleidoscope_cookery | 242 | 99 | 143 | 5 | 144 |
 | kaleidoscope_doll | 734 | 0 | 734 | 0 | 734 |
@@ -78,7 +73,7 @@ Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 0 | 183 | 0 | 183 |
 | luminous_nether | 205 | 6 | 199 | 0 | 199 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1440 | 306 | 1134 | 59 | 1137 |
+| minecraft | 1453 | 306 | 1147 | 59 | 1150 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | mobhome | 2 | 0 | 2 | 0 | 2 |
 | modefite | 2 | 0 | 2 | 0 | 2 |
@@ -92,7 +87,6 @@ Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime 
 | paraglider | 14 | 0 | 14 | 0 | 14 |
 | patchouli | 13 | 0 | 13 | 0 | 13 |
 | primal | 104 | 13 | 91 | 3 | 91 |
-| railways | 1928 | 288 | 1640 | 0 | 1640 |
 | ribbits | 21 | 3 | 18 | 0 | 18 |
 | rottencreatures | 30 | 2 | 28 | 0 | 28 |
 | royalvariations | 42 | 0 | 42 | 0 | 42 |
@@ -121,4 +115,5 @@ Static evidence observed 17,449 canonical item IDs. This is not a Forge runtime 
 | vanillabackport | 587 | 39 | 548 | 0 | 548 |
 | vinery | 171 | 60 | 111 | 14 | 111 |
 | whaleborne | 10 | 1 | 9 | 0 | 9 |
+| wildscapes | 219 | 0 | 219 | 0 | 219 |
 | xtraarrows | 104 | 0 | 104 | 0 | 104 |

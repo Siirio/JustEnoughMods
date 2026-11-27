@@ -10,4 +10,7 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `net/gouge/GougeClientPhysics` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/gouge-1.5.1-mc1.20.1-forge.jar!/net/gouge/GougeClientPhysics.class`
+- `net/gouge/client/GripHud` extends `java/lang/Object`; `$PROFILE/mods/gouge-1.8.4-mc1.20.1-forge.jar!/net/gouge/client/GripHud.class`
+- `net/gouge/config/ConfigData$Hud` extends `java/lang/Object`; `$PROFILE/mods/gouge-1.8.4-mc1.20.1-forge.jar!/net/gouge/config/ConfigData$Hud.class`
+- `net/gouge/mixin/GougeHudMixin` extends `java/lang/Object`; `$PROFILE/mods/gouge-1.8.4-mc1.20.1-forge.jar!/net/gouge/mixin/GougeHudMixin.class`
+- `net/gouge/physics/GougeClientPhysics` extends `java/lang/Object`; `$PROFILE/mods/gouge-1.8.4-mc1.20.1-forge.jar!/net/gouge/physics/GougeClientPhysics.class`

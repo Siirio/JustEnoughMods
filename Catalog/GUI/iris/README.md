@@ -6,11 +6,11 @@ Original reference assets. Control sheets retain their source dimensions and alp
 
 ## iris:textures/gui/widgets.png
 
-[PNG](png/source-40cb798d5329/assets/iris/textures/gui/widgets.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-759202ac439d/assets/iris/textures/gui/widgets.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/mods/oculus-mc1.20.1-1.8.0.jar!/assets/iris/textures/gui/widgets.png`
+Source: `$PROFILE/mods/oculus-mc1.20.1-1.8.0.jar!/assets/iris/textures/gui/widgets.png`
 
 Override target: `assets/iris/textures/gui/widgets.png`
 
-![iris:textures/gui/widgets.png](png/source-40cb798d5329/assets/iris/textures/gui/widgets.png)
+![iris:textures/gui/widgets.png](png/source-759202ac439d/assets/iris/textures/gui/widgets.png)
 

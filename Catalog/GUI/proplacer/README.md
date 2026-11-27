@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `fuzs/proplacer/client/handler/KeyBindingHandler` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/ProPlacer-v8.0.3-1.20.1-Forge.jar!/fuzs/proplacer/client/handler/KeyBindingHandler.class`
+- `fuzs/proplacer/client/handler/KeyBindingHandler` extends `java/lang/Object`; `$PROFILE/mods/ProPlacer-v8.0.3-1.20.1-Forge.jar!/fuzs/proplacer/client/handler/KeyBindingHandler.class`

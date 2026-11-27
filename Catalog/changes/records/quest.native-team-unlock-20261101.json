@@ -3,12 +3,20 @@
   "change_id": "quest.native-team-unlock-20261101",
   "status": "conditional",
   "selectors": [
-    { "type": "registry", "registry": "*" }
+    {
+      "type": "registry",
+      "registry": "*"
+    }
   ],
   "conditions": [
-    { "runtime": "FTB Quests 2001.4.22 is installed and a real server player logs in." }
+    {
+      "runtime": "FTB Quests 2001.4.22 is installed and a real server player logs in."
+    }
   ],
-  "precedence": { "layer": "jem_compatibility", "priority": 1160 },
+  "precedence": {
+    "layer": "jem_compatibility",
+    "priority": 1160
+  },
   "change": {
     "summary": "Keep the universal authored quest book available by reconciling the native FTB team lock after ServerLogin admission.",
     "modifiers": [
@@ -29,7 +37,6 @@
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbTeamDataRequestMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
       "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
-      "Client/ManagedPack/mods/jem-advancements-5.3.13.jar",
       "Mods/JEMAchievementGuide/README.md"
     ]
   },
@@ -85,12 +92,34 @@
       "commit": "SELF",
       "action": "resynchronize_after_serverlogin_admission",
       "summary": "Wait for ServerLogin authentication, then resend native quest definitions so FTB requests the unlocked TeamData snapshot only after its client quest file exists."
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-advancements-5.3.13.jar"
+      ]
     }
   ],
   "impacts": {
-    "systems": ["FTB Quests", "FTB Teams", "ServerLogin", "JEMAchievementGuide", "dedicated_server", "integrated_server"],
-    "relations": ["FTB Teams resolved login -> ServerLogin admission -> native quest definitions -> native TeamData request -> unlocked quest presentation"],
-    "notes": ["The local dedicated-server QA session opened the FTB quest map and a concrete quest after authentication without a locked message."],
-    "unresolved": ["MineRENT player acceptance remains pending after deployment."]
+    "systems": [
+      "FTB Quests",
+      "FTB Teams",
+      "ServerLogin",
+      "JEMAchievementGuide",
+      "dedicated_server",
+      "integrated_server"
+    ],
+    "relations": [
+      "FTB Teams resolved login -> ServerLogin admission -> native quest definitions -> native TeamData request -> unlocked quest presentation"
+    ],
+    "notes": [
+      "The local dedicated-server QA session opened the FTB quest map and a concrete quest after authentication without a locked message."
+    ],
+    "unresolved": [
+      "MineRENT player acceptance remains pending after deployment."
+    ]
   }
 }

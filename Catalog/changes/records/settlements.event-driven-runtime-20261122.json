@@ -2,13 +2,101 @@
   "schema_version": 2,
   "change_id": "settlements.event-driven-runtime-20261122",
   "status": "active",
-  "selectors": [{"type": "id", "registry": "entities", "value": "minecraft:villager"}],
-  "conditions": [{"side": "server", "installed_versions": ["JEM Settlements development source"]}],
-  "precedence": {"layer": "settlement_runtime", "priority": 1710, "overrides": []},
-  "change": {"summary": "Replace repeated settlement-wide scans with native POI, event, loaded-index, and saved chunk ownership.", "modifiers": [{"property": "settlements.home_rooms", "operation": "replace", "before": "Repeated derived room scans", "after": "Native HOME POI within range 8 and indexed floor relation"}, {"property": "settlements.threats_equipment_amenities", "operation": "replace", "before": "Periodic broad entity and block polling", "after": "Native target, damage, panic, raid, equipment, block-change, and loaded-actor events"}, {"property": "settlements.town_lookup", "operation": "replace", "before": "Repeated full ownership traversal", "after": "Saved derived chunk index and loaded actor index"}]},
-  "cause": {"owner": "JEM Settlements server runtime", "kind": "approved_runtime_cleanup", "source_files": ["Mods/JEMSettlements/src/main/java/**"]},
-  "rationale": {"purpose": "Keep settlement behavior while removing broad periodic work.", "decision_source": "Approved 2026-11-22 one-shot plan", "user_requested": "Rework settlement runtime performance without losing existing behavior.", "codex_choices": "Use installed native POI and Forge event signals, then retain only bounded loaded indexes."},
-  "introduced": {"date": "2026-11-22", "commit": "SELF", "action": "rework_settlement_runtime", "summary": "Move settlement observation to event and index owners."},
-  "history": [{"date": "2026-11-22", "commit": "SELF", "action": "rework_settlement_runtime", "summary": "Remove full entity traversal and no-op periodic scan hooks."}],
-  "impacts": {"systems": ["JEM Settlements", "villager homes", "threats", "amenities", "family complaints", "guards", "animals"], "relations": ["native events -> bounded loaded indexes -> saved settlement state"], "notes": ["JEM Settlements remains development-only and excluded from shared production inventories."], "unresolved": ["Runtime acceptance requires a later explicitly authorized session."]}
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    }
+  ],
+  "conditions": [
+    {
+      "side": "server",
+      "installed_versions": [
+        "JEM Settlements development source"
+      ]
+    }
+  ],
+  "precedence": {
+    "layer": "settlement_runtime",
+    "priority": 1710,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Replace repeated settlement-wide scans with native POI, event, loaded-index, and saved chunk ownership.",
+    "modifiers": [
+      {
+        "property": "settlements.home_rooms",
+        "operation": "replace",
+        "before": "Repeated derived room scans",
+        "after": "Native HOME POI within range 8 and indexed floor relation"
+      },
+      {
+        "property": "settlements.threats_equipment_amenities",
+        "operation": "replace",
+        "before": "Periodic broad entity and block polling",
+        "after": "Native target, damage, panic, raid, equipment, block-change, and loaded-actor events"
+      },
+      {
+        "property": "settlements.town_lookup",
+        "operation": "replace",
+        "before": "Repeated full ownership traversal",
+        "after": "Saved derived chunk index and loaded actor index"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Settlements server runtime",
+    "kind": "approved_runtime_cleanup",
+    "source_files": []
+  },
+  "rationale": {
+    "purpose": "Keep settlement behavior while removing broad periodic work.",
+    "decision_source": "Approved 2026-11-22 one-shot plan",
+    "user_requested": "Rework settlement runtime performance without losing existing behavior.",
+    "codex_choices": "Use installed native POI and Forge event signals, then retain only bounded loaded indexes."
+  },
+  "introduced": {
+    "date": "2026-11-22",
+    "commit": "SELF",
+    "action": "rework_settlement_runtime",
+    "summary": "Move settlement observation to event and index owners."
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "commit": "SELF",
+      "action": "rework_settlement_runtime",
+      "summary": "Remove full entity traversal and no-op periodic scan hooks."
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/**"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "JEM Settlements",
+      "villager homes",
+      "threats",
+      "amenities",
+      "family complaints",
+      "guards",
+      "animals"
+    ],
+    "relations": [
+      "native events -> bounded loaded indexes -> saved settlement state"
+    ],
+    "notes": [
+      "JEM Settlements remains development-only and excluded from shared production inventories."
+    ],
+    "unresolved": [
+      "Runtime acceptance requires a later explicitly authorized session."
+    ]
+  }
 }

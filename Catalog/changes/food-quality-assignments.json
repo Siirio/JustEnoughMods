@@ -3,23 +3,23 @@
   "status": "AUTHORING_DATA_FOR_CODEX_NOT_IMPLEMENTED",
   "origin": "user uploaded food-category-plan.json and JEMFood_Codex_Ready_v2.zip, Oct 2026",
   "summary": {
-    "total": 848,
+    "total": 843,
     "categories": {
+      "Шедевральная": 49,
       "Обычная": 320,
-      "Вкусная": 266,
-      "Изысканная": 213,
-      "Шедевральная": 49
+      "Вкусная": 261,
+      "Изысканная": 213
     },
-    "actual_bonus_foods": 517,
+    "actual_bonus_foods": 512,
     "native_only_foods": 11,
     "no_extra_bonuses": 320,
-    "variety_eligible": 569,
+    "variety_eligible": 564,
     "distinct_traits": 30,
-    "bonus_slots_total": 808,
+    "bonus_slots_total": 803,
     "distinct_combinations_by_tier": {
       "1": 30,
-      "2": 211,
-      "3": 40
+      "2": 212,
+      "3": 41
     },
     "group_trait_usage": {
       "angler": 17,
@@ -30,9 +30,9 @@
       "digger": 26,
       "fervor": 36,
       "fleet": 30,
-      "frostward": 24,
+      "frostward": 23,
       "harvester": 26,
-      "hearth": 37,
+      "hearth": 36,
       "heartroot": 34,
       "highstep": 30,
       "keenedge": 25,
@@ -43,14 +43,14 @@
       "quickbite": 33,
       "reserve": 31,
       "resolve": 35,
-      "sage": 32,
-      "satiety": 32,
+      "sage": 31,
+      "satiety": 31,
       "secondwind": 31,
       "steadfast": 25,
       "stonehide": 19,
       "surefoot": 30,
       "swimmer": 15,
-      "trailrunner": 32,
+      "trailrunner": 31,
       "woodcutter": 27
     },
     "source_unchanged_original_ids": true
@@ -5969,106 +5969,6 @@
       ],
       "classification_evidence": "historical_no_nbt_capture_plus_offline_curation;recipe_ingredient_rarity_not_exhaustively_verified",
       "authoring_priority_score": 0.0
-    },
-    {
-      "id": "create:bar_of_chocolate",
-      "name_from_capture": "Шоколадная плитка",
-      "registry": "item",
-      "consumption_route": "native_item",
-      "category": "Вкусная",
-      "quality_tier": 1,
-      "family": "sweet",
-      "bonus_policy": "food_blessing",
-      "variety_eligible": true,
-      "native_effect_policy": "preserve_unmodified",
-      "native_effect_count_capture_only": 0,
-      "classification_reason": "Доступное приготовленное блюдо, десерт либо культурный напиток.",
-      "evidence_level": "legacy_food_snapshot_and_curated_heuristic_not_recipe_verified",
-      "blessing_traits": [
-        "sage"
-      ],
-      "classification_evidence": "historical_no_nbt_capture_plus_offline_curation;recipe_ingredient_rarity_not_exhaustively_verified",
-      "authoring_priority_score": 0.0
-    },
-    {
-      "id": "create:builders_tea",
-      "name_from_capture": "Чай строителя",
-      "registry": "item",
-      "consumption_route": "native_item",
-      "category": "Вкусная",
-      "quality_tier": 1,
-      "family": "garden",
-      "bonus_policy": "food_blessing",
-      "variety_eligible": true,
-      "native_effect_policy": "preserve_unmodified",
-      "native_effect_count_capture_only": 1,
-      "classification_reason": "Доступное приготовленное блюдо, десерт либо культурный напиток.",
-      "evidence_level": "legacy_food_snapshot_and_curated_heuristic_not_recipe_verified",
-      "blessing_traits": [
-        "frostward"
-      ],
-      "classification_evidence": "historical_no_nbt_capture_plus_offline_curation;recipe_ingredient_rarity_not_exhaustively_verified",
-      "authoring_priority_score": 19.2
-    },
-    {
-      "id": "create:chocolate_glazed_berries",
-      "name_from_capture": "Ягоды в шоколадной глазури",
-      "registry": "item",
-      "consumption_route": "native_item",
-      "category": "Вкусная",
-      "quality_tier": 1,
-      "family": "sweet",
-      "bonus_policy": "food_blessing",
-      "variety_eligible": true,
-      "native_effect_policy": "preserve_unmodified",
-      "native_effect_count_capture_only": 0,
-      "classification_reason": "Доступное приготовленное блюдо, десерт либо культурный напиток.",
-      "evidence_level": "legacy_food_snapshot_and_curated_heuristic_not_recipe_verified",
-      "blessing_traits": [
-        "satiety"
-      ],
-      "classification_evidence": "historical_no_nbt_capture_plus_offline_curation;recipe_ingredient_rarity_not_exhaustively_verified",
-      "authoring_priority_score": 6.0
-    },
-    {
-      "id": "create:honeyed_apple",
-      "name_from_capture": "Яблоко в меду",
-      "registry": "item",
-      "consumption_route": "native_item",
-      "category": "Вкусная",
-      "quality_tier": 1,
-      "family": "sweet",
-      "bonus_policy": "food_blessing",
-      "variety_eligible": true,
-      "native_effect_policy": "preserve_unmodified",
-      "native_effect_count_capture_only": 0,
-      "classification_reason": "Доступное приготовленное блюдо, десерт либо культурный напиток.",
-      "evidence_level": "legacy_food_snapshot_and_curated_heuristic_not_recipe_verified",
-      "blessing_traits": [
-        "hearth"
-      ],
-      "classification_evidence": "historical_no_nbt_capture_plus_offline_curation;recipe_ingredient_rarity_not_exhaustively_verified",
-      "authoring_priority_score": 0.0
-    },
-    {
-      "id": "create:sweet_roll",
-      "name_from_capture": "Сладкий рулет",
-      "registry": "item",
-      "consumption_route": "native_item",
-      "category": "Вкусная",
-      "quality_tier": 1,
-      "family": "sweet",
-      "bonus_policy": "food_blessing",
-      "variety_eligible": true,
-      "native_effect_policy": "preserve_unmodified",
-      "native_effect_count_capture_only": 0,
-      "classification_reason": "Доступное приготовленное блюдо, десерт либо культурный напиток.",
-      "evidence_level": "legacy_food_snapshot_and_curated_heuristic_not_recipe_verified",
-      "blessing_traits": [
-        "trailrunner"
-      ],
-      "classification_evidence": "historical_no_nbt_capture_plus_offline_curation;recipe_ingredient_rarity_not_exhaustively_verified",
-      "authoring_priority_score": 18.0
     },
     {
       "id": "deep_dark_regrowth:apatine",

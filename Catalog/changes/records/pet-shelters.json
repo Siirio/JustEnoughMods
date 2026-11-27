@@ -188,10 +188,8 @@
       "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/PackSummonAgeMixin.java",
       "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/PrimalOwnerTeleportMixin.java",
       "Mods/MobHome/src/main/resources/META-INF/mods.toml",
-      "Mods/MobHome/src/main/resources/assets/mobhome/**",
       "Mods/MobHome/src/main/resources/assets/mobhome/lang/en_us.json",
       "Mods/MobHome/src/main/resources/assets/mobhome/lang/ru_ru.json",
-      "Mods/MobHome/src/main/resources/data/mobhome/**",
       "Mods/MobHome/src/main/resources/data/mobhome/advancements/recipes/animal_homes.json",
       "Mods/MobHome/src/main/resources/data/mobhome/recipes/large_animal_home.json",
       "Mods/MobHome/src/main/resources/data/mobhome/recipes/small_animal_home.json",
@@ -368,6 +366,16 @@
         "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterMenu.java",
         "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterRecovery.java",
         "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterEvents.java"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/MobHome/src/main/resources/assets/mobhome/**",
+        "Mods/MobHome/src/main/resources/data/mobhome/**"
       ]
     }
   ],

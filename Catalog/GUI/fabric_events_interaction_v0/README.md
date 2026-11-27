@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `net/fabricmc/fabric/mixin/event/interaction/client/MinecraftClientMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/txnilib-forge-1.0.24-1.20.1.jar!/META-INF/jars/fabric-api-0.92.2+1.11.12+1.20.1.jar!/META-INF/jarjar/fabric-events-interaction-v0-0.6.2+0d0bd5a777.jar!/net/fabricmc/fabric/mixin/event/interaction/client/MinecraftClientMixin.class`
+- `net/fabricmc/fabric/mixin/event/interaction/client/MinecraftClientMixin` extends `java/lang/Object`; `$PROFILE/mods/txnilib-forge-1.0.24-1.20.1.jar!/META-INF/jars/fabric-api-0.92.2+1.11.12+1.20.1.jar!/META-INF/jarjar/fabric-events-interaction-v0-0.6.2+0d0bd5a777.jar!/net/fabricmc/fabric/mixin/event/interaction/client/MinecraftClientMixin.class`

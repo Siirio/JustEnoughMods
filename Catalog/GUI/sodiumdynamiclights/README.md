@@ -10,6 +10,6 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `toni/sodiumdynamiclights/mixin/DebugScreenOverlayMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/sodiumdynamiclights-forge-1.0.10-1.20.1.jar!/toni/sodiumdynamiclights/mixin/DebugScreenOverlayMixin.class`
-- `toni/sodiumdynamiclights/mixin/sodium/SodiumOptionsGuiMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/sodiumdynamiclights-forge-1.0.10-1.20.1.jar!/toni/sodiumdynamiclights/mixin/sodium/SodiumOptionsGuiMixin.class`
-- `toni/sodiumdynamiclights/util/DynamicLightingPage` extends `me/jellysquid/mods/sodium/client/gui/options/OptionPage`; `$PROFILE/automodpack/client/active/mods/sodiumdynamiclights-forge-1.0.10-1.20.1.jar!/toni/sodiumdynamiclights/util/DynamicLightingPage.class`
+- `toni/sodiumdynamiclights/mixin/DebugScreenOverlayMixin` extends `java/lang/Object`; `$PROFILE/mods/sodiumdynamiclights-forge-1.0.10-1.20.1.jar!/toni/sodiumdynamiclights/mixin/DebugScreenOverlayMixin.class`
+- `toni/sodiumdynamiclights/mixin/sodium/SodiumOptionsGuiMixin` extends `java/lang/Object`; `$PROFILE/mods/sodiumdynamiclights-forge-1.0.10-1.20.1.jar!/toni/sodiumdynamiclights/mixin/sodium/SodiumOptionsGuiMixin.class`
+- `toni/sodiumdynamiclights/util/DynamicLightingPage` extends `me/jellysquid/mods/sodium/client/gui/options/OptionPage`; `$PROFILE/mods/sodiumdynamiclights-forge-1.0.10-1.20.1.jar!/toni/sodiumdynamiclights/util/DynamicLightingPage.class`

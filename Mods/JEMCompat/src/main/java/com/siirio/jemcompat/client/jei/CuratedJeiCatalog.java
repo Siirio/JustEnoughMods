@@ -11,7 +11,7 @@ import java.util.List;
 
 public final class CuratedJeiCatalog {
     private static final List<CatalogCategory> TOP_LEVEL = List.of(CatalogCategory.WEAPONS, CatalogCategory.WEARABLES, CatalogCategory.FOOD,
-            CatalogCategory.ORES, CatalogCategory.MUSIC_DISCS, CatalogCategory.CREATE_REDSTONE,
+            CatalogCategory.ORES, CatalogCategory.MUSIC_DISCS, CatalogCategory.REDSTONE,
             CatalogCategory.BUILDING, CatalogCategory.FISHING, CatalogCategory.BOOKS,
             CatalogCategory.POTIONS, CatalogCategory.TRANSPORT, CatalogCategory.COMPANIONS,
             CatalogCategory.SPAWN_EGGS, CatalogCategory.OTHER);

@@ -131,6 +131,6 @@ public final class ProfessionRadialScreen extends Screen {
     private boolean unlocked(ProfessionId id,ProfessionNode node){return status.unlocked().contains(id.name()+":"+node.id());}
     private boolean ready(ProfessionId id,ProfessionNode node){return status.authenticated()&&!unlocked(id,node)&&status.levels()[id.ordinal()]>=node.level()&&status.points()[id.ordinal()]>0&&(node.parentId().isBlank()||status.unlocked().contains(id.name()+":"+node.parentId()));}
     private static Item item(String id){return BuiltInRegistries.ITEM.getOptional(new ResourceLocation(id)).orElse(Items.BOOK);}
-    private static Item rootIcon(ProfessionId id){return switch(id){case ARCHITECT->Items.BRICKS;case FARMER->Items.WHEAT;case FISHER->Items.FISHING_ROD;case MINER->Items.IRON_PICKAXE;case EXPLORER->Items.COMPASS;case ENGINEER->item("create:wrench");case WARRIOR->Items.IRON_SWORD;case MERCHANT->Items.EMERALD;case MAYOR->Items.BELL;};}
+    private static Item rootIcon(ProfessionId id){return switch(id){case ARCHITECT->Items.BRICKS;case FARMER->Items.WHEAT;case FISHER->Items.FISHING_ROD;case MINER->Items.IRON_PICKAXE;case EXPLORER->Items.COMPASS;case ENGINEER->Items.REDSTONE;case WARRIOR->Items.IRON_SWORD;case MERCHANT->Items.EMERALD;case MAYOR->Items.BELL;};}
     private record Point(double x,double y){}private record Ref(ProfessionId profession,ProfessionNode node){}
 }

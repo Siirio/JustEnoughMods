@@ -57,7 +57,6 @@
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_resource_packs.json",
       "Mods/JEMCompat/gradle.properties",
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
       "Docs/releases/2026-10-26-original-controls-development-inventory/original-keybinds.txt",
       "Docs/input/README.md"
     ]
@@ -157,6 +156,15 @@
         "Mods/JEMCompat/gradle.properties",
         "Client/ManagedPack/mods/jemcompat-3.10.7.jar",
         "Docs/input/README.md"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
       ]
     }
   ],

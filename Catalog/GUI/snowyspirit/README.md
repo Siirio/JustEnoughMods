@@ -10,6 +10,6 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `net/mehvahdjukaar/snowyspirit/forge/SnowySpiritForge` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/snowyspirit-1.20-3.0.10.jar!/net/mehvahdjukaar/snowyspirit/forge/SnowySpiritForge.class`
-- `net/mehvahdjukaar/snowyspirit/integration/configured/ModConfigScreen` extends `net/mehvahdjukaar/moonlight/api/integration/configured/CustomConfigScreen`; `$PROFILE/automodpack/client/active/mods/snowyspirit-1.20-3.0.10.jar!/net/mehvahdjukaar/snowyspirit/integration/configured/ModConfigScreen.class`
-- `net/mehvahdjukaar/snowyspirit/integration/configured/ModConfigSelectScreen` extends `net/mehvahdjukaar/moonlight/api/integration/configured/CustomConfigSelectScreen`; `$PROFILE/automodpack/client/active/mods/snowyspirit-1.20-3.0.10.jar!/net/mehvahdjukaar/snowyspirit/integration/configured/ModConfigSelectScreen.class`
+- `net/mehvahdjukaar/snowyspirit/forge/SnowySpiritForge` extends `java/lang/Object`; `$PROFILE/mods/snowyspirit-1.20-3.0.12.jar!/net/mehvahdjukaar/snowyspirit/forge/SnowySpiritForge.class`
+- `net/mehvahdjukaar/snowyspirit/integration/configured/ModConfigScreen` extends `net/mehvahdjukaar/moonlight/api/integration/configured/CustomConfigScreen`; `$PROFILE/mods/snowyspirit-1.20-3.0.12.jar!/net/mehvahdjukaar/snowyspirit/integration/configured/ModConfigScreen.class`
+- `net/mehvahdjukaar/snowyspirit/integration/configured/ModConfigSelectScreen` extends `net/mehvahdjukaar/moonlight/api/integration/configured/CustomConfigSelectScreen`; `$PROFILE/mods/snowyspirit-1.20-3.0.12.jar!/net/mehvahdjukaar/snowyspirit/integration/configured/ModConfigSelectScreen.class`

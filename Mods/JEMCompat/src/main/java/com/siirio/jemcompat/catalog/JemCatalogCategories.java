@@ -25,7 +25,7 @@ public final class JemCatalogCategories {
         ORES,
         MUSIC_DISCS,
         TREES,
-        CREATE_REDSTONE,
+        REDSTONE,
         BUILDING,
         BUILDING_FURNITURE,
         BUILDING_NATURE,
@@ -79,7 +79,7 @@ public final class JemCatalogCategories {
 
     public static boolean isMarketBuilding(ItemStack stack) {
         return switch (classify(stack)) {
-            case CREATE_REDSTONE, TREES, BUILDING_FURNITURE, BUILDING_NATURE, BUILDING_CONTAINERS,
+            case REDSTONE, TREES, BUILDING_FURNITURE, BUILDING_NATURE, BUILDING_CONTAINERS,
                     BUILDING_HOLIDAY, BUILDING_BLOCKS, BUILDING_GLASS, BUILDING_LIGHT,
                     BUILDING_TOOLS -> true;
             default -> false;

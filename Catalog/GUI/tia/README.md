@@ -10,6 +10,6 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `xyz/trivaxy/tia/MixinInjects` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/tia-1.20-1.1-forge.jar!/xyz/trivaxy/tia/MixinInjects.class`
-- `xyz/trivaxy/tia/mixin/AbstractContainerScreenMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/tia-1.20-1.1-forge.jar!/xyz/trivaxy/tia/mixin/AbstractContainerScreenMixin.class`
-- `xyz/trivaxy/tia/mixin/GuiGraphicsMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/tia-1.20-1.1-forge.jar!/xyz/trivaxy/tia/mixin/GuiGraphicsMixin.class`
+- `xyz/trivaxy/tia/MixinInjects` extends `java/lang/Object`; `$PROFILE/mods/tia-1.20-1.1-forge.jar!/xyz/trivaxy/tia/MixinInjects.class`
+- `xyz/trivaxy/tia/mixin/AbstractContainerScreenMixin` extends `java/lang/Object`; `$PROFILE/mods/tia-1.20-1.1-forge.jar!/xyz/trivaxy/tia/mixin/AbstractContainerScreenMixin.class`
+- `xyz/trivaxy/tia/mixin/GuiGraphicsMixin` extends `java/lang/Object`; `$PROFILE/mods/tia-1.20-1.1-forge.jar!/xyz/trivaxy/tia/mixin/GuiGraphicsMixin.class`

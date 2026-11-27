@@ -34,8 +34,7 @@
     "kind": "runtime_correction",
     "source_files": [
       "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/AntiXray.java",
-      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/ChunkPacketDataMixin.java",
-      "Client/ManagedPack/mods/jem_security-1.0.8.jar"
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/ChunkPacketDataMixin.java"
     ]
   },
   "rationale": {
@@ -54,6 +53,15 @@
       "commit": "SELF",
       "action": "replace",
       "summary": "Encode masked chunk sections with independent palettes before packet allocation"
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jem_security-1.0.8.jar"
+      ]
     }
   ],
   "impacts": {

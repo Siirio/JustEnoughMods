@@ -20,7 +20,7 @@ tasks.named('processResources') {
     inputs.file 'build.gradle'
     filesMatching('META-INF/mods.toml') {
         def metadata = '\n[[mods]]\nmodId="jem_professions_sandbox"\nversion="1.0.0"\ndisplayName="JEM Professions Sandbox Controls"\ndescription="Explicit integrated-owner profession capability."\n'
-        [jem_economy:'1.3.0',jem_settlements:'2.1.0',create:'6.0.8',epicfight:'20.14.17',
+        [jem_economy:'1.3.0',jem_settlements:'2.1.0',epicfight:'20.14.17',
          playerrevive:'2.0.31',tinyinv:'1.1.0.1',recruits:'1.15.2'].each { mod, minimum ->
             metadata += "\n[[dependencies.jem_professions_sandbox]]\nmodId=\"${mod}\"\nmandatory=true\nversionRange=\"[${minimum},)\"\nordering=\"AFTER\"\nside=\"BOTH\"\n"
         }
@@ -28,15 +28,6 @@ tasks.named('processResources') {
     }
 }
 if (professionProfile == 'sandbox') {
-    tasks.register('extractNativeCompileJars', Copy) {
-        from(zipTree(file('../../Client/ManagedPack/mods/create-1.20.1-6.0.8.jar'))) {
-            include 'META-INF/jarjar/*.jar'
-            eachFile { path = name }
-            includeEmptyDirs = false
-        }
-        into file('build/native-libs')
-    }
-    tasks.named('compileJava') { dependsOn 'extractNativeCompileJars' }
     def sandboxData = layout.buildDirectory.dir('generated/sandbox-resources')
     sourceSets.main.resources.srcDir sandboxData
     tasks.register('prepareSandboxData', Exec) {
@@ -56,12 +47,10 @@ dependencies {
         annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
         compileOnly project(path: ':JEMEconomy', configuration: 'jemCompile')
         compileOnly project(path: ':JEMSettlements', configuration: 'jemCompile')
-        compileOnly fg.deobf('local:create:1.20.1-6.0.8')
         compileOnly fg.deobf('local:epic-fight:20.14.17-mc1.20.1-forge')
         compileOnly fg.deobf('local:PlayerRevive_FORGE_v2.0.31_mc1.20.1:installed')
         compileOnly fg.deobf('local:CreativeCore_FORGE_v2.12.40_mc1.20.1:installed')
         compileOnly fg.deobf('local:recruits:1.20.1-1.15.2')
-        compileOnly fileTree(dir: 'build/native-libs', include: '*.jar')
     }
 }
 if (professionProfile == 'sandbox') {

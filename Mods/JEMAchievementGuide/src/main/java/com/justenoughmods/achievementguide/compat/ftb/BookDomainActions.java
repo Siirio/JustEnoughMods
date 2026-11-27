@@ -7,7 +7,6 @@ public final class BookDomainActions {
     private BookDomainActions() {}
 
     public static void register() {
-        if (ModList.get().isLoaded("create")) com.justenoughmods.achievementguide.integration.create.CreateDeployerProofs.register();
         if (ModList.get().isLoaded("toms_storage")) BookTerminalActions.register();
         if (ModList.get().isLoaded("jemfood")) BookFoodActions.register();
         if (ModList.get().isLoaded("mobhome")) BookHomeActions.register();

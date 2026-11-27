@@ -56,8 +56,7 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinPolicy.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java",
       "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller",
-      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
     ]
   },
   "rationale": {
@@ -98,6 +97,15 @@
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
         "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
     }
   ],
   "impacts": {
@@ -124,4 +132,3 @@
     ]
   }
 }
-

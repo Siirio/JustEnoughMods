@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "change_id": "transport.aircraft-onboard-fuel-feed",
-  "status": "active",
+  "status": "superseded",
   "selectors": [
     {
       "type": "namespace",
@@ -51,15 +51,6 @@
     "owner": "JEM canonical module sources",
     "kind": "user_requested_behavior_and_bug_fix",
     "source_files": [
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelInventory.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelSlot.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelState.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftPolicy.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportContent.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftInventoryMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftFuelSlotMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftLiftMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
@@ -110,6 +101,23 @@
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelInventory.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelSlot.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelState.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftPolicy.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportContent.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftInventoryMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftFuelSlotMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftLiftMixin.java"
       ]
     }
   ],

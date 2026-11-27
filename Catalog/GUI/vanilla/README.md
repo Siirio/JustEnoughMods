@@ -4,2387 +4,5087 @@
 
 Original reference assets. Control sheets retain their source dimensions and alpha. Resource namespace and containing mod are recorded separately; a path is not evidence of a live screen.
 
+## minecraft:optifine/gui/container/chest/big.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/chest/big.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/chest/big.png`
+
+Override target: `assets/minecraft/optifine/gui/container/chest/big.png`
+
+![minecraft:optifine/gui/container/chest/big.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/chest/big.png)
+
+## minecraft:optifine/gui/container/chest/ender.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/chest/ender.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/chest/ender.png`
+
+Override target: `assets/minecraft/optifine/gui/container/chest/ender.png`
+
+![minecraft:optifine/gui/container/chest/ender.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/chest/ender.png)
+
+## minecraft:optifine/gui/container/chest/small.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/chest/small.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/chest/small.png`
+
+Override target: `assets/minecraft/optifine/gui/container/chest/small.png`
+
+![minecraft:optifine/gui/container/chest/small.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/chest/small.png)
+
+## minecraft:optifine/gui/container/dispenser/dispenser.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/dispenser/dispenser.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/dispenser/dispenser.png`
+
+Override target: `assets/minecraft/optifine/gui/container/dispenser/dispenser.png`
+
+![minecraft:optifine/gui/container/dispenser/dispenser.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/dispenser/dispenser.png)
+
+## minecraft:optifine/gui/container/dispenser/dropper.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/dispenser/dropper.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/dispenser/dropper.png`
+
+Override target: `assets/minecraft/optifine/gui/container/dispenser/dropper.png`
+
+![minecraft:optifine/gui/container/dispenser/dropper.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/dispenser/dropper.png)
+
+## minecraft:optifine/gui/container/horse/donkey.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/horse/donkey.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/horse/donkey.png`
+
+Override target: `assets/minecraft/optifine/gui/container/horse/donkey.png`
+
+![minecraft:optifine/gui/container/horse/donkey.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/horse/donkey.png)
+
+## minecraft:optifine/gui/container/horse/horse.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/horse/horse.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/horse/horse.png`
+
+Override target: `assets/minecraft/optifine/gui/container/horse/horse.png`
+
+![minecraft:optifine/gui/container/horse/horse.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/horse/horse.png)
+
+## minecraft:optifine/gui/container/horse/llama.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/horse/llama.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/horse/llama.png`
+
+Override target: `assets/minecraft/optifine/gui/container/horse/llama.png`
+
+![minecraft:optifine/gui/container/horse/llama.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/horse/llama.png)
+
+## minecraft:optifine/gui/container/horse/mule.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/horse/mule.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/horse/mule.png`
+
+Override target: `assets/minecraft/optifine/gui/container/horse/mule.png`
+
+![minecraft:optifine/gui/container/horse/mule.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/horse/mule.png)
+
+## minecraft:optifine/gui/container/shulker_box/black.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/black.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/black.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/black.png`
+
+![minecraft:optifine/gui/container/shulker_box/black.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/black.png)
+
+## minecraft:optifine/gui/container/shulker_box/blue.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/blue.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/blue.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/blue.png`
+
+![minecraft:optifine/gui/container/shulker_box/blue.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/blue.png)
+
+## minecraft:optifine/gui/container/shulker_box/brown.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/brown.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/brown.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/brown.png`
+
+![minecraft:optifine/gui/container/shulker_box/brown.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/brown.png)
+
+## minecraft:optifine/gui/container/shulker_box/cyan.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/cyan.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/cyan.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/cyan.png`
+
+![minecraft:optifine/gui/container/shulker_box/cyan.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/cyan.png)
+
+## minecraft:optifine/gui/container/shulker_box/gray.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/gray.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/gray.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/gray.png`
+
+![minecraft:optifine/gui/container/shulker_box/gray.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/gray.png)
+
+## minecraft:optifine/gui/container/shulker_box/green.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/green.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/green.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/green.png`
+
+![minecraft:optifine/gui/container/shulker_box/green.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/green.png)
+
+## minecraft:optifine/gui/container/shulker_box/light_blue.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/light_blue.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/light_blue.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/light_blue.png`
+
+![minecraft:optifine/gui/container/shulker_box/light_blue.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/light_blue.png)
+
+## minecraft:optifine/gui/container/shulker_box/light_gray.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/light_gray.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/light_gray.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/light_gray.png`
+
+![minecraft:optifine/gui/container/shulker_box/light_gray.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/light_gray.png)
+
+## minecraft:optifine/gui/container/shulker_box/lime.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/lime.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/lime.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/lime.png`
+
+![minecraft:optifine/gui/container/shulker_box/lime.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/lime.png)
+
+## minecraft:optifine/gui/container/shulker_box/magenta.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/magenta.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/magenta.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/magenta.png`
+
+![minecraft:optifine/gui/container/shulker_box/magenta.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/magenta.png)
+
+## minecraft:optifine/gui/container/shulker_box/orange.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/orange.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/orange.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/orange.png`
+
+![minecraft:optifine/gui/container/shulker_box/orange.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/orange.png)
+
+## minecraft:optifine/gui/container/shulker_box/pink.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/pink.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/pink.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/pink.png`
+
+![minecraft:optifine/gui/container/shulker_box/pink.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/pink.png)
+
+## minecraft:optifine/gui/container/shulker_box/purple.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/purple.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/purple.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/purple.png`
+
+![minecraft:optifine/gui/container/shulker_box/purple.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/purple.png)
+
+## minecraft:optifine/gui/container/shulker_box/red.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/red.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/red.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/red.png`
+
+![minecraft:optifine/gui/container/shulker_box/red.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/red.png)
+
+## minecraft:optifine/gui/container/shulker_box/white.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/white.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/white.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/white.png`
+
+![minecraft:optifine/gui/container/shulker_box/white.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/white.png)
+
+## minecraft:optifine/gui/container/shulker_box/yellow.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/yellow.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/shulker_box/yellow.png`
+
+Override target: `assets/minecraft/optifine/gui/container/shulker_box/yellow.png`
+
+![minecraft:optifine/gui/container/shulker_box/yellow.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/shulker_box/yellow.png)
+
+## minecraft:optifine/gui/container/villager/armorer/armorer.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/armorer/armorer.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/armorer/armorer.png`
+
+![minecraft:optifine/gui/container/villager/armorer/armorer.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer.png)
+
+## minecraft:optifine/gui/container/villager/armorer/armorer2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/armorer/armorer2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/armorer/armorer2.png`
+
+![minecraft:optifine/gui/container/villager/armorer/armorer2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer2.png)
+
+## minecraft:optifine/gui/container/villager/armorer/armorer3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/armorer/armorer3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/armorer/armorer3.png`
+
+![minecraft:optifine/gui/container/villager/armorer/armorer3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer3.png)
+
+## minecraft:optifine/gui/container/villager/armorer/armorer4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/armorer/armorer4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/armorer/armorer4.png`
+
+![minecraft:optifine/gui/container/villager/armorer/armorer4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer4.png)
+
+## minecraft:optifine/gui/container/villager/armorer/armorer5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/armorer/armorer5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/armorer/armorer5.png`
+
+![minecraft:optifine/gui/container/villager/armorer/armorer5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/armorer/armorer5.png)
+
+## minecraft:optifine/gui/container/villager/butcher/butcher.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/butcher/butcher.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/butcher/butcher.png`
+
+![minecraft:optifine/gui/container/villager/butcher/butcher.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher.png)
+
+## minecraft:optifine/gui/container/villager/butcher/butcher2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/butcher/butcher2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/butcher/butcher2.png`
+
+![minecraft:optifine/gui/container/villager/butcher/butcher2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher2.png)
+
+## minecraft:optifine/gui/container/villager/butcher/butcher3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/butcher/butcher3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/butcher/butcher3.png`
+
+![minecraft:optifine/gui/container/villager/butcher/butcher3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher3.png)
+
+## minecraft:optifine/gui/container/villager/butcher/butcher4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/butcher/butcher4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/butcher/butcher4.png`
+
+![minecraft:optifine/gui/container/villager/butcher/butcher4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher4.png)
+
+## minecraft:optifine/gui/container/villager/butcher/butcher5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/butcher/butcher5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/butcher/butcher5.png`
+
+![minecraft:optifine/gui/container/villager/butcher/butcher5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/butcher/butcher5.png)
+
+## minecraft:optifine/gui/container/villager/cartographer/cartographer.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cartographer/cartographer.png`
+
+![minecraft:optifine/gui/container/villager/cartographer/cartographer.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer.png)
+
+## minecraft:optifine/gui/container/villager/cartographer/cartographer2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cartographer/cartographer2.png`
+
+![minecraft:optifine/gui/container/villager/cartographer/cartographer2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer2.png)
+
+## minecraft:optifine/gui/container/villager/cartographer/cartographer3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cartographer/cartographer3.png`
+
+![minecraft:optifine/gui/container/villager/cartographer/cartographer3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer3.png)
+
+## minecraft:optifine/gui/container/villager/cartographer/cartographer4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cartographer/cartographer4.png`
+
+![minecraft:optifine/gui/container/villager/cartographer/cartographer4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer4.png)
+
+## minecraft:optifine/gui/container/villager/cartographer/cartographer5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cartographer/cartographer5.png`
+
+![minecraft:optifine/gui/container/villager/cartographer/cartographer5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cartographer/cartographer5.png)
+
+## minecraft:optifine/gui/container/villager/cleric/cleric.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cleric/cleric.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cleric/cleric.png`
+
+![minecraft:optifine/gui/container/villager/cleric/cleric.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric.png)
+
+## minecraft:optifine/gui/container/villager/cleric/cleric2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cleric/cleric2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cleric/cleric2.png`
+
+![minecraft:optifine/gui/container/villager/cleric/cleric2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric2.png)
+
+## minecraft:optifine/gui/container/villager/cleric/cleric3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cleric/cleric3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cleric/cleric3.png`
+
+![minecraft:optifine/gui/container/villager/cleric/cleric3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric3.png)
+
+## minecraft:optifine/gui/container/villager/cleric/cleric4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cleric/cleric4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cleric/cleric4.png`
+
+![minecraft:optifine/gui/container/villager/cleric/cleric4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric4.png)
+
+## minecraft:optifine/gui/container/villager/cleric/cleric5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/cleric/cleric5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/cleric/cleric5.png`
+
+![minecraft:optifine/gui/container/villager/cleric/cleric5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/cleric/cleric5.png)
+
+## minecraft:optifine/gui/container/villager/farmer/farmer.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/farmer/farmer.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/farmer/farmer.png`
+
+![minecraft:optifine/gui/container/villager/farmer/farmer.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer.png)
+
+## minecraft:optifine/gui/container/villager/farmer/farmer2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/farmer/farmer2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/farmer/farmer2.png`
+
+![minecraft:optifine/gui/container/villager/farmer/farmer2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer2.png)
+
+## minecraft:optifine/gui/container/villager/farmer/farmer3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/farmer/farmer3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/farmer/farmer3.png`
+
+![minecraft:optifine/gui/container/villager/farmer/farmer3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer3.png)
+
+## minecraft:optifine/gui/container/villager/farmer/farmer4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/farmer/farmer4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/farmer/farmer4.png`
+
+![minecraft:optifine/gui/container/villager/farmer/farmer4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer4.png)
+
+## minecraft:optifine/gui/container/villager/farmer/farmer5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/farmer/farmer5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/farmer/farmer5.png`
+
+![minecraft:optifine/gui/container/villager/farmer/farmer5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/farmer/farmer5.png)
+
+## minecraft:optifine/gui/container/villager/fisherman/fisherman.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fisherman/fisherman.png`
+
+![minecraft:optifine/gui/container/villager/fisherman/fisherman.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman.png)
+
+## minecraft:optifine/gui/container/villager/fisherman/fisherman2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fisherman/fisherman2.png`
+
+![minecraft:optifine/gui/container/villager/fisherman/fisherman2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman2.png)
+
+## minecraft:optifine/gui/container/villager/fisherman/fisherman3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fisherman/fisherman3.png`
+
+![minecraft:optifine/gui/container/villager/fisherman/fisherman3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman3.png)
+
+## minecraft:optifine/gui/container/villager/fisherman/fisherman4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fisherman/fisherman4.png`
+
+![minecraft:optifine/gui/container/villager/fisherman/fisherman4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman4.png)
+
+## minecraft:optifine/gui/container/villager/fisherman/fisherman5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fisherman/fisherman5.png`
+
+![minecraft:optifine/gui/container/villager/fisherman/fisherman5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fisherman/fisherman5.png)
+
+## minecraft:optifine/gui/container/villager/fletcher/fletcher.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fletcher/fletcher.png`
+
+![minecraft:optifine/gui/container/villager/fletcher/fletcher.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher.png)
+
+## minecraft:optifine/gui/container/villager/fletcher/fletcher2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fletcher/fletcher2.png`
+
+![minecraft:optifine/gui/container/villager/fletcher/fletcher2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher2.png)
+
+## minecraft:optifine/gui/container/villager/fletcher/fletcher3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fletcher/fletcher3.png`
+
+![minecraft:optifine/gui/container/villager/fletcher/fletcher3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher3.png)
+
+## minecraft:optifine/gui/container/villager/fletcher/fletcher4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fletcher/fletcher4.png`
+
+![minecraft:optifine/gui/container/villager/fletcher/fletcher4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher4.png)
+
+## minecraft:optifine/gui/container/villager/fletcher/fletcher5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/fletcher/fletcher5.png`
+
+![minecraft:optifine/gui/container/villager/fletcher/fletcher5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/fletcher/fletcher5.png)
+
+## minecraft:optifine/gui/container/villager/leatherworker/leatherworker.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker.png`
+
+![minecraft:optifine/gui/container/villager/leatherworker/leatherworker.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker.png)
+
+## minecraft:optifine/gui/container/villager/leatherworker/leatherworker2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker2.png`
+
+![minecraft:optifine/gui/container/villager/leatherworker/leatherworker2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker2.png)
+
+## minecraft:optifine/gui/container/villager/leatherworker/leatherworker3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker3.png`
+
+![minecraft:optifine/gui/container/villager/leatherworker/leatherworker3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker3.png)
+
+## minecraft:optifine/gui/container/villager/leatherworker/leatherworker4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker4.png`
+
+![minecraft:optifine/gui/container/villager/leatherworker/leatherworker4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker4.png)
+
+## minecraft:optifine/gui/container/villager/leatherworker/leatherworker5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker5.png`
+
+![minecraft:optifine/gui/container/villager/leatherworker/leatherworker5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/leatherworker/leatherworker5.png)
+
+## minecraft:optifine/gui/container/villager/librarian/librarian.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/librarian/librarian.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/librarian/librarian.png`
+
+![minecraft:optifine/gui/container/villager/librarian/librarian.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian.png)
+
+## minecraft:optifine/gui/container/villager/librarian/librarian2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/librarian/librarian2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/librarian/librarian2.png`
+
+![minecraft:optifine/gui/container/villager/librarian/librarian2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian2.png)
+
+## minecraft:optifine/gui/container/villager/librarian/librarian3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/librarian/librarian3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/librarian/librarian3.png`
+
+![minecraft:optifine/gui/container/villager/librarian/librarian3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian3.png)
+
+## minecraft:optifine/gui/container/villager/librarian/librarian4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/librarian/librarian4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/librarian/librarian4.png`
+
+![minecraft:optifine/gui/container/villager/librarian/librarian4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian4.png)
+
+## minecraft:optifine/gui/container/villager/librarian/librarian5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/librarian/librarian5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/librarian/librarian5.png`
+
+![minecraft:optifine/gui/container/villager/librarian/librarian5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/librarian/librarian5.png)
+
+## minecraft:optifine/gui/container/villager/mason/mason.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/mason/mason.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/mason/mason.png`
+
+![minecraft:optifine/gui/container/villager/mason/mason.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason.png)
+
+## minecraft:optifine/gui/container/villager/mason/mason2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/mason/mason2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/mason/mason2.png`
+
+![minecraft:optifine/gui/container/villager/mason/mason2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason2.png)
+
+## minecraft:optifine/gui/container/villager/mason/mason3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/mason/mason3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/mason/mason3.png`
+
+![minecraft:optifine/gui/container/villager/mason/mason3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason3.png)
+
+## minecraft:optifine/gui/container/villager/mason/mason4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/mason/mason4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/mason/mason4.png`
+
+![minecraft:optifine/gui/container/villager/mason/mason4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason4.png)
+
+## minecraft:optifine/gui/container/villager/mason/mason5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/mason/mason5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/mason/mason5.png`
+
+![minecraft:optifine/gui/container/villager/mason/mason5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/mason/mason5.png)
+
+## minecraft:optifine/gui/container/villager/shepherd/shepherd.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/shepherd/shepherd.png`
+
+![minecraft:optifine/gui/container/villager/shepherd/shepherd.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd.png)
+
+## minecraft:optifine/gui/container/villager/shepherd/shepherd2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/shepherd/shepherd2.png`
+
+![minecraft:optifine/gui/container/villager/shepherd/shepherd2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd2.png)
+
+## minecraft:optifine/gui/container/villager/shepherd/shepherd3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/shepherd/shepherd3.png`
+
+![minecraft:optifine/gui/container/villager/shepherd/shepherd3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd3.png)
+
+## minecraft:optifine/gui/container/villager/shepherd/shepherd4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/shepherd/shepherd4.png`
+
+![minecraft:optifine/gui/container/villager/shepherd/shepherd4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd4.png)
+
+## minecraft:optifine/gui/container/villager/shepherd/shepherd5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/shepherd/shepherd5.png`
+
+![minecraft:optifine/gui/container/villager/shepherd/shepherd5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/shepherd/shepherd5.png)
+
+## minecraft:optifine/gui/container/villager/toolsmith/tool_smith.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith.png`
+
+![minecraft:optifine/gui/container/villager/toolsmith/tool_smith.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith.png)
+
+## minecraft:optifine/gui/container/villager/toolsmith/tool_smith2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith2.png`
+
+![minecraft:optifine/gui/container/villager/toolsmith/tool_smith2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith2.png)
+
+## minecraft:optifine/gui/container/villager/toolsmith/tool_smith3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith3.png`
+
+![minecraft:optifine/gui/container/villager/toolsmith/tool_smith3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith3.png)
+
+## minecraft:optifine/gui/container/villager/toolsmith/tool_smith4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith4.png`
+
+![minecraft:optifine/gui/container/villager/toolsmith/tool_smith4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith4.png)
+
+## minecraft:optifine/gui/container/villager/toolsmith/tool_smith5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith5.png`
+
+![minecraft:optifine/gui/container/villager/toolsmith/tool_smith5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/toolsmith/tool_smith5.png)
+
+## minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith.png`
+
+![minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith.png)
+
+## minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith2.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith2.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith2.png`
+
+![minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith2.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith2.png)
+
+## minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith3.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith3.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith3.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith3.png`
+
+![minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith3.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith3.png)
+
+## minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith4.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith4.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith4.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith4.png`
+
+![minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith4.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith4.png)
+
+## minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith5.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith5.png) - 512 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith5.png`
+
+Override target: `assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith5.png`
+
+![minecraft:optifine/gui/container/villager/weaponsmith/weaponsmith5.png](png/source-8ce7747ad712/assets/minecraft/optifine/gui/container/villager/weaponsmith/weaponsmith5.png)
+
 ## minecraft:textures/entity/enchanting_table_book.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/entity/enchanting_table_book.png) - 64 x 32 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/entity/enchanting_table_book.png) - 64 x 32 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/entity/enchanting_table_book.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/entity/enchanting_table_book.png`
 
 Override target: `assets/minecraft/textures/entity/enchanting_table_book.png`
 
-![minecraft:textures/entity/enchanting_table_book.png](png/source-ce498f0d5d23/assets/minecraft/textures/entity/enchanting_table_book.png)
+![minecraft:textures/entity/enchanting_table_book.png](png/source-9c3f04957453/assets/minecraft/textures/entity/enchanting_table_book.png)
 
 ## minecraft:textures/environment/clouds.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/environment/clouds.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/environment/clouds.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/environment/clouds.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/environment/clouds.png`
 
 Override target: `assets/minecraft/textures/environment/clouds.png`
 
-![minecraft:textures/environment/clouds.png](png/source-ce498f0d5d23/assets/minecraft/textures/environment/clouds.png)
+![minecraft:textures/environment/clouds.png](png/source-9c3f04957453/assets/minecraft/textures/environment/clouds.png)
 
 ## minecraft:textures/environment/clouds.png
 
-[PNG](png/source-df03dde4c910/assets/minecraft/textures/environment/clouds.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/environment/clouds.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/mods/VanillaBackport-forge-1.20.1-1.1.7.10.jar!/assets/minecraft/textures/environment/clouds.png`
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/environment/clouds.png`
 
 Override target: `assets/minecraft/textures/environment/clouds.png`
 
-![minecraft:textures/environment/clouds.png](png/source-df03dde4c910/assets/minecraft/textures/environment/clouds.png)
+![minecraft:textures/environment/clouds.png](png/source-b89dc8d9d021/assets/minecraft/textures/environment/clouds.png)
 
 ## minecraft:textures/environment/end_sky.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/environment/end_sky.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/environment/end_sky.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/environment/end_sky.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/environment/end_sky.png`
 
 Override target: `assets/minecraft/textures/environment/end_sky.png`
 
-![minecraft:textures/environment/end_sky.png](png/source-ce498f0d5d23/assets/minecraft/textures/environment/end_sky.png)
+![minecraft:textures/environment/end_sky.png](png/source-9c3f04957453/assets/minecraft/textures/environment/end_sky.png)
 
 ## minecraft:textures/environment/moon_phases.png
 
-[PNG](png/source-6df382764794/assets/minecraft/textures/environment/moon_phases.png) - 8192 x 4092 - `selected_stack_candidate`
+[PNG](png/source-8955ad4b538d/assets/minecraft/textures/environment/moon_phases.png) - 8192 x 4092 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/cubic-sun-moon-v1.8.5.zip!/assets/minecraft/textures/environment/moon_phases.png`
+Source: `$PROFILE/resourcepacks/cubic-sun-moon-v1.8.5.zip!/assets/minecraft/textures/environment/moon_phases.png`
 
 Override target: `assets/minecraft/textures/environment/moon_phases.png`
 
-![minecraft:textures/environment/moon_phases.png](png/source-6df382764794/assets/minecraft/textures/environment/moon_phases.png)
+![minecraft:textures/environment/moon_phases.png](png/source-8955ad4b538d/assets/minecraft/textures/environment/moon_phases.png)
 
 ## minecraft:textures/environment/moon_phases.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/environment/moon_phases.png) - 128 x 64 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/environment/moon_phases.png) - 128 x 64 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/environment/moon_phases.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/environment/moon_phases.png`
 
 Override target: `assets/minecraft/textures/environment/moon_phases.png`
 
-![minecraft:textures/environment/moon_phases.png](png/source-ce498f0d5d23/assets/minecraft/textures/environment/moon_phases.png)
+![minecraft:textures/environment/moon_phases.png](png/source-9c3f04957453/assets/minecraft/textures/environment/moon_phases.png)
 
 ## minecraft:textures/environment/rain.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/environment/rain.png) - 64 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/environment/rain.png) - 64 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/environment/rain.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/environment/rain.png`
 
 Override target: `assets/minecraft/textures/environment/rain.png`
 
-![minecraft:textures/environment/rain.png](png/source-ce498f0d5d23/assets/minecraft/textures/environment/rain.png)
+![minecraft:textures/environment/rain.png](png/source-9c3f04957453/assets/minecraft/textures/environment/rain.png)
 
 ## minecraft:textures/environment/snow.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/environment/snow.png) - 64 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/environment/snow.png) - 64 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/environment/snow.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/environment/snow.png`
 
 Override target: `assets/minecraft/textures/environment/snow.png`
 
-![minecraft:textures/environment/snow.png](png/source-ce498f0d5d23/assets/minecraft/textures/environment/snow.png)
+![minecraft:textures/environment/snow.png](png/source-9c3f04957453/assets/minecraft/textures/environment/snow.png)
 
 ## minecraft:textures/environment/sun.png
 
-[PNG](png/source-6df382764794/assets/minecraft/textures/environment/sun.png) - 2048 x 2048 - `selected_stack_candidate`
+[PNG](png/source-8955ad4b538d/assets/minecraft/textures/environment/sun.png) - 2048 x 2048 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/cubic-sun-moon-v1.8.5.zip!/assets/minecraft/textures/environment/sun.png`
+Source: `$PROFILE/resourcepacks/cubic-sun-moon-v1.8.5.zip!/assets/minecraft/textures/environment/sun.png`
 
 Override target: `assets/minecraft/textures/environment/sun.png`
 
-![minecraft:textures/environment/sun.png](png/source-6df382764794/assets/minecraft/textures/environment/sun.png)
+![minecraft:textures/environment/sun.png](png/source-8955ad4b538d/assets/minecraft/textures/environment/sun.png)
 
 ## minecraft:textures/environment/sun.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/environment/sun.png) - 32 x 32 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/environment/sun.png) - 32 x 32 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/environment/sun.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/environment/sun.png`
 
 Override target: `assets/minecraft/textures/environment/sun.png`
 
-![minecraft:textures/environment/sun.png](png/source-ce498f0d5d23/assets/minecraft/textures/environment/sun.png)
+![minecraft:textures/environment/sun.png](png/source-9c3f04957453/assets/minecraft/textures/environment/sun.png)
 
 ## minecraft:textures/font/accented.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/font/accented.png) - 144 x 900 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/font/accented.png) - 144 x 900 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/font/accented.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/font/accented.png`
 
 Override target: `assets/minecraft/textures/font/accented.png`
 
-![minecraft:textures/font/accented.png](png/source-ce498f0d5d23/assets/minecraft/textures/font/accented.png)
+![minecraft:textures/font/accented.png](png/source-9c3f04957453/assets/minecraft/textures/font/accented.png)
 
 ## minecraft:textures/font/alpha_yeti.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/alpha_yeti.png) - 192 x 40 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/alpha_yeti.png) - 192 x 40 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/alpha_yeti.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/alpha_yeti.png`
 
 Override target: `assets/minecraft/textures/font/alpha_yeti.png`
 
-![minecraft:textures/font/alpha_yeti.png](png/source-06d778ed52a8/assets/minecraft/textures/font/alpha_yeti.png)
+![minecraft:textures/font/alpha_yeti.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/alpha_yeti.png)
 
 ## minecraft:textures/font/ascii.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/font/ascii.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/font/ascii.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/font/ascii.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/font/ascii.png`
 
 Override target: `assets/minecraft/textures/font/ascii.png`
 
-![minecraft:textures/font/ascii.png](png/source-ce498f0d5d23/assets/minecraft/textures/font/ascii.png)
+![minecraft:textures/font/ascii.png](png/source-9c3f04957453/assets/minecraft/textures/font/ascii.png)
 
 ## minecraft:textures/font/ascii_sga.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/font/ascii_sga.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/font/ascii_sga.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/font/ascii_sga.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/font/ascii_sga.png`
 
 Override target: `assets/minecraft/textures/font/ascii_sga.png`
 
-![minecraft:textures/font/ascii_sga.png](png/source-ce498f0d5d23/assets/minecraft/textures/font/ascii_sga.png)
+![minecraft:textures/font/ascii_sga.png](png/source-9c3f04957453/assets/minecraft/textures/font/ascii_sga.png)
 
 ## minecraft:textures/font/asciillager.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/font/asciillager.png) - 128 x 40 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/font/asciillager.png) - 128 x 40 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/font/asciillager.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/font/asciillager.png`
 
 Override target: `assets/minecraft/textures/font/asciillager.png`
 
-![minecraft:textures/font/asciillager.png](png/source-ce498f0d5d23/assets/minecraft/textures/font/asciillager.png)
+![minecraft:textures/font/asciillager.png](png/source-9c3f04957453/assets/minecraft/textures/font/asciillager.png)
 
 ## minecraft:textures/font/enderdragon.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/enderdragon.png) - 214 x 39 - `source_variant`
+[PNG](png/source-314e87e388c0/assets/minecraft/textures/font/enderdragon.png) - 190 x 54 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/enderdragon.png`
+Source: `$PROFILE/resourcepacks/AL's Boss Rush+FA 1.1.zip!/assets/minecraft/textures/font/enderdragon.png`
 
 Override target: `assets/minecraft/textures/font/enderdragon.png`
 
-![minecraft:textures/font/enderdragon.png](png/source-06d778ed52a8/assets/minecraft/textures/font/enderdragon.png)
+![minecraft:textures/font/enderdragon.png](png/source-314e87e388c0/assets/minecraft/textures/font/enderdragon.png)
 
 ## minecraft:textures/font/enderdragon.png
 
-[PNG](png/source-81695d5c30f0/assets/minecraft/textures/font/enderdragon.png) - 190 x 54 - `source_variant`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/enderdragon.png) - 214 x 39 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/AL's Boss Rush 1.1.zip!/assets/minecraft/textures/font/enderdragon.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/enderdragon.png`
 
 Override target: `assets/minecraft/textures/font/enderdragon.png`
 
-![minecraft:textures/font/enderdragon.png](png/source-81695d5c30f0/assets/minecraft/textures/font/enderdragon.png)
+![minecraft:textures/font/enderdragon.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/enderdragon.png)
 
 ## minecraft:textures/font/enderdragon.png
 
-[PNG](png/source-dec9d7206ddc/assets/minecraft/textures/font/enderdragon.png) - 190 x 54 - `selected_stack_candidate`
+[PNG](png/source-caaa6d46dab8/assets/minecraft/textures/font/enderdragon.png) - 190 x 54 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/AL's Boss Rush+FA 1.1.zip!/assets/minecraft/textures/font/enderdragon.png`
+Source: `$PROFILE/resourcepacks/AL's Boss Rush 1.1.zip!/assets/minecraft/textures/font/enderdragon.png`
 
 Override target: `assets/minecraft/textures/font/enderdragon.png`
 
-![minecraft:textures/font/enderdragon.png](png/source-dec9d7206ddc/assets/minecraft/textures/font/enderdragon.png)
+![minecraft:textures/font/enderdragon.png](png/source-caaa6d46dab8/assets/minecraft/textures/font/enderdragon.png)
 
 ## minecraft:textures/font/frostmaw.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/frostmaw.png) - 226 x 49 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/frostmaw.png) - 226 x 49 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/frostmaw.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/frostmaw.png`
 
 Override target: `assets/minecraft/textures/font/frostmaw.png`
 
-![minecraft:textures/font/frostmaw.png](png/source-06d778ed52a8/assets/minecraft/textures/font/frostmaw.png)
+![minecraft:textures/font/frostmaw.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/frostmaw.png)
 
 ## minecraft:textures/font/hydra.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/hydra.png) - 194 x 45 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/hydra.png) - 194 x 45 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/hydra.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/hydra.png`
 
 Override target: `assets/minecraft/textures/font/hydra.png`
 
-![minecraft:textures/font/hydra.png](png/source-06d778ed52a8/assets/minecraft/textures/font/hydra.png)
+![minecraft:textures/font/hydra.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/hydra.png)
 
 ## minecraft:textures/font/naga.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/naga.png) - 204 x 50 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/naga.png) - 204 x 50 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/naga.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/naga.png`
 
 Override target: `assets/minecraft/textures/font/naga.png`
 
-![minecraft:textures/font/naga.png](png/source-06d778ed52a8/assets/minecraft/textures/font/naga.png)
+![minecraft:textures/font/naga.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/naga.png)
 
 ## minecraft:textures/font/nethergauntlet.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/nethergauntlet.png) - 202 x 26 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/nethergauntlet.png) - 202 x 26 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/nethergauntlet.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/nethergauntlet.png`
 
 Override target: `assets/minecraft/textures/font/nethergauntlet.png`
 
-![minecraft:textures/font/nethergauntlet.png](png/source-06d778ed52a8/assets/minecraft/textures/font/nethergauntlet.png)
+![minecraft:textures/font/nethergauntlet.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/nethergauntlet.png)
 
 ## minecraft:textures/font/nightlich.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/nightlich.png) - 228 x 49 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/nightlich.png) - 228 x 49 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/nightlich.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/nightlich.png`
 
 Override target: `assets/minecraft/textures/font/nightlich.png`
 
-![minecraft:textures/font/nightlich.png](png/source-06d778ed52a8/assets/minecraft/textures/font/nightlich.png)
+![minecraft:textures/font/nightlich.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/nightlich.png)
 
 ## minecraft:textures/font/nonlatin_european.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/font/nonlatin_european.png) - 128 x 536 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/font/nonlatin_european.png) - 128 x 536 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/font/nonlatin_european.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/font/nonlatin_european.png`
 
 Override target: `assets/minecraft/textures/font/nonlatin_european.png`
 
-![minecraft:textures/font/nonlatin_european.png](png/source-ce498f0d5d23/assets/minecraft/textures/font/nonlatin_european.png)
+![minecraft:textures/font/nonlatin_european.png](png/source-9c3f04957453/assets/minecraft/textures/font/nonlatin_european.png)
 
 ## minecraft:textures/font/obsidilith.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/obsidilith.png) - 194 x 37 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/obsidilith.png) - 194 x 37 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/obsidilith.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/obsidilith.png`
 
 Override target: `assets/minecraft/textures/font/obsidilith.png`
 
-![minecraft:textures/font/obsidilith.png](png/source-06d778ed52a8/assets/minecraft/textures/font/obsidilith.png)
+![minecraft:textures/font/obsidilith.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/obsidilith.png)
 
 ## minecraft:textures/font/raid.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/raid.png) - 194 x 22 - `source_variant`
+[PNG](png/source-314e87e388c0/assets/minecraft/textures/font/raid.png) - 190 x 54 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/raid.png`
+Source: `$PROFILE/resourcepacks/AL's Boss Rush+FA 1.1.zip!/assets/minecraft/textures/font/raid.png`
 
 Override target: `assets/minecraft/textures/font/raid.png`
 
-![minecraft:textures/font/raid.png](png/source-06d778ed52a8/assets/minecraft/textures/font/raid.png)
+![minecraft:textures/font/raid.png](png/source-314e87e388c0/assets/minecraft/textures/font/raid.png)
 
 ## minecraft:textures/font/raid.png
 
-[PNG](png/source-81695d5c30f0/assets/minecraft/textures/font/raid.png) - 190 x 54 - `source_variant`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/raid.png) - 194 x 22 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/AL's Boss Rush 1.1.zip!/assets/minecraft/textures/font/raid.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/raid.png`
 
 Override target: `assets/minecraft/textures/font/raid.png`
 
-![minecraft:textures/font/raid.png](png/source-81695d5c30f0/assets/minecraft/textures/font/raid.png)
+![minecraft:textures/font/raid.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/raid.png)
 
 ## minecraft:textures/font/raid.png
 
-[PNG](png/source-dec9d7206ddc/assets/minecraft/textures/font/raid.png) - 190 x 54 - `selected_stack_candidate`
+[PNG](png/source-caaa6d46dab8/assets/minecraft/textures/font/raid.png) - 190 x 54 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/AL's Boss Rush+FA 1.1.zip!/assets/minecraft/textures/font/raid.png`
+Source: `$PROFILE/resourcepacks/AL's Boss Rush 1.1.zip!/assets/minecraft/textures/font/raid.png`
 
 Override target: `assets/minecraft/textures/font/raid.png`
 
-![minecraft:textures/font/raid.png](png/source-dec9d7206ddc/assets/minecraft/textures/font/raid.png)
+![minecraft:textures/font/raid.png](png/source-caaa6d46dab8/assets/minecraft/textures/font/raid.png)
 
 ## minecraft:textures/font/snow_queen.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/snow_queen.png) - 211 x 42 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/snow_queen.png) - 211 x 42 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/snow_queen.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/snow_queen.png`
 
 Override target: `assets/minecraft/textures/font/snow_queen.png`
 
-![minecraft:textures/font/snow_queen.png](png/source-06d778ed52a8/assets/minecraft/textures/font/snow_queen.png)
+![minecraft:textures/font/snow_queen.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/snow_queen.png)
 
 ## minecraft:textures/font/urghast.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/urghast.png) - 194 x 31 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/urghast.png) - 194 x 31 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/urghast.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/urghast.png`
 
 Override target: `assets/minecraft/textures/font/urghast.png`
 
-![minecraft:textures/font/urghast.png](png/source-06d778ed52a8/assets/minecraft/textures/font/urghast.png)
+![minecraft:textures/font/urghast.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/urghast.png)
 
 ## minecraft:textures/font/voidblossom.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/voidblossom.png) - 196 x 47 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/voidblossom.png) - 196 x 47 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/voidblossom.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/voidblossom.png`
 
 Override target: `assets/minecraft/textures/font/voidblossom.png`
 
-![minecraft:textures/font/voidblossom.png](png/source-06d778ed52a8/assets/minecraft/textures/font/voidblossom.png)
+![minecraft:textures/font/voidblossom.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/voidblossom.png)
 
 ## minecraft:textures/font/voidworm.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/voidworm.png) - 258 x 30 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/voidworm.png) - 258 x 30 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/voidworm.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/voidworm.png`
 
 Override target: `assets/minecraft/textures/font/voidworm.png`
 
-![minecraft:textures/font/voidworm.png](png/source-06d778ed52a8/assets/minecraft/textures/font/voidworm.png)
+![minecraft:textures/font/voidworm.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/voidworm.png)
 
 ## minecraft:textures/font/wither.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/wither.png) - 194 x 36 - `source_variant`
+[PNG](png/source-314e87e388c0/assets/minecraft/textures/font/wither.png) - 190 x 54 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/wither.png`
+Source: `$PROFILE/resourcepacks/AL's Boss Rush+FA 1.1.zip!/assets/minecraft/textures/font/wither.png`
 
 Override target: `assets/minecraft/textures/font/wither.png`
 
-![minecraft:textures/font/wither.png](png/source-06d778ed52a8/assets/minecraft/textures/font/wither.png)
+![minecraft:textures/font/wither.png](png/source-314e87e388c0/assets/minecraft/textures/font/wither.png)
 
 ## minecraft:textures/font/wither.png
 
-[PNG](png/source-81695d5c30f0/assets/minecraft/textures/font/wither.png) - 190 x 54 - `source_variant`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/wither.png) - 194 x 36 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/AL's Boss Rush 1.1.zip!/assets/minecraft/textures/font/wither.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/wither.png`
 
 Override target: `assets/minecraft/textures/font/wither.png`
 
-![minecraft:textures/font/wither.png](png/source-81695d5c30f0/assets/minecraft/textures/font/wither.png)
+![minecraft:textures/font/wither.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/wither.png)
 
 ## minecraft:textures/font/wither.png
 
-[PNG](png/source-dec9d7206ddc/assets/minecraft/textures/font/wither.png) - 190 x 54 - `selected_stack_candidate`
+[PNG](png/source-caaa6d46dab8/assets/minecraft/textures/font/wither.png) - 190 x 54 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/AL's Boss Rush+FA 1.1.zip!/assets/minecraft/textures/font/wither.png`
+Source: `$PROFILE/resourcepacks/AL's Boss Rush 1.1.zip!/assets/minecraft/textures/font/wither.png`
 
 Override target: `assets/minecraft/textures/font/wither.png`
 
-![minecraft:textures/font/wither.png](png/source-dec9d7206ddc/assets/minecraft/textures/font/wither.png)
+![minecraft:textures/font/wither.png](png/source-caaa6d46dab8/assets/minecraft/textures/font/wither.png)
 
 ## minecraft:textures/font/witherstorm.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/font/witherstorm.png) - 256 x 64 - `selected_stack_candidate`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/font/witherstorm.png) - 256 x 64 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/witherstorm.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/font/witherstorm.png`
 
 Override target: `assets/minecraft/textures/font/witherstorm.png`
 
-![minecraft:textures/font/witherstorm.png](png/source-06d778ed52a8/assets/minecraft/textures/font/witherstorm.png)
+![minecraft:textures/font/witherstorm.png](png/source-87103b1c7c5b/assets/minecraft/textures/font/witherstorm.png)
 
 ## minecraft:textures/gui/accessibility.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/accessibility.png) - 32 x 64 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/accessibility.png) - 32 x 64 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/accessibility.png`
-
-Override target: `assets/minecraft/textures/gui/accessibility.png`
-
-![minecraft:textures/gui/accessibility.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/accessibility.png)
-
-## minecraft:textures/gui/accessibility.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/accessibility.png) - 32 x 64 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/accessibility.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/accessibility.png`
 
 Override target: `assets/minecraft/textures/gui/accessibility.png`
 
-![minecraft:textures/gui/accessibility.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/accessibility.png)
+![minecraft:textures/gui/accessibility.png](png/source-9c3f04957453/assets/minecraft/textures/gui/accessibility.png)
 
 ## minecraft:textures/gui/advancements/backgrounds/adventure.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png`
-
-Override target: `assets/minecraft/textures/gui/advancements/backgrounds/adventure.png`
-
-![minecraft:textures/gui/advancements/backgrounds/adventure.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png)
-
-## minecraft:textures/gui/advancements/backgrounds/adventure.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png) - 16 x 16 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/backgrounds/adventure.png`
 
-![minecraft:textures/gui/advancements/backgrounds/adventure.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png)
+![minecraft:textures/gui/advancements/backgrounds/adventure.png](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/adventure.png)
 
 ## minecraft:textures/gui/advancements/backgrounds/end.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/end.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/end.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/advancements/backgrounds/end.png`
-
-Override target: `assets/minecraft/textures/gui/advancements/backgrounds/end.png`
-
-![minecraft:textures/gui/advancements/backgrounds/end.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/end.png)
-
-## minecraft:textures/gui/advancements/backgrounds/end.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/end.png) - 16 x 16 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/advancements/backgrounds/end.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/advancements/backgrounds/end.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/backgrounds/end.png`
 
-![minecraft:textures/gui/advancements/backgrounds/end.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/end.png)
+![minecraft:textures/gui/advancements/backgrounds/end.png](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/end.png)
 
 ## minecraft:textures/gui/advancements/backgrounds/husbandry.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png`
-
-Override target: `assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png`
-
-![minecraft:textures/gui/advancements/backgrounds/husbandry.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png)
-
-## minecraft:textures/gui/advancements/backgrounds/husbandry.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png) - 16 x 16 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png`
 
-![minecraft:textures/gui/advancements/backgrounds/husbandry.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png)
+![minecraft:textures/gui/advancements/backgrounds/husbandry.png](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/husbandry.png)
 
 ## minecraft:textures/gui/advancements/backgrounds/nether.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/nether.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/nether.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/advancements/backgrounds/nether.png`
-
-Override target: `assets/minecraft/textures/gui/advancements/backgrounds/nether.png`
-
-![minecraft:textures/gui/advancements/backgrounds/nether.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/nether.png)
-
-## minecraft:textures/gui/advancements/backgrounds/nether.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/nether.png) - 16 x 16 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/advancements/backgrounds/nether.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/advancements/backgrounds/nether.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/backgrounds/nether.png`
 
-![minecraft:textures/gui/advancements/backgrounds/nether.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/nether.png)
+![minecraft:textures/gui/advancements/backgrounds/nether.png](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/nether.png)
 
 ## minecraft:textures/gui/advancements/backgrounds/stone.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/stone.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/stone.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/advancements/backgrounds/stone.png`
-
-Override target: `assets/minecraft/textures/gui/advancements/backgrounds/stone.png`
-
-![minecraft:textures/gui/advancements/backgrounds/stone.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/backgrounds/stone.png)
-
-## minecraft:textures/gui/advancements/backgrounds/stone.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/stone.png) - 16 x 16 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/advancements/backgrounds/stone.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/advancements/backgrounds/stone.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/backgrounds/stone.png`
 
-![minecraft:textures/gui/advancements/backgrounds/stone.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/backgrounds/stone.png)
+![minecraft:textures/gui/advancements/backgrounds/stone.png](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/backgrounds/stone.png)
 
 ## minecraft:textures/gui/advancements/tabs.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/tabs.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/advancements/tabs.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/advancements/tabs.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/advancements/tabs.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/tabs.png`
 
-![minecraft:textures/gui/advancements/tabs.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/tabs.png)
+![minecraft:textures/gui/advancements/tabs.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/advancements/tabs.png)
 
 ## minecraft:textures/gui/advancements/tabs.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/tabs.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/tabs.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/advancements/tabs.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/advancements/tabs.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/tabs.png`
 
-![minecraft:textures/gui/advancements/tabs.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/tabs.png)
+![minecraft:textures/gui/advancements/tabs.png](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/tabs.png)
 
 ## minecraft:textures/gui/advancements/widgets.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/widgets.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/advancements/widgets.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/advancements/widgets.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/advancements/widgets.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/widgets.png`
 
-![minecraft:textures/gui/advancements/widgets.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/widgets.png)
+![minecraft:textures/gui/advancements/widgets.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/advancements/widgets.png)
 
 ## minecraft:textures/gui/advancements/widgets.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/widgets.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/widgets.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/advancements/widgets.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/advancements/widgets.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/widgets.png`
 
-![minecraft:textures/gui/advancements/widgets.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/widgets.png)
+![minecraft:textures/gui/advancements/widgets.png](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/widgets.png)
 
 ## minecraft:textures/gui/advancements/window.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/window.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/advancements/window.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/advancements/window.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/advancements/window.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/window.png`
 
-![minecraft:textures/gui/advancements/window.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/advancements/window.png)
+![minecraft:textures/gui/advancements/window.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/advancements/window.png)
 
 ## minecraft:textures/gui/advancements/window.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/window.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/window.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/advancements/window.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/advancements/window.png`
 
 Override target: `assets/minecraft/textures/gui/advancements/window.png`
 
-![minecraft:textures/gui/advancements/window.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/advancements/window.png)
+![minecraft:textures/gui/advancements/window.png](png/source-9c3f04957453/assets/minecraft/textures/gui/advancements/window.png)
 
 ## minecraft:textures/gui/bars.png
 
-[PNG](png/source-06d778ed52a8/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `source_variant`
+[PNG](png/source-314e87e388c0/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/gui/bars.png`
+Source: `$PROFILE/resourcepacks/AL's Boss Rush+FA 1.1.zip!/assets/minecraft/textures/gui/bars.png`
 
 Override target: `assets/minecraft/textures/gui/bars.png`
 
-![minecraft:textures/gui/bars.png](png/source-06d778ed52a8/assets/minecraft/textures/gui/bars.png)
+![minecraft:textures/gui/bars.png](png/source-314e87e388c0/assets/minecraft/textures/gui/bars.png)
 
 ## minecraft:textures/gui/bars.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `source_variant`
+[PNG](png/source-87103b1c7c5b/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/bars.png`
+Source: `$PROFILE/resourcepacks/%5B1.6%5D%20Enhanced%20Boss%20Bars.zip!/assets/minecraft/textures/gui/bars.png`
 
 Override target: `assets/minecraft/textures/gui/bars.png`
 
-![minecraft:textures/gui/bars.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/bars.png)
+![minecraft:textures/gui/bars.png](png/source-87103b1c7c5b/assets/minecraft/textures/gui/bars.png)
 
 ## minecraft:textures/gui/bars.png
 
-[PNG](png/source-81695d5c30f0/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `source_variant`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/AL's Boss Rush 1.1.zip!/assets/minecraft/textures/gui/bars.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/bars.png`
 
 Override target: `assets/minecraft/textures/gui/bars.png`
 
-![minecraft:textures/gui/bars.png](png/source-81695d5c30f0/assets/minecraft/textures/gui/bars.png)
+![minecraft:textures/gui/bars.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/bars.png)
 
 ## minecraft:textures/gui/bars.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/bars.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/bars.png`
 
 Override target: `assets/minecraft/textures/gui/bars.png`
 
-![minecraft:textures/gui/bars.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/bars.png)
+![minecraft:textures/gui/bars.png](png/source-9c3f04957453/assets/minecraft/textures/gui/bars.png)
 
 ## minecraft:textures/gui/bars.png
 
-[PNG](png/source-dec9d7206ddc/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-caaa6d46dab8/assets/minecraft/textures/gui/bars.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/AL's Boss Rush+FA 1.1.zip!/assets/minecraft/textures/gui/bars.png`
+Source: `$PROFILE/resourcepacks/AL's Boss Rush 1.1.zip!/assets/minecraft/textures/gui/bars.png`
 
 Override target: `assets/minecraft/textures/gui/bars.png`
 
-![minecraft:textures/gui/bars.png](png/source-dec9d7206ddc/assets/minecraft/textures/gui/bars.png)
+![minecraft:textures/gui/bars.png](png/source-caaa6d46dab8/assets/minecraft/textures/gui/bars.png)
 
 ## minecraft:textures/gui/book.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/book.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/book.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/book.png`
-
-Override target: `assets/minecraft/textures/gui/book.png`
-
-![minecraft:textures/gui/book.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/book.png)
-
-## minecraft:textures/gui/book.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/book.png) - 256 x 256 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/book.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/book.png`
 
 Override target: `assets/minecraft/textures/gui/book.png`
 
-![minecraft:textures/gui/book.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/book.png)
+![minecraft:textures/gui/book.png](png/source-9c3f04957453/assets/minecraft/textures/gui/book.png)
 
 ## minecraft:textures/gui/chat_tags.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/chat_tags.png) - 32 x 32 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/chat_tags.png) - 32 x 32 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/chat_tags.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/chat_tags.png`
 
 Override target: `assets/minecraft/textures/gui/chat_tags.png`
 
-![minecraft:textures/gui/chat_tags.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/chat_tags.png)
+![minecraft:textures/gui/chat_tags.png](png/source-9c3f04957453/assets/minecraft/textures/gui/chat_tags.png)
 
 ## minecraft:textures/gui/checkbox.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/checkbox.png) - 64 x 64 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/checkbox.png) - 64 x 64 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/checkbox.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/checkbox.png`
 
 Override target: `assets/minecraft/textures/gui/checkbox.png`
 
-![minecraft:textures/gui/checkbox.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/checkbox.png)
+![minecraft:textures/gui/checkbox.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/checkbox.png)
 
 ## minecraft:textures/gui/checkbox.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/checkbox.png) - 64 x 64 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/checkbox.png) - 64 x 64 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/checkbox.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/checkbox.png`
 
 Override target: `assets/minecraft/textures/gui/checkbox.png`
 
-![minecraft:textures/gui/checkbox.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/checkbox.png)
+![minecraft:textures/gui/checkbox.png](png/source-9c3f04957453/assets/minecraft/textures/gui/checkbox.png)
 
 ## minecraft:textures/gui/checkmark.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/checkmark.png) - 9 x 8 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/checkmark.png) - 9 x 8 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/checkmark.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/checkmark.png`
 
 Override target: `assets/minecraft/textures/gui/checkmark.png`
 
-![minecraft:textures/gui/checkmark.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/checkmark.png)
+![minecraft:textures/gui/checkmark.png](png/source-9c3f04957453/assets/minecraft/textures/gui/checkmark.png)
 
 ## minecraft:textures/gui/container/anvil.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/anvil.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/anvil.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/anvil.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/anvil.png`
 
 Override target: `assets/minecraft/textures/gui/container/anvil.png`
 
-![minecraft:textures/gui/container/anvil.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/anvil.png)
+![minecraft:textures/gui/container/anvil.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/anvil.png)
 
 ## minecraft:textures/gui/container/anvil.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/anvil.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/anvil.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/anvil.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/anvil.png`
 
 Override target: `assets/minecraft/textures/gui/container/anvil.png`
 
-![minecraft:textures/gui/container/anvil.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/anvil.png)
+![minecraft:textures/gui/container/anvil.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/anvil.png)
 
 ## minecraft:textures/gui/container/beacon.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/beacon.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/beacon.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/beacon.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/beacon.png`
 
 Override target: `assets/minecraft/textures/gui/container/beacon.png`
 
-![minecraft:textures/gui/container/beacon.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/beacon.png)
+![minecraft:textures/gui/container/beacon.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/beacon.png)
 
 ## minecraft:textures/gui/container/beacon.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/beacon.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/beacon.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/beacon.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/beacon.png`
 
 Override target: `assets/minecraft/textures/gui/container/beacon.png`
 
-![minecraft:textures/gui/container/beacon.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/beacon.png)
+![minecraft:textures/gui/container/beacon.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/beacon.png)
 
 ## minecraft:textures/gui/container/blast_furnace.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/blast_furnace.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/blast_furnace.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/blast_furnace.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/blast_furnace.png`
 
 Override target: `assets/minecraft/textures/gui/container/blast_furnace.png`
 
-![minecraft:textures/gui/container/blast_furnace.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/blast_furnace.png)
+![minecraft:textures/gui/container/blast_furnace.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/blast_furnace.png)
 
 ## minecraft:textures/gui/container/blast_furnace.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/blast_furnace.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/blast_furnace.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/blast_furnace.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/blast_furnace.png`
 
 Override target: `assets/minecraft/textures/gui/container/blast_furnace.png`
 
-![minecraft:textures/gui/container/blast_furnace.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/blast_furnace.png)
+![minecraft:textures/gui/container/blast_furnace.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/blast_furnace.png)
 
 ## minecraft:textures/gui/container/brewing_stand.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/brewing_stand.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/brewing_stand.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/brewing_stand.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/brewing_stand.png`
 
 Override target: `assets/minecraft/textures/gui/container/brewing_stand.png`
 
-![minecraft:textures/gui/container/brewing_stand.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/brewing_stand.png)
+![minecraft:textures/gui/container/brewing_stand.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/brewing_stand.png)
 
 ## minecraft:textures/gui/container/brewing_stand.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/brewing_stand.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/brewing_stand.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/brewing_stand.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/brewing_stand.png`
 
 Override target: `assets/minecraft/textures/gui/container/brewing_stand.png`
 
-![minecraft:textures/gui/container/brewing_stand.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/brewing_stand.png)
+![minecraft:textures/gui/container/brewing_stand.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/brewing_stand.png)
 
 ## minecraft:textures/gui/container/bundle.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/bundle.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/bundle.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/bundle.png`
-
-Override target: `assets/minecraft/textures/gui/container/bundle.png`
-
-![minecraft:textures/gui/container/bundle.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/bundle.png)
-
-## minecraft:textures/gui/container/bundle.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/bundle.png) - 128 x 128 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/bundle.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/bundle.png`
 
 Override target: `assets/minecraft/textures/gui/container/bundle.png`
 
-![minecraft:textures/gui/container/bundle.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/bundle.png)
+![minecraft:textures/gui/container/bundle.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/bundle.png)
 
 ## minecraft:textures/gui/container/cartography_table.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/cartography_table.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/cartography_table.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/cartography_table.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/cartography_table.png`
 
 Override target: `assets/minecraft/textures/gui/container/cartography_table.png`
 
-![minecraft:textures/gui/container/cartography_table.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/cartography_table.png)
+![minecraft:textures/gui/container/cartography_table.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/cartography_table.png)
 
 ## minecraft:textures/gui/container/cartography_table.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/cartography_table.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/cartography_table.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/cartography_table.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/cartography_table.png`
 
 Override target: `assets/minecraft/textures/gui/container/cartography_table.png`
 
-![minecraft:textures/gui/container/cartography_table.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/cartography_table.png)
+![minecraft:textures/gui/container/cartography_table.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/cartography_table.png)
+
+## minecraft:textures/gui/container/crafter.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/crafter.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/crafter.png`
+
+Override target: `assets/minecraft/textures/gui/container/crafter.png`
+
+![minecraft:textures/gui/container/crafter.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/crafter.png)
 
 ## minecraft:textures/gui/container/crafting_table.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/crafting_table.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/crafting_table.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/crafting_table.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/crafting_table.png`
 
 Override target: `assets/minecraft/textures/gui/container/crafting_table.png`
 
-![minecraft:textures/gui/container/crafting_table.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/crafting_table.png)
+![minecraft:textures/gui/container/crafting_table.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/crafting_table.png)
 
 ## minecraft:textures/gui/container/crafting_table.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/crafting_table.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/crafting_table.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/crafting_table.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/crafting_table.png`
 
 Override target: `assets/minecraft/textures/gui/container/crafting_table.png`
 
-![minecraft:textures/gui/container/crafting_table.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/crafting_table.png)
+![minecraft:textures/gui/container/crafting_table.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/crafting_table.png)
 
 ## minecraft:textures/gui/container/creative_inventory/tab_inventory.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png`
 
 Override target: `assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png`
 
-![minecraft:textures/gui/container/creative_inventory/tab_inventory.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png)
+![minecraft:textures/gui/container/creative_inventory/tab_inventory.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png)
 
 ## minecraft:textures/gui/container/creative_inventory/tab_inventory.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png`
 
 Override target: `assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png`
 
-![minecraft:textures/gui/container/creative_inventory/tab_inventory.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png)
+![minecraft:textures/gui/container/creative_inventory/tab_inventory.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/creative_inventory/tab_inventory.png)
 
 ## minecraft:textures/gui/container/creative_inventory/tab_item_search.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png`
 
 Override target: `assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png`
 
-![minecraft:textures/gui/container/creative_inventory/tab_item_search.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png)
+![minecraft:textures/gui/container/creative_inventory/tab_item_search.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png)
 
 ## minecraft:textures/gui/container/creative_inventory/tab_item_search.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png`
 
 Override target: `assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png`
 
-![minecraft:textures/gui/container/creative_inventory/tab_item_search.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png)
+![minecraft:textures/gui/container/creative_inventory/tab_item_search.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/creative_inventory/tab_item_search.png)
 
 ## minecraft:textures/gui/container/creative_inventory/tab_items.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png`
 
 Override target: `assets/minecraft/textures/gui/container/creative_inventory/tab_items.png`
 
-![minecraft:textures/gui/container/creative_inventory/tab_items.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png)
+![minecraft:textures/gui/container/creative_inventory/tab_items.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png)
 
 ## minecraft:textures/gui/container/creative_inventory/tab_items.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png`
 
 Override target: `assets/minecraft/textures/gui/container/creative_inventory/tab_items.png`
 
-![minecraft:textures/gui/container/creative_inventory/tab_items.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png)
+![minecraft:textures/gui/container/creative_inventory/tab_items.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/creative_inventory/tab_items.png)
 
 ## minecraft:textures/gui/container/creative_inventory/tabs.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/creative_inventory/tabs.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/creative_inventory/tabs.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/creative_inventory/tabs.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/creative_inventory/tabs.png`
 
 Override target: `assets/minecraft/textures/gui/container/creative_inventory/tabs.png`
 
-![minecraft:textures/gui/container/creative_inventory/tabs.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/creative_inventory/tabs.png)
+![minecraft:textures/gui/container/creative_inventory/tabs.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/creative_inventory/tabs.png)
 
 ## minecraft:textures/gui/container/creative_inventory/tabs.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/creative_inventory/tabs.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/creative_inventory/tabs.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/creative_inventory/tabs.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/creative_inventory/tabs.png`
 
 Override target: `assets/minecraft/textures/gui/container/creative_inventory/tabs.png`
 
-![minecraft:textures/gui/container/creative_inventory/tabs.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/creative_inventory/tabs.png)
+![minecraft:textures/gui/container/creative_inventory/tabs.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/creative_inventory/tabs.png)
 
 ## minecraft:textures/gui/container/dispenser.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/dispenser.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/dispenser.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/dispenser.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/dispenser.png`
 
 Override target: `assets/minecraft/textures/gui/container/dispenser.png`
 
-![minecraft:textures/gui/container/dispenser.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/dispenser.png)
+![minecraft:textures/gui/container/dispenser.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/dispenser.png)
 
 ## minecraft:textures/gui/container/dispenser.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/dispenser.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/dispenser.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/dispenser.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/dispenser.png`
 
 Override target: `assets/minecraft/textures/gui/container/dispenser.png`
 
-![minecraft:textures/gui/container/dispenser.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/dispenser.png)
+![minecraft:textures/gui/container/dispenser.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/dispenser.png)
 
 ## minecraft:textures/gui/container/enchanting_table.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/enchanting_table.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/enchanting_table.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/enchanting_table.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/enchanting_table.png`
 
 Override target: `assets/minecraft/textures/gui/container/enchanting_table.png`
 
-![minecraft:textures/gui/container/enchanting_table.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/enchanting_table.png)
+![minecraft:textures/gui/container/enchanting_table.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/enchanting_table.png)
 
 ## minecraft:textures/gui/container/enchanting_table.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/enchanting_table.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/enchanting_table.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/enchanting_table.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/enchanting_table.png`
 
 Override target: `assets/minecraft/textures/gui/container/enchanting_table.png`
 
-![minecraft:textures/gui/container/enchanting_table.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/enchanting_table.png)
+![minecraft:textures/gui/container/enchanting_table.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/enchanting_table.png)
 
 ## minecraft:textures/gui/container/furnace.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/furnace.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/furnace.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/furnace.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/furnace.png`
 
 Override target: `assets/minecraft/textures/gui/container/furnace.png`
 
-![minecraft:textures/gui/container/furnace.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/furnace.png)
+![minecraft:textures/gui/container/furnace.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/furnace.png)
 
 ## minecraft:textures/gui/container/furnace.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/furnace.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/furnace.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/furnace.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/furnace.png`
 
 Override target: `assets/minecraft/textures/gui/container/furnace.png`
 
-![minecraft:textures/gui/container/furnace.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/furnace.png)
+![minecraft:textures/gui/container/furnace.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/furnace.png)
 
 ## minecraft:textures/gui/container/gamemode_switcher.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/gamemode_switcher.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/gamemode_switcher.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/gamemode_switcher.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/gamemode_switcher.png`
 
 Override target: `assets/minecraft/textures/gui/container/gamemode_switcher.png`
 
-![minecraft:textures/gui/container/gamemode_switcher.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/gamemode_switcher.png)
+![minecraft:textures/gui/container/gamemode_switcher.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/gamemode_switcher.png)
 
 ## minecraft:textures/gui/container/gamemode_switcher.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/gamemode_switcher.png) - 128 x 128 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/gamemode_switcher.png) - 128 x 128 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/gamemode_switcher.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/gamemode_switcher.png`
 
 Override target: `assets/minecraft/textures/gui/container/gamemode_switcher.png`
 
-![minecraft:textures/gui/container/gamemode_switcher.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/gamemode_switcher.png)
+![minecraft:textures/gui/container/gamemode_switcher.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/gamemode_switcher.png)
 
 ## minecraft:textures/gui/container/generic_54.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/generic_54.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/generic_54.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/generic_54.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/generic_54.png`
 
 Override target: `assets/minecraft/textures/gui/container/generic_54.png`
 
-![minecraft:textures/gui/container/generic_54.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/generic_54.png)
+![minecraft:textures/gui/container/generic_54.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/generic_54.png)
 
 ## minecraft:textures/gui/container/generic_54.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/generic_54.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/generic_54.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/generic_54.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/generic_54.png`
 
 Override target: `assets/minecraft/textures/gui/container/generic_54.png`
 
-![minecraft:textures/gui/container/generic_54.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/generic_54.png)
+![minecraft:textures/gui/container/generic_54.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/generic_54.png)
 
 ## minecraft:textures/gui/container/grindstone.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/grindstone.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/grindstone.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/grindstone.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/grindstone.png`
 
 Override target: `assets/minecraft/textures/gui/container/grindstone.png`
 
-![minecraft:textures/gui/container/grindstone.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/grindstone.png)
+![minecraft:textures/gui/container/grindstone.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/grindstone.png)
 
 ## minecraft:textures/gui/container/grindstone.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/grindstone.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/grindstone.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/grindstone.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/grindstone.png`
 
 Override target: `assets/minecraft/textures/gui/container/grindstone.png`
 
-![minecraft:textures/gui/container/grindstone.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/grindstone.png)
+![minecraft:textures/gui/container/grindstone.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/grindstone.png)
 
 ## minecraft:textures/gui/container/hopper.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/hopper.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/hopper.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/hopper.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/hopper.png`
 
 Override target: `assets/minecraft/textures/gui/container/hopper.png`
 
-![minecraft:textures/gui/container/hopper.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/hopper.png)
+![minecraft:textures/gui/container/hopper.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/hopper.png)
 
 ## minecraft:textures/gui/container/hopper.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/hopper.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/hopper.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/hopper.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/hopper.png`
 
 Override target: `assets/minecraft/textures/gui/container/hopper.png`
 
-![minecraft:textures/gui/container/hopper.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/hopper.png)
+![minecraft:textures/gui/container/hopper.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/hopper.png)
 
 ## minecraft:textures/gui/container/horse.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/horse.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/horse.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/horse.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/horse.png`
 
 Override target: `assets/minecraft/textures/gui/container/horse.png`
 
-![minecraft:textures/gui/container/horse.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/horse.png)
+![minecraft:textures/gui/container/horse.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/horse.png)
 
 ## minecraft:textures/gui/container/horse.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/horse.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/horse.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/horse.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/horse.png`
 
 Override target: `assets/minecraft/textures/gui/container/horse.png`
 
-![minecraft:textures/gui/container/horse.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/horse.png)
+![minecraft:textures/gui/container/horse.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/horse.png)
 
 ## minecraft:textures/gui/container/inventory.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/inventory.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/inventory.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/inventory.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/inventory.png`
 
 Override target: `assets/minecraft/textures/gui/container/inventory.png`
 
-![minecraft:textures/gui/container/inventory.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/inventory.png)
+![minecraft:textures/gui/container/inventory.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/inventory.png)
 
 ## minecraft:textures/gui/container/inventory.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/inventory.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/inventory.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/inventory.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/inventory.png`
 
 Override target: `assets/minecraft/textures/gui/container/inventory.png`
 
-![minecraft:textures/gui/container/inventory.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/inventory.png)
+![minecraft:textures/gui/container/inventory.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/inventory.png)
 
 ## minecraft:textures/gui/container/legacy_smithing.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/legacy_smithing.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/legacy_smithing.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/legacy_smithing.png`
-
-Override target: `assets/minecraft/textures/gui/container/legacy_smithing.png`
-
-![minecraft:textures/gui/container/legacy_smithing.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/legacy_smithing.png)
-
-## minecraft:textures/gui/container/legacy_smithing.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/legacy_smithing.png) - 256 x 256 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/legacy_smithing.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/legacy_smithing.png`
 
 Override target: `assets/minecraft/textures/gui/container/legacy_smithing.png`
 
-![minecraft:textures/gui/container/legacy_smithing.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/legacy_smithing.png)
+![minecraft:textures/gui/container/legacy_smithing.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/legacy_smithing.png)
 
 ## minecraft:textures/gui/container/loom.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/loom.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/loom.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/loom.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/loom.png`
 
 Override target: `assets/minecraft/textures/gui/container/loom.png`
 
-![minecraft:textures/gui/container/loom.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/loom.png)
+![minecraft:textures/gui/container/loom.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/loom.png)
 
 ## minecraft:textures/gui/container/loom.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/loom.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/loom.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/loom.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/loom.png`
 
 Override target: `assets/minecraft/textures/gui/container/loom.png`
 
-![minecraft:textures/gui/container/loom.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/loom.png)
+![minecraft:textures/gui/container/loom.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/loom.png)
+
+## minecraft:textures/gui/container/nautilus.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/container/nautilus.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/container/nautilus.png`
+
+Override target: `assets/minecraft/textures/gui/container/nautilus.png`
+
+![minecraft:textures/gui/container/nautilus.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/container/nautilus.png)
 
 ## minecraft:textures/gui/container/shulker_box.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/shulker_box.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/shulker_box.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/shulker_box.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/shulker_box.png`
 
 Override target: `assets/minecraft/textures/gui/container/shulker_box.png`
 
-![minecraft:textures/gui/container/shulker_box.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/shulker_box.png)
+![minecraft:textures/gui/container/shulker_box.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/shulker_box.png)
 
 ## minecraft:textures/gui/container/shulker_box.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/shulker_box.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/shulker_box.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/shulker_box.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/shulker_box.png`
 
 Override target: `assets/minecraft/textures/gui/container/shulker_box.png`
 
-![minecraft:textures/gui/container/shulker_box.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/shulker_box.png)
+![minecraft:textures/gui/container/shulker_box.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/shulker_box.png)
 
 ## minecraft:textures/gui/container/smithing.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/smithing.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/smithing.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/smithing.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/smithing.png`
 
 Override target: `assets/minecraft/textures/gui/container/smithing.png`
 
-![minecraft:textures/gui/container/smithing.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/smithing.png)
+![minecraft:textures/gui/container/smithing.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/smithing.png)
 
 ## minecraft:textures/gui/container/smithing.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/smithing.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/smithing.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/smithing.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/smithing.png`
 
 Override target: `assets/minecraft/textures/gui/container/smithing.png`
 
-![minecraft:textures/gui/container/smithing.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/smithing.png)
+![minecraft:textures/gui/container/smithing.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/smithing.png)
 
 ## minecraft:textures/gui/container/smoker.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/smoker.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/smoker.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/smoker.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/smoker.png`
 
 Override target: `assets/minecraft/textures/gui/container/smoker.png`
 
-![minecraft:textures/gui/container/smoker.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/smoker.png)
+![minecraft:textures/gui/container/smoker.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/smoker.png)
 
 ## minecraft:textures/gui/container/smoker.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/smoker.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/smoker.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/smoker.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/smoker.png`
 
 Override target: `assets/minecraft/textures/gui/container/smoker.png`
 
-![minecraft:textures/gui/container/smoker.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/smoker.png)
+![minecraft:textures/gui/container/smoker.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/smoker.png)
 
 ## minecraft:textures/gui/container/stats_icons.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/stats_icons.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/stats_icons.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/stats_icons.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/stats_icons.png`
 
 Override target: `assets/minecraft/textures/gui/container/stats_icons.png`
 
-![minecraft:textures/gui/container/stats_icons.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/stats_icons.png)
+![minecraft:textures/gui/container/stats_icons.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/stats_icons.png)
 
 ## minecraft:textures/gui/container/stats_icons.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/stats_icons.png) - 128 x 128 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/stats_icons.png) - 128 x 128 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/stats_icons.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/stats_icons.png`
 
 Override target: `assets/minecraft/textures/gui/container/stats_icons.png`
 
-![minecraft:textures/gui/container/stats_icons.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/stats_icons.png)
+![minecraft:textures/gui/container/stats_icons.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/stats_icons.png)
 
 ## minecraft:textures/gui/container/stonecutter.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/stonecutter.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/stonecutter.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/stonecutter.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/stonecutter.png`
 
 Override target: `assets/minecraft/textures/gui/container/stonecutter.png`
 
-![minecraft:textures/gui/container/stonecutter.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/stonecutter.png)
+![minecraft:textures/gui/container/stonecutter.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/stonecutter.png)
 
 ## minecraft:textures/gui/container/stonecutter.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/stonecutter.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/stonecutter.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/stonecutter.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/stonecutter.png`
 
 Override target: `assets/minecraft/textures/gui/container/stonecutter.png`
 
-![minecraft:textures/gui/container/stonecutter.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/stonecutter.png)
+![minecraft:textures/gui/container/stonecutter.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/stonecutter.png)
 
 ## minecraft:textures/gui/container/villager2.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/villager2.png) - 512 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/villager2.png) - 512 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/container/villager2.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/container/villager2.png`
 
 Override target: `assets/minecraft/textures/gui/container/villager2.png`
 
-![minecraft:textures/gui/container/villager2.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/container/villager2.png)
+![minecraft:textures/gui/container/villager2.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/container/villager2.png)
 
 ## minecraft:textures/gui/container/villager2.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/villager2.png) - 512 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/container/villager2.png) - 512 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/container/villager2.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/container/villager2.png`
 
 Override target: `assets/minecraft/textures/gui/container/villager2.png`
 
-![minecraft:textures/gui/container/villager2.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/container/villager2.png)
+![minecraft:textures/gui/container/villager2.png](png/source-9c3f04957453/assets/minecraft/textures/gui/container/villager2.png)
 
 ## minecraft:textures/gui/demo_background.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/demo_background.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/demo_background.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/demo_background.png`
-
-Override target: `assets/minecraft/textures/gui/demo_background.png`
-
-![minecraft:textures/gui/demo_background.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/demo_background.png)
-
-## minecraft:textures/gui/demo_background.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/demo_background.png) - 256 x 256 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/demo_background.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/demo_background.png`
 
 Override target: `assets/minecraft/textures/gui/demo_background.png`
 
-![minecraft:textures/gui/demo_background.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/demo_background.png)
+![minecraft:textures/gui/demo_background.png](png/source-9c3f04957453/assets/minecraft/textures/gui/demo_background.png)
 
 ## minecraft:textures/gui/footer_separator.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/footer_separator.png) - 32 x 2 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/footer_separator.png) - 32 x 2 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/footer_separator.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/footer_separator.png`
 
 Override target: `assets/minecraft/textures/gui/footer_separator.png`
 
-![minecraft:textures/gui/footer_separator.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/footer_separator.png)
+![minecraft:textures/gui/footer_separator.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/footer_separator.png)
 
 ## minecraft:textures/gui/footer_separator.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/footer_separator.png) - 32 x 2 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/footer_separator.png) - 32 x 2 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/footer_separator.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/footer_separator.png`
 
 Override target: `assets/minecraft/textures/gui/footer_separator.png`
 
-![minecraft:textures/gui/footer_separator.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/footer_separator.png)
+![minecraft:textures/gui/footer_separator.png](png/source-9c3f04957453/assets/minecraft/textures/gui/footer_separator.png)
 
 ## minecraft:textures/gui/hanging_signs/acacia.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/acacia.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/acacia.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/acacia.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/acacia.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/acacia.png`
 
-![minecraft:textures/gui/hanging_signs/acacia.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/acacia.png)
+![minecraft:textures/gui/hanging_signs/acacia.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/acacia.png)
 
 ## minecraft:textures/gui/hanging_signs/bamboo.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/bamboo.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/bamboo.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/bamboo.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/bamboo.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/bamboo.png`
 
-![minecraft:textures/gui/hanging_signs/bamboo.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/bamboo.png)
+![minecraft:textures/gui/hanging_signs/bamboo.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/bamboo.png)
 
 ## minecraft:textures/gui/hanging_signs/birch.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/birch.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/birch.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/birch.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/birch.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/birch.png`
 
-![minecraft:textures/gui/hanging_signs/birch.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/birch.png)
+![minecraft:textures/gui/hanging_signs/birch.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/birch.png)
 
 ## minecraft:textures/gui/hanging_signs/cherry.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/cherry.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/cherry.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/cherry.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/cherry.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/cherry.png`
 
-![minecraft:textures/gui/hanging_signs/cherry.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/cherry.png)
+![minecraft:textures/gui/hanging_signs/cherry.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/cherry.png)
 
 ## minecraft:textures/gui/hanging_signs/crimson.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/crimson.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/crimson.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/crimson.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/crimson.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/crimson.png`
 
-![minecraft:textures/gui/hanging_signs/crimson.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/crimson.png)
+![minecraft:textures/gui/hanging_signs/crimson.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/crimson.png)
 
 ## minecraft:textures/gui/hanging_signs/dark_oak.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/dark_oak.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/dark_oak.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/dark_oak.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/dark_oak.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/dark_oak.png`
 
-![minecraft:textures/gui/hanging_signs/dark_oak.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/dark_oak.png)
+![minecraft:textures/gui/hanging_signs/dark_oak.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/dark_oak.png)
 
 ## minecraft:textures/gui/hanging_signs/jungle.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/jungle.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/jungle.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/jungle.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/jungle.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/jungle.png`
 
-![minecraft:textures/gui/hanging_signs/jungle.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/jungle.png)
+![minecraft:textures/gui/hanging_signs/jungle.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/jungle.png)
 
 ## minecraft:textures/gui/hanging_signs/mangrove.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/mangrove.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/mangrove.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/mangrove.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/mangrove.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/mangrove.png`
 
-![minecraft:textures/gui/hanging_signs/mangrove.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/mangrove.png)
+![minecraft:textures/gui/hanging_signs/mangrove.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/mangrove.png)
 
 ## minecraft:textures/gui/hanging_signs/oak.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/oak.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/oak.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/oak.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/oak.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/oak.png`
 
-![minecraft:textures/gui/hanging_signs/oak.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/oak.png)
+![minecraft:textures/gui/hanging_signs/oak.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/oak.png)
 
 ## minecraft:textures/gui/hanging_signs/pale_oak.png
 
-[PNG](png/source-df03dde4c910/assets/minecraft/textures/gui/hanging_signs/pale_oak.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hanging_signs/pale_oak.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/mods/VanillaBackport-forge-1.20.1-1.1.7.10.jar!/assets/minecraft/textures/gui/hanging_signs/pale_oak.png`
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hanging_signs/pale_oak.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/pale_oak.png`
 
-![minecraft:textures/gui/hanging_signs/pale_oak.png](png/source-df03dde4c910/assets/minecraft/textures/gui/hanging_signs/pale_oak.png)
+![minecraft:textures/gui/hanging_signs/pale_oak.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hanging_signs/pale_oak.png)
+
+## minecraft:textures/gui/hanging_signs/poplar.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hanging_signs/poplar.png) - 16 x 16 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hanging_signs/poplar.png`
+
+Override target: `assets/minecraft/textures/gui/hanging_signs/poplar.png`
+
+![minecraft:textures/gui/hanging_signs/poplar.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hanging_signs/poplar.png)
 
 ## minecraft:textures/gui/hanging_signs/spruce.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/spruce.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/spruce.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/spruce.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/spruce.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/spruce.png`
 
-![minecraft:textures/gui/hanging_signs/spruce.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/spruce.png)
+![minecraft:textures/gui/hanging_signs/spruce.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/spruce.png)
 
 ## minecraft:textures/gui/hanging_signs/warped.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/warped.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/warped.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/hanging_signs/warped.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/hanging_signs/warped.png`
 
 Override target: `assets/minecraft/textures/gui/hanging_signs/warped.png`
 
-![minecraft:textures/gui/hanging_signs/warped.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/hanging_signs/warped.png)
+![minecraft:textures/gui/hanging_signs/warped.png](png/source-9c3f04957453/assets/minecraft/textures/gui/hanging_signs/warped.png)
 
 ## minecraft:textures/gui/header_separator.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/header_separator.png) - 32 x 2 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/header_separator.png) - 32 x 2 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/header_separator.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/header_separator.png`
 
 Override target: `assets/minecraft/textures/gui/header_separator.png`
 
-![minecraft:textures/gui/header_separator.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/header_separator.png)
+![minecraft:textures/gui/header_separator.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/header_separator.png)
 
 ## minecraft:textures/gui/header_separator.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/header_separator.png) - 32 x 2 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/header_separator.png) - 32 x 2 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/header_separator.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/header_separator.png`
 
 Override target: `assets/minecraft/textures/gui/header_separator.png`
 
-![minecraft:textures/gui/header_separator.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/header_separator.png)
+![minecraft:textures/gui/header_separator.png](png/source-9c3f04957453/assets/minecraft/textures/gui/header_separator.png)
+
+## minecraft:textures/gui/hud/locator_bar_arrow_down.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_arrow_down.png) - 7 x 10 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_arrow_down.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_arrow_down.png`
+
+![minecraft:textures/gui/hud/locator_bar_arrow_down.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_arrow_down.png)
+
+## minecraft:textures/gui/hud/locator_bar_arrow_up.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_arrow_up.png) - 7 x 10 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_arrow_up.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_arrow_up.png`
+
+![minecraft:textures/gui/hud/locator_bar_arrow_up.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_arrow_up.png)
+
+## minecraft:textures/gui/hud/locator_bar_background.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_background.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_background.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_background.png`
+
+![minecraft:textures/gui/hud/locator_bar_background.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_background.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/bowtie.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/bowtie.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/bowtie.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/bowtie.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/bowtie.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/bowtie.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/corner.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/corner.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/corner.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/corner.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/corner.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/corner.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/death_0.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/death_0.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/death_0.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/death_0.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/death_0.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/death_0.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/death_1.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/death_1.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/death_1.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/death_1.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/death_1.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/death_1.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/death_2.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/death_2.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/death_2.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/death_2.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/death_2.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/death_2.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/default_0.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/default_0.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/default_0.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/default_0.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/default_0.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/default_0.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/default_1.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/default_1.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/default_1.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/default_1.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/default_1.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/default_1.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/default_2.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/default_2.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/default_2.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/default_2.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/default_2.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/default_2.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/default_3.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/default_3.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/default_3.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/default_3.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/default_3.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/default_3.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/east.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/east.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/east.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/east.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/east.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/east.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/lodestone_0.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_0.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_0.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_0.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/lodestone_0.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_0.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/lodestone_1.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_1.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_1.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_1.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/lodestone_1.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_1.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/lodestone_2.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_2.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_2.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_2.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/lodestone_2.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/lodestone_2.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/north.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/north.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/north.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/north.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/north.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/north.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/south.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/south.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/south.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/south.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/south.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/south.png)
+
+## minecraft:textures/gui/hud/locator_bar_dot/west.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/west.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/hud/locator_bar_dot/west.png`
+
+Override target: `assets/minecraft/textures/gui/hud/locator_bar_dot/west.png`
+
+![minecraft:textures/gui/hud/locator_bar_dot/west.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/hud/locator_bar_dot/west.png)
+
+## minecraft:textures/gui/icon/music_notes.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/icon/music_notes.png) - 16 x 128 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/icon/music_notes.png`
+
+Override target: `assets/minecraft/textures/gui/icon/music_notes.png`
+
+![minecraft:textures/gui/icon/music_notes.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/icon/music_notes.png)
 
 ## minecraft:textures/gui/icons.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/icons.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/icons.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/icons.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/icons.png`
 
 Override target: `assets/minecraft/textures/gui/icons.png`
 
-![minecraft:textures/gui/icons.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/icons.png)
+![minecraft:textures/gui/icons.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/icons.png)
 
 ## minecraft:textures/gui/icons.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/icons.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/icons.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/icons.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/icons.png`
 
 Override target: `assets/minecraft/textures/gui/icons.png`
 
-![minecraft:textures/gui/icons.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/icons.png)
+![minecraft:textures/gui/icons.png](png/source-9c3f04957453/assets/minecraft/textures/gui/icons.png)
 
 ## minecraft:textures/gui/info_icon.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/info_icon.png) - 20 x 20 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/info_icon.png) - 20 x 20 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/info_icon.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/info_icon.png`
 
 Override target: `assets/minecraft/textures/gui/info_icon.png`
 
-![minecraft:textures/gui/info_icon.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/info_icon.png)
+![minecraft:textures/gui/info_icon.png](png/source-9c3f04957453/assets/minecraft/textures/gui/info_icon.png)
 
 ## minecraft:textures/gui/light_dirt_background.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/light_dirt_background.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/light_dirt_background.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/light_dirt_background.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/light_dirt_background.png`
 
 Override target: `assets/minecraft/textures/gui/light_dirt_background.png`
 
-![minecraft:textures/gui/light_dirt_background.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/light_dirt_background.png)
+![minecraft:textures/gui/light_dirt_background.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/light_dirt_background.png)
+
+## minecraft:textures/gui/light_dirt_background.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/light_dirt_background.png) - 16 x 16 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/light_dirt_background.png`
+
+Override target: `assets/minecraft/textures/gui/light_dirt_background.png`
+
+![minecraft:textures/gui/light_dirt_background.png](png/source-9c3f04957453/assets/minecraft/textures/gui/light_dirt_background.png)
 
 ## minecraft:textures/gui/options_background.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/options_background.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/options_background.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/options_background.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/options_background.png`
 
 Override target: `assets/minecraft/textures/gui/options_background.png`
 
-![minecraft:textures/gui/options_background.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/options_background.png)
+![minecraft:textures/gui/options_background.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/options_background.png)
 
 ## minecraft:textures/gui/options_background.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/options_background.png) - 16 x 16 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/options_background.png) - 16 x 16 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/options_background.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/options_background.png`
 
 Override target: `assets/minecraft/textures/gui/options_background.png`
 
-![minecraft:textures/gui/options_background.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/options_background.png)
+![minecraft:textures/gui/options_background.png](png/source-9c3f04957453/assets/minecraft/textures/gui/options_background.png)
 
 ## minecraft:textures/gui/presets/isles.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/presets/isles.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/presets/isles.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/presets/isles.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/presets/isles.png`
 
 Override target: `assets/minecraft/textures/gui/presets/isles.png`
 
-![minecraft:textures/gui/presets/isles.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/presets/isles.png)
+![minecraft:textures/gui/presets/isles.png](png/source-9c3f04957453/assets/minecraft/textures/gui/presets/isles.png)
 
 ## minecraft:textures/gui/recipe_book.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/recipe_book.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/recipe_book.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/recipe_book.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/recipe_book.png`
 
 Override target: `assets/minecraft/textures/gui/recipe_book.png`
 
-![minecraft:textures/gui/recipe_book.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/recipe_book.png)
+![minecraft:textures/gui/recipe_book.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/recipe_book.png)
 
 ## minecraft:textures/gui/recipe_book.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/recipe_book.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/recipe_book.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/recipe_book.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/recipe_book.png`
 
 Override target: `assets/minecraft/textures/gui/recipe_book.png`
 
-![minecraft:textures/gui/recipe_book.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/recipe_book.png)
+![minecraft:textures/gui/recipe_book.png](png/source-9c3f04957453/assets/minecraft/textures/gui/recipe_book.png)
 
 ## minecraft:textures/gui/recipe_button.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/recipe_button.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/recipe_button.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/recipe_button.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/recipe_button.png`
 
 Override target: `assets/minecraft/textures/gui/recipe_button.png`
 
-![minecraft:textures/gui/recipe_button.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/recipe_button.png)
+![minecraft:textures/gui/recipe_button.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/recipe_button.png)
 
 ## minecraft:textures/gui/recipe_button.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/recipe_button.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/recipe_button.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/recipe_button.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/recipe_button.png`
 
 Override target: `assets/minecraft/textures/gui/recipe_button.png`
 
-![minecraft:textures/gui/recipe_button.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/recipe_button.png)
+![minecraft:textures/gui/recipe_button.png](png/source-9c3f04957453/assets/minecraft/textures/gui/recipe_button.png)
 
 ## minecraft:textures/gui/report_button.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/report_button.png) - 64 x 64 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/report_button.png) - 64 x 64 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/report_button.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/report_button.png`
 
 Override target: `assets/minecraft/textures/gui/report_button.png`
 
-![minecraft:textures/gui/report_button.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/report_button.png)
+![minecraft:textures/gui/report_button.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/report_button.png)
 
 ## minecraft:textures/gui/report_button.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/report_button.png) - 64 x 64 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/report_button.png) - 64 x 64 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/report_button.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/report_button.png`
 
 Override target: `assets/minecraft/textures/gui/report_button.png`
 
-![minecraft:textures/gui/report_button.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/report_button.png)
+![minecraft:textures/gui/report_button.png](png/source-9c3f04957453/assets/minecraft/textures/gui/report_button.png)
 
 ## minecraft:textures/gui/resource_packs.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/resource_packs.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/resource_packs.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/resource_packs.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/resource_packs.png`
 
 Override target: `assets/minecraft/textures/gui/resource_packs.png`
 
-![minecraft:textures/gui/resource_packs.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/resource_packs.png)
+![minecraft:textures/gui/resource_packs.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/resource_packs.png)
 
 ## minecraft:textures/gui/resource_packs.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/resource_packs.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/resource_packs.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/resource_packs.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/resource_packs.png`
 
 Override target: `assets/minecraft/textures/gui/resource_packs.png`
 
-![minecraft:textures/gui/resource_packs.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/resource_packs.png)
+![minecraft:textures/gui/resource_packs.png](png/source-9c3f04957453/assets/minecraft/textures/gui/resource_packs.png)
 
 ## minecraft:textures/gui/server_selection.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/server_selection.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/server_selection.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/server_selection.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/server_selection.png`
 
 Override target: `assets/minecraft/textures/gui/server_selection.png`
 
-![minecraft:textures/gui/server_selection.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/server_selection.png)
+![minecraft:textures/gui/server_selection.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/server_selection.png)
 
 ## minecraft:textures/gui/server_selection.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/server_selection.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/server_selection.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/server_selection.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/server_selection.png`
 
 Override target: `assets/minecraft/textures/gui/server_selection.png`
 
-![minecraft:textures/gui/server_selection.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/server_selection.png)
+![minecraft:textures/gui/server_selection.png](png/source-9c3f04957453/assets/minecraft/textures/gui/server_selection.png)
 
 ## minecraft:textures/gui/slider.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/slider.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/slider.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/slider.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/slider.png`
 
 Override target: `assets/minecraft/textures/gui/slider.png`
 
-![minecraft:textures/gui/slider.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/slider.png)
+![minecraft:textures/gui/slider.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/slider.png)
 
 ## minecraft:textures/gui/slider.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/slider.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/slider.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/slider.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/slider.png`
 
 Override target: `assets/minecraft/textures/gui/slider.png`
 
-![minecraft:textures/gui/slider.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/slider.png)
+![minecraft:textures/gui/slider.png](png/source-9c3f04957453/assets/minecraft/textures/gui/slider.png)
 
 ## minecraft:textures/gui/social_interactions.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/social_interactions.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/social_interactions.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/social_interactions.png`
-
-Override target: `assets/minecraft/textures/gui/social_interactions.png`
-
-![minecraft:textures/gui/social_interactions.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/social_interactions.png)
-
-## minecraft:textures/gui/social_interactions.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/social_interactions.png) - 256 x 256 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/social_interactions.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/social_interactions.png`
 
 Override target: `assets/minecraft/textures/gui/social_interactions.png`
 
-![minecraft:textures/gui/social_interactions.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/social_interactions.png)
+![minecraft:textures/gui/social_interactions.png](png/source-9c3f04957453/assets/minecraft/textures/gui/social_interactions.png)
 
 ## minecraft:textures/gui/spectator_widgets.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/spectator_widgets.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/spectator_widgets.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/spectator_widgets.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/spectator_widgets.png`
 
 Override target: `assets/minecraft/textures/gui/spectator_widgets.png`
 
-![minecraft:textures/gui/spectator_widgets.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/spectator_widgets.png)
+![minecraft:textures/gui/spectator_widgets.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/spectator_widgets.png)
 
 ## minecraft:textures/gui/spectator_widgets.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/spectator_widgets.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/spectator_widgets.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/spectator_widgets.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/spectator_widgets.png`
 
 Override target: `assets/minecraft/textures/gui/spectator_widgets.png`
 
-![minecraft:textures/gui/spectator_widgets.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/spectator_widgets.png)
+![minecraft:textures/gui/spectator_widgets.png](png/source-9c3f04957453/assets/minecraft/textures/gui/spectator_widgets.png)
+
+## minecraft:textures/gui/sprites/container/slot.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/container/slot.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/container/slot.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/container/slot.png`
+
+![minecraft:textures/gui/sprites/container/slot.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/container/slot.png)
+
+## minecraft:textures/gui/sprites/container/slot/potion.png
+
+[PNG](png/source-014a6bebe633/assets/minecraft/textures/gui/sprites/container/slot/potion.png) - 16 x 16 - `precedence_unresolved`
+
+Source: `$PROFILE/config/paxi/resourcepacks/shureee's Potions CIT.zip!/assets/minecraft/textures/gui/sprites/container/slot/potion.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/container/slot/potion.png`
+
+![minecraft:textures/gui/sprites/container/slot/potion.png](png/source-014a6bebe633/assets/minecraft/textures/gui/sprites/container/slot/potion.png)
+
+## minecraft:textures/gui/sprites/hud/air.2pdn.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/air.2pdn.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/air.2pdn.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/air.2pdn.png`
+
+![minecraft:textures/gui/sprites/hud/air.2pdn.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/air.2pdn.png)
+
+## minecraft:textures/gui/sprites/hud/air.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/air.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/air.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/air.png`
+
+![minecraft:textures/gui/sprites/hud/air.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/air.png)
+
+## minecraft:textures/gui/sprites/hud/air_bursting.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/air_bursting.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/air_bursting.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/air_bursting.png`
+
+![minecraft:textures/gui/sprites/hud/air_bursting.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/air_bursting.png)
+
+## minecraft:textures/gui/sprites/hud/armor_empty.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_empty.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/armor_empty.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/armor_empty.png`
+
+![minecraft:textures/gui/sprites/hud/armor_empty.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_empty.png)
+
+## minecraft:textures/gui/sprites/hud/armor_empty_shield.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_empty_shield.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/armor_empty_shield.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/armor_empty_shield.png`
+
+![minecraft:textures/gui/sprites/hud/armor_empty_shield.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_empty_shield.png)
+
+## minecraft:textures/gui/sprites/hud/armor_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/armor_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/armor_full.png`
+
+![minecraft:textures/gui/sprites/hud/armor_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_full.png)
+
+## minecraft:textures/gui/sprites/hud/armor_full_shield.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_full_shield.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/armor_full_shield.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/armor_full_shield.png`
+
+![minecraft:textures/gui/sprites/hud/armor_full_shield.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_full_shield.png)
+
+## minecraft:textures/gui/sprites/hud/armor_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/armor_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/armor_half.png`
+
+![minecraft:textures/gui/sprites/hud/armor_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_half.png)
+
+## minecraft:textures/gui/sprites/hud/armor_half_shield.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_half_shield.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/armor_half_shield.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/armor_half_shield.png`
+
+![minecraft:textures/gui/sprites/hud/armor_half_shield.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/armor_half_shield.png)
+
+## minecraft:textures/gui/sprites/hud/crosshair.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/crosshair.png) - 15 x 15 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/crosshair.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/crosshair.png`
+
+![minecraft:textures/gui/sprites/hud/crosshair.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/crosshair.png)
+
+## minecraft:textures/gui/sprites/hud/crosshair_attack_indicator_background.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_background.png) - 16 x 4 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_background.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_background.png`
+
+![minecraft:textures/gui/sprites/hud/crosshair_attack_indicator_background.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_background.png)
+
+## minecraft:textures/gui/sprites/hud/crosshair_attack_indicator_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_full.png) - 16 x 16 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_full.png`
+
+![minecraft:textures/gui/sprites/hud/crosshair_attack_indicator_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_full.png)
+
+## minecraft:textures/gui/sprites/hud/crosshair_attack_indicator_progress.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_progress.png) - 16 x 4 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_progress.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_progress.png`
+
+![minecraft:textures/gui/sprites/hud/crosshair_attack_indicator_progress.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/crosshair_attack_indicator_progress.png)
+
+## minecraft:textures/gui/sprites/hud/disabled/effect_background.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/disabled/effect_background.png) - 24 x 24 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/disabled/effect_background.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/disabled/effect_background.png`
+
+![minecraft:textures/gui/sprites/hud/disabled/effect_background.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/disabled/effect_background.png)
+
+## minecraft:textures/gui/sprites/hud/disabled/effect_background_ambient.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/disabled/effect_background_ambient.png) - 24 x 24 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/disabled/effect_background_ambient.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/disabled/effect_background_ambient.png`
+
+![minecraft:textures/gui/sprites/hud/disabled/effect_background_ambient.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/disabled/effect_background_ambient.png)
+
+## minecraft:textures/gui/sprites/hud/experience_bar_background.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/experience_bar_background.png) - 182 x 5 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/experience_bar_background.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/experience_bar_background.png`
+
+![minecraft:textures/gui/sprites/hud/experience_bar_background.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/experience_bar_background.png)
+
+## minecraft:textures/gui/sprites/hud/experience_bar_progress.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/experience_bar_progress.png) - 182 x 5 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/experience_bar_progress.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/experience_bar_progress.png`
+
+![minecraft:textures/gui/sprites/hud/experience_bar_progress.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/experience_bar_progress.png)
+
+## minecraft:textures/gui/sprites/hud/food_empty.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_empty.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/food_empty.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/food_empty.png`
+
+![minecraft:textures/gui/sprites/hud/food_empty.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_empty.png)
+
+## minecraft:textures/gui/sprites/hud/food_empty_hunger.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_empty_hunger.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/food_empty_hunger.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/food_empty_hunger.png`
+
+![minecraft:textures/gui/sprites/hud/food_empty_hunger.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_empty_hunger.png)
+
+## minecraft:textures/gui/sprites/hud/food_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/food_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/food_full.png`
+
+![minecraft:textures/gui/sprites/hud/food_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_full.png)
+
+## minecraft:textures/gui/sprites/hud/food_full_hunger.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_full_hunger.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/food_full_hunger.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/food_full_hunger.png`
+
+![minecraft:textures/gui/sprites/hud/food_full_hunger.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_full_hunger.png)
+
+## minecraft:textures/gui/sprites/hud/food_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/food_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/food_half.png`
+
+![minecraft:textures/gui/sprites/hud/food_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_half.png)
+
+## minecraft:textures/gui/sprites/hud/food_half_hunger.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_half_hunger.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/food_half_hunger.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/food_half_hunger.png`
+
+![minecraft:textures/gui/sprites/hud/food_half_hunger.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/food_half_hunger.png)
+
+## minecraft:textures/gui/sprites/hud/heart/absorbing_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/absorbing_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/absorbing_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/absorbing_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/absorbing_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/absorbing_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/absorbing_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/absorbing_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/absorbing_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half_blinking.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/absorbing_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half_blinking.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_half_blinking.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/absorbing_hardcore_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/absorbing_hardcore_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/absorbing_hardcore_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/absorbing_hardcore_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/absorbing_hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/absorbing_hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/absorbing_hardcore_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/absorbing_hardcore_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/absorbing_hardcore_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/container.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/container.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/container.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/container.png`
+
+![minecraft:textures/gui/sprites/hud/heart/container.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/container.png)
+
+## minecraft:textures/gui/sprites/hud/heart/container_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/container_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/container_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/container_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/container_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/container_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/container_hardcore.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/container_hardcore.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/container_hardcore.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/container_hardcore.png`
+
+![minecraft:textures/gui/sprites/hud/heart/container_hardcore.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/container_hardcore.png)
+
+## minecraft:textures/gui/sprites/hud/heart/container_hardcore_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/container_hardcore_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/container_hardcore_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/container_hardcore_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/container_hardcore_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/container_hardcore_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/frozen_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/frozen_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/frozen_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/frozen_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/frozen_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/frozen_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/frozen_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/frozen_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/frozen_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/frozen_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/frozen_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/frozen_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/frozen_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/frozen_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/frozen_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/frozen_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/frozen_hardcore_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/frozen_hardcore_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/frozen_hardcore_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/frozen_hardcore_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/frozen_hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/frozen_hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/frozen_hardcore_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/frozen_hardcore_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/frozen_hardcore_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/hardcore_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/hardcore_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/hardcore_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/hardcore_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/hardcore_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/hardcore_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/hardcore_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/absorbing_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/absorbing_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/absorbing_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/absorbing_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/absorbing_hardcore_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/frozen_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/frozen_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/frozen_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/frozen_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/frozen_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/frozen_half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/frozen_hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/frozen_hardcore_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/frozen_hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/frozen_hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/frozen_hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/frozen_hardcore_half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/hardcore_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/hardcore_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/hardcore_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/poisoned_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/poisoned_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/poisoned_hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_hardcore_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/poisoned_hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_hardcore_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/poisoned_hardcore_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/vehicle_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/vehicle_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/vehicle_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/vehicle_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/vehicle_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/vehicle_half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/withered_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/withered_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/heart_half/withered_hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_hardcore_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/heart_half/withered_hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_hardcore_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/heart_half/withered_hardcore_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_half2.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half2.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half2.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half2.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_half2.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half2.png)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_harcore_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_harcore_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_harcore_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_harcore_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_harcore_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_harcore_full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_hardcore_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_hardcore_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_hardcore_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_hardcore_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/poisoned_hardcore_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/poisoned_hardcore_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/poisoned_hardcore_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/vehicle_container.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_container.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_container.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/vehicle_container.png`
+
+![minecraft:textures/gui/sprites/hud/heart/vehicle_container.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_container.png)
+
+## minecraft:textures/gui/sprites/hud/heart/vehicle_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/vehicle_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/vehicle_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/vehicle_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_half.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/vehicle_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/vehicle_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/vehicle_half.png)
+
+## minecraft:textures/gui/sprites/hud/heart/withered_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/withered_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/withered_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/withered_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_full.png)
+
+## minecraft:textures/gui/sprites/hud/heart/withered_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/withered_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/withered_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/withered_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/withered_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/withered_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/withered_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/withered_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/withered_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/withered_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/withered_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/withered_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/withered_hardcore_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full.png`
+
+![minecraft:textures/gui/sprites/hud/heart/withered_hardcore_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/withered_hardcore_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/withered_hardcore_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heart/withered_hardcore_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half.png`
+
+![minecraft:textures/gui/sprites/hud/heart/withered_hardcore_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heart/withered_hardcore_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heart/withered_hardcore_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heart/withered_hardcore_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/absorbing_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_full.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/absorbing_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_full.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/absorbing_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/absorbing_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/absorbing_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/absorbing_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heartcore/absorbing_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/absorbing_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/absorbing_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/container.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/container.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/container.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/container.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/container.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/container.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/container_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/container_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/container_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/container_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/container_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/container_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/frozen_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_full.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/frozen_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_full.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/frozen_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/frozen_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/frozen_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/frozen_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heartcore/frozen_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/frozen_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/frozen_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/full.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/full.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/full.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/full.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heartcore/full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/half.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heartcore/half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/poisoned_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/poisoned_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heartcore/poisoned_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/poisoned_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/poisoned_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/poisoned_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heartcore/poisoned_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/poisoned_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/poisoned_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/withered_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/withered_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heartcore/withered_full_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/withered_full_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_full_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/withered_half.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half.png) - 9 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/withered_half.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half.png)
+
+[Original animation/texture metadata](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half.png.mcmeta)
+
+## minecraft:textures/gui/sprites/hud/heartcore/withered_half_blinking.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half_blinking.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half_blinking.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half_blinking.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/withered_half_blinking.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_half_blinking.png)
+
+## minecraft:textures/gui/sprites/hud/heartcore/withered_hardcore_full.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_hardcore_full.png) - 9 x 9 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_hardcore_full.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/heartcore/withered_hardcore_full.png`
+
+![minecraft:textures/gui/sprites/hud/heartcore/withered_hardcore_full.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/heartcore/withered_hardcore_full.png)
+
+## minecraft:textures/gui/sprites/hud/hotbar.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar.png) - 182 x 22 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/hotbar.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/hotbar.png`
+
+![minecraft:textures/gui/sprites/hud/hotbar.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar.png)
+
+## minecraft:textures/gui/sprites/hud/hotbar_attack_indicator_background.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_attack_indicator_background.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/hotbar_attack_indicator_background.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/hotbar_attack_indicator_background.png`
+
+![minecraft:textures/gui/sprites/hud/hotbar_attack_indicator_background.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_attack_indicator_background.png)
+
+## minecraft:textures/gui/sprites/hud/hotbar_attack_indicator_progress.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_attack_indicator_progress.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/hotbar_attack_indicator_progress.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/hotbar_attack_indicator_progress.png`
+
+![minecraft:textures/gui/sprites/hud/hotbar_attack_indicator_progress.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_attack_indicator_progress.png)
+
+## minecraft:textures/gui/sprites/hud/hotbar_offhand_left.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_offhand_left.png) - 29 x 24 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/hotbar_offhand_left.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/hotbar_offhand_left.png`
+
+![minecraft:textures/gui/sprites/hud/hotbar_offhand_left.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_offhand_left.png)
+
+## minecraft:textures/gui/sprites/hud/hotbar_offhand_right.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_offhand_right.png) - 29 x 24 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/hotbar_offhand_right.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/hotbar_offhand_right.png`
+
+![minecraft:textures/gui/sprites/hud/hotbar_offhand_right.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_offhand_right.png)
+
+## minecraft:textures/gui/sprites/hud/hotbar_selection.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_selection.png) - 24 x 23 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/hotbar_selection.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/hotbar_selection.png`
+
+![minecraft:textures/gui/sprites/hud/hotbar_selection.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/hotbar_selection.png)
+
+## minecraft:textures/gui/sprites/hud/jump_bar_background.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/jump_bar_background.png) - 182 x 5 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/jump_bar_background.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/jump_bar_background.png`
+
+![minecraft:textures/gui/sprites/hud/jump_bar_background.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/jump_bar_background.png)
+
+## minecraft:textures/gui/sprites/hud/jump_bar_cooldown.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/jump_bar_cooldown.png) - 182 x 5 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/jump_bar_cooldown.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/jump_bar_cooldown.png`
+
+![minecraft:textures/gui/sprites/hud/jump_bar_cooldown.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/jump_bar_cooldown.png)
+
+## minecraft:textures/gui/sprites/hud/jump_bar_progress.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/jump_bar_progress.png) - 182 x 5 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/sprites/hud/jump_bar_progress.png`
+
+Override target: `assets/minecraft/textures/gui/sprites/hud/jump_bar_progress.png`
+
+![minecraft:textures/gui/sprites/hud/jump_bar_progress.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/sprites/hud/jump_bar_progress.png)
 
 ## minecraft:textures/gui/stream_indicator.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/stream_indicator.png) - 16 x 64 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/stream_indicator.png) - 16 x 64 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/stream_indicator.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/stream_indicator.png`
 
 Override target: `assets/minecraft/textures/gui/stream_indicator.png`
 
-![minecraft:textures/gui/stream_indicator.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/stream_indicator.png)
+![minecraft:textures/gui/stream_indicator.png](png/source-9c3f04957453/assets/minecraft/textures/gui/stream_indicator.png)
 
 ## minecraft:textures/gui/tab_button.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/tab_button.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/tab_button.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/tab_button.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/tab_button.png`
 
 Override target: `assets/minecraft/textures/gui/tab_button.png`
 
-![minecraft:textures/gui/tab_button.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/tab_button.png)
+![minecraft:textures/gui/tab_button.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/tab_button.png)
 
 ## minecraft:textures/gui/tab_button.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/tab_button.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/tab_button.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/tab_button.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/tab_button.png`
 
 Override target: `assets/minecraft/textures/gui/tab_button.png`
 
-![minecraft:textures/gui/tab_button.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/tab_button.png)
+![minecraft:textures/gui/tab_button.png](png/source-9c3f04957453/assets/minecraft/textures/gui/tab_button.png)
 
 ## minecraft:textures/gui/title/background/panorama_0.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_0.png) - 1 x 1 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_0.png) - 1 x 1 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/background/panorama_0.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/background/panorama_0.png`
 
 Override target: `assets/minecraft/textures/gui/title/background/panorama_0.png`
 
-![minecraft:textures/gui/title/background/panorama_0.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_0.png)
+![minecraft:textures/gui/title/background/panorama_0.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_0.png)
+
+## minecraft:textures/gui/title/background/panorama_0.png
+
+[PNG](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_0.png) - 1024 x 1024 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar!/assets/minecraft/textures/gui/title/background/panorama_0.png`
+
+Override target: `assets/minecraft/textures/gui/title/background/panorama_0.png`
+
+![minecraft:textures/gui/title/background/panorama_0.png](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_0.png)
 
 ## minecraft:textures/gui/title/background/panorama_1.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_1.png) - 1 x 1 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_1.png) - 1 x 1 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/background/panorama_1.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/background/panorama_1.png`
 
 Override target: `assets/minecraft/textures/gui/title/background/panorama_1.png`
 
-![minecraft:textures/gui/title/background/panorama_1.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_1.png)
+![minecraft:textures/gui/title/background/panorama_1.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_1.png)
+
+## minecraft:textures/gui/title/background/panorama_1.png
+
+[PNG](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_1.png) - 1024 x 1024 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar!/assets/minecraft/textures/gui/title/background/panorama_1.png`
+
+Override target: `assets/minecraft/textures/gui/title/background/panorama_1.png`
+
+![minecraft:textures/gui/title/background/panorama_1.png](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_1.png)
 
 ## minecraft:textures/gui/title/background/panorama_2.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_2.png) - 1 x 1 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_2.png) - 1 x 1 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/background/panorama_2.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/background/panorama_2.png`
 
 Override target: `assets/minecraft/textures/gui/title/background/panorama_2.png`
 
-![minecraft:textures/gui/title/background/panorama_2.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_2.png)
+![minecraft:textures/gui/title/background/panorama_2.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_2.png)
+
+## minecraft:textures/gui/title/background/panorama_2.png
+
+[PNG](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_2.png) - 1024 x 1024 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar!/assets/minecraft/textures/gui/title/background/panorama_2.png`
+
+Override target: `assets/minecraft/textures/gui/title/background/panorama_2.png`
+
+![minecraft:textures/gui/title/background/panorama_2.png](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_2.png)
 
 ## minecraft:textures/gui/title/background/panorama_3.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_3.png) - 1 x 1 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_3.png) - 1 x 1 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/background/panorama_3.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/background/panorama_3.png`
 
 Override target: `assets/minecraft/textures/gui/title/background/panorama_3.png`
 
-![minecraft:textures/gui/title/background/panorama_3.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_3.png)
+![minecraft:textures/gui/title/background/panorama_3.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_3.png)
+
+## minecraft:textures/gui/title/background/panorama_3.png
+
+[PNG](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_3.png) - 1024 x 1024 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar!/assets/minecraft/textures/gui/title/background/panorama_3.png`
+
+Override target: `assets/minecraft/textures/gui/title/background/panorama_3.png`
+
+![minecraft:textures/gui/title/background/panorama_3.png](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_3.png)
 
 ## minecraft:textures/gui/title/background/panorama_4.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_4.png) - 1 x 1 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_4.png) - 1 x 1 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/background/panorama_4.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/background/panorama_4.png`
 
 Override target: `assets/minecraft/textures/gui/title/background/panorama_4.png`
 
-![minecraft:textures/gui/title/background/panorama_4.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_4.png)
+![minecraft:textures/gui/title/background/panorama_4.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_4.png)
+
+## minecraft:textures/gui/title/background/panorama_4.png
+
+[PNG](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_4.png) - 1024 x 1024 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar!/assets/minecraft/textures/gui/title/background/panorama_4.png`
+
+Override target: `assets/minecraft/textures/gui/title/background/panorama_4.png`
+
+![minecraft:textures/gui/title/background/panorama_4.png](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_4.png)
 
 ## minecraft:textures/gui/title/background/panorama_5.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_5.png) - 1 x 1 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_5.png) - 1 x 1 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/background/panorama_5.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/background/panorama_5.png`
 
 Override target: `assets/minecraft/textures/gui/title/background/panorama_5.png`
 
-![minecraft:textures/gui/title/background/panorama_5.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_5.png)
+![minecraft:textures/gui/title/background/panorama_5.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_5.png)
+
+## minecraft:textures/gui/title/background/panorama_5.png
+
+[PNG](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_5.png) - 1024 x 1024 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/mielons-the-sift-2.0.6-mc1.20.1-forge.jar!/assets/minecraft/textures/gui/title/background/panorama_5.png`
+
+Override target: `assets/minecraft/textures/gui/title/background/panorama_5.png`
+
+![minecraft:textures/gui/title/background/panorama_5.png](png/source-cca62c6299d4/assets/minecraft/textures/gui/title/background/panorama_5.png)
 
 ## minecraft:textures/gui/title/background/panorama_overlay.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_overlay.png) - 1 x 1 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_overlay.png) - 1 x 1 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/background/panorama_overlay.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/background/panorama_overlay.png`
 
 Override target: `assets/minecraft/textures/gui/title/background/panorama_overlay.png`
 
-![minecraft:textures/gui/title/background/panorama_overlay.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/background/panorama_overlay.png)
+![minecraft:textures/gui/title/background/panorama_overlay.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/background/panorama_overlay.png)
 
 ## minecraft:textures/gui/title/edition.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/edition.png) - 512 x 64 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/edition.png) - 512 x 64 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/edition.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/edition.png`
 
 Override target: `assets/minecraft/textures/gui/title/edition.png`
 
-![minecraft:textures/gui/title/edition.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/edition.png)
+![minecraft:textures/gui/title/edition.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/edition.png)
 
-[Original animation/texture metadata](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/edition.png.mcmeta)
+[Original animation/texture metadata](png/source-9c3f04957453/assets/minecraft/textures/gui/title/edition.png.mcmeta)
 
 ## minecraft:textures/gui/title/minceraft.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/minceraft.png) - 1024 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/minceraft.png) - 1024 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/minceraft.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/minceraft.png`
 
 Override target: `assets/minecraft/textures/gui/title/minceraft.png`
 
-![minecraft:textures/gui/title/minceraft.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/minceraft.png)
+![minecraft:textures/gui/title/minceraft.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/minceraft.png)
 
-[Original animation/texture metadata](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/minceraft.png.mcmeta)
+[Original animation/texture metadata](png/source-9c3f04957453/assets/minecraft/textures/gui/title/minceraft.png.mcmeta)
 
 ## minecraft:textures/gui/title/minecraft.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/minecraft.png) - 1024 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/minecraft.png) - 1024 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/minecraft.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/minecraft.png`
 
 Override target: `assets/minecraft/textures/gui/title/minecraft.png`
 
-![minecraft:textures/gui/title/minecraft.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/minecraft.png)
+![minecraft:textures/gui/title/minecraft.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/minecraft.png)
 
-[Original animation/texture metadata](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/minecraft.png.mcmeta)
+[Original animation/texture metadata](png/source-9c3f04957453/assets/minecraft/textures/gui/title/minecraft.png.mcmeta)
 
 ## minecraft:textures/gui/title/mojangstudios.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/mojangstudios.png) - 512 x 512 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/title/mojangstudios.png) - 512 x 512 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/title/mojangstudios.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/title/mojangstudios.png`
 
 Override target: `assets/minecraft/textures/gui/title/mojangstudios.png`
 
-![minecraft:textures/gui/title/mojangstudios.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/title/mojangstudios.png)
+![minecraft:textures/gui/title/mojangstudios.png](png/source-9c3f04957453/assets/minecraft/textures/gui/title/mojangstudios.png)
+
+## minecraft:textures/gui/toast/now_playing.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/gui/toast/now_playing.png) - 256 x 256 - `selected_stack_candidate`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/gui/toast/now_playing.png`
+
+Override target: `assets/minecraft/textures/gui/toast/now_playing.png`
+
+![minecraft:textures/gui/toast/now_playing.png](png/source-b89dc8d9d021/assets/minecraft/textures/gui/toast/now_playing.png)
 
 ## minecraft:textures/gui/toasts.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/toasts.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/toasts.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/toasts.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/toasts.png`
 
 Override target: `assets/minecraft/textures/gui/toasts.png`
 
-![minecraft:textures/gui/toasts.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/toasts.png)
+![minecraft:textures/gui/toasts.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/toasts.png)
 
 ## minecraft:textures/gui/toasts.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/toasts.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/toasts.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/toasts.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/toasts.png`
 
 Override target: `assets/minecraft/textures/gui/toasts.png`
 
-![minecraft:textures/gui/toasts.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/toasts.png)
+![minecraft:textures/gui/toasts.png](png/source-9c3f04957453/assets/minecraft/textures/gui/toasts.png)
 
 ## minecraft:textures/gui/unseen_notification.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/unseen_notification.png) - 10 x 10 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/unseen_notification.png) - 10 x 10 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/unseen_notification.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/unseen_notification.png`
 
 Override target: `assets/minecraft/textures/gui/unseen_notification.png`
 
-![minecraft:textures/gui/unseen_notification.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/unseen_notification.png)
+![minecraft:textures/gui/unseen_notification.png](png/source-9c3f04957453/assets/minecraft/textures/gui/unseen_notification.png)
 
 ## minecraft:textures/gui/widgets.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/widgets.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/widgets.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/widgets.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/widgets.png`
 
 Override target: `assets/minecraft/textures/gui/widgets.png`
 
-![minecraft:textures/gui/widgets.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/widgets.png)
+![minecraft:textures/gui/widgets.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/widgets.png)
 
 ## minecraft:textures/gui/widgets.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/widgets.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/widgets.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/widgets.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/widgets.png`
 
 Override target: `assets/minecraft/textures/gui/widgets.png`
 
-![minecraft:textures/gui/widgets.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/widgets.png)
+![minecraft:textures/gui/widgets.png](png/source-9c3f04957453/assets/minecraft/textures/gui/widgets.png)
 
 ## minecraft:textures/gui/world_selection.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/gui/world_selection.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/gui/world_selection.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/gui/world_selection.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/gui/world_selection.png`
 
 Override target: `assets/minecraft/textures/gui/world_selection.png`
 
-![minecraft:textures/gui/world_selection.png](png/source-63f7d14e75e4/assets/minecraft/textures/gui/world_selection.png)
+![minecraft:textures/gui/world_selection.png](png/source-8ce7747ad712/assets/minecraft/textures/gui/world_selection.png)
 
 ## minecraft:textures/gui/world_selection.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/gui/world_selection.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/gui/world_selection.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/gui/world_selection.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/gui/world_selection.png`
 
 Override target: `assets/minecraft/textures/gui/world_selection.png`
 
-![minecraft:textures/gui/world_selection.png](png/source-ce498f0d5d23/assets/minecraft/textures/gui/world_selection.png)
+![minecraft:textures/gui/world_selection.png](png/source-9c3f04957453/assets/minecraft/textures/gui/world_selection.png)
 
-## minecraft:textures/item/book.png
+## minecraft:textures/item/bundle.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/item/book.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/item/bundle.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/item/book.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/item/bundle.png`
 
-Override target: `assets/minecraft/textures/item/book.png`
+Override target: `assets/minecraft/textures/item/bundle.png`
 
-![minecraft:textures/item/book.png](png/source-ce498f0d5d23/assets/minecraft/textures/item/book.png)
-
-## minecraft:textures/map/map_background.png
-
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/map/map_background.png) - 64 x 64 - `selected_stack_candidate`
-
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/map/map_background.png`
-
-Override target: `assets/minecraft/textures/map/map_background.png`
-
-![minecraft:textures/map/map_background.png](png/source-63f7d14e75e4/assets/minecraft/textures/map/map_background.png)
+![minecraft:textures/item/bundle.png](png/source-9c3f04957453/assets/minecraft/textures/item/bundle.png)
 
 ## minecraft:textures/map/map_background.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/map/map_background.png) - 64 x 64 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/map/map_background.png) - 64 x 64 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/map/map_background.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/map/map_background.png`
 
 Override target: `assets/minecraft/textures/map/map_background.png`
 
-![minecraft:textures/map/map_background.png](png/source-ce498f0d5d23/assets/minecraft/textures/map/map_background.png)
+![minecraft:textures/map/map_background.png](png/source-9c3f04957453/assets/minecraft/textures/map/map_background.png)
 
 ## minecraft:textures/map/map_background_checkerboard.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/map/map_background_checkerboard.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/map/map_background_checkerboard.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/map/map_background_checkerboard.png`
-
-Override target: `assets/minecraft/textures/map/map_background_checkerboard.png`
-
-![minecraft:textures/map/map_background_checkerboard.png](png/source-63f7d14e75e4/assets/minecraft/textures/map/map_background_checkerboard.png)
-
-## minecraft:textures/map/map_background_checkerboard.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/map/map_background_checkerboard.png) - 128 x 128 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/map/map_background_checkerboard.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/map/map_background_checkerboard.png`
 
 Override target: `assets/minecraft/textures/map/map_background_checkerboard.png`
 
-![minecraft:textures/map/map_background_checkerboard.png](png/source-ce498f0d5d23/assets/minecraft/textures/map/map_background_checkerboard.png)
+![minecraft:textures/map/map_background_checkerboard.png](png/source-9c3f04957453/assets/minecraft/textures/map/map_background_checkerboard.png)
 
 ## minecraft:textures/map/map_icons.png
 
-[PNG](png/source-63f7d14e75e4/assets/minecraft/textures/map/map_icons.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/map/map_icons.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip!/assets/minecraft/textures/map/map_icons.png`
-
-Override target: `assets/minecraft/textures/map/map_icons.png`
-
-![minecraft:textures/map/map_icons.png](png/source-63f7d14e75e4/assets/minecraft/textures/map/map_icons.png)
-
-## minecraft:textures/map/map_icons.png
-
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/map/map_icons.png) - 128 x 128 - `source_variant`
-
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/map/map_icons.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/map/map_icons.png`
 
 Override target: `assets/minecraft/textures/map/map_icons.png`
 
-![minecraft:textures/map/map_icons.png](png/source-ce498f0d5d23/assets/minecraft/textures/map/map_icons.png)
+![minecraft:textures/map/map_icons.png](png/source-9c3f04957453/assets/minecraft/textures/map/map_icons.png)
 
 ## minecraft:textures/misc/forcefield.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/forcefield.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/forcefield.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/forcefield.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/forcefield.png`
 
 Override target: `assets/minecraft/textures/misc/forcefield.png`
 
-![minecraft:textures/misc/forcefield.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/forcefield.png)
+![minecraft:textures/misc/forcefield.png](png/source-9c3f04957453/assets/minecraft/textures/misc/forcefield.png)
 
 ## minecraft:textures/misc/nausea.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/nausea.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/nausea.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/nausea.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/nausea.png`
 
 Override target: `assets/minecraft/textures/misc/nausea.png`
 
-![minecraft:textures/misc/nausea.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/nausea.png)
+![minecraft:textures/misc/nausea.png](png/source-9c3f04957453/assets/minecraft/textures/misc/nausea.png)
 
 ## minecraft:textures/misc/powder_snow_outline.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/powder_snow_outline.png) - 256 x 256 - `source_variant`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/powder_snow_outline.png) - 256 x 256 - `source_variant`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/powder_snow_outline.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/powder_snow_outline.png`
 
 Override target: `assets/minecraft/textures/misc/powder_snow_outline.png`
 
-![minecraft:textures/misc/powder_snow_outline.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/powder_snow_outline.png)
+![minecraft:textures/misc/powder_snow_outline.png](png/source-9c3f04957453/assets/minecraft/textures/misc/powder_snow_outline.png)
 
 ## minecraft:textures/misc/powder_snow_outline.png
 
-[PNG](png/source-f6f13138739a/assets/minecraft/textures/misc/powder_snow_outline.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-c65f95a750a8/assets/minecraft/textures/misc/powder_snow_outline.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/automodpack/client/active/mods/punchy-2.7e-forge-1.20.1.jar!/assets/minecraft/textures/misc/powder_snow_outline.png`
+Source: `$PROFILE/mods/punchy-3.2b-forge-1.20.1.jar!/assets/minecraft/textures/misc/powder_snow_outline.png`
 
 Override target: `assets/minecraft/textures/misc/powder_snow_outline.png`
 
-![minecraft:textures/misc/powder_snow_outline.png](png/source-f6f13138739a/assets/minecraft/textures/misc/powder_snow_outline.png)
+![minecraft:textures/misc/powder_snow_outline.png](png/source-c65f95a750a8/assets/minecraft/textures/misc/powder_snow_outline.png)
 
 ## minecraft:textures/misc/pumpkinblur.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/pumpkinblur.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/pumpkinblur.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/pumpkinblur.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/pumpkinblur.png`
 
 Override target: `assets/minecraft/textures/misc/pumpkinblur.png`
 
-![minecraft:textures/misc/pumpkinblur.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/pumpkinblur.png)
+![minecraft:textures/misc/pumpkinblur.png](png/source-9c3f04957453/assets/minecraft/textures/misc/pumpkinblur.png)
 
-[Original animation/texture metadata](png/source-ce498f0d5d23/assets/minecraft/textures/misc/pumpkinblur.png.mcmeta)
+[Original animation/texture metadata](png/source-9c3f04957453/assets/minecraft/textures/misc/pumpkinblur.png.mcmeta)
 
 ## minecraft:textures/misc/shadow.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/shadow.png) - 64 x 64 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/shadow.png) - 64 x 64 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/shadow.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/shadow.png`
 
 Override target: `assets/minecraft/textures/misc/shadow.png`
 
-![minecraft:textures/misc/shadow.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/shadow.png)
+![minecraft:textures/misc/shadow.png](png/source-9c3f04957453/assets/minecraft/textures/misc/shadow.png)
 
-[Original animation/texture metadata](png/source-ce498f0d5d23/assets/minecraft/textures/misc/shadow.png.mcmeta)
+[Original animation/texture metadata](png/source-9c3f04957453/assets/minecraft/textures/misc/shadow.png.mcmeta)
 
 ## minecraft:textures/misc/spyglass_scope.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/spyglass_scope.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/spyglass_scope.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/spyglass_scope.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/spyglass_scope.png`
 
 Override target: `assets/minecraft/textures/misc/spyglass_scope.png`
 
-![minecraft:textures/misc/spyglass_scope.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/spyglass_scope.png)
+![minecraft:textures/misc/spyglass_scope.png](png/source-9c3f04957453/assets/minecraft/textures/misc/spyglass_scope.png)
 
 ## minecraft:textures/misc/underwater.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/underwater.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/underwater.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/underwater.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/underwater.png`
 
 Override target: `assets/minecraft/textures/misc/underwater.png`
 
-![minecraft:textures/misc/underwater.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/underwater.png)
+![minecraft:textures/misc/underwater.png](png/source-9c3f04957453/assets/minecraft/textures/misc/underwater.png)
 
 ## minecraft:textures/misc/unknown_pack.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/unknown_pack.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/unknown_pack.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/unknown_pack.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/unknown_pack.png`
 
 Override target: `assets/minecraft/textures/misc/unknown_pack.png`
 
-![minecraft:textures/misc/unknown_pack.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/unknown_pack.png)
+![minecraft:textures/misc/unknown_pack.png](png/source-9c3f04957453/assets/minecraft/textures/misc/unknown_pack.png)
 
 ## minecraft:textures/misc/unknown_server.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/unknown_server.png) - 128 x 128 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/unknown_server.png) - 128 x 128 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/unknown_server.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/unknown_server.png`
 
 Override target: `assets/minecraft/textures/misc/unknown_server.png`
 
-![minecraft:textures/misc/unknown_server.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/unknown_server.png)
+![minecraft:textures/misc/unknown_server.png](png/source-9c3f04957453/assets/minecraft/textures/misc/unknown_server.png)
 
 ## minecraft:textures/misc/vignette.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/misc/vignette.png) - 256 x 256 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/misc/vignette.png) - 256 x 256 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/misc/vignette.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/misc/vignette.png`
 
 Override target: `assets/minecraft/textures/misc/vignette.png`
 
-![minecraft:textures/misc/vignette.png](png/source-ce498f0d5d23/assets/minecraft/textures/misc/vignette.png)
+![minecraft:textures/misc/vignette.png](png/source-9c3f04957453/assets/minecraft/textures/misc/vignette.png)
 
-[Original animation/texture metadata](png/source-ce498f0d5d23/assets/minecraft/textures/misc/vignette.png.mcmeta)
+[Original animation/texture metadata](png/source-9c3f04957453/assets/minecraft/textures/misc/vignette.png.mcmeta)
 
 ## minecraft:textures/mob_effect/absorption.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/absorption.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/absorption.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/absorption.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/absorption.png`
 
 Override target: `assets/minecraft/textures/mob_effect/absorption.png`
 
-![minecraft:textures/mob_effect/absorption.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/absorption.png)
+![minecraft:textures/mob_effect/absorption.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/absorption.png)
+
+## minecraft:textures/mob_effect/absorption.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/absorption.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/absorption.png`
+
+Override target: `assets/minecraft/textures/mob_effect/absorption.png`
+
+![minecraft:textures/mob_effect/absorption.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/absorption.png)
 
 ## minecraft:textures/mob_effect/bad_omen.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/bad_omen.png) - 18 x 18 - `source_variant`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/bad_omen.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/bad_omen.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/bad_omen.png`
 
 Override target: `assets/minecraft/textures/mob_effect/bad_omen.png`
 
-![minecraft:textures/mob_effect/bad_omen.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/bad_omen.png)
+![minecraft:textures/mob_effect/bad_omen.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/bad_omen.png)
 
 ## minecraft:textures/mob_effect/bad_omen.png
 
-[PNG](png/source-f1931dbb3f52/assets/minecraft/textures/mob_effect/bad_omen.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/bad_omen.png) - 18 x 18 - `source_variant`
 
-Source: `$PROFILE/automodpack/client/active/mods/Trials-2.3.3.jar!/assets/minecraft/textures/mob_effect/bad_omen.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/bad_omen.png`
 
 Override target: `assets/minecraft/textures/mob_effect/bad_omen.png`
 
-![minecraft:textures/mob_effect/bad_omen.png](png/source-f1931dbb3f52/assets/minecraft/textures/mob_effect/bad_omen.png)
+![minecraft:textures/mob_effect/bad_omen.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/bad_omen.png)
+
+## minecraft:textures/mob_effect/bad_omen.png
+
+[PNG](png/source-9c6665b64658/assets/minecraft/textures/mob_effect/bad_omen.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/mods/Trials-2.3.3.jar!/assets/minecraft/textures/mob_effect/bad_omen.png`
+
+Override target: `assets/minecraft/textures/mob_effect/bad_omen.png`
+
+![minecraft:textures/mob_effect/bad_omen.png](png/source-9c6665b64658/assets/minecraft/textures/mob_effect/bad_omen.png)
 
 ## minecraft:textures/mob_effect/blindness.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/blindness.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/blindness.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/blindness.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/blindness.png`
 
 Override target: `assets/minecraft/textures/mob_effect/blindness.png`
 
-![minecraft:textures/mob_effect/blindness.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/blindness.png)
+![minecraft:textures/mob_effect/blindness.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/blindness.png)
+
+## minecraft:textures/mob_effect/blindness.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/blindness.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/blindness.png`
+
+Override target: `assets/minecraft/textures/mob_effect/blindness.png`
+
+![minecraft:textures/mob_effect/blindness.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/blindness.png)
+
+## minecraft:textures/mob_effect/breath_of_the_nautilus.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/breath_of_the_nautilus.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/breath_of_the_nautilus.png`
+
+Override target: `assets/minecraft/textures/mob_effect/breath_of_the_nautilus.png`
+
+![minecraft:textures/mob_effect/breath_of_the_nautilus.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/breath_of_the_nautilus.png)
+
+## minecraft:textures/mob_effect/breath_of_the_nautilus.png
+
+[PNG](png/source-b89dc8d9d021/assets/minecraft/textures/mob_effect/breath_of_the_nautilus.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/mods/VanillaBackport-forge-1.20.1-1.2.2.jar!/assets/minecraft/textures/mob_effect/breath_of_the_nautilus.png`
+
+Override target: `assets/minecraft/textures/mob_effect/breath_of_the_nautilus.png`
+
+![minecraft:textures/mob_effect/breath_of_the_nautilus.png](png/source-b89dc8d9d021/assets/minecraft/textures/mob_effect/breath_of_the_nautilus.png)
 
 ## minecraft:textures/mob_effect/conduit_power.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/conduit_power.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/conduit_power.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/conduit_power.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/conduit_power.png`
 
 Override target: `assets/minecraft/textures/mob_effect/conduit_power.png`
 
-![minecraft:textures/mob_effect/conduit_power.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/conduit_power.png)
+![minecraft:textures/mob_effect/conduit_power.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/conduit_power.png)
+
+## minecraft:textures/mob_effect/conduit_power.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/conduit_power.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/conduit_power.png`
+
+Override target: `assets/minecraft/textures/mob_effect/conduit_power.png`
+
+![minecraft:textures/mob_effect/conduit_power.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/conduit_power.png)
 
 ## minecraft:textures/mob_effect/darkness.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/darkness.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/darkness.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/darkness.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/darkness.png`
 
 Override target: `assets/minecraft/textures/mob_effect/darkness.png`
 
-![minecraft:textures/mob_effect/darkness.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/darkness.png)
+![minecraft:textures/mob_effect/darkness.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/darkness.png)
+
+## minecraft:textures/mob_effect/darkness.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/darkness.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/darkness.png`
+
+Override target: `assets/minecraft/textures/mob_effect/darkness.png`
+
+![minecraft:textures/mob_effect/darkness.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/darkness.png)
 
 ## minecraft:textures/mob_effect/dolphins_grace.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/dolphins_grace.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/dolphins_grace.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/dolphins_grace.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/dolphins_grace.png`
 
 Override target: `assets/minecraft/textures/mob_effect/dolphins_grace.png`
 
-![minecraft:textures/mob_effect/dolphins_grace.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/dolphins_grace.png)
+![minecraft:textures/mob_effect/dolphins_grace.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/dolphins_grace.png)
+
+## minecraft:textures/mob_effect/dolphins_grace.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/dolphins_grace.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/dolphins_grace.png`
+
+Override target: `assets/minecraft/textures/mob_effect/dolphins_grace.png`
+
+![minecraft:textures/mob_effect/dolphins_grace.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/dolphins_grace.png)
 
 ## minecraft:textures/mob_effect/fire_resistance.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/fire_resistance.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/fire_resistance.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/fire_resistance.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/fire_resistance.png`
 
 Override target: `assets/minecraft/textures/mob_effect/fire_resistance.png`
 
-![minecraft:textures/mob_effect/fire_resistance.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/fire_resistance.png)
+![minecraft:textures/mob_effect/fire_resistance.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/fire_resistance.png)
+
+## minecraft:textures/mob_effect/fire_resistance.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/fire_resistance.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/fire_resistance.png`
+
+Override target: `assets/minecraft/textures/mob_effect/fire_resistance.png`
+
+![minecraft:textures/mob_effect/fire_resistance.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/fire_resistance.png)
 
 ## minecraft:textures/mob_effect/glowing.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/glowing.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/glowing.png) - 36 x 36 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/glowing.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/glowing.png`
 
 Override target: `assets/minecraft/textures/mob_effect/glowing.png`
 
-![minecraft:textures/mob_effect/glowing.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/glowing.png)
+![minecraft:textures/mob_effect/glowing.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/glowing.png)
+
+## minecraft:textures/mob_effect/glowing.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/glowing.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/glowing.png`
+
+Override target: `assets/minecraft/textures/mob_effect/glowing.png`
+
+![minecraft:textures/mob_effect/glowing.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/glowing.png)
 
 ## minecraft:textures/mob_effect/haste.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/haste.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/haste.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/haste.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/haste.png`
 
 Override target: `assets/minecraft/textures/mob_effect/haste.png`
 
-![minecraft:textures/mob_effect/haste.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/haste.png)
+![minecraft:textures/mob_effect/haste.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/haste.png)
+
+## minecraft:textures/mob_effect/haste.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/haste.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/haste.png`
+
+Override target: `assets/minecraft/textures/mob_effect/haste.png`
+
+![minecraft:textures/mob_effect/haste.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/haste.png)
 
 ## minecraft:textures/mob_effect/health_boost.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/health_boost.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/health_boost.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/health_boost.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/health_boost.png`
 
 Override target: `assets/minecraft/textures/mob_effect/health_boost.png`
 
-![minecraft:textures/mob_effect/health_boost.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/health_boost.png)
+![minecraft:textures/mob_effect/health_boost.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/health_boost.png)
+
+## minecraft:textures/mob_effect/health_boost.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/health_boost.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/health_boost.png`
+
+Override target: `assets/minecraft/textures/mob_effect/health_boost.png`
+
+![minecraft:textures/mob_effect/health_boost.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/health_boost.png)
 
 ## minecraft:textures/mob_effect/hero_of_the_village.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/hero_of_the_village.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/hero_of_the_village.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/hero_of_the_village.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/hero_of_the_village.png`
 
 Override target: `assets/minecraft/textures/mob_effect/hero_of_the_village.png`
 
-![minecraft:textures/mob_effect/hero_of_the_village.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/hero_of_the_village.png)
+![minecraft:textures/mob_effect/hero_of_the_village.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/hero_of_the_village.png)
+
+## minecraft:textures/mob_effect/hero_of_the_village.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/hero_of_the_village.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/hero_of_the_village.png`
+
+Override target: `assets/minecraft/textures/mob_effect/hero_of_the_village.png`
+
+![minecraft:textures/mob_effect/hero_of_the_village.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/hero_of_the_village.png)
 
 ## minecraft:textures/mob_effect/hunger.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/hunger.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/hunger.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/hunger.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/hunger.png`
 
 Override target: `assets/minecraft/textures/mob_effect/hunger.png`
 
-![minecraft:textures/mob_effect/hunger.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/hunger.png)
+![minecraft:textures/mob_effect/hunger.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/hunger.png)
+
+## minecraft:textures/mob_effect/hunger.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/hunger.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/hunger.png`
+
+Override target: `assets/minecraft/textures/mob_effect/hunger.png`
+
+![minecraft:textures/mob_effect/hunger.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/hunger.png)
+
+## minecraft:textures/mob_effect/infested.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/infested.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/infested.png`
+
+Override target: `assets/minecraft/textures/mob_effect/infested.png`
+
+![minecraft:textures/mob_effect/infested.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/infested.png)
 
 ## minecraft:textures/mob_effect/instant_damage.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/instant_damage.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/instant_damage.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/instant_damage.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/instant_damage.png`
 
 Override target: `assets/minecraft/textures/mob_effect/instant_damage.png`
 
-![minecraft:textures/mob_effect/instant_damage.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/instant_damage.png)
+![minecraft:textures/mob_effect/instant_damage.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/instant_damage.png)
 
 ## minecraft:textures/mob_effect/instant_health.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/instant_health.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/instant_health.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/instant_health.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/instant_health.png`
 
 Override target: `assets/minecraft/textures/mob_effect/instant_health.png`
 
-![minecraft:textures/mob_effect/instant_health.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/instant_health.png)
+![minecraft:textures/mob_effect/instant_health.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/instant_health.png)
 
 ## minecraft:textures/mob_effect/invisibility.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/invisibility.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/invisibility.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/invisibility.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/invisibility.png`
 
 Override target: `assets/minecraft/textures/mob_effect/invisibility.png`
 
-![minecraft:textures/mob_effect/invisibility.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/invisibility.png)
+![minecraft:textures/mob_effect/invisibility.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/invisibility.png)
+
+## minecraft:textures/mob_effect/invisibility.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/invisibility.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/invisibility.png`
+
+Override target: `assets/minecraft/textures/mob_effect/invisibility.png`
+
+![minecraft:textures/mob_effect/invisibility.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/invisibility.png)
 
 ## minecraft:textures/mob_effect/jump_boost.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/jump_boost.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/jump_boost.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/jump_boost.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/jump_boost.png`
 
 Override target: `assets/minecraft/textures/mob_effect/jump_boost.png`
 
-![minecraft:textures/mob_effect/jump_boost.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/jump_boost.png)
+![minecraft:textures/mob_effect/jump_boost.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/jump_boost.png)
+
+## minecraft:textures/mob_effect/jump_boost.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/jump_boost.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/jump_boost.png`
+
+Override target: `assets/minecraft/textures/mob_effect/jump_boost.png`
+
+![minecraft:textures/mob_effect/jump_boost.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/jump_boost.png)
 
 ## minecraft:textures/mob_effect/levitation.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/levitation.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/levitation.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/levitation.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/levitation.png`
 
 Override target: `assets/minecraft/textures/mob_effect/levitation.png`
 
-![minecraft:textures/mob_effect/levitation.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/levitation.png)
+![minecraft:textures/mob_effect/levitation.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/levitation.png)
+
+## minecraft:textures/mob_effect/levitation.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/levitation.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/levitation.png`
+
+Override target: `assets/minecraft/textures/mob_effect/levitation.png`
+
+![minecraft:textures/mob_effect/levitation.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/levitation.png)
 
 ## minecraft:textures/mob_effect/luck.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/luck.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/luck.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/luck.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/luck.png`
 
 Override target: `assets/minecraft/textures/mob_effect/luck.png`
 
-![minecraft:textures/mob_effect/luck.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/luck.png)
+![minecraft:textures/mob_effect/luck.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/luck.png)
+
+## minecraft:textures/mob_effect/luck.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/luck.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/luck.png`
+
+Override target: `assets/minecraft/textures/mob_effect/luck.png`
+
+![minecraft:textures/mob_effect/luck.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/luck.png)
 
 ## minecraft:textures/mob_effect/mining_fatigue.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/mining_fatigue.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/mining_fatigue.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/mining_fatigue.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/mining_fatigue.png`
 
 Override target: `assets/minecraft/textures/mob_effect/mining_fatigue.png`
 
-![minecraft:textures/mob_effect/mining_fatigue.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/mining_fatigue.png)
+![minecraft:textures/mob_effect/mining_fatigue.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/mining_fatigue.png)
+
+## minecraft:textures/mob_effect/mining_fatigue.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/mining_fatigue.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/mining_fatigue.png`
+
+Override target: `assets/minecraft/textures/mob_effect/mining_fatigue.png`
+
+![minecraft:textures/mob_effect/mining_fatigue.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/mining_fatigue.png)
 
 ## minecraft:textures/mob_effect/nausea.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/nausea.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/nausea.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/nausea.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/nausea.png`
 
 Override target: `assets/minecraft/textures/mob_effect/nausea.png`
 
-![minecraft:textures/mob_effect/nausea.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/nausea.png)
+![minecraft:textures/mob_effect/nausea.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/nausea.png)
+
+## minecraft:textures/mob_effect/nausea.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/nausea.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/nausea.png`
+
+Override target: `assets/minecraft/textures/mob_effect/nausea.png`
+
+![minecraft:textures/mob_effect/nausea.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/nausea.png)
 
 ## minecraft:textures/mob_effect/night_vision.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/night_vision.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/night_vision.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/night_vision.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/night_vision.png`
 
 Override target: `assets/minecraft/textures/mob_effect/night_vision.png`
 
-![minecraft:textures/mob_effect/night_vision.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/night_vision.png)
+![minecraft:textures/mob_effect/night_vision.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/night_vision.png)
+
+## minecraft:textures/mob_effect/night_vision.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/night_vision.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/night_vision.png`
+
+Override target: `assets/minecraft/textures/mob_effect/night_vision.png`
+
+![minecraft:textures/mob_effect/night_vision.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/night_vision.png)
+
+## minecraft:textures/mob_effect/oozing.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/oozing.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/oozing.png`
+
+Override target: `assets/minecraft/textures/mob_effect/oozing.png`
+
+![minecraft:textures/mob_effect/oozing.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/oozing.png)
 
 ## minecraft:textures/mob_effect/poison.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/poison.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/poison.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/poison.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/poison.png`
 
 Override target: `assets/minecraft/textures/mob_effect/poison.png`
 
-![minecraft:textures/mob_effect/poison.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/poison.png)
+![minecraft:textures/mob_effect/poison.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/poison.png)
+
+## minecraft:textures/mob_effect/poison.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/poison.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/poison.png`
+
+Override target: `assets/minecraft/textures/mob_effect/poison.png`
+
+![minecraft:textures/mob_effect/poison.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/poison.png)
+
+## minecraft:textures/mob_effect/raid_omen.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/raid_omen.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/raid_omen.png`
+
+Override target: `assets/minecraft/textures/mob_effect/raid_omen.png`
+
+![minecraft:textures/mob_effect/raid_omen.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/raid_omen.png)
 
 ## minecraft:textures/mob_effect/regeneration.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/regeneration.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/regeneration.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/regeneration.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/regeneration.png`
 
 Override target: `assets/minecraft/textures/mob_effect/regeneration.png`
 
-![minecraft:textures/mob_effect/regeneration.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/regeneration.png)
+![minecraft:textures/mob_effect/regeneration.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/regeneration.png)
+
+## minecraft:textures/mob_effect/regeneration.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/regeneration.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/regeneration.png`
+
+Override target: `assets/minecraft/textures/mob_effect/regeneration.png`
+
+![minecraft:textures/mob_effect/regeneration.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/regeneration.png)
 
 ## minecraft:textures/mob_effect/resistance.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/resistance.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/resistance.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/resistance.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/resistance.png`
 
 Override target: `assets/minecraft/textures/mob_effect/resistance.png`
 
-![minecraft:textures/mob_effect/resistance.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/resistance.png)
+![minecraft:textures/mob_effect/resistance.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/resistance.png)
+
+## minecraft:textures/mob_effect/resistance.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/resistance.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/resistance.png`
+
+Override target: `assets/minecraft/textures/mob_effect/resistance.png`
+
+![minecraft:textures/mob_effect/resistance.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/resistance.png)
 
 ## minecraft:textures/mob_effect/saturation.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/saturation.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/saturation.png) - 36 x 36 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/saturation.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/saturation.png`
 
 Override target: `assets/minecraft/textures/mob_effect/saturation.png`
 
-![minecraft:textures/mob_effect/saturation.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/saturation.png)
+![minecraft:textures/mob_effect/saturation.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/saturation.png)
+
+## minecraft:textures/mob_effect/saturation.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/saturation.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/saturation.png`
+
+Override target: `assets/minecraft/textures/mob_effect/saturation.png`
+
+![minecraft:textures/mob_effect/saturation.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/saturation.png)
 
 ## minecraft:textures/mob_effect/slow_falling.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/slow_falling.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/slow_falling.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/slow_falling.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/slow_falling.png`
 
 Override target: `assets/minecraft/textures/mob_effect/slow_falling.png`
 
-![minecraft:textures/mob_effect/slow_falling.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/slow_falling.png)
+![minecraft:textures/mob_effect/slow_falling.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/slow_falling.png)
+
+## minecraft:textures/mob_effect/slow_falling.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/slow_falling.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/slow_falling.png`
+
+Override target: `assets/minecraft/textures/mob_effect/slow_falling.png`
+
+![minecraft:textures/mob_effect/slow_falling.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/slow_falling.png)
 
 ## minecraft:textures/mob_effect/slowness.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/slowness.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/slowness.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/slowness.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/slowness.png`
 
 Override target: `assets/minecraft/textures/mob_effect/slowness.png`
 
-![minecraft:textures/mob_effect/slowness.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/slowness.png)
+![minecraft:textures/mob_effect/slowness.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/slowness.png)
+
+## minecraft:textures/mob_effect/slowness.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/slowness.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/slowness.png`
+
+Override target: `assets/minecraft/textures/mob_effect/slowness.png`
+
+![minecraft:textures/mob_effect/slowness.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/slowness.png)
 
 ## minecraft:textures/mob_effect/speed.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/speed.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/speed.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/speed.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/speed.png`
 
 Override target: `assets/minecraft/textures/mob_effect/speed.png`
 
-![minecraft:textures/mob_effect/speed.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/speed.png)
+![minecraft:textures/mob_effect/speed.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/speed.png)
+
+## minecraft:textures/mob_effect/speed.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/speed.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/speed.png`
+
+Override target: `assets/minecraft/textures/mob_effect/speed.png`
+
+![minecraft:textures/mob_effect/speed.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/speed.png)
 
 ## minecraft:textures/mob_effect/strength.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/strength.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/strength.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/strength.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/strength.png`
 
 Override target: `assets/minecraft/textures/mob_effect/strength.png`
 
-![minecraft:textures/mob_effect/strength.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/strength.png)
+![minecraft:textures/mob_effect/strength.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/strength.png)
+
+## minecraft:textures/mob_effect/strength.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/strength.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/strength.png`
+
+Override target: `assets/minecraft/textures/mob_effect/strength.png`
+
+![minecraft:textures/mob_effect/strength.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/strength.png)
+
+## minecraft:textures/mob_effect/trial_omen.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/trial_omen.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/trial_omen.png`
+
+Override target: `assets/minecraft/textures/mob_effect/trial_omen.png`
+
+![minecraft:textures/mob_effect/trial_omen.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/trial_omen.png)
 
 ## minecraft:textures/mob_effect/unluck.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/unluck.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/unluck.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/unluck.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/unluck.png`
 
 Override target: `assets/minecraft/textures/mob_effect/unluck.png`
 
-![minecraft:textures/mob_effect/unluck.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/unluck.png)
+![minecraft:textures/mob_effect/unluck.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/unluck.png)
+
+## minecraft:textures/mob_effect/unluck.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/unluck.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/unluck.png`
+
+Override target: `assets/minecraft/textures/mob_effect/unluck.png`
+
+![minecraft:textures/mob_effect/unluck.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/unluck.png)
 
 ## minecraft:textures/mob_effect/water_breathing.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/water_breathing.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/water_breathing.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/water_breathing.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/water_breathing.png`
 
 Override target: `assets/minecraft/textures/mob_effect/water_breathing.png`
 
-![minecraft:textures/mob_effect/water_breathing.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/water_breathing.png)
+![minecraft:textures/mob_effect/water_breathing.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/water_breathing.png)
+
+## minecraft:textures/mob_effect/water_breathing.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/water_breathing.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/water_breathing.png`
+
+Override target: `assets/minecraft/textures/mob_effect/water_breathing.png`
+
+![minecraft:textures/mob_effect/water_breathing.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/water_breathing.png)
 
 ## minecraft:textures/mob_effect/weakness.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/weakness.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/weakness.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/weakness.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/weakness.png`
 
 Override target: `assets/minecraft/textures/mob_effect/weakness.png`
 
-![minecraft:textures/mob_effect/weakness.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/weakness.png)
+![minecraft:textures/mob_effect/weakness.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/weakness.png)
+
+## minecraft:textures/mob_effect/weakness.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/weakness.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/weakness.png`
+
+Override target: `assets/minecraft/textures/mob_effect/weakness.png`
+
+![minecraft:textures/mob_effect/weakness.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/weakness.png)
+
+## minecraft:textures/mob_effect/weaving.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/weaving.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/weaving.png`
+
+Override target: `assets/minecraft/textures/mob_effect/weaving.png`
+
+![minecraft:textures/mob_effect/weaving.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/weaving.png)
+
+## minecraft:textures/mob_effect/wind_charged.png
+
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/wind_charged.png) - 18 x 18 - `selected_stack_candidate`
+
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/wind_charged.png`
+
+Override target: `assets/minecraft/textures/mob_effect/wind_charged.png`
+
+![minecraft:textures/mob_effect/wind_charged.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/wind_charged.png)
 
 ## minecraft:textures/mob_effect/wither.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/wither.png) - 18 x 18 - `selected_stack_candidate`
+[PNG](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/wither.png) - 18 x 18 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/mob_effect/wither.png`
+Source: `$PROFILE/resourcepacks/JEM Release v0.3.zip!/assets/minecraft/textures/mob_effect/wither.png`
 
 Override target: `assets/minecraft/textures/mob_effect/wither.png`
 
-![minecraft:textures/mob_effect/wither.png](png/source-ce498f0d5d23/assets/minecraft/textures/mob_effect/wither.png)
+![minecraft:textures/mob_effect/wither.png](png/source-8ce7747ad712/assets/minecraft/textures/mob_effect/wither.png)
+
+## minecraft:textures/mob_effect/wither.png
+
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/wither.png) - 18 x 18 - `source_variant`
+
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/mob_effect/wither.png`
+
+Override target: `assets/minecraft/textures/mob_effect/wither.png`
+
+![minecraft:textures/mob_effect/wither.png](png/source-9c3f04957453/assets/minecraft/textures/mob_effect/wither.png)
 
 ## minecraft:textures/particle/big_smoke_10.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/particle/big_smoke_10.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/particle/big_smoke_10.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/particle/big_smoke_10.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/particle/big_smoke_10.png`
 
 Override target: `assets/minecraft/textures/particle/big_smoke_10.png`
 
-![minecraft:textures/particle/big_smoke_10.png](png/source-ce498f0d5d23/assets/minecraft/textures/particle/big_smoke_10.png)
+![minecraft:textures/particle/big_smoke_10.png](png/source-9c3f04957453/assets/minecraft/textures/particle/big_smoke_10.png)
 
 ## minecraft:textures/particle/big_smoke_11.png
 
-[PNG](png/source-ce498f0d5d23/assets/minecraft/textures/particle/big_smoke_11.png) - 16 x 16 - `selected_stack_candidate`
+[PNG](png/source-9c3f04957453/assets/minecraft/textures/particle/big_smoke_11.png) - 16 x 16 - `selected_stack_candidate`
 
-Source: `$PROFILE/test jem.jar!/assets/minecraft/textures/particle/big_smoke_11.png`
+Source: `$PROFILE/Test JustEnoughMods.jar!/assets/minecraft/textures/particle/big_smoke_11.png`
 
 Override target: `assets/minecraft/textures/particle/big_smoke_11.png`
 
-![minecraft:textures/particle/big_smoke_11.png](png/source-ce498f0d5d23/assets/minecraft/textures/particle/big_smoke_11.png)
+![minecraft:textures/particle/big_smoke_11.png](png/source-9c3f04957453/assets/minecraft/textures/particle/big_smoke_11.png)
 
 ## UI class candidates
 

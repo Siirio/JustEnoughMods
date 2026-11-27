@@ -62,12 +62,12 @@ PROFESSIONS = {
         "river_runner": ("Речной ходок", "+8% скорости обычной лодки.", "minecraft:oak_boat", "", "ration_saver", False),
         "portable_camp": ("Походный лагерь", "Разворачивает временный лагерь из припасов.", "minecraft:campfire", "", "river_runner", False),
     }),
-    "engineer": ("Инженер", "create:wrench", {
-        "gear_swap": ("Замена передач", "Безопасная смена детали Create.", "create:wrench", "", "", True),
-        "shaft_builder": ("Монтаж валов", "Укладывает проверенную линию до 16 валов.", "create:shaft", "", "gear_swap", False),
-        "factory_copy": ("Копия фабрики", "Хранит до 3 шаблонов 7×7×7.", "create:schematic", "", "shaft_builder", False),
-        "track_run": ("Укладка пути", "Укладывает линию до 12 рельсов.", "create:track", "", "", True),
-        "schedule_templates": ("Шаблоны расписаний", "Хранит до 3 расписаний поездов.", "create:schedule", "", "track_run", False),
+    "engineer": ("Инженер", "minecraft:redstone", {
+        "gear_swap": ("Обслуживание схем", "Обслуживает компоненты редстоуна.", "minecraft:redstone", "", "", True),
+        "shaft_builder": ("Линия поршней", "Укладывает проверенную линию до 16 компонентов.", "minecraft:piston", "", "gear_swap", False),
+        "factory_copy": ("Чертёж схемы", "Хранит до 3 шаблонов 7×7×7.", "minecraft:observer", "", "shaft_builder", False),
+        "track_run": ("Укладка пути", "Укладывает линию до 12 рельсов.", "minecraft:rail", "", "", True),
+        "schedule_templates": ("Расписание путей", "Хранит до 3 маршрутов.", "minecraft:clock", "", "track_run", False),
         "cargo_contract": ("Грузовой контракт", "Доставка с резервированием награды.", "minecraft:minecart", "", "schedule_templates", False),
     }),
     "warrior": ("Воин", "minecraft:iron_sword", {

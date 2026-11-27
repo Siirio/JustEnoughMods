@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "change_id": "content.create-aircraft-retirement-20261127",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "create"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "immersive_aircraft"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jemcompat:aircraft_fuel"
+    }
+  ],
+  "conditions": [],
+  "precedence": {
+    "layer": "jem_requested_update",
+    "priority": 1000
+  },
+  "change": {
+    "summary": "Retire Create, its add-ons, Immersive Aircraft, KubeJS Create and JEM Drill Lifecycle from the managed client and ordinary local Server.",
+    "modifiers": [
+      {
+        "property": "distribution.pack_presence",
+        "operation": "replace",
+        "before": true,
+        "after": false
+      },
+      {
+        "property": "progression.transport",
+        "operation": "replace",
+        "before": "Create trains and Immersive Aircraft provided active quest and achievement routes.",
+        "after": "Early ground mounts lead to a mid-game Subterranodon flight quest and a late-game Elytra quest."
+      },
+      {
+        "property": "world.migration",
+        "operation": "replace",
+        "before": "Create blocks, contraptions, trains and aircraft were registered world content.",
+        "after": "No automatic conversion exists. Operators must back up the old world and dismantle removed content before first startup with the reduced pack."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Managed pack and JEM canonical sources",
+    "kind": "user_requested_complete_dependency_removal",
+    "source_files": [
+      "Docs/DEVELOPMENT.md",
+      "tools/generate_jei_catalog.py",
+      "tools/module-inventory.json",
+      "CHANGELOG.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove the complete dependency and integration chain instead of deleting only JAR files.",
+    "decision_source": "User request on 2026-11-27.",
+    "user_requested": "Remove all listed Create and aircraft content from client and server while preserving unrelated systems and providing an existing-world migration plan.",
+    "codex_choices": "Keep exact third-party integrations only when their installed metadata declares Create optional, reuse existing horse and Subterranodon mechanics, and add one non-consuming Elytra inventory quest."
+  },
+  "introduced": {
+    "date": "2026-11-27",
+    "commit": "SELF",
+    "action": "retire",
+    "summary": "Removed the complete active Create and Immersive Aircraft dependency chain."
+  },
+  "history": [
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire",
+      "summary": "Removed mods, integrations, quests, resources, policy, configuration and generated registry surfaces from both local distribution sides.",
+      "source_files": [
+        "CHANGELOG.md",
+        "Docs/DEVELOPMENT.md"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/**",
+        "Server/**",
+        "Mods/JEMAchievementGuide/**",
+        "Mods/JEMCompat/**",
+        "Mods/JEMDrillLifecycle/**",
+        "Mods/SimplerExposure/src/main/resources/data/create/recipes/sequenced_assembly/black_and_white_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/create/recipes/sequenced_assembly/color_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/create/recipes/sequenced_assembly/high_sensitivity_black_and_white_film_developing.json",
+        "Mods/SimplerExposure/src/main/resources/data/create/recipes/sequenced_assembly/high_sensitivity_color_film_developing.json",
+        "Catalog/**"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "managed client inventory",
+      "ordinary local Server inventory",
+      "registries and recipes",
+      "JEM achievements and handbook",
+      "FTB Quests",
+      "JEI catalog",
+      "economy",
+      "Paxi",
+      "Item Obliterator",
+      "localization",
+      "existing worlds"
+    ],
+    "relations": [
+      "ground mounts -> Subterranodon -> Elytra",
+      "removed registries -> missing world objects on chunk load"
+    ],
+    "notes": [
+      "Historical release and research evidence remains history and is not active pack content.",
+      "Optional Create support inside retained third-party mods does not install or require Create."
+    ],
+    "unresolved": [
+      "Player acceptance and existing-world migration must be completed from a backup before production release."
+    ]
+  }
+}

@@ -174,7 +174,7 @@ public final class EnchantmentHelp {
             }
             List<Component> additions = new ArrayList<>();
             appendWrapped(additions, localized(record, record.has("brief") ? "brief" : "effect"), ChatFormatting.GRAY);
-            if (record.has("levels") || id.equals(new ResourceLocation("create", "capacity"))) {
+            if (record.has("levels")) {
                 appendWrapped(additions, levelEffect(record, level), ChatFormatting.AQUA);
             }
             if (book) appendWrapped(additions, label("applies") + ": " + applicability(record), ChatFormatting.DARK_AQUA);
@@ -222,10 +222,6 @@ public final class EnchantmentHelp {
     }
 
     static String levelEffect(JsonObject record, int level) {
-        if (record.get("id").getAsString().equals("create:capacity")) {
-            Integer capacity = NativeCapacity.maximum(level);
-            return capacity == null ? label("capacity_unavailable") : label("capacity") + ": " + capacity;
-        }
         if (record.has("levels")) {
             JsonArray levels = record.getAsJsonArray("levels");
             if (level > 0 && level <= levels.size()) return localized(levels.get(level - 1).getAsJsonObject(), "text");

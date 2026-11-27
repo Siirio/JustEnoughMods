@@ -10,6 +10,7 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/siirio/jemrewards/client/RewardsJei$1` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/jem-rewards-1.0.0.jar!/com/siirio/jemrewards/client/RewardsJei$1.class`
-- `com/siirio/jemrewards/client/RewardsJei` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/jem-rewards-1.0.0.jar!/com/siirio/jemrewards/client/RewardsJei.class`
-- `com/siirio/jemrewards/client/RewardsPanel` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/jem-rewards-1.0.0.jar!/com/siirio/jemrewards/client/RewardsPanel.class`
+- `com/siirio/jemrewards/client/RewardsJei$1` extends `java/lang/Object`; `$PROFILE/mods/jem-rewards-1.1.0.jar!/com/siirio/jemrewards/client/RewardsJei$1.class`
+- `com/siirio/jemrewards/client/RewardsJei$2` extends `java/lang/Object`; `$PROFILE/mods/jem-rewards-1.1.0.jar!/com/siirio/jemrewards/client/RewardsJei$2.class`
+- `com/siirio/jemrewards/client/RewardsJei` extends `java/lang/Object`; `$PROFILE/mods/jem-rewards-1.1.0.jar!/com/siirio/jemrewards/client/RewardsJei.class`
+- `com/siirio/jemrewards/client/RewardsPanel` extends `java/lang/Object`; `$PROFILE/mods/jem-rewards-1.1.0.jar!/com/siirio/jemrewards/client/RewardsPanel.class`

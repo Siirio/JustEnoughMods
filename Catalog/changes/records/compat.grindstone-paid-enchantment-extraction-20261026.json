@@ -45,7 +45,6 @@
     "owner": "JEMCompat",
     "kind": "server_owned_enchantment_cost_provenance",
     "source_files": [
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
       "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/feature/ExcavationEvents.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentCostHistory.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentRefundData.java",
@@ -112,6 +111,15 @@
         "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/feature/ExcavationEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/GrindstoneExtraction.java"
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
     }
   ],
   "impacts": {
@@ -137,4 +145,3 @@
     ]
   }
 }
-

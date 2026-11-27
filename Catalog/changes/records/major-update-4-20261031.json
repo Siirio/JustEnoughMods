@@ -97,8 +97,7 @@
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/advancements/major_update_4/ancient_bridge.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/advancements/major_update_4/sitting_plus.json",
       "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json",
-      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/compat/PackCompanionAdapter.java",
-      "Client/ManagedPack/config/horseman-*.toml"
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/compat/PackCompanionAdapter.java"
     ]
   },
   "rationale": {
@@ -131,6 +130,15 @@
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementSelectFtbButtonMixin.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancementSelectScreenAccess.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbQuestRawIconAccess.java"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Client/ManagedPack/config/horseman-*.toml"
       ]
     }
   ],

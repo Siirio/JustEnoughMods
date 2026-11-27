@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_durability_audit",
-  "snapshot_sha": "a20a47aa2f8fc8948cd5d8f86ab72da20ded20e1",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -484,41 +484,16 @@
     {
       "id": "cataclysm:black_steel_sword",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 750,
-          "owner_class": "com.github.L_Ender.cataclysm.items.Tooltier",
-          "status": "exact_forge_tier_static_initializer",
-          "source_field": "BLACK_STEEL"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "net.minecraft.world.item.SwordItem",
-          "status": "exact_owner_bytecode"
-        },
-        {
-          "cost": 2,
-          "owner_class": "net.minecraft.world.item.SwordItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 750,
-            "owner_class": "com.github.L_Ender.cataclysm.items.Tooltier",
-            "status": "exact_forge_tier_static_initializer",
-            "source_field": "BLACK_STEEL"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
@@ -578,25 +553,14 @@
       "id": "cataclysm:coral_spear",
       "kind": "durability_audit",
       "native_max_damage": [],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "com.github.L_Ender.cataclysm.items.Coral_Spear",
-          "status": "exact_owner_bytecode"
-        },
-        {
-          "cost": 2,
-          "owner_class": "com.github.L_Ender.cataclysm.items.Coral_Spear",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "observed_consumption": [],
       "nominal_vs_effective": {
         "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "partial",
+      "status": "unresolved",
       "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
@@ -719,13 +683,7 @@
       "id": "cataclysm:laser_gatling",
       "kind": "durability_audit",
       "native_max_damage": [],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "com.github.L_Ender.cataclysm.items.Laser_Gatling",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "observed_consumption": [],
       "nominal_vs_effective": {
         "nominal_max_damage": [],
         "explicit_override": null,
@@ -983,25 +941,14 @@
       "id": "companions:netherite_dagger",
       "kind": "durability_audit",
       "native_max_damage": [],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "net.minecraft.world.item.SwordItem",
-          "status": "exact_owner_bytecode"
-        },
-        {
-          "cost": 2,
-          "owner_class": "net.minecraft.world.item.SwordItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "observed_consumption": [],
       "nominal_vs_effective": {
         "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "partial",
+      "status": "unresolved",
       "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
@@ -1021,7 +968,22 @@
       "runtime_observation_required": false
     },
     {
-      "id": "create:cardboard_sword",
+      "id": "ec_ad:rib_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:sculk_bow",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
@@ -1930,6 +1892,21 @@
       "runtime_observation_required": false
     },
     {
+      "id": "epicfightx:eternal_night_scythe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
       "id": "handcrafted:hammer",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -1945,142 +1922,7 @@
       "runtime_observation_required": false
     },
     {
-      "id": "immersive_aircraft:heavy_crossbow",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:autoloader_crossbow",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:blood_staff",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:dev_staff",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:fiery_dagger",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:graybeard_staff",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:ice_staff",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:improved_blood_staff",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pyrium_staff",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:staff_of_the_nines",
+      "id": "jem_building:builder_hammer",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
@@ -2097,28 +1939,10 @@
     {
       "id": "legendary_monsters:atom_splitter",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 4,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 4,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem",
-            "status": "exact_owner_bytecode"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
@@ -2138,18 +1962,7 @@
       "id": "legendary_monsters:axe_of_lightning",
       "kind": "durability_audit",
       "native_max_damage": [],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem",
-          "status": "exact_owner_bytecode"
-        },
-        {
-          "cost": 2,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "observed_consumption": [],
       "nominal_vs_effective": {
         "nominal_max_damage": [],
         "explicit_override": null,
@@ -2208,30 +2021,10 @@
     {
       "id": "legendary_monsters:enderitium_axe",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 2100,
-          "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
-          "status": "exact_forge_tier_static_initializer",
-          "source_field": "ENDIRITIUM"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "net.minecraft.world.item.AxeItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 2100,
-            "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
-            "status": "exact_forge_tier_static_initializer",
-            "source_field": "ENDIRITIUM"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
@@ -2250,35 +2043,10 @@
     {
       "id": "legendary_monsters:enderitium_sword",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 2100,
-          "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
-          "status": "exact_forge_tier_static_initializer",
-          "source_field": "ENDIRITIUM"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "net.minecraft.world.item.SwordItem",
-          "status": "exact_owner_bytecode"
-        },
-        {
-          "cost": 2,
-          "owner_class": "net.minecraft.world.item.SwordItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 2100,
-            "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
-            "status": "exact_forge_tier_static_initializer",
-            "source_field": "ENDIRITIUM"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
@@ -2341,22 +2109,10 @@
     {
       "id": "legendary_monsters:mossy_hammer",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 850,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.MossyHammerItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "native_max_damage": [],
       "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 850,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.MossyHammerItem",
-            "status": "exact_owner_bytecode"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
@@ -2375,24 +2131,10 @@
     {
       "id": "legendary_monsters:shattered_greatsword",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 1500,
-          "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
-          "status": "exact_forge_tier_static_initializer",
-          "source_field": "SHATTERED_GREATSWORD"
-        }
-      ],
+      "native_max_damage": [],
       "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 1500,
-            "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
-            "status": "exact_forge_tier_static_initializer",
-            "source_field": "SHATTERED_GREATSWORD"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
@@ -2471,24 +2213,10 @@
     {
       "id": "legendary_monsters:the_tesseract",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 2100,
-          "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
-          "status": "exact_forge_tier_static_initializer",
-          "source_field": "TESSERACT"
-        }
-      ],
+      "native_max_damage": [],
       "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 2100,
-            "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
-            "status": "exact_forge_tier_static_initializer",
-            "source_field": "TESSERACT"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
@@ -2553,18 +2281,7 @@
       "id": "legendary_monsters:withered_scythe",
       "kind": "durability_audit",
       "native_max_damage": [],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem",
-          "status": "exact_owner_bytecode"
-        },
-        {
-          "cost": 2,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "observed_consumption": [],
       "nominal_vs_effective": {
         "nominal_max_damage": [],
         "explicit_override": null,
@@ -2584,6 +2301,21 @@
     },
     {
       "id": "minecraft:bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:copper_spear",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
@@ -2703,6 +2435,21 @@
       "runtime_observation_required": false
     },
     {
+      "id": "minecraft:diamond_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
       "id": "minecraft:diamond_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -2764,6 +2511,21 @@
     },
     {
       "id": "minecraft:golden_shovel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_spear",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
@@ -2853,6 +2615,21 @@
       "runtime_observation_required": false
     },
     {
+      "id": "minecraft:iron_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
       "id": "minecraft:iron_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -2928,6 +2705,21 @@
       "runtime_observation_required": false
     },
     {
+      "id": "minecraft:netherite_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
       "id": "minecraft:netherite_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -2989,6 +2781,21 @@
     },
     {
       "id": "minecraft:stone_shovel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:stone_spear",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
@@ -3093,6 +2900,21 @@
       "runtime_observation_required": false
     },
     {
+      "id": "minecraft:wooden_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
       "id": "minecraft:wooden_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -3109,6 +2931,36 @@
     },
     {
       "id": "rottencreatures:spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "royalvariations:royal_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "royalvariations:royal_staff",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
@@ -3156,20 +3008,14 @@
       "id": "simplybows:bubble_bow/bubble_bow",
       "kind": "durability_audit",
       "native_max_damage": [],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "net.sweenus.simplybows.item.unique.BubbleBowItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "observed_consumption": [],
       "nominal_vs_effective": {
         "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "partial",
+      "status": "unresolved",
       "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
@@ -3295,6 +3141,21 @@
     },
     {
       "id": "skarrier_mobs:resisteel_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "the_sift:siftite_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
@@ -5147,256 +5008,6 @@
       "runtime_observation_required": false
     },
     {
-      "id": "create:cardboard_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 52,
-          "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CARDBOARD"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 52,
-            "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CARDBOARD"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "create:cardboard_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 64,
-          "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CARDBOARD"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 64,
-            "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CARDBOARD"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "create:cardboard_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "create:cardboard_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 60,
-          "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CARDBOARD"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 60,
-            "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CARDBOARD"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "create:copper_diving_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 91,
-          "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "COPPER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 91,
-            "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "COPPER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "create:copper_diving_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 77,
-          "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "COPPER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 77,
-            "owner_class": "com.simibubi.create.content.equipment.armor.AllArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "COPPER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "create:netherite_diving_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "create:netherite_diving_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
       "id": "deep_dark_regrowth:ancient_boots",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -5638,6 +5249,366 @@
     },
     {
       "id": "deep_dark_regrowth:warden_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:chorusoatl_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:chorusoatl_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:chorusoatl_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:chorusoatl_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:coralosaur_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:coralosaur_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:coralosaur_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:coralosaur_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:lushsaur_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:lushsaur_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:lushsaur_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:lushsaur_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:obsidiceratops_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:obsidiceratops_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:obsidiceratops_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:obsidiceratops_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:sculksaur_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:sculksaur_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:sculksaur_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:sculksaur_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:therimoss_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:therimoss_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:therimoss_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "ec_ad:therimoss_leggings",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
@@ -6015,2138 +5986,6 @@
       "runtime_observation_required": false
     },
     {
-      "id": "irons_spellbooks:archevoker_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ARCHEVOKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ARCHEVOKER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:archevoker_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ARCHEVOKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ARCHEVOKER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:archevoker_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ARCHEVOKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ARCHEVOKER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:archevoker_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ARCHEVOKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ARCHEVOKER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cryomancer_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CRYOMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CRYOMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cryomancer_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CRYOMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CRYOMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cryomancer_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CRYOMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CRYOMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cryomancer_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CRYOMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CRYOMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cultist_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CULTIST"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CULTIST"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cultist_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CULTIST"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CULTIST"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cultist_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CULTIST"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CULTIST"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cultist_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CULTIST"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CULTIST"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:electromancer_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ELECTROMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ELECTROMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:electromancer_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ELECTROMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ELECTROMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:electromancer_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ELECTROMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ELECTROMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:electromancer_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ELECTROMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ELECTROMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:infernal_sorcerer_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 640,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "INFERNAL_SORCERER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 640,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "INFERNAL_SORCERER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:netherite_mage_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "NETHERITE_BATTLEMAGE"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "NETHERITE_BATTLEMAGE"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:netherite_mage_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "NETHERITE_BATTLEMAGE"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "NETHERITE_BATTLEMAGE"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:netherite_mage_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "NETHERITE_BATTLEMAGE"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "NETHERITE_BATTLEMAGE"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:netherite_mage_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "NETHERITE_BATTLEMAGE"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "NETHERITE_BATTLEMAGE"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:paladin_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 640,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PALADIN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 640,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PALADIN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:plagued_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PLAGUED"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PLAGUED"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:plagued_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PLAGUED"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PLAGUED"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:plagued_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PLAGUED"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PLAGUED"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:plagued_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PLAGUED"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PLAGUED"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:priest_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PRIEST"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PRIEST"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:priest_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PRIEST"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PRIEST"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:priest_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PRIEST"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PRIEST"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:priest_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PRIEST"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PRIEST"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pumpkin_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 429,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PUMPKIN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 429,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PUMPKIN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pumpkin_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 528,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PUMPKIN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 528,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PUMPKIN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pumpkin_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 363,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PUMPKIN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 363,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PUMPKIN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pumpkin_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 495,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PUMPKIN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 495,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PUMPKIN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pyromancer_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PYROMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PYROMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pyromancer_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PYROMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PYROMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pyromancer_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PYROMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PYROMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:pyromancer_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PYROMANCER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PYROMANCER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:shadowwalker_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "SHADOWWALKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "SHADOWWALKER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:shadowwalker_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "SHADOWWALKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "SHADOWWALKER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:shadowwalker_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "SHADOWWALKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "SHADOWWALKER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:shadowwalker_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "SHADOWWALKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "SHADOWWALKER"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:speed_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 520,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "BOOTS_OF_SPEED"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 520,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "BOOTS_OF_SPEED"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:tarnished_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 275,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "TARNISHED"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 275,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "TARNISHED"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wandering_magician_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 130,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WANDERING_MAGICIAN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 130,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WANDERING_MAGICIAN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wandering_magician_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 160,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WANDERING_MAGICIAN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 160,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WANDERING_MAGICIAN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wandering_magician_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 110,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WANDERING_MAGICIAN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 110,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WANDERING_MAGICIAN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wandering_magician_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 150,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WANDERING_MAGICIAN"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 150,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WANDERING_MAGICIAN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wizard_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 494,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WIZARD"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 494,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WIZARD"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wizard_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 608,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WIZARD"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 608,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WIZARD"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wizard_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 418,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WIZARD"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 418,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WIZARD"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wizard_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 570,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WIZARD"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 570,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WIZARD"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
-      },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
-      "runtime_observation_required": false
-    },
-    {
       "id": "kaleidoscope_cookery:farmer_boots",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -8179,370 +6018,136 @@
     {
       "id": "legendary_monsters:annihilator_boots",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 520,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ANNIHILATOR"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 520,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ANNIHILATOR"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:annihilator_chestplate",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 640,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ANNIHILATOR"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 640,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ANNIHILATOR"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:annihilator_helmet",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 440,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ANNIHILATOR"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 440,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ANNIHILATOR"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:annihilator_leggings",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 640,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "ANNIHILATOR"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 640,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "ANNIHILATOR"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:atmospheric_boots",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 26,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "CLOUDY"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 26,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "CLOUDY"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:blastproof_helmet",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 286,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "BLASTPROOF"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 286,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "BLASTPROOF"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:fiery_boots",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 338,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "BURNT"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 338,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "BURNT"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:mossy_chestplate",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 416,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "MOSSY"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 416,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "MOSSY"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:shulker_helmet",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 286,
-          "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "SHULKER"
-        }
-      ],
-      "observed_consumption": [
-        {
-          "formula": "max(1, floor(incoming_damage / 4)) durability points on each equipped armor piece for armor-damaging accepted hits",
-          "unbreaking_wear_probability": "0.6 + 0.4 / (level + 1)",
-          "mending": "repairs 2 durability per collected XP point while selected by the native Mending path",
-          "status": "exact_inherited_minecraft_1_20_1_armor_wear"
-        }
-      ],
+      "native_max_damage": [],
+      "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 286,
-            "owner_class": "net.miauczel.legendary_monsters.item.custom.customArmor.ModArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "SHULKER"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
-        "unbreaking_expected_wear_probability": {
-          "0": 1.0,
-          "1": 0.8,
-          "2": 0.733333,
-          "3": 0.7
-        },
-        "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent."
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
       },
-      "status": "max_and_consumption_traced",
-      "unresolved_reason": null,
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
     {
@@ -9706,6 +7311,51 @@
       "runtime_observation_required": false
     },
     {
+      "id": "royalvariations:royal_knight_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "royalvariations:royal_knight_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "royalvariations:royal_knight_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
       "id": "skarrier_mobs:crushing_pauldron_chestplate",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -10006,6 +7656,66 @@
       "runtime_observation_required": false
     },
     {
+      "id": "the_sift:siftite_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "the_sift:siftite_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "the_sift:siftite_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "the_sift:siftite_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
       "id": "tide:dragonfin_boots",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -10246,21 +7956,6 @@
       "runtime_observation_required": false
     },
     {
-      "id": "create:belt_connector",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
       "id": "deep_dark_extended:void_collar_charge_chestplate",
       "kind": "durability_audit",
       "native_max_damage": [],
@@ -10317,421 +8012,6 @@
         "mending_boundary": null
       },
       "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:affinity_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:amethyst_resonance_charm",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cast_time_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:concentration_amulet",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:conjurers_talisman",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:cooldown_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:emerald_stoneplate_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:fireward_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:frostward_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:greater_conjurers_talisman",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:heavy_chain_necklace",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:invisibility_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:lurker_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:mana_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:paladin_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 640,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "PALADIN"
-        }
-      ],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 640,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "PALADIN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:poisonward_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:silver_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:teleportation_amulet",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:visibility_ring",
-      "kind": "durability_audit",
-      "native_max_damage": [],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wandering_magician_boots",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 130,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WANDERING_MAGICIAN"
-        }
-      ],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 130,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WANDERING_MAGICIAN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wandering_magician_chestplate",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 160,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WANDERING_MAGICIAN"
-        }
-      ],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 160,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WANDERING_MAGICIAN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wandering_magician_helmet",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 110,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WANDERING_MAGICIAN"
-        }
-      ],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 110,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WANDERING_MAGICIAN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:wandering_magician_leggings",
-      "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 150,
-          "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-          "status": "exact_installed_armor_material_bytecode",
-          "source_field": "WANDERING_MAGICIAN"
-        }
-      ],
-      "observed_consumption": [],
-      "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 150,
-            "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
-            "status": "exact_installed_armor_material_bytecode",
-            "source_field": "WANDERING_MAGICIAN"
-          }
-        ],
-        "explicit_override": null,
-        "unbreaking_expected_wear_probability": null,
-        "mending_boundary": null
-      },
-      "status": "partial",
       "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
@@ -10798,27 +8078,15 @@
     {
       "id": "skarrier_mobs:blaring_horn",
       "kind": "durability_audit",
-      "native_max_damage": [
-        {
-          "max_damage": 64,
-          "owner_class": "net.mcreator.skarriermobs.item.BlaringHornItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "native_max_damage": [],
       "observed_consumption": [],
       "nominal_vs_effective": {
-        "nominal_max_damage": [
-          {
-            "max_damage": 64,
-            "owner_class": "net.mcreator.skarriermobs.item.BlaringHornItem",
-            "status": "exact_owner_bytecode"
-          }
-        ],
+        "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "partial",
+      "status": "unresolved",
       "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
@@ -10841,20 +8109,14 @@
       "id": "spawn:canned_herring",
       "kind": "durability_audit",
       "native_max_damage": [],
-      "observed_consumption": [
-        {
-          "cost": 1,
-          "owner_class": "com.ninni.spawn.server.item.DurabilityFoodItem",
-          "status": "exact_owner_bytecode"
-        }
-      ],
+      "observed_consumption": [],
       "nominal_vs_effective": {
         "nominal_max_damage": [],
         "explicit_override": null,
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "partial",
+      "status": "unresolved",
       "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
       "runtime_observation_required": false
     },
@@ -10965,6 +8227,51 @@
     },
     {
       "id": "spawn:spring_dragon_reeds",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spider_overhaul:sculk_string",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "the_sift:music_disc_wellspring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "nominal_vs_effective": {
+        "nominal_max_damage": [],
+        "explicit_override": null,
+        "unbreaking_expected_wear_probability": null,
+        "mending_boundary": null
+      },
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "wildscapes:illusionist_necklace",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],

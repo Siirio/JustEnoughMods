@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/siirio/jemworldbosstiers/client/StandaloneEncounterScreen` extends `net/minecraft/client/gui/screens/Screen`; `$PROFILE/automodpack/client/active/mods/jem-world-boss-tiers-2.5.0-dev.jar!/com/siirio/jemworldbosstiers/client/StandaloneEncounterScreen.class`
+- `com/siirio/jemworldbosstiers/client/StandaloneEncounterScreen` extends `net/minecraft/client/gui/screens/Screen`; `$PROFILE/mods/jem-world-boss-tiers-2.5.0-dev.jar!/com/siirio/jemworldbosstiers/client/StandaloneEncounterScreen.class`

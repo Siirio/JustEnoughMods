@@ -129,19 +129,16 @@ def main() -> None:
     if not any(error.startswith("Native criterion drift") for error in errors):
         checks.append(f"All selected native integrations preserve criteria, requirements, rewards, and conditions; disabled native trees use impossible criteria.")
 
-    forbidden_namespaces = ("luminous", "aquamirae", "aquaculture", "naturalist", "meteor_shower")
+    forbidden_namespaces = (
+        "luminous", "aquamirae", "aquaculture", "naturalist", "meteor_shower",
+        "create", "create_train_parts", "createrailwaysnavigator", "immersive_aircraft", "railways",
+    )
     serialized = json.dumps([load(path) for path in resources.rglob("*.json")], ensure_ascii=False).lower()
     stale = sorted(namespace for namespace in forbidden_namespaces if f"{namespace}:" in serialized)
     if stale:
         errors.append(f"Absent-mod namespace references remain: {stale}")
     else:
-        checks.append("No removed Luminous, Aquamirae, Aquaculture, Naturalist, or Meteor Shower IDs remain.")
-
-    create_native = [node for node in native_nodes if node["advancement_id"].startswith("create:") and node["proof"] == "NATIVE_CRITERIA_UNCHANGED"]
-    if len(create_native) < 1:
-        errors.append("Create visible advancement tree was not integrated.")
-    else:
-        checks.append(f"Complete visible Create advancement tree is integrated under Engineering ({len(create_native)} nodes).")
+        checks.append("No removed mod IDs remain in generated resources.")
 
     with zipfile.ZipFile(args.jar) as archive:
         names = archive.namelist()

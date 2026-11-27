@@ -4,21 +4,10 @@ plugins {
 }
 
 group = 'com.justenoughmods'
-version = '5.3.13'
+version = '5.4.0'
 
 def instanceOverride = findProperty('jemRuntimeRoot') ?: findProperty('jem_instance') ?: System.getenv('JEM_INSTANCE')
 def jemRuntimeRoot = file(instanceOverride?.toString()?.trim() ?: '../../Client/ManagedPack')
-
-def createJar = file("${jemRuntimeRoot}/mods/create-1.20.1-6.0.8.jar")
-def ponderName = zipTree(createJar).matching { include 'META-INF/jarjar/Ponder-Forge-*.jar' }.singleFile.name
-def extractedPonder = layout.buildDirectory.file("create-libs/${ponderName}")
-def extractPonder = tasks.register('extractPonder', Copy) {
-    from zipTree(createJar)
-    include 'META-INF/jarjar/Ponder-Forge-*.jar'
-    eachFile { details -> details.path = details.name }
-    includeEmptyDirs = false
-    into layout.buildDirectory.dir('create-libs')
-}
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -68,15 +57,10 @@ dependencies {
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/tide-forge-1.20.1-2.1.1-hotfix.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/natures_spirit-2.2.5-1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Tumbleweed-forge-1.20.1-0.5.5.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/immersive_aircraft-1.5.0+1.20.1-forge.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/gouge-1.8.4-mc1.20.1-forge.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/letsdo-beachparty-forge-2.0.3.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/create_train_parts-0.6.1-1.20.1-6.0.8-291.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/dragonlib-forge-1.20.1-beta-3.0.28.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Steam_Rails-1.7.3%2Bforge-mc1.20.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/geckolib-forge-1.20.1-4.8.5.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/letsdo-bakery-forge-2.0.6.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/epic-fight-20.14.17-mc1.20.1-forge.jar"))
@@ -85,7 +69,6 @@ dependencies {
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/sophisticatedstorage-1.20.1-1.5.19.2243.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/letsdo-vinery-forge-1.4.41.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/letsdo-herbalbrews-forge-1.0.12.jar"))
-    compileOnly project(path: ':JEMDrillLifecycle', configuration: 'jemCompile')
     compileOnly project(path: ':JEMEconomy', configuration: 'jemCompile')
     compileOnly project(path: ':JEMFood', configuration: 'jemCompile')
     compileOnly project(path: ':MobHome', configuration: 'jemCompile')
@@ -105,8 +88,6 @@ dependencies {
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/immersive_weathering-1.20.1-2.0.5-forge.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/jei-1.20.1-forge-15.49.0.194.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/curios-forge-5.14.1+1.20.1.jar"))
-    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/create-1.20.1-6.0.8.jar"))
-    compileOnly files(extractedPonder)
     compileOnly files("${jemRuntimeRoot}/mods/SpiderOverhaul-0.1.0-Forge-v1.20.jar")
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/toms_storage-1.20-1.7.1.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/letsdo-farm_and_charm-forge-1.0.14.jar"))
@@ -123,7 +104,6 @@ mixin {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    dependsOn extractPonder
     options.encoding = 'UTF-8'
     options.release = 17
     options.incremental = false

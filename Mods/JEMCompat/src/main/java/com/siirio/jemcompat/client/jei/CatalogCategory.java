@@ -23,7 +23,7 @@ enum CatalogCategory {
     ORES("gui.jemcompat.jei.ores", "minecraft:raw_iron"),
     MUSIC_DISCS("gui.jemcompat.jei.music_discs", "minecraft:music_disc_cat"),
     TREES("gui.jemcompat.jei.trees", "minecraft:oak_log"),
-    CREATE_REDSTONE("gui.jemcompat.jei.create_redstone", "create:cogwheel"),
+    REDSTONE("gui.jemcompat.jei.redstone", "minecraft:redstone"),
     BUILDING("gui.jemcompat.jei.building", "jem_building:builder_hammer"),
     BUILDING_FURNITURE("gui.jemcompat.jei.furniture", "minecraft:painting"),
     BUILDING_NATURE("gui.jemcompat.jei.nature", "minecraft:moss_block"),
@@ -36,7 +36,7 @@ enum CatalogCategory {
     FISHING("gui.jemcompat.jei.fishing", "tide:fish_display"),
     BOOKS("gui.jemcompat.jei.books", "minecraft:written_book"),
     POTIONS("gui.jemcompat.jei.potions", "minecraft:potion"),
-    TRANSPORT("gui.jemcompat.jei.transport", "create:controls"),
+    TRANSPORT("gui.jemcompat.jei.transport", "minecraft:minecart"),
     COMPANIONS("gui.jemcompat.jei.companions", "minecraft:wolf_spawn_egg"),
     SPAWN_EGGS("gui.jemcompat.jei.spawn_eggs", "minecraft:pig_spawn_egg"),
     OTHER("gui.jemcompat.jei.other", "minecraft:bundle");
@@ -68,7 +68,7 @@ enum CatalogCategory {
             case ORES -> net.minecraft.world.item.Items.RAW_IRON;
             case MUSIC_DISCS -> net.minecraft.world.item.Items.MUSIC_DISC_CAT;
             case TREES -> net.minecraft.world.item.Items.OAK_LOG;
-            case CREATE_REDSTONE -> net.minecraft.world.item.Items.REDSTONE;
+            case REDSTONE -> net.minecraft.world.item.Items.REDSTONE;
             case BUILDING, BUILDING_FURNITURE -> net.minecraft.world.item.Items.PAINTING;
             case BUILDING_NATURE -> net.minecraft.world.item.Items.MOSS_BLOCK;
             case BUILDING_CONTAINERS -> net.minecraft.world.item.Items.CHEST;

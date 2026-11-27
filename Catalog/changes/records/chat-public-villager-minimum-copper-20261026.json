@@ -62,7 +62,6 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
       "Client/ManagedPack/mods/jem-economy-1.3.5.jar",
       "Docs/SERVER_COMMANDS.md",
       "Docs/economy/native-trading-design.md"
@@ -85,6 +84,15 @@
       "commit": "SELF",
       "action": "implement",
       "summary": "Latest user correction retains small positively priced villager offers with one-Copper minimum instead of removing them. Shader work explicitly excluded"
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
     }
   ],
   "impacts": {
@@ -105,4 +113,3 @@
     ]
   }
 }
-

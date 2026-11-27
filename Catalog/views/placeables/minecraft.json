@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "ce08a5c9745b25c9dcde0203a80e42e7d8a9335a",
+  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
   "generation": {
-    "generated_utc": "2026-11-24T16:17:49.231100+00:00",
+    "generated_utc": "2026-11-27T08:04:12.066008+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -626,18 +626,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
         "data/minecraft/recipes/andesite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_andesite.json"
       ],
       "display_name_en_us": "Andesite",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/andesite_from_stone_types_andesite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/andesite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_andesite.json"
       ],
@@ -656,7 +654,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:andesite_from_stone_types_andesite_stonecutting",
         "minecraft:andesite",
         "unearthed_journey:stone_cut_breccia_andesite"
       ]
@@ -1538,27 +1535,27 @@
       "display_name_en_us": "Barrier",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
-        "jemcompat-3.11.6.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/inception_upgrade.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_1.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_2.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_downgrade_tier_3.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_omega_tier.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_1_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_2_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_starter_tier_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_from_starter.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_2_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_1_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_3_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_2_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_3_to_tier_4_conversion.json",
+        "jemcompat-3.12.0.jar:data/sophisticatedbackpacks/recipes/stack_upgrade_tier_4.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3870,7 +3867,6 @@
       ],
       "observed_in": [
         "data/alexscaves/recipes/cake_from_cake_layer.json",
-        "data/create/recipes/crafting/curiosities/cake.json",
         "data/minecraft/recipes/cake.json"
       ],
       "display_name_en_us": "Cake",
@@ -3878,8 +3874,6 @@
       "source_provenance": [
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/cake_from_cake_layer.json",
         "blueprint-1.20.1-7.1.5.jar:data/minecraft/recipes/cake.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/curiosities/cake.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/curiosities/cake.json",
         "letsdo-bakery-forge-2.0.6.jar:data/minecraft/recipes/cake.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/cake.json"
       ],
@@ -3899,7 +3893,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "alexscaves:cake_from_cake_layer",
-        "create:crafting/curiosities/cake",
         "minecraft:cake"
       ]
     },
@@ -3916,14 +3909,11 @@
         "client"
       ],
       "observed_in": [
-        "data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
         "data/natures_spirit/recipes/calcite_block.json"
       ],
       "display_name_en_us": "Calcite",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/calcite_from_stone_types_calcite_stonecutting.json",
         "natures_spirit-2.2.5-1.20.1.jar:data/natures_spirit/recipes/calcite_block.json"
       ],
       "confidence": "inferred",
@@ -3941,7 +3931,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:calcite_from_stone_types_calcite_stonecutting",
         "natures_spirit:calcite_block"
       ]
     },
@@ -4157,17 +4146,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/crafting/appliances/chain_from_zinc.json",
         "data/minecraft/recipes/chain.json"
       ],
       "display_name_en_us": "Chain",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/crafting/appliances/chain_from_zinc.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/chain_from_zinc.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/chain.json"
       ],
       "confidence": "inferred",
@@ -4185,7 +4172,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:crafting/appliances/chain_from_zinc",
         "minecraft:chain"
       ]
     },
@@ -7894,17 +7880,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
         "data/minecraft/recipes/deepslate.json"
       ],
       "display_name_en_us": "Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/deepslate_from_stone_types_deepslate_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/deepslate.json"
       ],
       "confidence": "inferred",
@@ -7922,7 +7906,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:deepslate_from_stone_types_deepslate_stonecutting",
         "minecraft:deepslate"
       ]
     },
@@ -8432,18 +8415,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
         "data/minecraft/recipes/diorite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_diorite.json"
       ],
       "display_name_en_us": "Diorite",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/diorite_from_stone_types_diorite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diorite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_diorite.json"
       ],
@@ -8462,7 +8443,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:diorite_from_stone_types_diorite_stonecutting",
         "minecraft:diorite",
         "unearthed_journey:stone_cut_breccia_diorite"
       ]
@@ -8727,17 +8707,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
         "data/minecraft/recipes/dripstone_block.json"
       ],
       "display_name_en_us": "Dripstone Block",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/dripstone_block_from_stone_types_dripstone_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/dripstone_block.json"
       ],
       "confidence": "inferred",
@@ -8755,7 +8733,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:dripstone_block_from_stone_types_dripstone_stonecutting",
         "minecraft:dripstone_block"
       ]
     },
@@ -9544,10 +9521,6 @@
       ],
       "observed_in": [
         "data/alexscaves/recipes/glass_from_sea_glass_shards.json",
-        "data/create/recipes/smelting/glass_from_framed_glass.json",
-        "data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
         "data/immersive_weathering/recipes/glass_from_vitrified_sand_smelting.json",
         "data/minecraft/recipes/glass.json",
         "data/unearthed_journey/recipes/quartz_sand_blast_recipe.json",
@@ -9559,14 +9532,6 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "alexscaves-2.0.2.jar:data/alexscaves/recipes/glass_from_sea_glass_shards.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_framed_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_horizontal_framed_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_tiled_glass.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_from_vertical_framed_glass.json",
         "immersive_weathering-1.20.1-2.0.5-forge.jar:data/immersive_weathering/recipes/glass_from_vitrified_sand_smelting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/glass.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/quartz_sand_blast_recipe.json",
@@ -9590,10 +9555,6 @@
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
         "alexscaves:glass_from_sea_glass_shards",
-        "create:smelting/glass_from_framed_glass",
-        "create:smelting/glass_from_horizontal_framed_glass",
-        "create:smelting/glass_from_tiled_glass",
-        "create:smelting/glass_from_vertical_framed_glass",
         "immersive_weathering:glass_from_vitrified_sand_smelting",
         "minecraft:glass",
         "unearthed_journey:quartz_sand_blast_recipe",
@@ -9612,26 +9573,15 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
         "data/minecraft/recipes/glass_pane.json"
       ],
       "display_name_en_us": "Glass Pane",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_horizontal_framed_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_tiled_glass_pane.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/smelting/glass_pane_from_vertical_framed_glass_pane.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/glass_pane.json"
       ],
       "confidence": "inferred",
@@ -9649,10 +9599,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:smelting/glass_pane_from_framed_glass_pane",
-        "create:smelting/glass_pane_from_horizontal_framed_glass_pane",
-        "create:smelting/glass_pane_from_tiled_glass_pane",
-        "create:smelting/glass_pane_from_vertical_framed_glass_pane",
         "minecraft:glass_pane"
       ]
     },
@@ -9744,18 +9690,16 @@
       "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
       "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
       "side_availability": [
-        "client"
+        "client",
+        "server"
       ],
       "observed_in": [
-        "data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
         "data/minecraft/recipes/granite.json",
         "data/unearthed_journey/recipes/stone_cut_breccia_granite.json"
       ],
       "display_name_en_us": "Granite",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "create-1.20.1-6.0.8-291-slim.jar:data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
-        "create-1.20.1-6.0.8.jar:data/create/recipes/granite_from_stone_types_granite_stonecutting.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/granite.json",
         "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_cut_breccia_granite.json"
       ],
@@ -9774,7 +9718,6 @@
       "break_drops": null,
       "permissions": "native Forge placement checks",
       "acquisition_routes": [
-        "create:granite_from_stone_types_granite_stonecutting",
         "minecraft:granite",
         "unearthed_journey:stone_cut_breccia_granite"
       ]
@@ -17989,7 +17932,7 @@
       "display_name_en_us": "Powered Rail",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/minecraft/recipes/powered_rail.json",
+        "jemcompat-3.12.0.jar:data/minecraft/recipes/powered_rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/powered_rail.json"
       ],
       "confidence": "inferred",
@@ -19062,7 +19005,7 @@
       "display_name_en_us": "Rail",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jemcompat-3.11.6.jar:data/minecraft/recipes/rail.json",
+        "jemcompat-3.12.0.jar:data/minecraft/recipes/rail.json",
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/rail.json"
       ],
       "confidence": "inferred",

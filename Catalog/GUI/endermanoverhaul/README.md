@@ -10,7 +10,7 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `tech/alexnijjar/endermanoverhaul/client/forge/EndermanOverhaulClientForge` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar!/tech/alexnijjar/endermanoverhaul/client/forge/EndermanOverhaulClientForge.class`
-- `tech/alexnijjar/endermanoverhaul/client/gui/FlashOverlay` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar!/tech/alexnijjar/endermanoverhaul/client/gui/FlashOverlay.class`
-- `tech/alexnijjar/endermanoverhaul/networking/messages/ClientboundFlashScreenPacket$Handler` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar!/tech/alexnijjar/endermanoverhaul/networking/messages/ClientboundFlashScreenPacket$Handler.class`
-- `tech/alexnijjar/endermanoverhaul/networking/messages/ClientboundFlashScreenPacket` extends `java/lang/Record`; `$PROFILE/automodpack/client/active/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar!/tech/alexnijjar/endermanoverhaul/networking/messages/ClientboundFlashScreenPacket.class`
+- `tech/alexnijjar/endermanoverhaul/client/forge/EndermanOverhaulClientForge` extends `java/lang/Object`; `$PROFILE/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar!/tech/alexnijjar/endermanoverhaul/client/forge/EndermanOverhaulClientForge.class`
+- `tech/alexnijjar/endermanoverhaul/client/gui/FlashOverlay` extends `java/lang/Object`; `$PROFILE/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar!/tech/alexnijjar/endermanoverhaul/client/gui/FlashOverlay.class`
+- `tech/alexnijjar/endermanoverhaul/networking/messages/ClientboundFlashScreenPacket$Handler` extends `java/lang/Object`; `$PROFILE/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar!/tech/alexnijjar/endermanoverhaul/networking/messages/ClientboundFlashScreenPacket$Handler.class`
+- `tech/alexnijjar/endermanoverhaul/networking/messages/ClientboundFlashScreenPacket` extends `java/lang/Record`; `$PROFILE/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar!/tech/alexnijjar/endermanoverhaul/networking/messages/ClientboundFlashScreenPacket.class`

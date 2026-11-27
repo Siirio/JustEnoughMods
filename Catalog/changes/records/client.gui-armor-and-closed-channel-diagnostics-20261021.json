@@ -46,7 +46,6 @@
       "Mods/JEMServer/build.gradle",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java",
-      "Client/ManagedPack/mods/jemcompat-3.11.6.jar",
       "Docs/releases/2026-10-21-shipping-market-repair.json"
     ]
   },
@@ -134,6 +133,15 @@
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/internal/menu/client/VanillaGuiPlayers.java"
       ],
       "current_source_files": []
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retire_missing_source_reference_20261127",
+      "summary": "Moved retired or replaced current source paths to historical evidence during the dependency removal.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.11.6.jar"
+      ]
     }
   ],
   "impacts": {
@@ -153,4 +161,3 @@
     ]
   }
 }
-

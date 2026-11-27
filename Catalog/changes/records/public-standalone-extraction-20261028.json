@@ -83,12 +83,8 @@
     "owner": "JEM public standalone extraction",
     "kind": "owner_boundary_change",
     "source_files": [
-      "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/**",
       "Mods/JEMExcavation/src/main/resources/jem_excavation.mixins.json",
-      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/**",
       "Mods/JEMFreecam/src/main/resources/jem_freecam.mixins.json",
-      "Mods/JEMSeasonsHud/src/main/java/com/siirio/jemseasonshud/**",
-      "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/**",
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTime.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
     ]
@@ -129,6 +125,18 @@
       "summary": "Preserve the generic Digger toggle while allowing the grindstone-specific Shift-use extraction owner to handle that block.",
       "source_files": [
         "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/feature/ExcavationEvents.java"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/**",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/**",
+        "Mods/JEMSeasonsHud/src/main/java/com/siirio/jemseasonshud/**",
+        "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/**"
       ]
     }
   ],

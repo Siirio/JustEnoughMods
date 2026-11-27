@@ -85,7 +85,6 @@ public final class EconomyRuntimeExport {
                 try(var reader=resource.get().openAsReader()){row.add("definition",com.google.gson.JsonParser.parseReader(reader));}
                 catch(java.io.IOException failure){throw new java.io.UncheckedIOException("Cannot read loaded recipe resource "+source,failure);}
             }else row.addProperty("resourceStatus","Dynamic recipe: no merged JSON resource; loaded ingredients/results below are authoritative");
-            captureCreate(recipe,row);
             ItemStack output = recipe.getResultItem(server.registryAccess());
             row.addProperty("output", String.valueOf(ForgeRegistries.ITEMS.getKey(output.getItem()))); row.addProperty("count", output.getCount());
             row.add("outputStack",stackJson(output));
@@ -134,34 +133,6 @@ public final class EconomyRuntimeExport {
     private static JsonObject stackJson(ItemStack stack) {
         JsonObject row=new JsonObject();row.addProperty("item",String.valueOf(ForgeRegistries.ITEMS.getKey(stack.getItem())));
         row.addProperty("count",stack.getCount());if(stack.hasTag())row.addProperty("nbt",stack.getTag().getAsString());return row;
-    }
-
-    /** Public Create6.0.8 methods inspected directly in the exact installed JAR. No random rolling/crafting. */
-    private static void captureCreate(net.minecraft.world.item.crafting.Recipe<?> recipe,JsonObject row) {
-        if(!net.minecraftforge.fml.ModList.get().isLoaded("create"))return;
-        try {
-            Class<?> processing=Class.forName("com.simibubi.create.content.processing.recipe.ProcessingRecipe");
-            if(!processing.isInstance(recipe))return;
-            Class<?> output=Class.forName("com.simibubi.create.content.processing.recipe.ProcessingOutput");
-            JsonArray results=new JsonArray();
-            for(Object result:(java.util.List<?>)processing.getMethod("getRollableResults").invoke(recipe)) {
-                JsonObject entry=stackJson((ItemStack)output.getMethod("getStack").invoke(result));
-                entry.addProperty("chance",String.valueOf(output.getMethod("getChance").invoke(result)));results.add(entry);
-            }
-            row.add("processingOutputs",results);JsonArray fluids=new JsonArray();
-            for(Object result:(java.util.List<?>)processing.getMethod("getFluidResults").invoke(recipe))
-                fluids.add(((net.minecraftforge.fluids.FluidStack)result).writeToNBT(new net.minecraft.nbt.CompoundTag()).getAsString());
-            row.add("fluidOutputs",fluids);
-            Class<?> ingredient=Class.forName("com.simibubi.create.foundation.fluid.FluidIngredient");JsonArray fluidInputs=new JsonArray();
-            for(Object input:(java.util.List<?>)processing.getMethod("getFluidIngredients").invoke(recipe)) {
-                JsonObject definition=(JsonObject)ingredient.getMethod("serialize").invoke(input);JsonArray matches=new JsonArray();
-                for(Object match:(java.util.List<?>)ingredient.getMethod("getMatchingFluidStacks").invoke(input))
-                    matches.add(((net.minecraftforge.fluids.FluidStack)match).writeToNBT(new net.minecraft.nbt.CompoundTag()).getAsString());
-                definition.add("resolvedStacks",matches);definition.addProperty("requiredAmount",(Number)ingredient.getMethod("getRequiredAmount").invoke(input));fluidInputs.add(definition);
-            }
-            row.add("fluidInputs",fluidInputs);row.addProperty("processingDuration",(Number)processing.getMethod("getProcessingDuration").invoke(recipe));
-            row.addProperty("requiredHeat",String.valueOf(processing.getMethod("getRequiredHeat").invoke(recipe)));
-        }catch(ReflectiveOperationException failure){throw new IllegalStateException("Installed Create processing evidence API changed",failure);}
     }
 
     private static JsonArray artifacts(MinecraftServer server) {

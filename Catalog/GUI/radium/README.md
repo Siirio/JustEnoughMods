@@ -10,4 +10,4 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `me/jellysquid/mods/lithium/mixin/block/hopper/ScreenHandlerMixin` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/radium-mc1.20.1-0.12.4+git.26c9d8e.jar!/me/jellysquid/mods/lithium/mixin/block/hopper/ScreenHandlerMixin.class`
+- `me/jellysquid/mods/lithium/mixin/block/hopper/ScreenHandlerMixin` extends `java/lang/Object`; `$PROFILE/mods/radium-re-reforged-mc1.20.1-0.15.0-git.626588c.jar!/me/jellysquid/mods/lithium/mixin/block/hopper/ScreenHandlerMixin.class`

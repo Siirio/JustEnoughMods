@@ -84,8 +84,6 @@ ICONS = {
     "jem_guide:building/14": "minecraft:emerald",
     "jem_guide:building/4": "minecraft:oak_stairs", "jem_guide:building/7": "minecraft:bell",
     "jem_guide:building/7_4": "minecraft:amethyst_shard", "jem_guide:building/8": "minecraft:campfire",
-    "jem:engineering/root": "create:wrench", "jem:engineering/drill_work": "create:mechanical_drill",
-    "jem:engineering/drill_service": "minecraft:iron_ingot", "jem:engineering/drill_replaced": "create:andesite_alloy",
     "jem_guide:cool_stuff/root": "minecraft:painting", "jem_guide:cool_stuff/4_4": "minecraft:brush",
     "jem_guide:cool_stuff/play_a_note": "minecraft:note_block", "jem_guide:cool_stuff/zipline_attach": "minecraft:chain",
     "jem_guide:cool_stuff/zipline_transfer": "minecraft:compass", "jem_guide:cool_stuff/zipline_release": "minecraft:slime_ball",

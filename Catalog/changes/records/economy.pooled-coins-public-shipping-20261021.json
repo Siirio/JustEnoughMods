@@ -88,8 +88,6 @@
       "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
       "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json",
       "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/profession_pools.json",
-      "Mods/JEMEconomy/tools/author_shipping_economy.py",
-      "Mods/JEMEconomy/tools/derive_conversion_economy.py",
       "Mods/JEMEconomy/tools/monetary_potential.py",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxItemRenderer.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxParticles.java",
@@ -345,6 +343,16 @@
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
         "Docs/economy/native-trading-design.md"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMEconomy/tools/author_shipping_economy.py",
+        "Mods/JEMEconomy/tools/derive_conversion_economy.py"
       ]
     }
   ],

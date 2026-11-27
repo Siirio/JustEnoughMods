@@ -52,9 +52,7 @@
       "Mods/JEMSeasonsHud/build.gradle",
       "Mods/JEMSeasonsHud/src/main/resources/assets/jemcompat/lang/en_us.json",
       "Mods/JEMSeasonsHud/src/main/resources/assets/jemcompat/lang/ru_ru.json",
-      "Docs/art/inventory-season-hud-2026-10-25/README.md",
-      "Mods/JEMSeasonsHud/src/main/resources/assets/jemcompat/textures/gui/time/*.png",
-      "Docs/art/inventory-season-hud-2026-10-25/approved/*"
+      "Docs/art/inventory-season-hud-2026-10-25/README.md"
     ]
   },
   "rationale": {
@@ -130,6 +128,16 @@
       "source_files": [
         "Mods/JEMSeasonsHud/src/main/java/com/siirio/jemseasonshud/client/TimeSeasonHud.java",
         "Mods/JEMSeasonsHud/src/main/java/com/siirio/jemseasonshud/config/HudConfig.java"
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "commit": "SELF",
+      "action": "retired dependency removal",
+      "summary": "Archived source paths removed with Create, Immersive Aircraft and their retired integrations",
+      "source_files": [
+        "Mods/JEMSeasonsHud/src/main/resources/assets/jemcompat/textures/gui/time/*.png",
+        "Docs/art/inventory-season-hud-2026-10-25/approved/*"
       ]
     }
   ],

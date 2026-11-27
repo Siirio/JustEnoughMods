@@ -61,13 +61,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Cool Rain | `1.0.3` | Client + server |  |
 | Copper-Age-Backport | `0.1.4` | Client + server |  |
 | CoroUtil | `1.20.1-1.3.7` | Client + server |  |
-| Create | `6.0.8` | Client + server |  |
-| Create Railways Navigator | `1.20.1-beta-0.9.1-C6` | Client + server |  |
-| Create Train Parts | `0.5.1` | Client + server |  |
-| Create: Bells & Whistles | `0.4.3-1.20.x` | Client + server |  |
-| Create: Steam 'n' Rails | `1.7.3+forge-mc1.20.1` | Server |  |
-| Create: Steam 'n' Rails | `1.7.3+forge-mc1.20.1` | Client |  |
-| CreateBetterFps | `1.1.2` | Client |  |
 | CreativeCore | `2.12.40` | Client + server |  |
 | Cristel Lib | `1.1.6` | Client + server | Towns and Towers dependency |
 | Cult of Azazel | `1.1.4.12` | Client + server | Major Update 4 |
@@ -141,7 +134,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Icy's Better Horses | `2.1.8` | Client + server | Native horse ownership, recruit mounting and MobHome support |
 | Icy's Lib | `1.1.0` | Client + server | Required by Wildscapes 1.0.3 |
 | ImmediatelyFast | `1.5.5+1.20.4` | Client |  |
-| Immersive Aircraft | `1.5.0+1.20.1` | Client + server |  |
 | Immersive Lanterns | `1.0.6` | Client + server |  |
 | Immersive Melodies | `0.8.0+1.20.1` | Server |  |
 | Immersive Melodies | `0.8.0+1.20.1` | Client |  |
@@ -160,7 +152,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | JamLib | `1.3.6+1.20.1-patch.1` | Client |  |
 | JEM Advancements | `5.3.2` | Client + server |  |
 | JEM Freecam | `1.0.2` | Client | First-person detached camera with F5 blocked while active |
-| JEM Drill Lifecycle | `1.0.0` | Client + server |  |
 | JEM Pack Core | `2.0.0-dev` | Client + server |  |
 | JEM Server | `2.0.0-dev` | Client + server |  |
 | JEM Twelve Eyes Campaign | `1.7.2` | Client + server | Uses the user-supplied first-End glitch clip |
@@ -185,7 +176,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | kotlinforforge-4.12.0-all | `4.12.0-all` | Client + server |  |
 | Ksyxis | `1.4.4` | Client + server |  |
 | KubeJS | `2001.6.5-build.26` | Client + server |  |
-| KubeJS Create | `2001.3.0-build.8` | Client + server |  |
 | LegendaryMonsters | `1.20.1` | Server |  |
 | LegendaryMonsters | `1.20.1` | Client |  |
 | Let Me Despawn | `1.5.0` | Client + server |  |

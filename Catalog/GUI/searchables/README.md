@@ -10,6 +10,6 @@ No separate GUI PNG was selected for this group. This does not prove the mod has
 
 Static names and declared superclasses only. Helpers/mixins can occur here. Shared vanilla controls, procedural drawing, item/entity renders and runtime state do not necessarily have their own PNG.
 
-- `com/blamejared/searchables/api/autcomplete/AutoComplete` extends `net/minecraft/client/gui/components/AbstractWidget`; `$PROFILE/automodpack/client/active/mods/Searchables-forge-1.20.1-1.0.3.jar!/com/blamejared/searchables/api/autcomplete/AutoComplete.class`
-- `com/blamejared/searchables/api/autcomplete/AutoCompletingEditBox` extends `net/minecraft/client/gui/components/EditBox`; `$PROFILE/automodpack/client/active/mods/Searchables-forge-1.20.1-1.0.3.jar!/com/blamejared/searchables/api/autcomplete/AutoCompletingEditBox.class`
-- `com/blamejared/searchables/mixin/AccessEditBox` extends `java/lang/Object`; `$PROFILE/automodpack/client/active/mods/Searchables-forge-1.20.1-1.0.3.jar!/com/blamejared/searchables/mixin/AccessEditBox.class`
+- `com/blamejared/searchables/api/autcomplete/AutoComplete` extends `net/minecraft/client/gui/components/AbstractWidget`; `$PROFILE/mods/Searchables-forge-1.20.1-1.0.3.jar!/com/blamejared/searchables/api/autcomplete/AutoComplete.class`
+- `com/blamejared/searchables/api/autcomplete/AutoCompletingEditBox` extends `net/minecraft/client/gui/components/EditBox`; `$PROFILE/mods/Searchables-forge-1.20.1-1.0.3.jar!/com/blamejared/searchables/api/autcomplete/AutoCompletingEditBox.class`
+- `com/blamejared/searchables/mixin/AccessEditBox` extends `java/lang/Object`; `$PROFILE/mods/Searchables-forge-1.20.1-1.0.3.jar!/com/blamejared/searchables/mixin/AccessEditBox.class`
