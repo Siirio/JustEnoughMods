@@ -1,3 +1,14 @@
+## 2026-11-28 - Replace the Christmas GUI and classify Wildscapes
+
+- The user rejected the previous Christmas GUI and hotbar overlays and selected `Winter Pack GUI 1.21.x [All Langs]` for the private Test client
+- The manually installed `JEM Christmas` overlay now removes the old GUI and hotbar assets, applies the selected Winter GUI, includes ChristmasChestAllYear only for permitted private personal use, and maps its default Christmas chest texture to all 60 Sophisticated Storage chest texture slots
+- Vanilla Backport remains the owner of copper, exposed, weathered and oxidized copper chest variants because the supplied Christmas chest pack does not contain those files
+- Bug / Client / Player Animator was deactivated while SittingPlus still required its classes, which put Forge into a broken mod state and caused the later Astemir resource errors, missing `forge:swim_speed`, square menu text and world-load crash / in testing with the exact Player Animator JAR reactivated
+- Wildscapes content is assigned to its reviewed JEI leaves, including Cypress wood in Trees, 161 mud-brick blocks in Building Blocks, both armor trim templates in Smithing Templates, plants in Nature, bonfires in Light and registered utility items in their matching categories
+- Eleven Wildscapes model or localization helper IDs are removed from the exact catalog because exact JAR registrations prove that they are not items
+- Exact Archie's Dinosaurs bytecode confirms that its seven totems are advancement-gated placeable blocks without revival behavior. They now appear in Furniture and Decorations instead of Weapon Totems
+- The user explicitly requested direct Test-client file changes and no JEM Pack Sync publication. The stable profile, MineRENT and release baseline remain unchanged
+
 ## 2026-11-28 - Add the JEM Christmas season
 
 - The user requested an automatic JEM Christmas season from November 28 through January 28 and supplied winter, Christmas, Santa-hat, GUI, hotbar, background-music, chest, FancyMenu background and title artwork

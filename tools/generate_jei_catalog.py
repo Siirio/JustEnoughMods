@@ -53,6 +53,17 @@ PARENTS = {"WEAPONS", "WEARABLES", "FOOD", "BUILDING"}
 ID_PATTERN = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
 INTERNAL_ITEM_EXCLUSIONS = {
     "food:empty",
+    "wildscapes:elasticity_book",
+    "wildscapes:empowered_jump_book",
+    "wildscapes:illusionist_necklace_active",
+    "wildscapes:magic_soup.empty",
+    "wildscapes:magic_soup.stacks",
+    "wildscapes:mirelash_shot",
+    "wildscapes:multi_jump_book",
+    "wildscapes:slime_banner_pattern.desc",
+    "wildscapes:slime_snare_book",
+    "wildscapes:spirit_banner_pattern.desc",
+    "wildscapes:witch_camp_map",
 }
 SKARRIER_TOTEMS = {
     "skarrier_mobs:blank_totem",
@@ -312,9 +323,9 @@ EXACT_RECLASSIFICATIONS = {
     "alexscaves:pewen_pines": "BUILDING_NATURE",
     "netherexp:nether_wart_beard": "BUILDING_NATURE",
     "netherexp:warped_wart_beard": "BUILDING_NATURE",
-    # Archie's Dinosaurs 1.0.7 exact behavior families
+    # Archie's Dinosaurs 1.0.7 placement-only trophy blocks.
     **{
-        f"ec_ad:{path}": "WEAPON_TOTEMS"
+        f"ec_ad:{path}": "BUILDING_FURNITURE"
         for path in (
             "burning_totem", "echo_totem", "fearful_totem", "lush_totem",
             "soaring_totem", "tidal_totem", "tropic_totem",
@@ -366,6 +377,72 @@ EXACT_RECLASSIFICATIONS = {
             "polished_amber_stairs", "polished_amber_wall",
         )
     },
+    # Wildscapes 1.0.3 reviewed families from exact registrations and block items.
+    **{
+        f"wildscapes:{path}": "TREES"
+        for path in (
+            "cypress_button", "cypress_door", "cypress_fence", "cypress_fence_gate",
+            "cypress_hanging_sign", "cypress_leaves", "cypress_log", "cypress_planks",
+            "cypress_pressure_plate", "cypress_sapling", "cypress_sign", "cypress_slab",
+            "cypress_stairs", "cypress_trapdoor", "cypress_wood", "stripped_cypress_log",
+            "stripped_cypress_wood",
+        )
+    },
+    **{
+        f"wildscapes:{path}": "BUILDING_LIGHT"
+        for path in ("bonfire", "soul_bonfire", "summoning_bonfire")
+    },
+    **{
+        f"wildscapes:{path}": "BUILDING_NATURE"
+        for path in ("duckweed", "luminous_mushroom", "rushes", "short_rushes")
+    },
+    **{
+        f"wildscapes:{path}": "BUILDING_FURNITURE"
+        for path in ("cauldron_of_souls", "slime_banner_pattern", "spirit_banner_pattern")
+    },
+    **{
+        f"wildscapes:{path}": "TRANSPORT"
+        for path in ("cypress_boat", "cypress_chest_boat")
+    },
+    **{
+        f"wildscapes:{path}": "FOOD_EDIBLES"
+        for path in ("frog_leg_stew", "frog_legs", "magic_soup")
+    },
+    **{
+        f"wildscapes:{path}": "SPAWN_EGGS"
+        for path in ("abomination_spawn_egg", "bogged_spawn_egg", "illusioner_spawn_egg")
+    },
+    **{
+        f"wildscapes:{path}": "WEAPON_SMITHING_TEMPLATES"
+        for path in (
+            "spell_armor_trim_smithing_template",
+            "viscose_armor_trim_smithing_template",
+        )
+    },
+    "wildscapes:incendiary_bottle": "WEAPON_RANGED",
+    "wildscapes:illusionist_necklace": "WEARABLE_ARMOR",
+    "wildscapes:ladle": "FOOD_COOKING_EQUIPMENT",
+    "wildscapes:merchants_guide": "BOOKS",
+    "wildscapes:mirelash": "WEAPON_MELEE",
+    "wildscapes:ominous_bottle": "POTIONS",
+    **{
+        item_id: "BUILDING_BLOCKS"
+        for item_id in (
+            f"wildscapes:{path}"
+            for color in (
+                "amber", "aqua", "beige", "black", "blue", "brown", "coral", "cyan",
+                "forest", "ginger", "gray", "green", "indigo", "light_blue", "light_gray",
+                "lime", "magenta", "maroon", "mint", "navy", "olive", "orange", "pink",
+                "purple", "red", "rose", "slate", "tan", "teal", "verdant", "white", "yellow",
+            )
+            for path in (
+                f"{color}_mud_bricks", f"chiseled_{color}_mud_bricks",
+                f"{color}_mud_brick_slab", f"{color}_mud_brick_stairs",
+                f"{color}_mud_brick_wall",
+            )
+        )
+    },
+    "wildscapes:chiseled_mud_bricks": "BUILDING_BLOCKS",
     # Royal Variations travel items
     "royalvariations:empty_royal_telelocator": "TRANSPORT",
     "royalvariations:royal_ender_pearl": "TRANSPORT",
@@ -1339,6 +1416,49 @@ def reclassified_manifest() -> dict:
     return result
 
 
+def applied_reviewed_manifest() -> dict:
+    """Apply only explicit reviewed corrections and remove known non-registry helper IDs."""
+    data = read_json(MANIFEST)
+    validate(data)
+    grouped: dict[str, list[str]] = defaultdict(list)
+    moves: Counter[tuple[str, str]] = Counter()
+    removed: list[str] = []
+    for current_leaf, item_ids in data["assignments"].items():
+        for item_id in item_ids:
+            if item_id in INTERNAL_ITEM_EXCLUSIONS:
+                removed.append(item_id)
+                continue
+            target = EXACT_RECLASSIFICATIONS.get(item_id, current_leaf)
+            grouped[target].append(item_id)
+            if target != current_leaf:
+                moves[(current_leaf, target)] += 1
+    assigned_ids = {
+        item_id
+        for item_ids in grouped.values()
+        for item_id in item_ids
+    }
+    additional = {
+        view: sorted(item_id for item_id in item_ids if item_id in assigned_ids)
+        for view, item_ids in data["additional_views"].items()
+    }
+    result = {
+        "schema_version": SCHEMA_VERSION,
+        "source": "Exact logical-server Forge item registry export with scoped reviewed corrections",
+        "item_count": len(assigned_ids),
+        "assignments": {leaf: sorted(grouped[leaf]) for leaf in LEAVES},
+        "additional_views": additional,
+    }
+    validate(result)
+    print(json.dumps({
+        "moves": {
+            f"{source} -> {target}": count
+            for (source, target), count in sorted(moves.items())
+        },
+        "removed_non_registry_helpers": sorted(removed),
+    }, indent=2))
+    return result
+
+
 def additional_views(registered_ids: set[str]) -> dict[str, list[str]]:
     return {
         "COMPANIONS": sorted(COMPANION_EGGS & registered_ids),
@@ -1406,14 +1526,21 @@ def write_manifest_review(data: dict) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=("generate", "update", "reclassify", "validate", "review"))
+    parser.add_argument(
+        "mode",
+        choices=("generate", "update", "reclassify", "apply-reviewed", "validate", "review"),
+    )
     parser.add_argument("export", type=Path, nargs="?")
     args = parser.parse_args()
     if args.export is None:
-        if args.mode not in {"reclassify", "validate", "review"}:
+        if args.mode not in {"reclassify", "apply-reviewed", "validate", "review"}:
             parser.error("generate and update require a runtime export")
         if args.mode == "reclassify":
             data = reclassified_manifest()
+            MANIFEST.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            write_manifest_review(data)
+        elif args.mode == "apply-reviewed":
+            data = applied_reviewed_manifest()
             MANIFEST.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             write_manifest_review(data)
         else:

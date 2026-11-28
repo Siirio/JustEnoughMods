@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7",
-  "generated_utc": "2026-11-27T08:04:12.066008+00:00",
+  "snapshot_sha": "a94f344039c8a6096643a51b7fb38b8ca00f481e",
+  "generated_utc": "2026-11-28T11:29:03.028597+00:00",
   "claim": "100% of statically observed canonical IDs; runtime boundary unresolved",
   "id_coverage": {
     "items": {
       "expected_id_count": null,
-      "enumerated_id_count": 14740,
+      "enumerated_id_count": 14744,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -52,6 +52,7 @@
         "geckolib": 21,
         "golemoverhaul": 13,
         "gravestone": 2,
+        "guardvillagers": 4,
         "handcrafted": 285,
         "herbalbrews": 48,
         "icys_better_horses": 30,
@@ -227,7 +228,7 @@
     },
     "entities": {
       "expected_id_count": null,
-      "enumerated_id_count": 1580,
+      "enumerated_id_count": 1581,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -260,6 +261,7 @@
         "geckolib": 9,
         "golemoverhaul": 12,
         "gravestone": 1,
+        "guardvillagers": 1,
         "handcrafted": 2,
         "icys_better_horses": 31,
         "incision": 5,
@@ -357,7 +359,7 @@
     },
     "enchantments": {
       "expected_id_count": null,
-      "enumerated_id_count": 229,
+      "enumerated_id_count": 255,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -369,6 +371,7 @@
         "cnc": 1,
         "efn": 16,
         "gouge": 8,
+        "jei_enchants": 26,
         "jem_excavation": 1,
         "jem_world_boss_tiers": 2,
         "kaleidoscope_cookery": 2,
@@ -519,18 +522,18 @@
   "classification_coverage": {
     "armor": 245,
     "foods": 4,
-    "mobs": 1580,
+    "mobs": 1581,
     "placeables": 7985,
     "tools": 98,
-    "trade_policies": 14740,
+    "trade_policies": 14744,
     "weapons": 378
   },
   "semantic_field_coverage": {
     "runtime_verified": 0,
-    "static_inferred": 28372,
+    "static_inferred": 28403,
     "note": "Null is intentional where static sources do not prove semantics."
   },
   "unresolved_counts": {
-    "entries": 60
+    "entries": 58
   }
 }

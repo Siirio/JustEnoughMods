@@ -1,0 +1,136 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.jei-wildscapes-and-archie-decor-20261128",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "items",
+      "value": "wildscapes"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "ec_ad:burning_totem"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "ec_ad:echo_totem"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "ec_ad:fearful_totem"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "ec_ad:lush_totem"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "ec_ad:soaring_totem"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "ec_ad:tidal_totem"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "ec_ad:tropic_totem"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "JEMCompat loads the schema-2 exact JEI catalog manifest"
+    }
+  ],
+  "precedence": {
+    "layer": "presentation",
+    "priority": 1830,
+    "overrides": [
+      "compat.jei-building-family-review-20261124"
+    ]
+  },
+  "change": {
+    "summary": "Classify Wildscapes content by exact item role and move Archie's placement-only totems from weapons to decor",
+    "modifiers": [
+      {
+        "property": "jem.jei_catalog.wildscapes",
+        "operation": "replace",
+        "before": "New Wildscapes IDs were placed in Other, including model-only helper resource IDs",
+        "after": "Registered Wildscapes items use reviewed Trees, Building Blocks, Nature, Furniture, Light, Smithing Templates, Food, Books, Potions, Transport, Spawn Eggs, Wearables and Weapons leaves. Model-only helper IDs are absent"
+      },
+      {
+        "property": "jem.jei_catalog.archie_totems",
+        "operation": "replace",
+        "before": "Seven Archie's Dinosaurs totems were assigned to Weapon Totems",
+        "after": "All seven are assigned to Furniture and Decorations because exact bytecode identifies them as advancement-gated BlockItem placements without revival behavior"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat exact JEI catalog manifest",
+    "kind": "catalog_classification",
+    "source_files": [
+      "tools/generate_jei_catalog.py",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json",
+      "Docs/catalog/JEI_CATALOG_REVIEW.md",
+      "Catalog/registries/items/wildscapes.json",
+      "Catalog/registries/blocks/wildscapes.json",
+      "Catalog/views/placeables/wildscapes.json",
+      "Client/ManagedPack/mods/wildscapes-forge-1.20.1-1.0.3.jar",
+      "Client/ManagedPack/mods/ec_ad-forge-1.20.1-1.0.7.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make new content easy to find and keep non-revival decor out of weapon categories",
+    "decision_source": "Direct user request on 2026-11-28 plus exact installed JAR registrations, models, recipes, tags and bytecode"
+  },
+  "introduced": {
+    "date": "2026-11-28",
+    "commit": "SELF",
+    "action": "classify_wildscapes_and_archie_totems",
+    "summary": "Add scoped reviewed catalog corrections without reclassifying unrelated items",
+    "source_files": [
+      "tools/generate_jei_catalog.py",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_catalog.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-11-28",
+      "commit": "SELF",
+      "action": "classify_wildscapes_and_archie_totems",
+      "summary": "Review exact registrations, remove model-only helper IDs and apply only the requested category moves",
+      "source_files": [
+        "Catalog/registries/items/wildscapes.json",
+        "Catalog/registries/blocks/wildscapes.json",
+        "Catalog/views/placeables/ec_ad.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "jei_catalog",
+      "client_presentation",
+      "registry_atlas"
+    ],
+    "relations": [
+      "Installed Wildscapes evidence -> scoped exact assignments -> JEI catalog",
+      "Archie's TotemItem bytecode -> placement-only behavior -> Furniture and Decorations"
+    ],
+    "notes": [
+      "Unrelated existing item assignments are preserved",
+      "The runtime continues to use direct exact-ID lookup"
+    ],
+    "unresolved": [
+      "Player visual acceptance remains pending because Codex did not launch Minecraft"
+    ]
+  }
+}

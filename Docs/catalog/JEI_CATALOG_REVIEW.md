@@ -1,18 +1,18 @@
 # JEI Catalog Review
 
-- Runtime export: C:/MyProjects/Minecraft/JustEnoughMods/tools/_jei_atlas_export.json
-- Export SHA-256: d591d8e6be2b283d1e341aeb12effed401b56d1e57bd91392eb7217bf045402f
-- Registered items: 14739
+- Registry source: reviewed logical-server export removed after initial validation
+- Source export SHA-256: 958be5aee64f564c148764bdb9e97a8115c3e00fd44c0fe9b65fcd5f98174d39
+- Registered items: 14728
+- Manifest schema: 2
 - Runtime classification: direct immutable item-ID lookup only
 
 ## Leaf and namespace counts
 
 ### WEAPON_TOTEMS
 
-Total: 22
+Total: 15
 
 - alexscaves: 1
-- ec_ad: 7
 - minecraft: 1
 - moretotems: 7
 - skarrier_mobs: 6
@@ -24,7 +24,7 @@ Total: 0
 
 ### WEAPON_MELEE
 
-Total: 270
+Total: 271
 
 - alexscaves: 14
 - alexsmobs: 6
@@ -57,11 +57,12 @@ Total: 270
 - tide: 3
 - trials: 1
 - unearthed_journey: 1
+- wildscapes: 1
 - xtraarrows: 5
 
 ### WEAPON_RANGED
 
-Total: 187
+Total: 188
 
 - alexscaves: 12
 - alexsmobs: 2
@@ -82,6 +83,7 @@ Total: 187
 - tide: 1
 - unearthed_journey: 1
 - whaleborne: 1
+- wildscapes: 1
 - xtraarrows: 97
 
 ### WEAPON_SHIELDS
@@ -100,7 +102,7 @@ Total: 17
 
 ### WEAPON_SMITHING_TEMPLATES
 
-Total: 50
+Total: 52
 
 - alexscaves: 1
 - aquamirae: 2
@@ -114,10 +116,11 @@ Total: 50
 - royalvariations: 1
 - the_sift: 2
 - trials: 2
+- wildscapes: 2
 
 ### WEARABLE_ARMOR
 
-Total: 286
+Total: 287
 
 - alexscaves: 18
 - alexsmobs: 16
@@ -152,6 +155,7 @@ Total: 286
 - tide: 3
 - unearthed_journey: 4
 - vinery: 4
+- wildscapes: 1
 
 ### WEARABLE_MOB_ARMOR
 
@@ -176,7 +180,7 @@ Total: 776
 
 ### FOOD_EDIBLES
 
-Total: 1029
+Total: 1032
 
 - alexscaves: 128
 - alexsmobs: 26
@@ -218,10 +222,11 @@ Total: 1029
 - tide: 107
 - unearthed_journey: 24
 - vinery: 59
+- wildscapes: 3
 
 ### FOOD_COOKING_EQUIPMENT
 
-Total: 62
+Total: 63
 
 - alexscaves: 1
 - bakery: 6
@@ -235,6 +240,7 @@ Total: 62
 - kaleidoscope_nether: 1
 - minecraft: 2
 - vinery: 3
+- wildscapes: 1
 
 ### FISHING
 
@@ -257,7 +263,7 @@ Total: 257
 
 ### TRANSPORT
 
-Total: 133
+Total: 135
 
 - alexscaves: 4
 - alexsmobs: 2
@@ -278,6 +284,7 @@ Total: 133
 - trotting_wagons: 5
 - unearthed_journey: 1
 - vinery: 2
+- wildscapes: 2
 
 ### COMPANIONS
 
@@ -317,17 +324,18 @@ Total: 358
 
 ### POTIONS
 
-Total: 9
+Total: 10
 
 - alexscaves: 2
 - alexsmobs: 1
 - luminous_nether: 1
 - minecraft: 4
 - the_sift: 1
+- wildscapes: 1
 
 ### BOOKS
 
-Total: 36
+Total: 37
 
 - alexscaves: 2
 - alexsmobs: 1
@@ -347,6 +355,7 @@ Total: 36
 - minecraft: 5
 - patchouli: 1
 - unearthed_journey: 1
+- wildscapes: 1
 
 ### ORES
 
@@ -404,7 +413,7 @@ Total: 87
 
 ### TREES
 
-Total: 1192
+Total: 1209
 
 - alexscaves: 28
 - bakery: 1
@@ -431,6 +440,7 @@ Total: 1192
 - the_sift: 30
 - unearthed_journey: 71
 - vinery: 35
+- wildscapes: 17
 
 ### REDSTONE
 
@@ -448,7 +458,7 @@ Total: 203
 
 ### BUILDING_FURNITURE
 
-Total: 880
+Total: 890
 
 - alexscaves: 29
 - alexsmobs: 7
@@ -466,6 +476,7 @@ Total: 880
 - companions: 2
 - deep_dark_regrowth: 2
 - dustydecorations: 317
+- ec_ad: 7
 - fairylights: 6
 - handcrafted: 86
 - herbalbrews: 1
@@ -486,10 +497,11 @@ Total: 880
 - trials: 2
 - unearthed_journey: 11
 - vinery: 1
+- wildscapes: 3
 
 ### BUILDING_NATURE
 
-Total: 439
+Total: 443
 
 - alexscaves: 11
 - alexsmobs: 3
@@ -517,6 +529,7 @@ Total: 439
 - the_sift: 35
 - unearthed_journey: 40
 - vinery: 7
+- wildscapes: 4
 
 ### BUILDING_GLASS
 
@@ -538,7 +551,7 @@ Total: 152
 
 ### BUILDING_LIGHT
 
-Total: 203
+Total: 206
 
 - alexscaves: 19
 - aquamirae: 1
@@ -560,6 +573,7 @@ Total: 203
 - netherexp: 9
 - ribbits: 1
 - snowyspirit: 4
+- wildscapes: 3
 
 ### BUILDING_TOOLS
 
@@ -580,7 +594,7 @@ Total: 213
 
 ### BUILDING_BLOCKS
 
-Total: 2908
+Total: 3069
 
 - alexscaves: 148
 - alexsmobs: 18
@@ -633,10 +647,11 @@ Total: 2908
 - unearthed_journey: 91
 - vinery: 7
 - whaleborne: 2
+- wildscapes: 161
 
 ### SPAWN_EGGS
 
-Total: 850
+Total: 853
 
 - alexscaves: 43
 - alexsmobs: 89
@@ -676,10 +691,11 @@ Total: 850
 - unearthed_journey: 74
 - vinery: 2
 - whaleborne: 1
+- wildscapes: 3
 
 ### OTHER
 
-Total: 3849
+Total: 3634
 
 - alexscaves: 107
 - alexsmobs: 109
@@ -792,7 +808,7 @@ Total: 3849
 - vanillabackport: 129
 - vinery: 13
 - whaleborne: 5
-- wildscapes: 216
+- wildscapes: 1
 - xtraarrows: 2
 
 ## Additional exact views

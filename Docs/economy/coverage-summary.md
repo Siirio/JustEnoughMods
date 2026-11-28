@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-11-27T08:04:12.066008+00:00` for `4886c5c1d6abb6134eb76f9e4f2cf452dfee98c7`.
+Generated from Atlas schema 1 at `2026-11-28T11:29:03.028597+00:00` for `a94f344039c8a6096643a51b7fb38b8ca00f481e`.
 
-Static evidence observed 14,740 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 14,744 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -46,6 +46,7 @@ Static evidence observed 14,740 canonical item IDs. This is not a Forge runtime 
 | geckolib | 21 | 0 | 21 | 0 | 21 |
 | golemoverhaul | 13 | 0 | 13 | 0 | 13 |
 | gravestone | 2 | 0 | 2 | 0 | 2 |
+| guardvillagers | 4 | 0 | 4 | 0 | 4 |
 | handcrafted | 285 | 63 | 222 | 0 | 222 |
 | herbalbrews | 48 | 19 | 29 | 3 | 29 |
 | icys_better_horses | 30 | 0 | 30 | 0 | 30 |
